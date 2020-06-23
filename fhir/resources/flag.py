@@ -14,7 +14,11 @@ from . import domainresource, fhirtypes
 
 
 class Flag(domainresource.DomainResource):
-    """ Key information to flag to healthcare providers.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Key information to flag to healthcare providers.
     Prospective warnings of potential issues when providing care to the
     patient.
     """
@@ -72,8 +76,11 @@ class Flag(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="active | inactive | entered-in-error",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     subject: fhirtypes.ReferenceType = Field(

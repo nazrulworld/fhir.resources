@@ -7,6 +7,7 @@ Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field
 
@@ -14,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Organization(domainresource.DomainResource):
-    """ A grouping of people or organizations with a common purpose.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A grouping of people or organizations with a common purpose.
     A formally or informally recognized grouping of people or organizations
     formed for the purpose of achieving some form of collective action.
     Includes companies, institutions, corporations, departments, community
@@ -29,6 +34,9 @@ class Organization(domainresource.DomainResource):
         title="Type `bool`",
         description="Whether the organization\u0027s record is still in active use",
     )
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_active", title="Extension field for ``active``."
+    )
 
     address: ListType[fhirtypes.AddressType] = Field(
         None,
@@ -40,11 +48,14 @@ class Organization(domainresource.DomainResource):
     alias: ListType[fhirtypes.String] = Field(
         None,
         alias="alias",
-        title="List of `String` items (represented as `dict` in JSON)",
+        title="List of `String` items",
         description=(
             "A list of\u00a0alternate names that the organization is known as, or was "
             "known as in the past"
         ),
+    )
+    alias__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_alias", title="Extension field for ``alias``."
     )
 
     contact: ListType[fhirtypes.OrganizationContactType] = Field(
@@ -77,8 +88,11 @@ class Organization(domainresource.DomainResource):
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name used for the organization",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     partOf: fhirtypes.ReferenceType = Field(
@@ -107,7 +121,11 @@ class Organization(domainresource.DomainResource):
 
 
 class OrganizationContact(backboneelement.BackboneElement):
-    """ Contact for the organization for a certain purpose.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Contact for the organization for a certain purpose.
     """
 
     resource_type = Field("OrganizationContact", const=True)

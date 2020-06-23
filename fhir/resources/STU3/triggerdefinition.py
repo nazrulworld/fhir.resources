@@ -14,7 +14,11 @@ from . import element, fhirtypes
 
 
 class TriggerDefinition(element.Element):
-    """ Defines an expected trigger for a module.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Defines an expected trigger for a module.
     A description of a triggering event.
     """
 
@@ -30,26 +34,37 @@ class TriggerDefinition(element.Element):
     eventName: fhirtypes.String = Field(
         None,
         alias="eventName",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Triggering event name",
+    )
+    eventName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_eventName", title="Extension field for ``eventName``."
     )
 
     eventTimingDate: fhirtypes.Date = Field(
         None,
         alias="eventTimingDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="Timing of the event",
         one_of_many="eventTiming",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    eventTimingDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_eventTimingDate", title="Extension field for ``eventTimingDate``."
     )
 
     eventTimingDateTime: fhirtypes.DateTime = Field(
         None,
         alias="eventTimingDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Timing of the event",
         one_of_many="eventTiming",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    eventTimingDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_eventTimingDateTime",
+        title="Extension field for ``eventTimingDateTime``.",
     )
 
     eventTimingReference: fhirtypes.ReferenceType = Field(
@@ -75,11 +90,14 @@ class TriggerDefinition(element.Element):
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "named-event | periodic | data-added | data-modified | data-removed | "
             "data-accessed | data-access-ended"
         ),
+    )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
     )
 
     @root_validator(pre=True)

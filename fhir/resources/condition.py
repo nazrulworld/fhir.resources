@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Condition(domainresource.DomainResource):
-    """ Detailed information about conditions, problems or diagnoses.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Detailed information about conditions, problems or diagnoses.
     A clinical condition, problem, diagnosis, or other event, situation, issue,
     or clinical concept that has risen to a level of concern.
     """
@@ -34,10 +38,15 @@ class Condition(domainresource.DomainResource):
     abatementDateTime: fhirtypes.DateTime = Field(
         None,
         alias="abatementDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When in resolution/remission",
         one_of_many="abatement",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    abatementDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_abatementDateTime",
+        title="Extension field for ``abatementDateTime``.",
     )
 
     abatementPeriod: fhirtypes.PeriodType = Field(
@@ -61,10 +70,13 @@ class Condition(domainresource.DomainResource):
     abatementString: fhirtypes.String = Field(
         None,
         alias="abatementString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="When in resolution/remission",
         one_of_many="abatement",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    abatementString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_abatementString", title="Extension field for ``abatementString``."
     )
 
     asserter: fhirtypes.ReferenceType = Field(
@@ -148,10 +160,13 @@ class Condition(domainresource.DomainResource):
     onsetDateTime: fhirtypes.DateTime = Field(
         None,
         alias="onsetDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Estimated or actual date,  date-time, or age",
         one_of_many="onset",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    onsetDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_onsetDateTime", title="Extension field for ``onsetDateTime``."
     )
 
     onsetPeriod: fhirtypes.PeriodType = Field(
@@ -175,17 +190,23 @@ class Condition(domainresource.DomainResource):
     onsetString: fhirtypes.String = Field(
         None,
         alias="onsetString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Estimated or actual date,  date-time, or age",
         one_of_many="onset",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    onsetString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_onsetString", title="Extension field for ``onsetString``."
     )
 
     recordedDate: fhirtypes.DateTime = Field(
         None,
         alias="recordedDate",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Date record was first recorded",
+    )
+    recordedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_recordedDate", title="Extension field for ``recordedDate``."
     )
 
     recorder: fhirtypes.ReferenceType = Field(
@@ -285,7 +306,11 @@ class Condition(domainresource.DomainResource):
 
 
 class ConditionEvidence(backboneelement.BackboneElement):
-    """ Supporting evidence.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Supporting evidence.
     Supporting evidence / manifestations that are the basis of the Condition's
     verification status, such as evidence that confirmed or refuted the
     condition.
@@ -312,7 +337,11 @@ class ConditionEvidence(backboneelement.BackboneElement):
 
 
 class ConditionStage(backboneelement.BackboneElement):
-    """ Stage/grade, usually assessed formally.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Stage/grade, usually assessed formally.
     Clinical stage or grade of a condition. May include formal severity
     assessments.
     """

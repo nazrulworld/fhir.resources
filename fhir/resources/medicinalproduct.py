@@ -8,6 +8,7 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 from typing import Any, Dict
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field, root_validator
 
@@ -15,7 +16,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class MedicinalProduct(domainresource.DomainResource):
-    """ Detailed definition of a medicinal product, typically for uses other than
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Detailed definition of a medicinal product, typically for uses other than
     direct patient care (e.g. regulatory use).
     """
 
@@ -202,11 +207,16 @@ class MedicinalProduct(domainresource.DomainResource):
     specialMeasures: ListType[fhirtypes.String] = Field(
         None,
         alias="specialMeasures",
-        title="List of `String` items (represented as `dict` in JSON)",
+        title="List of `String` items",
         description=(
             "Whether the Medicinal Product is subject to special measures for "
             "regulatory reasons"
         ),
+    )
+    specialMeasures__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(
+        None, alias="_specialMeasures", title="Extension field for ``specialMeasures``."
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -218,7 +228,11 @@ class MedicinalProduct(domainresource.DomainResource):
 
 
 class MedicinalProductManufacturingBusinessOperation(backboneelement.BackboneElement):
-    """ An operation applied to the product, for manufacturing or adminsitrative
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    An operation applied to the product, for manufacturing or adminsitrative
     purpose.
     """
 
@@ -241,8 +255,11 @@ class MedicinalProductManufacturingBusinessOperation(backboneelement.BackboneEle
     effectiveDate: fhirtypes.DateTime = Field(
         None,
         alias="effectiveDate",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Regulatory authorization date",
+    )
+    effectiveDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_effectiveDate", title="Extension field for ``effectiveDate``."
     )
 
     manufacturer: ListType[fhirtypes.ReferenceType] = Field(
@@ -274,7 +291,11 @@ class MedicinalProductManufacturingBusinessOperation(backboneelement.BackboneEle
 
 
 class MedicinalProductName(backboneelement.BackboneElement):
-    """ The product's name, including full name and possibly coded parts.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The product's name, including full name and possibly coded parts.
     """
 
     resource_type = Field("MedicinalProductName", const=True)
@@ -304,13 +325,20 @@ class MedicinalProductName(backboneelement.BackboneElement):
     productName: fhirtypes.String = Field(
         ...,
         alias="productName",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="The full product name",
+    )
+    productName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_productName", title="Extension field for ``productName``."
     )
 
 
 class MedicinalProductNameCountryLanguage(backboneelement.BackboneElement):
-    """ Country where the name applies.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Country where the name applies.
     """
 
     resource_type = Field("MedicinalProductNameCountryLanguage", const=True)
@@ -338,7 +366,11 @@ class MedicinalProductNameCountryLanguage(backboneelement.BackboneElement):
 
 
 class MedicinalProductNameNamePart(backboneelement.BackboneElement):
-    """ Coding words or phrases of the name.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Coding words or phrases of the name.
     """
 
     resource_type = Field("MedicinalProductNameNamePart", const=True)
@@ -346,8 +378,11 @@ class MedicinalProductNameNamePart(backboneelement.BackboneElement):
     part: fhirtypes.String = Field(
         ...,
         alias="part",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="A fragment of a product name",
+    )
+    part__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_part", title="Extension field for ``part``."
     )
 
     type: fhirtypes.CodingType = Field(
@@ -359,7 +394,11 @@ class MedicinalProductNameNamePart(backboneelement.BackboneElement):
 
 
 class MedicinalProductSpecialDesignation(backboneelement.BackboneElement):
-    """ Indicates if the medicinal product has an orphan designation for the
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Indicates if the medicinal product has an orphan designation for the
     treatment of a rare disease.
     """
 
@@ -368,8 +407,11 @@ class MedicinalProductSpecialDesignation(backboneelement.BackboneElement):
     date: fhirtypes.DateTime = Field(
         None,
         alias="date",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Date when the designation was granted",
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(

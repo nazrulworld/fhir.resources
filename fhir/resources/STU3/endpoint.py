@@ -7,6 +7,7 @@ Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field
 
@@ -14,7 +15,11 @@ from . import domainresource, fhirtypes
 
 
 class Endpoint(domainresource.DomainResource):
-    """ The technical details of an endpoint that can be used for electronic
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The technical details of an endpoint that can be used for electronic
     services.
     The technical details of an endpoint that can be used for electronic
     services, such as for web services providing XDS.b or a REST endpoint for
@@ -26,8 +31,11 @@ class Endpoint(domainresource.DomainResource):
     address: fhirtypes.Uri = Field(
         ...,
         alias="address",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="The technical base address for connecting to this endpoint",
+    )
+    address__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_address", title="Extension field for ``address``."
     )
 
     connectionType: fhirtypes.CodingType = Field(
@@ -47,8 +55,11 @@ class Endpoint(domainresource.DomainResource):
     header: ListType[fhirtypes.String] = Field(
         None,
         alias="header",
-        title="List of `String` items (represented as `dict` in JSON)",
+        title="List of `String` items",
         description="Usage depends on the channel type",
+    )
+    header__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_header", title="Extension field for ``header``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -74,18 +85,26 @@ class Endpoint(domainresource.DomainResource):
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="A name that this endpoint can be identified by",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     payloadMimeType: ListType[fhirtypes.Code] = Field(
         None,
         alias="payloadMimeType",
-        title="List of `Code` items (represented as `dict` in JSON)",
+        title="List of `Code` items",
         description=(
             "Mimetype to send. If not specified, the content could be anything "
             "(including no payload, if the connectionType defined this)"
         ),
+    )
+    payloadMimeType__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(
+        None, alias="_payloadMimeType", title="Extension field for ``payloadMimeType``."
     )
 
     payloadType: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -108,6 +127,9 @@ class Endpoint(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="active | suspended | error | off | entered-in-error | test",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )

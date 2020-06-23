@@ -14,7 +14,11 @@ from . import element, fhirtypes
 
 
 class ContactDetail(element.Element):
-    """ Contact information.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Contact information.
     Specifies contact information for a person or organization.
     """
 
@@ -23,8 +27,11 @@ class ContactDetail(element.Element):
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name of an individual to contact",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     telecom: ListType[fhirtypes.ContactPointType] = Field(

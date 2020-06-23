@@ -7,6 +7,7 @@ Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field
 
@@ -14,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class CompartmentDefinition(domainresource.DomainResource):
-    """ Compartment Definition for a resource.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Compartment Definition for a resource.
     A compartment definition that defines how resources are accessed on a
     server.
     """
@@ -24,8 +29,11 @@ class CompartmentDefinition(domainresource.DomainResource):
     code: fhirtypes.Code = Field(
         ...,
         alias="code",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="Patient | Encounter | RelatedPerson | Practitioner | Device",
+    )
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_code", title="Extension field for ``code``."
     )
 
     contact: ListType[fhirtypes.ContactDetailType] = Field(
@@ -38,15 +46,21 @@ class CompartmentDefinition(domainresource.DomainResource):
     date: fhirtypes.DateTime = Field(
         None,
         alias="date",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Date this was last changed",
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Natural language description of the compartment definition",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     experimental: bool = Field(
@@ -54,6 +68,9 @@ class CompartmentDefinition(domainresource.DomainResource):
         alias="experimental",
         title="Type `bool`",
         description="For testing purposes, not real usage",
+    )
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_experimental", title="Extension field for ``experimental``."
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -66,22 +83,31 @@ class CompartmentDefinition(domainresource.DomainResource):
     name: fhirtypes.String = Field(
         ...,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for this compartment definition (computer friendly)",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     publisher: fhirtypes.String = Field(
         None,
         alias="publisher",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name of the publisher (organization or individual)",
+    )
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
     purpose: fhirtypes.Markdown = Field(
         None,
         alias="purpose",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Why this compartment definition is defined",
+    )
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
     resource: ListType[fhirtypes.CompartmentDefinitionResourceType] = Field(
@@ -100,26 +126,38 @@ class CompartmentDefinition(domainresource.DomainResource):
         title="Type `bool`",
         description="Whether the search syntax is supported",
     )
+    search__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_search", title="Extension field for ``search``."
+    )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="draft | active | retired | unknown",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for this compartment definition (human friendly)",
+    )
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_title", title="Extension field for ``title``."
     )
 
     url: fhirtypes.Uri = Field(
         ...,
         alias="url",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Logical URI to reference this compartment definition (globally unique)",
+    )
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_url", title="Extension field for ``url``."
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -131,29 +169,39 @@ class CompartmentDefinition(domainresource.DomainResource):
 
 
 class CompartmentDefinitionResource(backboneelement.BackboneElement):
-    """ How a resource is related to the compartment.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    How a resource is related to the compartment.
     Information about how a resource is related to the compartment.
     """
 
     resource_type = Field("CompartmentDefinitionResource", const=True)
 
     code: fhirtypes.Code = Field(
-        ...,
-        alias="code",
-        title="Type `Code` (represented as `dict` in JSON)",
-        description="Name of resource type",
+        ..., alias="code", title="Type `Code`", description="Name of resource type"
+    )
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_code", title="Extension field for ``code``."
     )
 
     documentation: fhirtypes.String = Field(
         None,
         alias="documentation",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Additional documentation about the resource and compartment",
+    )
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_documentation", title="Extension field for ``documentation``."
     )
 
     param: ListType[fhirtypes.String] = Field(
         None,
         alias="param",
-        title="List of `String` items (represented as `dict` in JSON)",
+        title="List of `String` items",
         description="Search Parameter Name, or chained parameters",
+    )
+    param__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_param", title="Extension field for ``param``."
     )

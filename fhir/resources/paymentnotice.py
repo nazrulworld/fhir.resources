@@ -14,7 +14,11 @@ from . import domainresource, fhirtypes
 
 
 class PaymentNotice(domainresource.DomainResource):
-    """ PaymentNotice request.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    PaymentNotice request.
     This resource provides the status of the payment for goods and services
     rendered, and the request and response resource references.
     """
@@ -29,10 +33,10 @@ class PaymentNotice(domainresource.DomainResource):
     )
 
     created: fhirtypes.DateTime = Field(
-        ...,
-        alias="created",
-        title="Type `DateTime` (represented as `dict` in JSON)",
-        description="Creation date",
+        ..., alias="created", title="Type `DateTime`", description="Creation date"
+    )
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_created", title="Extension field for ``created``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -65,8 +69,11 @@ class PaymentNotice(domainresource.DomainResource):
     paymentDate: fhirtypes.Date = Field(
         None,
         alias="paymentDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="Payment or clearing date",
+    )
+    paymentDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_paymentDate", title="Extension field for ``paymentDate``."
     )
 
     paymentStatus: fhirtypes.CodeableConceptType = Field(
@@ -117,6 +124,9 @@ class PaymentNotice(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="active | cancelled | draft | entered-in-error",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )

@@ -14,7 +14,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class VisionPrescription(domainresource.DomainResource):
-    """ Prescription for vision correction products for a patient.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Prescription for vision correction products for a patient.
     An authorization for the provision of glasses and/or contact lenses to a
     patient.
     """
@@ -24,15 +28,21 @@ class VisionPrescription(domainresource.DomainResource):
     created: fhirtypes.DateTime = Field(
         ...,
         alias="created",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Response creation date",
+    )
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_created", title="Extension field for ``created``."
     )
 
     dateWritten: fhirtypes.DateTime = Field(
         ...,
         alias="dateWritten",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When prescription was authorized",
+    )
+    dateWritten__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_dateWritten", title="Extension field for ``dateWritten``."
     )
 
     encounter: fhirtypes.ReferenceType = Field(
@@ -84,13 +94,20 @@ class VisionPrescription(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="active | cancelled | draft | entered-in-error",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
 
 class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
-    """ Vision lens authorization.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Vision lens authorization.
     Contain the details of  the individual lens specifications and serves as
     the authorization for the fullfillment by certified professionals.
     """
@@ -100,50 +117,65 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
     add: fhirtypes.Decimal = Field(
         None,
         alias="add",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Added power for multifocal levels",
+    )
+    add__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_add", title="Extension field for ``add``."
     )
 
     axis: fhirtypes.Integer = Field(
         None,
         alias="axis",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="Lens meridian which contain no power for astigmatism",
+    )
+    axis__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_axis", title="Extension field for ``axis``."
     )
 
     backCurve: fhirtypes.Decimal = Field(
         None,
         alias="backCurve",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Contact lens back curvature",
+    )
+    backCurve__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_backCurve", title="Extension field for ``backCurve``."
     )
 
     brand: fhirtypes.String = Field(
-        None,
-        alias="brand",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Brand required",
+        None, alias="brand", title="Type `String`", description="Brand required"
+    )
+    brand__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_brand", title="Extension field for ``brand``."
     )
 
     color: fhirtypes.String = Field(
-        None,
-        alias="color",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Color required",
+        None, alias="color", title="Type `String`", description="Color required"
+    )
+    color__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_color", title="Extension field for ``color``."
     )
 
     cylinder: fhirtypes.Decimal = Field(
         None,
         alias="cylinder",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Lens power for astigmatism",
+    )
+    cylinder__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_cylinder", title="Extension field for ``cylinder``."
     )
 
     diameter: fhirtypes.Decimal = Field(
         None,
         alias="diameter",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Contact lens diameter",
+    )
+    diameter__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_diameter", title="Extension field for ``diameter``."
     )
 
     duration: fhirtypes.QuantityType = Field(
@@ -154,10 +186,10 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
     )
 
     eye: fhirtypes.Code = Field(
-        ...,
-        alias="eye",
-        title="Type `Code` (represented as `dict` in JSON)",
-        description="right | left",
+        ..., alias="eye", title="Type `Code`", description="right | left"
+    )
+    eye__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_eye", title="Extension field for ``eye``."
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
@@ -168,10 +200,10 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
     )
 
     power: fhirtypes.Decimal = Field(
-        None,
-        alias="power",
-        title="Type `Decimal` (represented as `dict` in JSON)",
-        description="Contact lens power",
+        None, alias="power", title="Type `Decimal`", description="Contact lens power"
+    )
+    power__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_power", title="Extension field for ``power``."
     )
 
     prism: ListType[fhirtypes.VisionPrescriptionLensSpecificationPrismType] = Field(
@@ -192,30 +224,34 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
     )
 
     sphere: fhirtypes.Decimal = Field(
-        None,
-        alias="sphere",
-        title="Type `Decimal` (represented as `dict` in JSON)",
-        description="Power of the lens",
+        None, alias="sphere", title="Type `Decimal`", description="Power of the lens"
+    )
+    sphere__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_sphere", title="Extension field for ``sphere``."
     )
 
 
 class VisionPrescriptionLensSpecificationPrism(backboneelement.BackboneElement):
-    """ Eye alignment compensation.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Eye alignment compensation.
     Allows for adjustment on two axis.
     """
 
     resource_type = Field("VisionPrescriptionLensSpecificationPrism", const=True)
 
     amount: fhirtypes.Decimal = Field(
-        ...,
-        alias="amount",
-        title="Type `Decimal` (represented as `dict` in JSON)",
-        description="Amount of adjustment",
+        ..., alias="amount", title="Type `Decimal`", description="Amount of adjustment"
+    )
+    amount__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_amount", title="Extension field for ``amount``."
     )
 
     base: fhirtypes.Code = Field(
-        ...,
-        alias="base",
-        title="Type `Code` (represented as `dict` in JSON)",
-        description="up | down | in | out",
+        ..., alias="base", title="Type `Code`", description="up | down | in | out"
+    )
+    base__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_base", title="Extension field for ``base``."
     )

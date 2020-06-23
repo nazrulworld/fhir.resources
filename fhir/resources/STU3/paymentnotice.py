@@ -14,7 +14,11 @@ from . import domainresource, fhirtypes
 
 
 class PaymentNotice(domainresource.DomainResource):
-    """ PaymentNotice request.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    PaymentNotice request.
     This resource provides the status of the payment for goods and services
     rendered, and the request and response resource references.
     """
@@ -22,10 +26,10 @@ class PaymentNotice(domainresource.DomainResource):
     resource_type = Field("PaymentNotice", const=True)
 
     created: fhirtypes.DateTime = Field(
-        None,
-        alias="created",
-        title="Type `DateTime` (represented as `dict` in JSON)",
-        description="Creation date",
+        None, alias="created", title="Type `DateTime`", description="Creation date"
+    )
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_created", title="Extension field for ``created``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -83,15 +87,21 @@ class PaymentNotice(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="active | cancelled | draft | entered-in-error",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     statusDate: fhirtypes.Date = Field(
         None,
         alias="statusDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="Payment or clearing date",
+    )
+    statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_statusDate", title="Extension field for ``statusDate``."
     )
 
     target: fhirtypes.ReferenceType = Field(

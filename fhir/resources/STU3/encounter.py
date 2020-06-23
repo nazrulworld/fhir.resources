@@ -14,7 +14,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Encounter(domainresource.DomainResource):
-    """ An interaction during which services are provided to the patient.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    An interaction during which services are provided to the patient.
     An interaction between a patient and healthcare provider(s) for the purpose
     of providing healthcare service(s) or assessing the health status of a
     patient.
@@ -162,11 +166,14 @@ class Encounter(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "planned | arrived | triaged | in-progress | onleave | finished | "
             "cancelled +"
         ),
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     statusHistory: ListType[fhirtypes.EncounterStatusHistoryType] = Field(
@@ -195,7 +202,11 @@ class Encounter(domainresource.DomainResource):
 
 
 class EncounterClassHistory(backboneelement.BackboneElement):
-    """ List of past encounter classes.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    List of past encounter classes.
     The class history permits the tracking of the encounters transitions
     without needing to go  through the resource history.
 
@@ -224,7 +235,11 @@ class EncounterClassHistory(backboneelement.BackboneElement):
 
 
 class EncounterDiagnosis(backboneelement.BackboneElement):
-    """ The list of diagnosis relevant to this encounter.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The list of diagnosis relevant to this encounter.
     """
 
     resource_type = Field("EncounterDiagnosis", const=True)
@@ -242,8 +257,11 @@ class EncounterDiagnosis(backboneelement.BackboneElement):
     rank: fhirtypes.PositiveInt = Field(
         None,
         alias="rank",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="Ranking of the diagnosis (for each role type)",
+    )
+    rank__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_rank", title="Extension field for ``rank``."
     )
 
     role: fhirtypes.CodeableConceptType = Field(
@@ -258,7 +276,11 @@ class EncounterDiagnosis(backboneelement.BackboneElement):
 
 
 class EncounterHospitalization(backboneelement.BackboneElement):
-    """ Details about the admission to a healthcare service.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Details about the admission to a healthcare service.
     """
 
     resource_type = Field("EncounterHospitalization", const=True)
@@ -335,7 +357,11 @@ class EncounterHospitalization(backboneelement.BackboneElement):
 
 
 class EncounterLocation(backboneelement.BackboneElement):
-    """ List of locations where the patient has been.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    List of locations where the patient has been.
     List of locations where  the patient has been during this encounter.
     """
 
@@ -360,13 +386,20 @@ class EncounterLocation(backboneelement.BackboneElement):
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="planned | active | reserved | completed",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
 
 class EncounterParticipant(backboneelement.BackboneElement):
-    """ List of participants involved in the encounter.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    List of participants involved in the encounter.
     The list of people responsible for providing the service.
     """
 
@@ -398,7 +431,11 @@ class EncounterParticipant(backboneelement.BackboneElement):
 
 
 class EncounterStatusHistory(backboneelement.BackboneElement):
-    """ List of past encounter statuses.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    List of past encounter statuses.
     The status history permits the encounter resource to contain the status
     history without needing to read through the historical versions of the
     resource, or even have the server store them.
@@ -416,9 +453,12 @@ class EncounterStatusHistory(backboneelement.BackboneElement):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "planned | arrived | triaged | in-progress | onleave | finished | "
             "cancelled +"
         ),
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )

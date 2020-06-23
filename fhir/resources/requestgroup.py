@@ -8,6 +8,7 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 from typing import Any, Dict
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field, root_validator
 
@@ -15,7 +16,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class RequestGroup(domainresource.DomainResource):
-    """ A group of related requests.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A group of related requests.
     A group of related requests that can be used to capture intended activities
     that have inter-dependencies such as "give this medication after that one".
     """
@@ -42,8 +47,11 @@ class RequestGroup(domainresource.DomainResource):
     authoredOn: fhirtypes.DateTime = Field(
         None,
         alias="authoredOn",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When the request group was authored",
+    )
+    authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_authoredOn", title="Extension field for ``authoredOn``."
     )
 
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
@@ -90,25 +98,40 @@ class RequestGroup(domainresource.DomainResource):
     instantiatesCanonical: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="instantiatesCanonical",
-        title="List of `Canonical` items (represented as `dict` in JSON)",
+        title="List of `Canonical` items",
         description="Instantiates FHIR protocol or definition",
+    )
+    instantiatesCanonical__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(
+        None,
+        alias="_instantiatesCanonical",
+        title="Extension field for ``instantiatesCanonical``.",
     )
 
     instantiatesUri: ListType[fhirtypes.Uri] = Field(
         None,
         alias="instantiatesUri",
-        title="List of `Uri` items (represented as `dict` in JSON)",
+        title="List of `Uri` items",
         description="Instantiates external protocol or definition",
+    )
+    instantiatesUri__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(
+        None, alias="_instantiatesUri", title="Extension field for ``instantiatesUri``."
     )
 
     intent: fhirtypes.Code = Field(
         ...,
         alias="intent",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "proposal | plan | directive | order | original-order | reflex-order | "
             "filler-order | instance-order | option"
         ),
+    )
+    intent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_intent", title="Extension field for ``intent``."
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
@@ -121,8 +144,11 @@ class RequestGroup(domainresource.DomainResource):
     priority: fhirtypes.Code = Field(
         None,
         alias="priority",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="routine | urgent | asap | stat",
+    )
+    priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_priority", title="Extension field for ``priority``."
     )
 
     reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -155,11 +181,14 @@ class RequestGroup(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "draft | active | on-hold | revoked | completed | entered-in-error | "
             "unknown"
         ),
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -174,7 +203,11 @@ class RequestGroup(domainresource.DomainResource):
 
 
 class RequestGroupAction(backboneelement.BackboneElement):
-    """ Proposed actions, if any.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Proposed actions, if any.
     The actions, if any, produced by the evaluation of the artifact.
     """
 
@@ -190,8 +223,13 @@ class RequestGroupAction(backboneelement.BackboneElement):
     cardinalityBehavior: fhirtypes.Code = Field(
         None,
         alias="cardinalityBehavior",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="single | multiple",
+    )
+    cardinalityBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_cardinalityBehavior",
+        title="Extension field for ``cardinalityBehavior``.",
     )
 
     code: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -214,8 +252,11 @@ class RequestGroupAction(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Short description of the action",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     documentation: ListType[fhirtypes.RelatedArtifactType] = Field(
@@ -228,8 +269,13 @@ class RequestGroupAction(backboneelement.BackboneElement):
     groupingBehavior: fhirtypes.Code = Field(
         None,
         alias="groupingBehavior",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="visual-group | logical-group | sentence-group",
+    )
+    groupingBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_groupingBehavior",
+        title="Extension field for ``groupingBehavior``.",
     )
 
     participant: ListType[fhirtypes.ReferenceType] = Field(
@@ -244,24 +290,32 @@ class RequestGroupAction(backboneelement.BackboneElement):
     )
 
     precheckBehavior: fhirtypes.Code = Field(
+        None, alias="precheckBehavior", title="Type `Code`", description="yes | no"
+    )
+    precheckBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
-        alias="precheckBehavior",
-        title="Type `Code` (represented as `dict` in JSON)",
-        description="yes | no",
+        alias="_precheckBehavior",
+        title="Extension field for ``precheckBehavior``.",
     )
 
     prefix: fhirtypes.String = Field(
         None,
         alias="prefix",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="User-visible prefix for the action (e.g. 1. or A.)",
+    )
+    prefix__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_prefix", title="Extension field for ``prefix``."
     )
 
     priority: fhirtypes.Code = Field(
         None,
         alias="priority",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="routine | urgent | asap | stat",
+    )
+    priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_priority", title="Extension field for ``priority``."
     )
 
     relatedAction: ListType[fhirtypes.RequestGroupActionRelatedActionType] = Field(
@@ -277,8 +331,13 @@ class RequestGroupAction(backboneelement.BackboneElement):
     requiredBehavior: fhirtypes.Code = Field(
         None,
         alias="requiredBehavior",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="must | could | must-unless-documented",
+    )
+    requiredBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_requiredBehavior",
+        title="Extension field for ``requiredBehavior``.",
     )
 
     resource: fhirtypes.ReferenceType = Field(
@@ -293,18 +352,26 @@ class RequestGroupAction(backboneelement.BackboneElement):
     selectionBehavior: fhirtypes.Code = Field(
         None,
         alias="selectionBehavior",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="any | all | all-or-none | exactly-one | at-most-one | one-or-more",
+    )
+    selectionBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_selectionBehavior",
+        title="Extension field for ``selectionBehavior``.",
     )
 
     textEquivalent: fhirtypes.String = Field(
         None,
         alias="textEquivalent",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description=(
             "Static text equivalent of the action, used if the dynamic aspects "
             "cannot be interpreted by the receiving system"
         ),
+    )
+    textEquivalent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_textEquivalent", title="Extension field for ``textEquivalent``."
     )
 
     timingAge: fhirtypes.AgeType = Field(
@@ -319,10 +386,13 @@ class RequestGroupAction(backboneelement.BackboneElement):
     timingDateTime: fhirtypes.DateTime = Field(
         None,
         alias="timingDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When the action should take place",
         one_of_many="timing",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    timingDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_timingDateTime", title="Extension field for ``timingDateTime``."
     )
 
     timingDuration: fhirtypes.DurationType = Field(
@@ -362,10 +432,10 @@ class RequestGroupAction(backboneelement.BackboneElement):
     )
 
     title: fhirtypes.String = Field(
-        None,
-        alias="title",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="User-visible title",
+        None, alias="title", title="Type `String`", description="User-visible title"
+    )
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_title", title="Extension field for ``title``."
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -422,7 +492,11 @@ class RequestGroupAction(backboneelement.BackboneElement):
 
 
 class RequestGroupActionCondition(backboneelement.BackboneElement):
-    """ Whether or not the action is applicable.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Whether or not the action is applicable.
     An expression that describes applicability criteria, or start/stop
     conditions for the action.
     """
@@ -439,13 +513,20 @@ class RequestGroupActionCondition(backboneelement.BackboneElement):
     kind: fhirtypes.Code = Field(
         ...,
         alias="kind",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="applicability | start | stop",
+    )
+    kind__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_kind", title="Extension field for ``kind``."
     )
 
 
 class RequestGroupActionRelatedAction(backboneelement.BackboneElement):
-    """ Relationship to another action.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Relationship to another action.
     A relationship to another action such as "before" or "30-60 minutes after
     start of".
     """
@@ -455,8 +536,11 @@ class RequestGroupActionRelatedAction(backboneelement.BackboneElement):
     actionId: fhirtypes.Id = Field(
         ...,
         alias="actionId",
-        title="Type `Id` (represented as `dict` in JSON)",
+        title="Type `Id`",
         description="What action this is related to",
+    )
+    actionId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_actionId", title="Extension field for ``actionId``."
     )
 
     offsetDuration: fhirtypes.DurationType = Field(
@@ -480,11 +564,14 @@ class RequestGroupActionRelatedAction(backboneelement.BackboneElement):
     relationship: fhirtypes.Code = Field(
         ...,
         alias="relationship",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "before-start | before | before-end | concurrent-with-start | "
             "concurrent | concurrent-with-end | after-start | after | after-end"
         ),
+    )
+    relationship__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_relationship", title="Extension field for ``relationship``."
     )
 
     @root_validator(pre=True)

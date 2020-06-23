@@ -14,7 +14,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Linkage(domainresource.DomainResource):
-    """ Links records for 'same' item.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Links records for 'same' item.
     Identifies two or more records (resource instances) that refer to the same
     real-world "occurrence".
     """
@@ -26,6 +30,9 @@ class Linkage(domainresource.DomainResource):
         alias="active",
         title="Type `bool`",
         description="Whether this linkage assertion is active or not",
+    )
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_active", title="Extension field for ``active``."
     )
 
     author: fhirtypes.ReferenceType = Field(
@@ -47,7 +54,11 @@ class Linkage(domainresource.DomainResource):
 
 
 class LinkageItem(backboneelement.BackboneElement):
-    """ Item to be linked.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Item to be linked.
     Identifies which record considered as the reference to the same real-world
     occurrence as well as how the items should be evaluated within the
     collection of linked items.
@@ -67,6 +78,9 @@ class LinkageItem(backboneelement.BackboneElement):
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="source | alternate | historical",
+    )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
     )

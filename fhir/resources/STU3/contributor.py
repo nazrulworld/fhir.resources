@@ -14,7 +14,11 @@ from . import element, fhirtypes
 
 
 class Contributor(element.Element):
-    """ Contributor information.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Contributor information.
     A contributor to the content of a knowledge asset, including authors,
     editors, reviewers, and endorsers.
     """
@@ -31,13 +35,19 @@ class Contributor(element.Element):
     name: fhirtypes.String = Field(
         ...,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Who contributed the content",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="author | editor | reviewer | endorser",
+    )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
     )

@@ -14,7 +14,11 @@ from . import domainresource, fhirtypes
 
 
 class MedicinalProductManufactured(domainresource.DomainResource):
-    """ The manufactured item as contained in the packaged medicinal product.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The manufactured item as contained in the packaged medicinal product.
     """
 
     resource_type = Field("MedicinalProductManufactured", const=True)

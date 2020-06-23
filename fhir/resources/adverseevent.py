@@ -14,7 +14,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class AdverseEvent(domainresource.DomainResource):
-    """ Medical care, research study or other healthcare event causing physical
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Medical care, research study or other healthcare event causing physical
     injury.
     Actual or  potential/avoided event causing unintended physical injury
     resulting from or contributed to by medical care, a research study or other
@@ -25,10 +29,10 @@ class AdverseEvent(domainresource.DomainResource):
     resource_type = Field("AdverseEvent", const=True)
 
     actuality: fhirtypes.Code = Field(
-        ...,
-        alias="actuality",
-        title="Type `Code` (represented as `dict` in JSON)",
-        description="actual | potential",
+        ..., alias="actuality", title="Type `Code`", description="actual | potential"
+    )
+    actuality__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_actuality", title="Extension field for ``actuality``."
     )
 
     category: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -57,15 +61,21 @@ class AdverseEvent(domainresource.DomainResource):
     date: fhirtypes.DateTime = Field(
         None,
         alias="date",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When the event occurred",
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     detected: fhirtypes.DateTime = Field(
         None,
         alias="detected",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When the event was detected",
+    )
+    detected__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_detected", title="Extension field for ``detected``."
     )
 
     encounter: fhirtypes.ReferenceType = Field(
@@ -114,8 +124,11 @@ class AdverseEvent(domainresource.DomainResource):
     recordedDate: fhirtypes.DateTime = Field(
         None,
         alias="recordedDate",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When the event was recorded",
+    )
+    recordedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_recordedDate", title="Extension field for ``recordedDate``."
     )
 
     recorder: fhirtypes.ReferenceType = Field(
@@ -205,7 +218,11 @@ class AdverseEvent(domainresource.DomainResource):
 
 
 class AdverseEventSuspectEntity(backboneelement.BackboneElement):
-    """ The suspected agent causing the adverse event.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The suspected agent causing the adverse event.
     Describes the entity that is suspected to have caused the adverse event.
     """
 
@@ -234,7 +251,11 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
 
 
 class AdverseEventSuspectEntityCausality(backboneelement.BackboneElement):
-    """ Information on the possible cause of the event.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Information on the possible cause of the event.
     """
 
     resource_type = Field("AdverseEventSuspectEntityCausality", const=True)
@@ -266,6 +287,11 @@ class AdverseEventSuspectEntityCausality(backboneelement.BackboneElement):
     productRelatedness: fhirtypes.String = Field(
         None,
         alias="productRelatedness",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="AdverseEvent.suspectEntity.causalityProductRelatedness",
+    )
+    productRelatedness__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_productRelatedness",
+        title="Extension field for ``productRelatedness``.",
     )

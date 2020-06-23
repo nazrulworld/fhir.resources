@@ -104,6 +104,10 @@ MODEL_CLASSES = {
     "CommunicationPayload": (None, ".communication"),
     "CommunicationRequest": (None, ".communicationrequest"),
     "CommunicationRequestPayload": (None, ".communicationrequest"),
+    "Composition": (None, ".composition"),
+    "CompositionAttester": (None, ".composition"),
+    "CompositionEvent": (None, ".composition"),
+    "CompositionSection": (None, ".composition"),
 }
 
 
@@ -552,6 +556,22 @@ def communicationrequestpayload_validator(
     return fhir_model_validator("CommunicationRequestPayload", v)
 
 
+def composition_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Composition", v)
+
+
+def compositionattester_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("CompositionAttester", v)
+
+
+def compositionevent_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("CompositionEvent", v)
+
+
+def compositionsection_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("CompositionSection", v)
+
+
 __all__ = [
     "element_validator",
     "resource_validator",
@@ -644,4 +664,8 @@ __all__ = [
     "communicationpayload_validator",
     "communicationrequest_validator",
     "communicationrequestpayload_validator",
+    "composition_validator",
+    "compositionattester_validator",
+    "compositionevent_validator",
+    "compositionsection_validator",
 ]

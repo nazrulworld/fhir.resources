@@ -14,7 +14,11 @@ from . import element, fhirtypes
 
 
 class BackboneElement(element.Element):
-    """ Base for elements defined inside a resource.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Base for elements defined inside a resource.
     Base definition for all elements that are defined inside a resource - but
     not those in a data type.
     """

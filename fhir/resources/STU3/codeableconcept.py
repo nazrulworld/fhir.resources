@@ -14,7 +14,11 @@ from . import element, fhirtypes
 
 
 class CodeableConcept(element.Element):
-    """ Concept - reference to a terminology or just  text.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Concept - reference to a terminology or just  text.
     A concept that may be defined by a formal reference to a terminology or
     ontology or may be provided by text.
     """
@@ -31,6 +35,9 @@ class CodeableConcept(element.Element):
     text: fhirtypes.String = Field(
         None,
         alias="text",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Plain text representation of the concept",
+    )
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_text", title="Extension field for ``text``."
     )

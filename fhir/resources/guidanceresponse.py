@@ -15,7 +15,11 @@ from . import domainresource, fhirtypes
 
 
 class GuidanceResponse(domainresource.DomainResource):
-    """ The formal response to a guidance request.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The formal response to a guidance request.
     A guidance response is the formal response to a guidance request, including
     any output parameters returned by the evaluation, as well as the
     description of any proposed actions to be taken.
@@ -60,10 +64,13 @@ class GuidanceResponse(domainresource.DomainResource):
     moduleCanonical: fhirtypes.Canonical = Field(
         None,
         alias="moduleCanonical",
-        title="Type `Canonical` (represented as `dict` in JSON)",
+        title="Type `Canonical`",
         description="What guidance was requested",
         one_of_many="module",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    moduleCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_moduleCanonical", title="Extension field for ``moduleCanonical``."
     )
 
     moduleCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -78,10 +85,13 @@ class GuidanceResponse(domainresource.DomainResource):
     moduleUri: fhirtypes.Uri = Field(
         None,
         alias="moduleUri",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="What guidance was requested",
         one_of_many="module",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    moduleUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_moduleUri", title="Extension field for ``moduleUri``."
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
@@ -94,8 +104,13 @@ class GuidanceResponse(domainresource.DomainResource):
     occurrenceDateTime: fhirtypes.DateTime = Field(
         None,
         alias="occurrenceDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When the guidance response was processed",
+    )
+    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_occurrenceDateTime",
+        title="Extension field for ``occurrenceDateTime``.",
     )
 
     outputParameters: fhirtypes.ReferenceType = Field(
@@ -152,11 +167,14 @@ class GuidanceResponse(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "success | data-requested | data-required | in-progress | failure | "
             "entered-in-error"
         ),
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     subject: fhirtypes.ReferenceType = Field(

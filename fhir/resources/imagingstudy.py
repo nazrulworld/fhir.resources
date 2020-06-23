@@ -14,7 +14,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ImagingStudy(domainresource.DomainResource):
-    """ A set of images produced in single study (one or more series of references
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A set of images produced in single study (one or more series of references
     images).
     Representation of the content produced in a DICOM imaging study. A study
     comprises a set of series, each of which includes a set of Service-Object
@@ -39,8 +43,11 @@ class ImagingStudy(domainresource.DomainResource):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Institution-generated description",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     encounter: fhirtypes.ReferenceType = Field(
@@ -106,15 +113,23 @@ class ImagingStudy(domainresource.DomainResource):
     numberOfInstances: fhirtypes.UnsignedInt = Field(
         None,
         alias="numberOfInstances",
-        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        title="Type `UnsignedInt`",
         description="Number of Study Related Instances",
+    )
+    numberOfInstances__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_numberOfInstances",
+        title="Extension field for ``numberOfInstances``.",
     )
 
     numberOfSeries: fhirtypes.UnsignedInt = Field(
         None,
         alias="numberOfSeries",
-        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        title="Type `UnsignedInt`",
         description="Number of Study Related Series",
+    )
+    numberOfSeries__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_numberOfSeries", title="Extension field for ``numberOfSeries``."
     )
 
     procedureCode: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -171,15 +186,21 @@ class ImagingStudy(domainresource.DomainResource):
     started: fhirtypes.DateTime = Field(
         None,
         alias="started",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When the study was started",
+    )
+    started__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_started", title="Extension field for ``started``."
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="registered | available | cancelled | entered-in-error | unknown",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -194,7 +215,11 @@ class ImagingStudy(domainresource.DomainResource):
 
 
 class ImagingStudySeries(backboneelement.BackboneElement):
-    """ Each study has one or more series of instances.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Each study has one or more series of instances.
     Each study has one or more series of images or other content.
     """
 
@@ -210,8 +235,11 @@ class ImagingStudySeries(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="A short human readable summary of the series",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     endpoint: ListType[fhirtypes.ReferenceType] = Field(
@@ -251,15 +279,23 @@ class ImagingStudySeries(backboneelement.BackboneElement):
     number: fhirtypes.UnsignedInt = Field(
         None,
         alias="number",
-        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        title="Type `UnsignedInt`",
         description="Numeric identifier of this series",
+    )
+    number__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_number", title="Extension field for ``number``."
     )
 
     numberOfInstances: fhirtypes.UnsignedInt = Field(
         None,
         alias="numberOfInstances",
-        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        title="Type `UnsignedInt`",
         description="Number of Series Related Instances",
+    )
+    numberOfInstances__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_numberOfInstances",
+        title="Extension field for ``numberOfInstances``.",
     )
 
     performer: ListType[fhirtypes.ImagingStudySeriesPerformerType] = Field(
@@ -285,20 +321,30 @@ class ImagingStudySeries(backboneelement.BackboneElement):
     started: fhirtypes.DateTime = Field(
         None,
         alias="started",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When the series started",
+    )
+    started__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_started", title="Extension field for ``started``."
     )
 
     uid: fhirtypes.Id = Field(
         ...,
         alias="uid",
-        title="Type `Id` (represented as `dict` in JSON)",
+        title="Type `Id`",
         description="DICOM Series Instance UID for the series",
+    )
+    uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_uid", title="Extension field for ``uid``."
     )
 
 
 class ImagingStudySeriesInstance(backboneelement.BackboneElement):
-    """ A single SOP instance from the series.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A single SOP instance from the series.
     A single SOP instance within the series, e.g. an image, or presentation
     state.
     """
@@ -308,8 +354,11 @@ class ImagingStudySeriesInstance(backboneelement.BackboneElement):
     number: fhirtypes.UnsignedInt = Field(
         None,
         alias="number",
-        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        title="Type `UnsignedInt`",
         description="The number of this instance in the series",
+    )
+    number__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_number", title="Extension field for ``number``."
     )
 
     sopClass: fhirtypes.CodingType = Field(
@@ -322,20 +371,27 @@ class ImagingStudySeriesInstance(backboneelement.BackboneElement):
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Description of instance",
+    )
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_title", title="Extension field for ``title``."
     )
 
     uid: fhirtypes.Id = Field(
-        ...,
-        alias="uid",
-        title="Type `Id` (represented as `dict` in JSON)",
-        description="DICOM SOP Instance UID",
+        ..., alias="uid", title="Type `Id`", description="DICOM SOP Instance UID"
+    )
+    uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_uid", title="Extension field for ``uid``."
     )
 
 
 class ImagingStudySeriesPerformer(backboneelement.BackboneElement):
-    """ Who performed the series.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Who performed the series.
     Indicates who or what performed the series and how they were involved.
     """
 

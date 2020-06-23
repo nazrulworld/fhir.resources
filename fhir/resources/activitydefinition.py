@@ -8,6 +8,7 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 from typing import Any, Dict
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field, root_validator
 
@@ -15,7 +16,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ActivityDefinition(domainresource.DomainResource):
-    """ The definition of a specific activity to be taken, independent of any
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The definition of a specific activity to be taken, independent of any
     particular patient or context.
     This resource allows for the definition of some activity to be performed,
     independent of a particular patient, practitioner, or other performance
@@ -27,8 +32,11 @@ class ActivityDefinition(domainresource.DomainResource):
     approvalDate: fhirtypes.Date = Field(
         None,
         alias="approvalDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="When the activity definition was approved by publisher",
+    )
+    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_approvalDate", title="Extension field for ``approvalDate``."
     )
 
     author: ListType[fhirtypes.ContactDetailType] = Field(
@@ -62,22 +70,28 @@ class ActivityDefinition(domainresource.DomainResource):
     copyright: fhirtypes.Markdown = Field(
         None,
         alias="copyright",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Use and/or publishing restrictions",
+    )
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
     date: fhirtypes.DateTime = Field(
-        None,
-        alias="date",
-        title="Type `DateTime` (represented as `dict` in JSON)",
-        description="Date last changed",
+        None, alias="date", title="Type `DateTime`", description="Date last changed"
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Natural language description of the activity definition",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     doNotPerform: bool = Field(
@@ -85,6 +99,9 @@ class ActivityDefinition(domainresource.DomainResource):
         alias="doNotPerform",
         title="Type `bool`",
         description="True if the activity should not be performed",
+    )
+    doNotPerform__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_doNotPerform", title="Extension field for ``doNotPerform``."
     )
 
     dosage: ListType[fhirtypes.DosageType] = Field(
@@ -131,6 +148,9 @@ class ActivityDefinition(domainresource.DomainResource):
         title="Type `bool`",
         description="For testing purposes, not real usage",
     )
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_experimental", title="Extension field for ``experimental``."
+    )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
@@ -142,11 +162,14 @@ class ActivityDefinition(domainresource.DomainResource):
     intent: fhirtypes.Code = Field(
         None,
         alias="intent",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "proposal | plan | directive | order | original-order | reflex-order | "
             "filler-order | instance-order | option"
         ),
+    )
+    intent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_intent", title="Extension field for ``intent``."
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -157,27 +180,30 @@ class ActivityDefinition(domainresource.DomainResource):
     )
 
     kind: fhirtypes.Code = Field(
-        None,
-        alias="kind",
-        title="Type `Code` (represented as `dict` in JSON)",
-        description="Kind of resource",
+        None, alias="kind", title="Type `Code`", description="Kind of resource"
+    )
+    kind__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_kind", title="Extension field for ``kind``."
     )
 
     lastReviewDate: fhirtypes.Date = Field(
         None,
         alias="lastReviewDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="When the activity definition was last reviewed",
+    )
+    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
     )
 
     library: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="library",
-        title=(
-            "List of `Canonical` items referencing `Library` (represented as `dict`"
-            " in JSON)"
-        ),
+        title="List of `Canonical` items referencing `Library`",
         description="Logic used by the activity definition",
+    )
+    library__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_library", title="Extension field for ``library``."
     )
 
     location: fhirtypes.ReferenceType = Field(
@@ -192,8 +218,11 @@ class ActivityDefinition(domainresource.DomainResource):
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for this activity definition (computer friendly)",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     observationRequirement: ListType[fhirtypes.ReferenceType] = Field(
@@ -229,8 +258,11 @@ class ActivityDefinition(domainresource.DomainResource):
     priority: fhirtypes.Code = Field(
         None,
         alias="priority",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="routine | urgent | asap | stat",
+    )
+    priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_priority", title="Extension field for ``priority``."
     )
 
     productCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -257,25 +289,31 @@ class ActivityDefinition(domainresource.DomainResource):
     profile: fhirtypes.Canonical = Field(
         None,
         alias="profile",
-        title=(
-            "Type `Canonical` referencing `StructureDefinition` (represented as "
-            "`dict` in JSON)"
-        ),
+        title="Type `Canonical` referencing `StructureDefinition`",
         description="What profile the resource needs to conform to",
+    )
+    profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_profile", title="Extension field for ``profile``."
     )
 
     publisher: fhirtypes.String = Field(
         None,
         alias="publisher",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name of the publisher (organization or individual)",
+    )
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
     purpose: fhirtypes.Markdown = Field(
         None,
         alias="purpose",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Why this activity definition is defined",
+    )
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
     quantity: fhirtypes.QuantityType = Field(
@@ -312,8 +350,11 @@ class ActivityDefinition(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="draft | active | retired | unknown",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     subjectCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -337,8 +378,11 @@ class ActivityDefinition(domainresource.DomainResource):
     subtitle: fhirtypes.String = Field(
         None,
         alias="subtitle",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Subordinate title of the activity definition",
+    )
+    subtitle__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_subtitle", title="Extension field for ``subtitle``."
     )
 
     timingAge: fhirtypes.AgeType = Field(
@@ -353,10 +397,13 @@ class ActivityDefinition(domainresource.DomainResource):
     timingDateTime: fhirtypes.DateTime = Field(
         None,
         alias="timingDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When activity is to occur",
         one_of_many="timing",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    timingDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_timingDateTime", title="Extension field for ``timingDateTime``."
     )
 
     timingDuration: fhirtypes.DurationType = Field(
@@ -398,8 +445,11 @@ class ActivityDefinition(domainresource.DomainResource):
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for this activity definition (human friendly)",
+    )
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_title", title="Extension field for ``title``."
     )
 
     topic: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -412,28 +462,34 @@ class ActivityDefinition(domainresource.DomainResource):
     transform: fhirtypes.Canonical = Field(
         None,
         alias="transform",
-        title=(
-            "Type `Canonical` referencing `StructureMap` (represented as `dict` in "
-            "JSON)"
-        ),
+        title="Type `Canonical` referencing `StructureMap`",
         description="Transform to apply the template",
+    )
+    transform__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_transform", title="Extension field for ``transform``."
     )
 
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description=(
             "Canonical identifier for this activity definition, represented as a "
             "URI (globally unique)"
         ),
     )
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_url", title="Extension field for ``url``."
+    )
 
     usage: fhirtypes.String = Field(
         None,
         alias="usage",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Describes the clinical usage of the activity definition",
+    )
+    usage__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_usage", title="Extension field for ``usage``."
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -446,8 +502,11 @@ class ActivityDefinition(domainresource.DomainResource):
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Business version of the activity definition",
+    )
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_version", title="Extension field for ``version``."
     )
 
     @root_validator(pre=True)
@@ -499,7 +558,11 @@ class ActivityDefinition(domainresource.DomainResource):
 
 
 class ActivityDefinitionDynamicValue(backboneelement.BackboneElement):
-    """ Dynamic aspects of the definition.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Dynamic aspects of the definition.
     Dynamic values that will be evaluated to produce values for elements of the
     resulting resource. For example, if the dosage of a medication must be
     computed based on the patient's weight, a dynamic value would be used to
@@ -519,13 +582,20 @@ class ActivityDefinitionDynamicValue(backboneelement.BackboneElement):
     path: fhirtypes.String = Field(
         ...,
         alias="path",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="The path to the element to be set dynamically",
+    )
+    path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_path", title="Extension field for ``path``."
     )
 
 
 class ActivityDefinitionParticipant(backboneelement.BackboneElement):
-    """ Who should participate in the action.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Who should participate in the action.
     Indicates who should participate in performing the action described.
     """
 
@@ -541,6 +611,9 @@ class ActivityDefinitionParticipant(backboneelement.BackboneElement):
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="patient | practitioner | related-person | device",
+    )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
     )

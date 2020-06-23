@@ -14,7 +14,11 @@ from . import domainresource, fhirtypes
 
 
 class BodyStructure(domainresource.DomainResource):
-    """ Specific and identified anatomical structure.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Specific and identified anatomical structure.
     Record details about an anatomical structure.  This resource may be used
     when a coded concept does not provide the necessary detail needed for the
     use case.
@@ -28,12 +32,15 @@ class BodyStructure(domainresource.DomainResource):
         title="Type `bool`",
         description="Whether this record is in active use",
     )
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_active", title="Extension field for ``active``."
+    )
 
     description: fhirtypes.String = Field(
-        None,
-        alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Text description",
+        None, alias="description", title="Type `String`", description="Text description"
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(

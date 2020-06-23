@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Substance(domainresource.DomainResource):
-    """ A homogeneous material with a definite composition.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A homogeneous material with a definite composition.
     """
 
     resource_type = Field("Substance", const=True)
@@ -37,8 +41,11 @@ class Substance(domainresource.DomainResource):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Textual description of the substance, comments",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -65,13 +72,20 @@ class Substance(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="active | inactive | entered-in-error",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
 
 class SubstanceIngredient(backboneelement.BackboneElement):
-    """ Composition information about the substance.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Composition information about the substance.
     A substance can be composed of other substances.
     """
 
@@ -145,7 +159,11 @@ class SubstanceIngredient(backboneelement.BackboneElement):
 
 
 class SubstanceInstance(backboneelement.BackboneElement):
-    """ If this describes a specific package/container of the substance.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    If this describes a specific package/container of the substance.
     Substance may be used to describe a kind of substance, or a specific
     package/container of the substance: an instance.
     """
@@ -155,8 +173,11 @@ class SubstanceInstance(backboneelement.BackboneElement):
     expiry: fhirtypes.DateTime = Field(
         None,
         alias="expiry",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When no longer valid to use",
+    )
+    expiry__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_expiry", title="Extension field for ``expiry``."
     )
 
     identifier: fhirtypes.IdentifierType = Field(

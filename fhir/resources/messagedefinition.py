@@ -8,6 +8,7 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 from typing import Any, Dict
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field, root_validator
 
@@ -15,7 +16,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class MessageDefinition(domainresource.DomainResource):
-    """ A resource that defines a type of message that can be exchanged between
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A resource that defines a type of message that can be exchanged between
     systems.
     Defines the characteristics of a message that can be shared between
     systems, including the type of event that initiates the message, the
@@ -37,18 +42,21 @@ class MessageDefinition(domainresource.DomainResource):
     base: fhirtypes.Canonical = Field(
         None,
         alias="base",
-        title=(
-            "Type `Canonical` referencing `MessageDefinition` (represented as "
-            "`dict` in JSON)"
-        ),
+        title="Type `Canonical` referencing `MessageDefinition`",
         description="Definition this one is based on",
+    )
+    base__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_base", title="Extension field for ``base``."
     )
 
     category: fhirtypes.Code = Field(
         None,
         alias="category",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="consequence | currency | notification",
+    )
+    category__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_category", title="Extension field for ``category``."
     )
 
     contact: ListType[fhirtypes.ContactDetailType] = Field(
@@ -61,22 +69,28 @@ class MessageDefinition(domainresource.DomainResource):
     copyright: fhirtypes.Markdown = Field(
         None,
         alias="copyright",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Use and/or publishing restrictions",
+    )
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
     date: fhirtypes.DateTime = Field(
-        ...,
-        alias="date",
-        title="Type `DateTime` (represented as `dict` in JSON)",
-        description="Date last changed",
+        ..., alias="date", title="Type `DateTime`", description="Date last changed"
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Natural language description of the message definition",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     eventCoding: fhirtypes.CodingType = Field(
@@ -91,10 +105,13 @@ class MessageDefinition(domainresource.DomainResource):
     eventUri: fhirtypes.Uri = Field(
         None,
         alias="eventUri",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Event code  or link to the EventDefinition",
         one_of_many="event",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    eventUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_eventUri", title="Extension field for ``eventUri``."
     )
 
     experimental: bool = Field(
@@ -102,6 +119,9 @@ class MessageDefinition(domainresource.DomainResource):
         alias="experimental",
         title="Type `bool`",
         description="For testing purposes, not real usage",
+    )
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_experimental", title="Extension field for ``experimental``."
     )
 
     focus: ListType[fhirtypes.MessageDefinitionFocusType] = Field(
@@ -114,11 +134,11 @@ class MessageDefinition(domainresource.DomainResource):
     graph: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="graph",
-        title=(
-            "List of `Canonical` items referencing `GraphDefinition` (represented "
-            "as `dict` in JSON)"
-        ),
+        title="List of `Canonical` items referencing `GraphDefinition`",
         description="Canonical reference to a GraphDefinition",
+    )
+    graph__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_graph", title="Extension field for ``graph``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -138,8 +158,11 @@ class MessageDefinition(domainresource.DomainResource):
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for this message definition (computer friendly)",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     parent: ListType[fhirtypes.Canonical] = Field(
@@ -147,61 +170,84 @@ class MessageDefinition(domainresource.DomainResource):
         alias="parent",
         title=(
             "List of `Canonical` items referencing `ActivityDefinition, "
-            "PlanDefinition` (represented as `dict` in JSON)"
+            "PlanDefinition`"
         ),
         description="Protocol/workflow this is part of",
+    )
+    parent__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_parent", title="Extension field for ``parent``."
     )
 
     publisher: fhirtypes.String = Field(
         None,
         alias="publisher",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name of the publisher (organization or individual)",
+    )
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
     purpose: fhirtypes.Markdown = Field(
         None,
         alias="purpose",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Why this message definition is defined",
+    )
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
     replaces: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="replaces",
-        title=(
-            "List of `Canonical` items referencing `MessageDefinition` (represented"
-            " as `dict` in JSON)"
-        ),
+        title="List of `Canonical` items referencing `MessageDefinition`",
         description="Takes the place of",
+    )
+    replaces__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_replaces", title="Extension field for ``replaces``."
     )
 
     responseRequired: fhirtypes.Code = Field(
         None,
         alias="responseRequired",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="always | on-error | never | on-success",
+    )
+    responseRequired__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_responseRequired",
+        title="Extension field for ``responseRequired``.",
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="draft | active | retired | unknown",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for this message definition (human friendly)",
+    )
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_title", title="Extension field for ``title``."
     )
 
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Business Identifier for a given MessageDefinition",
+    )
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_url", title="Extension field for ``url``."
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -214,8 +260,11 @@ class MessageDefinition(domainresource.DomainResource):
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Business version of the message definition",
+    )
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_version", title="Extension field for ``version``."
     )
 
     @root_validator(pre=True)
@@ -256,7 +305,11 @@ class MessageDefinition(domainresource.DomainResource):
 
 
 class MessageDefinitionAllowedResponse(backboneelement.BackboneElement):
-    """ Responses to this message.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Responses to this message.
     Indicates what types of messages may be sent as an application-level
     response to this message.
     """
@@ -266,23 +319,30 @@ class MessageDefinitionAllowedResponse(backboneelement.BackboneElement):
     message: fhirtypes.Canonical = Field(
         ...,
         alias="message",
-        title=(
-            "Type `Canonical` referencing `MessageDefinition` (represented as "
-            "`dict` in JSON)"
-        ),
+        title="Type `Canonical` referencing `MessageDefinition`",
         description="Reference to allowed message definition response",
+    )
+    message__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_message", title="Extension field for ``message``."
     )
 
     situation: fhirtypes.Markdown = Field(
         None,
         alias="situation",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="When should this response be used",
+    )
+    situation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_situation", title="Extension field for ``situation``."
     )
 
 
 class MessageDefinitionFocus(backboneelement.BackboneElement):
-    """ Resource(s) that are the subject of the event.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Resource(s) that are the subject of the event.
     Identifies the resource (or resources) that are being addressed by the
     event.  For example, the Encounter for an admit message or two Account
     records for a merge.
@@ -291,32 +351,38 @@ class MessageDefinitionFocus(backboneelement.BackboneElement):
     resource_type = Field("MessageDefinitionFocus", const=True)
 
     code: fhirtypes.Code = Field(
-        ...,
-        alias="code",
-        title="Type `Code` (represented as `dict` in JSON)",
-        description="Type of resource",
+        ..., alias="code", title="Type `Code`", description="Type of resource"
+    )
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_code", title="Extension field for ``code``."
     )
 
     max: fhirtypes.String = Field(
         None,
         alias="max",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Maximum number of focuses of this type",
+    )
+    max__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_max", title="Extension field for ``max``."
     )
 
     min: fhirtypes.UnsignedInt = Field(
         ...,
         alias="min",
-        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        title="Type `UnsignedInt`",
         description="Minimum number of focuses of this type",
+    )
+    min__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_min", title="Extension field for ``min``."
     )
 
     profile: fhirtypes.Canonical = Field(
         None,
         alias="profile",
-        title=(
-            "Type `Canonical` referencing `StructureDefinition` (represented as "
-            "`dict` in JSON)"
-        ),
+        title="Type `Canonical` referencing `StructureDefinition`",
         description="Profile that must be adhered to by focus",
+    )
+    profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_profile", title="Extension field for ``profile``."
     )

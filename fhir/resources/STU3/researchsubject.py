@@ -12,7 +12,11 @@ from . import domainresource, fhirtypes
 
 
 class ResearchSubject(domainresource.DomainResource):
-    """ Investigation to increase healthcare-related patient-independent knowledge.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Investigation to increase healthcare-related patient-independent knowledge.
     A process where a researcher or organization plans and then executes a
     series of steps intended to increase the field of healthcare-related
     knowledge.  This includes studies of safety, efficacy, comparative
@@ -26,15 +30,21 @@ class ResearchSubject(domainresource.DomainResource):
     actualArm: fhirtypes.String = Field(
         None,
         alias="actualArm",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="What path was followed",
+    )
+    actualArm__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_actualArm", title="Extension field for ``actualArm``."
     )
 
     assignedArm: fhirtypes.String = Field(
         None,
         alias="assignedArm",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="What path should be followed",
+    )
+    assignedArm__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_assignedArm", title="Extension field for ``assignedArm``."
     )
 
     consent: fhirtypes.ReferenceType = Field(
@@ -68,8 +78,11 @@ class ResearchSubject(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="candidate | enrolled | active | suspended | withdrawn | completed",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     study: fhirtypes.ReferenceType = Field(

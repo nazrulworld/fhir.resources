@@ -14,7 +14,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class EpisodeOfCare(domainresource.DomainResource):
-    """ An association of a Patient with an Organization and  Healthcare
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    An association of a Patient with an Organization and  Healthcare
     Provider(s) for a period of time that the Organization assumes some level
     of responsibility.
     An association between a patient and an organization / healthcare
@@ -98,11 +102,14 @@ class EpisodeOfCare(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "planned | waitlist | active | onhold | finished | cancelled | entered-"
             "in-error"
         ),
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     statusHistory: ListType[fhirtypes.EpisodeOfCareStatusHistoryType] = Field(
@@ -137,7 +144,11 @@ class EpisodeOfCare(domainresource.DomainResource):
 
 
 class EpisodeOfCareDiagnosis(backboneelement.BackboneElement):
-    """ The list of diagnosis relevant to this episode of care.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The list of diagnosis relevant to this episode of care.
     """
 
     resource_type = Field("EpisodeOfCareDiagnosis", const=True)
@@ -155,8 +166,11 @@ class EpisodeOfCareDiagnosis(backboneelement.BackboneElement):
     rank: fhirtypes.PositiveInt = Field(
         None,
         alias="rank",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="Ranking of the diagnosis (for each role type)",
+    )
+    rank__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_rank", title="Extension field for ``rank``."
     )
 
     role: fhirtypes.CodeableConceptType = Field(
@@ -171,7 +185,11 @@ class EpisodeOfCareDiagnosis(backboneelement.BackboneElement):
 
 
 class EpisodeOfCareStatusHistory(backboneelement.BackboneElement):
-    """ Past list of status codes (the current status may be included to cover the
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Past list of status codes (the current status may be included to cover the
     start date of the status).
     The history of statuses that the EpisodeOfCare has been through (without
     requiring processing the history of the resource).
@@ -189,9 +207,12 @@ class EpisodeOfCareStatusHistory(backboneelement.BackboneElement):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "planned | waitlist | active | onhold | finished | cancelled | entered-"
             "in-error"
         ),
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )

@@ -14,7 +14,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class DocumentReference(domainresource.DomainResource):
-    """ A reference to a document.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A reference to a document.
     """
 
     resource_type = Field("DocumentReference", const=True)
@@ -66,8 +70,11 @@ class DocumentReference(domainresource.DomainResource):
     created: fhirtypes.DateTime = Field(
         None,
         alias="created",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Document creation time",
+    )
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_created", title="Extension field for ``created``."
     )
 
     custodian: fhirtypes.ReferenceType = Field(
@@ -83,15 +90,21 @@ class DocumentReference(domainresource.DomainResource):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Human-readable description (title)",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     docStatus: fhirtypes.Code = Field(
         None,
         alias="docStatus",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="preliminary | final | appended | amended | entered-in-error",
+    )
+    docStatus__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_docStatus", title="Extension field for ``docStatus``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -104,8 +117,11 @@ class DocumentReference(domainresource.DomainResource):
     indexed: fhirtypes.Instant = Field(
         ...,
         alias="indexed",
-        title="Type `Instant` (represented as `dict` in JSON)",
+        title="Type `Instant`",
         description="When this document reference was created",
+    )
+    indexed__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_indexed", title="Extension field for ``indexed``."
     )
 
     masterIdentifier: fhirtypes.IdentifierType = Field(
@@ -135,8 +151,11 @@ class DocumentReference(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="current | superseded | entered-in-error",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -158,7 +177,11 @@ class DocumentReference(domainresource.DomainResource):
 
 
 class DocumentReferenceContent(backboneelement.BackboneElement):
-    """ Document referenced.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Document referenced.
     The document and format referenced. There may be multiple content element
     repetitions, each with a different format.
     """
@@ -181,7 +204,11 @@ class DocumentReferenceContent(backboneelement.BackboneElement):
 
 
 class DocumentReferenceContext(backboneelement.BackboneElement):
-    """ Clinical context of document.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Clinical context of document.
     The clinical context in which the document was prepared.
     """
 
@@ -247,7 +274,11 @@ class DocumentReferenceContext(backboneelement.BackboneElement):
 
 
 class DocumentReferenceContextRelated(backboneelement.BackboneElement):
-    """ Related identifiers or resources.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Related identifiers or resources.
     Related identifiers or resources associated with the DocumentReference.
     """
 
@@ -271,7 +302,11 @@ class DocumentReferenceContextRelated(backboneelement.BackboneElement):
 
 
 class DocumentReferenceRelatesTo(backboneelement.BackboneElement):
-    """ Relationships to other documents.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Relationships to other documents.
     Relationships that this document has with other document references that
     already exist.
     """
@@ -281,8 +316,11 @@ class DocumentReferenceRelatesTo(backboneelement.BackboneElement):
     code: fhirtypes.Code = Field(
         ...,
         alias="code",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="replaces | transforms | signs | appends",
+    )
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_code", title="Extension field for ``code``."
     )
 
     target: fhirtypes.ReferenceType = Field(

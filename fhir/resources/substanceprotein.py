@@ -7,6 +7,7 @@ Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field
 
@@ -14,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class SubstanceProtein(domainresource.DomainResource):
-    """ A SubstanceProtein is defined as a single unit of a linear amino acid
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A SubstanceProtein is defined as a single unit of a linear amino acid
     sequence, or a combination of subunits that are either covalently linked or
     have a defined invariant stoichiometric relationship. This includes all
     synthetic, recombinant and purified SubstanceProteins of defined sequence,
@@ -29,7 +34,7 @@ class SubstanceProtein(domainresource.DomainResource):
     disulfideLinkage: ListType[fhirtypes.String] = Field(
         None,
         alias="disulfideLinkage",
-        title="List of `String` items (represented as `dict` in JSON)",
+        title="List of `String` items",
         description=(
             "The disulphide bond between two cysteine residues either on the same "
             "subunit or on two different subunits shall be described. The position "
@@ -40,17 +45,29 @@ class SubstanceProtein(domainresource.DomainResource):
             "Cysteine at the respective positions"
         ),
     )
+    disulfideLinkage__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(
+        None,
+        alias="_disulfideLinkage",
+        title="Extension field for ``disulfideLinkage``.",
+    )
 
     numberOfSubunits: fhirtypes.Integer = Field(
         None,
         alias="numberOfSubunits",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description=(
             "Number of linear sequences of amino acids linked through peptide "
             "bonds. The number of subunits constituting the SubstanceProtein shall "
             "be described. It is possible that the number of subunits can be "
             "variable"
         ),
+    )
+    numberOfSubunits__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_numberOfSubunits",
+        title="Extension field for ``numberOfSubunits``.",
     )
 
     sequenceType: fhirtypes.CodeableConceptType = Field(
@@ -84,7 +101,11 @@ class SubstanceProtein(domainresource.DomainResource):
 
 
 class SubstanceProteinSubunit(backboneelement.BackboneElement):
-    """ This subclause refers to the description of each subunit constituting the
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    This subclause refers to the description of each subunit constituting the
     SubstanceProtein. A subunit is a linear sequence of amino acids linked
     through peptide bonds. The Subunit information shall be provided when the
     finished SubstanceProtein is a complex of multiple sequences; subunits are
@@ -99,8 +120,13 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
     cTerminalModification: fhirtypes.String = Field(
         None,
         alias="cTerminalModification",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="The modification at the C-terminal shall be specified",
+    )
+    cTerminalModification__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_cTerminalModification",
+        title="Extension field for ``cTerminalModification``.",
     )
 
     cTerminalModificationId: fhirtypes.IdentifierType = Field(
@@ -116,18 +142,26 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
     length: fhirtypes.Integer = Field(
         None,
         alias="length",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="Length of linear sequences of amino acids contained in the subunit",
+    )
+    length__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_length", title="Extension field for ``length``."
     )
 
     nTerminalModification: fhirtypes.String = Field(
         None,
         alias="nTerminalModification",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description=(
             "The name of the fragment modified at the N-terminal of the "
             "SubstanceProtein shall be specified"
         ),
+    )
+    nTerminalModification__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_nTerminalModification",
+        title="Extension field for ``nTerminalModification``.",
     )
 
     nTerminalModificationId: fhirtypes.IdentifierType = Field(
@@ -143,7 +177,7 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
     sequence: fhirtypes.String = Field(
         None,
         alias="sequence",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description=(
             "The sequence information shall be provided enumerating the amino acids"
             " from N- to C-terminal end using standard single-letter amino acid "
@@ -154,6 +188,9 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
             "be used within the sequence. The modified amino acids will be "
             "distinguished by their position in the sequence"
         ),
+    )
+    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
     sequenceAttachment: fhirtypes.AttachmentType = Field(
@@ -175,11 +212,14 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
     subunit: fhirtypes.Integer = Field(
         None,
         alias="subunit",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description=(
             "Index of primary sequences of amino acids linked through peptide bonds"
             " in order of decreasing length. Sequences of the same length will be "
             "ordered by molecular weight. Subunits that have identical sequences "
             "will be repeated and have sequential subscripts"
         ),
+    )
+    subunit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_subunit", title="Extension field for ``subunit``."
     )

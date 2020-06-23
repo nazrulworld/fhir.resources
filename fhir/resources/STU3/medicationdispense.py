@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class MedicationDispense(domainresource.DomainResource):
-    """ Dispensing a medication to a named patient.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Dispensing a medication to a named patient.
     Indicates that a medication product is to be or has been dispensed for a
     named person/patient.  This includes a description of the medication
     product (supply) provided and the instructions for administering the
@@ -132,6 +136,9 @@ class MedicationDispense(domainresource.DomainResource):
         title="Type `bool`",
         description="Whether the dispense was or was not performed",
     )
+    notDone__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_notDone", title="Extension field for ``notDone``."
+    )
 
     notDoneReasonCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
@@ -201,11 +208,14 @@ class MedicationDispense(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "preparation | in-progress | on-hold | completed | entered-in-error | "
             "stopped"
         ),
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -245,15 +255,21 @@ class MedicationDispense(domainresource.DomainResource):
     whenHandedOver: fhirtypes.DateTime = Field(
         None,
         alias="whenHandedOver",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When product was given out",
+    )
+    whenHandedOver__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_whenHandedOver", title="Extension field for ``whenHandedOver``."
     )
 
     whenPrepared: fhirtypes.DateTime = Field(
         None,
         alias="whenPrepared",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When product was packaged and reviewed",
+    )
+    whenPrepared__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_whenPrepared", title="Extension field for ``whenPrepared``."
     )
 
     @root_validator(pre=True)
@@ -297,7 +313,11 @@ class MedicationDispense(domainresource.DomainResource):
 
 
 class MedicationDispensePerformer(backboneelement.BackboneElement):
-    """ Who performed event.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Who performed event.
     Indicates who or what performed the event.  It should be assumed that the
     performer is the dispenser of the medication.
     """
@@ -326,7 +346,11 @@ class MedicationDispensePerformer(backboneelement.BackboneElement):
 
 
 class MedicationDispenseSubstitution(backboneelement.BackboneElement):
-    """ Whether a substitution was performed on the dispense.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Whether a substitution was performed on the dispense.
     Indicates whether or not substitution was made as part of the dispense.  In
     some cases substitution will be expected but does not happen, in other
     cases substitution is not expected but does happen.  This block explains
@@ -368,4 +392,7 @@ class MedicationDispenseSubstitution(backboneelement.BackboneElement):
         alias="wasSubstituted",
         title="Type `bool`",
         description="Whether a substitution was or was not performed on the dispense",
+    )
+    wasSubstituted__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_wasSubstituted", title="Extension field for ``wasSubstituted``."
     )

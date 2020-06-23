@@ -14,7 +14,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Device(domainresource.DomainResource):
-    """ Item used in healthcare.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Item used in healthcare.
     This resource identifies an instance or a type of a manufactured item that
     is used in the provision of healthcare without being substantially changed
     through that activity. The device may be a medical or non-medical device.
@@ -36,8 +40,11 @@ class Device(domainresource.DomainResource):
     expirationDate: fhirtypes.DateTime = Field(
         None,
         alias="expirationDate",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Date and time of expiry of this device (if applicable)",
+    )
+    expirationDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_expirationDate", title="Extension field for ``expirationDate``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -59,29 +66,41 @@ class Device(domainresource.DomainResource):
     lotNumber: fhirtypes.String = Field(
         None,
         alias="lotNumber",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Lot number of manufacture",
+    )
+    lotNumber__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_lotNumber", title="Extension field for ``lotNumber``."
     )
 
     manufactureDate: fhirtypes.DateTime = Field(
         None,
         alias="manufactureDate",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Date when the device was made",
+    )
+    manufactureDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_manufactureDate", title="Extension field for ``manufactureDate``."
     )
 
     manufacturer: fhirtypes.String = Field(
         None,
         alias="manufacturer",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name of device manufacturer",
+    )
+    manufacturer__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_manufacturer", title="Extension field for ``manufacturer``."
     )
 
     model: fhirtypes.String = Field(
         None,
         alias="model",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Model id assigned by the manufacturer",
+    )
+    model__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_model", title="Extension field for ``model``."
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
@@ -118,8 +137,11 @@ class Device(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="active | inactive | entered-in-error | unknown",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -139,20 +161,30 @@ class Device(domainresource.DomainResource):
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Network address to contact device",
+    )
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_url", title="Extension field for ``url``."
     )
 
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Version number (i.e. software)",
+    )
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_version", title="Extension field for ``version``."
     )
 
 
 class DeviceUdi(backboneelement.BackboneElement):
-    """ Unique Device Identifier (UDI) Barcode string.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Unique Device Identifier (UDI) Barcode string.
     [Unique device identifier (UDI)](device.html#5.11.3.2.2) assigned to device
     label or package.
     """
@@ -162,48 +194,68 @@ class DeviceUdi(backboneelement.BackboneElement):
     carrierAIDC: fhirtypes.Base64Binary = Field(
         None,
         alias="carrierAIDC",
-        title="Type `Base64Binary` (represented as `dict` in JSON)",
+        title="Type `Base64Binary`",
         description="UDI Machine Readable Barcode String",
+    )
+    carrierAIDC__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_carrierAIDC", title="Extension field for ``carrierAIDC``."
     )
 
     carrierHRF: fhirtypes.String = Field(
         None,
         alias="carrierHRF",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="UDI Human Readable Barcode String",
+    )
+    carrierHRF__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_carrierHRF", title="Extension field for ``carrierHRF``."
     )
 
     deviceIdentifier: fhirtypes.String = Field(
         None,
         alias="deviceIdentifier",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Mandatory fixed portion of UDI",
+    )
+    deviceIdentifier__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_deviceIdentifier",
+        title="Extension field for ``deviceIdentifier``.",
     )
 
     entryType: fhirtypes.Code = Field(
         None,
         alias="entryType",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="barcode | rfid | manual +",
+    )
+    entryType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_entryType", title="Extension field for ``entryType``."
     )
 
     issuer: fhirtypes.Uri = Field(
-        None,
-        alias="issuer",
-        title="Type `Uri` (represented as `dict` in JSON)",
-        description="UDI Issuing Organization",
+        None, alias="issuer", title="Type `Uri`", description="UDI Issuing Organization"
+    )
+    issuer__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_issuer", title="Extension field for ``issuer``."
     )
 
     jurisdiction: fhirtypes.Uri = Field(
         None,
         alias="jurisdiction",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Regional UDI authority",
+    )
+    jurisdiction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_jurisdiction", title="Extension field for ``jurisdiction``."
     )
 
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Device Name as appears on UDI label",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )

@@ -14,7 +14,11 @@ from . import domainresource, fhirtypes
 
 
 class ServiceDefinition(domainresource.DomainResource):
-    """ A description of decision support service functionality.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A description of decision support service functionality.
     The ServiceDefinition describes a unit of decision support functionality
     that is made available as a service, such as immunization modules or drug-
     drug interaction checking.
@@ -25,8 +29,11 @@ class ServiceDefinition(domainresource.DomainResource):
     approvalDate: fhirtypes.Date = Field(
         None,
         alias="approvalDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="When the service definition was approved by publisher",
+    )
+    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_approvalDate", title="Extension field for ``approvalDate``."
     )
 
     contact: ListType[fhirtypes.ContactDetailType] = Field(
@@ -46,8 +53,11 @@ class ServiceDefinition(domainresource.DomainResource):
     copyright: fhirtypes.Markdown = Field(
         None,
         alias="copyright",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Use and/or publishing restrictions",
+    )
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
     dataRequirement: ListType[fhirtypes.DataRequirementType] = Field(
@@ -60,15 +70,21 @@ class ServiceDefinition(domainresource.DomainResource):
     date: fhirtypes.DateTime = Field(
         None,
         alias="date",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Date this was last changed",
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Natural language description of the service definition",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     effectivePeriod: fhirtypes.PeriodType = Field(
@@ -83,6 +99,9 @@ class ServiceDefinition(domainresource.DomainResource):
         alias="experimental",
         title="Type `bool`",
         description="For testing purposes, not real usage",
+    )
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_experimental", title="Extension field for ``experimental``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -102,15 +121,21 @@ class ServiceDefinition(domainresource.DomainResource):
     lastReviewDate: fhirtypes.Date = Field(
         None,
         alias="lastReviewDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="When the service definition was last reviewed",
+    )
+    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
     )
 
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for this service definition (computer friendly)",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     operationDefinition: fhirtypes.ReferenceType = Field(
@@ -126,15 +151,21 @@ class ServiceDefinition(domainresource.DomainResource):
     publisher: fhirtypes.String = Field(
         None,
         alias="publisher",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name of the publisher (organization or individual)",
+    )
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
     purpose: fhirtypes.Markdown = Field(
         None,
         alias="purpose",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Why this service definition is defined",
+    )
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
     relatedArtifact: ListType[fhirtypes.RelatedArtifactType] = Field(
@@ -147,15 +178,21 @@ class ServiceDefinition(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="draft | active | retired | unknown",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for this service definition (human friendly)",
+    )
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_title", title="Extension field for ``title``."
     )
 
     topic: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -175,15 +212,21 @@ class ServiceDefinition(domainresource.DomainResource):
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Logical URI to reference this service definition (globally unique)",
+    )
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_url", title="Extension field for ``url``."
     )
 
     usage: fhirtypes.String = Field(
         None,
         alias="usage",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Describes the clinical usage of the module",
+    )
+    usage__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_usage", title="Extension field for ``usage``."
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -196,6 +239,9 @@ class ServiceDefinition(domainresource.DomainResource):
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Business version of the service definition",
+    )
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_version", title="Extension field for ``version``."
     )

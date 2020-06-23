@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class FamilyMemberHistory(domainresource.DomainResource):
-    """ Information about patient's relatives, relevant for patient.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Information about patient's relatives, relevant for patient.
     Significant health events and conditions for a person related to the
     patient relevant in the context of care for the patient.
     """
@@ -43,19 +47,25 @@ class FamilyMemberHistory(domainresource.DomainResource):
     ageString: fhirtypes.String = Field(
         None,
         alias="ageString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="(approximate) age",
         one_of_many="age",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    ageString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_ageString", title="Extension field for ``ageString``."
     )
 
     bornDate: fhirtypes.Date = Field(
         None,
         alias="bornDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="(approximate) date of birth",
         one_of_many="born",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    bornDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_bornDate", title="Extension field for ``bornDate``."
     )
 
     bornPeriod: fhirtypes.PeriodType = Field(
@@ -70,10 +80,13 @@ class FamilyMemberHistory(domainresource.DomainResource):
     bornString: fhirtypes.String = Field(
         None,
         alias="bornString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="(approximate) date of birth",
         one_of_many="born",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    bornString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_bornString", title="Extension field for ``bornString``."
     )
 
     condition: ListType[fhirtypes.FamilyMemberHistoryConditionType] = Field(
@@ -89,8 +102,11 @@ class FamilyMemberHistory(domainresource.DomainResource):
     date: fhirtypes.DateTime = Field(
         None,
         alias="date",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When history was captured/updated",
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     deceasedAge: fhirtypes.AgeType = Field(
@@ -110,14 +126,20 @@ class FamilyMemberHistory(domainresource.DomainResource):
         one_of_many="deceased",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
+    deceasedBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_deceasedBoolean", title="Extension field for ``deceasedBoolean``."
+    )
 
     deceasedDate: fhirtypes.Date = Field(
         None,
         alias="deceasedDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="Dead? How old/when?",
         one_of_many="deceased",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    deceasedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_deceasedDate", title="Extension field for ``deceasedDate``."
     )
 
     deceasedRange: fhirtypes.RangeType = Field(
@@ -132,10 +154,13 @@ class FamilyMemberHistory(domainresource.DomainResource):
     deceasedString: fhirtypes.String = Field(
         None,
         alias="deceasedString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Dead? How old/when?",
         one_of_many="deceased",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    deceasedString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_deceasedString", title="Extension field for ``deceasedString``."
     )
 
     definition: ListType[fhirtypes.ReferenceType] = Field(
@@ -151,12 +176,18 @@ class FamilyMemberHistory(domainresource.DomainResource):
     estimatedAge: bool = Field(
         None, alias="estimatedAge", title="Type `bool`", description="Age is estimated?"
     )
+    estimatedAge__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_estimatedAge", title="Extension field for ``estimatedAge``."
+    )
 
     gender: fhirtypes.Code = Field(
         None,
         alias="gender",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="male | female | other | unknown",
+    )
+    gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_gender", title="Extension field for ``gender``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -169,8 +200,11 @@ class FamilyMemberHistory(domainresource.DomainResource):
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="The family member described",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     notDone: bool = Field(
@@ -178,6 +212,9 @@ class FamilyMemberHistory(domainresource.DomainResource):
         alias="notDone",
         title="Type `bool`",
         description="The taking of a family member\u0027s history did not occur",
+    )
+    notDone__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_notDone", title="Extension field for ``notDone``."
     )
 
     notDoneReason: fhirtypes.CodeableConceptType = Field(
@@ -229,8 +266,11 @@ class FamilyMemberHistory(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="partial | completed | entered-in-error | health-unknown",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     @root_validator(pre=True)
@@ -281,7 +321,11 @@ class FamilyMemberHistory(domainresource.DomainResource):
 
 
 class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
-    """ Condition that the related person had.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Condition that the related person had.
     The significant Conditions (or condition) that the family member had. This
     is a repeating section to allow a system to represent more than one
     condition per resource, though there is nothing stopping multiple resources
@@ -334,10 +378,13 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
     onsetString: fhirtypes.String = Field(
         None,
         alias="onsetString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="When condition first manifested",
         one_of_many="onset",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    onsetString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_onsetString", title="Extension field for ``onsetString``."
     )
 
     outcome: fhirtypes.CodeableConceptType = Field(

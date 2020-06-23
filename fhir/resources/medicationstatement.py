@@ -15,7 +15,11 @@ from . import domainresource, fhirtypes
 
 
 class MedicationStatement(domainresource.DomainResource):
-    """ Record of medication being taken by a patient.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Record of medication being taken by a patient.
     A record of a medication that is being consumed by a patient.   A
     MedicationStatement may indicate that the patient may be taking the
     medication now or has taken the medication in the past or will be taking
@@ -74,8 +78,11 @@ class MedicationStatement(domainresource.DomainResource):
     dateAsserted: fhirtypes.DateTime = Field(
         None,
         alias="dateAsserted",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When the statement was asserted?",
+    )
+    dateAsserted__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_dateAsserted", title="Extension field for ``dateAsserted``."
     )
 
     derivedFrom: ListType[fhirtypes.ReferenceType] = Field(
@@ -98,10 +105,15 @@ class MedicationStatement(domainresource.DomainResource):
     effectiveDateTime: fhirtypes.DateTime = Field(
         None,
         alias="effectiveDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="The date/time or interval when the medication is/was/will be taken",
         one_of_many="effective",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    effectiveDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_effectiveDateTime",
+        title="Extension field for ``effectiveDateTime``.",
     )
 
     effectivePeriod: fhirtypes.PeriodType = Field(
@@ -195,11 +207,14 @@ class MedicationStatement(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "active | completed | entered-in-error | intended | stopped | on-hold |"
             " unknown | not-taken"
         ),
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     statusReason: ListType[fhirtypes.CodeableConceptType] = Field(

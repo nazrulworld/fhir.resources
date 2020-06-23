@@ -7,6 +7,7 @@ Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field
 
@@ -14,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class SearchParameter(domainresource.DomainResource):
-    """ Search Parameter for a resource.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Search Parameter for a resource.
     A search parameter that defines a named search item that can be used to
     search/filter on a resource.
     """
@@ -24,30 +29,39 @@ class SearchParameter(domainresource.DomainResource):
     base: ListType[fhirtypes.Code] = Field(
         ...,
         alias="base",
-        title="List of `Code` items (represented as `dict` in JSON)",
+        title="List of `Code` items",
         description="The resource type(s) this search parameter applies to",
+    )
+    base__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_base", title="Extension field for ``base``."
     )
 
     chain: ListType[fhirtypes.String] = Field(
         None,
         alias="chain",
-        title="List of `String` items (represented as `dict` in JSON)",
+        title="List of `String` items",
         description="Chained names supported",
+    )
+    chain__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_chain", title="Extension field for ``chain``."
     )
 
     code: fhirtypes.Code = Field(
-        ...,
-        alias="code",
-        title="Type `Code` (represented as `dict` in JSON)",
-        description="Code used in URL",
+        ..., alias="code", title="Type `Code`", description="Code used in URL"
+    )
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_code", title="Extension field for ``code``."
     )
 
     comparator: ListType[fhirtypes.Code] = Field(
         None,
         alias="comparator",
-        title="List of `Code` items (represented as `dict` in JSON)",
+        title="List of `Code` items",
         description="eq | ne | gt | lt | ge | le | sa | eb | ap",
     )
+    comparator__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_comparator", title="Extension field for ``comparator``.")
 
     component: ListType[fhirtypes.SearchParameterComponentType] = Field(
         None,
@@ -69,22 +83,31 @@ class SearchParameter(domainresource.DomainResource):
     date: fhirtypes.DateTime = Field(
         None,
         alias="date",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Date this was last changed",
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     derivedFrom: fhirtypes.Uri = Field(
         None,
         alias="derivedFrom",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Original Definition for the search parameter",
+    )
+    derivedFrom__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_derivedFrom", title="Extension field for ``derivedFrom``."
     )
 
     description: fhirtypes.Markdown = Field(
         ...,
         alias="description",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Natural language description of the search parameter",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     experimental: bool = Field(
@@ -93,12 +116,18 @@ class SearchParameter(domainresource.DomainResource):
         title="Type `bool`",
         description="For testing purposes, not real usage",
     )
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_experimental", title="Extension field for ``experimental``."
+    )
 
     expression: fhirtypes.String = Field(
         None,
         alias="expression",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="FHIRPath expression that extracts the values",
+    )
+    expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_expression", title="Extension field for ``expression``."
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -111,62 +140,86 @@ class SearchParameter(domainresource.DomainResource):
     modifier: ListType[fhirtypes.Code] = Field(
         None,
         alias="modifier",
-        title="List of `Code` items (represented as `dict` in JSON)",
+        title="List of `Code` items",
         description=(
             "missing | exact | contains | not | text | in | not-in | below | above "
             "| type"
         ),
     )
+    modifier__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_modifier", title="Extension field for ``modifier``."
+    )
 
     name: fhirtypes.String = Field(
         ...,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for this search parameter (computer friendly)",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     publisher: fhirtypes.String = Field(
         None,
         alias="publisher",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name of the publisher (organization or individual)",
+    )
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
     purpose: fhirtypes.Markdown = Field(
         None,
         alias="purpose",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Why this search parameter is defined",
+    )
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="draft | active | retired | unknown",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     target: ListType[fhirtypes.Code] = Field(
         None,
         alias="target",
-        title="List of `Code` items (represented as `dict` in JSON)",
+        title="List of `Code` items",
         description="Types of resource (if a resource reference)",
+    )
+    target__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_target", title="Extension field for ``target``."
     )
 
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "number | date | string | token | reference | composite | quantity | " "uri"
         ),
+    )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
     )
 
     url: fhirtypes.Uri = Field(
         ...,
         alias="url",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Logical URI to reference this search parameter (globally unique)",
+    )
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_url", title="Extension field for ``url``."
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -179,27 +232,40 @@ class SearchParameter(domainresource.DomainResource):
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Business version of the search parameter",
+    )
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_version", title="Extension field for ``version``."
     )
 
     xpath: fhirtypes.String = Field(
         None,
         alias="xpath",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="XPath that extracts the values",
+    )
+    xpath__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_xpath", title="Extension field for ``xpath``."
     )
 
     xpathUsage: fhirtypes.Code = Field(
         None,
         alias="xpathUsage",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="normal | phonetic | nearby | distance | other",
+    )
+    xpathUsage__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_xpathUsage", title="Extension field for ``xpathUsage``."
     )
 
 
 class SearchParameterComponent(backboneelement.BackboneElement):
-    """ For Composite resources to define the parts.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    For Composite resources to define the parts.
     Used to define the parts of a composite search parameter.
     """
 
@@ -218,6 +284,9 @@ class SearchParameterComponent(backboneelement.BackboneElement):
     expression: fhirtypes.String = Field(
         ...,
         alias="expression",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Subexpression relative to main expression",
+    )
+    expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_expression", title="Extension field for ``expression``."
     )

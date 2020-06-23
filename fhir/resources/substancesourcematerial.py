@@ -7,6 +7,7 @@ Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field
 
@@ -14,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class SubstanceSourceMaterial(domainresource.DomainResource):
-    """ Source material shall capture information on the taxonomic and anatomical
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Source material shall capture information on the taxonomic and anatomical
     origins as well as the fraction of a material that can result in or can be
     modified to form a substance. This set of data elements shall be used to
     define polymer substances isolated from biological matrices. Taxonomic and
@@ -81,11 +86,18 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
     geographicalLocation: ListType[fhirtypes.String] = Field(
         None,
         alias="geographicalLocation",
-        title="List of `String` items (represented as `dict` in JSON)",
+        title="List of `String` items",
         description=(
             "The place/region where the plant is harvested or the places/regions "
             "where the animal source material has its habitat"
         ),
+    )
+    geographicalLocation__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(
+        None,
+        alias="_geographicalLocation",
+        title="Extension field for ``geographicalLocation``.",
     )
 
     organism: fhirtypes.SubstanceSourceMaterialOrganismType = Field(
@@ -113,11 +125,14 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
     organismName: fhirtypes.String = Field(
         None,
         alias="organismName",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description=(
             "The organism accepted Scientific name shall be provided based on the "
             "organism taxonomy"
         ),
+    )
+    organismName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_organismName", title="Extension field for ``organismName``."
     )
 
     parentSubstanceId: ListType[fhirtypes.IdentifierType] = Field(
@@ -134,8 +149,15 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
     parentSubstanceName: ListType[fhirtypes.String] = Field(
         None,
         alias="parentSubstanceName",
-        title="List of `String` items (represented as `dict` in JSON)",
+        title="List of `String` items",
         description="The parent substance of the Herbal Drug, or Herbal preparation",
+    )
+    parentSubstanceName__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(
+        None,
+        alias="_parentSubstanceName",
+        title="Extension field for ``parentSubstanceName``.",
     )
 
     partDescription: ListType[
@@ -180,7 +202,11 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
 
 
 class SubstanceSourceMaterialFractionDescription(backboneelement.BackboneElement):
-    """ Many complex materials are fractions of parts of plants, animals, or
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Many complex materials are fractions of parts of plants, animals, or
     minerals. Fraction elements are often necessary to define both Substances
     and Specified Group 1 Substances. For substances derived from Plants,
     fraction information will be captured at the Substance information level (
@@ -196,11 +222,14 @@ class SubstanceSourceMaterialFractionDescription(backboneelement.BackboneElement
     fraction: fhirtypes.String = Field(
         None,
         alias="fraction",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description=(
             "This element is capturing information about the fraction of a plant "
             "part, or human plasma for fractionation"
         ),
+    )
+    fraction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_fraction", title="Extension field for ``fraction``."
     )
 
     materialType: fhirtypes.CodeableConceptType = Field(
@@ -216,7 +245,11 @@ class SubstanceSourceMaterialFractionDescription(backboneelement.BackboneElement
 
 
 class SubstanceSourceMaterialOrganism(backboneelement.BackboneElement):
-    """ This subclause describes the organism which the substance is derived from.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    This subclause describes the organism which the substance is derived from.
     For vaccines, the parent organism shall be specified based on these
     subclause elements. As an example, full taxonomy will be described for the
     Substance Name: ., Leaf.
@@ -265,13 +298,18 @@ class SubstanceSourceMaterialOrganism(backboneelement.BackboneElement):
     intraspecificDescription: fhirtypes.String = Field(
         None,
         alias="intraspecificDescription",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description=(
             "The intraspecific description of an organism shall be specified based "
             "on a controlled vocabulary. For Influenza Vaccine, the intraspecific "
             "description shall contain the syntax of the antigen in line with the "
             "WHO convention"
         ),
+    )
+    intraspecificDescription__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_intraspecificDescription",
+        title="Extension field for ``intraspecificDescription``.",
     )
 
     intraspecificType: fhirtypes.CodeableConceptType = Field(
@@ -304,7 +342,11 @@ class SubstanceSourceMaterialOrganism(backboneelement.BackboneElement):
 
 
 class SubstanceSourceMaterialOrganismAuthor(backboneelement.BackboneElement):
-    """ 4.9.13.6.1 Author type (Conditional).
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    4.9.13.6.1 Author type (Conditional).
     """
 
     resource_type = Field("SubstanceSourceMaterialOrganismAuthor", const=True)
@@ -312,13 +354,18 @@ class SubstanceSourceMaterialOrganismAuthor(backboneelement.BackboneElement):
     authorDescription: fhirtypes.String = Field(
         None,
         alias="authorDescription",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description=(
             "The author of an organism species shall be specified. The author year "
             "of an organism shall also be specified when applicable; refers to the "
             "year in which the first author(s) published the infraspecific "
             "plant/animal name (of any rank)"
         ),
+    )
+    authorDescription__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_authorDescription",
+        title="Extension field for ``authorDescription``.",
     )
 
     authorType: fhirtypes.CodeableConceptType = Field(
@@ -336,7 +383,11 @@ class SubstanceSourceMaterialOrganismAuthor(backboneelement.BackboneElement):
 
 
 class SubstanceSourceMaterialOrganismHybrid(backboneelement.BackboneElement):
-    """ 4.9.13.8.1 Hybrid species maternal organism ID (Optional).
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    4.9.13.8.1 Hybrid species maternal organism ID (Optional).
     """
 
     resource_type = Field("SubstanceSourceMaterialOrganismHybrid", const=True)
@@ -351,7 +402,7 @@ class SubstanceSourceMaterialOrganismHybrid(backboneelement.BackboneElement):
     maternalOrganismId: fhirtypes.String = Field(
         None,
         alias="maternalOrganismId",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description=(
             "The identifier of the maternal species constituting the hybrid "
             "organism shall be specified based on a controlled vocabulary. For "
@@ -359,11 +410,16 @@ class SubstanceSourceMaterialOrganismHybrid(backboneelement.BackboneElement):
             "will be known which is maternal and which is paternal"
         ),
     )
+    maternalOrganismId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_maternalOrganismId",
+        title="Extension field for ``maternalOrganismId``.",
+    )
 
     maternalOrganismName: fhirtypes.String = Field(
         None,
         alias="maternalOrganismName",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description=(
             "The name of the maternal species constituting the hybrid organism "
             "shall be specified. For plants, the parents aren\u2019t always known, and "
@@ -371,30 +427,49 @@ class SubstanceSourceMaterialOrganismHybrid(backboneelement.BackboneElement):
             "paternal"
         ),
     )
+    maternalOrganismName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_maternalOrganismName",
+        title="Extension field for ``maternalOrganismName``.",
+    )
 
     paternalOrganismId: fhirtypes.String = Field(
         None,
         alias="paternalOrganismId",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description=(
             "The identifier of the paternal species constituting the hybrid "
             "organism shall be specified based on a controlled vocabulary"
         ),
     )
+    paternalOrganismId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_paternalOrganismId",
+        title="Extension field for ``paternalOrganismId``.",
+    )
 
     paternalOrganismName: fhirtypes.String = Field(
         None,
         alias="paternalOrganismName",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description=(
             "The name of the paternal species constituting the hybrid organism "
             "shall be specified"
         ),
     )
+    paternalOrganismName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_paternalOrganismName",
+        title="Extension field for ``paternalOrganismName``.",
+    )
 
 
 class SubstanceSourceMaterialOrganismOrganismGeneral(backboneelement.BackboneElement):
-    """ 4.9.13.7.1 Kingdom (Conditional).
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    4.9.13.7.1 Kingdom (Conditional).
     """
 
     resource_type = Field("SubstanceSourceMaterialOrganismOrganismGeneral", const=True)
@@ -429,7 +504,11 @@ class SubstanceSourceMaterialOrganismOrganismGeneral(backboneelement.BackboneEle
 
 
 class SubstanceSourceMaterialPartDescription(backboneelement.BackboneElement):
-    """ To do.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    To do.
     """
 
     resource_type = Field("SubstanceSourceMaterialPartDescription", const=True)

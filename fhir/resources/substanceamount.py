@@ -14,7 +14,11 @@ from . import backboneelement, element, fhirtypes
 
 
 class SubstanceAmount(backboneelement.BackboneElement):
-    """ Chemical substances are a single substance type whose primary defining
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Chemical substances are a single substance type whose primary defining
     element is the molecular structure. Chemical substances shall be defined on
     the basis of their complete covalent molecular structure; the presence of a
     salt (counter-ion) and/or solvates (water, alcohols) is also captured.
@@ -56,7 +60,7 @@ class SubstanceAmount(backboneelement.BackboneElement):
     amountString: fhirtypes.String = Field(
         None,
         alias="amountString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description=(
             "Used to capture quantitative values for a variety of elements. If only"
             " limits are given, the arithmetic mean would be the average. If only a"
@@ -66,12 +70,18 @@ class SubstanceAmount(backboneelement.BackboneElement):
         one_of_many="amount",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
+    amountString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_amountString", title="Extension field for ``amountString``."
+    )
 
     amountText: fhirtypes.String = Field(
         None,
         alias="amountText",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="A textual comment on a numeric value",
+    )
+    amountText__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_amountText", title="Extension field for ``amountText``."
     )
 
     amountType: fhirtypes.CodeableConceptType = Field(
@@ -136,7 +146,11 @@ class SubstanceAmount(backboneelement.BackboneElement):
 
 
 class SubstanceAmountReferenceRange(element.Element):
-    """ Reference range of possible or expected values.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Reference range of possible or expected values.
     """
 
     resource_type = Field("SubstanceAmountReferenceRange", const=True)

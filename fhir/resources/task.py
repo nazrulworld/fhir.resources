@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Task(domainresource.DomainResource):
-    """ A task to be performed.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A task to be performed.
     """
 
     resource_type = Field("Task", const=True)
@@ -23,8 +27,11 @@ class Task(domainresource.DomainResource):
     authoredOn: fhirtypes.DateTime = Field(
         None,
         alias="authoredOn",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Task Creation Date",
+    )
+    authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_authoredOn", title="Extension field for ``authoredOn``."
     )
 
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
@@ -54,8 +61,11 @@ class Task(domainresource.DomainResource):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Human-readable explanation of task",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     encounter: fhirtypes.ReferenceType = Field(
@@ -117,18 +127,23 @@ class Task(domainresource.DomainResource):
     instantiatesCanonical: fhirtypes.Canonical = Field(
         None,
         alias="instantiatesCanonical",
-        title=(
-            "Type `Canonical` referencing `ActivityDefinition` (represented as "
-            "`dict` in JSON)"
-        ),
+        title="Type `Canonical` referencing `ActivityDefinition`",
         description="Formal definition of task",
+    )
+    instantiatesCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_instantiatesCanonical",
+        title="Extension field for ``instantiatesCanonical``.",
     )
 
     instantiatesUri: fhirtypes.Uri = Field(
         None,
         alias="instantiatesUri",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Formal definition of task",
+    )
+    instantiatesUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_instantiatesUri", title="Extension field for ``instantiatesUri``."
     )
 
     insurance: ListType[fhirtypes.ReferenceType] = Field(
@@ -144,18 +159,24 @@ class Task(domainresource.DomainResource):
     intent: fhirtypes.Code = Field(
         ...,
         alias="intent",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "unknown | proposal | plan | order | original-order | reflex-order | "
             "filler-order | instance-order | option"
         ),
     )
+    intent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_intent", title="Extension field for ``intent``."
+    )
 
     lastModified: fhirtypes.DateTime = Field(
         None,
         alias="lastModified",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Task Last Modified Date",
+    )
+    lastModified__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_lastModified", title="Extension field for ``lastModified``."
     )
 
     location: fhirtypes.ReferenceType = Field(
@@ -212,8 +233,11 @@ class Task(domainresource.DomainResource):
     priority: fhirtypes.Code = Field(
         None,
         alias="priority",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="routine | urgent | asap | stat",
+    )
+    priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_priority", title="Extension field for ``priority``."
     )
 
     reasonCode: fhirtypes.CodeableConceptType = Field(
@@ -263,8 +287,11 @@ class Task(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="draft | requested | received | accepted | +",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     statusReason: fhirtypes.CodeableConceptType = Field(
@@ -276,7 +303,11 @@ class Task(domainresource.DomainResource):
 
 
 class TaskInput(backboneelement.BackboneElement):
-    """ Information used to perform task.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Information used to perform task.
     Additional information that may be needed in the execution of the task.
     """
 
@@ -328,10 +359,15 @@ class TaskInput(backboneelement.BackboneElement):
     valueBase64Binary: fhirtypes.Base64Binary = Field(
         None,
         alias="valueBase64Binary",
-        title="Type `Base64Binary` (represented as `dict` in JSON)",
+        title="Type `Base64Binary`",
         description="Content to use in performing the task",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_valueBase64Binary",
+        title="Extension field for ``valueBase64Binary``.",
     )
 
     valueBoolean: bool = Field(
@@ -342,23 +378,32 @@ class TaskInput(backboneelement.BackboneElement):
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
     )
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
+    )
 
     valueCanonical: fhirtypes.Canonical = Field(
         None,
         alias="valueCanonical",
-        title="Type `Canonical` (represented as `dict` in JSON)",
+        title="Type `Canonical`",
         description="Content to use in performing the task",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueCanonical", title="Extension field for ``valueCanonical``."
     )
 
     valueCode: fhirtypes.Code = Field(
         None,
         alias="valueCode",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="Content to use in performing the task",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueCode", title="Extension field for ``valueCode``."
     )
 
     valueCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -427,28 +472,37 @@ class TaskInput(backboneelement.BackboneElement):
     valueDate: fhirtypes.Date = Field(
         None,
         alias="valueDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="Content to use in performing the task",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueDate", title="Extension field for ``valueDate``."
     )
 
     valueDateTime: fhirtypes.DateTime = Field(
         None,
         alias="valueDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Content to use in performing the task",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueDateTime", title="Extension field for ``valueDateTime``."
     )
 
     valueDecimal: fhirtypes.Decimal = Field(
         None,
         alias="valueDecimal",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Content to use in performing the task",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueDecimal", title="Extension field for ``valueDecimal``."
     )
 
     valueDistance: fhirtypes.DistanceType = Field(
@@ -499,10 +553,13 @@ class TaskInput(backboneelement.BackboneElement):
     valueId: fhirtypes.Id = Field(
         None,
         alias="valueId",
-        title="Type `Id` (represented as `dict` in JSON)",
+        title="Type `Id`",
         description="Content to use in performing the task",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueId", title="Extension field for ``valueId``."
     )
 
     valueIdentifier: fhirtypes.IdentifierType = Field(
@@ -517,28 +574,37 @@ class TaskInput(backboneelement.BackboneElement):
     valueInstant: fhirtypes.Instant = Field(
         None,
         alias="valueInstant",
-        title="Type `Instant` (represented as `dict` in JSON)",
+        title="Type `Instant`",
         description="Content to use in performing the task",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueInstant", title="Extension field for ``valueInstant``."
     )
 
     valueInteger: fhirtypes.Integer = Field(
         None,
         alias="valueInteger",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="Content to use in performing the task",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueInteger", title="Extension field for ``valueInteger``."
     )
 
     valueMarkdown: fhirtypes.Markdown = Field(
         None,
         alias="valueMarkdown",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Content to use in performing the task",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueMarkdown", title="Extension field for ``valueMarkdown``."
     )
 
     valueMeta: fhirtypes.MetaType = Field(
@@ -562,10 +628,13 @@ class TaskInput(backboneelement.BackboneElement):
     valueOid: fhirtypes.Oid = Field(
         None,
         alias="valueOid",
-        title="Type `Oid` (represented as `dict` in JSON)",
+        title="Type `Oid`",
         description="Content to use in performing the task",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueOid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueOid", title="Extension field for ``valueOid``."
     )
 
     valueParameterDefinition: fhirtypes.ParameterDefinitionType = Field(
@@ -589,10 +658,15 @@ class TaskInput(backboneelement.BackboneElement):
     valuePositiveInt: fhirtypes.PositiveInt = Field(
         None,
         alias="valuePositiveInt",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="Content to use in performing the task",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_valuePositiveInt",
+        title="Extension field for ``valuePositiveInt``.",
     )
 
     valueQuantity: fhirtypes.QuantityType = Field(
@@ -661,19 +735,25 @@ class TaskInput(backboneelement.BackboneElement):
     valueString: fhirtypes.String = Field(
         None,
         alias="valueString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Content to use in performing the task",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueString", title="Extension field for ``valueString``."
     )
 
     valueTime: fhirtypes.Time = Field(
         None,
         alias="valueTime",
-        title="Type `Time` (represented as `dict` in JSON)",
+        title="Type `Time`",
         description="Content to use in performing the task",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueTime", title="Extension field for ``valueTime``."
     )
 
     valueTiming: fhirtypes.TimingType = Field(
@@ -697,28 +777,39 @@ class TaskInput(backboneelement.BackboneElement):
     valueUnsignedInt: fhirtypes.UnsignedInt = Field(
         None,
         alias="valueUnsignedInt",
-        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        title="Type `UnsignedInt`",
         description="Content to use in performing the task",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_valueUnsignedInt",
+        title="Extension field for ``valueUnsignedInt``.",
     )
 
     valueUri: fhirtypes.Uri = Field(
         None,
         alias="valueUri",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Content to use in performing the task",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueUri", title="Extension field for ``valueUri``."
     )
 
     valueUrl: fhirtypes.Url = Field(
         None,
         alias="valueUrl",
-        title="Type `Url` (represented as `dict` in JSON)",
+        title="Type `Url`",
         description="Content to use in performing the task",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueUrl", title="Extension field for ``valueUrl``."
     )
 
     valueUsageContext: fhirtypes.UsageContextType = Field(
@@ -733,10 +824,13 @@ class TaskInput(backboneelement.BackboneElement):
     valueUuid: fhirtypes.Uuid = Field(
         None,
         alias="valueUuid",
-        title="Type `Uuid` (represented as `dict` in JSON)",
+        title="Type `Uuid`",
         description="Content to use in performing the task",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueUuid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueUuid", title="Extension field for ``valueUuid``."
     )
 
     @root_validator(pre=True)
@@ -830,7 +924,11 @@ class TaskInput(backboneelement.BackboneElement):
 
 
 class TaskOutput(backboneelement.BackboneElement):
-    """ Information produced as part of task.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Information produced as part of task.
     Outputs produced by the Task.
     """
 
@@ -882,10 +980,15 @@ class TaskOutput(backboneelement.BackboneElement):
     valueBase64Binary: fhirtypes.Base64Binary = Field(
         None,
         alias="valueBase64Binary",
-        title="Type `Base64Binary` (represented as `dict` in JSON)",
+        title="Type `Base64Binary`",
         description="Result of output",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_valueBase64Binary",
+        title="Extension field for ``valueBase64Binary``.",
     )
 
     valueBoolean: bool = Field(
@@ -896,23 +999,32 @@ class TaskOutput(backboneelement.BackboneElement):
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
     )
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
+    )
 
     valueCanonical: fhirtypes.Canonical = Field(
         None,
         alias="valueCanonical",
-        title="Type `Canonical` (represented as `dict` in JSON)",
+        title="Type `Canonical`",
         description="Result of output",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueCanonical", title="Extension field for ``valueCanonical``."
     )
 
     valueCode: fhirtypes.Code = Field(
         None,
         alias="valueCode",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="Result of output",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueCode", title="Extension field for ``valueCode``."
     )
 
     valueCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -981,28 +1093,37 @@ class TaskOutput(backboneelement.BackboneElement):
     valueDate: fhirtypes.Date = Field(
         None,
         alias="valueDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="Result of output",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueDate", title="Extension field for ``valueDate``."
     )
 
     valueDateTime: fhirtypes.DateTime = Field(
         None,
         alias="valueDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Result of output",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueDateTime", title="Extension field for ``valueDateTime``."
     )
 
     valueDecimal: fhirtypes.Decimal = Field(
         None,
         alias="valueDecimal",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Result of output",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueDecimal", title="Extension field for ``valueDecimal``."
     )
 
     valueDistance: fhirtypes.DistanceType = Field(
@@ -1053,10 +1174,13 @@ class TaskOutput(backboneelement.BackboneElement):
     valueId: fhirtypes.Id = Field(
         None,
         alias="valueId",
-        title="Type `Id` (represented as `dict` in JSON)",
+        title="Type `Id`",
         description="Result of output",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueId", title="Extension field for ``valueId``."
     )
 
     valueIdentifier: fhirtypes.IdentifierType = Field(
@@ -1071,28 +1195,37 @@ class TaskOutput(backboneelement.BackboneElement):
     valueInstant: fhirtypes.Instant = Field(
         None,
         alias="valueInstant",
-        title="Type `Instant` (represented as `dict` in JSON)",
+        title="Type `Instant`",
         description="Result of output",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueInstant", title="Extension field for ``valueInstant``."
     )
 
     valueInteger: fhirtypes.Integer = Field(
         None,
         alias="valueInteger",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="Result of output",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueInteger", title="Extension field for ``valueInteger``."
     )
 
     valueMarkdown: fhirtypes.Markdown = Field(
         None,
         alias="valueMarkdown",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Result of output",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueMarkdown", title="Extension field for ``valueMarkdown``."
     )
 
     valueMeta: fhirtypes.MetaType = Field(
@@ -1116,10 +1249,13 @@ class TaskOutput(backboneelement.BackboneElement):
     valueOid: fhirtypes.Oid = Field(
         None,
         alias="valueOid",
-        title="Type `Oid` (represented as `dict` in JSON)",
+        title="Type `Oid`",
         description="Result of output",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueOid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueOid", title="Extension field for ``valueOid``."
     )
 
     valueParameterDefinition: fhirtypes.ParameterDefinitionType = Field(
@@ -1143,10 +1279,15 @@ class TaskOutput(backboneelement.BackboneElement):
     valuePositiveInt: fhirtypes.PositiveInt = Field(
         None,
         alias="valuePositiveInt",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="Result of output",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_valuePositiveInt",
+        title="Extension field for ``valuePositiveInt``.",
     )
 
     valueQuantity: fhirtypes.QuantityType = Field(
@@ -1215,19 +1356,25 @@ class TaskOutput(backboneelement.BackboneElement):
     valueString: fhirtypes.String = Field(
         None,
         alias="valueString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Result of output",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueString", title="Extension field for ``valueString``."
     )
 
     valueTime: fhirtypes.Time = Field(
         None,
         alias="valueTime",
-        title="Type `Time` (represented as `dict` in JSON)",
+        title="Type `Time`",
         description="Result of output",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueTime", title="Extension field for ``valueTime``."
     )
 
     valueTiming: fhirtypes.TimingType = Field(
@@ -1251,28 +1398,39 @@ class TaskOutput(backboneelement.BackboneElement):
     valueUnsignedInt: fhirtypes.UnsignedInt = Field(
         None,
         alias="valueUnsignedInt",
-        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        title="Type `UnsignedInt`",
         description="Result of output",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_valueUnsignedInt",
+        title="Extension field for ``valueUnsignedInt``.",
     )
 
     valueUri: fhirtypes.Uri = Field(
         None,
         alias="valueUri",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Result of output",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueUri", title="Extension field for ``valueUri``."
     )
 
     valueUrl: fhirtypes.Url = Field(
         None,
         alias="valueUrl",
-        title="Type `Url` (represented as `dict` in JSON)",
+        title="Type `Url`",
         description="Result of output",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueUrl", title="Extension field for ``valueUrl``."
     )
 
     valueUsageContext: fhirtypes.UsageContextType = Field(
@@ -1287,10 +1445,13 @@ class TaskOutput(backboneelement.BackboneElement):
     valueUuid: fhirtypes.Uuid = Field(
         None,
         alias="valueUuid",
-        title="Type `Uuid` (represented as `dict` in JSON)",
+        title="Type `Uuid`",
         description="Result of output",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueUuid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueUuid", title="Extension field for ``valueUuid``."
     )
 
     @root_validator(pre=True)
@@ -1384,7 +1545,11 @@ class TaskOutput(backboneelement.BackboneElement):
 
 
 class TaskRestriction(backboneelement.BackboneElement):
-    """ Constraints on fulfillment tasks.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Constraints on fulfillment tasks.
     If the Task.focus is a request resource and the task is seeking fulfillment
     (i.e. is asking for the request to be actioned), this element identifies
     any limitations on what parts of the referenced request should be actioned.
@@ -1413,6 +1578,9 @@ class TaskRestriction(backboneelement.BackboneElement):
     repetitions: fhirtypes.PositiveInt = Field(
         None,
         alias="repetitions",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="How many times to repeat",
+    )
+    repetitions__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_repetitions", title="Extension field for ``repetitions``."
     )

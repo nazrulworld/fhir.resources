@@ -12,7 +12,11 @@ from . import quantity
 
 
 class Duration(quantity.Quantity):
-    """ A length of time.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A length of time.
     """
 
     resource_type = Field("Duration", const=True)

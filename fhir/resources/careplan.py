@@ -8,6 +8,7 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 from typing import Any, Dict
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field, root_validator
 
@@ -15,7 +16,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class CarePlan(domainresource.DomainResource):
-    """ Healthcare plan for patient or group.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Healthcare plan for patient or group.
     Describes the intention of how one or more practitioners intend to deliver
     care for a particular patient, group or community for a period of time,
     possibly limited to care for a specific condition or set of conditions.
@@ -92,15 +97,21 @@ class CarePlan(domainresource.DomainResource):
     created: fhirtypes.DateTime = Field(
         None,
         alias="created",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Date record was first recorded",
+    )
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_created", title="Extension field for ``created``."
     )
 
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Summary of nature of plan",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     encounter: fhirtypes.ReferenceType = Field(
@@ -135,24 +146,38 @@ class CarePlan(domainresource.DomainResource):
         alias="instantiatesCanonical",
         title=(
             "List of `Canonical` items referencing `PlanDefinition, Questionnaire, "
-            "Measure, ActivityDefinition, OperationDefinition` (represented as "
-            "`dict` in JSON)"
+            "Measure, ActivityDefinition, OperationDefinition`"
         ),
         description="Instantiates FHIR protocol or definition",
+    )
+    instantiatesCanonical__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(
+        None,
+        alias="_instantiatesCanonical",
+        title="Extension field for ``instantiatesCanonical``.",
     )
 
     instantiatesUri: ListType[fhirtypes.Uri] = Field(
         None,
         alias="instantiatesUri",
-        title="List of `Uri` items (represented as `dict` in JSON)",
+        title="List of `Uri` items",
         description="Instantiates external protocol or definition",
+    )
+    instantiatesUri__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(
+        None, alias="_instantiatesUri", title="Extension field for ``instantiatesUri``."
     )
 
     intent: fhirtypes.Code = Field(
         ...,
         alias="intent",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="proposal | plan | order | option",
+    )
+    intent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_intent", title="Extension field for ``intent``."
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
@@ -192,11 +217,14 @@ class CarePlan(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "draft | active | on-hold | revoked | completed | entered-in-error | "
             "unknown"
         ),
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -222,13 +250,20 @@ class CarePlan(domainresource.DomainResource):
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Human-friendly name for the care plan",
+    )
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_title", title="Extension field for ``title``."
     )
 
 
 class CarePlanActivity(backboneelement.BackboneElement):
-    """ Action to occur as part of plan.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Action to occur as part of plan.
     Identifies a planned action to occur as part of the plan.  For example, a
     medication to be used, lab tests to perform, self-monitoring, education,
     etc.
@@ -281,7 +316,11 @@ class CarePlanActivity(backboneelement.BackboneElement):
 
 
 class CarePlanActivityDetail(backboneelement.BackboneElement):
-    """ In-line definition of activity.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    In-line definition of activity.
     A simple summary of a planned activity suitable for a general care plan
     system (e.g. form driven) that doesn't know about specific resources such
     as procedure etc.
@@ -306,8 +345,11 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Extra info describing activity to perform",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     doNotPerform: bool = Field(
@@ -315,6 +357,9 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
         alias="doNotPerform",
         title="Type `bool`",
         description="If true, activity is prohibiting action",
+    )
+    doNotPerform__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_doNotPerform", title="Extension field for ``doNotPerform``."
     )
 
     goal: ListType[fhirtypes.ReferenceType] = Field(
@@ -332,27 +377,41 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
         alias="instantiatesCanonical",
         title=(
             "List of `Canonical` items referencing `PlanDefinition, "
-            "ActivityDefinition, Questionnaire, Measure, OperationDefinition` "
-            "(represented as `dict` in JSON)"
+            "ActivityDefinition, Questionnaire, Measure, OperationDefinition`"
         ),
         description="Instantiates FHIR protocol or definition",
+    )
+    instantiatesCanonical__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(
+        None,
+        alias="_instantiatesCanonical",
+        title="Extension field for ``instantiatesCanonical``.",
     )
 
     instantiatesUri: ListType[fhirtypes.Uri] = Field(
         None,
         alias="instantiatesUri",
-        title="List of `Uri` items (represented as `dict` in JSON)",
+        title="List of `Uri` items",
         description="Instantiates external protocol or definition",
+    )
+    instantiatesUri__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(
+        None, alias="_instantiatesUri", title="Extension field for ``instantiatesUri``."
     )
 
     kind: fhirtypes.Code = Field(
         None,
         alias="kind",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "Appointment | CommunicationRequest | DeviceRequest | MedicationRequest"
             " | NutritionOrder | Task | ServiceRequest | VisionPrescription"
         ),
+    )
+    kind__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_kind", title="Extension field for ``kind``."
     )
 
     location: fhirtypes.ReferenceType = Field(
@@ -432,10 +491,13 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
     scheduledString: fhirtypes.String = Field(
         None,
         alias="scheduledString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="When activity is to occur",
         one_of_many="scheduled",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    scheduledString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_scheduledString", title="Extension field for ``scheduledString``."
     )
 
     scheduledTiming: fhirtypes.TimingType = Field(
@@ -450,11 +512,14 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "not-started | scheduled | in-progress | on-hold | completed | "
             "cancelled | stopped | unknown | entered-in-error"
         ),
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     statusReason: fhirtypes.CodeableConceptType = Field(

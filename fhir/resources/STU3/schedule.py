@@ -14,7 +14,11 @@ from . import domainresource, fhirtypes
 
 
 class Schedule(domainresource.DomainResource):
-    """ A container for slots of time that may be available for booking
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A container for slots of time that may be available for booking
     appointments.
     """
 
@@ -25,6 +29,9 @@ class Schedule(domainresource.DomainResource):
         alias="active",
         title="Type `bool`",
         description="Whether this schedule is in active use",
+    )
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_active", title="Extension field for ``active``."
     )
 
     actor: ListType[fhirtypes.ReferenceType] = Field(
@@ -46,11 +53,14 @@ class Schedule(domainresource.DomainResource):
     comment: fhirtypes.String = Field(
         None,
         alias="comment",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description=(
             "Comments on the availability to describe any extended information. "
             "Such as custom constraints on the slots that may be associated"
         ),
+    )
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_comment", title="Extension field for ``comment``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(

@@ -30,6 +30,7 @@ data validation, faster in performance. Written in modern python.
 
 * Easy to construct, easy to extended validation, easy to export.
 * By inheriting behaviour from pydantic_, compatible with `ORM <https://en.wikipedia.org/wiki/Object-relational_mapping>`_.
+* Full support of FHIR® Extensibility for Primitive Data Types are available.
 * Previous release of FHIR® Resources are available.
 * Free software: BSD license
 

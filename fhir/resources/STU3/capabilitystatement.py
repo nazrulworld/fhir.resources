@@ -7,6 +7,7 @@ Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field
 
@@ -14,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class CapabilityStatement(domainresource.DomainResource):
-    """ A statement of system capabilities.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A statement of system capabilities.
     A Capability Statement documents a set of capabilities (behaviors) of a
     FHIR Server that may be used as a statement of actual server functionality
     or a statement of required or desired server implementation.
@@ -25,8 +30,11 @@ class CapabilityStatement(domainresource.DomainResource):
     acceptUnknown: fhirtypes.Code = Field(
         ...,
         alias="acceptUnknown",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="no | extensions | elements | both",
+    )
+    acceptUnknown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_acceptUnknown", title="Extension field for ``acceptUnknown``."
     )
 
     contact: ListType[fhirtypes.ContactDetailType] = Field(
@@ -39,22 +47,31 @@ class CapabilityStatement(domainresource.DomainResource):
     copyright: fhirtypes.Markdown = Field(
         None,
         alias="copyright",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Use and/or publishing restrictions",
+    )
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
     date: fhirtypes.DateTime = Field(
         ...,
         alias="date",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Date this was last changed",
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Natural language description of the capability statement",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     document: ListType[fhirtypes.CapabilityStatementDocumentType] = Field(
@@ -73,19 +90,28 @@ class CapabilityStatement(domainresource.DomainResource):
         title="Type `bool`",
         description="For testing purposes, not real usage",
     )
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_experimental", title="Extension field for ``experimental``."
+    )
 
     fhirVersion: fhirtypes.Id = Field(
         ...,
         alias="fhirVersion",
-        title="Type `Id` (represented as `dict` in JSON)",
+        title="Type `Id`",
         description="FHIR Version the system uses",
+    )
+    fhirVersion__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_fhirVersion", title="Extension field for ``fhirVersion``."
     )
 
     format: ListType[fhirtypes.Code] = Field(
         ...,
         alias="format",
-        title="List of `Code` items (represented as `dict` in JSON)",
+        title="List of `Code` items",
         description="formats supported (xml | json | ttl | mime type)",
+    )
+    format__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_format", title="Extension field for ``format``."
     )
 
     implementation: fhirtypes.CapabilityStatementImplementationType = Field(
@@ -101,15 +127,27 @@ class CapabilityStatement(domainresource.DomainResource):
     implementationGuide: ListType[fhirtypes.Uri] = Field(
         None,
         alias="implementationGuide",
-        title="List of `Uri` items (represented as `dict` in JSON)",
+        title="List of `Uri` items",
         description="Implementation guides supported",
+    )
+    implementationGuide__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(
+        None,
+        alias="_implementationGuide",
+        title="Extension field for ``implementationGuide``.",
     )
 
     instantiates: ListType[fhirtypes.Uri] = Field(
         None,
         alias="instantiates",
-        title="List of `Uri` items (represented as `dict` in JSON)",
+        title="List of `Uri` items",
         description="Canonical URL of another capability statement this implements",
+    )
+    instantiates__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(
+        None, alias="_instantiates", title="Extension field for ``instantiates``."
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -122,8 +160,11 @@ class CapabilityStatement(domainresource.DomainResource):
     kind: fhirtypes.Code = Field(
         ...,
         alias="kind",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="instance | capability | requirements",
+    )
+    kind__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_kind", title="Extension field for ``kind``."
     )
 
     messaging: ListType[fhirtypes.CapabilityStatementMessagingType] = Field(
@@ -139,16 +180,22 @@ class CapabilityStatement(domainresource.DomainResource):
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for this capability statement (computer friendly)",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     patchFormat: ListType[fhirtypes.Code] = Field(
         None,
         alias="patchFormat",
-        title="List of `Code` items (represented as `dict` in JSON)",
+        title="List of `Code` items",
         description="Patch formats supported",
     )
+    patchFormat__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_patchFormat", title="Extension field for ``patchFormat``.")
 
     profile: ListType[fhirtypes.ReferenceType] = Field(
         None,
@@ -163,15 +210,21 @@ class CapabilityStatement(domainresource.DomainResource):
     publisher: fhirtypes.String = Field(
         None,
         alias="publisher",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name of the publisher (organization or individual)",
+    )
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
     purpose: fhirtypes.Markdown = Field(
         None,
         alias="purpose",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Why this capability statement is defined",
+    )
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
     rest: ListType[fhirtypes.CapabilityStatementRestType] = Field(
@@ -193,22 +246,31 @@ class CapabilityStatement(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="draft | active | retired | unknown",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for this capability statement (human friendly)",
+    )
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_title", title="Extension field for ``title``."
     )
 
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Logical URI to reference this capability statement (globally unique)",
+    )
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_url", title="Extension field for ``url``."
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -221,13 +283,20 @@ class CapabilityStatement(domainresource.DomainResource):
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Business version of the capability statement",
+    )
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_version", title="Extension field for ``version``."
     )
 
 
 class CapabilityStatementDocument(backboneelement.BackboneElement):
-    """ Document definition.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Document definition.
     A document definition.
     """
 
@@ -236,15 +305,18 @@ class CapabilityStatementDocument(backboneelement.BackboneElement):
     documentation: fhirtypes.String = Field(
         None,
         alias="documentation",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Description of document support",
+    )
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_documentation", title="Extension field for ``documentation``."
     )
 
     mode: fhirtypes.Code = Field(
-        ...,
-        alias="mode",
-        title="Type `Code` (represented as `dict` in JSON)",
-        description="producer | consumer",
+        ..., alias="mode", title="Type `Code`", description="producer | consumer"
+    )
+    mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_mode", title="Extension field for ``mode``."
     )
 
     profile: fhirtypes.ReferenceType = Field(
@@ -259,7 +331,11 @@ class CapabilityStatementDocument(backboneelement.BackboneElement):
 
 
 class CapabilityStatementImplementation(backboneelement.BackboneElement):
-    """ If this describes a specific instance.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    If this describes a specific instance.
     Identifies a specific implementation instance that is described by the
     capability statement - i.e. a particular installation, rather than the
     capabilities of a software program.
@@ -270,20 +346,30 @@ class CapabilityStatementImplementation(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         ...,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Describes this specific instance",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Base URL for the installation",
+    )
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_url", title="Extension field for ``url``."
     )
 
 
 class CapabilityStatementMessaging(backboneelement.BackboneElement):
-    """ If messaging is supported.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    If messaging is supported.
     A description of the messaging capabilities of the solution.
     """
 
@@ -292,8 +378,11 @@ class CapabilityStatementMessaging(backboneelement.BackboneElement):
     documentation: fhirtypes.String = Field(
         None,
         alias="documentation",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Messaging interface behavior details",
+    )
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_documentation", title="Extension field for ``documentation``."
     )
 
     endpoint: ListType[fhirtypes.CapabilityStatementMessagingEndpointType] = Field(
@@ -319,8 +408,11 @@ class CapabilityStatementMessaging(backboneelement.BackboneElement):
     reliableCache: fhirtypes.UnsignedInt = Field(
         None,
         alias="reliableCache",
-        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        title="Type `UnsignedInt`",
         description="Reliable Message Cache Length (min)",
+    )
+    reliableCache__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_reliableCache", title="Extension field for ``reliableCache``."
     )
 
     supportedMessage: ListType[
@@ -337,7 +429,11 @@ class CapabilityStatementMessaging(backboneelement.BackboneElement):
 
 
 class CapabilityStatementMessagingEndpoint(backboneelement.BackboneElement):
-    """ Where messages should be sent.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Where messages should be sent.
     An endpoint (network accessible address) to which messages and/or replies
     are to be sent.
     """
@@ -347,8 +443,11 @@ class CapabilityStatementMessagingEndpoint(backboneelement.BackboneElement):
     address: fhirtypes.Uri = Field(
         ...,
         alias="address",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Network address or identifier of the end-point",
+    )
+    address__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_address", title="Extension field for ``address``."
     )
 
     protocol: fhirtypes.CodingType = Field(
@@ -360,7 +459,11 @@ class CapabilityStatementMessagingEndpoint(backboneelement.BackboneElement):
 
 
 class CapabilityStatementMessagingEvent(backboneelement.BackboneElement):
-    """ Declare support for this event.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Declare support for this event.
     A description of the solution's support for an event at this end-point.
     """
 
@@ -369,8 +472,11 @@ class CapabilityStatementMessagingEvent(backboneelement.BackboneElement):
     category: fhirtypes.Code = Field(
         None,
         alias="category",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="Consequence | Currency | Notification",
+    )
+    category__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_category", title="Extension field for ``category``."
     )
 
     code: fhirtypes.CodingType = Field(
@@ -383,22 +489,28 @@ class CapabilityStatementMessagingEvent(backboneelement.BackboneElement):
     documentation: fhirtypes.String = Field(
         None,
         alias="documentation",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Endpoint-specific event documentation",
+    )
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_documentation", title="Extension field for ``documentation``."
     )
 
     focus: fhirtypes.Code = Field(
         ...,
         alias="focus",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="Resource that\u0027s focus of message",
+    )
+    focus__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_focus", title="Extension field for ``focus``."
     )
 
     mode: fhirtypes.Code = Field(
-        ...,
-        alias="mode",
-        title="Type `Code` (represented as `dict` in JSON)",
-        description="sender | receiver",
+        ..., alias="mode", title="Type `Code`", description="sender | receiver"
+    )
+    mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_mode", title="Extension field for ``mode``."
     )
 
     request: fhirtypes.ReferenceType = Field(
@@ -423,7 +535,11 @@ class CapabilityStatementMessagingEvent(backboneelement.BackboneElement):
 
 
 class CapabilityStatementMessagingSupportedMessage(backboneelement.BackboneElement):
-    """ Messages supported by this system.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Messages supported by this system.
     References to message definitions for messages this system can send or
     receive.
     """
@@ -441,15 +557,19 @@ class CapabilityStatementMessagingSupportedMessage(backboneelement.BackboneEleme
     )
 
     mode: fhirtypes.Code = Field(
-        ...,
-        alias="mode",
-        title="Type `Code` (represented as `dict` in JSON)",
-        description="sender | receiver",
+        ..., alias="mode", title="Type `Code`", description="sender | receiver"
+    )
+    mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_mode", title="Extension field for ``mode``."
     )
 
 
 class CapabilityStatementRest(backboneelement.BackboneElement):
-    """ If the endpoint is a RESTful one.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    If the endpoint is a RESTful one.
     A definition of the restful capabilities of the solution, if any.
     """
 
@@ -458,15 +578,21 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
     compartment: ListType[fhirtypes.Uri] = Field(
         None,
         alias="compartment",
-        title="List of `Uri` items (represented as `dict` in JSON)",
+        title="List of `Uri` items",
         description="Compartments served/used by system",
     )
+    compartment__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_compartment", title="Extension field for ``compartment``.")
 
     documentation: fhirtypes.String = Field(
         None,
         alias="documentation",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="General description of implementation",
+    )
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_documentation", title="Extension field for ``documentation``."
     )
 
     interaction: ListType[fhirtypes.CapabilityStatementRestInteractionType] = Field(
@@ -480,10 +606,10 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
     )
 
     mode: fhirtypes.Code = Field(
-        ...,
-        alias="mode",
-        title="Type `Code` (represented as `dict` in JSON)",
-        description="client | server",
+        ..., alias="mode", title="Type `Code`", description="client | server"
+    )
+    mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_mode", title="Extension field for ``mode``."
     )
 
     operation: ListType[fhirtypes.CapabilityStatementRestOperationType] = Field(
@@ -527,7 +653,11 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
 
 
 class CapabilityStatementRestInteraction(backboneelement.BackboneElement):
-    """ What operations are supported?.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    What operations are supported?.
     A specification of restful operations supported by the system.
     """
 
@@ -536,20 +666,30 @@ class CapabilityStatementRestInteraction(backboneelement.BackboneElement):
     code: fhirtypes.Code = Field(
         ...,
         alias="code",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="transaction | batch | search-system | history-system",
+    )
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_code", title="Extension field for ``code``."
     )
 
     documentation: fhirtypes.String = Field(
         None,
         alias="documentation",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Anything special about operation behavior",
+    )
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_documentation", title="Extension field for ``documentation``."
     )
 
 
 class CapabilityStatementRestOperation(backboneelement.BackboneElement):
-    """ Definition of an operation or a custom query.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Definition of an operation or a custom query.
     Definition of an operation or a named query together with its parameters
     and their meaning and type.
     """
@@ -569,13 +709,20 @@ class CapabilityStatementRestOperation(backboneelement.BackboneElement):
     name: fhirtypes.String = Field(
         ...,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name by which the operation/query is invoked",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
 
 class CapabilityStatementRestResource(backboneelement.BackboneElement):
-    """ Resource served on the REST interface.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Resource served on the REST interface.
     A specification of the restful capabilities of the solution for a specific
     resource type.
     """
@@ -588,21 +735,34 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         title="Type `bool`",
         description="If allows/uses conditional create",
     )
+    conditionalCreate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_conditionalCreate",
+        title="Extension field for ``conditionalCreate``.",
+    )
 
     conditionalDelete: fhirtypes.Code = Field(
         None,
         alias="conditionalDelete",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "not-supported | single | multiple - how conditional delete is " "supported"
         ),
+    )
+    conditionalDelete__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_conditionalDelete",
+        title="Extension field for ``conditionalDelete``.",
     )
 
     conditionalRead: fhirtypes.Code = Field(
         None,
         alias="conditionalRead",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="not-supported | modified-since | not-match | full-support",
+    )
+    conditionalRead__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_conditionalRead", title="Extension field for ``conditionalRead``."
     )
 
     conditionalUpdate: bool = Field(
@@ -611,12 +771,20 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         title="Type `bool`",
         description="If allows/uses conditional update",
     )
+    conditionalUpdate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_conditionalUpdate",
+        title="Extension field for ``conditionalUpdate``.",
+    )
 
     documentation: fhirtypes.Markdown = Field(
         None,
         alias="documentation",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Additional information about the use of the resource type",
+    )
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_documentation", title="Extension field for ``documentation``."
     )
 
     interaction: ListType[
@@ -647,19 +815,32 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         title="Type `bool`",
         description="Whether vRead can return past versions",
     )
+    readHistory__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_readHistory", title="Extension field for ``readHistory``."
+    )
 
     referencePolicy: ListType[fhirtypes.Code] = Field(
         None,
         alias="referencePolicy",
-        title="List of `Code` items (represented as `dict` in JSON)",
+        title="List of `Code` items",
         description="literal | logical | resolves | enforced | local",
+    )
+    referencePolicy__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(
+        None, alias="_referencePolicy", title="Extension field for ``referencePolicy``."
     )
 
     searchInclude: ListType[fhirtypes.String] = Field(
         None,
         alias="searchInclude",
-        title="List of `String` items (represented as `dict` in JSON)",
+        title="List of `String` items",
         description="_include values supported by the server",
+    )
+    searchInclude__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(
+        None, alias="_searchInclude", title="Extension field for ``searchInclude``."
     )
 
     searchParam: ListType[
@@ -677,15 +858,25 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
     searchRevInclude: ListType[fhirtypes.String] = Field(
         None,
         alias="searchRevInclude",
-        title="List of `String` items (represented as `dict` in JSON)",
+        title="List of `String` items",
         description="_revinclude values supported by the server",
+    )
+    searchRevInclude__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(
+        None,
+        alias="_searchRevInclude",
+        title="Extension field for ``searchRevInclude``.",
     )
 
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="A resource type that is supported",
+    )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
     )
 
     updateCreate: bool = Field(
@@ -694,17 +885,27 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         title="Type `bool`",
         description="If update can commit to a new identity",
     )
+    updateCreate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_updateCreate", title="Extension field for ``updateCreate``."
+    )
 
     versioning: fhirtypes.Code = Field(
         None,
         alias="versioning",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="no-version | versioned | versioned-update",
+    )
+    versioning__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_versioning", title="Extension field for ``versioning``."
     )
 
 
 class CapabilityStatementRestResourceInteraction(backboneelement.BackboneElement):
-    """ What operations are supported?.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    What operations are supported?.
     Identifies a restful operation supported by the solution.
     """
 
@@ -713,23 +914,33 @@ class CapabilityStatementRestResourceInteraction(backboneelement.BackboneElement
     code: fhirtypes.Code = Field(
         ...,
         alias="code",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "read | vread | update | patch | delete | history-instance | history-"
             "type | create | search-type"
         ),
     )
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_code", title="Extension field for ``code``."
+    )
 
     documentation: fhirtypes.String = Field(
         None,
         alias="documentation",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Anything special about operation behavior",
+    )
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_documentation", title="Extension field for ``documentation``."
     )
 
 
 class CapabilityStatementRestResourceSearchParam(backboneelement.BackboneElement):
-    """ Search parameters supported by implementation.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Search parameters supported by implementation.
     Search parameters for implementations to support and/or make use of -
     either references to ones defined in the specification, or additional ones
     defined for/by the implementation.
@@ -740,36 +951,49 @@ class CapabilityStatementRestResourceSearchParam(backboneelement.BackboneElement
     definition: fhirtypes.Uri = Field(
         None,
         alias="definition",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Source of definition for parameter",
+    )
+    definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_definition", title="Extension field for ``definition``."
     )
 
     documentation: fhirtypes.String = Field(
         None,
         alias="documentation",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Server-specific usage",
+    )
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_documentation", title="Extension field for ``documentation``."
     )
 
     name: fhirtypes.String = Field(
-        ...,
-        alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Name of search parameter",
+        ..., alias="name", title="Type `String`", description="Name of search parameter"
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "number | date | string | token | reference | composite | quantity | " "uri"
         ),
     )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
+    )
 
 
 class CapabilityStatementRestSecurity(backboneelement.BackboneElement):
-    """ Information about security of implementation.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Information about security of implementation.
     Information about security implementation from an interface perspective -
     what a client needs to know.
     """
@@ -794,12 +1018,18 @@ class CapabilityStatementRestSecurity(backboneelement.BackboneElement):
         title="Type `bool`",
         description="Adds CORS Headers (http://enable-cors.org/)",
     )
+    cors__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_cors", title="Extension field for ``cors``."
+    )
 
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="General description of how security works",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     service: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -811,7 +1041,11 @@ class CapabilityStatementRestSecurity(backboneelement.BackboneElement):
 
 
 class CapabilityStatementRestSecurityCertificate(backboneelement.BackboneElement):
-    """ Certificates associated with security profiles.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Certificates associated with security profiles.
     """
 
     resource_type = Field("CapabilityStatementRestSecurityCertificate", const=True)
@@ -819,20 +1053,30 @@ class CapabilityStatementRestSecurityCertificate(backboneelement.BackboneElement
     blob: fhirtypes.Base64Binary = Field(
         None,
         alias="blob",
-        title="Type `Base64Binary` (represented as `dict` in JSON)",
+        title="Type `Base64Binary`",
         description="Actual certificate",
+    )
+    blob__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_blob", title="Extension field for ``blob``."
     )
 
     type: fhirtypes.Code = Field(
         None,
         alias="type",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="Mime type for certificates",
+    )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
     )
 
 
 class CapabilityStatementSoftware(backboneelement.BackboneElement):
-    """ Software that is covered by this capability statement.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Software that is covered by this capability statement.
     Software that is covered by this capability statement.  It is used when the
     capability statement describes the capabilities of a particular software
     version, independent of an installation.
@@ -843,20 +1087,29 @@ class CapabilityStatementSoftware(backboneelement.BackboneElement):
     name: fhirtypes.String = Field(
         ...,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="A name the software is known by",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     releaseDate: fhirtypes.DateTime = Field(
         None,
         alias="releaseDate",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Date this version released",
+    )
+    releaseDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_releaseDate", title="Extension field for ``releaseDate``."
     )
 
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Version covered by this statement",
+    )
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_version", title="Extension field for ``version``."
     )

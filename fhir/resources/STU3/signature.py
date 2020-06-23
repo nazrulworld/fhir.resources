@@ -15,7 +15,11 @@ from . import element, fhirtypes
 
 
 class Signature(element.Element):
-    """ A digital Signature - XML DigSig, JWT, Graphical image of signature, etc..
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A digital Signature - XML DigSig, JWT, Graphical image of signature, etc..
     A digital signature along with supporting context. The signature may be
     electronic/cryptographic in nature, or a graphical image representing a
     hand-written signature, or a signature process. Different signature
@@ -27,15 +31,21 @@ class Signature(element.Element):
     blob: fhirtypes.Base64Binary = Field(
         None,
         alias="blob",
-        title="Type `Base64Binary` (represented as `dict` in JSON)",
+        title="Type `Base64Binary`",
         description="The actual signature content (XML DigSig. JWT, picture, etc.)",
+    )
+    blob__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_blob", title="Extension field for ``blob``."
     )
 
     contentType: fhirtypes.Code = Field(
         None,
         alias="contentType",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="The technical format of the signature",
+    )
+    contentType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_contentType", title="Extension field for ``contentType``."
     )
 
     onBehalfOfReference: fhirtypes.ReferenceType = Field(
@@ -53,10 +63,13 @@ class Signature(element.Element):
     onBehalfOfUri: fhirtypes.Uri = Field(
         None,
         alias="onBehalfOfUri",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="The party represented",
         one_of_many="onBehalfOf",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    onBehalfOfUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_onBehalfOfUri", title="Extension field for ``onBehalfOfUri``."
     )
 
     type: ListType[fhirtypes.CodingType] = Field(
@@ -69,8 +82,11 @@ class Signature(element.Element):
     when: fhirtypes.Instant = Field(
         ...,
         alias="when",
-        title="Type `Instant` (represented as `dict` in JSON)",
+        title="Type `Instant`",
         description="When the signature was created",
+    )
+    when__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_when", title="Extension field for ``when``."
     )
 
     whoReference: fhirtypes.ReferenceType = Field(
@@ -88,10 +104,13 @@ class Signature(element.Element):
     whoUri: fhirtypes.Uri = Field(
         None,
         alias="whoUri",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Who signed",
         one_of_many="who",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    whoUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_whoUri", title="Extension field for ``whoUri``."
     )
 
     @root_validator(pre=True)

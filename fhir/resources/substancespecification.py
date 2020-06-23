@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class SubstanceSpecification(domainresource.DomainResource):
-    """ The detailed description of a substance, typically at a level beyond what
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The detailed description of a substance, typically at a level beyond what
     is used for prescribing.
     """
 
@@ -34,15 +38,21 @@ class SubstanceSpecification(domainresource.DomainResource):
     comment: fhirtypes.String = Field(
         None,
         alias="comment",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Textual comment about this record of a substance",
+    )
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_comment", title="Extension field for ``comment``."
     )
 
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Textual description of the substance",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     domain: fhirtypes.CodeableConceptType = Field(
@@ -203,7 +213,11 @@ class SubstanceSpecification(domainresource.DomainResource):
 
 
 class SubstanceSpecificationCode(backboneelement.BackboneElement):
-    """ Codes associated with the substance.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Codes associated with the substance.
     """
 
     resource_type = Field("SubstanceSpecificationCode", const=True)
@@ -218,8 +232,11 @@ class SubstanceSpecificationCode(backboneelement.BackboneElement):
     comment: fhirtypes.String = Field(
         None,
         alias="comment",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Any comment can be provided in this field, if necessary",
+    )
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_comment", title="Extension field for ``comment``."
     )
 
     source: ListType[fhirtypes.ReferenceType] = Field(
@@ -242,16 +259,23 @@ class SubstanceSpecificationCode(backboneelement.BackboneElement):
     statusDate: fhirtypes.DateTime = Field(
         None,
         alias="statusDate",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description=(
             "The date at which the code status is changed as part of the "
             "terminology maintenance"
         ),
     )
+    statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_statusDate", title="Extension field for ``statusDate``."
+    )
 
 
 class SubstanceSpecificationMoiety(backboneelement.BackboneElement):
-    """ Moiety, for structural modifications.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Moiety, for structural modifications.
     """
 
     resource_type = Field("SubstanceSpecificationMoiety", const=True)
@@ -268,10 +292,13 @@ class SubstanceSpecificationMoiety(backboneelement.BackboneElement):
     amountString: fhirtypes.String = Field(
         None,
         alias="amountString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Quantitative value for this moiety",
         one_of_many="amount",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    amountString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_amountString", title="Extension field for ``amountString``."
     )
 
     identifier: fhirtypes.IdentifierType = Field(
@@ -284,15 +311,23 @@ class SubstanceSpecificationMoiety(backboneelement.BackboneElement):
     molecularFormula: fhirtypes.String = Field(
         None,
         alias="molecularFormula",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Molecular formula",
+    )
+    molecularFormula__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_molecularFormula",
+        title="Extension field for ``molecularFormula``.",
     )
 
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Textual name for this moiety substance",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     opticalActivity: fhirtypes.CodeableConceptType = Field(
@@ -354,7 +389,11 @@ class SubstanceSpecificationMoiety(backboneelement.BackboneElement):
 
 
 class SubstanceSpecificationName(backboneelement.BackboneElement):
-    """ Names applicable to this substance.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Names applicable to this substance.
     """
 
     resource_type = Field("SubstanceSpecificationName", const=True)
@@ -384,10 +423,10 @@ class SubstanceSpecificationName(backboneelement.BackboneElement):
     )
 
     name: fhirtypes.String = Field(
-        ...,
-        alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="The actual name",
+        ..., alias="name", title="Type `String`", description="The actual name"
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     official: ListType[fhirtypes.SubstanceSpecificationNameOfficialType] = Field(
@@ -405,6 +444,9 @@ class SubstanceSpecificationName(backboneelement.BackboneElement):
         alias="preferred",
         title="Type `bool`",
         description="If this is the preferred name for this substance",
+    )
+    preferred__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_preferred", title="Extension field for ``preferred``."
     )
 
     source: ListType[fhirtypes.ReferenceType] = Field(
@@ -453,7 +495,11 @@ class SubstanceSpecificationName(backboneelement.BackboneElement):
 
 
 class SubstanceSpecificationNameOfficial(backboneelement.BackboneElement):
-    """ Details of the official nature of this name.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Details of the official nature of this name.
     """
 
     resource_type = Field("SubstanceSpecificationNameOfficial", const=True)
@@ -468,8 +514,11 @@ class SubstanceSpecificationNameOfficial(backboneelement.BackboneElement):
     date: fhirtypes.DateTime = Field(
         None,
         alias="date",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Date of official name change",
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     status: fhirtypes.CodeableConceptType = Field(
@@ -481,7 +530,11 @@ class SubstanceSpecificationNameOfficial(backboneelement.BackboneElement):
 
 
 class SubstanceSpecificationProperty(backboneelement.BackboneElement):
-    """ General specifications for this substance, including how it is related to
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    General specifications for this substance, including how it is related to
     other substances.
     """
 
@@ -499,10 +552,13 @@ class SubstanceSpecificationProperty(backboneelement.BackboneElement):
     amountString: fhirtypes.String = Field(
         None,
         alias="amountString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Quantitative value for this property",
         one_of_many="amount",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    amountString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_amountString", title="Extension field for ``amountString``."
     )
 
     category: fhirtypes.CodeableConceptType = Field(
@@ -549,11 +605,14 @@ class SubstanceSpecificationProperty(backboneelement.BackboneElement):
     parameters: fhirtypes.String = Field(
         None,
         alias="parameters",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description=(
             "Parameters that were used in the measurement of a property (e.g. for "
             "viscosity: measured at 20C with a pH of 7.1)"
         ),
+    )
+    parameters__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_parameters", title="Extension field for ``parameters``."
     )
 
     @root_validator(pre=True)
@@ -600,7 +659,11 @@ class SubstanceSpecificationProperty(backboneelement.BackboneElement):
 
 
 class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
-    """ A link between this substance and another, with details of the relationship.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A link between this substance and another, with details of the relationship.
     """
 
     resource_type = Field("SubstanceSpecificationRelationship", const=True)
@@ -654,7 +717,7 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
     amountString: fhirtypes.String = Field(
         None,
         alias="amountString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description=(
             "A numeric factor for the relationship, for instance to express that "
             "the salt of a substance has some percentage of the active substance in"
@@ -662,6 +725,9 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
         ),
         one_of_many="amount",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    amountString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_amountString", title="Extension field for ``amountString``."
     )
 
     amountType: fhirtypes.CodeableConceptType = Field(
@@ -683,6 +749,9 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
             "substance, this is a defining relationship for that enzyme, out of "
             "several possible substance relationships"
         ),
+    )
+    isDefining__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_isDefining", title="Extension field for ``isDefining``."
     )
 
     relationship: fhirtypes.CodeableConceptType = Field(
@@ -770,7 +839,11 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
 
 
 class SubstanceSpecificationStructure(backboneelement.BackboneElement):
-    """ Structural information.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Structural information.
     """
 
     resource_type = Field("SubstanceSpecificationStructure", const=True)
@@ -791,18 +864,28 @@ class SubstanceSpecificationStructure(backboneelement.BackboneElement):
     molecularFormula: fhirtypes.String = Field(
         None,
         alias="molecularFormula",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Molecular formula",
+    )
+    molecularFormula__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_molecularFormula",
+        title="Extension field for ``molecularFormula``.",
     )
 
     molecularFormulaByMoiety: fhirtypes.String = Field(
         None,
         alias="molecularFormulaByMoiety",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description=(
             "Specified per moiety according to the Hill system, i.e. first C, then "
             "H, then alphabetical, each moiety separated by a dot"
         ),
+    )
+    molecularFormulaByMoiety__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_molecularFormulaByMoiety",
+        title="Extension field for ``molecularFormulaByMoiety``.",
     )
 
     molecularWeight: fhirtypes.SubstanceSpecificationStructureIsotopeMolecularWeightType = Field(  # noqa: B950
@@ -856,7 +939,11 @@ class SubstanceSpecificationStructure(backboneelement.BackboneElement):
 
 
 class SubstanceSpecificationStructureIsotope(backboneelement.BackboneElement):
-    """ Applicable for single substances that contain a radionuclide or a non-
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Applicable for single substances that contain a radionuclide or a non-
     natural isotopic ratio.
     """
 
@@ -907,7 +994,11 @@ class SubstanceSpecificationStructureIsotope(backboneelement.BackboneElement):
 class SubstanceSpecificationStructureIsotopeMolecularWeight(
     backboneelement.BackboneElement
 ):
-    """ The molecular weight or weight range (for proteins, polymers or nucleic
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The molecular weight or weight range (for proteins, polymers or nucleic
     acids).
     """
 
@@ -946,7 +1037,11 @@ class SubstanceSpecificationStructureIsotopeMolecularWeight(
 
 
 class SubstanceSpecificationStructureRepresentation(backboneelement.BackboneElement):
-    """ Molecular structural representation.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Molecular structural representation.
     """
 
     resource_type = Field("SubstanceSpecificationStructureRepresentation", const=True)
@@ -961,11 +1056,14 @@ class SubstanceSpecificationStructureRepresentation(backboneelement.BackboneElem
     representation: fhirtypes.String = Field(
         None,
         alias="representation",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description=(
             "The structural representation as text string in a format e.g. InChI, "
             "SMILES, MOLFILE, CDX"
         ),
+    )
+    representation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_representation", title="Extension field for ``representation``."
     )
 
     type: fhirtypes.CodeableConceptType = Field(

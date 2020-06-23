@@ -12,7 +12,11 @@ from . import element, fhirtypes
 
 
 class Identifier(element.Element):
-    """ An identifier intended for computation.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    An identifier intended for computation.
     An identifier - identifies some entity uniquely and unambiguously.
     Typically this is used for business identifiers.
     """
@@ -39,8 +43,11 @@ class Identifier(element.Element):
     system: fhirtypes.Uri = Field(
         None,
         alias="system",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="The namespace for the identifier value",
+    )
+    system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_system", title="Extension field for ``system``."
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -53,13 +60,19 @@ class Identifier(element.Element):
     use: fhirtypes.Code = Field(
         None,
         alias="use",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="usual | official | temp | secondary | old (If known)",
+    )
+    use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_use", title="Extension field for ``use``."
     )
 
     value: fhirtypes.String = Field(
         None,
         alias="value",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="The value that is unique",
+    )
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_value", title="Extension field for ``value``."
     )

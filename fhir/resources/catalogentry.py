@@ -14,7 +14,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class CatalogEntry(domainresource.DomainResource):
-    """ An entry in a catalog.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    An entry in a catalog.
     Catalog entries are wrappers that contextualize items included in a
     catalog.
     """
@@ -62,8 +66,11 @@ class CatalogEntry(domainresource.DomainResource):
     lastUpdated: fhirtypes.DateTime = Field(
         None,
         alias="lastUpdated",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When was this catalog last updated",
+    )
+    lastUpdated__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_lastUpdated", title="Extension field for ``lastUpdated``."
     )
 
     orderable: bool = Field(
@@ -71,6 +78,9 @@ class CatalogEntry(domainresource.DomainResource):
         alias="orderable",
         title="Type `bool`",
         description="Whether the entry represents an orderable item",
+    )
+    orderable__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_orderable", title="Extension field for ``orderable``."
     )
 
     referencedItem: fhirtypes.ReferenceType = Field(
@@ -98,8 +108,11 @@ class CatalogEntry(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="draft | active | retired | unknown",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -112,8 +125,11 @@ class CatalogEntry(domainresource.DomainResource):
     validTo: fhirtypes.DateTime = Field(
         None,
         alias="validTo",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="The date until which this catalog entry is expected to be active",
+    )
+    validTo__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_validTo", title="Extension field for ``validTo``."
     )
 
     validityPeriod: fhirtypes.PeriodType = Field(
@@ -125,7 +141,11 @@ class CatalogEntry(domainresource.DomainResource):
 
 
 class CatalogEntryRelatedEntry(backboneelement.BackboneElement):
-    """ An item that this catalog entry is related to.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    An item that this catalog entry is related to.
     Used for example, to point to a substance, or to a device used to
     administer a medication.
     """
@@ -145,6 +165,9 @@ class CatalogEntryRelatedEntry(backboneelement.BackboneElement):
     relationtype: fhirtypes.Code = Field(
         ...,
         alias="relationtype",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="triggers | is-replaced-by",
+    )
+    relationtype__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_relationtype", title="Extension field for ``relationtype``."
     )

@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class SupplyRequest(domainresource.DomainResource):
-    """ Request for a medication, substance or device.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Request for a medication, substance or device.
     A record of a request for a medication, substance or device used in the
     healthcare setting.
     """
@@ -25,8 +29,11 @@ class SupplyRequest(domainresource.DomainResource):
     authoredOn: fhirtypes.DateTime = Field(
         None,
         alias="authoredOn",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When the request was made",
+    )
+    authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_authoredOn", title="Extension field for ``authoredOn``."
     )
 
     category: fhirtypes.CodeableConceptType = Field(
@@ -66,10 +73,15 @@ class SupplyRequest(domainresource.DomainResource):
     occurrenceDateTime: fhirtypes.DateTime = Field(
         None,
         alias="occurrenceDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When the request should be fulfilled",
         one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_occurrenceDateTime",
+        title="Extension field for ``occurrenceDateTime``.",
     )
 
     occurrencePeriod: fhirtypes.PeriodType = Field(
@@ -100,8 +112,11 @@ class SupplyRequest(domainresource.DomainResource):
     priority: fhirtypes.Code = Field(
         None,
         alias="priority",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="routine | urgent | asap | stat",
+    )
+    priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_priority", title="Extension field for ``priority``."
     )
 
     reasonCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -134,8 +149,11 @@ class SupplyRequest(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="draft | active | suspended +",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     supplier: ListType[fhirtypes.ReferenceType] = Field(
@@ -193,7 +211,11 @@ class SupplyRequest(domainresource.DomainResource):
 
 
 class SupplyRequestOrderedItem(backboneelement.BackboneElement):
-    """ The item being requested.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The item being requested.
     """
 
     resource_type = Field("SupplyRequestOrderedItem", const=True)
@@ -264,7 +286,11 @@ class SupplyRequestOrderedItem(backboneelement.BackboneElement):
 
 
 class SupplyRequestRequester(backboneelement.BackboneElement):
-    """ Who/what is requesting service.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Who/what is requesting service.
     The individual who initiated the request and has responsibility for its
     activation.
     """

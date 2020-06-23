@@ -15,7 +15,11 @@ from . import backboneelement, element, fhirtypes
 
 
 class Dosage(backboneelement.BackboneElement):
-    """ How the medication is/was taken or should be taken.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    How the medication is/was taken or should be taken.
     Indicates how the medication is/was taken or should be taken by the
     patient.
     """
@@ -39,6 +43,9 @@ class Dosage(backboneelement.BackboneElement):
         description='Take "as needed" (for x)',
         one_of_many="asNeeded",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    asNeededBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_asNeededBoolean", title="Extension field for ``asNeededBoolean``."
     )
 
     asNeededCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -88,8 +95,13 @@ class Dosage(backboneelement.BackboneElement):
     patientInstruction: fhirtypes.String = Field(
         None,
         alias="patientInstruction",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Patient or consumer oriented instructions",
+    )
+    patientInstruction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_patientInstruction",
+        title="Extension field for ``patientInstruction``.",
     )
 
     route: fhirtypes.CodeableConceptType = Field(
@@ -102,8 +114,11 @@ class Dosage(backboneelement.BackboneElement):
     sequence: fhirtypes.Integer = Field(
         None,
         alias="sequence",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="The order of the dosage instructions",
+    )
+    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
     site: fhirtypes.CodeableConceptType = Field(
@@ -116,8 +131,11 @@ class Dosage(backboneelement.BackboneElement):
     text: fhirtypes.String = Field(
         None,
         alias="text",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Free text dosage instructions e.g. SIG",
+    )
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_text", title="Extension field for ``text``."
     )
 
     timing: fhirtypes.TimingType = Field(
@@ -167,7 +185,11 @@ class Dosage(backboneelement.BackboneElement):
 
 
 class DosageDoseAndRate(element.Element):
-    """ Amount of medication administered.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Amount of medication administered.
     The amount of medication administered.
     """
 

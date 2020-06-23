@@ -14,7 +14,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Person(domainresource.DomainResource):
-    """ A generic person record.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A generic person record.
     Demographics and administrative information about a person independent of a
     specific health-related context.
     """
@@ -27,6 +31,9 @@ class Person(domainresource.DomainResource):
         title="Type `bool`",
         description="This person\u0027s record is in active use",
     )
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_active", title="Extension field for ``active``."
+    )
 
     address: ListType[fhirtypes.AddressType] = Field(
         None,
@@ -38,15 +45,21 @@ class Person(domainresource.DomainResource):
     birthDate: fhirtypes.Date = Field(
         None,
         alias="birthDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="The date on which the person was born",
+    )
+    birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_birthDate", title="Extension field for ``birthDate``."
     )
 
     gender: fhirtypes.Code = Field(
         None,
         alias="gender",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="male | female | other | unknown",
+    )
+    gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_gender", title="Extension field for ``gender``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -96,7 +109,11 @@ class Person(domainresource.DomainResource):
 
 
 class PersonLink(backboneelement.BackboneElement):
-    """ Link to a resource that concerns the same actual person.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Link to a resource that concerns the same actual person.
     """
 
     resource_type = Field("PersonLink", const=True)
@@ -104,8 +121,11 @@ class PersonLink(backboneelement.BackboneElement):
     assurance: fhirtypes.Code = Field(
         None,
         alias="assurance",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="level1 | level2 | level3 | level4",
+    )
+    assurance__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_assurance", title="Extension field for ``assurance``."
     )
 
     target: fhirtypes.ReferenceType = Field(

@@ -14,7 +14,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class PaymentReconciliation(domainresource.DomainResource):
-    """ PaymentReconciliation resource.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    PaymentReconciliation resource.
     This resource provides the details including amount of a payment and
     allocates the payment items being paid.
     """
@@ -22,10 +26,10 @@ class PaymentReconciliation(domainresource.DomainResource):
     resource_type = Field("PaymentReconciliation", const=True)
 
     created: fhirtypes.DateTime = Field(
-        ...,
-        alias="created",
-        title="Type `DateTime` (represented as `dict` in JSON)",
-        description="Creation date",
+        ..., alias="created", title="Type `DateTime`", description="Creation date"
+    )
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_created", title="Extension field for ``created``."
     )
 
     detail: ListType[fhirtypes.PaymentReconciliationDetailType] = Field(
@@ -41,8 +45,11 @@ class PaymentReconciliation(domainresource.DomainResource):
     disposition: fhirtypes.String = Field(
         None,
         alias="disposition",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Disposition message",
+    )
+    disposition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_disposition", title="Extension field for ``disposition``."
     )
 
     formCode: fhirtypes.CodeableConceptType = Field(
@@ -62,8 +69,11 @@ class PaymentReconciliation(domainresource.DomainResource):
     outcome: fhirtypes.Code = Field(
         None,
         alias="outcome",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="queued | complete | error | partial",
+    )
+    outcome__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_outcome", title="Extension field for ``outcome``."
     )
 
     paymentAmount: fhirtypes.MoneyType = Field(
@@ -74,10 +84,10 @@ class PaymentReconciliation(domainresource.DomainResource):
     )
 
     paymentDate: fhirtypes.Date = Field(
-        ...,
-        alias="paymentDate",
-        title="Type `Date` (represented as `dict` in JSON)",
-        description="When payment issued",
+        ..., alias="paymentDate", title="Type `Date`", description="When payment issued"
+    )
+    paymentDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_paymentDate", title="Extension field for ``paymentDate``."
     )
 
     paymentIdentifier: fhirtypes.IdentifierType = Field(
@@ -134,13 +144,20 @@ class PaymentReconciliation(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="active | cancelled | draft | entered-in-error",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
 
 class PaymentReconciliationDetail(backboneelement.BackboneElement):
-    """ Settlement particulars.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Settlement particulars.
     Distribution of the payment amount for a previously acknowledged payable.
     """
 
@@ -154,10 +171,10 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
     )
 
     date: fhirtypes.Date = Field(
-        None,
-        alias="date",
-        title="Type `Date` (represented as `dict` in JSON)",
-        description="Date of commitment to pay",
+        None, alias="date", title="Type `Date`", description="Date of commitment to pay"
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     identifier: fhirtypes.IdentifierType = Field(
@@ -231,22 +248,29 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
 
 
 class PaymentReconciliationProcessNote(backboneelement.BackboneElement):
-    """ Note concerning processing.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Note concerning processing.
     A note that describes or explains the processing in a human readable form.
     """
 
     resource_type = Field("PaymentReconciliationProcessNote", const=True)
 
     text: fhirtypes.String = Field(
-        None,
-        alias="text",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Note explanatory text",
+        None, alias="text", title="Type `String`", description="Note explanatory text"
+    )
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_text", title="Extension field for ``text``."
     )
 
     type: fhirtypes.Code = Field(
         None,
         alias="type",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="display | print | printoper",
+    )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
     )

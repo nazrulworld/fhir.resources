@@ -8,6 +8,7 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 from typing import Any, Dict
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field, root_validator
 
@@ -15,7 +16,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ClinicalImpression(domainresource.DomainResource):
-    """ A clinical assessment performed when planning treatments and management
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A clinical assessment performed when planning treatments and management
     strategies for a patient.
     A record of a clinical assessment performed to determine what problem(s)
     may affect the patient and before planning the treatments or management
@@ -48,24 +53,35 @@ class ClinicalImpression(domainresource.DomainResource):
     date: fhirtypes.DateTime = Field(
         None,
         alias="date",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When the assessment was documented",
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Why/how the assessment was performed",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     effectiveDateTime: fhirtypes.DateTime = Field(
         None,
         alias="effectiveDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Time of assessment",
         one_of_many="effective",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    effectiveDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_effectiveDateTime",
+        title="Extension field for ``effectiveDateTime``.",
     )
 
     effectivePeriod: fhirtypes.PeriodType = Field(
@@ -161,15 +177,21 @@ class ClinicalImpression(domainresource.DomainResource):
     protocol: ListType[fhirtypes.Uri] = Field(
         None,
         alias="protocol",
-        title="List of `Uri` items (represented as `dict` in JSON)",
+        title="List of `Uri` items",
         description="Clinical Protocol followed",
+    )
+    protocol__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_protocol", title="Extension field for ``protocol``."
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="in-progress | completed | entered-in-error",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     statusReason: fhirtypes.CodeableConceptType = Field(
@@ -192,8 +214,11 @@ class ClinicalImpression(domainresource.DomainResource):
     summary: fhirtypes.String = Field(
         None,
         alias="summary",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Summary of the assessment",
+    )
+    summary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_summary", title="Extension field for ``summary``."
     )
 
     supportingInfo: ListType[fhirtypes.ReferenceType] = Field(
@@ -244,7 +269,11 @@ class ClinicalImpression(domainresource.DomainResource):
 
 
 class ClinicalImpressionFinding(backboneelement.BackboneElement):
-    """ Possible or likely findings and diagnoses.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Possible or likely findings and diagnoses.
     Specific findings or diagnoses that were considered likely or relevant to
     ongoing treatment.
     """
@@ -254,8 +283,11 @@ class ClinicalImpressionFinding(backboneelement.BackboneElement):
     basis: fhirtypes.String = Field(
         None,
         alias="basis",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Which investigations support finding",
+    )
+    basis__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_basis", title="Extension field for ``basis``."
     )
 
     itemCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -277,7 +309,11 @@ class ClinicalImpressionFinding(backboneelement.BackboneElement):
 
 
 class ClinicalImpressionInvestigation(backboneelement.BackboneElement):
-    """ One or more sets of investigations (signs, symptoms, etc.).
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    One or more sets of investigations (signs, symptoms, etc.).
     One or more sets of investigations (signs, symptoms, etc.). The actual
     grouping of investigations varies greatly depending on the type and context
     of the assessment. These investigations may include data generated during

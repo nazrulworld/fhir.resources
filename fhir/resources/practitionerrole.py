@@ -7,6 +7,7 @@ Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field
 
@@ -14,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class PractitionerRole(domainresource.DomainResource):
-    """ Roles/organizations the practitioner is associated with.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Roles/organizations the practitioner is associated with.
     A specific set of Roles/Locations/specialties/services that a practitioner
     may perform at an organization for a period of time.
     """
@@ -27,12 +32,20 @@ class PractitionerRole(domainresource.DomainResource):
         title="Type `bool`",
         description="Whether this practitioner role record is in active use",
     )
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_active", title="Extension field for ``active``."
+    )
 
     availabilityExceptions: fhirtypes.String = Field(
         None,
         alias="availabilityExceptions",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Description of availability exceptions",
+    )
+    availabilityExceptions__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_availabilityExceptions",
+        title="Extension field for ``availabilityExceptions``.",
     )
 
     availableTime: ListType[fhirtypes.PractitionerRoleAvailableTimeType] = Field(
@@ -154,7 +167,11 @@ class PractitionerRole(domainresource.DomainResource):
 
 
 class PractitionerRoleAvailableTime(backboneelement.BackboneElement):
-    """ Times the Service Site is available.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Times the Service Site is available.
     A collection of times the practitioner is available or performing this role
     at the location and/or healthcareservice.
     """
@@ -167,31 +184,51 @@ class PractitionerRoleAvailableTime(backboneelement.BackboneElement):
         title="Type `bool`",
         description="Always available? e.g. 24 hour service",
     )
+    allDay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_allDay", title="Extension field for ``allDay``."
+    )
 
     availableEndTime: fhirtypes.Time = Field(
         None,
         alias="availableEndTime",
-        title="Type `Time` (represented as `dict` in JSON)",
+        title="Type `Time`",
         description="Closing time of day (ignored if allDay = true)",
+    )
+    availableEndTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_availableEndTime",
+        title="Extension field for ``availableEndTime``.",
     )
 
     availableStartTime: fhirtypes.Time = Field(
         None,
         alias="availableStartTime",
-        title="Type `Time` (represented as `dict` in JSON)",
+        title="Type `Time`",
         description="Opening time of day (ignored if allDay = true)",
+    )
+    availableStartTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_availableStartTime",
+        title="Extension field for ``availableStartTime``.",
     )
 
     daysOfWeek: ListType[fhirtypes.Code] = Field(
         None,
         alias="daysOfWeek",
-        title="List of `Code` items (represented as `dict` in JSON)",
+        title="List of `Code` items",
         description="mon | tue | wed | thu | fri | sat | sun",
     )
+    daysOfWeek__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_daysOfWeek", title="Extension field for ``daysOfWeek``.")
 
 
 class PractitionerRoleNotAvailable(backboneelement.BackboneElement):
-    """ Not available during this time due to provided reason.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Not available during this time due to provided reason.
     The practitioner is not available or performing this role during this
     period of time due to the provided reason.
     """
@@ -201,8 +238,11 @@ class PractitionerRoleNotAvailable(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         ...,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Reason presented to the user explaining why time not available",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     during: fhirtypes.PeriodType = Field(

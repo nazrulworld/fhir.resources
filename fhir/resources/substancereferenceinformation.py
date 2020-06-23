@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class SubstanceReferenceInformation(domainresource.DomainResource):
-    """ Todo.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Todo.
     """
 
     resource_type = Field("SubstanceReferenceInformation", const=True)
@@ -33,10 +37,10 @@ class SubstanceReferenceInformation(domainresource.DomainResource):
     )
 
     comment: fhirtypes.String = Field(
-        None,
-        alias="comment",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="comment", title="Type `String`", description="Todo"
+    )
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_comment", title="Extension field for ``comment``."
     )
 
     gene: ListType[fhirtypes.SubstanceReferenceInformationGeneType] = Field(
@@ -73,7 +77,11 @@ class SubstanceReferenceInformation(domainresource.DomainResource):
 
 
 class SubstanceReferenceInformationClassification(backboneelement.BackboneElement):
-    """ Todo.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Todo.
     """
 
     resource_type = Field("SubstanceReferenceInformationClassification", const=True)
@@ -111,7 +119,11 @@ class SubstanceReferenceInformationClassification(backboneelement.BackboneElemen
 
 
 class SubstanceReferenceInformationGene(backboneelement.BackboneElement):
-    """ Todo.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Todo.
     """
 
     resource_type = Field("SubstanceReferenceInformationGene", const=True)
@@ -142,7 +154,11 @@ class SubstanceReferenceInformationGene(backboneelement.BackboneElement):
 
 
 class SubstanceReferenceInformationGeneElement(backboneelement.BackboneElement):
-    """ Todo.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Todo.
     """
 
     resource_type = Field("SubstanceReferenceInformationGeneElement", const=True)
@@ -173,7 +189,11 @@ class SubstanceReferenceInformationGeneElement(backboneelement.BackboneElement):
 
 
 class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
-    """ Todo.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Todo.
     """
 
     resource_type = Field("SubstanceReferenceInformationTarget", const=True)
@@ -199,10 +219,13 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
     amountString: fhirtypes.String = Field(
         None,
         alias="amountString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Todo",
         one_of_many="amount",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    amountString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_amountString", title="Extension field for ``amountString``."
     )
 
     amountType: fhirtypes.CodeableConceptType = Field(

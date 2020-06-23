@@ -14,7 +14,11 @@ from . import domainresource, fhirtypes
 
 
 class ResearchSubject(domainresource.DomainResource):
-    """ Physical entity which is the primary unit of interest in the study.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Physical entity which is the primary unit of interest in the study.
     A physical entity which is the primary unit of operational and/or
     administrative interest in a study.
     """
@@ -24,15 +28,21 @@ class ResearchSubject(domainresource.DomainResource):
     actualArm: fhirtypes.String = Field(
         None,
         alias="actualArm",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="What path was followed",
+    )
+    actualArm__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_actualArm", title="Extension field for ``actualArm``."
     )
 
     assignedArm: fhirtypes.String = Field(
         None,
         alias="assignedArm",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="What path should be followed",
+    )
+    assignedArm__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_assignedArm", title="Extension field for ``assignedArm``."
     )
 
     consent: fhirtypes.ReferenceType = Field(
@@ -66,12 +76,15 @@ class ResearchSubject(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "candidate | eligible | follow-up | ineligible | not-registered | off-"
             "study | on-study | on-study-intervention | on-study-observation | "
             "pending-on-study | potential-candidate | screening | withdrawn"
         ),
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     study: fhirtypes.ReferenceType = Field(

@@ -14,7 +14,11 @@ from . import domainresource, fhirtypes
 
 
 class RelatedPerson(domainresource.DomainResource):
-    """ An person that is related to a patient, but who is not a direct target of
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    An person that is related to a patient, but who is not a direct target of
     care.
     Information about a person that is involved in the care for a patient, but
     who is not the target of healthcare, nor has a formal responsibility in the
@@ -29,6 +33,9 @@ class RelatedPerson(domainresource.DomainResource):
         title="Type `bool`",
         description="Whether this related person\u0027s record is in active use",
     )
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_active", title="Extension field for ``active``."
+    )
 
     address: ListType[fhirtypes.AddressType] = Field(
         None,
@@ -40,15 +47,21 @@ class RelatedPerson(domainresource.DomainResource):
     birthDate: fhirtypes.Date = Field(
         None,
         alias="birthDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="The date on which the related person was born",
+    )
+    birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_birthDate", title="Extension field for ``birthDate``."
     )
 
     gender: fhirtypes.Code = Field(
         None,
         alias="gender",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="male | female | other | unknown",
+    )
+    gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_gender", title="Extension field for ``gender``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(

@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Observation(domainresource.DomainResource):
-    """ Measurements and simple assertions.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Measurements and simple assertions.
     Measurements and simple assertions made about a patient, device or other
     subject.
     """
@@ -57,8 +61,11 @@ class Observation(domainresource.DomainResource):
     comment: fhirtypes.String = Field(
         None,
         alias="comment",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Comments about result",
+    )
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_comment", title="Extension field for ``comment``."
     )
 
     component: ListType[fhirtypes.ObservationComponentType] = Field(
@@ -98,10 +105,15 @@ class Observation(domainresource.DomainResource):
     effectiveDateTime: fhirtypes.DateTime = Field(
         None,
         alias="effectiveDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Clinically relevant time/time-period for observation",
         one_of_many="effective",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    effectiveDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_effectiveDateTime",
+        title="Extension field for ``effectiveDateTime``.",
     )
 
     effectivePeriod: fhirtypes.PeriodType = Field(
@@ -130,8 +142,11 @@ class Observation(domainresource.DomainResource):
     issued: fhirtypes.Instant = Field(
         None,
         alias="issued",
-        title="Type `Instant` (represented as `dict` in JSON)",
+        title="Type `Instant`",
         description="Date/Time this was made available",
+    )
+    issued__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_issued", title="Extension field for ``issued``."
     )
 
     method: fhirtypes.CodeableConceptType = Field(
@@ -180,8 +195,11 @@ class Observation(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="registered | preliminary | final | amended +",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -211,6 +229,9 @@ class Observation(domainresource.DomainResource):
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
+    )
 
     valueCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
@@ -224,10 +245,13 @@ class Observation(domainresource.DomainResource):
     valueDateTime: fhirtypes.DateTime = Field(
         None,
         alias="valueDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Actual result",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueDateTime", title="Extension field for ``valueDateTime``."
     )
 
     valuePeriod: fhirtypes.PeriodType = Field(
@@ -278,19 +302,25 @@ class Observation(domainresource.DomainResource):
     valueString: fhirtypes.String = Field(
         None,
         alias="valueString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Actual result",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueString", title="Extension field for ``valueString``."
     )
 
     valueTime: fhirtypes.Time = Field(
         None,
         alias="valueTime",
-        title="Type `Time` (represented as `dict` in JSON)",
+        title="Type `Time`",
         description="Actual result",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    valueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueTime", title="Extension field for ``valueTime``."
     )
 
     @root_validator(pre=True)
@@ -346,7 +376,11 @@ class Observation(domainresource.DomainResource):
 
 
 class ObservationComponent(backboneelement.BackboneElement):
-    """ Component results.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Component results.
     Some observations have multiple component observations.  These component
     observations are expressed as separate code value pairs that share the same
     attributes.  Examples include systolic and diastolic component observations
@@ -408,10 +442,13 @@ class ObservationComponent(backboneelement.BackboneElement):
     valueDateTime: fhirtypes.DateTime = Field(
         None,
         alias="valueDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Actual component result",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueDateTime", title="Extension field for ``valueDateTime``."
     )
 
     valuePeriod: fhirtypes.PeriodType = Field(
@@ -462,19 +499,25 @@ class ObservationComponent(backboneelement.BackboneElement):
     valueString: fhirtypes.String = Field(
         None,
         alias="valueString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Actual component result",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueString", title="Extension field for ``valueString``."
     )
 
     valueTime: fhirtypes.Time = Field(
         None,
         alias="valueTime",
-        title="Type `Time` (represented as `dict` in JSON)",
+        title="Type `Time`",
         description="Actual component result",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    valueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueTime", title="Extension field for ``valueTime``."
     )
 
     @root_validator(pre=True)
@@ -528,7 +571,11 @@ class ObservationComponent(backboneelement.BackboneElement):
 
 
 class ObservationReferenceRange(backboneelement.BackboneElement):
-    """ Provides guide for interpretation.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Provides guide for interpretation.
     Guidance on how to interpret the value by comparison to a normal or
     recommended range.
     """
@@ -566,8 +613,11 @@ class ObservationReferenceRange(backboneelement.BackboneElement):
     text: fhirtypes.String = Field(
         None,
         alias="text",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Text based reference range in an observation",
+    )
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_text", title="Extension field for ``text``."
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -579,7 +629,11 @@ class ObservationReferenceRange(backboneelement.BackboneElement):
 
 
 class ObservationRelated(backboneelement.BackboneElement):
-    """ Resource related to this observation.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Resource related to this observation.
     A  reference to another resource (usually another Observation) whose
     relationship is defined by the relationship type code.
     """
@@ -599,9 +653,12 @@ class ObservationRelated(backboneelement.BackboneElement):
     type: fhirtypes.Code = Field(
         None,
         alias="type",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "has-member | derived-from | sequel-to | replaces | qualified-by | "
             "interfered-by"
         ),
+    )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
     )

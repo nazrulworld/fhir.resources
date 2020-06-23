@@ -8,6 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 from typing import Any, Dict
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field, root_validator
 
@@ -15,7 +16,11 @@ from . import element, fhirtypes
 
 
 class DataRequirement(element.Element):
-    """ Describes a required data item.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Describes a required data item.
     Describes a required data item for evaluation in terms of the type of data,
     and optional code or date-based filters of the data.
     """
@@ -45,30 +50,43 @@ class DataRequirement(element.Element):
     mustSupport: ListType[fhirtypes.String] = Field(
         None,
         alias="mustSupport",
-        title="List of `String` items (represented as `dict` in JSON)",
+        title="List of `String` items",
         description=(
             "Indicates that specific structure elements are referenced by the "
             "knowledge module"
         ),
     )
+    mustSupport__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_mustSupport", title="Extension field for ``mustSupport``.")
 
     profile: ListType[fhirtypes.Uri] = Field(
         None,
         alias="profile",
-        title="List of `Uri` items (represented as `dict` in JSON)",
+        title="List of `Uri` items",
         description="The profile of the required data",
+    )
+    profile__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_profile", title="Extension field for ``profile``."
     )
 
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="The type of the required data",
+    )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
     )
 
 
 class DataRequirementCodeFilter(element.Element):
-    """ What codes are expected.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    What codes are expected.
     Code filters specify additional constraints on the data, specifying the
     value set of interest for a particular element of the data.
     """
@@ -78,15 +96,21 @@ class DataRequirementCodeFilter(element.Element):
     path: fhirtypes.String = Field(
         ...,
         alias="path",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="The code-valued attribute of the filter",
+    )
+    path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_path", title="Extension field for ``path``."
     )
 
     valueCode: ListType[fhirtypes.Code] = Field(
         None,
         alias="valueCode",
-        title="List of `Code` items (represented as `dict` in JSON)",
+        title="List of `Code` items",
         description="What code is expected",
+    )
+    valueCode__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_valueCode", title="Extension field for ``valueCode``."
     )
 
     valueCodeableConcept: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -117,10 +141,13 @@ class DataRequirementCodeFilter(element.Element):
     valueSetString: fhirtypes.String = Field(
         None,
         alias="valueSetString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Valueset for the filter",
         one_of_many="valueSet",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    valueSetString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueSetString", title="Extension field for ``valueSetString``."
     )
 
     @root_validator(pre=True)
@@ -161,7 +188,11 @@ class DataRequirementCodeFilter(element.Element):
 
 
 class DataRequirementDateFilter(element.Element):
-    """ What dates/date ranges are expected.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    What dates/date ranges are expected.
     Date filters specify additional constraints on the data in terms of the
     applicable date range for specific elements.
     """
@@ -171,17 +202,23 @@ class DataRequirementDateFilter(element.Element):
     path: fhirtypes.String = Field(
         ...,
         alias="path",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="The date-valued attribute of the filter",
+    )
+    path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_path", title="Extension field for ``path``."
     )
 
     valueDateTime: fhirtypes.DateTime = Field(
         None,
         alias="valueDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="The value of the filter, as a Period, DateTime, or Duration value",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueDateTime", title="Extension field for ``valueDateTime``."
     )
 
     valueDuration: fhirtypes.DurationType = Field(

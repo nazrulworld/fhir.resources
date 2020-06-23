@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Specimen(domainresource.DomainResource):
-    """ Sample for analysis.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Sample for analysis.
     A sample to be used for analysis.
     """
 
@@ -76,8 +80,11 @@ class Specimen(domainresource.DomainResource):
     receivedTime: fhirtypes.DateTime = Field(
         None,
         alias="receivedTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="The time when specimen was received for processing",
+    )
+    receivedTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_receivedTime", title="Extension field for ``receivedTime``."
     )
 
     request: ListType[fhirtypes.ReferenceType] = Field(
@@ -93,8 +100,11 @@ class Specimen(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="available | unavailable | unsatisfactory | entered-in-error",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -119,7 +129,11 @@ class Specimen(domainresource.DomainResource):
 
 
 class SpecimenCollection(backboneelement.BackboneElement):
-    """ Collection details.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Collection details.
     Details concerning the specimen collection.
     """
 
@@ -135,10 +149,15 @@ class SpecimenCollection(backboneelement.BackboneElement):
     collectedDateTime: fhirtypes.DateTime = Field(
         None,
         alias="collectedDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Collection time",
         one_of_many="collected",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    collectedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_collectedDateTime",
+        title="Extension field for ``collectedDateTime``.",
     )
 
     collectedPeriod: fhirtypes.PeriodType = Field(
@@ -212,7 +231,11 @@ class SpecimenCollection(backboneelement.BackboneElement):
 
 
 class SpecimenContainer(backboneelement.BackboneElement):
-    """ Direct container of specimen (tube/slide, etc.).
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Direct container of specimen (tube/slide, etc.).
     The container holding the specimen.  The recursive nature of containers;
     i.e. blood in tube in tray in rack is not addressed here.
     """
@@ -250,8 +273,11 @@ class SpecimenContainer(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Textual description of the container",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -315,7 +341,11 @@ class SpecimenContainer(backboneelement.BackboneElement):
 
 
 class SpecimenProcessing(backboneelement.BackboneElement):
-    """ Processing and processing step details.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Processing and processing step details.
     Details concerning processing and processing steps for the specimen.
     """
 
@@ -334,8 +364,11 @@ class SpecimenProcessing(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Textual description of procedure",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     procedure: fhirtypes.CodeableConceptType = Field(
@@ -348,10 +381,13 @@ class SpecimenProcessing(backboneelement.BackboneElement):
     timeDateTime: fhirtypes.DateTime = Field(
         None,
         alias="timeDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Date and time of specimen processing",
         one_of_many="time",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    timeDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_timeDateTime", title="Extension field for ``timeDateTime``."
     )
 
     timePeriod: fhirtypes.PeriodType = Field(

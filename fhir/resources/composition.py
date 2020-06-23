@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Composition(domainresource.DomainResource):
-    """ A set of resources composed into a single coherent clinical statement with
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A set of resources composed into a single coherent clinical statement with
     clinical attestation.
     A set of healthcare-related information that is assembled together into a
     single logical package that provides a single coherent statement of
@@ -58,8 +62,11 @@ class Composition(domainresource.DomainResource):
     confidentiality: fhirtypes.Code = Field(
         None,
         alias="confidentiality",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="As defined by affinity domain",
+    )
+    confidentiality__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_confidentiality", title="Extension field for ``confidentiality``."
     )
 
     custodian: fhirtypes.ReferenceType = Field(
@@ -75,8 +82,11 @@ class Composition(domainresource.DomainResource):
     date: fhirtypes.DateTime = Field(
         ...,
         alias="date",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Composition editing time",
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     encounter: fhirtypes.ReferenceType = Field(
@@ -120,8 +130,11 @@ class Composition(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="preliminary | final | amended | entered-in-error",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -136,8 +149,11 @@ class Composition(domainresource.DomainResource):
     title: fhirtypes.String = Field(
         ...,
         alias="title",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Human Readable name/title",
+    )
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_title", title="Extension field for ``title``."
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -149,7 +165,11 @@ class Composition(domainresource.DomainResource):
 
 
 class CompositionAttester(backboneelement.BackboneElement):
-    """ Attests to accuracy of composition.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Attests to accuracy of composition.
     A participant who has attested to the accuracy of the composition/document.
     """
 
@@ -158,8 +178,11 @@ class CompositionAttester(backboneelement.BackboneElement):
     mode: fhirtypes.Code = Field(
         ...,
         alias="mode",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="personal | professional | legal | official",
+    )
+    mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_mode", title="Extension field for ``mode``."
     )
 
     party: fhirtypes.ReferenceType = Field(
@@ -175,13 +198,20 @@ class CompositionAttester(backboneelement.BackboneElement):
     time: fhirtypes.DateTime = Field(
         None,
         alias="time",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When the composition was attested",
+    )
+    time__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_time", title="Extension field for ``time``."
     )
 
 
 class CompositionEvent(backboneelement.BackboneElement):
-    """ The clinical service(s) being documented.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The clinical service(s) being documented.
     The clinical service, such as a colonoscopy or an appendectomy, being
     documented.
     """
@@ -214,7 +244,11 @@ class CompositionEvent(backboneelement.BackboneElement):
 
 
 class CompositionRelatesTo(backboneelement.BackboneElement):
-    """ Relationships to other compositions/documents.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Relationships to other compositions/documents.
     Relationships that this composition has with other compositions or
     documents that already exist.
     """
@@ -224,8 +258,11 @@ class CompositionRelatesTo(backboneelement.BackboneElement):
     code: fhirtypes.Code = Field(
         ...,
         alias="code",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="replaces | transforms | signs | appends",
+    )
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_code", title="Extension field for ``code``."
     )
 
     targetIdentifier: fhirtypes.IdentifierType = Field(
@@ -287,7 +324,11 @@ class CompositionRelatesTo(backboneelement.BackboneElement):
 
 
 class CompositionSection(backboneelement.BackboneElement):
-    """ Composition is broken into sections.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Composition is broken into sections.
     The root of the sections that make up the composition.
     """
 
@@ -343,8 +384,11 @@ class CompositionSection(backboneelement.BackboneElement):
     mode: fhirtypes.Code = Field(
         None,
         alias="mode",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="working | snapshot | changes",
+    )
+    mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_mode", title="Extension field for ``mode``."
     )
 
     orderedBy: fhirtypes.CodeableConceptType = Field(
@@ -371,6 +415,9 @@ class CompositionSection(backboneelement.BackboneElement):
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Label for section (e.g. for ToC)",
+    )
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_title", title="Extension field for ``title``."
     )

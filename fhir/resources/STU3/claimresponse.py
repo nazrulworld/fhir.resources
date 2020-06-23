@@ -7,6 +7,7 @@ Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field
 
@@ -14,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ClaimResponse(domainresource.DomainResource):
-    """ Remittance resource.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Remittance resource.
     This resource provides the adjudication details from the processing of a
     Claim resource.
     """
@@ -39,17 +44,20 @@ class ClaimResponse(domainresource.DomainResource):
     )
 
     created: fhirtypes.DateTime = Field(
-        None,
-        alias="created",
-        title="Type `DateTime` (represented as `dict` in JSON)",
-        description="Creation date",
+        None, alias="created", title="Type `DateTime`", description="Creation date"
+    )
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_created", title="Extension field for ``created``."
     )
 
     disposition: fhirtypes.String = Field(
         None,
         alias="disposition",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Disposition Message",
+    )
+    disposition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_disposition", title="Extension field for ``disposition``."
     )
 
     error: ListType[fhirtypes.ClaimResponseErrorType] = Field(
@@ -172,8 +180,11 @@ class ClaimResponse(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="active | cancelled | draft | entered-in-error",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     totalBenefit: fhirtypes.MoneyType = Field(
@@ -199,7 +210,11 @@ class ClaimResponse(domainresource.DomainResource):
 
 
 class ClaimResponseAddItem(backboneelement.BackboneElement):
-    """ Insurer added line items.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Insurer added line items.
     The first tier service adjudications for payor added services.
     """
 
@@ -249,9 +264,12 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
     noteNumber: ListType[fhirtypes.PositiveInt] = Field(
         None,
         alias="noteNumber",
-        title="List of `PositiveInt` items (represented as `dict` in JSON)",
+        title="List of `PositiveInt` items",
         description="List of note numbers which apply",
     )
+    noteNumber__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_noteNumber", title="Extension field for ``noteNumber``.")
 
     revenue: fhirtypes.CodeableConceptType = Field(
         None,
@@ -263,8 +281,13 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
     sequenceLinkId: ListType[fhirtypes.PositiveInt] = Field(
         None,
         alias="sequenceLinkId",
-        title="List of `PositiveInt` items (represented as `dict` in JSON)",
+        title="List of `PositiveInt` items",
         description="Service instances",
+    )
+    sequenceLinkId__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(
+        None, alias="_sequenceLinkId", title="Extension field for ``sequenceLinkId``."
     )
 
     service: fhirtypes.CodeableConceptType = Field(
@@ -276,7 +299,11 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
 
 
 class ClaimResponseAddItemDetail(backboneelement.BackboneElement):
-    """ Added items details.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Added items details.
     The second tier service adjudications for payor added services.
     """
 
@@ -316,9 +343,12 @@ class ClaimResponseAddItemDetail(backboneelement.BackboneElement):
     noteNumber: ListType[fhirtypes.PositiveInt] = Field(
         None,
         alias="noteNumber",
-        title="List of `PositiveInt` items (represented as `dict` in JSON)",
+        title="List of `PositiveInt` items",
         description="List of note numbers which apply",
     )
+    noteNumber__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_noteNumber", title="Extension field for ``noteNumber``.")
 
     revenue: fhirtypes.CodeableConceptType = Field(
         None,
@@ -336,7 +366,11 @@ class ClaimResponseAddItemDetail(backboneelement.BackboneElement):
 
 
 class ClaimResponseError(backboneelement.BackboneElement):
-    """ Processing errors.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Processing errors.
     Mutually exclusive with Services Provided (Item).
     """
 
@@ -352,27 +386,44 @@ class ClaimResponseError(backboneelement.BackboneElement):
     detailSequenceLinkId: fhirtypes.PositiveInt = Field(
         None,
         alias="detailSequenceLinkId",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="Detail sequence number",
+    )
+    detailSequenceLinkId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_detailSequenceLinkId",
+        title="Extension field for ``detailSequenceLinkId``.",
     )
 
     sequenceLinkId: fhirtypes.PositiveInt = Field(
         None,
         alias="sequenceLinkId",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="Item sequence number",
+    )
+    sequenceLinkId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_sequenceLinkId", title="Extension field for ``sequenceLinkId``."
     )
 
     subdetailSequenceLinkId: fhirtypes.PositiveInt = Field(
         None,
         alias="subdetailSequenceLinkId",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="Subdetail sequence number",
+    )
+    subdetailSequenceLinkId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_subdetailSequenceLinkId",
+        title="Extension field for ``subdetailSequenceLinkId``.",
     )
 
 
 class ClaimResponseInsurance(backboneelement.BackboneElement):
-    """ Insurance or medical plan.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Insurance or medical plan.
     Financial instrument by which payment information for health care.
     """
 
@@ -381,8 +432,13 @@ class ClaimResponseInsurance(backboneelement.BackboneElement):
     businessArrangement: fhirtypes.String = Field(
         None,
         alias="businessArrangement",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Business agreement",
+    )
+    businessArrangement__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_businessArrangement",
+        title="Extension field for ``businessArrangement``.",
     )
 
     claimResponse: fhirtypes.ReferenceType = Field(
@@ -407,24 +463,37 @@ class ClaimResponseInsurance(backboneelement.BackboneElement):
     focal: bool = Field(
         ..., alias="focal", title="Type `bool`", description="Is the focal Coverage"
     )
+    focal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_focal", title="Extension field for ``focal``."
+    )
 
     preAuthRef: ListType[fhirtypes.String] = Field(
         None,
         alias="preAuthRef",
-        title="List of `String` items (represented as `dict` in JSON)",
+        title="List of `String` items",
         description="Pre-Authorization/Determination Reference",
     )
+    preAuthRef__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_preAuthRef", title="Extension field for ``preAuthRef``.")
 
     sequence: fhirtypes.PositiveInt = Field(
         ...,
         alias="sequence",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="Service instance identifier",
+    )
+    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
 
 class ClaimResponseItem(backboneelement.BackboneElement):
-    """ Line items.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Line items.
     The first tier service adjudications for submitted services.
     """
 
@@ -452,20 +521,30 @@ class ClaimResponseItem(backboneelement.BackboneElement):
     noteNumber: ListType[fhirtypes.PositiveInt] = Field(
         None,
         alias="noteNumber",
-        title="List of `PositiveInt` items (represented as `dict` in JSON)",
+        title="List of `PositiveInt` items",
         description="List of note numbers which apply",
     )
+    noteNumber__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_noteNumber", title="Extension field for ``noteNumber``.")
 
     sequenceLinkId: fhirtypes.PositiveInt = Field(
         ...,
         alias="sequenceLinkId",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="Service instance",
+    )
+    sequenceLinkId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_sequenceLinkId", title="Extension field for ``sequenceLinkId``."
     )
 
 
 class ClaimResponseItemAdjudication(backboneelement.BackboneElement):
-    """ Adjudication details.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Adjudication details.
     The adjudication results.
     """
 
@@ -493,15 +572,19 @@ class ClaimResponseItemAdjudication(backboneelement.BackboneElement):
     )
 
     value: fhirtypes.Decimal = Field(
-        None,
-        alias="value",
-        title="Type `Decimal` (represented as `dict` in JSON)",
-        description="Non-monetary value",
+        None, alias="value", title="Type `Decimal`", description="Non-monetary value"
+    )
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_value", title="Extension field for ``value``."
     )
 
 
 class ClaimResponseItemDetail(backboneelement.BackboneElement):
-    """ Detail line items.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Detail line items.
     The second tier service adjudications for submitted services.
     """
 
@@ -520,15 +603,21 @@ class ClaimResponseItemDetail(backboneelement.BackboneElement):
     noteNumber: ListType[fhirtypes.PositiveInt] = Field(
         None,
         alias="noteNumber",
-        title="List of `PositiveInt` items (represented as `dict` in JSON)",
+        title="List of `PositiveInt` items",
         description="List of note numbers which apply",
     )
+    noteNumber__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_noteNumber", title="Extension field for ``noteNumber``.")
 
     sequenceLinkId: fhirtypes.PositiveInt = Field(
         ...,
         alias="sequenceLinkId",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="Service instance",
+    )
+    sequenceLinkId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_sequenceLinkId", title="Extension field for ``sequenceLinkId``."
     )
 
     subDetail: ListType[fhirtypes.ClaimResponseItemDetailSubDetailType] = Field(
@@ -543,7 +632,11 @@ class ClaimResponseItemDetail(backboneelement.BackboneElement):
 
 
 class ClaimResponseItemDetailSubDetail(backboneelement.BackboneElement):
-    """ Subdetail line items.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Subdetail line items.
     The third tier service adjudications for submitted services.
     """
 
@@ -562,20 +655,30 @@ class ClaimResponseItemDetailSubDetail(backboneelement.BackboneElement):
     noteNumber: ListType[fhirtypes.PositiveInt] = Field(
         None,
         alias="noteNumber",
-        title="List of `PositiveInt` items (represented as `dict` in JSON)",
+        title="List of `PositiveInt` items",
         description="List of note numbers which apply",
     )
+    noteNumber__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_noteNumber", title="Extension field for ``noteNumber``.")
 
     sequenceLinkId: fhirtypes.PositiveInt = Field(
         ...,
         alias="sequenceLinkId",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="Service instance",
+    )
+    sequenceLinkId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_sequenceLinkId", title="Extension field for ``sequenceLinkId``."
     )
 
 
 class ClaimResponsePayment(backboneelement.BackboneElement):
-    """ Payment details, if paid.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Payment details, if paid.
     Payment details for the claim if the claim has been paid.
     """
 
@@ -603,10 +706,10 @@ class ClaimResponsePayment(backboneelement.BackboneElement):
     )
 
     date: fhirtypes.Date = Field(
-        None,
-        alias="date",
-        title="Type `Date` (represented as `dict` in JSON)",
-        description="Expected data of Payment",
+        None, alias="date", title="Type `Date`", description="Expected data of Payment"
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     identifier: fhirtypes.IdentifierType = Field(
@@ -625,7 +728,11 @@ class ClaimResponsePayment(backboneelement.BackboneElement):
 
 
 class ClaimResponseProcessNote(backboneelement.BackboneElement):
-    """ Processing notes.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Processing notes.
     Note text.
     """
 
@@ -641,15 +748,18 @@ class ClaimResponseProcessNote(backboneelement.BackboneElement):
     number: fhirtypes.PositiveInt = Field(
         None,
         alias="number",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="Sequence Number for this note",
+    )
+    number__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_number", title="Extension field for ``number``."
     )
 
     text: fhirtypes.String = Field(
-        None,
-        alias="text",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Note explanatory text",
+        None, alias="text", title="Type `String`", description="Note explanatory text"
+    )
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_text", title="Extension field for ``text``."
     )
 
     type: fhirtypes.CodeableConceptType = Field(

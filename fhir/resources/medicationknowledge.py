@@ -8,6 +8,7 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 from typing import Any, Dict
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field, root_validator
 
@@ -15,7 +16,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class MedicationKnowledge(domainresource.DomainResource):
-    """ Definition of Medication Knowledge.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Definition of Medication Knowledge.
     Information about a medication that is used to support knowledge.
     """
 
@@ -182,8 +187,13 @@ class MedicationKnowledge(domainresource.DomainResource):
     preparationInstruction: fhirtypes.Markdown = Field(
         None,
         alias="preparationInstruction",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="The instructions for preparing the medication",
+    )
+    preparationInstruction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_preparationInstruction",
+        title="Extension field for ``preparationInstruction``.",
     )
 
     productType: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -218,20 +228,30 @@ class MedicationKnowledge(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="active | inactive | entered-in-error",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     synonym: ListType[fhirtypes.String] = Field(
         None,
         alias="synonym",
-        title="List of `String` items (represented as `dict` in JSON)",
+        title="List of `String` items",
         description="Additional names for a medication",
+    )
+    synonym__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_synonym", title="Extension field for ``synonym``."
     )
 
 
 class MedicationKnowledgeAdministrationGuidelines(backboneelement.BackboneElement):
-    """ Guidelines for administration of the medication.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Guidelines for administration of the medication.
     Guidelines for the administration of the medication.
     """
 
@@ -332,7 +352,11 @@ class MedicationKnowledgeAdministrationGuidelines(backboneelement.BackboneElemen
 class MedicationKnowledgeAdministrationGuidelinesDosage(
     backboneelement.BackboneElement
 ):
-    """ Dosage for the medication for the specific guidelines.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Dosage for the medication for the specific guidelines.
     """
 
     resource_type = Field(
@@ -357,7 +381,11 @@ class MedicationKnowledgeAdministrationGuidelinesDosage(
 class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics(
     backboneelement.BackboneElement
 ):
-    """ Characteristics of the patient that are relevant to the administration
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Characteristics of the patient that are relevant to the administration
     guidelines.
     Characteristics of the patient that are relevant to the administration
     guidelines (for example, height, weight, gender, etc.).
@@ -394,8 +422,11 @@ class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics(
     value: ListType[fhirtypes.String] = Field(
         None,
         alias="value",
-        title="List of `String` items (represented as `dict` in JSON)",
+        title="List of `String` items",
         description="The specific characteristic",
+    )
+    value__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_value", title="Extension field for ``value``."
     )
 
     @root_validator(pre=True)
@@ -441,7 +472,11 @@ class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics(
 
 
 class MedicationKnowledgeCost(backboneelement.BackboneElement):
-    """ The pricing of the medication.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The pricing of the medication.
     The price of the medication.
     """
 
@@ -457,8 +492,11 @@ class MedicationKnowledgeCost(backboneelement.BackboneElement):
     source: fhirtypes.String = Field(
         None,
         alias="source",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="The source or owner for the price information",
+    )
+    source__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_source", title="Extension field for ``source``."
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -470,7 +508,11 @@ class MedicationKnowledgeCost(backboneelement.BackboneElement):
 
 
 class MedicationKnowledgeDrugCharacteristic(backboneelement.BackboneElement):
-    """ Specifies descriptive properties of the medicine.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Specifies descriptive properties of the medicine.
     Specifies descriptive properties of the medicine, such as color, shape,
     imprints, etc.
     """
@@ -487,10 +529,15 @@ class MedicationKnowledgeDrugCharacteristic(backboneelement.BackboneElement):
     valueBase64Binary: fhirtypes.Base64Binary = Field(
         None,
         alias="valueBase64Binary",
-        title="Type `Base64Binary` (represented as `dict` in JSON)",
+        title="Type `Base64Binary`",
         description="Description of the characteristic",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    valueBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_valueBase64Binary",
+        title="Extension field for ``valueBase64Binary``.",
     )
 
     valueCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -514,10 +561,13 @@ class MedicationKnowledgeDrugCharacteristic(backboneelement.BackboneElement):
     valueString: fhirtypes.String = Field(
         None,
         alias="valueString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Description of the characteristic",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueString", title="Extension field for ``valueString``."
     )
 
     @root_validator(pre=True)
@@ -565,7 +615,11 @@ class MedicationKnowledgeDrugCharacteristic(backboneelement.BackboneElement):
 
 
 class MedicationKnowledgeIngredient(backboneelement.BackboneElement):
-    """ Active or inactive ingredient.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Active or inactive ingredient.
     Identifies a particular constituent of interest in the product.
     """
 
@@ -576,6 +630,9 @@ class MedicationKnowledgeIngredient(backboneelement.BackboneElement):
         alias="isActive",
         title="Type `bool`",
         description="Active ingredient indicator",
+    )
+    isActive__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_isActive", title="Extension field for ``isActive``."
     )
 
     itemCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -644,7 +701,11 @@ class MedicationKnowledgeIngredient(backboneelement.BackboneElement):
 
 
 class MedicationKnowledgeKinetics(backboneelement.BackboneElement):
-    """ The time course of drug absorption, distribution, metabolism and excretion
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The time course of drug absorption, distribution, metabolism and excretion
     of a medication from the body.
     """
 
@@ -673,7 +734,11 @@ class MedicationKnowledgeKinetics(backboneelement.BackboneElement):
 
 
 class MedicationKnowledgeMedicineClassification(backboneelement.BackboneElement):
-    """ Categorization of the medication within a formulary or classification
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Categorization of the medication within a formulary or classification
     system.
     """
 
@@ -698,7 +763,11 @@ class MedicationKnowledgeMedicineClassification(backboneelement.BackboneElement)
 
 
 class MedicationKnowledgeMonitoringProgram(backboneelement.BackboneElement):
-    """ Program under which a medication is reviewed.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Program under which a medication is reviewed.
     The program under which the medication is reviewed.
     """
 
@@ -707,8 +776,11 @@ class MedicationKnowledgeMonitoringProgram(backboneelement.BackboneElement):
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name of the reviewing program",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -720,7 +792,11 @@ class MedicationKnowledgeMonitoringProgram(backboneelement.BackboneElement):
 
 
 class MedicationKnowledgeMonograph(backboneelement.BackboneElement):
-    """ Associated documentation about the medication.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Associated documentation about the medication.
     """
 
     resource_type = Field("MedicationKnowledgeMonograph", const=True)
@@ -744,7 +820,11 @@ class MedicationKnowledgeMonograph(backboneelement.BackboneElement):
 
 
 class MedicationKnowledgePackaging(backboneelement.BackboneElement):
-    """ Details about packaged medications.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Details about packaged medications.
     Information that only applies to packages (not products).
     """
 
@@ -769,7 +849,11 @@ class MedicationKnowledgePackaging(backboneelement.BackboneElement):
 
 
 class MedicationKnowledgeRegulatory(backboneelement.BackboneElement):
-    """ Regulatory information about a medication.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Regulatory information about a medication.
     """
 
     resource_type = Field("MedicationKnowledgeRegulatory", const=True)
@@ -824,7 +908,11 @@ class MedicationKnowledgeRegulatory(backboneelement.BackboneElement):
 
 
 class MedicationKnowledgeRegulatoryMaxDispense(backboneelement.BackboneElement):
-    """ The maximum number of units of the medication that can be dispensed in a
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The maximum number of units of the medication that can be dispensed in a
     period.
     """
 
@@ -846,7 +934,11 @@ class MedicationKnowledgeRegulatoryMaxDispense(backboneelement.BackboneElement):
 
 
 class MedicationKnowledgeRegulatorySchedule(backboneelement.BackboneElement):
-    """ Specifies the schedule of a medication in jurisdiction.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Specifies the schedule of a medication in jurisdiction.
     """
 
     resource_type = Field("MedicationKnowledgeRegulatorySchedule", const=True)
@@ -860,7 +952,11 @@ class MedicationKnowledgeRegulatorySchedule(backboneelement.BackboneElement):
 
 
 class MedicationKnowledgeRegulatorySubstitution(backboneelement.BackboneElement):
-    """ Specifies if changes are allowed when dispensing a medication from a
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Specifies if changes are allowed when dispensing a medication from a
     regulatory perspective.
     """
 
@@ -875,6 +971,9 @@ class MedicationKnowledgeRegulatorySubstitution(backboneelement.BackboneElement)
             "dispensing"
         ),
     )
+    allowed__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_allowed", title="Extension field for ``allowed``."
+    )
 
     type: fhirtypes.CodeableConceptType = Field(
         ...,
@@ -885,7 +984,11 @@ class MedicationKnowledgeRegulatorySubstitution(backboneelement.BackboneElement)
 
 
 class MedicationKnowledgeRelatedMedicationKnowledge(backboneelement.BackboneElement):
-    """ Associated or related medication information.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Associated or related medication information.
     Associated or related knowledge about a medication.
     """
 

@@ -8,6 +8,7 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 from typing import Any, Dict
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field, root_validator
 
@@ -15,7 +16,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Questionnaire(domainresource.DomainResource):
-    """ A structured set of questions.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A structured set of questions.
     A structured set of questions intended to guide the collection of answers
     from end-users. Questionnaires provide detailed control over order,
     presentation, phraseology and grouping to allow coherent, consistent data
@@ -27,8 +32,11 @@ class Questionnaire(domainresource.DomainResource):
     approvalDate: fhirtypes.Date = Field(
         None,
         alias="approvalDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="When the questionnaire was approved by publisher",
+    )
+    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_approvalDate", title="Extension field for ``approvalDate``."
     )
 
     code: ListType[fhirtypes.CodingType] = Field(
@@ -48,32 +56,38 @@ class Questionnaire(domainresource.DomainResource):
     copyright: fhirtypes.Markdown = Field(
         None,
         alias="copyright",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Use and/or publishing restrictions",
+    )
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
     date: fhirtypes.DateTime = Field(
-        None,
-        alias="date",
-        title="Type `DateTime` (represented as `dict` in JSON)",
-        description="Date last changed",
+        None, alias="date", title="Type `DateTime`", description="Date last changed"
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     derivedFrom: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="derivedFrom",
-        title=(
-            "List of `Canonical` items referencing `Questionnaire` (represented as "
-            "`dict` in JSON)"
-        ),
+        title="List of `Canonical` items referencing `Questionnaire`",
         description="Instantiates protocol or definition",
     )
+    derivedFrom__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_derivedFrom", title="Extension field for ``derivedFrom``.")
 
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Natural language description of the questionnaire",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     effectivePeriod: fhirtypes.PeriodType = Field(
@@ -88,6 +102,9 @@ class Questionnaire(domainresource.DomainResource):
         alias="experimental",
         title="Type `bool`",
         description="For testing purposes, not real usage",
+    )
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_experimental", title="Extension field for ``experimental``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -114,60 +131,84 @@ class Questionnaire(domainresource.DomainResource):
     lastReviewDate: fhirtypes.Date = Field(
         None,
         alias="lastReviewDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="When the questionnaire was last reviewed",
+    )
+    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
     )
 
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for this questionnaire (computer friendly)",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     publisher: fhirtypes.String = Field(
         None,
         alias="publisher",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name of the publisher (organization or individual)",
+    )
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
     purpose: fhirtypes.Markdown = Field(
         None,
         alias="purpose",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Why this questionnaire is defined",
+    )
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="draft | active | retired | unknown",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     subjectType: ListType[fhirtypes.Code] = Field(
         None,
         alias="subjectType",
-        title="List of `Code` items (represented as `dict` in JSON)",
+        title="List of `Code` items",
         description="Resource that can be subject of QuestionnaireResponse",
     )
+    subjectType__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_subjectType", title="Extension field for ``subjectType``.")
 
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for this questionnaire (human friendly)",
+    )
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_title", title="Extension field for ``title``."
     )
 
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description=(
             "Canonical identifier for this questionnaire, represented as a URI "
             "(globally unique)"
         ),
+    )
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_url", title="Extension field for ``url``."
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -180,13 +221,20 @@ class Questionnaire(domainresource.DomainResource):
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Business version of the questionnaire",
+    )
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_version", title="Extension field for ``version``."
     )
 
 
 class QuestionnaireItem(backboneelement.BackboneElement):
-    """ Questions and sections within the Questionnaire.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Questions and sections within the Questionnaire.
     A particular question, question grouping or display text that is part of
     the questionnaire.
     """
@@ -206,10 +254,11 @@ class QuestionnaireItem(backboneelement.BackboneElement):
     answerValueSet: fhirtypes.Canonical = Field(
         None,
         alias="answerValueSet",
-        title=(
-            "Type `Canonical` referencing `ValueSet` (represented as `dict` in " "JSON)"
-        ),
+        title="Type `Canonical` referencing `ValueSet`",
         description="Valueset containing permitted answers",
+    )
+    answerValueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_answerValueSet", title="Extension field for ``answerValueSet``."
     )
 
     code: ListType[fhirtypes.CodingType] = Field(
@@ -222,15 +271,18 @@ class QuestionnaireItem(backboneelement.BackboneElement):
     definition: fhirtypes.Uri = Field(
         None,
         alias="definition",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="ElementDefinition - details for the item",
+    )
+    definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_definition", title="Extension field for ``definition``."
     )
 
     enableBehavior: fhirtypes.Code = Field(
-        None,
-        alias="enableBehavior",
-        title="Type `Code` (represented as `dict` in JSON)",
-        description="all | any",
+        None, alias="enableBehavior", title="Type `Code`", description="all | any"
+    )
+    enableBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_enableBehavior", title="Extension field for ``enableBehavior``."
     )
 
     enableWhen: ListType[fhirtypes.QuestionnaireItemEnableWhenType] = Field(
@@ -263,22 +315,28 @@ class QuestionnaireItem(backboneelement.BackboneElement):
     linkId: fhirtypes.String = Field(
         ...,
         alias="linkId",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Unique id for item in questionnaire",
+    )
+    linkId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_linkId", title="Extension field for ``linkId``."
     )
 
     maxLength: fhirtypes.Integer = Field(
         None,
         alias="maxLength",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="No more than this many characters",
+    )
+    maxLength__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_maxLength", title="Extension field for ``maxLength``."
     )
 
     prefix: fhirtypes.String = Field(
-        None,
-        alias="prefix",
-        title="Type `String` (represented as `dict` in JSON)",
-        description='E.g. "1(a)", "2.5.3"',
+        None, alias="prefix", title="Type `String`", description='E.g. "1(a)", "2.5.3"'
+    )
+    prefix__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_prefix", title="Extension field for ``prefix``."
     )
 
     readOnly: bool = Field(
@@ -287,12 +345,18 @@ class QuestionnaireItem(backboneelement.BackboneElement):
         title="Type `bool`",
         description="Don\u0027t allow human editing",
     )
+    readOnly__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_readOnly", title="Extension field for ``readOnly``."
+    )
 
     repeats: bool = Field(
         None,
         alias="repeats",
         title="Type `bool`",
         description="Whether the item may repeat",
+    )
+    repeats__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_repeats", title="Extension field for ``repeats``."
     )
 
     required: bool = Field(
@@ -301,24 +365,37 @@ class QuestionnaireItem(backboneelement.BackboneElement):
         title="Type `bool`",
         description="Whether the item must be included in data results",
     )
+    required__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_required", title="Extension field for ``required``."
+    )
 
     text: fhirtypes.String = Field(
         None,
         alias="text",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Primary text for the item",
+    )
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_text", title="Extension field for ``text``."
     )
 
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="group | display | boolean | decimal | integer | date | dateTime +",
+    )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
     )
 
 
 class QuestionnaireItemAnswerOption(backboneelement.BackboneElement):
-    """ Permitted answer.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Permitted answer.
     One of the permitted answers for a "choice" or "open-choice" question.
     """
 
@@ -329,6 +406,9 @@ class QuestionnaireItemAnswerOption(backboneelement.BackboneElement):
         alias="initialSelected",
         title="Type `bool`",
         description="Whether option is selected by default",
+    )
+    initialSelected__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_initialSelected", title="Extension field for ``initialSelected``."
     )
 
     valueCoding: fhirtypes.CodingType = Field(
@@ -343,19 +423,25 @@ class QuestionnaireItemAnswerOption(backboneelement.BackboneElement):
     valueDate: fhirtypes.Date = Field(
         None,
         alias="valueDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="Answer value",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueDate", title="Extension field for ``valueDate``."
     )
 
     valueInteger: fhirtypes.Integer = Field(
         None,
         alias="valueInteger",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="Answer value",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueInteger", title="Extension field for ``valueInteger``."
     )
 
     valueReference: fhirtypes.ReferenceType = Field(
@@ -372,19 +458,25 @@ class QuestionnaireItemAnswerOption(backboneelement.BackboneElement):
     valueString: fhirtypes.String = Field(
         None,
         alias="valueString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Answer value",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueString", title="Extension field for ``valueString``."
     )
 
     valueTime: fhirtypes.Time = Field(
         None,
         alias="valueTime",
-        title="Type `Time` (represented as `dict` in JSON)",
+        title="Type `Time`",
         description="Answer value",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueTime", title="Extension field for ``valueTime``."
     )
 
     @root_validator(pre=True)
@@ -434,7 +526,11 @@ class QuestionnaireItemAnswerOption(backboneelement.BackboneElement):
 
 
 class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
-    """ Only allow data when.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Only allow data when.
     A constraint indicating that this item should only be enabled
     (displayed/allow answers to be captured) when the specified condition is
     true.
@@ -450,6 +546,9 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
         one_of_many="answer",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
     )
+    answerBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_answerBoolean", title="Extension field for ``answerBoolean``."
+    )
 
     answerCoding: fhirtypes.CodingType = Field(
         None,
@@ -463,37 +562,49 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
     answerDate: fhirtypes.Date = Field(
         None,
         alias="answerDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="Value for question comparison based on operator",
         one_of_many="answer",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    answerDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_answerDate", title="Extension field for ``answerDate``."
     )
 
     answerDateTime: fhirtypes.DateTime = Field(
         None,
         alias="answerDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Value for question comparison based on operator",
         one_of_many="answer",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    answerDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_answerDateTime", title="Extension field for ``answerDateTime``."
     )
 
     answerDecimal: fhirtypes.Decimal = Field(
         None,
         alias="answerDecimal",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Value for question comparison based on operator",
         one_of_many="answer",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    answerDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_answerDecimal", title="Extension field for ``answerDecimal``."
     )
 
     answerInteger: fhirtypes.Integer = Field(
         None,
         alias="answerInteger",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="Value for question comparison based on operator",
         one_of_many="answer",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    answerInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_answerInteger", title="Extension field for ``answerInteger``."
     )
 
     answerQuantity: fhirtypes.QuantityType = Field(
@@ -519,33 +630,45 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
     answerString: fhirtypes.String = Field(
         None,
         alias="answerString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Value for question comparison based on operator",
         one_of_many="answer",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    answerString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_answerString", title="Extension field for ``answerString``."
     )
 
     answerTime: fhirtypes.Time = Field(
         None,
         alias="answerTime",
-        title="Type `Time` (represented as `dict` in JSON)",
+        title="Type `Time`",
         description="Value for question comparison based on operator",
         one_of_many="answer",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    answerTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_answerTime", title="Extension field for ``answerTime``."
     )
 
     operator: fhirtypes.Code = Field(
         ...,
         alias="operator",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="exists | = | != | \u003e | \u003c | \u003e= | \u003c=",
+    )
+    operator__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_operator", title="Extension field for ``operator``."
     )
 
     question: fhirtypes.String = Field(
         ...,
         alias="question",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Question that determines whether item is enabled",
+    )
+    question__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_question", title="Extension field for ``question``."
     )
 
     @root_validator(pre=True)
@@ -599,7 +722,11 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
 
 
 class QuestionnaireItemInitial(backboneelement.BackboneElement):
-    """ Initial value(s) when item is first rendered.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Initial value(s) when item is first rendered.
     One or more values that should be pre-populated in the answer when
     initially rendering the questionnaire for user input.
     """
@@ -623,6 +750,9 @@ class QuestionnaireItemInitial(backboneelement.BackboneElement):
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
     )
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
+    )
 
     valueCoding: fhirtypes.CodingType = Field(
         None,
@@ -636,37 +766,49 @@ class QuestionnaireItemInitial(backboneelement.BackboneElement):
     valueDate: fhirtypes.Date = Field(
         None,
         alias="valueDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="Actual value for initializing the question",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueDate", title="Extension field for ``valueDate``."
     )
 
     valueDateTime: fhirtypes.DateTime = Field(
         None,
         alias="valueDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Actual value for initializing the question",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueDateTime", title="Extension field for ``valueDateTime``."
     )
 
     valueDecimal: fhirtypes.Decimal = Field(
         None,
         alias="valueDecimal",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Actual value for initializing the question",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueDecimal", title="Extension field for ``valueDecimal``."
     )
 
     valueInteger: fhirtypes.Integer = Field(
         None,
         alias="valueInteger",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="Actual value for initializing the question",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueInteger", title="Extension field for ``valueInteger``."
     )
 
     valueQuantity: fhirtypes.QuantityType = Field(
@@ -692,28 +834,37 @@ class QuestionnaireItemInitial(backboneelement.BackboneElement):
     valueString: fhirtypes.String = Field(
         None,
         alias="valueString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Actual value for initializing the question",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueString", title="Extension field for ``valueString``."
     )
 
     valueTime: fhirtypes.Time = Field(
         None,
         alias="valueTime",
-        title="Type `Time` (represented as `dict` in JSON)",
+        title="Type `Time`",
         description="Actual value for initializing the question",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueTime", title="Extension field for ``valueTime``."
     )
 
     valueUri: fhirtypes.Uri = Field(
         None,
         alias="valueUri",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Actual value for initializing the question",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueUri", title="Extension field for ``valueUri``."
     )
 
     @root_validator(pre=True)

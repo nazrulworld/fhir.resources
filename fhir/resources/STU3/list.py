@@ -14,7 +14,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class List(domainresource.DomainResource):
-    """ Information summarized from a list of other resources.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Information summarized from a list of other resources.
     A set of information summarized from a list of other resources.
     """
 
@@ -30,8 +34,11 @@ class List(domainresource.DomainResource):
     date: fhirtypes.DateTime = Field(
         None,
         alias="date",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When the list was prepared",
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     emptyReason: fhirtypes.CodeableConceptType = Field(
@@ -68,8 +75,11 @@ class List(domainresource.DomainResource):
     mode: fhirtypes.Code = Field(
         ...,
         alias="mode",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="working | snapshot | changes",
+    )
+    mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_mode", title="Extension field for ``mode``."
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
@@ -99,8 +109,11 @@ class List(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="current | retired | entered-in-error",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -116,13 +129,20 @@ class List(domainresource.DomainResource):
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Descriptive name for the list",
+    )
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_title", title="Extension field for ``title``."
     )
 
 
 class ListEntry(backboneelement.BackboneElement):
-    """ Entries in the list.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Entries in the list.
     Entries in this list.
     """
 
@@ -131,8 +151,11 @@ class ListEntry(backboneelement.BackboneElement):
     date: fhirtypes.DateTime = Field(
         None,
         alias="date",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When item added to list",
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     deleted: bool = Field(
@@ -140,6 +163,9 @@ class ListEntry(backboneelement.BackboneElement):
         alias="deleted",
         title="Type `bool`",
         description="If this item is actually marked as deleted",
+    )
+    deleted__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_deleted", title="Extension field for ``deleted``."
     )
 
     flag: fhirtypes.CodeableConceptType = Field(

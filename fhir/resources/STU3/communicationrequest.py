@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class CommunicationRequest(domainresource.DomainResource):
-    """ A request for information to be sent to a receiver.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A request for information to be sent to a receiver.
     A request to convey information; e.g. the CDS system proposes that an alert
     be sent to a responsible provider, the CDS system proposes that the public
     health agency be notified about a reportable condition.
@@ -26,8 +30,11 @@ class CommunicationRequest(domainresource.DomainResource):
     authoredOn: fhirtypes.DateTime = Field(
         None,
         alias="authoredOn",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When request transitioned to being actionable",
+    )
+    authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_authoredOn", title="Extension field for ``authoredOn``."
     )
 
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
@@ -88,10 +95,15 @@ class CommunicationRequest(domainresource.DomainResource):
     occurrenceDateTime: fhirtypes.DateTime = Field(
         None,
         alias="occurrenceDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When scheduled",
         one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_occurrenceDateTime",
+        title="Extension field for ``occurrenceDateTime``.",
     )
 
     occurrencePeriod: fhirtypes.PeriodType = Field(
@@ -114,10 +126,10 @@ class CommunicationRequest(domainresource.DomainResource):
     )
 
     priority: fhirtypes.Code = Field(
-        None,
-        alias="priority",
-        title="Type `Code` (represented as `dict` in JSON)",
-        description="Message urgency",
+        None, alias="priority", title="Type `Code`", description="Message urgency"
+    )
+    priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_priority", title="Extension field for ``priority``."
     )
 
     reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -178,11 +190,14 @@ class CommunicationRequest(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "draft | active | suspended | cancelled | completed | entered-in-error "
             "| unknown"
         ),
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -243,7 +258,11 @@ class CommunicationRequest(domainresource.DomainResource):
 
 
 class CommunicationRequestPayload(backboneelement.BackboneElement):
-    """ Message payload.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Message payload.
     Text, attachment(s), or resource(s) to be communicated to the recipient.
     """
 
@@ -272,10 +291,13 @@ class CommunicationRequestPayload(backboneelement.BackboneElement):
     contentString: fhirtypes.String = Field(
         None,
         alias="contentString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Message part content",
         one_of_many="content",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    contentString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_contentString", title="Extension field for ``contentString``."
     )
 
     @root_validator(pre=True)
@@ -318,7 +340,11 @@ class CommunicationRequestPayload(backboneelement.BackboneElement):
 
 
 class CommunicationRequestRequester(backboneelement.BackboneElement):
-    """ Who/what is requesting service.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Who/what is requesting service.
     The individual who initiated the request and has responsibility for its
     activation.
     """

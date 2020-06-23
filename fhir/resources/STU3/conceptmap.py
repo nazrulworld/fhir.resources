@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ConceptMap(domainresource.DomainResource):
-    """ A map from one set of concepts to one or more other concepts.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A map from one set of concepts to one or more other concepts.
     A statement of relationships from one set of concepts to one or more other
     concepts - either code systems or data elements, or classes in class
     models.
@@ -33,22 +37,31 @@ class ConceptMap(domainresource.DomainResource):
     copyright: fhirtypes.Markdown = Field(
         None,
         alias="copyright",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Use and/or publishing restrictions",
+    )
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
     date: fhirtypes.DateTime = Field(
         None,
         alias="date",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Date this was last changed",
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Natural language description of the concept map",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     experimental: bool = Field(
@@ -56,6 +69,9 @@ class ConceptMap(domainresource.DomainResource):
         alias="experimental",
         title="Type `bool`",
         description="For testing purposes, not real usage",
+    )
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_experimental", title="Extension field for ``experimental``."
     )
 
     group: ListType[fhirtypes.ConceptMapGroupType] = Field(
@@ -82,22 +98,31 @@ class ConceptMap(domainresource.DomainResource):
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for this concept map (computer friendly)",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     publisher: fhirtypes.String = Field(
         None,
         alias="publisher",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name of the publisher (organization or individual)",
+    )
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
     purpose: fhirtypes.Markdown = Field(
         None,
         alias="purpose",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Why this concept map is defined",
+    )
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
     sourceReference: fhirtypes.ReferenceType = Field(
@@ -114,17 +139,23 @@ class ConceptMap(domainresource.DomainResource):
     sourceUri: fhirtypes.Uri = Field(
         None,
         alias="sourceUri",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Identifies the source of the concepts which are being mapped",
         one_of_many="source",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    sourceUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_sourceUri", title="Extension field for ``sourceUri``."
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="draft | active | retired | unknown",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     targetReference: fhirtypes.ReferenceType = Field(
@@ -141,24 +172,33 @@ class ConceptMap(domainresource.DomainResource):
     targetUri: fhirtypes.Uri = Field(
         None,
         alias="targetUri",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Provides context to the mappings",
         one_of_many="target",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    targetUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_targetUri", title="Extension field for ``targetUri``."
     )
 
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for this concept map (human friendly)",
+    )
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_title", title="Extension field for ``title``."
     )
 
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Logical URI to reference this concept map (globally unique)",
+    )
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_url", title="Extension field for ``url``."
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -171,8 +211,11 @@ class ConceptMap(domainresource.DomainResource):
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Business version of the concept map",
+    )
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_version", title="Extension field for ``version``."
     )
 
     @root_validator(pre=True)
@@ -216,7 +259,11 @@ class ConceptMap(domainresource.DomainResource):
 
 
 class ConceptMapGroup(backboneelement.BackboneElement):
-    """ Same source and target systems.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Same source and target systems.
     A group of mappings that all have the same source and target system.
     """
 
@@ -232,29 +279,41 @@ class ConceptMapGroup(backboneelement.BackboneElement):
     source: fhirtypes.Uri = Field(
         None,
         alias="source",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Code System (if value set crosses code systems)",
+    )
+    source__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_source", title="Extension field for ``source``."
     )
 
     sourceVersion: fhirtypes.String = Field(
         None,
         alias="sourceVersion",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Specific version of the  code system",
+    )
+    sourceVersion__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_sourceVersion", title="Extension field for ``sourceVersion``."
     )
 
     target: fhirtypes.Uri = Field(
         None,
         alias="target",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="System of the target (if necessary)",
+    )
+    target__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_target", title="Extension field for ``target``."
     )
 
     targetVersion: fhirtypes.String = Field(
         None,
         alias="targetVersion",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Specific version of the  code system",
+    )
+    targetVersion__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_targetVersion", title="Extension field for ``targetVersion``."
     )
 
     unmapped: fhirtypes.ConceptMapGroupUnmappedType = Field(
@@ -266,7 +325,11 @@ class ConceptMapGroup(backboneelement.BackboneElement):
 
 
 class ConceptMapGroupElement(backboneelement.BackboneElement):
-    """ Mappings for a concept from the source set.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Mappings for a concept from the source set.
     Mappings for an individual concept in the source to one or more concepts in
     the target.
     """
@@ -276,15 +339,18 @@ class ConceptMapGroupElement(backboneelement.BackboneElement):
     code: fhirtypes.Code = Field(
         None,
         alias="code",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="Identifies element being mapped",
+    )
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_code", title="Extension field for ``code``."
     )
 
     display: fhirtypes.String = Field(
-        None,
-        alias="display",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Display for the code",
+        None, alias="display", title="Type `String`", description="Display for the code"
+    )
+    display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_display", title="Extension field for ``display``."
     )
 
     target: ListType[fhirtypes.ConceptMapGroupElementTargetType] = Field(
@@ -299,7 +365,11 @@ class ConceptMapGroupElement(backboneelement.BackboneElement):
 
 
 class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
-    """ Concept in target system for element.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Concept in target system for element.
     A concept from the target value set that this concept maps to.
     """
 
@@ -308,15 +378,21 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
     code: fhirtypes.Code = Field(
         None,
         alias="code",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="Code that identifies the target element",
+    )
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_code", title="Extension field for ``code``."
     )
 
     comment: fhirtypes.String = Field(
         None,
         alias="comment",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Description of status/issues in mapping",
+    )
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_comment", title="Extension field for ``comment``."
     )
 
     dependsOn: ListType[fhirtypes.ConceptMapGroupElementTargetDependsOnType] = Field(
@@ -330,20 +406,23 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
     )
 
     display: fhirtypes.String = Field(
-        None,
-        alias="display",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Display for the code",
+        None, alias="display", title="Type `String`", description="Display for the code"
+    )
+    display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_display", title="Extension field for ``display``."
     )
 
     equivalence: fhirtypes.Code = Field(
         None,
         alias="equivalence",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "relatedto | equivalent | equal | wider | subsumes | narrower | "
             "specializes | inexact | unmatched | disjoint"
         ),
+    )
+    equivalence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_equivalence", title="Extension field for ``equivalence``."
     )
 
     product: ListType[fhirtypes.ConceptMapGroupElementTargetDependsOnType] = Field(
@@ -358,7 +437,11 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
 
 
 class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
-    """ Other elements required for this mapping (from context).
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Other elements required for this mapping (from context).
     A set of additional dependencies for this mapping to hold. This mapping is
     only applicable if the specified element can be resolved, and it has the
     specified value.
@@ -369,34 +452,47 @@ class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
     code: fhirtypes.String = Field(
         ...,
         alias="code",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Value of the referenced element",
+    )
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_code", title="Extension field for ``code``."
     )
 
     display: fhirtypes.String = Field(
-        None,
-        alias="display",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Display for the code",
+        None, alias="display", title="Type `String`", description="Display for the code"
+    )
+    display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_display", title="Extension field for ``display``."
     )
 
     property: fhirtypes.Uri = Field(
         ...,
         alias="property",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Reference to property mapping depends on",
+    )
+    property__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_property", title="Extension field for ``property``."
     )
 
     system: fhirtypes.Uri = Field(
         None,
         alias="system",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Code System (if necessary)",
+    )
+    system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_system", title="Extension field for ``system``."
     )
 
 
 class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
-    """ When no match in the mappings.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    When no match in the mappings.
     What to do when there is no match in the mappings in the group.
     """
 
@@ -405,27 +501,36 @@ class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
     code: fhirtypes.Code = Field(
         None,
         alias="code",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="Fixed code when mode = fixed",
+    )
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_code", title="Extension field for ``code``."
     )
 
     display: fhirtypes.String = Field(
-        None,
-        alias="display",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Display for the code",
+        None, alias="display", title="Type `String`", description="Display for the code"
+    )
+    display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_display", title="Extension field for ``display``."
     )
 
     mode: fhirtypes.Code = Field(
         ...,
         alias="mode",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="provided | fixed | other-map",
+    )
+    mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_mode", title="Extension field for ``mode``."
     )
 
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Canonical URL for other concept map",
+    )
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_url", title="Extension field for ``url``."
     )

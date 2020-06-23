@@ -14,7 +14,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Account(domainresource.DomainResource):
-    """ Tracks balance, charges, for patient or cost center.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Tracks balance, charges, for patient or cost center.
     A financial tool for tracking value accrued for a particular purpose.  In
     the healthcare field, used to track charges for a patient, cost centers,
     etc.
@@ -35,8 +39,11 @@ class Account(domainresource.DomainResource):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Explanation of purpose/use",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     guarantor: ListType[fhirtypes.AccountGuarantorType] = Field(
@@ -54,10 +61,10 @@ class Account(domainresource.DomainResource):
     )
 
     name: fhirtypes.String = Field(
-        None,
-        alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Human-readable label",
+        None, alias="name", title="Type `String`", description="Human-readable label"
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     owner: fhirtypes.ReferenceType = Field(
@@ -87,8 +94,11 @@ class Account(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="active | inactive | entered-in-error | on-hold | unknown",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     subject: ListType[fhirtypes.ReferenceType] = Field(
@@ -111,7 +121,11 @@ class Account(domainresource.DomainResource):
 
 
 class AccountCoverage(backboneelement.BackboneElement):
-    """ The party(s) that are responsible for covering the payment of this account,
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The party(s) that are responsible for covering the payment of this account,
     and what order should they be applied to the account.
     """
 
@@ -132,13 +146,20 @@ class AccountCoverage(backboneelement.BackboneElement):
     priority: fhirtypes.PositiveInt = Field(
         None,
         alias="priority",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="The priority of the coverage in the context of this account",
+    )
+    priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_priority", title="Extension field for ``priority``."
     )
 
 
 class AccountGuarantor(backboneelement.BackboneElement):
-    """ The parties ultimately responsible for balancing the Account.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The parties ultimately responsible for balancing the Account.
     The parties responsible for balancing the account if other payment options
     fall short.
     """
@@ -150,6 +171,9 @@ class AccountGuarantor(backboneelement.BackboneElement):
         alias="onHold",
         title="Type `bool`",
         description="Credit or other hold applied",
+    )
+    onHold__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_onHold", title="Extension field for ``onHold``."
     )
 
     party: fhirtypes.ReferenceType = Field(

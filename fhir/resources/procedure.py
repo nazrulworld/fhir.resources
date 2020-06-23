@@ -8,6 +8,7 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 from typing import Any, Dict
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field, root_validator
 
@@ -15,7 +16,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Procedure(domainresource.DomainResource):
-    """ An action that is being or was performed on a patient.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    An action that is being or was performed on a patient.
     An action that is or was performed on or for a patient. This can be a
     physical intervention like an operation, or less invasive like long term
     services, counseling, or hypnotherapy.
@@ -117,17 +122,28 @@ class Procedure(domainresource.DomainResource):
         alias="instantiatesCanonical",
         title=(
             "List of `Canonical` items referencing `PlanDefinition, "
-            "ActivityDefinition, Measure, OperationDefinition, Questionnaire` "
-            "(represented as `dict` in JSON)"
+            "ActivityDefinition, Measure, OperationDefinition, Questionnaire`"
         ),
         description="Instantiates FHIR protocol or definition",
+    )
+    instantiatesCanonical__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(
+        None,
+        alias="_instantiatesCanonical",
+        title="Extension field for ``instantiatesCanonical``.",
     )
 
     instantiatesUri: ListType[fhirtypes.Uri] = Field(
         None,
         alias="instantiatesUri",
-        title="List of `Uri` items (represented as `dict` in JSON)",
+        title="List of `Uri` items",
         description="Instantiates external protocol or definition",
+    )
+    instantiatesUri__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(
+        None, alias="_instantiatesUri", title="Extension field for ``instantiatesUri``."
     )
 
     location: fhirtypes.ReferenceType = Field(
@@ -175,10 +191,15 @@ class Procedure(domainresource.DomainResource):
     performedDateTime: fhirtypes.DateTime = Field(
         None,
         alias="performedDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When the procedure was performed",
         one_of_many="performed",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    performedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_performedDateTime",
+        title="Extension field for ``performedDateTime``.",
     )
 
     performedPeriod: fhirtypes.PeriodType = Field(
@@ -202,10 +223,13 @@ class Procedure(domainresource.DomainResource):
     performedString: fhirtypes.String = Field(
         None,
         alias="performedString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="When the procedure was performed",
         one_of_many="performed",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    performedString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_performedString", title="Extension field for ``performedString``."
     )
 
     performer: ListType[fhirtypes.ProcedurePerformerType] = Field(
@@ -256,11 +280,14 @@ class Procedure(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "preparation | in-progress | not-done | on-hold | stopped | completed |"
             " entered-in-error | unknown"
         ),
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     statusReason: fhirtypes.CodeableConceptType = Field(
@@ -343,7 +370,11 @@ class Procedure(domainresource.DomainResource):
 
 
 class ProcedureFocalDevice(backboneelement.BackboneElement):
-    """ Manipulated, implanted, or removed device.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Manipulated, implanted, or removed device.
     A device that is implanted, removed or otherwise manipulated (calibration,
     battery replacement, fitting a prosthesis, attaching a wound-vac, etc.) as
     a focal portion of the Procedure.
@@ -367,7 +398,11 @@ class ProcedureFocalDevice(backboneelement.BackboneElement):
 
 
 class ProcedurePerformer(backboneelement.BackboneElement):
-    """ The people who performed the procedure.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The people who performed the procedure.
     Limited to "real" people rather than equipment.
     """
 

@@ -14,7 +14,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class MedicinalProductPharmaceutical(domainresource.DomainResource):
-    """ A pharmaceutical product described in terms of its composition and dose
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A pharmaceutical product described in terms of its composition and dose
     form.
     """
 
@@ -90,7 +94,11 @@ class MedicinalProductPharmaceutical(domainresource.DomainResource):
 
 
 class MedicinalProductPharmaceuticalCharacteristics(backboneelement.BackboneElement):
-    """ Characteristics e.g. a products onset of action.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Characteristics e.g. a products onset of action.
     """
 
     resource_type = Field("MedicinalProductPharmaceuticalCharacteristics", const=True)
@@ -113,7 +121,11 @@ class MedicinalProductPharmaceuticalCharacteristics(backboneelement.BackboneElem
 class MedicinalProductPharmaceuticalRouteOfAdministration(
     backboneelement.BackboneElement
 ):
-    """ The path by which the pharmaceutical product is taken into or makes contact
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The path by which the pharmaceutical product is taken into or makes contact
     with the body.
     """
 
@@ -199,7 +211,11 @@ class MedicinalProductPharmaceuticalRouteOfAdministration(
 class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies(
     backboneelement.BackboneElement
 ):
-    """ A species for which this route applies.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A species for which this route applies.
     """
 
     resource_type = Field(
@@ -232,7 +248,11 @@ class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies(
 class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod(
     backboneelement.BackboneElement
 ):
-    """ A species specific time during which consumption of animal product is not
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A species specific time during which consumption of animal product is not
     appropriate.
     """
 
@@ -244,8 +264,13 @@ class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawal
     supportingInformation: fhirtypes.String = Field(
         None,
         alias="supportingInformation",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Extra information about the withdrawal period",
+    )
+    supportingInformation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_supportingInformation",
+        title="Extension field for ``supportingInformation``.",
     )
 
     tissue: fhirtypes.CodeableConceptType = Field(

@@ -8,6 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 from typing import Any, Dict
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field, root_validator
 
@@ -15,7 +16,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class CodeSystem(domainresource.DomainResource):
-    """ A set of codes drawn from one or more code systems.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A set of codes drawn from one or more code systems.
     A code system resource specifies a set of codes drawn from one or more code
     systems.
     """
@@ -28,12 +33,18 @@ class CodeSystem(domainresource.DomainResource):
         title="Type `bool`",
         description="If code comparison is case sensitive",
     )
+    caseSensitive__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_caseSensitive", title="Extension field for ``caseSensitive``."
+    )
 
     compositional: bool = Field(
         None,
         alias="compositional",
         title="Type `bool`",
         description="If code system defines a post-composition grammar",
+    )
+    compositional__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_compositional", title="Extension field for ``compositional``."
     )
 
     concept: ListType[fhirtypes.CodeSystemConceptType] = Field(
@@ -53,36 +64,51 @@ class CodeSystem(domainresource.DomainResource):
     content: fhirtypes.Code = Field(
         ...,
         alias="content",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="not-present | example | fragment | complete",
+    )
+    content__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_content", title="Extension field for ``content``."
     )
 
     copyright: fhirtypes.Markdown = Field(
         None,
         alias="copyright",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Use and/or publishing restrictions",
+    )
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
     count: fhirtypes.UnsignedInt = Field(
         None,
         alias="count",
-        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        title="Type `UnsignedInt`",
         description="Total concepts in the code system",
+    )
+    count__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_count", title="Extension field for ``count``."
     )
 
     date: fhirtypes.DateTime = Field(
         None,
         alias="date",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Date this was last changed",
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Natural language description of the code system",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     experimental: bool = Field(
@@ -90,6 +116,9 @@ class CodeSystem(domainresource.DomainResource):
         alias="experimental",
         title="Type `bool`",
         description="For testing purposes, not real usage",
+    )
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_experimental", title="Extension field for ``experimental``."
     )
 
     filter: ListType[fhirtypes.CodeSystemFilterType] = Field(
@@ -102,8 +131,13 @@ class CodeSystem(domainresource.DomainResource):
     hierarchyMeaning: fhirtypes.Code = Field(
         None,
         alias="hierarchyMeaning",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="grouped-by | is-a | part-of | classified-with",
+    )
+    hierarchyMeaning__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_hierarchyMeaning",
+        title="Extension field for ``hierarchyMeaning``.",
     )
 
     identifier: fhirtypes.IdentifierType = Field(
@@ -123,8 +157,11 @@ class CodeSystem(domainresource.DomainResource):
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for this code system (computer friendly)",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     property: ListType[fhirtypes.CodeSystemPropertyType] = Field(
@@ -137,39 +174,54 @@ class CodeSystem(domainresource.DomainResource):
     publisher: fhirtypes.String = Field(
         None,
         alias="publisher",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name of the publisher (organization or individual)",
+    )
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
     purpose: fhirtypes.Markdown = Field(
         None,
         alias="purpose",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Why this code system is defined",
+    )
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="draft | active | retired | unknown",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for this code system (human friendly)",
+    )
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_title", title="Extension field for ``title``."
     )
 
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description=(
             "Logical URI to reference this code system (globally unique) "
             "(Coding.system)"
         ),
+    )
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_url", title="Extension field for ``url``."
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -182,15 +234,21 @@ class CodeSystem(domainresource.DomainResource):
     valueSet: fhirtypes.Uri = Field(
         None,
         alias="valueSet",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Canonical URL for value set with entire code system",
+    )
+    valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueSet", title="Extension field for ``valueSet``."
     )
 
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Business version of the code system (Coding.version)",
+    )
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_version", title="Extension field for ``version``."
     )
 
     versionNeeded: bool = Field(
@@ -199,10 +257,17 @@ class CodeSystem(domainresource.DomainResource):
         title="Type `bool`",
         description="If definitions are not stable",
     )
+    versionNeeded__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_versionNeeded", title="Extension field for ``versionNeeded``."
+    )
 
 
 class CodeSystemConcept(backboneelement.BackboneElement):
-    """ Concepts in the code system.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Concepts in the code system.
     Concepts that are in the code system. The concept definitions are
     inherently hierarchical, but the definitions must be consulted to determine
     what the meaning of the hierarchical relationships are.
@@ -213,8 +278,11 @@ class CodeSystemConcept(backboneelement.BackboneElement):
     code: fhirtypes.Code = Field(
         ...,
         alias="code",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="Code that identifies concept",
+    )
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_code", title="Extension field for ``code``."
     )
 
     concept: ListType[fhirtypes.CodeSystemConceptType] = Field(
@@ -225,10 +293,10 @@ class CodeSystemConcept(backboneelement.BackboneElement):
     )
 
     definition: fhirtypes.String = Field(
-        None,
-        alias="definition",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Formal definition",
+        None, alias="definition", title="Type `String`", description="Formal definition"
+    )
+    definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_definition", title="Extension field for ``definition``."
     )
 
     designation: ListType[fhirtypes.CodeSystemConceptDesignationType] = Field(
@@ -244,8 +312,11 @@ class CodeSystemConcept(backboneelement.BackboneElement):
     display: fhirtypes.String = Field(
         None,
         alias="display",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Text to display to the user",
+    )
+    display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_display", title="Extension field for ``display``."
     )
 
     property: ListType[fhirtypes.CodeSystemConceptPropertyType] = Field(
@@ -260,7 +331,11 @@ class CodeSystemConcept(backboneelement.BackboneElement):
 
 
 class CodeSystemConceptDesignation(backboneelement.BackboneElement):
-    """ Additional representations for the concept.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Additional representations for the concept.
     Additional representations for the concept - other languages, aliases,
     specialized purposes, used for particular purposes, etc.
     """
@@ -270,8 +345,11 @@ class CodeSystemConceptDesignation(backboneelement.BackboneElement):
     language: fhirtypes.Code = Field(
         None,
         alias="language",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="Human language of the designation",
+    )
+    language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_language", title="Extension field for ``language``."
     )
 
     use: fhirtypes.CodingType = Field(
@@ -284,13 +362,20 @@ class CodeSystemConceptDesignation(backboneelement.BackboneElement):
     value: fhirtypes.String = Field(
         ...,
         alias="value",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="The text value for this designation",
+    )
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_value", title="Extension field for ``value``."
     )
 
 
 class CodeSystemConceptProperty(backboneelement.BackboneElement):
-    """ Property value for the concept.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Property value for the concept.
     A property value for this concept.
     """
 
@@ -299,8 +384,11 @@ class CodeSystemConceptProperty(backboneelement.BackboneElement):
     code: fhirtypes.Code = Field(
         ...,
         alias="code",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="Reference to CodeSystem.property.code",
+    )
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_code", title="Extension field for ``code``."
     )
 
     valueBoolean: bool = Field(
@@ -311,14 +399,20 @@ class CodeSystemConceptProperty(backboneelement.BackboneElement):
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
     )
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
+    )
 
     valueCode: fhirtypes.Code = Field(
         None,
         alias="valueCode",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="Value of the property for this concept",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueCode", title="Extension field for ``valueCode``."
     )
 
     valueCoding: fhirtypes.CodingType = Field(
@@ -333,28 +427,37 @@ class CodeSystemConceptProperty(backboneelement.BackboneElement):
     valueDateTime: fhirtypes.DateTime = Field(
         None,
         alias="valueDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Value of the property for this concept",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueDateTime", title="Extension field for ``valueDateTime``."
     )
 
     valueInteger: fhirtypes.Integer = Field(
         None,
         alias="valueInteger",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="Value of the property for this concept",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueInteger", title="Extension field for ``valueInteger``."
     )
 
     valueString: fhirtypes.String = Field(
         None,
         alias="valueString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Value of the property for this concept",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueString", title="Extension field for ``valueString``."
     )
 
     @root_validator(pre=True)
@@ -404,7 +507,11 @@ class CodeSystemConceptProperty(backboneelement.BackboneElement):
 
 
 class CodeSystemFilter(backboneelement.BackboneElement):
-    """ Filter that can be used in a value set.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Filter that can be used in a value set.
     A filter that can be used in a value set compose statement when selecting
     concepts using a filter.
     """
@@ -414,34 +521,50 @@ class CodeSystemFilter(backboneelement.BackboneElement):
     code: fhirtypes.Code = Field(
         ...,
         alias="code",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="Code that identifies the filter",
+    )
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_code", title="Extension field for ``code``."
     )
 
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="How or why the filter is used",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     operator: ListType[fhirtypes.Code] = Field(
         ...,
         alias="operator",
-        title="List of `Code` items (represented as `dict` in JSON)",
+        title="List of `Code` items",
         description="Operators that can be used with filter",
+    )
+    operator__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_operator", title="Extension field for ``operator``."
     )
 
     value: fhirtypes.String = Field(
         ...,
         alias="value",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="What to use for the value",
+    )
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_value", title="Extension field for ``value``."
     )
 
 
 class CodeSystemProperty(backboneelement.BackboneElement):
-    """ Additional information supplied about each concept.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Additional information supplied about each concept.
     A property defines an additional slot through which additional information
     can be provided about a concept.
     """
@@ -451,30 +574,42 @@ class CodeSystemProperty(backboneelement.BackboneElement):
     code: fhirtypes.Code = Field(
         ...,
         alias="code",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "Identifies the property on the concepts, and when referred to in "
             "operations"
         ),
     )
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_code", title="Extension field for ``code``."
+    )
 
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Why the property is defined, and/or what it conveys",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="code | Coding | string | integer | boolean | dateTime",
+    )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
     )
 
     uri: fhirtypes.Uri = Field(
         None,
         alias="uri",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Formal identifier for the property",
+    )
+    uri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_uri", title="Extension field for ``uri``."
     )

@@ -15,7 +15,11 @@ from . import domainresource, fhirtypes
 
 
 class ImmunizationEvaluation(domainresource.DomainResource):
-    """ Immunization evaluation information.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Immunization evaluation information.
     Describes a comparison of an immunization event against published
     recommendations to determine if the administration is "valid" in relation
     to those  recommendations.
@@ -36,33 +40,46 @@ class ImmunizationEvaluation(domainresource.DomainResource):
     date: fhirtypes.DateTime = Field(
         None,
         alias="date",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Date evaluation was performed",
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     description: fhirtypes.String = Field(
-        None,
-        alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Evaluation notes",
+        None, alias="description", title="Type `String`", description="Evaluation notes"
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     doseNumberPositiveInt: fhirtypes.PositiveInt = Field(
         None,
         alias="doseNumberPositiveInt",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="Dose number within series",
         one_of_many="doseNumber",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    doseNumberPositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_doseNumberPositiveInt",
+        title="Extension field for ``doseNumberPositiveInt``.",
     )
 
     doseNumberString: fhirtypes.String = Field(
         None,
         alias="doseNumberString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Dose number within series",
         one_of_many="doseNumber",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    doseNumberString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_doseNumberString",
+        title="Extension field for ``doseNumberString``.",
     )
 
     doseStatus: fhirtypes.CodeableConceptType = Field(
@@ -106,33 +123,49 @@ class ImmunizationEvaluation(domainresource.DomainResource):
     series: fhirtypes.String = Field(
         None,
         alias="series",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name of vaccine series",
+    )
+    series__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_series", title="Extension field for ``series``."
     )
 
     seriesDosesPositiveInt: fhirtypes.PositiveInt = Field(
         None,
         alias="seriesDosesPositiveInt",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="Recommended number of doses for immunity",
         one_of_many="seriesDoses",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    seriesDosesPositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_seriesDosesPositiveInt",
+        title="Extension field for ``seriesDosesPositiveInt``.",
     )
 
     seriesDosesString: fhirtypes.String = Field(
         None,
         alias="seriesDosesString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Recommended number of doses for immunity",
         one_of_many="seriesDoses",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    seriesDosesString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_seriesDosesString",
+        title="Extension field for ``seriesDosesString``.",
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="completed | entered-in-error",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     targetDisease: fhirtypes.CodeableConceptType = Field(

@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Procedure(domainresource.DomainResource):
-    """ An action that is being or was performed on a patient.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    An action that is being or was performed on a patient.
     An action that is or was performed on a patient. This can be a physical
     intervention like an operation, or less invasive like counseling or
     hypnotherapy.
@@ -127,6 +131,9 @@ class Procedure(domainresource.DomainResource):
         title="Type `bool`",
         description="True if procedure was not performed as scheduled",
     )
+    notDone__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_notDone", title="Extension field for ``notDone``."
+    )
 
     notDoneReason: fhirtypes.CodeableConceptType = Field(
         None,
@@ -162,10 +169,15 @@ class Procedure(domainresource.DomainResource):
     performedDateTime: fhirtypes.DateTime = Field(
         None,
         alias="performedDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Date/Period the procedure was performed",
         one_of_many="performed",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    performedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_performedDateTime",
+        title="Extension field for ``performedDateTime``.",
     )
 
     performedPeriod: fhirtypes.PeriodType = Field(
@@ -214,11 +226,14 @@ class Procedure(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "preparation | in-progress | suspended | aborted | completed | entered-"
             "in-error | unknown"
         ),
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -286,7 +301,11 @@ class Procedure(domainresource.DomainResource):
 
 
 class ProcedureFocalDevice(backboneelement.BackboneElement):
-    """ Device changed in procedure.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Device changed in procedure.
     A device that is implanted, removed or otherwise manipulated (calibration,
     battery replacement, fitting a prosthesis, attaching a wound-vac, etc.) as
     a focal portion of the Procedure.
@@ -310,7 +329,11 @@ class ProcedureFocalDevice(backboneelement.BackboneElement):
 
 
 class ProcedurePerformer(backboneelement.BackboneElement):
-    """ The people who performed the procedure.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The people who performed the procedure.
     Limited to 'real' people rather than equipment.
     """
 

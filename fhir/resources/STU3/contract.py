@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Contract(domainresource.DomainResource):
-    """ Legal Agreement.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Legal Agreement.
     A formal agreement between parties regarding the conduct of business,
     exchange of information or other matters.
     """
@@ -122,8 +126,11 @@ class Contract(domainresource.DomainResource):
     issued: fhirtypes.DateTime = Field(
         None,
         alias="issued",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When this Contract was issued",
+    )
+    issued__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_issued", title="Extension field for ``issued``."
     )
 
     legal: ListType[fhirtypes.ContractLegalType] = Field(
@@ -157,12 +164,15 @@ class Contract(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "amended | appended | cancelled | disputed | entered-in-error | "
             "executable | executed | negotiable | offered | policy | rejected | "
             "renewed | revoked | resolved | terminated"
         ),
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     subType: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -251,7 +261,11 @@ class Contract(domainresource.DomainResource):
 
 
 class ContractAgent(backboneelement.BackboneElement):
-    """ Entity being ascribed responsibility.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Entity being ascribed responsibility.
     An actor taking a role in an activity for which it can be assigned some
     degree of responsibility for the activity taking place.
     """
@@ -278,7 +292,11 @@ class ContractAgent(backboneelement.BackboneElement):
 
 
 class ContractFriendly(backboneelement.BackboneElement):
-    """ Contract Friendly Language.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Contract Friendly Language.
     The "patient friendly language" versionof the Contract in whole or in
     parts. "Patient friendly language" means the representation of the Contract
     and Contract Provisions in a manner that is readily accessible and
@@ -349,7 +367,11 @@ class ContractFriendly(backboneelement.BackboneElement):
 
 
 class ContractLegal(backboneelement.BackboneElement):
-    """ Contract Legal Language.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Contract Legal Language.
     List of Legal expressions or representations of this Contract.
     """
 
@@ -414,7 +436,11 @@ class ContractLegal(backboneelement.BackboneElement):
 
 
 class ContractRule(backboneelement.BackboneElement):
-    """ Computable Contract Language.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Computable Contract Language.
     List of Computable Policy Rule Language Representations of this Contract.
     """
 
@@ -479,7 +505,11 @@ class ContractRule(backboneelement.BackboneElement):
 
 
 class ContractSigner(backboneelement.BackboneElement):
-    """ Contract Signatory.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Contract Signatory.
     Parties with legal standing in the Contract, including the principal
     parties, the grantor(s) and grantee(s), which are any person or
     organization bound by the contract, and any ancillary parties, which
@@ -514,7 +544,11 @@ class ContractSigner(backboneelement.BackboneElement):
 
 
 class ContractTerm(backboneelement.BackboneElement):
-    """ Contract Term List.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Contract Term List.
     One or more Contract Provisions, which may be related and conveyed as a
     group, and may contain nested groups.
     """
@@ -566,8 +600,11 @@ class ContractTerm(backboneelement.BackboneElement):
     issued: fhirtypes.DateTime = Field(
         None,
         alias="issued",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Contract Term Issue Date Time",
+    )
+    issued__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_issued", title="Extension field for ``issued``."
     )
 
     securityLabel: ListType[fhirtypes.CodingType] = Field(
@@ -587,8 +624,11 @@ class ContractTerm(backboneelement.BackboneElement):
     text: fhirtypes.String = Field(
         None,
         alias="text",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Human readable Contract term text",
+    )
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_text", title="Extension field for ``text``."
     )
 
     topic: ListType[fhirtypes.ReferenceType] = Field(
@@ -617,7 +657,11 @@ class ContractTerm(backboneelement.BackboneElement):
 
 
 class ContractTermAgent(backboneelement.BackboneElement):
-    """ Contract Term Agent List.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Contract Term Agent List.
     An actor taking a role in an activity for which it can be assigned some
     degree of responsibility for the activity taking place.
     """
@@ -644,7 +688,11 @@ class ContractTermAgent(backboneelement.BackboneElement):
 
 
 class ContractTermValuedItem(backboneelement.BackboneElement):
-    """ Contract Term Valued Item List.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Contract Term Valued Item List.
     Contract Provision Valued Item List.
     """
 
@@ -653,8 +701,11 @@ class ContractTermValuedItem(backboneelement.BackboneElement):
     effectiveTime: fhirtypes.DateTime = Field(
         None,
         alias="effectiveTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Contract Term Valued Item Effective Tiem",
+    )
+    effectiveTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_effectiveTime", title="Extension field for ``effectiveTime``."
     )
 
     entityCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -680,8 +731,11 @@ class ContractTermValuedItem(backboneelement.BackboneElement):
     factor: fhirtypes.Decimal = Field(
         None,
         alias="factor",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Contract Term Valued Item Price Scaling Factor",
+    )
+    factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_factor", title="Extension field for ``factor``."
     )
 
     identifier: fhirtypes.IdentifierType = Field(
@@ -701,8 +755,11 @@ class ContractTermValuedItem(backboneelement.BackboneElement):
     points: fhirtypes.Decimal = Field(
         None,
         alias="points",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Contract Term Valued Item Difficulty Scaling Factor",
+    )
+    points__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_points", title="Extension field for ``points``."
     )
 
     quantity: fhirtypes.QuantityType = Field(
@@ -757,7 +814,11 @@ class ContractTermValuedItem(backboneelement.BackboneElement):
 
 
 class ContractValuedItem(backboneelement.BackboneElement):
-    """ Contract Valued Item List.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Contract Valued Item List.
     """
 
     resource_type = Field("ContractValuedItem", const=True)
@@ -765,8 +826,11 @@ class ContractValuedItem(backboneelement.BackboneElement):
     effectiveTime: fhirtypes.DateTime = Field(
         None,
         alias="effectiveTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Contract Valued Item Effective Tiem",
+    )
+    effectiveTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_effectiveTime", title="Extension field for ``effectiveTime``."
     )
 
     entityCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -792,8 +856,11 @@ class ContractValuedItem(backboneelement.BackboneElement):
     factor: fhirtypes.Decimal = Field(
         None,
         alias="factor",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Contract Valued Item Price Scaling Factor",
+    )
+    factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_factor", title="Extension field for ``factor``."
     )
 
     identifier: fhirtypes.IdentifierType = Field(
@@ -813,8 +880,11 @@ class ContractValuedItem(backboneelement.BackboneElement):
     points: fhirtypes.Decimal = Field(
         None,
         alias="points",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Contract Valued Item Difficulty Scaling Factor",
+    )
+    points__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_points", title="Extension field for ``points``."
     )
 
     quantity: fhirtypes.QuantityType = Field(

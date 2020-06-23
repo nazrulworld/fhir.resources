@@ -746,6 +746,22 @@ class CommunicationRequestPayloadType(AbstractType):
     __resource_type__ = "CommunicationRequestPayload"
 
 
+class CompositionType(AbstractType):
+    __resource_type__ = "Composition"
+
+
+class CompositionAttesterType(AbstractType):
+    __resource_type__ = "CompositionAttester"
+
+
+class CompositionEventType(AbstractType):
+    __resource_type__ = "CompositionEvent"
+
+
+class CompositionSectionType(AbstractType):
+    __resource_type__ = "CompositionSection"
+
+
 __all__ = [
     "ElementType",
     "ResourceType",
@@ -840,4 +856,8 @@ __all__ = [
     "CommunicationPayloadType",
     "CommunicationRequestType",
     "CommunicationRequestPayloadType",
+    "CompositionType",
+    "CompositionAttesterType",
+    "CompositionEventType",
+    "CompositionSectionType",
 ]

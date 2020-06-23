@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class DetectedIssue(domainresource.DomainResource):
-    """ Clinical issue with action.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Clinical issue with action.
     Indicates an actual or potential clinical issue with or between one or more
     active or proposed clinical actions for a patient; e.g. Drug-drug
     interaction, Ineffective treatment frequency, Procedure-condition conflict,
@@ -44,8 +48,11 @@ class DetectedIssue(domainresource.DomainResource):
     detail: fhirtypes.String = Field(
         None,
         alias="detail",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Description and context",
+    )
+    detail__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_detail", title="Extension field for ``detail``."
     )
 
     evidence: ListType[fhirtypes.DetectedIssueEvidenceType] = Field(
@@ -58,10 +65,15 @@ class DetectedIssue(domainresource.DomainResource):
     identifiedDateTime: fhirtypes.DateTime = Field(
         None,
         alias="identifiedDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When identified",
         one_of_many="identified",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    identifiedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_identifiedDateTime",
+        title="Extension field for ``identifiedDateTime``.",
     )
 
     identifiedPeriod: fhirtypes.PeriodType = Field(
@@ -107,24 +119,27 @@ class DetectedIssue(domainresource.DomainResource):
     )
 
     reference: fhirtypes.Uri = Field(
-        None,
-        alias="reference",
-        title="Type `Uri` (represented as `dict` in JSON)",
-        description="Authority for issue",
+        None, alias="reference", title="Type `Uri`", description="Authority for issue"
+    )
+    reference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_reference", title="Extension field for ``reference``."
     )
 
     severity: fhirtypes.Code = Field(
-        None,
-        alias="severity",
-        title="Type `Code` (represented as `dict` in JSON)",
-        description="high | moderate | low",
+        None, alias="severity", title="Type `Code`", description="high | moderate | low"
+    )
+    severity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_severity", title="Extension field for ``severity``."
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="registered | preliminary | final | amended +",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     @root_validator(pre=True)
@@ -165,7 +180,11 @@ class DetectedIssue(domainresource.DomainResource):
 
 
 class DetectedIssueEvidence(backboneelement.BackboneElement):
-    """ Supporting evidence.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Supporting evidence.
     Supporting evidence or manifestations that provide the basis for
     identifying the detected issue such as a GuidanceResponse or MeasureReport.
     """
@@ -191,7 +210,11 @@ class DetectedIssueEvidence(backboneelement.BackboneElement):
 
 
 class DetectedIssueMitigation(backboneelement.BackboneElement):
-    """ Step taken to address.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Step taken to address.
     Indicates an action that has been taken or is committed to reduce or
     eliminate the likelihood of the risk identified by the detected issue from
     manifesting.  Can also reflect an observation of known mitigating factors
@@ -218,8 +241,8 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
     )
 
     date: fhirtypes.DateTime = Field(
-        None,
-        alias="date",
-        title="Type `DateTime` (represented as `dict` in JSON)",
-        description="Date committed",
+        None, alias="date", title="Type `DateTime`", description="Date committed"
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )

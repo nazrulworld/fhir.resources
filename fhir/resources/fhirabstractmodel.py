@@ -61,10 +61,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
             )
         if errors:
             raise ValidationError(errors, __pydantic_self__.__class__)
-        # clean comments in data
-        for item in data.copy():
-            if item.startswith("_"):
-                del data[item]
+
         BaseModel.__init__(__pydantic_self__, **data)
 
     @classmethod

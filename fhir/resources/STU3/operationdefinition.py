@@ -8,6 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 from typing import Any, Dict
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field, root_validator
 
@@ -15,7 +16,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class OperationDefinition(domainresource.DomainResource):
-    """ Definition of an operation or a named query.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Definition of an operation or a named query.
     A formal computable definition of an operation (on the RESTful interface)
     or a named query (using the search interaction).
     """
@@ -35,15 +40,21 @@ class OperationDefinition(domainresource.DomainResource):
     code: fhirtypes.Code = Field(
         ...,
         alias="code",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="Name used to invoke the operation",
+    )
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_code", title="Extension field for ``code``."
     )
 
     comment: fhirtypes.String = Field(
         None,
         alias="comment",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Additional information about use",
+    )
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_comment", title="Extension field for ``comment``."
     )
 
     contact: ListType[fhirtypes.ContactDetailType] = Field(
@@ -56,15 +67,21 @@ class OperationDefinition(domainresource.DomainResource):
     date: fhirtypes.DateTime = Field(
         None,
         alias="date",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Date this was last changed",
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Natural language description of the operation definition",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     experimental: bool = Field(
@@ -73,6 +90,9 @@ class OperationDefinition(domainresource.DomainResource):
         title="Type `bool`",
         description="For testing purposes, not real usage",
     )
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_experimental", title="Extension field for ``experimental``."
+    )
 
     idempotent: bool = Field(
         None,
@@ -80,9 +100,15 @@ class OperationDefinition(domainresource.DomainResource):
         title="Type `bool`",
         description="Whether content is unchanged by the operation",
     )
+    idempotent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_idempotent", title="Extension field for ``idempotent``."
+    )
 
     instance: bool = Field(
         ..., alias="instance", title="Type `bool`", description="Invoke on an instance?"
+    )
+    instance__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_instance", title="Extension field for ``instance``."
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -93,17 +119,20 @@ class OperationDefinition(domainresource.DomainResource):
     )
 
     kind: fhirtypes.Code = Field(
-        ...,
-        alias="kind",
-        title="Type `Code` (represented as `dict` in JSON)",
-        description="operation | query",
+        ..., alias="kind", title="Type `Code`", description="operation | query"
+    )
+    kind__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_kind", title="Extension field for ``kind``."
     )
 
     name: fhirtypes.String = Field(
         ...,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for this operation definition (computer friendly)",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     overload: ListType[fhirtypes.OperationDefinitionOverloadType] = Field(
@@ -129,29 +158,41 @@ class OperationDefinition(domainresource.DomainResource):
     publisher: fhirtypes.String = Field(
         None,
         alias="publisher",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name of the publisher (organization or individual)",
+    )
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
     purpose: fhirtypes.Markdown = Field(
         None,
         alias="purpose",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Why this operation definition is defined",
+    )
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
     resource: ListType[fhirtypes.Code] = Field(
         None,
         alias="resource",
-        title="List of `Code` items (represented as `dict` in JSON)",
+        title="List of `Code` items",
         description="Types this operation applies to",
+    )
+    resource__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_resource", title="Extension field for ``resource``."
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="draft | active | retired | unknown",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     system: bool = Field(
@@ -160,16 +201,25 @@ class OperationDefinition(domainresource.DomainResource):
         title="Type `bool`",
         description="Invoke at the system level?",
     )
+    system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_system", title="Extension field for ``system``."
+    )
 
     type: bool = Field(
         ..., alias="type", title="Type `bool`", description="Invole at the type level?"
+    )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
     )
 
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Logical URI to reference this operation definition (globally unique)",
+    )
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_url", title="Extension field for ``url``."
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -182,13 +232,20 @@ class OperationDefinition(domainresource.DomainResource):
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Business version of the operation definition",
+    )
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_version", title="Extension field for ``version``."
     )
 
 
 class OperationDefinitionOverload(backboneelement.BackboneElement):
-    """ Define overloaded variants for when  generating code.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Define overloaded variants for when  generating code.
     Defines an appropriate combination of parameters to use when invoking this
     operation, to help code generators when generating overloaded parameter
     sets for this operation.
@@ -199,20 +256,32 @@ class OperationDefinitionOverload(backboneelement.BackboneElement):
     comment: fhirtypes.String = Field(
         None,
         alias="comment",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Comments to go on overload",
+    )
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_comment", title="Extension field for ``comment``."
     )
 
     parameterName: ListType[fhirtypes.String] = Field(
         None,
         alias="parameterName",
-        title="List of `String` items (represented as `dict` in JSON)",
+        title="List of `String` items",
         description="Name of parameter to include in overload",
+    )
+    parameterName__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(
+        None, alias="_parameterName", title="Extension field for ``parameterName``."
     )
 
 
 class OperationDefinitionParameter(backboneelement.BackboneElement):
-    """ Parameters for the operation/query.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Parameters for the operation/query.
     The parameters for the operation/query.
     """
 
@@ -231,29 +300,38 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
     documentation: fhirtypes.String = Field(
         None,
         alias="documentation",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Description of meaning/use",
+    )
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_documentation", title="Extension field for ``documentation``."
     )
 
     max: fhirtypes.String = Field(
         ...,
         alias="max",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Maximum Cardinality (a number or *)",
+    )
+    max__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_max", title="Extension field for ``max``."
     )
 
     min: fhirtypes.Integer = Field(
-        ...,
-        alias="min",
-        title="Type `Integer` (represented as `dict` in JSON)",
-        description="Minimum Cardinality",
+        ..., alias="min", title="Type `Integer`", description="Minimum Cardinality"
+    )
+    min__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_min", title="Extension field for ``min``."
     )
 
     name: fhirtypes.Code = Field(
         ...,
         alias="name",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="Name in Parameters.parameter.name or in URL",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     part: ListType[fhirtypes.OperationDefinitionParameterType] = Field(
@@ -279,29 +357,39 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
     searchType: fhirtypes.Code = Field(
         None,
         alias="searchType",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "number | date | string | token | reference | composite | quantity | " "uri"
         ),
+    )
+    searchType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_searchType", title="Extension field for ``searchType``."
     )
 
     type: fhirtypes.Code = Field(
         None,
         alias="type",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="What type this parameter has",
+    )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
     )
 
     use: fhirtypes.Code = Field(
-        ...,
-        alias="use",
-        title="Type `Code` (represented as `dict` in JSON)",
-        description="in | out",
+        ..., alias="use", title="Type `Code`", description="in | out"
+    )
+    use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_use", title="Extension field for ``use``."
     )
 
 
 class OperationDefinitionParameterBinding(backboneelement.BackboneElement):
-    """ ValueSet details if this is coded.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    ValueSet details if this is coded.
     Binds to a value set if this parameter is coded (code, Coding,
     CodeableConcept).
     """
@@ -311,8 +399,11 @@ class OperationDefinitionParameterBinding(backboneelement.BackboneElement):
     strength: fhirtypes.Code = Field(
         ...,
         alias="strength",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="required | extensible | preferred | example",
+    )
+    strength__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_strength", title="Extension field for ``strength``."
     )
 
     valueSetReference: fhirtypes.ReferenceType = Field(
@@ -329,10 +420,13 @@ class OperationDefinitionParameterBinding(backboneelement.BackboneElement):
     valueSetUri: fhirtypes.Uri = Field(
         None,
         alias="valueSetUri",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Source of value set",
         one_of_many="valueSet",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueSetUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueSetUri", title="Extension field for ``valueSetUri``."
     )
 
     @root_validator(pre=True)

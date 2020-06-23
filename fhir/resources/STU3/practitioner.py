@@ -14,7 +14,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Practitioner(domainresource.DomainResource):
-    """ A person with a  formal responsibility in the provisioning of healthcare or
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A person with a  formal responsibility in the provisioning of healthcare or
     related services.
     A person who is directly or indirectly involved in the provisioning of
     healthcare.
@@ -27,6 +31,9 @@ class Practitioner(domainresource.DomainResource):
         alias="active",
         title="Type `bool`",
         description="Whether this practitioner\u0027s record is in active use",
+    )
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_active", title="Extension field for ``active``."
     )
 
     address: ListType[fhirtypes.AddressType] = Field(
@@ -42,8 +49,11 @@ class Practitioner(domainresource.DomainResource):
     birthDate: fhirtypes.Date = Field(
         None,
         alias="birthDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="The date  on which the practitioner was born",
+    )
+    birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_birthDate", title="Extension field for ``birthDate``."
     )
 
     communication: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -56,8 +66,11 @@ class Practitioner(domainresource.DomainResource):
     gender: fhirtypes.Code = Field(
         None,
         alias="gender",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="male | female | other | unknown",
+    )
+    gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_gender", title="Extension field for ``gender``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -100,7 +113,11 @@ class Practitioner(domainresource.DomainResource):
 
 
 class PractitionerQualification(backboneelement.BackboneElement):
-    """ Qualifications obtained by training and certification.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Qualifications obtained by training and certification.
     """
 
     resource_type = Field("PractitionerQualification", const=True)

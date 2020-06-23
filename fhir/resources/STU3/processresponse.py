@@ -14,7 +14,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ProcessResponse(domainresource.DomainResource):
-    """ ProcessResponse resource.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    ProcessResponse resource.
     This resource provides processing status, errors and notes from the
     processing of a resource.
     """
@@ -32,17 +36,20 @@ class ProcessResponse(domainresource.DomainResource):
     )
 
     created: fhirtypes.DateTime = Field(
-        None,
-        alias="created",
-        title="Type `DateTime` (represented as `dict` in JSON)",
-        description="Creation date",
+        None, alias="created", title="Type `DateTime`", description="Creation date"
+    )
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_created", title="Extension field for ``created``."
     )
 
     disposition: fhirtypes.String = Field(
         None,
         alias="disposition",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Disposition Message",
+    )
+    disposition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_disposition", title="Extension field for ``disposition``."
     )
 
     error: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -125,13 +132,20 @@ class ProcessResponse(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="active | cancelled | draft | entered-in-error",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
 
 class ProcessResponseProcessNote(backboneelement.BackboneElement):
-    """ Processing comments or additional requirements.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Processing comments or additional requirements.
     Suite of processing notes or additional requirements if the processing has
     been held.
     """
@@ -141,8 +155,11 @@ class ProcessResponseProcessNote(backboneelement.BackboneElement):
     text: fhirtypes.String = Field(
         None,
         alias="text",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Comment on the processing",
+    )
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_text", title="Extension field for ``text``."
     )
 
     type: fhirtypes.CodeableConceptType = Field(

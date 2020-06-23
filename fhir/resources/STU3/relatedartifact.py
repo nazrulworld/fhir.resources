@@ -12,7 +12,11 @@ from . import element, fhirtypes
 
 
 class RelatedArtifact(element.Element):
-    """ Related artifacts for a knowledge resource.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Related artifacts for a knowledge resource.
     Related artifacts such as additional documentation, justification, or
     bibliographic references.
     """
@@ -22,15 +26,21 @@ class RelatedArtifact(element.Element):
     citation: fhirtypes.String = Field(
         None,
         alias="citation",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Bibliographic citation for the artifact",
+    )
+    citation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_citation", title="Extension field for ``citation``."
     )
 
     display: fhirtypes.String = Field(
         None,
         alias="display",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Brief description of the related artifact",
+    )
+    display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_display", title="Extension field for ``display``."
     )
 
     document: fhirtypes.AttachmentType = Field(
@@ -52,16 +62,22 @@ class RelatedArtifact(element.Element):
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "documentation | justification | citation | predecessor | successor | "
             "derived-from | depends-on | composed-of"
         ),
     )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
+    )
 
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Where the artifact can be accessed",
+    )
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_url", title="Extension field for ``url``."
     )

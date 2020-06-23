@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ReferralRequest(domainresource.DomainResource):
-    """ A request for referral or transfer of care.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A request for referral or transfer of care.
     Used to record and send details about a request for referral service or
     transfer of a patient to the care of another provider or provider
     organization.
@@ -26,8 +30,11 @@ class ReferralRequest(domainresource.DomainResource):
     authoredOn: fhirtypes.DateTime = Field(
         None,
         alias="authoredOn",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Date of creation/activation",
+    )
+    authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_authoredOn", title="Extension field for ``authoredOn``."
     )
 
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
@@ -63,8 +70,11 @@ class ReferralRequest(domainresource.DomainResource):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="A textual description of the referral",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     groupIdentifier: fhirtypes.IdentifierType = Field(
@@ -82,10 +92,10 @@ class ReferralRequest(domainresource.DomainResource):
     )
 
     intent: fhirtypes.Code = Field(
-        ...,
-        alias="intent",
-        title="Type `Code` (represented as `dict` in JSON)",
-        description="proposal | plan | order",
+        ..., alias="intent", title="Type `Code`", description="proposal | plan | order"
+    )
+    intent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_intent", title="Extension field for ``intent``."
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
@@ -98,10 +108,15 @@ class ReferralRequest(domainresource.DomainResource):
     occurrenceDateTime: fhirtypes.DateTime = Field(
         None,
         alias="occurrenceDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When the service(s) requested in the referral should occur",
         one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_occurrenceDateTime",
+        title="Extension field for ``occurrenceDateTime``.",
     )
 
     occurrencePeriod: fhirtypes.PeriodType = Field(
@@ -116,8 +131,11 @@ class ReferralRequest(domainresource.DomainResource):
     priority: fhirtypes.Code = Field(
         None,
         alias="priority",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="Urgency of referral / transfer of care request",
+    )
+    priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_priority", title="Extension field for ``priority``."
     )
 
     reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -191,11 +209,14 @@ class ReferralRequest(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "draft | active | suspended | cancelled | completed | entered-in-error "
             "| unknown"
         ),
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -263,7 +284,11 @@ class ReferralRequest(domainresource.DomainResource):
 
 
 class ReferralRequestRequester(backboneelement.BackboneElement):
-    """ Who/what is requesting service.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Who/what is requesting service.
     The individual who initiated the request and has responsibility for its
     activation.
     """

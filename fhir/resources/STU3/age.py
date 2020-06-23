@@ -12,7 +12,11 @@ from . import quantity
 
 
 class Age(quantity.Quantity):
-    """ A duration of time during which an organism (or a process) has existed.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A duration of time during which an organism (or a process) has existed.
     """
 
     resource_type = Field("Age", const=True)

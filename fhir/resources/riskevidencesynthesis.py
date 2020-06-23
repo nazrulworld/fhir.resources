@@ -14,7 +14,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class RiskEvidenceSynthesis(domainresource.DomainResource):
-    """ A quantified estimate of risk based on a body of evidence.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A quantified estimate of risk based on a body of evidence.
     The RiskEvidenceSynthesis resource describes the likelihood of an outcome
     in a population plus exposure state where the risk estimate is derived from
     a combination of research studies.
@@ -25,8 +29,11 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
     approvalDate: fhirtypes.Date = Field(
         None,
         alias="approvalDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="When the risk evidence synthesis was approved by publisher",
+    )
+    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_approvalDate", title="Extension field for ``approvalDate``."
     )
 
     author: ListType[fhirtypes.ContactDetailType] = Field(
@@ -56,22 +63,28 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
     copyright: fhirtypes.Markdown = Field(
         None,
         alias="copyright",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Use and/or publishing restrictions",
+    )
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
     date: fhirtypes.DateTime = Field(
-        None,
-        alias="date",
-        title="Type `DateTime` (represented as `dict` in JSON)",
-        description="Date last changed",
+        None, alias="date", title="Type `DateTime`", description="Date last changed"
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Natural language description of the risk evidence synthesis",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     editor: ListType[fhirtypes.ContactDetailType] = Field(
@@ -122,15 +135,21 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
     lastReviewDate: fhirtypes.Date = Field(
         None,
         alias="lastReviewDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="When the risk evidence synthesis was last reviewed",
+    )
+    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
     )
 
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for this risk evidence synthesis (computer friendly)",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
@@ -163,8 +182,11 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
     publisher: fhirtypes.String = Field(
         None,
         alias="publisher",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name of the publisher (organization or individual)",
+    )
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
     relatedArtifact: ListType[fhirtypes.RelatedArtifactType] = Field(
@@ -201,8 +223,11 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="draft | active | retired | unknown",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     studyType: fhirtypes.CodeableConceptType = Field(
@@ -222,8 +247,11 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for this risk evidence synthesis (human friendly)",
+    )
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_title", title="Extension field for ``title``."
     )
 
     topic: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -239,11 +267,14 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description=(
             "Canonical identifier for this risk evidence synthesis, represented as "
             "a URI (globally unique)"
         ),
+    )
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_url", title="Extension field for ``url``."
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -256,13 +287,20 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Business version of the risk evidence synthesis",
+    )
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_version", title="Extension field for ``version``."
     )
 
 
 class RiskEvidenceSynthesisCertainty(backboneelement.BackboneElement):
-    """ How certain is the risk.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    How certain is the risk.
     A description of the certainty of the risk estimate.
     """
 
@@ -298,7 +336,11 @@ class RiskEvidenceSynthesisCertainty(backboneelement.BackboneElement):
 class RiskEvidenceSynthesisCertaintyCertaintySubcomponent(
     backboneelement.BackboneElement
 ):
-    """ A component that contributes to the overall certainty.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A component that contributes to the overall certainty.
     A description of a component of the overall certainty.
     """
 
@@ -329,7 +371,11 @@ class RiskEvidenceSynthesisCertaintyCertaintySubcomponent(
 
 
 class RiskEvidenceSynthesisRiskEstimate(backboneelement.BackboneElement):
-    """ What was the estimated risk.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    What was the estimated risk.
     The estimated risk of the outcome.
     """
 
@@ -338,22 +384,33 @@ class RiskEvidenceSynthesisRiskEstimate(backboneelement.BackboneElement):
     denominatorCount: fhirtypes.Integer = Field(
         None,
         alias="denominatorCount",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="Sample size for group measured",
+    )
+    denominatorCount__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_denominatorCount",
+        title="Extension field for ``denominatorCount``.",
     )
 
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Description of risk estimate",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     numeratorCount: fhirtypes.Integer = Field(
         None,
         alias="numeratorCount",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="Number with the outcome",
+    )
+    numeratorCount__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_numeratorCount", title="Extension field for ``numeratorCount``."
     )
 
     precisionEstimate: ListType[
@@ -383,17 +440,21 @@ class RiskEvidenceSynthesisRiskEstimate(backboneelement.BackboneElement):
     )
 
     value: fhirtypes.Decimal = Field(
-        None,
-        alias="value",
-        title="Type `Decimal` (represented as `dict` in JSON)",
-        description="Point estimate",
+        None, alias="value", title="Type `Decimal`", description="Point estimate"
+    )
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_value", title="Extension field for ``value``."
     )
 
 
 class RiskEvidenceSynthesisRiskEstimatePrecisionEstimate(
     backboneelement.BackboneElement
 ):
-    """ How precise the estimate is.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    How precise the estimate is.
     A description of the precision of the estimate for the effect.
     """
 
@@ -402,24 +463,27 @@ class RiskEvidenceSynthesisRiskEstimatePrecisionEstimate(
     )
 
     from_fhir: fhirtypes.Decimal = Field(
-        None,
-        alias="from",
-        title="Type `Decimal` (represented as `dict` in JSON)",
-        description="Lower bound",
+        None, alias="from", title="Type `Decimal`", description="Lower bound"
+    )
+    from__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_from", title="Extension field for ``from_fhir``."
     )
 
     level: fhirtypes.Decimal = Field(
         None,
         alias="level",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Level of confidence interval",
+    )
+    level__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_level", title="Extension field for ``level``."
     )
 
     to: fhirtypes.Decimal = Field(
-        None,
-        alias="to",
-        title="Type `Decimal` (represented as `dict` in JSON)",
-        description="Upper bound",
+        None, alias="to", title="Type `Decimal`", description="Upper bound"
+    )
+    to__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_to", title="Extension field for ``to``."
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -431,7 +495,11 @@ class RiskEvidenceSynthesisRiskEstimatePrecisionEstimate(
 
 
 class RiskEvidenceSynthesisSampleSize(backboneelement.BackboneElement):
-    """ What sample size was involved?.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    What sample size was involved?.
     A description of the size of the sample involved in the synthesis.
     """
 
@@ -440,20 +508,31 @@ class RiskEvidenceSynthesisSampleSize(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Description of sample size",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     numberOfParticipants: fhirtypes.Integer = Field(
         None,
         alias="numberOfParticipants",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="How many participants?",
+    )
+    numberOfParticipants__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_numberOfParticipants",
+        title="Extension field for ``numberOfParticipants``.",
     )
 
     numberOfStudies: fhirtypes.Integer = Field(
         None,
         alias="numberOfStudies",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="How many studies?",
+    )
+    numberOfStudies__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_numberOfStudies", title="Extension field for ``numberOfStudies``."
     )

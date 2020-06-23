@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Group(domainresource.DomainResource):
-    """ Group of multiple entities.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Group of multiple entities.
     Represents a defined collection of entities that may be discussed or acted
     upon collectively but which are not expected to act collectively, and are
     not formally or legally recognized; i.e. a collection of entities that
@@ -30,9 +34,15 @@ class Group(domainresource.DomainResource):
         title="Type `bool`",
         description="Whether this group\u0027s record is in active use",
     )
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_active", title="Extension field for ``active``."
+    )
 
     actual: bool = Field(
         ..., alias="actual", title="Type `bool`", description="Descriptive or actual"
+    )
+    actual__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_actual", title="Extension field for ``actual``."
     )
 
     characteristic: ListType[fhirtypes.GroupCharacteristicType] = Field(
@@ -74,29 +84,39 @@ class Group(domainresource.DomainResource):
     )
 
     name: fhirtypes.String = Field(
-        None,
-        alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Label for Group",
+        None, alias="name", title="Type `String`", description="Label for Group"
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     quantity: fhirtypes.UnsignedInt = Field(
         None,
         alias="quantity",
-        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        title="Type `UnsignedInt`",
         description="Number of members",
+    )
+    quantity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_quantity", title="Extension field for ``quantity``."
     )
 
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="person | animal | practitioner | device | medication | substance",
+    )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
     )
 
 
 class GroupCharacteristic(backboneelement.BackboneElement):
-    """ Include / Exclude group members by Trait.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Include / Exclude group members by Trait.
     Identifies traits whose presence r absence is shared by members of the
     group.
     """
@@ -116,6 +136,9 @@ class GroupCharacteristic(backboneelement.BackboneElement):
         title="Type `bool`",
         description="Group includes or excludes",
     )
+    exclude__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_exclude", title="Extension field for ``exclude``."
+    )
 
     period: fhirtypes.PeriodType = Field(
         None,
@@ -131,6 +154,9 @@ class GroupCharacteristic(backboneelement.BackboneElement):
         description="Value held by characteristic",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
     )
 
     valueCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -215,7 +241,11 @@ class GroupCharacteristic(backboneelement.BackboneElement):
 
 
 class GroupMember(backboneelement.BackboneElement):
-    """ Who or what is in group.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Who or what is in group.
     Identifies the resource instances that are members of the group.
     """
 
@@ -236,6 +266,9 @@ class GroupMember(backboneelement.BackboneElement):
         alias="inactive",
         title="Type `bool`",
         description="If member is no longer in group",
+    )
+    inactive__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_inactive", title="Extension field for ``inactive``."
     )
 
     period: fhirtypes.PeriodType = Field(

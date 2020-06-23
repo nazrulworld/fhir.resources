@@ -14,7 +14,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Appointment(domainresource.DomainResource):
-    """ A booking of a healthcare event among patient(s), practitioner(s), related
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A booking of a healthcare event among patient(s), practitioner(s), related
     person(s) and/or device(s) for a specific date/time. This may result in one
     or more Encounter(s).
     """
@@ -49,31 +53,40 @@ class Appointment(domainresource.DomainResource):
     )
 
     comment: fhirtypes.String = Field(
-        None,
-        alias="comment",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Additional comments",
+        None, alias="comment", title="Type `String`", description="Additional comments"
+    )
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_comment", title="Extension field for ``comment``."
     )
 
     created: fhirtypes.DateTime = Field(
         None,
         alias="created",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="The date that this appointment was initially created",
+    )
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_created", title="Extension field for ``created``."
     )
 
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Shown on a subject line in a meeting request, or appointment list",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     end: fhirtypes.Instant = Field(
         None,
         alias="end",
-        title="Type `Instant` (represented as `dict` in JSON)",
+        title="Type `Instant`",
         description="When appointment is to conclude",
+    )
+    end__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_end", title="Extension field for ``end``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -86,8 +99,11 @@ class Appointment(domainresource.DomainResource):
     minutesDuration: fhirtypes.PositiveInt = Field(
         None,
         alias="minutesDuration",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="Can be less than start/end (e.g. estimate)",
+    )
+    minutesDuration__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_minutesDuration", title="Extension field for ``minutesDuration``."
     )
 
     participant: ListType[fhirtypes.AppointmentParticipantType] = Field(
@@ -100,15 +116,23 @@ class Appointment(domainresource.DomainResource):
     patientInstruction: fhirtypes.String = Field(
         None,
         alias="patientInstruction",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Detailed information and instructions for the patient",
+    )
+    patientInstruction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_patientInstruction",
+        title="Extension field for ``patientInstruction``.",
     )
 
     priority: fhirtypes.UnsignedInt = Field(
         None,
         alias="priority",
-        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        title="Type `UnsignedInt`",
         description="Used to make informed decisions if needing to re-prioritize",
+    )
+    priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_priority", title="Extension field for ``priority``."
     )
 
     reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -179,18 +203,24 @@ class Appointment(domainresource.DomainResource):
     start: fhirtypes.Instant = Field(
         None,
         alias="start",
-        title="Type `Instant` (represented as `dict` in JSON)",
+        title="Type `Instant`",
         description="When appointment is to take place",
+    )
+    start__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_start", title="Extension field for ``start``."
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "proposed | pending | booked | arrived | fulfilled | cancelled | noshow"
             " | entered-in-error | checked-in | waitlist"
         ),
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     supportingInformation: ListType[fhirtypes.ReferenceType] = Field(
@@ -205,7 +235,11 @@ class Appointment(domainresource.DomainResource):
 
 
 class AppointmentParticipant(backboneelement.BackboneElement):
-    """ Participants involved in appointment.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Participants involved in appointment.
     List of participants involved in the appointment.
     """
 
@@ -232,15 +266,21 @@ class AppointmentParticipant(backboneelement.BackboneElement):
     required: fhirtypes.Code = Field(
         None,
         alias="required",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="required | optional | information-only",
+    )
+    required__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_required", title="Extension field for ``required``."
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="accepted | declined | tentative | needs-action",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     type: ListType[fhirtypes.CodeableConceptType] = Field(

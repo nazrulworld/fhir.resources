@@ -8,6 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 from typing import Any, Dict
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field, root_validator
 
@@ -15,7 +16,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class PlanDefinition(domainresource.DomainResource):
-    """ The definition of a plan for a series of actions, independent of any
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The definition of a plan for a series of actions, independent of any
     specific patient or context.
     This resource allows for the definition of various types of plans as a
     sharable, consumable, and executable artifact. The resource is general
@@ -35,8 +40,11 @@ class PlanDefinition(domainresource.DomainResource):
     approvalDate: fhirtypes.Date = Field(
         None,
         alias="approvalDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="When the plan definition was approved by publisher",
+    )
+    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_approvalDate", title="Extension field for ``approvalDate``."
     )
 
     contact: ListType[fhirtypes.ContactDetailType] = Field(
@@ -56,22 +64,31 @@ class PlanDefinition(domainresource.DomainResource):
     copyright: fhirtypes.Markdown = Field(
         None,
         alias="copyright",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Use and/or publishing restrictions",
+    )
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
     date: fhirtypes.DateTime = Field(
         None,
         alias="date",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Date this was last changed",
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Natural language description of the plan definition",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     effectivePeriod: fhirtypes.PeriodType = Field(
@@ -86,6 +103,9 @@ class PlanDefinition(domainresource.DomainResource):
         alias="experimental",
         title="Type `bool`",
         description="For testing purposes, not real usage",
+    )
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_experimental", title="Extension field for ``experimental``."
     )
 
     goal: ListType[fhirtypes.PlanDefinitionGoalType] = Field(
@@ -112,8 +132,11 @@ class PlanDefinition(domainresource.DomainResource):
     lastReviewDate: fhirtypes.Date = Field(
         None,
         alias="lastReviewDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="When the plan definition was last reviewed",
+    )
+    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
     )
 
     library: ListType[fhirtypes.ReferenceType] = Field(
@@ -129,22 +152,31 @@ class PlanDefinition(domainresource.DomainResource):
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for this plan definition (computer friendly)",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     publisher: fhirtypes.String = Field(
         None,
         alias="publisher",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name of the publisher (organization or individual)",
+    )
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
     purpose: fhirtypes.Markdown = Field(
         None,
         alias="purpose",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Why this plan definition is defined",
+    )
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
     relatedArtifact: ListType[fhirtypes.RelatedArtifactType] = Field(
@@ -157,15 +189,21 @@ class PlanDefinition(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="draft | active | retired | unknown",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for this plan definition (human friendly)",
+    )
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_title", title="Extension field for ``title``."
     )
 
     topic: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -185,15 +223,21 @@ class PlanDefinition(domainresource.DomainResource):
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Logical URI to reference this plan definition (globally unique)",
+    )
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_url", title="Extension field for ``url``."
     )
 
     usage: fhirtypes.String = Field(
         None,
         alias="usage",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Describes the clinical usage of the asset",
+    )
+    usage__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_usage", title="Extension field for ``usage``."
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -206,13 +250,20 @@ class PlanDefinition(domainresource.DomainResource):
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Business version of the plan definition",
+    )
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_version", title="Extension field for ``version``."
     )
 
 
 class PlanDefinitionAction(backboneelement.BackboneElement):
-    """ Action defined by the plan.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Action defined by the plan.
     An action to be taken as part of the plan.
     """
 
@@ -228,8 +279,13 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
     cardinalityBehavior: fhirtypes.Code = Field(
         None,
         alias="cardinalityBehavior",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="single | multiple",
+    )
+    cardinalityBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_cardinalityBehavior",
+        title="Extension field for ``cardinalityBehavior``.",
     )
 
     code: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -262,8 +318,11 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Short description of the action",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     documentation: ListType[fhirtypes.RelatedArtifactType] = Field(
@@ -286,15 +345,23 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
     goalId: ListType[fhirtypes.Id] = Field(
         None,
         alias="goalId",
-        title="List of `Id` items (represented as `dict` in JSON)",
+        title="List of `Id` items",
         description="What goals this action supports",
+    )
+    goalId__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_goalId", title="Extension field for ``goalId``."
     )
 
     groupingBehavior: fhirtypes.Code = Field(
         None,
         alias="groupingBehavior",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="visual-group | logical-group | sentence-group",
+    )
+    groupingBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_groupingBehavior",
+        title="Extension field for ``groupingBehavior``.",
     )
 
     input: ListType[fhirtypes.DataRequirementType] = Field(
@@ -307,8 +374,11 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
     label: fhirtypes.String = Field(
         None,
         alias="label",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="User-visible label for the action (e.g. 1. or A.)",
+    )
+    label__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_label", title="Extension field for ``label``."
     )
 
     output: ListType[fhirtypes.DataRequirementType] = Field(
@@ -329,10 +399,12 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
     )
 
     precheckBehavior: fhirtypes.Code = Field(
+        None, alias="precheckBehavior", title="Type `Code`", description="yes | no"
+    )
+    precheckBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
-        alias="precheckBehavior",
-        title="Type `Code` (represented as `dict` in JSON)",
-        description="yes | no",
+        alias="_precheckBehavior",
+        title="Extension field for ``precheckBehavior``.",
     )
 
     reason: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -355,34 +427,50 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
     requiredBehavior: fhirtypes.Code = Field(
         None,
         alias="requiredBehavior",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="must | could | must-unless-documented",
+    )
+    requiredBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_requiredBehavior",
+        title="Extension field for ``requiredBehavior``.",
     )
 
     selectionBehavior: fhirtypes.Code = Field(
         None,
         alias="selectionBehavior",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="any | all | all-or-none | exactly-one | at-most-one | one-or-more",
+    )
+    selectionBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_selectionBehavior",
+        title="Extension field for ``selectionBehavior``.",
     )
 
     textEquivalent: fhirtypes.String = Field(
         None,
         alias="textEquivalent",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description=(
             "Static text equivalent of the action, used if the dynamic aspects "
             "cannot be interpreted by the receiving system"
         ),
     )
+    textEquivalent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_textEquivalent", title="Extension field for ``textEquivalent``."
+    )
 
     timingDateTime: fhirtypes.DateTime = Field(
         None,
         alias="timingDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When the action should take place",
         one_of_many="timing",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    timingDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_timingDateTime", title="Extension field for ``timingDateTime``."
     )
 
     timingDuration: fhirtypes.DurationType = Field(
@@ -422,10 +510,10 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
     )
 
     title: fhirtypes.String = Field(
-        None,
-        alias="title",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="User-visible title",
+        None, alias="title", title="Type `String`", description="User-visible title"
+    )
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_title", title="Extension field for ``title``."
     )
 
     transform: fhirtypes.ReferenceType = Field(
@@ -498,7 +586,11 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
 
 
 class PlanDefinitionActionCondition(backboneelement.BackboneElement):
-    """ Whether or not the action is applicable.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Whether or not the action is applicable.
     An expression that describes applicability criteria, or start/stop
     conditions for the action.
     """
@@ -508,34 +600,50 @@ class PlanDefinitionActionCondition(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Natural language description of the condition",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     expression: fhirtypes.String = Field(
         None,
         alias="expression",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Boolean-valued expression",
+    )
+    expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_expression", title="Extension field for ``expression``."
     )
 
     kind: fhirtypes.Code = Field(
         ...,
         alias="kind",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="applicability | start | stop",
+    )
+    kind__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_kind", title="Extension field for ``kind``."
     )
 
     language: fhirtypes.String = Field(
         None,
         alias="language",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Language of the expression",
+    )
+    language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_language", title="Extension field for ``language``."
     )
 
 
 class PlanDefinitionActionDynamicValue(backboneelement.BackboneElement):
-    """ Dynamic aspects of the definition.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Dynamic aspects of the definition.
     Customizations that should be applied to the statically defined resource.
     For example, if the dosage of a medication must be computed based on the
     patient's weight, a customization would be used to specify an expression
@@ -548,34 +656,50 @@ class PlanDefinitionActionDynamicValue(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Natural language description of the dynamic value",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     expression: fhirtypes.String = Field(
         None,
         alias="expression",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="An expression that provides the dynamic value for the customization",
+    )
+    expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_expression", title="Extension field for ``expression``."
     )
 
     language: fhirtypes.String = Field(
         None,
         alias="language",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Language of the expression",
+    )
+    language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_language", title="Extension field for ``language``."
     )
 
     path: fhirtypes.String = Field(
         None,
         alias="path",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="The path to the element to be set dynamically",
+    )
+    path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_path", title="Extension field for ``path``."
     )
 
 
 class PlanDefinitionActionParticipant(backboneelement.BackboneElement):
-    """ Who should participate in the action.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Who should participate in the action.
     Indicates who should participate in performing the action described.
     """
 
@@ -591,13 +715,20 @@ class PlanDefinitionActionParticipant(backboneelement.BackboneElement):
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="patient | practitioner | related-person",
+    )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
     )
 
 
 class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
-    """ Relationship to another action.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Relationship to another action.
     A relationship to another action such as "before" or "30-60 minutes after
     start of".
     """
@@ -607,8 +738,11 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
     actionId: fhirtypes.Id = Field(
         ...,
         alias="actionId",
-        title="Type `Id` (represented as `dict` in JSON)",
+        title="Type `Id`",
         description="What action is this related to",
+    )
+    actionId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_actionId", title="Extension field for ``actionId``."
     )
 
     offsetDuration: fhirtypes.DurationType = Field(
@@ -632,11 +766,14 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
     relationship: fhirtypes.Code = Field(
         ...,
         alias="relationship",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "before-start | before | before-end | concurrent-with-start | "
             "concurrent | concurrent-with-end | after-start | after | after-end"
         ),
+    )
+    relationship__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_relationship", title="Extension field for ``relationship``."
     )
 
     @root_validator(pre=True)
@@ -677,7 +814,11 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
 
 
 class PlanDefinitionGoal(backboneelement.BackboneElement):
-    """ What the plan is trying to accomplish.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    What the plan is trying to accomplish.
     Goals that describe what the activities within the plan are intended to
     achieve. For example, weight loss, restoring an activity of daily living,
     obtaining herd immunity via immunization, meeting a process improvement
@@ -740,7 +881,11 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
 
 
 class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
-    """ Target outcome for the goal.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Target outcome for the goal.
     Indicates what should be done and within what timeframe.
     """
 

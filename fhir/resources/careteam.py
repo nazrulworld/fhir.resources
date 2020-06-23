@@ -14,7 +14,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class CareTeam(domainresource.DomainResource):
-    """ Planned participants in the coordination and delivery of care for a patient
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Planned participants in the coordination and delivery of care for a patient
     or group.
     The Care Team includes all the people and organizations who plan to
     participate in the coordination and delivery of care for a patient.
@@ -59,8 +63,11 @@ class CareTeam(domainresource.DomainResource):
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name of the team, such as crisis assessment team",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
@@ -104,8 +111,11 @@ class CareTeam(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="proposed | active | suspended | inactive | entered-in-error",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -127,7 +137,11 @@ class CareTeam(domainresource.DomainResource):
 
 
 class CareTeamParticipant(backboneelement.BackboneElement):
-    """ Members of the team.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Members of the team.
     Identifies all people and organizations who are expected to be involved in
     the care team.
     """

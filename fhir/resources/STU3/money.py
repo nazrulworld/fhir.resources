@@ -12,7 +12,11 @@ from . import quantity
 
 
 class Money(quantity.Quantity):
-    """ An amount of economic utility in some recognized currency.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    An amount of economic utility in some recognized currency.
     """
 
     resource_type = Field("Money", const=True)

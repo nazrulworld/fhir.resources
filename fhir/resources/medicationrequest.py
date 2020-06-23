@@ -8,6 +8,7 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 from typing import Any, Dict
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field, root_validator
 
@@ -15,7 +16,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class MedicationRequest(domainresource.DomainResource):
-    """ Ordering of medication for patient or group.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Ordering of medication for patient or group.
     An order or request for both supply of the medication and the instructions
     for administration of the medication to a patient. The resource is called
     "MedicationRequest" rather than "MedicationPrescription" or
@@ -29,8 +34,11 @@ class MedicationRequest(domainresource.DomainResource):
     authoredOn: fhirtypes.DateTime = Field(
         None,
         alias="authoredOn",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When request was initially authored",
+    )
+    authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_authoredOn", title="Extension field for ``authoredOn``."
     )
 
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
@@ -83,6 +91,9 @@ class MedicationRequest(domainresource.DomainResource):
         title="Type `bool`",
         description="True if request is prohibiting action",
     )
+    doNotPerform__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_doNotPerform", title="Extension field for ``doNotPerform``."
+    )
 
     dosageInstruction: ListType[fhirtypes.DosageType] = Field(
         None,
@@ -128,15 +139,27 @@ class MedicationRequest(domainresource.DomainResource):
     instantiatesCanonical: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="instantiatesCanonical",
-        title="List of `Canonical` items (represented as `dict` in JSON)",
+        title="List of `Canonical` items",
         description="Instantiates FHIR protocol or definition",
+    )
+    instantiatesCanonical__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(
+        None,
+        alias="_instantiatesCanonical",
+        title="Extension field for ``instantiatesCanonical``.",
     )
 
     instantiatesUri: ListType[fhirtypes.Uri] = Field(
         None,
         alias="instantiatesUri",
-        title="List of `Uri` items (represented as `dict` in JSON)",
+        title="List of `Uri` items",
         description="Instantiates external protocol or definition",
+    )
+    instantiatesUri__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(
+        None, alias="_instantiatesUri", title="Extension field for ``instantiatesUri``."
     )
 
     insurance: ListType[fhirtypes.ReferenceType] = Field(
@@ -152,11 +175,14 @@ class MedicationRequest(domainresource.DomainResource):
     intent: fhirtypes.Code = Field(
         ...,
         alias="intent",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "proposal | plan | order | original-order | reflex-order | filler-order"
             " | instance-order | option"
         ),
+    )
+    intent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_intent", title="Extension field for ``intent``."
     )
 
     medicationCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -218,8 +244,11 @@ class MedicationRequest(domainresource.DomainResource):
     priority: fhirtypes.Code = Field(
         None,
         alias="priority",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="routine | urgent | asap | stat",
+    )
+    priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_priority", title="Extension field for ``priority``."
     )
 
     reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -260,6 +289,9 @@ class MedicationRequest(domainresource.DomainResource):
         one_of_many="reported",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
+    reportedBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_reportedBoolean", title="Extension field for ``reportedBoolean``."
+    )
 
     reportedReference: fhirtypes.ReferenceType = Field(
         None,
@@ -287,11 +319,14 @@ class MedicationRequest(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "active | on-hold | cancelled | completed | entered-in-error | stopped "
             "| draft | unknown"
         ),
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     statusReason: fhirtypes.CodeableConceptType = Field(
@@ -369,7 +404,11 @@ class MedicationRequest(domainresource.DomainResource):
 
 
 class MedicationRequestDispenseRequest(backboneelement.BackboneElement):
-    """ Medication supply authorization.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Medication supply authorization.
     Indicates the specific details for the dispense or medication supply part
     of a medication request (also known as a Medication Prescription or
     Medication Order).  Note that this information is not always sent with the
@@ -407,8 +446,13 @@ class MedicationRequestDispenseRequest(backboneelement.BackboneElement):
     numberOfRepeatsAllowed: fhirtypes.UnsignedInt = Field(
         None,
         alias="numberOfRepeatsAllowed",
-        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        title="Type `UnsignedInt`",
         description="Number of refills authorized",
+    )
+    numberOfRepeatsAllowed__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_numberOfRepeatsAllowed",
+        title="Extension field for ``numberOfRepeatsAllowed``.",
     )
 
     performer: fhirtypes.ReferenceType = Field(
@@ -437,7 +481,11 @@ class MedicationRequestDispenseRequest(backboneelement.BackboneElement):
 
 
 class MedicationRequestDispenseRequestInitialFill(backboneelement.BackboneElement):
-    """ First fill details.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    First fill details.
     Indicates the quantity or duration for the first dispense of the
     medication.
     """
@@ -460,7 +508,11 @@ class MedicationRequestDispenseRequestInitialFill(backboneelement.BackboneElemen
 
 
 class MedicationRequestSubstitution(backboneelement.BackboneElement):
-    """ Any restrictions on medication substitution.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Any restrictions on medication substitution.
     Indicates whether or not substitution can or should be part of the
     dispense. In some cases, substitution must happen, in other cases
     substitution must not happen. This block explains the prescriber's intent.
@@ -476,6 +528,9 @@ class MedicationRequestSubstitution(backboneelement.BackboneElement):
         description="Whether substitution is allowed or not",
         one_of_many="allowed",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    allowedBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_allowedBoolean", title="Extension field for ``allowedBoolean``."
     )
 
     allowedCodeableConcept: fhirtypes.CodeableConceptType = Field(

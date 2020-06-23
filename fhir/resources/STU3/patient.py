@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Patient(domainresource.DomainResource):
-    """ Information about an individual or animal receiving health care services.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Information about an individual or animal receiving health care services.
     Demographics and other administrative information about an individual or
     animal receiving care or other health-related services.
     """
@@ -27,6 +31,9 @@ class Patient(domainresource.DomainResource):
         alias="active",
         title="Type `bool`",
         description="Whether this patient\u0027s record is in active use",
+    )
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_active", title="Extension field for ``active``."
     )
 
     address: ListType[fhirtypes.AddressType] = Field(
@@ -46,8 +53,11 @@ class Patient(domainresource.DomainResource):
     birthDate: fhirtypes.Date = Field(
         None,
         alias="birthDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="The date of birth for the individual",
+    )
+    birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_birthDate", title="Extension field for ``birthDate``."
     )
 
     communication: ListType[fhirtypes.PatientCommunicationType] = Field(
@@ -75,21 +85,32 @@ class Patient(domainresource.DomainResource):
         one_of_many="deceased",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
+    deceasedBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_deceasedBoolean", title="Extension field for ``deceasedBoolean``."
+    )
 
     deceasedDateTime: fhirtypes.DateTime = Field(
         None,
         alias="deceasedDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Indicates if the individual is deceased or not",
         one_of_many="deceased",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    deceasedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_deceasedDateTime",
+        title="Extension field for ``deceasedDateTime``.",
     )
 
     gender: fhirtypes.Code = Field(
         None,
         alias="gender",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="male | female | other | unknown",
+    )
+    gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_gender", title="Extension field for ``gender``."
     )
 
     generalPractitioner: ListType[fhirtypes.ReferenceType] = Field(
@@ -141,14 +162,24 @@ class Patient(domainresource.DomainResource):
         one_of_many="multipleBirth",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
+    multipleBirthBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_multipleBirthBoolean",
+        title="Extension field for ``multipleBirthBoolean``.",
+    )
 
     multipleBirthInteger: fhirtypes.Integer = Field(
         None,
         alias="multipleBirthInteger",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="Whether patient is part of a multiple birth",
         one_of_many="multipleBirth",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    multipleBirthInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_multipleBirthInteger",
+        title="Extension field for ``multipleBirthInteger``.",
     )
 
     name: ListType[fhirtypes.HumanNameType] = Field(
@@ -213,7 +244,11 @@ class Patient(domainresource.DomainResource):
 
 
 class PatientAnimal(backboneelement.BackboneElement):
-    """ This patient is known to be an animal (non-human).
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    This patient is known to be an animal (non-human).
     This patient is known to be an animal.
     """
 
@@ -242,7 +277,11 @@ class PatientAnimal(backboneelement.BackboneElement):
 
 
 class PatientCommunication(backboneelement.BackboneElement):
-    """ A list of Languages which may be used to communicate with the patient about
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A list of Languages which may be used to communicate with the patient about
     his or her health.
     Languages which may be used to communicate with the patient about his or
     her health.
@@ -266,10 +305,17 @@ class PatientCommunication(backboneelement.BackboneElement):
         title="Type `bool`",
         description="Language preference indicator",
     )
+    preferred__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_preferred", title="Extension field for ``preferred``."
+    )
 
 
 class PatientContact(backboneelement.BackboneElement):
-    """ A contact party (e.g. guardian, partner, friend) for the patient.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A contact party (e.g. guardian, partner, friend) for the patient.
     """
 
     resource_type = Field("PatientContact", const=True)
@@ -284,8 +330,11 @@ class PatientContact(backboneelement.BackboneElement):
     gender: fhirtypes.Code = Field(
         None,
         alias="gender",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="male | female | other | unknown",
+    )
+    gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_gender", title="Extension field for ``gender``."
     )
 
     name: fhirtypes.HumanNameType = Field(
@@ -331,7 +380,11 @@ class PatientContact(backboneelement.BackboneElement):
 
 
 class PatientLink(backboneelement.BackboneElement):
-    """ Link to another patient resource that concerns the same actual person.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Link to another patient resource that concerns the same actual person.
     Link to another patient resource that concerns the same actual patient.
     """
 
@@ -350,6 +403,9 @@ class PatientLink(backboneelement.BackboneElement):
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="replaced-by | replaces | refer | seealso - type of link",
+    )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
     )

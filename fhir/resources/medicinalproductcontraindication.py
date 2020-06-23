@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class MedicinalProductContraindication(domainresource.DomainResource):
-    """ MedicinalProductContraindication.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    MedicinalProductContraindication.
     The clinical particulars - indications, contraindications etc. of a
     medicinal product, including for regulatory purposes.
     """
@@ -90,7 +94,11 @@ class MedicinalProductContraindication(domainresource.DomainResource):
 
 
 class MedicinalProductContraindicationOtherTherapy(backboneelement.BackboneElement):
-    """ Information about the use of the medicinal product in relation to other
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Information about the use of the medicinal product in relation to other
     therapies described as part of the indication.
     """
 

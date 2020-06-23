@@ -12,7 +12,11 @@ from . import backboneelement, fhirtypes
 
 
 class MarketingStatus(backboneelement.BackboneElement):
-    """ The marketing status describes the date when a medicinal product is
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The marketing status describes the date when a medicinal product is
     actually put on the market or the date as of which it is no longer
     available.
     """
@@ -61,7 +65,7 @@ class MarketingStatus(backboneelement.BackboneElement):
     restoreDate: fhirtypes.DateTime = Field(
         None,
         alias="restoreDate",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description=(
             "The date when the Medicinal Product is placed on the market by the "
             "Marketing Authorisation Holder (or where applicable, the "
@@ -71,6 +75,9 @@ class MarketingStatus(backboneelement.BackboneElement):
             "refers to the release of the Medicinal Product into the distribution "
             "chain"
         ),
+    )
+    restoreDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_restoreDate", title="Extension field for ``restoreDate``."
     )
 
     status: fhirtypes.CodeableConceptType = Field(

@@ -7,6 +7,7 @@ Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field
 
@@ -14,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ExampleScenario(domainresource.DomainResource):
-    """ Example of workflow instance.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Example of workflow instance.
     """
 
     resource_type = Field("ExampleScenario", const=True)
@@ -36,15 +41,18 @@ class ExampleScenario(domainresource.DomainResource):
     copyright: fhirtypes.Markdown = Field(
         None,
         alias="copyright",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Use and/or publishing restrictions",
+    )
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
     date: fhirtypes.DateTime = Field(
-        None,
-        alias="date",
-        title="Type `DateTime` (represented as `dict` in JSON)",
-        description="Date last changed",
+        None, alias="date", title="Type `DateTime`", description="Date last changed"
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     experimental: bool = Field(
@@ -52,6 +60,9 @@ class ExampleScenario(domainresource.DomainResource):
         alias="experimental",
         title="Type `bool`",
         description="For testing purposes, not real usage",
+    )
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_experimental", title="Extension field for ``experimental``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -80,8 +91,11 @@ class ExampleScenario(domainresource.DomainResource):
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for this example scenario (computer friendly)",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     process: ListType[fhirtypes.ExampleScenarioProcessType] = Field(
@@ -94,32 +108,44 @@ class ExampleScenario(domainresource.DomainResource):
     publisher: fhirtypes.String = Field(
         None,
         alias="publisher",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name of the publisher (organization or individual)",
+    )
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
     purpose: fhirtypes.Markdown = Field(
         None,
         alias="purpose",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="The purpose of the example, e.g. to illustrate a scenario",
+    )
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="draft | active | retired | unknown",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description=(
             "Canonical identifier for this example scenario, represented as a URI "
             "(globally unique)"
         ),
+    )
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_url", title="Extension field for ``url``."
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -132,23 +158,30 @@ class ExampleScenario(domainresource.DomainResource):
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Business version of the example scenario",
+    )
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_version", title="Extension field for ``version``."
     )
 
     workflow: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="workflow",
-        title=(
-            "List of `Canonical` items referencing `ExampleScenario` (represented "
-            "as `dict` in JSON)"
-        ),
+        title="List of `Canonical` items referencing `ExampleScenario`",
         description="Another nested workflow",
+    )
+    workflow__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_workflow", title="Extension field for ``workflow``."
     )
 
 
 class ExampleScenarioActor(backboneelement.BackboneElement):
-    """ Actor participating in the resource.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Actor participating in the resource.
     """
 
     resource_type = Field("ExampleScenarioActor", const=True)
@@ -156,34 +189,47 @@ class ExampleScenarioActor(backboneelement.BackboneElement):
     actorId: fhirtypes.String = Field(
         ...,
         alias="actorId",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="ID or acronym of the actor",
+    )
+    actorId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_actorId", title="Extension field for ``actorId``."
     )
 
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="The description of the actor",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="The name of the actor as shown in the page",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     type: fhirtypes.Code = Field(
-        ...,
-        alias="type",
-        title="Type `Code` (represented as `dict` in JSON)",
-        description="person | entity",
+        ..., alias="type", title="Type `Code`", description="person | entity"
+    )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
     )
 
 
 class ExampleScenarioInstance(backboneelement.BackboneElement):
-    """ Each resource and each version that is present in the workflow.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Each resource and each version that is present in the workflow.
     """
 
     resource_type = Field("ExampleScenarioInstance", const=True)
@@ -203,29 +249,41 @@ class ExampleScenarioInstance(backboneelement.BackboneElement):
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Human-friendly description of the resource instance",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="A short name for the resource instance",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     resourceId: fhirtypes.String = Field(
         ...,
         alias="resourceId",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="The id of the resource for referencing",
+    )
+    resourceId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_resourceId", title="Extension field for ``resourceId``."
     )
 
     resourceType: fhirtypes.Code = Field(
         ...,
         alias="resourceType",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="The type of the resource",
+    )
+    resourceType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_resourceType", title="Extension field for ``resourceType``."
     )
 
     version: ListType[fhirtypes.ExampleScenarioInstanceVersionType] = Field(
@@ -240,7 +298,11 @@ class ExampleScenarioInstance(backboneelement.BackboneElement):
 
 
 class ExampleScenarioInstanceContainedInstance(backboneelement.BackboneElement):
-    """ Resources contained in the instance.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Resources contained in the instance.
     Resources contained in the instance (e.g. the observations contained in a
     bundle).
     """
@@ -250,20 +312,30 @@ class ExampleScenarioInstanceContainedInstance(backboneelement.BackboneElement):
     resourceId: fhirtypes.String = Field(
         ...,
         alias="resourceId",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Each resource contained in the instance",
+    )
+    resourceId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_resourceId", title="Extension field for ``resourceId``."
     )
 
     versionId: fhirtypes.String = Field(
         None,
         alias="versionId",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="A specific version of a resource contained in the instance",
+    )
+    versionId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_versionId", title="Extension field for ``versionId``."
     )
 
 
 class ExampleScenarioInstanceVersion(backboneelement.BackboneElement):
-    """ A specific version of the resource.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A specific version of the resource.
     """
 
     resource_type = Field("ExampleScenarioInstanceVersion", const=True)
@@ -271,20 +343,30 @@ class ExampleScenarioInstanceVersion(backboneelement.BackboneElement):
     description: fhirtypes.Markdown = Field(
         ...,
         alias="description",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="The description of the resource version",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     versionId: fhirtypes.String = Field(
         ...,
         alias="versionId",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="The identifier of a specific version of a resource",
+    )
+    versionId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_versionId", title="Extension field for ``versionId``."
     )
 
 
 class ExampleScenarioProcess(backboneelement.BackboneElement):
-    """ Each major process - a group of operations.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Each major process - a group of operations.
     """
 
     resource_type = Field("ExampleScenarioProcess", const=True)
@@ -292,22 +374,31 @@ class ExampleScenarioProcess(backboneelement.BackboneElement):
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="A longer description of the group of operations",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     postConditions: fhirtypes.Markdown = Field(
         None,
         alias="postConditions",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Description of final status after the process ends",
+    )
+    postConditions__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_postConditions", title="Extension field for ``postConditions``."
     )
 
     preConditions: fhirtypes.Markdown = Field(
         None,
         alias="preConditions",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Description of initial status before the process starts",
+    )
+    preConditions__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_preConditions", title="Extension field for ``preConditions``."
     )
 
     step: ListType[fhirtypes.ExampleScenarioProcessStepType] = Field(
@@ -323,13 +414,20 @@ class ExampleScenarioProcess(backboneelement.BackboneElement):
     title: fhirtypes.String = Field(
         ...,
         alias="title",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="The diagram title of the group of operations",
+    )
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_title", title="Extension field for ``title``."
     )
 
 
 class ExampleScenarioProcessStep(backboneelement.BackboneElement):
-    """ Each step of the process.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Each step of the process.
     """
 
     resource_type = Field("ExampleScenarioProcessStep", const=True)
@@ -360,6 +458,9 @@ class ExampleScenarioProcessStep(backboneelement.BackboneElement):
         title="Type `bool`",
         description="If there is a pause in the flow",
     )
+    pause__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_pause", title="Extension field for ``pause``."
+    )
 
     process: ListType[fhirtypes.ExampleScenarioProcessType] = Field(
         None,
@@ -370,7 +471,11 @@ class ExampleScenarioProcessStep(backboneelement.BackboneElement):
 
 
 class ExampleScenarioProcessStepAlternative(backboneelement.BackboneElement):
-    """ Alternate non-typical step action.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Alternate non-typical step action.
     Indicates an alternative step that can be taken instead of the operations
     on the base step in exceptional/atypical circumstances.
     """
@@ -380,8 +485,11 @@ class ExampleScenarioProcessStepAlternative(backboneelement.BackboneElement):
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="A human-readable description of each option",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     step: ListType[fhirtypes.ExampleScenarioProcessStepType] = Field(
@@ -395,15 +503,19 @@ class ExampleScenarioProcessStepAlternative(backboneelement.BackboneElement):
     )
 
     title: fhirtypes.String = Field(
-        ...,
-        alias="title",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Label for alternative",
+        ..., alias="title", title="Type `String`", description="Label for alternative"
+    )
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_title", title="Extension field for ``title``."
     )
 
 
 class ExampleScenarioProcessStepOperation(backboneelement.BackboneElement):
-    """ Each interaction or action.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Each interaction or action.
     """
 
     resource_type = Field("ExampleScenarioProcessStepOperation", const=True)
@@ -411,15 +523,21 @@ class ExampleScenarioProcessStepOperation(backboneelement.BackboneElement):
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="A comment to be inserted in the diagram",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     initiator: fhirtypes.String = Field(
         None,
         alias="initiator",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Who starts the transaction",
+    )
+    initiator__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_initiator", title="Extension field for ``initiator``."
     )
 
     initiatorActive: bool = Field(
@@ -428,26 +546,38 @@ class ExampleScenarioProcessStepOperation(backboneelement.BackboneElement):
         title="Type `bool`",
         description="Whether the initiator is deactivated right after the transaction",
     )
+    initiatorActive__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_initiatorActive", title="Extension field for ``initiatorActive``."
+    )
 
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="The human-friendly name of the interaction",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     number: fhirtypes.String = Field(
         ...,
         alias="number",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="The sequential number of the interaction",
+    )
+    number__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_number", title="Extension field for ``number``."
     )
 
     receiver: fhirtypes.String = Field(
         None,
         alias="receiver",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Who receives the transaction",
+    )
+    receiver__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_receiver", title="Extension field for ``receiver``."
     )
 
     receiverActive: bool = Field(
@@ -455,6 +585,9 @@ class ExampleScenarioProcessStepOperation(backboneelement.BackboneElement):
         alias="receiverActive",
         title="Type `bool`",
         description="Whether the receiver is deactivated right after the transaction",
+    )
+    receiverActive__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_receiverActive", title="Extension field for ``receiverActive``."
     )
 
     request: fhirtypes.ExampleScenarioInstanceContainedInstanceType = Field(
@@ -480,6 +613,9 @@ class ExampleScenarioProcessStepOperation(backboneelement.BackboneElement):
     type: fhirtypes.String = Field(
         None,
         alias="type",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="The type of operation - CRUD",
+    )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
     )

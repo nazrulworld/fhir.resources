@@ -14,7 +14,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class MedicinalProductPackaged(domainresource.DomainResource):
-    """ A medicinal product in a container or package.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A medicinal product in a container or package.
     """
 
     resource_type = Field("MedicinalProductPackaged", const=True)
@@ -34,8 +38,11 @@ class MedicinalProductPackaged(domainresource.DomainResource):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Textual description",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -107,7 +114,11 @@ class MedicinalProductPackaged(domainresource.DomainResource):
 
 
 class MedicinalProductPackagedBatchIdentifier(backboneelement.BackboneElement):
-    """ Batch numbering.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Batch numbering.
     """
 
     resource_type = Field("MedicinalProductPackagedBatchIdentifier", const=True)
@@ -131,7 +142,11 @@ class MedicinalProductPackagedBatchIdentifier(backboneelement.BackboneElement):
 
 
 class MedicinalProductPackagedPackageItem(backboneelement.BackboneElement):
-    """ A packaging item, as a contained for medicine, possibly with other
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A packaging item, as a contained for medicine, possibly with other
     packaging items within.
     """
 

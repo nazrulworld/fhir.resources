@@ -7,6 +7,7 @@ Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field
 
@@ -14,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class SubstancePolymer(domainresource.DomainResource):
-    """ Todo.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Todo.
     """
 
     resource_type = Field("SubstancePolymer", const=True)
@@ -41,10 +46,12 @@ class SubstancePolymer(domainresource.DomainResource):
     )
 
     modification: ListType[fhirtypes.String] = Field(
-        None,
-        alias="modification",
-        title="List of `String` items (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="modification", title="List of `String` items", description="Todo"
+    )
+    modification__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(
+        None, alias="_modification", title="Extension field for ``modification``."
     )
 
     monomerSet: ListType[fhirtypes.SubstancePolymerMonomerSetType] = Field(
@@ -66,7 +73,11 @@ class SubstancePolymer(domainresource.DomainResource):
 
 
 class SubstancePolymerMonomerSet(backboneelement.BackboneElement):
-    """ Todo.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Todo.
     """
 
     resource_type = Field("SubstancePolymerMonomerSet", const=True)
@@ -92,7 +103,11 @@ class SubstancePolymerMonomerSet(backboneelement.BackboneElement):
 
 
 class SubstancePolymerMonomerSetStartingMaterial(backboneelement.BackboneElement):
-    """ Todo.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Todo.
     """
 
     resource_type = Field("SubstancePolymerMonomerSetStartingMaterial", const=True)
@@ -106,6 +121,9 @@ class SubstancePolymerMonomerSetStartingMaterial(backboneelement.BackboneElement
 
     isDefining: bool = Field(
         None, alias="isDefining", title="Type `bool`", description="Todo"
+    )
+    isDefining__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_isDefining", title="Extension field for ``isDefining``."
     )
 
     material: fhirtypes.CodeableConceptType = Field(
@@ -124,23 +142,29 @@ class SubstancePolymerMonomerSetStartingMaterial(backboneelement.BackboneElement
 
 
 class SubstancePolymerRepeat(backboneelement.BackboneElement):
-    """ Todo.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Todo.
     """
 
     resource_type = Field("SubstancePolymerRepeat", const=True)
 
     averageMolecularFormula: fhirtypes.String = Field(
+        None, alias="averageMolecularFormula", title="Type `String`", description="Todo"
+    )
+    averageMolecularFormula__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
-        alias="averageMolecularFormula",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Todo",
+        alias="_averageMolecularFormula",
+        title="Extension field for ``averageMolecularFormula``.",
     )
 
     numberOfUnits: fhirtypes.Integer = Field(
-        None,
-        alias="numberOfUnits",
-        title="Type `Integer` (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="numberOfUnits", title="Type `Integer`", description="Todo"
+    )
+    numberOfUnits__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_numberOfUnits", title="Extension field for ``numberOfUnits``."
     )
 
     repeatUnit: ListType[fhirtypes.SubstancePolymerRepeatRepeatUnitType] = Field(
@@ -162,7 +186,11 @@ class SubstancePolymerRepeat(backboneelement.BackboneElement):
 
 
 class SubstancePolymerRepeatRepeatUnit(backboneelement.BackboneElement):
-    """ Todo.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Todo.
     """
 
     resource_type = Field("SubstancePolymerRepeatRepeatUnit", const=True)
@@ -194,10 +222,10 @@ class SubstancePolymerRepeatRepeatUnit(backboneelement.BackboneElement):
     )
 
     repeatUnit: fhirtypes.String = Field(
-        None,
-        alias="repeatUnit",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="repeatUnit", title="Type `String`", description="Todo"
+    )
+    repeatUnit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_repeatUnit", title="Extension field for ``repeatUnit``."
     )
 
     structuralRepresentation: ListType[
@@ -216,7 +244,11 @@ class SubstancePolymerRepeatRepeatUnit(backboneelement.BackboneElement):
 class SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation(
     backboneelement.BackboneElement
 ):
-    """ Todo.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Todo.
     """
 
     resource_type = Field(
@@ -241,7 +273,11 @@ class SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation(
 class SubstancePolymerRepeatRepeatUnitStructuralRepresentation(
     backboneelement.BackboneElement
 ):
-    """ Todo.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Todo.
     """
 
     resource_type = Field(
@@ -256,10 +292,10 @@ class SubstancePolymerRepeatRepeatUnitStructuralRepresentation(
     )
 
     representation: fhirtypes.String = Field(
-        None,
-        alias="representation",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="representation", title="Type `String`", description="Todo"
+    )
+    representation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_representation", title="Extension field for ``representation``."
     )
 
     type: fhirtypes.CodeableConceptType = Field(

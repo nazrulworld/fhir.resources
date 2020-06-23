@@ -8,6 +8,7 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 from typing import Any, Dict
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field, root_validator
 
@@ -15,7 +16,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class CoverageEligibilityRequest(domainresource.DomainResource):
-    """ CoverageEligibilityRequest resource.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    CoverageEligibilityRequest resource.
     The CoverageEligibilityRequest provides patient and insurance coverage
     information to an insurer for them to respond, in the form of an
     CoverageEligibilityResponse, with information regarding whether the stated
@@ -26,10 +31,10 @@ class CoverageEligibilityRequest(domainresource.DomainResource):
     resource_type = Field("CoverageEligibilityRequest", const=True)
 
     created: fhirtypes.DateTime = Field(
-        ...,
-        alias="created",
-        title="Type `DateTime` (represented as `dict` in JSON)",
-        description="Creation date",
+        ..., alias="created", title="Type `DateTime`", description="Creation date"
+    )
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_created", title="Extension field for ``created``."
     )
 
     enterer: fhirtypes.ReferenceType = Field(
@@ -115,17 +120,23 @@ class CoverageEligibilityRequest(domainresource.DomainResource):
     purpose: ListType[fhirtypes.Code] = Field(
         ...,
         alias="purpose",
-        title="List of `Code` items (represented as `dict` in JSON)",
+        title="List of `Code` items",
         description="auth-requirements | benefits | discovery | validation",
+    )
+    purpose__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
     servicedDate: fhirtypes.Date = Field(
         None,
         alias="servicedDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="Estimated date or dates of service",
         one_of_many="serviced",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    servicedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_servicedDate", title="Extension field for ``servicedDate``."
     )
 
     servicedPeriod: fhirtypes.PeriodType = Field(
@@ -140,8 +151,11 @@ class CoverageEligibilityRequest(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="active | cancelled | draft | entered-in-error",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     supportingInfo: ListType[
@@ -194,7 +208,11 @@ class CoverageEligibilityRequest(domainresource.DomainResource):
 
 
 class CoverageEligibilityRequestInsurance(backboneelement.BackboneElement):
-    """ Patient insurance information.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Patient insurance information.
     Financial instruments for reimbursement for the health care products and
     services.
     """
@@ -204,8 +222,13 @@ class CoverageEligibilityRequestInsurance(backboneelement.BackboneElement):
     businessArrangement: fhirtypes.String = Field(
         None,
         alias="businessArrangement",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Additional provider contract number",
+    )
+    businessArrangement__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_businessArrangement",
+        title="Extension field for ``businessArrangement``.",
     )
 
     coverage: fhirtypes.ReferenceType = Field(
@@ -220,10 +243,17 @@ class CoverageEligibilityRequestInsurance(backboneelement.BackboneElement):
     focal: bool = Field(
         None, alias="focal", title="Type `bool`", description="Applicable coverage"
     )
+    focal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_focal", title="Extension field for ``focal``."
+    )
 
 
 class CoverageEligibilityRequestItem(backboneelement.BackboneElement):
-    """ Item to be evaluated for eligibiity.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Item to be evaluated for eligibiity.
     Service categories or billable services for which benefit details and/or an
     authorization prior to service delivery may be required by the payor.
     """
@@ -301,8 +331,15 @@ class CoverageEligibilityRequestItem(backboneelement.BackboneElement):
     supportingInfoSequence: ListType[fhirtypes.PositiveInt] = Field(
         None,
         alias="supportingInfoSequence",
-        title="List of `PositiveInt` items (represented as `dict` in JSON)",
+        title="List of `PositiveInt` items",
         description="Applicable exception or supporting information",
+    )
+    supportingInfoSequence__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(
+        None,
+        alias="_supportingInfoSequence",
+        title="Extension field for ``supportingInfoSequence``.",
     )
 
     unitPrice: fhirtypes.MoneyType = Field(
@@ -314,7 +351,11 @@ class CoverageEligibilityRequestItem(backboneelement.BackboneElement):
 
 
 class CoverageEligibilityRequestItemDiagnosis(backboneelement.BackboneElement):
-    """ Applicable diagnosis.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Applicable diagnosis.
     Patient diagnosis for which care is sought.
     """
 
@@ -381,7 +422,11 @@ class CoverageEligibilityRequestItemDiagnosis(backboneelement.BackboneElement):
 
 
 class CoverageEligibilityRequestSupportingInfo(backboneelement.BackboneElement):
-    """ Supporting information.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Supporting information.
     Additional information codes regarding exceptions, special considerations,
     the condition, situation, prior or concurrent issues.
     """
@@ -393,6 +438,9 @@ class CoverageEligibilityRequestSupportingInfo(backboneelement.BackboneElement):
         alias="appliesToAll",
         title="Type `bool`",
         description="Applies to all items",
+    )
+    appliesToAll__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_appliesToAll", title="Extension field for ``appliesToAll``."
     )
 
     information: fhirtypes.ReferenceType = Field(
@@ -407,6 +455,9 @@ class CoverageEligibilityRequestSupportingInfo(backboneelement.BackboneElement):
     sequence: fhirtypes.PositiveInt = Field(
         ...,
         alias="sequence",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="Information instance identifier",
+    )
+    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_sequence", title="Extension field for ``sequence``."
     )

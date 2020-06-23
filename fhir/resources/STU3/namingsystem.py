@@ -14,7 +14,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class NamingSystem(domainresource.DomainResource):
-    """ System of unique identification.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    System of unique identification.
     A curated namespace that issues unique symbols within that namespace for
     the identification of concepts, people, devices, etc.  Represents a
     "System" used within the Identifier and Coding data types.
@@ -32,15 +36,21 @@ class NamingSystem(domainresource.DomainResource):
     date: fhirtypes.DateTime = Field(
         ...,
         alias="date",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Date this was last changed",
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Natural language description of the naming system",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -53,22 +63,31 @@ class NamingSystem(domainresource.DomainResource):
     kind: fhirtypes.Code = Field(
         ...,
         alias="kind",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="codesystem | identifier | root",
+    )
+    kind__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_kind", title="Extension field for ``kind``."
     )
 
     name: fhirtypes.String = Field(
         ...,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for this naming system (computer friendly)",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     publisher: fhirtypes.String = Field(
         None,
         alias="publisher",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name of the publisher (organization or individual)",
+    )
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
     replacedBy: fhirtypes.ReferenceType = Field(
@@ -84,15 +103,21 @@ class NamingSystem(domainresource.DomainResource):
     responsible: fhirtypes.String = Field(
         None,
         alias="responsible",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Who maintains system namespace?",
+    )
+    responsible__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_responsible", title="Extension field for ``responsible``."
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="draft | active | retired | unknown",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -110,10 +135,10 @@ class NamingSystem(domainresource.DomainResource):
     )
 
     usage: fhirtypes.String = Field(
-        None,
-        alias="usage",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="How/where is it used",
+        None, alias="usage", title="Type `String`", description="How/where is it used"
+    )
+    usage__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_usage", title="Extension field for ``usage``."
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -125,7 +150,11 @@ class NamingSystem(domainresource.DomainResource):
 
 
 class NamingSystemUniqueId(backboneelement.BackboneElement):
-    """ Unique identifiers used for system.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Unique identifiers used for system.
     Indicates how the system may be identified when referenced in electronic
     exchange.
     """
@@ -135,8 +164,11 @@ class NamingSystemUniqueId(backboneelement.BackboneElement):
     comment: fhirtypes.String = Field(
         None,
         alias="comment",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Notes about identifier usage",
+    )
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_comment", title="Extension field for ``comment``."
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -152,17 +184,20 @@ class NamingSystemUniqueId(backboneelement.BackboneElement):
         title="Type `bool`",
         description="Is this the id that should be used for this type",
     )
+    preferred__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_preferred", title="Extension field for ``preferred``."
+    )
 
     type: fhirtypes.Code = Field(
-        ...,
-        alias="type",
-        title="Type `Code` (represented as `dict` in JSON)",
-        description="oid | uuid | uri | other",
+        ..., alias="type", title="Type `Code`", description="oid | uuid | uri | other"
+    )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
     )
 
     value: fhirtypes.String = Field(
-        ...,
-        alias="value",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="The unique identifier",
+        ..., alias="value", title="Type `String`", description="The unique identifier"
+    )
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_value", title="Extension field for ``value``."
     )

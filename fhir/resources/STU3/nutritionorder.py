@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class NutritionOrder(domainresource.DomainResource):
-    """ Diet, formula or nutritional supplement request.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Diet, formula or nutritional supplement request.
     A request to supply a diet, formula feeding (enteral) or oral nutritional
     supplement to a patient/resident.
     """
@@ -38,8 +42,11 @@ class NutritionOrder(domainresource.DomainResource):
     dateTime: fhirtypes.DateTime = Field(
         ...,
         alias="dateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Date and time the nutrition order was requested",
+    )
+    dateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_dateTime", title="Extension field for ``dateTime``."
     )
 
     encounter: fhirtypes.ReferenceType = Field(
@@ -109,11 +116,14 @@ class NutritionOrder(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "proposed | draft | planned | requested | active | on-hold | completed "
             "| cancelled | entered-in-error"
         ),
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     supplement: ListType[fhirtypes.NutritionOrderSupplementType] = Field(
@@ -128,7 +138,11 @@ class NutritionOrder(domainresource.DomainResource):
 
 
 class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
-    """ Enteral formula components.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Enteral formula components.
     Feeding provided through the gastrointestinal tract via a tube, catheter,
     or stoma that delivers nutrition distal to the oral cavity.
     """
@@ -138,8 +152,13 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
     additiveProductName: fhirtypes.String = Field(
         None,
         alias="additiveProductName",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Product or brand name of the modular additive",
+    )
+    additiveProductName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_additiveProductName",
+        title="Extension field for ``additiveProductName``.",
     )
 
     additiveType: fhirtypes.CodeableConceptType = Field(
@@ -164,15 +183,25 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
     administrationInstruction: fhirtypes.String = Field(
         None,
         alias="administrationInstruction",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Formula feeding instructions expressed as text",
+    )
+    administrationInstruction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_administrationInstruction",
+        title="Extension field for ``administrationInstruction``.",
     )
 
     baseFormulaProductName: fhirtypes.String = Field(
         None,
         alias="baseFormulaProductName",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Product or brand name of the enteral or infant formula",
+    )
+    baseFormulaProductName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_baseFormulaProductName",
+        title="Extension field for ``baseFormulaProductName``.",
     )
 
     baseFormulaType: fhirtypes.CodeableConceptType = Field(
@@ -205,7 +234,11 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
 
 
 class NutritionOrderEnteralFormulaAdministration(backboneelement.BackboneElement):
-    """ Formula feeding instruction as structured data.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Formula feeding instruction as structured data.
     Formula administration instructions as structured data.  This repeating
     structure allows for changing the administration rate or volume over time
     for both bolus and continuous feeding.  An example of this would be an
@@ -284,7 +317,11 @@ class NutritionOrderEnteralFormulaAdministration(backboneelement.BackboneElement
 
 
 class NutritionOrderOralDiet(backboneelement.BackboneElement):
-    """ Oral diet components.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Oral diet components.
     Diet given orally in contrast to enteral (tube) feeding.
     """
 
@@ -300,8 +337,11 @@ class NutritionOrderOralDiet(backboneelement.BackboneElement):
     instruction: fhirtypes.String = Field(
         None,
         alias="instruction",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Instructions or additional information about the oral diet",
+    )
+    instruction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_instruction", title="Extension field for ``instruction``."
     )
 
     nutrient: ListType[fhirtypes.NutritionOrderOralDietNutrientType] = Field(
@@ -343,7 +383,11 @@ class NutritionOrderOralDiet(backboneelement.BackboneElement):
 
 
 class NutritionOrderOralDietNutrient(backboneelement.BackboneElement):
-    """ Required  nutrient modifications.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Required  nutrient modifications.
     Class that defines the quantity and type of nutrient modifications (for
     example carbohydrate, fiber or sodium) required for the oral diet.
     """
@@ -366,7 +410,11 @@ class NutritionOrderOralDietNutrient(backboneelement.BackboneElement):
 
 
 class NutritionOrderOralDietTexture(backboneelement.BackboneElement):
-    """ Required  texture modifications.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Required  texture modifications.
     Class that describes any texture modifications required for the patient to
     safely consume various types of solid foods.
     """
@@ -392,7 +440,11 @@ class NutritionOrderOralDietTexture(backboneelement.BackboneElement):
 
 
 class NutritionOrderSupplement(backboneelement.BackboneElement):
-    """ Supplement components.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Supplement components.
     Oral nutritional products given in order to add further nutritional value
     to the patient's diet.
     """
@@ -402,15 +454,21 @@ class NutritionOrderSupplement(backboneelement.BackboneElement):
     instruction: fhirtypes.String = Field(
         None,
         alias="instruction",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Instructions or additional information about the oral supplement",
+    )
+    instruction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_instruction", title="Extension field for ``instruction``."
     )
 
     productName: fhirtypes.String = Field(
         None,
         alias="productName",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Product or brand name of the nutritional supplement",
+    )
+    productName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_productName", title="Extension field for ``productName``."
     )
 
     quantity: fhirtypes.QuantityType = Field(

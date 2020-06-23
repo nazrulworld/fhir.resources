@@ -14,7 +14,11 @@ from . import backboneelement, fhirtypes, resource
 
 
 class Bundle(resource.Resource):
-    """ Contains a collection of resources.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Contains a collection of resources.
     A container for a collection of resources.
     """
 
@@ -51,23 +55,33 @@ class Bundle(resource.Resource):
     total: fhirtypes.UnsignedInt = Field(
         None,
         alias="total",
-        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        title="Type `UnsignedInt`",
         description="If search, the total number of matches",
+    )
+    total__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_total", title="Extension field for ``total``."
     )
 
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "document | message | transaction | transaction-response | batch | "
             "batch-response | history | searchset | collection"
         ),
     )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
+    )
 
 
 class BundleEntry(backboneelement.BackboneElement):
-    """ Entry in the bundle - will have a resource, or information.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Entry in the bundle - will have a resource, or information.
     An entry in a bundle resource - will either contain a resource, or
     information about a resource (transactions and history only).
     """
@@ -77,8 +91,11 @@ class BundleEntry(backboneelement.BackboneElement):
     fullUrl: fhirtypes.Uri = Field(
         None,
         alias="fullUrl",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Absolute URL for resource (server address, or UUID/OID)",
+    )
+    fullUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_fullUrl", title="Extension field for ``fullUrl``."
     )
 
     link: ListType[fhirtypes.BundleLinkType] = Field(
@@ -118,7 +135,11 @@ class BundleEntry(backboneelement.BackboneElement):
 
 
 class BundleEntryRequest(backboneelement.BackboneElement):
-    """ Transaction Related Information.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Transaction Related Information.
     Additional information about how this entry should be processed as part of
     a transaction.
     """
@@ -128,48 +149,70 @@ class BundleEntryRequest(backboneelement.BackboneElement):
     ifMatch: fhirtypes.String = Field(
         None,
         alias="ifMatch",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="For managing update contention",
+    )
+    ifMatch__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_ifMatch", title="Extension field for ``ifMatch``."
     )
 
     ifModifiedSince: fhirtypes.Instant = Field(
         None,
         alias="ifModifiedSince",
-        title="Type `Instant` (represented as `dict` in JSON)",
+        title="Type `Instant`",
         description="For managing update contention",
+    )
+    ifModifiedSince__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_ifModifiedSince", title="Extension field for ``ifModifiedSince``."
     )
 
     ifNoneExist: fhirtypes.String = Field(
         None,
         alias="ifNoneExist",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="For conditional creates",
+    )
+    ifNoneExist__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_ifNoneExist", title="Extension field for ``ifNoneExist``."
     )
 
     ifNoneMatch: fhirtypes.String = Field(
         None,
         alias="ifNoneMatch",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="For managing cache currency",
+    )
+    ifNoneMatch__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_ifNoneMatch", title="Extension field for ``ifNoneMatch``."
     )
 
     method: fhirtypes.Code = Field(
         ...,
         alias="method",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="GET | POST | PUT | DELETE",
+    )
+    method__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_method", title="Extension field for ``method``."
     )
 
     url: fhirtypes.Uri = Field(
         ...,
         alias="url",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="URL for HTTP equivalent of this entry",
+    )
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_url", title="Extension field for ``url``."
     )
 
 
 class BundleEntryResponse(backboneelement.BackboneElement):
-    """ Transaction Related Information.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Transaction Related Information.
     Additional information about how this entry should be processed as part of
     a transaction.
     """
@@ -179,22 +222,31 @@ class BundleEntryResponse(backboneelement.BackboneElement):
     etag: fhirtypes.String = Field(
         None,
         alias="etag",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="The etag for the resource (if relevant)",
+    )
+    etag__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_etag", title="Extension field for ``etag``."
     )
 
     lastModified: fhirtypes.Instant = Field(
         None,
         alias="lastModified",
-        title="Type `Instant` (represented as `dict` in JSON)",
+        title="Type `Instant`",
         description="Server\u0027s date time modified",
+    )
+    lastModified__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_lastModified", title="Extension field for ``lastModified``."
     )
 
     location: fhirtypes.Uri = Field(
         None,
         alias="location",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="The location, if the operation returns a location",
+    )
+    location__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_location", title="Extension field for ``location``."
     )
 
     outcome: fhirtypes.ResourceType = Field(
@@ -207,13 +259,20 @@ class BundleEntryResponse(backboneelement.BackboneElement):
     status: fhirtypes.String = Field(
         ...,
         alias="status",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Status response code (text optional)",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
 
 class BundleEntrySearch(backboneelement.BackboneElement):
-    """ Search related information.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Search related information.
     Information about the search process that lead to the creation of this
     entry.
     """
@@ -223,20 +282,30 @@ class BundleEntrySearch(backboneelement.BackboneElement):
     mode: fhirtypes.Code = Field(
         None,
         alias="mode",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="match | include | outcome - why this is in the result set",
+    )
+    mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_mode", title="Extension field for ``mode``."
     )
 
     score: fhirtypes.Decimal = Field(
         None,
         alias="score",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Search ranking (between 0 and 1)",
+    )
+    score__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_score", title="Extension field for ``score``."
     )
 
 
 class BundleLink(backboneelement.BackboneElement):
-    """ Links related to this Bundle.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Links related to this Bundle.
     A series of links that provide context to this bundle.
     """
 
@@ -245,16 +314,22 @@ class BundleLink(backboneelement.BackboneElement):
     relation: fhirtypes.String = Field(
         ...,
         alias="relation",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description=(
             "See http://www.iana.org/assignments/link-relations/link-"
             "relations.xhtml#link-relations-1"
         ),
     )
+    relation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_relation", title="Extension field for ``relation``."
+    )
 
     url: fhirtypes.Uri = Field(
         ...,
         alias="url",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Reference details for the link",
+    )
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_url", title="Extension field for ``url``."
     )

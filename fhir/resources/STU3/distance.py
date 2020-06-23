@@ -12,7 +12,11 @@ from . import quantity
 
 
 class Distance(quantity.Quantity):
-    """ A length - a value with a unit that is a physical distance.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A length - a value with a unit that is a physical distance.
     """
 
     resource_type = Field("Distance", const=True)

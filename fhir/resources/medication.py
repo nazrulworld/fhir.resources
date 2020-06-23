@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Medication(domainresource.DomainResource):
-    """ Definition of a Medication.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Definition of a Medication.
     This resource is primarily used for the identification and definition of a
     medication for the purposes of prescribing, dispensing, and administering a
     medication as well as for making statements about medication use.
@@ -78,13 +82,20 @@ class Medication(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="active | inactive | entered-in-error",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
 
 class MedicationBatch(backboneelement.BackboneElement):
-    """ Details about packaged medications.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Details about packaged medications.
     Information that only applies to packages (not products).
     """
 
@@ -93,20 +104,30 @@ class MedicationBatch(backboneelement.BackboneElement):
     expirationDate: fhirtypes.DateTime = Field(
         None,
         alias="expirationDate",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When batch will expire",
+    )
+    expirationDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_expirationDate", title="Extension field for ``expirationDate``."
     )
 
     lotNumber: fhirtypes.String = Field(
         None,
         alias="lotNumber",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Identifier assigned to batch",
+    )
+    lotNumber__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_lotNumber", title="Extension field for ``lotNumber``."
     )
 
 
 class MedicationIngredient(backboneelement.BackboneElement):
-    """ Active or inactive ingredient.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Active or inactive ingredient.
     Identifies a particular constituent of interest in the product.
     """
 
@@ -117,6 +138,9 @@ class MedicationIngredient(backboneelement.BackboneElement):
         alias="isActive",
         title="Type `bool`",
         description="Active ingredient indicator",
+    )
+    isActive__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_isActive", title="Extension field for ``isActive``."
     )
 
     itemCodeableConcept: fhirtypes.CodeableConceptType = Field(

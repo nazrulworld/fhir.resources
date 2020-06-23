@@ -14,7 +14,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class DeviceMetric(domainresource.DomainResource):
-    """ Measurement, calculation or setting capability of a medical device.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Measurement, calculation or setting capability of a medical device.
     Describes a measurement, calculation or setting capability of a medical
     device.
     """
@@ -36,15 +40,21 @@ class DeviceMetric(domainresource.DomainResource):
     category: fhirtypes.Code = Field(
         ...,
         alias="category",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="measurement | setting | calculation | unspecified",
+    )
+    category__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_category", title="Extension field for ``category``."
     )
 
     color: fhirtypes.Code = Field(
         None,
         alias="color",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="black | red | green | yellow | blue | magenta | cyan | white",
+    )
+    color__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_color", title="Extension field for ``color``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -64,8 +74,13 @@ class DeviceMetric(domainresource.DomainResource):
     operationalStatus: fhirtypes.Code = Field(
         None,
         alias="operationalStatus",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="on | off | standby | entered-in-error",
+    )
+    operationalStatus__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_operationalStatus",
+        title="Extension field for ``operationalStatus``.",
     )
 
     parent: fhirtypes.ReferenceType = Field(
@@ -98,7 +113,11 @@ class DeviceMetric(domainresource.DomainResource):
 
 
 class DeviceMetricCalibration(backboneelement.BackboneElement):
-    """ Describes the calibrations that have been performed or that are required to
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Describes the calibrations that have been performed or that are required to
     be performed.
     """
 
@@ -107,20 +126,29 @@ class DeviceMetricCalibration(backboneelement.BackboneElement):
     state: fhirtypes.Code = Field(
         None,
         alias="state",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="not-calibrated | calibration-required | calibrated | unspecified",
+    )
+    state__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_state", title="Extension field for ``state``."
     )
 
     time: fhirtypes.Instant = Field(
         None,
         alias="time",
-        title="Type `Instant` (represented as `dict` in JSON)",
+        title="Type `Instant`",
         description="Describes the time last calibration has been performed",
+    )
+    time__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_time", title="Extension field for ``time``."
     )
 
     type: fhirtypes.Code = Field(
         None,
         alias="type",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="unspecified | offset | gain | two-point",
+    )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
     )

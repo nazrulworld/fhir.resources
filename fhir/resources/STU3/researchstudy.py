@@ -14,7 +14,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ResearchStudy(domainresource.DomainResource):
-    """ Investigation to increase healthcare-related patient-independent knowledge.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Investigation to increase healthcare-related patient-independent knowledge.
     A process where a researcher or organization plans and then executes a
     series of steps intended to increase the field of healthcare-related
     knowledge.  This includes studies of safety, efficacy, comparative
@@ -49,8 +53,11 @@ class ResearchStudy(domainresource.DomainResource):
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="What this is study doing",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     enrollment: ListType[fhirtypes.ReferenceType] = Field(
@@ -172,23 +179,30 @@ class ResearchStudy(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "draft | in-progress | suspended | stopped | completed | entered-in-"
             "error"
         ),
     )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
+    )
 
     title: fhirtypes.String = Field(
-        None,
-        alias="title",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Name for this study",
+        None, alias="title", title="Type `String`", description="Name for this study"
+    )
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_title", title="Extension field for ``title``."
     )
 
 
 class ResearchStudyArm(backboneelement.BackboneElement):
-    """ Defined path through the study for a subject.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Defined path through the study for a subject.
     Describes an expected sequence of events for one of the participants of a
     study.  E.g. Exposure to drug A, wash-out, exposure to drug B, wash-out,
     follow-up.
@@ -206,13 +220,16 @@ class ResearchStudyArm(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Short explanation of study path",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     name: fhirtypes.String = Field(
-        ...,
-        alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Label for study arm",
+        ..., alias="name", title="Type `String`", description="Label for study arm"
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )

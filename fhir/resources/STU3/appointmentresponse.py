@@ -14,7 +14,11 @@ from . import domainresource, fhirtypes
 
 
 class AppointmentResponse(domainresource.DomainResource):
-    """ A reply to an appointment request for a patient and/or practitioner(s),
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A reply to an appointment request for a patient and/or practitioner(s),
     such as a confirmation or rejection.
     """
 
@@ -41,17 +45,20 @@ class AppointmentResponse(domainresource.DomainResource):
     )
 
     comment: fhirtypes.String = Field(
-        None,
-        alias="comment",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Additional comments",
+        None, alias="comment", title="Type `String`", description="Additional comments"
+    )
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_comment", title="Extension field for ``comment``."
     )
 
     end: fhirtypes.Instant = Field(
         None,
         alias="end",
-        title="Type `Instant` (represented as `dict` in JSON)",
+        title="Type `Instant`",
         description="Time from appointment, or requested new end time",
+    )
+    end__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_end", title="Extension field for ``end``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -64,11 +71,16 @@ class AppointmentResponse(domainresource.DomainResource):
     participantStatus: fhirtypes.Code = Field(
         ...,
         alias="participantStatus",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "accepted | declined | tentative | in-process | completed | needs-"
             "action | entered-in-error"
         ),
+    )
+    participantStatus__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_participantStatus",
+        title="Extension field for ``participantStatus``.",
     )
 
     participantType: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -81,6 +93,9 @@ class AppointmentResponse(domainresource.DomainResource):
     start: fhirtypes.Instant = Field(
         None,
         alias="start",
-        title="Type `Instant` (represented as `dict` in JSON)",
+        title="Type `Instant`",
         description="Time from appointment, or requested new start time",
+    )
+    start__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_start", title="Extension field for ``start``."
     )

@@ -14,7 +14,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Coverage(domainresource.DomainResource):
-    """ Insurance or medical plan or a payment agreement.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Insurance or medical plan or a payment agreement.
     Financial instrument which may be used to reimburse or pay for health care
     products and services.
     """
@@ -39,10 +43,10 @@ class Coverage(domainresource.DomainResource):
     )
 
     dependent: fhirtypes.String = Field(
-        None,
-        alias="dependent",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Dependent number",
+        None, alias="dependent", title="Type `String`", description="Dependent number"
+    )
+    dependent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_dependent", title="Extension field for ``dependent``."
     )
 
     grouping: fhirtypes.CoverageGroupingType = Field(
@@ -60,17 +64,20 @@ class Coverage(domainresource.DomainResource):
     )
 
     network: fhirtypes.String = Field(
-        None,
-        alias="network",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Insurer network",
+        None, alias="network", title="Type `String`", description="Insurer network"
+    )
+    network__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_network", title="Extension field for ``network``."
     )
 
     order: fhirtypes.PositiveInt = Field(
         None,
         alias="order",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="Relative order of the coverage",
+    )
+    order__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_order", title="Extension field for ``order``."
     )
 
     payor: ListType[fhirtypes.ReferenceType] = Field(
@@ -110,15 +117,21 @@ class Coverage(domainresource.DomainResource):
     sequence: fhirtypes.String = Field(
         None,
         alias="sequence",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="The plan instance or sequence counter",
+    )
+    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="active | cancelled | draft | entered-in-error",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     subscriber: fhirtypes.ReferenceType = Field(
@@ -134,8 +147,11 @@ class Coverage(domainresource.DomainResource):
     subscriberId: fhirtypes.String = Field(
         None,
         alias="subscriberId",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="ID assigned to the Subscriber",
+    )
+    subscriberId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_subscriberId", title="Extension field for ``subscriberId``."
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -147,7 +163,11 @@ class Coverage(domainresource.DomainResource):
 
 
 class CoverageGrouping(backboneelement.BackboneElement):
-    """ Additional coverage classifications.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Additional coverage classifications.
     A suite of underwrite specific classifiers, for example may be used to
     identify a class of coverage or employer group, Policy, Plan.
     """
@@ -157,83 +177,119 @@ class CoverageGrouping(backboneelement.BackboneElement):
     classDisplay: fhirtypes.String = Field(
         None,
         alias="classDisplay",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Display text for the class",
+    )
+    classDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_classDisplay", title="Extension field for ``classDisplay``."
     )
 
     class_fhir: fhirtypes.String = Field(
         None,
         alias="class",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="An identifier for the class",
+    )
+    class__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_class", title="Extension field for ``class_fhir``."
     )
 
     group: fhirtypes.String = Field(
         None,
         alias="group",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="An identifier for the group",
+    )
+    group__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_group", title="Extension field for ``group``."
     )
 
     groupDisplay: fhirtypes.String = Field(
         None,
         alias="groupDisplay",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Display text for an identifier for the group",
+    )
+    groupDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_groupDisplay", title="Extension field for ``groupDisplay``."
     )
 
     plan: fhirtypes.String = Field(
         None,
         alias="plan",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="An identifier for the plan",
+    )
+    plan__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_plan", title="Extension field for ``plan``."
     )
 
     planDisplay: fhirtypes.String = Field(
         None,
         alias="planDisplay",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Display text for the plan",
+    )
+    planDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_planDisplay", title="Extension field for ``planDisplay``."
     )
 
     subClass: fhirtypes.String = Field(
         None,
         alias="subClass",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="An identifier for the subsection of the class",
+    )
+    subClass__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_subClass", title="Extension field for ``subClass``."
     )
 
     subClassDisplay: fhirtypes.String = Field(
         None,
         alias="subClassDisplay",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Display text for the subsection of the subclass",
+    )
+    subClassDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_subClassDisplay", title="Extension field for ``subClassDisplay``."
     )
 
     subGroup: fhirtypes.String = Field(
         None,
         alias="subGroup",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="An identifier for the subsection of the group",
+    )
+    subGroup__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_subGroup", title="Extension field for ``subGroup``."
     )
 
     subGroupDisplay: fhirtypes.String = Field(
         None,
         alias="subGroupDisplay",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Display text for the subsection of the group",
+    )
+    subGroupDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_subGroupDisplay", title="Extension field for ``subGroupDisplay``."
     )
 
     subPlan: fhirtypes.String = Field(
         None,
         alias="subPlan",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="An identifier for the subsection of the plan",
+    )
+    subPlan__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_subPlan", title="Extension field for ``subPlan``."
     )
 
     subPlanDisplay: fhirtypes.String = Field(
         None,
         alias="subPlanDisplay",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Display text for the subsection of the plan",
+    )
+    subPlanDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_subPlanDisplay", title="Extension field for ``subPlanDisplay``."
     )

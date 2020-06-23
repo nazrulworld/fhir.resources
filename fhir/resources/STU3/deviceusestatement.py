@@ -15,7 +15,11 @@ from . import domainresource, fhirtypes
 
 
 class DeviceUseStatement(domainresource.DomainResource):
-    """ Record of use of a device.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Record of use of a device.
     A record of a device being used by a patient where the record is the result
     of a report from the patient or another clinician.
     """
@@ -60,8 +64,11 @@ class DeviceUseStatement(domainresource.DomainResource):
     recordedOn: fhirtypes.DateTime = Field(
         None,
         alias="recordedOn",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When statement was recorded",
+    )
+    recordedOn__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_recordedOn", title="Extension field for ``recordedOn``."
     )
 
     source: fhirtypes.ReferenceType = Field(
@@ -77,8 +84,11 @@ class DeviceUseStatement(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="active | completed | entered-in-error +",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -94,10 +104,13 @@ class DeviceUseStatement(domainresource.DomainResource):
     timingDateTime: fhirtypes.DateTime = Field(
         None,
         alias="timingDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="How often  the device was used",
         one_of_many="timing",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    timingDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_timingDateTime", title="Extension field for ``timingDateTime``."
     )
 
     timingPeriod: fhirtypes.PeriodType = Field(

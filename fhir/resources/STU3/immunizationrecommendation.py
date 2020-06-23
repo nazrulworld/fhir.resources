@@ -14,7 +14,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ImmunizationRecommendation(domainresource.DomainResource):
-    """ Guidance or advice relating to an immunization.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Guidance or advice relating to an immunization.
     A patient's point-in-time immunization and recommendation (i.e. forecasting
     a patient's immunization eligibility according to a published schedule)
     with optional supporting justification.
@@ -50,7 +54,11 @@ class ImmunizationRecommendation(domainresource.DomainResource):
 
 
 class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
-    """ Vaccine administration recommendations.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Vaccine administration recommendations.
     """
 
     resource_type = Field("ImmunizationRecommendationRecommendation", const=True)
@@ -58,8 +66,11 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
     date: fhirtypes.DateTime = Field(
         ...,
         alias="date",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Date recommendation created",
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     dateCriterion: ListType[
@@ -77,8 +88,11 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
     doseNumber: fhirtypes.PositiveInt = Field(
         None,
         alias="doseNumber",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="Recommended dose number",
+    )
+    doseNumber__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_doseNumber", title="Extension field for ``doseNumber``."
     )
 
     forecastStatus: fhirtypes.CodeableConceptType = Field(
@@ -136,7 +150,11 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
 class ImmunizationRecommendationRecommendationDateCriterion(
     backboneelement.BackboneElement
 ):
-    """ Dates governing proposed immunization.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Dates governing proposed immunization.
     Vaccine date recommendations.  For example, earliest date to administer,
     latest date to administer, etc.
     """
@@ -153,15 +171,19 @@ class ImmunizationRecommendationRecommendationDateCriterion(
     )
 
     value: fhirtypes.DateTime = Field(
-        ...,
-        alias="value",
-        title="Type `DateTime` (represented as `dict` in JSON)",
-        description="Recommended date",
+        ..., alias="value", title="Type `DateTime`", description="Recommended date"
+    )
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_value", title="Extension field for ``value``."
     )
 
 
 class ImmunizationRecommendationRecommendationProtocol(backboneelement.BackboneElement):
-    """ Protocol used by recommendation.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Protocol used by recommendation.
     Contains information about the protocol under which the vaccine was
     administered.
     """
@@ -181,22 +203,28 @@ class ImmunizationRecommendationRecommendationProtocol(backboneelement.BackboneE
     )
 
     description: fhirtypes.String = Field(
-        None,
-        alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Protocol details",
+        None, alias="description", title="Type `String`", description="Protocol details"
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     doseSequence: fhirtypes.PositiveInt = Field(
         None,
         alias="doseSequence",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="Dose number within sequence",
+    )
+    doseSequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_doseSequence", title="Extension field for ``doseSequence``."
     )
 
     series: fhirtypes.String = Field(
         None,
         alias="series",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name of vaccination series",
+    )
+    series__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_series", title="Extension field for ``series``."
     )

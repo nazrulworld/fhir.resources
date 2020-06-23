@@ -8,6 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 from typing import Any, Dict
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field, root_validator
 
@@ -15,7 +16,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class StructureMap(domainresource.DomainResource):
-    """ A Map of relationships between 2 structures that can be used to transform
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A Map of relationships between 2 structures that can be used to transform
     data.
     """
 
@@ -31,22 +36,31 @@ class StructureMap(domainresource.DomainResource):
     copyright: fhirtypes.Markdown = Field(
         None,
         alias="copyright",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Use and/or publishing restrictions",
+    )
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
     date: fhirtypes.DateTime = Field(
         None,
         alias="date",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Date this was last changed",
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Natural language description of the structure map",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     experimental: bool = Field(
@@ -54,6 +68,9 @@ class StructureMap(domainresource.DomainResource):
         alias="experimental",
         title="Type `bool`",
         description="For testing purposes, not real usage",
+    )
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_experimental", title="Extension field for ``experimental``."
     )
 
     group: ListType[fhirtypes.StructureMapGroupType] = Field(
@@ -73,8 +90,11 @@ class StructureMap(domainresource.DomainResource):
     import_fhir: ListType[fhirtypes.Uri] = Field(
         None,
         alias="import",
-        title="List of `Uri` items (represented as `dict` in JSON)",
+        title="List of `Uri` items",
         description="Other maps used by this map (canonical URLs)",
+    )
+    import__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_import", title="Extension field for ``import_fhir``."
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -87,29 +107,41 @@ class StructureMap(domainresource.DomainResource):
     name: fhirtypes.String = Field(
         ...,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for this structure map (computer friendly)",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     publisher: fhirtypes.String = Field(
         None,
         alias="publisher",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name of the publisher (organization or individual)",
+    )
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
     purpose: fhirtypes.Markdown = Field(
         None,
         alias="purpose",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Why this structure map is defined",
+    )
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="draft | active | retired | unknown",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     structure: ListType[fhirtypes.StructureMapStructureType] = Field(
@@ -122,15 +154,21 @@ class StructureMap(domainresource.DomainResource):
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for this structure map (human friendly)",
+    )
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_title", title="Extension field for ``title``."
     )
 
     url: fhirtypes.Uri = Field(
         ...,
         alias="url",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Logical URI to reference this structure map (globally unique)",
+    )
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_url", title="Extension field for ``url``."
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -143,13 +181,20 @@ class StructureMap(domainresource.DomainResource):
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Business version of the structure map",
+    )
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_version", title="Extension field for ``version``."
     )
 
 
 class StructureMapGroup(backboneelement.BackboneElement):
-    """ Named sections for reader convenience.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Named sections for reader convenience.
     Organizes the mapping into managable chunks for human review/ease of
     maintenance.
     """
@@ -159,15 +204,21 @@ class StructureMapGroup(backboneelement.BackboneElement):
     documentation: fhirtypes.String = Field(
         None,
         alias="documentation",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Additional description/explaination for group",
+    )
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_documentation", title="Extension field for ``documentation``."
     )
 
     extends: fhirtypes.Id = Field(
         None,
         alias="extends",
-        title="Type `Id` (represented as `dict` in JSON)",
+        title="Type `Id`",
         description="Another group that this group adds rules to",
+    )
+    extends__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_extends", title="Extension field for ``extends``."
     )
 
     input: ListType[fhirtypes.StructureMapGroupInputType] = Field(
@@ -178,10 +229,10 @@ class StructureMapGroup(backboneelement.BackboneElement):
     )
 
     name: fhirtypes.Id = Field(
-        ...,
-        alias="name",
-        title="Type `Id` (represented as `dict` in JSON)",
-        description="Human-readable label",
+        ..., alias="name", title="Type `Id`", description="Human-readable label"
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     rule: ListType[fhirtypes.StructureMapGroupRuleType] = Field(
@@ -194,13 +245,20 @@ class StructureMapGroup(backboneelement.BackboneElement):
     typeMode: fhirtypes.Code = Field(
         ...,
         alias="typeMode",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="none | types | type-and-types",
+    )
+    typeMode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_typeMode", title="Extension field for ``typeMode``."
     )
 
 
 class StructureMapGroupInput(backboneelement.BackboneElement):
-    """ Named instance provided when invoking the map.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Named instance provided when invoking the map.
     A name assigned to an instance of data. The instance must be provided when
     the mapping is invoked.
     """
@@ -210,34 +268,47 @@ class StructureMapGroupInput(backboneelement.BackboneElement):
     documentation: fhirtypes.String = Field(
         None,
         alias="documentation",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Documentation for this instance of data",
+    )
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_documentation", title="Extension field for ``documentation``."
     )
 
     mode: fhirtypes.Code = Field(
-        ...,
-        alias="mode",
-        title="Type `Code` (represented as `dict` in JSON)",
-        description="source | target",
+        ..., alias="mode", title="Type `Code`", description="source | target"
+    )
+    mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_mode", title="Extension field for ``mode``."
     )
 
     name: fhirtypes.Id = Field(
         ...,
         alias="name",
-        title="Type `Id` (represented as `dict` in JSON)",
+        title="Type `Id`",
         description="Name for this instance of data",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     type: fhirtypes.String = Field(
         None,
         alias="type",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Type for this instance of data",
+    )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
     )
 
 
 class StructureMapGroupRule(backboneelement.BackboneElement):
-    """ Transform Rule from source to target.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Transform Rule from source to target.
     """
 
     resource_type = Field("StructureMapGroupRule", const=True)
@@ -255,15 +326,21 @@ class StructureMapGroupRule(backboneelement.BackboneElement):
     documentation: fhirtypes.String = Field(
         None,
         alias="documentation",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Documentation for this instance of data",
+    )
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_documentation", title="Extension field for ``documentation``."
     )
 
     name: fhirtypes.Id = Field(
         ...,
         alias="name",
-        title="Type `Id` (represented as `dict` in JSON)",
+        title="Type `Id`",
         description="Name of the rule for internal references",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     rule: ListType[fhirtypes.StructureMapGroupRuleType] = Field(
@@ -295,7 +372,11 @@ class StructureMapGroupRule(backboneelement.BackboneElement):
 
 
 class StructureMapGroupRuleDependent(backboneelement.BackboneElement):
-    """ Which other rules to apply in the context of this rule.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Which other rules to apply in the context of this rule.
     """
 
     resource_type = Field("StructureMapGroupRuleDependent", const=True)
@@ -303,20 +384,30 @@ class StructureMapGroupRuleDependent(backboneelement.BackboneElement):
     name: fhirtypes.Id = Field(
         ...,
         alias="name",
-        title="Type `Id` (represented as `dict` in JSON)",
+        title="Type `Id`",
         description="Name of a rule or group to apply",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     variable: ListType[fhirtypes.String] = Field(
         ...,
         alias="variable",
-        title="List of `String` items (represented as `dict` in JSON)",
+        title="List of `String` items",
         description="Variable to pass to the rule or group",
+    )
+    variable__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_variable", title="Extension field for ``variable``."
     )
 
 
 class StructureMapGroupRuleSource(backboneelement.BackboneElement):
-    """ Source inputs to the mapping.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Source inputs to the mapping.
     """
 
     resource_type = Field("StructureMapGroupRuleSource", const=True)
@@ -324,25 +415,34 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
     check: fhirtypes.String = Field(
         None,
         alias="check",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description=(
             "FHIRPath expression  - must be true or the mapping engine throws an "
             "error instead of completing"
         ),
     )
+    check__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_check", title="Extension field for ``check``."
+    )
 
     condition: fhirtypes.String = Field(
         None,
         alias="condition",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="FHIRPath expression  - must be true or the rule does not apply",
+    )
+    condition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_condition", title="Extension field for ``condition``."
     )
 
     context: fhirtypes.Id = Field(
         ...,
         alias="context",
-        title="Type `Id` (represented as `dict` in JSON)",
+        title="Type `Id`",
         description="Type or variable this rule applies to",
+    )
+    context__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_context", title="Extension field for ``context``."
     )
 
     defaultValueAddress: fhirtypes.AddressType = Field(
@@ -384,10 +484,15 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
     defaultValueBase64Binary: fhirtypes.Base64Binary = Field(
         None,
         alias="defaultValueBase64Binary",
-        title="Type `Base64Binary` (represented as `dict` in JSON)",
+        title="Type `Base64Binary`",
         description="Default value if no value exists",
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    defaultValueBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_defaultValueBase64Binary",
+        title="Extension field for ``defaultValueBase64Binary``.",
     )
 
     defaultValueBoolean: bool = Field(
@@ -398,14 +503,24 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
+    defaultValueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_defaultValueBoolean",
+        title="Extension field for ``defaultValueBoolean``.",
+    )
 
     defaultValueCode: fhirtypes.Code = Field(
         None,
         alias="defaultValueCode",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="Default value if no value exists",
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    defaultValueCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_defaultValueCode",
+        title="Extension field for ``defaultValueCode``.",
     )
 
     defaultValueCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -447,28 +562,43 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
     defaultValueDate: fhirtypes.Date = Field(
         None,
         alias="defaultValueDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="Default value if no value exists",
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    defaultValueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_defaultValueDate",
+        title="Extension field for ``defaultValueDate``.",
     )
 
     defaultValueDateTime: fhirtypes.DateTime = Field(
         None,
         alias="defaultValueDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Default value if no value exists",
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    defaultValueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_defaultValueDateTime",
+        title="Extension field for ``defaultValueDateTime``.",
     )
 
     defaultValueDecimal: fhirtypes.Decimal = Field(
         None,
         alias="defaultValueDecimal",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Default value if no value exists",
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    defaultValueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_defaultValueDecimal",
+        title="Extension field for ``defaultValueDecimal``.",
     )
 
     defaultValueDistance: fhirtypes.DistanceType = Field(
@@ -501,10 +631,13 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
     defaultValueId: fhirtypes.Id = Field(
         None,
         alias="defaultValueId",
-        title="Type `Id` (represented as `dict` in JSON)",
+        title="Type `Id`",
         description="Default value if no value exists",
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    defaultValueId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_defaultValueId", title="Extension field for ``defaultValueId``."
     )
 
     defaultValueIdentifier: fhirtypes.IdentifierType = Field(
@@ -519,28 +652,43 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
     defaultValueInstant: fhirtypes.Instant = Field(
         None,
         alias="defaultValueInstant",
-        title="Type `Instant` (represented as `dict` in JSON)",
+        title="Type `Instant`",
         description="Default value if no value exists",
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    defaultValueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_defaultValueInstant",
+        title="Extension field for ``defaultValueInstant``.",
     )
 
     defaultValueInteger: fhirtypes.Integer = Field(
         None,
         alias="defaultValueInteger",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="Default value if no value exists",
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    defaultValueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_defaultValueInteger",
+        title="Extension field for ``defaultValueInteger``.",
     )
 
     defaultValueMarkdown: fhirtypes.Markdown = Field(
         None,
         alias="defaultValueMarkdown",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Default value if no value exists",
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    defaultValueMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_defaultValueMarkdown",
+        title="Extension field for ``defaultValueMarkdown``.",
     )
 
     defaultValueMeta: fhirtypes.MetaType = Field(
@@ -564,10 +712,13 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
     defaultValueOid: fhirtypes.Oid = Field(
         None,
         alias="defaultValueOid",
-        title="Type `Oid` (represented as `dict` in JSON)",
+        title="Type `Oid`",
         description="Default value if no value exists",
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    defaultValueOid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_defaultValueOid", title="Extension field for ``defaultValueOid``."
     )
 
     defaultValuePeriod: fhirtypes.PeriodType = Field(
@@ -582,10 +733,15 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
     defaultValuePositiveInt: fhirtypes.PositiveInt = Field(
         None,
         alias="defaultValuePositiveInt",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="Default value if no value exists",
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    defaultValuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_defaultValuePositiveInt",
+        title="Extension field for ``defaultValuePositiveInt``.",
     )
 
     defaultValueQuantity: fhirtypes.QuantityType = Field(
@@ -645,19 +801,29 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
     defaultValueString: fhirtypes.String = Field(
         None,
         alias="defaultValueString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Default value if no value exists",
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    defaultValueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_defaultValueString",
+        title="Extension field for ``defaultValueString``.",
     )
 
     defaultValueTime: fhirtypes.Time = Field(
         None,
         alias="defaultValueTime",
-        title="Type `Time` (represented as `dict` in JSON)",
+        title="Type `Time`",
         description="Default value if no value exists",
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    defaultValueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_defaultValueTime",
+        title="Extension field for ``defaultValueTime``.",
     )
 
     defaultValueTiming: fhirtypes.TimingType = Field(
@@ -672,61 +838,87 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
     defaultValueUnsignedInt: fhirtypes.UnsignedInt = Field(
         None,
         alias="defaultValueUnsignedInt",
-        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        title="Type `UnsignedInt`",
         description="Default value if no value exists",
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    defaultValueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_defaultValueUnsignedInt",
+        title="Extension field for ``defaultValueUnsignedInt``.",
     )
 
     defaultValueUri: fhirtypes.Uri = Field(
         None,
         alias="defaultValueUri",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Default value if no value exists",
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    defaultValueUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_defaultValueUri", title="Extension field for ``defaultValueUri``."
     )
 
     element: fhirtypes.String = Field(
         None,
         alias="element",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Optional field for this source",
+    )
+    element__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_element", title="Extension field for ``element``."
     )
 
     listMode: fhirtypes.Code = Field(
         None,
         alias="listMode",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="first | not_first | last | not_last | only_one",
+    )
+    listMode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_listMode", title="Extension field for ``listMode``."
     )
 
     max: fhirtypes.String = Field(
         None,
         alias="max",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Specified maximum cardinality (number or *)",
+    )
+    max__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_max", title="Extension field for ``max``."
     )
 
     min: fhirtypes.Integer = Field(
         None,
         alias="min",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="Specified minimum cardinality",
+    )
+    min__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_min", title="Extension field for ``min``."
     )
 
     type: fhirtypes.String = Field(
         None,
         alias="type",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Rule only applies if source has this type",
+    )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
     )
 
     variable: fhirtypes.Id = Field(
         None,
         alias="variable",
-        title="Type `Id` (represented as `dict` in JSON)",
+        title="Type `Id`",
         description="Named context for field, if a field is specified",
+    )
+    variable__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_variable", title="Extension field for ``variable``."
     )
 
     @root_validator(pre=True)
@@ -808,7 +1000,11 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
 
 
 class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
-    """ Content to create because of this mapping rule.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Content to create because of this mapping rule.
     """
 
     resource_type = Field("StructureMapGroupRuleTarget", const=True)
@@ -816,36 +1012,48 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
     context: fhirtypes.Id = Field(
         None,
         alias="context",
-        title="Type `Id` (represented as `dict` in JSON)",
+        title="Type `Id`",
         description="Type or variable this rule applies to",
+    )
+    context__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_context", title="Extension field for ``context``."
     )
 
     contextType: fhirtypes.Code = Field(
-        None,
-        alias="contextType",
-        title="Type `Code` (represented as `dict` in JSON)",
-        description="type | variable",
+        None, alias="contextType", title="Type `Code`", description="type | variable"
+    )
+    contextType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_contextType", title="Extension field for ``contextType``."
     )
 
     element: fhirtypes.String = Field(
         None,
         alias="element",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Field to create in the context",
+    )
+    element__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_element", title="Extension field for ``element``."
     )
 
     listMode: ListType[fhirtypes.Code] = Field(
         None,
         alias="listMode",
-        title="List of `Code` items (represented as `dict` in JSON)",
+        title="List of `Code` items",
         description="first | share | last | collate",
+    )
+    listMode__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_listMode", title="Extension field for ``listMode``."
     )
 
     listRuleId: fhirtypes.Id = Field(
         None,
         alias="listRuleId",
-        title="Type `Id` (represented as `dict` in JSON)",
+        title="Type `Id`",
         description="Internal rule reference for shared list items",
+    )
+    listRuleId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_listRuleId", title="Extension field for ``listRuleId``."
     )
 
     parameter: ListType[fhirtypes.StructureMapGroupRuleTargetParameterType] = Field(
@@ -859,22 +1067,29 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
     )
 
     transform: fhirtypes.Code = Field(
-        None,
-        alias="transform",
-        title="Type `Code` (represented as `dict` in JSON)",
-        description="create | copy +",
+        None, alias="transform", title="Type `Code`", description="create | copy +"
+    )
+    transform__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_transform", title="Extension field for ``transform``."
     )
 
     variable: fhirtypes.Id = Field(
         None,
         alias="variable",
-        title="Type `Id` (represented as `dict` in JSON)",
+        title="Type `Id`",
         description="Named context for field, if desired, and a field is specified",
+    )
+    variable__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_variable", title="Extension field for ``variable``."
     )
 
 
 class StructureMapGroupRuleTargetParameter(backboneelement.BackboneElement):
-    """ Parameters to the transform.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Parameters to the transform.
     """
 
     resource_type = Field("StructureMapGroupRuleTargetParameter", const=True)
@@ -887,41 +1102,56 @@ class StructureMapGroupRuleTargetParameter(backboneelement.BackboneElement):
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
     )
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
+    )
 
     valueDecimal: fhirtypes.Decimal = Field(
         None,
         alias="valueDecimal",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Parameter value - variable or literal",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueDecimal", title="Extension field for ``valueDecimal``."
     )
 
     valueId: fhirtypes.Id = Field(
         None,
         alias="valueId",
-        title="Type `Id` (represented as `dict` in JSON)",
+        title="Type `Id`",
         description="Parameter value - variable or literal",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueId", title="Extension field for ``valueId``."
     )
 
     valueInteger: fhirtypes.Integer = Field(
         None,
         alias="valueInteger",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="Parameter value - variable or literal",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueInteger", title="Extension field for ``valueInteger``."
     )
 
     valueString: fhirtypes.String = Field(
         None,
         alias="valueString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Parameter value - variable or literal",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueString", title="Extension field for ``valueString``."
     )
 
     @root_validator(pre=True)
@@ -970,7 +1200,11 @@ class StructureMapGroupRuleTargetParameter(backboneelement.BackboneElement):
 
 
 class StructureMapStructure(backboneelement.BackboneElement):
-    """ Structure Definition used by this map.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Structure Definition used by this map.
     A structure definition used by this map. The structure definition may
     describe instances that are converted, or the instances that are produced.
     """
@@ -980,27 +1214,39 @@ class StructureMapStructure(backboneelement.BackboneElement):
     alias: fhirtypes.String = Field(
         None,
         alias="alias",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for type in this map",
+    )
+    alias__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_alias", title="Extension field for ``alias``."
     )
 
     documentation: fhirtypes.String = Field(
         None,
         alias="documentation",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Documentation on use of structure",
+    )
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_documentation", title="Extension field for ``documentation``."
     )
 
     mode: fhirtypes.Code = Field(
         ...,
         alias="mode",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="source | queried | target | produced",
+    )
+    mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_mode", title="Extension field for ``mode``."
     )
 
     url: fhirtypes.Uri = Field(
         ...,
         alias="url",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Canonical URL for structure definition",
+    )
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_url", title="Extension field for ``url``."
     )

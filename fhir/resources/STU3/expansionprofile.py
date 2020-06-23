@@ -14,7 +14,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ExpansionProfile(domainresource.DomainResource):
-    """ Defines behaviour and contraints on the ValueSet Expansion operation.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Defines behaviour and contraints on the ValueSet Expansion operation.
     Resource to define constraints on the Expansion of a FHIR ValueSet.
     """
 
@@ -25,6 +29,9 @@ class ExpansionProfile(domainresource.DomainResource):
         alias="activeOnly",
         title="Type `bool`",
         description="Include or exclude inactive concepts in the expansion",
+    )
+    activeOnly__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_activeOnly", title="Extension field for ``activeOnly``."
     )
 
     contact: ListType[fhirtypes.ContactDetailType] = Field(
@@ -37,15 +44,21 @@ class ExpansionProfile(domainresource.DomainResource):
     date: fhirtypes.DateTime = Field(
         None,
         alias="date",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Date this was last changed",
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Natural language description of the expansion profile",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     designation: fhirtypes.ExpansionProfileDesignationType = Field(
@@ -58,11 +71,14 @@ class ExpansionProfile(domainresource.DomainResource):
     displayLanguage: fhirtypes.Code = Field(
         None,
         alias="displayLanguage",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "Specify the language for the display element of codes in the value set"
             " expansion"
         ),
+    )
+    displayLanguage__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_displayLanguage", title="Extension field for ``displayLanguage``."
     )
 
     excludeNested: bool = Field(
@@ -70,6 +86,9 @@ class ExpansionProfile(domainresource.DomainResource):
         alias="excludeNested",
         title="Type `bool`",
         description="Nested codes in the expansion or not",
+    )
+    excludeNested__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_excludeNested", title="Extension field for ``excludeNested``."
     )
 
     excludeNotForUI: bool = Field(
@@ -81,6 +100,9 @@ class ExpansionProfile(domainresource.DomainResource):
             "in the value set expansion"
         ),
     )
+    excludeNotForUI__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_excludeNotForUI", title="Extension field for ``excludeNotForUI``."
+    )
 
     excludePostCoordinated: bool = Field(
         None,
@@ -90,6 +112,11 @@ class ExpansionProfile(domainresource.DomainResource):
             "Include or exclude codes which are post coordinated expressions in the"
             " value set expansion"
         ),
+    )
+    excludePostCoordinated__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_excludePostCoordinated",
+        title="Extension field for ``excludePostCoordinated``.",
     )
 
     excludedSystem: fhirtypes.ExpansionProfileExcludedSystemType = Field(
@@ -104,6 +131,9 @@ class ExpansionProfile(domainresource.DomainResource):
         alias="experimental",
         title="Type `bool`",
         description="For testing purposes, not real usage",
+    )
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_experimental", title="Extension field for ``experimental``."
     )
 
     fixedVersion: ListType[fhirtypes.ExpansionProfileFixedVersionType] = Field(
@@ -129,12 +159,22 @@ class ExpansionProfile(domainresource.DomainResource):
         title="Type `bool`",
         description="Include or exclude the value set definition in the expansion",
     )
+    includeDefinition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_includeDefinition",
+        title="Extension field for ``includeDefinition``.",
+    )
 
     includeDesignations: bool = Field(
         None,
         alias="includeDesignations",
         title="Type `bool`",
         description="Whether the expansion should include concept designations",
+    )
+    includeDesignations__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_includeDesignations",
+        title="Extension field for ``includeDesignations``.",
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -153,33 +193,50 @@ class ExpansionProfile(domainresource.DomainResource):
             "are too large to be completely expanded"
         ),
     )
+    limitedExpansion__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_limitedExpansion",
+        title="Extension field for ``limitedExpansion``.",
+    )
 
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for this expansion profile (computer friendly)",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     publisher: fhirtypes.String = Field(
         None,
         alias="publisher",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name of the publisher (organization or individual)",
+    )
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="draft | active | retired | unknown",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Logical URI to reference this expansion profile (globally unique)",
+    )
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_url", title="Extension field for ``url``."
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -192,13 +249,20 @@ class ExpansionProfile(domainresource.DomainResource):
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Business version of the expansion profile",
+    )
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_version", title="Extension field for ``version``."
     )
 
 
 class ExpansionProfileDesignation(backboneelement.BackboneElement):
-    """ When the expansion profile imposes designation contraints.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    When the expansion profile imposes designation contraints.
     A set of criteria that provide the constraints imposed on the value set
     expansion by including or excluding designations.
     """
@@ -227,7 +291,11 @@ class ExpansionProfileDesignation(backboneelement.BackboneElement):
 
 
 class ExpansionProfileDesignationExclude(backboneelement.BackboneElement):
-    """ Designations to be excluded.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Designations to be excluded.
     """
 
     resource_type = Field("ExpansionProfileDesignationExclude", const=True)
@@ -246,7 +314,11 @@ class ExpansionProfileDesignationExclude(backboneelement.BackboneElement):
 
 
 class ExpansionProfileDesignationExcludeDesignation(backboneelement.BackboneElement):
-    """ The designation to be excluded.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The designation to be excluded.
     A data group for each designation to be excluded.
     """
 
@@ -255,8 +327,11 @@ class ExpansionProfileDesignationExcludeDesignation(backboneelement.BackboneElem
     language: fhirtypes.Code = Field(
         None,
         alias="language",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="Human language of the designation to be excluded",
+    )
+    language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_language", title="Extension field for ``language``."
     )
 
     use: fhirtypes.CodingType = Field(
@@ -268,7 +343,11 @@ class ExpansionProfileDesignationExcludeDesignation(backboneelement.BackboneElem
 
 
 class ExpansionProfileDesignationInclude(backboneelement.BackboneElement):
-    """ Designations to be included.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Designations to be included.
     """
 
     resource_type = Field("ExpansionProfileDesignationInclude", const=True)
@@ -287,7 +366,11 @@ class ExpansionProfileDesignationInclude(backboneelement.BackboneElement):
 
 
 class ExpansionProfileDesignationIncludeDesignation(backboneelement.BackboneElement):
-    """ The designation to be included.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The designation to be included.
     A data group for each designation to be included.
     """
 
@@ -296,8 +379,11 @@ class ExpansionProfileDesignationIncludeDesignation(backboneelement.BackboneElem
     language: fhirtypes.Code = Field(
         None,
         alias="language",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="Human language of the designation to be included",
+    )
+    language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_language", title="Extension field for ``language``."
     )
 
     use: fhirtypes.CodingType = Field(
@@ -309,7 +395,11 @@ class ExpansionProfileDesignationIncludeDesignation(backboneelement.BackboneElem
 
 
 class ExpansionProfileExcludedSystem(backboneelement.BackboneElement):
-    """ Systems/Versions to be exclude.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Systems/Versions to be exclude.
     Code system, or a particular version of a code system to be excluded from
     value set expansions.
     """
@@ -319,42 +409,58 @@ class ExpansionProfileExcludedSystem(backboneelement.BackboneElement):
     system: fhirtypes.Uri = Field(
         ...,
         alias="system",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="The specific code system to be excluded",
+    )
+    system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_system", title="Extension field for ``system``."
     )
 
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Specific version of the code system referred to",
+    )
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_version", title="Extension field for ``version``."
     )
 
 
 class ExpansionProfileFixedVersion(backboneelement.BackboneElement):
-    """ Fix use of a code system to a particular version.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Fix use of a code system to a particular version.
     Fix use of a particular code system to a particular version.
     """
 
     resource_type = Field("ExpansionProfileFixedVersion", const=True)
 
     mode: fhirtypes.Code = Field(
-        ...,
-        alias="mode",
-        title="Type `Code` (represented as `dict` in JSON)",
-        description="default | check | override",
+        ..., alias="mode", title="Type `Code`", description="default | check | override"
+    )
+    mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_mode", title="Extension field for ``mode``."
     )
 
     system: fhirtypes.Uri = Field(
         ...,
         alias="system",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="System to have its version fixed",
+    )
+    system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_system", title="Extension field for ``system``."
     )
 
     version: fhirtypes.String = Field(
         ...,
         alias="version",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Specific version of the code system referred to",
+    )
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_version", title="Extension field for ``version``."
     )

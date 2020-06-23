@@ -8,6 +8,7 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 from typing import Any, Dict
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field, root_validator
 
@@ -15,7 +16,11 @@ from . import domainresource, fhirtypes
 
 
 class ServiceRequest(domainresource.DomainResource):
-    """ A request for a service to be performed.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A request for a service to be performed.
     A record of a request for service such as diagnostic investigations,
     treatments, or operations to be performed.
     """
@@ -30,6 +35,9 @@ class ServiceRequest(domainresource.DomainResource):
         one_of_many="asNeeded",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
+    asNeededBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_asNeededBoolean", title="Extension field for ``asNeededBoolean``."
+    )
 
     asNeededCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
@@ -43,8 +51,11 @@ class ServiceRequest(domainresource.DomainResource):
     authoredOn: fhirtypes.DateTime = Field(
         None,
         alias="authoredOn",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Date request signed",
+    )
+    authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_authoredOn", title="Extension field for ``authoredOn``."
     )
 
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
@@ -84,6 +95,9 @@ class ServiceRequest(domainresource.DomainResource):
         title="Type `bool`",
         description="True if service/procedure should not be performed",
     )
+    doNotPerform__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_doNotPerform", title="Extension field for ``doNotPerform``."
+    )
 
     encounter: fhirtypes.ReferenceType = Field(
         None,
@@ -107,16 +121,28 @@ class ServiceRequest(domainresource.DomainResource):
         alias="instantiatesCanonical",
         title=(
             "List of `Canonical` items referencing `ActivityDefinition, "
-            "PlanDefinition` (represented as `dict` in JSON)"
+            "PlanDefinition`"
         ),
         description="Instantiates FHIR protocol or definition",
+    )
+    instantiatesCanonical__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(
+        None,
+        alias="_instantiatesCanonical",
+        title="Extension field for ``instantiatesCanonical``.",
     )
 
     instantiatesUri: ListType[fhirtypes.Uri] = Field(
         None,
         alias="instantiatesUri",
-        title="List of `Uri` items (represented as `dict` in JSON)",
+        title="List of `Uri` items",
         description="Instantiates external protocol or definition",
+    )
+    instantiatesUri__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(
+        None, alias="_instantiatesUri", title="Extension field for ``instantiatesUri``."
     )
 
     insurance: ListType[fhirtypes.ReferenceType] = Field(
@@ -132,11 +158,14 @@ class ServiceRequest(domainresource.DomainResource):
     intent: fhirtypes.Code = Field(
         ...,
         alias="intent",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "proposal | plan | directive | order | original-order | reflex-order | "
             "filler-order | instance-order | option"
         ),
+    )
+    intent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_intent", title="Extension field for ``intent``."
     )
 
     locationCode: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -166,10 +195,15 @@ class ServiceRequest(domainresource.DomainResource):
     occurrenceDateTime: fhirtypes.DateTime = Field(
         None,
         alias="occurrenceDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When service should occur",
         one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_occurrenceDateTime",
+        title="Extension field for ``occurrenceDateTime``.",
     )
 
     occurrencePeriod: fhirtypes.PeriodType = Field(
@@ -200,8 +234,13 @@ class ServiceRequest(domainresource.DomainResource):
     patientInstruction: fhirtypes.String = Field(
         None,
         alias="patientInstruction",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Patient or consumer-oriented instructions",
+    )
+    patientInstruction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_patientInstruction",
+        title="Extension field for ``patientInstruction``.",
     )
 
     performer: ListType[fhirtypes.ReferenceType] = Field(
@@ -225,8 +264,11 @@ class ServiceRequest(domainresource.DomainResource):
     priority: fhirtypes.Code = Field(
         None,
         alias="priority",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="routine | urgent | asap | stat",
+    )
+    priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_priority", title="Extension field for ``priority``."
     )
 
     quantityQuantity: fhirtypes.QuantityType = Field(
@@ -324,11 +366,14 @@ class ServiceRequest(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "draft | active | on-hold | revoked | completed | entered-in-error | "
             "unknown"
         ),
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     subject: fhirtypes.ReferenceType = Field(

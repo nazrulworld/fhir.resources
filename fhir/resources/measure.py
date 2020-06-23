@@ -8,6 +8,7 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 from typing import Any, Dict
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field, root_validator
 
@@ -15,7 +16,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Measure(domainresource.DomainResource):
-    """ A quality measure definition.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A quality measure definition.
     The Measure resource provides the definition of a quality measure.
     """
 
@@ -24,8 +29,11 @@ class Measure(domainresource.DomainResource):
     approvalDate: fhirtypes.Date = Field(
         None,
         alias="approvalDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="When the measure was approved by publisher",
+    )
+    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_approvalDate", title="Extension field for ``approvalDate``."
     )
 
     author: ListType[fhirtypes.ContactDetailType] = Field(
@@ -38,8 +46,13 @@ class Measure(domainresource.DomainResource):
     clinicalRecommendationStatement: fhirtypes.Markdown = Field(
         None,
         alias="clinicalRecommendationStatement",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Summary of clinical guidelines",
+    )
+    clinicalRecommendationStatement__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_clinicalRecommendationStatement",
+        title="Extension field for ``clinicalRecommendationStatement``.",
     )
 
     compositeScoring: fhirtypes.CodeableConceptType = Field(
@@ -59,36 +72,48 @@ class Measure(domainresource.DomainResource):
     copyright: fhirtypes.Markdown = Field(
         None,
         alias="copyright",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Use and/or publishing restrictions",
+    )
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
     date: fhirtypes.DateTime = Field(
-        None,
-        alias="date",
-        title="Type `DateTime` (represented as `dict` in JSON)",
-        description="Date last changed",
+        None, alias="date", title="Type `DateTime`", description="Date last changed"
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     definition: ListType[fhirtypes.Markdown] = Field(
         None,
         alias="definition",
-        title="List of `Markdown` items (represented as `dict` in JSON)",
+        title="List of `Markdown` items",
         description="Defined terms used in the measure documentation",
     )
+    definition__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_definition", title="Extension field for ``definition``.")
 
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Natural language description of the measure",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     disclaimer: fhirtypes.Markdown = Field(
         None,
         alias="disclaimer",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Disclaimer for use of the measure or its referenced content",
+    )
+    disclaimer__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_disclaimer", title="Extension field for ``disclaimer``."
     )
 
     editor: ListType[fhirtypes.ContactDetailType] = Field(
@@ -118,6 +143,9 @@ class Measure(domainresource.DomainResource):
         title="Type `bool`",
         description="For testing purposes, not real usage",
     )
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_experimental", title="Extension field for ``experimental``."
+    )
 
     group: ListType[fhirtypes.MeasureGroupType] = Field(
         None,
@@ -129,8 +157,11 @@ class Measure(domainresource.DomainResource):
     guidance: fhirtypes.Markdown = Field(
         None,
         alias="guidance",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Additional guidance for implementers",
+    )
+    guidance__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_guidance", title="Extension field for ``guidance``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -157,53 +188,71 @@ class Measure(domainresource.DomainResource):
     lastReviewDate: fhirtypes.Date = Field(
         None,
         alias="lastReviewDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="When the measure was last reviewed",
+    )
+    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
     )
 
     library: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="library",
-        title=(
-            "List of `Canonical` items referencing `Library` (represented as `dict`"
-            " in JSON)"
-        ),
+        title="List of `Canonical` items referencing `Library`",
         description="Logic used by the measure",
+    )
+    library__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_library", title="Extension field for ``library``."
     )
 
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for this measure (computer friendly)",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     publisher: fhirtypes.String = Field(
         None,
         alias="publisher",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name of the publisher (organization or individual)",
+    )
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
     purpose: fhirtypes.Markdown = Field(
         None,
         alias="purpose",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Why this measure is defined",
+    )
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
     rateAggregation: fhirtypes.String = Field(
         None,
         alias="rateAggregation",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="How is rate aggregation performed for this measure",
+    )
+    rateAggregation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_rateAggregation", title="Extension field for ``rateAggregation``."
     )
 
     rationale: fhirtypes.Markdown = Field(
         None,
         alias="rationale",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Detailed description of why the measure exists",
+    )
+    rationale__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_rationale", title="Extension field for ``rationale``."
     )
 
     relatedArtifact: ListType[fhirtypes.RelatedArtifactType] = Field(
@@ -223,8 +272,11 @@ class Measure(domainresource.DomainResource):
     riskAdjustment: fhirtypes.String = Field(
         None,
         alias="riskAdjustment",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="How risk adjustment is applied for this measure",
+    )
+    riskAdjustment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_riskAdjustment", title="Extension field for ``riskAdjustment``."
     )
 
     scoring: fhirtypes.CodeableConceptType = Field(
@@ -237,8 +289,11 @@ class Measure(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="draft | active | retired | unknown",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     subjectCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -268,8 +323,11 @@ class Measure(domainresource.DomainResource):
     subtitle: fhirtypes.String = Field(
         None,
         alias="subtitle",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Subordinate title of the measure",
+    )
+    subtitle__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_subtitle", title="Extension field for ``subtitle``."
     )
 
     supplementalData: ListType[fhirtypes.MeasureSupplementalDataType] = Field(
@@ -284,8 +342,11 @@ class Measure(domainresource.DomainResource):
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for this measure (human friendly)",
+    )
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_title", title="Extension field for ``title``."
     )
 
     topic: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -308,18 +369,24 @@ class Measure(domainresource.DomainResource):
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description=(
             "Canonical identifier for this measure, represented as a URI (globally "
             "unique)"
         ),
     )
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_url", title="Extension field for ``url``."
+    )
 
     usage: fhirtypes.String = Field(
         None,
         alias="usage",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Describes the clinical usage of the measure",
+    )
+    usage__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_usage", title="Extension field for ``usage``."
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -332,8 +399,11 @@ class Measure(domainresource.DomainResource):
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Business version of the measure",
+    )
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_version", title="Extension field for ``version``."
     )
 
     @root_validator(pre=True)
@@ -374,7 +444,11 @@ class Measure(domainresource.DomainResource):
 
 
 class MeasureGroup(backboneelement.BackboneElement):
-    """ Population criteria group.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Population criteria group.
     A group of population criteria for the measure.
     """
 
@@ -390,8 +464,11 @@ class MeasureGroup(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Summary description",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     population: ListType[fhirtypes.MeasureGroupPopulationType] = Field(
@@ -410,7 +487,11 @@ class MeasureGroup(backboneelement.BackboneElement):
 
 
 class MeasureGroupPopulation(backboneelement.BackboneElement):
-    """ Population criteria.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Population criteria.
     A population criteria for the measure.
     """
 
@@ -437,13 +518,20 @@ class MeasureGroupPopulation(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="The human readable description of this population criteria",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
 
 class MeasureGroupStratifier(backboneelement.BackboneElement):
-    """ Stratifier criteria for the measure.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Stratifier criteria for the measure.
     The stratifier criteria for the measure report, specified as either the
     name of a valid CQL expression defined within a referenced library or a
     valid FHIR Resource Path.
@@ -478,13 +566,20 @@ class MeasureGroupStratifier(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="The human readable description of this stratifier",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
 
 class MeasureGroupStratifierComponent(backboneelement.BackboneElement):
-    """ Stratifier criteria component for the measure.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Stratifier criteria component for the measure.
     A component of the stratifier criteria for the measure report, specified as
     either the name of a valid CQL expression defined within a referenced
     library or a valid FHIR Resource Path.
@@ -509,13 +604,20 @@ class MeasureGroupStratifierComponent(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="The human readable description of this stratifier component",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
 
 class MeasureSupplementalData(backboneelement.BackboneElement):
-    """ What other data should be reported with the measure.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    What other data should be reported with the measure.
     The supplemental data criteria for the measure report, specified as either
     the name of a valid CQL expression within a referenced library, or a valid
     FHIR Resource Path.
@@ -540,8 +642,11 @@ class MeasureSupplementalData(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="The human readable description of this supplemental data",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     usage: ListType[fhirtypes.CodeableConceptType] = Field(

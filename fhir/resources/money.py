@@ -12,7 +12,11 @@ from . import element, fhirtypes
 
 
 class Money(element.Element):
-    """ An amount of economic utility in some recognized currency.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    An amount of economic utility in some recognized currency.
     """
 
     resource_type = Field("Money", const=True)
@@ -20,13 +24,19 @@ class Money(element.Element):
     currency: fhirtypes.Code = Field(
         None,
         alias="currency",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="ISO 4217 Currency Code",
+    )
+    currency__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_currency", title="Extension field for ``currency``."
     )
 
     value: fhirtypes.Decimal = Field(
         None,
         alias="value",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Numerical value (with implicit precision)",
+    )
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_value", title="Extension field for ``value``."
     )

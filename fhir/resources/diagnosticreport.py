@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class DiagnosticReport(domainresource.DomainResource):
-    """ A Diagnostic report - a combination of request information, atomic results,
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A Diagnostic report - a combination of request information, atomic results,
     images, interpretation, as well as formatted reports.
     The findings and interpretation of diagnostic  tests performed on patients,
     groups of patients, devices, and locations, and/or specimens derived from
@@ -54,8 +58,11 @@ class DiagnosticReport(domainresource.DomainResource):
     conclusion: fhirtypes.String = Field(
         None,
         alias="conclusion",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Clinical conclusion (interpretation) of test results",
+    )
+    conclusion__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_conclusion", title="Extension field for ``conclusion``."
     )
 
     conclusionCode: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -68,10 +75,15 @@ class DiagnosticReport(domainresource.DomainResource):
     effectiveDateTime: fhirtypes.DateTime = Field(
         None,
         alias="effectiveDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Clinically relevant time/time-period for report",
         one_of_many="effective",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    effectiveDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_effectiveDateTime",
+        title="Extension field for ``effectiveDateTime``.",
     )
 
     effectivePeriod: fhirtypes.PeriodType = Field(
@@ -116,8 +128,11 @@ class DiagnosticReport(domainresource.DomainResource):
     issued: fhirtypes.Instant = Field(
         None,
         alias="issued",
-        title="Type `Instant` (represented as `dict` in JSON)",
+        title="Type `Instant`",
         description="DateTime this version was made",
+    )
+    issued__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_issued", title="Extension field for ``issued``."
     )
 
     media: ListType[fhirtypes.DiagnosticReportMediaType] = Field(
@@ -177,8 +192,11 @@ class DiagnosticReport(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="registered | partial | preliminary | final +",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -229,7 +247,11 @@ class DiagnosticReport(domainresource.DomainResource):
 
 
 class DiagnosticReportMedia(backboneelement.BackboneElement):
-    """ Key images associated with this report.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Key images associated with this report.
     A list of key images associated with this report. The images are generally
     created during the diagnostic process, and may be directly of the patient,
     or of treated specimens (i.e. slides of interest).
@@ -240,8 +262,11 @@ class DiagnosticReportMedia(backboneelement.BackboneElement):
     comment: fhirtypes.String = Field(
         None,
         alias="comment",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Comment about the image (e.g. explanation)",
+    )
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_comment", title="Extension field for ``comment``."
     )
 
     link: fhirtypes.ReferenceType = Field(

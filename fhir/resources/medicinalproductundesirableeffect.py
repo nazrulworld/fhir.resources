@@ -14,7 +14,11 @@ from . import domainresource, fhirtypes
 
 
 class MedicinalProductUndesirableEffect(domainresource.DomainResource):
-    """ MedicinalProductUndesirableEffect.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    MedicinalProductUndesirableEffect.
     Describe the undesirable effects of the medicinal product.
     """
 

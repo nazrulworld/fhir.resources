@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class RiskAssessment(domainresource.DomainResource):
-    """ Potential outcomes for a subject with likelihood.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Potential outcomes for a subject with likelihood.
     An assessment of the likely outcome(s) for a patient or other subject as
     well as the likelihood of each outcome.
     """
@@ -51,8 +55,11 @@ class RiskAssessment(domainresource.DomainResource):
     comment: fhirtypes.String = Field(
         None,
         alias="comment",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Comments on the risk assessment",
+    )
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_comment", title="Extension field for ``comment``."
     )
 
     condition: fhirtypes.ReferenceType = Field(
@@ -92,17 +99,25 @@ class RiskAssessment(domainresource.DomainResource):
     mitigation: fhirtypes.String = Field(
         None,
         alias="mitigation",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="How to reduce risk",
+    )
+    mitigation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_mitigation", title="Extension field for ``mitigation``."
     )
 
     occurrenceDateTime: fhirtypes.DateTime = Field(
         None,
         alias="occurrenceDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When was assessment made?",
         one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_occurrenceDateTime",
+        title="Extension field for ``occurrenceDateTime``.",
     )
 
     occurrencePeriod: fhirtypes.PeriodType = Field(
@@ -166,8 +181,11 @@ class RiskAssessment(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="registered | preliminary | final | amended +",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -221,7 +239,11 @@ class RiskAssessment(domainresource.DomainResource):
 
 
 class RiskAssessmentPrediction(backboneelement.BackboneElement):
-    """ Outcome predicted.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Outcome predicted.
     Describes the expected outcome for the subject.
     """
 
@@ -237,10 +259,15 @@ class RiskAssessmentPrediction(backboneelement.BackboneElement):
     probabilityDecimal: fhirtypes.Decimal = Field(
         None,
         alias="probabilityDecimal",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Likelihood of specified outcome",
         one_of_many="probability",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    probabilityDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_probabilityDecimal",
+        title="Extension field for ``probabilityDecimal``.",
     )
 
     probabilityRange: fhirtypes.RangeType = Field(
@@ -262,15 +289,21 @@ class RiskAssessmentPrediction(backboneelement.BackboneElement):
     rationale: fhirtypes.String = Field(
         None,
         alias="rationale",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Explanation of prediction",
+    )
+    rationale__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_rationale", title="Extension field for ``rationale``."
     )
 
     relativeRisk: fhirtypes.Decimal = Field(
         None,
         alias="relativeRisk",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Relative likelihood",
+    )
+    relativeRisk__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_relativeRisk", title="Extension field for ``relativeRisk``."
     )
 
     whenPeriod: fhirtypes.PeriodType = Field(

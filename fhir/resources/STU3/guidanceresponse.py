@@ -15,7 +15,11 @@ from . import domainresource, fhirtypes
 
 
 class GuidanceResponse(domainresource.DomainResource):
-    """ The formal response to a guidance request.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The formal response to a guidance request.
     A guidance response is the formal response to a guidance request, including
     any output parameters returned by the evaluation, as well as the
     description of any proposed actions to be taken.
@@ -77,8 +81,13 @@ class GuidanceResponse(domainresource.DomainResource):
     occurrenceDateTime: fhirtypes.DateTime = Field(
         None,
         alias="occurrenceDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When the guidance response was processed",
+    )
+    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_occurrenceDateTime",
+        title="Extension field for ``occurrenceDateTime``.",
     )
 
     outputParameters: fhirtypes.ReferenceType = Field(
@@ -121,8 +130,11 @@ class GuidanceResponse(domainresource.DomainResource):
     requestId: fhirtypes.Id = Field(
         None,
         alias="requestId",
-        title="Type `Id` (represented as `dict` in JSON)",
+        title="Type `Id`",
         description="The id of the request associated with this response, if any",
+    )
+    requestId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_requestId", title="Extension field for ``requestId``."
     )
 
     result: fhirtypes.ReferenceType = Field(
@@ -138,11 +150,14 @@ class GuidanceResponse(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "success | data-requested | data-required | in-progress | failure | "
             "entered-in-error"
         ),
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     subject: fhirtypes.ReferenceType = Field(

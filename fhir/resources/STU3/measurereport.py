@@ -14,7 +14,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class MeasureReport(domainresource.DomainResource):
-    """ Results of a measure evaluation.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Results of a measure evaluation.
     The MeasureReport resource contains the results of evaluating a measure.
     """
 
@@ -23,8 +27,11 @@ class MeasureReport(domainresource.DomainResource):
     date: fhirtypes.DateTime = Field(
         None,
         alias="date",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When the report was generated",
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     evaluatedResources: fhirtypes.ReferenceType = Field(
@@ -82,20 +89,30 @@ class MeasureReport(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="complete | pending | error",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="individual | patient-list | summary",
+    )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
     )
 
 
 class MeasureReportGroup(backboneelement.BackboneElement):
-    """ Measure results for each group.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Measure results for each group.
     The results of the calculation, one for each population group in the
     measure.
     """
@@ -112,8 +129,11 @@ class MeasureReportGroup(backboneelement.BackboneElement):
     measureScore: fhirtypes.Decimal = Field(
         None,
         alias="measureScore",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="What score this group achieved",
+    )
+    measureScore__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_measureScore", title="Extension field for ``measureScore``."
     )
 
     population: ListType[fhirtypes.MeasureReportGroupPopulationType] = Field(
@@ -138,7 +158,11 @@ class MeasureReportGroup(backboneelement.BackboneElement):
 
 
 class MeasureReportGroupPopulation(backboneelement.BackboneElement):
-    """ The populations in the group.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The populations in the group.
     The populations that make up the population group, one for each type of
     population appropriate for the measure.
     """
@@ -159,8 +183,11 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
     count: fhirtypes.Integer = Field(
         None,
         alias="count",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="Size of the population",
+    )
+    count__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_count", title="Extension field for ``count``."
     )
 
     identifier: fhirtypes.IdentifierType = Field(
@@ -179,7 +206,11 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
 
 
 class MeasureReportGroupStratifier(backboneelement.BackboneElement):
-    """ Stratification results.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Stratification results.
     When a measure includes multiple stratifiers, there will be a stratifier
     group for each stratifier defined by the measure.
     """
@@ -205,7 +236,11 @@ class MeasureReportGroupStratifier(backboneelement.BackboneElement):
 
 
 class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
-    """ Stratum results, one for each unique value in the stratifier.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Stratum results, one for each unique value in the stratifier.
     This element contains the results for a single stratum within the
     stratifier. For example, when stratifying on administrative gender, there
     will be four strata, one for each possible gender value.
@@ -216,8 +251,11 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
     measureScore: fhirtypes.Decimal = Field(
         None,
         alias="measureScore",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="What score this stratum achieved",
+    )
+    measureScore__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_measureScore", title="Extension field for ``measureScore``."
     )
 
     population: ListType[
@@ -235,13 +273,20 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
     value: fhirtypes.String = Field(
         ...,
         alias="value",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="The stratum value, e.g. male",
+    )
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_value", title="Extension field for ``value``."
     )
 
 
 class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElement):
-    """ Population results in this stratum.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Population results in this stratum.
     The populations that make up the stratum, one for each type of population
     appropriate to the measure.
     """
@@ -262,8 +307,11 @@ class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElem
     count: fhirtypes.Integer = Field(
         None,
         alias="count",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="Size of the population",
+    )
+    count__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_count", title="Extension field for ``count``."
     )
 
     identifier: fhirtypes.IdentifierType = Field(

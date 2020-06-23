@@ -14,7 +14,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class DeviceComponent(domainresource.DomainResource):
-    """ An instance of a medical-related component of a medical device.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    An instance of a medical-related component of a medical device.
     The characteristics, operational status and capabilities of a medical-
     related component of a medical device.
     """
@@ -41,18 +45,28 @@ class DeviceComponent(domainresource.DomainResource):
     lastSystemChange: fhirtypes.Instant = Field(
         None,
         alias="lastSystemChange",
-        title="Type `Instant` (represented as `dict` in JSON)",
+        title="Type `Instant`",
         description="Recent system change timestamp",
+    )
+    lastSystemChange__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_lastSystemChange",
+        title="Extension field for ``lastSystemChange``.",
     )
 
     measurementPrinciple: fhirtypes.Code = Field(
         None,
         alias="measurementPrinciple",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "other | chemical | electrical | impedance | nuclear | optical | "
             "thermal | biological | mechanical | acoustical | manual+"
         ),
+    )
+    measurementPrinciple__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_measurementPrinciple",
+        title="Extension field for ``measurementPrinciple``.",
     )
 
     operationalStatus: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -110,7 +124,11 @@ class DeviceComponent(domainresource.DomainResource):
 
 
 class DeviceComponentProductionSpecification(backboneelement.BackboneElement):
-    """ Specification details such as Component Revisions, or Serial Numbers.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Specification details such as Component Revisions, or Serial Numbers.
     The production specification such as component revision, serial number,
     etc.
     """
@@ -127,8 +145,11 @@ class DeviceComponentProductionSpecification(backboneelement.BackboneElement):
     productionSpec: fhirtypes.String = Field(
         None,
         alias="productionSpec",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="A printable string defining the component",
+    )
+    productionSpec__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_productionSpec", title="Extension field for ``productionSpec``."
     )
 
     specType: fhirtypes.CodeableConceptType = Field(

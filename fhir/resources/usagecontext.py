@@ -14,7 +14,11 @@ from . import element, fhirtypes
 
 
 class UsageContext(element.Element):
-    """ Describes the context of use for a conformance or knowledge resource.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Describes the context of use for a conformance or knowledge resource.
     Specifies clinical/business/etc. metadata that can be used to retrieve,
     index and/or categorize an artifact. This metadata can either be specific
     to the applicable population (e.g., age category, DRG) or the specific

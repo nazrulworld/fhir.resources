@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class SupplyDelivery(domainresource.DomainResource):
-    """ Delivery of bulk Supplies.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Delivery of bulk Supplies.
     Record of delivery of what is supplied.
     """
 
@@ -50,10 +54,15 @@ class SupplyDelivery(domainresource.DomainResource):
     occurrenceDateTime: fhirtypes.DateTime = Field(
         None,
         alias="occurrenceDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When event occurred",
         one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_occurrenceDateTime",
+        title="Extension field for ``occurrenceDateTime``.",
     )
 
     occurrencePeriod: fhirtypes.PeriodType = Field(
@@ -104,8 +113,11 @@ class SupplyDelivery(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="in-progress | completed | abandoned | entered-in-error",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     suppliedItem: fhirtypes.SupplyDeliverySuppliedItemType = Field(
@@ -172,7 +184,11 @@ class SupplyDelivery(domainresource.DomainResource):
 
 
 class SupplyDeliverySuppliedItem(backboneelement.BackboneElement):
-    """ The item that is delivered or supplied.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The item that is delivered or supplied.
     The item that is being delivered or has been supplied.
     """
 

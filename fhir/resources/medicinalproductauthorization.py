@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class MedicinalProductAuthorization(domainresource.DomainResource):
-    """ The regulatory authorization of a medicinal product.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The regulatory authorization of a medicinal product.
     """
 
     resource_type = Field("MedicinalProductAuthorization", const=True)
@@ -40,11 +44,16 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
     dateOfFirstAuthorization: fhirtypes.DateTime = Field(
         None,
         alias="dateOfFirstAuthorization",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description=(
             "The date when the first authorization was granted by a Medicines "
             "Regulatory Agency"
         ),
+    )
+    dateOfFirstAuthorization__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_dateOfFirstAuthorization",
+        title="Extension field for ``dateOfFirstAuthorization``.",
     )
 
     holder: fhirtypes.ReferenceType = Field(
@@ -70,11 +79,16 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
     internationalBirthDate: fhirtypes.DateTime = Field(
         None,
         alias="internationalBirthDate",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description=(
             "Date of first marketing authorization for a company\u0027s new medicinal "
             "product in any country in the World"
         ),
+    )
+    internationalBirthDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_internationalBirthDate",
+        title="Extension field for ``internationalBirthDate``.",
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -129,11 +143,14 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
     restoreDate: fhirtypes.DateTime = Field(
         None,
         alias="restoreDate",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description=(
             "The date when a suspended the marketing or the marketing authorization"
             " of the product is anticipated to be restored"
         ),
+    )
+    restoreDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_restoreDate", title="Extension field for ``restoreDate``."
     )
 
     status: fhirtypes.CodeableConceptType = Field(
@@ -146,8 +163,11 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
     statusDate: fhirtypes.DateTime = Field(
         None,
         alias="statusDate",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="The date at which the given status has become applicable",
+    )
+    statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_statusDate", title="Extension field for ``statusDate``."
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -176,7 +196,11 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
 class MedicinalProductAuthorizationJurisdictionalAuthorization(
     backboneelement.BackboneElement
 ):
-    """ Authorization in areas within a country.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Authorization in areas within a country.
     """
 
     resource_type = Field(
@@ -220,7 +244,11 @@ class MedicinalProductAuthorizationJurisdictionalAuthorization(
 
 
 class MedicinalProductAuthorizationProcedure(backboneelement.BackboneElement):
-    """ The regulatory procedure for granting or amending a marketing authorization.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The regulatory procedure for granting or amending a marketing authorization.
     """
 
     resource_type = Field("MedicinalProductAuthorizationProcedure", const=True)
@@ -238,10 +266,13 @@ class MedicinalProductAuthorizationProcedure(backboneelement.BackboneElement):
     dateDateTime: fhirtypes.DateTime = Field(
         None,
         alias="dateDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Date of procedure",
         one_of_many="date",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    dateDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_dateDateTime", title="Extension field for ``dateDateTime``."
     )
 
     datePeriod: fhirtypes.PeriodType = Field(

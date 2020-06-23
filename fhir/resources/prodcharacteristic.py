@@ -7,6 +7,7 @@ Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field
 
@@ -14,7 +15,11 @@ from . import backboneelement, fhirtypes
 
 
 class ProdCharacteristic(backboneelement.BackboneElement):
-    """ The marketing status describes the date when a medicinal product is
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The marketing status describes the date when a medicinal product is
     actually put on the market or the date as of which it is no longer
     available.
     """
@@ -24,12 +29,15 @@ class ProdCharacteristic(backboneelement.BackboneElement):
     color: ListType[fhirtypes.String] = Field(
         None,
         alias="color",
-        title="List of `String` items (represented as `dict` in JSON)",
+        title="List of `String` items",
         description=(
             "Where applicable, the color can be specified An appropriate controlled"
             " vocabulary shall be used The term and the term identifier shall be "
             "used"
         ),
+    )
+    color__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_color", title="Extension field for ``color``."
     )
 
     depth: fhirtypes.QuantityType = Field(
@@ -81,8 +89,11 @@ class ProdCharacteristic(backboneelement.BackboneElement):
     imprint: ListType[fhirtypes.String] = Field(
         None,
         alias="imprint",
-        title="List of `String` items (represented as `dict` in JSON)",
+        title="List of `String` items",
         description="Where applicable, the imprint can be specified as text",
+    )
+    imprint__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_imprint", title="Extension field for ``imprint``."
     )
 
     nominalVolume: fhirtypes.QuantityType = Field(
@@ -111,12 +122,15 @@ class ProdCharacteristic(backboneelement.BackboneElement):
     shape: fhirtypes.String = Field(
         None,
         alias="shape",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description=(
             "Where applicable, the shape can be specified An appropriate controlled"
             " vocabulary shall be used The term and the term identifier shall be "
             "used"
         ),
+    )
+    shape__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_shape", title="Extension field for ``shape``."
     )
 
     weight: fhirtypes.QuantityType = Field(

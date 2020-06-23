@@ -7,6 +7,7 @@ Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field
 
@@ -14,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ObservationDefinition(domainresource.DomainResource):
-    """ Definition of an observation.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Definition of an observation.
     Set of definitional characteristics for a kind of observation or
     measurement produced or consumed by an orderable health care service.
     """
@@ -79,6 +84,11 @@ class ObservationDefinition(domainresource.DomainResource):
         title="Type `bool`",
         description="Multiple results allowed",
     )
+    multipleResultsAllowed__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_multipleResultsAllowed",
+        title="Extension field for ``multipleResultsAllowed``.",
+    )
 
     normalCodedValueSet: fhirtypes.ReferenceType = Field(
         None,
@@ -95,18 +105,30 @@ class ObservationDefinition(domainresource.DomainResource):
     permittedDataType: ListType[fhirtypes.Code] = Field(
         None,
         alias="permittedDataType",
-        title="List of `Code` items (represented as `dict` in JSON)",
+        title="List of `Code` items",
         description=(
             "Quantity | CodeableConcept | string | boolean | integer | Range | "
             "Ratio | SampledData | time | dateTime | Period"
         ),
     )
+    permittedDataType__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(
+        None,
+        alias="_permittedDataType",
+        title="Extension field for ``permittedDataType``.",
+    )
 
     preferredReportName: fhirtypes.String = Field(
         None,
         alias="preferredReportName",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Preferred report name",
+    )
+    preferredReportName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_preferredReportName",
+        title="Extension field for ``preferredReportName``.",
     )
 
     qualifiedInterval: ListType[
@@ -145,7 +167,11 @@ class ObservationDefinition(domainresource.DomainResource):
 
 
 class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
-    """ Qualified range for continuous and ordinal observation results.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Qualified range for continuous and ordinal observation results.
     Multiple  ranges of results qualified by different contexts for ordinal or
     continuous observations conforming to this ObservationDefinition.
     """
@@ -169,15 +195,21 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
     category: fhirtypes.Code = Field(
         None,
         alias="category",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="reference | critical | absolute",
+    )
+    category__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_category", title="Extension field for ``category``."
     )
 
     condition: fhirtypes.String = Field(
         None,
         alias="condition",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Condition associated with the reference range",
+    )
+    condition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_condition", title="Extension field for ``condition``."
     )
 
     context: fhirtypes.CodeableConceptType = Field(
@@ -190,8 +222,11 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
     gender: fhirtypes.Code = Field(
         None,
         alias="gender",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="male | female | other | unknown",
+    )
+    gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_gender", title="Extension field for ``gender``."
     )
 
     gestationalAge: fhirtypes.RangeType = Field(
@@ -210,7 +245,11 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
 
 
 class ObservationDefinitionQuantitativeDetails(backboneelement.BackboneElement):
-    """ Characteristics of quantitative results.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Characteristics of quantitative results.
     Characteristics for quantitative results of this observation.
     """
 
@@ -219,8 +258,13 @@ class ObservationDefinitionQuantitativeDetails(backboneelement.BackboneElement):
     conversionFactor: fhirtypes.Decimal = Field(
         None,
         alias="conversionFactor",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="SI to Customary unit conversion factor",
+    )
+    conversionFactor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_conversionFactor",
+        title="Extension field for ``conversionFactor``.",
     )
 
     customaryUnit: fhirtypes.CodeableConceptType = Field(
@@ -233,8 +277,13 @@ class ObservationDefinitionQuantitativeDetails(backboneelement.BackboneElement):
     decimalPrecision: fhirtypes.Integer = Field(
         None,
         alias="decimalPrecision",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="Decimal precision of observation quantitative results",
+    )
+    decimalPrecision__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_decimalPrecision",
+        title="Extension field for ``decimalPrecision``.",
     )
 
     unit: fhirtypes.CodeableConceptType = Field(

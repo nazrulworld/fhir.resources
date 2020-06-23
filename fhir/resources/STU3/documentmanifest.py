@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class DocumentManifest(domainresource.DomainResource):
-    """ A list that defines a set of documents.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A list that defines a set of documents.
     A collection of documents compiled for a purpose together with metadata
     that applies to the collection.
     """
@@ -44,15 +48,21 @@ class DocumentManifest(domainresource.DomainResource):
     created: fhirtypes.DateTime = Field(
         None,
         alias="created",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When this document manifest created",
+    )
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_created", title="Extension field for ``created``."
     )
 
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Human-readable description (title)",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -91,15 +101,21 @@ class DocumentManifest(domainresource.DomainResource):
     source: fhirtypes.Uri = Field(
         None,
         alias="source",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="The source system/application/software",
+    )
+    source__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_source", title="Extension field for ``source``."
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="current | superseded | entered-in-error",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -121,7 +137,11 @@ class DocumentManifest(domainresource.DomainResource):
 
 
 class DocumentManifestContent(backboneelement.BackboneElement):
-    """ The items included.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The items included.
     The list of Documents included in the manifest.
     """
 
@@ -185,7 +205,11 @@ class DocumentManifestContent(backboneelement.BackboneElement):
 
 
 class DocumentManifestRelated(backboneelement.BackboneElement):
-    """ Related things.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Related things.
     Related identifiers or resources associated with the DocumentManifest.
     """
 

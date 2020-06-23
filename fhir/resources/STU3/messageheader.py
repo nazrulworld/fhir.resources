@@ -14,7 +14,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class MessageHeader(domainresource.DomainResource):
-    """ A resource that describes a message that is exchanged between systems.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A resource that describes a message that is exchanged between systems.
     The header for a message exchange that is either requesting or responding
     to an action.  The reference(s) that are the subject of the action as well
     as other information related to the action are typically transmitted in a
@@ -125,13 +129,20 @@ class MessageHeader(domainresource.DomainResource):
     timestamp: fhirtypes.Instant = Field(
         ...,
         alias="timestamp",
-        title="Type `Instant` (represented as `dict` in JSON)",
+        title="Type `Instant`",
         description="Time that the message was sent",
+    )
+    timestamp__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_timestamp", title="Extension field for ``timestamp``."
     )
 
 
 class MessageHeaderDestination(backboneelement.BackboneElement):
-    """ Message destination application(s).
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Message destination application(s).
     The destination application which the message is intended for.
     """
 
@@ -140,15 +151,18 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
     endpoint: fhirtypes.Uri = Field(
         ...,
         alias="endpoint",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Actual destination address or id",
+    )
+    endpoint__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_endpoint", title="Extension field for ``endpoint``."
     )
 
     name: fhirtypes.String = Field(
-        None,
-        alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Name of system",
+        None, alias="name", title="Type `String`", description="Name of system"
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     target: fhirtypes.ReferenceType = Field(
@@ -160,7 +174,11 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
 
 
 class MessageHeaderResponse(backboneelement.BackboneElement):
-    """ If this is a reply to prior message.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    If this is a reply to prior message.
     Information about the message that this message is a response to.  Only
     present if this message is a response.
     """
@@ -170,8 +188,11 @@ class MessageHeaderResponse(backboneelement.BackboneElement):
     code: fhirtypes.Code = Field(
         ...,
         alias="code",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="ok | transient-error | fatal-error",
+    )
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_code", title="Extension field for ``code``."
     )
 
     details: fhirtypes.ReferenceType = Field(
@@ -185,15 +206,19 @@ class MessageHeaderResponse(backboneelement.BackboneElement):
     )
 
     identifier: fhirtypes.Id = Field(
-        ...,
-        alias="identifier",
-        title="Type `Id` (represented as `dict` in JSON)",
-        description="Id of original message",
+        ..., alias="identifier", title="Type `Id`", description="Id of original message"
+    )
+    identifier__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_identifier", title="Extension field for ``identifier``."
     )
 
 
 class MessageHeaderSource(backboneelement.BackboneElement):
-    """ Message source application.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Message source application.
     The source application from which this message originated.
     """
 
@@ -209,27 +234,36 @@ class MessageHeaderSource(backboneelement.BackboneElement):
     endpoint: fhirtypes.Uri = Field(
         ...,
         alias="endpoint",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Actual message source address or id",
+    )
+    endpoint__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_endpoint", title="Extension field for ``endpoint``."
     )
 
     name: fhirtypes.String = Field(
-        None,
-        alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Name of system",
+        None, alias="name", title="Type `String`", description="Name of system"
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     software: fhirtypes.String = Field(
         None,
         alias="software",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name of software running the system",
+    )
+    software__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_software", title="Extension field for ``software``."
     )
 
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Version of software running",
+    )
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_version", title="Extension field for ``version``."
     )

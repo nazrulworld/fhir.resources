@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class MedicinalProductInteraction(domainresource.DomainResource):
-    """ MedicinalProductInteraction.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    MedicinalProductInteraction.
     The interactions of the medicinal product with other medicinal products, or
     other forms of interactions.
     """
@@ -25,8 +29,11 @@ class MedicinalProductInteraction(domainresource.DomainResource):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="The interaction described",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     effect: fhirtypes.CodeableConceptType = Field(
@@ -85,7 +92,11 @@ class MedicinalProductInteraction(domainresource.DomainResource):
 
 
 class MedicinalProductInteractionInteractant(backboneelement.BackboneElement):
-    """ The specific medication, food or laboratory test that interacts.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The specific medication, food or laboratory test that interacts.
     """
 
     resource_type = Field("MedicinalProductInteractionInteractant", const=True)

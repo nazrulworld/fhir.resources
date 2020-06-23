@@ -14,7 +14,11 @@ from . import domainresource, fhirtypes
 
 
 class Slot(domainresource.DomainResource):
-    """ A slot of time on a schedule that may be available for booking appointments.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A slot of time on a schedule that may be available for booking appointments.
     """
 
     resource_type = Field("Slot", const=True)
@@ -32,18 +36,24 @@ class Slot(domainresource.DomainResource):
     comment: fhirtypes.String = Field(
         None,
         alias="comment",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description=(
             "Comments on the slot to describe any extended information. Such as "
             "custom constraints on the slot"
         ),
     )
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_comment", title="Extension field for ``comment``."
+    )
 
     end: fhirtypes.Instant = Field(
         ...,
         alias="end",
-        title="Type `Instant` (represented as `dict` in JSON)",
+        title="Type `Instant`",
         description="Date/Time that the slot is to conclude",
+    )
+    end__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_end", title="Extension field for ``end``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -61,6 +71,9 @@ class Slot(domainresource.DomainResource):
             "This slot has already been overbooked, appointments are unlikely to be"
             " accepted for this time"
         ),
+    )
+    overbooked__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_overbooked", title="Extension field for ``overbooked``."
     )
 
     schedule: fhirtypes.ReferenceType = Field(
@@ -110,13 +123,19 @@ class Slot(domainresource.DomainResource):
     start: fhirtypes.Instant = Field(
         ...,
         alias="start",
-        title="Type `Instant` (represented as `dict` in JSON)",
+        title="Type `Instant`",
         description="Date/Time that the slot is to begin",
+    )
+    start__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_start", title="Extension field for ``start``."
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="busy | free | busy-unavailable | busy-tentative | entered-in-error",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )

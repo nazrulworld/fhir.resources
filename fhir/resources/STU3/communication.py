@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Communication(domainresource.DomainResource):
-    """ A record of information transmitted from a sender to a receiver.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A record of information transmitted from a sender to a receiver.
     An occurrence of information being transmitted; e.g. an alert that was sent
     to a responsible provider, a public health agency was notified about a
     reportable condition.
@@ -80,6 +84,9 @@ class Communication(domainresource.DomainResource):
         title="Type `bool`",
         description="Communication did not occur",
     )
+    notDone__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_notDone", title="Extension field for ``notDone``."
+    )
 
     notDoneReason: fhirtypes.CodeableConceptType = Field(
         None,
@@ -130,10 +137,10 @@ class Communication(domainresource.DomainResource):
     )
 
     received: fhirtypes.DateTime = Field(
-        None,
-        alias="received",
-        title="Type `DateTime` (represented as `dict` in JSON)",
-        description="When received",
+        None, alias="received", title="Type `DateTime`", description="When received"
+    )
+    received__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_received", title="Extension field for ``received``."
     )
 
     recipient: ListType[fhirtypes.ReferenceType] = Field(
@@ -157,20 +164,23 @@ class Communication(domainresource.DomainResource):
     )
 
     sent: fhirtypes.DateTime = Field(
-        None,
-        alias="sent",
-        title="Type `DateTime` (represented as `dict` in JSON)",
-        description="When sent",
+        None, alias="sent", title="Type `DateTime`", description="When sent"
+    )
+    sent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_sent", title="Extension field for ``sent``."
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "preparation | in-progress | suspended | aborted | completed | entered-"
             "in-error"
         ),
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -195,7 +205,11 @@ class Communication(domainresource.DomainResource):
 
 
 class CommunicationPayload(backboneelement.BackboneElement):
-    """ Message payload.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Message payload.
     Text, attachment(s), or resource(s) that was communicated to the recipient.
     """
 
@@ -224,10 +238,13 @@ class CommunicationPayload(backboneelement.BackboneElement):
     contentString: fhirtypes.String = Field(
         None,
         alias="contentString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Message part content",
         one_of_many="content",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    contentString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_contentString", title="Extension field for ``contentString``."
     )
 
     @root_validator(pre=True)

@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class DeviceRequest(domainresource.DomainResource):
-    """ Medical device request.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Medical device request.
     Represents a request for a patient to employ a medical device. The device
     may be an implantable device, or an external assistive device, such as a
     walker.
@@ -24,10 +28,10 @@ class DeviceRequest(domainresource.DomainResource):
     resource_type = Field("DeviceRequest", const=True)
 
     authoredOn: fhirtypes.DateTime = Field(
-        None,
-        alias="authoredOn",
-        title="Type `DateTime` (represented as `dict` in JSON)",
-        description="When recorded",
+        None, alias="authoredOn", title="Type `DateTime`", description="When recorded"
+    )
+    authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_authoredOn", title="Extension field for ``authoredOn``."
     )
 
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
@@ -109,10 +113,15 @@ class DeviceRequest(domainresource.DomainResource):
     occurrenceDateTime: fhirtypes.DateTime = Field(
         None,
         alias="occurrenceDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Desired time or schedule for use",
         one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_occurrenceDateTime",
+        title="Extension field for ``occurrenceDateTime``.",
     )
 
     occurrencePeriod: fhirtypes.PeriodType = Field(
@@ -164,11 +173,14 @@ class DeviceRequest(domainresource.DomainResource):
     priority: fhirtypes.Code = Field(
         None,
         alias="priority",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "Indicates how quickly the {{title}} should be addressed with respect "
             "to other requests"
         ),
+    )
+    priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_priority", title="Extension field for ``priority``."
     )
 
     reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -208,8 +220,11 @@ class DeviceRequest(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="draft | active | suspended | completed | entered-in-error | cancelled",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -277,7 +292,11 @@ class DeviceRequest(domainresource.DomainResource):
 
 
 class DeviceRequestRequester(backboneelement.BackboneElement):
-    """ Who/what is requesting diagnostics.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Who/what is requesting diagnostics.
     The individual who initiated the request and has responsibility for its
     activation.
     """

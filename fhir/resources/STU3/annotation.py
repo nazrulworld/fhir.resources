@@ -14,7 +14,11 @@ from . import element, fhirtypes
 
 
 class Annotation(element.Element):
-    """ Text node with attribution.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Text node with attribution.
     A  text note which also  contains information about who made the statement
     and when.
     """
@@ -36,24 +40,33 @@ class Annotation(element.Element):
     authorString: fhirtypes.String = Field(
         None,
         alias="authorString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Individual responsible for the annotation",
         one_of_many="author",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    authorString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_authorString", title="Extension field for ``authorString``."
     )
 
     text: fhirtypes.String = Field(
         ...,
         alias="text",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="The annotation  - text content",
+    )
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_text", title="Extension field for ``text``."
     )
 
     time: fhirtypes.DateTime = Field(
         None,
         alias="time",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When the annotation was made",
+    )
+    time__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_time", title="Extension field for ``time``."
     )
 
     @root_validator(pre=True)

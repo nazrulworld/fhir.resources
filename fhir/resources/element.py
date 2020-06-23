@@ -14,7 +14,11 @@ from . import fhirabstractmodel, fhirtypes
 
 
 class Element(fhirabstractmodel.FHIRAbstractModel):
-    """ Base for all elements.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Base for all elements.
     Base definition for all elements in a resource.
     """
 
@@ -30,6 +34,9 @@ class Element(fhirabstractmodel.FHIRAbstractModel):
     id: fhirtypes.String = Field(
         None,
         alias="id",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Unique id for inter-element referencing",
+    )
+    id__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_id", title="Extension field for ``id``."
     )

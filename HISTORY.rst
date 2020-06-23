@@ -10,7 +10,7 @@ Please have look at readme section, for howto.
 
 Improvements
 
-- not yet
+- Full support of FHIR `Extensibility <https://www.hl7.org/fhir/extensibility.html>`_ for `Primitive Data Types <https://www.hl7.org/fhir/datatypes.html#primitive>`_
 
 Breaking
 

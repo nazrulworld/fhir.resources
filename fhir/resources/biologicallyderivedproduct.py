@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class BiologicallyDerivedProduct(domainresource.DomainResource):
-    """ A material substance originating from a biological entity.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A material substance originating from a biological entity.
     A material substance originating from a biological entity intended to be
     transplanted or infused
     into another (possibly the same) biological entity.
@@ -73,8 +77,11 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
     productCategory: fhirtypes.Code = Field(
         None,
         alias="productCategory",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="organ | tissue | fluid | cells | biologicalAgent",
+    )
+    productCategory__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_productCategory", title="Extension field for ``productCategory``."
     )
 
     productCode: fhirtypes.CodeableConceptType = Field(
@@ -87,8 +94,11 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
     quantity: fhirtypes.Integer = Field(
         None,
         alias="quantity",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="The amount of this biologically derived product",
+    )
+    quantity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_quantity", title="Extension field for ``quantity``."
     )
 
     request: ListType[fhirtypes.ReferenceType] = Field(
@@ -102,10 +112,10 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
     )
 
     status: fhirtypes.Code = Field(
-        None,
-        alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
-        description="available | unavailable",
+        None, alias="status", title="Type `Code`", description="available | unavailable"
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     storage: ListType[fhirtypes.BiologicallyDerivedProductStorageType] = Field(
@@ -120,7 +130,11 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
 
 
 class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
-    """ How this product was collected.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    How this product was collected.
     """
 
     resource_type = Field("BiologicallyDerivedProductCollection", const=True)
@@ -128,10 +142,15 @@ class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
     collectedDateTime: fhirtypes.DateTime = Field(
         None,
         alias="collectedDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Time of product collection",
         one_of_many="collected",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    collectedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_collectedDateTime",
+        title="Extension field for ``collectedDateTime``.",
     )
 
     collectedPeriod: fhirtypes.PeriodType = Field(
@@ -201,7 +220,11 @@ class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
 
 
 class BiologicallyDerivedProductManipulation(backboneelement.BackboneElement):
-    """ Any manipulation of product post-collection.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Any manipulation of product post-collection.
     Any manipulation of product post-collection that is intended to alter the
     product.  For example a buffy-coat enrichment or CD8 reduction of
     Peripheral Blood Stem Cells to make it more suitable for infusion.
@@ -212,17 +235,23 @@ class BiologicallyDerivedProductManipulation(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Description of manipulation",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     timeDateTime: fhirtypes.DateTime = Field(
         None,
         alias="timeDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Time of manipulation",
         one_of_many="time",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    timeDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_timeDateTime", title="Extension field for ``timeDateTime``."
     )
 
     timePeriod: fhirtypes.PeriodType = Field(
@@ -272,7 +301,11 @@ class BiologicallyDerivedProductManipulation(backboneelement.BackboneElement):
 
 
 class BiologicallyDerivedProductProcessing(backboneelement.BackboneElement):
-    """ Any processing of the product during collection.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Any processing of the product during collection.
     Any processing of the product during collection that does not change the
     fundamental nature of the product. For example adding anti-coagulants
     during the collection of Peripheral Blood Stem Cells.
@@ -293,8 +326,11 @@ class BiologicallyDerivedProductProcessing(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Description of of processing",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     procedure: fhirtypes.CodeableConceptType = Field(
@@ -307,10 +343,13 @@ class BiologicallyDerivedProductProcessing(backboneelement.BackboneElement):
     timeDateTime: fhirtypes.DateTime = Field(
         None,
         alias="timeDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Time of processing",
         one_of_many="time",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    timeDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_timeDateTime", title="Extension field for ``timeDateTime``."
     )
 
     timePeriod: fhirtypes.PeriodType = Field(
@@ -360,7 +399,11 @@ class BiologicallyDerivedProductProcessing(backboneelement.BackboneElement):
 
 
 class BiologicallyDerivedProductStorage(backboneelement.BackboneElement):
-    """ Product storage.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Product storage.
     """
 
     resource_type = Field("BiologicallyDerivedProductStorage", const=True)
@@ -368,8 +411,11 @@ class BiologicallyDerivedProductStorage(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Description of storage",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     duration: fhirtypes.PeriodType = Field(
@@ -382,13 +428,19 @@ class BiologicallyDerivedProductStorage(backboneelement.BackboneElement):
     scale: fhirtypes.Code = Field(
         None,
         alias="scale",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="farenheit | celsius | kelvin",
+    )
+    scale__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_scale", title="Extension field for ``scale``."
     )
 
     temperature: fhirtypes.Decimal = Field(
         None,
         alias="temperature",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Storage temperature",
+    )
+    temperature__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_temperature", title="Extension field for ``temperature``."
     )

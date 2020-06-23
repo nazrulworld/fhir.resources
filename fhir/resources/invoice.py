@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Invoice(domainresource.DomainResource):
-    """ Invoice containing ChargeItems from an Account.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Invoice containing ChargeItems from an Account.
     Invoice containing collected ChargeItems from an Account with calculated
     individual and total price for Billing purpose.
     """
@@ -32,15 +36,21 @@ class Invoice(domainresource.DomainResource):
     cancelledReason: fhirtypes.String = Field(
         None,
         alias="cancelledReason",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Reason for cancellation of this Invoice",
+    )
+    cancelledReason__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_cancelledReason", title="Extension field for ``cancelledReason``."
     )
 
     date: fhirtypes.DateTime = Field(
         None,
         alias="date",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Invoice date / posting date",
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -84,8 +94,11 @@ class Invoice(domainresource.DomainResource):
     paymentTerms: fhirtypes.Markdown = Field(
         None,
         alias="paymentTerms",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Payment details",
+    )
+    paymentTerms__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_paymentTerms", title="Extension field for ``paymentTerms``."
     )
 
     recipient: fhirtypes.ReferenceType = Field(
@@ -101,8 +114,11 @@ class Invoice(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="draft | issued | balanced | cancelled | entered-in-error",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -148,7 +164,11 @@ class Invoice(domainresource.DomainResource):
 
 
 class InvoiceLineItem(backboneelement.BackboneElement):
-    """ Line items of this Invoice.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Line items of this Invoice.
     Each line item represents one charge for goods and services rendered.
     Details such as date, code and amount are found in the referenced
     ChargeItem resource.
@@ -196,8 +216,11 @@ class InvoiceLineItem(backboneelement.BackboneElement):
     sequence: fhirtypes.PositiveInt = Field(
         None,
         alias="sequence",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="Sequence number of line item",
+    )
+    sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
     @root_validator(pre=True)
@@ -240,7 +263,11 @@ class InvoiceLineItem(backboneelement.BackboneElement):
 
 
 class InvoiceLineItemPriceComponent(backboneelement.BackboneElement):
-    """ Components of total line item price.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Components of total line item price.
     The price for a ChargeItem may be calculated as a base price with
     surcharges/deductions that apply in certain conditions. A
     ChargeItemDefinition resource that defines the prices, factors and
@@ -268,20 +295,30 @@ class InvoiceLineItemPriceComponent(backboneelement.BackboneElement):
     factor: fhirtypes.Decimal = Field(
         None,
         alias="factor",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Factor used for calculating this component",
+    )
+    factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_factor", title="Extension field for ``factor``."
     )
 
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="base | surcharge | deduction | discount | tax | informational",
+    )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
     )
 
 
 class InvoiceParticipant(backboneelement.BackboneElement):
-    """ Participant in creation of this Invoice.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Participant in creation of this Invoice.
     Indicates who or what performed or participated in the charged service.
     """
 

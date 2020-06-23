@@ -14,7 +14,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class PaymentReconciliation(domainresource.DomainResource):
-    """ PaymentReconciliation resource.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    PaymentReconciliation resource.
     This resource provides payment details and claim references supporting a
     bulk payment.
     """
@@ -22,10 +26,10 @@ class PaymentReconciliation(domainresource.DomainResource):
     resource_type = Field("PaymentReconciliation", const=True)
 
     created: fhirtypes.DateTime = Field(
-        None,
-        alias="created",
-        title="Type `DateTime` (represented as `dict` in JSON)",
-        description="Creation date",
+        None, alias="created", title="Type `DateTime`", description="Creation date"
+    )
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_created", title="Extension field for ``created``."
     )
 
     detail: ListType[fhirtypes.PaymentReconciliationDetailType] = Field(
@@ -41,8 +45,11 @@ class PaymentReconciliation(domainresource.DomainResource):
     disposition: fhirtypes.String = Field(
         None,
         alias="disposition",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Disposition Message",
+    )
+    disposition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_disposition", title="Extension field for ``disposition``."
     )
 
     form: fhirtypes.CodeableConceptType = Field(
@@ -126,8 +133,11 @@ class PaymentReconciliation(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="active | cancelled | draft | entered-in-error",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     total: fhirtypes.MoneyType = Field(
@@ -139,7 +149,11 @@ class PaymentReconciliation(domainresource.DomainResource):
 
 
 class PaymentReconciliationDetail(backboneelement.BackboneElement):
-    """ List of settlements.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    List of settlements.
     List of individual settlement amounts and the corresponding transaction.
     """
 
@@ -153,10 +167,10 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
     )
 
     date: fhirtypes.Date = Field(
-        None,
-        alias="date",
-        title="Type `Date` (represented as `dict` in JSON)",
-        description="Invoice date",
+        None, alias="date", title="Type `Date`", description="Invoice date"
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     payee: fhirtypes.ReferenceType = Field(
@@ -206,7 +220,11 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
 
 
 class PaymentReconciliationProcessNote(backboneelement.BackboneElement):
-    """ Processing comments.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Processing comments.
     Suite of notes.
     """
 
@@ -215,8 +233,11 @@ class PaymentReconciliationProcessNote(backboneelement.BackboneElement):
     text: fhirtypes.String = Field(
         None,
         alias="text",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Comment on the processing",
+    )
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_text", title="Extension field for ``text``."
     )
 
     type: fhirtypes.CodeableConceptType = Field(

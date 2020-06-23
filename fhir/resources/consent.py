@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Consent(domainresource.DomainResource):
-    """ A healthcare consumer's  choices to permit or deny recipients or roles to
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A healthcare consumer's  choices to permit or deny recipients or roles to
     perform actions for specific purposes and periods of time.
     A record of a healthcare consumer’s  choices, which permits or denies
     identified recipient(s) or recipient role(s) to perform one or more actions
@@ -34,8 +38,11 @@ class Consent(domainresource.DomainResource):
     dateTime: fhirtypes.DateTime = Field(
         None,
         alias="dateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When this Consent was created or indexed",
+    )
+    dateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_dateTime", title="Extension field for ``dateTime``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -125,8 +132,11 @@ class Consent(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="draft | proposed | active | rejected | inactive | entered-in-error",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     verification: ListType[fhirtypes.ConsentVerificationType] = Field(
@@ -174,7 +184,11 @@ class Consent(domainresource.DomainResource):
 
 
 class ConsentPolicy(backboneelement.BackboneElement):
-    """ Policies covered by this consent.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Policies covered by this consent.
     The references to the policies that are included in this consent scope.
     Policies may be organizational, but are often defined jurisdictionally, or
     in law.
@@ -185,20 +199,30 @@ class ConsentPolicy(backboneelement.BackboneElement):
     authority: fhirtypes.Uri = Field(
         None,
         alias="authority",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Enforcement source for policy",
+    )
+    authority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_authority", title="Extension field for ``authority``."
     )
 
     uri: fhirtypes.Uri = Field(
         None,
         alias="uri",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Specific policy covered by this consent",
+    )
+    uri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_uri", title="Extension field for ``uri``."
     )
 
 
 class ConsentProvision(backboneelement.BackboneElement):
-    """ Constraints to the base Consent.policyRule.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Constraints to the base Consent.policyRule.
     An exception to the base policy of this consent. An exception can be an
     addition or removal of access permissions.
     """
@@ -276,15 +300,19 @@ class ConsentProvision(backboneelement.BackboneElement):
     )
 
     type: fhirtypes.Code = Field(
-        None,
-        alias="type",
-        title="Type `Code` (represented as `dict` in JSON)",
-        description="deny | permit",
+        None, alias="type", title="Type `Code`", description="deny | permit"
+    )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
     )
 
 
 class ConsentProvisionActor(backboneelement.BackboneElement):
-    """ Who|what controlled by this rule (or group, by role).
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Who|what controlled by this rule (or group, by role).
     Who or what is controlled by this rule. Use group to identify a set of
     actors by some property they share (e.g. 'admitting officers').
     """
@@ -311,7 +339,11 @@ class ConsentProvisionActor(backboneelement.BackboneElement):
 
 
 class ConsentProvisionData(backboneelement.BackboneElement):
-    """ Data controlled by this rule.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Data controlled by this rule.
     The resources controlled by this rule if specific resources are referenced.
     """
 
@@ -320,8 +352,11 @@ class ConsentProvisionData(backboneelement.BackboneElement):
     meaning: fhirtypes.Code = Field(
         ...,
         alias="meaning",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="instance | related | dependents | authoredby",
+    )
+    meaning__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_meaning", title="Extension field for ``meaning``."
     )
 
     reference: fhirtypes.ReferenceType = Field(
@@ -335,7 +370,11 @@ class ConsentProvisionData(backboneelement.BackboneElement):
 
 
 class ConsentVerification(backboneelement.BackboneElement):
-    """ Consent Verified by patient or family.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Consent Verified by patient or family.
     Whether a treatment instruction (e.g. artificial respiration yes or no) was
     verified with the patient, his/her family or another authorized person.
     """
@@ -345,12 +384,20 @@ class ConsentVerification(backboneelement.BackboneElement):
     verificationDate: fhirtypes.DateTime = Field(
         None,
         alias="verificationDate",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When consent verified",
+    )
+    verificationDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_verificationDate",
+        title="Extension field for ``verificationDate``.",
     )
 
     verified: bool = Field(
         ..., alias="verified", title="Type `bool`", description="Has been verified"
+    )
+    verified__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_verified", title="Extension field for ``verified``."
     )
 
     verifiedWith: fhirtypes.ReferenceType = Field(

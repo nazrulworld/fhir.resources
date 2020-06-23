@@ -14,7 +14,11 @@ from . import domainresource, fhirtypes
 
 
 class EnrollmentResponse(domainresource.DomainResource):
-    """ EnrollmentResponse resource.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    EnrollmentResponse resource.
     This resource provides enrollment and plan details from the processing of
     an EnrollmentRequest resource.
     """
@@ -22,17 +26,20 @@ class EnrollmentResponse(domainresource.DomainResource):
     resource_type = Field("EnrollmentResponse", const=True)
 
     created: fhirtypes.DateTime = Field(
-        None,
-        alias="created",
-        title="Type `DateTime` (represented as `dict` in JSON)",
-        description="Creation date",
+        None, alias="created", title="Type `DateTime`", description="Creation date"
+    )
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_created", title="Extension field for ``created``."
     )
 
     disposition: fhirtypes.String = Field(
         None,
         alias="disposition",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Disposition Message",
+    )
+    disposition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_disposition", title="Extension field for ``disposition``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -55,8 +62,11 @@ class EnrollmentResponse(domainresource.DomainResource):
     outcome: fhirtypes.Code = Field(
         None,
         alias="outcome",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="queued | complete | error | partial",
+    )
+    outcome__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_outcome", title="Extension field for ``outcome``."
     )
 
     request: fhirtypes.ReferenceType = Field(
@@ -82,6 +92,9 @@ class EnrollmentResponse(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="active | cancelled | draft | entered-in-error",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )

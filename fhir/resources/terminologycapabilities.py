@@ -7,6 +7,7 @@ Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field
 
@@ -14,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class TerminologyCapabilities(domainresource.DomainResource):
-    """ A statement of system capabilities.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A statement of system capabilities.
     A TerminologyCapabilities resource documents a set of capabilities
     (behaviors) of a FHIR Terminology Server that may be used as a statement of
     actual server functionality or a statement of required or desired server
@@ -34,10 +39,10 @@ class TerminologyCapabilities(domainresource.DomainResource):
     )
 
     codeSearch: fhirtypes.Code = Field(
-        None,
-        alias="codeSearch",
-        title="Type `Code` (represented as `dict` in JSON)",
-        description="explicit | all",
+        None, alias="codeSearch", title="Type `Code`", description="explicit | all"
+    )
+    codeSearch__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_codeSearch", title="Extension field for ``codeSearch``."
     )
 
     codeSystem: ListType[fhirtypes.TerminologyCapabilitiesCodeSystemType] = Field(
@@ -60,22 +65,28 @@ class TerminologyCapabilities(domainresource.DomainResource):
     copyright: fhirtypes.Markdown = Field(
         None,
         alias="copyright",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Use and/or publishing restrictions",
+    )
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
     date: fhirtypes.DateTime = Field(
-        ...,
-        alias="date",
-        title="Type `DateTime` (represented as `dict` in JSON)",
-        description="Date last changed",
+        ..., alias="date", title="Type `DateTime`", description="Date last changed"
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Natural language description of the terminology capabilities",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     expansion: fhirtypes.TerminologyCapabilitiesExpansionType = Field(
@@ -95,6 +106,9 @@ class TerminologyCapabilities(domainresource.DomainResource):
         alias="experimental",
         title="Type `bool`",
         description="For testing purposes, not real usage",
+    )
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_experimental", title="Extension field for ``experimental``."
     )
 
     implementation: fhirtypes.TerminologyCapabilitiesImplementationType = Field(
@@ -117,8 +131,11 @@ class TerminologyCapabilities(domainresource.DomainResource):
     kind: fhirtypes.Code = Field(
         ...,
         alias="kind",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="instance | capability | requirements",
+    )
+    kind__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_kind", title="Extension field for ``kind``."
     )
 
     lockedDate: bool = Field(
@@ -127,26 +144,38 @@ class TerminologyCapabilities(domainresource.DomainResource):
         title="Type `bool`",
         description="Whether lockedDate is supported",
     )
+    lockedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_lockedDate", title="Extension field for ``lockedDate``."
+    )
 
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for this terminology capabilities (computer friendly)",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     publisher: fhirtypes.String = Field(
         None,
         alias="publisher",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name of the publisher (organization or individual)",
+    )
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
     purpose: fhirtypes.Markdown = Field(
         None,
         alias="purpose",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Why this terminology capabilities is defined",
+    )
+    purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
     software: fhirtypes.TerminologyCapabilitiesSoftwareType = Field(
@@ -159,15 +188,21 @@ class TerminologyCapabilities(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="draft | active | retired | unknown",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for this terminology capabilities (human friendly)",
+    )
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_title", title="Extension field for ``title``."
     )
 
     translation: fhirtypes.TerminologyCapabilitiesTranslationType = Field(
@@ -186,11 +221,14 @@ class TerminologyCapabilities(domainresource.DomainResource):
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description=(
             "Canonical identifier for this terminology capabilities, represented as"
             " a URI (globally unique)"
         ),
+    )
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_url", title="Extension field for ``url``."
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -216,13 +254,20 @@ class TerminologyCapabilities(domainresource.DomainResource):
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Business version of the terminology capabilities",
+    )
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_version", title="Extension field for ``version``."
     )
 
 
 class TerminologyCapabilitiesClosure(backboneelement.BackboneElement):
-    """ Information about the [ConceptMap/$closure](conceptmap-operation-
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Information about the [ConceptMap/$closure](conceptmap-operation-
     closure.html) operation.
     Whether the $closure operation is supported.
     """
@@ -235,10 +280,17 @@ class TerminologyCapabilitiesClosure(backboneelement.BackboneElement):
         title="Type `bool`",
         description="If cross-system closure is supported",
     )
+    translation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_translation", title="Extension field for ``translation``."
+    )
 
 
 class TerminologyCapabilitiesCodeSystem(backboneelement.BackboneElement):
-    """ A code system supported by the server.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A code system supported by the server.
     Identifies a code system that is supported by the server. If there is a no
     code system URL, then this declares the general assumptions a client can
     make about support for any CodeSystem resource.
@@ -252,15 +304,18 @@ class TerminologyCapabilitiesCodeSystem(backboneelement.BackboneElement):
         title="Type `bool`",
         description="Whether subsumption is supported",
     )
+    subsumption__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_subsumption", title="Extension field for ``subsumption``."
+    )
 
     uri: fhirtypes.Canonical = Field(
         None,
         alias="uri",
-        title=(
-            "Type `Canonical` referencing `CodeSystem` (represented as `dict` in "
-            "JSON)"
-        ),
+        title="Type `Canonical` referencing `CodeSystem`",
         description="URI for the Code System",
+    )
+    uri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_uri", title="Extension field for ``uri``."
     )
 
     version: ListType[fhirtypes.TerminologyCapabilitiesCodeSystemVersionType] = Field(
@@ -275,7 +330,11 @@ class TerminologyCapabilitiesCodeSystem(backboneelement.BackboneElement):
 
 
 class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
-    """ Version of Code System supported.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Version of Code System supported.
     For the code system, a list of versions that are supported by the server.
     """
 
@@ -284,8 +343,11 @@ class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
     code: fhirtypes.String = Field(
         None,
         alias="code",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Version identifier for this version",
+    )
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_code", title="Extension field for ``code``."
     )
 
     compositional: bool = Field(
@@ -293,6 +355,9 @@ class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
         alias="compositional",
         title="Type `bool`",
         description="If compositional grammar is supported",
+    )
+    compositional__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_compositional", title="Extension field for ``compositional``."
     )
 
     filter: ListType[
@@ -313,24 +378,37 @@ class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
         title="Type `bool`",
         description="If this is the default version for this code system",
     )
+    isDefault__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_isDefault", title="Extension field for ``isDefault``."
+    )
 
     language: ListType[fhirtypes.Code] = Field(
         None,
         alias="language",
-        title="List of `Code` items (represented as `dict` in JSON)",
+        title="List of `Code` items",
         description="Language Displays supported",
+    )
+    language__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_language", title="Extension field for ``language``."
     )
 
     property: ListType[fhirtypes.Code] = Field(
         None,
         alias="property",
-        title="List of `Code` items (represented as `dict` in JSON)",
+        title="List of `Code` items",
         description="Properties supported for $lookup",
+    )
+    property__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_property", title="Extension field for ``property``."
     )
 
 
 class TerminologyCapabilitiesCodeSystemVersionFilter(backboneelement.BackboneElement):
-    """ Filter Properties supported.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Filter Properties supported.
     """
 
     resource_type = Field("TerminologyCapabilitiesCodeSystemVersionFilter", const=True)
@@ -338,20 +416,30 @@ class TerminologyCapabilitiesCodeSystemVersionFilter(backboneelement.BackboneEle
     code: fhirtypes.Code = Field(
         ...,
         alias="code",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="Code of the property supported",
+    )
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_code", title="Extension field for ``code``."
     )
 
     op: ListType[fhirtypes.Code] = Field(
         ...,
         alias="op",
-        title="List of `Code` items (represented as `dict` in JSON)",
+        title="List of `Code` items",
         description="Operations supported for the property",
+    )
+    op__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_op", title="Extension field for ``op``."
     )
 
 
 class TerminologyCapabilitiesExpansion(backboneelement.BackboneElement):
-    """ Information about the [ValueSet/$expand](valueset-operation-expand.html)
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Information about the [ValueSet/$expand](valueset-operation-expand.html)
     operation.
     """
 
@@ -363,6 +451,9 @@ class TerminologyCapabilitiesExpansion(backboneelement.BackboneElement):
         title="Type `bool`",
         description="Whether the server can return nested value sets",
     )
+    hierarchical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_hierarchical", title="Extension field for ``hierarchical``."
+    )
 
     incomplete: bool = Field(
         None,
@@ -370,12 +461,18 @@ class TerminologyCapabilitiesExpansion(backboneelement.BackboneElement):
         title="Type `bool`",
         description="Allow request for incomplete expansions?",
     )
+    incomplete__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_incomplete", title="Extension field for ``incomplete``."
+    )
 
     paging: bool = Field(
         None,
         alias="paging",
         title="Type `bool`",
         description="Whether the server supports paging on expansion",
+    )
+    paging__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_paging", title="Extension field for ``paging``."
     )
 
     parameter: ListType[
@@ -393,13 +490,20 @@ class TerminologyCapabilitiesExpansion(backboneelement.BackboneElement):
     textFilter: fhirtypes.Markdown = Field(
         None,
         alias="textFilter",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Documentation about text searching works",
+    )
+    textFilter__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_textFilter", title="Extension field for ``textFilter``."
     )
 
 
 class TerminologyCapabilitiesExpansionParameter(backboneelement.BackboneElement):
-    """ Supported expansion parameter.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Supported expansion parameter.
     """
 
     resource_type = Field("TerminologyCapabilitiesExpansionParameter", const=True)
@@ -407,20 +511,27 @@ class TerminologyCapabilitiesExpansionParameter(backboneelement.BackboneElement)
     documentation: fhirtypes.String = Field(
         None,
         alias="documentation",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Description of support for parameter",
+    )
+    documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_documentation", title="Extension field for ``documentation``."
     )
 
     name: fhirtypes.Code = Field(
-        ...,
-        alias="name",
-        title="Type `Code` (represented as `dict` in JSON)",
-        description="Expansion Parameter name",
+        ..., alias="name", title="Type `Code`", description="Expansion Parameter name"
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
 
 class TerminologyCapabilitiesImplementation(backboneelement.BackboneElement):
-    """ If this describes a specific instance.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    If this describes a specific instance.
     Identifies a specific implementation instance that is described by the
     terminology capability statement - i.e. a particular installation, rather
     than the capabilities of a software program.
@@ -431,20 +542,30 @@ class TerminologyCapabilitiesImplementation(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         ...,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Describes this specific instance",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     url: fhirtypes.Url = Field(
         None,
         alias="url",
-        title="Type `Url` (represented as `dict` in JSON)",
+        title="Type `Url`",
         description="Base URL for the implementation",
+    )
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_url", title="Extension field for ``url``."
     )
 
 
 class TerminologyCapabilitiesSoftware(backboneelement.BackboneElement):
-    """ Software that is covered by this terminology capability statement.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Software that is covered by this terminology capability statement.
     Software that is covered by this terminology capability statement.  It is
     used when the statement describes the capabilities of a particular software
     version, independent of an installation.
@@ -455,20 +576,30 @@ class TerminologyCapabilitiesSoftware(backboneelement.BackboneElement):
     name: fhirtypes.String = Field(
         ...,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="A name the software is known by",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Version covered by this statement",
+    )
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_version", title="Extension field for ``version``."
     )
 
 
 class TerminologyCapabilitiesTranslation(backboneelement.BackboneElement):
-    """ Information about the [ConceptMap/$translate](conceptmap-operation-
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Information about the [ConceptMap/$translate](conceptmap-operation-
     translate.html) operation.
     """
 
@@ -480,10 +611,17 @@ class TerminologyCapabilitiesTranslation(backboneelement.BackboneElement):
         title="Type `bool`",
         description="Whether the client must identify the map",
     )
+    needsMap__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_needsMap", title="Extension field for ``needsMap``."
+    )
 
 
 class TerminologyCapabilitiesValidateCode(backboneelement.BackboneElement):
-    """ Information about the [ValueSet/$validate-code](valueset-operation-
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Information about the [ValueSet/$validate-code](valueset-operation-
     validate-code.html) operation.
     """
 
@@ -494,4 +632,7 @@ class TerminologyCapabilitiesValidateCode(backboneelement.BackboneElement):
         alias="translations",
         title="Type `bool`",
         description="Whether translations are validated",
+    )
+    translations__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_translations", title="Extension field for ``translations``."
     )

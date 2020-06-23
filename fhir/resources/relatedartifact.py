@@ -12,7 +12,11 @@ from . import element, fhirtypes
 
 
 class RelatedArtifact(element.Element):
-    """ Related artifacts for a knowledge resource.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Related artifacts for a knowledge resource.
     Related artifacts such as additional documentation, justification, or
     bibliographic references.
     """
@@ -22,15 +26,21 @@ class RelatedArtifact(element.Element):
     citation: fhirtypes.Markdown = Field(
         None,
         alias="citation",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Bibliographic citation for the artifact",
+    )
+    citation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_citation", title="Extension field for ``citation``."
     )
 
     display: fhirtypes.String = Field(
         None,
         alias="display",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Brief description of the related artifact",
+    )
+    display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_display", title="Extension field for ``display``."
     )
 
     document: fhirtypes.AttachmentType = Field(
@@ -41,34 +51,41 @@ class RelatedArtifact(element.Element):
     )
 
     label: fhirtypes.String = Field(
-        None,
-        alias="label",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Short label",
+        None, alias="label", title="Type `String`", description="Short label"
+    )
+    label__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_label", title="Extension field for ``label``."
     )
 
     resource: fhirtypes.Canonical = Field(
         None,
         alias="resource",
-        title=(
-            "Type `Canonical` referencing `Resource` (represented as `dict` in " "JSON)"
-        ),
+        title="Type `Canonical` referencing `Resource`",
         description="What resource is being referenced",
+    )
+    resource__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_resource", title="Extension field for ``resource``."
     )
 
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "documentation | justification | citation | predecessor | successor | "
             "derived-from | depends-on | composed-of"
         ),
     )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
+    )
 
     url: fhirtypes.Url = Field(
         None,
         alias="url",
-        title="Type `Url` (represented as `dict` in JSON)",
+        title="Type `Url`",
         description="Where the artifact can be accessed",
+    )
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_url", title="Extension field for ``url``."
     )

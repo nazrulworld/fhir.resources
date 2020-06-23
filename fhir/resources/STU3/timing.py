@@ -8,6 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 from typing import Any, Dict
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field, root_validator
 
@@ -15,7 +16,11 @@ from . import element, fhirtypes
 
 
 class Timing(element.Element):
-    """ A timing schedule that specifies an event that may occur multiple times.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A timing schedule that specifies an event that may occur multiple times.
     Specifies an event that may occur multiple times. Timing schedules are used
     to record when things are planned, expected or requested to occur. The most
     common usage is in dosage instructions for medications. They are also used
@@ -35,8 +40,11 @@ class Timing(element.Element):
     event: ListType[fhirtypes.DateTime] = Field(
         None,
         alias="event",
-        title="List of `DateTime` items (represented as `dict` in JSON)",
+        title="List of `DateTime` items",
         description="When the event occurs",
+    )
+    event__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_event", title="Extension field for ``event``."
     )
 
     repeat: fhirtypes.TimingRepeatType = Field(
@@ -48,7 +56,11 @@ class Timing(element.Element):
 
 
 class TimingRepeat(element.Element):
-    """ When the event is to occur.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    When the event is to occur.
     A set of rules that describe when the event is scheduled.
     """
 
@@ -84,99 +96,141 @@ class TimingRepeat(element.Element):
     count: fhirtypes.Integer = Field(
         None,
         alias="count",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="Number of times to repeat",
+    )
+    count__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_count", title="Extension field for ``count``."
     )
 
     countMax: fhirtypes.Integer = Field(
         None,
         alias="countMax",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="Maximum number of times to repeat",
+    )
+    countMax__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_countMax", title="Extension field for ``countMax``."
     )
 
     dayOfWeek: ListType[fhirtypes.Code] = Field(
         None,
         alias="dayOfWeek",
-        title="List of `Code` items (represented as `dict` in JSON)",
+        title="List of `Code` items",
         description="mon | tue | wed | thu | fri | sat | sun",
+    )
+    dayOfWeek__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_dayOfWeek", title="Extension field for ``dayOfWeek``."
     )
 
     duration: fhirtypes.Decimal = Field(
         None,
         alias="duration",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="How long when it happens",
+    )
+    duration__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_duration", title="Extension field for ``duration``."
     )
 
     durationMax: fhirtypes.Decimal = Field(
         None,
         alias="durationMax",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="How long when it happens (Max)",
+    )
+    durationMax__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_durationMax", title="Extension field for ``durationMax``."
     )
 
     durationUnit: fhirtypes.Code = Field(
         None,
         alias="durationUnit",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="s | min | h | d | wk | mo | a - unit of time (UCUM)",
+    )
+    durationUnit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_durationUnit", title="Extension field for ``durationUnit``."
     )
 
     frequency: fhirtypes.Integer = Field(
         None,
         alias="frequency",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="Event occurs frequency times per period",
+    )
+    frequency__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_frequency", title="Extension field for ``frequency``."
     )
 
     frequencyMax: fhirtypes.Integer = Field(
         None,
         alias="frequencyMax",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="Event occurs up to frequencyMax times per period",
+    )
+    frequencyMax__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_frequencyMax", title="Extension field for ``frequencyMax``."
     )
 
     offset: fhirtypes.UnsignedInt = Field(
         None,
         alias="offset",
-        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        title="Type `UnsignedInt`",
         description="Minutes from event (before or after)",
+    )
+    offset__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_offset", title="Extension field for ``offset``."
     )
 
     period: fhirtypes.Decimal = Field(
         None,
         alias="period",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Event occurs frequency times per period",
+    )
+    period__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_period", title="Extension field for ``period``."
     )
 
     periodMax: fhirtypes.Decimal = Field(
         None,
         alias="periodMax",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Upper limit of period (3-4 hours)",
+    )
+    periodMax__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_periodMax", title="Extension field for ``periodMax``."
     )
 
     periodUnit: fhirtypes.Code = Field(
         None,
         alias="periodUnit",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="s | min | h | d | wk | mo | a - unit of time (UCUM)",
+    )
+    periodUnit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_periodUnit", title="Extension field for ``periodUnit``."
     )
 
     timeOfDay: ListType[fhirtypes.Time] = Field(
         None,
         alias="timeOfDay",
-        title="List of `Time` items (represented as `dict` in JSON)",
+        title="List of `Time` items",
         description="Time of day for action",
+    )
+    timeOfDay__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_timeOfDay", title="Extension field for ``timeOfDay``."
     )
 
     when: ListType[fhirtypes.Code] = Field(
         None,
         alias="when",
-        title="List of `Code` items (represented as `dict` in JSON)",
+        title="List of `Code` items",
         description="Regular life events the event is tied to",
+    )
+    when__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_when", title="Extension field for ``when``."
     )
 
     @root_validator(pre=True)

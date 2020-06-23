@@ -14,7 +14,11 @@ from . import domainresource, fhirtypes
 
 
 class OrganizationAffiliation(domainresource.DomainResource):
-    """ Defines an affiliation/assotiation/relationship between 2 distinct
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Defines an affiliation/assotiation/relationship between 2 distinct
     oganizations, that is not a part-of relationship/sub-division relationship.
     """
 
@@ -25,6 +29,9 @@ class OrganizationAffiliation(domainresource.DomainResource):
         alias="active",
         title="Type `bool`",
         description="Whether this organization affiliation record is in active use",
+    )
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_active", title="Extension field for ``active``."
     )
 
     code: ListType[fhirtypes.CodeableConceptType] = Field(

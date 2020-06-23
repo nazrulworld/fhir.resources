@@ -7,6 +7,7 @@ Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field
 
@@ -14,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ProcessRequest(domainresource.DomainResource):
-    """ Request to perform some action on or in regards to an existing resource.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Request to perform some action on or in regards to an existing resource.
     This resource provides the target, request and response, and action details
     for an action to be performed by the target on or about existing resources.
     """
@@ -24,22 +29,28 @@ class ProcessRequest(domainresource.DomainResource):
     action: fhirtypes.Code = Field(
         None,
         alias="action",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="cancel | poll | reprocess | status",
+    )
+    action__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_action", title="Extension field for ``action``."
     )
 
     created: fhirtypes.DateTime = Field(
-        None,
-        alias="created",
-        title="Type `DateTime` (represented as `dict` in JSON)",
-        description="Creation date",
+        None, alias="created", title="Type `DateTime`", description="Creation date"
+    )
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_created", title="Extension field for ``created``."
     )
 
     exclude: ListType[fhirtypes.String] = Field(
         None,
         alias="exclude",
-        title="List of `String` items (represented as `dict` in JSON)",
+        title="List of `String` items",
         description="Resource type(s) to exclude",
+    )
+    exclude__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_exclude", title="Extension field for ``exclude``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -52,8 +63,11 @@ class ProcessRequest(domainresource.DomainResource):
     include: ListType[fhirtypes.String] = Field(
         None,
         alias="include",
-        title="List of `String` items (represented as `dict` in JSON)",
+        title="List of `String` items",
         description="Resource type(s) to include",
+    )
+    include__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_include", title="Extension field for ``include``."
     )
 
     item: ListType[fhirtypes.ProcessRequestItemType] = Field(
@@ -65,6 +79,9 @@ class ProcessRequest(domainresource.DomainResource):
 
     nullify: bool = Field(
         None, alias="nullify", title="Type `bool`", description="Remove history"
+    )
+    nullify__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_nullify", title="Extension field for ``nullify``."
     )
 
     organization: fhirtypes.ReferenceType = Field(
@@ -97,8 +114,11 @@ class ProcessRequest(domainresource.DomainResource):
     reference: fhirtypes.String = Field(
         None,
         alias="reference",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Reference number/string",
+    )
+    reference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_reference", title="Extension field for ``reference``."
     )
 
     request: fhirtypes.ReferenceType = Field(
@@ -122,8 +142,11 @@ class ProcessRequest(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="active | cancelled | draft | entered-in-error",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     target: fhirtypes.ReferenceType = Field(
@@ -138,7 +161,11 @@ class ProcessRequest(domainresource.DomainResource):
 
 
 class ProcessRequestItem(backboneelement.BackboneElement):
-    """ Items to re-adjudicate.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Items to re-adjudicate.
     List of top level items to be re-adjudicated, if none specified then the
     entire submission is re-adjudicated.
     """
@@ -148,6 +175,9 @@ class ProcessRequestItem(backboneelement.BackboneElement):
     sequenceLinkId: fhirtypes.Integer = Field(
         ...,
         alias="sequenceLinkId",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="Service instance",
+    )
+    sequenceLinkId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_sequenceLinkId", title="Extension field for ``sequenceLinkId``."
     )

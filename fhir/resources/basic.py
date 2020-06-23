@@ -14,7 +14,11 @@ from . import domainresource, fhirtypes
 
 
 class Basic(domainresource.DomainResource):
-    """ Resource for non-supported content.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Resource for non-supported content.
     Basic is used for handling concepts not yet defined in FHIR, narrative-only
     resources that don't map to an existing resource, and custom resources not
     appropriate for inclusion in the FHIR specification.
@@ -40,10 +44,10 @@ class Basic(domainresource.DomainResource):
     )
 
     created: fhirtypes.Date = Field(
-        None,
-        alias="created",
-        title="Type `Date` (represented as `dict` in JSON)",
-        description="When created",
+        None, alias="created", title="Type `Date`", description="When created"
+    )
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_created", title="Extension field for ``created``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(

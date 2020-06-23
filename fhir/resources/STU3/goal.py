@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Goal(domainresource.DomainResource):
-    """ Describes the intended objective(s) for a patient, group or organization.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Describes the intended objective(s) for a patient, group or organization.
     Describes the intended objective(s) for a patient, group or organization
     care, for example, weight loss, restoring an activity of daily living,
     obtaining herd immunity via immunization, meeting a process improvement
@@ -109,35 +113,47 @@ class Goal(domainresource.DomainResource):
     startDate: fhirtypes.Date = Field(
         None,
         alias="startDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="When goal pursuit begins",
         one_of_many="start",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    startDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_startDate", title="Extension field for ``startDate``."
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "proposed | accepted | planned | in-progress | on-target | ahead-of-"
             "target | behind-target | sustaining | achieved | on-hold | cancelled |"
             " entered-in-error | rejected"
         ),
     )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
+    )
 
     statusDate: fhirtypes.Date = Field(
         None,
         alias="statusDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="When goal status took effect",
+    )
+    statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_statusDate", title="Extension field for ``statusDate``."
     )
 
     statusReason: fhirtypes.String = Field(
         None,
         alias="statusReason",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Reason for current status",
+    )
+    statusReason__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_statusReason", title="Extension field for ``statusReason``."
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -195,7 +211,11 @@ class Goal(domainresource.DomainResource):
 
 
 class GoalTarget(backboneelement.BackboneElement):
-    """ Target outcome for the goal.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Target outcome for the goal.
     Indicates what should be done by when.
     """
 
@@ -231,10 +251,13 @@ class GoalTarget(backboneelement.BackboneElement):
     dueDate: fhirtypes.Date = Field(
         None,
         alias="dueDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="Reach goal on or before",
         one_of_many="due",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    dueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_dueDate", title="Extension field for ``dueDate``."
     )
 
     dueDuration: fhirtypes.DurationType = Field(

@@ -7,6 +7,7 @@ Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field
 
@@ -14,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ChargeItemDefinition(domainresource.DomainResource):
-    """ Definition of properties and rules about how the price and the
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Definition of properties and rules about how the price and the
     applicability of a ChargeItem can be determined.
     The ChargeItemDefinition resource provides the properties that apply to the
     (billing) codes necessary to calculate costs and prices. The properties may
@@ -38,8 +43,11 @@ class ChargeItemDefinition(domainresource.DomainResource):
     approvalDate: fhirtypes.Date = Field(
         None,
         alias="approvalDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="When the charge item definition was approved by publisher",
+    )
+    approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_approvalDate", title="Extension field for ``approvalDate``."
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -59,29 +67,40 @@ class ChargeItemDefinition(domainresource.DomainResource):
     copyright: fhirtypes.Markdown = Field(
         None,
         alias="copyright",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Use and/or publishing restrictions",
+    )
+    copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
     date: fhirtypes.DateTime = Field(
-        None,
-        alias="date",
-        title="Type `DateTime` (represented as `dict` in JSON)",
-        description="Date last changed",
+        None, alias="date", title="Type `DateTime`", description="Date last changed"
+    )
+    date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_date", title="Extension field for ``date``."
     )
 
     derivedFromUri: ListType[fhirtypes.Uri] = Field(
         None,
         alias="derivedFromUri",
-        title="List of `Uri` items (represented as `dict` in JSON)",
+        title="List of `Uri` items",
         description="Underlying externally-defined charge item definition",
+    )
+    derivedFromUri__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(
+        None, alias="_derivedFromUri", title="Extension field for ``derivedFromUri``."
     )
 
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Natural language description of the charge item definition",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     effectivePeriod: fhirtypes.PeriodType = Field(
@@ -96,6 +115,9 @@ class ChargeItemDefinition(domainresource.DomainResource):
         alias="experimental",
         title="Type `bool`",
         description="For testing purposes, not real usage",
+    )
+    experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_experimental", title="Extension field for ``experimental``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -125,21 +147,24 @@ class ChargeItemDefinition(domainresource.DomainResource):
     lastReviewDate: fhirtypes.Date = Field(
         None,
         alias="lastReviewDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="When the charge item definition was last reviewed",
+    )
+    lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
     )
 
     partOf: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="partOf",
-        title=(
-            "List of `Canonical` items referencing `ChargeItemDefinition` "
-            "(represented as `dict` in JSON)"
-        ),
+        title="List of `Canonical` items referencing `ChargeItemDefinition`",
         description=(
             "A larger definition of which this particular definition is a component"
             " or step"
         ),
+    )
+    partOf__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_partOf", title="Extension field for ``partOf``."
     )
 
     propertyGroup: ListType[fhirtypes.ChargeItemDefinitionPropertyGroupType] = Field(
@@ -155,45 +180,57 @@ class ChargeItemDefinition(domainresource.DomainResource):
     publisher: fhirtypes.String = Field(
         None,
         alias="publisher",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name of the publisher (organization or individual)",
+    )
+    publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
     replaces: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="replaces",
-        title=(
-            "List of `Canonical` items referencing `ChargeItemDefinition` "
-            "(represented as `dict` in JSON)"
-        ),
+        title="List of `Canonical` items referencing `ChargeItemDefinition`",
         description=(
             "Completed or terminated request(s) whose function is taken by this new"
             " request"
         ),
     )
+    replaces__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_replaces", title="Extension field for ``replaces``."
+    )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="draft | active | retired | unknown",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for this charge item definition (human friendly)",
+    )
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_title", title="Extension field for ``title``."
     )
 
     url: fhirtypes.Uri = Field(
         ...,
         alias="url",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description=(
             "Canonical identifier for this charge item definition, represented as a"
             " URI (globally unique)"
         ),
+    )
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_url", title="Extension field for ``url``."
     )
 
     useContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -206,13 +243,20 @@ class ChargeItemDefinition(domainresource.DomainResource):
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Business version of the charge item definition",
+    )
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_version", title="Extension field for ``version``."
     )
 
 
 class ChargeItemDefinitionApplicability(backboneelement.BackboneElement):
-    """ Whether or not the billing code is applicable.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Whether or not the billing code is applicable.
     Expressions that describe applicability criteria for the billing code.
     """
 
@@ -221,27 +265,40 @@ class ChargeItemDefinitionApplicability(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Natural language description of the condition",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     expression: fhirtypes.String = Field(
         None,
         alias="expression",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Boolean-valued expression",
+    )
+    expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_expression", title="Extension field for ``expression``."
     )
 
     language: fhirtypes.String = Field(
         None,
         alias="language",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Language of the expression",
+    )
+    language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_language", title="Extension field for ``language``."
     )
 
 
 class ChargeItemDefinitionPropertyGroup(backboneelement.BackboneElement):
-    """ Group of properties which are applicable under the same conditions.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Group of properties which are applicable under the same conditions.
     Group of properties which are applicable under the same conditions. If no
     applicability rules are established for the group, then all properties
     always apply.
@@ -273,7 +330,11 @@ class ChargeItemDefinitionPropertyGroup(backboneelement.BackboneElement):
 
 
 class ChargeItemDefinitionPropertyGroupPriceComponent(backboneelement.BackboneElement):
-    """ Components of total line item price.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Components of total line item price.
     The price for a ChargeItem may be calculated as a base price with
     surcharges/deductions that apply in certain conditions. A
     ChargeItemDefinition resource that defines the prices, factors and
@@ -301,13 +362,19 @@ class ChargeItemDefinitionPropertyGroupPriceComponent(backboneelement.BackboneEl
     factor: fhirtypes.Decimal = Field(
         None,
         alias="factor",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Factor used for calculating this component",
+    )
+    factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_factor", title="Extension field for ``factor``."
     )
 
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="base | surcharge | deduction | discount | tax | informational",
+    )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
     )

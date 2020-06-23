@@ -12,7 +12,11 @@ from . import element, fhirtypes
 
 
 class Reference(element.Element):
-    """ A reference from one resource to another.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A reference from one resource to another.
     """
 
     resource_type = Field("Reference", const=True)
@@ -20,8 +24,11 @@ class Reference(element.Element):
     display: fhirtypes.String = Field(
         None,
         alias="display",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Text alternative for the resource",
+    )
+    display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_display", title="Extension field for ``display``."
     )
 
     identifier: fhirtypes.IdentifierType = Field(
@@ -34,13 +41,19 @@ class Reference(element.Element):
     reference: fhirtypes.String = Field(
         None,
         alias="reference",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Literal reference, Relative, internal or absolute URL",
+    )
+    reference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_reference", title="Extension field for ``reference``."
     )
 
     type: fhirtypes.Uri = Field(
         None,
         alias="type",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description='Type the reference refers to (e.g. "Patient")',
+    )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
     )

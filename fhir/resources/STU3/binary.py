@@ -12,7 +12,11 @@ from . import fhirtypes, resource
 
 
 class Binary(resource.Resource):
-    """ Pure binary content defined by a format other than FHIR.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Pure binary content defined by a format other than FHIR.
     A binary resource can contain any content, whether text, image, pdf, zip
     archive, etc.
     """
@@ -22,15 +26,21 @@ class Binary(resource.Resource):
     content: fhirtypes.Base64Binary = Field(
         ...,
         alias="content",
-        title="Type `Base64Binary` (represented as `dict` in JSON)",
+        title="Type `Base64Binary`",
         description="The actual content",
+    )
+    content__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_content", title="Extension field for ``content``."
     )
 
     contentType: fhirtypes.Code = Field(
         ...,
         alias="contentType",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="MimeType of the binary content",
+    )
+    contentType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_contentType", title="Extension field for ``contentType``."
     )
 
     securityContext: fhirtypes.ReferenceType = Field(

@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ProcedureRequest(domainresource.DomainResource):
-    """ A request for a procedure or diagnostic to be performed.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A request for a procedure or diagnostic to be performed.
     A record of a request for diagnostic investigations, treatments, or
     operations to be performed.
     """
@@ -30,6 +34,9 @@ class ProcedureRequest(domainresource.DomainResource):
         one_of_many="asNeeded",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
+    asNeededBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_asNeededBoolean", title="Extension field for ``asNeededBoolean``."
+    )
 
     asNeededCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
@@ -43,8 +50,11 @@ class ProcedureRequest(domainresource.DomainResource):
     authoredOn: fhirtypes.DateTime = Field(
         None,
         alias="authoredOn",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Date request signed",
+    )
+    authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_authoredOn", title="Extension field for ``authoredOn``."
     )
 
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
@@ -104,6 +114,9 @@ class ProcedureRequest(domainresource.DomainResource):
         title="Type `bool`",
         description="True if procedure should not be performed",
     )
+    doNotPerform__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_doNotPerform", title="Extension field for ``doNotPerform``."
+    )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
@@ -115,8 +128,11 @@ class ProcedureRequest(domainresource.DomainResource):
     intent: fhirtypes.Code = Field(
         ...,
         alias="intent",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="proposal | plan | order +",
+    )
+    intent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_intent", title="Extension field for ``intent``."
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
@@ -129,10 +145,15 @@ class ProcedureRequest(domainresource.DomainResource):
     occurrenceDateTime: fhirtypes.DateTime = Field(
         None,
         alias="occurrenceDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When procedure should occur",
         one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_occurrenceDateTime",
+        title="Extension field for ``occurrenceDateTime``.",
     )
 
     occurrencePeriod: fhirtypes.PeriodType = Field(
@@ -174,8 +195,11 @@ class ProcedureRequest(domainresource.DomainResource):
     priority: fhirtypes.Code = Field(
         None,
         alias="priority",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="routine | urgent | asap | stat",
+    )
+    priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_priority", title="Extension field for ``priority``."
     )
 
     reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -242,8 +266,11 @@ class ProcedureRequest(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="draft | active | suspended | completed | entered-in-error | cancelled",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -311,7 +338,11 @@ class ProcedureRequest(domainresource.DomainResource):
 
 
 class ProcedureRequestRequester(backboneelement.BackboneElement):
-    """ Who/what is requesting procedure or diagnostic.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Who/what is requesting procedure or diagnostic.
     The individual who initiated the request and has responsibility for its
     activation.
     """

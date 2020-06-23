@@ -8,6 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 from typing import Any, Dict
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field, root_validator
 
@@ -15,7 +16,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ChargeItem(domainresource.DomainResource):
-    """ Item containing charge code(s) associated with the provision of healthcare
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Item containing charge code(s) associated with the provision of healthcare
     provider products.
     The resource ChargeItem describes the provision of healthcare provider
     products for a certain patient, therefore referring not only to the
@@ -64,15 +69,21 @@ class ChargeItem(domainresource.DomainResource):
     definition: ListType[fhirtypes.Uri] = Field(
         None,
         alias="definition",
-        title="List of `Uri` items (represented as `dict` in JSON)",
+        title="List of `Uri` items",
         description="Defining information about the code of this charge item",
     )
+    definition__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_definition", title="Extension field for ``definition``.")
 
     enteredDate: fhirtypes.DateTime = Field(
         None,
         alias="enteredDate",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Date the charge item was entered",
+    )
+    enteredDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_enteredDate", title="Extension field for ``enteredDate``."
     )
 
     enterer: fhirtypes.ReferenceType = Field(
@@ -88,8 +99,11 @@ class ChargeItem(domainresource.DomainResource):
     factorOverride: fhirtypes.Decimal = Field(
         None,
         alias="factorOverride",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Factor overriding the associated rules",
+    )
+    factorOverride__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_factorOverride", title="Extension field for ``factorOverride``."
     )
 
     identifier: fhirtypes.IdentifierType = Field(
@@ -109,10 +123,15 @@ class ChargeItem(domainresource.DomainResource):
     occurrenceDateTime: fhirtypes.DateTime = Field(
         None,
         alias="occurrenceDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When the charged service was applied",
         one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_occurrenceDateTime",
+        title="Extension field for ``occurrenceDateTime``.",
     )
 
     occurrencePeriod: fhirtypes.PeriodType = Field(
@@ -136,8 +155,11 @@ class ChargeItem(domainresource.DomainResource):
     overrideReason: fhirtypes.String = Field(
         None,
         alias="overrideReason",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Reason for overriding the list price/factor",
+    )
+    overrideReason__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_overrideReason", title="Extension field for ``overrideReason``."
     )
 
     partOf: ListType[fhirtypes.ReferenceType] = Field(
@@ -213,11 +235,14 @@ class ChargeItem(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "planned | billable | not-billable | aborted | billed | entered-in-"
             "error | unknown"
         ),
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -280,7 +305,11 @@ class ChargeItem(domainresource.DomainResource):
 
 
 class ChargeItemParticipant(backboneelement.BackboneElement):
-    """ Who performed charged service.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Who performed charged service.
     Indicates who or what performed or participated in the charged service.
     """
 

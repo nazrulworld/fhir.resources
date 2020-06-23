@@ -2,7 +2,7 @@
 import datetime
 import re
 from email.utils import formataddr, parseaddr
-from typing import TYPE_CHECKING, Any, Dict, Union
+from typing import TYPE_CHECKING, Any, Dict, Optional, Pattern, Union
 from uuid import UUID
 
 from pydantic import AnyUrl
@@ -29,14 +29,32 @@ __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 
 FHIR_DATE_PARTS = re.compile(r"(?P<year>\d{4})(-(?P<month>\d{2}))?(-(?P<day>\d{2}))?$")
 
+
+class Primitive:
+    """FHIR Primitive Data Type Base Class"""
+
+    regex: Optional[Pattern[str]] = None
+    __visit_name__: Optional[str] = None
+
+    @classmethod
+    def is_primitive(cls) -> bool:
+        """ """
+        return True
+
+    @classmethod
+    def fhir_type_name(cls) -> Optional[str]:
+        """ """
+        return cls.__visit_name__
+
+
 if TYPE_CHECKING:
     Boolean = bool
 else:
 
-    class Boolean(int):
+    class Boolean(int, Primitive):
         """true | false"""
 
-        regex: str = "true|false"
+        regex = re.compile("true|false")
         __visit_name__ = "boolean"
 
         @classmethod
@@ -48,7 +66,7 @@ else:
             yield bool_validator
 
 
-class String(ConstrainedStr):
+class String(ConstrainedStr, Primitive):
     """A sequence of Unicode characters
     Note that strings SHALL NOT exceed 1MB (1024*1024 characters) in size.
     Strings SHOULD not contain Unicode character points below 32, except for
@@ -62,14 +80,14 @@ class String(ConstrainedStr):
     __visit_name__ = "string"
 
 
-class Base64Binary(ConstrainedBytes):
+class Base64Binary(ConstrainedBytes, Primitive):
     """A stream of bytes, base64 encoded (RFC 4648 )"""
 
     regex = re.compile(r"(\s*([0-9a-zA-Z+=]){4}\s*)+")
     __visit_name__ = "base64Binary"
 
 
-class Code(ConstrainedStr):
+class Code(ConstrainedStr, Primitive):
     """Indicates that the value is taken from a set of controlled
     strings defined elsewhere (see Using codes for further discussion).
     Technically, a code is restricted to a string which has at least one
@@ -80,7 +98,7 @@ class Code(ConstrainedStr):
     __visit_name__ = "code"
 
 
-class Id(ConstrainedStr):
+class Id(ConstrainedStr, Primitive):
     """Any combination of upper- or lower-case ASCII letters
     ('A'..'Z', and 'a'..'z', numerals ('0'..'9'), '-' and '.',
     with a length limit of 64 characters.
@@ -94,7 +112,7 @@ class Id(ConstrainedStr):
     __visit_name__ = "id"
 
 
-class Decimal(ConstrainedDecimal):
+class Decimal(ConstrainedDecimal, Primitive):
     """Rational numbers that have a decimal representation.
     See below about the precision of the number"""
 
@@ -102,7 +120,7 @@ class Decimal(ConstrainedDecimal):
     __visit_name__ = "decimal"
 
 
-class Integer(ConstrainedInt):
+class Integer(ConstrainedInt, Primitive):
     """A signed integer in the range −2,147,483,648..2,147,483,647 (32-bit;
     for larger values, use decimal)"""
 
@@ -110,7 +128,7 @@ class Integer(ConstrainedInt):
     __visit_name__ = "integer"
 
 
-class UnsignedInt(ConstrainedInt):
+class UnsignedInt(ConstrainedInt, Primitive):
     """Any non-negative integer in the range 0..2,147,483,647"""
 
     regex = re.compile(r"[0]|([1-9][0-9]*)")
@@ -118,7 +136,7 @@ class UnsignedInt(ConstrainedInt):
     ge = 0
 
 
-class PositiveInt(ConstrainedInt):
+class PositiveInt(ConstrainedInt, Primitive):
     """Any positive integer in the range 1..2,147,483,647"""
 
     regex = re.compile(r"\+?[1-9][0-9]*")
@@ -126,7 +144,7 @@ class PositiveInt(ConstrainedInt):
     gt = 0
 
 
-class Uri(ConstrainedStr):
+class Uri(ConstrainedStr, Primitive):
     """A Uniform Resource Identifier Reference (RFC 3986 ).
     Note: URIs are case sensitive.
     For UUID (urn:uuid:53fefa32-fcbb-4ff8-8a92-55ee120877b7)
@@ -141,14 +159,14 @@ class Uri(ConstrainedStr):
     regex = re.compile(r"\S*")
 
 
-class Oid(ConstrainedStr):
+class Oid(ConstrainedStr, Primitive):
     """An OID represented as a URI (RFC 3001 ); e.g. urn:oid:1.2.3.4.5"""
 
     __visit_name__ = "oid"
     regex = re.compile(r"urn:oid:[0-2](\.(0|[1-9][0-9]*))+")
 
 
-class Uuid(UUID):
+class Uuid(UUID, Primitive):
     """A UUID (aka GUID) represented as a URI (RFC 4122 );
     e.g. urn:uuid:c757873d-ec9a-4326-a141-556f43239520"""
 
@@ -168,13 +186,12 @@ class Canonical(Uri):
     __visit_name__ = "canonical"
 
 
-class Url(AnyUrl):
+class Url(AnyUrl, Primitive):
     """A Uniform Resource Locator (RFC 1738 ).
     Note URLs are accessed directly using the specified protocol.
     Common URL protocols are http{s}:, ftp:, mailto: and mllp:,
     though many others are defined"""
 
-    regex = None
     __visit_name__ = "url"
 
     @classmethod
@@ -197,7 +214,7 @@ class Url(AnyUrl):
         return AnyUrl.validate(value, field, config)
 
 
-class Markdown(ConstrainedStr):
+class Markdown(ConstrainedStr, Primitive):
     """A FHIR string (see above) that may contain markdown syntax for optional processing
     by a markdown presentation engine, in the GFM extension of CommonMark format (see below)"""
 
@@ -205,12 +222,11 @@ class Markdown(ConstrainedStr):
     regex = re.compile(r"\s*(\S|\s)*")
 
 
-class Xhtml(ConstrainedStr):
-    regex = None
+class Xhtml(ConstrainedStr, Primitive):
     __visit_name__ = "xhtml"
 
 
-class Date(datetime.date):
+class Date(datetime.date, Primitive):
     """A date, or partial date (e.g. just year or year + month)
     as used in human communication. The format is YYYY, YYYY-MM, or YYYY-MM-DD,
     e.g. 2018, 1973-06, or 1905-08-23.
@@ -250,7 +266,7 @@ class Date(datetime.date):
         return parse_date(value)
 
 
-class DateTime(datetime.datetime):
+class DateTime(datetime.datetime, Primitive):
     """A date, date-time or partial date (e.g. just year or year + month) as used
     in human communication. The format is YYYY, YYYY-MM, YYYY-MM-DD or
     YYYY-MM-DDThh:mm:ss+zz:zz, e.g. 2018, 1973-06, 1905-08-23,
@@ -305,7 +321,7 @@ class DateTime(datetime.datetime):
         return parse_datetime(value)
 
 
-class Instant(datetime.datetime):
+class Instant(datetime.datetime, Primitive):
     """An instant in time in the format YYYY-MM-DDThh:mm:ss.sss+zz:zz
     (e.g. 2015-02-07T13:28:17.239+02:00 or 2017-01-01T00:00:00Z).
     The time SHALL specified at least to the second and SHALL include a time zone.
@@ -339,7 +355,7 @@ class Instant(datetime.datetime):
         return parse_datetime(value)
 
 
-class Time(datetime.time):
+class Time(datetime.time, Primitive):
     """A time during the day, in the format hh:mm:ss.
     There is no date specified. Seconds must be provided due
     to schema type constraints but may be zero-filled and may
@@ -387,6 +403,22 @@ class AbstractType(dict):
 
         yield getattr(fhirtypesvalidators, cls.__resource_type__.lower() + "_validator")
 
+    @classmethod
+    def is_primitive(cls) -> bool:
+        """ """
+        return False
+
+    @classmethod
+    def fhir_type_name(cls) -> str:
+        """ """
+        return cls.__resource_type__
+
+
+class FHIRPrimitiveExtensionType(AbstractType):
+    """ """
+
+    __resource_type__ = "FHIRPrimitiveExtension"
+
 
 class AbstractBaseType(dict):
     """ """
@@ -423,6 +455,16 @@ class AbstractBaseType(dict):
         type_class = get_fhir_type_class(resource_type)
         v = run_validator_for_fhir_type(type_class, v, values, config, field)
         return v
+
+    @classmethod
+    def is_primitive(cls) -> bool:
+        """ """
+        return False
+
+    @classmethod
+    def fhir_type_name(cls) -> str:
+        """ """
+        return cls.__resource_type__
 
 
 class ElementType(AbstractBaseType):
@@ -2390,6 +2432,27 @@ class VisionPrescriptionDispenseType(AbstractType):
 
 
 __all__ = [
+    "Boolean",
+    "String",
+    "Base64Binary",
+    "Code",
+    "Id",
+    "Decimal",
+    "Integer",
+    "UnsignedInt",
+    "PositiveInt",
+    "Uri",
+    "Oid",
+    "Uuid",
+    "Canonical",
+    "Url",
+    "Markdown",
+    "Xhtml",
+    "Date",
+    "DateTime",
+    "Instant",
+    "Time",
+    "FHIRPrimitiveExtensionType",
     "ElementType",
     "ResourceType",
     "AccountType",

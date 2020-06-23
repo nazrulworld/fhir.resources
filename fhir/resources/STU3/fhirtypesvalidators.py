@@ -12,6 +12,7 @@ from .fhirabstractmodel import FHIRAbstractModel
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 
 MODEL_CLASSES = {
+    "FHIRPrimitiveExtension": (None, ".fhirprimitiveextension"),
     "Account": (None, ".account"),
     "AccountCoverage": (None, ".account"),
     "AccountGuarantor": (None, ".account"),
@@ -552,6 +553,11 @@ def fhir_model_validator(
     if model_name != v.resource_type:
         raise ValueError
     return v
+
+
+def fhirprimitiveextension_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+
+    return fhir_model_validator("FHIRPrimitiveExtension", v)
 
 
 def account_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
@@ -3367,6 +3373,7 @@ def visionprescriptiondispense_validator(
 
 
 __all__ = [
+    "fhirprimitiveextension_validator",
     "account_validator",
     "accountcoverage_validator",
     "accountguarantor_validator",

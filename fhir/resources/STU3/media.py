@@ -15,7 +15,11 @@ from . import domainresource, fhirtypes
 
 
 class Media(domainresource.DomainResource):
-    """ A photo, video, or audio recording acquired or used in healthcare. The
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A photo, video, or audio recording acquired or used in healthcare. The
     actual content may be inline or provided by direct reference.
     """
 
@@ -68,22 +72,31 @@ class Media(domainresource.DomainResource):
     duration: fhirtypes.UnsignedInt = Field(
         None,
         alias="duration",
-        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        title="Type `UnsignedInt`",
         description="Length in seconds (audio / video)",
+    )
+    duration__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_duration", title="Extension field for ``duration``."
     )
 
     frames: fhirtypes.PositiveInt = Field(
         None,
         alias="frames",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="Number of frames if \u003e 1 (photo)",
+    )
+    frames__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_frames", title="Extension field for ``frames``."
     )
 
     height: fhirtypes.PositiveInt = Field(
         None,
         alias="height",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="Height of the image in pixels (photo/video)",
+    )
+    height__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_height", title="Extension field for ``height``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -103,10 +116,15 @@ class Media(domainresource.DomainResource):
     occurrenceDateTime: fhirtypes.DateTime = Field(
         None,
         alias="occurrenceDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When Media was collected",
         one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_occurrenceDateTime",
+        title="Extension field for ``occurrenceDateTime``.",
     )
 
     occurrencePeriod: fhirtypes.PeriodType = Field(
@@ -153,10 +171,10 @@ class Media(domainresource.DomainResource):
     )
 
     type: fhirtypes.Code = Field(
-        ...,
-        alias="type",
-        title="Type `Code` (represented as `dict` in JSON)",
-        description="photo | video | audio",
+        ..., alias="type", title="Type `Code`", description="photo | video | audio"
+    )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
     )
 
     view: fhirtypes.CodeableConceptType = Field(
@@ -169,8 +187,11 @@ class Media(domainresource.DomainResource):
     width: fhirtypes.PositiveInt = Field(
         None,
         alias="width",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="Width of the image in pixels (photo/video)",
+    )
+    width__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_width", title="Extension field for ``width``."
     )
 
     @root_validator(pre=True)

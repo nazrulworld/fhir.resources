@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Condition(domainresource.DomainResource):
-    """ Detailed information about conditions, problems or diagnoses.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Detailed information about conditions, problems or diagnoses.
     A clinical condition, problem, diagnosis, or other event, situation, issue,
     or clinical concept that has risen to a level of concern.
     """
@@ -39,14 +43,24 @@ class Condition(domainresource.DomainResource):
         one_of_many="abatement",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
+    abatementBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_abatementBoolean",
+        title="Extension field for ``abatementBoolean``.",
+    )
 
     abatementDateTime: fhirtypes.DateTime = Field(
         None,
         alias="abatementDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="If/when in resolution/remission",
         one_of_many="abatement",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    abatementDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_abatementDateTime",
+        title="Extension field for ``abatementDateTime``.",
     )
 
     abatementPeriod: fhirtypes.PeriodType = Field(
@@ -70,17 +84,23 @@ class Condition(domainresource.DomainResource):
     abatementString: fhirtypes.String = Field(
         None,
         alias="abatementString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="If/when in resolution/remission",
         one_of_many="abatement",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    abatementString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_abatementString", title="Extension field for ``abatementString``."
     )
 
     assertedDate: fhirtypes.DateTime = Field(
         None,
         alias="assertedDate",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Date record was believed accurate",
+    )
+    assertedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_assertedDate", title="Extension field for ``assertedDate``."
     )
 
     asserter: fhirtypes.ReferenceType = Field(
@@ -110,8 +130,11 @@ class Condition(domainresource.DomainResource):
     clinicalStatus: fhirtypes.Code = Field(
         None,
         alias="clinicalStatus",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="active | recurrence | inactive | remission | resolved",
+    )
+    clinicalStatus__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_clinicalStatus", title="Extension field for ``clinicalStatus``."
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -164,10 +187,13 @@ class Condition(domainresource.DomainResource):
     onsetDateTime: fhirtypes.DateTime = Field(
         None,
         alias="onsetDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Estimated or actual date,  date-time, or age",
         one_of_many="onset",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    onsetDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_onsetDateTime", title="Extension field for ``onsetDateTime``."
     )
 
     onsetPeriod: fhirtypes.PeriodType = Field(
@@ -191,10 +217,13 @@ class Condition(domainresource.DomainResource):
     onsetString: fhirtypes.String = Field(
         None,
         alias="onsetString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Estimated or actual date,  date-time, or age",
         one_of_many="onset",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    onsetString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_onsetString", title="Extension field for ``onsetString``."
     )
 
     severity: fhirtypes.CodeableConceptType = Field(
@@ -224,11 +253,16 @@ class Condition(domainresource.DomainResource):
     verificationStatus: fhirtypes.Code = Field(
         None,
         alias="verificationStatus",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "provisional | differential | confirmed | refuted | entered-in-error | "
             "unknown"
         ),
+    )
+    verificationStatus__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_verificationStatus",
+        title="Extension field for ``verificationStatus``.",
     )
 
     @root_validator(pre=True)
@@ -285,7 +319,11 @@ class Condition(domainresource.DomainResource):
 
 
 class ConditionEvidence(backboneelement.BackboneElement):
-    """ Supporting evidence.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Supporting evidence.
     Supporting Evidence / manifestations that are the basis on which this
     condition is suspected or confirmed.
     """
@@ -311,7 +349,11 @@ class ConditionEvidence(backboneelement.BackboneElement):
 
 
 class ConditionStage(backboneelement.BackboneElement):
-    """ Stage/grade, usually assessed formally.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Stage/grade, usually assessed formally.
     Clinical stage or grade of a condition. May include formal severity
     assessments.
     """

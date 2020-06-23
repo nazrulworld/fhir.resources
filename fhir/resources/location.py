@@ -7,6 +7,7 @@ Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field
 
@@ -14,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Location(domainresource.DomainResource):
-    """ Details and position information for a physical place.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Details and position information for a physical place.
     Details and position information for a physical place where services are
     provided and resources and participants may be stored, found, contained, or
     accommodated.
@@ -32,28 +37,39 @@ class Location(domainresource.DomainResource):
     alias: ListType[fhirtypes.String] = Field(
         None,
         alias="alias",
-        title="List of `String` items (represented as `dict` in JSON)",
+        title="List of `String` items",
         description=(
             "A list of alternate names that the location is known as, or was known "
             "as, in the past"
         ),
     )
+    alias__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_alias", title="Extension field for ``alias``."
+    )
 
     availabilityExceptions: fhirtypes.String = Field(
         None,
         alias="availabilityExceptions",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Description of availability exceptions",
+    )
+    availabilityExceptions__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_availabilityExceptions",
+        title="Extension field for ``availabilityExceptions``.",
     )
 
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description=(
             "Additional details about the location that could be displayed as "
             "further information to identify the location beyond its name"
         ),
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     endpoint: ListType[fhirtypes.ReferenceType] = Field(
@@ -97,17 +113,20 @@ class Location(domainresource.DomainResource):
     )
 
     mode: fhirtypes.Code = Field(
-        None,
-        alias="mode",
-        title="Type `Code` (represented as `dict` in JSON)",
-        description="instance | kind",
+        None, alias="mode", title="Type `Code`", description="instance | kind"
+    )
+    mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_mode", title="Extension field for ``mode``."
     )
 
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name of the location as used by humans",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     operationalStatus: fhirtypes.CodingType = Field(
@@ -143,8 +162,11 @@ class Location(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="active | suspended | inactive",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     telecom: ListType[fhirtypes.ContactPointType] = Field(
@@ -163,7 +185,11 @@ class Location(domainresource.DomainResource):
 
 
 class LocationHoursOfOperation(backboneelement.BackboneElement):
-    """ What days/times during a week is this location usually open.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    What days/times during a week is this location usually open.
     """
 
     resource_type = Field("LocationHoursOfOperation", const=True)
@@ -174,31 +200,47 @@ class LocationHoursOfOperation(backboneelement.BackboneElement):
         title="Type `bool`",
         description="The Location is open all day",
     )
+    allDay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_allDay", title="Extension field for ``allDay``."
+    )
 
     closingTime: fhirtypes.Time = Field(
         None,
         alias="closingTime",
-        title="Type `Time` (represented as `dict` in JSON)",
+        title="Type `Time`",
         description="Time that the Location closes",
+    )
+    closingTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_closingTime", title="Extension field for ``closingTime``."
     )
 
     daysOfWeek: ListType[fhirtypes.Code] = Field(
         None,
         alias="daysOfWeek",
-        title="List of `Code` items (represented as `dict` in JSON)",
+        title="List of `Code` items",
         description="mon | tue | wed | thu | fri | sat | sun",
     )
+    daysOfWeek__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_daysOfWeek", title="Extension field for ``daysOfWeek``.")
 
     openingTime: fhirtypes.Time = Field(
         None,
         alias="openingTime",
-        title="Type `Time` (represented as `dict` in JSON)",
+        title="Type `Time`",
         description="Time that the Location opens",
+    )
+    openingTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_openingTime", title="Extension field for ``openingTime``."
     )
 
 
 class LocationPosition(backboneelement.BackboneElement):
-    """ The absolute geographic location.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The absolute geographic location.
     The absolute geographic location of the Location, expressed using the WGS84
     datum (This is the same co-ordinate system used in KML).
     """
@@ -208,20 +250,29 @@ class LocationPosition(backboneelement.BackboneElement):
     altitude: fhirtypes.Decimal = Field(
         None,
         alias="altitude",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Altitude with WGS84 datum",
+    )
+    altitude__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_altitude", title="Extension field for ``altitude``."
     )
 
     latitude: fhirtypes.Decimal = Field(
         ...,
         alias="latitude",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Latitude with WGS84 datum",
+    )
+    latitude__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_latitude", title="Extension field for ``latitude``."
     )
 
     longitude: fhirtypes.Decimal = Field(
         ...,
         alias="longitude",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Longitude with WGS84 datum",
+    )
+    longitude__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_longitude", title="Extension field for ``longitude``."
     )

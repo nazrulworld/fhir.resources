@@ -12,7 +12,11 @@ from . import element, fhirtypes
 
 
 class Attachment(element.Element):
-    """ Content in a format defined elsewhere.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Content in a format defined elsewhere.
     For referring to data content defined in other formats.
     """
 
@@ -21,55 +25,79 @@ class Attachment(element.Element):
     contentType: fhirtypes.Code = Field(
         None,
         alias="contentType",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="Mime type of the content, with charset etc.",
+    )
+    contentType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_contentType", title="Extension field for ``contentType``."
     )
 
     creation: fhirtypes.DateTime = Field(
         None,
         alias="creation",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Date attachment was first created",
+    )
+    creation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_creation", title="Extension field for ``creation``."
     )
 
     data: fhirtypes.Base64Binary = Field(
         None,
         alias="data",
-        title="Type `Base64Binary` (represented as `dict` in JSON)",
+        title="Type `Base64Binary`",
         description="Data inline, base64ed",
+    )
+    data__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_data", title="Extension field for ``data``."
     )
 
     hash: fhirtypes.Base64Binary = Field(
         None,
         alias="hash",
-        title="Type `Base64Binary` (represented as `dict` in JSON)",
+        title="Type `Base64Binary`",
         description="Hash of the data (sha-1, base64ed)",
+    )
+    hash__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_hash", title="Extension field for ``hash``."
     )
 
     language: fhirtypes.Code = Field(
         None,
         alias="language",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="Human language of the content (BCP-47)",
+    )
+    language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_language", title="Extension field for ``language``."
     )
 
     size: fhirtypes.UnsignedInt = Field(
         None,
         alias="size",
-        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        title="Type `UnsignedInt`",
         description="Number of bytes of content (if url provided)",
+    )
+    size__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_size", title="Extension field for ``size``."
     )
 
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Label to display in place of the data",
+    )
+    title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_title", title="Extension field for ``title``."
     )
 
     url: fhirtypes.Url = Field(
         None,
         alias="url",
-        title="Type `Url` (represented as `dict` in JSON)",
+        title="Type `Url`",
         description="Uri where the data can be found",
+    )
+    url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_url", title="Extension field for ``url``."
     )

@@ -8,6 +8,7 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 from typing import Any, Dict
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field, root_validator
 
@@ -15,7 +16,11 @@ from . import backboneelement, element, fhirtypes
 
 
 class ElementDefinition(backboneelement.BackboneElement):
-    """ Definition of an element in a resource or extension.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Definition of an element in a resource or extension.
     Captures constraints on each element within the resource, profile, or
     extension.
     """
@@ -23,10 +28,10 @@ class ElementDefinition(backboneelement.BackboneElement):
     resource_type = Field("ElementDefinition", const=True)
 
     alias: ListType[fhirtypes.String] = Field(
-        None,
-        alias="alias",
-        title="List of `String` items (represented as `dict` in JSON)",
-        description="Other names",
+        None, alias="alias", title="List of `String` items", description="Other names"
+    )
+    alias__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_alias", title="Extension field for ``alias``."
     )
 
     base: fhirtypes.ElementDefinitionBaseType = Field(
@@ -53,15 +58,21 @@ class ElementDefinition(backboneelement.BackboneElement):
     comment: fhirtypes.Markdown = Field(
         None,
         alias="comment",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Comments about the use of this element",
+    )
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_comment", title="Extension field for ``comment``."
     )
 
     condition: ListType[fhirtypes.Id] = Field(
         None,
         alias="condition",
-        title="List of `Id` items (represented as `dict` in JSON)",
+        title="List of `Id` items",
         description="Reference to invariant about presence",
+    )
+    condition__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_condition", title="Extension field for ``condition``."
     )
 
     constraint: ListType[fhirtypes.ElementDefinitionConstraintType] = Field(
@@ -77,8 +88,13 @@ class ElementDefinition(backboneelement.BackboneElement):
     contentReference: fhirtypes.Uri = Field(
         None,
         alias="contentReference",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Reference to definition of content for the element",
+    )
+    contentReference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_contentReference",
+        title="Extension field for ``contentReference``.",
     )
 
     defaultValueAddress: fhirtypes.AddressType = Field(
@@ -120,10 +136,15 @@ class ElementDefinition(backboneelement.BackboneElement):
     defaultValueBase64Binary: fhirtypes.Base64Binary = Field(
         None,
         alias="defaultValueBase64Binary",
-        title="Type `Base64Binary` (represented as `dict` in JSON)",
+        title="Type `Base64Binary`",
         description="Specified value if missing from instance",
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    defaultValueBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_defaultValueBase64Binary",
+        title="Extension field for ``defaultValueBase64Binary``.",
     )
 
     defaultValueBoolean: bool = Field(
@@ -134,23 +155,38 @@ class ElementDefinition(backboneelement.BackboneElement):
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
+    defaultValueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_defaultValueBoolean",
+        title="Extension field for ``defaultValueBoolean``.",
+    )
 
     defaultValueCanonical: fhirtypes.Canonical = Field(
         None,
         alias="defaultValueCanonical",
-        title="Type `Canonical` (represented as `dict` in JSON)",
+        title="Type `Canonical`",
         description="Specified value if missing from instance",
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    defaultValueCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_defaultValueCanonical",
+        title="Extension field for ``defaultValueCanonical``.",
     )
 
     defaultValueCode: fhirtypes.Code = Field(
         None,
         alias="defaultValueCode",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="Specified value if missing from instance",
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    defaultValueCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_defaultValueCode",
+        title="Extension field for ``defaultValueCode``.",
     )
 
     defaultValueCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -219,28 +255,43 @@ class ElementDefinition(backboneelement.BackboneElement):
     defaultValueDate: fhirtypes.Date = Field(
         None,
         alias="defaultValueDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="Specified value if missing from instance",
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    defaultValueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_defaultValueDate",
+        title="Extension field for ``defaultValueDate``.",
     )
 
     defaultValueDateTime: fhirtypes.DateTime = Field(
         None,
         alias="defaultValueDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Specified value if missing from instance",
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    defaultValueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_defaultValueDateTime",
+        title="Extension field for ``defaultValueDateTime``.",
     )
 
     defaultValueDecimal: fhirtypes.Decimal = Field(
         None,
         alias="defaultValueDecimal",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Specified value if missing from instance",
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    defaultValueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_defaultValueDecimal",
+        title="Extension field for ``defaultValueDecimal``.",
     )
 
     defaultValueDistance: fhirtypes.DistanceType = Field(
@@ -291,10 +342,13 @@ class ElementDefinition(backboneelement.BackboneElement):
     defaultValueId: fhirtypes.Id = Field(
         None,
         alias="defaultValueId",
-        title="Type `Id` (represented as `dict` in JSON)",
+        title="Type `Id`",
         description="Specified value if missing from instance",
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    defaultValueId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_defaultValueId", title="Extension field for ``defaultValueId``."
     )
 
     defaultValueIdentifier: fhirtypes.IdentifierType = Field(
@@ -309,28 +363,43 @@ class ElementDefinition(backboneelement.BackboneElement):
     defaultValueInstant: fhirtypes.Instant = Field(
         None,
         alias="defaultValueInstant",
-        title="Type `Instant` (represented as `dict` in JSON)",
+        title="Type `Instant`",
         description="Specified value if missing from instance",
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    defaultValueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_defaultValueInstant",
+        title="Extension field for ``defaultValueInstant``.",
     )
 
     defaultValueInteger: fhirtypes.Integer = Field(
         None,
         alias="defaultValueInteger",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="Specified value if missing from instance",
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    defaultValueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_defaultValueInteger",
+        title="Extension field for ``defaultValueInteger``.",
     )
 
     defaultValueMarkdown: fhirtypes.Markdown = Field(
         None,
         alias="defaultValueMarkdown",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Specified value if missing from instance",
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    defaultValueMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_defaultValueMarkdown",
+        title="Extension field for ``defaultValueMarkdown``.",
     )
 
     defaultValueMeta: fhirtypes.MetaType = Field(
@@ -354,10 +423,13 @@ class ElementDefinition(backboneelement.BackboneElement):
     defaultValueOid: fhirtypes.Oid = Field(
         None,
         alias="defaultValueOid",
-        title="Type `Oid` (represented as `dict` in JSON)",
+        title="Type `Oid`",
         description="Specified value if missing from instance",
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    defaultValueOid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_defaultValueOid", title="Extension field for ``defaultValueOid``."
     )
 
     defaultValueParameterDefinition: fhirtypes.ParameterDefinitionType = Field(
@@ -381,10 +453,15 @@ class ElementDefinition(backboneelement.BackboneElement):
     defaultValuePositiveInt: fhirtypes.PositiveInt = Field(
         None,
         alias="defaultValuePositiveInt",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="Specified value if missing from instance",
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    defaultValuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_defaultValuePositiveInt",
+        title="Extension field for ``defaultValuePositiveInt``.",
     )
 
     defaultValueQuantity: fhirtypes.QuantityType = Field(
@@ -453,19 +530,29 @@ class ElementDefinition(backboneelement.BackboneElement):
     defaultValueString: fhirtypes.String = Field(
         None,
         alias="defaultValueString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Specified value if missing from instance",
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    defaultValueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_defaultValueString",
+        title="Extension field for ``defaultValueString``.",
     )
 
     defaultValueTime: fhirtypes.Time = Field(
         None,
         alias="defaultValueTime",
-        title="Type `Time` (represented as `dict` in JSON)",
+        title="Type `Time`",
         description="Specified value if missing from instance",
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    defaultValueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_defaultValueTime",
+        title="Extension field for ``defaultValueTime``.",
     )
 
     defaultValueTiming: fhirtypes.TimingType = Field(
@@ -489,28 +576,39 @@ class ElementDefinition(backboneelement.BackboneElement):
     defaultValueUnsignedInt: fhirtypes.UnsignedInt = Field(
         None,
         alias="defaultValueUnsignedInt",
-        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        title="Type `UnsignedInt`",
         description="Specified value if missing from instance",
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    defaultValueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_defaultValueUnsignedInt",
+        title="Extension field for ``defaultValueUnsignedInt``.",
     )
 
     defaultValueUri: fhirtypes.Uri = Field(
         None,
         alias="defaultValueUri",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Specified value if missing from instance",
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    defaultValueUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_defaultValueUri", title="Extension field for ``defaultValueUri``."
     )
 
     defaultValueUrl: fhirtypes.Url = Field(
         None,
         alias="defaultValueUrl",
-        title="Type `Url` (represented as `dict` in JSON)",
+        title="Type `Url`",
         description="Specified value if missing from instance",
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    defaultValueUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_defaultValueUrl", title="Extension field for ``defaultValueUrl``."
     )
 
     defaultValueUsageContext: fhirtypes.UsageContextType = Field(
@@ -525,17 +623,25 @@ class ElementDefinition(backboneelement.BackboneElement):
     defaultValueUuid: fhirtypes.Uuid = Field(
         None,
         alias="defaultValueUuid",
-        title="Type `Uuid` (represented as `dict` in JSON)",
+        title="Type `Uuid`",
         description="Specified value if missing from instance",
         one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    defaultValueUuid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_defaultValueUuid",
+        title="Extension field for ``defaultValueUuid``.",
     )
 
     definition: fhirtypes.Markdown = Field(
         None,
         alias="definition",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Full formal definition as narrative text",
+    )
+    definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_definition", title="Extension field for ``definition``."
     )
 
     example: ListType[fhirtypes.ElementDefinitionExampleType] = Field(
@@ -587,10 +693,15 @@ class ElementDefinition(backboneelement.BackboneElement):
     fixedBase64Binary: fhirtypes.Base64Binary = Field(
         None,
         alias="fixedBase64Binary",
-        title="Type `Base64Binary` (represented as `dict` in JSON)",
+        title="Type `Base64Binary`",
         description="Value must be exactly this",
         one_of_many="fixed",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    fixedBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_fixedBase64Binary",
+        title="Extension field for ``fixedBase64Binary``.",
     )
 
     fixedBoolean: bool = Field(
@@ -601,23 +712,32 @@ class ElementDefinition(backboneelement.BackboneElement):
         one_of_many="fixed",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
+    fixedBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_fixedBoolean", title="Extension field for ``fixedBoolean``."
+    )
 
     fixedCanonical: fhirtypes.Canonical = Field(
         None,
         alias="fixedCanonical",
-        title="Type `Canonical` (represented as `dict` in JSON)",
+        title="Type `Canonical`",
         description="Value must be exactly this",
         one_of_many="fixed",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    fixedCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_fixedCanonical", title="Extension field for ``fixedCanonical``."
     )
 
     fixedCode: fhirtypes.Code = Field(
         None,
         alias="fixedCode",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="Value must be exactly this",
         one_of_many="fixed",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    fixedCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_fixedCode", title="Extension field for ``fixedCode``."
     )
 
     fixedCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -686,28 +806,37 @@ class ElementDefinition(backboneelement.BackboneElement):
     fixedDate: fhirtypes.Date = Field(
         None,
         alias="fixedDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="Value must be exactly this",
         one_of_many="fixed",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    fixedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_fixedDate", title="Extension field for ``fixedDate``."
     )
 
     fixedDateTime: fhirtypes.DateTime = Field(
         None,
         alias="fixedDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Value must be exactly this",
         one_of_many="fixed",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    fixedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_fixedDateTime", title="Extension field for ``fixedDateTime``."
     )
 
     fixedDecimal: fhirtypes.Decimal = Field(
         None,
         alias="fixedDecimal",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Value must be exactly this",
         one_of_many="fixed",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    fixedDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_fixedDecimal", title="Extension field for ``fixedDecimal``."
     )
 
     fixedDistance: fhirtypes.DistanceType = Field(
@@ -758,10 +887,13 @@ class ElementDefinition(backboneelement.BackboneElement):
     fixedId: fhirtypes.Id = Field(
         None,
         alias="fixedId",
-        title="Type `Id` (represented as `dict` in JSON)",
+        title="Type `Id`",
         description="Value must be exactly this",
         one_of_many="fixed",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    fixedId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_fixedId", title="Extension field for ``fixedId``."
     )
 
     fixedIdentifier: fhirtypes.IdentifierType = Field(
@@ -776,28 +908,37 @@ class ElementDefinition(backboneelement.BackboneElement):
     fixedInstant: fhirtypes.Instant = Field(
         None,
         alias="fixedInstant",
-        title="Type `Instant` (represented as `dict` in JSON)",
+        title="Type `Instant`",
         description="Value must be exactly this",
         one_of_many="fixed",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    fixedInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_fixedInstant", title="Extension field for ``fixedInstant``."
     )
 
     fixedInteger: fhirtypes.Integer = Field(
         None,
         alias="fixedInteger",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="Value must be exactly this",
         one_of_many="fixed",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    fixedInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_fixedInteger", title="Extension field for ``fixedInteger``."
     )
 
     fixedMarkdown: fhirtypes.Markdown = Field(
         None,
         alias="fixedMarkdown",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Value must be exactly this",
         one_of_many="fixed",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    fixedMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_fixedMarkdown", title="Extension field for ``fixedMarkdown``."
     )
 
     fixedMeta: fhirtypes.MetaType = Field(
@@ -821,10 +962,13 @@ class ElementDefinition(backboneelement.BackboneElement):
     fixedOid: fhirtypes.Oid = Field(
         None,
         alias="fixedOid",
-        title="Type `Oid` (represented as `dict` in JSON)",
+        title="Type `Oid`",
         description="Value must be exactly this",
         one_of_many="fixed",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    fixedOid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_fixedOid", title="Extension field for ``fixedOid``."
     )
 
     fixedParameterDefinition: fhirtypes.ParameterDefinitionType = Field(
@@ -848,10 +992,15 @@ class ElementDefinition(backboneelement.BackboneElement):
     fixedPositiveInt: fhirtypes.PositiveInt = Field(
         None,
         alias="fixedPositiveInt",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="Value must be exactly this",
         one_of_many="fixed",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    fixedPositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_fixedPositiveInt",
+        title="Extension field for ``fixedPositiveInt``.",
     )
 
     fixedQuantity: fhirtypes.QuantityType = Field(
@@ -920,19 +1069,25 @@ class ElementDefinition(backboneelement.BackboneElement):
     fixedString: fhirtypes.String = Field(
         None,
         alias="fixedString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Value must be exactly this",
         one_of_many="fixed",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    fixedString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_fixedString", title="Extension field for ``fixedString``."
     )
 
     fixedTime: fhirtypes.Time = Field(
         None,
         alias="fixedTime",
-        title="Type `Time` (represented as `dict` in JSON)",
+        title="Type `Time`",
         description="Value must be exactly this",
         one_of_many="fixed",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    fixedTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_fixedTime", title="Extension field for ``fixedTime``."
     )
 
     fixedTiming: fhirtypes.TimingType = Field(
@@ -956,28 +1111,39 @@ class ElementDefinition(backboneelement.BackboneElement):
     fixedUnsignedInt: fhirtypes.UnsignedInt = Field(
         None,
         alias="fixedUnsignedInt",
-        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        title="Type `UnsignedInt`",
         description="Value must be exactly this",
         one_of_many="fixed",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    fixedUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_fixedUnsignedInt",
+        title="Extension field for ``fixedUnsignedInt``.",
     )
 
     fixedUri: fhirtypes.Uri = Field(
         None,
         alias="fixedUri",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Value must be exactly this",
         one_of_many="fixed",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    fixedUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_fixedUri", title="Extension field for ``fixedUri``."
     )
 
     fixedUrl: fhirtypes.Url = Field(
         None,
         alias="fixedUrl",
-        title="Type `Url` (represented as `dict` in JSON)",
+        title="Type `Url`",
         description="Value must be exactly this",
         one_of_many="fixed",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    fixedUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_fixedUrl", title="Extension field for ``fixedUrl``."
     )
 
     fixedUsageContext: fhirtypes.UsageContextType = Field(
@@ -992,10 +1158,13 @@ class ElementDefinition(backboneelement.BackboneElement):
     fixedUuid: fhirtypes.Uuid = Field(
         None,
         alias="fixedUuid",
-        title="Type `Uuid` (represented as `dict` in JSON)",
+        title="Type `Uuid`",
         description="Value must be exactly this",
         one_of_many="fixed",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    fixedUuid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_fixedUuid", title="Extension field for ``fixedUuid``."
     )
 
     isModifier: bool = Field(
@@ -1004,12 +1173,20 @@ class ElementDefinition(backboneelement.BackboneElement):
         title="Type `bool`",
         description="If this modifies the meaning of other elements",
     )
+    isModifier__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_isModifier", title="Extension field for ``isModifier``."
+    )
 
     isModifierReason: fhirtypes.String = Field(
         None,
         alias="isModifierReason",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Reason that this element is marked as a modifier",
+    )
+    isModifierReason__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_isModifierReason",
+        title="Extension field for ``isModifierReason``.",
     )
 
     isSummary: bool = Field(
@@ -1018,12 +1195,18 @@ class ElementDefinition(backboneelement.BackboneElement):
         title="Type `bool`",
         description="Include when _summary = true?",
     )
+    isSummary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_isSummary", title="Extension field for ``isSummary``."
+    )
 
     label: fhirtypes.String = Field(
         None,
         alias="label",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for element to display with or prompt for element",
+    )
+    label__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_label", title="Extension field for ``label``."
     )
 
     mapping: ListType[fhirtypes.ElementDefinitionMappingType] = Field(
@@ -1039,69 +1222,97 @@ class ElementDefinition(backboneelement.BackboneElement):
     max: fhirtypes.String = Field(
         None,
         alias="max",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Maximum Cardinality (a number or *)",
+    )
+    max__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_max", title="Extension field for ``max``."
     )
 
     maxLength: fhirtypes.Integer = Field(
         None,
         alias="maxLength",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="Max length for strings",
+    )
+    maxLength__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_maxLength", title="Extension field for ``maxLength``."
     )
 
     maxValueDate: fhirtypes.Date = Field(
         None,
         alias="maxValueDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="Maximum Allowed Value (for some types)",
         one_of_many="maxValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    maxValueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_maxValueDate", title="Extension field for ``maxValueDate``."
     )
 
     maxValueDateTime: fhirtypes.DateTime = Field(
         None,
         alias="maxValueDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Maximum Allowed Value (for some types)",
         one_of_many="maxValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    maxValueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_maxValueDateTime",
+        title="Extension field for ``maxValueDateTime``.",
     )
 
     maxValueDecimal: fhirtypes.Decimal = Field(
         None,
         alias="maxValueDecimal",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Maximum Allowed Value (for some types)",
         one_of_many="maxValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    maxValueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_maxValueDecimal", title="Extension field for ``maxValueDecimal``."
     )
 
     maxValueInstant: fhirtypes.Instant = Field(
         None,
         alias="maxValueInstant",
-        title="Type `Instant` (represented as `dict` in JSON)",
+        title="Type `Instant`",
         description="Maximum Allowed Value (for some types)",
         one_of_many="maxValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    maxValueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_maxValueInstant", title="Extension field for ``maxValueInstant``."
     )
 
     maxValueInteger: fhirtypes.Integer = Field(
         None,
         alias="maxValueInteger",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="Maximum Allowed Value (for some types)",
         one_of_many="maxValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    maxValueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_maxValueInteger", title="Extension field for ``maxValueInteger``."
     )
 
     maxValuePositiveInt: fhirtypes.PositiveInt = Field(
         None,
         alias="maxValuePositiveInt",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="Maximum Allowed Value (for some types)",
         one_of_many="maxValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    maxValuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_maxValuePositiveInt",
+        title="Extension field for ``maxValuePositiveInt``.",
     )
 
     maxValueQuantity: fhirtypes.QuantityType = Field(
@@ -1116,87 +1327,122 @@ class ElementDefinition(backboneelement.BackboneElement):
     maxValueTime: fhirtypes.Time = Field(
         None,
         alias="maxValueTime",
-        title="Type `Time` (represented as `dict` in JSON)",
+        title="Type `Time`",
         description="Maximum Allowed Value (for some types)",
         one_of_many="maxValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    maxValueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_maxValueTime", title="Extension field for ``maxValueTime``."
     )
 
     maxValueUnsignedInt: fhirtypes.UnsignedInt = Field(
         None,
         alias="maxValueUnsignedInt",
-        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        title="Type `UnsignedInt`",
         description="Maximum Allowed Value (for some types)",
         one_of_many="maxValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    maxValueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_maxValueUnsignedInt",
+        title="Extension field for ``maxValueUnsignedInt``.",
     )
 
     meaningWhenMissing: fhirtypes.Markdown = Field(
         None,
         alias="meaningWhenMissing",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Implicit meaning when this element is missing",
+    )
+    meaningWhenMissing__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_meaningWhenMissing",
+        title="Extension field for ``meaningWhenMissing``.",
     )
 
     min: fhirtypes.UnsignedInt = Field(
-        None,
-        alias="min",
-        title="Type `UnsignedInt` (represented as `dict` in JSON)",
-        description="Minimum Cardinality",
+        None, alias="min", title="Type `UnsignedInt`", description="Minimum Cardinality"
+    )
+    min__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_min", title="Extension field for ``min``."
     )
 
     minValueDate: fhirtypes.Date = Field(
         None,
         alias="minValueDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="Minimum Allowed Value (for some types)",
         one_of_many="minValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    minValueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_minValueDate", title="Extension field for ``minValueDate``."
     )
 
     minValueDateTime: fhirtypes.DateTime = Field(
         None,
         alias="minValueDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Minimum Allowed Value (for some types)",
         one_of_many="minValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    minValueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_minValueDateTime",
+        title="Extension field for ``minValueDateTime``.",
     )
 
     minValueDecimal: fhirtypes.Decimal = Field(
         None,
         alias="minValueDecimal",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Minimum Allowed Value (for some types)",
         one_of_many="minValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    minValueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_minValueDecimal", title="Extension field for ``minValueDecimal``."
     )
 
     minValueInstant: fhirtypes.Instant = Field(
         None,
         alias="minValueInstant",
-        title="Type `Instant` (represented as `dict` in JSON)",
+        title="Type `Instant`",
         description="Minimum Allowed Value (for some types)",
         one_of_many="minValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    minValueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_minValueInstant", title="Extension field for ``minValueInstant``."
     )
 
     minValueInteger: fhirtypes.Integer = Field(
         None,
         alias="minValueInteger",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="Minimum Allowed Value (for some types)",
         one_of_many="minValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    minValueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_minValueInteger", title="Extension field for ``minValueInteger``."
     )
 
     minValuePositiveInt: fhirtypes.PositiveInt = Field(
         None,
         alias="minValuePositiveInt",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="Minimum Allowed Value (for some types)",
         one_of_many="minValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    minValuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_minValuePositiveInt",
+        title="Extension field for ``minValuePositiveInt``.",
     )
 
     minValueQuantity: fhirtypes.QuantityType = Field(
@@ -1211,19 +1457,27 @@ class ElementDefinition(backboneelement.BackboneElement):
     minValueTime: fhirtypes.Time = Field(
         None,
         alias="minValueTime",
-        title="Type `Time` (represented as `dict` in JSON)",
+        title="Type `Time`",
         description="Minimum Allowed Value (for some types)",
         one_of_many="minValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    minValueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_minValueTime", title="Extension field for ``minValueTime``."
     )
 
     minValueUnsignedInt: fhirtypes.UnsignedInt = Field(
         None,
         alias="minValueUnsignedInt",
-        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        title="Type `UnsignedInt`",
         description="Minimum Allowed Value (for some types)",
         one_of_many="minValue",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    minValueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_minValueUnsignedInt",
+        title="Extension field for ``minValueUnsignedInt``.",
     )
 
     mustSupport: bool = Field(
@@ -1232,19 +1486,28 @@ class ElementDefinition(backboneelement.BackboneElement):
         title="Type `bool`",
         description="If the element must be supported",
     )
+    mustSupport__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_mustSupport", title="Extension field for ``mustSupport``."
+    )
 
     orderMeaning: fhirtypes.String = Field(
         None,
         alias="orderMeaning",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="What the order of the elements means",
+    )
+    orderMeaning__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_orderMeaning", title="Extension field for ``orderMeaning``."
     )
 
     path: fhirtypes.String = Field(
         ...,
         alias="path",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Path of the element in the hierarchy of elements",
+    )
+    path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_path", title="Extension field for ``path``."
     )
 
     patternAddress: fhirtypes.AddressType = Field(
@@ -1286,10 +1549,15 @@ class ElementDefinition(backboneelement.BackboneElement):
     patternBase64Binary: fhirtypes.Base64Binary = Field(
         None,
         alias="patternBase64Binary",
-        title="Type `Base64Binary` (represented as `dict` in JSON)",
+        title="Type `Base64Binary`",
         description="Value must have at least these property values",
         one_of_many="pattern",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    patternBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_patternBase64Binary",
+        title="Extension field for ``patternBase64Binary``.",
     )
 
     patternBoolean: bool = Field(
@@ -1300,23 +1568,34 @@ class ElementDefinition(backboneelement.BackboneElement):
         one_of_many="pattern",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
     )
+    patternBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_patternBoolean", title="Extension field for ``patternBoolean``."
+    )
 
     patternCanonical: fhirtypes.Canonical = Field(
         None,
         alias="patternCanonical",
-        title="Type `Canonical` (represented as `dict` in JSON)",
+        title="Type `Canonical`",
         description="Value must have at least these property values",
         one_of_many="pattern",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    patternCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_patternCanonical",
+        title="Extension field for ``patternCanonical``.",
     )
 
     patternCode: fhirtypes.Code = Field(
         None,
         alias="patternCode",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="Value must have at least these property values",
         one_of_many="pattern",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    patternCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_patternCode", title="Extension field for ``patternCode``."
     )
 
     patternCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -1385,28 +1664,37 @@ class ElementDefinition(backboneelement.BackboneElement):
     patternDate: fhirtypes.Date = Field(
         None,
         alias="patternDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="Value must have at least these property values",
         one_of_many="pattern",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    patternDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_patternDate", title="Extension field for ``patternDate``."
     )
 
     patternDateTime: fhirtypes.DateTime = Field(
         None,
         alias="patternDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Value must have at least these property values",
         one_of_many="pattern",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    patternDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_patternDateTime", title="Extension field for ``patternDateTime``."
     )
 
     patternDecimal: fhirtypes.Decimal = Field(
         None,
         alias="patternDecimal",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Value must have at least these property values",
         one_of_many="pattern",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    patternDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_patternDecimal", title="Extension field for ``patternDecimal``."
     )
 
     patternDistance: fhirtypes.DistanceType = Field(
@@ -1457,10 +1745,13 @@ class ElementDefinition(backboneelement.BackboneElement):
     patternId: fhirtypes.Id = Field(
         None,
         alias="patternId",
-        title="Type `Id` (represented as `dict` in JSON)",
+        title="Type `Id`",
         description="Value must have at least these property values",
         one_of_many="pattern",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    patternId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_patternId", title="Extension field for ``patternId``."
     )
 
     patternIdentifier: fhirtypes.IdentifierType = Field(
@@ -1475,28 +1766,37 @@ class ElementDefinition(backboneelement.BackboneElement):
     patternInstant: fhirtypes.Instant = Field(
         None,
         alias="patternInstant",
-        title="Type `Instant` (represented as `dict` in JSON)",
+        title="Type `Instant`",
         description="Value must have at least these property values",
         one_of_many="pattern",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    patternInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_patternInstant", title="Extension field for ``patternInstant``."
     )
 
     patternInteger: fhirtypes.Integer = Field(
         None,
         alias="patternInteger",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="Value must have at least these property values",
         one_of_many="pattern",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    patternInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_patternInteger", title="Extension field for ``patternInteger``."
     )
 
     patternMarkdown: fhirtypes.Markdown = Field(
         None,
         alias="patternMarkdown",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Value must have at least these property values",
         one_of_many="pattern",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    patternMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_patternMarkdown", title="Extension field for ``patternMarkdown``."
     )
 
     patternMeta: fhirtypes.MetaType = Field(
@@ -1520,10 +1820,13 @@ class ElementDefinition(backboneelement.BackboneElement):
     patternOid: fhirtypes.Oid = Field(
         None,
         alias="patternOid",
-        title="Type `Oid` (represented as `dict` in JSON)",
+        title="Type `Oid`",
         description="Value must have at least these property values",
         one_of_many="pattern",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    patternOid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_patternOid", title="Extension field for ``patternOid``."
     )
 
     patternParameterDefinition: fhirtypes.ParameterDefinitionType = Field(
@@ -1547,10 +1850,15 @@ class ElementDefinition(backboneelement.BackboneElement):
     patternPositiveInt: fhirtypes.PositiveInt = Field(
         None,
         alias="patternPositiveInt",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="Value must have at least these property values",
         one_of_many="pattern",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    patternPositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_patternPositiveInt",
+        title="Extension field for ``patternPositiveInt``.",
     )
 
     patternQuantity: fhirtypes.QuantityType = Field(
@@ -1619,19 +1927,25 @@ class ElementDefinition(backboneelement.BackboneElement):
     patternString: fhirtypes.String = Field(
         None,
         alias="patternString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Value must have at least these property values",
         one_of_many="pattern",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    patternString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_patternString", title="Extension field for ``patternString``."
     )
 
     patternTime: fhirtypes.Time = Field(
         None,
         alias="patternTime",
-        title="Type `Time` (represented as `dict` in JSON)",
+        title="Type `Time`",
         description="Value must have at least these property values",
         one_of_many="pattern",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    patternTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_patternTime", title="Extension field for ``patternTime``."
     )
 
     patternTiming: fhirtypes.TimingType = Field(
@@ -1655,28 +1969,39 @@ class ElementDefinition(backboneelement.BackboneElement):
     patternUnsignedInt: fhirtypes.UnsignedInt = Field(
         None,
         alias="patternUnsignedInt",
-        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        title="Type `UnsignedInt`",
         description="Value must have at least these property values",
         one_of_many="pattern",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    patternUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_patternUnsignedInt",
+        title="Extension field for ``patternUnsignedInt``.",
     )
 
     patternUri: fhirtypes.Uri = Field(
         None,
         alias="patternUri",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Value must have at least these property values",
         one_of_many="pattern",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    patternUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_patternUri", title="Extension field for ``patternUri``."
     )
 
     patternUrl: fhirtypes.Url = Field(
         None,
         alias="patternUrl",
-        title="Type `Url` (represented as `dict` in JSON)",
+        title="Type `Url`",
         description="Value must have at least these property values",
         one_of_many="pattern",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    patternUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_patternUrl", title="Extension field for ``patternUrl``."
     )
 
     patternUsageContext: fhirtypes.UsageContextType = Field(
@@ -1691,31 +2016,45 @@ class ElementDefinition(backboneelement.BackboneElement):
     patternUuid: fhirtypes.Uuid = Field(
         None,
         alias="patternUuid",
-        title="Type `Uuid` (represented as `dict` in JSON)",
+        title="Type `Uuid`",
         description="Value must have at least these property values",
         one_of_many="pattern",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    patternUuid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_patternUuid", title="Extension field for ``patternUuid``."
     )
 
     representation: ListType[fhirtypes.Code] = Field(
         None,
         alias="representation",
-        title="List of `Code` items (represented as `dict` in JSON)",
+        title="List of `Code` items",
         description="xmlAttr | xmlText | typeAttr | cdaText | xhtml",
+    )
+    representation__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(
+        None, alias="_representation", title="Extension field for ``representation``."
     )
 
     requirements: fhirtypes.Markdown = Field(
         None,
         alias="requirements",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Why this resource has been created",
+    )
+    requirements__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_requirements", title="Extension field for ``requirements``."
     )
 
     short: fhirtypes.String = Field(
         None,
         alias="short",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Concise definition for space-constrained presentation",
+    )
+    short__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_short", title="Extension field for ``short``."
     )
 
     sliceIsConstraining: bool = Field(
@@ -1727,12 +2066,20 @@ class ElementDefinition(backboneelement.BackboneElement):
             "not)"
         ),
     )
+    sliceIsConstraining__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_sliceIsConstraining",
+        title="Extension field for ``sliceIsConstraining``.",
+    )
 
     sliceName: fhirtypes.String = Field(
         None,
         alias="sliceName",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Name for this particular element (in a set of slices)",
+    )
+    sliceName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_sliceName", title="Extension field for ``sliceName``."
     )
 
     slicing: fhirtypes.ElementDefinitionSlicingType = Field(
@@ -1966,7 +2313,11 @@ class ElementDefinition(backboneelement.BackboneElement):
 
 
 class ElementDefinitionBase(element.Element):
-    """ Base definition information for tools.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Base definition information for tools.
     Information about the base definition of the element, provided to make it
     unnecessary for tools to trace the deviation of the element through the
     derived and related profiles. When the element definition is not the
@@ -1982,27 +2333,40 @@ class ElementDefinitionBase(element.Element):
     max: fhirtypes.String = Field(
         ...,
         alias="max",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Max cardinality of the base element",
+    )
+    max__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_max", title="Extension field for ``max``."
     )
 
     min: fhirtypes.UnsignedInt = Field(
         ...,
         alias="min",
-        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        title="Type `UnsignedInt`",
         description="Min cardinality of the base element",
+    )
+    min__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_min", title="Extension field for ``min``."
     )
 
     path: fhirtypes.String = Field(
         ...,
         alias="path",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Path that identifies the base element",
+    )
+    path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_path", title="Extension field for ``path``."
     )
 
 
 class ElementDefinitionBinding(element.Element):
-    """ ValueSet details if this is coded.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    ValueSet details if this is coded.
     Binds to a value set if this element is coded (code, Coding,
     CodeableConcept, Quantity), or the data types (string, uri).
     """
@@ -2012,29 +2376,40 @@ class ElementDefinitionBinding(element.Element):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Human explanation of the value set",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     strength: fhirtypes.Code = Field(
         ...,
         alias="strength",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="required | extensible | preferred | example",
+    )
+    strength__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_strength", title="Extension field for ``strength``."
     )
 
     valueSet: fhirtypes.Canonical = Field(
         None,
         alias="valueSet",
-        title=(
-            "Type `Canonical` referencing `ValueSet` (represented as `dict` in " "JSON)"
-        ),
+        title="Type `Canonical` referencing `ValueSet`",
         description="Source of value set",
+    )
+    valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueSet", title="Extension field for ``valueSet``."
     )
 
 
 class ElementDefinitionConstraint(element.Element):
-    """ Condition that must evaluate to true.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Condition that must evaluate to true.
     Formal constraints such as co-occurrence and other constraints that can be
     computationally evaluated within the context of the instance.
     """
@@ -2044,58 +2419,77 @@ class ElementDefinitionConstraint(element.Element):
     expression: fhirtypes.String = Field(
         None,
         alias="expression",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="FHIRPath expression of constraint",
+    )
+    expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_expression", title="Extension field for ``expression``."
     )
 
     human: fhirtypes.String = Field(
         ...,
         alias="human",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Human description of constraint",
+    )
+    human__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_human", title="Extension field for ``human``."
     )
 
     key: fhirtypes.Id = Field(
         ...,
         alias="key",
-        title="Type `Id` (represented as `dict` in JSON)",
+        title="Type `Id`",
         description="Target of \u0027condition\u0027 reference above",
+    )
+    key__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_key", title="Extension field for ``key``."
     )
 
     requirements: fhirtypes.String = Field(
         None,
         alias="requirements",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Why this constraint is necessary or appropriate",
+    )
+    requirements__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_requirements", title="Extension field for ``requirements``."
     )
 
     severity: fhirtypes.Code = Field(
-        ...,
-        alias="severity",
-        title="Type `Code` (represented as `dict` in JSON)",
-        description="error | warning",
+        ..., alias="severity", title="Type `Code`", description="error | warning"
+    )
+    severity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_severity", title="Extension field for ``severity``."
     )
 
     source: fhirtypes.Canonical = Field(
         None,
         alias="source",
-        title=(
-            "Type `Canonical` referencing `StructureDefinition` (represented as "
-            "`dict` in JSON)"
-        ),
+        title="Type `Canonical` referencing `StructureDefinition`",
         description="Reference to original source of constraint",
+    )
+    source__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_source", title="Extension field for ``source``."
     )
 
     xpath: fhirtypes.String = Field(
         None,
         alias="xpath",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="XPath expression of constraint",
+    )
+    xpath__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_xpath", title="Extension field for ``xpath``."
     )
 
 
 class ElementDefinitionExample(element.Element):
-    """ Example value (as defined for type).
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Example value (as defined for type).
     A sample value for this element demonstrating the type of information that
     would typically be found in the element.
     """
@@ -2105,8 +2499,11 @@ class ElementDefinitionExample(element.Element):
     label: fhirtypes.String = Field(
         ...,
         alias="label",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Describes the purpose of this example",
+    )
+    label__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_label", title="Extension field for ``label``."
     )
 
     valueAddress: fhirtypes.AddressType = Field(
@@ -2148,10 +2545,15 @@ class ElementDefinitionExample(element.Element):
     valueBase64Binary: fhirtypes.Base64Binary = Field(
         None,
         alias="valueBase64Binary",
-        title="Type `Base64Binary` (represented as `dict` in JSON)",
+        title="Type `Base64Binary`",
         description="Value of Example (one of allowed types)",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_valueBase64Binary",
+        title="Extension field for ``valueBase64Binary``.",
     )
 
     valueBoolean: bool = Field(
@@ -2162,23 +2564,32 @@ class ElementDefinitionExample(element.Element):
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
     )
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
+    )
 
     valueCanonical: fhirtypes.Canonical = Field(
         None,
         alias="valueCanonical",
-        title="Type `Canonical` (represented as `dict` in JSON)",
+        title="Type `Canonical`",
         description="Value of Example (one of allowed types)",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueCanonical", title="Extension field for ``valueCanonical``."
     )
 
     valueCode: fhirtypes.Code = Field(
         None,
         alias="valueCode",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="Value of Example (one of allowed types)",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueCode", title="Extension field for ``valueCode``."
     )
 
     valueCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -2247,28 +2658,37 @@ class ElementDefinitionExample(element.Element):
     valueDate: fhirtypes.Date = Field(
         None,
         alias="valueDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="Value of Example (one of allowed types)",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueDate", title="Extension field for ``valueDate``."
     )
 
     valueDateTime: fhirtypes.DateTime = Field(
         None,
         alias="valueDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Value of Example (one of allowed types)",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueDateTime", title="Extension field for ``valueDateTime``."
     )
 
     valueDecimal: fhirtypes.Decimal = Field(
         None,
         alias="valueDecimal",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Value of Example (one of allowed types)",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueDecimal", title="Extension field for ``valueDecimal``."
     )
 
     valueDistance: fhirtypes.DistanceType = Field(
@@ -2319,10 +2739,13 @@ class ElementDefinitionExample(element.Element):
     valueId: fhirtypes.Id = Field(
         None,
         alias="valueId",
-        title="Type `Id` (represented as `dict` in JSON)",
+        title="Type `Id`",
         description="Value of Example (one of allowed types)",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueId", title="Extension field for ``valueId``."
     )
 
     valueIdentifier: fhirtypes.IdentifierType = Field(
@@ -2337,28 +2760,37 @@ class ElementDefinitionExample(element.Element):
     valueInstant: fhirtypes.Instant = Field(
         None,
         alias="valueInstant",
-        title="Type `Instant` (represented as `dict` in JSON)",
+        title="Type `Instant`",
         description="Value of Example (one of allowed types)",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueInstant", title="Extension field for ``valueInstant``."
     )
 
     valueInteger: fhirtypes.Integer = Field(
         None,
         alias="valueInteger",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="Value of Example (one of allowed types)",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueInteger", title="Extension field for ``valueInteger``."
     )
 
     valueMarkdown: fhirtypes.Markdown = Field(
         None,
         alias="valueMarkdown",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Value of Example (one of allowed types)",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueMarkdown", title="Extension field for ``valueMarkdown``."
     )
 
     valueMeta: fhirtypes.MetaType = Field(
@@ -2382,10 +2814,13 @@ class ElementDefinitionExample(element.Element):
     valueOid: fhirtypes.Oid = Field(
         None,
         alias="valueOid",
-        title="Type `Oid` (represented as `dict` in JSON)",
+        title="Type `Oid`",
         description="Value of Example (one of allowed types)",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueOid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueOid", title="Extension field for ``valueOid``."
     )
 
     valueParameterDefinition: fhirtypes.ParameterDefinitionType = Field(
@@ -2409,10 +2844,15 @@ class ElementDefinitionExample(element.Element):
     valuePositiveInt: fhirtypes.PositiveInt = Field(
         None,
         alias="valuePositiveInt",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="Value of Example (one of allowed types)",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_valuePositiveInt",
+        title="Extension field for ``valuePositiveInt``.",
     )
 
     valueQuantity: fhirtypes.QuantityType = Field(
@@ -2481,19 +2921,25 @@ class ElementDefinitionExample(element.Element):
     valueString: fhirtypes.String = Field(
         None,
         alias="valueString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Value of Example (one of allowed types)",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueString", title="Extension field for ``valueString``."
     )
 
     valueTime: fhirtypes.Time = Field(
         None,
         alias="valueTime",
-        title="Type `Time` (represented as `dict` in JSON)",
+        title="Type `Time`",
         description="Value of Example (one of allowed types)",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueTime", title="Extension field for ``valueTime``."
     )
 
     valueTiming: fhirtypes.TimingType = Field(
@@ -2517,28 +2963,39 @@ class ElementDefinitionExample(element.Element):
     valueUnsignedInt: fhirtypes.UnsignedInt = Field(
         None,
         alias="valueUnsignedInt",
-        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        title="Type `UnsignedInt`",
         description="Value of Example (one of allowed types)",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_valueUnsignedInt",
+        title="Extension field for ``valueUnsignedInt``.",
     )
 
     valueUri: fhirtypes.Uri = Field(
         None,
         alias="valueUri",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Value of Example (one of allowed types)",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueUri", title="Extension field for ``valueUri``."
     )
 
     valueUrl: fhirtypes.Url = Field(
         None,
         alias="valueUrl",
-        title="Type `Url` (represented as `dict` in JSON)",
+        title="Type `Url`",
         description="Value of Example (one of allowed types)",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueUrl", title="Extension field for ``valueUrl``."
     )
 
     valueUsageContext: fhirtypes.UsageContextType = Field(
@@ -2553,10 +3010,13 @@ class ElementDefinitionExample(element.Element):
     valueUuid: fhirtypes.Uuid = Field(
         None,
         alias="valueUuid",
-        title="Type `Uuid` (represented as `dict` in JSON)",
+        title="Type `Uuid`",
         description="Value of Example (one of allowed types)",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    valueUuid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueUuid", title="Extension field for ``valueUuid``."
     )
 
     @root_validator(pre=True)
@@ -2650,7 +3110,11 @@ class ElementDefinitionExample(element.Element):
 
 
 class ElementDefinitionMapping(element.Element):
-    """ Map element to another set of definitions.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Map element to another set of definitions.
     Identifies a concept from an external specification that roughly
     corresponds to this element.
     """
@@ -2660,34 +3124,47 @@ class ElementDefinitionMapping(element.Element):
     comment: fhirtypes.String = Field(
         None,
         alias="comment",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Comments about the mapping or its use",
+    )
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_comment", title="Extension field for ``comment``."
     )
 
     identity: fhirtypes.Id = Field(
         ...,
         alias="identity",
-        title="Type `Id` (represented as `dict` in JSON)",
+        title="Type `Id`",
         description="Reference to mapping declaration",
+    )
+    identity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_identity", title="Extension field for ``identity``."
     )
 
     language: fhirtypes.Code = Field(
         None,
         alias="language",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="Computable language of mapping",
+    )
+    language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_language", title="Extension field for ``language``."
     )
 
     map: fhirtypes.String = Field(
-        ...,
-        alias="map",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Details of the mapping",
+        ..., alias="map", title="Type `String`", description="Details of the mapping"
+    )
+    map__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_map", title="Extension field for ``map``."
     )
 
 
 class ElementDefinitionSlicing(element.Element):
-    """ This element is sliced - slices follow.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    This element is sliced - slices follow.
     Indicates that the element is sliced into a set of alternative definitions
     (i.e. in a structure definition, there are multiple different constraints
     on a single element in the base resource). Slicing can be used in any
@@ -2702,8 +3179,11 @@ class ElementDefinitionSlicing(element.Element):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Text description of how slicing works (or not)",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     discriminator: ListType[
@@ -2724,17 +3204,24 @@ class ElementDefinitionSlicing(element.Element):
         title="Type `bool`",
         description="If elements must be in same order as slices",
     )
+    ordered__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_ordered", title="Extension field for ``ordered``."
+    )
 
     rules: fhirtypes.Code = Field(
-        ...,
-        alias="rules",
-        title="Type `Code` (represented as `dict` in JSON)",
-        description="closed | open | openAtEnd",
+        ..., alias="rules", title="Type `Code`", description="closed | open | openAtEnd"
+    )
+    rules__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_rules", title="Extension field for ``rules``."
     )
 
 
 class ElementDefinitionSlicingDiscriminator(element.Element):
-    """ Element values that are used to distinguish the slices.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Element values that are used to distinguish the slices.
     Designates which child elements are used to discriminate between the slices
     when processing an instance. If one or more discriminators are provided,
     the value of the child elements in the instance data SHALL completely
@@ -2745,22 +3232,29 @@ class ElementDefinitionSlicingDiscriminator(element.Element):
     resource_type = Field("ElementDefinitionSlicingDiscriminator", const=True)
 
     path: fhirtypes.String = Field(
-        ...,
-        alias="path",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Path to element value",
+        ..., alias="path", title="Type `String`", description="Path to element value"
+    )
+    path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_path", title="Extension field for ``path``."
     )
 
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="value | exists | pattern | type | profile",
+    )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
     )
 
 
 class ElementDefinitionType(element.Element):
-    """ Data type and Profile for this element.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Data type and Profile for this element.
     The data type or resource that the value of this element is permitted to
     be.
     """
@@ -2770,15 +3264,21 @@ class ElementDefinitionType(element.Element):
     aggregation: ListType[fhirtypes.Code] = Field(
         None,
         alias="aggregation",
-        title="List of `Code` items (represented as `dict` in JSON)",
+        title="List of `Code` items",
         description="contained | referenced | bundled - how aggregated",
     )
+    aggregation__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_aggregation", title="Extension field for ``aggregation``.")
 
     code: fhirtypes.Uri = Field(
         ...,
         alias="code",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Data type or Resource (reference to definition)",
+    )
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_code", title="Extension field for ``code``."
     )
 
     profile: ListType[fhirtypes.Canonical] = Field(
@@ -2786,9 +3286,12 @@ class ElementDefinitionType(element.Element):
         alias="profile",
         title=(
             "List of `Canonical` items referencing `StructureDefinition, "
-            "ImplementationGuide` (represented as `dict` in JSON)"
+            "ImplementationGuide`"
         ),
         description="Profiles (StructureDefinition or IG) - one must apply",
+    )
+    profile__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_profile", title="Extension field for ``profile``."
     )
 
     targetProfile: ListType[fhirtypes.Canonical] = Field(
@@ -2796,17 +3299,25 @@ class ElementDefinitionType(element.Element):
         alias="targetProfile",
         title=(
             "List of `Canonical` items referencing `StructureDefinition, "
-            "ImplementationGuide` (represented as `dict` in JSON)"
+            "ImplementationGuide`"
         ),
         description=(
             "Profile (StructureDefinition or IG) on the Reference/canonical target "
             "- one must apply"
         ),
     )
+    targetProfile__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(
+        None, alias="_targetProfile", title="Extension field for ``targetProfile``."
+    )
 
     versioning: fhirtypes.Code = Field(
         None,
         alias="versioning",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="either | independent | specific",
+    )
+    versioning__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_versioning", title="Extension field for ``versioning``."
     )

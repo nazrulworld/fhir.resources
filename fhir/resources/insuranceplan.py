@@ -7,6 +7,7 @@ Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field
 
@@ -14,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class InsurancePlan(domainresource.DomainResource):
-    """ Details of a Health Insurance product/plan provided by an organization.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Details of a Health Insurance product/plan provided by an organization.
     """
 
     resource_type = Field("InsurancePlan", const=True)
@@ -32,8 +37,11 @@ class InsurancePlan(domainresource.DomainResource):
     alias: ListType[fhirtypes.String] = Field(
         None,
         alias="alias",
-        title="List of `String` items (represented as `dict` in JSON)",
+        title="List of `String` items",
         description="Alternate names",
+    )
+    alias__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_alias", title="Extension field for ``alias``."
     )
 
     contact: ListType[fhirtypes.InsurancePlanContactType] = Field(
@@ -78,10 +86,10 @@ class InsurancePlan(domainresource.DomainResource):
     )
 
     name: fhirtypes.String = Field(
-        None,
-        alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Official name",
+        None, alias="name", title="Type `String`", description="Official name"
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     network: ListType[fhirtypes.ReferenceType] = Field(
@@ -121,8 +129,11 @@ class InsurancePlan(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="draft | active | retired | unknown",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     type: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -134,7 +145,11 @@ class InsurancePlan(domainresource.DomainResource):
 
 
 class InsurancePlanContact(backboneelement.BackboneElement):
-    """ Contact for the product.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Contact for the product.
     The contact for the health insurance product for a certain purpose.
     """
 
@@ -170,7 +185,11 @@ class InsurancePlanContact(backboneelement.BackboneElement):
 
 
 class InsurancePlanCoverage(backboneelement.BackboneElement):
-    """ Coverage details.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Coverage details.
     Details about the coverage offered by the insurance product.
     """
 
@@ -205,7 +224,11 @@ class InsurancePlanCoverage(backboneelement.BackboneElement):
 
 
 class InsurancePlanCoverageBenefit(backboneelement.BackboneElement):
-    """ List of benefits.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    List of benefits.
     Specific benefits under this type of coverage.
     """
 
@@ -224,8 +247,11 @@ class InsurancePlanCoverageBenefit(backboneelement.BackboneElement):
     requirement: fhirtypes.String = Field(
         None,
         alias="requirement",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Referral requirements",
+    )
+    requirement__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_requirement", title="Extension field for ``requirement``."
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -237,7 +263,11 @@ class InsurancePlanCoverageBenefit(backboneelement.BackboneElement):
 
 
 class InsurancePlanCoverageBenefitLimit(backboneelement.BackboneElement):
-    """ Benefit limits.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Benefit limits.
     The specific limits on the benefit.
     """
 
@@ -259,7 +289,11 @@ class InsurancePlanCoverageBenefitLimit(backboneelement.BackboneElement):
 
 
 class InsurancePlanPlan(backboneelement.BackboneElement):
-    """ Plan details.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Plan details.
     Details about an insurance plan.
     """
 
@@ -321,7 +355,11 @@ class InsurancePlanPlan(backboneelement.BackboneElement):
 
 
 class InsurancePlanPlanGeneralCost(backboneelement.BackboneElement):
-    """ Overall costs.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Overall costs.
     Overall costs associated with the plan.
     """
 
@@ -330,8 +368,11 @@ class InsurancePlanPlanGeneralCost(backboneelement.BackboneElement):
     comment: fhirtypes.String = Field(
         None,
         alias="comment",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Additional cost information",
+    )
+    comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_comment", title="Extension field for ``comment``."
     )
 
     cost: fhirtypes.MoneyType = Field(
@@ -344,8 +385,11 @@ class InsurancePlanPlanGeneralCost(backboneelement.BackboneElement):
     groupSize: fhirtypes.PositiveInt = Field(
         None,
         alias="groupSize",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="Number of enrollees",
+    )
+    groupSize__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_groupSize", title="Extension field for ``groupSize``."
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -357,7 +401,11 @@ class InsurancePlanPlanGeneralCost(backboneelement.BackboneElement):
 
 
 class InsurancePlanPlanSpecificCost(backboneelement.BackboneElement):
-    """ Specific costs.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Specific costs.
     Costs associated with the coverage provided by the product.
     """
 
@@ -382,7 +430,11 @@ class InsurancePlanPlanSpecificCost(backboneelement.BackboneElement):
 
 
 class InsurancePlanPlanSpecificCostBenefit(backboneelement.BackboneElement):
-    """ Benefits list.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Benefits list.
     List of the specific benefits under this category of benefit.
     """
 
@@ -407,7 +459,11 @@ class InsurancePlanPlanSpecificCostBenefit(backboneelement.BackboneElement):
 
 
 class InsurancePlanPlanSpecificCostBenefitCost(backboneelement.BackboneElement):
-    """ List of the costs.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    List of the costs.
     List of the costs associated with a specific benefit.
     """
 

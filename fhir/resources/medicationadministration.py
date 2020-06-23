@@ -8,6 +8,7 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 from typing import Any, Dict
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field, root_validator
 
@@ -15,7 +16,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class MedicationAdministration(domainresource.DomainResource):
-    """ Administration of medication to a patient.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Administration of medication to a patient.
     Describes the event of a patient consuming or otherwise being administered
     a medication.  This may be as simple as swallowing a tablet or it may be a
     long running infusion.  Related resources tie this event to the authorizing
@@ -62,10 +67,15 @@ class MedicationAdministration(domainresource.DomainResource):
     effectiveDateTime: fhirtypes.DateTime = Field(
         None,
         alias="effectiveDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Start and end time of administration",
         one_of_many="effective",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    effectiveDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_effectiveDateTime",
+        title="Extension field for ``effectiveDateTime``.",
     )
 
     effectivePeriod: fhirtypes.PeriodType = Field(
@@ -97,8 +107,13 @@ class MedicationAdministration(domainresource.DomainResource):
     instantiates: ListType[fhirtypes.Uri] = Field(
         None,
         alias="instantiates",
-        title="List of `Uri` items (represented as `dict` in JSON)",
+        title="List of `Uri` items",
         description="Instantiates protocol or definition",
+    )
+    instantiates__ext: ListType[
+        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(
+        None, alias="_instantiates", title="Extension field for ``instantiates``."
     )
 
     medicationCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -182,11 +197,14 @@ class MedicationAdministration(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description=(
             "in-progress | not-done | on-hold | completed | entered-in-error | "
             "stopped | unknown"
         ),
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     statusReason: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -257,7 +275,11 @@ class MedicationAdministration(domainresource.DomainResource):
 
 
 class MedicationAdministrationDosage(backboneelement.BackboneElement):
-    """ Details of how medication was taken.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Details of how medication was taken.
     Describes the medication dosage information details e.g. dose, rate, site,
     route, etc.
     """
@@ -313,8 +335,11 @@ class MedicationAdministrationDosage(backboneelement.BackboneElement):
     text: fhirtypes.String = Field(
         None,
         alias="text",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Free text dosage instructions e.g. SIG",
+    )
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_text", title="Extension field for ``text``."
     )
 
     @root_validator(pre=True)
@@ -355,7 +380,11 @@ class MedicationAdministrationDosage(backboneelement.BackboneElement):
 
 
 class MedicationAdministrationPerformer(backboneelement.BackboneElement):
-    """ Who performed the medication administration and what they did.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Who performed the medication administration and what they did.
     Indicates who or what performed the medication administration and how they
     were involved.
     """

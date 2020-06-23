@@ -15,7 +15,11 @@ from . import domainresource, fhirtypes
 
 
 class EligibilityRequest(domainresource.DomainResource):
-    """ Determine insurance validity and scope of coverage.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Determine insurance validity and scope of coverage.
     The EligibilityRequest provides patient and insurance coverage information
     to an insurer for them to respond, in the form of an EligibilityResponse,
     with information regarding whether the stated coverage is valid and in-
@@ -41,8 +45,13 @@ class EligibilityRequest(domainresource.DomainResource):
     businessArrangement: fhirtypes.String = Field(
         None,
         alias="businessArrangement",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Business agreement",
+    )
+    businessArrangement__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_businessArrangement",
+        title="Extension field for ``businessArrangement``.",
     )
 
     coverage: fhirtypes.ReferenceType = Field(
@@ -55,10 +64,10 @@ class EligibilityRequest(domainresource.DomainResource):
     )
 
     created: fhirtypes.DateTime = Field(
-        None,
-        alias="created",
-        title="Type `DateTime` (represented as `dict` in JSON)",
-        description="Creation date",
+        None, alias="created", title="Type `DateTime`", description="Creation date"
+    )
+    created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_created", title="Extension field for ``created``."
     )
 
     enterer: fhirtypes.ReferenceType = Field(
@@ -134,10 +143,13 @@ class EligibilityRequest(domainresource.DomainResource):
     servicedDate: fhirtypes.Date = Field(
         None,
         alias="servicedDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="Estimated date or dates of Service",
         one_of_many="serviced",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    servicedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_servicedDate", title="Extension field for ``servicedDate``."
     )
 
     servicedPeriod: fhirtypes.PeriodType = Field(
@@ -152,8 +164,11 @@ class EligibilityRequest(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="active | cancelled | draft | entered-in-error",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
     )
 
     @root_validator(pre=True)

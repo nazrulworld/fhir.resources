@@ -14,7 +14,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class MedicinalProductIngredient(domainresource.DomainResource):
-    """ An ingredient of a manufactured item or pharmaceutical product.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    An ingredient of a manufactured item or pharmaceutical product.
     """
 
     resource_type = Field("MedicinalProductIngredient", const=True)
@@ -24,6 +28,11 @@ class MedicinalProductIngredient(domainresource.DomainResource):
         alias="allergenicIndicator",
         title="Type `bool`",
         description="If the ingredient is a known or suspected allergen",
+    )
+    allergenicIndicator__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_allergenicIndicator",
+        title="Extension field for ``allergenicIndicator``.",
     )
 
     identifier: fhirtypes.IdentifierType = Field(
@@ -74,7 +83,11 @@ class MedicinalProductIngredient(domainresource.DomainResource):
 
 
 class MedicinalProductIngredientSpecifiedSubstance(backboneelement.BackboneElement):
-    """ A specified substance that comprises this ingredient.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    A specified substance that comprises this ingredient.
     """
 
     resource_type = Field("MedicinalProductIngredientSpecifiedSubstance", const=True)
@@ -119,7 +132,11 @@ class MedicinalProductIngredientSpecifiedSubstance(backboneelement.BackboneEleme
 class MedicinalProductIngredientSpecifiedSubstanceStrength(
     backboneelement.BackboneElement
 ):
-    """ Quantity of the substance or specified substance present in the
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Quantity of the substance or specified substance present in the
     manufactured item or pharmaceutical product.
     """
 
@@ -155,8 +172,13 @@ class MedicinalProductIngredientSpecifiedSubstanceStrength(
     measurementPoint: fhirtypes.String = Field(
         None,
         alias="measurementPoint",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="For when strength is measured at a particular point or distance",
+    )
+    measurementPoint__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_measurementPoint",
+        title="Extension field for ``measurementPoint``.",
     )
 
     presentation: fhirtypes.RatioType = Field(
@@ -197,7 +219,11 @@ class MedicinalProductIngredientSpecifiedSubstanceStrength(
 class MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength(
     backboneelement.BackboneElement
 ):
-    """ Strength expressed in terms of a reference substance.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Strength expressed in terms of a reference substance.
     """
 
     resource_type = Field(
@@ -215,8 +241,13 @@ class MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength(
     measurementPoint: fhirtypes.String = Field(
         None,
         alias="measurementPoint",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="For when strength is measured at a particular point or distance",
+    )
+    measurementPoint__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_measurementPoint",
+        title="Extension field for ``measurementPoint``.",
     )
 
     strength: fhirtypes.RatioType = Field(
@@ -242,7 +273,11 @@ class MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength(
 
 
 class MedicinalProductIngredientSubstance(backboneelement.BackboneElement):
-    """ The ingredient substance.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The ingredient substance.
     """
 
     resource_type = Field("MedicinalProductIngredientSubstance", const=True)

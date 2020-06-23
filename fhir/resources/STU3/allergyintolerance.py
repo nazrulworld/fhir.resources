@@ -8,6 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 from typing import Any, Dict
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field, root_validator
 
@@ -15,7 +16,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class AllergyIntolerance(domainresource.DomainResource):
-    """ Allergy or Intolerance (generally: Risk of adverse reaction to a substance).
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Allergy or Intolerance (generally: Risk of adverse reaction to a substance).
     Risk of harmful or undesirable, physiological response which is unique to
     an individual and associated with exposure to a substance.
     """
@@ -25,8 +30,11 @@ class AllergyIntolerance(domainresource.DomainResource):
     assertedDate: fhirtypes.DateTime = Field(
         None,
         alias="assertedDate",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Date record was believed accurate",
+    )
+    assertedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_assertedDate", title="Extension field for ``assertedDate``."
     )
 
     asserter: fhirtypes.ReferenceType = Field(
@@ -42,15 +50,21 @@ class AllergyIntolerance(domainresource.DomainResource):
     category: ListType[fhirtypes.Code] = Field(
         None,
         alias="category",
-        title="List of `Code` items (represented as `dict` in JSON)",
+        title="List of `Code` items",
         description="food | medication | environment | biologic",
+    )
+    category__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_category", title="Extension field for ``category``."
     )
 
     clinicalStatus: fhirtypes.Code = Field(
         None,
         alias="clinicalStatus",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="active | inactive | resolved",
+    )
+    clinicalStatus__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_clinicalStatus", title="Extension field for ``clinicalStatus``."
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -63,8 +77,11 @@ class AllergyIntolerance(domainresource.DomainResource):
     criticality: fhirtypes.Code = Field(
         None,
         alias="criticality",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="low | high | unable-to-assess",
+    )
+    criticality__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_criticality", title="Extension field for ``criticality``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -77,8 +94,11 @@ class AllergyIntolerance(domainresource.DomainResource):
     lastOccurrence: fhirtypes.DateTime = Field(
         None,
         alias="lastOccurrence",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Date(/time) of last known occurrence of a reaction",
+    )
+    lastOccurrence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_lastOccurrence", title="Extension field for ``lastOccurrence``."
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
@@ -100,10 +120,13 @@ class AllergyIntolerance(domainresource.DomainResource):
     onsetDateTime: fhirtypes.DateTime = Field(
         None,
         alias="onsetDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="When allergy or intolerance was identified",
         one_of_many="onset",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    onsetDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_onsetDateTime", title="Extension field for ``onsetDateTime``."
     )
 
     onsetPeriod: fhirtypes.PeriodType = Field(
@@ -127,10 +150,13 @@ class AllergyIntolerance(domainresource.DomainResource):
     onsetString: fhirtypes.String = Field(
         None,
         alias="onsetString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="When allergy or intolerance was identified",
         one_of_many="onset",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    onsetString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_onsetString", title="Extension field for ``onsetString``."
     )
 
     patient: fhirtypes.ReferenceType = Field(
@@ -163,15 +189,23 @@ class AllergyIntolerance(domainresource.DomainResource):
     type: fhirtypes.Code = Field(
         None,
         alias="type",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="allergy | intolerance - Underlying mechanism (if known)",
+    )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
     )
 
     verificationStatus: fhirtypes.Code = Field(
         ...,
         alias="verificationStatus",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="unconfirmed | confirmed | refuted | entered-in-error",
+    )
+    verificationStatus__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_verificationStatus",
+        title="Extension field for ``verificationStatus``.",
     )
 
     @root_validator(pre=True)
@@ -220,7 +254,11 @@ class AllergyIntolerance(domainresource.DomainResource):
 
 
 class AllergyIntoleranceReaction(backboneelement.BackboneElement):
-    """ Adverse Reaction Events linked to exposure to substance.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Adverse Reaction Events linked to exposure to substance.
     Details about each adverse reaction event linked to exposure to the
     identified substance.
     """
@@ -230,8 +268,11 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Description of the event as a whole",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     exposureRoute: fhirtypes.CodeableConceptType = Field(
@@ -258,15 +299,21 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
     onset: fhirtypes.DateTime = Field(
         None,
         alias="onset",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Date(/time) when manifestations showed",
+    )
+    onset__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_onset", title="Extension field for ``onset``."
     )
 
     severity: fhirtypes.Code = Field(
         None,
         alias="severity",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="mild | moderate | severe (of event as a whole)",
+    )
+    severity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_severity", title="Extension field for ``severity``."
     )
 
     substance: fhirtypes.CodeableConceptType = Field(

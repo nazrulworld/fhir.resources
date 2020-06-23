@@ -14,7 +14,11 @@ from . import element, fhirtypes
 
 
 class Extension(element.Element):
-    """ Optional Extensions Element.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Optional Extensions Element.
     Optional Extension Element - found in all resources.
     """
 
@@ -23,7 +27,7 @@ class Extension(element.Element):
     url: fhirtypes.Uri = Field(
         ...,
         alias="url",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="identifies the meaning of the extension",
     )
 
@@ -66,7 +70,7 @@ class Extension(element.Element):
     valueBase64Binary: fhirtypes.Base64Binary = Field(
         None,
         alias="valueBase64Binary",
-        title="Type `Base64Binary` (represented as `dict` in JSON)",
+        title="Type `Base64Binary`",
         description="Value of extension",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -84,7 +88,7 @@ class Extension(element.Element):
     valueCanonical: fhirtypes.Canonical = Field(
         None,
         alias="valueCanonical",
-        title="Type `Canonical` (represented as `dict` in JSON)",
+        title="Type `Canonical`",
         description="Value of extension",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -93,7 +97,7 @@ class Extension(element.Element):
     valueCode: fhirtypes.Code = Field(
         None,
         alias="valueCode",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="Value of extension",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -165,7 +169,7 @@ class Extension(element.Element):
     valueDate: fhirtypes.Date = Field(
         None,
         alias="valueDate",
-        title="Type `Date` (represented as `dict` in JSON)",
+        title="Type `Date`",
         description="Value of extension",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -174,7 +178,7 @@ class Extension(element.Element):
     valueDateTime: fhirtypes.DateTime = Field(
         None,
         alias="valueDateTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Value of extension",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -183,7 +187,7 @@ class Extension(element.Element):
     valueDecimal: fhirtypes.Decimal = Field(
         None,
         alias="valueDecimal",
-        title="Type `Decimal` (represented as `dict` in JSON)",
+        title="Type `Decimal`",
         description="Value of extension",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -237,7 +241,7 @@ class Extension(element.Element):
     valueId: fhirtypes.Id = Field(
         None,
         alias="valueId",
-        title="Type `Id` (represented as `dict` in JSON)",
+        title="Type `Id`",
         description="Value of extension",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -255,7 +259,7 @@ class Extension(element.Element):
     valueInstant: fhirtypes.Instant = Field(
         None,
         alias="valueInstant",
-        title="Type `Instant` (represented as `dict` in JSON)",
+        title="Type `Instant`",
         description="Value of extension",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -264,7 +268,7 @@ class Extension(element.Element):
     valueInteger: fhirtypes.Integer = Field(
         None,
         alias="valueInteger",
-        title="Type `Integer` (represented as `dict` in JSON)",
+        title="Type `Integer`",
         description="Value of extension",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -273,7 +277,7 @@ class Extension(element.Element):
     valueMarkdown: fhirtypes.Markdown = Field(
         None,
         alias="valueMarkdown",
-        title="Type `Markdown` (represented as `dict` in JSON)",
+        title="Type `Markdown`",
         description="Value of extension",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -300,7 +304,7 @@ class Extension(element.Element):
     valueOid: fhirtypes.Oid = Field(
         None,
         alias="valueOid",
-        title="Type `Oid` (represented as `dict` in JSON)",
+        title="Type `Oid`",
         description="Value of extension",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -327,7 +331,7 @@ class Extension(element.Element):
     valuePositiveInt: fhirtypes.PositiveInt = Field(
         None,
         alias="valuePositiveInt",
-        title="Type `PositiveInt` (represented as `dict` in JSON)",
+        title="Type `PositiveInt`",
         description="Value of extension",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -399,7 +403,7 @@ class Extension(element.Element):
     valueString: fhirtypes.String = Field(
         None,
         alias="valueString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Value of extension",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -408,7 +412,7 @@ class Extension(element.Element):
     valueTime: fhirtypes.Time = Field(
         None,
         alias="valueTime",
-        title="Type `Time` (represented as `dict` in JSON)",
+        title="Type `Time`",
         description="Value of extension",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -435,7 +439,7 @@ class Extension(element.Element):
     valueUnsignedInt: fhirtypes.UnsignedInt = Field(
         None,
         alias="valueUnsignedInt",
-        title="Type `UnsignedInt` (represented as `dict` in JSON)",
+        title="Type `UnsignedInt`",
         description="Value of extension",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -444,7 +448,7 @@ class Extension(element.Element):
     valueUri: fhirtypes.Uri = Field(
         None,
         alias="valueUri",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Value of extension",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -453,7 +457,7 @@ class Extension(element.Element):
     valueUrl: fhirtypes.Url = Field(
         None,
         alias="valueUrl",
-        title="Type `Url` (represented as `dict` in JSON)",
+        title="Type `Url`",
         description="Value of extension",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
@@ -471,7 +475,7 @@ class Extension(element.Element):
     valueUuid: fhirtypes.Uuid = Field(
         None,
         alias="valueUuid",
-        title="Type `Uuid` (represented as `dict` in JSON)",
+        title="Type `Uuid`",
         description="Value of extension",
         one_of_many="value",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,

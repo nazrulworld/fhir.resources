@@ -7,6 +7,7 @@ Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field
 
@@ -14,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class AuditEvent(domainresource.DomainResource):
-    """ Event record kept for security purposes.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Event record kept for security purposes.
     A record of an event made for purposes of maintaining a security log.
     Typical uses include detection of intrusion attempts and monitoring for
     inappropriate usage.
@@ -25,8 +30,11 @@ class AuditEvent(domainresource.DomainResource):
     action: fhirtypes.Code = Field(
         None,
         alias="action",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="Type of action performed during the event",
+    )
+    action__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_action", title="Extension field for ``action``."
     )
 
     agent: ListType[fhirtypes.AuditEventAgentType] = Field(
@@ -46,15 +54,21 @@ class AuditEvent(domainresource.DomainResource):
     outcome: fhirtypes.Code = Field(
         None,
         alias="outcome",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="Whether the event succeeded or failed",
+    )
+    outcome__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_outcome", title="Extension field for ``outcome``."
     )
 
     outcomeDesc: fhirtypes.String = Field(
         None,
         alias="outcomeDesc",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Description of the event outcome",
+    )
+    outcomeDesc__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_outcomeDesc", title="Extension field for ``outcomeDesc``."
     )
 
     purposeOfEvent: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -67,8 +81,11 @@ class AuditEvent(domainresource.DomainResource):
     recorded: fhirtypes.Instant = Field(
         ...,
         alias="recorded",
-        title="Type `Instant` (represented as `dict` in JSON)",
+        title="Type `Instant`",
         description="Time when the event occurred on source",
+    )
+    recorded__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_recorded", title="Extension field for ``recorded``."
     )
 
     source: fhirtypes.AuditEventSourceType = Field(
@@ -94,7 +111,11 @@ class AuditEvent(domainresource.DomainResource):
 
 
 class AuditEventAgent(backboneelement.BackboneElement):
-    """ Actor involved in the event.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Actor involved in the event.
     An actor taking an active role in the event or activity that is logged.
     """
 
@@ -103,8 +124,11 @@ class AuditEventAgent(backboneelement.BackboneElement):
     altId: fhirtypes.String = Field(
         None,
         alias="altId",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Alternative User id e.g. authentication",
+    )
+    altId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_altId", title="Extension field for ``altId``."
     )
 
     location: fhirtypes.ReferenceType = Field(
@@ -126,8 +150,11 @@ class AuditEventAgent(backboneelement.BackboneElement):
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Human-meaningful name for the agent",
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     network: fhirtypes.AuditEventAgentNetworkType = Field(
@@ -140,8 +167,11 @@ class AuditEventAgent(backboneelement.BackboneElement):
     policy: ListType[fhirtypes.Uri] = Field(
         None,
         alias="policy",
-        title="List of `Uri` items (represented as `dict` in JSON)",
+        title="List of `Uri` items",
         description="Policy that authorized event",
+    )
+    policy__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_policy", title="Extension field for ``policy``."
     )
 
     purposeOfUse: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -167,6 +197,9 @@ class AuditEventAgent(backboneelement.BackboneElement):
         title="Type `bool`",
         description="Whether user is initiator",
     )
+    requestor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_requestor", title="Extension field for ``requestor``."
+    )
 
     role: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
@@ -184,7 +217,11 @@ class AuditEventAgent(backboneelement.BackboneElement):
 
 
 class AuditEventAgentNetwork(backboneelement.BackboneElement):
-    """ Logical network location for application activity.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Logical network location for application activity.
     Logical network location for application activity, if the activity has a
     network location.
     """
@@ -194,30 +231,40 @@ class AuditEventAgentNetwork(backboneelement.BackboneElement):
     address: fhirtypes.String = Field(
         None,
         alias="address",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Identifier for the network access point of the user device",
+    )
+    address__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_address", title="Extension field for ``address``."
     )
 
     type: fhirtypes.Code = Field(
         None,
         alias="type",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="The type of network access point",
+    )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
     )
 
 
 class AuditEventEntity(backboneelement.BackboneElement):
-    """ Data or objects used.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Data or objects used.
     Specific instances of data or objects that have been accessed.
     """
 
     resource_type = Field("AuditEventEntity", const=True)
 
     description: fhirtypes.String = Field(
-        None,
-        alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Descriptive text",
+        None, alias="description", title="Type `String`", description="Descriptive text"
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     detail: ListType[fhirtypes.AuditEventEntityDetailType] = Field(
@@ -242,17 +289,17 @@ class AuditEventEntity(backboneelement.BackboneElement):
     )
 
     name: fhirtypes.String = Field(
-        None,
-        alias="name",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Descriptor for entity",
+        None, alias="name", title="Type `String`", description="Descriptor for entity"
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
     )
 
     query: fhirtypes.Base64Binary = Field(
-        None,
-        alias="query",
-        title="Type `Base64Binary` (represented as `dict` in JSON)",
-        description="Query parameters",
+        None, alias="query", title="Type `Base64Binary`", description="Query parameters"
+    )
+    query__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_query", title="Extension field for ``query``."
     )
 
     reference: fhirtypes.ReferenceType = Field(
@@ -287,29 +334,37 @@ class AuditEventEntity(backboneelement.BackboneElement):
 
 
 class AuditEventEntityDetail(backboneelement.BackboneElement):
-    """ Additional Information about the entity.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Additional Information about the entity.
     Tagged value pairs for conveying additional information about the entity.
     """
 
     resource_type = Field("AuditEventEntityDetail", const=True)
 
     type: fhirtypes.String = Field(
-        ...,
-        alias="type",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Name of the property",
+        ..., alias="type", title="Type `String`", description="Name of the property"
+    )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
     )
 
     value: fhirtypes.Base64Binary = Field(
-        ...,
-        alias="value",
-        title="Type `Base64Binary` (represented as `dict` in JSON)",
-        description="Property value",
+        ..., alias="value", title="Type `Base64Binary`", description="Property value"
+    )
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_value", title="Extension field for ``value``."
     )
 
 
 class AuditEventSource(backboneelement.BackboneElement):
-    """ Audit Event Reporter.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Audit Event Reporter.
     The system that is reporting the event.
     """
 
@@ -325,8 +380,11 @@ class AuditEventSource(backboneelement.BackboneElement):
     site: fhirtypes.String = Field(
         None,
         alias="site",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Logical source location within the enterprise",
+    )
+    site__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_site", title="Extension field for ``site``."
     )
 
     type: ListType[fhirtypes.CodingType] = Field(

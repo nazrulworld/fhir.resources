@@ -14,7 +14,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ImagingManifest(domainresource.DomainResource):
-    """ Key Object Selection.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Key Object Selection.
     A text description of the DICOM SOP instances selected in the
     ImagingManifest; or the reason for, or significance of, the selection.
     """
@@ -34,15 +38,18 @@ class ImagingManifest(domainresource.DomainResource):
     authoringTime: fhirtypes.DateTime = Field(
         None,
         alias="authoringTime",
-        title="Type `DateTime` (represented as `dict` in JSON)",
+        title="Type `DateTime`",
         description="Time when the selection of instances was made",
+    )
+    authoringTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_authoringTime", title="Extension field for ``authoringTime``."
     )
 
     description: fhirtypes.String = Field(
-        None,
-        alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
-        description="Description text",
+        None, alias="description", title="Type `String`", description="Description text"
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     identifier: fhirtypes.IdentifierType = Field(
@@ -68,7 +75,11 @@ class ImagingManifest(domainresource.DomainResource):
 
 
 class ImagingManifestStudy(backboneelement.BackboneElement):
-    """ Study identity of the selected instances.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Study identity of the selected instances.
     Study identity and locating information of the DICOM SOP instances in the
     selection.
     """
@@ -106,15 +117,19 @@ class ImagingManifestStudy(backboneelement.BackboneElement):
     )
 
     uid: fhirtypes.Oid = Field(
-        ...,
-        alias="uid",
-        title="Type `Oid` (represented as `dict` in JSON)",
-        description="Study instance UID",
+        ..., alias="uid", title="Type `Oid`", description="Study instance UID"
+    )
+    uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_uid", title="Extension field for ``uid``."
     )
 
 
 class ImagingManifestStudySeries(backboneelement.BackboneElement):
-    """ Series identity of the selected instances.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Series identity of the selected instances.
     Series identity and locating information of the DICOM SOP instances in the
     selection.
     """
@@ -142,15 +157,19 @@ class ImagingManifestStudySeries(backboneelement.BackboneElement):
     )
 
     uid: fhirtypes.Oid = Field(
-        ...,
-        alias="uid",
-        title="Type `Oid` (represented as `dict` in JSON)",
-        description="Series instance UID",
+        ..., alias="uid", title="Type `Oid`", description="Series instance UID"
+    )
+    uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_uid", title="Extension field for ``uid``."
     )
 
 
 class ImagingManifestStudySeriesInstance(backboneelement.BackboneElement):
-    """ The selected instance.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The selected instance.
     Identity and locating information of the selected DICOM SOP instances.
     """
 
@@ -159,13 +178,16 @@ class ImagingManifestStudySeriesInstance(backboneelement.BackboneElement):
     sopClass: fhirtypes.Oid = Field(
         ...,
         alias="sopClass",
-        title="Type `Oid` (represented as `dict` in JSON)",
+        title="Type `Oid`",
         description="SOP class UID of instance",
+    )
+    sopClass__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_sopClass", title="Extension field for ``sopClass``."
     )
 
     uid: fhirtypes.Oid = Field(
-        ...,
-        alias="uid",
-        title="Type `Oid` (represented as `dict` in JSON)",
-        description="Selected instance UID",
+        ..., alias="uid", title="Type `Oid`", description="Selected instance UID"
+    )
+    uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_uid", title="Extension field for ``uid``."
     )

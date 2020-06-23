@@ -8,6 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 from typing import Any, Dict
 from typing import List as ListType
+from typing import Union
 
 from pydantic import Field, root_validator
 
@@ -15,7 +16,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Provenance(domainresource.DomainResource):
-    """ Who, What, When for a set of resources.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Who, What, When for a set of resources.
     Provenance of a resource is a record that describes entities and processes
     involved in producing and delivering or otherwise influencing that
     resource. Provenance provides a critical foundation for assessing
@@ -70,8 +75,11 @@ class Provenance(domainresource.DomainResource):
     policy: ListType[fhirtypes.Uri] = Field(
         None,
         alias="policy",
-        title="List of `Uri` items (represented as `dict` in JSON)",
+        title="List of `Uri` items",
         description="Policy or plan the activity was defined by",
+    )
+    policy__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None, alias="_policy", title="Extension field for ``policy``."
     )
 
     reason: ListType[fhirtypes.CodingType] = Field(
@@ -84,8 +92,11 @@ class Provenance(domainresource.DomainResource):
     recorded: fhirtypes.Instant = Field(
         ...,
         alias="recorded",
-        title="Type `Instant` (represented as `dict` in JSON)",
+        title="Type `Instant`",
         description="When the activity was recorded / updated",
+    )
+    recorded__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_recorded", title="Extension field for ``recorded``."
     )
 
     signature: ListType[fhirtypes.SignatureType] = Field(
@@ -107,7 +118,11 @@ class Provenance(domainresource.DomainResource):
 
 
 class ProvenanceAgent(backboneelement.BackboneElement):
-    """ Actor involved.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Actor involved.
     An actor taking a role in an activity  for which it can be assigned some
     degree of responsibility for the activity taking place.
     """
@@ -129,10 +144,13 @@ class ProvenanceAgent(backboneelement.BackboneElement):
     onBehalfOfUri: fhirtypes.Uri = Field(
         None,
         alias="onBehalfOfUri",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Who the agent is representing",
         one_of_many="onBehalfOf",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    onBehalfOfUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_onBehalfOfUri", title="Extension field for ``onBehalfOfUri``."
     )
 
     relatedAgentType: fhirtypes.CodeableConceptType = Field(
@@ -164,10 +182,13 @@ class ProvenanceAgent(backboneelement.BackboneElement):
     whoUri: fhirtypes.Uri = Field(
         None,
         alias="whoUri",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Who participated",
         one_of_many="who",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    whoUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_whoUri", title="Extension field for ``whoUri``."
     )
 
     @root_validator(pre=True)
@@ -211,7 +232,11 @@ class ProvenanceAgent(backboneelement.BackboneElement):
 
 
 class ProvenanceEntity(backboneelement.BackboneElement):
-    """ An entity used in this activity.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    An entity used in this activity.
     """
 
     resource_type = Field("ProvenanceEntity", const=True)
@@ -226,8 +251,11 @@ class ProvenanceEntity(backboneelement.BackboneElement):
     role: fhirtypes.Code = Field(
         ...,
         alias="role",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="derivation | revision | quotation | source | removal",
+    )
+    role__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_role", title="Extension field for ``role``."
     )
 
     whatIdentifier: fhirtypes.IdentifierType = Field(
@@ -253,10 +281,13 @@ class ProvenanceEntity(backboneelement.BackboneElement):
     whatUri: fhirtypes.Uri = Field(
         None,
         alias="whatUri",
-        title="Type `Uri` (represented as `dict` in JSON)",
+        title="Type `Uri`",
         description="Identity of entity",
         one_of_many="what",  # Choice of Data Types. i.e value[x]
         one_of_many_required=True,
+    )
+    whatUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_whatUri", title="Extension field for ``whatUri``."
     )
 
     @root_validator(pre=True)

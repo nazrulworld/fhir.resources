@@ -15,7 +15,11 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class SpecimenDefinition(domainresource.DomainResource):
-    """ Kind of specimen.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Kind of specimen.
     A kind of specimen with associated set of requirements.
     """
 
@@ -45,8 +49,11 @@ class SpecimenDefinition(domainresource.DomainResource):
     timeAspect: fhirtypes.String = Field(
         None,
         alias="timeAspect",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Time aspect for collection",
+    )
+    timeAspect__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_timeAspect", title="Extension field for ``timeAspect``."
     )
 
     typeCollected: fhirtypes.CodeableConceptType = Field(
@@ -68,7 +75,11 @@ class SpecimenDefinition(domainresource.DomainResource):
 
 
 class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
-    """ Specimen in container intended for testing by lab.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Specimen in container intended for testing by lab.
     Specimen conditioned in a container as expected by the testing laboratory.
     """
 
@@ -100,12 +111,18 @@ class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
         title="Type `bool`",
         description="Primary or secondary specimen",
     )
+    isDerived__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_isDerived", title="Extension field for ``isDerived``."
+    )
 
     preference: fhirtypes.Code = Field(
         ...,
         alias="preference",
-        title="Type `Code` (represented as `dict` in JSON)",
+        title="Type `Code`",
         description="preferred | alternate",
+    )
+    preference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_preference", title="Extension field for ``preference``."
     )
 
     rejectionCriterion: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -118,8 +135,11 @@ class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
     requirement: fhirtypes.String = Field(
         None,
         alias="requirement",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Specimen requirements",
+    )
+    requirement__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_requirement", title="Extension field for ``requirement``."
     )
 
     retentionTime: fhirtypes.DurationType = Field(
@@ -138,7 +158,11 @@ class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
 
 
 class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
-    """ The specimen's container.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    The specimen's container.
     """
 
     resource_type = Field("SpecimenDefinitionTypeTestedContainer", const=True)
@@ -172,8 +196,11 @@ class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Container description",
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
     )
 
     material: fhirtypes.CodeableConceptType = Field(
@@ -195,17 +222,25 @@ class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
     minimumVolumeString: fhirtypes.String = Field(
         None,
         alias="minimumVolumeString",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Minimum volume",
         one_of_many="minimumVolume",  # Choice of Data Types. i.e value[x]
         one_of_many_required=False,
+    )
+    minimumVolumeString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None,
+        alias="_minimumVolumeString",
+        title="Extension field for ``minimumVolumeString``.",
     )
 
     preparation: fhirtypes.String = Field(
         None,
         alias="preparation",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Specimen container preparation",
+    )
+    preparation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_preparation", title="Extension field for ``preparation``."
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -255,7 +290,11 @@ class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
 
 
 class SpecimenDefinitionTypeTestedContainerAdditive(backboneelement.BackboneElement):
-    """ Additive associated with container.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Additive associated with container.
     Substance introduced in the kind of container to preserve, maintain or
     enhance the specimen. Examples: Formalin, Citrate, EDTA.
     """
@@ -323,7 +362,11 @@ class SpecimenDefinitionTypeTestedContainerAdditive(backboneelement.BackboneElem
 
 
 class SpecimenDefinitionTypeTestedHandling(backboneelement.BackboneElement):
-    """ Specimen handling before testing.
+    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    Resource StructureDefinition, instead used to enable Extensibility feature
+    for FHIR Primitive Data Types.
+
+    Specimen handling before testing.
     Set of instructions for preservation/transport of the specimen at a defined
     temperature interval, prior the testing process.
     """
@@ -333,8 +376,11 @@ class SpecimenDefinitionTypeTestedHandling(backboneelement.BackboneElement):
     instruction: fhirtypes.String = Field(
         None,
         alias="instruction",
-        title="Type `String` (represented as `dict` in JSON)",
+        title="Type `String`",
         description="Preservation instruction",
+    )
+    instruction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_instruction", title="Extension field for ``instruction``."
     )
 
     maxDuration: fhirtypes.DurationType = Field(

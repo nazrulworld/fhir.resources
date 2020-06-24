@@ -30,8 +30,8 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
     created: fhirtypes.DateTime = Field(
         ...,
         alias="created",
-        title="Type `DateTime`",
-        description="Response creation date",
+        title="Response creation date",
+        description="The date this resource was created.",
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_created", title="Extension field for ``created``."
@@ -40,8 +40,8 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
     disposition: fhirtypes.String = Field(
         None,
         alias="disposition",
-        title="Type `String`",
-        description="Disposition Message",
+        title="Disposition Message",
+        description="A human readable description of the status of the adjudication.",
     )
     disposition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_disposition", title="Extension field for ``disposition``."
@@ -50,52 +50,54 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
     error: ListType[fhirtypes.CoverageEligibilityResponseErrorType] = Field(
         None,
         alias="error",
-        title=(
-            "List of `CoverageEligibilityResponseError` items (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Processing errors",
+        title="Processing errors",
+        description="Errors encountered during the processing of the request.",
     )
 
     form: fhirtypes.CodeableConceptType = Field(
         None,
         alias="form",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Printed form identifier",
+        title="Printed form identifier",
+        description="A code for the form to be used for printing the content.",
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Business Identifier for coverage eligiblity request",
+        title="Business Identifier for coverage eligiblity request",
+        description="A unique identifier assigned to this coverage eligiblity request.",
     )
 
     insurance: ListType[fhirtypes.CoverageEligibilityResponseInsuranceType] = Field(
         None,
         alias="insurance",
-        title=(
-            "List of `CoverageEligibilityResponseInsurance` items (represented as "
-            "`dict` in JSON)"
+        title="Patient insurance information",
+        description=(
+            "Financial instruments for reimbursement for the health care products "
+            "and services."
         ),
-        description="Patient insurance information",
     )
 
     insurer: fhirtypes.ReferenceType = Field(
         ...,
         alias="insurer",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
+        title="Coverage issuer",
+        description=(
+            "The Insurer who issued the coverage in question and is the author of "
+            "the response."
         ),
-        description="Coverage issuer",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     outcome: fhirtypes.Code = Field(
         ...,
         alias="outcome",
-        title="Type `Code`",
-        description="queued | complete | error | partial",
+        title="queued | complete | error | partial",
+        description="The outcome of the request processing.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["queued", "complete", "error", "partial"],
     )
     outcome__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_outcome", title="Extension field for ``outcome``."
@@ -104,15 +106,23 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
     patient: fhirtypes.ReferenceType = Field(
         ...,
         alias="patient",
-        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
-        description="Intended recipient of products and services",
+        title="Intended recipient of products and services",
+        description=(
+            "The party who is the beneficiary of the supplied coverage and for whom"
+            " eligibility is sought."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient"],
     )
 
     preAuthRef: fhirtypes.String = Field(
         None,
         alias="preAuthRef",
-        title="Type `String`",
-        description="Preauthorization reference",
+        title="Preauthorization reference",
+        description=(
+            "A reference from the Insurer to which these services pertain to be "
+            "used on further communication and as proof that the request occurred."
+        ),
     )
     preAuthRef__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_preAuthRef", title="Extension field for ``preAuthRef``."
@@ -121,8 +131,17 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
     purpose: ListType[fhirtypes.Code] = Field(
         ...,
         alias="purpose",
-        title="List of `Code` items",
-        description="auth-requirements | benefits | discovery | validation",
+        title="auth-requirements | benefits | discovery | validation",
+        description=(
+            "Code to specify whether requesting: prior authorization requirements "
+            "for some service categories or billing codes; benefits for coverages "
+            "specified or discovered; discovery and return of coverages for the "
+            "patient; and/or validation that the specified coverage is in-force at "
+            "the date/period specified or 'now' if not specified."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["auth-requirements", "benefits", "discovery", "validation"],
     )
     purpose__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_purpose", title="Extension field for ``purpose``."
@@ -131,29 +150,31 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
     request: fhirtypes.ReferenceType = Field(
         ...,
         alias="request",
-        title=(
-            "Type `Reference` referencing `CoverageEligibilityRequest` (represented"
-            " as `dict` in JSON)"
-        ),
-        description="Eligibility request reference",
+        title="Eligibility request reference",
+        description="Reference to the original request resource.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["CoverageEligibilityRequest"],
     )
 
     requestor: fhirtypes.ReferenceType = Field(
         None,
         alias="requestor",
-        title=(
-            "Type `Reference` referencing `Practitioner, PractitionerRole, "
-            "Organization` (represented as `dict` in JSON)"
-        ),
-        description="Party responsible for the request",
+        title="Party responsible for the request",
+        description="The provider which is responsible for the request.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
     )
 
     servicedDate: fhirtypes.Date = Field(
         None,
         alias="servicedDate",
-        title="Type `Date`",
-        description="Estimated date or dates of service",
-        one_of_many="serviced",  # Choice of Data Types. i.e value[x]
+        title="Estimated date or dates of service",
+        description=(
+            "The date or dates when the enclosed suite of services were performed "
+            "or completed."
+        ),
+        # Choice of Data Types. i.e serviced[x]
+        one_of_many="serviced",
         one_of_many_required=False,
     )
     servicedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -163,17 +184,24 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
     servicedPeriod: fhirtypes.PeriodType = Field(
         None,
         alias="servicedPeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Estimated date or dates of service",
-        one_of_many="serviced",  # Choice of Data Types. i.e value[x]
+        title="Estimated date or dates of service",
+        description=(
+            "The date or dates when the enclosed suite of services were performed "
+            "or completed."
+        ),
+        # Choice of Data Types. i.e serviced[x]
+        one_of_many="serviced",
         one_of_many_required=False,
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="active | cancelled | draft | entered-in-error",
+        title="active | cancelled | draft | entered-in-error",
+        description="The status of the resource instance.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["active", "cancelled", "draft", "entered-in-error"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -230,8 +258,11 @@ class CoverageEligibilityResponseError(backboneelement.BackboneElement):
     code: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Error code detailing processing issues",
+        title="Error code detailing processing issues",
+        description=(
+            "An error code,from a specified code system, which details why the "
+            "eligibility check could not be performed."
+        ),
     )
 
 
@@ -250,24 +281,33 @@ class CoverageEligibilityResponseInsurance(backboneelement.BackboneElement):
     benefitPeriod: fhirtypes.PeriodType = Field(
         None,
         alias="benefitPeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="When the benefits are applicable",
+        title="When the benefits are applicable",
+        description="The term of the benefits documented in this response.",
     )
 
     coverage: fhirtypes.ReferenceType = Field(
         ...,
         alias="coverage",
-        title=(
-            "Type `Reference` referencing `Coverage` (represented as `dict` in " "JSON)"
+        title="Insurance information",
+        description=(
+            "Reference to the insurance card level information contained in the "
+            "Coverage resource. The coverage issuing insurer will use these details"
+            " to locate the patient's actual coverage within the insurer's "
+            "information system."
         ),
-        description="Insurance information",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Coverage"],
     )
 
     inforce: bool = Field(
         None,
         alias="inforce",
-        title="Type `bool`",
-        description="Coverage inforce indicator",
+        title="Coverage inforce indicator",
+        description=(
+            "Flag indicating if the coverage provided is inforce currently if no "
+            "service date(s) specified or for the whole duration of the service "
+            "dates."
+        ),
     )
     inforce__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_inforce", title="Extension field for ``inforce``."
@@ -276,11 +316,11 @@ class CoverageEligibilityResponseInsurance(backboneelement.BackboneElement):
     item: ListType[fhirtypes.CoverageEligibilityResponseInsuranceItemType] = Field(
         None,
         alias="item",
-        title=(
-            "List of `CoverageEligibilityResponseInsuranceItem` items (represented "
-            "as `dict` in JSON)"
+        title="Benefits and authorization details",
+        description=(
+            "Benefits and optionally current balances, and authorization details by"
+            " category or service."
         ),
-        description="Benefits and authorization details",
     )
 
 
@@ -299,8 +339,11 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
     authorizationRequired: bool = Field(
         None,
         alias="authorizationRequired",
-        title="Type `bool`",
-        description="Authorization required flag",
+        title="Authorization required flag",
+        description=(
+            "A boolean flag indicating whether a preauthorization is required prior"
+            " to actual service delivery."
+        ),
     )
     authorizationRequired__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -311,15 +354,21 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
     authorizationSupporting: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="authorizationSupporting",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Type of required supporting materials",
+        title="Type of required supporting materials",
+        description=(
+            "Codes or comments regarding information or actions associated with the"
+            " preauthorization."
+        ),
     )
 
     authorizationUrl: fhirtypes.Uri = Field(
         None,
         alias="authorizationUrl",
-        title="Type `Uri`",
-        description="Preauthorization requirements endpoint",
+        title="Preauthorization requirements endpoint",
+        description=(
+            "A web location for obtaining requirements or descriptive information "
+            "regarding the preauthorization."
+        ),
     )
     authorizationUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -332,25 +381,25 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="benefit",
-        title=(
-            "List of `CoverageEligibilityResponseInsuranceItemBenefit` items "
-            "(represented as `dict` in JSON)"
-        ),
-        description="Benefit Summary",
+        title="Benefit Summary",
+        description="Benefits used to date.",
     )
 
     category: fhirtypes.CodeableConceptType = Field(
         None,
         alias="category",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Benefit classification",
+        title="Benefit classification",
+        description=(
+            "Code to identify the general type of benefits under which products and"
+            " services are provided."
+        ),
     )
 
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Description of the benefit or services covered",
+        title="Description of the benefit or services covered",
+        description="A richer description of the benefit or services covered.",
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -359,8 +408,12 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
     excluded: bool = Field(
         None,
         alias="excluded",
-        title="Type `bool`",
-        description="Excluded from the plan",
+        title="Excluded from the plan",
+        description=(
+            "True if the indicated class of service is excluded from the plan, "
+            "missing or False indicates the product or service is included in the "
+            "coverage."
+        ),
     )
     excluded__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_excluded", title="Extension field for ``excluded``."
@@ -369,15 +422,18 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
     modifier: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="modifier",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Product or service billing modifiers",
+        title="Product or service billing modifiers",
+        description=(
+            "Item typification or modifiers codes to convey additional context for "
+            "the product or service."
+        ),
     )
 
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String`",
-        description="Short name for the benefit",
+        title="Short name for the benefit",
+        description="A short name or tag for the benefit.",
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -386,39 +442,50 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
     network: fhirtypes.CodeableConceptType = Field(
         None,
         alias="network",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="In or out of network",
+        title="In or out of network",
+        description=(
+            "Is a flag to indicate whether the benefits refer to in-network "
+            "providers or out-of-network providers."
+        ),
     )
 
     productOrService: fhirtypes.CodeableConceptType = Field(
         None,
         alias="productOrService",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Billing, service, product, or drug code",
+        title="Billing, service, product, or drug code",
+        description=(
+            "This contains the product, service, drug or other billing code for the"
+            " item."
+        ),
     )
 
     provider: fhirtypes.ReferenceType = Field(
         None,
         alias="provider",
-        title=(
-            "Type `Reference` referencing `Practitioner, PractitionerRole` "
-            "(represented as `dict` in JSON)"
+        title="Performing practitioner",
+        description=(
+            "The practitioner who is eligible for the provision of the product or "
+            "service."
         ),
-        description="Performing practitioner",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner", "PractitionerRole"],
     )
 
     term: fhirtypes.CodeableConceptType = Field(
         None,
         alias="term",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Annual or lifetime",
+        title="Annual or lifetime",
+        description=(
+            "The term or period of the values such as 'maximum lifetime benefit' or"
+            " 'maximum annual visits'."
+        ),
     )
 
     unit: fhirtypes.CodeableConceptType = Field(
         None,
         alias="unit",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Individual or family",
+        title="Individual or family",
+        description="Indicates if the benefits apply to an individual or to the family.",
     )
 
 
@@ -436,18 +503,20 @@ class CoverageEligibilityResponseInsuranceItemBenefit(backboneelement.BackboneEl
     allowedMoney: fhirtypes.MoneyType = Field(
         None,
         alias="allowedMoney",
-        title="Type `Money` (represented as `dict` in JSON)",
-        description="Benefits allowed",
-        one_of_many="allowed",  # Choice of Data Types. i.e value[x]
+        title="Benefits allowed",
+        description="The quantity of the benefit which is permitted under the coverage.",
+        # Choice of Data Types. i.e allowed[x]
+        one_of_many="allowed",
         one_of_many_required=False,
     )
 
     allowedString: fhirtypes.String = Field(
         None,
         alias="allowedString",
-        title="Type `String`",
-        description="Benefits allowed",
-        one_of_many="allowed",  # Choice of Data Types. i.e value[x]
+        title="Benefits allowed",
+        description="The quantity of the benefit which is permitted under the coverage.",
+        # Choice of Data Types. i.e allowed[x]
+        one_of_many="allowed",
         one_of_many_required=False,
     )
     allowedString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -457,9 +526,10 @@ class CoverageEligibilityResponseInsuranceItemBenefit(backboneelement.BackboneEl
     allowedUnsignedInt: fhirtypes.UnsignedInt = Field(
         None,
         alias="allowedUnsignedInt",
-        title="Type `UnsignedInt`",
-        description="Benefits allowed",
-        one_of_many="allowed",  # Choice of Data Types. i.e value[x]
+        title="Benefits allowed",
+        description="The quantity of the benefit which is permitted under the coverage.",
+        # Choice of Data Types. i.e allowed[x]
+        one_of_many="allowed",
         one_of_many_required=False,
     )
     allowedUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -471,25 +541,27 @@ class CoverageEligibilityResponseInsuranceItemBenefit(backboneelement.BackboneEl
     type: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Benefit classification",
+        title="Benefit classification",
+        description="Classification of benefit being provided.",
     )
 
     usedMoney: fhirtypes.MoneyType = Field(
         None,
         alias="usedMoney",
-        title="Type `Money` (represented as `dict` in JSON)",
-        description="Benefits used",
-        one_of_many="used",  # Choice of Data Types. i.e value[x]
+        title="Benefits used",
+        description="The quantity of the benefit which have been consumed to date.",
+        # Choice of Data Types. i.e used[x]
+        one_of_many="used",
         one_of_many_required=False,
     )
 
     usedString: fhirtypes.String = Field(
         None,
         alias="usedString",
-        title="Type `String`",
-        description="Benefits used",
-        one_of_many="used",  # Choice of Data Types. i.e value[x]
+        title="Benefits used",
+        description="The quantity of the benefit which have been consumed to date.",
+        # Choice of Data Types. i.e used[x]
+        one_of_many="used",
         one_of_many_required=False,
     )
     usedString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -499,9 +571,10 @@ class CoverageEligibilityResponseInsuranceItemBenefit(backboneelement.BackboneEl
     usedUnsignedInt: fhirtypes.UnsignedInt = Field(
         None,
         alias="usedUnsignedInt",
-        title="Type `UnsignedInt`",
-        description="Benefits used",
-        one_of_many="used",  # Choice of Data Types. i.e value[x]
+        title="Benefits used",
+        description="The quantity of the benefit which have been consumed to date.",
+        # Choice of Data Types. i.e used[x]
+        one_of_many="used",
         one_of_many_required=False,
     )
     usedUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(

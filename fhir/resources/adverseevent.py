@@ -29,7 +29,17 @@ class AdverseEvent(domainresource.DomainResource):
     resource_type = Field("AdverseEvent", const=True)
 
     actuality: fhirtypes.Code = Field(
-        ..., alias="actuality", title="Type `Code`", description="actual | potential"
+        ...,
+        alias="actuality",
+        title="actual | potential",
+        description=(
+            "Whether the event actually happened, or just had the potential to. "
+            "Note that this is independent of whether anyone was affected or harmed"
+            " or how severely."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["actual", "potential"],
     )
     actuality__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_actuality", title="Extension field for ``actuality``."
@@ -38,31 +48,38 @@ class AdverseEvent(domainresource.DomainResource):
     category: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="category",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description=(
+        title=(
             "product-problem | product-quality | product-use-error | wrong-dose | "
             "incorrect-prescribing-information | wrong-technique | wrong-route-of-"
             "administration | wrong-rate | wrong-duration | wrong-time | expired-"
             "drug | medical-device-use-error | problem-different-manufacturer | "
             "unsafe-physical-environment"
         ),
+        description="The overall type of event, intended for search and filtering purposes.",
     )
 
     contributor: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="contributor",
-        title=(
-            "List of `Reference` items referencing `Practitioner, PractitionerRole,"
-            " Device` (represented as `dict` in JSON)"
+        title="Who  was involved in the adverse event or the potential adverse event",
+        description=(
+            "Parties that may or should contribute or have contributed information "
+            "to the adverse event, which can consist of one or more activities.  "
+            "Such information includes information leading to the decision to "
+            "perform the activity and how to perform the activity (e.g. "
+            "consultant), information that the activity itself seeks to reveal "
+            "(e.g. informant of clinical history), or information about what "
+            "activity was performed (e.g. informant witness)."
         ),
-        description="Who  was involved in the adverse event or the potential adverse event",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner", "PractitionerRole", "Device"],
     )
 
     date: fhirtypes.DateTime = Field(
         None,
         alias="date",
-        title="Type `DateTime`",
-        description="When the event occurred",
+        title="When the event occurred",
+        description="The date (and perhaps time) when the adverse event occurred.",
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -71,8 +88,11 @@ class AdverseEvent(domainresource.DomainResource):
     detected: fhirtypes.DateTime = Field(
         None,
         alias="detected",
-        title="Type `DateTime`",
-        description="When the event was detected",
+        title="When the event was detected",
+        description=(
+            "Estimated or actual date the AdverseEvent began, in the opinion of the"
+            " reporter."
+        ),
     )
     detected__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_detected", title="Extension field for ``detected``."
@@ -81,51 +101,62 @@ class AdverseEvent(domainresource.DomainResource):
     encounter: fhirtypes.ReferenceType = Field(
         None,
         alias="encounter",
-        title=(
-            "Type `Reference` referencing `Encounter` (represented as `dict` in "
-            "JSON)"
+        title="Encounter created as part of",
+        description=(
+            "The Encounter during which AdverseEvent was created or to which the "
+            "creation of this record is tightly associated."
         ),
-        description="Encounter created as part of",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Encounter"],
     )
 
     event: fhirtypes.CodeableConceptType = Field(
         None,
         alias="event",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type of the event itself in relation to the subject",
+        title="Type of the event itself in relation to the subject",
+        description=(
+            "This element defines the specific type of event that occurred or that "
+            "was prevented from occurring."
+        ),
     )
 
     identifier: fhirtypes.IdentifierType = Field(
         None,
         alias="identifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Business identifier for the event",
+        title="Business identifier for the event",
+        description=(
+            "Business identifiers assigned to this adverse event by the performer "
+            "or other systems which remain constant as the resource is updated and "
+            "propagates from server to server."
+        ),
     )
 
     location: fhirtypes.ReferenceType = Field(
         None,
         alias="location",
-        title=(
-            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
-        ),
-        description="Location where adverse event occurred",
+        title="Location where adverse event occurred",
+        description="The information about where the adverse event occurred.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Location"],
     )
 
     outcome: fhirtypes.CodeableConceptType = Field(
         None,
         alias="outcome",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "resolved | recovering | ongoing | resolvedWithSequelae | fatal | "
             "unknown"
         ),
+        description="Describes the type of outcome from the adverse event.",
     )
 
     recordedDate: fhirtypes.DateTime = Field(
         None,
         alias="recordedDate",
-        title="Type `DateTime`",
-        description="When the event was recorded",
+        title="When the event was recorded",
+        description=(
+            "The date on which the existence of the AdverseEvent was first " "recorded."
+        ),
     )
     recordedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_recordedDate", title="Extension field for ``recordedDate``."
@@ -134,86 +165,103 @@ class AdverseEvent(domainresource.DomainResource):
     recorder: fhirtypes.ReferenceType = Field(
         None,
         alias="recorder",
-        title=(
-            "Type `Reference` referencing `Patient, Practitioner, PractitionerRole,"
-            " RelatedPerson` (represented as `dict` in JSON)"
+        title="Who recorded the adverse event",
+        description=(
+            "Information on who recorded the adverse event.  May be the patient or "
+            "a practitioner."
         ),
-        description="Who recorded the adverse event",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Patient",
+            "Practitioner",
+            "PractitionerRole",
+            "RelatedPerson",
+        ],
     )
 
     referenceDocument: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="referenceDocument",
-        title=(
-            "List of `Reference` items referencing `DocumentReference` (represented"
-            " as `dict` in JSON)"
-        ),
-        description="AdverseEvent.referenceDocument",
+        title="AdverseEvent.referenceDocument",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["DocumentReference"],
     )
 
     resultingCondition: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="resultingCondition",
-        title=(
-            "List of `Reference` items referencing `Condition` (represented as "
-            "`dict` in JSON)"
+        title="Effect on the subject due to this event",
+        description=(
+            "Includes information about the reaction that occurred as a result of "
+            "exposure to a substance (for example, a drug or a chemical)."
         ),
-        description="Effect on the subject due to this event",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Condition"],
     )
 
     seriousness: fhirtypes.CodeableConceptType = Field(
         None,
         alias="seriousness",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Seriousness of the event",
+        title="Seriousness of the event",
+        description="Assessment whether this event was of real importance.",
     )
 
     severity: fhirtypes.CodeableConceptType = Field(
         None,
         alias="severity",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="mild | moderate | severe",
+        title="mild | moderate | severe",
+        description=(
+            "Describes the severity of the adverse event, in relation to the "
+            "subject. Contrast to AdverseEvent.seriousness - a severe rash might "
+            "not be serious, but a mild heart problem is."
+        ),
     )
 
     study: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="study",
-        title=(
-            "List of `Reference` items referencing `ResearchStudy` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="AdverseEvent.study",
+        title="AdverseEvent.study",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ResearchStudy"],
     )
 
     subject: fhirtypes.ReferenceType = Field(
         ...,
         alias="subject",
-        title=(
-            "Type `Reference` referencing `Patient, Group, Practitioner, "
-            "RelatedPerson` (represented as `dict` in JSON)"
-        ),
-        description="Subject impacted by event",
+        title="Subject impacted by event",
+        description="This subject or group impacted by the event.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "Group", "Practitioner", "RelatedPerson"],
     )
 
     subjectMedicalHistory: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="subjectMedicalHistory",
-        title=(
-            "List of `Reference` items referencing `Condition, Observation, "
-            "AllergyIntolerance, FamilyMemberHistory, Immunization, Procedure, "
-            "Media, DocumentReference` (represented as `dict` in JSON)"
-        ),
-        description="AdverseEvent.subjectMedicalHistory",
+        title="AdverseEvent.subjectMedicalHistory",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Condition",
+            "Observation",
+            "AllergyIntolerance",
+            "FamilyMemberHistory",
+            "Immunization",
+            "Procedure",
+            "Media",
+            "DocumentReference",
+        ],
     )
 
     suspectEntity: ListType[fhirtypes.AdverseEventSuspectEntityType] = Field(
         None,
         alias="suspectEntity",
-        title=(
-            "List of `AdverseEventSuspectEntity` items (represented as `dict` in "
-            "JSON)"
+        title="The suspected agent causing the adverse event",
+        description=(
+            "Describes the entity that is suspected to have caused the adverse "
+            "event."
         ),
-        description="The suspected agent causing the adverse event",
     )
 
 
@@ -231,22 +279,29 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
     causality: ListType[fhirtypes.AdverseEventSuspectEntityCausalityType] = Field(
         None,
         alias="causality",
-        title=(
-            "List of `AdverseEventSuspectEntityCausality` items (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Information on the possible cause of the event",
+        title="Information on the possible cause of the event",
+        description=None,
     )
 
     instance: fhirtypes.ReferenceType = Field(
         ...,
         alias="instance",
-        title=(
-            "Type `Reference` referencing `Immunization, Procedure, Substance, "
-            "Medication, MedicationAdministration, MedicationStatement, Device` "
-            "(represented as `dict` in JSON)"
+        title="Refers to the specific entity that caused the adverse event",
+        description=(
+            "Identifies the actual instance of what caused the adverse event.  May "
+            "be a substance, medication, medication administration, medication "
+            "statement or a device."
         ),
-        description="Refers to the specific entity that caused the adverse event",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Immunization",
+            "Procedure",
+            "Substance",
+            "Medication",
+            "MedicationAdministration",
+            "MedicationStatement",
+            "Device",
+        ],
     )
 
 
@@ -263,32 +318,31 @@ class AdverseEventSuspectEntityCausality(backboneelement.BackboneElement):
     assessment: fhirtypes.CodeableConceptType = Field(
         None,
         alias="assessment",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Assessment of if the entity caused the event",
+        title="Assessment of if the entity caused the event",
+        description=None,
     )
 
     author: fhirtypes.ReferenceType = Field(
         None,
         alias="author",
-        title=(
-            "Type `Reference` referencing `Practitioner, PractitionerRole` "
-            "(represented as `dict` in JSON)"
-        ),
-        description="AdverseEvent.suspectEntity.causalityAuthor",
+        title="AdverseEvent.suspectEntity.causalityAuthor",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner", "PractitionerRole"],
     )
 
     method: fhirtypes.CodeableConceptType = Field(
         None,
         alias="method",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="ProbabilityScale | Bayesian | Checklist",
+        title="ProbabilityScale | Bayesian | Checklist",
+        description=None,
     )
 
     productRelatedness: fhirtypes.String = Field(
         None,
         alias="productRelatedness",
-        title="Type `String`",
-        description="AdverseEvent.suspectEntity.causalityProductRelatedness",
+        title="AdverseEvent.suspectEntity.causalityProductRelatedness",
+        description=None,
     )
     productRelatedness__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,

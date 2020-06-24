@@ -26,8 +26,8 @@ class Binary(resource.Resource):
     content: fhirtypes.Base64Binary = Field(
         ...,
         alias="content",
-        title="Type `Base64Binary`",
-        description="The actual content",
+        title="The actual content",
+        description="The actual content, base64 encoded.",
     )
     content__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_content", title="Extension field for ``content``."
@@ -36,8 +36,11 @@ class Binary(resource.Resource):
     contentType: fhirtypes.Code = Field(
         ...,
         alias="contentType",
-        title="Type `Code`",
-        description="MimeType of the binary content",
+        title="MimeType of the binary content",
+        description=(
+            "MimeType of the binary content represented as a standard MimeType (BCP"
+            " 13)."
+        ),
     )
     contentType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_contentType", title="Extension field for ``contentType``."
@@ -46,8 +49,11 @@ class Binary(resource.Resource):
     securityContext: fhirtypes.ReferenceType = Field(
         None,
         alias="securityContext",
-        title=(
-            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        title="Access Control Management",
+        description=(
+            "Treat this binary as if it was this other resource for access control "
+            "purposes."
         ),
-        description="Access Control Management",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )

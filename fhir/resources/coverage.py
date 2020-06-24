@@ -29,39 +29,47 @@ class Coverage(domainresource.DomainResource):
     beneficiary: fhirtypes.ReferenceType = Field(
         ...,
         alias="beneficiary",
-        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
-        description="Plan beneficiary",
+        title="Plan beneficiary",
+        description=(
+            "The party who benefits from the insurance coverage; the patient when "
+            "products and/or services are provided."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient"],
     )
 
     class_fhir: ListType[fhirtypes.CoverageClassType] = Field(
         None,
         alias="class",
-        title="List of `CoverageClass` items (represented as `dict` in JSON)",
-        description="Additional coverage classifications",
+        title="Additional coverage classifications",
+        description="A suite of underwriter specific classifiers.",
     )
 
     contract: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="contract",
-        title=(
-            "List of `Reference` items referencing `Contract` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Contract details",
+        title="Contract details",
+        description="The policy(s) which constitute this insurance coverage.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Contract"],
     )
 
     costToBeneficiary: ListType[fhirtypes.CoverageCostToBeneficiaryType] = Field(
         None,
         alias="costToBeneficiary",
-        title=(
-            "List of `CoverageCostToBeneficiary` items (represented as `dict` in "
-            "JSON)"
+        title="Patient payments for services/products",
+        description=(
+            "A suite of codes indicating the cost category and associated amount "
+            "which have been detailed in the policy and may have been  included on "
+            "the health card."
         ),
-        description="Patient payments for services/products",
     )
 
     dependent: fhirtypes.String = Field(
-        None, alias="dependent", title="Type `String`", description="Dependent number"
+        None,
+        alias="dependent",
+        title="Dependent number",
+        description="A unique identifier for a dependent under the coverage.",
     )
     dependent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_dependent", title="Extension field for ``dependent``."
@@ -70,12 +78,20 @@ class Coverage(domainresource.DomainResource):
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Business Identifier for the coverage",
+        title="Business Identifier for the coverage",
+        description="A unique identifier assigned to this coverage.",
     )
 
     network: fhirtypes.String = Field(
-        None, alias="network", title="Type `String`", description="Insurer network"
+        None,
+        alias="network",
+        title="Insurer network",
+        description=(
+            "The insurer-specific identifier for the insurer-defined network of "
+            "providers to which the beneficiary may seek treatment which will be "
+            "covered at the 'in-network' rate, otherwise 'out of network' terms and"
+            " conditions apply."
+        ),
     )
     network__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_network", title="Extension field for ``network``."
@@ -84,8 +100,13 @@ class Coverage(domainresource.DomainResource):
     order: fhirtypes.PositiveInt = Field(
         None,
         alias="order",
-        title="Type `PositiveInt`",
-        description="Relative order of the coverage",
+        title="Relative order of the coverage",
+        description=(
+            "The order of applicability of this coverage relative to other "
+            "coverages which are currently in force. Note, there may be gaps in the"
+            " numbering and this does not imply primary, secondary etc. as the "
+            "specific positioning of coverages depends upon the episode of care."
+        ),
     )
     order__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_order", title="Extension field for ``order``."
@@ -94,42 +115,50 @@ class Coverage(domainresource.DomainResource):
     payor: ListType[fhirtypes.ReferenceType] = Field(
         ...,
         alias="payor",
-        title=(
-            "List of `Reference` items referencing `Organization, Patient, "
-            "RelatedPerson` (represented as `dict` in JSON)"
+        title="Issuer of the policy",
+        description=(
+            "The program or plan underwriter or payor including both insurance and "
+            "non-insurance agreements, such as patient-pay agreements."
         ),
-        description="Issuer of the policy",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization", "Patient", "RelatedPerson"],
     )
 
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Coverage start and end dates",
+        title="Coverage start and end dates",
+        description=(
+            "Time period during which the coverage is in force. A missing start "
+            "date indicates the start date isn't known, a missing end date means "
+            "the coverage is continuing to be in force."
+        ),
     )
 
     policyHolder: fhirtypes.ReferenceType = Field(
         None,
         alias="policyHolder",
-        title=(
-            "Type `Reference` referencing `Patient, RelatedPerson, Organization` "
-            "(represented as `dict` in JSON)"
-        ),
-        description="Owner of the policy",
+        title="Owner of the policy",
+        description="The party who 'owns' the insurance policy.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "RelatedPerson", "Organization"],
     )
 
     relationship: fhirtypes.CodeableConceptType = Field(
         None,
         alias="relationship",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Beneficiary relationship to the subscriber",
+        title="Beneficiary relationship to the subscriber",
+        description="The relationship of beneficiary (patient) to the subscriber.",
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="active | cancelled | draft | entered-in-error",
+        title="active | cancelled | draft | entered-in-error",
+        description="The status of the resource instance.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["active", "cancelled", "draft", "entered-in-error"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -138,8 +167,12 @@ class Coverage(domainresource.DomainResource):
     subrogation: bool = Field(
         None,
         alias="subrogation",
-        title="Type `bool`",
-        description="Reimbursement to insurer",
+        title="Reimbursement to insurer",
+        description=(
+            "When 'subrogation=true' this insurance instance has been included not "
+            "for adjudication but to provide insurers with the details to recover "
+            "costs."
+        ),
     )
     subrogation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_subrogation", title="Extension field for ``subrogation``."
@@ -148,18 +181,21 @@ class Coverage(domainresource.DomainResource):
     subscriber: fhirtypes.ReferenceType = Field(
         None,
         alias="subscriber",
-        title=(
-            "Type `Reference` referencing `Patient, RelatedPerson` (represented as "
-            "`dict` in JSON)"
+        title="Subscriber to the policy",
+        description=(
+            "The party who has signed-up for or 'owns' the contractual relationship"
+            " to the policy or to whom the benefit of the policy for services "
+            "rendered to them or their family is due."
         ),
-        description="Subscriber to the policy",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "RelatedPerson"],
     )
 
     subscriberId: fhirtypes.String = Field(
         None,
         alias="subscriberId",
-        title="Type `String`",
-        description="ID assigned to the subscriber",
+        title="ID assigned to the subscriber",
+        description="The insurer assigned ID for the Subscriber.",
     )
     subscriberId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_subscriberId", title="Extension field for ``subscriberId``."
@@ -168,8 +204,12 @@ class Coverage(domainresource.DomainResource):
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Coverage category such as medical or accident",
+        title="Coverage category such as medical or accident",
+        description=(
+            "The type of coverage: social program, medical plan, accident coverage "
+            "(workers compensation, auto), group health or payment by an individual"
+            " or organization."
+        ),
     )
 
 
@@ -187,8 +227,8 @@ class CoverageClass(backboneelement.BackboneElement):
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String`",
-        description="Human readable description of the type and value",
+        title="Human readable description of the type and value",
+        description="A short description for the class.",
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -197,15 +237,21 @@ class CoverageClass(backboneelement.BackboneElement):
     type: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type of class such as \u0027group\u0027 or \u0027plan\u0027",
+        title="Type of class such as 'group' or 'plan'",
+        description=(
+            "The type of classification for which an insurer-specific class label "
+            "or number and optional name is provided, for example may be used to "
+            "identify a class of coverage or employer group, Policy, Plan."
+        ),
     )
 
     value: fhirtypes.String = Field(
         ...,
         alias="value",
-        title="Type `String`",
-        description="Value associated with the type",
+        title="Value associated with the type",
+        description=(
+            "The alphanumeric string value associated with the insurer issued " "label."
+        ),
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."
@@ -228,35 +274,37 @@ class CoverageCostToBeneficiary(backboneelement.BackboneElement):
     exception: ListType[fhirtypes.CoverageCostToBeneficiaryExceptionType] = Field(
         None,
         alias="exception",
-        title=(
-            "List of `CoverageCostToBeneficiaryException` items (represented as "
-            "`dict` in JSON)"
+        title="Exceptions for patient payments",
+        description=(
+            "A suite of codes indicating exceptions or reductions to patient costs "
+            "and their effective periods."
         ),
-        description="Exceptions for patient payments",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Cost category",
+        title="Cost category",
+        description="The category of patient centric costs associated with treatment.",
     )
 
     valueMoney: fhirtypes.MoneyType = Field(
         None,
         alias="valueMoney",
-        title="Type `Money` (represented as `dict` in JSON)",
-        description="The amount or percentage due from the beneficiary",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="The amount or percentage due from the beneficiary",
+        description="The amount due from the patient for the cost category.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueQuantity: fhirtypes.QuantityType = Field(
         None,
         alias="valueQuantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="The amount or percentage due from the beneficiary",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="The amount or percentage due from the beneficiary",
+        description="The amount due from the patient for the cost category.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
@@ -312,13 +360,13 @@ class CoverageCostToBeneficiaryException(backboneelement.BackboneElement):
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="The effective period of the exception",
+        title="The effective period of the exception",
+        description="The timeframe during when the exception is in force.",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Exception category",
+        title="Exception category",
+        description="The code for the specific exception.",
     )

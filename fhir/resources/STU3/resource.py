@@ -23,7 +23,13 @@ class Resource(fhirresourcemodel.FHIRResourceModel):
     resource_type = Field("Resource", const=True)
 
     id: fhirtypes.Id = Field(
-        None, alias="id", title="Type `Id`", description="Logical id of this artifact"
+        None,
+        alias="id",
+        title="Logical id of this artifact",
+        description=(
+            "The logical id of the resource, as used in the URL for the resource. "
+            "Once assigned, this value never changes."
+        ),
     )
     id__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_id", title="Extension field for ``id``."
@@ -32,8 +38,12 @@ class Resource(fhirresourcemodel.FHIRResourceModel):
     implicitRules: fhirtypes.Uri = Field(
         None,
         alias="implicitRules",
-        title="Type `Uri`",
-        description="A set of rules under which this content was created",
+        title="A set of rules under which this content was created",
+        description=(
+            "A reference to a set of rules that were followed when the resource was"
+            " constructed, and which must be understood when processing the "
+            "content."
+        ),
     )
     implicitRules__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_implicitRules", title="Extension field for ``implicitRules``."
@@ -42,8 +52,8 @@ class Resource(fhirresourcemodel.FHIRResourceModel):
     language: fhirtypes.Code = Field(
         None,
         alias="language",
-        title="Type `Code`",
-        description="Language of the resource content",
+        title="Language of the resource content",
+        description="The base language in which the resource is written.",
     )
     language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_language", title="Extension field for ``language``."
@@ -52,6 +62,10 @@ class Resource(fhirresourcemodel.FHIRResourceModel):
     meta: fhirtypes.MetaType = Field(
         None,
         alias="meta",
-        title="Type `Meta` (represented as `dict` in JSON)",
-        description="Metadata about the resource",
+        title="Metadata about the resource",
+        description=(
+            "The metadata about the resource. This is content that is maintained by"
+            " the infrastructure. Changes to the content may not always be "
+            "associated with version changes to the resource."
+        ),
     )

@@ -28,12 +28,23 @@ class MetadataResource(domainresource.DomainResource):
     contact: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="contact",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Contact details for the publisher",
+        title="Contact details for the publisher",
+        description=(
+            "Contact details to assist a user in finding and communicating with the"
+            " publisher."
+        ),
     )
 
     date: fhirtypes.DateTime = Field(
-        None, alias="date", title="Type `DateTime`", description="Date last changed"
+        None,
+        alias="date",
+        title="Date last changed",
+        description=(
+            "The date  (and optionally time) when the metadata resource was "
+            "published. The date must change when the business version changes and "
+            "it must change if the status code changes. In addition, it should "
+            "change when the substantive content of the metadata resource changes."
+        ),
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -42,8 +53,11 @@ class MetadataResource(domainresource.DomainResource):
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown`",
-        description="Natural language description of the metadata resource",
+        title="Natural language description of the metadata resource",
+        description=(
+            "A free text natural language description of the metadata resource from"
+            " a consumer's perspective."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -52,8 +66,12 @@ class MetadataResource(domainresource.DomainResource):
     experimental: bool = Field(
         None,
         alias="experimental",
-        title="Type `bool`",
-        description="For testing purposes, not real usage",
+        title="For testing purposes, not real usage",
+        description=(
+            "A Boolean value to indicate that this metadata resource is authored "
+            "for testing purposes (or education/evaluation/marketing) and is not "
+            "intended to be used for genuine usage."
+        ),
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -62,15 +80,22 @@ class MetadataResource(domainresource.DomainResource):
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="jurisdiction",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Intended jurisdiction for metadata resource (if applicable)",
+        title="Intended jurisdiction for metadata resource (if applicable)",
+        description=(
+            "A legal or geographic region in which the metadata resource is "
+            "intended to be used."
+        ),
     )
 
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String`",
-        description="Name for this metadata resource (computer friendly)",
+        title="Name for this metadata resource (computer friendly)",
+        description=(
+            "A natural language name identifying the metadata resource. This name "
+            "should be usable as an identifier for the module by machine processing"
+            " applications such as code generation."
+        ),
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -79,8 +104,11 @@ class MetadataResource(domainresource.DomainResource):
     publisher: fhirtypes.String = Field(
         None,
         alias="publisher",
-        title="Type `String`",
-        description="Name of the publisher (organization or individual)",
+        title="Name of the publisher (organization or individual)",
+        description=(
+            "The name of the organization or individual that published the metadata"
+            " resource."
+        ),
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -89,8 +117,14 @@ class MetadataResource(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="draft | active | retired | unknown",
+        title="draft | active | retired | unknown",
+        description=(
+            "The status of this metadata resource. Enables tracking the life-cycle "
+            "of the content."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["draft", "active", "retired", "unknown"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -99,8 +133,8 @@ class MetadataResource(domainresource.DomainResource):
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String`",
-        description="Name for this metadata resource (human friendly)",
+        title="Name for this metadata resource (human friendly)",
+        description="A short, descriptive, user-friendly title for the metadata resource.",
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -109,10 +143,18 @@ class MetadataResource(domainresource.DomainResource):
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
-        title="Type `Uri`",
-        description=(
+        title=(
             "Canonical identifier for this metadata resource, represented as a URI "
             "(globally unique)"
+        ),
+        description=(
+            "An absolute URI that is used to identify this metadata resource when "
+            "it is referenced in a specification, model, design or an instance; "
+            "also called its canonical identifier. This SHOULD be globally unique "
+            "and SHOULD be a literal address at which at which an authoritative "
+            "instance of this metadata resource is (or will be) published. This URL"
+            " can be the target of a canonical reference. It SHALL remain the same "
+            "when the metadata resource is stored on different servers."
         ),
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -122,15 +164,29 @@ class MetadataResource(domainresource.DomainResource):
     useContext: ListType[fhirtypes.UsageContextType] = Field(
         None,
         alias="useContext",
-        title="List of `UsageContext` items (represented as `dict` in JSON)",
-        description="The context that the content is intended to support",
+        title="The context that the content is intended to support",
+        description=(
+            "The content was developed with a focus and intent of supporting the "
+            "contexts that are listed. These contexts may be general categories "
+            "(gender, age, ...) or may be references to specific programs "
+            "(insurance plans, studies, ...) and may be used to assist with "
+            "indexing and searching for appropriate metadata resource instances."
+        ),
     )
 
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String`",
-        description="Business version of the metadata resource",
+        title="Business version of the metadata resource",
+        description=(
+            "The identifier that is used to identify this version of the metadata "
+            "resource when it is referenced in a specification, model, design or "
+            "instance. This is an arbitrary value managed by the metadata resource "
+            "author and is not expected to be globally unique. For example, it "
+            "might be a timestamp (e.g. yyyymmdd) if a managed version is not "
+            "available. There is also no expectation that versions can be placed in"
+            " a lexicographical sequence."
+        ),
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."

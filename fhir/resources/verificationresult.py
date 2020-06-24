@@ -28,32 +28,29 @@ class VerificationResult(domainresource.DomainResource):
     attestation: fhirtypes.VerificationResultAttestationType = Field(
         None,
         alias="attestation",
-        title="Type `VerificationResultAttestation` (represented as `dict` in JSON)",
-        description="Information about the entity attesting to information",
+        title="Information about the entity attesting to information",
+        description=None,
     )
 
     failureAction: fhirtypes.CodeableConceptType = Field(
         None,
         alias="failureAction",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="fatal | warn | rec-only | none",
+        title="fatal | warn | rec-only | none",
+        description="The result if validation fails (fatal; warning; record only; none).",
     )
 
     frequency: fhirtypes.TimingType = Field(
-        None,
-        alias="frequency",
-        title="Type `Timing` (represented as `dict` in JSON)",
-        description="Frequency of revalidation",
+        None, alias="frequency", title="Frequency of revalidation", description=None,
     )
 
     lastPerformed: fhirtypes.DateTime = Field(
         None,
         alias="lastPerformed",
-        title="Type `DateTime`",
-        description=(
+        title=(
             "The date/time validation was last completed (including failed "
             "validations)"
         ),
+        description=None,
     )
     lastPerformed__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastPerformed", title="Extension field for ``lastPerformed``."
@@ -62,15 +59,18 @@ class VerificationResult(domainresource.DomainResource):
     need: fhirtypes.CodeableConceptType = Field(
         None,
         alias="need",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="none | initial | periodic",
+        title="none | initial | periodic",
+        description=(
+            "The frequency with which the target must be validated (none; initial; "
+            "periodic)."
+        ),
     )
 
     nextScheduled: fhirtypes.Date = Field(
         None,
         alias="nextScheduled",
-        title="Type `Date`",
-        description="The date when target is next validated, if appropriate",
+        title="The date when target is next validated, if appropriate",
+        description=None,
     )
     nextScheduled__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_nextScheduled", title="Extension field for ``nextScheduled``."
@@ -79,20 +79,30 @@ class VerificationResult(domainresource.DomainResource):
     primarySource: ListType[fhirtypes.VerificationResultPrimarySourceType] = Field(
         None,
         alias="primarySource",
-        title=(
-            "List of `VerificationResultPrimarySource` items (represented as `dict`"
-            " in JSON)"
-        ),
-        description="Information about the primary source(s) involved in validation",
+        title="Information about the primary source(s) involved in validation",
+        description=None,
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description=(
+        title=(
             "attested | validated | in-process | req-revalid | val-fail | reval-" "fail"
         ),
+        description=(
+            "The validation status of the target (attested; validated; in process; "
+            "requires revalidation; validation failed; revalidation failed)."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "attested",
+            "validated",
+            "in-process",
+            "req-revalid",
+            "val-fail",
+            "reval-fail",
+        ],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -101,8 +111,8 @@ class VerificationResult(domainresource.DomainResource):
     statusDate: fhirtypes.DateTime = Field(
         None,
         alias="statusDate",
-        title="Type `DateTime`",
-        description="When the validation status was updated",
+        title="When the validation status was updated",
+        description=None,
     )
     statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_statusDate", title="Extension field for ``statusDate``."
@@ -111,18 +121,17 @@ class VerificationResult(domainresource.DomainResource):
     target: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="target",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="A resource that was validated",
+        title="A resource that was validated",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     targetLocation: ListType[fhirtypes.String] = Field(
         None,
         alias="targetLocation",
-        title="List of `String` items",
-        description="The fhirpath location(s) within the resource that was validated",
+        title="The fhirpath location(s) within the resource that was validated",
+        description=None,
     )
     targetLocation__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -133,28 +142,28 @@ class VerificationResult(domainresource.DomainResource):
     validationProcess: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="validationProcess",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The primary process by which the target is validated (edit check; "
             "value set; primary source; multiple sources; standalone; in context)"
         ),
+        description=None,
     )
 
     validationType: fhirtypes.CodeableConceptType = Field(
         None,
         alias="validationType",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="nothing | primary | multiple",
+        title="nothing | primary | multiple",
+        description=(
+            "What the target is validated against (nothing; primary source; "
+            "multiple sources)."
+        ),
     )
 
     validator: ListType[fhirtypes.VerificationResultValidatorType] = Field(
         None,
         alias="validator",
-        title=(
-            "List of `VerificationResultValidator` items (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Information about the entity validating information",
+        title="Information about the entity validating information",
+        description=None,
     )
 
 
@@ -171,15 +180,18 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
     communicationMethod: fhirtypes.CodeableConceptType = Field(
         None,
         alias="communicationMethod",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The method by which attested information was submitted/retrieved",
+        title="The method by which attested information was submitted/retrieved",
+        description=(
+            "The method by which attested information was submitted/retrieved "
+            "(manual; API; Push)."
+        ),
     )
 
     date: fhirtypes.Date = Field(
         None,
         alias="date",
-        title="Type `Date`",
-        description="The date the information was attested to",
+        title="The date the information was attested to",
+        description=None,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -189,23 +201,22 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
         None,
         alias="onBehalfOf",
         title=(
-            "Type `Reference` referencing `Organization, Practitioner, "
-            "PractitionerRole` (represented as `dict` in JSON)"
-        ),
-        description=(
             "When the who is asserting on behalf of another (organization or "
             "individual)"
         ),
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization", "Practitioner", "PractitionerRole"],
     )
 
     proxyIdentityCertificate: fhirtypes.String = Field(
         None,
         alias="proxyIdentityCertificate",
-        title="Type `String`",
-        description=(
+        title=(
             "A digital identity certificate associated with the proxy entity "
             "submitting attested information on behalf of the attestation source"
         ),
+        description=None,
     )
     proxyIdentityCertificate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -216,15 +227,19 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
     proxySignature: fhirtypes.SignatureType = Field(
         None,
         alias="proxySignature",
-        title="Type `Signature` (represented as `dict` in JSON)",
-        description="Proxy signature",
+        title="Proxy signature",
+        description=(
+            "Signed assertion by the proxy entity indicating that they have the "
+            "right to submit attested information on behalf of the attestation "
+            "source."
+        ),
     )
 
     sourceIdentityCertificate: fhirtypes.String = Field(
         None,
         alias="sourceIdentityCertificate",
-        title="Type `String`",
-        description="A digital identity certificate associated with the attestation source",
+        title="A digital identity certificate associated with the attestation source",
+        description=None,
     )
     sourceIdentityCertificate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -235,18 +250,20 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
     sourceSignature: fhirtypes.SignatureType = Field(
         None,
         alias="sourceSignature",
-        title="Type `Signature` (represented as `dict` in JSON)",
-        description="Attester signature",
+        title="Attester signature",
+        description=(
+            "Signed assertion by the attestation source that they have attested to "
+            "the information."
+        ),
     )
 
     who: fhirtypes.ReferenceType = Field(
         None,
         alias="who",
-        title=(
-            "Type `Reference` referencing `Practitioner, PractitionerRole, "
-            "Organization` (represented as `dict` in JSON)"
-        ),
-        description="The individual or organization attesting to information",
+        title="The individual or organization attesting to information",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
     )
 
 
@@ -263,40 +280,46 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
     canPushUpdates: fhirtypes.CodeableConceptType = Field(
         None,
         alias="canPushUpdates",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="yes | no | undetermined",
+        title="yes | no | undetermined",
+        description=(
+            "Ability of the primary source to push updates/alerts (yes; no; "
+            "undetermined)."
+        ),
     )
 
     communicationMethod: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="communicationMethod",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Method for exchanging information with the primary source",
+        title="Method for exchanging information with the primary source",
+        description="Method for communicating with the primary source (manual; API; Push).",
     )
 
     pushTypeAvailable: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="pushTypeAvailable",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="specific | any | source",
+        title="specific | any | source",
+        description=(
+            "Type of alerts/updates the primary source can send (specific requested"
+            " changes; any changes; as defined by source)."
+        ),
     )
 
     type: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="type",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Type of primary source (License Board; Primary Education; Continuing "
             "Education; Postal Service; Relationship owner; Registration Authority;"
             " legal source; issuing source; authoritative source)"
         ),
+        description=None,
     )
 
     validationDate: fhirtypes.DateTime = Field(
         None,
         alias="validationDate",
-        title="Type `DateTime`",
-        description="When the target was validated against the primary source",
+        title="When the target was validated against the primary source",
+        description=None,
     )
     validationDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_validationDate", title="Extension field for ``validationDate``."
@@ -305,18 +328,20 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
     validationStatus: fhirtypes.CodeableConceptType = Field(
         None,
         alias="validationStatus",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="successful | failed | unknown",
+        title="successful | failed | unknown",
+        description=(
+            "Status of the validation of the target against the primary source "
+            "(successful; failed; unknown)."
+        ),
     )
 
     who: fhirtypes.ReferenceType = Field(
         None,
         alias="who",
-        title=(
-            "Type `Reference` referencing `Organization, Practitioner, "
-            "PractitionerRole` (represented as `dict` in JSON)"
-        ),
-        description="Reference to the primary source",
+        title="Reference to the primary source",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization", "Practitioner", "PractitionerRole"],
     )
 
 
@@ -333,15 +358,18 @@ class VerificationResultValidator(backboneelement.BackboneElement):
     attestationSignature: fhirtypes.SignatureType = Field(
         None,
         alias="attestationSignature",
-        title="Type `Signature` (represented as `dict` in JSON)",
-        description="Validator signature",
+        title="Validator signature",
+        description=(
+            "Signed assertion by the validator that they have validated the "
+            "information."
+        ),
     )
 
     identityCertificate: fhirtypes.String = Field(
         None,
         alias="identityCertificate",
-        title="Type `String`",
-        description="A digital identity certificate associated with the validator",
+        title="A digital identity certificate associated with the validator",
+        description=None,
     )
     identityCertificate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -352,9 +380,8 @@ class VerificationResultValidator(backboneelement.BackboneElement):
     organization: fhirtypes.ReferenceType = Field(
         ...,
         alias="organization",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Reference to the organization validating information",
+        title="Reference to the organization validating information",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )

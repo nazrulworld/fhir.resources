@@ -28,56 +28,71 @@ class Flag(domainresource.DomainResource):
     author: fhirtypes.ReferenceType = Field(
         None,
         alias="author",
-        title=(
-            "Type `Reference` referencing `Device, Organization, Patient, "
-            "Practitioner` (represented as `dict` in JSON)"
-        ),
-        description="Flag creator",
+        title="Flag creator",
+        description="The person, organization or device that created the flag.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Device", "Organization", "Patient", "Practitioner"],
     )
 
     category: fhirtypes.CodeableConceptType = Field(
         None,
         alias="category",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Clinical, administrative, etc.",
+        title="Clinical, administrative, etc.",
+        description=(
+            "Allows an flag to be divided into different categories like clinical, "
+            "administrative etc. Intended to be used as a means of filtering which "
+            "flags are displayed to particular user or in a given context."
+        ),
     )
 
     code: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Coded or textual message to display to user",
+        title="Coded or textual message to display to user",
+        description=(
+            "The coded value or textual component of the flag to display to the "
+            "user."
+        ),
     )
 
     encounter: fhirtypes.ReferenceType = Field(
         None,
         alias="encounter",
-        title=(
-            "Type `Reference` referencing `Encounter` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Alert relevant during encounter",
+        title="Alert relevant during encounter",
+        description="This alert is only relevant during the encounter.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Encounter"],
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Business identifier",
+        title="Business identifier",
+        description=(
+            "Identifier assigned to the flag for external use (outside the FHIR "
+            "environment)."
+        ),
     )
 
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Time period when flag is active",
+        title="Time period when flag is active",
+        description=(
+            "The period of time from the activation of the flag to inactivation of "
+            "the flag. If the flag is active, the end of the period should be "
+            "unspecified."
+        ),
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="active | inactive | entered-in-error",
+        title="active | inactive | entered-in-error",
+        description="Supports basic workflow.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["active", "inactive", "entered-in-error"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -86,10 +101,20 @@ class Flag(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         ...,
         alias="subject",
-        title=(
-            "Type `Reference` referencing `Patient, Location, Group, Organization, "
-            "Practitioner, PlanDefinition, Medication, Procedure` (represented as "
-            "`dict` in JSON)"
+        title="Who/What is flag about?",
+        description=(
+            "The patient, location, group , organization , or practitioner, etc. "
+            "this is about record this flag is associated with."
         ),
-        description="Who/What is flag about?",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Patient",
+            "Location",
+            "Group",
+            "Organization",
+            "Practitioner",
+            "PlanDefinition",
+            "Medication",
+            "Procedure",
+        ],
     )

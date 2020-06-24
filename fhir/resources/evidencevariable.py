@@ -29,8 +29,12 @@ class EvidenceVariable(domainresource.DomainResource):
     approvalDate: fhirtypes.Date = Field(
         None,
         alias="approvalDate",
-        title="Type `Date`",
-        description="When the evidence variable was approved by publisher",
+        title="When the evidence variable was approved by publisher",
+        description=(
+            "The date on which the resource content was approved by the publisher. "
+            "Approval happens once when the content is officially approved for "
+            "usage."
+        ),
     )
     approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_approvalDate", title="Extension field for ``approvalDate``."
@@ -39,39 +43,57 @@ class EvidenceVariable(domainresource.DomainResource):
     author: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="author",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Who authored the content",
+        title="Who authored the content",
+        description=(
+            "An individiual or organization primarily involved in the creation and "
+            "maintenance of the content."
+        ),
     )
 
     characteristic: ListType[fhirtypes.EvidenceVariableCharacteristicType] = Field(
         ...,
         alias="characteristic",
-        title=(
-            "List of `EvidenceVariableCharacteristic` items (represented as `dict` "
-            "in JSON)"
+        title="What defines the members of the evidence element",
+        description=(
+            "A characteristic that defines the members of the evidence element. "
+            'Multiple characteristics are applied with "and" semantics.'
         ),
-        description="What defines the members of the evidence element",
     )
 
     contact: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="contact",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Contact details for the publisher",
+        title="Contact details for the publisher",
+        description=(
+            "Contact details to assist a user in finding and communicating with the"
+            " publisher."
+        ),
     )
 
     copyright: fhirtypes.Markdown = Field(
         None,
         alias="copyright",
-        title="Type `Markdown`",
-        description="Use and/or publishing restrictions",
+        title="Use and/or publishing restrictions",
+        description=(
+            "A copyright statement relating to the evidence variable and/or its "
+            "contents. Copyright statements are generally legal restrictions on the"
+            " use and publishing of the evidence variable."
+        ),
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
     date: fhirtypes.DateTime = Field(
-        None, alias="date", title="Type `DateTime`", description="Date last changed"
+        None,
+        alias="date",
+        title="Date last changed",
+        description=(
+            "The date  (and optionally time) when the evidence variable was "
+            "published. The date must change when the business version changes and "
+            "it must change if the status code changes. In addition, it should "
+            "change when the substantive content of the evidence variable changes."
+        ),
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -80,8 +102,11 @@ class EvidenceVariable(domainresource.DomainResource):
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown`",
-        description="Natural language description of the evidence variable",
+        title="Natural language description of the evidence variable",
+        description=(
+            "A free text natural language description of the evidence variable from"
+            " a consumer's perspective."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -90,43 +115,63 @@ class EvidenceVariable(domainresource.DomainResource):
     editor: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="editor",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Who edited the content",
+        title="Who edited the content",
+        description=(
+            "An individual or organization primarily responsible for internal "
+            "coherence of the content."
+        ),
     )
 
     effectivePeriod: fhirtypes.PeriodType = Field(
         None,
         alias="effectivePeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="When the evidence variable is expected to be used",
+        title="When the evidence variable is expected to be used",
+        description=(
+            "The period during which the evidence variable content was or is "
+            "planned to be in active use."
+        ),
     )
 
     endorser: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="endorser",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Who endorsed the content",
+        title="Who endorsed the content",
+        description=(
+            "An individual or organization responsible for officially endorsing the"
+            " content for use in some setting."
+        ),
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Additional identifier for the evidence variable",
+        title="Additional identifier for the evidence variable",
+        description=(
+            "A formal identifier that is used to identify this evidence variable "
+            "when it is represented in other formats, or referenced in a "
+            "specification, model, design or an instance."
+        ),
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="jurisdiction",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Intended jurisdiction for evidence variable (if applicable)",
+        title="Intended jurisdiction for evidence variable (if applicable)",
+        description=(
+            "A legal or geographic region in which the evidence variable is "
+            "intended to be used."
+        ),
     )
 
     lastReviewDate: fhirtypes.Date = Field(
         None,
         alias="lastReviewDate",
-        title="Type `Date`",
-        description="When the evidence variable was last reviewed",
+        title="When the evidence variable was last reviewed",
+        description=(
+            "The date on which the resource content was last reviewed. Review "
+            "happens periodically after approval but does not change the original "
+            "approval date."
+        ),
     )
     lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
@@ -135,8 +180,12 @@ class EvidenceVariable(domainresource.DomainResource):
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String`",
-        description="Name for this evidence variable (computer friendly)",
+        title="Name for this evidence variable (computer friendly)",
+        description=(
+            "A natural language name identifying the evidence variable. This name "
+            "should be usable as an identifier for the module by machine processing"
+            " applications such as code generation."
+        ),
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -145,15 +194,21 @@ class EvidenceVariable(domainresource.DomainResource):
     note: ListType[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
-        title="List of `Annotation` items (represented as `dict` in JSON)",
-        description="Used for footnotes or explanatory notes",
+        title="Used for footnotes or explanatory notes",
+        description=(
+            "A human-readable string to clarify or explain concepts about the "
+            "resource."
+        ),
     )
 
     publisher: fhirtypes.String = Field(
         None,
         alias="publisher",
-        title="Type `String`",
-        description="Name of the publisher (organization or individual)",
+        title="Name of the publisher (organization or individual)",
+        description=(
+            "The name of the organization or individual that published the evidence"
+            " variable."
+        ),
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -162,22 +217,31 @@ class EvidenceVariable(domainresource.DomainResource):
     relatedArtifact: ListType[fhirtypes.RelatedArtifactType] = Field(
         None,
         alias="relatedArtifact",
-        title="List of `RelatedArtifact` items (represented as `dict` in JSON)",
-        description="Additional documentation, citations, etc.",
+        title="Additional documentation, citations, etc.",
+        description=(
+            "Related artifacts such as additional documentation, justification, or "
+            "bibliographic references."
+        ),
     )
 
     reviewer: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="reviewer",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Who reviewed the content",
+        title="Who reviewed the content",
+        description=(
+            "An individual or organization primarily responsible for review of some"
+            " aspect of the content."
+        ),
     )
 
     shortTitle: fhirtypes.String = Field(
         None,
         alias="shortTitle",
-        title="Type `String`",
-        description="Title for use in informal contexts",
+        title="Title for use in informal contexts",
+        description=(
+            "The short title provides an alternate title for use in informal "
+            "descriptive contexts where the full, formal title is not necessary."
+        ),
     )
     shortTitle__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_shortTitle", title="Extension field for ``shortTitle``."
@@ -186,8 +250,14 @@ class EvidenceVariable(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="draft | active | retired | unknown",
+        title="draft | active | retired | unknown",
+        description=(
+            "The status of this evidence variable. Enables tracking the life-cycle "
+            "of the content."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["draft", "active", "retired", "unknown"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -196,8 +266,11 @@ class EvidenceVariable(domainresource.DomainResource):
     subtitle: fhirtypes.String = Field(
         None,
         alias="subtitle",
-        title="Type `String`",
-        description="Subordinate title of the EvidenceVariable",
+        title="Subordinate title of the EvidenceVariable",
+        description=(
+            "An explanatory or alternate title for the EvidenceVariable giving "
+            "additional information about its content."
+        ),
     )
     subtitle__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_subtitle", title="Extension field for ``subtitle``."
@@ -206,8 +279,8 @@ class EvidenceVariable(domainresource.DomainResource):
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String`",
-        description="Name for this evidence variable (human friendly)",
+        title="Name for this evidence variable (human friendly)",
+        description="A short, descriptive, user-friendly title for the evidence variable.",
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -216,18 +289,27 @@ class EvidenceVariable(domainresource.DomainResource):
     topic: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="topic",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The category of the EvidenceVariable, such as Education, Treatment, "
             "Assessment, etc."
+        ),
+        description=(
+            "Descriptive topics related to the content of the EvidenceVariable. "
+            "Topics provide a high-level categorization grouping types of "
+            "EvidenceVariables that can be useful for filtering and searching."
         ),
     )
 
     type: fhirtypes.Code = Field(
         None,
         alias="type",
-        title="Type `Code`",
-        description="dichotomous | continuous | descriptive",
+        title="dichotomous | continuous | descriptive",
+        description=(
+            "The type of evidence element, a population, an exposure, or an " "outcome."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["dichotomous", "continuous", "descriptive"],
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -236,10 +318,18 @@ class EvidenceVariable(domainresource.DomainResource):
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
-        title="Type `Uri`",
-        description=(
+        title=(
             "Canonical identifier for this evidence variable, represented as a URI "
             "(globally unique)"
+        ),
+        description=(
+            "An absolute URI that is used to identify this evidence variable when "
+            "it is referenced in a specification, model, design or an instance; "
+            "also called its canonical identifier. This SHOULD be globally unique "
+            "and SHOULD be a literal address at which at which an authoritative "
+            "instance of this evidence variable is (or will be) published. This URL"
+            " can be the target of a canonical reference. It SHALL remain the same "
+            "when the evidence variable is stored on different servers."
         ),
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -249,15 +339,34 @@ class EvidenceVariable(domainresource.DomainResource):
     useContext: ListType[fhirtypes.UsageContextType] = Field(
         None,
         alias="useContext",
-        title="List of `UsageContext` items (represented as `dict` in JSON)",
-        description="The context that the content is intended to support",
+        title="The context that the content is intended to support",
+        description=(
+            "The content was developed with a focus and intent of supporting the "
+            "contexts that are listed. These contexts may be general categories "
+            "(gender, age, ...) or may be references to specific programs "
+            "(insurance plans, studies, ...) and may be used to assist with "
+            "indexing and searching for appropriate evidence variable instances."
+        ),
     )
 
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String`",
-        description="Business version of the evidence variable",
+        title="Business version of the evidence variable",
+        description=(
+            "The identifier that is used to identify this version of the evidence "
+            "variable when it is referenced in a specification, model, design or "
+            "instance. This is an arbitrary value managed by the evidence variable "
+            "author and is not expected to be globally unique. For example, it "
+            "might be a timestamp (e.g. yyyymmdd) if a managed version is not "
+            "available. There is also no expectation that versions can be placed in"
+            " a lexicographical sequence. To provide a version consistent with the "
+            "Decision Support Service specification, use the format "
+            "Major.Minor.Revision (e.g. 1.0.0). For more information on versioning "
+            "knowledge assets, refer to the Decision Support Service specification."
+            " Note that a version is required for non-experimental active "
+            "artifacts."
+        ),
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -279,10 +388,18 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
     definitionCanonical: fhirtypes.Canonical = Field(
         None,
         alias="definitionCanonical",
-        title="Type `Canonical` referencing `ActivityDefinition`",
-        description="What code or expression defines members?",
-        one_of_many="definition",  # Choice of Data Types. i.e value[x]
+        title="What code or expression defines members?",
+        description=(
+            "Define members of the evidence element using Codes (such as condition,"
+            " medication, or observation), Expressions ( using an expression "
+            "language such as FHIRPath or CQL) or DataRequirements (such as "
+            "Diabetes diagnosis onset in the last year)."
+        ),
+        # Choice of Data Types. i.e definition[x]
+        one_of_many="definition",
         one_of_many_required=True,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ActivityDefinition"],
     )
     definitionCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -293,53 +410,88 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
     definitionCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="definitionCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="What code or expression defines members?",
-        one_of_many="definition",  # Choice of Data Types. i.e value[x]
+        title="What code or expression defines members?",
+        description=(
+            "Define members of the evidence element using Codes (such as condition,"
+            " medication, or observation), Expressions ( using an expression "
+            "language such as FHIRPath or CQL) or DataRequirements (such as "
+            "Diabetes diagnosis onset in the last year)."
+        ),
+        # Choice of Data Types. i.e definition[x]
+        one_of_many="definition",
         one_of_many_required=True,
     )
 
     definitionDataRequirement: fhirtypes.DataRequirementType = Field(
         None,
         alias="definitionDataRequirement",
-        title="Type `DataRequirement` (represented as `dict` in JSON)",
-        description="What code or expression defines members?",
-        one_of_many="definition",  # Choice of Data Types. i.e value[x]
+        title="What code or expression defines members?",
+        description=(
+            "Define members of the evidence element using Codes (such as condition,"
+            " medication, or observation), Expressions ( using an expression "
+            "language such as FHIRPath or CQL) or DataRequirements (such as "
+            "Diabetes diagnosis onset in the last year)."
+        ),
+        # Choice of Data Types. i.e definition[x]
+        one_of_many="definition",
         one_of_many_required=True,
     )
 
     definitionExpression: fhirtypes.ExpressionType = Field(
         None,
         alias="definitionExpression",
-        title="Type `Expression` (represented as `dict` in JSON)",
-        description="What code or expression defines members?",
-        one_of_many="definition",  # Choice of Data Types. i.e value[x]
+        title="What code or expression defines members?",
+        description=(
+            "Define members of the evidence element using Codes (such as condition,"
+            " medication, or observation), Expressions ( using an expression "
+            "language such as FHIRPath or CQL) or DataRequirements (such as "
+            "Diabetes diagnosis onset in the last year)."
+        ),
+        # Choice of Data Types. i.e definition[x]
+        one_of_many="definition",
         one_of_many_required=True,
     )
 
     definitionReference: fhirtypes.ReferenceType = Field(
         None,
         alias="definitionReference",
-        title="Type `Reference` referencing `Group` (represented as `dict` in JSON)",
-        description="What code or expression defines members?",
-        one_of_many="definition",  # Choice of Data Types. i.e value[x]
+        title="What code or expression defines members?",
+        description=(
+            "Define members of the evidence element using Codes (such as condition,"
+            " medication, or observation), Expressions ( using an expression "
+            "language such as FHIRPath or CQL) or DataRequirements (such as "
+            "Diabetes diagnosis onset in the last year)."
+        ),
+        # Choice of Data Types. i.e definition[x]
+        one_of_many="definition",
         one_of_many_required=True,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Group"],
     )
 
     definitionTriggerDefinition: fhirtypes.TriggerDefinitionType = Field(
         None,
         alias="definitionTriggerDefinition",
-        title="Type `TriggerDefinition` (represented as `dict` in JSON)",
-        description="What code or expression defines members?",
-        one_of_many="definition",  # Choice of Data Types. i.e value[x]
+        title="What code or expression defines members?",
+        description=(
+            "Define members of the evidence element using Codes (such as condition,"
+            " medication, or observation), Expressions ( using an expression "
+            "language such as FHIRPath or CQL) or DataRequirements (such as "
+            "Diabetes diagnosis onset in the last year)."
+        ),
+        # Choice of Data Types. i.e definition[x]
+        one_of_many="definition",
         one_of_many_required=True,
     )
 
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Natural language description of the characteristic",
+        title="Natural language description of the characteristic",
+        description=(
+            "A short, natural language description of the characteristic that could"
+            " be used to communicate the criteria to an end-user."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -348,8 +500,11 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
     exclude: bool = Field(
         None,
         alias="exclude",
-        title="Type `bool`",
-        description="Whether the characteristic includes or excludes members",
+        title="Whether the characteristic includes or excludes members",
+        description=(
+            "When true, members with this characteristic are excluded from the "
+            "element."
+        ),
     )
     exclude__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_exclude", title="Extension field for ``exclude``."
@@ -358,11 +513,24 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
     groupMeasure: fhirtypes.Code = Field(
         None,
         alias="groupMeasure",
-        title="Type `Code`",
-        description=(
+        title=(
             "mean | median | mean-of-mean | mean-of-median | median-of-mean | "
             "median-of-median"
         ),
+        description=(
+            "Indicates how elements are aggregated within the study effective "
+            "period."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "mean",
+            "median",
+            "mean-of-mean",
+            "mean-of-median",
+            "median-of-mean",
+            "median-of-median",
+        ],
     )
     groupMeasure__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_groupMeasure", title="Extension field for ``groupMeasure``."
@@ -371,9 +539,10 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
     participantEffectiveDateTime: fhirtypes.DateTime = Field(
         None,
         alias="participantEffectiveDateTime",
-        title="Type `DateTime`",
-        description="What time period do participants cover",
-        one_of_many="participantEffective",  # Choice of Data Types. i.e value[x]
+        title="What time period do participants cover",
+        description="Indicates what effective period the study covers.",
+        # Choice of Data Types. i.e participantEffective[x]
+        one_of_many="participantEffective",
         one_of_many_required=False,
     )
     participantEffectiveDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -385,42 +554,48 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
     participantEffectiveDuration: fhirtypes.DurationType = Field(
         None,
         alias="participantEffectiveDuration",
-        title="Type `Duration` (represented as `dict` in JSON)",
-        description="What time period do participants cover",
-        one_of_many="participantEffective",  # Choice of Data Types. i.e value[x]
+        title="What time period do participants cover",
+        description="Indicates what effective period the study covers.",
+        # Choice of Data Types. i.e participantEffective[x]
+        one_of_many="participantEffective",
         one_of_many_required=False,
     )
 
     participantEffectivePeriod: fhirtypes.PeriodType = Field(
         None,
         alias="participantEffectivePeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="What time period do participants cover",
-        one_of_many="participantEffective",  # Choice of Data Types. i.e value[x]
+        title="What time period do participants cover",
+        description="Indicates what effective period the study covers.",
+        # Choice of Data Types. i.e participantEffective[x]
+        one_of_many="participantEffective",
         one_of_many_required=False,
     )
 
     participantEffectiveTiming: fhirtypes.TimingType = Field(
         None,
         alias="participantEffectiveTiming",
-        title="Type `Timing` (represented as `dict` in JSON)",
-        description="What time period do participants cover",
-        one_of_many="participantEffective",  # Choice of Data Types. i.e value[x]
+        title="What time period do participants cover",
+        description="Indicates what effective period the study covers.",
+        # Choice of Data Types. i.e participantEffective[x]
+        one_of_many="participantEffective",
         one_of_many_required=False,
     )
 
     timeFromStart: fhirtypes.DurationType = Field(
         None,
         alias="timeFromStart",
-        title="Type `Duration` (represented as `dict` in JSON)",
-        description="Observation time from study start",
+        title="Observation time from study start",
+        description="Indicates duration from the participant's study entry.",
     )
 
     usageContext: ListType[fhirtypes.UsageContextType] = Field(
         None,
         alias="usageContext",
-        title="List of `UsageContext` items (represented as `dict` in JSON)",
-        description="What code/value pairs define members?",
+        title="What code/value pairs define members?",
+        description=(
+            "Use UsageContext to define the members of the population, such as Age "
+            "Ranges, Genders, Settings."
+        ),
     )
 
     @root_validator(pre=True)

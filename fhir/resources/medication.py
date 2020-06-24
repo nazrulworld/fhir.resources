@@ -30,60 +30,78 @@ class Medication(domainresource.DomainResource):
     amount: fhirtypes.RatioType = Field(
         None,
         alias="amount",
-        title="Type `Ratio` (represented as `dict` in JSON)",
-        description="Amount of drug in package",
+        title="Amount of drug in package",
+        description=(
+            "Specific amount of the drug in the packaged product.  For example, "
+            "when specifying a product that has the same strength (For example, "
+            "Insulin glargine 100 unit per mL solution for injection), this "
+            "attribute provides additional clarification of the package amount (For"
+            " example, 3 mL, 10mL, etc.)."
+        ),
     )
 
     batch: fhirtypes.MedicationBatchType = Field(
         None,
         alias="batch",
-        title="Type `MedicationBatch` (represented as `dict` in JSON)",
-        description="Details about packaged medications",
+        title="Details about packaged medications",
+        description="Information that only applies to packages (not products).",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
         None,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Codes that identify this medication",
+        title="Codes that identify this medication",
+        description=(
+            "A code (or set of codes) that specify this medication, or a textual "
+            "description if no code is available. Usage note: This could be a "
+            "standard medication code such as a code from RxNorm, SNOMED CT, IDMP "
+            "etc. It could also be a national or local formulary code, optionally "
+            "with translations to other code systems."
+        ),
     )
 
     form: fhirtypes.CodeableConceptType = Field(
         None,
         alias="form",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="powder | tablets | capsule +",
+        title="powder | tablets | capsule +",
+        description="Describes the form of the item.  Powder; tablets; capsule.",
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Business identifier for this medication",
+        title="Business identifier for this medication",
+        description=None,
     )
 
     ingredient: ListType[fhirtypes.MedicationIngredientType] = Field(
         None,
         alias="ingredient",
-        title="List of `MedicationIngredient` items (represented as `dict` in JSON)",
-        description="Active or inactive ingredient",
+        title="Active or inactive ingredient",
+        description="Identifies a particular constituent of interest in the product.",
     )
 
     manufacturer: fhirtypes.ReferenceType = Field(
         None,
         alias="manufacturer",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
+        title="Manufacturer of the item",
+        description=(
+            "Describes the details of the manufacturer of the medication product.  "
+            "This is not intended to represent the distributor of a medication "
+            "product."
         ),
-        description="Manufacturer of the item",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code`",
-        description="active | inactive | entered-in-error",
+        title="active | inactive | entered-in-error",
+        description="A code to indicate if the medication is in active use.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["active", "inactive", "entered-in-error"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -104,8 +122,8 @@ class MedicationBatch(backboneelement.BackboneElement):
     expirationDate: fhirtypes.DateTime = Field(
         None,
         alias="expirationDate",
-        title="Type `DateTime`",
-        description="When batch will expire",
+        title="When batch will expire",
+        description="When this specific batch of product will expire.",
     )
     expirationDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_expirationDate", title="Extension field for ``expirationDate``."
@@ -114,8 +132,8 @@ class MedicationBatch(backboneelement.BackboneElement):
     lotNumber: fhirtypes.String = Field(
         None,
         alias="lotNumber",
-        title="Type `String`",
-        description="Identifier assigned to batch",
+        title="Identifier assigned to batch",
+        description="The assigned lot number of a batch of the specified product.",
     )
     lotNumber__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lotNumber", title="Extension field for ``lotNumber``."
@@ -136,8 +154,11 @@ class MedicationIngredient(backboneelement.BackboneElement):
     isActive: bool = Field(
         None,
         alias="isActive",
-        title="Type `bool`",
-        description="Active ingredient indicator",
+        title="Active ingredient indicator",
+        description=(
+            "Indication of whether this ingredient affects the therapeutic action "
+            "of the drug."
+        ),
     )
     isActive__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_isActive", title="Extension field for ``isActive``."
@@ -146,29 +167,40 @@ class MedicationIngredient(backboneelement.BackboneElement):
     itemCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="itemCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The actual ingredient or content",
-        one_of_many="item",  # Choice of Data Types. i.e value[x]
+        title="The actual ingredient or content",
+        description=(
+            "The actual ingredient - either a substance (simple ingredient) or "
+            "another medication of a medication."
+        ),
+        # Choice of Data Types. i.e item[x]
+        one_of_many="item",
         one_of_many_required=True,
     )
 
     itemReference: fhirtypes.ReferenceType = Field(
         None,
         alias="itemReference",
-        title=(
-            "Type `Reference` referencing `Substance, Medication` (represented as "
-            "`dict` in JSON)"
+        title="The actual ingredient or content",
+        description=(
+            "The actual ingredient - either a substance (simple ingredient) or "
+            "another medication of a medication."
         ),
-        description="The actual ingredient or content",
-        one_of_many="item",  # Choice of Data Types. i.e value[x]
+        # Choice of Data Types. i.e item[x]
+        one_of_many="item",
         one_of_many_required=True,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Substance", "Medication"],
     )
 
     strength: fhirtypes.RatioType = Field(
         None,
         alias="strength",
-        title="Type `Ratio` (represented as `dict` in JSON)",
-        description="Quantity of ingredient present",
+        title="Quantity of ingredient present",
+        description=(
+            "Specifies how many (or how much) of the items there are in this "
+            "Medication.  For example, 250 mg per tablet.  This is expressed as a "
+            "ratio where the numerator is 250mg and the denominator is 1 tablet."
+        ),
     )
 
     @root_validator(pre=True)

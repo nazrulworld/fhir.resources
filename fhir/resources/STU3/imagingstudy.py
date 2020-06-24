@@ -32,15 +32,24 @@ class ImagingStudy(domainresource.DomainResource):
     accession: fhirtypes.IdentifierType = Field(
         None,
         alias="accession",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description='Related workflow identifier ("Accession Number")',
+        title='Related workflow identifier ("Accession Number")',
+        description=(
+            "Accession Number is an identifier related to some aspect of imaging "
+            "workflow and data management. Usage may vary across different "
+            "institutions.  See for instance [IHE Radiology Technical Framework "
+            "Volume 1 Appendix A](http://www.ihe.net/uploadedFiles/Documents/Radiol"
+            "ogy/IHE_RAD_TF_Rev13.0_Vol1_FT_2014-07-30.pdf)."
+        ),
     )
 
     availability: fhirtypes.Code = Field(
         None,
         alias="availability",
-        title="Type `Code`",
-        description="ONLINE | OFFLINE | NEARLINE | UNAVAILABLE",
+        title="ONLINE | OFFLINE | NEARLINE | UNAVAILABLE",
+        description="Availability of study (online, offline, or nearline).",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["ONLINE", "OFFLINE", "NEARLINE", "UNAVAILABLE"],
     )
     availability__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_availability", title="Extension field for ``availability``."
@@ -49,28 +58,32 @@ class ImagingStudy(domainresource.DomainResource):
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
-        title=(
-            "List of `Reference` items referencing `ReferralRequest, CarePlan, "
-            "ProcedureRequest` (represented as `dict` in JSON)"
+        title="Request fulfilled",
+        description=(
+            "A list of the diagnostic requests that resulted in this imaging study "
+            "being performed."
         ),
-        description="Request fulfilled",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ReferralRequest", "CarePlan", "ProcedureRequest"],
     )
 
     context: fhirtypes.ReferenceType = Field(
         None,
         alias="context",
-        title=(
-            "Type `Reference` referencing `Encounter, EpisodeOfCare` (represented "
-            "as `dict` in JSON)"
-        ),
-        description="Originating context",
+        title="Originating context",
+        description="The encounter or episode at which the request is initiated.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Encounter", "EpisodeOfCare"],
     )
 
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Institution-generated description",
+        title="Institution-generated description",
+        description=(
+            "Institution-generated description or classification of the Study "
+            "performed."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -79,42 +92,55 @@ class ImagingStudy(domainresource.DomainResource):
     endpoint: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="endpoint",
-        title=(
-            "List of `Reference` items referencing `Endpoint` (represented as "
-            "`dict` in JSON)"
+        title="Study access endpoint",
+        description=(
+            "The network service providing access (e.g., query, view, or retrieval)"
+            " for the study. See implementation notes for information about using "
+            "DICOM endpoints. A study-level endpoint applies to each series in the "
+            "study, unless overridden by a series-level endpoint with the same "
+            "Endpoint.type."
         ),
-        description="Study access endpoint",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Endpoint"],
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Other identifiers for the study",
+        title="Other identifiers for the study",
+        description=None,
     )
 
     interpreter: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="interpreter",
-        title=(
-            "List of `Reference` items referencing `Practitioner` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Who interpreted images",
+        title="Who interpreted images",
+        description="Who read the study and interpreted the images or other content.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner"],
     )
 
     modalityList: ListType[fhirtypes.CodingType] = Field(
         None,
         alias="modalityList",
-        title="List of `Coding` items (represented as `dict` in JSON)",
-        description="All series modality if actual acquisition modalities",
+        title="All series modality if actual acquisition modalities",
+        description=(
+            "A list of all the Series.ImageModality values that are actual "
+            "acquisition modalities, i.e. those in the DICOM Context Group 29 "
+            "(value set OID 1.2.840.10008.6.1.19)."
+        ),
     )
 
     numberOfInstances: fhirtypes.UnsignedInt = Field(
         None,
         alias="numberOfInstances",
-        title="Type `UnsignedInt`",
-        description="Number of Study Related Instances",
+        title="Number of Study Related Instances",
+        description=(
+            "Number of SOP Instances in Study. This value given may be larger than "
+            "the number of instance elements this resource contains due to resource"
+            " availability, security, or other factors. This element should be "
+            "present if any instance elements are present."
+        ),
     )
     numberOfInstances__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -125,8 +151,13 @@ class ImagingStudy(domainresource.DomainResource):
     numberOfSeries: fhirtypes.UnsignedInt = Field(
         None,
         alias="numberOfSeries",
-        title="Type `UnsignedInt`",
-        description="Number of Study Related Series",
+        title="Number of Study Related Series",
+        description=(
+            "Number of Series in the Study. This value given may be larger than the"
+            " number of series elements this Resource contains due to resource "
+            "availability, security, or other factors. This element should be "
+            "present if any series elements are present."
+        ),
     )
     numberOfSeries__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_numberOfSeries", title="Extension field for ``numberOfSeries``."
@@ -135,56 +166,59 @@ class ImagingStudy(domainresource.DomainResource):
     patient: fhirtypes.ReferenceType = Field(
         ...,
         alias="patient",
-        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
-        description="Who the images are of",
+        title="Who the images are of",
+        description="The patient imaged in the study.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient"],
     )
 
     procedureCode: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="procedureCode",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="The performed procedure code",
+        title="The performed procedure code",
+        description="The code for the performed procedure type.",
     )
 
     procedureReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="procedureReference",
-        title=(
-            "List of `Reference` items referencing `Procedure` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="The performed Procedure reference",
+        title="The performed Procedure reference",
+        description="A reference to the performed Procedure.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Procedure"],
     )
 
     reason: fhirtypes.CodeableConceptType = Field(
         None,
         alias="reason",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Why the study was requested",
+        title="Why the study was requested",
+        description=(
+            "Description of clinical condition indicating why the ImagingStudy was "
+            "requested."
+        ),
     )
 
     referrer: fhirtypes.ReferenceType = Field(
         None,
         alias="referrer",
-        title=(
-            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Referring physician",
+        title="Referring physician",
+        description="The requesting/referring physician.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner"],
     )
 
     series: ListType[fhirtypes.ImagingStudySeriesType] = Field(
         None,
         alias="series",
-        title="List of `ImagingStudySeries` items (represented as `dict` in JSON)",
-        description="Each study has one or more series of instances",
+        title="Each study has one or more series of instances",
+        description="Each study has one or more series of images or other content.",
     )
 
     started: fhirtypes.DateTime = Field(
         None,
         alias="started",
-        title="Type `DateTime`",
-        description="When the study was started",
+        title="When the study was started",
+        description="Date and time the study started.",
     )
     started__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_started", title="Extension field for ``started``."
@@ -193,8 +227,8 @@ class ImagingStudy(domainresource.DomainResource):
     uid: fhirtypes.Oid = Field(
         ...,
         alias="uid",
-        title="Type `Oid`",
-        description="Formal DICOM identifier for the study",
+        title="Formal DICOM identifier for the study",
+        description="Formal identifier for the study.",
     )
     uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uid", title="Extension field for ``uid``."
@@ -215,8 +249,11 @@ class ImagingStudySeries(backboneelement.BackboneElement):
     availability: fhirtypes.Code = Field(
         None,
         alias="availability",
-        title="Type `Code`",
-        description="ONLINE | OFFLINE | NEARLINE | UNAVAILABLE",
+        title="ONLINE | OFFLINE | NEARLINE | UNAVAILABLE",
+        description="Availability of series (online, offline or nearline).",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["ONLINE", "OFFLINE", "NEARLINE", "UNAVAILABLE"],
     )
     availability__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_availability", title="Extension field for ``availability``."
@@ -225,15 +262,21 @@ class ImagingStudySeries(backboneelement.BackboneElement):
     bodySite: fhirtypes.CodingType = Field(
         None,
         alias="bodySite",
-        title="Type `Coding` (represented as `dict` in JSON)",
-        description="Body part examined",
+        title="Body part examined",
+        description=(
+            "The anatomic structures examined. See DICOM Part 16 Annex L (http://di"
+            "com.nema.org/medical/dicom/current/output/chtml/part16/chapter_L.html)"
+            " for DICOM to SNOMED-CT mappings. The bodySite may indicate the "
+            "laterality of body part imaged; if so, it shall be consistent with any"
+            " content of ImagingStudy.series.laterality."
+        ),
     )
 
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="A short human readable summary of the series",
+        title="A short human readable summary of the series",
+        description="A description of the series.",
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -242,42 +285,51 @@ class ImagingStudySeries(backboneelement.BackboneElement):
     endpoint: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="endpoint",
-        title=(
-            "List of `Reference` items referencing `Endpoint` (represented as "
-            "`dict` in JSON)"
+        title="Series access endpoint",
+        description=(
+            "The network service providing access (e.g., query, view, or retrieval)"
+            " for this series. See implementation notes for information about using"
+            " DICOM endpoints. A series-level endpoint, if present, has precedence "
+            "over a study-level endpoint with the same Endpoint.type."
         ),
-        description="Series access endpoint",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Endpoint"],
     )
 
     instance: ListType[fhirtypes.ImagingStudySeriesInstanceType] = Field(
         None,
         alias="instance",
-        title=(
-            "List of `ImagingStudySeriesInstance` items (represented as `dict` in "
-            "JSON)"
+        title="A single SOP instance from the series",
+        description=(
+            "A single SOP instance within the series, e.g. an image, or "
+            "presentation state."
         ),
-        description="A single SOP instance from the series",
     )
 
     laterality: fhirtypes.CodingType = Field(
         None,
         alias="laterality",
-        title="Type `Coding` (represented as `dict` in JSON)",
-        description="Body part laterality",
+        title="Body part laterality",
+        description=(
+            "The laterality of the (possibly paired) anatomic structures examined. "
+            "E.g., the left knee, both lungs, or unpaired abdomen. If present, "
+            "shall be consistent with any laterality information indicated in "
+            "ImagingStudy.series.bodySite."
+        ),
     )
 
     modality: fhirtypes.CodingType = Field(
         ...,
         alias="modality",
-        title="Type `Coding` (represented as `dict` in JSON)",
-        description="The modality of the instances in the series",
+        title="The modality of the instances in the series",
+        description="The modality of this series sequence.",
     )
 
     number: fhirtypes.UnsignedInt = Field(
         None,
         alias="number",
-        title="Type `UnsignedInt`",
-        description="Numeric identifier of this series",
+        title="Numeric identifier of this series",
+        description="The numeric identifier of this series in the study.",
     )
     number__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_number", title="Extension field for ``number``."
@@ -286,8 +338,13 @@ class ImagingStudySeries(backboneelement.BackboneElement):
     numberOfInstances: fhirtypes.UnsignedInt = Field(
         None,
         alias="numberOfInstances",
-        title="Type `UnsignedInt`",
-        description="Number of Series Related Instances",
+        title="Number of Series Related Instances",
+        description=(
+            "Number of SOP Instances in the Study. The value given may be larger "
+            "than the number of instance elements this resource contains due to "
+            "resource availability, security, or other factors. This element should"
+            " be present if any instance elements are present."
+        ),
     )
     numberOfInstances__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -298,18 +355,23 @@ class ImagingStudySeries(backboneelement.BackboneElement):
     performer: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="performer",
-        title=(
-            "List of `Reference` items referencing `Practitioner` (represented as "
-            "`dict` in JSON)"
+        title="Who performed the series",
+        description=(
+            "The physician or operator (often the radiology technician)  who "
+            "performed the series. The performer is recorded at the series level, "
+            "since each series in a study may be performed by a different "
+            "practitioner, at different times, and using different devices. A "
+            "series may be performed by multiple practitioners."
         ),
-        description="Who performed the series",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner"],
     )
 
     started: fhirtypes.DateTime = Field(
         None,
         alias="started",
-        title="Type `DateTime`",
-        description="When the series started",
+        title="When the series started",
+        description="The date and time the series was started.",
     )
     started__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_started", title="Extension field for ``started``."
@@ -318,8 +380,8 @@ class ImagingStudySeries(backboneelement.BackboneElement):
     uid: fhirtypes.Oid = Field(
         ...,
         alias="uid",
-        title="Type `Oid`",
-        description="Formal DICOM identifier for this series",
+        title="Formal DICOM identifier for this series",
+        description="Formal identifier for this series.",
     )
     uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uid", title="Extension field for ``uid``."
@@ -341,15 +403,18 @@ class ImagingStudySeriesInstance(backboneelement.BackboneElement):
     number: fhirtypes.UnsignedInt = Field(
         None,
         alias="number",
-        title="Type `UnsignedInt`",
-        description="The number of this instance in the series",
+        title="The number of this instance in the series",
+        description="The number of instance in the series.",
     )
     number__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_number", title="Extension field for ``number``."
     )
 
     sopClass: fhirtypes.Oid = Field(
-        ..., alias="sopClass", title="Type `Oid`", description="DICOM class type"
+        ...,
+        alias="sopClass",
+        title="DICOM class type",
+        description="DICOM instance  type.",
     )
     sopClass__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sopClass", title="Extension field for ``sopClass``."
@@ -358,8 +423,8 @@ class ImagingStudySeriesInstance(backboneelement.BackboneElement):
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String`",
-        description="Description of instance",
+        title="Description of instance",
+        description="The description of the instance.",
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -368,8 +433,8 @@ class ImagingStudySeriesInstance(backboneelement.BackboneElement):
     uid: fhirtypes.Oid = Field(
         ...,
         alias="uid",
-        title="Type `Oid`",
-        description="Formal DICOM identifier for this instance",
+        title="Formal DICOM identifier for this instance",
+        description="Formal identifier for this image or other content.",
     )
     uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uid", title="Extension field for ``uid``."

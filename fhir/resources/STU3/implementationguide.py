@@ -31,8 +31,11 @@ class ImplementationGuide(domainresource.DomainResource):
     binary: ListType[fhirtypes.Uri] = Field(
         None,
         alias="binary",
-        title="List of `Uri` items",
-        description="Image, css, script, etc.",
+        title="Image, css, script, etc.",
+        description=(
+            "A binary file that is included in the  implementation guide when it is"
+            " published."
+        ),
     )
     binary__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_binary", title="Extension field for ``binary``."
@@ -41,15 +44,22 @@ class ImplementationGuide(domainresource.DomainResource):
     contact: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="contact",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Contact details for the publisher",
+        title="Contact details for the publisher",
+        description=(
+            "Contact details to assist a user in finding and communicating with the"
+            " publisher."
+        ),
     )
 
     copyright: fhirtypes.Markdown = Field(
         None,
         alias="copyright",
-        title="Type `Markdown`",
-        description="Use and/or publishing restrictions",
+        title="Use and/or publishing restrictions",
+        description=(
+            "A copyright statement relating to the implementation guide and/or its "
+            "contents. Copyright statements are generally legal restrictions on the"
+            " use and publishing of the implementation guide."
+        ),
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
@@ -58,8 +68,14 @@ class ImplementationGuide(domainresource.DomainResource):
     date: fhirtypes.DateTime = Field(
         None,
         alias="date",
-        title="Type `DateTime`",
-        description="Date this was last changed",
+        title="Date this was last changed",
+        description=(
+            "The date  (and optionally time) when the implementation guide was "
+            "published. The date must change if and when the business version "
+            "changes and it must change if the status code changes. In addition, it"
+            " should change when the substantive content of the implementation "
+            "guide changes."
+        ),
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -68,18 +84,22 @@ class ImplementationGuide(domainresource.DomainResource):
     dependency: ListType[fhirtypes.ImplementationGuideDependencyType] = Field(
         None,
         alias="dependency",
-        title=(
-            "List of `ImplementationGuideDependency` items (represented as `dict` "
-            "in JSON)"
+        title="Another Implementation guide this depends on",
+        description=(
+            "Another implementation guide that this implementation depends on. "
+            "Typically, an implementation guide uses value sets, profiles "
+            "etc.defined in other implementation guides."
         ),
-        description="Another Implementation guide this depends on",
     )
 
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown`",
-        description="Natural language description of the implementation guide",
+        title="Natural language description of the implementation guide",
+        description=(
+            "A free text natural language description of the implementation guide "
+            "from a consumer's perspective."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -88,8 +108,12 @@ class ImplementationGuide(domainresource.DomainResource):
     experimental: bool = Field(
         None,
         alias="experimental",
-        title="Type `bool`",
-        description="For testing purposes, not real usage",
+        title="For testing purposes, not real usage",
+        description=(
+            "A boolean value to indicate that this implementation guide is authored"
+            " for testing purposes (or education/evaluation/marketing), and is not "
+            "intended to be used for genuine usage."
+        ),
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -98,8 +122,13 @@ class ImplementationGuide(domainresource.DomainResource):
     fhirVersion: fhirtypes.Id = Field(
         None,
         alias="fhirVersion",
-        title="Type `Id`",
-        description="FHIR Version this Implementation Guide targets",
+        title="FHIR Version this Implementation Guide targets",
+        description=(
+            "The version of the FHIR specification on which this "
+            "ImplementationGuide is based - this is the formal version of the "
+            "specification, without the revision number, e.g. "
+            "[publication].[major].[minor], which is 3.0.2 for this version."
+        ),
     )
     fhirVersion__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_fhirVersion", title="Extension field for ``fhirVersion``."
@@ -108,25 +137,32 @@ class ImplementationGuide(domainresource.DomainResource):
     global_fhir: ListType[fhirtypes.ImplementationGuideGlobalType] = Field(
         None,
         alias="global",
-        title=(
-            "List of `ImplementationGuideGlobal` items (represented as `dict` in "
-            "JSON)"
+        title="Profiles that apply globally",
+        description=(
+            "A set of profiles that all resources covered by this implementation "
+            "guide must conform to."
         ),
-        description="Profiles that apply globally",
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="jurisdiction",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Intended jurisdiction for implementation guide (if applicable)",
+        title="Intended jurisdiction for implementation guide (if applicable)",
+        description=(
+            "A legal or geographic region in which the implementation guide is "
+            "intended to be used."
+        ),
     )
 
     name: fhirtypes.String = Field(
         ...,
         alias="name",
-        title="Type `String`",
-        description="Name for this implementation guide (computer friendly)",
+        title="Name for this implementation guide (computer friendly)",
+        description=(
+            "A natural language name identifying the implementation guide. This "
+            "name should be usable as an identifier for the module by machine "
+            "processing applications such as code generation."
+        ),
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -135,25 +171,31 @@ class ImplementationGuide(domainresource.DomainResource):
     package: ListType[fhirtypes.ImplementationGuidePackageType] = Field(
         None,
         alias="package",
-        title=(
-            "List of `ImplementationGuidePackage` items (represented as `dict` in "
-            "JSON)"
+        title="Group of resources as used in .page.package",
+        description=(
+            "A logical group of resources. Logical groups can be used when building"
+            " pages."
         ),
-        description="Group of resources as used in .page.package",
     )
 
     page: fhirtypes.ImplementationGuidePageType = Field(
         None,
         alias="page",
-        title="Type `ImplementationGuidePage` (represented as `dict` in JSON)",
-        description="Page/Section in the Guide",
+        title="Page/Section in the Guide",
+        description=(
+            "A page / section in the implementation guide. The root page is the "
+            "implementation guide home page."
+        ),
     )
 
     publisher: fhirtypes.String = Field(
         None,
         alias="publisher",
-        title="Type `String`",
-        description="Name of the publisher (organization or individual)",
+        title="Name of the publisher (organization or individual)",
+        description=(
+            "The name of the individual or organization that published the "
+            "implementation guide."
+        ),
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -162,8 +204,14 @@ class ImplementationGuide(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="draft | active | retired | unknown",
+        title="draft | active | retired | unknown",
+        description=(
+            "The status of this implementation guide. Enables tracking the life-"
+            "cycle of the content."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["draft", "active", "retired", "unknown"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -172,8 +220,16 @@ class ImplementationGuide(domainresource.DomainResource):
     url: fhirtypes.Uri = Field(
         ...,
         alias="url",
-        title="Type `Uri`",
-        description="Logical URI to reference this implementation guide (globally unique)",
+        title="Logical URI to reference this implementation guide (globally unique)",
+        description=(
+            "An absolute URI that is used to identify this implementation guide "
+            "when it is referenced in a specification, model, design or an "
+            "instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD "
+            "be an address at which this implementation guide is (or will be) "
+            "published. The URL SHOULD include the major version of the "
+            "implementation guide. For more information see [Technical and Business"
+            " Versions](resource.html#versions)."
+        ),
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -182,15 +238,27 @@ class ImplementationGuide(domainresource.DomainResource):
     useContext: ListType[fhirtypes.UsageContextType] = Field(
         None,
         alias="useContext",
-        title="List of `UsageContext` items (represented as `dict` in JSON)",
-        description="Context the content is intended to support",
+        title="Context the content is intended to support",
+        description=(
+            "The content was developed with a focus and intent of supporting the "
+            "contexts that are listed. These terms may be used to assist with "
+            "indexing and searching for appropriate implementation guide instances."
+        ),
     )
 
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String`",
-        description="Business version of the implementation guide",
+        title="Business version of the implementation guide",
+        description=(
+            "The identifier that is used to identify this version of the "
+            "implementation guide when it is referenced in a specification, model, "
+            "design or instance. This is an arbitrary value managed by the "
+            "implementation guide author and is not expected to be globally unique."
+            " For example, it might be a timestamp (e.g. yyyymmdd) if a managed "
+            "version is not available. There is also no expectation that versions "
+            "can be placed in a lexicographical sequence."
+        ),
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -211,14 +279,23 @@ class ImplementationGuideDependency(backboneelement.BackboneElement):
     resource_type = Field("ImplementationGuideDependency", const=True)
 
     type: fhirtypes.Code = Field(
-        ..., alias="type", title="Type `Code`", description="reference | inclusion"
+        ...,
+        alias="type",
+        title="reference | inclusion",
+        description="How the dependency is represented when the guide is published.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["reference", "inclusion"],
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
     )
 
     uri: fhirtypes.Uri = Field(
-        ..., alias="uri", title="Type `Uri`", description="Where to find dependency"
+        ...,
+        alias="uri",
+        title="Where to find dependency",
+        description="Where the dependency is located.",
     )
     uri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uri", title="Extension field for ``uri``."
@@ -240,18 +317,17 @@ class ImplementationGuideGlobal(backboneelement.BackboneElement):
     profile: fhirtypes.ReferenceType = Field(
         ...,
         alias="profile",
-        title=(
-            "Type `Reference` referencing `StructureDefinition` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Profile that all resources must conform to",
+        title="Profile that all resources must conform to",
+        description="A reference to the profile that all instances must conform to.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["StructureDefinition"],
     )
 
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code`",
-        description="Type this profiles applies to",
+        title="Type this profiles applies to",
+        description="The type of resource that all instances must conform to.",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -273,15 +349,18 @@ class ImplementationGuidePackage(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Human readable text describing the package",
+        title="Human readable text describing the package",
+        description=None,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
     )
 
     name: fhirtypes.String = Field(
-        ..., alias="name", title="Type `String`", description="Name used .page.package"
+        ...,
+        alias="name",
+        title="Name used .page.package",
+        description="The name for the group, as used in page.package.",
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -290,11 +369,13 @@ class ImplementationGuidePackage(backboneelement.BackboneElement):
     resource: ListType[fhirtypes.ImplementationGuidePackageResourceType] = Field(
         ...,
         alias="resource",
-        title=(
-            "List of `ImplementationGuidePackageResource` items (represented as "
-            "`dict` in JSON)"
+        title="Resource in the implementation guide",
+        description=(
+            "A resource that is part of the implementation guide. Conformance "
+            "resources (value set, structure definition, capability statements "
+            "etc.) are obvious candidates for inclusion, but any kind of resource "
+            "can be included as an example resource."
         ),
-        description="Resource in the implementation guide",
     )
 
 
@@ -315,8 +396,11 @@ class ImplementationGuidePackageResource(backboneelement.BackboneElement):
     acronym: fhirtypes.String = Field(
         None,
         alias="acronym",
-        title="Type `String`",
-        description="Short code to identify the resource",
+        title="Short code to identify the resource",
+        description=(
+            "A short code that may be used to identify the resource throughout the "
+            "implementation guide."
+        ),
     )
     acronym__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_acronym", title="Extension field for ``acronym``."
@@ -325,8 +409,11 @@ class ImplementationGuidePackageResource(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Reason why included in guide",
+        title="Reason why included in guide",
+        description=(
+            "A description of the reason that a resource has been included in the "
+            "implementation guide."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -335,8 +422,13 @@ class ImplementationGuidePackageResource(backboneelement.BackboneElement):
     example: bool = Field(
         ...,
         alias="example",
-        title="Type `bool`",
-        description="If not an example, has its normal meaning",
+        title="If not an example, has its normal meaning",
+        description=(
+            "Whether a resource is included in the guide as part of the rules "
+            "defined by the guide, or just as an example of a resource that "
+            "conforms to the rules and/or help implementers understand the intent "
+            "of the guide."
+        ),
     )
     example__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_example", title="Extension field for ``example``."
@@ -345,18 +437,25 @@ class ImplementationGuidePackageResource(backboneelement.BackboneElement):
     exampleFor: fhirtypes.ReferenceType = Field(
         None,
         alias="exampleFor",
-        title=(
-            "Type `Reference` referencing `StructureDefinition` (represented as "
-            "`dict` in JSON)"
+        title="Resource this is an example of (if applicable)",
+        description=(
+            "Another resource that this resource is an example for. This is mostly "
+            "used for resources that are included as examples of "
+            "StructureDefinitions."
         ),
-        description="Resource this is an example of (if applicable)",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["StructureDefinition"],
     )
 
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String`",
-        description="Human Name for the resource",
+        title="Human Name for the resource",
+        description=(
+            "A human assigned name for the resource. All resources SHOULD have a "
+            "name, but the name may be extracted from the resource (e.g. "
+            "ValueSet.name)."
+        ),
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -365,20 +464,22 @@ class ImplementationGuidePackageResource(backboneelement.BackboneElement):
     sourceReference: fhirtypes.ReferenceType = Field(
         None,
         alias="sourceReference",
-        title=(
-            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
-        ),
-        description="Location of the resource",
-        one_of_many="source",  # Choice of Data Types. i.e value[x]
+        title="Location of the resource",
+        description="Where this resource is found.",
+        # Choice of Data Types. i.e source[x]
+        one_of_many="source",
         one_of_many_required=True,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     sourceUri: fhirtypes.Uri = Field(
         None,
         alias="sourceUri",
-        title="Type `Uri`",
-        description="Location of the resource",
-        one_of_many="source",  # Choice of Data Types. i.e value[x]
+        title="Location of the resource",
+        description="Where this resource is found.",
+        # Choice of Data Types. i.e source[x]
+        one_of_many="source",
         one_of_many_required=True,
     )
     sourceUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -437,8 +538,8 @@ class ImplementationGuidePage(backboneelement.BackboneElement):
     format: fhirtypes.Code = Field(
         None,
         alias="format",
-        title="Type `Code`",
-        description="Format of the page (e.g. html, markdown, etc.)",
+        title="Format of the page (e.g. html, markdown, etc.)",
+        description="The format of the page.",
     )
     format__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_format", title="Extension field for ``format``."
@@ -447,11 +548,27 @@ class ImplementationGuidePage(backboneelement.BackboneElement):
     kind: fhirtypes.Code = Field(
         ...,
         alias="kind",
-        title="Type `Code`",
-        description=(
+        title=(
             "page | example | list | include | directory | dictionary | toc | "
             "resource"
         ),
+        description=(
+            "The kind of page that this is. Some pages are autogenerated (list, "
+            "example), and other kinds are of interest so that tools can navigate "
+            "the user to the page of interest."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "page",
+            "example",
+            "list",
+            "include",
+            "directory",
+            "dictionary",
+            "toc",
+            "resource",
+        ],
     )
     kind__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_kind", title="Extension field for ``kind``."
@@ -460,8 +577,11 @@ class ImplementationGuidePage(backboneelement.BackboneElement):
     package: ListType[fhirtypes.String] = Field(
         None,
         alias="package",
-        title="List of `String` items",
-        description="Name of package to include",
+        title="Name of package to include",
+        description=(
+            "For constructed pages, a list of packages to include in the page (or "
+            "else empty for everything)."
+        ),
     )
     package__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_package", title="Extension field for ``package``."
@@ -470,14 +590,15 @@ class ImplementationGuidePage(backboneelement.BackboneElement):
     page: ListType[fhirtypes.ImplementationGuidePageType] = Field(
         None,
         alias="page",
-        title=(
-            "List of `ImplementationGuidePage` items (represented as `dict` in " "JSON)"
-        ),
-        description="Nested Pages / Sections",
+        title="Nested Pages / Sections",
+        description="Nested Pages/Sections under this page.",
     )
 
     source: fhirtypes.Uri = Field(
-        ..., alias="source", title="Type `Uri`", description="Where to find that page"
+        ...,
+        alias="source",
+        title="Where to find that page",
+        description="The source address for the page.",
     )
     source__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_source", title="Extension field for ``source``."
@@ -486,8 +607,11 @@ class ImplementationGuidePage(backboneelement.BackboneElement):
     title: fhirtypes.String = Field(
         ...,
         alias="title",
-        title="Type `String`",
-        description="Short title shown for navigational assistance",
+        title="Short title shown for navigational assistance",
+        description=(
+            "A short title used to represent this page in navigational structures "
+            "such as table of contents, bread crumbs, etc."
+        ),
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -496,8 +620,8 @@ class ImplementationGuidePage(backboneelement.BackboneElement):
     type: ListType[fhirtypes.Code] = Field(
         None,
         alias="type",
-        title="List of `Code` items",
-        description="Kind of resource to include in the list",
+        title="Kind of resource to include in the list",
+        description="For constructed pages, what kind of resources to include in the list.",
     )
     type__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_type", title="Extension field for ``type``."

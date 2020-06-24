@@ -27,22 +27,28 @@ class Substance(domainresource.DomainResource):
     category: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="category",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="What class/type of substance this is",
+        title="What class/type of substance this is",
+        description=(
+            "A code that classifies the general type of substance.  This is used  "
+            "for searching, sorting and display purposes."
+        ),
     )
 
     code: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="What substance this is",
+        title="What substance this is",
+        description="A code (or set of codes) that identify this substance.",
     )
 
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Textual description of the substance, comments",
+        title="Textual description of the substance, comments",
+        description=(
+            "A description of the substance - its appearance, handling "
+            "requirements, and other usage notes."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -51,29 +57,35 @@ class Substance(domainresource.DomainResource):
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Unique identifier",
+        title="Unique identifier",
+        description="Unique identifier for the substance.",
     )
 
     ingredient: ListType[fhirtypes.SubstanceIngredientType] = Field(
         None,
         alias="ingredient",
-        title="List of `SubstanceIngredient` items (represented as `dict` in JSON)",
-        description="Composition information about the substance",
+        title="Composition information about the substance",
+        description="A substance can be composed of other substances.",
     )
 
     instance: ListType[fhirtypes.SubstanceInstanceType] = Field(
         None,
         alias="instance",
-        title="List of `SubstanceInstance` items (represented as `dict` in JSON)",
-        description="If this describes a specific package/container of the substance",
+        title="If this describes a specific package/container of the substance",
+        description=(
+            "Substance may be used to describe a kind of substance, or a specific "
+            "package/container of the substance: an instance."
+        ),
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code`",
-        description="active | inactive | entered-in-error",
+        title="active | inactive | entered-in-error",
+        description="A code to indicate if the substance is actively used.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["active", "inactive", "entered-in-error"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -94,29 +106,30 @@ class SubstanceIngredient(backboneelement.BackboneElement):
     quantity: fhirtypes.RatioType = Field(
         None,
         alias="quantity",
-        title="Type `Ratio` (represented as `dict` in JSON)",
-        description="Optional amount (concentration)",
+        title="Optional amount (concentration)",
+        description="The amount of the ingredient in the substance - a concentration ratio.",
     )
 
     substanceCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="substanceCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="A component of the substance",
-        one_of_many="substance",  # Choice of Data Types. i.e value[x]
+        title="A component of the substance",
+        description="Another substance that is a component of this substance.",
+        # Choice of Data Types. i.e substance[x]
+        one_of_many="substance",
         one_of_many_required=True,
     )
 
     substanceReference: fhirtypes.ReferenceType = Field(
         None,
         alias="substanceReference",
-        title=(
-            "Type `Reference` referencing `Substance` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="A component of the substance",
-        one_of_many="substance",  # Choice of Data Types. i.e value[x]
+        title="A component of the substance",
+        description="Another substance that is a component of this substance.",
+        # Choice of Data Types. i.e substance[x]
+        one_of_many="substance",
         one_of_many_required=True,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Substance"],
     )
 
     @root_validator(pre=True)
@@ -173,8 +186,11 @@ class SubstanceInstance(backboneelement.BackboneElement):
     expiry: fhirtypes.DateTime = Field(
         None,
         alias="expiry",
-        title="Type `DateTime`",
-        description="When no longer valid to use",
+        title="When no longer valid to use",
+        description=(
+            "When the substance is no longer valid to use. For some substances, a "
+            "single arbitrary date is used for expiry."
+        ),
     )
     expiry__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_expiry", title="Extension field for ``expiry``."
@@ -183,13 +199,16 @@ class SubstanceInstance(backboneelement.BackboneElement):
     identifier: fhirtypes.IdentifierType = Field(
         None,
         alias="identifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Identifier of the package/container",
+        title="Identifier of the package/container",
+        description=(
+            "Identifier associated with the package/container (usually a label "
+            "affixed directly)."
+        ),
     )
 
     quantity: fhirtypes.QuantityType = Field(
         None,
         alias="quantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Amount of substance in the package",
+        title="Amount of substance in the package",
+        description="The amount of the substance.",
     )

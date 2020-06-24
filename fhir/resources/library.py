@@ -31,8 +31,12 @@ class Library(domainresource.DomainResource):
     approvalDate: fhirtypes.Date = Field(
         None,
         alias="approvalDate",
-        title="Type `Date`",
-        description="When the library was approved by publisher",
+        title="When the library was approved by publisher",
+        description=(
+            "The date on which the resource content was approved by the publisher. "
+            "Approval happens once when the content is officially approved for "
+            "usage."
+        ),
     )
     approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_approvalDate", title="Extension field for ``approvalDate``."
@@ -41,29 +45,44 @@ class Library(domainresource.DomainResource):
     author: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="author",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Who authored the content",
+        title="Who authored the content",
+        description=(
+            "An individiual or organization primarily involved in the creation and "
+            "maintenance of the content."
+        ),
     )
 
     contact: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="contact",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Contact details for the publisher",
+        title="Contact details for the publisher",
+        description=(
+            "Contact details to assist a user in finding and communicating with the"
+            " publisher."
+        ),
     )
 
     content: ListType[fhirtypes.AttachmentType] = Field(
         None,
         alias="content",
-        title="List of `Attachment` items (represented as `dict` in JSON)",
-        description="Contents of the library, either embedded or referenced",
+        title="Contents of the library, either embedded or referenced",
+        description=(
+            "The content of the library as an Attachment. The content may be a "
+            "reference to a url, or may be directly embedded as a base-64 string. "
+            "Either way, the contentType of the attachment determines how to "
+            "interpret the content."
+        ),
     )
 
     copyright: fhirtypes.Markdown = Field(
         None,
         alias="copyright",
-        title="Type `Markdown`",
-        description="Use and/or publishing restrictions",
+        title="Use and/or publishing restrictions",
+        description=(
+            "A copyright statement relating to the library and/or its contents. "
+            "Copyright statements are generally legal restrictions on the use and "
+            "publishing of the library."
+        ),
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
@@ -72,12 +91,23 @@ class Library(domainresource.DomainResource):
     dataRequirement: ListType[fhirtypes.DataRequirementType] = Field(
         None,
         alias="dataRequirement",
-        title="List of `DataRequirement` items (represented as `dict` in JSON)",
-        description="What data is referenced by this library",
+        title="What data is referenced by this library",
+        description=(
+            "Describes a set of data that must be provided in order to be able to "
+            "successfully perform the computations defined by the library."
+        ),
     )
 
     date: fhirtypes.DateTime = Field(
-        None, alias="date", title="Type `DateTime`", description="Date last changed"
+        None,
+        alias="date",
+        title="Date last changed",
+        description=(
+            "The date  (and optionally time) when the library was published. The "
+            "date must change when the business version changes and it must change "
+            "if the status code changes. In addition, it should change when the "
+            "substantive content of the library changes."
+        ),
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -86,8 +116,11 @@ class Library(domainresource.DomainResource):
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown`",
-        description="Natural language description of the library",
+        title="Natural language description of the library",
+        description=(
+            "A free text natural language description of the library from a "
+            "consumer's perspective."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -96,29 +129,42 @@ class Library(domainresource.DomainResource):
     editor: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="editor",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Who edited the content",
+        title="Who edited the content",
+        description=(
+            "An individual or organization primarily responsible for internal "
+            "coherence of the content."
+        ),
     )
 
     effectivePeriod: fhirtypes.PeriodType = Field(
         None,
         alias="effectivePeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="When the library is expected to be used",
+        title="When the library is expected to be used",
+        description=(
+            "The period during which the library content was or is planned to be in"
+            " active use."
+        ),
     )
 
     endorser: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="endorser",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Who endorsed the content",
+        title="Who endorsed the content",
+        description=(
+            "An individual or organization responsible for officially endorsing the"
+            " content for use in some setting."
+        ),
     )
 
     experimental: bool = Field(
         None,
         alias="experimental",
-        title="Type `bool`",
-        description="For testing purposes, not real usage",
+        title="For testing purposes, not real usage",
+        description=(
+            "A Boolean value to indicate that this library is authored for testing "
+            "purposes (or education/evaluation/marketing) and is not intended to be"
+            " used for genuine usage."
+        ),
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -127,22 +173,35 @@ class Library(domainresource.DomainResource):
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Additional identifier for the library",
+        title="Additional identifier for the library",
+        description=(
+            "A formal identifier that is used to identify this library when it is "
+            "represented in other formats, or referenced in a specification, model,"
+            " design or an instance. e.g. CMS or NQF identifiers for a measure "
+            "artifact. Note that at least one identifier is required for non-"
+            "experimental active artifacts."
+        ),
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="jurisdiction",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Intended jurisdiction for library (if applicable)",
+        title="Intended jurisdiction for library (if applicable)",
+        description=(
+            "A legal or geographic region in which the library is intended to be "
+            "used."
+        ),
     )
 
     lastReviewDate: fhirtypes.Date = Field(
         None,
         alias="lastReviewDate",
-        title="Type `Date`",
-        description="When the library was last reviewed",
+        title="When the library was last reviewed",
+        description=(
+            "The date on which the resource content was last reviewed. Review "
+            "happens periodically after approval but does not change the original "
+            "approval date."
+        ),
     )
     lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
@@ -151,8 +210,12 @@ class Library(domainresource.DomainResource):
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String`",
-        description="Name for this library (computer friendly)",
+        title="Name for this library (computer friendly)",
+        description=(
+            "A natural language name identifying the library. This name should be "
+            "usable as an identifier for the module by machine processing "
+            "applications such as code generation."
+        ),
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -161,15 +224,15 @@ class Library(domainresource.DomainResource):
     parameter: ListType[fhirtypes.ParameterDefinitionType] = Field(
         None,
         alias="parameter",
-        title="List of `ParameterDefinition` items (represented as `dict` in JSON)",
-        description="Parameters defined by the library",
+        title="Parameters defined by the library",
+        description="The parameter element defines parameters used by the library.",
     )
 
     publisher: fhirtypes.String = Field(
         None,
         alias="publisher",
-        title="Type `String`",
-        description="Name of the publisher (organization or individual)",
+        title="Name of the publisher (organization or individual)",
+        description="The name of the organization or individual that published the library.",
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -178,8 +241,11 @@ class Library(domainresource.DomainResource):
     purpose: fhirtypes.Markdown = Field(
         None,
         alias="purpose",
-        title="Type `Markdown`",
-        description="Why this library is defined",
+        title="Why this library is defined",
+        description=(
+            "Explanation of why this library is needed and why it has been designed"
+            " as it has."
+        ),
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_purpose", title="Extension field for ``purpose``."
@@ -188,22 +254,34 @@ class Library(domainresource.DomainResource):
     relatedArtifact: ListType[fhirtypes.RelatedArtifactType] = Field(
         None,
         alias="relatedArtifact",
-        title="List of `RelatedArtifact` items (represented as `dict` in JSON)",
-        description="Additional documentation, citations, etc.",
+        title="Additional documentation, citations, etc.",
+        description=(
+            "Related artifacts such as additional documentation, justification, or "
+            "bibliographic references."
+        ),
     )
 
     reviewer: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="reviewer",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Who reviewed the content",
+        title="Who reviewed the content",
+        description=(
+            "An individual or organization primarily responsible for review of some"
+            " aspect of the content."
+        ),
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="draft | active | retired | unknown",
+        title="draft | active | retired | unknown",
+        description=(
+            "The status of this library. Enables tracking the life-cycle of the "
+            "content."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["draft", "active", "retired", "unknown"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -212,26 +290,39 @@ class Library(domainresource.DomainResource):
     subjectCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="subjectCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type of individual the library content is focused on",
-        one_of_many="subject",  # Choice of Data Types. i.e value[x]
+        title="Type of individual the library content is focused on",
+        description=(
+            "A code or group definition that describes the intended subject of the "
+            "contents of the library."
+        ),
+        # Choice of Data Types. i.e subject[x]
+        one_of_many="subject",
         one_of_many_required=False,
     )
 
     subjectReference: fhirtypes.ReferenceType = Field(
         None,
         alias="subjectReference",
-        title="Type `Reference` referencing `Group` (represented as `dict` in JSON)",
-        description="Type of individual the library content is focused on",
-        one_of_many="subject",  # Choice of Data Types. i.e value[x]
+        title="Type of individual the library content is focused on",
+        description=(
+            "A code or group definition that describes the intended subject of the "
+            "contents of the library."
+        ),
+        # Choice of Data Types. i.e subject[x]
+        one_of_many="subject",
         one_of_many_required=False,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Group"],
     )
 
     subtitle: fhirtypes.String = Field(
         None,
         alias="subtitle",
-        title="Type `String`",
-        description="Subordinate title of the library",
+        title="Subordinate title of the library",
+        description=(
+            "An explanatory or alternate title for the library giving additional "
+            "information about its content."
+        ),
     )
     subtitle__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_subtitle", title="Extension field for ``subtitle``."
@@ -240,8 +331,8 @@ class Library(domainresource.DomainResource):
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String`",
-        description="Name for this library (human friendly)",
+        title="Name for this library (human friendly)",
+        description="A short, descriptive, user-friendly title for the library.",
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -250,26 +341,41 @@ class Library(domainresource.DomainResource):
     topic: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="topic",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="E.g. Education, Treatment, Assessment, etc.",
+        title="E.g. Education, Treatment, Assessment, etc.",
+        description=(
+            "Descriptive topics related to the content of the library. Topics "
+            "provide a high-level categorization of the library that can be useful "
+            "for filtering and searching."
+        ),
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "logic-library | model-definition | asset-collection | module-" "definition"
+        ),
+        description=(
+            "Identifies the type of library such as a Logic Library, Model "
+            "Definition, Asset Collection, or Module Definition."
         ),
     )
 
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
-        title="Type `Uri`",
-        description=(
+        title=(
             "Canonical identifier for this library, represented as a URI (globally "
             "unique)"
+        ),
+        description=(
+            "An absolute URI that is used to identify this library when it is "
+            "referenced in a specification, model, design or an instance; also "
+            "called its canonical identifier. This SHOULD be globally unique and "
+            "SHOULD be a literal address at which at which an authoritative "
+            "instance of this library is (or will be) published. This URL can be "
+            "the target of a canonical reference. It SHALL remain the same when the"
+            " library is stored on different servers."
         ),
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -279,8 +385,11 @@ class Library(domainresource.DomainResource):
     usage: fhirtypes.String = Field(
         None,
         alias="usage",
-        title="Type `String`",
-        description="Describes the clinical usage of the library",
+        title="Describes the clinical usage of the library",
+        description=(
+            "A detailed description of how the library is used from a clinical "
+            "perspective."
+        ),
     )
     usage__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_usage", title="Extension field for ``usage``."
@@ -289,15 +398,33 @@ class Library(domainresource.DomainResource):
     useContext: ListType[fhirtypes.UsageContextType] = Field(
         None,
         alias="useContext",
-        title="List of `UsageContext` items (represented as `dict` in JSON)",
-        description="The context that the content is intended to support",
+        title="The context that the content is intended to support",
+        description=(
+            "The content was developed with a focus and intent of supporting the "
+            "contexts that are listed. These contexts may be general categories "
+            "(gender, age, ...) or may be references to specific programs "
+            "(insurance plans, studies, ...) and may be used to assist with "
+            "indexing and searching for appropriate library instances."
+        ),
     )
 
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String`",
-        description="Business version of the library",
+        title="Business version of the library",
+        description=(
+            "The identifier that is used to identify this version of the library "
+            "when it is referenced in a specification, model, design or instance. "
+            "This is an arbitrary value managed by the library author and is not "
+            "expected to be globally unique. For example, it might be a timestamp "
+            "(e.g. yyyymmdd) if a managed version is not available. There is also "
+            "no expectation that versions can be placed in a lexicographical "
+            "sequence. To provide a version consistent with the Decision Support "
+            "Service specification, use the format Major.Minor.Revision (e.g. "
+            "1.0.0). For more information on versioning knowledge assets, refer to "
+            "the Decision Support Service specification. Note that a version is "
+            "required for non-experimental active artifacts."
+        ),
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."

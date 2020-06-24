@@ -30,48 +30,73 @@ class UsageContext(element.Element):
     code: fhirtypes.CodingType = Field(
         ...,
         alias="code",
-        title="Type `Coding` (represented as `dict` in JSON)",
-        description="Type of context being specified",
+        title="Type of context being specified",
+        description=(
+            "A code that identifies the type of context being specified by this "
+            "usage context."
+        ),
     )
 
     valueCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="valueCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Value that defines the context",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value that defines the context",
+        description=(
+            "A value that defines the context specified in this context of use. The"
+            " interpretation of the value is defined by the code."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueQuantity: fhirtypes.QuantityType = Field(
         None,
         alias="valueQuantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Value that defines the context",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value that defines the context",
+        description=(
+            "A value that defines the context specified in this context of use. The"
+            " interpretation of the value is defined by the code."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueRange: fhirtypes.RangeType = Field(
         None,
         alias="valueRange",
-        title="Type `Range` (represented as `dict` in JSON)",
-        description="Value that defines the context",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value that defines the context",
+        description=(
+            "A value that defines the context specified in this context of use. The"
+            " interpretation of the value is defined by the code."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueReference: fhirtypes.ReferenceType = Field(
         None,
         alias="valueReference",
-        title=(
-            "Type `Reference` referencing `PlanDefinition, ResearchStudy, "
-            "InsurancePlan, HealthcareService, Group, Location, Organization` "
-            "(represented as `dict` in JSON)"
+        title="Value that defines the context",
+        description=(
+            "A value that defines the context specified in this context of use. The"
+            " interpretation of the value is defined by the code."
         ),
-        description="Value that defines the context",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "PlanDefinition",
+            "ResearchStudy",
+            "InsurancePlan",
+            "HealthcareService",
+            "Group",
+            "Location",
+            "Organization",
+        ],
     )
 
     @root_validator(pre=True)

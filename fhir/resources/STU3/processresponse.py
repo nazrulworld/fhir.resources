@@ -28,15 +28,23 @@ class ProcessResponse(domainresource.DomainResource):
     communicationRequest: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="communicationRequest",
-        title=(
-            "List of `Reference` items referencing `CommunicationRequest` "
-            "(represented as `dict` in JSON)"
+        title="Request for additional information",
+        description=(
+            "Request for additional supporting or authorizing information, such as:"
+            " documents, images or resources."
         ),
-        description="Request for additional information",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["CommunicationRequest"],
     )
 
     created: fhirtypes.DateTime = Field(
-        None, alias="created", title="Type `DateTime`", description="Creation date"
+        None,
+        alias="created",
+        title="Creation date",
+        description=(
+            "The date when the enclosed suite of services were performed or "
+            "completed."
+        ),
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_created", title="Extension field for ``created``."
@@ -45,95 +53,98 @@ class ProcessResponse(domainresource.DomainResource):
     disposition: fhirtypes.String = Field(
         None,
         alias="disposition",
-        title="Type `String`",
-        description="Disposition Message",
+        title="Disposition Message",
+        description="A description of the status of the adjudication or processing.",
     )
     disposition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_disposition", title="Extension field for ``disposition``."
     )
 
     error: ListType[fhirtypes.CodeableConceptType] = Field(
-        None,
-        alias="error",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Error code",
+        None, alias="error", title="Error code", description="Processing errors.",
     )
 
     form: fhirtypes.CodeableConceptType = Field(
         None,
         alias="form",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Printed Form Identifier",
+        title="Printed Form Identifier",
+        description="The form to be used for printing the content.",
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Business Identifier",
+        title="Business Identifier",
+        description="The Response business identifier.",
     )
 
     organization: fhirtypes.ReferenceType = Field(
         None,
         alias="organization",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Authoring Organization",
+        title="Authoring Organization",
+        description="The organization who produced this adjudicated response.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     outcome: fhirtypes.CodeableConceptType = Field(
         None,
         alias="outcome",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Processing outcome",
+        title="Processing outcome",
+        description="Transaction status: error, complete, held.",
     )
 
     processNote: ListType[fhirtypes.ProcessResponseProcessNoteType] = Field(
         None,
         alias="processNote",
-        title=(
-            "List of `ProcessResponseProcessNote` items (represented as `dict` in "
-            "JSON)"
+        title="Processing comments or additional requirements",
+        description=(
+            "Suite of processing notes or additional requirements if the processing"
+            " has been held."
         ),
-        description="Processing comments or additional requirements",
     )
 
     request: fhirtypes.ReferenceType = Field(
         None,
         alias="request",
-        title=(
-            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
-        ),
-        description="Request reference",
+        title="Request reference",
+        description="Original request resource reference.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     requestOrganization: fhirtypes.ReferenceType = Field(
         None,
         alias="requestOrganization",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
+        title="Responsible organization",
+        description=(
+            "The organization which is responsible for the services rendered to the"
+            " patient."
         ),
-        description="Responsible organization",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     requestProvider: fhirtypes.ReferenceType = Field(
         None,
         alias="requestProvider",
-        title=(
-            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
-            "JSON)"
+        title="Responsible Practitioner",
+        description=(
+            "The practitioner who is responsible for the services rendered to the "
+            "patient."
         ),
-        description="Responsible Practitioner",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner"],
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code`",
-        description="active | cancelled | draft | entered-in-error",
+        title="active | cancelled | draft | entered-in-error",
+        description="The status of the resource instance.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["active", "cancelled", "draft", "entered-in-error"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -155,8 +166,8 @@ class ProcessResponseProcessNote(backboneelement.BackboneElement):
     text: fhirtypes.String = Field(
         None,
         alias="text",
-        title="Type `String`",
-        description="Comment on the processing",
+        title="Comment on the processing",
+        description="The note text.",
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_text", title="Extension field for ``text``."
@@ -165,6 +176,6 @@ class ProcessResponseProcessNote(backboneelement.BackboneElement):
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="display | print | printoper",
+        title="display | print | printoper",
+        description="The note purpose: Print/Display.",
     )

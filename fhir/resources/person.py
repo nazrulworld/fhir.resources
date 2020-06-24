@@ -28,8 +28,8 @@ class Person(domainresource.DomainResource):
     active: bool = Field(
         None,
         alias="active",
-        title="Type `bool`",
-        description="This person\u0027s record is in active use",
+        title="This person's record is in active use",
+        description="Whether this person's record is in active use.",
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_active", title="Extension field for ``active``."
@@ -38,15 +38,15 @@ class Person(domainresource.DomainResource):
     address: ListType[fhirtypes.AddressType] = Field(
         None,
         alias="address",
-        title="List of `Address` items (represented as `dict` in JSON)",
-        description="One or more addresses for the person",
+        title="One or more addresses for the person",
+        description=None,
     )
 
     birthDate: fhirtypes.Date = Field(
         None,
         alias="birthDate",
-        title="Type `Date`",
-        description="The date on which the person was born",
+        title="The date on which the person was born",
+        description="The birth date for the person.",
     )
     birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_birthDate", title="Extension field for ``birthDate``."
@@ -55,8 +55,11 @@ class Person(domainresource.DomainResource):
     gender: fhirtypes.Code = Field(
         None,
         alias="gender",
-        title="Type `Code`",
-        description="male | female | other | unknown",
+        title="male | female | other | unknown",
+        description="Administrative Gender.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["male", "female", "other", "unknown"],
     )
     gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_gender", title="Extension field for ``gender``."
@@ -65,46 +68,48 @@ class Person(domainresource.DomainResource):
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="A human identifier for this person",
+        title="A human identifier for this person",
+        description="Identifier for a person within a particular scope.",
     )
 
     link: ListType[fhirtypes.PersonLinkType] = Field(
         None,
         alias="link",
-        title="List of `PersonLink` items (represented as `dict` in JSON)",
-        description="Link to a resource that concerns the same actual person",
+        title="Link to a resource that concerns the same actual person",
+        description=None,
     )
 
     managingOrganization: fhirtypes.ReferenceType = Field(
         None,
         alias="managingOrganization",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="The organization that is the custodian of the person record",
+        title="The organization that is the custodian of the person record",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     name: ListType[fhirtypes.HumanNameType] = Field(
-        None,
-        alias="name",
-        title="List of `HumanName` items (represented as `dict` in JSON)",
-        description="A name associated with the person",
+        None, alias="name", title="A name associated with the person", description=None,
     )
 
     photo: fhirtypes.AttachmentType = Field(
         None,
         alias="photo",
-        title="Type `Attachment` (represented as `dict` in JSON)",
-        description="Image of the person",
+        title="Image of the person",
+        description=(
+            "An image that can be displayed as a thumbnail of the person to enhance"
+            " the identification of the individual."
+        ),
     )
 
     telecom: ListType[fhirtypes.ContactPointType] = Field(
         None,
         alias="telecom",
-        title="List of `ContactPoint` items (represented as `dict` in JSON)",
-        description="A contact detail for the person",
+        title="A contact detail for the person",
+        description=(
+            "A contact detail for the person, e.g. a telephone number or an email "
+            "address."
+        ),
     )
 
 
@@ -121,8 +126,14 @@ class PersonLink(backboneelement.BackboneElement):
     assurance: fhirtypes.Code = Field(
         None,
         alias="assurance",
-        title="Type `Code`",
-        description="level1 | level2 | level3 | level4",
+        title="level1 | level2 | level3 | level4",
+        description=(
+            "Level of assurance that this link is associated with the target "
+            "resource."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["level1", "level2", "level3", "level4"],
     )
     assurance__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_assurance", title="Extension field for ``assurance``."
@@ -131,9 +142,8 @@ class PersonLink(backboneelement.BackboneElement):
     target: fhirtypes.ReferenceType = Field(
         ...,
         alias="target",
-        title=(
-            "Type `Reference` referencing `Patient, Practitioner, RelatedPerson, "
-            "Person` (represented as `dict` in JSON)"
-        ),
-        description="The resource to which this actual person is associated",
+        title="The resource to which this actual person is associated",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "Practitioner", "RelatedPerson", "Person"],
     )

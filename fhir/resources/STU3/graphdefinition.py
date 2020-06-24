@@ -29,15 +29,24 @@ class GraphDefinition(domainresource.DomainResource):
     contact: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="contact",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Contact details for the publisher",
+        title="Contact details for the publisher",
+        description=(
+            "Contact details to assist a user in finding and communicating with the"
+            " publisher."
+        ),
     )
 
     date: fhirtypes.DateTime = Field(
         None,
         alias="date",
-        title="Type `DateTime`",
-        description="Date this was last changed",
+        title="Date this was last changed",
+        description=(
+            "The date  (and optionally time) when the graph definition was "
+            "published. The date must change if and when the business version "
+            "changes and it must change if the status code changes. In addition, it"
+            " should change when the substantive content of the graph definition "
+            "changes."
+        ),
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -46,8 +55,11 @@ class GraphDefinition(domainresource.DomainResource):
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown`",
-        description="Natural language description of the graph definition",
+        title="Natural language description of the graph definition",
+        description=(
+            "A free text natural language description of the graph definition from "
+            "a consumer's perspective."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -56,8 +68,12 @@ class GraphDefinition(domainresource.DomainResource):
     experimental: bool = Field(
         None,
         alias="experimental",
-        title="Type `bool`",
-        description="For testing purposes, not real usage",
+        title="For testing purposes, not real usage",
+        description=(
+            "A boolean value to indicate that this graph definition is authored for"
+            " testing purposes (or education/evaluation/marketing), and is not "
+            "intended to be used for genuine usage."
+        ),
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -66,22 +82,29 @@ class GraphDefinition(domainresource.DomainResource):
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="jurisdiction",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Intended jurisdiction for graph definition (if applicable)",
+        title="Intended jurisdiction for graph definition (if applicable)",
+        description=(
+            "A legal or geographic region in which the graph definition is intended"
+            " to be used."
+        ),
     )
 
     link: ListType[fhirtypes.GraphDefinitionLinkType] = Field(
         None,
         alias="link",
-        title="List of `GraphDefinitionLink` items (represented as `dict` in JSON)",
-        description="Links this graph makes rules about",
+        title="Links this graph makes rules about",
+        description=None,
     )
 
     name: fhirtypes.String = Field(
         ...,
         alias="name",
-        title="Type `String`",
-        description="Name for this graph definition (computer friendly)",
+        title="Name for this graph definition (computer friendly)",
+        description=(
+            "A natural language name identifying the graph definition. This name "
+            "should be usable as an identifier for the module by machine processing"
+            " applications such as code generation."
+        ),
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -90,8 +113,8 @@ class GraphDefinition(domainresource.DomainResource):
     profile: fhirtypes.Uri = Field(
         None,
         alias="profile",
-        title="Type `Uri`",
-        description="Profile on base resource",
+        title="Profile on base resource",
+        description="The profile that describes the use of the base resource.",
     )
     profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_profile", title="Extension field for ``profile``."
@@ -100,8 +123,11 @@ class GraphDefinition(domainresource.DomainResource):
     publisher: fhirtypes.String = Field(
         None,
         alias="publisher",
-        title="Type `String`",
-        description="Name of the publisher (organization or individual)",
+        title="Name of the publisher (organization or individual)",
+        description=(
+            "The name of the individual or organization that published the graph "
+            "definition."
+        ),
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -110,8 +136,11 @@ class GraphDefinition(domainresource.DomainResource):
     purpose: fhirtypes.Markdown = Field(
         None,
         alias="purpose",
-        title="Type `Markdown`",
-        description="Why this graph definition is defined",
+        title="Why this graph definition is defined",
+        description=(
+            "Explaination of why this graph definition is needed and why it has "
+            "been designed as it has."
+        ),
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_purpose", title="Extension field for ``purpose``."
@@ -120,8 +149,8 @@ class GraphDefinition(domainresource.DomainResource):
     start: fhirtypes.Code = Field(
         ...,
         alias="start",
-        title="Type `Code`",
-        description="Type of resource at which the graph starts",
+        title="Type of resource at which the graph starts",
+        description="The type of FHIR resource at which instances of this graph start.",
     )
     start__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_start", title="Extension field for ``start``."
@@ -130,8 +159,14 @@ class GraphDefinition(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="draft | active | retired | unknown",
+        title="draft | active | retired | unknown",
+        description=(
+            "The status of this graph definition. Enables tracking the life-cycle "
+            "of the content."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["draft", "active", "retired", "unknown"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -140,8 +175,16 @@ class GraphDefinition(domainresource.DomainResource):
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
-        title="Type `Uri`",
-        description="Logical URI to reference this graph definition (globally unique)",
+        title="Logical URI to reference this graph definition (globally unique)",
+        description=(
+            "An absolute URI that is used to identify this graph definition when it"
+            " is referenced in a specification, model, design or an instance. This "
+            "SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at"
+            " which this graph definition is (or will be) published. The URL SHOULD"
+            " include the major version of the graph definition. For more "
+            "information see [Technical and Business "
+            "Versions](resource.html#versions)."
+        ),
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -150,15 +193,27 @@ class GraphDefinition(domainresource.DomainResource):
     useContext: ListType[fhirtypes.UsageContextType] = Field(
         None,
         alias="useContext",
-        title="List of `UsageContext` items (represented as `dict` in JSON)",
-        description="Context the content is intended to support",
+        title="Context the content is intended to support",
+        description=(
+            "The content was developed with a focus and intent of supporting the "
+            "contexts that are listed. These terms may be used to assist with "
+            "indexing and searching for appropriate graph definition instances."
+        ),
     )
 
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String`",
-        description="Business version of the graph definition",
+        title="Business version of the graph definition",
+        description=(
+            "The identifier that is used to identify this version of the graph "
+            "definition when it is referenced in a specification, model, design or "
+            "instance. This is an arbitrary value managed by the graph definition "
+            "author and is not expected to be globally unique. For example, it "
+            "might be a timestamp (e.g. yyyymmdd) if a managed version is not "
+            "available. There is also no expectation that versions can be placed in"
+            " a lexicographical sequence."
+        ),
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -178,28 +233,25 @@ class GraphDefinitionLink(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Why this link is specified",
+        title="Why this link is specified",
+        description=(
+            "Information about why this link is of interest in this graph "
+            "definition."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
     )
 
     max: fhirtypes.String = Field(
-        None,
-        alias="max",
-        title="Type `String`",
-        description="Maximum occurrences for this link",
+        None, alias="max", title="Maximum occurrences for this link", description=None,
     )
     max__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_max", title="Extension field for ``max``."
     )
 
     min: fhirtypes.Integer = Field(
-        None,
-        alias="min",
-        title="Type `Integer`",
-        description="Minimum occurrences for this link",
+        None, alias="min", title="Minimum occurrences for this link", description=None,
     )
     min__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_min", title="Extension field for ``min``."
@@ -208,31 +260,22 @@ class GraphDefinitionLink(backboneelement.BackboneElement):
     path: fhirtypes.String = Field(
         ...,
         alias="path",
-        title="Type `String`",
-        description="Path in the resource that contains the link",
+        title="Path in the resource that contains the link",
+        description=None,
     )
     path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_path", title="Extension field for ``path``."
     )
 
     sliceName: fhirtypes.String = Field(
-        None,
-        alias="sliceName",
-        title="Type `String`",
-        description="Which slice (if profiled)",
+        None, alias="sliceName", title="Which slice (if profiled)", description=None,
     )
     sliceName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sliceName", title="Extension field for ``sliceName``."
     )
 
     target: ListType[fhirtypes.GraphDefinitionLinkTargetType] = Field(
-        ...,
-        alias="target",
-        title=(
-            "List of `GraphDefinitionLinkTarget` items (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Potential target for the link",
+        ..., alias="target", title="Potential target for the link", description=None,
     )
 
 
@@ -249,25 +292,22 @@ class GraphDefinitionLinkTarget(backboneelement.BackboneElement):
     compartment: ListType[fhirtypes.GraphDefinitionLinkTargetCompartmentType] = Field(
         None,
         alias="compartment",
-        title=(
-            "List of `GraphDefinitionLinkTargetCompartment` items (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Compartment Consistency Rules",
+        title="Compartment Consistency Rules",
+        description=None,
     )
 
     link: ListType[fhirtypes.GraphDefinitionLinkType] = Field(
         None,
         alias="link",
-        title="List of `GraphDefinitionLink` items (represented as `dict` in JSON)",
-        description="Additional links from target resource",
+        title="Additional links from target resource",
+        description=None,
     )
 
     profile: fhirtypes.Uri = Field(
         None,
         alias="profile",
-        title="Type `Uri`",
-        description="Profile for the target resource",
+        title="Profile for the target resource",
+        description=None,
     )
     profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_profile", title="Extension field for ``profile``."
@@ -276,8 +316,8 @@ class GraphDefinitionLinkTarget(backboneelement.BackboneElement):
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code`",
-        description="Type of resource this link refers to",
+        title="Type of resource this link refers to",
+        description=None,
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -295,7 +335,7 @@ class GraphDefinitionLinkTargetCompartment(backboneelement.BackboneElement):
     resource_type = Field("GraphDefinitionLinkTargetCompartment", const=True)
 
     code: fhirtypes.Code = Field(
-        ..., alias="code", title="Type `Code`", description="Identifies the compartment"
+        ..., alias="code", title="Identifies the compartment", description=None,
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -304,8 +344,8 @@ class GraphDefinitionLinkTargetCompartment(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Documentation for FHIRPath expression",
+        title="Documentation for FHIRPath expression",
+        description=None,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -314,8 +354,8 @@ class GraphDefinitionLinkTargetCompartment(backboneelement.BackboneElement):
     expression: fhirtypes.String = Field(
         None,
         alias="expression",
-        title="Type `String`",
-        description="Custom rule, as a FHIRPath expression",
+        title="Custom rule, as a FHIRPath expression",
+        description=None,
     )
     expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_expression", title="Extension field for ``expression``."
@@ -324,8 +364,11 @@ class GraphDefinitionLinkTargetCompartment(backboneelement.BackboneElement):
     rule: fhirtypes.Code = Field(
         ...,
         alias="rule",
-        title="Type `Code`",
-        description="identical | matching | different | custom",
+        title="identical | matching | different | custom",
+        description="identical | matching | different | no-rule | custom.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["identical", "matching", "different", "custom"],
     )
     rule__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_rule", title="Extension field for ``rule``."

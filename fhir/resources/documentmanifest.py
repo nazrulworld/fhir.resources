@@ -28,29 +28,40 @@ class DocumentManifest(domainresource.DomainResource):
     author: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="author",
-        title=(
-            "List of `Reference` items referencing `Practitioner, PractitionerRole,"
-            " Organization, Device, Patient, RelatedPerson` (represented as `dict` "
-            "in JSON)"
+        title="Who and/or what authored the DocumentManifest",
+        description=(
+            "Identifies who is the author of the manifest. Manifest author is not "
+            "necessarly the author of the references included."
         ),
-        description="Who and/or what authored the DocumentManifest",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Practitioner",
+            "PractitionerRole",
+            "Organization",
+            "Device",
+            "Patient",
+            "RelatedPerson",
+        ],
     )
 
     content: ListType[fhirtypes.ReferenceType] = Field(
         ...,
         alias="content",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Items in manifest",
+        title="Items in manifest",
+        description="The list of Resources that consist of the parts of this manifest.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     created: fhirtypes.DateTime = Field(
         None,
         alias="created",
-        title="Type `DateTime`",
-        description="When this document manifest created",
+        title="When this document manifest created",
+        description=(
+            "When the document manifest was created for submission to the server "
+            "(not necessarily the same thing as the actual resource last modified "
+            "time, since it may be modified, replicated, etc.)."
+        ),
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_created", title="Extension field for ``created``."
@@ -59,8 +70,11 @@ class DocumentManifest(domainresource.DomainResource):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Human-readable description (title)",
+        title="Human-readable description (title)",
+        description=(
+            "Human-readable description of the source document. This is sometimes "
+            'known as the "title".'
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -69,42 +83,56 @@ class DocumentManifest(domainresource.DomainResource):
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Other identifiers for the manifest",
+        title="Other identifiers for the manifest",
+        description=(
+            "Other identifiers associated with the document manifest, including "
+            "version independent  identifiers."
+        ),
     )
 
     masterIdentifier: fhirtypes.IdentifierType = Field(
         None,
         alias="masterIdentifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Unique Identifier for the set of documents",
+        title="Unique Identifier for the set of documents",
+        description=(
+            "A single identifier that uniquely identifies this manifest. "
+            "Principally used to refer to the manifest in non-FHIR contexts."
+        ),
     )
 
     recipient: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="recipient",
-        title=(
-            "List of `Reference` items referencing `Patient, Practitioner, "
-            "PractitionerRole, RelatedPerson, Organization` (represented as `dict` "
-            "in JSON)"
+        title="Intended to get notified about this set of documents",
+        description=(
+            "A patient, practitioner, or organization for which this set of "
+            "documents is intended."
         ),
-        description="Intended to get notified about this set of documents",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Patient",
+            "Practitioner",
+            "PractitionerRole",
+            "RelatedPerson",
+            "Organization",
+        ],
     )
 
     related: ListType[fhirtypes.DocumentManifestRelatedType] = Field(
         None,
         alias="related",
-        title=(
-            "List of `DocumentManifestRelated` items (represented as `dict` in " "JSON)"
-        ),
-        description="Related things",
+        title="Related things",
+        description="Related identifiers or resources associated with the DocumentManifest.",
     )
 
     source: fhirtypes.Uri = Field(
         None,
         alias="source",
-        title="Type `Uri`",
-        description="The source system/application/software",
+        title="The source system/application/software",
+        description=(
+            "Identifies the source system, application, or software that produced "
+            "the document manifest."
+        ),
     )
     source__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_source", title="Extension field for ``source``."
@@ -113,8 +141,11 @@ class DocumentManifest(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="current | superseded | entered-in-error",
+        title="current | superseded | entered-in-error",
+        description="The status of this document manifest.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["current", "superseded", "entered-in-error"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -123,18 +154,27 @@ class DocumentManifest(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title=(
-            "Type `Reference` referencing `Patient, Practitioner, Group, Device` "
-            "(represented as `dict` in JSON)"
+        title="The subject of the set of documents",
+        description=(
+            "Who or what the set of documents is about. The documents can be about "
+            "a person, (patient or healthcare practitioner), a device (i.e. "
+            "machine) or even a group of subjects (such as a document about a herd "
+            "of farm animals, or a set of patients that share a common exposure). "
+            "If the documents cross more than one subject, then more than one "
+            "subject is allowed here (unusual use case)."
         ),
-        description="The subject of the set of documents",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "Practitioner", "Group", "Device"],
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Kind of document set",
+        title="Kind of document set",
+        description=(
+            "The code specifying the type of clinical activity that resulted in "
+            "placing the associated content into the DocumentManifest."
+        ),
     )
 
 
@@ -152,15 +192,21 @@ class DocumentManifestRelated(backboneelement.BackboneElement):
     identifier: fhirtypes.IdentifierType = Field(
         None,
         alias="identifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Identifiers of things that are related",
+        title="Identifiers of things that are related",
+        description=(
+            "Related identifier to this DocumentManifest.  For example, Order "
+            "numbers, accession numbers, XDW workflow numbers."
+        ),
     )
 
     ref: fhirtypes.ReferenceType = Field(
         None,
         alias="ref",
-        title=(
-            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        title="Related Resource",
+        description=(
+            "Related Resource to this DocumentManifest. For example, Order, "
+            "ServiceRequest,  Procedure, EligibilityRequest, etc."
         ),
-        description="Related Resource",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )

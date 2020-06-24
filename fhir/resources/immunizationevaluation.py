@@ -30,25 +30,30 @@ class ImmunizationEvaluation(domainresource.DomainResource):
     authority: fhirtypes.ReferenceType = Field(
         None,
         alias="authority",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Who is responsible for publishing the recommendations",
+        title="Who is responsible for publishing the recommendations",
+        description="Indicates the authority who published the protocol (e.g. ACIP).",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     date: fhirtypes.DateTime = Field(
         None,
         alias="date",
-        title="Type `DateTime`",
-        description="Date evaluation was performed",
+        title="Date evaluation was performed",
+        description=(
+            "The date the evaluation of the vaccine administration event was "
+            "performed."
+        ),
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
     )
 
     description: fhirtypes.String = Field(
-        None, alias="description", title="Type `String`", description="Evaluation notes"
+        None,
+        alias="description",
+        title="Evaluation notes",
+        description="Additional information about the evaluation.",
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -57,9 +62,10 @@ class ImmunizationEvaluation(domainresource.DomainResource):
     doseNumberPositiveInt: fhirtypes.PositiveInt = Field(
         None,
         alias="doseNumberPositiveInt",
-        title="Type `PositiveInt`",
-        description="Dose number within series",
-        one_of_many="doseNumber",  # Choice of Data Types. i.e value[x]
+        title="Dose number within series",
+        description="Nominal position in a series.",
+        # Choice of Data Types. i.e doseNumber[x]
+        one_of_many="doseNumber",
         one_of_many_required=False,
     )
     doseNumberPositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -71,9 +77,10 @@ class ImmunizationEvaluation(domainresource.DomainResource):
     doseNumberString: fhirtypes.String = Field(
         None,
         alias="doseNumberString",
-        title="Type `String`",
-        description="Dose number within series",
-        one_of_many="doseNumber",  # Choice of Data Types. i.e value[x]
+        title="Dose number within series",
+        description="Nominal position in a series.",
+        # Choice of Data Types. i.e doseNumber[x]
+        one_of_many="doseNumber",
         one_of_many_required=False,
     )
     doseNumberString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -85,46 +92,56 @@ class ImmunizationEvaluation(domainresource.DomainResource):
     doseStatus: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="doseStatus",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Status of the dose relative to published recommendations",
+        title="Status of the dose relative to published recommendations",
+        description=(
+            "Indicates if the dose is valid or not valid with respect to the "
+            "published recommendations."
+        ),
     )
 
     doseStatusReason: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="doseStatusReason",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Reason for the dose status",
+        title="Reason for the dose status",
+        description=(
+            "Provides an explanation as to why the vaccine administration event is "
+            "valid or not relative to the published recommendations."
+        ),
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Business identifier",
+        title="Business identifier",
+        description="A unique identifier assigned to this immunization evaluation record.",
     )
 
     immunizationEvent: fhirtypes.ReferenceType = Field(
         ...,
         alias="immunizationEvent",
-        title=(
-            "Type `Reference` referencing `Immunization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Immunization being evaluated",
+        title="Immunization being evaluated",
+        description="The vaccine administration event being evaluated.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Immunization"],
     )
 
     patient: fhirtypes.ReferenceType = Field(
         ...,
         alias="patient",
-        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
-        description="Who this evaluation is for",
+        title="Who this evaluation is for",
+        description="The individual for whom the evaluation is being done.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient"],
     )
 
     series: fhirtypes.String = Field(
         None,
         alias="series",
-        title="Type `String`",
-        description="Name of vaccine series",
+        title="Name of vaccine series",
+        description=(
+            "One possible path to achieve presumed immunity against a disease - "
+            "within the context of an authority."
+        ),
     )
     series__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_series", title="Extension field for ``series``."
@@ -133,9 +150,10 @@ class ImmunizationEvaluation(domainresource.DomainResource):
     seriesDosesPositiveInt: fhirtypes.PositiveInt = Field(
         None,
         alias="seriesDosesPositiveInt",
-        title="Type `PositiveInt`",
-        description="Recommended number of doses for immunity",
-        one_of_many="seriesDoses",  # Choice of Data Types. i.e value[x]
+        title="Recommended number of doses for immunity",
+        description="The recommended number of doses to achieve immunity.",
+        # Choice of Data Types. i.e seriesDoses[x]
+        one_of_many="seriesDoses",
         one_of_many_required=False,
     )
     seriesDosesPositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -147,9 +165,10 @@ class ImmunizationEvaluation(domainresource.DomainResource):
     seriesDosesString: fhirtypes.String = Field(
         None,
         alias="seriesDosesString",
-        title="Type `String`",
-        description="Recommended number of doses for immunity",
-        one_of_many="seriesDoses",  # Choice of Data Types. i.e value[x]
+        title="Recommended number of doses for immunity",
+        description="The recommended number of doses to achieve immunity.",
+        # Choice of Data Types. i.e seriesDoses[x]
+        one_of_many="seriesDoses",
         one_of_many_required=False,
     )
     seriesDosesString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -161,8 +180,14 @@ class ImmunizationEvaluation(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="completed | entered-in-error",
+        title="completed | entered-in-error",
+        description=(
+            "Indicates the current status of the evaluation of the vaccination "
+            "administration event."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["completed", "entered-in-error"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -171,8 +196,8 @@ class ImmunizationEvaluation(domainresource.DomainResource):
     targetDisease: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="targetDisease",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Evaluation target disease",
+        title="Evaluation target disease",
+        description="The vaccine preventable disease the dose is being evaluated against.",
     )
 
     @root_validator(pre=True)

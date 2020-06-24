@@ -24,8 +24,11 @@ class Reference(element.Element):
     display: fhirtypes.String = Field(
         None,
         alias="display",
-        title="Type `String`",
-        description="Text alternative for the resource",
+        title="Text alternative for the resource",
+        description=(
+            "Plain text narrative that identifies the resource in addition to the "
+            "resource reference."
+        ),
     )
     display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_display", title="Extension field for ``display``."
@@ -34,15 +37,33 @@ class Reference(element.Element):
     identifier: fhirtypes.IdentifierType = Field(
         None,
         alias="identifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Logical reference, when literal reference is not known",
+        title="Logical reference, when literal reference is not known",
+        description=(
+            "An identifier for the other resource. This is used when there is no "
+            "way to reference the other resource directly, either because the "
+            "entity is not available through a FHIR server, or because there is no "
+            "way for the author of the resource to convert a known identifier to an"
+            " actual location. There is no requirement that a Reference.identifier "
+            "point to something that is actually exposed as a FHIR instance, but it"
+            " SHALL point to a business concept that would be expected to be "
+            "exposed as a FHIR instance, and that instance would need to be of a "
+            "FHIR resource type allowed by the reference."
+        ),
     )
 
     reference: fhirtypes.String = Field(
         None,
         alias="reference",
-        title="Type `String`",
-        description="Literal reference, Relative, internal or absolute URL",
+        title="Literal reference, Relative, internal or absolute URL",
+        description=(
+            "A reference to a location at which the other resource is found. The "
+            "reference may be a relative reference, in which case it is relative to"
+            " the service base URL, or an absolute URL that resolves to the "
+            "location where the resource is found. The reference may be version "
+            "specific or not. If the reference is not to a FHIR RESTful server, "
+            "then it should be assumed to be version specific. Internal fragment "
+            "references (start with '#') refer to contained resources."
+        ),
     )
     reference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_reference", title="Extension field for ``reference``."

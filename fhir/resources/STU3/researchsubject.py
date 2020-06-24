@@ -30,8 +30,11 @@ class ResearchSubject(domainresource.DomainResource):
     actualArm: fhirtypes.String = Field(
         None,
         alias="actualArm",
-        title="Type `String`",
-        description="What path was followed",
+        title="What path was followed",
+        description=(
+            "The name of the arm in the study the subject actually followed as part"
+            " of this study."
+        ),
     )
     actualArm__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_actualArm", title="Extension field for ``actualArm``."
@@ -40,8 +43,11 @@ class ResearchSubject(domainresource.DomainResource):
     assignedArm: fhirtypes.String = Field(
         None,
         alias="assignedArm",
-        title="Type `String`",
-        description="What path should be followed",
+        title="What path should be followed",
+        description=(
+            "The name of the arm in the study the subject is expected to follow as "
+            "part of this study."
+        ),
     )
     assignedArm__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_assignedArm", title="Extension field for ``assignedArm``."
@@ -50,36 +56,58 @@ class ResearchSubject(domainresource.DomainResource):
     consent: fhirtypes.ReferenceType = Field(
         None,
         alias="consent",
-        title="Type `Reference` referencing `Consent` (represented as `dict` in JSON)",
-        description="Agreement to participate in study",
+        title="Agreement to participate in study",
+        description=(
+            "A record of the patient's informed agreement to participate in the "
+            "study."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Consent"],
     )
 
     identifier: fhirtypes.IdentifierType = Field(
         None,
         alias="identifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Business Identifier for research subject",
+        title="Business Identifier for research subject",
+        description=(
+            "Identifiers assigned to this research study by the sponsor or other "
+            "systems."
+        ),
     )
 
     individual: fhirtypes.ReferenceType = Field(
         ...,
         alias="individual",
-        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
-        description="Who is part of study",
+        title="Who is part of study",
+        description="The record of the person or animal who is involved in the study.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient"],
     )
 
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Start and end of participation",
+        title="Start and end of participation",
+        description=(
+            "The dates the subject began and ended their participation in the " "study."
+        ),
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="candidate | enrolled | active | suspended | withdrawn | completed",
+        title="candidate | enrolled | active | suspended | withdrawn | completed",
+        description="The current state of the subject.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "candidate",
+            "enrolled",
+            "active",
+            "suspended",
+            "withdrawn",
+            "completed",
+        ],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -88,9 +116,8 @@ class ResearchSubject(domainresource.DomainResource):
     study: fhirtypes.ReferenceType = Field(
         ...,
         alias="study",
-        title=(
-            "Type `Reference` referencing `ResearchStudy` (represented as `dict` in"
-            " JSON)"
-        ),
-        description="Study subject is part of",
+        title="Study subject is part of",
+        description="Reference to the study the subject is participating in.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ResearchStudy"],
     )

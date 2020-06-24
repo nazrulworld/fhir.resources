@@ -27,10 +27,7 @@ class MedicinalProductInteraction(domainresource.DomainResource):
     resource_type = Field("MedicinalProductInteraction", const=True)
 
     description: fhirtypes.String = Field(
-        None,
-        alias="description",
-        title="Type `String`",
-        description="The interaction described",
+        None, alias="description", title="The interaction described", description=None,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -39,55 +36,51 @@ class MedicinalProductInteraction(domainresource.DomainResource):
     effect: fhirtypes.CodeableConceptType = Field(
         None,
         alias="effect",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             'The effect of the interaction, for example "reduced gastric absorption'
             ' of primary medication"'
         ),
+        description=None,
     )
 
     incidence: fhirtypes.CodeableConceptType = Field(
         None,
         alias="incidence",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The incidence of the interaction, e.g. theoretical, observed",
+        title="The incidence of the interaction, e.g. theoretical, observed",
+        description=None,
     )
 
     interactant: ListType[fhirtypes.MedicinalProductInteractionInteractantType] = Field(
         None,
         alias="interactant",
-        title=(
-            "List of `MedicinalProductInteractionInteractant` items (represented as"
-            " `dict` in JSON)"
-        ),
-        description="The specific medication, food or laboratory test that interacts",
+        title="The specific medication, food or laboratory test that interacts",
+        description=None,
     )
 
     management: fhirtypes.CodeableConceptType = Field(
         None,
         alias="management",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Actions for managing the interaction",
+        title="Actions for managing the interaction",
+        description=None,
     )
 
     subject: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="subject",
-        title=(
-            "List of `Reference` items referencing `MedicinalProduct, Medication, "
-            "Substance` (represented as `dict` in JSON)"
-        ),
-        description="The medication for which this is a described interaction",
+        title="The medication for which this is a described interaction",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["MedicinalProduct", "Medication", "Substance"],
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The type of the interaction e.g. drug-drug interaction, drug-food "
             "interaction, drug-lab test interaction"
         ),
+        description=None,
     )
 
 
@@ -104,22 +97,28 @@ class MedicinalProductInteractionInteractant(backboneelement.BackboneElement):
     itemCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="itemCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The specific medication, food or laboratory test that interacts",
-        one_of_many="item",  # Choice of Data Types. i.e value[x]
+        title="The specific medication, food or laboratory test that interacts",
+        description=None,
+        # Choice of Data Types. i.e item[x]
+        one_of_many="item",
         one_of_many_required=True,
     )
 
     itemReference: fhirtypes.ReferenceType = Field(
         None,
         alias="itemReference",
-        title=(
-            "Type `Reference` referencing `MedicinalProduct, Medication, Substance,"
-            " ObservationDefinition` (represented as `dict` in JSON)"
-        ),
-        description="The specific medication, food or laboratory test that interacts",
-        one_of_many="item",  # Choice of Data Types. i.e value[x]
+        title="The specific medication, food or laboratory test that interacts",
+        description=None,
+        # Choice of Data Types. i.e item[x]
+        one_of_many="item",
         one_of_many_required=True,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "MedicinalProduct",
+            "Medication",
+            "Substance",
+            "ObservationDefinition",
+        ],
     )
 
     @root_validator(pre=True)

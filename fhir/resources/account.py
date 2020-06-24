@@ -29,18 +29,21 @@ class Account(domainresource.DomainResource):
     coverage: ListType[fhirtypes.AccountCoverageType] = Field(
         None,
         alias="coverage",
-        title="List of `AccountCoverage` items (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The party(s) that are responsible for covering the payment of this "
             "account, and what order should they be applied to the account"
         ),
+        description=None,
     )
 
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Explanation of purpose/use",
+        title="Explanation of purpose/use",
+        description=(
+            "Provides additional information about what the account tracks and how "
+            "it is used."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -49,19 +52,30 @@ class Account(domainresource.DomainResource):
     guarantor: ListType[fhirtypes.AccountGuarantorType] = Field(
         None,
         alias="guarantor",
-        title="List of `AccountGuarantor` items (represented as `dict` in JSON)",
-        description="The parties ultimately responsible for balancing the Account",
+        title="The parties ultimately responsible for balancing the Account",
+        description=(
+            "The parties responsible for balancing the account if other payment "
+            "options fall short."
+        ),
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Account number",
+        title="Account number",
+        description=(
+            "Unique identifier used to reference the account.  Might or might not "
+            "be intended for human use (e.g. credit card number)."
+        ),
     )
 
     name: fhirtypes.String = Field(
-        None, alias="name", title="Type `String`", description="Human-readable label"
+        None,
+        alias="name",
+        title="Human-readable label",
+        description=(
+            "Name used for the account when displaying it to humans in reports, " "etc."
+        ),
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -70,32 +84,39 @@ class Account(domainresource.DomainResource):
     owner: fhirtypes.ReferenceType = Field(
         None,
         alias="owner",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
+        title="Entity managing the Account",
+        description=(
+            "Indicates the service area, hospital, department, etc. with "
+            "responsibility for managing the Account."
         ),
-        description="Entity managing the Account",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     partOf: fhirtypes.ReferenceType = Field(
         None,
         alias="partOf",
-        title="Type `Reference` referencing `Account` (represented as `dict` in JSON)",
-        description="Reference to a parent Account",
+        title="Reference to a parent Account",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Account"],
     )
 
     servicePeriod: fhirtypes.PeriodType = Field(
         None,
         alias="servicePeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Transaction window",
+        title="Transaction window",
+        description="The date range of services associated with this account.",
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="active | inactive | entered-in-error | on-hold | unknown",
+        title="active | inactive | entered-in-error | on-hold | unknown",
+        description="Indicates whether the account is presently used/usable or not.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["active", "inactive", "entered-in-error", "on-hold", "unknown"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -104,19 +125,30 @@ class Account(domainresource.DomainResource):
     subject: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="subject",
-        title=(
-            "List of `Reference` items referencing `Patient, Device, Practitioner, "
-            "PractitionerRole, Location, HealthcareService, Organization` "
-            "(represented as `dict` in JSON)"
+        title="The entity that caused the expenses",
+        description=(
+            "Identifies the entity which incurs the expenses. While the immediate "
+            "recipients of services or goods might be entities related to the "
+            "subject, the expenses were ultimately incurred by the subject of the "
+            "Account."
         ),
-        description="The entity that caused the expenses",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Patient",
+            "Device",
+            "Practitioner",
+            "PractitionerRole",
+            "Location",
+            "HealthcareService",
+            "Organization",
+        ],
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="E.g. patient, expense, depreciation",
+        title="E.g. patient, expense, depreciation",
+        description="Categorizes the account for reporting and searching purposes.",
     )
 
 
@@ -135,19 +167,24 @@ class AccountCoverage(backboneelement.BackboneElement):
         ...,
         alias="coverage",
         title=(
-            "Type `Reference` referencing `Coverage` (represented as `dict` in " "JSON)"
-        ),
-        description=(
             "The party(s), such as insurances, that may contribute to the payment "
             "of this account"
         ),
+        description=(
+            "The party(s) that contribute to payment (or part of) of the charges "
+            "applied to this account (including self-pay).  A coverage may only be "
+            "responsible for specific types of charges, and the sequence of the "
+            "coverages in the account could be important when processing billing."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Coverage"],
     )
 
     priority: fhirtypes.PositiveInt = Field(
         None,
         alias="priority",
-        title="Type `PositiveInt`",
-        description="The priority of the coverage in the context of this account",
+        title="The priority of the coverage in the context of this account",
+        description=None,
     )
     priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_priority", title="Extension field for ``priority``."
@@ -169,8 +206,11 @@ class AccountGuarantor(backboneelement.BackboneElement):
     onHold: bool = Field(
         None,
         alias="onHold",
-        title="Type `bool`",
-        description="Credit or other hold applied",
+        title="Credit or other hold applied",
+        description=(
+            "A guarantor may be placed on credit hold or otherwise have their role "
+            "temporarily suspended."
+        ),
     )
     onHold__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_onHold", title="Extension field for ``onHold``."
@@ -179,16 +219,18 @@ class AccountGuarantor(backboneelement.BackboneElement):
     party: fhirtypes.ReferenceType = Field(
         ...,
         alias="party",
-        title=(
-            "Type `Reference` referencing `Patient, RelatedPerson, Organization` "
-            "(represented as `dict` in JSON)"
-        ),
-        description="Responsible entity",
+        title="Responsible entity",
+        description="The entity who is responsible.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "RelatedPerson", "Organization"],
     )
 
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Guarantee account during",
+        title="Guarantee account during",
+        description=(
+            "The timeframe during which the guarantor accepts responsibility for "
+            "the account."
+        ),
     )

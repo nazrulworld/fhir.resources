@@ -29,8 +29,8 @@ class MeasureReport(domainresource.DomainResource):
     date: fhirtypes.DateTime = Field(
         None,
         alias="date",
-        title="Type `DateTime`",
-        description="When the report was generated",
+        title="When the report was generated",
+        description="The date this measure report was generated.",
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -39,39 +39,53 @@ class MeasureReport(domainresource.DomainResource):
     evaluatedResource: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="evaluatedResource",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
+        title="What data was used to calculate the measure score",
+        description=(
+            "A reference to a Bundle containing the Resources that were used in the"
+            " calculation of this measure."
         ),
-        description="What data was used to calculate the measure score",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     group: ListType[fhirtypes.MeasureReportGroupType] = Field(
         None,
         alias="group",
-        title="List of `MeasureReportGroup` items (represented as `dict` in JSON)",
-        description="Measure results for each group",
+        title="Measure results for each group",
+        description=(
+            "The results of the calculation, one for each population group in the "
+            "measure."
+        ),
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Additional identifier for the MeasureReport",
+        title="Additional identifier for the MeasureReport",
+        description=(
+            "A formal identifier that is used to identify this MeasureReport when "
+            "it is represented in other formats or referenced in a specification, "
+            "model, design or an instance."
+        ),
     )
 
     improvementNotation: fhirtypes.CodeableConceptType = Field(
         None,
         alias="improvementNotation",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="increase | decrease",
+        title="increase | decrease",
+        description=(
+            "Whether improvement in the measure is noted by an increase or decrease"
+            " in the measure score."
+        ),
     )
 
     measure: fhirtypes.Canonical = Field(
         ...,
         alias="measure",
-        title="Type `Canonical` referencing `Measure`",
-        description="What measure was calculated",
+        title="What measure was calculated",
+        description="A reference to the Measure that was calculated to produce this report.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Measure"],
     )
     measure__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_measure", title="Extension field for ``measure``."
@@ -80,25 +94,35 @@ class MeasureReport(domainresource.DomainResource):
     period: fhirtypes.PeriodType = Field(
         ...,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="What period the report covers",
+        title="What period the report covers",
+        description="The reporting period for which the report was calculated.",
     )
 
     reporter: fhirtypes.ReferenceType = Field(
         None,
         alias="reporter",
-        title=(
-            "Type `Reference` referencing `Practitioner, PractitionerRole, "
-            "Location, Organization` (represented as `dict` in JSON)"
-        ),
-        description="Who is reporting the data",
+        title="Who is reporting the data",
+        description="The individual, location, or organization that is reporting the data.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Practitioner",
+            "PractitionerRole",
+            "Location",
+            "Organization",
+        ],
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="complete | pending | error",
+        title="complete | pending | error",
+        description=(
+            "The MeasureReport status. No data will be available until the "
+            "MeasureReport status is complete."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["complete", "pending", "error"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -107,19 +131,39 @@ class MeasureReport(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title=(
-            "Type `Reference` referencing `Patient, Practitioner, PractitionerRole,"
-            " Location, Device, RelatedPerson, Group` (represented as `dict` in "
-            "JSON)"
+        title="What individual(s) the report is for",
+        description=(
+            "Optional subject identifying the individual or individuals the report "
+            "is for."
         ),
-        description="What individual(s) the report is for",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Patient",
+            "Practitioner",
+            "PractitionerRole",
+            "Location",
+            "Device",
+            "RelatedPerson",
+            "Group",
+        ],
     )
 
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code`",
-        description="individual | subject-list | summary | data-collection",
+        title="individual | subject-list | summary | data-collection",
+        description=(
+            "The type of measure report. This may be an individual report, which "
+            "provides the score for the measure for an individual member of the "
+            "population; a subject-listing, which returns the list of members that "
+            "meet the various criteria in the measure; a summary report, which "
+            "returns a population count for each of the criteria in the measure; or"
+            " a data-collection, which enables the MeasureReport to be used to "
+            "exchange the data-of-interest for a quality measure."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["individual", "subject-list", "summary", "data-collection"],
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -141,35 +185,42 @@ class MeasureReportGroup(backboneelement.BackboneElement):
     code: fhirtypes.CodeableConceptType = Field(
         None,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Meaning of the group",
+        title="Meaning of the group",
+        description=(
+            "The meaning of the population group as defined in the measure "
+            "definition."
+        ),
     )
 
     measureScore: fhirtypes.QuantityType = Field(
         None,
         alias="measureScore",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="What score this group achieved",
+        title="What score this group achieved",
+        description=(
+            "The measure score for this population group, calculated as appropriate"
+            " for the measure type and scoring method, and based on the contents of"
+            " the populations defined in the group."
+        ),
     )
 
     population: ListType[fhirtypes.MeasureReportGroupPopulationType] = Field(
         None,
         alias="population",
-        title=(
-            "List of `MeasureReportGroupPopulation` items (represented as `dict` in"
-            " JSON)"
+        title="The populations in the group",
+        description=(
+            "The populations that make up the population group, one for each type "
+            "of population appropriate for the measure."
         ),
-        description="The populations in the group",
     )
 
     stratifier: ListType[fhirtypes.MeasureReportGroupStratifierType] = Field(
         None,
         alias="stratifier",
-        title=(
-            "List of `MeasureReportGroupStratifier` items (represented as `dict` in"
-            " JSON)"
+        title="Stratification results",
+        description=(
+            "When a measure includes multiple stratifiers, there will be a "
+            "stratifier group for each stratifier defined by the measure."
         ),
-        description="Stratification results",
     )
 
 
@@ -188,19 +239,19 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
     code: fhirtypes.CodeableConceptType = Field(
         None,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "initial-population | numerator | numerator-exclusion | denominator | "
             "denominator-exclusion | denominator-exception | measure-population | "
             "measure-population-exclusion | measure-observation"
         ),
+        description="The type of the population.",
     )
 
     count: fhirtypes.Integer = Field(
         None,
         alias="count",
-        title="Type `Integer`",
-        description="Size of the population",
+        title="Size of the population",
+        description="The number of members of the population.",
     )
     count__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_count", title="Extension field for ``count``."
@@ -209,8 +260,13 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
     subjectResults: fhirtypes.ReferenceType = Field(
         None,
         alias="subjectResults",
-        title="Type `Reference` referencing `List` (represented as `dict` in JSON)",
-        description="For subject-list reports, the subject results in this population",
+        title="For subject-list reports, the subject results in this population",
+        description=(
+            "This element refers to a List of subject level MeasureReport "
+            "resources, one for each subject in this population."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["List"],
     )
 
 
@@ -229,20 +285,21 @@ class MeasureReportGroupStratifier(backboneelement.BackboneElement):
     code: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="code",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="What stratifier of the group",
+        title="What stratifier of the group",
+        description="The meaning of this stratifier, as defined in the measure definition.",
     )
 
     stratum: ListType[fhirtypes.MeasureReportGroupStratifierStratumType] = Field(
         None,
         alias="stratum",
         title=(
-            "List of `MeasureReportGroupStratifierStratum` items (represented as "
-            "`dict` in JSON)"
-        ),
-        description=(
             "Stratum results, one for each unique value, or set of values, in the "
             "stratifier, or stratifier components"
+        ),
+        description=(
+            "This element contains the results for a single stratum within the "
+            "stratifier. For example, when stratifying on administrative gender, "
+            "there will be four strata, one for each possible gender value."
         ),
     )
 
@@ -266,18 +323,19 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="component",
-        title=(
-            "List of `MeasureReportGroupStratifierStratumComponent` items "
-            "(represented as `dict` in JSON)"
-        ),
-        description="Stratifier component values",
+        title="Stratifier component values",
+        description="A stratifier component value.",
     )
 
     measureScore: fhirtypes.QuantityType = Field(
         None,
         alias="measureScore",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="What score this stratum achieved",
+        title="What score this stratum achieved",
+        description=(
+            "The measure score for this stratum, calculated as appropriate for the "
+            "measure type and scoring method, and based on only the members of this"
+            " stratum."
+        ),
     )
 
     population: ListType[
@@ -285,18 +343,22 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="population",
-        title=(
-            "List of `MeasureReportGroupStratifierStratumPopulation` items "
-            "(represented as `dict` in JSON)"
+        title="Population results in this stratum",
+        description=(
+            "The populations that make up the stratum, one for each type of "
+            "population appropriate to the measure."
         ),
-        description="Population results in this stratum",
     )
 
     value: fhirtypes.CodeableConceptType = Field(
         None,
         alias="value",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The stratum value, e.g. male",
+        title="The stratum value, e.g. male",
+        description=(
+            "The value for this stratum, expressed as a CodeableConcept. When "
+            "defining stratifiers on complex values, the value must be rendered "
+            "such that the value for each stratum within the stratifier is unique."
+        ),
     )
 
 
@@ -314,15 +376,15 @@ class MeasureReportGroupStratifierStratumComponent(backboneelement.BackboneEleme
     code: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="What stratifier component of the group",
+        title="What stratifier component of the group",
+        description="The code for the stratum component value.",
     )
 
     value: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="value",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The stratum component value, e.g. male",
+        title="The stratum component value, e.g. male",
+        description="The stratum component value.",
     )
 
 
@@ -341,19 +403,19 @@ class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElem
     code: fhirtypes.CodeableConceptType = Field(
         None,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "initial-population | numerator | numerator-exclusion | denominator | "
             "denominator-exclusion | denominator-exception | measure-population | "
             "measure-population-exclusion | measure-observation"
         ),
+        description="The type of the population.",
     )
 
     count: fhirtypes.Integer = Field(
         None,
         alias="count",
-        title="Type `Integer`",
-        description="Size of the population",
+        title="Size of the population",
+        description="The number of members of the population in this stratum.",
     )
     count__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_count", title="Extension field for ``count``."
@@ -362,6 +424,11 @@ class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElem
     subjectResults: fhirtypes.ReferenceType = Field(
         None,
         alias="subjectResults",
-        title="Type `Reference` referencing `List` (represented as `dict` in JSON)",
-        description="For subject-list reports, the subject results in this population",
+        title="For subject-list reports, the subject results in this population",
+        description=(
+            "This element refers to a List of subject level MeasureReport "
+            "resources, one for each subject in this population in this stratum."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["List"],
     )

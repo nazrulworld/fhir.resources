@@ -31,74 +31,106 @@ class CarePlan(domainresource.DomainResource):
     activity: ListType[fhirtypes.CarePlanActivityType] = Field(
         None,
         alias="activity",
-        title="List of `CarePlanActivity` items (represented as `dict` in JSON)",
-        description="Action to occur as part of plan",
+        title="Action to occur as part of plan",
+        description=(
+            "Identifies a planned action to occur as part of the plan.  For "
+            "example, a medication to be used, lab tests to perform, self-"
+            "monitoring, education, etc."
+        ),
     )
 
     addresses: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="addresses",
-        title=(
-            "List of `Reference` items referencing `Condition` (represented as "
-            "`dict` in JSON)"
+        title="Health issues this plan addresses",
+        description=(
+            "Identifies the conditions/problems/concerns/diagnoses/etc. whose "
+            "management and/or mitigation are handled by this plan."
         ),
-        description="Health issues this plan addresses",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Condition"],
     )
 
     author: fhirtypes.ReferenceType = Field(
         None,
         alias="author",
-        title=(
-            "Type `Reference` referencing `Patient, Practitioner, PractitionerRole,"
-            " Device, RelatedPerson, Organization, CareTeam` (represented as `dict`"
-            " in JSON)"
+        title="Who is the designated responsible party",
+        description=(
+            "When populated, the author is responsible for the care plan.  The care"
+            " plan is attributed to the author."
         ),
-        description="Who is the designated responsible party",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Patient",
+            "Practitioner",
+            "PractitionerRole",
+            "Device",
+            "RelatedPerson",
+            "Organization",
+            "CareTeam",
+        ],
     )
 
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
-        title=(
-            "List of `Reference` items referencing `CarePlan` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Fulfills CarePlan",
+        title="Fulfills CarePlan",
+        description="A care plan that is fulfilled in whole or in part by this care plan.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["CarePlan"],
     )
 
     careTeam: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="careTeam",
-        title=(
-            "List of `Reference` items referencing `CareTeam` (represented as "
-            "`dict` in JSON)"
+        title="Who's involved in plan?",
+        description=(
+            "Identifies all people and organizations who are expected to be "
+            "involved in the care envisioned by this plan."
         ),
-        description="Who\u0027s involved in plan?",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["CareTeam"],
     )
 
     category: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="category",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Type of plan",
+        title="Type of plan",
+        description=(
+            'Identifies what "kind" of plan this is to support differentiation '
+            'between multiple co-existing plans; e.g. "Home health", "psychiatric",'
+            ' "asthma", "disease management", "wellness plan", etc.'
+        ),
     )
 
     contributor: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="contributor",
-        title=(
-            "List of `Reference` items referencing `Patient, Practitioner, "
-            "PractitionerRole, Device, RelatedPerson, Organization, CareTeam` "
-            "(represented as `dict` in JSON)"
+        title="Who provided the content of the care plan",
+        description=(
+            "Identifies the individual(s) or organization who provided the contents"
+            " of the care plan."
         ),
-        description="Who provided the content of the care plan",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Patient",
+            "Practitioner",
+            "PractitionerRole",
+            "Device",
+            "RelatedPerson",
+            "Organization",
+            "CareTeam",
+        ],
     )
 
     created: fhirtypes.DateTime = Field(
         None,
         alias="created",
-        title="Type `DateTime`",
-        description="Date record was first recorded",
+        title="Date record was first recorded",
+        description=(
+            "Represents when this particular CarePlan record was created in the "
+            "system, which is often a system-generated date."
+        ),
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_created", title="Extension field for ``created``."
@@ -107,8 +139,8 @@ class CarePlan(domainresource.DomainResource):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Summary of nature of plan",
+        title="Summary of nature of plan",
+        description="A description of the scope and nature of the plan.",
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -117,38 +149,52 @@ class CarePlan(domainresource.DomainResource):
     encounter: fhirtypes.ReferenceType = Field(
         None,
         alias="encounter",
-        title=(
-            "Type `Reference` referencing `Encounter` (represented as `dict` in "
-            "JSON)"
+        title="Encounter created as part of",
+        description=(
+            "The Encounter during which this CarePlan was created or to which the "
+            "creation of this record is tightly associated."
         ),
-        description="Encounter created as part of",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Encounter"],
     )
 
     goal: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="goal",
-        title=(
-            "List of `Reference` items referencing `Goal` (represented as `dict` in"
-            " JSON)"
-        ),
-        description="Desired outcome of plan",
+        title="Desired outcome of plan",
+        description="Describes the intended objective(s) of carrying out the care plan.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Goal"],
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="External Ids for this plan",
+        title="External Ids for this plan",
+        description=(
+            "Business identifiers assigned to this care plan by the performer or "
+            "other systems which remain constant as the resource is updated and "
+            "propagates from server to server."
+        ),
     )
 
     instantiatesCanonical: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="instantiatesCanonical",
-        title=(
-            "List of `Canonical` items referencing `PlanDefinition, Questionnaire, "
-            "Measure, ActivityDefinition, OperationDefinition`"
+        title="Instantiates FHIR protocol or definition",
+        description=(
+            "The URL pointing to a FHIR-defined protocol, guideline, questionnaire "
+            "or other definition that is adhered to in whole or in part by this "
+            "CarePlan."
         ),
-        description="Instantiates FHIR protocol or definition",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "PlanDefinition",
+            "Questionnaire",
+            "Measure",
+            "ActivityDefinition",
+            "OperationDefinition",
+        ],
     )
     instantiatesCanonical__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -161,8 +207,12 @@ class CarePlan(domainresource.DomainResource):
     instantiatesUri: ListType[fhirtypes.Uri] = Field(
         None,
         alias="instantiatesUri",
-        title="List of `Uri` items",
-        description="Instantiates external protocol or definition",
+        title="Instantiates external protocol or definition",
+        description=(
+            "The URL pointing to an externally maintained protocol, guideline, "
+            "questionnaire or other definition that is adhered to in whole or in "
+            "part by this CarePlan."
+        ),
     )
     instantiatesUri__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -173,8 +223,14 @@ class CarePlan(domainresource.DomainResource):
     intent: fhirtypes.Code = Field(
         ...,
         alias="intent",
-        title="Type `Code`",
-        description="proposal | plan | order | option",
+        title="proposal | plan | order | option",
+        description=(
+            "Indicates the level of authority/intentionality associated with the "
+            "care plan and where the care plan fits into the workflow chain."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["proposal", "plan", "order", "option"],
     )
     intent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_intent", title="Extension field for ``intent``."
@@ -183,45 +239,66 @@ class CarePlan(domainresource.DomainResource):
     note: ListType[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
-        title="List of `Annotation` items (represented as `dict` in JSON)",
-        description="Comments about the plan",
+        title="Comments about the plan",
+        description="General notes about the care plan not covered elsewhere.",
     )
 
     partOf: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="partOf",
-        title=(
-            "List of `Reference` items referencing `CarePlan` (represented as "
-            "`dict` in JSON)"
+        title="Part of referenced CarePlan",
+        description=(
+            "A larger care plan of which this particular care plan is a component "
+            "or step."
         ),
-        description="Part of referenced CarePlan",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["CarePlan"],
     )
 
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Time period plan covers",
+        title="Time period plan covers",
+        description=(
+            "Indicates when the plan did (or is intended to) come into effect and "
+            "end."
+        ),
     )
 
     replaces: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="replaces",
-        title=(
-            "List of `Reference` items referencing `CarePlan` (represented as "
-            "`dict` in JSON)"
+        title="CarePlan replaced by this CarePlan",
+        description=(
+            "Completed or terminated care plan whose function is taken by this new "
+            "care plan."
         ),
-        description="CarePlan replaced by this CarePlan",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["CarePlan"],
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description=(
+        title=(
             "draft | active | on-hold | revoked | completed | entered-in-error | "
             "unknown"
         ),
+        description=(
+            "Indicates whether the plan is currently being acted upon, represents "
+            "future intentions or is now a historical record."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "draft",
+            "active",
+            "on-hold",
+            "revoked",
+            "completed",
+            "entered-in-error",
+            "unknown",
+        ],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -230,28 +307,34 @@ class CarePlan(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         ...,
         alias="subject",
-        title=(
-            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
-            "in JSON)"
+        title="Who the care plan is for",
+        description=(
+            "Identifies the patient or group whose intended care is described by "
+            "the plan."
         ),
-        description="Who the care plan is for",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "Group"],
     )
 
     supportingInfo: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="supportingInfo",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
+        title="Information considered as part of plan",
+        description=(
+            "Identifies portions of the patient's record that specifically "
+            "influenced the formation of the plan.  These might include "
+            "comorbidities, recent procedures, limitations, recent assessments, "
+            "etc."
         ),
-        description="Information considered as part of plan",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String`",
-        description="Human-friendly name for the care plan",
+        title="Human-friendly name for the care plan",
+        description=None,
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -274,44 +357,67 @@ class CarePlanActivity(backboneelement.BackboneElement):
     detail: fhirtypes.CarePlanActivityDetailType = Field(
         None,
         alias="detail",
-        title="Type `CarePlanActivityDetail` (represented as `dict` in JSON)",
-        description="In-line definition of activity",
+        title="In-line definition of activity",
+        description=(
+            "A simple summary of a planned activity suitable for a general care "
+            "plan system (e.g. form driven) that doesn't know about specific "
+            "resources such as procedure etc."
+        ),
     )
 
     outcomeCodeableConcept: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="outcomeCodeableConcept",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Results of the activity",
+        title="Results of the activity",
+        description=(
+            "Identifies the outcome at the point when the status of the activity is"
+            " assessed.  For example, the outcome of an education activity could be"
+            " patient understands (or not)."
+        ),
     )
 
     outcomeReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="outcomeReference",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
+        title="Appointment, Encounter, Procedure, etc.",
+        description=(
+            "Details of the outcome or action resulting from the activity.  The "
+            'reference to an "event" resource, such as Procedure or Encounter or '
+            "Observation, is the result/outcome of the activity itself.  The "
+            "activity can be conveyed using CarePlan.activity.detail OR using the "
+            "CarePlan.activity.reference (a reference to a \u201crequest\u201d resource)."
         ),
-        description="Appointment, Encounter, Procedure, etc.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     progress: ListType[fhirtypes.AnnotationType] = Field(
         None,
         alias="progress",
-        title="List of `Annotation` items (represented as `dict` in JSON)",
-        description="Comments about the activity status/progress",
+        title="Comments about the activity status/progress",
+        description="Notes about the adherence/status/progress of the activity.",
     )
 
     reference: fhirtypes.ReferenceType = Field(
         None,
         alias="reference",
-        title=(
-            "Type `Reference` referencing `Appointment, CommunicationRequest, "
-            "DeviceRequest, MedicationRequest, NutritionOrder, Task, "
-            "ServiceRequest, VisionPrescription, RequestGroup` (represented as "
-            "`dict` in JSON)"
+        title="Activity details defined in specific resource",
+        description=(
+            "The details of the proposed activity represented in a specific "
+            "resource."
         ),
-        description="Activity details defined in specific resource",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Appointment",
+            "CommunicationRequest",
+            "DeviceRequest",
+            "MedicationRequest",
+            "NutritionOrder",
+            "Task",
+            "ServiceRequest",
+            "VisionPrescription",
+            "RequestGroup",
+        ],
     )
 
 
@@ -331,22 +437,31 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
     code: fhirtypes.CodeableConceptType = Field(
         None,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Detail type of activity",
+        title="Detail type of activity",
+        description=(
+            "Detailed description of the type of planned activity; e.g. what lab "
+            "test, what procedure, what kind of encounter."
+        ),
     )
 
     dailyAmount: fhirtypes.QuantityType = Field(
         None,
         alias="dailyAmount",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="How to consume/day?",
+        title="How to consume/day?",
+        description="Identifies the quantity expected to be consumed in a given day.",
     )
 
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Extra info describing activity to perform",
+        title="Extra info describing activity to perform",
+        description=(
+            "This provides a textual description of constraints on the intended "
+            "activity occurrence, including relation to other activities.  It may "
+            "also include objectives, pre-conditions and end-conditions.  Finally, "
+            "it may convey specifics about the activity such as body site, method, "
+            "route, etc."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -355,8 +470,13 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
     doNotPerform: bool = Field(
         None,
         alias="doNotPerform",
-        title="Type `bool`",
-        description="If true, activity is prohibiting action",
+        title="If true, activity is prohibiting action",
+        description=(
+            "If true, indicates that the described activity is one that must NOT be"
+            " engaged in when following the plan.  If false, or missing, indicates "
+            "that the described activity is one that should be engaged in when "
+            "following the plan."
+        ),
     )
     doNotPerform__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_doNotPerform", title="Extension field for ``doNotPerform``."
@@ -365,21 +485,32 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
     goal: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="goal",
-        title=(
-            "List of `Reference` items referencing `Goal` (represented as `dict` in"
-            " JSON)"
+        title="Goals this activity relates to",
+        description=(
+            "Internal reference that identifies the goals that this activity is "
+            "intended to contribute towards meeting."
         ),
-        description="Goals this activity relates to",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Goal"],
     )
 
     instantiatesCanonical: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="instantiatesCanonical",
-        title=(
-            "List of `Canonical` items referencing `PlanDefinition, "
-            "ActivityDefinition, Questionnaire, Measure, OperationDefinition`"
+        title="Instantiates FHIR protocol or definition",
+        description=(
+            "The URL pointing to a FHIR-defined protocol, guideline, questionnaire "
+            "or other definition that is adhered to in whole or in part by this "
+            "CarePlan activity."
         ),
-        description="Instantiates FHIR protocol or definition",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "PlanDefinition",
+            "ActivityDefinition",
+            "Questionnaire",
+            "Measure",
+            "OperationDefinition",
+        ],
     )
     instantiatesCanonical__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -392,8 +523,12 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
     instantiatesUri: ListType[fhirtypes.Uri] = Field(
         None,
         alias="instantiatesUri",
-        title="List of `Uri` items",
-        description="Instantiates external protocol or definition",
+        title="Instantiates external protocol or definition",
+        description=(
+            "The URL pointing to an externally maintained protocol, guideline, "
+            "questionnaire or other definition that is adhered to in whole or in "
+            "part by this CarePlan activity."
+        ),
     )
     instantiatesUri__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -404,11 +539,29 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
     kind: fhirtypes.Code = Field(
         None,
         alias="kind",
-        title="Type `Code`",
-        description=(
+        title=(
             "Appointment | CommunicationRequest | DeviceRequest | MedicationRequest"
             " | NutritionOrder | Task | ServiceRequest | VisionPrescription"
         ),
+        description=(
+            "A description of the kind of resource the in-line definition of a care"
+            " plan activity is representing.  The CarePlan.activity.detail is an "
+            "in-line definition when a resource is not referenced using "
+            "CarePlan.activity.reference.  For example, a MedicationRequest, a "
+            "ServiceRequest, or a CommunicationRequest."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "Appointment",
+            "CommunicationRequest",
+            "DeviceRequest",
+            "MedicationRequest",
+            "NutritionOrder",
+            "Task",
+            "ServiceRequest",
+            "VisionPrescription",
+        ],
     )
     kind__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_kind", title="Extension field for ``kind``."
@@ -417,83 +570,123 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
     location: fhirtypes.ReferenceType = Field(
         None,
         alias="location",
-        title=(
-            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
+        title="Where it should happen",
+        description=(
+            "Identifies the facility where the activity will occur; e.g. home, "
+            "hospital, specific clinic, etc."
         ),
-        description="Where it should happen",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Location"],
     )
 
     performer: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="performer",
-        title=(
-            "List of `Reference` items referencing `Practitioner, PractitionerRole,"
-            " Organization, RelatedPerson, Patient, CareTeam, HealthcareService, "
-            "Device` (represented as `dict` in JSON)"
-        ),
-        description="Who will be responsible?",
+        title="Who will be responsible?",
+        description="Identifies who's expected to be involved in the activity.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Practitioner",
+            "PractitionerRole",
+            "Organization",
+            "RelatedPerson",
+            "Patient",
+            "CareTeam",
+            "HealthcareService",
+            "Device",
+        ],
     )
 
     productCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="productCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="What is to be administered/supplied",
-        one_of_many="product",  # Choice of Data Types. i.e value[x]
+        title="What is to be administered/supplied",
+        description=(
+            "Identifies the food, drug or other product to be consumed or supplied "
+            "in the activity."
+        ),
+        # Choice of Data Types. i.e product[x]
+        one_of_many="product",
         one_of_many_required=False,
     )
 
     productReference: fhirtypes.ReferenceType = Field(
         None,
         alias="productReference",
-        title=(
-            "Type `Reference` referencing `Medication, Substance` (represented as "
-            "`dict` in JSON)"
+        title="What is to be administered/supplied",
+        description=(
+            "Identifies the food, drug or other product to be consumed or supplied "
+            "in the activity."
         ),
-        description="What is to be administered/supplied",
-        one_of_many="product",  # Choice of Data Types. i.e value[x]
+        # Choice of Data Types. i.e product[x]
+        one_of_many="product",
         one_of_many_required=False,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Medication", "Substance"],
     )
 
     quantity: fhirtypes.QuantityType = Field(
         None,
         alias="quantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="How much to administer/supply/consume",
+        title="How much to administer/supply/consume",
+        description=(
+            "Identifies the quantity expected to be supplied, administered or "
+            "consumed by the subject."
+        ),
     )
 
     reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="reasonCode",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Why activity should be done or why activity was prohibited",
+        title="Why activity should be done or why activity was prohibited",
+        description=(
+            "Provides the rationale that drove the inclusion of this particular "
+            "activity as part of the plan or the reason why the activity was "
+            "prohibited."
+        ),
     )
 
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="reasonReference",
-        title=(
-            "List of `Reference` items referencing `Condition, Observation, "
-            "DiagnosticReport, DocumentReference` (represented as `dict` in JSON)"
+        title="Why activity is needed",
+        description=(
+            "Indicates another resource, such as the health condition(s), whose "
+            "existence justifies this request and drove the inclusion of this "
+            "particular activity as part of the plan."
         ),
-        description="Why activity is needed",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Condition",
+            "Observation",
+            "DiagnosticReport",
+            "DocumentReference",
+        ],
     )
 
     scheduledPeriod: fhirtypes.PeriodType = Field(
         None,
         alias="scheduledPeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="When activity is to occur",
-        one_of_many="scheduled",  # Choice of Data Types. i.e value[x]
+        title="When activity is to occur",
+        description=(
+            "The period, timing or frequency upon which the described activity is "
+            "to occur."
+        ),
+        # Choice of Data Types. i.e scheduled[x]
+        one_of_many="scheduled",
         one_of_many_required=False,
     )
 
     scheduledString: fhirtypes.String = Field(
         None,
         alias="scheduledString",
-        title="Type `String`",
-        description="When activity is to occur",
-        one_of_many="scheduled",  # Choice of Data Types. i.e value[x]
+        title="When activity is to occur",
+        description=(
+            "The period, timing or frequency upon which the described activity is "
+            "to occur."
+        ),
+        # Choice of Data Types. i.e scheduled[x]
+        one_of_many="scheduled",
         one_of_many_required=False,
     )
     scheduledString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -503,20 +696,37 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
     scheduledTiming: fhirtypes.TimingType = Field(
         None,
         alias="scheduledTiming",
-        title="Type `Timing` (represented as `dict` in JSON)",
-        description="When activity is to occur",
-        one_of_many="scheduled",  # Choice of Data Types. i.e value[x]
+        title="When activity is to occur",
+        description=(
+            "The period, timing or frequency upon which the described activity is "
+            "to occur."
+        ),
+        # Choice of Data Types. i.e scheduled[x]
+        one_of_many="scheduled",
         one_of_many_required=False,
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description=(
+        title=(
             "not-started | scheduled | in-progress | on-hold | completed | "
             "cancelled | stopped | unknown | entered-in-error"
         ),
+        description="Identifies what progress is being made for the specific activity.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "not-started",
+            "scheduled",
+            "in-progress",
+            "on-hold",
+            "completed",
+            "cancelled",
+            "stopped",
+            "unknown",
+            "entered-in-error",
+        ],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -525,8 +735,11 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
     statusReason: fhirtypes.CodeableConceptType = Field(
         None,
         alias="statusReason",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Reason for current status",
+        title="Reason for current status",
+        description=(
+            "Provides reason why the activity isn't yet started, is on hold, was "
+            "cancelled, etc."
+        ),
     )
 
     @root_validator(pre=True)

@@ -51,35 +51,45 @@ class MedicationStatement(domainresource.DomainResource):
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
-        title=(
-            "List of `Reference` items referencing `MedicationRequest, CarePlan, "
-            "ServiceRequest` (represented as `dict` in JSON)"
+        title="Fulfils plan, proposal or order",
+        description=(
+            "A plan, proposal or order that is fulfilled in whole or in part by "
+            "this event."
         ),
-        description="Fulfils plan, proposal or order",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["MedicationRequest", "CarePlan", "ServiceRequest"],
     )
 
     category: fhirtypes.CodeableConceptType = Field(
         None,
         alias="category",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type of medication usage",
+        title="Type of medication usage",
+        description=(
+            "Indicates where the medication is expected to be consumed or "
+            "administered."
+        ),
     )
 
     context: fhirtypes.ReferenceType = Field(
         None,
         alias="context",
-        title=(
-            "Type `Reference` referencing `Encounter, EpisodeOfCare` (represented "
-            "as `dict` in JSON)"
+        title="Encounter / Episode associated with MedicationStatement",
+        description=(
+            "The encounter or episode of care that establishes the context for this"
+            " MedicationStatement."
         ),
-        description="Encounter / Episode associated with MedicationStatement",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Encounter", "EpisodeOfCare"],
     )
 
     dateAsserted: fhirtypes.DateTime = Field(
         None,
         alias="dateAsserted",
-        title="Type `DateTime`",
-        description="When the statement was asserted?",
+        title="When the statement was asserted?",
+        description=(
+            "The date when the medication statement was asserted by the information"
+            " source."
+        ),
     )
     dateAsserted__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_dateAsserted", title="Extension field for ``dateAsserted``."
@@ -88,26 +98,34 @@ class MedicationStatement(domainresource.DomainResource):
     derivedFrom: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="derivedFrom",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
+        title="Additional supporting information",
+        description=(
+            "Allows linking the MedicationStatement to the underlying "
+            "MedicationRequest, or to other information that supports or is used to"
+            " derive the MedicationStatement."
         ),
-        description="Additional supporting information",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     dosage: ListType[fhirtypes.DosageType] = Field(
         None,
         alias="dosage",
-        title="List of `Dosage` items (represented as `dict` in JSON)",
-        description="Details of how medication is/was taken or should be taken",
+        title="Details of how medication is/was taken or should be taken",
+        description="Indicates how the medication is/was or should be taken by the patient.",
     )
 
     effectiveDateTime: fhirtypes.DateTime = Field(
         None,
         alias="effectiveDateTime",
-        title="Type `DateTime`",
-        description="The date/time or interval when the medication is/was/will be taken",
-        one_of_many="effective",  # Choice of Data Types. i.e value[x]
+        title="The date/time or interval when the medication is/was/will be taken",
+        description=(
+            "The interval of time during which it is being asserted that the "
+            "patient is/was/will be taking the medication (or was not taking, when "
+            "the MedicationStatement.taken element is No)."
+        ),
+        # Choice of Data Types. i.e effective[x]
+        one_of_many="effective",
         one_of_many_required=False,
     )
     effectiveDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -119,99 +137,154 @@ class MedicationStatement(domainresource.DomainResource):
     effectivePeriod: fhirtypes.PeriodType = Field(
         None,
         alias="effectivePeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="The date/time or interval when the medication is/was/will be taken",
-        one_of_many="effective",  # Choice of Data Types. i.e value[x]
+        title="The date/time or interval when the medication is/was/will be taken",
+        description=(
+            "The interval of time during which it is being asserted that the "
+            "patient is/was/will be taking the medication (or was not taking, when "
+            "the MedicationStatement.taken element is No)."
+        ),
+        # Choice of Data Types. i.e effective[x]
+        one_of_many="effective",
         one_of_many_required=False,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="External identifier",
+        title="External identifier",
+        description=(
+            "Identifiers associated with this Medication Statement that are defined"
+            " by business processes and/or used to refer to it when a direct URL "
+            "reference to the resource itself is not appropriate. They are business"
+            " identifiers assigned to this resource by the performer or other "
+            "systems and remain constant as the resource is updated and propagates "
+            "from server to server."
+        ),
     )
 
     informationSource: fhirtypes.ReferenceType = Field(
         None,
         alias="informationSource",
         title=(
-            "Type `Reference` referencing `Patient, Practitioner, PractitionerRole,"
-            " RelatedPerson, Organization` (represented as `dict` in JSON)"
-        ),
-        description=(
             "Person or organization that provided the information about the taking "
             "of this medication"
         ),
+        description=(
+            "The person or organization that provided the information about the "
+            "taking of this medication. Note: Use derivedFrom when a "
+            "MedicationStatement is derived from other resources, e.g. Claim or "
+            "MedicationRequest."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Patient",
+            "Practitioner",
+            "PractitionerRole",
+            "RelatedPerson",
+            "Organization",
+        ],
     )
 
     medicationCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="medicationCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="What medication was taken",
-        one_of_many="medication",  # Choice of Data Types. i.e value[x]
+        title="What medication was taken",
+        description=(
+            "Identifies the medication being administered. This is either a link to"
+            " a resource representing the details of the medication or a simple "
+            "attribute carrying a code that identifies the medication from a known "
+            "list of medications."
+        ),
+        # Choice of Data Types. i.e medication[x]
+        one_of_many="medication",
         one_of_many_required=True,
     )
 
     medicationReference: fhirtypes.ReferenceType = Field(
         None,
         alias="medicationReference",
-        title=(
-            "Type `Reference` referencing `Medication` (represented as `dict` in "
-            "JSON)"
+        title="What medication was taken",
+        description=(
+            "Identifies the medication being administered. This is either a link to"
+            " a resource representing the details of the medication or a simple "
+            "attribute carrying a code that identifies the medication from a known "
+            "list of medications."
         ),
-        description="What medication was taken",
-        one_of_many="medication",  # Choice of Data Types. i.e value[x]
+        # Choice of Data Types. i.e medication[x]
+        one_of_many="medication",
         one_of_many_required=True,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Medication"],
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
-        title="List of `Annotation` items (represented as `dict` in JSON)",
-        description="Further information about the statement",
+        title="Further information about the statement",
+        description=(
+            "Provides extra information about the medication statement that is not "
+            "conveyed by the other attributes."
+        ),
     )
 
     partOf: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="partOf",
-        title=(
-            "List of `Reference` items referencing `MedicationAdministration, "
-            "MedicationDispense, MedicationStatement, Procedure, Observation` "
-            "(represented as `dict` in JSON)"
-        ),
-        description="Part of referenced event",
+        title="Part of referenced event",
+        description="A larger event of which this particular event is a component or step.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "MedicationAdministration",
+            "MedicationDispense",
+            "MedicationStatement",
+            "Procedure",
+            "Observation",
+        ],
     )
 
     reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="reasonCode",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Reason for why the medication is being/was taken",
+        title="Reason for why the medication is being/was taken",
+        description="A reason for why the medication is being/was taken.",
     )
 
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="reasonReference",
         title=(
-            "List of `Reference` items referencing `Condition, Observation, "
-            "DiagnosticReport` (represented as `dict` in JSON)"
-        ),
-        description=(
             "Condition or observation that supports why the medication is being/was"
             " taken"
         ),
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Condition", "Observation", "DiagnosticReport"],
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description=(
+        title=(
             "active | completed | entered-in-error | intended | stopped | on-hold |"
             " unknown | not-taken"
         ),
+        description=(
+            "A code representing the patient or other source's judgment about the "
+            "state of the medication used that this statement is about.  Generally,"
+            " this will be active or completed."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "active",
+            "completed",
+            "entered-in-error",
+            "intended",
+            "stopped",
+            "on-hold",
+            "unknown",
+            "not-taken",
+        ],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -220,18 +293,17 @@ class MedicationStatement(domainresource.DomainResource):
     statusReason: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="statusReason",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Reason for current status",
+        title="Reason for current status",
+        description="Captures the reason for the current state of the MedicationStatement.",
     )
 
     subject: fhirtypes.ReferenceType = Field(
         ...,
         alias="subject",
-        title=(
-            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
-            "in JSON)"
-        ),
-        description="Who is/was taking  the medication",
+        title="Who is/was taking  the medication",
+        description="The person, animal or group who is/was taking the medication.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "Group"],
     )
 
     @root_validator(pre=True)

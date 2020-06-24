@@ -25,7 +25,13 @@ class Quantity(element.Element):
     resource_type = Field("Quantity", const=True)
 
     code: fhirtypes.Code = Field(
-        None, alias="code", title="Type `Code`", description="Coded form of the unit"
+        None,
+        alias="code",
+        title="Coded form of the unit",
+        description=(
+            "A computer processable form of the unit in some unit representation "
+            "system."
+        ),
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -34,8 +40,21 @@ class Quantity(element.Element):
     comparator: fhirtypes.Code = Field(
         None,
         alias="comparator",
-        title="Type `Code`",
-        description="\u003c | \u003c= | \u003e= | \u003e - how to understand the value",
+        title="< | <= | >= | > - how to understand the value",
+        description=(
+            "How the value should be understood and represented - whether the "
+            "actual value is greater or less than the stated value due to "
+            'measurement issues; e.g. if the comparator is "<" , then the real '
+            "value is < stated value."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "\u003c",
+            "\u003c=",
+            "\u003e=",
+            "\u003e - how to understand the value",
+        ],
     )
     comparator__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comparator", title="Extension field for ``comparator``."
@@ -44,15 +63,21 @@ class Quantity(element.Element):
     system: fhirtypes.Uri = Field(
         None,
         alias="system",
-        title="Type `Uri`",
-        description="System that defines coded unit form",
+        title="System that defines coded unit form",
+        description=(
+            "The identification of the system that provides the coded form of the "
+            "unit."
+        ),
     )
     system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_system", title="Extension field for ``system``."
     )
 
     unit: fhirtypes.String = Field(
-        None, alias="unit", title="Type `String`", description="Unit representation"
+        None,
+        alias="unit",
+        title="Unit representation",
+        description="A human-readable form of the unit.",
     )
     unit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_unit", title="Extension field for ``unit``."
@@ -61,8 +86,11 @@ class Quantity(element.Element):
     value: fhirtypes.Decimal = Field(
         None,
         alias="value",
-        title="Type `Decimal`",
-        description="Numerical value (with implicit precision)",
+        title="Numerical value (with implicit precision)",
+        description=(
+            "The value of the measured amount. The value includes an implicit "
+            "precision in the presentation of the value."
+        ),
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."

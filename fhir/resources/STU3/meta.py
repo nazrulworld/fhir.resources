@@ -30,8 +30,8 @@ class Meta(element.Element):
     lastUpdated: fhirtypes.Instant = Field(
         None,
         alias="lastUpdated",
-        title="Type `Instant`",
-        description="When the resource version last changed",
+        title="When the resource version last changed",
+        description="When the resource last changed - e.g. when the version changed.",
     )
     lastUpdated__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastUpdated", title="Extension field for ``lastUpdated``."
@@ -40,8 +40,13 @@ class Meta(element.Element):
     profile: ListType[fhirtypes.Uri] = Field(
         None,
         alias="profile",
-        title="List of `Uri` items",
-        description="Profiles this resource claims to conform to",
+        title="Profiles this resource claims to conform to",
+        description=(
+            "A list of profiles (references to "
+            "[StructureDefinition](structuredefinition.html#) resources) that this "
+            "resource claims to conform to. The URL is a reference to "
+            "[StructureDefinition.url]()."
+        ),
     )
     profile__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_profile", title="Extension field for ``profile``."
@@ -50,22 +55,34 @@ class Meta(element.Element):
     security: ListType[fhirtypes.CodingType] = Field(
         None,
         alias="security",
-        title="List of `Coding` items (represented as `dict` in JSON)",
-        description="Security Labels applied to this resource",
+        title="Security Labels applied to this resource",
+        description=(
+            "Security labels applied to this resource. These tags connect specific "
+            "resources to the overall security policy and infrastructure."
+        ),
     )
 
     tag: ListType[fhirtypes.CodingType] = Field(
         None,
         alias="tag",
-        title="List of `Coding` items (represented as `dict` in JSON)",
-        description="Tags applied to this resource",
+        title="Tags applied to this resource",
+        description=(
+            "Tags applied to this resource. Tags are intended to be used to "
+            "identify and relate resources to process and workflow, and "
+            "applications are not required to consider the tags when interpreting "
+            "the meaning of a resource."
+        ),
     )
 
     versionId: fhirtypes.Id = Field(
         None,
         alias="versionId",
-        title="Type `Id`",
-        description="Version specific identifier",
+        title="Version specific identifier",
+        description=(
+            "The version specific identifier, as it appears in the version portion "
+            "of the URL. This values changes when the resource is created, updated,"
+            " or deleted."
+        ),
     )
     versionId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_versionId", title="Extension field for ``versionId``."

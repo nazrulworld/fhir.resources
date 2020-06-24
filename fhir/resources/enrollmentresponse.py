@@ -26,7 +26,13 @@ class EnrollmentResponse(domainresource.DomainResource):
     resource_type = Field("EnrollmentResponse", const=True)
 
     created: fhirtypes.DateTime = Field(
-        None, alias="created", title="Type `DateTime`", description="Creation date"
+        None,
+        alias="created",
+        title="Creation date",
+        description=(
+            "The date when the enclosed suite of services were performed or "
+            "completed."
+        ),
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_created", title="Extension field for ``created``."
@@ -35,8 +41,8 @@ class EnrollmentResponse(domainresource.DomainResource):
     disposition: fhirtypes.String = Field(
         None,
         alias="disposition",
-        title="Type `String`",
-        description="Disposition Message",
+        title="Disposition Message",
+        description="A description of the status of the adjudication.",
     )
     disposition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_disposition", title="Extension field for ``disposition``."
@@ -45,25 +51,27 @@ class EnrollmentResponse(domainresource.DomainResource):
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Business Identifier",
+        title="Business Identifier",
+        description="The Response business identifier.",
     )
 
     organization: fhirtypes.ReferenceType = Field(
         None,
         alias="organization",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Insurer",
+        title="Insurer",
+        description="The Insurer who produced this adjudicated response.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     outcome: fhirtypes.Code = Field(
         None,
         alias="outcome",
-        title="Type `Code`",
-        description="queued | complete | error | partial",
+        title="queued | complete | error | partial",
+        description="Processing status: error, complete.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["queued", "complete", "error", "partial"],
     )
     outcome__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_outcome", title="Extension field for ``outcome``."
@@ -72,28 +80,32 @@ class EnrollmentResponse(domainresource.DomainResource):
     request: fhirtypes.ReferenceType = Field(
         None,
         alias="request",
-        title=(
-            "Type `Reference` referencing `EnrollmentRequest` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Claim reference",
+        title="Claim reference",
+        description="Original request resource reference.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["EnrollmentRequest"],
     )
 
     requestProvider: fhirtypes.ReferenceType = Field(
         None,
         alias="requestProvider",
-        title=(
-            "Type `Reference` referencing `Practitioner, PractitionerRole, "
-            "Organization` (represented as `dict` in JSON)"
+        title="Responsible practitioner",
+        description=(
+            "The practitioner who is responsible for the services rendered to the "
+            "patient."
         ),
-        description="Responsible practitioner",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code`",
-        description="active | cancelled | draft | entered-in-error",
+        title="active | cancelled | draft | entered-in-error",
+        description="The status of the resource instance.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["active", "cancelled", "draft", "entered-in-error"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."

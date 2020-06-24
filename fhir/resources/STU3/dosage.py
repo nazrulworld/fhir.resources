@@ -29,16 +29,21 @@ class Dosage(element.Element):
     additionalInstruction: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="additionalInstruction",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description='Supplemental instruction - e.g. "with meals"',
+        title='Supplemental instruction - e.g. "with meals"',
+        description=None,
     )
 
     asNeededBoolean: bool = Field(
         None,
         alias="asNeededBoolean",
-        title="Type `bool`",
-        description='Take "as needed" (for x)',
-        one_of_many="asNeeded",  # Choice of Data Types. i.e value[x]
+        title='Take "as needed" (for x)',
+        description=(
+            "Indicates whether the Medication is only taken when needed within a "
+            "specific dosing schedule (Boolean option), or it indicates the "
+            "precondition for taking the Medication (CodeableConcept)."
+        ),
+        # Choice of Data Types. i.e asNeeded[x]
+        one_of_many="asNeeded",
         one_of_many_required=False,
     )
     asNeededBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -48,63 +53,70 @@ class Dosage(element.Element):
     asNeededCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="asNeededCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description='Take "as needed" (for x)',
-        one_of_many="asNeeded",  # Choice of Data Types. i.e value[x]
+        title='Take "as needed" (for x)',
+        description=(
+            "Indicates whether the Medication is only taken when needed within a "
+            "specific dosing schedule (Boolean option), or it indicates the "
+            "precondition for taking the Medication (CodeableConcept)."
+        ),
+        # Choice of Data Types. i.e asNeeded[x]
+        one_of_many="asNeeded",
         one_of_many_required=False,
     )
 
     doseQuantity: fhirtypes.QuantityType = Field(
         None,
         alias="doseQuantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Amount of medication per dose",
-        one_of_many="dose",  # Choice of Data Types. i.e value[x]
+        title="Amount of medication per dose",
+        description=None,
+        # Choice of Data Types. i.e dose[x]
+        one_of_many="dose",
         one_of_many_required=False,
     )
 
     doseRange: fhirtypes.RangeType = Field(
         None,
         alias="doseRange",
-        title="Type `Range` (represented as `dict` in JSON)",
-        description="Amount of medication per dose",
-        one_of_many="dose",  # Choice of Data Types. i.e value[x]
+        title="Amount of medication per dose",
+        description=None,
+        # Choice of Data Types. i.e dose[x]
+        one_of_many="dose",
         one_of_many_required=False,
     )
 
     maxDosePerAdministration: fhirtypes.QuantityType = Field(
         None,
         alias="maxDosePerAdministration",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Upper limit on medication per administration",
+        title="Upper limit on medication per administration",
+        description=None,
     )
 
     maxDosePerLifetime: fhirtypes.QuantityType = Field(
         None,
         alias="maxDosePerLifetime",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Upper limit on medication per lifetime of the patient",
+        title="Upper limit on medication per lifetime of the patient",
+        description=None,
     )
 
     maxDosePerPeriod: fhirtypes.RatioType = Field(
         None,
         alias="maxDosePerPeriod",
-        title="Type `Ratio` (represented as `dict` in JSON)",
-        description="Upper limit on medication per unit of time",
+        title="Upper limit on medication per unit of time",
+        description=None,
     )
 
     method: fhirtypes.CodeableConceptType = Field(
         None,
         alias="method",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Technique for administering medication",
+        title="Technique for administering medication",
+        description=None,
     )
 
     patientInstruction: fhirtypes.String = Field(
         None,
         alias="patientInstruction",
-        title="Type `String`",
-        description="Patient or consumer oriented instructions",
+        title="Patient or consumer oriented instructions",
+        description="Instructions in terms that are understood by the patient or consumer.",
     )
     patientInstruction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -115,59 +127,59 @@ class Dosage(element.Element):
     rateQuantity: fhirtypes.QuantityType = Field(
         None,
         alias="rateQuantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Amount of medication per unit of time",
-        one_of_many="rate",  # Choice of Data Types. i.e value[x]
+        title="Amount of medication per unit of time",
+        description=None,
+        # Choice of Data Types. i.e rate[x]
+        one_of_many="rate",
         one_of_many_required=False,
     )
 
     rateRange: fhirtypes.RangeType = Field(
         None,
         alias="rateRange",
-        title="Type `Range` (represented as `dict` in JSON)",
-        description="Amount of medication per unit of time",
-        one_of_many="rate",  # Choice of Data Types. i.e value[x]
+        title="Amount of medication per unit of time",
+        description=None,
+        # Choice of Data Types. i.e rate[x]
+        one_of_many="rate",
         one_of_many_required=False,
     )
 
     rateRatio: fhirtypes.RatioType = Field(
         None,
         alias="rateRatio",
-        title="Type `Ratio` (represented as `dict` in JSON)",
-        description="Amount of medication per unit of time",
-        one_of_many="rate",  # Choice of Data Types. i.e value[x]
+        title="Amount of medication per unit of time",
+        description=None,
+        # Choice of Data Types. i.e rate[x]
+        one_of_many="rate",
         one_of_many_required=False,
     )
 
     route: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="route",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="How drug should enter body",
+        None, alias="route", title="How drug should enter body", description=None,
     )
 
     sequence: fhirtypes.Integer = Field(
         None,
         alias="sequence",
-        title="Type `Integer`",
-        description="The order of the dosage instructions",
+        title="The order of the dosage instructions",
+        description=(
+            "Indicates the order in which the dosage instructions should be applied"
+            " or interpreted."
+        ),
     )
     sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
     site: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="site",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Body site to administer to",
+        None, alias="site", title="Body site to administer to", description=None,
     )
 
     text: fhirtypes.String = Field(
         None,
         alias="text",
-        title="Type `String`",
-        description="Free text dosage instructions e.g. SIG",
+        title="Free text dosage instructions e.g. SIG",
+        description=None,
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_text", title="Extension field for ``text``."
@@ -176,8 +188,8 @@ class Dosage(element.Element):
     timing: fhirtypes.TimingType = Field(
         None,
         alias="timing",
-        title="Type `Timing` (represented as `dict` in JSON)",
-        description="When medication should be administered",
+        title="When medication should be administered",
+        description=None,
     )
 
     @root_validator(pre=True)

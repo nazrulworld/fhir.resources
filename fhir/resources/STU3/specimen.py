@@ -28,60 +28,73 @@ class Specimen(domainresource.DomainResource):
     accessionIdentifier: fhirtypes.IdentifierType = Field(
         None,
         alias="accessionIdentifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Identifier assigned by the lab",
+        title="Identifier assigned by the lab",
+        description=(
+            "The identifier assigned by the lab when accessioning specimen(s). This"
+            " is not necessarily the same as the specimen identifier, depending on "
+            "local lab procedures."
+        ),
     )
 
     collection: fhirtypes.SpecimenCollectionType = Field(
         None,
         alias="collection",
-        title="Type `SpecimenCollection` (represented as `dict` in JSON)",
-        description="Collection details",
+        title="Collection details",
+        description="Details concerning the specimen collection.",
     )
 
     container: ListType[fhirtypes.SpecimenContainerType] = Field(
         None,
         alias="container",
-        title="List of `SpecimenContainer` items (represented as `dict` in JSON)",
-        description="Direct container of specimen (tube/slide, etc.)",
+        title="Direct container of specimen (tube/slide, etc.)",
+        description=(
+            "The container holding the specimen.  The recursive nature of "
+            "containers; i.e. blood in tube in tray in rack is not addressed here."
+        ),
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="External Identifier",
+        title="External Identifier",
+        description="Id for specimen.",
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
-        title="List of `Annotation` items (represented as `dict` in JSON)",
-        description="Comments",
+        title="Comments",
+        description=(
+            "To communicate any details or issues about the specimen or during the "
+            "specimen collection. (for example: broken vial, sent with patient, "
+            "frozen)."
+        ),
     )
 
     parent: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="parent",
-        title=(
-            "List of `Reference` items referencing `Specimen` (represented as "
-            "`dict` in JSON)"
+        title="Specimen from which this specimen originated",
+        description=(
+            "Reference to the parent (source) specimen which is used when the "
+            "specimen was either derived from or a component of another specimen."
         ),
-        description="Specimen from which this specimen originated",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Specimen"],
     )
 
     processing: ListType[fhirtypes.SpecimenProcessingType] = Field(
         None,
         alias="processing",
-        title="List of `SpecimenProcessing` items (represented as `dict` in JSON)",
-        description="Processing and processing step details",
+        title="Processing and processing step details",
+        description="Details concerning processing and processing steps for the specimen.",
     )
 
     receivedTime: fhirtypes.DateTime = Field(
         None,
         alias="receivedTime",
-        title="Type `DateTime`",
-        description="The time when specimen was received for processing",
+        title="The time when specimen was received for processing",
+        description="Time when specimen was received for processing or testing.",
     )
     receivedTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_receivedTime", title="Extension field for ``receivedTime``."
@@ -90,18 +103,23 @@ class Specimen(domainresource.DomainResource):
     request: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="request",
-        title=(
-            "List of `Reference` items referencing `ProcedureRequest` (represented "
-            "as `dict` in JSON)"
+        title="Why the specimen was collected",
+        description=(
+            "Details concerning a test or procedure request that required a "
+            "specimen to be collected."
         ),
-        description="Why the specimen was collected",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ProcedureRequest"],
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code`",
-        description="available | unavailable | unsatisfactory | entered-in-error",
+        title="available | unavailable | unsatisfactory | entered-in-error",
+        description="The availability of the specimen.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["available", "unavailable", "unsatisfactory", "entered-in-error"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -111,20 +129,19 @@ class Specimen(domainresource.DomainResource):
         ...,
         alias="subject",
         title=(
-            "Type `Reference` referencing `Patient, Group, Device, Substance` "
-            "(represented as `dict` in JSON)"
-        ),
-        description=(
             "Where the specimen came from. This may be from the patient(s) or from "
             "the environment or a device"
         ),
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "Group", "Device", "Substance"],
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Kind of material that forms the specimen",
+        title="Kind of material that forms the specimen",
+        description="The kind of material that forms the specimen.",
     )
 
 
@@ -142,16 +159,24 @@ class SpecimenCollection(backboneelement.BackboneElement):
     bodySite: fhirtypes.CodeableConceptType = Field(
         None,
         alias="bodySite",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Anatomical collection site",
+        title="Anatomical collection site",
+        description=(
+            "Anatomical location from which the specimen was collected (if subject "
+            "is a patient). This is the target site.  This element is not used for "
+            "environmental specimens."
+        ),
     )
 
     collectedDateTime: fhirtypes.DateTime = Field(
         None,
         alias="collectedDateTime",
-        title="Type `DateTime`",
-        description="Collection time",
-        one_of_many="collected",  # Choice of Data Types. i.e value[x]
+        title="Collection time",
+        description=(
+            "Time when specimen was collected from subject - the physiologically "
+            "relevant time."
+        ),
+        # Choice of Data Types. i.e collected[x]
+        one_of_many="collected",
         one_of_many_required=False,
     )
     collectedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -163,34 +188,43 @@ class SpecimenCollection(backboneelement.BackboneElement):
     collectedPeriod: fhirtypes.PeriodType = Field(
         None,
         alias="collectedPeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Collection time",
-        one_of_many="collected",  # Choice of Data Types. i.e value[x]
+        title="Collection time",
+        description=(
+            "Time when specimen was collected from subject - the physiologically "
+            "relevant time."
+        ),
+        # Choice of Data Types. i.e collected[x]
+        one_of_many="collected",
         one_of_many_required=False,
     )
 
     collector: fhirtypes.ReferenceType = Field(
         None,
         alias="collector",
-        title=(
-            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Who collected the specimen",
+        title="Who collected the specimen",
+        description="Person who collected the specimen.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner"],
     )
 
     method: fhirtypes.CodeableConceptType = Field(
         None,
         alias="method",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Technique used to perform collection",
+        title="Technique used to perform collection",
+        description=(
+            "A coded value specifying the technique that is used to perform the "
+            "procedure."
+        ),
     )
 
     quantity: fhirtypes.QuantityType = Field(
         None,
         alias="quantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="The quantity of specimen collected",
+        title="The quantity of specimen collected",
+        description=(
+            "The quantity of specimen collected; for instance the volume of a blood"
+            " sample, or the physical measurement of an anatomic pathology sample."
+        ),
     )
 
     @root_validator(pre=True)
@@ -245,36 +279,43 @@ class SpecimenContainer(backboneelement.BackboneElement):
     additiveCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="additiveCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Additive associated with container",
-        one_of_many="additive",  # Choice of Data Types. i.e value[x]
+        title="Additive associated with container",
+        description=(
+            "Introduced substance to preserve, maintain or enhance the specimen. "
+            "Examples: Formalin, Citrate, EDTA."
+        ),
+        # Choice of Data Types. i.e additive[x]
+        one_of_many="additive",
         one_of_many_required=False,
     )
 
     additiveReference: fhirtypes.ReferenceType = Field(
         None,
         alias="additiveReference",
-        title=(
-            "Type `Reference` referencing `Substance` (represented as `dict` in "
-            "JSON)"
+        title="Additive associated with container",
+        description=(
+            "Introduced substance to preserve, maintain or enhance the specimen. "
+            "Examples: Formalin, Citrate, EDTA."
         ),
-        description="Additive associated with container",
-        one_of_many="additive",  # Choice of Data Types. i.e value[x]
+        # Choice of Data Types. i.e additive[x]
+        one_of_many="additive",
         one_of_many_required=False,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Substance"],
     )
 
     capacity: fhirtypes.QuantityType = Field(
         None,
         alias="capacity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Container volume or size",
+        title="Container volume or size",
+        description="The capacity (volume or other measure) the container may contain.",
     )
 
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Textual description of the container",
+        title="Textual description of the container",
+        description=None,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -283,22 +324,32 @@ class SpecimenContainer(backboneelement.BackboneElement):
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Id for the container",
+        title="Id for the container",
+        description=(
+            "Id for container. There may be multiple; a manufacturer's bar code, "
+            "lab assigned identifier, etc. The container ID may differ from the "
+            "specimen id in some circumstances."
+        ),
     )
 
     specimenQuantity: fhirtypes.QuantityType = Field(
         None,
         alias="specimenQuantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Quantity of specimen within container",
+        title="Quantity of specimen within container",
+        description=(
+            "The quantity of specimen in the container; may be volume, dimensions, "
+            "or other appropriate measurements, depending on the specimen type."
+        ),
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Kind of container directly associated with specimen",
+        title="Kind of container directly associated with specimen",
+        description=(
+            "The type of container associated with the specimen (e.g. slide, "
+            "aliquot, etc.)."
+        ),
     )
 
     @root_validator(pre=True)
@@ -354,18 +405,17 @@ class SpecimenProcessing(backboneelement.BackboneElement):
     additive: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="additive",
-        title=(
-            "List of `Reference` items referencing `Substance` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Material used in the processing step",
+        title="Material used in the processing step",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Substance"],
     )
 
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Textual description of procedure",
+        title="Textual description of procedure",
+        description=None,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -374,16 +424,21 @@ class SpecimenProcessing(backboneelement.BackboneElement):
     procedure: fhirtypes.CodeableConceptType = Field(
         None,
         alias="procedure",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Indicates the treatment step  applied to the specimen",
+        title="Indicates the treatment step  applied to the specimen",
+        description="A coded value specifying the procedure used to process the specimen.",
     )
 
     timeDateTime: fhirtypes.DateTime = Field(
         None,
         alias="timeDateTime",
-        title="Type `DateTime`",
-        description="Date and time of specimen processing",
-        one_of_many="time",  # Choice of Data Types. i.e value[x]
+        title="Date and time of specimen processing",
+        description=(
+            "A record of the time or period when the specimen processing occurred."
+            "  For example the time of sample fixation or the period of time the "
+            "sample was in formalin."
+        ),
+        # Choice of Data Types. i.e time[x]
+        one_of_many="time",
         one_of_many_required=False,
     )
     timeDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -393,9 +448,14 @@ class SpecimenProcessing(backboneelement.BackboneElement):
     timePeriod: fhirtypes.PeriodType = Field(
         None,
         alias="timePeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Date and time of specimen processing",
-        one_of_many="time",  # Choice of Data Types. i.e value[x]
+        title="Date and time of specimen processing",
+        description=(
+            "A record of the time or period when the specimen processing occurred."
+            "  For example the time of sample fixation or the period of time the "
+            "sample was in formalin."
+        ),
+        # Choice of Data Types. i.e time[x]
+        one_of_many="time",
         one_of_many_required=False,
     )
 

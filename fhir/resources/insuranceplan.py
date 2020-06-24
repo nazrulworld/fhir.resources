@@ -27,18 +27,24 @@ class InsurancePlan(domainresource.DomainResource):
     administeredBy: fhirtypes.ReferenceType = Field(
         None,
         alias="administeredBy",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
+        title="Product administrator",
+        description=(
+            "An organization which administer other services such as underwriting, "
+            "customer service and/or claims processing on behalf of the health "
+            "insurance product owner."
         ),
-        description="Product administrator",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     alias: ListType[fhirtypes.String] = Field(
         None,
         alias="alias",
-        title="List of `String` items",
-        description="Alternate names",
+        title="Alternate names",
+        description=(
+            "A list of alternate names that the product is known as, or was known "
+            "as in the past."
+        ),
     )
     alias__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_alias", title="Extension field for ``alias``."
@@ -47,46 +53,60 @@ class InsurancePlan(domainresource.DomainResource):
     contact: ListType[fhirtypes.InsurancePlanContactType] = Field(
         None,
         alias="contact",
-        title="List of `InsurancePlanContact` items (represented as `dict` in JSON)",
-        description="Contact for the product",
+        title="Contact for the product",
+        description="The contact for the health insurance product for a certain purpose.",
     )
 
     coverage: ListType[fhirtypes.InsurancePlanCoverageType] = Field(
         None,
         alias="coverage",
-        title="List of `InsurancePlanCoverage` items (represented as `dict` in JSON)",
-        description="Coverage details",
+        title="Coverage details",
+        description="Details about the coverage offered by the insurance product.",
     )
 
     coverageArea: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="coverageArea",
-        title=(
-            "List of `Reference` items referencing `Location` (represented as "
-            "`dict` in JSON)"
+        title="Where product applies",
+        description=(
+            "The geographic region in which a health insurance product's benefits "
+            "apply."
         ),
-        description="Where product applies",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Location"],
     )
 
     endpoint: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="endpoint",
-        title=(
-            "List of `Reference` items referencing `Endpoint` (represented as "
-            "`dict` in JSON)"
+        title="Technical endpoint",
+        description=(
+            "The technical endpoints providing access to services operated for the "
+            "health insurance product."
         ),
-        description="Technical endpoint",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Endpoint"],
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Business Identifier for Product",
+        title="Business Identifier for Product",
+        description=(
+            "Business identifiers assigned to this health insurance product which "
+            "remain constant as the resource is updated and propagates from server "
+            "to server."
+        ),
     )
 
     name: fhirtypes.String = Field(
-        None, alias="name", title="Type `String`", description="Official name"
+        None,
+        alias="name",
+        title="Official name",
+        description=(
+            "Official name of the health insurance product as designated by the "
+            "owner."
+        ),
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -95,42 +115,48 @@ class InsurancePlan(domainresource.DomainResource):
     network: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="network",
-        title=(
-            "List of `Reference` items referencing `Organization` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="What networks are Included",
+        title="What networks are Included",
+        description="Reference to the network included in the health insurance product.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     ownedBy: fhirtypes.ReferenceType = Field(
         None,
         alias="ownedBy",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
+        title="Plan issuer",
+        description=(
+            "The entity that is providing  the health insurance product and "
+            "underwriting the risk.  This is typically an insurance carriers, other"
+            " third-party payers, or health plan sponsors comonly referred to as "
+            "'payers'."
         ),
-        description="Plan issuer",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="When the product is available",
+        title="When the product is available",
+        description="The period of time that the health insurance product is available.",
     )
 
     plan: ListType[fhirtypes.InsurancePlanPlanType] = Field(
         None,
         alias="plan",
-        title="List of `InsurancePlanPlan` items (represented as `dict` in JSON)",
-        description="Plan details",
+        title="Plan details",
+        description="Details about an insurance plan.",
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code`",
-        description="draft | active | retired | unknown",
+        title="draft | active | retired | unknown",
+        description="The current state of the health insurance product.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["draft", "active", "retired", "unknown"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -139,8 +165,8 @@ class InsurancePlan(domainresource.DomainResource):
     type: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="type",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Kind of product",
+        title="Kind of product",
+        description="The kind of health insurance product.",
     )
 
 
@@ -158,29 +184,32 @@ class InsurancePlanContact(backboneelement.BackboneElement):
     address: fhirtypes.AddressType = Field(
         None,
         alias="address",
-        title="Type `Address` (represented as `dict` in JSON)",
-        description="Visiting or postal addresses for the contact",
+        title="Visiting or postal addresses for the contact",
+        description=None,
     )
 
     name: fhirtypes.HumanNameType = Field(
         None,
         alias="name",
-        title="Type `HumanName` (represented as `dict` in JSON)",
-        description="A name associated with the contact",
+        title="A name associated with the contact",
+        description=None,
     )
 
     purpose: fhirtypes.CodeableConceptType = Field(
         None,
         alias="purpose",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The type of contact",
+        title="The type of contact",
+        description="Indicates a purpose for which the contact can be reached.",
     )
 
     telecom: ListType[fhirtypes.ContactPointType] = Field(
         None,
         alias="telecom",
-        title="List of `ContactPoint` items (represented as `dict` in JSON)",
-        description="Contact details (telephone, email, etc.)  for a contact",
+        title="Contact details (telephone, email, etc.)  for a contact",
+        description=(
+            "A contact detail (e.g. a telephone number or an email address) by "
+            "which the party may be contacted."
+        ),
     )
 
 
@@ -198,28 +227,27 @@ class InsurancePlanCoverage(backboneelement.BackboneElement):
     benefit: ListType[fhirtypes.InsurancePlanCoverageBenefitType] = Field(
         ...,
         alias="benefit",
-        title=(
-            "List of `InsurancePlanCoverageBenefit` items (represented as `dict` in"
-            " JSON)"
-        ),
-        description="List of benefits",
+        title="List of benefits",
+        description="Specific benefits under this type of coverage.",
     )
 
     network: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="network",
-        title=(
-            "List of `Reference` items referencing `Organization` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="What networks provide coverage",
+        title="What networks provide coverage",
+        description="Reference to the network that providing the type of coverage.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type of coverage",
+        title="Type of coverage",
+        description=(
+            "Type of coverage  (Medical; Dental; Mental Health; Substance Abuse; "
+            "Vision; Drug; Short Term; Long Term Care; Hospice; Home Health)."
+        ),
     )
 
 
@@ -237,18 +265,15 @@ class InsurancePlanCoverageBenefit(backboneelement.BackboneElement):
     limit: ListType[fhirtypes.InsurancePlanCoverageBenefitLimitType] = Field(
         None,
         alias="limit",
-        title=(
-            "List of `InsurancePlanCoverageBenefitLimit` items (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Benefit limits",
+        title="Benefit limits",
+        description="The specific limits on the benefit.",
     )
 
     requirement: fhirtypes.String = Field(
         None,
         alias="requirement",
-        title="Type `String`",
-        description="Referral requirements",
+        title="Referral requirements",
+        description="The referral requirements to have access/coverage for this benefit.",
     )
     requirement__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_requirement", title="Extension field for ``requirement``."
@@ -257,8 +282,10 @@ class InsurancePlanCoverageBenefit(backboneelement.BackboneElement):
     type: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type of benefit",
+        title="Type of benefit",
+        description=(
+            "Type of benefit (primary care; speciality care; inpatient; " "outpatient)."
+        ),
     )
 
 
@@ -276,15 +303,18 @@ class InsurancePlanCoverageBenefitLimit(backboneelement.BackboneElement):
     code: fhirtypes.CodeableConceptType = Field(
         None,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Benefit limit details",
+        title="Benefit limit details",
+        description="The specific limit on the benefit.",
     )
 
     value: fhirtypes.QuantityType = Field(
         None,
         alias="value",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Maximum value allowed",
+        title="Maximum value allowed",
+        description=(
+            "The maximum amount of a service item a plan will pay for a covered "
+            "benefit.  For examples. wellness visits, or eyeglasses."
+        ),
     )
 
 
@@ -302,55 +332,54 @@ class InsurancePlanPlan(backboneelement.BackboneElement):
     coverageArea: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="coverageArea",
-        title=(
-            "List of `Reference` items referencing `Location` (represented as "
-            "`dict` in JSON)"
+        title="Where product applies",
+        description=(
+            "The geographic region in which a health insurance plan's benefits "
+            "apply."
         ),
-        description="Where product applies",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Location"],
     )
 
     generalCost: ListType[fhirtypes.InsurancePlanPlanGeneralCostType] = Field(
         None,
         alias="generalCost",
-        title=(
-            "List of `InsurancePlanPlanGeneralCost` items (represented as `dict` in"
-            " JSON)"
-        ),
-        description="Overall costs",
+        title="Overall costs",
+        description="Overall costs associated with the plan.",
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Business Identifier for Product",
+        title="Business Identifier for Product",
+        description=(
+            "Business identifiers assigned to this health insurance plan which "
+            "remain constant as the resource is updated and propagates from server "
+            "to server."
+        ),
     )
 
     network: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="network",
-        title=(
-            "List of `Reference` items referencing `Organization` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="What networks provide coverage",
+        title="What networks provide coverage",
+        description="Reference to the network that providing the type of coverage.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     specificCost: ListType[fhirtypes.InsurancePlanPlanSpecificCostType] = Field(
         None,
         alias="specificCost",
-        title=(
-            "List of `InsurancePlanPlanSpecificCost` items (represented as `dict` "
-            "in JSON)"
-        ),
-        description="Specific costs",
+        title="Specific costs",
+        description="Costs associated with the coverage provided by the product.",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type of plan",
+        title="Type of plan",
+        description='Type of plan. For example, "Platinum" or "High Deductable".',
     )
 
 
@@ -368,35 +397,32 @@ class InsurancePlanPlanGeneralCost(backboneelement.BackboneElement):
     comment: fhirtypes.String = Field(
         None,
         alias="comment",
-        title="Type `String`",
-        description="Additional cost information",
+        title="Additional cost information",
+        description=(
+            "Additional information about the general costs associated with this "
+            "plan."
+        ),
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comment", title="Extension field for ``comment``."
     )
 
     cost: fhirtypes.MoneyType = Field(
-        None,
-        alias="cost",
-        title="Type `Money` (represented as `dict` in JSON)",
-        description="Cost value",
+        None, alias="cost", title="Cost value", description="Value of the cost.",
     )
 
     groupSize: fhirtypes.PositiveInt = Field(
         None,
         alias="groupSize",
-        title="Type `PositiveInt`",
-        description="Number of enrollees",
+        title="Number of enrollees",
+        description="Number of participants enrolled in the plan.",
     )
     groupSize__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_groupSize", title="Extension field for ``groupSize``."
     )
 
     type: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type of cost",
+        None, alias="type", title="Type of cost", description=None,
     )
 
 
@@ -414,18 +440,18 @@ class InsurancePlanPlanSpecificCost(backboneelement.BackboneElement):
     benefit: ListType[fhirtypes.InsurancePlanPlanSpecificCostBenefitType] = Field(
         None,
         alias="benefit",
-        title=(
-            "List of `InsurancePlanPlanSpecificCostBenefit` items (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Benefits list",
+        title="Benefits list",
+        description="List of the specific benefits under this category of benefit.",
     )
 
     category: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="category",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="General category of benefit",
+        title="General category of benefit",
+        description=(
+            "General category of benefit (Medical; Dental; Vision; Drug; Mental "
+            "Health; Substance Abuse; Hospice, Home Health)."
+        ),
     )
 
 
@@ -443,18 +469,19 @@ class InsurancePlanPlanSpecificCostBenefit(backboneelement.BackboneElement):
     cost: ListType[fhirtypes.InsurancePlanPlanSpecificCostBenefitCostType] = Field(
         None,
         alias="cost",
-        title=(
-            "List of `InsurancePlanPlanSpecificCostBenefitCost` items (represented "
-            "as `dict` in JSON)"
-        ),
-        description="List of the costs",
+        title="List of the costs",
+        description="List of the costs associated with a specific benefit.",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type of specific benefit",
+        title="Type of specific benefit",
+        description=(
+            "Type of specific benefit (preventative; primary care office visit; "
+            "speciality office visit; hospitalization; emergency room; urgent "
+            "care)."
+        ),
     )
 
 
@@ -472,27 +499,39 @@ class InsurancePlanPlanSpecificCostBenefitCost(backboneelement.BackboneElement):
     applicability: fhirtypes.CodeableConceptType = Field(
         None,
         alias="applicability",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="in-network | out-of-network | other",
+        title="in-network | out-of-network | other",
+        description=(
+            "Whether the cost applies to in-network or out-of-network providers "
+            "(in-network; out-of-network; other)."
+        ),
     )
 
     qualifiers: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="qualifiers",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Additional information about the cost",
+        title="Additional information about the cost",
+        description=(
+            "Additional information about the cost, such as information about "
+            "funding sources (e.g. HSA, HRA, FSA, RRA)."
+        ),
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type of cost",
+        title="Type of cost",
+        description=(
+            "Type of cost (copay; individual cap; family cap; coinsurance; "
+            "deductible)."
+        ),
     )
 
     value: fhirtypes.QuantityType = Field(
         None,
         alias="value",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="The actual cost value",
+        title="The actual cost value",
+        description=(
+            "The actual cost value. (some of the costs may be represented as "
+            "percentages rather than currency, e.g. 10% coinsurance)."
+        ),
     )

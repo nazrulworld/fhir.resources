@@ -38,45 +38,53 @@ class Provenance(domainresource.DomainResource):
     activity: fhirtypes.CodingType = Field(
         None,
         alias="activity",
-        title="Type `Coding` (represented as `dict` in JSON)",
-        description="Activity that occurred",
+        title="Activity that occurred",
+        description=(
+            "An activity is something that occurs over a period of time and acts "
+            "upon or with entities; it may include consuming, processing, "
+            "transforming, modifying, relocating, using, or generating entities."
+        ),
     )
 
     agent: ListType[fhirtypes.ProvenanceAgentType] = Field(
         ...,
         alias="agent",
-        title="List of `ProvenanceAgent` items (represented as `dict` in JSON)",
-        description="Actor involved",
+        title="Actor involved",
+        description=(
+            "An actor taking a role in an activity  for which it can be assigned "
+            "some degree of responsibility for the activity taking place."
+        ),
     )
 
     entity: ListType[fhirtypes.ProvenanceEntityType] = Field(
-        None,
-        alias="entity",
-        title="List of `ProvenanceEntity` items (represented as `dict` in JSON)",
-        description="An entity used in this activity",
+        None, alias="entity", title="An entity used in this activity", description=None,
     )
 
     location: fhirtypes.ReferenceType = Field(
         None,
         alias="location",
-        title=(
-            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
-        ),
-        description="Where the activity occurred, if relevant",
+        title="Where the activity occurred, if relevant",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Location"],
     )
 
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="When the activity occurred",
+        title="When the activity occurred",
+        description="The period during which the activity occurred.",
     )
 
     policy: ListType[fhirtypes.Uri] = Field(
         None,
         alias="policy",
-        title="List of `Uri` items",
-        description="Policy or plan the activity was defined by",
+        title="Policy or plan the activity was defined by",
+        description=(
+            "Policy or plan the activity was defined by. Typically, a single "
+            "activity may have multiple applicable policy documents, such as "
+            "patient consent, guarantor funding, etc."
+        ),
     )
     policy__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_policy", title="Extension field for ``policy``."
@@ -85,15 +93,15 @@ class Provenance(domainresource.DomainResource):
     reason: ListType[fhirtypes.CodingType] = Field(
         None,
         alias="reason",
-        title="List of `Coding` items (represented as `dict` in JSON)",
-        description="Reason the activity is occurring",
+        title="Reason the activity is occurring",
+        description="The reason that the activity was taking place.",
     )
 
     recorded: fhirtypes.Instant = Field(
         ...,
         alias="recorded",
-        title="Type `Instant`",
-        description="When the activity was recorded / updated",
+        title="When the activity was recorded / updated",
+        description="The instant of time at which the activity was recorded.",
     )
     recorded__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_recorded", title="Extension field for ``recorded``."
@@ -102,18 +110,25 @@ class Provenance(domainresource.DomainResource):
     signature: ListType[fhirtypes.SignatureType] = Field(
         None,
         alias="signature",
-        title="List of `Signature` items (represented as `dict` in JSON)",
-        description="Signature on target",
+        title="Signature on target",
+        description=(
+            "A digital signature on the target Reference(s). The signer should "
+            "match a Provenance.agent. The purpose of the signature is indicated."
+        ),
     )
 
     target: ListType[fhirtypes.ReferenceType] = Field(
         ...,
         alias="target",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
+        title="Target Reference(s) (usually version specific)",
+        description=(
+            "The Reference(s) that were generated or updated by  the activity "
+            "described in this resource. A provenance can point to more than one "
+            "target if multiple resources were created/updated by the same "
+            "activity."
         ),
-        description="Target Reference(s) (usually version specific)",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
 
@@ -132,21 +147,28 @@ class ProvenanceAgent(backboneelement.BackboneElement):
     onBehalfOfReference: fhirtypes.ReferenceType = Field(
         None,
         alias="onBehalfOfReference",
-        title=(
-            "Type `Reference` referencing `Practitioner, RelatedPerson, Patient, "
-            "Device, Organization` (represented as `dict` in JSON)"
-        ),
-        description="Who the agent is representing",
-        one_of_many="onBehalfOf",  # Choice of Data Types. i.e value[x]
+        title="Who the agent is representing",
+        description="The individual, device, or organization for whom the change was made.",
+        # Choice of Data Types. i.e onBehalfOf[x]
+        one_of_many="onBehalfOf",
         one_of_many_required=False,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Practitioner",
+            "RelatedPerson",
+            "Patient",
+            "Device",
+            "Organization",
+        ],
     )
 
     onBehalfOfUri: fhirtypes.Uri = Field(
         None,
         alias="onBehalfOfUri",
-        title="Type `Uri`",
-        description="Who the agent is representing",
-        one_of_many="onBehalfOf",  # Choice of Data Types. i.e value[x]
+        title="Who the agent is representing",
+        description="The individual, device, or organization for whom the change was made.",
+        # Choice of Data Types. i.e onBehalfOf[x]
+        one_of_many="onBehalfOf",
         one_of_many_required=False,
     )
     onBehalfOfUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -156,35 +178,45 @@ class ProvenanceAgent(backboneelement.BackboneElement):
     relatedAgentType: fhirtypes.CodeableConceptType = Field(
         None,
         alias="relatedAgentType",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type of relationship between agents",
+        title="Type of relationship between agents",
+        description="The type of relationship between agents.",
     )
 
     role: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="role",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="What the agents role was",
+        title="What the agents role was",
+        description=(
+            "The function of the agent with respect to the activity. The security "
+            "role enabling the agent with respect to the activity."
+        ),
     )
 
     whoReference: fhirtypes.ReferenceType = Field(
         None,
         alias="whoReference",
-        title=(
-            "Type `Reference` referencing `Practitioner, RelatedPerson, Patient, "
-            "Device, Organization` (represented as `dict` in JSON)"
-        ),
-        description="Who participated",
-        one_of_many="who",  # Choice of Data Types. i.e value[x]
+        title="Who participated",
+        description="The individual, device or organization that participated in the event.",
+        # Choice of Data Types. i.e who[x]
+        one_of_many="who",
         one_of_many_required=True,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Practitioner",
+            "RelatedPerson",
+            "Patient",
+            "Device",
+            "Organization",
+        ],
     )
 
     whoUri: fhirtypes.Uri = Field(
         None,
         alias="whoUri",
-        title="Type `Uri`",
-        description="Who participated",
-        one_of_many="who",  # Choice of Data Types. i.e value[x]
+        title="Who participated",
+        description="The individual, device or organization that participated in the event.",
+        # Choice of Data Types. i.e who[x]
+        one_of_many="who",
         one_of_many_required=True,
     )
     whoUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -244,15 +276,23 @@ class ProvenanceEntity(backboneelement.BackboneElement):
     agent: ListType[fhirtypes.ProvenanceAgentType] = Field(
         None,
         alias="agent",
-        title="List of `ProvenanceAgent` items (represented as `dict` in JSON)",
-        description="Entity is attributed to this agent",
+        title="Entity is attributed to this agent",
+        description=(
+            "The entity is attributed to an agent to express the agent's "
+            "responsibility for that entity, possibly along with other agents. This"
+            " description can be understood as shorthand for saying that the agent "
+            "was responsible for the activity which generated the entity."
+        ),
     )
 
     role: fhirtypes.Code = Field(
         ...,
         alias="role",
-        title="Type `Code`",
-        description="derivation | revision | quotation | source | removal",
+        title="derivation | revision | quotation | source | removal",
+        description="How the entity was used during the activity.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["derivation", "revision", "quotation", "source", "removal"],
     )
     role__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_role", title="Extension field for ``role``."
@@ -261,29 +301,41 @@ class ProvenanceEntity(backboneelement.BackboneElement):
     whatIdentifier: fhirtypes.IdentifierType = Field(
         None,
         alias="whatIdentifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Identity of entity",
-        one_of_many="what",  # Choice of Data Types. i.e value[x]
+        title="Identity of entity",
+        description=(
+            "Identity of the  Entity used. May be a logical or physical uri and "
+            "maybe absolute or relative."
+        ),
+        # Choice of Data Types. i.e what[x]
+        one_of_many="what",
         one_of_many_required=True,
     )
 
     whatReference: fhirtypes.ReferenceType = Field(
         None,
         alias="whatReference",
-        title=(
-            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        title="Identity of entity",
+        description=(
+            "Identity of the  Entity used. May be a logical or physical uri and "
+            "maybe absolute or relative."
         ),
-        description="Identity of entity",
-        one_of_many="what",  # Choice of Data Types. i.e value[x]
+        # Choice of Data Types. i.e what[x]
+        one_of_many="what",
         one_of_many_required=True,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     whatUri: fhirtypes.Uri = Field(
         None,
         alias="whatUri",
-        title="Type `Uri`",
-        description="Identity of entity",
-        one_of_many="what",  # Choice of Data Types. i.e value[x]
+        title="Identity of entity",
+        description=(
+            "Identity of the  Entity used. May be a logical or physical uri and "
+            "maybe absolute or relative."
+        ),
+        # Choice of Data Types. i.e what[x]
+        one_of_many="what",
         one_of_many_required=True,
     )
     whatUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(

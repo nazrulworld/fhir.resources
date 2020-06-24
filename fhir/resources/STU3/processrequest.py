@@ -29,15 +29,24 @@ class ProcessRequest(domainresource.DomainResource):
     action: fhirtypes.Code = Field(
         None,
         alias="action",
-        title="Type `Code`",
-        description="cancel | poll | reprocess | status",
+        title="cancel | poll | reprocess | status",
+        description=(
+            "The type of processing action being requested, for example Reversal, "
+            "Readjudication, StatusRequest,PendedRequest."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["cancel", "poll", "reprocess", "status"],
     )
     action__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_action", title="Extension field for ``action``."
     )
 
     created: fhirtypes.DateTime = Field(
-        None, alias="created", title="Type `DateTime`", description="Creation date"
+        None,
+        alias="created",
+        title="Creation date",
+        description="The date when this resource was created.",
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_created", title="Extension field for ``created``."
@@ -46,8 +55,8 @@ class ProcessRequest(domainresource.DomainResource):
     exclude: ListType[fhirtypes.String] = Field(
         None,
         alias="exclude",
-        title="List of `String` items",
-        description="Resource type(s) to exclude",
+        title="Resource type(s) to exclude",
+        description="Names of resource types to exclude.",
     )
     exclude__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_exclude", title="Extension field for ``exclude``."
@@ -56,15 +65,15 @@ class ProcessRequest(domainresource.DomainResource):
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Business Identifier",
+        title="Business Identifier",
+        description="The ProcessRequest business identifier.",
     )
 
     include: ListType[fhirtypes.String] = Field(
         None,
         alias="include",
-        title="List of `String` items",
-        description="Resource type(s) to include",
+        title="Resource type(s) to include",
+        description="Names of resource types to include.",
     )
     include__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_include", title="Extension field for ``include``."
@@ -73,12 +82,18 @@ class ProcessRequest(domainresource.DomainResource):
     item: ListType[fhirtypes.ProcessRequestItemType] = Field(
         None,
         alias="item",
-        title="List of `ProcessRequestItem` items (represented as `dict` in JSON)",
-        description="Items to re-adjudicate",
+        title="Items to re-adjudicate",
+        description=(
+            "List of top level items to be re-adjudicated, if none specified then "
+            "the entire submission is re-adjudicated."
+        ),
     )
 
     nullify: bool = Field(
-        None, alias="nullify", title="Type `bool`", description="Remove history"
+        None,
+        alias="nullify",
+        title="Remove history",
+        description="If true remove all history excluding audit.",
     )
     nullify__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_nullify", title="Extension field for ``nullify``."
@@ -87,35 +102,42 @@ class ProcessRequest(domainresource.DomainResource):
     organization: fhirtypes.ReferenceType = Field(
         None,
         alias="organization",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
+        title="Responsible organization",
+        description=(
+            "The organization which is responsible for the action speccified in "
+            "this request."
         ),
-        description="Responsible organization",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Selection period",
+        title="Selection period",
+        description=(
+            "A period of time during which the fulfilling resources would have been"
+            " created."
+        ),
     )
 
     provider: fhirtypes.ReferenceType = Field(
         None,
         alias="provider",
-        title=(
-            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
-            "JSON)"
+        title="Responsible practitioner",
+        description=(
+            "The practitioner who is responsible for the action specified in this "
+            "request."
         ),
-        description="Responsible practitioner",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner"],
     )
 
     reference: fhirtypes.String = Field(
         None,
         alias="reference",
-        title="Type `String`",
-        description="Reference number/string",
+        title="Reference number/string",
+        description="A reference to supply which authenticates the process.",
     )
     reference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_reference", title="Extension field for ``reference``."
@@ -124,26 +146,32 @@ class ProcessRequest(domainresource.DomainResource):
     request: fhirtypes.ReferenceType = Field(
         None,
         alias="request",
-        title=(
-            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
-        ),
-        description="Reference to the Request resource",
+        title="Reference to the Request resource",
+        description="Reference of resource which is the target or subject of this action.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     response: fhirtypes.ReferenceType = Field(
         None,
         alias="response",
-        title=(
-            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        title="Reference to the Response resource",
+        description=(
+            "Reference of a prior response to resource which is the target or "
+            "subject of this action."
         ),
-        description="Reference to the Response resource",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code`",
-        description="active | cancelled | draft | entered-in-error",
+        title="active | cancelled | draft | entered-in-error",
+        description="The status of the resource instance.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["active", "cancelled", "draft", "entered-in-error"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -152,11 +180,10 @@ class ProcessRequest(domainresource.DomainResource):
     target: fhirtypes.ReferenceType = Field(
         None,
         alias="target",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Party which is the target of the request",
+        title="Party which is the target of the request",
+        description="The organization which is the target of the request.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
 
@@ -175,8 +202,8 @@ class ProcessRequestItem(backboneelement.BackboneElement):
     sequenceLinkId: fhirtypes.Integer = Field(
         ...,
         alias="sequenceLinkId",
-        title="Type `Integer`",
-        description="Service instance",
+        title="Service instance",
+        description="A service line number.",
     )
     sequenceLinkId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sequenceLinkId", title="Extension field for ``sequenceLinkId``."

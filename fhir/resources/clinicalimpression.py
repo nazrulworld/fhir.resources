@@ -36,25 +36,24 @@ class ClinicalImpression(domainresource.DomainResource):
     assessor: fhirtypes.ReferenceType = Field(
         None,
         alias="assessor",
-        title=(
-            "Type `Reference` referencing `Practitioner, PractitionerRole` "
-            "(represented as `dict` in JSON)"
-        ),
-        description="The clinician performing the assessment",
+        title="The clinician performing the assessment",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner", "PractitionerRole"],
     )
 
     code: fhirtypes.CodeableConceptType = Field(
         None,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Kind of assessment performed",
+        title="Kind of assessment performed",
+        description="Categorizes the type of clinical assessment performed.",
     )
 
     date: fhirtypes.DateTime = Field(
         None,
         alias="date",
-        title="Type `DateTime`",
-        description="When the assessment was documented",
+        title="When the assessment was documented",
+        description="Indicates when the documentation of the assessment was complete.",
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -63,8 +62,11 @@ class ClinicalImpression(domainresource.DomainResource):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Why/how the assessment was performed",
+        title="Why/how the assessment was performed",
+        description=(
+            "A summary of the context and/or cause of the assessment - why / where "
+            "it was performed, and what patient events/status prompted it."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -73,9 +75,10 @@ class ClinicalImpression(domainresource.DomainResource):
     effectiveDateTime: fhirtypes.DateTime = Field(
         None,
         alias="effectiveDateTime",
-        title="Type `DateTime`",
-        description="Time of assessment",
-        one_of_many="effective",  # Choice of Data Types. i.e value[x]
+        title="Time of assessment",
+        description="The point in time or period over which the subject was assessed.",
+        # Choice of Data Types. i.e effective[x]
+        one_of_many="effective",
         one_of_many_required=False,
     )
     effectiveDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -87,98 +90,118 @@ class ClinicalImpression(domainresource.DomainResource):
     effectivePeriod: fhirtypes.PeriodType = Field(
         None,
         alias="effectivePeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Time of assessment",
-        one_of_many="effective",  # Choice of Data Types. i.e value[x]
+        title="Time of assessment",
+        description="The point in time or period over which the subject was assessed.",
+        # Choice of Data Types. i.e effective[x]
+        one_of_many="effective",
         one_of_many_required=False,
     )
 
     encounter: fhirtypes.ReferenceType = Field(
         None,
         alias="encounter",
-        title=(
-            "Type `Reference` referencing `Encounter` (represented as `dict` in "
-            "JSON)"
+        title="Encounter created as part of",
+        description=(
+            "The Encounter during which this ClinicalImpression was created or to "
+            "which the creation of this record is tightly associated."
         ),
-        description="Encounter created as part of",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Encounter"],
     )
 
     finding: ListType[fhirtypes.ClinicalImpressionFindingType] = Field(
         None,
         alias="finding",
-        title=(
-            "List of `ClinicalImpressionFinding` items (represented as `dict` in "
-            "JSON)"
+        title="Possible or likely findings and diagnoses",
+        description=(
+            "Specific findings or diagnoses that were considered likely or relevant"
+            " to ongoing treatment."
         ),
-        description="Possible or likely findings and diagnoses",
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Business identifier",
+        title="Business identifier",
+        description=(
+            "Business identifiers assigned to this clinical impression by the "
+            "performer or other systems which remain constant as the resource is "
+            "updated and propagates from server to server."
+        ),
     )
 
     investigation: ListType[fhirtypes.ClinicalImpressionInvestigationType] = Field(
         None,
         alias="investigation",
-        title=(
-            "List of `ClinicalImpressionInvestigation` items (represented as `dict`"
-            " in JSON)"
+        title="One or more sets of investigations (signs, symptoms, etc.)",
+        description=(
+            "One or more sets of investigations (signs, symptoms, etc.). The actual"
+            " grouping of investigations varies greatly depending on the type and "
+            "context of the assessment. These investigations may include data "
+            "generated during the assessment process, or data previously generated "
+            "and recorded that is pertinent to the outcomes."
         ),
-        description="One or more sets of investigations (signs, symptoms, etc.)",
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
-        title="List of `Annotation` items (represented as `dict` in JSON)",
-        description="Comments made about the ClinicalImpression",
+        title="Comments made about the ClinicalImpression",
+        description=(
+            "Commentary about the impression, typically recorded after the "
+            "impression itself was made, though supplemental notes by the original "
+            "author could also appear."
+        ),
     )
 
     previous: fhirtypes.ReferenceType = Field(
         None,
         alias="previous",
-        title=(
-            "Type `Reference` referencing `ClinicalImpression` (represented as "
-            "`dict` in JSON)"
+        title="Reference to last assessment",
+        description=(
+            "A reference to the last assessment that was conducted on this patient."
+            " Assessments are often/usually ongoing in nature; a care provider "
+            "(practitioner or team) will make new assessments on an ongoing basis "
+            "as new data arises or the patient's conditions changes."
         ),
-        description="Reference to last assessment",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ClinicalImpression"],
     )
 
     problem: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="problem",
-        title=(
-            "List of `Reference` items referencing `Condition, AllergyIntolerance` "
-            "(represented as `dict` in JSON)"
-        ),
-        description="Relevant impressions of patient state",
+        title="Relevant impressions of patient state",
+        description="A list of the relevant problems/conditions for a patient.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Condition", "AllergyIntolerance"],
     )
 
     prognosisCodeableConcept: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="prognosisCodeableConcept",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Estimate of likely outcome",
+        title="Estimate of likely outcome",
+        description=None,
     )
 
     prognosisReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="prognosisReference",
-        title=(
-            "List of `Reference` items referencing `RiskAssessment` (represented as"
-            " `dict` in JSON)"
-        ),
-        description="RiskAssessment expressing likely outcome",
+        title="RiskAssessment expressing likely outcome",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["RiskAssessment"],
     )
 
     protocol: ListType[fhirtypes.Uri] = Field(
         None,
         alias="protocol",
-        title="List of `Uri` items",
-        description="Clinical Protocol followed",
+        title="Clinical Protocol followed",
+        description=(
+            "Reference to a specific published clinical protocol that was followed "
+            "during this assessment, and/or that provides evidence in support of "
+            "the diagnosis."
+        ),
     )
     protocol__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_protocol", title="Extension field for ``protocol``."
@@ -187,8 +210,11 @@ class ClinicalImpression(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="in-progress | completed | entered-in-error",
+        title="in-progress | completed | entered-in-error",
+        description="Identifies the workflow status of the assessment.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["in-progress", "completed", "entered-in-error"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -197,25 +223,24 @@ class ClinicalImpression(domainresource.DomainResource):
     statusReason: fhirtypes.CodeableConceptType = Field(
         None,
         alias="statusReason",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Reason for current status",
+        title="Reason for current status",
+        description="Captures the reason for the current state of the ClinicalImpression.",
     )
 
     subject: fhirtypes.ReferenceType = Field(
         ...,
         alias="subject",
-        title=(
-            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
-            "in JSON)"
-        ),
-        description="Patient or group assessed",
+        title="Patient or group assessed",
+        description="The patient or group of individuals assessed as part of this record.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "Group"],
     )
 
     summary: fhirtypes.String = Field(
         None,
         alias="summary",
-        title="Type `String`",
-        description="Summary of the assessment",
+        title="Summary of the assessment",
+        description="A text summary of the investigations and the diagnosis.",
     )
     summary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_summary", title="Extension field for ``summary``."
@@ -224,11 +249,10 @@ class ClinicalImpression(domainresource.DomainResource):
     supportingInfo: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="supportingInfo",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Information supporting the clinical impression",
+        title="Information supporting the clinical impression",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     @root_validator(pre=True)
@@ -283,8 +307,8 @@ class ClinicalImpressionFinding(backboneelement.BackboneElement):
     basis: fhirtypes.String = Field(
         None,
         alias="basis",
-        title="Type `String`",
-        description="Which investigations support finding",
+        title="Which investigations support finding",
+        description="Which investigations support finding or diagnosis.",
     )
     basis__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_basis", title="Extension field for ``basis``."
@@ -293,18 +317,23 @@ class ClinicalImpressionFinding(backboneelement.BackboneElement):
     itemCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="itemCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="What was found",
+        title="What was found",
+        description=(
+            "Specific text or code for finding or diagnosis, which may include "
+            "ruled-out or resolved conditions."
+        ),
     )
 
     itemReference: fhirtypes.ReferenceType = Field(
         None,
         alias="itemReference",
-        title=(
-            "Type `Reference` referencing `Condition, Observation, Media` "
-            "(represented as `dict` in JSON)"
+        title="What was found",
+        description=(
+            "Specific reference for finding or diagnosis, which may include ruled-"
+            "out or resolved conditions."
         ),
-        description="What was found",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Condition", "Observation", "Media"],
     )
 
 
@@ -326,17 +355,28 @@ class ClinicalImpressionInvestigation(backboneelement.BackboneElement):
     code: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="A name/code for the set",
+        title="A name/code for the set",
+        description=(
+            'A name/code for the group ("set") of investigations. Typically, this '
+            'will be something like "signs", "symptoms", "clinical", "diagnostic", '
+            "but the list is not constrained, and others such groups such as "
+            "(exposure|family|travel|nutritional) history may be used."
+        ),
     )
 
     item: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="item",
-        title=(
-            "List of `Reference` items referencing `Observation, "
-            "QuestionnaireResponse, FamilyMemberHistory, DiagnosticReport, "
-            "RiskAssessment, ImagingStudy, Media` (represented as `dict` in JSON)"
-        ),
-        description="Record of a specific investigation",
+        title="Record of a specific investigation",
+        description="A record of a specific investigation that was undertaken.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Observation",
+            "QuestionnaireResponse",
+            "FamilyMemberHistory",
+            "DiagnosticReport",
+            "RiskAssessment",
+            "ImagingStudy",
+            "Media",
+        ],
     )

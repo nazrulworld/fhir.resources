@@ -31,29 +31,32 @@ class Claim(domainresource.DomainResource):
     accident: fhirtypes.ClaimAccidentType = Field(
         None,
         alias="accident",
-        title="Type `ClaimAccident` (represented as `dict` in JSON)",
-        description="Details of the event",
+        title="Details of the event",
+        description=(
+            "Details of an accident which resulted in injuries which required the "
+            "products and services listed in the claim."
+        ),
     )
 
     billablePeriod: fhirtypes.PeriodType = Field(
         None,
         alias="billablePeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Relevant time frame for the claim",
+        title="Relevant time frame for the claim",
+        description="The period for which charges are being submitted.",
     )
 
     careTeam: ListType[fhirtypes.ClaimCareTeamType] = Field(
         None,
         alias="careTeam",
-        title="List of `ClaimCareTeam` items (represented as `dict` in JSON)",
-        description="Members of the care team",
+        title="Members of the care team",
+        description="The members of the team who provided the products and services.",
     )
 
     created: fhirtypes.DateTime = Field(
         ...,
         alias="created",
-        title="Type `DateTime`",
-        description="Resource creation date",
+        title="Resource creation date",
+        description="The date this resource was created.",
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_created", title="Extension field for ``created``."
@@ -62,147 +65,191 @@ class Claim(domainresource.DomainResource):
     diagnosis: ListType[fhirtypes.ClaimDiagnosisType] = Field(
         None,
         alias="diagnosis",
-        title="List of `ClaimDiagnosis` items (represented as `dict` in JSON)",
-        description="Pertinent diagnosis information",
+        title="Pertinent diagnosis information",
+        description="Information about diagnoses relevant to the claim items.",
     )
 
     enterer: fhirtypes.ReferenceType = Field(
         None,
         alias="enterer",
-        title=(
-            "Type `Reference` referencing `Practitioner, PractitionerRole` "
-            "(represented as `dict` in JSON)"
+        title="Author of the claim",
+        description=(
+            "Individual who created the claim, predetermination or " "preauthorization."
         ),
-        description="Author of the claim",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner", "PractitionerRole"],
     )
 
     facility: fhirtypes.ReferenceType = Field(
         None,
         alias="facility",
-        title=(
-            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
-        ),
-        description="Servicing facility",
+        title="Servicing facility",
+        description="Facility where the services were provided.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Location"],
     )
 
     fundsReserve: fhirtypes.CodeableConceptType = Field(
         None,
         alias="fundsReserve",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="For whom to reserve funds",
+        title="For whom to reserve funds",
+        description=(
+            "A code to indicate whether and for whom funds are to be reserved for "
+            "future claims."
+        ),
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Business Identifier for claim",
+        title="Business Identifier for claim",
+        description="A unique identifier assigned to this claim.",
     )
 
     insurance: ListType[fhirtypes.ClaimInsuranceType] = Field(
         ...,
         alias="insurance",
-        title="List of `ClaimInsurance` items (represented as `dict` in JSON)",
-        description="Patient insurance information",
+        title="Patient insurance information",
+        description=(
+            "Financial instruments for reimbursement for the health care products "
+            "and services specified on the claim."
+        ),
     )
 
     insurer: fhirtypes.ReferenceType = Field(
         None,
         alias="insurer",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Target",
+        title="Target",
+        description="The Insurer who is target of the request.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     item: ListType[fhirtypes.ClaimItemType] = Field(
         None,
         alias="item",
-        title="List of `ClaimItem` items (represented as `dict` in JSON)",
-        description="Product or service provided",
+        title="Product or service provided",
+        description=(
+            "A claim line. Either a simple  product or service or a 'group' of "
+            "details which can each be a simple items or groups of sub-details."
+        ),
     )
 
     originalPrescription: fhirtypes.ReferenceType = Field(
         None,
         alias="originalPrescription",
-        title=(
-            "Type `Reference` referencing `DeviceRequest, MedicationRequest, "
-            "VisionPrescription` (represented as `dict` in JSON)"
+        title="Original prescription if superseded by fulfiller",
+        description=(
+            "Original prescription which has been superseded by this prescription "
+            "to support the dispensing of pharmacy services, medications or "
+            "products."
         ),
-        description="Original prescription if superseded by fulfiller",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "DeviceRequest",
+            "MedicationRequest",
+            "VisionPrescription",
+        ],
     )
 
     patient: fhirtypes.ReferenceType = Field(
         ...,
         alias="patient",
-        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
-        description="The recipient of the products and services",
+        title="The recipient of the products and services",
+        description=(
+            "The party to whom the professional services and/or products have been "
+            "supplied or are being considered and for whom actual or forecast "
+            "reimbursement is sought."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient"],
     )
 
     payee: fhirtypes.ClaimPayeeType = Field(
         None,
         alias="payee",
-        title="Type `ClaimPayee` (represented as `dict` in JSON)",
-        description="Recipient of benefits payable",
+        title="Recipient of benefits payable",
+        description=(
+            "The party to be reimbursed for cost of the products and services "
+            "according to the terms of the policy."
+        ),
     )
 
     prescription: fhirtypes.ReferenceType = Field(
         None,
         alias="prescription",
-        title=(
-            "Type `Reference` referencing `DeviceRequest, MedicationRequest, "
-            "VisionPrescription` (represented as `dict` in JSON)"
+        title="Prescription authorizing services and products",
+        description=(
+            "Prescription to support the dispensing of pharmacy, device or vision "
+            "products."
         ),
-        description="Prescription authorizing services and products",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "DeviceRequest",
+            "MedicationRequest",
+            "VisionPrescription",
+        ],
     )
 
     priority: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="priority",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Desired processing ugency",
+        title="Desired processing ugency",
+        description=(
+            "The provider-required urgency of processing the request. Typical "
+            "values include: stat, routine deferred."
+        ),
     )
 
     procedure: ListType[fhirtypes.ClaimProcedureType] = Field(
         None,
         alias="procedure",
-        title="List of `ClaimProcedure` items (represented as `dict` in JSON)",
-        description="Clinical procedures performed",
+        title="Clinical procedures performed",
+        description=(
+            "Procedures performed on the patient relevant to the billing items with"
+            " the claim."
+        ),
     )
 
     provider: fhirtypes.ReferenceType = Field(
         ...,
         alias="provider",
-        title=(
-            "Type `Reference` referencing `Practitioner, PractitionerRole, "
-            "Organization` (represented as `dict` in JSON)"
+        title="Party responsible for the claim",
+        description=(
+            "The provider which is responsible for the claim, predetermination or "
+            "preauthorization."
         ),
-        description="Party responsible for the claim",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
     )
 
     referral: fhirtypes.ReferenceType = Field(
         None,
         alias="referral",
-        title=(
-            "Type `Reference` referencing `ServiceRequest` (represented as `dict` "
-            "in JSON)"
-        ),
-        description="Treatment referral",
+        title="Treatment referral",
+        description="A reference to a referral resource.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ServiceRequest"],
     )
 
     related: ListType[fhirtypes.ClaimRelatedType] = Field(
         None,
         alias="related",
-        title="List of `ClaimRelated` items (represented as `dict` in JSON)",
-        description="Prior or corollary claims",
+        title="Prior or corollary claims",
+        description=(
+            "Other claims which are related to this claim such as prior submissions"
+            " or claims for related services or for the same event."
+        ),
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="active | cancelled | draft | entered-in-error",
+        title="active | cancelled | draft | entered-in-error",
+        description="The status of the resource instance.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["active", "cancelled", "draft", "entered-in-error"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -211,36 +258,55 @@ class Claim(domainresource.DomainResource):
     subType: fhirtypes.CodeableConceptType = Field(
         None,
         alias="subType",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="More granular claim type",
+        title="More granular claim type",
+        description=(
+            "A finer grained suite of claim type codes which may convey additional "
+            "information such as Inpatient vs Outpatient and/or a specialty "
+            "service."
+        ),
     )
 
     supportingInfo: ListType[fhirtypes.ClaimSupportingInfoType] = Field(
         None,
         alias="supportingInfo",
-        title="List of `ClaimSupportingInfo` items (represented as `dict` in JSON)",
-        description="Supporting information",
+        title="Supporting information",
+        description=(
+            "Additional information codes regarding exceptions, special "
+            "considerations, the condition, situation, prior or concurrent issues."
+        ),
     )
 
     total: fhirtypes.MoneyType = Field(
         None,
         alias="total",
-        title="Type `Money` (represented as `dict` in JSON)",
-        description="Total claim cost",
+        title="Total claim cost",
+        description="The total value of the all the items in the claim.",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Category or discipline",
+        title="Category or discipline",
+        description=(
+            "The category of claim, e.g. oral, pharmacy, vision, institutional, "
+            "professional."
+        ),
     )
 
     use: fhirtypes.Code = Field(
         ...,
         alias="use",
-        title="Type `Code`",
-        description="claim | preauthorization | predetermination",
+        title="claim | preauthorization | predetermination",
+        description=(
+            "A code to indicate whether the nature of the request is: to request "
+            "adjudication of products and services previously rendered; or "
+            "requesting authorization and adjudication for provision in the future;"
+            " or requesting the non-binding adjudication of the listed products and"
+            " services which could be provided in the future."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["claim", "preauthorization", "predetermination"],
     )
     use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_use", title="Extension field for ``use``."
@@ -260,7 +326,13 @@ class ClaimAccident(backboneelement.BackboneElement):
     resource_type = Field("ClaimAccident", const=True)
 
     date: fhirtypes.Date = Field(
-        ..., alias="date", title="Type `Date`", description="When the incident occurred"
+        ...,
+        alias="date",
+        title="When the incident occurred",
+        description=(
+            "Date of an accident event  related to the products and services "
+            "contained in the claim."
+        ),
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -269,28 +341,34 @@ class ClaimAccident(backboneelement.BackboneElement):
     locationAddress: fhirtypes.AddressType = Field(
         None,
         alias="locationAddress",
-        title="Type `Address` (represented as `dict` in JSON)",
-        description="Where the event occurred",
-        one_of_many="location",  # Choice of Data Types. i.e value[x]
+        title="Where the event occurred",
+        description="The physical location of the accident event.",
+        # Choice of Data Types. i.e location[x]
+        one_of_many="location",
         one_of_many_required=False,
     )
 
     locationReference: fhirtypes.ReferenceType = Field(
         None,
         alias="locationReference",
-        title=(
-            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
-        ),
-        description="Where the event occurred",
-        one_of_many="location",  # Choice of Data Types. i.e value[x]
+        title="Where the event occurred",
+        description="The physical location of the accident event.",
+        # Choice of Data Types. i.e location[x]
+        one_of_many="location",
         one_of_many_required=False,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Location"],
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The nature of the accident",
+        title="The nature of the accident",
+        description=(
+            "The type or context of the accident event for the purposes of "
+            "selection of potential insurance coverages and determination of "
+            "coordination between insurers."
+        ),
     )
 
     @root_validator(pre=True)
@@ -344,25 +422,30 @@ class ClaimCareTeam(backboneelement.BackboneElement):
     provider: fhirtypes.ReferenceType = Field(
         ...,
         alias="provider",
-        title=(
-            "Type `Reference` referencing `Practitioner, PractitionerRole, "
-            "Organization` (represented as `dict` in JSON)"
-        ),
-        description="Practitioner or organization",
+        title="Practitioner or organization",
+        description="Member of the team who provided the product or service.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
     )
 
     qualification: fhirtypes.CodeableConceptType = Field(
         None,
         alias="qualification",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Practitioner credential or specialization",
+        title="Practitioner credential or specialization",
+        description=(
+            "The qualification of the practitioner which is applicable for this "
+            "service."
+        ),
     )
 
     responsible: bool = Field(
         None,
         alias="responsible",
-        title="Type `bool`",
-        description="Indicator of the lead practitioner",
+        title="Indicator of the lead practitioner",
+        description=(
+            "The party who is billing and/or responsible for the claimed products "
+            "or services."
+        ),
     )
     responsible__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_responsible", title="Extension field for ``responsible``."
@@ -371,15 +454,18 @@ class ClaimCareTeam(backboneelement.BackboneElement):
     role: fhirtypes.CodeableConceptType = Field(
         None,
         alias="role",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Function within the team",
+        title="Function within the team",
+        description=(
+            "The lead, assisting or supervising practitioner and their discipline "
+            "if a multidisciplinary team."
+        ),
     )
 
     sequence: fhirtypes.PositiveInt = Field(
         ...,
         alias="sequence",
-        title="Type `PositiveInt`",
-        description="Order of care team",
+        title="Order of care team",
+        description="A number to uniquely identify care team entries.",
     )
     sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sequence", title="Extension field for ``sequence``."
@@ -400,43 +486,57 @@ class ClaimDiagnosis(backboneelement.BackboneElement):
     diagnosisCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="diagnosisCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Nature of illness or problem",
-        one_of_many="diagnosis",  # Choice of Data Types. i.e value[x]
+        title="Nature of illness or problem",
+        description=(
+            "The nature of illness or problem in a coded form or as a reference to "
+            "an external defined Condition."
+        ),
+        # Choice of Data Types. i.e diagnosis[x]
+        one_of_many="diagnosis",
         one_of_many_required=True,
     )
 
     diagnosisReference: fhirtypes.ReferenceType = Field(
         None,
         alias="diagnosisReference",
-        title=(
-            "Type `Reference` referencing `Condition` (represented as `dict` in "
-            "JSON)"
+        title="Nature of illness or problem",
+        description=(
+            "The nature of illness or problem in a coded form or as a reference to "
+            "an external defined Condition."
         ),
-        description="Nature of illness or problem",
-        one_of_many="diagnosis",  # Choice of Data Types. i.e value[x]
+        # Choice of Data Types. i.e diagnosis[x]
+        one_of_many="diagnosis",
         one_of_many_required=True,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Condition"],
     )
 
     onAdmission: fhirtypes.CodeableConceptType = Field(
         None,
         alias="onAdmission",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Present on admission",
+        title="Present on admission",
+        description=(
+            "Indication of whether the diagnosis was present on admission to a "
+            "facility."
+        ),
     )
 
     packageCode: fhirtypes.CodeableConceptType = Field(
         None,
         alias="packageCode",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Package billing code",
+        title="Package billing code",
+        description=(
+            "A package billing code or bundle code used to group products and "
+            "services to a particular health condition (such as heart attack) which"
+            " is based on a predetermined grouping code system."
+        ),
     )
 
     sequence: fhirtypes.PositiveInt = Field(
         ...,
         alias="sequence",
-        title="Type `PositiveInt`",
-        description="Diagnosis instance identifier",
+        title="Diagnosis instance identifier",
+        description="A number to uniquely identify diagnosis entries.",
     )
     sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sequence", title="Extension field for ``sequence``."
@@ -445,8 +545,8 @@ class ClaimDiagnosis(backboneelement.BackboneElement):
     type: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="type",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Timing or nature of the diagnosis",
+        title="Timing or nature of the diagnosis",
+        description="When the condition was observed or the relative ranking.",
     )
 
     @root_validator(pre=True)
@@ -503,8 +603,11 @@ class ClaimInsurance(backboneelement.BackboneElement):
     businessArrangement: fhirtypes.String = Field(
         None,
         alias="businessArrangement",
-        title="Type `String`",
-        description="Additional provider contract number",
+        title="Additional provider contract number",
+        description=(
+            "A business agreement number established between the provider and the "
+            "insurer for special business processing purposes."
+        ),
     )
     businessArrangement__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -515,27 +618,37 @@ class ClaimInsurance(backboneelement.BackboneElement):
     claimResponse: fhirtypes.ReferenceType = Field(
         None,
         alias="claimResponse",
-        title=(
-            "Type `Reference` referencing `ClaimResponse` (represented as `dict` in"
-            " JSON)"
+        title="Adjudication results",
+        description=(
+            "The result of the adjudication of the line items for the Coverage "
+            "specified in this insurance."
         ),
-        description="Adjudication results",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ClaimResponse"],
     )
 
     coverage: fhirtypes.ReferenceType = Field(
         ...,
         alias="coverage",
-        title=(
-            "Type `Reference` referencing `Coverage` (represented as `dict` in " "JSON)"
+        title="Insurance information",
+        description=(
+            "Reference to the insurance card level information contained in the "
+            "Coverage resource. The coverage issuing insurer will use these details"
+            " to locate the patient's actual coverage within the insurer's "
+            "information system."
         ),
-        description="Insurance information",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Coverage"],
     )
 
     focal: bool = Field(
         ...,
         alias="focal",
-        title="Type `bool`",
-        description="Coverage to be used for adjudication",
+        title="Coverage to be used for adjudication",
+        description=(
+            "A flag to indicate that this Coverage is to be used for adjudication "
+            "of this claim when set to true."
+        ),
     )
     focal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_focal", title="Extension field for ``focal``."
@@ -544,15 +657,22 @@ class ClaimInsurance(backboneelement.BackboneElement):
     identifier: fhirtypes.IdentifierType = Field(
         None,
         alias="identifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Pre-assigned Claim number",
+        title="Pre-assigned Claim number",
+        description=(
+            "The business identifier to be used when the claim is sent for "
+            "adjudication against this insurance policy."
+        ),
     )
 
     preAuthRef: ListType[fhirtypes.String] = Field(
         None,
         alias="preAuthRef",
-        title="List of `String` items",
-        description="Prior authorization reference number",
+        title="Prior authorization reference number",
+        description=(
+            "Reference numbers previously provided by the insurer to the provider "
+            "to be quoted on subsequent claims containing services or products "
+            "related to the prior authorization."
+        ),
     )
     preAuthRef__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -561,8 +681,11 @@ class ClaimInsurance(backboneelement.BackboneElement):
     sequence: fhirtypes.PositiveInt = Field(
         ...,
         alias="sequence",
-        title="Type `PositiveInt`",
-        description="Insurance instance identifier",
+        title="Insurance instance identifier",
+        description=(
+            "A number to uniquely identify insurance entries and provide a sequence"
+            " of coverages to convey coordination of benefit order."
+        ),
     )
     sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sequence", title="Extension field for ``sequence``."
@@ -584,15 +707,15 @@ class ClaimItem(backboneelement.BackboneElement):
     bodySite: fhirtypes.CodeableConceptType = Field(
         None,
         alias="bodySite",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Anatomical location",
+        title="Anatomical location",
+        description="Physical service site on the patient (limb, tooth, etc.).",
     )
 
     careTeamSequence: ListType[fhirtypes.PositiveInt] = Field(
         None,
         alias="careTeamSequence",
-        title="List of `PositiveInt` items",
-        description="Applicable careTeam members",
+        title="Applicable careTeam members",
+        description="CareTeam members related to this service or product.",
     )
     careTeamSequence__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -605,22 +728,28 @@ class ClaimItem(backboneelement.BackboneElement):
     category: fhirtypes.CodeableConceptType = Field(
         None,
         alias="category",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Benefit classification",
+        title="Benefit classification",
+        description=(
+            "Code to identify the general type of benefits under which products and"
+            " services are provided."
+        ),
     )
 
     detail: ListType[fhirtypes.ClaimItemDetailType] = Field(
         None,
         alias="detail",
-        title="List of `ClaimItemDetail` items (represented as `dict` in JSON)",
-        description="Product or service provided",
+        title="Product or service provided",
+        description=(
+            "A claim detail line. Either a simple (a product or service) or a "
+            "'group' of sub-details which are simple items."
+        ),
     )
 
     diagnosisSequence: ListType[fhirtypes.PositiveInt] = Field(
         None,
         alias="diagnosisSequence",
-        title="List of `PositiveInt` items",
-        description="Applicable diagnoses",
+        title="Applicable diagnoses",
+        description="Diagnosis applicable for this service or product.",
     )
     diagnosisSequence__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -633,15 +762,25 @@ class ClaimItem(backboneelement.BackboneElement):
     encounter: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="encounter",
-        title=(
-            "List of `Reference` items referencing `Encounter` (represented as "
-            "`dict` in JSON)"
+        title="Encounters related to this billed item",
+        description=(
+            "The Encounters during which this Claim was created or to which the "
+            "creation of this record is tightly associated."
         ),
-        description="Encounters related to this billed item",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Encounter"],
     )
 
     factor: fhirtypes.Decimal = Field(
-        None, alias="factor", title="Type `Decimal`", description="Price scaling factor"
+        None,
+        alias="factor",
+        title="Price scaling factor",
+        description=(
+            "A real number that represents a multiplier used in determining the "
+            "overall value of services delivered and/or goods received. The concept"
+            " of a Factor allows for a discount or surcharge multiplier to be "
+            "applied to a monetary amount."
+        ),
     )
     factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_factor", title="Extension field for ``factor``."
@@ -650,8 +789,11 @@ class ClaimItem(backboneelement.BackboneElement):
     informationSequence: ListType[fhirtypes.PositiveInt] = Field(
         None,
         alias="informationSequence",
-        title="List of `PositiveInt` items",
-        description="Applicable exception and supporting information",
+        title="Applicable exception and supporting information",
+        description=(
+            "Exceptions, special conditions and supporting information applicable "
+            "for this service or product."
+        ),
     )
     informationSequence__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -664,51 +806,60 @@ class ClaimItem(backboneelement.BackboneElement):
     locationAddress: fhirtypes.AddressType = Field(
         None,
         alias="locationAddress",
-        title="Type `Address` (represented as `dict` in JSON)",
-        description="Place of service or where product was supplied",
-        one_of_many="location",  # Choice of Data Types. i.e value[x]
+        title="Place of service or where product was supplied",
+        description="Where the product or service was provided.",
+        # Choice of Data Types. i.e location[x]
+        one_of_many="location",
         one_of_many_required=False,
     )
 
     locationCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="locationCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Place of service or where product was supplied",
-        one_of_many="location",  # Choice of Data Types. i.e value[x]
+        title="Place of service or where product was supplied",
+        description="Where the product or service was provided.",
+        # Choice of Data Types. i.e location[x]
+        one_of_many="location",
         one_of_many_required=False,
     )
 
     locationReference: fhirtypes.ReferenceType = Field(
         None,
         alias="locationReference",
-        title=(
-            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
-        ),
-        description="Place of service or where product was supplied",
-        one_of_many="location",  # Choice of Data Types. i.e value[x]
+        title="Place of service or where product was supplied",
+        description="Where the product or service was provided.",
+        # Choice of Data Types. i.e location[x]
+        one_of_many="location",
         one_of_many_required=False,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Location"],
     )
 
     modifier: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="modifier",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Product or service billing modifiers",
+        title="Product or service billing modifiers",
+        description=(
+            "Item typification or modifiers codes to convey additional context for "
+            "the product or service."
+        ),
     )
 
     net: fhirtypes.MoneyType = Field(
         None,
         alias="net",
-        title="Type `Money` (represented as `dict` in JSON)",
-        description="Total item cost",
+        title="Total item cost",
+        description=(
+            "The quantity times the unit price for an additional service or product"
+            " or charge."
+        ),
     )
 
     procedureSequence: ListType[fhirtypes.PositiveInt] = Field(
         None,
         alias="procedureSequence",
-        title="List of `PositiveInt` items",
-        description="Applicable procedures",
+        title="Applicable procedures",
+        description="Procedures applicable for this service or product.",
     )
     procedureSequence__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -721,36 +872,43 @@ class ClaimItem(backboneelement.BackboneElement):
     productOrService: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="productOrService",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Billing, service, product, or drug code",
+        title="Billing, service, product, or drug code",
+        description=(
+            "When the value is a group code then this item collects a set of "
+            "related claim details, otherwise this contains the product, service, "
+            "drug or other billing code for the item."
+        ),
     )
 
     programCode: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="programCode",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Program the product or service is provided under",
+        title="Program the product or service is provided under",
+        description="Identifies the program under which this may be recovered.",
     )
 
     quantity: fhirtypes.QuantityType = Field(
         None,
         alias="quantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Count of products or services",
+        title="Count of products or services",
+        description="The number of repetitions of a service or product.",
     )
 
     revenue: fhirtypes.CodeableConceptType = Field(
         None,
         alias="revenue",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Revenue or cost center code",
+        title="Revenue or cost center code",
+        description=(
+            "The type of revenue or cost center providing the product and/or "
+            "service."
+        ),
     )
 
     sequence: fhirtypes.PositiveInt = Field(
         ...,
         alias="sequence",
-        title="Type `PositiveInt`",
-        description="Item instance identifier",
+        title="Item instance identifier",
+        description="A number to uniquely identify item entries.",
     )
     sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sequence", title="Extension field for ``sequence``."
@@ -759,9 +917,13 @@ class ClaimItem(backboneelement.BackboneElement):
     servicedDate: fhirtypes.Date = Field(
         None,
         alias="servicedDate",
-        title="Type `Date`",
-        description="Date or dates of service or product delivery",
-        one_of_many="serviced",  # Choice of Data Types. i.e value[x]
+        title="Date or dates of service or product delivery",
+        description=(
+            "The date or dates when the service or product was supplied, performed "
+            "or completed."
+        ),
+        # Choice of Data Types. i.e serviced[x]
+        one_of_many="serviced",
         one_of_many_required=False,
     )
     servicedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -771,34 +933,44 @@ class ClaimItem(backboneelement.BackboneElement):
     servicedPeriod: fhirtypes.PeriodType = Field(
         None,
         alias="servicedPeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Date or dates of service or product delivery",
-        one_of_many="serviced",  # Choice of Data Types. i.e value[x]
+        title="Date or dates of service or product delivery",
+        description=(
+            "The date or dates when the service or product was supplied, performed "
+            "or completed."
+        ),
+        # Choice of Data Types. i.e serviced[x]
+        one_of_many="serviced",
         one_of_many_required=False,
     )
 
     subSite: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="subSite",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Anatomical sub-location",
+        title="Anatomical sub-location",
+        description=(
+            "A region or surface of the bodySite, e.g. limb region or tooth "
+            "surface(s)."
+        ),
     )
 
     udi: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="udi",
-        title=(
-            "List of `Reference` items referencing `Device` (represented as `dict` "
-            "in JSON)"
-        ),
-        description="Unique device identifier",
+        title="Unique device identifier",
+        description="Unique Device Identifiers associated with this line item.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Device"],
     )
 
     unitPrice: fhirtypes.MoneyType = Field(
         None,
         alias="unitPrice",
-        title="Type `Money` (represented as `dict` in JSON)",
-        description="Fee, charge or cost per item",
+        title="Fee, charge or cost per item",
+        description=(
+            "If the item is not a group then this is the fee for the product or "
+            "service, otherwise this is the total of the fees for the details of "
+            "the group."
+        ),
     )
 
     @root_validator(pre=True)
@@ -860,12 +1032,23 @@ class ClaimItemDetail(backboneelement.BackboneElement):
     category: fhirtypes.CodeableConceptType = Field(
         None,
         alias="category",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Benefit classification",
+        title="Benefit classification",
+        description=(
+            "Code to identify the general type of benefits under which products and"
+            " services are provided."
+        ),
     )
 
     factor: fhirtypes.Decimal = Field(
-        None, alias="factor", title="Type `Decimal`", description="Price scaling factor"
+        None,
+        alias="factor",
+        title="Price scaling factor",
+        description=(
+            "A real number that represents a multiplier used in determining the "
+            "overall value of services delivered and/or goods received. The concept"
+            " of a Factor allows for a discount or surcharge multiplier to be "
+            "applied to a monetary amount."
+        ),
     )
     factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_factor", title="Extension field for ``factor``."
@@ -874,50 +1057,63 @@ class ClaimItemDetail(backboneelement.BackboneElement):
     modifier: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="modifier",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Service/Product billing modifiers",
+        title="Service/Product billing modifiers",
+        description=(
+            "Item typification or modifiers codes to convey additional context for "
+            "the product or service."
+        ),
     )
 
     net: fhirtypes.MoneyType = Field(
         None,
         alias="net",
-        title="Type `Money` (represented as `dict` in JSON)",
-        description="Total item cost",
+        title="Total item cost",
+        description=(
+            "The quantity times the unit price for an additional service or product"
+            " or charge."
+        ),
     )
 
     productOrService: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="productOrService",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Billing, service, product, or drug code",
+        title="Billing, service, product, or drug code",
+        description=(
+            "When the value is a group code then this item collects a set of "
+            "related claim details, otherwise this contains the product, service, "
+            "drug or other billing code for the item."
+        ),
     )
 
     programCode: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="programCode",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Program the product or service is provided under",
+        title="Program the product or service is provided under",
+        description="Identifies the program under which this may be recovered.",
     )
 
     quantity: fhirtypes.QuantityType = Field(
         None,
         alias="quantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Count of products or services",
+        title="Count of products or services",
+        description="The number of repetitions of a service or product.",
     )
 
     revenue: fhirtypes.CodeableConceptType = Field(
         None,
         alias="revenue",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Revenue or cost center code",
+        title="Revenue or cost center code",
+        description=(
+            "The type of revenue or cost center providing the product and/or "
+            "service."
+        ),
     )
 
     sequence: fhirtypes.PositiveInt = Field(
         ...,
         alias="sequence",
-        title="Type `PositiveInt`",
-        description="Item instance identifier",
+        title="Item instance identifier",
+        description="A number to uniquely identify item entries.",
     )
     sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sequence", title="Extension field for ``sequence``."
@@ -926,28 +1122,31 @@ class ClaimItemDetail(backboneelement.BackboneElement):
     subDetail: ListType[fhirtypes.ClaimItemDetailSubDetailType] = Field(
         None,
         alias="subDetail",
-        title=(
-            "List of `ClaimItemDetailSubDetail` items (represented as `dict` in "
-            "JSON)"
+        title="Product or service provided",
+        description=(
+            "A claim detail line. Either a simple (a product or service) or a "
+            "'group' of sub-details which are simple items."
         ),
-        description="Product or service provided",
     )
 
     udi: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="udi",
-        title=(
-            "List of `Reference` items referencing `Device` (represented as `dict` "
-            "in JSON)"
-        ),
-        description="Unique device identifier",
+        title="Unique device identifier",
+        description="Unique Device Identifiers associated with this line item.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Device"],
     )
 
     unitPrice: fhirtypes.MoneyType = Field(
         None,
         alias="unitPrice",
-        title="Type `Money` (represented as `dict` in JSON)",
-        description="Fee, charge or cost per item",
+        title="Fee, charge or cost per item",
+        description=(
+            "If the item is not a group then this is the fee for the product or "
+            "service, otherwise this is the total of the fees for the details of "
+            "the group."
+        ),
     )
 
 
@@ -966,12 +1165,23 @@ class ClaimItemDetailSubDetail(backboneelement.BackboneElement):
     category: fhirtypes.CodeableConceptType = Field(
         None,
         alias="category",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Benefit classification",
+        title="Benefit classification",
+        description=(
+            "Code to identify the general type of benefits under which products and"
+            " services are provided."
+        ),
     )
 
     factor: fhirtypes.Decimal = Field(
-        None, alias="factor", title="Type `Decimal`", description="Price scaling factor"
+        None,
+        alias="factor",
+        title="Price scaling factor",
+        description=(
+            "A real number that represents a multiplier used in determining the "
+            "overall value of services delivered and/or goods received. The concept"
+            " of a Factor allows for a discount or surcharge multiplier to be "
+            "applied to a monetary amount."
+        ),
     )
     factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_factor", title="Extension field for ``factor``."
@@ -980,50 +1190,63 @@ class ClaimItemDetailSubDetail(backboneelement.BackboneElement):
     modifier: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="modifier",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Service/Product billing modifiers",
+        title="Service/Product billing modifiers",
+        description=(
+            "Item typification or modifiers codes to convey additional context for "
+            "the product or service."
+        ),
     )
 
     net: fhirtypes.MoneyType = Field(
         None,
         alias="net",
-        title="Type `Money` (represented as `dict` in JSON)",
-        description="Total item cost",
+        title="Total item cost",
+        description=(
+            "The quantity times the unit price for an additional service or product"
+            " or charge."
+        ),
     )
 
     productOrService: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="productOrService",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Billing, service, product, or drug code",
+        title="Billing, service, product, or drug code",
+        description=(
+            "When the value is a group code then this item collects a set of "
+            "related claim details, otherwise this contains the product, service, "
+            "drug or other billing code for the item."
+        ),
     )
 
     programCode: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="programCode",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Program the product or service is provided under",
+        title="Program the product or service is provided under",
+        description="Identifies the program under which this may be recovered.",
     )
 
     quantity: fhirtypes.QuantityType = Field(
         None,
         alias="quantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Count of products or services",
+        title="Count of products or services",
+        description="The number of repetitions of a service or product.",
     )
 
     revenue: fhirtypes.CodeableConceptType = Field(
         None,
         alias="revenue",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Revenue or cost center code",
+        title="Revenue or cost center code",
+        description=(
+            "The type of revenue or cost center providing the product and/or "
+            "service."
+        ),
     )
 
     sequence: fhirtypes.PositiveInt = Field(
         ...,
         alias="sequence",
-        title="Type `PositiveInt`",
-        description="Item instance identifier",
+        title="Item instance identifier",
+        description="A number to uniquely identify item entries.",
     )
     sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sequence", title="Extension field for ``sequence``."
@@ -1032,18 +1255,21 @@ class ClaimItemDetailSubDetail(backboneelement.BackboneElement):
     udi: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="udi",
-        title=(
-            "List of `Reference` items referencing `Device` (represented as `dict` "
-            "in JSON)"
-        ),
-        description="Unique device identifier",
+        title="Unique device identifier",
+        description="Unique Device Identifiers associated with this line item.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Device"],
     )
 
     unitPrice: fhirtypes.MoneyType = Field(
         None,
         alias="unitPrice",
-        title="Type `Money` (represented as `dict` in JSON)",
-        description="Fee, charge or cost per item",
+        title="Fee, charge or cost per item",
+        description=(
+            "If the item is not a group then this is the fee for the product or "
+            "service, otherwise this is the total of the fees for the details of "
+            "the group."
+        ),
     )
 
 
@@ -1062,18 +1288,26 @@ class ClaimPayee(backboneelement.BackboneElement):
     party: fhirtypes.ReferenceType = Field(
         None,
         alias="party",
-        title=(
-            "Type `Reference` referencing `Practitioner, PractitionerRole, "
-            "Organization, Patient, RelatedPerson` (represented as `dict` in JSON)"
+        title="Recipient reference",
+        description=(
+            "Reference to the individual or organization to whom any payment will "
+            "be made."
         ),
-        description="Recipient reference",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Practitioner",
+            "PractitionerRole",
+            "Organization",
+            "Patient",
+            "RelatedPerson",
+        ],
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Category of recipient",
+        title="Category of recipient",
+        description="Type of Party to be reimbursed: subscriber, provider, other.",
     )
 
 
@@ -1092,8 +1326,8 @@ class ClaimProcedure(backboneelement.BackboneElement):
     date: fhirtypes.DateTime = Field(
         None,
         alias="date",
-        title="Type `DateTime`",
-        description="When the procedure was performed",
+        title="When the procedure was performed",
+        description="Date and optionally time the procedure was performed.",
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -1102,29 +1336,36 @@ class ClaimProcedure(backboneelement.BackboneElement):
     procedureCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="procedureCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Specific clinical procedure",
-        one_of_many="procedure",  # Choice of Data Types. i.e value[x]
+        title="Specific clinical procedure",
+        description=(
+            "The code or reference to a Procedure resource which identifies the "
+            "clinical intervention performed."
+        ),
+        # Choice of Data Types. i.e procedure[x]
+        one_of_many="procedure",
         one_of_many_required=True,
     )
 
     procedureReference: fhirtypes.ReferenceType = Field(
         None,
         alias="procedureReference",
-        title=(
-            "Type `Reference` referencing `Procedure` (represented as `dict` in "
-            "JSON)"
+        title="Specific clinical procedure",
+        description=(
+            "The code or reference to a Procedure resource which identifies the "
+            "clinical intervention performed."
         ),
-        description="Specific clinical procedure",
-        one_of_many="procedure",  # Choice of Data Types. i.e value[x]
+        # Choice of Data Types. i.e procedure[x]
+        one_of_many="procedure",
         one_of_many_required=True,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Procedure"],
     )
 
     sequence: fhirtypes.PositiveInt = Field(
         ...,
         alias="sequence",
-        title="Type `PositiveInt`",
-        description="Procedure instance identifier",
+        title="Procedure instance identifier",
+        description="A number to uniquely identify procedure entries.",
     )
     sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sequence", title="Extension field for ``sequence``."
@@ -1133,18 +1374,17 @@ class ClaimProcedure(backboneelement.BackboneElement):
     type: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="type",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Category of Procedure",
+        title="Category of Procedure",
+        description="When the condition was observed or the relative ranking.",
     )
 
     udi: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="udi",
-        title=(
-            "List of `Reference` items referencing `Device` (represented as `dict` "
-            "in JSON)"
-        ),
-        description="Unique device identifier",
+        title="Unique device identifier",
+        description="Unique Device Identifiers associated with this line item.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Device"],
     )
 
     @root_validator(pre=True)
@@ -1201,22 +1441,27 @@ class ClaimRelated(backboneelement.BackboneElement):
     claim: fhirtypes.ReferenceType = Field(
         None,
         alias="claim",
-        title="Type `Reference` referencing `Claim` (represented as `dict` in JSON)",
-        description="Reference to the related claim",
+        title="Reference to the related claim",
+        description="Reference to a related claim.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Claim"],
     )
 
     reference: fhirtypes.IdentifierType = Field(
         None,
         alias="reference",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="File or case reference",
+        title="File or case reference",
+        description=(
+            "An alternate organizational reference to the case or file to which "
+            "this particular claim pertains."
+        ),
     )
 
     relationship: fhirtypes.CodeableConceptType = Field(
         None,
         alias="relationship",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="How the reference claim is related",
+        title="How the reference claim is related",
+        description="A code to convey how the claims are related.",
     )
 
 
@@ -1235,29 +1480,39 @@ class ClaimSupportingInfo(backboneelement.BackboneElement):
     category: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="category",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Classification of the supplied information",
+        title="Classification of the supplied information",
+        description=(
+            "The general class of the information supplied: information; exception;"
+            " accident, employment; onset, etc."
+        ),
     )
 
     code: fhirtypes.CodeableConceptType = Field(
         None,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type of information",
+        title="Type of information",
+        description=(
+            "System and code pertaining to the specific information regarding "
+            "special conditions relating to the setting, treatment or patient  for "
+            "which care is sought."
+        ),
     )
 
     reason: fhirtypes.CodeableConceptType = Field(
         None,
         alias="reason",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Explanation for the information",
+        title="Explanation for the information",
+        description=(
+            "Provides the reason in the situation where a reason code is required "
+            "in addition to the content."
+        ),
     )
 
     sequence: fhirtypes.PositiveInt = Field(
         ...,
         alias="sequence",
-        title="Type `PositiveInt`",
-        description="Information instance identifier",
+        title="Information instance identifier",
+        description="A number to uniquely identify supporting information entries.",
     )
     sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sequence", title="Extension field for ``sequence``."
@@ -1266,9 +1521,10 @@ class ClaimSupportingInfo(backboneelement.BackboneElement):
     timingDate: fhirtypes.Date = Field(
         None,
         alias="timingDate",
-        title="Type `Date`",
-        description="When it occurred",
-        one_of_many="timing",  # Choice of Data Types. i.e value[x]
+        title="When it occurred",
+        description="The date when or period to which this information refers.",
+        # Choice of Data Types. i.e timing[x]
+        one_of_many="timing",
         one_of_many_required=False,
     )
     timingDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1278,27 +1534,38 @@ class ClaimSupportingInfo(backboneelement.BackboneElement):
     timingPeriod: fhirtypes.PeriodType = Field(
         None,
         alias="timingPeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="When it occurred",
-        one_of_many="timing",  # Choice of Data Types. i.e value[x]
+        title="When it occurred",
+        description="The date when or period to which this information refers.",
+        # Choice of Data Types. i.e timing[x]
+        one_of_many="timing",
         one_of_many_required=False,
     )
 
     valueAttachment: fhirtypes.AttachmentType = Field(
         None,
         alias="valueAttachment",
-        title="Type `Attachment` (represented as `dict` in JSON)",
-        description="Data to be provided",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Data to be provided",
+        description=(
+            "Additional data or information such as resources, documents, images "
+            "etc. including references to the data or the actual inclusion of the "
+            "data."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=False,
     )
 
     valueBoolean: bool = Field(
         None,
         alias="valueBoolean",
-        title="Type `bool`",
-        description="Data to be provided",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Data to be provided",
+        description=(
+            "Additional data or information such as resources, documents, images "
+            "etc. including references to the data or the actual inclusion of the "
+            "data."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=False,
     )
     valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1308,29 +1575,44 @@ class ClaimSupportingInfo(backboneelement.BackboneElement):
     valueQuantity: fhirtypes.QuantityType = Field(
         None,
         alias="valueQuantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Data to be provided",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Data to be provided",
+        description=(
+            "Additional data or information such as resources, documents, images "
+            "etc. including references to the data or the actual inclusion of the "
+            "data."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=False,
     )
 
     valueReference: fhirtypes.ReferenceType = Field(
         None,
         alias="valueReference",
-        title=(
-            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        title="Data to be provided",
+        description=(
+            "Additional data or information such as resources, documents, images "
+            "etc. including references to the data or the actual inclusion of the "
+            "data."
         ),
-        description="Data to be provided",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=False,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     valueString: fhirtypes.String = Field(
         None,
         alias="valueString",
-        title="Type `String`",
-        description="Data to be provided",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Data to be provided",
+        description=(
+            "Additional data or information such as resources, documents, images "
+            "etc. including references to the data or the actual inclusion of the "
+            "data."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=False,
     )
     valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(

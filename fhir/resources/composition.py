@@ -37,33 +37,48 @@ class Composition(domainresource.DomainResource):
     attester: ListType[fhirtypes.CompositionAttesterType] = Field(
         None,
         alias="attester",
-        title="List of `CompositionAttester` items (represented as `dict` in JSON)",
-        description="Attests to accuracy of composition",
+        title="Attests to accuracy of composition",
+        description=(
+            "A participant who has attested to the accuracy of the "
+            "composition/document."
+        ),
     )
 
     author: ListType[fhirtypes.ReferenceType] = Field(
         ...,
         alias="author",
-        title=(
-            "List of `Reference` items referencing `Practitioner, PractitionerRole,"
-            " Device, Patient, RelatedPerson, Organization` (represented as `dict` "
-            "in JSON)"
+        title="Who and/or what authored the composition",
+        description=(
+            "Identifies who is responsible for the information in the composition, "
+            "not necessarily who typed it in."
         ),
-        description="Who and/or what authored the composition",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Practitioner",
+            "PractitionerRole",
+            "Device",
+            "Patient",
+            "RelatedPerson",
+            "Organization",
+        ],
     )
 
     category: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="category",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Categorization of Composition",
+        title="Categorization of Composition",
+        description=(
+            "A categorization for the type of the composition - helps for indexing "
+            "and searching. This may be implied by or derived from the code "
+            "specified in the Composition Type."
+        ),
     )
 
     confidentiality: fhirtypes.Code = Field(
         None,
         alias="confidentiality",
-        title="Type `Code`",
-        description="As defined by affinity domain",
+        title="As defined by affinity domain",
+        description="The code specifying the level of confidentiality of the Composition.",
     )
     confidentiality__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_confidentiality", title="Extension field for ``confidentiality``."
@@ -72,18 +87,23 @@ class Composition(domainresource.DomainResource):
     custodian: fhirtypes.ReferenceType = Field(
         None,
         alias="custodian",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
+        title="Organization which maintains the composition",
+        description=(
+            "Identifies the organization or group who is responsible for ongoing "
+            "maintenance of and access to the composition/document information."
         ),
-        description="Organization which maintains the composition",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     date: fhirtypes.DateTime = Field(
         ...,
         alias="date",
-        title="Type `DateTime`",
-        description="Composition editing time",
+        title="Composition editing time",
+        description=(
+            "The composition editing time, when the composition was last logically "
+            "changed by the author."
+        ),
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -92,46 +112,63 @@ class Composition(domainresource.DomainResource):
     encounter: fhirtypes.ReferenceType = Field(
         None,
         alias="encounter",
-        title=(
-            "Type `Reference` referencing `Encounter` (represented as `dict` in "
-            "JSON)"
+        title="Context of the Composition",
+        description=(
+            "Describes the clinical encounter or type of care this documentation is"
+            " associated with."
         ),
-        description="Context of the Composition",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Encounter"],
     )
 
     event: ListType[fhirtypes.CompositionEventType] = Field(
         None,
         alias="event",
-        title="List of `CompositionEvent` items (represented as `dict` in JSON)",
-        description="The clinical service(s) being documented",
+        title="The clinical service(s) being documented",
+        description=(
+            "The clinical service, such as a colonoscopy or an appendectomy, being "
+            "documented."
+        ),
     )
 
     identifier: fhirtypes.IdentifierType = Field(
         None,
         alias="identifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Version-independent identifier for the Composition",
+        title="Version-independent identifier for the Composition",
+        description=(
+            "A version-independent identifier for the Composition. This identifier "
+            "stays constant as the composition is changed over time."
+        ),
     )
 
     relatesTo: ListType[fhirtypes.CompositionRelatesToType] = Field(
         None,
         alias="relatesTo",
-        title="List of `CompositionRelatesTo` items (represented as `dict` in JSON)",
-        description="Relationships to other compositions/documents",
+        title="Relationships to other compositions/documents",
+        description=(
+            "Relationships that this composition has with other compositions or "
+            "documents that already exist."
+        ),
     )
 
     section: ListType[fhirtypes.CompositionSectionType] = Field(
         None,
         alias="section",
-        title="List of `CompositionSection` items (represented as `dict` in JSON)",
-        description="Composition is broken into sections",
+        title="Composition is broken into sections",
+        description="The root of the sections that make up the composition.",
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="preliminary | final | amended | entered-in-error",
+        title="preliminary | final | amended | entered-in-error",
+        description=(
+            "The workflow/clinical status of this composition. The status is a "
+            "marker for the clinical standing of the document."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["preliminary", "final", "amended", "entered-in-error"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -140,17 +177,22 @@ class Composition(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title=(
-            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        title="Who and/or what the composition is about",
+        description=(
+            "Who or what the composition is about. The composition can be about a "
+            "person, (patient or healthcare practitioner), a device (e.g. a "
+            "machine) or even a group of subjects (such as a document about a herd "
+            "of livestock, or a set of patients that share a common exposure)."
         ),
-        description="Who and/or what the composition is about",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     title: fhirtypes.String = Field(
         ...,
         alias="title",
-        title="Type `String`",
-        description="Human Readable name/title",
+        title="Human Readable name/title",
+        description="Official human-readable label for the composition.",
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -159,8 +201,12 @@ class Composition(domainresource.DomainResource):
     type: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Kind of composition (LOINC if possible)",
+        title="Kind of composition (LOINC if possible)",
+        description=(
+            "Specifies the particular kind of composition (e.g. History and "
+            "Physical, Discharge Summary, Progress Note). This usually equates to "
+            "the purpose of making the composition."
+        ),
     )
 
 
@@ -178,8 +224,11 @@ class CompositionAttester(backboneelement.BackboneElement):
     mode: fhirtypes.Code = Field(
         ...,
         alias="mode",
-        title="Type `Code`",
-        description="personal | professional | legal | official",
+        title="personal | professional | legal | official",
+        description="The type of attestation the authenticator offers.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["personal", "professional", "legal", "official"],
     )
     mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_mode", title="Extension field for ``mode``."
@@ -188,18 +237,23 @@ class CompositionAttester(backboneelement.BackboneElement):
     party: fhirtypes.ReferenceType = Field(
         None,
         alias="party",
-        title=(
-            "Type `Reference` referencing `Patient, RelatedPerson, Practitioner, "
-            "PractitionerRole, Organization` (represented as `dict` in JSON)"
-        ),
-        description="Who attested the composition",
+        title="Who attested the composition",
+        description="Who attested the composition in the specified way.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Patient",
+            "RelatedPerson",
+            "Practitioner",
+            "PractitionerRole",
+            "Organization",
+        ],
     )
 
     time: fhirtypes.DateTime = Field(
         None,
         alias="time",
-        title="Type `DateTime`",
-        description="When the composition was attested",
+        title="When the composition was attested",
+        description="When the composition was attested by the party.",
     )
     time__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_time", title="Extension field for ``time``."
@@ -221,25 +275,38 @@ class CompositionEvent(backboneelement.BackboneElement):
     code: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="code",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Code(s) that apply to the event being documented",
+        title="Code(s) that apply to the event being documented",
+        description=(
+            "This list of codes represents the main clinical acts, such as a "
+            "colonoscopy or an appendectomy, being documented. In some cases, the "
+            'event is inherent in the typeCode, such as a "History and Physical '
+            'Report" in which the procedure being documented is necessarily a '
+            '"History and Physical" act.'
+        ),
     )
 
     detail: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="detail",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
+        title="The event(s) being documented",
+        description=(
+            "The description and/or reference of the event(s) being documented. For"
+            " example, this could be used to document such a colonoscopy or an "
+            "appendectomy."
         ),
-        description="The event(s) being documented",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="The period covered by the documentation",
+        title="The period covered by the documentation",
+        description=(
+            "The period of time covered by the documentation. There is no assertion"
+            " that the documentation is a complete representation for this period, "
+            "only that it documents events during this time."
+        ),
     )
 
 
@@ -258,8 +325,14 @@ class CompositionRelatesTo(backboneelement.BackboneElement):
     code: fhirtypes.Code = Field(
         ...,
         alias="code",
-        title="Type `Code`",
-        description="replaces | transforms | signs | appends",
+        title="replaces | transforms | signs | appends",
+        description=(
+            "The type of relationship that this composition has with anther "
+            "composition or document."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["replaces", "transforms", "signs", "appends"],
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -268,22 +341,23 @@ class CompositionRelatesTo(backboneelement.BackboneElement):
     targetIdentifier: fhirtypes.IdentifierType = Field(
         None,
         alias="targetIdentifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Target of the relationship",
-        one_of_many="target",  # Choice of Data Types. i.e value[x]
+        title="Target of the relationship",
+        description="The target composition/document of this relationship.",
+        # Choice of Data Types. i.e target[x]
+        one_of_many="target",
         one_of_many_required=True,
     )
 
     targetReference: fhirtypes.ReferenceType = Field(
         None,
         alias="targetReference",
-        title=(
-            "Type `Reference` referencing `Composition` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Target of the relationship",
-        one_of_many="target",  # Choice of Data Types. i.e value[x]
+        title="Target of the relationship",
+        description="The target composition/document of this relationship.",
+        # Choice of Data Types. i.e target[x]
+        one_of_many="target",
         one_of_many_required=True,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Composition"],
     )
 
     @root_validator(pre=True)
@@ -337,55 +411,90 @@ class CompositionSection(backboneelement.BackboneElement):
     author: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="author",
-        title=(
-            "List of `Reference` items referencing `Practitioner, PractitionerRole,"
-            " Device, Patient, RelatedPerson, Organization` (represented as `dict` "
-            "in JSON)"
+        title="Who and/or what authored the section",
+        description=(
+            "Identifies who is responsible for the information in this section, not"
+            " necessarily who typed it in."
         ),
-        description="Who and/or what authored the section",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Practitioner",
+            "PractitionerRole",
+            "Device",
+            "Patient",
+            "RelatedPerson",
+            "Organization",
+        ],
     )
 
     code: fhirtypes.CodeableConceptType = Field(
         None,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Classification of section (recommended)",
+        title="Classification of section (recommended)",
+        description=(
+            "A code identifying the kind of content contained within the section. "
+            "This must be consistent with the section title."
+        ),
     )
 
     emptyReason: fhirtypes.CodeableConceptType = Field(
         None,
         alias="emptyReason",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Why the section is empty",
+        title="Why the section is empty",
+        description=(
+            "If the section is empty, why the list is empty. An empty section "
+            "typically has some text explaining the empty reason."
+        ),
     )
 
     entry: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="entry",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
+        title="A reference to data that supports this section",
+        description=(
+            "A reference to the actual resource from which the narrative in the "
+            "section is derived."
         ),
-        description="A reference to data that supports this section",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     focus: fhirtypes.ReferenceType = Field(
         None,
         alias="focus",
         title=(
-            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
-        ),
-        description=(
             "Who/what the section is about, when it is not about the subject of "
             "composition"
         ),
+        description=(
+            "The actual focus of the section when it is not the subject of the "
+            "composition, but instead represents something or someone associated "
+            "with the subject such as (for a patient subject) a spouse, parent, "
+            "fetus, or donor. If not focus is specified, the focus is assumed to be"
+            " focus of the parent section, or, for a section in the Composition "
+            "itself, the subject of the composition. Sections with a focus SHALL "
+            "only include resources where the logical subject (patient, subject, "
+            "focus, etc.) matches the section focus, or the resources have no "
+            "logical subject (few resources)."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     mode: fhirtypes.Code = Field(
         None,
         alias="mode",
-        title="Type `Code`",
-        description="working | snapshot | changes",
+        title="working | snapshot | changes",
+        description=(
+            "How the entry list was prepared - whether it is a working list that is"
+            " suitable for being maintained on an ongoing basis, or if it "
+            "represents a snapshot of a list of items from another source, or "
+            "whether it is a prepared list where items may be marked as added, "
+            "modified or deleted."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["working", "snapshot", "changes"],
     )
     mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_mode", title="Extension field for ``mode``."
@@ -394,29 +503,39 @@ class CompositionSection(backboneelement.BackboneElement):
     orderedBy: fhirtypes.CodeableConceptType = Field(
         None,
         alias="orderedBy",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Order of section entries",
+        title="Order of section entries",
+        description="Specifies the order applied to the items in the section entries.",
     )
 
     section: ListType[fhirtypes.CompositionSectionType] = Field(
         None,
         alias="section",
-        title="List of `CompositionSection` items (represented as `dict` in JSON)",
-        description="Nested Section",
+        title="Nested Section",
+        description="A nested sub-section within this section.",
     )
 
     text: fhirtypes.NarrativeType = Field(
         None,
         alias="text",
-        title="Type `Narrative` (represented as `dict` in JSON)",
-        description="Text summary of the section, for human interpretation",
+        title="Text summary of the section, for human interpretation",
+        description=(
+            "A human-readable narrative that contains the attested content of the "
+            "section, used to represent the content of the resource to a human. The"
+            " narrative need not encode all the structured data, but is required to"
+            ' contain sufficient detail to make it "clinically safe" for a human to'
+            " just read the narrative."
+        ),
     )
 
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String`",
-        description="Label for section (e.g. for ToC)",
+        title="Label for section (e.g. for ToC)",
+        description=(
+            "The label for this particular section.  This will be part of the "
+            "rendered content for the document, and is often used to build a table "
+            "of contents."
+        ),
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."

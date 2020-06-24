@@ -33,15 +33,23 @@ class Timing(element.Element):
     code: fhirtypes.CodeableConceptType = Field(
         None,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="BID | TID | QID | AM | PM | QD | QOD | Q4H | Q6H +",
+        title="BID | TID | QID | AM | PM | QD | QOD | Q4H | Q6H +",
+        description=(
+            "A code for the timing schedule. Some codes such as BID are ubiquitous,"
+            " but many institutions define their own additional codes. If a code is"
+            " provided, the code is understood to be a complete statement of "
+            "whatever is specified in the structured timing data, and either the "
+            "code or the data may be used to interpret the Timing, with the "
+            "exception that .repeat.bounds still applies over the code (and is not "
+            "contained in the code)."
+        ),
     )
 
     event: ListType[fhirtypes.DateTime] = Field(
         None,
         alias="event",
-        title="List of `DateTime` items",
-        description="When the event occurs",
+        title="When the event occurs",
+        description="Identifies specific times when the event occurs.",
     )
     event__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_event", title="Extension field for ``event``."
@@ -50,8 +58,8 @@ class Timing(element.Element):
     repeat: fhirtypes.TimingRepeatType = Field(
         None,
         alias="repeat",
-        title="Type `TimingRepeat` (represented as `dict` in JSON)",
-        description="When the event is to occur",
+        title="When the event is to occur",
+        description="A set of rules that describe when the event is scheduled.",
     )
 
 
@@ -69,35 +77,50 @@ class TimingRepeat(element.Element):
     boundsDuration: fhirtypes.DurationType = Field(
         None,
         alias="boundsDuration",
-        title="Type `Duration` (represented as `dict` in JSON)",
-        description="Length/Range of lengths, or (Start and/or end) limits",
-        one_of_many="bounds",  # Choice of Data Types. i.e value[x]
+        title="Length/Range of lengths, or (Start and/or end) limits",
+        description=(
+            "Either a duration for the length of the timing schedule, a range of "
+            "possible length, or outer bounds for start and/or end limits of the "
+            "timing schedule."
+        ),
+        # Choice of Data Types. i.e bounds[x]
+        one_of_many="bounds",
         one_of_many_required=False,
     )
 
     boundsPeriod: fhirtypes.PeriodType = Field(
         None,
         alias="boundsPeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Length/Range of lengths, or (Start and/or end) limits",
-        one_of_many="bounds",  # Choice of Data Types. i.e value[x]
+        title="Length/Range of lengths, or (Start and/or end) limits",
+        description=(
+            "Either a duration for the length of the timing schedule, a range of "
+            "possible length, or outer bounds for start and/or end limits of the "
+            "timing schedule."
+        ),
+        # Choice of Data Types. i.e bounds[x]
+        one_of_many="bounds",
         one_of_many_required=False,
     )
 
     boundsRange: fhirtypes.RangeType = Field(
         None,
         alias="boundsRange",
-        title="Type `Range` (represented as `dict` in JSON)",
-        description="Length/Range of lengths, or (Start and/or end) limits",
-        one_of_many="bounds",  # Choice of Data Types. i.e value[x]
+        title="Length/Range of lengths, or (Start and/or end) limits",
+        description=(
+            "Either a duration for the length of the timing schedule, a range of "
+            "possible length, or outer bounds for start and/or end limits of the "
+            "timing schedule."
+        ),
+        # Choice of Data Types. i.e bounds[x]
+        one_of_many="bounds",
         one_of_many_required=False,
     )
 
     count: fhirtypes.Integer = Field(
         None,
         alias="count",
-        title="Type `Integer`",
-        description="Number of times to repeat",
+        title="Number of times to repeat",
+        description="A total count of the desired number of repetitions.",
     )
     count__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_count", title="Extension field for ``count``."
@@ -106,8 +129,11 @@ class TimingRepeat(element.Element):
     countMax: fhirtypes.Integer = Field(
         None,
         alias="countMax",
-        title="Type `Integer`",
-        description="Maximum number of times to repeat",
+        title="Maximum number of times to repeat",
+        description=(
+            "A maximum value for the count of the desired repetitions (e.g. do "
+            "something 6-8 times)."
+        ),
     )
     countMax__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_countMax", title="Extension field for ``countMax``."
@@ -116,8 +142,14 @@ class TimingRepeat(element.Element):
     dayOfWeek: ListType[fhirtypes.Code] = Field(
         None,
         alias="dayOfWeek",
-        title="List of `Code` items",
-        description="mon | tue | wed | thu | fri | sat | sun",
+        title="mon | tue | wed | thu | fri | sat | sun",
+        description=(
+            "If one or more days of week is provided, then the action happens only "
+            "on the specified day(s)."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["mon", "tue", "wed", "thu", "fri", "sat", "sun"],
     )
     dayOfWeek__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_dayOfWeek", title="Extension field for ``dayOfWeek``."
@@ -126,8 +158,8 @@ class TimingRepeat(element.Element):
     duration: fhirtypes.Decimal = Field(
         None,
         alias="duration",
-        title="Type `Decimal`",
-        description="How long when it happens",
+        title="How long when it happens",
+        description="How long this thing happens for when it happens.",
     )
     duration__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_duration", title="Extension field for ``duration``."
@@ -136,8 +168,8 @@ class TimingRepeat(element.Element):
     durationMax: fhirtypes.Decimal = Field(
         None,
         alias="durationMax",
-        title="Type `Decimal`",
-        description="How long when it happens (Max)",
+        title="How long when it happens (Max)",
+        description="The upper limit of how long this thing happens for when it happens.",
     )
     durationMax__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_durationMax", title="Extension field for ``durationMax``."
@@ -146,8 +178,11 @@ class TimingRepeat(element.Element):
     durationUnit: fhirtypes.Code = Field(
         None,
         alias="durationUnit",
-        title="Type `Code`",
-        description="s | min | h | d | wk | mo | a - unit of time (UCUM)",
+        title="s | min | h | d | wk | mo | a - unit of time (UCUM)",
+        description="The units of time for the duration, in UCUM units.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["s", "min", "h", "d", "wk", "mo", "a - unit of time (UCUM)"],
     )
     durationUnit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_durationUnit", title="Extension field for ``durationUnit``."
@@ -156,8 +191,11 @@ class TimingRepeat(element.Element):
     frequency: fhirtypes.Integer = Field(
         None,
         alias="frequency",
-        title="Type `Integer`",
-        description="Event occurs frequency times per period",
+        title="Event occurs frequency times per period",
+        description=(
+            "The number of times to repeat the action within the specified period /"
+            " period range (i.e. both period and periodMax provided)."
+        ),
     )
     frequency__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_frequency", title="Extension field for ``frequency``."
@@ -166,8 +204,12 @@ class TimingRepeat(element.Element):
     frequencyMax: fhirtypes.Integer = Field(
         None,
         alias="frequencyMax",
-        title="Type `Integer`",
-        description="Event occurs up to frequencyMax times per period",
+        title="Event occurs up to frequencyMax times per period",
+        description=(
+            "If present, indicates that the frequency is a range - so to repeat "
+            "between [frequency] and [frequencyMax] times within the period or "
+            "period range."
+        ),
     )
     frequencyMax__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_frequencyMax", title="Extension field for ``frequencyMax``."
@@ -176,8 +218,12 @@ class TimingRepeat(element.Element):
     offset: fhirtypes.UnsignedInt = Field(
         None,
         alias="offset",
-        title="Type `UnsignedInt`",
-        description="Minutes from event (before or after)",
+        title="Minutes from event (before or after)",
+        description=(
+            "The number of minutes from the event. If the event code does not "
+            "indicate whether the minutes is before or after the event, then the "
+            "offset is assumed to be after the event."
+        ),
     )
     offset__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_offset", title="Extension field for ``offset``."
@@ -186,8 +232,12 @@ class TimingRepeat(element.Element):
     period: fhirtypes.Decimal = Field(
         None,
         alias="period",
-        title="Type `Decimal`",
-        description="Event occurs frequency times per period",
+        title="Event occurs frequency times per period",
+        description=(
+            "Indicates the duration of time over which repetitions are to occur; "
+            'e.g. to express "3 times per day", 3 would be the frequency and "1 '
+            'day" would be the period.'
+        ),
     )
     period__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_period", title="Extension field for ``period``."
@@ -196,8 +246,12 @@ class TimingRepeat(element.Element):
     periodMax: fhirtypes.Decimal = Field(
         None,
         alias="periodMax",
-        title="Type `Decimal`",
-        description="Upper limit of period (3-4 hours)",
+        title="Upper limit of period (3-4 hours)",
+        description=(
+            "If present, indicates that the period is a range from [period] to "
+            '[periodMax], allowing expressing concepts such as "do this once every '
+            "3-5 days."
+        ),
     )
     periodMax__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_periodMax", title="Extension field for ``periodMax``."
@@ -206,8 +260,11 @@ class TimingRepeat(element.Element):
     periodUnit: fhirtypes.Code = Field(
         None,
         alias="periodUnit",
-        title="Type `Code`",
-        description="s | min | h | d | wk | mo | a - unit of time (UCUM)",
+        title="s | min | h | d | wk | mo | a - unit of time (UCUM)",
+        description="The units of time for the period in UCUM units.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["s", "min", "h", "d", "wk", "mo", "a - unit of time (UCUM)"],
     )
     periodUnit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_periodUnit", title="Extension field for ``periodUnit``."
@@ -216,8 +273,8 @@ class TimingRepeat(element.Element):
     timeOfDay: ListType[fhirtypes.Time] = Field(
         None,
         alias="timeOfDay",
-        title="List of `Time` items",
-        description="Time of day for action",
+        title="Time of day for action",
+        description="Specified time of day for action to take place.",
     )
     timeOfDay__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_timeOfDay", title="Extension field for ``timeOfDay``."
@@ -226,8 +283,8 @@ class TimingRepeat(element.Element):
     when: ListType[fhirtypes.Code] = Field(
         None,
         alias="when",
-        title="List of `Code` items",
-        description="Regular life events the event is tied to",
+        title="Regular life events the event is tied to",
+        description="Real world events that the occurrence of the event should be tied to.",
     )
     when__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_when", title="Extension field for ``when``."

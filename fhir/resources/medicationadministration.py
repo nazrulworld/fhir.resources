@@ -33,43 +33,59 @@ class MedicationAdministration(domainresource.DomainResource):
     category: fhirtypes.CodeableConceptType = Field(
         None,
         alias="category",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type of medication usage",
+        title="Type of medication usage",
+        description=(
+            "Indicates where the medication is expected to be consumed or "
+            "administered."
+        ),
     )
 
     context: fhirtypes.ReferenceType = Field(
         None,
         alias="context",
-        title=(
-            "Type `Reference` referencing `Encounter, EpisodeOfCare` (represented "
-            "as `dict` in JSON)"
+        title="Encounter or Episode of Care administered as part of",
+        description=(
+            "The visit, admission, or other contact between patient and health care"
+            " provider during which the medication administration was performed."
         ),
-        description="Encounter or Episode of Care administered as part of",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Encounter", "EpisodeOfCare"],
     )
 
     device: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="device",
-        title=(
-            "List of `Reference` items referencing `Device` (represented as `dict` "
-            "in JSON)"
+        title="Device used to administer",
+        description=(
+            "The device used in administering the medication to the patient.  For "
+            "example, a particular infusion pump."
         ),
-        description="Device used to administer",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Device"],
     )
 
     dosage: fhirtypes.MedicationAdministrationDosageType = Field(
         None,
         alias="dosage",
-        title="Type `MedicationAdministrationDosage` (represented as `dict` in JSON)",
-        description="Details of how medication was taken",
+        title="Details of how medication was taken",
+        description=(
+            "Describes the medication dosage information details e.g. dose, rate, "
+            "site, route, etc."
+        ),
     )
 
     effectiveDateTime: fhirtypes.DateTime = Field(
         None,
         alias="effectiveDateTime",
-        title="Type `DateTime`",
-        description="Start and end time of administration",
-        one_of_many="effective",  # Choice of Data Types. i.e value[x]
+        title="Start and end time of administration",
+        description=(
+            "A specific date/time or interval of time during which the "
+            "administration took place (or did not take place, when the 'notGiven' "
+            "attribute is true). For many administrations, such as swallowing a "
+            "tablet the use of dateTime is more appropriate."
+        ),
+        # Choice of Data Types. i.e effective[x]
+        one_of_many="effective",
         one_of_many_required=True,
     )
     effectiveDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -81,34 +97,52 @@ class MedicationAdministration(domainresource.DomainResource):
     effectivePeriod: fhirtypes.PeriodType = Field(
         None,
         alias="effectivePeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Start and end time of administration",
-        one_of_many="effective",  # Choice of Data Types. i.e value[x]
+        title="Start and end time of administration",
+        description=(
+            "A specific date/time or interval of time during which the "
+            "administration took place (or did not take place, when the 'notGiven' "
+            "attribute is true). For many administrations, such as swallowing a "
+            "tablet the use of dateTime is more appropriate."
+        ),
+        # Choice of Data Types. i.e effective[x]
+        one_of_many="effective",
         one_of_many_required=True,
     )
 
     eventHistory: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="eventHistory",
-        title=(
-            "List of `Reference` items referencing `Provenance` (represented as "
-            "`dict` in JSON)"
+        title="A list of events of interest in the lifecycle",
+        description=(
+            "A summary of the events of interest that have occurred, such as when "
+            "the administration was verified."
         ),
-        description="A list of events of interest in the lifecycle",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Provenance"],
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="External identifier",
+        title="External identifier",
+        description=(
+            "Identifiers associated with this Medication Administration that are "
+            "defined by business processes and/or used to refer to it when a direct"
+            " URL reference to the resource itself is not appropriate. They are "
+            "business identifiers assigned to this resource by the performer or "
+            "other systems and remain constant as the resource is updated and "
+            "propagates from server to server."
+        ),
     )
 
     instantiates: ListType[fhirtypes.Uri] = Field(
         None,
         alias="instantiates",
-        title="List of `Uri` items",
-        description="Instantiates protocol or definition",
+        title="Instantiates protocol or definition",
+        description=(
+            "A protocol, guideline, orderset, or other definition that was adhered "
+            "to in whole or in part by this event."
+        ),
     )
     instantiates__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -119,89 +153,119 @@ class MedicationAdministration(domainresource.DomainResource):
     medicationCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="medicationCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="What was administered",
-        one_of_many="medication",  # Choice of Data Types. i.e value[x]
+        title="What was administered",
+        description=(
+            "Identifies the medication that was administered. This is either a link"
+            " to a resource representing the details of the medication or a simple "
+            "attribute carrying a code that identifies the medication from a known "
+            "list of medications."
+        ),
+        # Choice of Data Types. i.e medication[x]
+        one_of_many="medication",
         one_of_many_required=True,
     )
 
     medicationReference: fhirtypes.ReferenceType = Field(
         None,
         alias="medicationReference",
-        title=(
-            "Type `Reference` referencing `Medication` (represented as `dict` in "
-            "JSON)"
+        title="What was administered",
+        description=(
+            "Identifies the medication that was administered. This is either a link"
+            " to a resource representing the details of the medication or a simple "
+            "attribute carrying a code that identifies the medication from a known "
+            "list of medications."
         ),
-        description="What was administered",
-        one_of_many="medication",  # Choice of Data Types. i.e value[x]
+        # Choice of Data Types. i.e medication[x]
+        one_of_many="medication",
         one_of_many_required=True,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Medication"],
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
-        title="List of `Annotation` items (represented as `dict` in JSON)",
-        description="Information about the administration",
+        title="Information about the administration",
+        description=(
+            "Extra information about the medication administration that is not "
+            "conveyed by the other attributes."
+        ),
     )
 
     partOf: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="partOf",
-        title=(
-            "List of `Reference` items referencing `MedicationAdministration, "
-            "Procedure` (represented as `dict` in JSON)"
-        ),
-        description="Part of referenced event",
+        title="Part of referenced event",
+        description="A larger event of which this particular event is a component or step.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["MedicationAdministration", "Procedure"],
     )
 
     performer: ListType[fhirtypes.MedicationAdministrationPerformerType] = Field(
         None,
         alias="performer",
-        title=(
-            "List of `MedicationAdministrationPerformer` items (represented as "
-            "`dict` in JSON)"
+        title="Who performed the medication administration and what they did",
+        description=(
+            "Indicates who or what performed the medication administration and how "
+            "they were involved."
         ),
-        description="Who performed the medication administration and what they did",
     )
 
     reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="reasonCode",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Reason administration performed",
+        title="Reason administration performed",
+        description="A code indicating why the medication was given.",
     )
 
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="reasonReference",
         title=(
-            "List of `Reference` items referencing `Condition, Observation, "
-            "DiagnosticReport` (represented as `dict` in JSON)"
-        ),
-        description=(
             "Condition or observation that supports why the medication was "
             "administered"
         ),
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Condition", "Observation", "DiagnosticReport"],
     )
 
     request: fhirtypes.ReferenceType = Field(
         None,
         alias="request",
-        title=(
-            "Type `Reference` referencing `MedicationRequest` (represented as "
-            "`dict` in JSON)"
+        title="Request administration performed against",
+        description=(
+            "The original request, instruction or authority to perform the "
+            "administration."
         ),
-        description="Request administration performed against",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["MedicationRequest"],
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description=(
+        title=(
             "in-progress | not-done | on-hold | completed | entered-in-error | "
             "stopped | unknown"
         ),
+        description=(
+            "Will generally be set to show that the administration has been "
+            "completed.  For some long running administrations such as infusions, "
+            "it is possible for an administration to be started but not completed "
+            "or it may be paused while some other process is under way."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "in-progress",
+            "not-done",
+            "on-hold",
+            "completed",
+            "entered-in-error",
+            "stopped",
+            "unknown",
+        ],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -210,28 +274,29 @@ class MedicationAdministration(domainresource.DomainResource):
     statusReason: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="statusReason",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Reason administration not performed",
+        title="Reason administration not performed",
+        description="A code indicating why the administration was not performed.",
     )
 
     subject: fhirtypes.ReferenceType = Field(
         ...,
         alias="subject",
-        title=(
-            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
-            "in JSON)"
-        ),
-        description="Who received medication",
+        title="Who received medication",
+        description="The person or animal or group receiving the medication.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "Group"],
     )
 
     supportingInformation: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="supportingInformation",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
+        title="Additional information to support administration",
+        description=(
+            "Additional information (for example, patient height and weight) that "
+            "supports the administration of the medication."
         ),
-        description="Additional information to support administration",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     @root_validator(pre=True)
@@ -289,54 +354,90 @@ class MedicationAdministrationDosage(backboneelement.BackboneElement):
     dose: fhirtypes.QuantityType = Field(
         None,
         alias="dose",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Amount of medication per dose",
+        title="Amount of medication per dose",
+        description=(
+            "The amount of the medication given at one administration event.   Use "
+            "this value when the administration is essentially an instantaneous "
+            "event such as a swallowing a tablet or giving an injection."
+        ),
     )
 
     method: fhirtypes.CodeableConceptType = Field(
         None,
         alias="method",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="How drug was administered",
+        title="How drug was administered",
+        description=(
+            "A coded value indicating the method by which the medication is "
+            "intended to be or was introduced into or on the body.  This attribute "
+            "will most often NOT be populated.  It is most commonly used for "
+            "injections.  For example, Slow Push, Deep IV."
+        ),
     )
 
     rateQuantity: fhirtypes.QuantityType = Field(
         None,
         alias="rateQuantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Dose quantity per unit of time",
-        one_of_many="rate",  # Choice of Data Types. i.e value[x]
+        title="Dose quantity per unit of time",
+        description=(
+            "Identifies the speed with which the medication was or will be "
+            "introduced into the patient.  Typically, the rate for an infusion e.g."
+            " 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per "
+            "unit of time, e.g. 500 ml per 2 hours.  Other examples:  200 mcg/min "
+            "or 200 mcg/1 minute; 1 liter/8 hours."
+        ),
+        # Choice of Data Types. i.e rate[x]
+        one_of_many="rate",
         one_of_many_required=False,
     )
 
     rateRatio: fhirtypes.RatioType = Field(
         None,
         alias="rateRatio",
-        title="Type `Ratio` (represented as `dict` in JSON)",
-        description="Dose quantity per unit of time",
-        one_of_many="rate",  # Choice of Data Types. i.e value[x]
+        title="Dose quantity per unit of time",
+        description=(
+            "Identifies the speed with which the medication was or will be "
+            "introduced into the patient.  Typically, the rate for an infusion e.g."
+            " 100 ml per 1 hour or 100 ml/hr.  May also be expressed as a rate per "
+            "unit of time, e.g. 500 ml per 2 hours.  Other examples:  200 mcg/min "
+            "or 200 mcg/1 minute; 1 liter/8 hours."
+        ),
+        # Choice of Data Types. i.e rate[x]
+        one_of_many="rate",
         one_of_many_required=False,
     )
 
     route: fhirtypes.CodeableConceptType = Field(
         None,
         alias="route",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Path of substance into body",
+        title="Path of substance into body",
+        description=(
+            "A code specifying the route or physiological path of administration of"
+            " a therapeutic agent into or onto the patient.  For example, topical, "
+            "intravenous, etc."
+        ),
     )
 
     site: fhirtypes.CodeableConceptType = Field(
         None,
         alias="site",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Body site administered to",
+        title="Body site administered to",
+        description=(
+            "A coded specification of the anatomic site where the medication first "
+            'entered the body.  For example, "left arm".'
+        ),
     )
 
     text: fhirtypes.String = Field(
         None,
         alias="text",
-        title="Type `String`",
-        description="Free text dosage instructions e.g. SIG",
+        title="Free text dosage instructions e.g. SIG",
+        description=(
+            "Free text dosage can be used for cases where the dosage administered "
+            "is too complex to code. When coded dosage is present, the free text "
+            "dosage may still be present for display to humans.  The dosage "
+            "instructions should reflect the dosage of the medication that was "
+            "administered."
+        ),
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_text", title="Extension field for ``text``."
@@ -394,16 +495,24 @@ class MedicationAdministrationPerformer(backboneelement.BackboneElement):
     actor: fhirtypes.ReferenceType = Field(
         ...,
         alias="actor",
-        title=(
-            "Type `Reference` referencing `Practitioner, PractitionerRole, Patient,"
-            " RelatedPerson, Device` (represented as `dict` in JSON)"
-        ),
-        description="Who performed the medication administration",
+        title="Who performed the medication administration",
+        description="Indicates who or what performed the medication administration.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Practitioner",
+            "PractitionerRole",
+            "Patient",
+            "RelatedPerson",
+            "Device",
+        ],
     )
 
     function: fhirtypes.CodeableConceptType = Field(
         None,
         alias="function",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type of performance",
+        title="Type of performance",
+        description=(
+            "Distinguishes the type of involvement of the performer in the "
+            "medication administration."
+        ),
     )

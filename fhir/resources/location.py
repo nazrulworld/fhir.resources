@@ -28,20 +28,17 @@ class Location(domainresource.DomainResource):
     resource_type = Field("Location", const=True)
 
     address: fhirtypes.AddressType = Field(
-        None,
-        alias="address",
-        title="Type `Address` (represented as `dict` in JSON)",
-        description="Physical location",
+        None, alias="address", title="Physical location", description=None,
     )
 
     alias: ListType[fhirtypes.String] = Field(
         None,
         alias="alias",
-        title="List of `String` items",
-        description=(
+        title=(
             "A list of alternate names that the location is known as, or was known "
             "as, in the past"
         ),
+        description=None,
     )
     alias__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_alias", title="Extension field for ``alias``."
@@ -50,8 +47,13 @@ class Location(domainresource.DomainResource):
     availabilityExceptions: fhirtypes.String = Field(
         None,
         alias="availabilityExceptions",
-        title="Type `String`",
-        description="Description of availability exceptions",
+        title="Description of availability exceptions",
+        description=(
+            "A description of when the locations opening ours are different to "
+            "normal, e.g. public holiday availability. Succinctly describing all "
+            "possible exceptions to normal site availability as detailed in the "
+            "opening hours Times."
+        ),
     )
     availabilityExceptions__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -62,10 +64,13 @@ class Location(domainresource.DomainResource):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description=(
+        title=(
             "Additional details about the location that could be displayed as "
             "further information to identify the location beyond its name"
+        ),
+        description=(
+            "Description of the Location, which helps in finding or referencing the"
+            " place."
         ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -76,44 +81,51 @@ class Location(domainresource.DomainResource):
         None,
         alias="endpoint",
         title=(
-            "List of `Reference` items referencing `Endpoint` (represented as "
-            "`dict` in JSON)"
-        ),
-        description=(
             "Technical endpoints providing access to services operated for the "
             "location"
         ),
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Endpoint"],
     )
 
     hoursOfOperation: ListType[fhirtypes.LocationHoursOfOperationType] = Field(
         None,
         alias="hoursOfOperation",
-        title=(
-            "List of `LocationHoursOfOperation` items (represented as `dict` in "
-            "JSON)"
-        ),
-        description="What days/times during a week is this location usually open",
+        title="What days/times during a week is this location usually open",
+        description=None,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Unique code or number identifying the location to its users",
+        title="Unique code or number identifying the location to its users",
+        description=None,
     )
 
     managingOrganization: fhirtypes.ReferenceType = Field(
         None,
         alias="managingOrganization",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
+        title="Organization responsible for provisioning and upkeep",
+        description=(
+            "The organization responsible for the provisioning and upkeep of the "
+            "location."
         ),
-        description="Organization responsible for provisioning and upkeep",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     mode: fhirtypes.Code = Field(
-        None, alias="mode", title="Type `Code`", description="instance | kind"
+        None,
+        alias="mode",
+        title="instance | kind",
+        description=(
+            "Indicates whether a resource instance represents a specific location "
+            "or a class of locations."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["instance", "kind"],
     )
     mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_mode", title="Extension field for ``mode``."
@@ -122,8 +134,8 @@ class Location(domainresource.DomainResource):
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String`",
-        description="Name of the location as used by humans",
+        title="Name of the location as used by humans",
+        description="Name of the location as used by humans. Does not need to be unique.",
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -132,38 +144,53 @@ class Location(domainresource.DomainResource):
     operationalStatus: fhirtypes.CodingType = Field(
         None,
         alias="operationalStatus",
-        title="Type `Coding` (represented as `dict` in JSON)",
-        description="The operational status of the location (typically only for a bed/room)",
+        title="The operational status of the location (typically only for a bed/room)",
+        description=(
+            "The operational status covers operation values most relevant to beds "
+            "(but can also apply to rooms/units/chairs/etc. such as an isolation "
+            "unit/dialysis chair). This typically covers concepts such as "
+            "contamination, housekeeping, and other activities like maintenance."
+        ),
     )
 
     partOf: fhirtypes.ReferenceType = Field(
         None,
         alias="partOf",
-        title=(
-            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
-        ),
-        description="Another Location this one is physically a part of",
+        title="Another Location this one is physically a part of",
+        description="Another Location of which this Location is physically a part of.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Location"],
     )
 
     physicalType: fhirtypes.CodeableConceptType = Field(
         None,
         alias="physicalType",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Physical form of the location",
+        title="Physical form of the location",
+        description="Physical form of the location, e.g. building, room, vehicle, road.",
     )
 
     position: fhirtypes.LocationPositionType = Field(
         None,
         alias="position",
-        title="Type `LocationPosition` (represented as `dict` in JSON)",
-        description="The absolute geographic location",
+        title="The absolute geographic location",
+        description=(
+            "The absolute geographic location of the Location, expressed using the "
+            "WGS84 datum (This is the same co-ordinate system used in KML)."
+        ),
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code`",
-        description="active | suspended | inactive",
+        title="active | suspended | inactive",
+        description=(
+            "The status property covers the general availability of the resource, "
+            "not the current value which may be covered by the operationStatus, or "
+            "by a schedule/slots if they are configured for the location."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["active", "suspended", "inactive"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -172,15 +199,19 @@ class Location(domainresource.DomainResource):
     telecom: ListType[fhirtypes.ContactPointType] = Field(
         None,
         alias="telecom",
-        title="List of `ContactPoint` items (represented as `dict` in JSON)",
-        description="Contact details of the location",
+        title="Contact details of the location",
+        description=(
+            "The contact details of communication devices available at the "
+            "location. This can include phone numbers, fax numbers, mobile numbers,"
+            " email addresses and web sites."
+        ),
     )
 
     type: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="type",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Type of function performed",
+        title="Type of function performed",
+        description="Indicates the type of function performed at the location.",
     )
 
 
@@ -195,10 +226,7 @@ class LocationHoursOfOperation(backboneelement.BackboneElement):
     resource_type = Field("LocationHoursOfOperation", const=True)
 
     allDay: bool = Field(
-        None,
-        alias="allDay",
-        title="Type `bool`",
-        description="The Location is open all day",
+        None, alias="allDay", title="The Location is open all day", description=None,
     )
     allDay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_allDay", title="Extension field for ``allDay``."
@@ -207,8 +235,8 @@ class LocationHoursOfOperation(backboneelement.BackboneElement):
     closingTime: fhirtypes.Time = Field(
         None,
         alias="closingTime",
-        title="Type `Time`",
-        description="Time that the Location closes",
+        title="Time that the Location closes",
+        description=None,
     )
     closingTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_closingTime", title="Extension field for ``closingTime``."
@@ -217,8 +245,14 @@ class LocationHoursOfOperation(backboneelement.BackboneElement):
     daysOfWeek: ListType[fhirtypes.Code] = Field(
         None,
         alias="daysOfWeek",
-        title="List of `Code` items",
-        description="mon | tue | wed | thu | fri | sat | sun",
+        title="mon | tue | wed | thu | fri | sat | sun",
+        description=(
+            "Indicates which days of the week are available between the start and "
+            "end Times."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["mon", "tue", "wed", "thu", "fri", "sat", "sun"],
     )
     daysOfWeek__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -227,8 +261,8 @@ class LocationHoursOfOperation(backboneelement.BackboneElement):
     openingTime: fhirtypes.Time = Field(
         None,
         alias="openingTime",
-        title="Type `Time`",
-        description="Time that the Location opens",
+        title="Time that the Location opens",
+        description=None,
     )
     openingTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_openingTime", title="Extension field for ``openingTime``."
@@ -250,8 +284,11 @@ class LocationPosition(backboneelement.BackboneElement):
     altitude: fhirtypes.Decimal = Field(
         None,
         alias="altitude",
-        title="Type `Decimal`",
-        description="Altitude with WGS84 datum",
+        title="Altitude with WGS84 datum",
+        description=(
+            "Altitude. The value domain and the interpretation are the same as for "
+            "the text of the altitude element in KML (see notes below)."
+        ),
     )
     altitude__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_altitude", title="Extension field for ``altitude``."
@@ -260,8 +297,11 @@ class LocationPosition(backboneelement.BackboneElement):
     latitude: fhirtypes.Decimal = Field(
         ...,
         alias="latitude",
-        title="Type `Decimal`",
-        description="Latitude with WGS84 datum",
+        title="Latitude with WGS84 datum",
+        description=(
+            "Latitude. The value domain and the interpretation are the same as for "
+            "the text of the latitude element in KML (see notes below)."
+        ),
     )
     latitude__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_latitude", title="Extension field for ``latitude``."
@@ -270,8 +310,11 @@ class LocationPosition(backboneelement.BackboneElement):
     longitude: fhirtypes.Decimal = Field(
         ...,
         alias="longitude",
-        title="Type `Decimal`",
-        description="Longitude with WGS84 datum",
+        title="Longitude with WGS84 datum",
+        description=(
+            "Longitude. The value domain and the interpretation are the same as for"
+            " the text of the longitude element in KML (see notes below)."
+        ),
     )
     longitude__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_longitude", title="Extension field for ``longitude``."

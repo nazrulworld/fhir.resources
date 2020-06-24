@@ -26,21 +26,21 @@ class Slot(domainresource.DomainResource):
     appointmentType: fhirtypes.CodeableConceptType = Field(
         None,
         alias="appointmentType",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The style of appointment or patient that may be booked in the slot "
             "(not service type)"
         ),
+        description=None,
     )
 
     comment: fhirtypes.String = Field(
         None,
         alias="comment",
-        title="Type `String`",
-        description=(
+        title=(
             "Comments on the slot to describe any extended information. Such as "
             "custom constraints on the slot"
         ),
+        description=None,
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comment", title="Extension field for ``comment``."
@@ -49,28 +49,25 @@ class Slot(domainresource.DomainResource):
     end: fhirtypes.Instant = Field(
         ...,
         alias="end",
-        title="Type `Instant`",
-        description="Date/Time that the slot is to conclude",
+        title="Date/Time that the slot is to conclude",
+        description=None,
     )
     end__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_end", title="Extension field for ``end``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
-        None,
-        alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="External Ids for this item",
+        None, alias="identifier", title="External Ids for this item", description=None,
     )
 
     overbooked: bool = Field(
         None,
         alias="overbooked",
-        title="Type `bool`",
-        description=(
+        title=(
             "This slot has already been overbooked, appointments are unlikely to be"
             " accepted for this time"
         ),
+        description=None,
     )
     overbooked__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_overbooked", title="Extension field for ``overbooked``."
@@ -80,51 +77,51 @@ class Slot(domainresource.DomainResource):
         ...,
         alias="schedule",
         title=(
-            "Type `Reference` referencing `Schedule` (represented as `dict` in " "JSON)"
-        ),
-        description=(
             "The schedule resource that this slot defines an interval of status "
             "information"
         ),
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Schedule"],
     )
 
     serviceCategory: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="serviceCategory",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description=(
+        title=(
             "A broad categorization of the service that is to be performed during "
             "this appointment"
         ),
+        description=None,
     )
 
     serviceType: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="serviceType",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The type of appointments that can be booked into this slot (ideally "
             "this would be an identifiable service - which is at a location, rather"
             " than the location itself). If provided then this overrides the value "
             "provided on the availability resource"
         ),
+        description=None,
     )
 
     specialty: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="specialty",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The specialty of a practitioner that would be required to perform the "
             "service requested in this appointment"
         ),
+        description=None,
     )
 
     start: fhirtypes.Instant = Field(
         ...,
         alias="start",
-        title="Type `Instant`",
-        description="Date/Time that the slot is to begin",
+        title="Date/Time that the slot is to begin",
+        description=None,
     )
     start__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_start", title="Extension field for ``start``."
@@ -133,8 +130,17 @@ class Slot(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="busy | free | busy-unavailable | busy-tentative | entered-in-error",
+        title="busy | free | busy-unavailable | busy-tentative | entered-in-error",
+        description=None,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "busy",
+            "free",
+            "busy-unavailable",
+            "busy-tentative",
+            "entered-in-error",
+        ],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."

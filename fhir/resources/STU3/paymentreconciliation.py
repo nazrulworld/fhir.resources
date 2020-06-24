@@ -26,7 +26,13 @@ class PaymentReconciliation(domainresource.DomainResource):
     resource_type = Field("PaymentReconciliation", const=True)
 
     created: fhirtypes.DateTime = Field(
-        None, alias="created", title="Type `DateTime`", description="Creation date"
+        None,
+        alias="created",
+        title="Creation date",
+        description=(
+            "The date when the enclosed suite of services were performed or "
+            "completed."
+        ),
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_created", title="Extension field for ``created``."
@@ -35,18 +41,18 @@ class PaymentReconciliation(domainresource.DomainResource):
     detail: ListType[fhirtypes.PaymentReconciliationDetailType] = Field(
         None,
         alias="detail",
-        title=(
-            "List of `PaymentReconciliationDetail` items (represented as `dict` in "
-            "JSON)"
+        title="List of settlements",
+        description=(
+            "List of individual settlement amounts and the corresponding "
+            "transaction."
         ),
-        description="List of settlements",
     )
 
     disposition: fhirtypes.String = Field(
         None,
         alias="disposition",
-        title="Type `String`",
-        description="Disposition Message",
+        title="Disposition Message",
+        description="A description of the status of the adjudication.",
     )
     disposition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_disposition", title="Extension field for ``disposition``."
@@ -55,86 +61,91 @@ class PaymentReconciliation(domainresource.DomainResource):
     form: fhirtypes.CodeableConceptType = Field(
         None,
         alias="form",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Printed Form Identifier",
+        title="Printed Form Identifier",
+        description="The form to be used for printing the content.",
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Business Identifier",
+        title="Business Identifier",
+        description="The Response business identifier.",
     )
 
     organization: fhirtypes.ReferenceType = Field(
         None,
         alias="organization",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Insurer",
+        title="Insurer",
+        description="The Insurer who produced this adjudicated response.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     outcome: fhirtypes.CodeableConceptType = Field(
         None,
         alias="outcome",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="complete | error | partial",
+        title="complete | error | partial",
+        description="Transaction status: error, complete.",
     )
 
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Period covered",
+        title="Period covered",
+        description=(
+            "The period of time for which payments have been gathered into this "
+            "bulk payment for settlement."
+        ),
     )
 
     processNote: ListType[fhirtypes.PaymentReconciliationProcessNoteType] = Field(
         None,
         alias="processNote",
-        title=(
-            "List of `PaymentReconciliationProcessNote` items (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Processing comments",
+        title="Processing comments",
+        description="Suite of notes.",
     )
 
     request: fhirtypes.ReferenceType = Field(
         None,
         alias="request",
-        title=(
-            "Type `Reference` referencing `ProcessRequest` (represented as `dict` "
-            "in JSON)"
-        ),
-        description="Claim reference",
+        title="Claim reference",
+        description="Original request resource reference.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ProcessRequest"],
     )
 
     requestOrganization: fhirtypes.ReferenceType = Field(
         None,
         alias="requestOrganization",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
+        title="Responsible organization",
+        description=(
+            "The organization which is responsible for the services rendered to the"
+            " patient."
         ),
-        description="Responsible organization",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     requestProvider: fhirtypes.ReferenceType = Field(
         None,
         alias="requestProvider",
-        title=(
-            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
-            "JSON)"
+        title="Responsible practitioner",
+        description=(
+            "The practitioner who is responsible for the services rendered to the "
+            "patient."
         ),
-        description="Responsible practitioner",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner"],
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code`",
-        description="active | cancelled | draft | entered-in-error",
+        title="active | cancelled | draft | entered-in-error",
+        description="The status of the resource instance.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["active", "cancelled", "draft", "entered-in-error"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -143,8 +154,8 @@ class PaymentReconciliation(domainresource.DomainResource):
     total: fhirtypes.MoneyType = Field(
         None,
         alias="total",
-        title="Type `Money` (represented as `dict` in JSON)",
-        description="Total amount of Payment",
+        title="Total amount of Payment",
+        description="Total payment amount.",
     )
 
 
@@ -162,12 +173,15 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
     amount: fhirtypes.MoneyType = Field(
         None,
         alias="amount",
-        title="Type `Money` (represented as `dict` in JSON)",
-        description="Amount being paid",
+        title="Amount being paid",
+        description="Amount paid for this detail.",
     )
 
     date: fhirtypes.Date = Field(
-        None, alias="date", title="Type `Date`", description="Invoice date"
+        None,
+        alias="date",
+        title="Invoice date",
+        description="The date of the invoice or financial resource.",
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -176,46 +190,47 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
     payee: fhirtypes.ReferenceType = Field(
         None,
         alias="payee",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Organization which is receiving the payment",
+        title="Organization which is receiving the payment",
+        description="The organization which is receiving the payment.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     request: fhirtypes.ReferenceType = Field(
         None,
         alias="request",
-        title=(
-            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
-        ),
-        description="Claim",
+        title="Claim",
+        description="The claim or financial resource.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     response: fhirtypes.ReferenceType = Field(
         None,
         alias="response",
-        title=(
-            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
-        ),
-        description="Claim Response",
+        title="Claim Response",
+        description="The claim response resource.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     submitter: fhirtypes.ReferenceType = Field(
         None,
         alias="submitter",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Organization which submitted the claim",
+        title="Organization which submitted the claim",
+        description="The Organization which submitted the claim or financial transaction.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type code",
+        title="Type code",
+        description=(
+            "Code to indicate the nature of the payment, adjustment, funds advance,"
+            " etc."
+        ),
     )
 
 
@@ -233,8 +248,8 @@ class PaymentReconciliationProcessNote(backboneelement.BackboneElement):
     text: fhirtypes.String = Field(
         None,
         alias="text",
-        title="Type `String`",
-        description="Comment on the processing",
+        title="Comment on the processing",
+        description="The note text.",
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_text", title="Extension field for ``text``."
@@ -243,6 +258,6 @@ class PaymentReconciliationProcessNote(backboneelement.BackboneElement):
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="display | print | printoper",
+        title="display | print | printoper",
+        description="The note purpose: Print/Display.",
     )

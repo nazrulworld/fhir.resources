@@ -29,8 +29,12 @@ class EffectEvidenceSynthesis(domainresource.DomainResource):
     approvalDate: fhirtypes.Date = Field(
         None,
         alias="approvalDate",
-        title="Type `Date`",
-        description="When the effect evidence synthesis was approved by publisher",
+        title="When the effect evidence synthesis was approved by publisher",
+        description=(
+            "The date on which the resource content was approved by the publisher. "
+            "Approval happens once when the content is officially approved for "
+            "usage."
+        ),
     )
     approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_approvalDate", title="Extension field for ``approvalDate``."
@@ -39,39 +43,55 @@ class EffectEvidenceSynthesis(domainresource.DomainResource):
     author: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="author",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Who authored the content",
+        title="Who authored the content",
+        description=(
+            "An individiual or organization primarily involved in the creation and "
+            "maintenance of the content."
+        ),
     )
 
     certainty: ListType[fhirtypes.EffectEvidenceSynthesisCertaintyType] = Field(
         None,
         alias="certainty",
-        title=(
-            "List of `EffectEvidenceSynthesisCertainty` items (represented as "
-            "`dict` in JSON)"
-        ),
-        description="How certain is the effect",
+        title="How certain is the effect",
+        description="A description of the certainty of the effect estimate.",
     )
 
     contact: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="contact",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Contact details for the publisher",
+        title="Contact details for the publisher",
+        description=(
+            "Contact details to assist a user in finding and communicating with the"
+            " publisher."
+        ),
     )
 
     copyright: fhirtypes.Markdown = Field(
         None,
         alias="copyright",
-        title="Type `Markdown`",
-        description="Use and/or publishing restrictions",
+        title="Use and/or publishing restrictions",
+        description=(
+            "A copyright statement relating to the effect evidence synthesis and/or"
+            " its contents. Copyright statements are generally legal restrictions "
+            "on the use and publishing of the effect evidence synthesis."
+        ),
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
     date: fhirtypes.DateTime = Field(
-        None, alias="date", title="Type `DateTime`", description="Date last changed"
+        None,
+        alias="date",
+        title="Date last changed",
+        description=(
+            "The date  (and optionally time) when the effect evidence synthesis was"
+            " published. The date must change when the business version changes and"
+            " it must change if the status code changes. In addition, it should "
+            "change when the substantive content of the effect evidence synthesis "
+            "changes."
+        ),
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -80,8 +100,11 @@ class EffectEvidenceSynthesis(domainresource.DomainResource):
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown`",
-        description="Natural language description of the effect evidence synthesis",
+        title="Natural language description of the effect evidence synthesis",
+        description=(
+            "A free text natural language description of the effect evidence "
+            "synthesis from a consumer's perspective."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -90,8 +113,11 @@ class EffectEvidenceSynthesis(domainresource.DomainResource):
     editor: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="editor",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Who edited the content",
+        title="Who edited the content",
+        description=(
+            "An individual or organization primarily responsible for internal "
+            "coherence of the content."
+        ),
     )
 
     effectEstimate: ListType[
@@ -99,66 +125,84 @@ class EffectEvidenceSynthesis(domainresource.DomainResource):
     ] = Field(
         None,
         alias="effectEstimate",
-        title=(
-            "List of `EffectEvidenceSynthesisEffectEstimate` items (represented as "
-            "`dict` in JSON)"
-        ),
-        description="What was the estimated effect",
+        title="What was the estimated effect",
+        description="The estimated effect of the exposure variant.",
     )
 
     effectivePeriod: fhirtypes.PeriodType = Field(
         None,
         alias="effectivePeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="When the effect evidence synthesis is expected to be used",
+        title="When the effect evidence synthesis is expected to be used",
+        description=(
+            "The period during which the effect evidence synthesis content was or "
+            "is planned to be in active use."
+        ),
     )
 
     endorser: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="endorser",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Who endorsed the content",
+        title="Who endorsed the content",
+        description=(
+            "An individual or organization responsible for officially endorsing the"
+            " content for use in some setting."
+        ),
     )
 
     exposure: fhirtypes.ReferenceType = Field(
         ...,
         alias="exposure",
-        title=(
-            "Type `Reference` referencing `EvidenceVariable` (represented as `dict`"
-            " in JSON)"
+        title="What exposure?",
+        description=(
+            "A reference to a EvidenceVariable resource that defines the exposure "
+            "for the research."
         ),
-        description="What exposure?",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["EvidenceVariable"],
     )
 
     exposureAlternative: fhirtypes.ReferenceType = Field(
         ...,
         alias="exposureAlternative",
-        title=(
-            "Type `Reference` referencing `EvidenceVariable` (represented as `dict`"
-            " in JSON)"
+        title="What comparison exposure?",
+        description=(
+            "A reference to a EvidenceVariable resource that defines the comparison"
+            " exposure for the research."
         ),
-        description="What comparison exposure?",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["EvidenceVariable"],
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Additional identifier for the effect evidence synthesis",
+        title="Additional identifier for the effect evidence synthesis",
+        description=(
+            "A formal identifier that is used to identify this effect evidence "
+            "synthesis when it is represented in other formats, or referenced in a "
+            "specification, model, design or an instance."
+        ),
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="jurisdiction",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Intended jurisdiction for effect evidence synthesis (if applicable)",
+        title="Intended jurisdiction for effect evidence synthesis (if applicable)",
+        description=(
+            "A legal or geographic region in which the effect evidence synthesis is"
+            " intended to be used."
+        ),
     )
 
     lastReviewDate: fhirtypes.Date = Field(
         None,
         alias="lastReviewDate",
-        title="Type `Date`",
-        description="When the effect evidence synthesis was last reviewed",
+        title="When the effect evidence synthesis was last reviewed",
+        description=(
+            "The date on which the resource content was last reviewed. Review "
+            "happens periodically after approval but does not change the original "
+            "approval date."
+        ),
     )
     lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
@@ -167,8 +211,12 @@ class EffectEvidenceSynthesis(domainresource.DomainResource):
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String`",
-        description="Name for this effect evidence synthesis (computer friendly)",
+        title="Name for this effect evidence synthesis (computer friendly)",
+        description=(
+            "A natural language name identifying the effect evidence synthesis. "
+            "This name should be usable as an identifier for the module by machine "
+            "processing applications such as code generation."
+        ),
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -177,35 +225,45 @@ class EffectEvidenceSynthesis(domainresource.DomainResource):
     note: ListType[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
-        title="List of `Annotation` items (represented as `dict` in JSON)",
-        description="Used for footnotes or explanatory notes",
+        title="Used for footnotes or explanatory notes",
+        description=(
+            "A human-readable string to clarify or explain concepts about the "
+            "resource."
+        ),
     )
 
     outcome: fhirtypes.ReferenceType = Field(
         ...,
         alias="outcome",
-        title=(
-            "Type `Reference` referencing `EvidenceVariable` (represented as `dict`"
-            " in JSON)"
+        title="What outcome?",
+        description=(
+            "A reference to a EvidenceVariable resomece that defines the outcome "
+            "for the research."
         ),
-        description="What outcome?",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["EvidenceVariable"],
     )
 
     population: fhirtypes.ReferenceType = Field(
         ...,
         alias="population",
-        title=(
-            "Type `Reference` referencing `EvidenceVariable` (represented as `dict`"
-            " in JSON)"
+        title="What population?",
+        description=(
+            "A reference to a EvidenceVariable resource that defines the population"
+            " for the research."
         ),
-        description="What population?",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["EvidenceVariable"],
     )
 
     publisher: fhirtypes.String = Field(
         None,
         alias="publisher",
-        title="Type `String`",
-        description="Name of the publisher (organization or individual)",
+        title="Name of the publisher (organization or individual)",
+        description=(
+            "The name of the organization or individual that published the effect "
+            "evidence synthesis."
+        ),
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -214,8 +272,11 @@ class EffectEvidenceSynthesis(domainresource.DomainResource):
     relatedArtifact: ListType[fhirtypes.RelatedArtifactType] = Field(
         None,
         alias="relatedArtifact",
-        title="List of `RelatedArtifact` items (represented as `dict` in JSON)",
-        description="Additional documentation, citations, etc.",
+        title="Additional documentation, citations, etc.",
+        description=(
+            "Related artifacts such as additional documentation, justification, or "
+            "bibliographic references."
+        ),
     )
 
     resultsByExposure: ListType[
@@ -223,35 +284,41 @@ class EffectEvidenceSynthesis(domainresource.DomainResource):
     ] = Field(
         None,
         alias="resultsByExposure",
-        title=(
-            "List of `EffectEvidenceSynthesisResultsByExposure` items (represented "
-            "as `dict` in JSON)"
+        title="What was the result per exposure?",
+        description=(
+            "A description of the results for each exposure considered in the "
+            "effect estimate."
         ),
-        description="What was the result per exposure?",
     )
 
     reviewer: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="reviewer",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Who reviewed the content",
+        title="Who reviewed the content",
+        description=(
+            "An individual or organization primarily responsible for review of some"
+            " aspect of the content."
+        ),
     )
 
     sampleSize: fhirtypes.EffectEvidenceSynthesisSampleSizeType = Field(
         None,
         alias="sampleSize",
-        title=(
-            "Type `EffectEvidenceSynthesisSampleSize` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="What sample size was involved?",
+        title="What sample size was involved?",
+        description="A description of the size of the sample involved in the synthesis.",
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="draft | active | retired | unknown",
+        title="draft | active | retired | unknown",
+        description=(
+            "The status of this effect evidence synthesis. Enables tracking the "
+            "life-cycle of the content."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["draft", "active", "retired", "unknown"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -260,22 +327,25 @@ class EffectEvidenceSynthesis(domainresource.DomainResource):
     studyType: fhirtypes.CodeableConceptType = Field(
         None,
         alias="studyType",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type of study",
+        title="Type of study",
+        description="Type of study eg randomized trial.",
     )
 
     synthesisType: fhirtypes.CodeableConceptType = Field(
         None,
         alias="synthesisType",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type of synthesis",
+        title="Type of synthesis",
+        description="Type of synthesis eg meta-analysis.",
     )
 
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String`",
-        description="Name for this effect evidence synthesis (human friendly)",
+        title="Name for this effect evidence synthesis (human friendly)",
+        description=(
+            "A short, descriptive, user-friendly title for the effect evidence "
+            "synthesis."
+        ),
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -284,20 +354,34 @@ class EffectEvidenceSynthesis(domainresource.DomainResource):
     topic: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="topic",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The category of the EffectEvidenceSynthesis, such as Education, "
             "Treatment, Assessment, etc."
+        ),
+        description=(
+            "Descriptive topics related to the content of the "
+            "EffectEvidenceSynthesis. Topics provide a high-level categorization "
+            "grouping types of EffectEvidenceSynthesiss that can be useful for "
+            "filtering and searching."
         ),
     )
 
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
-        title="Type `Uri`",
-        description=(
+        title=(
             "Canonical identifier for this effect evidence synthesis, represented "
             "as a URI (globally unique)"
+        ),
+        description=(
+            "An absolute URI that is used to identify this effect evidence "
+            "synthesis when it is referenced in a specification, model, design or "
+            "an instance; also called its canonical identifier. This SHOULD be "
+            "globally unique and SHOULD be a literal address at which at which an "
+            "authoritative instance of this effect evidence synthesis is (or will "
+            "be) published. This URL can be the target of a canonical reference. It"
+            " SHALL remain the same when the effect evidence synthesis is stored on"
+            " different servers."
         ),
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -307,15 +391,30 @@ class EffectEvidenceSynthesis(domainresource.DomainResource):
     useContext: ListType[fhirtypes.UsageContextType] = Field(
         None,
         alias="useContext",
-        title="List of `UsageContext` items (represented as `dict` in JSON)",
-        description="The context that the content is intended to support",
+        title="The context that the content is intended to support",
+        description=(
+            "The content was developed with a focus and intent of supporting the "
+            "contexts that are listed. These contexts may be general categories "
+            "(gender, age, ...) or may be references to specific programs "
+            "(insurance plans, studies, ...) and may be used to assist with "
+            "indexing and searching for appropriate effect evidence synthesis "
+            "instances."
+        ),
     )
 
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String`",
-        description="Business version of the effect evidence synthesis",
+        title="Business version of the effect evidence synthesis",
+        description=(
+            "The identifier that is used to identify this version of the effect "
+            "evidence synthesis when it is referenced in a specification, model, "
+            "design or instance. This is an arbitrary value managed by the effect "
+            "evidence synthesis author and is not expected to be globally unique. "
+            "For example, it might be a timestamp (e.g. yyyymmdd) if a managed "
+            "version is not available. There is also no expectation that versions "
+            "can be placed in a lexicographical sequence."
+        ),
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -338,25 +437,25 @@ class EffectEvidenceSynthesisCertainty(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="certaintySubcomponent",
-        title=(
-            "List of `EffectEvidenceSynthesisCertaintyCertaintySubcomponent` items "
-            "(represented as `dict` in JSON)"
-        ),
-        description="A component that contributes to the overall certainty",
+        title="A component that contributes to the overall certainty",
+        description="A description of a component of the overall certainty.",
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
-        title="List of `Annotation` items (represented as `dict` in JSON)",
-        description="Used for footnotes or explanatory notes",
+        title="Used for footnotes or explanatory notes",
+        description=(
+            "A human-readable string to clarify or explain concepts about the "
+            "resource."
+        ),
     )
 
     rating: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="rating",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Certainty rating",
+        title="Certainty rating",
+        description="A rating of the certainty of the effect estimate.",
     )
 
 
@@ -378,22 +477,25 @@ class EffectEvidenceSynthesisCertaintyCertaintySubcomponent(
     note: ListType[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
-        title="List of `Annotation` items (represented as `dict` in JSON)",
-        description="Used for footnotes or explanatory notes",
+        title="Used for footnotes or explanatory notes",
+        description=(
+            "A human-readable string to clarify or explain concepts about the "
+            "resource."
+        ),
     )
 
     rating: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="rating",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Subcomponent certainty rating",
+        title="Subcomponent certainty rating",
+        description="A rating of a subcomponent of rating certainty.",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type of subcomponent of certainty rating",
+        title="Type of subcomponent of certainty rating",
+        description=None,
     )
 
 
@@ -411,8 +513,8 @@ class EffectEvidenceSynthesisEffectEstimate(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Description of effect estimate",
+        title="Description of effect estimate",
+        description="Human-readable summary of effect estimate.",
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -423,29 +525,29 @@ class EffectEvidenceSynthesisEffectEstimate(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="precisionEstimate",
-        title=(
-            "List of `EffectEvidenceSynthesisEffectEstimatePrecisionEstimate` items"
-            " (represented as `dict` in JSON)"
-        ),
-        description="How precise the estimate is",
+        title="How precise the estimate is",
+        description="A description of the precision of the estimate for the effect.",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type of efffect estimate",
+        title="Type of efffect estimate",
+        description="Examples include relative risk and mean difference.",
     )
 
     unitOfMeasure: fhirtypes.CodeableConceptType = Field(
         None,
         alias="unitOfMeasure",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="What unit is the outcome described in?",
+        title="What unit is the outcome described in?",
+        description="Specifies the UCUM unit for the outcome.",
     )
 
     value: fhirtypes.Decimal = Field(
-        None, alias="value", title="Type `Decimal`", description="Point estimate"
+        None,
+        alias="value",
+        title="Point estimate",
+        description="The point estimate of the effect estimate.",
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."
@@ -454,8 +556,8 @@ class EffectEvidenceSynthesisEffectEstimate(backboneelement.BackboneElement):
     variantState: fhirtypes.CodeableConceptType = Field(
         None,
         alias="variantState",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Variant exposure states",
+        title="Variant exposure states",
+        description="Used to define variant exposure states such as low-risk state.",
     )
 
 
@@ -475,7 +577,10 @@ class EffectEvidenceSynthesisEffectEstimatePrecisionEstimate(
     )
 
     from_fhir: fhirtypes.Decimal = Field(
-        None, alias="from", title="Type `Decimal`", description="Lower bound"
+        None,
+        alias="from",
+        title="Lower bound",
+        description="Lower bound of confidence interval.",
     )
     from__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_from", title="Extension field for ``from_fhir``."
@@ -484,15 +589,18 @@ class EffectEvidenceSynthesisEffectEstimatePrecisionEstimate(
     level: fhirtypes.Decimal = Field(
         None,
         alias="level",
-        title="Type `Decimal`",
-        description="Level of confidence interval",
+        title="Level of confidence interval",
+        description="Use 95 for a 95% confidence interval.",
     )
     level__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_level", title="Extension field for ``level``."
     )
 
     to: fhirtypes.Decimal = Field(
-        None, alias="to", title="Type `Decimal`", description="Upper bound"
+        None,
+        alias="to",
+        title="Upper bound",
+        description="Upper bound of confidence interval.",
     )
     to__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_to", title="Extension field for ``to``."
@@ -501,8 +609,8 @@ class EffectEvidenceSynthesisEffectEstimatePrecisionEstimate(
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type of precision estimate",
+        title="Type of precision estimate",
+        description="Examples include confidence interval and interquartile range.",
     )
 
 
@@ -521,8 +629,8 @@ class EffectEvidenceSynthesisResultsByExposure(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Description of results by exposure",
+        title="Description of results by exposure",
+        description="Human-readable summary of results by exposure state.",
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -531,8 +639,14 @@ class EffectEvidenceSynthesisResultsByExposure(backboneelement.BackboneElement):
     exposureState: fhirtypes.Code = Field(
         None,
         alias="exposureState",
-        title="Type `Code`",
-        description="exposure | exposure-alternative",
+        title="exposure | exposure-alternative",
+        description=(
+            "Whether these results are for the exposure state or alternative "
+            "exposure state."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["exposure", "exposure-alternative"],
     )
     exposureState__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_exposureState", title="Extension field for ``exposureState``."
@@ -541,18 +655,17 @@ class EffectEvidenceSynthesisResultsByExposure(backboneelement.BackboneElement):
     riskEvidenceSynthesis: fhirtypes.ReferenceType = Field(
         ...,
         alias="riskEvidenceSynthesis",
-        title=(
-            "Type `Reference` referencing `RiskEvidenceSynthesis` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Risk evidence synthesis",
+        title="Risk evidence synthesis",
+        description="Reference to a RiskEvidenceSynthesis resource.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["RiskEvidenceSynthesis"],
     )
 
     variantState: fhirtypes.CodeableConceptType = Field(
         None,
         alias="variantState",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Variant exposure states",
+        title="Variant exposure states",
+        description="Used to define variant exposure states such as low-risk state.",
     )
 
 
@@ -570,8 +683,8 @@ class EffectEvidenceSynthesisSampleSize(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Description of sample size",
+        title="Description of sample size",
+        description="Human-readable summary of sample size.",
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -580,8 +693,8 @@ class EffectEvidenceSynthesisSampleSize(backboneelement.BackboneElement):
     numberOfParticipants: fhirtypes.Integer = Field(
         None,
         alias="numberOfParticipants",
-        title="Type `Integer`",
-        description="How many participants?",
+        title="How many participants?",
+        description="Number of participants included in this evidence synthesis.",
     )
     numberOfParticipants__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -592,8 +705,8 @@ class EffectEvidenceSynthesisSampleSize(backboneelement.BackboneElement):
     numberOfStudies: fhirtypes.Integer = Field(
         None,
         alias="numberOfStudies",
-        title="Type `Integer`",
-        description="How many studies?",
+        title="How many studies?",
+        description="Number of studies included in this evidence synthesis.",
     )
     numberOfStudies__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_numberOfStudies", title="Extension field for ``numberOfStudies``."

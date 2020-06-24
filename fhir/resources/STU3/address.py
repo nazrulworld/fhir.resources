@@ -31,7 +31,13 @@ class Address(element.Element):
     resource_type = Field("Address", const=True)
 
     city: fhirtypes.String = Field(
-        None, alias="city", title="Type `String`", description="Name of city, town etc."
+        None,
+        alias="city",
+        title="Name of city, town etc.",
+        description=(
+            "The name of the city, town, village or other community or delivery "
+            "center."
+        ),
     )
     city__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_city", title="Extension field for ``city``."
@@ -40,8 +46,8 @@ class Address(element.Element):
     country: fhirtypes.String = Field(
         None,
         alias="country",
-        title="Type `String`",
-        description="Country (e.g. can be ISO 3166 2 or 3 letter code)",
+        title="Country (e.g. can be ISO 3166 2 or 3 letter code)",
+        description="Country - a nation as commonly understood or generally accepted.",
     )
     country__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_country", title="Extension field for ``country``."
@@ -50,8 +56,8 @@ class Address(element.Element):
     district: fhirtypes.String = Field(
         None,
         alias="district",
-        title="Type `String`",
-        description="District name (aka county)",
+        title="District name (aka county)",
+        description="The name of the administrative area (county).",
     )
     district__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_district", title="Extension field for ``district``."
@@ -60,8 +66,12 @@ class Address(element.Element):
     line: ListType[fhirtypes.String] = Field(
         None,
         alias="line",
-        title="List of `String` items",
-        description="Street name, number, direction \u0026 P.O. Box etc.",
+        title="Street name, number, direction & P.O. Box etc.",
+        description=(
+            "This component contains the house number, apartment number, street "
+            "name, street direction,  P.O. Box number, delivery hints, and similar "
+            "address information."
+        ),
     )
     line__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_line", title="Extension field for ``line``."
@@ -70,15 +80,15 @@ class Address(element.Element):
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Time period when address was/is in use",
+        title="Time period when address was/is in use",
+        description=None,
     )
 
     postalCode: fhirtypes.String = Field(
         None,
         alias="postalCode",
-        title="Type `String`",
-        description="Postal code for area",
+        title="Postal code for area",
+        description="A postal code designating a region defined by the postal service.",
     )
     postalCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_postalCode", title="Extension field for ``postalCode``."
@@ -87,8 +97,12 @@ class Address(element.Element):
     state: fhirtypes.String = Field(
         None,
         alias="state",
-        title="Type `String`",
-        description="Sub-unit of country (abbreviations ok)",
+        title="Sub-unit of country (abbreviations ok)",
+        description=(
+            "Sub-unit of a country with limited sovereignty in a federally "
+            "organized country. A code may be used if codes are in common use (i.e."
+            " US 2 letter state codes)."
+        ),
     )
     state__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_state", title="Extension field for ``state``."
@@ -97,15 +111,25 @@ class Address(element.Element):
     text: fhirtypes.String = Field(
         None,
         alias="text",
-        title="Type `String`",
-        description="Text representation of the address",
+        title="Text representation of the address",
+        description="A full text representation of the address.",
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_text", title="Extension field for ``text``."
     )
 
     type: fhirtypes.Code = Field(
-        None, alias="type", title="Type `Code`", description="postal | physical | both"
+        None,
+        alias="type",
+        title="postal | physical | both",
+        description=(
+            "Distinguishes between physical addresses (those you can visit) and "
+            "mailing addresses (e.g. PO Boxes and care-of addresses). Most "
+            "addresses are both."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["postal", "physical", "both"],
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -114,8 +138,11 @@ class Address(element.Element):
     use: fhirtypes.Code = Field(
         None,
         alias="use",
-        title="Type `Code`",
-        description="home | work | temp | old - purpose of this address",
+        title="home | work | temp | old - purpose of this address",
+        description="The purpose of this address.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["home", "work", "temp", "old - purpose of this address"],
     )
     use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_use", title="Extension field for ``use``."

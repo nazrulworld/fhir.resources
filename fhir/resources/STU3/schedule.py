@@ -27,8 +27,11 @@ class Schedule(domainresource.DomainResource):
     active: bool = Field(
         None,
         alias="active",
-        title="Type `bool`",
-        description="Whether this schedule is in active use",
+        title="Whether this schedule is in active use",
+        description=(
+            "Whether this schedule record is in active use, or should not be used "
+            "(such as was entered in error)."
+        ),
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_active", title="Extension field for ``active``."
@@ -38,74 +41,77 @@ class Schedule(domainresource.DomainResource):
         ...,
         alias="actor",
         title=(
-            "List of `Reference` items referencing `Patient, Practitioner, "
-            "PractitionerRole, RelatedPerson, Device, HealthcareService, Location` "
-            "(represented as `dict` in JSON)"
-        ),
-        description=(
             "The resource this Schedule resource is providing availability "
             "information for. These are expected to usually be one of "
             "HealthcareService, Location, Practitioner, PractitionerRole, Device, "
             "Patient or RelatedPerson"
         ),
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Patient",
+            "Practitioner",
+            "PractitionerRole",
+            "RelatedPerson",
+            "Device",
+            "HealthcareService",
+            "Location",
+        ],
     )
 
     comment: fhirtypes.String = Field(
         None,
         alias="comment",
-        title="Type `String`",
-        description=(
+        title=(
             "Comments on the availability to describe any extended information. "
             "Such as custom constraints on the slots that may be associated"
         ),
+        description=None,
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comment", title="Extension field for ``comment``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
-        None,
-        alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="External Ids for this item",
+        None, alias="identifier", title="External Ids for this item", description=None,
     )
 
     planningHorizon: fhirtypes.PeriodType = Field(
         None,
         alias="planningHorizon",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The period of time that the slots that are attached to this Schedule "
             "resource cover (even if none exist). These  cover the amount of time "
-            "that an organization\u0027s planning horizon; the interval for which they "
+            "that an organization's planning horizon; the interval for which they "
             "are currently accepting appointments. This does not define a "
             '"template" for planning outside these dates'
         ),
+        description=None,
     )
 
     serviceCategory: fhirtypes.CodeableConceptType = Field(
         None,
         alias="serviceCategory",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "A broad categorisation of the service that is to be performed during "
             "this appointment"
         ),
+        description=None,
     )
 
     serviceType: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="serviceType",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="The specific service that is to be performed during this appointment",
+        title="The specific service that is to be performed during this appointment",
+        description=None,
     )
 
     specialty: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="specialty",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The specialty of a practitioner that would be required to perform the "
             "service requested in this appointment"
         ),
+        description=None,
     )

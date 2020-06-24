@@ -22,10 +22,7 @@ class Money(element.Element):
     resource_type = Field("Money", const=True)
 
     currency: fhirtypes.Code = Field(
-        None,
-        alias="currency",
-        title="Type `Code`",
-        description="ISO 4217 Currency Code",
+        None, alias="currency", title="ISO 4217 Currency Code", description=None,
     )
     currency__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_currency", title="Extension field for ``currency``."
@@ -34,8 +31,8 @@ class Money(element.Element):
     value: fhirtypes.Decimal = Field(
         None,
         alias="value",
-        title="Type `Decimal`",
-        description="Numerical value (with implicit precision)",
+        title="Numerical value (with implicit precision)",
+        description=None,
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."

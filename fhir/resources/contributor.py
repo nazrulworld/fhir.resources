@@ -28,15 +28,21 @@ class Contributor(element.Element):
     contact: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="contact",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Contact details of the contributor",
+        title="Contact details of the contributor",
+        description=(
+            "Contact details to assist a user in finding and communicating with the"
+            " contributor."
+        ),
     )
 
     name: fhirtypes.String = Field(
         ...,
         alias="name",
-        title="Type `String`",
-        description="Who contributed the content",
+        title="Who contributed the content",
+        description=(
+            "The name of the individual or organization responsible for the "
+            "contribution."
+        ),
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -45,8 +51,11 @@ class Contributor(element.Element):
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code`",
-        description="author | editor | reviewer | endorser",
+        title="author | editor | reviewer | endorser",
+        description="The type of contributor.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["author", "editor", "reviewer", "endorser"],
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."

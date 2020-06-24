@@ -762,6 +762,26 @@ class CompositionSectionType(AbstractType):
     __resource_type__ = "CompositionSection"
 
 
+class ConceptMapType(AbstractType):
+    __resource_type__ = "ConceptMap"
+
+
+class ConceptMapContactType(AbstractType):
+    __resource_type__ = "ConceptMapContact"
+
+
+class ConceptMapElementType(AbstractType):
+    __resource_type__ = "ConceptMapElement"
+
+
+class ConceptMapElementTargetType(AbstractType):
+    __resource_type__ = "ConceptMapElementTarget"
+
+
+class ConceptMapElementTargetDependsOnType(AbstractType):
+    __resource_type__ = "ConceptMapElementTargetDependsOn"
+
+
 __all__ = [
     "ElementType",
     "ResourceType",
@@ -860,4 +880,9 @@ __all__ = [
     "CompositionAttesterType",
     "CompositionEventType",
     "CompositionSectionType",
+    "ConceptMapType",
+    "ConceptMapContactType",
+    "ConceptMapElementType",
+    "ConceptMapElementTargetType",
+    "ConceptMapElementTargetDependsOnType",
 ]

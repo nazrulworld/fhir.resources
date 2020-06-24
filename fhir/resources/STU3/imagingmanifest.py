@@ -28,25 +28,52 @@ class ImagingManifest(domainresource.DomainResource):
     author: fhirtypes.ReferenceType = Field(
         None,
         alias="author",
-        title=(
-            "Type `Reference` referencing `Practitioner, Device, Organization, "
-            "Patient, RelatedPerson` (represented as `dict` in JSON)"
+        title="Author (human or machine)",
+        description=(
+            "Author of ImagingManifest. It can be a human author or a device which "
+            "made the decision of the SOP instances selected. For example, a "
+            "radiologist selected a set of imaging SOP instances to attach in a "
+            "diagnostic report, and a CAD application may author a selection to "
+            "describe SOP instances it used to generate a detection conclusion."
         ),
-        description="Author (human or machine)",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Practitioner",
+            "Device",
+            "Organization",
+            "Patient",
+            "RelatedPerson",
+        ],
     )
 
     authoringTime: fhirtypes.DateTime = Field(
         None,
         alias="authoringTime",
-        title="Type `DateTime`",
-        description="Time when the selection of instances was made",
+        title="Time when the selection of instances was made",
+        description=(
+            "Date and time when the selection of the referenced instances were "
+            "made. It is (typically) different from the creation date of the "
+            "selection resource, and from dates associated with the referenced "
+            "instances (e.g. capture time of the referenced image)."
+        ),
     )
     authoringTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_authoringTime", title="Extension field for ``authoringTime``."
     )
 
     description: fhirtypes.String = Field(
-        None, alias="description", title="Type `String`", description="Description text"
+        None,
+        alias="description",
+        title="Description text",
+        description=(
+            "Free text narrative description of the ImagingManifest.   The value "
+            "may be derived from the DICOM Standard Part 16, CID-7010 descriptions "
+            "(e.g. Best in Set, Complete Study Content). Note that those values "
+            "cover the wide range of uses of the DICOM Key Object Selection object,"
+            " several of which are not supported by ImagingManifest. Specifically, "
+            "there is no expected behavior associated with descriptions that "
+            "suggest referenced images be removed or not used."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -55,22 +82,33 @@ class ImagingManifest(domainresource.DomainResource):
     identifier: fhirtypes.IdentifierType = Field(
         None,
         alias="identifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="SOP Instance UID",
+        title="SOP Instance UID",
+        description=(
+            "Unique identifier of the DICOM Key Object Selection (KOS) that this "
+            "resource represents."
+        ),
     )
 
     patient: fhirtypes.ReferenceType = Field(
         ...,
         alias="patient",
-        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
-        description="Patient of the selected objects",
+        title="Patient of the selected objects",
+        description=(
+            "A patient resource reference which is the patient subject of all DICOM"
+            " SOP Instances in this ImagingManifest."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient"],
     )
 
     study: ListType[fhirtypes.ImagingManifestStudyType] = Field(
         ...,
         alias="study",
-        title="List of `ImagingManifestStudy` items (represented as `dict` in JSON)",
-        description="Study identity of the selected instances",
+        title="Study identity of the selected instances",
+        description=(
+            "Study identity and locating information of the DICOM SOP instances in "
+            "the selection."
+        ),
     )
 
 
@@ -89,35 +127,42 @@ class ImagingManifestStudy(backboneelement.BackboneElement):
     endpoint: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="endpoint",
-        title=(
-            "List of `Reference` items referencing `Endpoint` (represented as "
-            "`dict` in JSON)"
+        title="Study access service endpoint",
+        description=(
+            "The network service providing access (e.g., query, view, or retrieval)"
+            " for the study. See implementation notes for information about using "
+            "DICOM endpoints. A study-level endpoint applies to each series in the "
+            "study, unless overridden by a series-level endpoint with the same "
+            "Endpoint.type."
         ),
-        description="Study access service endpoint",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Endpoint"],
     )
 
     imagingStudy: fhirtypes.ReferenceType = Field(
         None,
         alias="imagingStudy",
-        title=(
-            "Type `Reference` referencing `ImagingStudy` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Reference to ImagingStudy",
+        title="Reference to ImagingStudy",
+        description="Reference to the Imaging Study in FHIR form.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ImagingStudy"],
     )
 
     series: ListType[fhirtypes.ImagingManifestStudySeriesType] = Field(
         ...,
         alias="series",
-        title=(
-            "List of `ImagingManifestStudySeries` items (represented as `dict` in "
-            "JSON)"
+        title="Series identity of the selected instances",
+        description=(
+            "Series identity and locating information of the DICOM SOP instances in"
+            " the selection."
         ),
-        description="Series identity of the selected instances",
     )
 
     uid: fhirtypes.Oid = Field(
-        ..., alias="uid", title="Type `Oid`", description="Study instance UID"
+        ...,
+        alias="uid",
+        title="Study instance UID",
+        description="Study instance UID of the SOP instances in the selection.",
     )
     uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uid", title="Extension field for ``uid``."
@@ -139,25 +184,29 @@ class ImagingManifestStudySeries(backboneelement.BackboneElement):
     endpoint: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="endpoint",
-        title=(
-            "List of `Reference` items referencing `Endpoint` (represented as "
-            "`dict` in JSON)"
+        title="Series access endpoint",
+        description=(
+            "The network service providing access (e.g., query, view, or retrieval)"
+            " for this series. See implementation notes for information about using"
+            " DICOM endpoints. A series-level endpoint, if present, has precedence "
+            "over a study-level endpoint with the same Endpoint.type."
         ),
-        description="Series access endpoint",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Endpoint"],
     )
 
     instance: ListType[fhirtypes.ImagingManifestStudySeriesInstanceType] = Field(
         ...,
         alias="instance",
-        title=(
-            "List of `ImagingManifestStudySeriesInstance` items (represented as "
-            "`dict` in JSON)"
-        ),
-        description="The selected instance",
+        title="The selected instance",
+        description="Identity and locating information of the selected DICOM SOP instances.",
     )
 
     uid: fhirtypes.Oid = Field(
-        ..., alias="uid", title="Type `Oid`", description="Series instance UID"
+        ...,
+        alias="uid",
+        title="Series instance UID",
+        description="Series instance UID of the SOP instances in the selection.",
     )
     uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uid", title="Extension field for ``uid``."
@@ -178,15 +227,18 @@ class ImagingManifestStudySeriesInstance(backboneelement.BackboneElement):
     sopClass: fhirtypes.Oid = Field(
         ...,
         alias="sopClass",
-        title="Type `Oid`",
-        description="SOP class UID of instance",
+        title="SOP class UID of instance",
+        description="SOP class UID of the selected instance.",
     )
     sopClass__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sopClass", title="Extension field for ``sopClass``."
     )
 
     uid: fhirtypes.Oid = Field(
-        ..., alias="uid", title="Type `Oid`", description="Selected instance UID"
+        ...,
+        alias="uid",
+        title="Selected instance UID",
+        description="SOP Instance UID of the selected instance.",
     )
     uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uid", title="Extension field for ``uid``."

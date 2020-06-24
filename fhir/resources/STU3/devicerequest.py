@@ -28,7 +28,10 @@ class DeviceRequest(domainresource.DomainResource):
     resource_type = Field("DeviceRequest", const=True)
 
     authoredOn: fhirtypes.DateTime = Field(
-        None, alias="authoredOn", title="Type `DateTime`", description="When recorded"
+        None,
+        alias="authoredOn",
+        title="When recorded",
+        description="When the request transitioned to being actionable.",
     )
     authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_authoredOn", title="Extension field for ``authoredOn``."
@@ -37,85 +40,107 @@ class DeviceRequest(domainresource.DomainResource):
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="What request fulfills",
+        title="What request fulfills",
+        description="Plan/proposal/order fulfilled by this request.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     codeCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="codeCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Device requested",
-        one_of_many="code",  # Choice of Data Types. i.e value[x]
+        title="Device requested",
+        description="The details of the device to be used.",
+        # Choice of Data Types. i.e code[x]
+        one_of_many="code",
         one_of_many_required=True,
     )
 
     codeReference: fhirtypes.ReferenceType = Field(
         None,
         alias="codeReference",
-        title="Type `Reference` referencing `Device` (represented as `dict` in JSON)",
-        description="Device requested",
-        one_of_many="code",  # Choice of Data Types. i.e value[x]
+        title="Device requested",
+        description="The details of the device to be used.",
+        # Choice of Data Types. i.e code[x]
+        one_of_many="code",
         one_of_many_required=True,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Device"],
     )
 
     context: fhirtypes.ReferenceType = Field(
         None,
         alias="context",
-        title=(
-            "Type `Reference` referencing `Encounter, EpisodeOfCare` (represented "
-            "as `dict` in JSON)"
+        title="Encounter or Episode motivating request",
+        description=(
+            "An encounter that provides additional context in which this request is"
+            " made."
         ),
-        description="Encounter or Episode motivating request",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Encounter", "EpisodeOfCare"],
     )
 
     definition: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="definition",
-        title=(
-            "List of `Reference` items referencing `ActivityDefinition, "
-            "PlanDefinition` (represented as `dict` in JSON)"
+        title="Protocol or definition",
+        description=(
+            "Protocol or definition followed by this request. For example: The "
+            "proposed act must be performed if the indicated conditions occur, "
+            "e.g.., shortness of breath, SpO2 less than x%."
         ),
-        description="Protocol or definition",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ActivityDefinition", "PlanDefinition"],
     )
 
     groupIdentifier: fhirtypes.IdentifierType = Field(
         None,
         alias="groupIdentifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Identifier of composite request",
+        title="Identifier of composite request",
+        description="Composite request this is part of.",
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="External Request identifier",
+        title="External Request identifier",
+        description="Identifiers assigned to this order by the orderer or by the receiver.",
     )
 
     intent: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="intent",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="proposal | plan | original-order | encoded | reflex-order",
+        title="proposal | plan | original-order | encoded | reflex-order",
+        description=(
+            "Whether the request is a proposal, plan, an original order or a reflex"
+            " order."
+        ),
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
-        title="List of `Annotation` items (represented as `dict` in JSON)",
-        description="Notes or comments",
+        title="Notes or comments",
+        description=(
+            "Details about this request that were not represented at all or "
+            "sufficiently in one of the attributes provided in a class. These may "
+            "include for example a comment, an instruction, or a note associated "
+            "with the statement."
+        ),
     )
 
     occurrenceDateTime: fhirtypes.DateTime = Field(
         None,
         alias="occurrenceDateTime",
-        title="Type `DateTime`",
-        description="Desired time or schedule for use",
-        one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
+        title="Desired time or schedule for use",
+        description=(
+            "The timing schedule for the use of the device. The Schedule data type "
+            'allows many different expressions, for example. "Every 8 hours"; '
+            '"Three times a day"; "1/2 an hour before breakfast for 10 days from '
+            '23-Dec 2011:"; "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".'
+        ),
+        # Choice of Data Types. i.e occurrence[x]
+        one_of_many="occurrence",
         one_of_many_required=False,
     )
     occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -127,57 +152,76 @@ class DeviceRequest(domainresource.DomainResource):
     occurrencePeriod: fhirtypes.PeriodType = Field(
         None,
         alias="occurrencePeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Desired time or schedule for use",
-        one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
+        title="Desired time or schedule for use",
+        description=(
+            "The timing schedule for the use of the device. The Schedule data type "
+            'allows many different expressions, for example. "Every 8 hours"; '
+            '"Three times a day"; "1/2 an hour before breakfast for 10 days from '
+            '23-Dec 2011:"; "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".'
+        ),
+        # Choice of Data Types. i.e occurrence[x]
+        one_of_many="occurrence",
         one_of_many_required=False,
     )
 
     occurrenceTiming: fhirtypes.TimingType = Field(
         None,
         alias="occurrenceTiming",
-        title="Type `Timing` (represented as `dict` in JSON)",
-        description="Desired time or schedule for use",
-        one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
+        title="Desired time or schedule for use",
+        description=(
+            "The timing schedule for the use of the device. The Schedule data type "
+            'allows many different expressions, for example. "Every 8 hours"; '
+            '"Three times a day"; "1/2 an hour before breakfast for 10 days from '
+            '23-Dec 2011:"; "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".'
+        ),
+        # Choice of Data Types. i.e occurrence[x]
+        one_of_many="occurrence",
         one_of_many_required=False,
     )
 
     performer: fhirtypes.ReferenceType = Field(
         None,
         alias="performer",
-        title=(
-            "Type `Reference` referencing `Practitioner, Organization, Patient, "
-            "Device, RelatedPerson, HealthcareService` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Requested Filler",
+        title="Requested Filler",
+        description="The desired perfomer for doing the diagnostic testing.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Practitioner",
+            "Organization",
+            "Patient",
+            "Device",
+            "RelatedPerson",
+            "HealthcareService",
+        ],
     )
 
     performerType: fhirtypes.CodeableConceptType = Field(
         None,
         alias="performerType",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Fille role",
+        title="Fille role",
+        description="Desired type of performer for doing the diagnostic testing.",
     )
 
     priorRequest: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="priorRequest",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
+        title="What request replaces",
+        description=(
+            "The request takes the place of the referenced completed or terminated "
+            "request(s)."
         ),
-        description="What request replaces",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     priority: fhirtypes.Code = Field(
         None,
         alias="priority",
-        title="Type `Code`",
-        description=(
+        title=(
             "Indicates how quickly the {{title}} should be addressed with respect "
             "to other requests"
         ),
+        description=None,
     )
     priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_priority", title="Extension field for ``priority``."
@@ -186,42 +230,53 @@ class DeviceRequest(domainresource.DomainResource):
     reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="reasonCode",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Coded Reason for request",
+        title="Coded Reason for request",
+        description="Reason or justification for the use of this device.",
     )
 
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="reasonReference",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Linked Reason for request",
+        title="Linked Reason for request",
+        description="Reason or justification for the use of this device.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     relevantHistory: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="relevantHistory",
-        title=(
-            "List of `Reference` items referencing `Provenance` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Request provenance",
+        title="Request provenance",
+        description="Key events in the history of the request.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Provenance"],
     )
 
     requester: fhirtypes.DeviceRequestRequesterType = Field(
         None,
         alias="requester",
-        title="Type `DeviceRequestRequester` (represented as `dict` in JSON)",
-        description="Who/what is requesting diagnostics",
+        title="Who/what is requesting diagnostics",
+        description=(
+            "The individual who initiated the request and has responsibility for "
+            "its activation."
+        ),
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code`",
-        description="draft | active | suspended | completed | entered-in-error | cancelled",
+        title="draft | active | suspended | completed | entered-in-error | cancelled",
+        description="The status of the request.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "draft",
+            "active",
+            "suspended",
+            "completed",
+            "entered-in-error",
+            "cancelled",
+        ],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -230,21 +285,23 @@ class DeviceRequest(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         ...,
         alias="subject",
-        title=(
-            "Type `Reference` referencing `Patient, Group, Location, Device` "
-            "(represented as `dict` in JSON)"
-        ),
-        description="Focus of request",
+        title="Focus of request",
+        description="The patient who will use the device.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "Group", "Location", "Device"],
     )
 
     supportingInfo: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="supportingInfo",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
+        title="Additional clinical information",
+        description=(
+            "Additional clinical information about the patient that may influence "
+            "the request fulfilment.  For example, this may includes body where on "
+            "the subject's the device will be used ( i.e. the target site)."
         ),
-        description="Additional clinical information",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     @root_validator(pre=True)
@@ -306,19 +363,17 @@ class DeviceRequestRequester(backboneelement.BackboneElement):
     agent: fhirtypes.ReferenceType = Field(
         ...,
         alias="agent",
-        title=(
-            "Type `Reference` referencing `Device, Practitioner, Organization` "
-            "(represented as `dict` in JSON)"
-        ),
-        description="Individual making the request",
+        title="Individual making the request",
+        description="The device, practitioner, etc. who initiated the request.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Device", "Practitioner", "Organization"],
     )
 
     onBehalfOf: fhirtypes.ReferenceType = Field(
         None,
         alias="onBehalfOf",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Organization agent is acting for",
+        title="Organization agent is acting for",
+        description="The organization the device or practitioner was acting on behalf of.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )

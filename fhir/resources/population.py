@@ -28,43 +28,42 @@ class Population(backboneelement.BackboneElement):
     ageCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="ageCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The age of the specific population",
-        one_of_many="age",  # Choice of Data Types. i.e value[x]
+        title="The age of the specific population",
+        description=None,
+        # Choice of Data Types. i.e age[x]
+        one_of_many="age",
         one_of_many_required=False,
     )
 
     ageRange: fhirtypes.RangeType = Field(
         None,
         alias="ageRange",
-        title="Type `Range` (represented as `dict` in JSON)",
-        description="The age of the specific population",
-        one_of_many="age",  # Choice of Data Types. i.e value[x]
+        title="The age of the specific population",
+        description=None,
+        # Choice of Data Types. i.e age[x]
+        one_of_many="age",
         one_of_many_required=False,
     )
 
     gender: fhirtypes.CodeableConceptType = Field(
         None,
         alias="gender",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The gender of the specific population",
+        title="The gender of the specific population",
+        description=None,
     )
 
     physiologicalCondition: fhirtypes.CodeableConceptType = Field(
         None,
         alias="physiologicalCondition",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The existing physiological conditions of the specific population to "
             "which this applies"
         ),
+        description=None,
     )
 
     race: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="race",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Race of the specific population",
+        None, alias="race", title="Race of the specific population", description=None,
     )
 
     @root_validator(pre=True)

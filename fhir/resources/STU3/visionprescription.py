@@ -29,8 +29,8 @@ class VisionPrescription(domainresource.DomainResource):
     dateWritten: fhirtypes.DateTime = Field(
         None,
         alias="dateWritten",
-        title="Type `DateTime`",
-        description="When prescription was authorized",
+        title="When prescription was authorized",
+        description="The date (and perhaps time) when the prescription was written.",
     )
     dateWritten__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_dateWritten", title="Extension field for ``dateWritten``."
@@ -39,73 +39,86 @@ class VisionPrescription(domainresource.DomainResource):
     dispense: ListType[fhirtypes.VisionPrescriptionDispenseType] = Field(
         None,
         alias="dispense",
-        title=(
-            "List of `VisionPrescriptionDispense` items (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Vision supply authorization",
+        title="Vision supply authorization",
+        description="Deals with details of the dispense part of the supply specification.",
     )
 
     encounter: fhirtypes.ReferenceType = Field(
         None,
         alias="encounter",
-        title=(
-            "Type `Reference` referencing `Encounter` (represented as `dict` in "
-            "JSON)"
+        title="Created during encounter / admission / stay",
+        description=(
+            "A link to a resource that identifies the particular occurrence of "
+            "contact between patient and health care provider."
         ),
-        description="Created during encounter / admission / stay",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Encounter"],
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Business identifier",
+        title="Business identifier",
+        description=(
+            "Business identifier which may be used by other parties to reference or"
+            " identify the prescription."
+        ),
     )
 
     patient: fhirtypes.ReferenceType = Field(
         None,
         alias="patient",
-        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
-        description="Who prescription is for",
+        title="Who prescription is for",
+        description=(
+            "A link to a resource representing the person to whom the vision "
+            "products will be supplied."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient"],
     )
 
     prescriber: fhirtypes.ReferenceType = Field(
         None,
         alias="prescriber",
-        title=(
-            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
-            "JSON)"
+        title="Who authorizes the vision product",
+        description=(
+            "The healthcare professional responsible for authorizing the "
+            "prescription."
         ),
-        description="Who authorizes the vision product",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner"],
     )
 
     reasonCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="reasonCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Reason or indication for writing the prescription",
-        one_of_many="reason",  # Choice of Data Types. i.e value[x]
+        title="Reason or indication for writing the prescription",
+        description="Can be the reason or the indication for writing the prescription.",
+        # Choice of Data Types. i.e reason[x]
+        one_of_many="reason",
         one_of_many_required=False,
     )
 
     reasonReference: fhirtypes.ReferenceType = Field(
         None,
         alias="reasonReference",
-        title=(
-            "Type `Reference` referencing `Condition` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Reason or indication for writing the prescription",
-        one_of_many="reason",  # Choice of Data Types. i.e value[x]
+        title="Reason or indication for writing the prescription",
+        description="Can be the reason or the indication for writing the prescription.",
+        # Choice of Data Types. i.e reason[x]
+        one_of_many="reason",
         one_of_many_required=False,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Condition"],
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code`",
-        description="active | cancelled | draft | entered-in-error",
+        title="active | cancelled | draft | entered-in-error",
+        description="The status of the resource instance.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["active", "cancelled", "draft", "entered-in-error"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -160,14 +173,23 @@ class VisionPrescriptionDispense(backboneelement.BackboneElement):
     resource_type = Field("VisionPrescriptionDispense", const=True)
 
     add: fhirtypes.Decimal = Field(
-        None, alias="add", title="Type `Decimal`", description="Lens add"
+        None,
+        alias="add",
+        title="Lens add",
+        description=(
+            "Power adjustment for multifocal lenses measured in diopters (0.25 "
+            "units)."
+        ),
     )
     add__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_add", title="Extension field for ``add``."
     )
 
     axis: fhirtypes.Integer = Field(
-        None, alias="axis", title="Type `Integer`", description="Lens axis"
+        None,
+        alias="axis",
+        title="Lens axis",
+        description="Adjustment for astigmatism measured in integer degrees.",
     )
     axis__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_axis", title="Extension field for ``axis``."
@@ -176,36 +198,51 @@ class VisionPrescriptionDispense(backboneelement.BackboneElement):
     backCurve: fhirtypes.Decimal = Field(
         None,
         alias="backCurve",
-        title="Type `Decimal`",
-        description="Contact lens back curvature",
+        title="Contact lens back curvature",
+        description="Back curvature measured in millimeters.",
     )
     backCurve__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_backCurve", title="Extension field for ``backCurve``."
     )
 
     base: fhirtypes.Code = Field(
-        None, alias="base", title="Type `Code`", description="up | down | in | out"
+        None,
+        alias="base",
+        title="up | down | in | out",
+        description="The relative base, or reference lens edge, for the prism.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["up", "down", "in", "out"],
     )
     base__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_base", title="Extension field for ``base``."
     )
 
     brand: fhirtypes.String = Field(
-        None, alias="brand", title="Type `String`", description="Brand required"
+        None,
+        alias="brand",
+        title="Brand required",
+        description="Brand recommendations or restrictions.",
     )
     brand__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_brand", title="Extension field for ``brand``."
     )
 
     color: fhirtypes.String = Field(
-        None, alias="color", title="Type `String`", description="Color required"
+        None,
+        alias="color",
+        title="Color required",
+        description="Special color or pattern.",
     )
     color__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_color", title="Extension field for ``color``."
     )
 
     cylinder: fhirtypes.Decimal = Field(
-        None, alias="cylinder", title="Type `Decimal`", description="Lens cylinder"
+        None,
+        alias="cylinder",
+        title="Lens cylinder",
+        description="Power adjustment for astigmatism measured in diopters (0.25 units).",
     )
     cylinder__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_cylinder", title="Extension field for ``cylinder``."
@@ -214,8 +251,8 @@ class VisionPrescriptionDispense(backboneelement.BackboneElement):
     diameter: fhirtypes.Decimal = Field(
         None,
         alias="diameter",
-        title="Type `Decimal`",
-        description="Contact lens diameter",
+        title="Contact lens diameter",
+        description="Contact lens diameter measured in millimeters.",
     )
     diameter__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_diameter", title="Extension field for ``diameter``."
@@ -224,12 +261,18 @@ class VisionPrescriptionDispense(backboneelement.BackboneElement):
     duration: fhirtypes.QuantityType = Field(
         None,
         alias="duration",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Lens wear duration",
+        title="Lens wear duration",
+        description="The recommended maximum wear period for the lens.",
     )
 
     eye: fhirtypes.Code = Field(
-        None, alias="eye", title="Type `Code`", description="right | left"
+        None,
+        alias="eye",
+        title="right | left",
+        description="The eye for which the lens applies.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["right", "left"],
     )
     eye__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_eye", title="Extension field for ``eye``."
@@ -238,19 +281,25 @@ class VisionPrescriptionDispense(backboneelement.BackboneElement):
     note: ListType[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
-        title="List of `Annotation` items (represented as `dict` in JSON)",
-        description="Notes for coatings",
+        title="Notes for coatings",
+        description="Notes for special requirements such as coatings and lens materials.",
     )
 
     power: fhirtypes.Decimal = Field(
-        None, alias="power", title="Type `Decimal`", description="Contact lens power"
+        None,
+        alias="power",
+        title="Contact lens power",
+        description="Contact lens power measured in diopters (0.25 units).",
     )
     power__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_power", title="Extension field for ``power``."
     )
 
     prism: fhirtypes.Decimal = Field(
-        None, alias="prism", title="Type `Decimal`", description="Lens prism"
+        None,
+        alias="prism",
+        title="Lens prism",
+        description="Amount of prism to compensate for eye alignment in fractional units.",
     )
     prism__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_prism", title="Extension field for ``prism``."
@@ -259,12 +308,18 @@ class VisionPrescriptionDispense(backboneelement.BackboneElement):
     product: fhirtypes.CodeableConceptType = Field(
         None,
         alias="product",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Product to be supplied",
+        title="Product to be supplied",
+        description=(
+            "Identifies the type of vision correction product which is required for"
+            " the patient."
+        ),
     )
 
     sphere: fhirtypes.Decimal = Field(
-        None, alias="sphere", title="Type `Decimal`", description="Lens sphere"
+        None,
+        alias="sphere",
+        title="Lens sphere",
+        description="Lens power measured in diopters (0.25 units).",
     )
     sphere__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sphere", title="Extension field for ``sphere``."

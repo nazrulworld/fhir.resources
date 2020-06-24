@@ -27,8 +27,8 @@ class ContactDetail(element.Element):
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String`",
-        description="Name of an individual to contact",
+        title="Name of an individual to contact",
+        description="The name of an individual to contact.",
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -37,6 +37,9 @@ class ContactDetail(element.Element):
     telecom: ListType[fhirtypes.ContactPointType] = Field(
         None,
         alias="telecom",
-        title="List of `ContactPoint` items (represented as `dict` in JSON)",
-        description="Contact details for individual or organization",
+        title="Contact details for individual or organization",
+        description=(
+            "The contact details for the individual (if a name was provided) or the"
+            " organization."
+        ),
     )

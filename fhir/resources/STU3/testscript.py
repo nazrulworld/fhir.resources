@@ -29,15 +29,22 @@ class TestScript(domainresource.DomainResource):
     contact: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="contact",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Contact details for the publisher",
+        title="Contact details for the publisher",
+        description=(
+            "Contact details to assist a user in finding and communicating with the"
+            " publisher."
+        ),
     )
 
     copyright: fhirtypes.Markdown = Field(
         None,
         alias="copyright",
-        title="Type `Markdown`",
-        description="Use and/or publishing restrictions",
+        title="Use and/or publishing restrictions",
+        description=(
+            "A copyright statement relating to the test script and/or its contents."
+            " Copyright statements are generally legal restrictions on the use and "
+            "publishing of the test script."
+        ),
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
@@ -46,8 +53,13 @@ class TestScript(domainresource.DomainResource):
     date: fhirtypes.DateTime = Field(
         None,
         alias="date",
-        title="Type `DateTime`",
-        description="Date this was last changed",
+        title="Date this was last changed",
+        description=(
+            "The date  (and optionally time) when the test script was published. "
+            "The date must change if and when the business version changes and it "
+            "must change if the status code changes. In addition, it should change "
+            "when the substantive content of the test script changes."
+        ),
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -56,8 +68,11 @@ class TestScript(domainresource.DomainResource):
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown`",
-        description="Natural language description of the test script",
+        title="Natural language description of the test script",
+        description=(
+            "A free text natural language description of the test script from a "
+            "consumer's perspective."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -66,18 +81,25 @@ class TestScript(domainresource.DomainResource):
     destination: ListType[fhirtypes.TestScriptDestinationType] = Field(
         None,
         alias="destination",
-        title="List of `TestScriptDestination` items (represented as `dict` in JSON)",
-        description=(
+        title=(
             "An abstract server representing a destination or receiver in a message"
             " exchange"
+        ),
+        description=(
+            "An abstract server used in operations within this test script in the "
+            "destination element."
         ),
     )
 
     experimental: bool = Field(
         None,
         alias="experimental",
-        title="Type `bool`",
-        description="For testing purposes, not real usage",
+        title="For testing purposes, not real usage",
+        description=(
+            "A boolean value to indicate that this test script is authored for "
+            "testing purposes (or education/evaluation/marketing), and is not "
+            "intended to be used for genuine usage."
+        ),
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -86,39 +108,56 @@ class TestScript(domainresource.DomainResource):
     fixture: ListType[fhirtypes.TestScriptFixtureType] = Field(
         None,
         alias="fixture",
-        title="List of `TestScriptFixture` items (represented as `dict` in JSON)",
-        description="Fixture in the test script - by reference (uri)",
+        title="Fixture in the test script - by reference (uri)",
+        description=(
+            "Fixture in the test script - by reference (uri). All fixtures are "
+            "required for the test script to execute."
+        ),
     )
 
     identifier: fhirtypes.IdentifierType = Field(
         None,
         alias="identifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Additional identifier for the test script",
+        title="Additional identifier for the test script",
+        description=(
+            "A formal identifier that is used to identify this test script when it "
+            "is represented in other formats, or referenced in a specification, "
+            "model, design or an instance."
+        ),
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="jurisdiction",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Intended jurisdiction for test script (if applicable)",
+        title="Intended jurisdiction for test script (if applicable)",
+        description=(
+            "A legal or geographic region in which the test script is intended to "
+            "be used."
+        ),
     )
 
     metadata: fhirtypes.TestScriptMetadataType = Field(
         None,
         alias="metadata",
-        title="Type `TestScriptMetadata` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Required capability that is assumed to function correctly on the FHIR "
             "server being tested"
+        ),
+        description=(
+            "The required capability must exist and are assumed to function "
+            "correctly on the FHIR server being tested."
         ),
     )
 
     name: fhirtypes.String = Field(
         ...,
         alias="name",
-        title="Type `String`",
-        description="Name for this test script (computer friendly)",
+        title="Name for this test script (computer friendly)",
+        description=(
+            "A natural language name identifying the test script. This name should "
+            "be usable as an identifier for the module by machine processing "
+            "applications such as code generation."
+        ),
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -127,28 +166,33 @@ class TestScript(domainresource.DomainResource):
     origin: ListType[fhirtypes.TestScriptOriginType] = Field(
         None,
         alias="origin",
-        title="List of `TestScriptOrigin` items (represented as `dict` in JSON)",
-        description=(
+        title=(
             "An abstract server representing a client or sender in a message "
             "exchange"
+        ),
+        description=(
+            "An abstract server used in operations within this test script in the "
+            "origin element."
         ),
     )
 
     profile: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="profile",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Reference of the validation profile",
+        title="Reference of the validation profile",
+        description="Reference to the profile to be used for validation.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     publisher: fhirtypes.String = Field(
         None,
         alias="publisher",
-        title="Type `String`",
-        description="Name of the publisher (organization or individual)",
+        title="Name of the publisher (organization or individual)",
+        description=(
+            "The name of the individual or organization that published the test "
+            "script."
+        ),
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -157,8 +201,11 @@ class TestScript(domainresource.DomainResource):
     purpose: fhirtypes.Markdown = Field(
         None,
         alias="purpose",
-        title="Type `Markdown`",
-        description="Why this test script is defined",
+        title="Why this test script is defined",
+        description=(
+            "Explaination of why this test script is needed and why it has been "
+            "designed as it has."
+        ),
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_purpose", title="Extension field for ``purpose``."
@@ -167,29 +214,38 @@ class TestScript(domainresource.DomainResource):
     rule: ListType[fhirtypes.TestScriptRuleType] = Field(
         None,
         alias="rule",
-        title="List of `TestScriptRule` items (represented as `dict` in JSON)",
-        description="Assert rule used within the test script",
+        title="Assert rule used within the test script",
+        description="Assert rule to be used in one or more asserts within the test script.",
     )
 
     ruleset: ListType[fhirtypes.TestScriptRulesetType] = Field(
         None,
         alias="ruleset",
-        title="List of `TestScriptRuleset` items (represented as `dict` in JSON)",
-        description="Assert ruleset used within the test script",
+        title="Assert ruleset used within the test script",
+        description=(
+            "Contains one or more rules.  Offers a way to group rules so assertions"
+            " could reference the group of rules and have them all applied."
+        ),
     )
 
     setup: fhirtypes.TestScriptSetupType = Field(
         None,
         alias="setup",
-        title="Type `TestScriptSetup` (represented as `dict` in JSON)",
-        description="A series of required setup operations before tests are executed",
+        title="A series of required setup operations before tests are executed",
+        description=None,
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="draft | active | retired | unknown",
+        title="draft | active | retired | unknown",
+        description=(
+            "The status of this test script. Enables tracking the life-cycle of the"
+            " content."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["draft", "active", "retired", "unknown"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -198,22 +254,22 @@ class TestScript(domainresource.DomainResource):
     teardown: fhirtypes.TestScriptTeardownType = Field(
         None,
         alias="teardown",
-        title="Type `TestScriptTeardown` (represented as `dict` in JSON)",
-        description="A series of required clean up steps",
+        title="A series of required clean up steps",
+        description=(
+            "A series of operations required to clean up after the all the tests "
+            "are executed (successfully or otherwise)."
+        ),
     )
 
     test: ListType[fhirtypes.TestScriptTestType] = Field(
-        None,
-        alias="test",
-        title="List of `TestScriptTest` items (represented as `dict` in JSON)",
-        description="A test in this script",
+        None, alias="test", title="A test in this script", description=None,
     )
 
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String`",
-        description="Name for this test script (human friendly)",
+        title="Name for this test script (human friendly)",
+        description="A short, descriptive, user-friendly title for the test script.",
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -222,8 +278,15 @@ class TestScript(domainresource.DomainResource):
     url: fhirtypes.Uri = Field(
         ...,
         alias="url",
-        title="Type `Uri`",
-        description="Logical URI to reference this test script (globally unique)",
+        title="Logical URI to reference this test script (globally unique)",
+        description=(
+            "An absolute URI that is used to identify this test script when it is "
+            "referenced in a specification, model, design or an instance. This "
+            "SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at"
+            " which this test script is (or will be) published. The URL SHOULD "
+            "include the major version of the test script. For more information see"
+            " [Technical and Business Versions](resource.html#versions)."
+        ),
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -232,22 +295,37 @@ class TestScript(domainresource.DomainResource):
     useContext: ListType[fhirtypes.UsageContextType] = Field(
         None,
         alias="useContext",
-        title="List of `UsageContext` items (represented as `dict` in JSON)",
-        description="Context the content is intended to support",
+        title="Context the content is intended to support",
+        description=(
+            "The content was developed with a focus and intent of supporting the "
+            "contexts that are listed. These terms may be used to assist with "
+            "indexing and searching for appropriate test script instances."
+        ),
     )
 
     variable: ListType[fhirtypes.TestScriptVariableType] = Field(
         None,
         alias="variable",
-        title="List of `TestScriptVariable` items (represented as `dict` in JSON)",
-        description="Placeholder for evaluated elements",
+        title="Placeholder for evaluated elements",
+        description=(
+            "Variable is set based either on element value in response body or on "
+            "header field value in the response headers."
+        ),
     )
 
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String`",
-        description="Business version of the test script",
+        title="Business version of the test script",
+        description=(
+            "The identifier that is used to identify this version of the test "
+            "script when it is referenced in a specification, model, design or "
+            "instance. This is an arbitrary value managed by the test script author"
+            " and is not expected to be globally unique. For example, it might be a"
+            " timestamp (e.g. yyyymmdd) if a managed version is not available. "
+            "There is also no expectation that versions can be placed in a "
+            "lexicographical sequence."
+        ),
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -270,8 +348,11 @@ class TestScriptDestination(backboneelement.BackboneElement):
     index: fhirtypes.Integer = Field(
         ...,
         alias="index",
-        title="Type `Integer`",
-        description="The index of the abstract destination server starting at 1",
+        title="The index of the abstract destination server starting at 1",
+        description=(
+            "Abstract name given to a destination server in this test script.  The "
+            "name is provided as a number starting at 1."
+        ),
     )
     index__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_index", title="Extension field for ``index``."
@@ -280,11 +361,11 @@ class TestScriptDestination(backboneelement.BackboneElement):
     profile: fhirtypes.CodingType = Field(
         ...,
         alias="profile",
-        title="Type `Coding` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "FHIR-Server | FHIR-SDC-FormManager | FHIR-SDC-FormReceiver | FHIR-SDC-"
             "FormProcessor"
         ),
+        description="The type of destination profile the test system supports.",
     )
 
 
@@ -303,8 +384,13 @@ class TestScriptFixture(backboneelement.BackboneElement):
     autocreate: bool = Field(
         None,
         alias="autocreate",
-        title="Type `bool`",
-        description="Whether or not to implicitly create the fixture during setup",
+        title="Whether or not to implicitly create the fixture during setup",
+        description=(
+            "Whether or not to implicitly create the fixture during setup. If true,"
+            " the fixture is automatically created on each server being tested "
+            "during setup, therefore no create operation is required for this "
+            "fixture in the TestScript.setup section."
+        ),
     )
     autocreate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_autocreate", title="Extension field for ``autocreate``."
@@ -313,8 +399,13 @@ class TestScriptFixture(backboneelement.BackboneElement):
     autodelete: bool = Field(
         None,
         alias="autodelete",
-        title="Type `bool`",
-        description="Whether or not to implicitly delete the fixture during teardown",
+        title="Whether or not to implicitly delete the fixture during teardown",
+        description=(
+            "Whether or not to implicitly delete the fixture during teardown. If "
+            "true, the fixture is automatically deleted on each server being tested"
+            " during teardown, therefore no delete operation is required for this "
+            "fixture in the TestScript.teardown section."
+        ),
     )
     autodelete__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_autodelete", title="Extension field for ``autodelete``."
@@ -323,10 +414,13 @@ class TestScriptFixture(backboneelement.BackboneElement):
     resource: fhirtypes.ReferenceType = Field(
         None,
         alias="resource",
-        title=(
-            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        title="Reference of the resource",
+        description=(
+            "Reference to the resource (containing the contents of the resource "
+            "needed for operations)."
         ),
-        description="Reference of the resource",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
 
@@ -347,20 +441,20 @@ class TestScriptMetadata(backboneelement.BackboneElement):
         ...,
         alias="capability",
         title=(
-            "List of `TestScriptMetadataCapability` items (represented as `dict` in"
-            " JSON)"
-        ),
-        description=(
             "Capabilities  that are assumed to function correctly on the FHIR "
             "server being tested"
+        ),
+        description=(
+            "Capabilities that must exist and are assumed to function correctly on "
+            "the FHIR server being tested."
         ),
     )
 
     link: ListType[fhirtypes.TestScriptMetadataLinkType] = Field(
         None,
         alias="link",
-        title="List of `TestScriptMetadataLink` items (represented as `dict` in JSON)",
-        description="Links to the FHIR specification",
+        title="Links to the FHIR specification",
+        description="A link to the FHIR specification that this test is covering.",
     )
 
 
@@ -380,18 +474,24 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
     capabilities: fhirtypes.ReferenceType = Field(
         ...,
         alias="capabilities",
-        title=(
-            "Type `Reference` referencing `CapabilityStatement` (represented as "
-            "`dict` in JSON)"
+        title="Required Capability Statement",
+        description=(
+            "Minimum capabilities required of server for test script to execute "
+            "successfully.   If server does not meet at a minimum the referenced "
+            "capability statement, then all tests in this script are skipped."
         ),
-        description="Required Capability Statement",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["CapabilityStatement"],
     )
 
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="The expected capabilities of the server",
+        title="The expected capabilities of the server",
+        description=(
+            "Description of the capabilities that this test script is requiring the"
+            " server to support."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -400,8 +500,8 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
     destination: fhirtypes.Integer = Field(
         None,
         alias="destination",
-        title="Type `Integer`",
-        description="Which server these requirements apply to",
+        title="Which server these requirements apply to",
+        description=None,
     )
     destination__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_destination", title="Extension field for ``destination``."
@@ -410,8 +510,11 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
     link: ListType[fhirtypes.Uri] = Field(
         None,
         alias="link",
-        title="List of `Uri` items",
-        description="Links to the FHIR specification",
+        title="Links to the FHIR specification",
+        description=(
+            "Links to the FHIR specification that describes this interaction and "
+            "the resources involved in more detail."
+        ),
     )
     link__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_link", title="Extension field for ``link``."
@@ -420,8 +523,8 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
     origin: ListType[fhirtypes.Integer] = Field(
         None,
         alias="origin",
-        title="List of `Integer` items",
-        description="Which origin server these requirements apply to",
+        title="Which origin server these requirements apply to",
+        description=None,
     )
     origin__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_origin", title="Extension field for ``origin``."
@@ -430,8 +533,11 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
     required: bool = Field(
         None,
         alias="required",
-        title="Type `bool`",
-        description="Are the capabilities required?",
+        title="Are the capabilities required?",
+        description=(
+            "Whether or not the test execution will require the given capabilities "
+            "of the server in order for this test script to execute."
+        ),
     )
     required__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_required", title="Extension field for ``required``."
@@ -440,8 +546,11 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
     validated: bool = Field(
         None,
         alias="validated",
-        title="Type `bool`",
-        description="Are the capabilities validated?",
+        title="Are the capabilities validated?",
+        description=(
+            "Whether or not the test execution will validate the given capabilities"
+            " of the server in order for this test script to execute."
+        ),
     )
     validated__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_validated", title="Extension field for ``validated``."
@@ -462,15 +571,21 @@ class TestScriptMetadataLink(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Short description",
+        title="Short description",
+        description="Short description of the link.",
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
     )
 
     url: fhirtypes.Uri = Field(
-        ..., alias="url", title="Type `Uri`", description="URL to the specification"
+        ...,
+        alias="url",
+        title="URL to the specification",
+        description=(
+            "URL to a particular requirement or feature within the FHIR "
+            "specification."
+        ),
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -492,8 +607,11 @@ class TestScriptOrigin(backboneelement.BackboneElement):
     index: fhirtypes.Integer = Field(
         ...,
         alias="index",
-        title="Type `Integer`",
-        description="The index of the abstract origin server starting at 1",
+        title="The index of the abstract origin server starting at 1",
+        description=(
+            "Abstract name given to an origin server in this test script.  The name"
+            " is provided as a number starting at 1."
+        ),
     )
     index__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_index", title="Extension field for ``index``."
@@ -502,8 +620,8 @@ class TestScriptOrigin(backboneelement.BackboneElement):
     profile: fhirtypes.CodingType = Field(
         ...,
         alias="profile",
-        title="Type `Coding` (represented as `dict` in JSON)",
-        description="FHIR-Client | FHIR-SDC-FormFiller",
+        title="FHIR-Client | FHIR-SDC-FormFiller",
+        description="The type of origin profile the test system supports.",
     )
 
 
@@ -521,17 +639,22 @@ class TestScriptRule(backboneelement.BackboneElement):
     param: ListType[fhirtypes.TestScriptRuleParamType] = Field(
         None,
         alias="param",
-        title="List of `TestScriptRuleParam` items (represented as `dict` in JSON)",
-        description="Rule parameter template",
+        title="Rule parameter template",
+        description=(
+            "Each rule template can take one or more parameters for rule " "evaluation."
+        ),
     )
 
     resource: fhirtypes.ReferenceType = Field(
         ...,
         alias="resource",
-        title=(
-            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        title="Assert rule resource reference",
+        description=(
+            "Reference to the resource (containing the contents of the rule needed "
+            "for assertions)."
         ),
-        description="Assert rule resource reference",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
 
@@ -549,8 +672,11 @@ class TestScriptRuleParam(backboneelement.BackboneElement):
     name: fhirtypes.String = Field(
         ...,
         alias="name",
-        title="Type `String`",
-        description="Parameter name matching external assert rule parameter",
+        title="Parameter name matching external assert rule parameter",
+        description=(
+            "Descriptive name for this parameter that matches the external assert "
+            "rule parameter name."
+        ),
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -559,8 +685,11 @@ class TestScriptRuleParam(backboneelement.BackboneElement):
     value: fhirtypes.String = Field(
         None,
         alias="value",
-        title="Type `String`",
-        description="Parameter value defined either explicitly or dynamically",
+        title="Parameter value defined either explicitly or dynamically",
+        description=(
+            "The explicit or dynamic value for the parameter that will be passed on"
+            " to the external rule template."
+        ),
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."
@@ -582,17 +711,20 @@ class TestScriptRuleset(backboneelement.BackboneElement):
     resource: fhirtypes.ReferenceType = Field(
         ...,
         alias="resource",
-        title=(
-            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        title="Assert ruleset resource reference",
+        description=(
+            "Reference to the resource (containing the contents of the ruleset "
+            "needed for assertions)."
         ),
-        description="Assert ruleset resource reference",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     rule: ListType[fhirtypes.TestScriptRulesetRuleType] = Field(
         ...,
         alias="rule",
-        title="List of `TestScriptRulesetRule` items (represented as `dict` in JSON)",
-        description="The referenced rule within the ruleset",
+        title="The referenced rule within the ruleset",
+        description="The referenced rule within the external ruleset template.",
     )
 
 
@@ -610,18 +742,17 @@ class TestScriptRulesetRule(backboneelement.BackboneElement):
     param: ListType[fhirtypes.TestScriptRulesetRuleParamType] = Field(
         None,
         alias="param",
-        title=(
-            "List of `TestScriptRulesetRuleParam` items (represented as `dict` in "
-            "JSON)"
+        title="Ruleset rule parameter template",
+        description=(
+            "Each rule template can take one or more parameters for rule " "evaluation."
         ),
-        description="Ruleset rule parameter template",
     )
 
     ruleId: fhirtypes.Id = Field(
         ...,
         alias="ruleId",
-        title="Type `Id`",
-        description="Id of referenced rule within the ruleset",
+        title="Id of referenced rule within the ruleset",
+        description="Id of the referenced rule within the external ruleset template.",
     )
     ruleId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_ruleId", title="Extension field for ``ruleId``."
@@ -642,8 +773,11 @@ class TestScriptRulesetRuleParam(backboneelement.BackboneElement):
     name: fhirtypes.String = Field(
         ...,
         alias="name",
-        title="Type `String`",
-        description="Parameter name matching external assert ruleset rule parameter",
+        title="Parameter name matching external assert ruleset rule parameter",
+        description=(
+            "Descriptive name for this parameter that matches the external assert "
+            "ruleset rule parameter name."
+        ),
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -652,8 +786,11 @@ class TestScriptRulesetRuleParam(backboneelement.BackboneElement):
     value: fhirtypes.String = Field(
         None,
         alias="value",
-        title="Type `String`",
-        description="Parameter value defined either explicitly or dynamically",
+        title="Parameter value defined either explicitly or dynamically",
+        description=(
+            "The value for the parameter that will be passed on to the external "
+            "ruleset rule template."
+        ),
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."
@@ -673,8 +810,8 @@ class TestScriptSetup(backboneelement.BackboneElement):
     action: ListType[fhirtypes.TestScriptSetupActionType] = Field(
         ...,
         alias="action",
-        title="List of `TestScriptSetupAction` items (represented as `dict` in JSON)",
-        description="A setup operation or assert to perform",
+        title="A setup operation or assert to perform",
+        description="Action would contain either an operation or an assertion.",
     )
 
 
@@ -692,15 +829,18 @@ class TestScriptSetupAction(backboneelement.BackboneElement):
     assert_fhir: fhirtypes.TestScriptSetupActionAssertType = Field(
         None,
         alias="assert",
-        title="Type `TestScriptSetupActionAssert` (represented as `dict` in JSON)",
-        description="The assertion to perform",
+        title="The assertion to perform",
+        description=(
+            "Evaluates the results of previous operations to determine if the "
+            "server under test behaves appropriately."
+        ),
     )
 
     operation: fhirtypes.TestScriptSetupActionOperationType = Field(
         None,
         alias="operation",
-        title="Type `TestScriptSetupActionOperation` (represented as `dict` in JSON)",
-        description="The setup operation to perform",
+        title="The setup operation to perform",
+        description="The operation to perform.",
     )
 
 
@@ -719,8 +859,12 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
     compareToSourceExpression: fhirtypes.String = Field(
         None,
         alias="compareToSourceExpression",
-        title="Type `String`",
-        description="The fluentpath expression to evaluate against the source fixture",
+        title="The fluentpath expression to evaluate against the source fixture",
+        description=(
+            "The fluentpath expression to evaluate against the source fixture. When"
+            " compareToSourceId is defined, either compareToSourceExpression or "
+            "compareToSourcePath must be defined, but not both."
+        ),
     )
     compareToSourceExpression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -731,8 +875,11 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
     compareToSourceId: fhirtypes.String = Field(
         None,
         alias="compareToSourceId",
-        title="Type `String`",
-        description="Id of the source fixture to be evaluated",
+        title="Id of the source fixture to be evaluated",
+        description=(
+            "Id of the source fixture used as the contents to be evaluated by "
+            'either the "source/expression" or "sourceId/path" definition.'
+        ),
     )
     compareToSourceId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -743,8 +890,12 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
     compareToSourcePath: fhirtypes.String = Field(
         None,
         alias="compareToSourcePath",
-        title="Type `String`",
-        description="XPath or JSONPath expression to evaluate against the source fixture",
+        title="XPath or JSONPath expression to evaluate against the source fixture",
+        description=(
+            "XPath or JSONPath expression to evaluate against the source fixture. "
+            "When compareToSourceId is defined, either compareToSourceExpression or"
+            " compareToSourcePath must be defined, but not both."
+        ),
     )
     compareToSourcePath__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -755,8 +906,14 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
     contentType: fhirtypes.Code = Field(
         None,
         alias="contentType",
-        title="Type `Code`",
-        description="xml | json | ttl | none",
+        title="xml | json | ttl | none",
+        description=(
+            "The content-type or mime-type to use for RESTful operation in the "
+            "'Content-Type' header."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["xml", "json", "ttl", "none"],
     )
     contentType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_contentType", title="Extension field for ``contentType``."
@@ -765,15 +922,24 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Tracking/reporting assertion description",
+        title="Tracking/reporting assertion description",
+        description=(
+            "The description would be used by test engines for tracking and "
+            "reporting purposes."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
     )
 
     direction: fhirtypes.Code = Field(
-        None, alias="direction", title="Type `Code`", description="response | request"
+        None,
+        alias="direction",
+        title="response | request",
+        description="The direction to use for the assertion.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["response", "request"],
     )
     direction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_direction", title="Extension field for ``direction``."
@@ -782,8 +948,11 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
     expression: fhirtypes.String = Field(
         None,
         alias="expression",
-        title="Type `String`",
-        description="The fluentpath expression to be evaluated",
+        title="The fluentpath expression to be evaluated",
+        description=(
+            "The fluentpath expression to be evaluated against the request or "
+            "response message contents - HTTP headers and payload."
+        ),
     )
     expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_expression", title="Extension field for ``expression``."
@@ -792,8 +961,8 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
     headerField: fhirtypes.String = Field(
         None,
         alias="headerField",
-        title="Type `String`",
-        description="HTTP header field name",
+        title="HTTP header field name",
+        description="The HTTP header field name e.g. 'Location'.",
     )
     headerField__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_headerField", title="Extension field for ``headerField``."
@@ -802,8 +971,8 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
     label: fhirtypes.String = Field(
         None,
         alias="label",
-        title="Type `String`",
-        description="Tracking/logging assertion label",
+        title="Tracking/logging assertion label",
+        description="The label would be used for tracking/logging purposes by test engines.",
     )
     label__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_label", title="Extension field for ``label``."
@@ -812,8 +981,11 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
     minimumId: fhirtypes.String = Field(
         None,
         alias="minimumId",
-        title="Type `String`",
-        description="Fixture Id of minimum content resource",
+        title="Fixture Id of minimum content resource",
+        description=(
+            "The ID of a fixture.  Asserts that the response contains at a minimum "
+            "the fixture specified by minimumId."
+        ),
     )
     minimumId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_minimumId", title="Extension field for ``minimumId``."
@@ -822,8 +994,11 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
     navigationLinks: bool = Field(
         None,
         alias="navigationLinks",
-        title="Type `bool`",
-        description="Perform validation on navigation links?",
+        title="Perform validation on navigation links?",
+        description=(
+            "Whether or not the test execution performs validation on the bundle "
+            "navigation links."
+        ),
     )
     navigationLinks__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_navigationLinks", title="Extension field for ``navigationLinks``."
@@ -832,11 +1007,29 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
     operator: fhirtypes.Code = Field(
         None,
         alias="operator",
-        title="Type `Code`",
-        description=(
+        title=(
             "equals | notEquals | in | notIn | greaterThan | lessThan | empty | "
             "notEmpty | contains | notContains | eval"
         ),
+        description=(
+            "The operator type defines the conditional behavior of the assert. If "
+            "not defined, the default is equals."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "equals",
+            "notEquals",
+            "in",
+            "notIn",
+            "greaterThan",
+            "lessThan",
+            "empty",
+            "notEmpty",
+            "contains",
+            "notContains",
+            "eval",
+        ],
     )
     operator__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_operator", title="Extension field for ``operator``."
@@ -845,8 +1038,11 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
     path: fhirtypes.String = Field(
         None,
         alias="path",
-        title="Type `String`",
-        description="XPath or JSONPath expression",
+        title="XPath or JSONPath expression",
+        description=(
+            "The XPath or JSONPath expression to be evaluated against the fixture "
+            "representing the response received from server."
+        ),
     )
     path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_path", title="Extension field for ``path``."
@@ -855,8 +1051,14 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
     requestMethod: fhirtypes.Code = Field(
         None,
         alias="requestMethod",
-        title="Type `Code`",
-        description="delete | get | options | patch | post | put",
+        title="delete | get | options | patch | post | put",
+        description=(
+            "The request method or HTTP operation code to compare against that used"
+            " by the client system under test."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["delete", "get", "options", "patch", "post", "put"],
     )
     requestMethod__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_requestMethod", title="Extension field for ``requestMethod``."
@@ -865,15 +1067,21 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
     requestURL: fhirtypes.String = Field(
         None,
         alias="requestURL",
-        title="Type `String`",
-        description="Request URL comparison value",
+        title="Request URL comparison value",
+        description="The value to use in a comparison against the request URL path string.",
     )
     requestURL__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_requestURL", title="Extension field for ``requestURL``."
     )
 
     resource: fhirtypes.Code = Field(
-        None, alias="resource", title="Type `Code`", description="Resource type"
+        None,
+        alias="resource",
+        title="Resource type",
+        description=(
+            "The type of the resource.  See "
+            "http://hl7.org/fhir/STU3/resourcelist.html."
+        ),
     )
     resource__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_resource", title="Extension field for ``resource``."
@@ -882,12 +1090,28 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
     response: fhirtypes.Code = Field(
         None,
         alias="response",
-        title="Type `Code`",
-        description=(
+        title=(
             "okay | created | noContent | notModified | bad | forbidden | notFound "
             "| methodNotAllowed | conflict | gone | preconditionFailed | "
             "unprocessable"
         ),
+        description=None,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "okay",
+            "created",
+            "noContent",
+            "notModified",
+            "bad",
+            "forbidden",
+            "notFound",
+            "methodNotAllowed",
+            "conflict",
+            "gone",
+            "preconditionFailed",
+            "unprocessable",
+        ],
     )
     response__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_response", title="Extension field for ``response``."
@@ -896,8 +1120,8 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
     responseCode: fhirtypes.String = Field(
         None,
         alias="responseCode",
-        title="Type `String`",
-        description="HTTP response code to test",
+        title="HTTP response code to test",
+        description="The value of the HTTP response code to be tested.",
     )
     responseCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_responseCode", title="Extension field for ``responseCode``."
@@ -906,25 +1130,25 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
     rule: fhirtypes.TestScriptSetupActionAssertRuleType = Field(
         None,
         alias="rule",
-        title="Type `TestScriptSetupActionAssertRule` (represented as `dict` in JSON)",
-        description="The reference to a TestScript.rule",
+        title="The reference to a TestScript.rule",
+        description="The TestScript.rule this assert will evaluate.",
     )
 
     ruleset: fhirtypes.TestScriptSetupActionAssertRulesetType = Field(
         None,
         alias="ruleset",
-        title=(
-            "Type `TestScriptSetupActionAssertRuleset` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="The reference to a TestScript.ruleset",
+        title="The reference to a TestScript.ruleset",
+        description="The TestScript.ruleset this assert will evaluate.",
     )
 
     sourceId: fhirtypes.Id = Field(
         None,
         alias="sourceId",
-        title="Type `Id`",
-        description="Fixture Id of source expression or headerField",
+        title="Fixture Id of source expression or headerField",
+        description=(
+            "Fixture to evaluate the XPath/JSONPath expression or the headerField  "
+            "against."
+        ),
     )
     sourceId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sourceId", title="Extension field for ``sourceId``."
@@ -933,8 +1157,8 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
     validateProfileId: fhirtypes.Id = Field(
         None,
         alias="validateProfileId",
-        title="Type `Id`",
-        description="Profile Id of validation profile reference",
+        title="Profile Id of validation profile reference",
+        description="The ID of the Profile to validate against.",
     )
     validateProfileId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -943,10 +1167,7 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
     )
 
     value: fhirtypes.String = Field(
-        None,
-        alias="value",
-        title="Type `String`",
-        description="The value to compare to",
+        None, alias="value", title="The value to compare to", description=None,
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."
@@ -955,8 +1176,11 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
     warningOnly: bool = Field(
         None,
         alias="warningOnly",
-        title="Type `bool`",
-        description="Will this assert produce a warning only on error?",
+        title="Will this assert produce a warning only on error?",
+        description=(
+            "Whether or not the test execution will produce a warning only on error"
+            " for this assert."
+        ),
     )
     warningOnly__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_warningOnly", title="Extension field for ``warningOnly``."
@@ -977,15 +1201,17 @@ class TestScriptSetupActionAssertRule(backboneelement.BackboneElement):
     param: ListType[fhirtypes.TestScriptSetupActionAssertRuleParamType] = Field(
         None,
         alias="param",
-        title=(
-            "List of `TestScriptSetupActionAssertRuleParam` items (represented as "
-            "`dict` in JSON)"
+        title="Rule parameter template",
+        description=(
+            "Each rule template can take one or more parameters for rule " "evaluation."
         ),
-        description="Rule parameter template",
     )
 
     ruleId: fhirtypes.Id = Field(
-        ..., alias="ruleId", title="Type `Id`", description="Id of the TestScript.rule"
+        ...,
+        alias="ruleId",
+        title="Id of the TestScript.rule",
+        description="The TestScript.rule id value this assert will evaluate.",
     )
     ruleId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_ruleId", title="Extension field for ``ruleId``."
@@ -1006,8 +1232,11 @@ class TestScriptSetupActionAssertRuleParam(backboneelement.BackboneElement):
     name: fhirtypes.String = Field(
         ...,
         alias="name",
-        title="Type `String`",
-        description="Parameter name matching external assert rule parameter",
+        title="Parameter name matching external assert rule parameter",
+        description=(
+            "Descriptive name for this parameter that matches the external assert "
+            "rule parameter name."
+        ),
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -1016,8 +1245,11 @@ class TestScriptSetupActionAssertRuleParam(backboneelement.BackboneElement):
     value: fhirtypes.String = Field(
         ...,
         alias="value",
-        title="Type `String`",
-        description="Parameter value defined either explicitly or dynamically",
+        title="Parameter value defined either explicitly or dynamically",
+        description=(
+            "The value for the parameter that will be passed on to the external "
+            "rule template."
+        ),
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."
@@ -1038,18 +1270,15 @@ class TestScriptSetupActionAssertRuleset(backboneelement.BackboneElement):
     rule: ListType[fhirtypes.TestScriptSetupActionAssertRulesetRuleType] = Field(
         None,
         alias="rule",
-        title=(
-            "List of `TestScriptSetupActionAssertRulesetRule` items (represented as"
-            " `dict` in JSON)"
-        ),
-        description="The referenced rule within the ruleset",
+        title="The referenced rule within the ruleset",
+        description="The referenced rule within the external ruleset template.",
     )
 
     rulesetId: fhirtypes.Id = Field(
         ...,
         alias="rulesetId",
-        title="Type `Id`",
-        description="Id of the TestScript.ruleset",
+        title="Id of the TestScript.ruleset",
+        description="The TestScript.ruleset id value this assert will evaluate.",
     )
     rulesetId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_rulesetId", title="Extension field for ``rulesetId``."
@@ -1070,18 +1299,17 @@ class TestScriptSetupActionAssertRulesetRule(backboneelement.BackboneElement):
     param: ListType[fhirtypes.TestScriptSetupActionAssertRulesetRuleParamType] = Field(
         None,
         alias="param",
-        title=(
-            "List of `TestScriptSetupActionAssertRulesetRuleParam` items "
-            "(represented as `dict` in JSON)"
+        title="Rule parameter template",
+        description=(
+            "Each rule template can take one or more parameters for rule " "evaluation."
         ),
-        description="Rule parameter template",
     )
 
     ruleId: fhirtypes.Id = Field(
         ...,
         alias="ruleId",
-        title="Type `Id`",
-        description="Id of referenced rule within the ruleset",
+        title="Id of referenced rule within the ruleset",
+        description="Id of the referenced rule within the external ruleset template.",
     )
     ruleId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_ruleId", title="Extension field for ``ruleId``."
@@ -1102,8 +1330,11 @@ class TestScriptSetupActionAssertRulesetRuleParam(backboneelement.BackboneElemen
     name: fhirtypes.String = Field(
         ...,
         alias="name",
-        title="Type `String`",
-        description="Parameter name matching external assert ruleset rule parameter",
+        title="Parameter name matching external assert ruleset rule parameter",
+        description=(
+            "Descriptive name for this parameter that matches the external assert "
+            "ruleset rule parameter name."
+        ),
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -1112,8 +1343,11 @@ class TestScriptSetupActionAssertRulesetRuleParam(backboneelement.BackboneElemen
     value: fhirtypes.String = Field(
         ...,
         alias="value",
-        title="Type `String`",
-        description="Parameter value defined either explicitly or dynamically",
+        title="Parameter value defined either explicitly or dynamically",
+        description=(
+            "The value for the parameter that will be passed on to the external "
+            "ruleset rule template."
+        ),
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."
@@ -1132,7 +1366,16 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
     resource_type = Field("TestScriptSetupActionOperation", const=True)
 
     accept: fhirtypes.Code = Field(
-        None, alias="accept", title="Type `Code`", description="xml | json | ttl | none"
+        None,
+        alias="accept",
+        title="xml | json | ttl | none",
+        description=(
+            "The content-type or mime-type to use for RESTful operation in the "
+            "'Accept' header."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["xml", "json", "ttl", "none"],
     )
     accept__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_accept", title="Extension field for ``accept``."
@@ -1141,8 +1384,14 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
     contentType: fhirtypes.Code = Field(
         None,
         alias="contentType",
-        title="Type `Code`",
-        description="xml | json | ttl | none",
+        title="xml | json | ttl | none",
+        description=(
+            "The content-type or mime-type to use for RESTful operation in the "
+            "'Content-Type' header."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["xml", "json", "ttl", "none"],
     )
     contentType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_contentType", title="Extension field for ``contentType``."
@@ -1151,8 +1400,11 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Tracking/reporting operation description",
+        title="Tracking/reporting operation description",
+        description=(
+            "The description would be used by test engines for tracking and "
+            "reporting purposes."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -1161,8 +1413,11 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
     destination: fhirtypes.Integer = Field(
         None,
         alias="destination",
-        title="Type `Integer`",
-        description="Server responding to the request",
+        title="Server responding to the request",
+        description=(
+            "The server where the request message is destined for.  Must be one of "
+            "the server numbers listed in TestScript.destination section."
+        ),
     )
     destination__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_destination", title="Extension field for ``destination``."
@@ -1171,8 +1426,13 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
     encodeRequestUrl: bool = Field(
         None,
         alias="encodeRequestUrl",
-        title="Type `bool`",
-        description="Whether or not to send the request url in encoded format",
+        title="Whether or not to send the request url in encoded format",
+        description=(
+            "Whether or not to implicitly send the request url in encoded format. "
+            "The default is true to match the standard RESTful client behavior. Set"
+            " to false when communicating with a server that does not support "
+            "encoded url paths."
+        ),
     )
     encodeRequestUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -1183,8 +1443,8 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
     label: fhirtypes.String = Field(
         None,
         alias="label",
-        title="Type `String`",
-        description="Tracking/logging operation label",
+        title="Tracking/logging operation label",
+        description="The label would be used for tracking/logging purposes by test engines.",
     )
     label__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_label", title="Extension field for ``label``."
@@ -1193,8 +1453,11 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
     origin: fhirtypes.Integer = Field(
         None,
         alias="origin",
-        title="Type `Integer`",
-        description="Server initiating the request",
+        title="Server initiating the request",
+        description=(
+            "The server where the request message originates from.  Must be one of "
+            "the server numbers listed in TestScript.origin section."
+        ),
     )
     origin__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_origin", title="Extension field for ``origin``."
@@ -1203,8 +1466,11 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
     params: fhirtypes.String = Field(
         None,
         alias="params",
-        title="Type `String`",
-        description="Explicitly defined path parameters",
+        title="Explicitly defined path parameters",
+        description=(
+            "Path plus parameters after [type].  Used to set parts of the request "
+            "URL explicitly."
+        ),
     )
     params__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_params", title="Extension field for ``params``."
@@ -1215,25 +1481,28 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="requestHeader",
-        title=(
-            "List of `TestScriptSetupActionOperationRequestHeader` items "
-            "(represented as `dict` in JSON)"
-        ),
-        description="Each operation can have one or more header elements",
+        title="Each operation can have one or more header elements",
+        description="Header elements would be used to set HTTP headers.",
     )
 
     requestId: fhirtypes.Id = Field(
         None,
         alias="requestId",
-        title="Type `Id`",
-        description="Fixture Id of mapped request",
+        title="Fixture Id of mapped request",
+        description="The fixture id (maybe new) to map to the request.",
     )
     requestId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_requestId", title="Extension field for ``requestId``."
     )
 
     resource: fhirtypes.Code = Field(
-        None, alias="resource", title="Type `Code`", description="Resource type"
+        None,
+        alias="resource",
+        title="Resource type",
+        description=(
+            "The type of the resource.  See "
+            "http://hl7.org/fhir/STU3/resourcelist.html."
+        ),
     )
     resource__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_resource", title="Extension field for ``resource``."
@@ -1242,8 +1511,8 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
     responseId: fhirtypes.Id = Field(
         None,
         alias="responseId",
-        title="Type `Id`",
-        description="Fixture Id of mapped response",
+        title="Fixture Id of mapped response",
+        description="The fixture id (maybe new) to map to the response.",
     )
     responseId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_responseId", title="Extension field for ``responseId``."
@@ -1252,8 +1521,8 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
     sourceId: fhirtypes.Id = Field(
         None,
         alias="sourceId",
-        title="Type `Id`",
-        description="Fixture Id of body for PUT and POST requests",
+        title="Fixture Id of body for PUT and POST requests",
+        description="The id of the fixture used as the body of a PUT or POST request.",
     )
     sourceId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sourceId", title="Extension field for ``sourceId``."
@@ -1262,11 +1531,11 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
     targetId: fhirtypes.Id = Field(
         None,
         alias="targetId",
-        title="Type `Id`",
-        description=(
+        title=(
             "Id of fixture used for extracting the [id],  [type], and [vid] for GET"
             " requests"
         ),
+        description=None,
     )
     targetId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_targetId", title="Extension field for ``targetId``."
@@ -1275,12 +1544,12 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
     type: fhirtypes.CodingType = Field(
         None,
         alias="type",
-        title="Type `Coding` (represented as `dict` in JSON)",
-        description="The operation code type that will be executed",
+        title="The operation code type that will be executed",
+        description="Server interaction or operation type.",
     )
 
     url: fhirtypes.String = Field(
-        None, alias="url", title="Type `String`", description="Request URL"
+        None, alias="url", title="Request URL", description="Complete request URL.",
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -1299,14 +1568,20 @@ class TestScriptSetupActionOperationRequestHeader(backboneelement.BackboneElemen
     resource_type = Field("TestScriptSetupActionOperationRequestHeader", const=True)
 
     field: fhirtypes.String = Field(
-        ..., alias="field", title="Type `String`", description="HTTP header field name"
+        ...,
+        alias="field",
+        title="HTTP header field name",
+        description='The HTTP header field e.g. "Accept".',
     )
     field__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_field", title="Extension field for ``field``."
     )
 
     value: fhirtypes.String = Field(
-        ..., alias="value", title="Type `String`", description="HTTP headerfield value"
+        ...,
+        alias="value",
+        title="HTTP headerfield value",
+        description='The value of the header e.g. "application/fhir+xml".',
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."
@@ -1328,11 +1603,8 @@ class TestScriptTeardown(backboneelement.BackboneElement):
     action: ListType[fhirtypes.TestScriptTeardownActionType] = Field(
         ...,
         alias="action",
-        title=(
-            "List of `TestScriptTeardownAction` items (represented as `dict` in "
-            "JSON)"
-        ),
-        description="One or more teardown operations to perform",
+        title="One or more teardown operations to perform",
+        description="The teardown action will only contain an operation.",
     )
 
 
@@ -1350,8 +1622,8 @@ class TestScriptTeardownAction(backboneelement.BackboneElement):
     operation: fhirtypes.TestScriptSetupActionOperationType = Field(
         ...,
         alias="operation",
-        title="Type `TestScriptSetupActionOperation` (represented as `dict` in JSON)",
-        description="The teardown operation to perform",
+        title="The teardown operation to perform",
+        description="An operation would involve a REST request to a server.",
     )
 
 
@@ -1368,15 +1640,18 @@ class TestScriptTest(backboneelement.BackboneElement):
     action: ListType[fhirtypes.TestScriptTestActionType] = Field(
         ...,
         alias="action",
-        title="List of `TestScriptTestAction` items (represented as `dict` in JSON)",
-        description="A test operation or assert to perform",
+        title="A test operation or assert to perform",
+        description="Action would contain either an operation or an assertion.",
     )
 
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Tracking/reporting short description of the test",
+        title="Tracking/reporting short description of the test",
+        description=(
+            "A short description of the test used by test engines for tracking and "
+            "reporting purposes."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -1385,8 +1660,11 @@ class TestScriptTest(backboneelement.BackboneElement):
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String`",
-        description="Tracking/logging name of this test",
+        title="Tracking/logging name of this test",
+        description=(
+            "The name of this test used for tracking/logging purposes by test "
+            "engines."
+        ),
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -1407,15 +1685,18 @@ class TestScriptTestAction(backboneelement.BackboneElement):
     assert_fhir: fhirtypes.TestScriptSetupActionAssertType = Field(
         None,
         alias="assert",
-        title="Type `TestScriptSetupActionAssert` (represented as `dict` in JSON)",
-        description="The setup assertion to perform",
+        title="The setup assertion to perform",
+        description=(
+            "Evaluates the results of previous operations to determine if the "
+            "server under test behaves appropriately."
+        ),
     )
 
     operation: fhirtypes.TestScriptSetupActionOperationType = Field(
         None,
         alias="operation",
-        title="Type `TestScriptSetupActionOperation` (represented as `dict` in JSON)",
-        description="The setup operation to perform",
+        title="The setup operation to perform",
+        description="An operation would involve a REST request to a server.",
     )
 
 
@@ -1434,8 +1715,8 @@ class TestScriptVariable(backboneelement.BackboneElement):
     defaultValue: fhirtypes.String = Field(
         None,
         alias="defaultValue",
-        title="Type `String`",
-        description="Default, hard-coded, or user-defined value for this variable",
+        title="Default, hard-coded, or user-defined value for this variable",
+        description="A default, hard-coded, or user-defined value for this variable.",
     )
     defaultValue__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_defaultValue", title="Extension field for ``defaultValue``."
@@ -1444,8 +1725,11 @@ class TestScriptVariable(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Natural language description of the variable",
+        title="Natural language description of the variable",
+        description=(
+            "A free text natural language description of the variable and its "
+            "purpose."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -1454,8 +1738,12 @@ class TestScriptVariable(backboneelement.BackboneElement):
     expression: fhirtypes.String = Field(
         None,
         alias="expression",
-        title="Type `String`",
-        description="The fluentpath expression against the fixture body",
+        title="The fluentpath expression against the fixture body",
+        description=(
+            "The fluentpath expression to evaluate against the fixture body. When "
+            "variables are defined, only one of either expression, headerField or "
+            "path must be specified."
+        ),
     )
     expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_expression", title="Extension field for ``expression``."
@@ -1464,8 +1752,11 @@ class TestScriptVariable(backboneelement.BackboneElement):
     headerField: fhirtypes.String = Field(
         None,
         alias="headerField",
-        title="Type `String`",
-        description="HTTP header field name for source",
+        title="HTTP header field name for source",
+        description=(
+            "Will be used to grab the HTTP header field value from the headers that"
+            " sourceId is pointing to."
+        ),
     )
     headerField__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_headerField", title="Extension field for ``headerField``."
@@ -1474,18 +1765,18 @@ class TestScriptVariable(backboneelement.BackboneElement):
     hint: fhirtypes.String = Field(
         None,
         alias="hint",
-        title="Type `String`",
-        description="Hint help text for default value to enter",
+        title="Hint help text for default value to enter",
+        description=(
+            "Displayable text string with hint help information to the user when "
+            "entering a default value."
+        ),
     )
     hint__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_hint", title="Extension field for ``hint``."
     )
 
     name: fhirtypes.String = Field(
-        ...,
-        alias="name",
-        title="Type `String`",
-        description="Descriptive name for this variable",
+        ..., alias="name", title="Descriptive name for this variable", description=None,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -1494,8 +1785,12 @@ class TestScriptVariable(backboneelement.BackboneElement):
     path: fhirtypes.String = Field(
         None,
         alias="path",
-        title="Type `String`",
-        description="XPath or JSONPath against the fixture body",
+        title="XPath or JSONPath against the fixture body",
+        description=(
+            "XPath or JSONPath to evaluate against the fixture body.  When "
+            "variables are defined, only one of either expression, headerField or "
+            "path must be specified."
+        ),
     )
     path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_path", title="Extension field for ``path``."
@@ -1504,8 +1799,11 @@ class TestScriptVariable(backboneelement.BackboneElement):
     sourceId: fhirtypes.Id = Field(
         None,
         alias="sourceId",
-        title="Type `Id`",
-        description="Fixture Id of source expression or headerField within this variable",
+        title="Fixture Id of source expression or headerField within this variable",
+        description=(
+            "Fixture to evaluate the XPath/JSONPath expression or the headerField  "
+            "against within this variable."
+        ),
     )
     sourceId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sourceId", title="Extension field for ``sourceId``."

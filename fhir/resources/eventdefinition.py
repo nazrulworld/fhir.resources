@@ -29,8 +29,12 @@ class EventDefinition(domainresource.DomainResource):
     approvalDate: fhirtypes.Date = Field(
         None,
         alias="approvalDate",
-        title="Type `Date`",
-        description="When the event definition was approved by publisher",
+        title="When the event definition was approved by publisher",
+        description=(
+            "The date on which the resource content was approved by the publisher. "
+            "Approval happens once when the content is officially approved for "
+            "usage."
+        ),
     )
     approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_approvalDate", title="Extension field for ``approvalDate``."
@@ -39,29 +43,47 @@ class EventDefinition(domainresource.DomainResource):
     author: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="author",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Who authored the content",
+        title="Who authored the content",
+        description=(
+            "An individiual or organization primarily involved in the creation and "
+            "maintenance of the content."
+        ),
     )
 
     contact: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="contact",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Contact details for the publisher",
+        title="Contact details for the publisher",
+        description=(
+            "Contact details to assist a user in finding and communicating with the"
+            " publisher."
+        ),
     )
 
     copyright: fhirtypes.Markdown = Field(
         None,
         alias="copyright",
-        title="Type `Markdown`",
-        description="Use and/or publishing restrictions",
+        title="Use and/or publishing restrictions",
+        description=(
+            "A copyright statement relating to the event definition and/or its "
+            "contents. Copyright statements are generally legal restrictions on the"
+            " use and publishing of the event definition."
+        ),
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
     date: fhirtypes.DateTime = Field(
-        None, alias="date", title="Type `DateTime`", description="Date last changed"
+        None,
+        alias="date",
+        title="Date last changed",
+        description=(
+            "The date  (and optionally time) when the event definition was "
+            "published. The date must change when the business version changes and "
+            "it must change if the status code changes. In addition, it should "
+            "change when the substantive content of the event definition changes."
+        ),
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -70,8 +92,11 @@ class EventDefinition(domainresource.DomainResource):
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown`",
-        description="Natural language description of the event definition",
+        title="Natural language description of the event definition",
+        description=(
+            "A free text natural language description of the event definition from "
+            "a consumer's perspective."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -80,29 +105,42 @@ class EventDefinition(domainresource.DomainResource):
     editor: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="editor",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Who edited the content",
+        title="Who edited the content",
+        description=(
+            "An individual or organization primarily responsible for internal "
+            "coherence of the content."
+        ),
     )
 
     effectivePeriod: fhirtypes.PeriodType = Field(
         None,
         alias="effectivePeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="When the event definition is expected to be used",
+        title="When the event definition is expected to be used",
+        description=(
+            "The period during which the event definition content was or is planned"
+            " to be in active use."
+        ),
     )
 
     endorser: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="endorser",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Who endorsed the content",
+        title="Who endorsed the content",
+        description=(
+            "An individual or organization responsible for officially endorsing the"
+            " content for use in some setting."
+        ),
     )
 
     experimental: bool = Field(
         None,
         alias="experimental",
-        title="Type `bool`",
-        description="For testing purposes, not real usage",
+        title="For testing purposes, not real usage",
+        description=(
+            "A Boolean value to indicate that this event definition is authored for"
+            " testing purposes (or education/evaluation/marketing) and is not "
+            "intended to be used for genuine usage."
+        ),
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -111,22 +149,33 @@ class EventDefinition(domainresource.DomainResource):
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Additional identifier for the event definition",
+        title="Additional identifier for the event definition",
+        description=(
+            "A formal identifier that is used to identify this event definition "
+            "when it is represented in other formats, or referenced in a "
+            "specification, model, design or an instance."
+        ),
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="jurisdiction",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Intended jurisdiction for event definition (if applicable)",
+        title="Intended jurisdiction for event definition (if applicable)",
+        description=(
+            "A legal or geographic region in which the event definition is intended"
+            " to be used."
+        ),
     )
 
     lastReviewDate: fhirtypes.Date = Field(
         None,
         alias="lastReviewDate",
-        title="Type `Date`",
-        description="When the event definition was last reviewed",
+        title="When the event definition was last reviewed",
+        description=(
+            "The date on which the resource content was last reviewed. Review "
+            "happens periodically after approval but does not change the original "
+            "approval date."
+        ),
     )
     lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
@@ -135,8 +184,12 @@ class EventDefinition(domainresource.DomainResource):
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String`",
-        description="Name for this event definition (computer friendly)",
+        title="Name for this event definition (computer friendly)",
+        description=(
+            "A natural language name identifying the event definition. This name "
+            "should be usable as an identifier for the module by machine processing"
+            " applications such as code generation."
+        ),
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -145,8 +198,11 @@ class EventDefinition(domainresource.DomainResource):
     publisher: fhirtypes.String = Field(
         None,
         alias="publisher",
-        title="Type `String`",
-        description="Name of the publisher (organization or individual)",
+        title="Name of the publisher (organization or individual)",
+        description=(
+            "The name of the organization or individual that published the event "
+            "definition."
+        ),
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -155,8 +211,11 @@ class EventDefinition(domainresource.DomainResource):
     purpose: fhirtypes.Markdown = Field(
         None,
         alias="purpose",
-        title="Type `Markdown`",
-        description="Why this event definition is defined",
+        title="Why this event definition is defined",
+        description=(
+            "Explanation of why this event definition is needed and why it has been"
+            " designed as it has."
+        ),
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_purpose", title="Extension field for ``purpose``."
@@ -165,22 +224,34 @@ class EventDefinition(domainresource.DomainResource):
     relatedArtifact: ListType[fhirtypes.RelatedArtifactType] = Field(
         None,
         alias="relatedArtifact",
-        title="List of `RelatedArtifact` items (represented as `dict` in JSON)",
-        description="Additional documentation, citations, etc.",
+        title="Additional documentation, citations, etc.",
+        description=(
+            "Related resources such as additional documentation, justification, or "
+            "bibliographic references."
+        ),
     )
 
     reviewer: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="reviewer",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Who reviewed the content",
+        title="Who reviewed the content",
+        description=(
+            "An individual or organization primarily responsible for review of some"
+            " aspect of the content."
+        ),
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="draft | active | retired | unknown",
+        title="draft | active | retired | unknown",
+        description=(
+            "The status of this event definition. Enables tracking the life-cycle "
+            "of the content."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["draft", "active", "retired", "unknown"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -189,26 +260,39 @@ class EventDefinition(domainresource.DomainResource):
     subjectCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="subjectCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type of individual the event definition is focused on",
-        one_of_many="subject",  # Choice of Data Types. i.e value[x]
+        title="Type of individual the event definition is focused on",
+        description=(
+            "A code or group definition that describes the intended subject of the "
+            "event definition."
+        ),
+        # Choice of Data Types. i.e subject[x]
+        one_of_many="subject",
         one_of_many_required=False,
     )
 
     subjectReference: fhirtypes.ReferenceType = Field(
         None,
         alias="subjectReference",
-        title="Type `Reference` referencing `Group` (represented as `dict` in JSON)",
-        description="Type of individual the event definition is focused on",
-        one_of_many="subject",  # Choice of Data Types. i.e value[x]
+        title="Type of individual the event definition is focused on",
+        description=(
+            "A code or group definition that describes the intended subject of the "
+            "event definition."
+        ),
+        # Choice of Data Types. i.e subject[x]
+        one_of_many="subject",
         one_of_many_required=False,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Group"],
     )
 
     subtitle: fhirtypes.String = Field(
         None,
         alias="subtitle",
-        title="Type `String`",
-        description="Subordinate title of the event definition",
+        title="Subordinate title of the event definition",
+        description=(
+            "An explanatory or alternate title for the event definition giving "
+            "additional information about its content."
+        ),
     )
     subtitle__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_subtitle", title="Extension field for ``subtitle``."
@@ -217,8 +301,8 @@ class EventDefinition(domainresource.DomainResource):
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String`",
-        description="Name for this event definition (human friendly)",
+        title="Name for this event definition (human friendly)",
+        description="A short, descriptive, user-friendly title for the event definition.",
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -227,24 +311,40 @@ class EventDefinition(domainresource.DomainResource):
     topic: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="topic",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="E.g. Education, Treatment, Assessment, etc.",
+        title="E.g. Education, Treatment, Assessment, etc.",
+        description=(
+            "Descriptive topics related to the module. Topics provide a high-level "
+            "categorization of the module that can be useful for filtering and "
+            "searching."
+        ),
     )
 
     trigger: ListType[fhirtypes.TriggerDefinitionType] = Field(
         ...,
         alias="trigger",
-        title="List of `TriggerDefinition` items (represented as `dict` in JSON)",
-        description='"when" the event occurs (multiple = \u0027or\u0027)',
+        title="\"when\" the event occurs (multiple = 'or')",
+        description=(
+            "The trigger element defines when the event occurs. If more than one "
+            "trigger condition is specified, the event fires whenever any one of "
+            "the trigger conditions is met."
+        ),
     )
 
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
-        title="Type `Uri`",
-        description=(
+        title=(
             "Canonical identifier for this event definition, represented as a URI "
             "(globally unique)"
+        ),
+        description=(
+            "An absolute URI that is used to identify this event definition when it"
+            " is referenced in a specification, model, design or an instance; also "
+            "called its canonical identifier. This SHOULD be globally unique and "
+            "SHOULD be a literal address at which at which an authoritative "
+            "instance of this event definition is (or will be) published. This URL "
+            "can be the target of a canonical reference. It SHALL remain the same "
+            "when the event definition is stored on different servers."
         ),
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -254,8 +354,11 @@ class EventDefinition(domainresource.DomainResource):
     usage: fhirtypes.String = Field(
         None,
         alias="usage",
-        title="Type `String`",
-        description="Describes the clinical usage of the event definition",
+        title="Describes the clinical usage of the event definition",
+        description=(
+            "A detailed description of how the event definition is used from a "
+            "clinical perspective."
+        ),
     )
     usage__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_usage", title="Extension field for ``usage``."
@@ -264,15 +367,29 @@ class EventDefinition(domainresource.DomainResource):
     useContext: ListType[fhirtypes.UsageContextType] = Field(
         None,
         alias="useContext",
-        title="List of `UsageContext` items (represented as `dict` in JSON)",
-        description="The context that the content is intended to support",
+        title="The context that the content is intended to support",
+        description=(
+            "The content was developed with a focus and intent of supporting the "
+            "contexts that are listed. These contexts may be general categories "
+            "(gender, age, ...) or may be references to specific programs "
+            "(insurance plans, studies, ...) and may be used to assist with "
+            "indexing and searching for appropriate event definition instances."
+        ),
     )
 
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String`",
-        description="Business version of the event definition",
+        title="Business version of the event definition",
+        description=(
+            "The identifier that is used to identify this version of the event "
+            "definition when it is referenced in a specification, model, design or "
+            "instance. This is an arbitrary value managed by the event definition "
+            "author and is not expected to be globally unique. For example, it "
+            "might be a timestamp (e.g. yyyymmdd) if a managed version is not "
+            "available. There is also no expectation that versions can be placed in"
+            " a lexicographical sequence."
+        ),
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."

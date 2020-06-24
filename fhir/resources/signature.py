@@ -31,8 +31,11 @@ class Signature(element.Element):
     data: fhirtypes.Base64Binary = Field(
         None,
         alias="data",
-        title="Type `Base64Binary`",
-        description="The actual signature content (XML DigSig. JWS, picture, etc.)",
+        title="The actual signature content (XML DigSig. JWS, picture, etc.)",
+        description=(
+            "The base64 encoding of the Signature content. When signature is not "
+            "recorded electronically this element would be empty."
+        ),
     )
     data__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_data", title="Extension field for ``data``."
@@ -41,19 +44,32 @@ class Signature(element.Element):
     onBehalfOf: fhirtypes.ReferenceType = Field(
         None,
         alias="onBehalfOf",
-        title=(
-            "Type `Reference` referencing `Practitioner, PractitionerRole, "
-            "RelatedPerson, Patient, Device, Organization` (represented as `dict` "
-            "in JSON)"
+        title="The party represented",
+        description=(
+            "A reference to an application-usable description of the identity that "
+            "is represented by the signature."
         ),
-        description="The party represented",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Practitioner",
+            "PractitionerRole",
+            "RelatedPerson",
+            "Patient",
+            "Device",
+            "Organization",
+        ],
     )
 
     sigFormat: fhirtypes.Code = Field(
         None,
         alias="sigFormat",
-        title="Type `Code`",
-        description="The technical format of the signature",
+        title="The technical format of the signature",
+        description=(
+            "A mime type that indicates the technical format of the signature. "
+            "Important mime types are application/signature+xml for X ML DigSig, "
+            "application/jose for JWS, and image/* for a graphical image of a "
+            "signature, etc."
+        ),
     )
     sigFormat__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sigFormat", title="Extension field for ``sigFormat``."
@@ -62,8 +78,11 @@ class Signature(element.Element):
     targetFormat: fhirtypes.Code = Field(
         None,
         alias="targetFormat",
-        title="Type `Code`",
-        description="The technical format of the signed resources",
+        title="The technical format of the signed resources",
+        description=(
+            "A mime type that indicates the technical format of the target "
+            "resources signed by the signature."
+        ),
     )
     targetFormat__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_targetFormat", title="Extension field for ``targetFormat``."
@@ -72,15 +91,20 @@ class Signature(element.Element):
     type: ListType[fhirtypes.CodingType] = Field(
         ...,
         alias="type",
-        title="List of `Coding` items (represented as `dict` in JSON)",
-        description="Indication of the reason the entity signed the object(s)",
+        title="Indication of the reason the entity signed the object(s)",
+        description=(
+            "An indication of the reason that the entity signed this document. This"
+            " may be explicitly included as part of the signature information and "
+            "can be used when determining accountability for various actions "
+            "concerning the document."
+        ),
     )
 
     when: fhirtypes.Instant = Field(
         ...,
         alias="when",
-        title="Type `Instant`",
-        description="When the signature was created",
+        title="When the signature was created",
+        description="When the digital signature was signed.",
     )
     when__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_when", title="Extension field for ``when``."
@@ -89,10 +113,18 @@ class Signature(element.Element):
     who: fhirtypes.ReferenceType = Field(
         ...,
         alias="who",
-        title=(
-            "Type `Reference` referencing `Practitioner, PractitionerRole, "
-            "RelatedPerson, Patient, Device, Organization` (represented as `dict` "
-            "in JSON)"
+        title="Who signed",
+        description=(
+            "A reference to an application-usable description of the identity that "
+            "signed  (e.g. the signature used their private key)."
         ),
-        description="Who signed",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Practitioner",
+            "PractitionerRole",
+            "RelatedPerson",
+            "Patient",
+            "Device",
+            "Organization",
+        ],
     )

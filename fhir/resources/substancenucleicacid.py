@@ -29,14 +29,14 @@ class SubstanceNucleicAcid(domainresource.DomainResource):
     areaOfHybridisation: fhirtypes.String = Field(
         None,
         alias="areaOfHybridisation",
-        title="Type `String`",
-        description=(
+        title=(
             "The area of hybridisation shall be described if applicable for double "
             "stranded RNA or DNA. The number associated with the subunit followed "
             "by the number associated to the residue shall be specified in "
             "increasing order. The underscore \u201c\u201d shall be used as separator as "
             "follows: \u201cSubunitnumber Residue\u201d"
         ),
+        description=None,
     )
     areaOfHybridisation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -47,14 +47,14 @@ class SubstanceNucleicAcid(domainresource.DomainResource):
     numberOfSubunits: fhirtypes.Integer = Field(
         None,
         alias="numberOfSubunits",
-        title="Type `Integer`",
-        description=(
+        title=(
             "The number of linear sequences of nucleotides linked through "
             "phosphodiester bonds shall be described. Subunits would be strands of "
             "nucleic acids that are tightly associated typically through Watson-"
             "Crick base pairing. NOTE: If not specified in the reference source, "
             "the assumption is that there is 1 subunit"
         ),
+        description=None,
     )
     numberOfSubunits__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -63,34 +63,28 @@ class SubstanceNucleicAcid(domainresource.DomainResource):
     )
 
     oligoNucleotideType: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="oligoNucleotideType",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="(TBC)",
+        None, alias="oligoNucleotideType", title="(TBC)", description=None,
     )
 
     sequenceType: fhirtypes.CodeableConceptType = Field(
         None,
         alias="sequenceType",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The type of the sequence shall be specified based on a controlled "
             "vocabulary"
         ),
+        description=None,
     )
 
     subunit: ListType[fhirtypes.SubstanceNucleicAcidSubunitType] = Field(
         None,
         alias="subunit",
         title=(
-            "List of `SubstanceNucleicAcidSubunit` items (represented as `dict` in "
-            "JSON)"
-        ),
-        description=(
             "Subunits are listed in order of decreasing length; sequences of the "
             "same length will be ordered by molecular weight; subunits that have "
             "identical sequences will be repeated multiple times"
         ),
+        description=None,
     )
 
 
@@ -109,20 +103,20 @@ class SubstanceNucleicAcidSubunit(backboneelement.BackboneElement):
     fivePrime: fhirtypes.CodeableConceptType = Field(
         None,
         alias="fivePrime",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The nucleotide present at the 5\u2019 terminal shall be specified based on "
-            "a controlled vocabulary. Since the sequence is represented from the 5\u0027"
-            " to the 3\u0027 end, the 5\u2019 prime nucleotide is the letter at the first "
+            "a controlled vocabulary. Since the sequence is represented from the 5'"
+            " to the 3' end, the 5\u2019 prime nucleotide is the letter at the first "
             "position in the sequence. A separate representation would be redundant"
         ),
+        description=None,
     )
 
     length: fhirtypes.Integer = Field(
         None,
         alias="length",
-        title="Type `Integer`",
-        description="The length of the sequence shall be captured",
+        title="The length of the sequence shall be captured",
+        description=None,
     )
     length__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_length", title="Extension field for ``length``."
@@ -131,69 +125,57 @@ class SubstanceNucleicAcidSubunit(backboneelement.BackboneElement):
     linkage: ListType[fhirtypes.SubstanceNucleicAcidSubunitLinkageType] = Field(
         None,
         alias="linkage",
-        title=(
-            "List of `SubstanceNucleicAcidSubunitLinkage` items (represented as "
-            "`dict` in JSON)"
-        ),
-        description="The linkages between sugar residues will also be captured",
+        title="The linkages between sugar residues will also be captured",
+        description=None,
     )
 
     sequence: fhirtypes.String = Field(
         None,
         alias="sequence",
-        title="Type `String`",
-        description=(
-            "Actual nucleotide sequence notation from 5\u0027 to 3\u0027 end using standard "
+        title=(
+            "Actual nucleotide sequence notation from 5' to 3' end using standard "
             "single letter codes. In addition to the base sequence, sugar and type "
             "of phosphate or non-phosphate linkage should also be captured"
         ),
+        description=None,
     )
     sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
     sequenceAttachment: fhirtypes.AttachmentType = Field(
-        None,
-        alias="sequenceAttachment",
-        title="Type `Attachment` (represented as `dict` in JSON)",
-        description="(TBC)",
+        None, alias="sequenceAttachment", title="(TBC)", description=None,
     )
 
     subunit: fhirtypes.Integer = Field(
         None,
         alias="subunit",
-        title="Type `Integer`",
-        description=(
+        title=(
             "Index of linear sequences of nucleic acids in order of decreasing "
             "length. Sequences of the same length will be ordered by molecular "
             "weight. Subunits that have identical sequences will be repeated and "
             "have sequential subscripts"
         ),
+        description=None,
     )
     subunit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_subunit", title="Extension field for ``subunit``."
     )
 
     sugar: ListType[fhirtypes.SubstanceNucleicAcidSubunitSugarType] = Field(
-        None,
-        alias="sugar",
-        title=(
-            "List of `SubstanceNucleicAcidSubunitSugar` items (represented as "
-            "`dict` in JSON)"
-        ),
-        description="5.3.6.8.1 Sugar ID (Mandatory)",
+        None, alias="sugar", title="5.3.6.8.1 Sugar ID (Mandatory)", description=None,
     )
 
     threePrime: fhirtypes.CodeableConceptType = Field(
         None,
         alias="threePrime",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The nucleotide present at the 3\u2019 terminal shall be specified based on "
-            "a controlled vocabulary. Since the sequence is represented from the 5\u0027"
-            " to the 3\u0027 end, the 5\u2019 prime nucleotide is the letter at the last "
+            "a controlled vocabulary. Since the sequence is represented from the 5'"
+            " to the 3' end, the 5\u2019 prime nucleotide is the letter at the last "
             "position in the sequence. A separate representation would be redundant"
         ),
+        description=None,
     )
 
 
@@ -210,15 +192,16 @@ class SubstanceNucleicAcidSubunitLinkage(backboneelement.BackboneElement):
     connectivity: fhirtypes.String = Field(
         None,
         alias="connectivity",
-        title="Type `String`",
-        description=(
+        title=(
             "The entity that links the sugar residues together should also be "
             "captured for nearly all naturally occurring nucleic acid the linkage "
             "is a phosphate group. For many synthetic oligonucleotides "
             "phosphorothioate linkages are often seen. Linkage connectivity is "
             "assumed to be 3\u2019-5\u2019. If the linkage is either "
-            "3\u2019-3\u2019 or 5\u2019-5\u2019 this should be specified"
+            "3\u2019-3\u2019 or 5\u2019-5\u2019 this "
+            "should be specified"
         ),
+        description=None,
     )
     connectivity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_connectivity", title="Extension field for ``connectivity``."
@@ -227,18 +210,18 @@ class SubstanceNucleicAcidSubunitLinkage(backboneelement.BackboneElement):
     identifier: fhirtypes.IdentifierType = Field(
         None,
         alias="identifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Each linkage will be registered as a fragment and have an ID",
+        title="Each linkage will be registered as a fragment and have an ID",
+        description=None,
     )
 
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String`",
-        description=(
+        title=(
             "Each linkage will be registered as a fragment and have at least one "
             "name. A single name shall be assigned to each linkage"
         ),
+        description=None,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -247,8 +230,8 @@ class SubstanceNucleicAcidSubunitLinkage(backboneelement.BackboneElement):
     residueSite: fhirtypes.String = Field(
         None,
         alias="residueSite",
-        title="Type `String`",
-        description="Residues shall be captured as described in 5.3.6.8.3",
+        title="Residues shall be captured as described in 5.3.6.8.3",
+        description=None,
     )
     residueSite__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_residueSite", title="Extension field for ``residueSite``."
@@ -268,21 +251,21 @@ class SubstanceNucleicAcidSubunitSugar(backboneelement.BackboneElement):
     identifier: fhirtypes.IdentifierType = Field(
         None,
         alias="identifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The Substance ID of the sugar or sugar-like component that make up the"
             " nucleotide"
         ),
+        description=None,
     )
 
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String`",
-        description=(
+        title=(
             "The name of the sugar or sugar-like component that make up the "
             "nucleotide"
         ),
+        description=None,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -291,12 +274,12 @@ class SubstanceNucleicAcidSubunitSugar(backboneelement.BackboneElement):
     residueSite: fhirtypes.String = Field(
         None,
         alias="residueSite",
-        title="Type `String`",
-        description=(
+        title=(
             "The residues that contain a given sugar will be captured. The order of"
             " given residues will be captured in the 5\u2018-3\u2018direction consistent with"
             " the base sequences listed above"
         ),
+        description=None,
     )
     residueSite__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_residueSite", title="Extension field for ``residueSite``."

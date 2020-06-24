@@ -31,15 +31,25 @@ class Group(domainresource.DomainResource):
     active: bool = Field(
         None,
         alias="active",
-        title="Type `bool`",
-        description="Whether this group\u0027s record is in active use",
+        title="Whether this group's record is in active use",
+        description=(
+            "Indicates whether the record for the group is available for use or is "
+            "merely being retained for historical purposes."
+        ),
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_active", title="Extension field for ``active``."
     )
 
     actual: bool = Field(
-        ..., alias="actual", title="Type `bool`", description="Descriptive or actual"
+        ...,
+        alias="actual",
+        title="Descriptive or actual",
+        description=(
+            "If true, indicates that the resource refers to a specific group of "
+            "real individuals.  If false, the group defines a set of intended "
+            "individuals."
+        ),
     )
     actual__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_actual", title="Extension field for ``actual``."
@@ -48,43 +58,62 @@ class Group(domainresource.DomainResource):
     characteristic: ListType[fhirtypes.GroupCharacteristicType] = Field(
         None,
         alias="characteristic",
-        title="List of `GroupCharacteristic` items (represented as `dict` in JSON)",
-        description="Include / Exclude group members by Trait",
+        title="Include / Exclude group members by Trait",
+        description=(
+            "Identifies traits whose presence r absence is shared by members of the"
+            " group."
+        ),
     )
 
     code: fhirtypes.CodeableConceptType = Field(
         None,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Kind of Group members",
+        title="Kind of Group members",
+        description=(
+            'Provides a specific type of resource the group includes; e.g. "cow", '
+            '"syringe", etc.'
+        ),
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Unique id",
+        title="Unique id",
+        description="A unique business identifier for this group.",
     )
 
     managingEntity: fhirtypes.ReferenceType = Field(
         None,
         alias="managingEntity",
-        title=(
-            "Type `Reference` referencing `Organization, RelatedPerson, "
-            "Practitioner, PractitionerRole` (represented as `dict` in JSON)"
+        title="Entity that is the custodian of the Group's definition",
+        description=(
+            "Entity responsible for defining and maintaining Group characteristics "
+            "and/or registered members."
         ),
-        description="Entity that is the custodian of the Group\u0027s definition",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Organization",
+            "RelatedPerson",
+            "Practitioner",
+            "PractitionerRole",
+        ],
     )
 
     member: ListType[fhirtypes.GroupMemberType] = Field(
         None,
         alias="member",
-        title="List of `GroupMember` items (represented as `dict` in JSON)",
-        description="Who or what is in group",
+        title="Who or what is in group",
+        description="Identifies the resource instances that are members of the group.",
     )
 
     name: fhirtypes.String = Field(
-        None, alias="name", title="Type `String`", description="Label for Group"
+        None,
+        alias="name",
+        title="Label for Group",
+        description=(
+            "A label assigned to the group for human identification and "
+            "communication."
+        ),
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -93,8 +122,10 @@ class Group(domainresource.DomainResource):
     quantity: fhirtypes.UnsignedInt = Field(
         None,
         alias="quantity",
-        title="Type `UnsignedInt`",
-        description="Number of members",
+        title="Number of members",
+        description=(
+            "A count of the number of resource instances that are part of the " "group."
+        ),
     )
     quantity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_quantity", title="Extension field for ``quantity``."
@@ -103,8 +134,21 @@ class Group(domainresource.DomainResource):
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code`",
-        description="person | animal | practitioner | device | medication | substance",
+        title="person | animal | practitioner | device | medication | substance",
+        description=(
+            "Identifies the broad classification of the kind of resources the group"
+            " includes."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "person",
+            "animal",
+            "practitioner",
+            "device",
+            "medication",
+            "substance",
+        ],
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -126,15 +170,18 @@ class GroupCharacteristic(backboneelement.BackboneElement):
     code: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Kind of characteristic",
+        title="Kind of characteristic",
+        description="A code that identifies the kind of trait being asserted.",
     )
 
     exclude: bool = Field(
         ...,
         alias="exclude",
-        title="Type `bool`",
-        description="Group includes or excludes",
+        title="Group includes or excludes",
+        description=(
+            "If true, indicates the characteristic is one that is NOT held by "
+            "members of the group."
+        ),
     )
     exclude__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_exclude", title="Extension field for ``exclude``."
@@ -143,16 +190,23 @@ class GroupCharacteristic(backboneelement.BackboneElement):
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Period over which characteristic is tested",
+        title="Period over which characteristic is tested",
+        description=(
+            "The period over which the characteristic is tested; e.g. the patient "
+            "had an operation during the month of June."
+        ),
     )
 
     valueBoolean: bool = Field(
         None,
         alias="valueBoolean",
-        title="Type `bool`",
-        description="Value held by characteristic",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value held by characteristic",
+        description=(
+            "The value of the trait that holds (or does not hold - see 'exclude') "
+            "for members of the group."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -162,36 +216,52 @@ class GroupCharacteristic(backboneelement.BackboneElement):
     valueCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="valueCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Value held by characteristic",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value held by characteristic",
+        description=(
+            "The value of the trait that holds (or does not hold - see 'exclude') "
+            "for members of the group."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueQuantity: fhirtypes.QuantityType = Field(
         None,
         alias="valueQuantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Value held by characteristic",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value held by characteristic",
+        description=(
+            "The value of the trait that holds (or does not hold - see 'exclude') "
+            "for members of the group."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueRange: fhirtypes.RangeType = Field(
         None,
         alias="valueRange",
-        title="Type `Range` (represented as `dict` in JSON)",
-        description="Value held by characteristic",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value held by characteristic",
+        description=(
+            "The value of the trait that holds (or does not hold - see 'exclude') "
+            "for members of the group."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueReference: fhirtypes.ReferenceType = Field(
         None,
         alias="valueReference",
-        title="Type `Reference` (represented as `dict` in JSON)",
-        description="Value held by characteristic",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value held by characteristic",
+        description=(
+            "The value of the trait that holds (or does not hold - see 'exclude') "
+            "for members of the group."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
@@ -254,18 +324,32 @@ class GroupMember(backboneelement.BackboneElement):
     entity: fhirtypes.ReferenceType = Field(
         ...,
         alias="entity",
-        title=(
-            "Type `Reference` referencing `Patient, Practitioner, PractitionerRole,"
-            " Device, Medication, Substance, Group` (represented as `dict` in JSON)"
+        title="Reference to the group member",
+        description=(
+            "A reference to the entity that is a member of the group. Must be "
+            "consistent with Group.type. If the entity is another group, then the "
+            "type must be the same."
         ),
-        description="Reference to the group member",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Patient",
+            "Practitioner",
+            "PractitionerRole",
+            "Device",
+            "Medication",
+            "Substance",
+            "Group",
+        ],
     )
 
     inactive: bool = Field(
         None,
         alias="inactive",
-        title="Type `bool`",
-        description="If member is no longer in group",
+        title="If member is no longer in group",
+        description=(
+            "A flag to indicate that the member is no longer in the group, but "
+            "previously may have been a member."
+        ),
     )
     inactive__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_inactive", title="Extension field for ``inactive``."
@@ -274,6 +358,6 @@ class GroupMember(backboneelement.BackboneElement):
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Period member belonged to the group",
+        title="Period member belonged to the group",
+        description="The period that the member was in the group, if known.",
     )

@@ -28,15 +28,19 @@ class CodeableConcept(element.Element):
     coding: ListType[fhirtypes.CodingType] = Field(
         None,
         alias="coding",
-        title="List of `Coding` items (represented as `dict` in JSON)",
-        description="Code defined by a terminology system",
+        title="Code defined by a terminology system",
+        description="A reference to a code defined by a terminology system.",
     )
 
     text: fhirtypes.String = Field(
         None,
         alias="text",
-        title="Type `String`",
-        description="Plain text representation of the concept",
+        title="Plain text representation of the concept",
+        description=(
+            "A human language representation of the concept as "
+            "seen/selected/uttered by the user who entered the data and/or which "
+            "represents the intended meaning of the user."
+        ),
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_text", title="Extension field for ``text``."

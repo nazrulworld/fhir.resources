@@ -26,63 +26,61 @@ class MedicinalProductManufactured(domainresource.DomainResource):
     ingredient: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="ingredient",
-        title=(
-            "List of `Reference` items referencing `MedicinalProductIngredient` "
-            "(represented as `dict` in JSON)"
-        ),
-        description="Ingredient",
+        title="Ingredient",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["MedicinalProductIngredient"],
     )
 
     manufacturedDoseForm: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="manufacturedDoseForm",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Dose form as manufactured and before any transformation into the "
             "pharmaceutical product"
         ),
+        description=None,
     )
 
     manufacturer: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="manufacturer",
         title=(
-            "List of `Reference` items referencing `Organization` (represented as "
-            "`dict` in JSON)"
-        ),
-        description=(
             "Manufacturer of the item (Note that this should be named "
             '"manufacturer" but it currently causes technical issues)'
         ),
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     otherCharacteristics: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="otherCharacteristics",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Other codeable characteristics",
+        title="Other codeable characteristics",
+        description=None,
     )
 
     physicalCharacteristics: fhirtypes.ProdCharacteristicType = Field(
         None,
         alias="physicalCharacteristics",
-        title="Type `ProdCharacteristic` (represented as `dict` in JSON)",
+        title="Dimensions, color etc.",
         description="Dimensions, color etc.",
     )
 
     quantity: fhirtypes.QuantityType = Field(
         ...,
         alias="quantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description='The quantity or "count number" of the manufactured item',
+        title='The quantity or "count number" of the manufactured item',
+        description=None,
     )
 
     unitOfPresentation: fhirtypes.CodeableConceptType = Field(
         None,
         alias="unitOfPresentation",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The \u201creal world\u201d units in which the quantity of the manufactured item "
             "is described"
         ),
+        description=None,
     )

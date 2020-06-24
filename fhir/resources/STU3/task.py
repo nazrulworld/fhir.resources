@@ -27,8 +27,8 @@ class Task(domainresource.DomainResource):
     authoredOn: fhirtypes.DateTime = Field(
         None,
         alias="authoredOn",
-        title="Type `DateTime`",
-        description="Task Creation Date",
+        title="Task Creation Date",
+        description="The date and time this task was created.",
     )
     authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_authoredOn", title="Extension field for ``authoredOn``."
@@ -37,55 +37,71 @@ class Task(domainresource.DomainResource):
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
+        title="Request fulfilled by this task",
+        description=(
+            "BasedOn refers to a higher-level authorization that triggered the "
+            'creation of the task.  It references a "request" resource such as a '
+            "ProcedureRequest, MedicationRequest, ProcedureRequest, CarePlan, etc. "
+            'which is distinct from the "request" resource the task is seeking to '
+            "fulfil.  This latter resource is referenced by FocusOn.  For example, "
+            "based on a ProcedureRequest (= BasedOn), a task is created to fulfil a"
+            " procedureRequest ( = FocusOn ) to collect a specimen from a patient."
         ),
-        description="Request fulfilled by this task",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     businessStatus: fhirtypes.CodeableConceptType = Field(
         None,
         alias="businessStatus",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description='E.g. "Specimen collected", "IV prepped"',
+        title='E.g. "Specimen collected", "IV prepped"',
+        description="Contains business-specific nuances of the business state.",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
         None,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Task Type",
+        title="Task Type",
+        description="A name or code (or both) briefly describing what the task involves.",
     )
 
     context: fhirtypes.ReferenceType = Field(
         None,
         alias="context",
-        title=(
-            "Type `Reference` referencing `Encounter, EpisodeOfCare` (represented "
-            "as `dict` in JSON)"
+        title="Healthcare event during which this task originated",
+        description=(
+            "The healthcare event  (e.g. a patient and healthcare provider "
+            "interaction) during which this task was created."
         ),
-        description="Healthcare event during which this task originated",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Encounter", "EpisodeOfCare"],
     )
 
     definitionReference: fhirtypes.ReferenceType = Field(
         None,
         alias="definitionReference",
-        title=(
-            "Type `Reference` referencing `ActivityDefinition` (represented as "
-            "`dict` in JSON)"
+        title="Formal definition of task",
+        description=(
+            "A reference to a formal or informal definition of the task.  For "
+            "example, a protocol, a step within a defined workflow definition, etc."
         ),
-        description="Formal definition of task",
-        one_of_many="definition",  # Choice of Data Types. i.e value[x]
+        # Choice of Data Types. i.e definition[x]
+        one_of_many="definition",
         one_of_many_required=False,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ActivityDefinition"],
     )
 
     definitionUri: fhirtypes.Uri = Field(
         None,
         alias="definitionUri",
-        title="Type `Uri`",
-        description="Formal definition of task",
-        one_of_many="definition",  # Choice of Data Types. i.e value[x]
+        title="Formal definition of task",
+        description=(
+            "A reference to a formal or informal definition of the task.  For "
+            "example, a protocol, a step within a defined workflow definition, etc."
+        ),
+        # Choice of Data Types. i.e definition[x]
+        one_of_many="definition",
         one_of_many_required=False,
     )
     definitionUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -95,8 +111,8 @@ class Task(domainresource.DomainResource):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Human-readable explanation of task",
+        title="Human-readable explanation of task",
+        description="A free-text description of what is to be performed.",
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -105,54 +121,75 @@ class Task(domainresource.DomainResource):
     executionPeriod: fhirtypes.PeriodType = Field(
         None,
         alias="executionPeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Start and end time of execution",
+        title="Start and end time of execution",
+        description=(
+            "Identifies the time action was first taken against the task (start) "
+            "and/or the time final action was taken against the task prior to "
+            "marking it as completed (end)."
+        ),
     )
 
     focus: fhirtypes.ReferenceType = Field(
         None,
         alias="focus",
-        title=(
-            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        title="What task is acting on",
+        description=(
+            "The request being actioned or the resource being manipulated by this "
+            "task."
         ),
-        description="What task is acting on",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     for_fhir: fhirtypes.ReferenceType = Field(
         None,
         alias="for",
-        title=(
-            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        title="Beneficiary of the Task",
+        description=(
+            "The entity who benefits from the performance of the service specified "
+            "in the task (e.g., the patient)."
         ),
-        description="Beneficiary of the Task",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     groupIdentifier: fhirtypes.IdentifierType = Field(
         None,
         alias="groupIdentifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Requisition or grouper id",
+        title="Requisition or grouper id",
+        description=(
+            "An identifier that links together multiple tasks and other requests "
+            "that were created in the same context."
+        ),
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Task Instance Identifier",
+        title="Task Instance Identifier",
+        description="The business identifier for this task.",
     )
 
     input: ListType[fhirtypes.TaskInputType] = Field(
         None,
         alias="input",
-        title="List of `TaskInput` items (represented as `dict` in JSON)",
-        description="Information used to perform task",
+        title="Information used to perform task",
+        description=(
+            "Additional information that may be needed in the execution of the " "task."
+        ),
     )
 
     intent: fhirtypes.Code = Field(
         ...,
         alias="intent",
-        title="Type `Code`",
-        description="proposal | plan | order +",
+        title="proposal | plan | order +",
+        description=(
+            'Indicates the "level" of actionability associated with the Task.  I.e.'
+            " Is this a proposed task, a planned task, an actionable task, etc."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["proposal", "plan", "order +"],
     )
     intent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_intent", title="Extension field for ``intent``."
@@ -161,8 +198,8 @@ class Task(domainresource.DomainResource):
     lastModified: fhirtypes.DateTime = Field(
         None,
         alias="lastModified",
-        title="Type `DateTime`",
-        description="Task Last Modified Date",
+        title="Task Last Modified Date",
+        description="The date and time of last modification to this task.",
     )
     lastModified__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastModified", title="Extension field for ``lastModified``."
@@ -171,52 +208,65 @@ class Task(domainresource.DomainResource):
     note: ListType[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
-        title="List of `Annotation` items (represented as `dict` in JSON)",
-        description="Comments made about the task",
+        title="Comments made about the task",
+        description="Free-text information captured about the task as it progresses.",
     )
 
     output: ListType[fhirtypes.TaskOutputType] = Field(
         None,
         alias="output",
-        title="List of `TaskOutput` items (represented as `dict` in JSON)",
-        description="Information produced as part of task",
+        title="Information produced as part of task",
+        description="Outputs produced by the Task.",
     )
 
     owner: fhirtypes.ReferenceType = Field(
         None,
         alias="owner",
-        title=(
-            "Type `Reference` referencing `Device, Organization, Patient, "
-            "Practitioner, RelatedPerson` (represented as `dict` in JSON)"
+        title="Responsible individual",
+        description=(
+            "Individual organization or Device currently responsible for task "
+            "execution."
         ),
-        description="Responsible individual",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Device",
+            "Organization",
+            "Patient",
+            "Practitioner",
+            "RelatedPerson",
+        ],
     )
 
     partOf: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="partOf",
-        title=(
-            "List of `Reference` items referencing `Task` (represented as `dict` in"
-            " JSON)"
-        ),
-        description="Composite task",
+        title="Composite task",
+        description="Task that this particular task is part of.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Task"],
     )
 
     performerType: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="performerType",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description=(
+        title=(
             "requester | dispatcher | scheduler | performer | monitor | manager | "
             "acquirer | reviewer"
         ),
+        description="The type of participant that can execute the task.",
     )
 
     priority: fhirtypes.Code = Field(
         None,
         alias="priority",
-        title="Type `Code`",
-        description="normal | urgent | asap | stat",
+        title="normal | urgent | asap | stat",
+        description=(
+            "Indicates how quickly the Task should be addressed with respect to "
+            "other requests."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["normal", "urgent", "asap", "stat"],
     )
     priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_priority", title="Extension field for ``priority``."
@@ -225,39 +275,50 @@ class Task(domainresource.DomainResource):
     reason: fhirtypes.CodeableConceptType = Field(
         None,
         alias="reason",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Why task is needed",
+        title="Why task is needed",
+        description="A description or code indicating why this task needs to be performed.",
     )
 
     relevantHistory: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="relevantHistory",
-        title=(
-            "List of `Reference` items referencing `Provenance` (represented as "
-            "`dict` in JSON)"
+        title="Key events in history of the Task",
+        description=(
+            "Links to Provenance records for past versions of this Task that "
+            "identify key state transitions or updates that are likely to be "
+            "relevant to a user looking at the current version of the task."
         ),
-        description="Key events in history of the Task",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Provenance"],
     )
 
     requester: fhirtypes.TaskRequesterType = Field(
         None,
         alias="requester",
-        title="Type `TaskRequester` (represented as `dict` in JSON)",
-        description="Who is asking for task to be done",
+        title="Who is asking for task to be done",
+        description="The creator of the task.",
     )
 
     restriction: fhirtypes.TaskRestrictionType = Field(
         None,
         alias="restriction",
-        title="Type `TaskRestriction` (represented as `dict` in JSON)",
-        description="Constraints on fulfillment tasks",
+        title="Constraints on fulfillment tasks",
+        description=(
+            "If the Task.focus is a request resource and the task is seeking "
+            "fulfillment (i.e is asking for the request to be actioned), this "
+            "element identifies any limitations on what parts of the referenced "
+            "request should be actioned."
+        ),
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="draft | requested | received | accepted | +",
+        title="draft | requested | received | accepted | +",
+        description="The current status of the task.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["draft", "requested", "received", "accepted", "+"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -266,8 +327,8 @@ class Task(domainresource.DomainResource):
     statusReason: fhirtypes.CodeableConceptType = Field(
         None,
         alias="statusReason",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Reason for current status",
+        title="Reason for current status",
+        description="An explanation as to why this task is held, failed, was refused, etc.",
     )
 
     @root_validator(pre=True)
@@ -321,52 +382,60 @@ class TaskInput(backboneelement.BackboneElement):
     type: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Label for the input",
+        title="Label for the input",
+        description=(
+            "A code or description indicating how the input is intended to be used "
+            "as part of the task execution."
+        ),
     )
 
     valueAddress: fhirtypes.AddressType = Field(
         None,
         alias="valueAddress",
-        title="Type `Address` (represented as `dict` in JSON)",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueAge: fhirtypes.AgeType = Field(
         None,
         alias="valueAge",
-        title="Type `Age` (represented as `dict` in JSON)",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueAnnotation: fhirtypes.AnnotationType = Field(
         None,
         alias="valueAnnotation",
-        title="Type `Annotation` (represented as `dict` in JSON)",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueAttachment: fhirtypes.AttachmentType = Field(
         None,
         alias="valueAttachment",
-        title="Type `Attachment` (represented as `dict` in JSON)",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueBase64Binary: fhirtypes.Base64Binary = Field(
         None,
         alias="valueBase64Binary",
-        title="Type `Base64Binary`",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -378,9 +447,10 @@ class TaskInput(backboneelement.BackboneElement):
     valueBoolean: bool = Field(
         None,
         alias="valueBoolean",
-        title="Type `bool`",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -390,9 +460,10 @@ class TaskInput(backboneelement.BackboneElement):
     valueCode: fhirtypes.Code = Field(
         None,
         alias="valueCode",
-        title="Type `Code`",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -402,45 +473,50 @@ class TaskInput(backboneelement.BackboneElement):
     valueCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="valueCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueCoding: fhirtypes.CodingType = Field(
         None,
         alias="valueCoding",
-        title="Type `Coding` (represented as `dict` in JSON)",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueContactPoint: fhirtypes.ContactPointType = Field(
         None,
         alias="valueContactPoint",
-        title="Type `ContactPoint` (represented as `dict` in JSON)",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueCount: fhirtypes.CountType = Field(
         None,
         alias="valueCount",
-        title="Type `Count` (represented as `dict` in JSON)",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueDate: fhirtypes.Date = Field(
         None,
         alias="valueDate",
-        title="Type `Date`",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -450,9 +526,10 @@ class TaskInput(backboneelement.BackboneElement):
     valueDateTime: fhirtypes.DateTime = Field(
         None,
         alias="valueDateTime",
-        title="Type `DateTime`",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -462,9 +539,10 @@ class TaskInput(backboneelement.BackboneElement):
     valueDecimal: fhirtypes.Decimal = Field(
         None,
         alias="valueDecimal",
-        title="Type `Decimal`",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -474,36 +552,40 @@ class TaskInput(backboneelement.BackboneElement):
     valueDistance: fhirtypes.DistanceType = Field(
         None,
         alias="valueDistance",
-        title="Type `Distance` (represented as `dict` in JSON)",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueDuration: fhirtypes.DurationType = Field(
         None,
         alias="valueDuration",
-        title="Type `Duration` (represented as `dict` in JSON)",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueHumanName: fhirtypes.HumanNameType = Field(
         None,
         alias="valueHumanName",
-        title="Type `HumanName` (represented as `dict` in JSON)",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueId: fhirtypes.Id = Field(
         None,
         alias="valueId",
-        title="Type `Id`",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -513,18 +595,20 @@ class TaskInput(backboneelement.BackboneElement):
     valueIdentifier: fhirtypes.IdentifierType = Field(
         None,
         alias="valueIdentifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueInstant: fhirtypes.Instant = Field(
         None,
         alias="valueInstant",
-        title="Type `Instant`",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -534,9 +618,10 @@ class TaskInput(backboneelement.BackboneElement):
     valueInteger: fhirtypes.Integer = Field(
         None,
         alias="valueInteger",
-        title="Type `Integer`",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -546,9 +631,10 @@ class TaskInput(backboneelement.BackboneElement):
     valueMarkdown: fhirtypes.Markdown = Field(
         None,
         alias="valueMarkdown",
-        title="Type `Markdown`",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -558,27 +644,30 @@ class TaskInput(backboneelement.BackboneElement):
     valueMeta: fhirtypes.MetaType = Field(
         None,
         alias="valueMeta",
-        title="Type `Meta` (represented as `dict` in JSON)",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueMoney: fhirtypes.MoneyType = Field(
         None,
         alias="valueMoney",
-        title="Type `Money` (represented as `dict` in JSON)",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueOid: fhirtypes.Oid = Field(
         None,
         alias="valueOid",
-        title="Type `Oid`",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueOid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -588,18 +677,20 @@ class TaskInput(backboneelement.BackboneElement):
     valuePeriod: fhirtypes.PeriodType = Field(
         None,
         alias="valuePeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valuePositiveInt: fhirtypes.PositiveInt = Field(
         None,
         alias="valuePositiveInt",
-        title="Type `PositiveInt`",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -611,63 +702,70 @@ class TaskInput(backboneelement.BackboneElement):
     valueQuantity: fhirtypes.QuantityType = Field(
         None,
         alias="valueQuantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueRange: fhirtypes.RangeType = Field(
         None,
         alias="valueRange",
-        title="Type `Range` (represented as `dict` in JSON)",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueRatio: fhirtypes.RatioType = Field(
         None,
         alias="valueRatio",
-        title="Type `Ratio` (represented as `dict` in JSON)",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueReference: fhirtypes.ReferenceType = Field(
         None,
         alias="valueReference",
-        title="Type `Reference` (represented as `dict` in JSON)",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueSampledData: fhirtypes.SampledDataType = Field(
         None,
         alias="valueSampledData",
-        title="Type `SampledData` (represented as `dict` in JSON)",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueSignature: fhirtypes.SignatureType = Field(
         None,
         alias="valueSignature",
-        title="Type `Signature` (represented as `dict` in JSON)",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueString: fhirtypes.String = Field(
         None,
         alias="valueString",
-        title="Type `String`",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -677,9 +775,10 @@ class TaskInput(backboneelement.BackboneElement):
     valueTime: fhirtypes.Time = Field(
         None,
         alias="valueTime",
-        title="Type `Time`",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -689,18 +788,20 @@ class TaskInput(backboneelement.BackboneElement):
     valueTiming: fhirtypes.TimingType = Field(
         None,
         alias="valueTiming",
-        title="Type `Timing` (represented as `dict` in JSON)",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueUnsignedInt: fhirtypes.UnsignedInt = Field(
         None,
         alias="valueUnsignedInt",
-        title="Type `UnsignedInt`",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -712,9 +813,10 @@ class TaskInput(backboneelement.BackboneElement):
     valueUri: fhirtypes.Uri = Field(
         None,
         alias="valueUri",
-        title="Type `Uri`",
-        description="Content to use in performing the task",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Content to use in performing the task",
+        description="The value of the input parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -813,52 +915,57 @@ class TaskOutput(backboneelement.BackboneElement):
     type: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Label for output",
+        title="Label for output",
+        description="The name of the Output parameter.",
     )
 
     valueAddress: fhirtypes.AddressType = Field(
         None,
         alias="valueAddress",
-        title="Type `Address` (represented as `dict` in JSON)",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueAge: fhirtypes.AgeType = Field(
         None,
         alias="valueAge",
-        title="Type `Age` (represented as `dict` in JSON)",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueAnnotation: fhirtypes.AnnotationType = Field(
         None,
         alias="valueAnnotation",
-        title="Type `Annotation` (represented as `dict` in JSON)",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueAttachment: fhirtypes.AttachmentType = Field(
         None,
         alias="valueAttachment",
-        title="Type `Attachment` (represented as `dict` in JSON)",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueBase64Binary: fhirtypes.Base64Binary = Field(
         None,
         alias="valueBase64Binary",
-        title="Type `Base64Binary`",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -870,9 +977,10 @@ class TaskOutput(backboneelement.BackboneElement):
     valueBoolean: bool = Field(
         None,
         alias="valueBoolean",
-        title="Type `bool`",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -882,9 +990,10 @@ class TaskOutput(backboneelement.BackboneElement):
     valueCode: fhirtypes.Code = Field(
         None,
         alias="valueCode",
-        title="Type `Code`",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -894,45 +1003,50 @@ class TaskOutput(backboneelement.BackboneElement):
     valueCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="valueCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueCoding: fhirtypes.CodingType = Field(
         None,
         alias="valueCoding",
-        title="Type `Coding` (represented as `dict` in JSON)",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueContactPoint: fhirtypes.ContactPointType = Field(
         None,
         alias="valueContactPoint",
-        title="Type `ContactPoint` (represented as `dict` in JSON)",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueCount: fhirtypes.CountType = Field(
         None,
         alias="valueCount",
-        title="Type `Count` (represented as `dict` in JSON)",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueDate: fhirtypes.Date = Field(
         None,
         alias="valueDate",
-        title="Type `Date`",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -942,9 +1056,10 @@ class TaskOutput(backboneelement.BackboneElement):
     valueDateTime: fhirtypes.DateTime = Field(
         None,
         alias="valueDateTime",
-        title="Type `DateTime`",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -954,9 +1069,10 @@ class TaskOutput(backboneelement.BackboneElement):
     valueDecimal: fhirtypes.Decimal = Field(
         None,
         alias="valueDecimal",
-        title="Type `Decimal`",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -966,36 +1082,40 @@ class TaskOutput(backboneelement.BackboneElement):
     valueDistance: fhirtypes.DistanceType = Field(
         None,
         alias="valueDistance",
-        title="Type `Distance` (represented as `dict` in JSON)",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueDuration: fhirtypes.DurationType = Field(
         None,
         alias="valueDuration",
-        title="Type `Duration` (represented as `dict` in JSON)",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueHumanName: fhirtypes.HumanNameType = Field(
         None,
         alias="valueHumanName",
-        title="Type `HumanName` (represented as `dict` in JSON)",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueId: fhirtypes.Id = Field(
         None,
         alias="valueId",
-        title="Type `Id`",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1005,18 +1125,20 @@ class TaskOutput(backboneelement.BackboneElement):
     valueIdentifier: fhirtypes.IdentifierType = Field(
         None,
         alias="valueIdentifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueInstant: fhirtypes.Instant = Field(
         None,
         alias="valueInstant",
-        title="Type `Instant`",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1026,9 +1148,10 @@ class TaskOutput(backboneelement.BackboneElement):
     valueInteger: fhirtypes.Integer = Field(
         None,
         alias="valueInteger",
-        title="Type `Integer`",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1038,9 +1161,10 @@ class TaskOutput(backboneelement.BackboneElement):
     valueMarkdown: fhirtypes.Markdown = Field(
         None,
         alias="valueMarkdown",
-        title="Type `Markdown`",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1050,27 +1174,30 @@ class TaskOutput(backboneelement.BackboneElement):
     valueMeta: fhirtypes.MetaType = Field(
         None,
         alias="valueMeta",
-        title="Type `Meta` (represented as `dict` in JSON)",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueMoney: fhirtypes.MoneyType = Field(
         None,
         alias="valueMoney",
-        title="Type `Money` (represented as `dict` in JSON)",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueOid: fhirtypes.Oid = Field(
         None,
         alias="valueOid",
-        title="Type `Oid`",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueOid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1080,18 +1207,20 @@ class TaskOutput(backboneelement.BackboneElement):
     valuePeriod: fhirtypes.PeriodType = Field(
         None,
         alias="valuePeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valuePositiveInt: fhirtypes.PositiveInt = Field(
         None,
         alias="valuePositiveInt",
-        title="Type `PositiveInt`",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1103,63 +1232,70 @@ class TaskOutput(backboneelement.BackboneElement):
     valueQuantity: fhirtypes.QuantityType = Field(
         None,
         alias="valueQuantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueRange: fhirtypes.RangeType = Field(
         None,
         alias="valueRange",
-        title="Type `Range` (represented as `dict` in JSON)",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueRatio: fhirtypes.RatioType = Field(
         None,
         alias="valueRatio",
-        title="Type `Ratio` (represented as `dict` in JSON)",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueReference: fhirtypes.ReferenceType = Field(
         None,
         alias="valueReference",
-        title="Type `Reference` (represented as `dict` in JSON)",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueSampledData: fhirtypes.SampledDataType = Field(
         None,
         alias="valueSampledData",
-        title="Type `SampledData` (represented as `dict` in JSON)",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueSignature: fhirtypes.SignatureType = Field(
         None,
         alias="valueSignature",
-        title="Type `Signature` (represented as `dict` in JSON)",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueString: fhirtypes.String = Field(
         None,
         alias="valueString",
-        title="Type `String`",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1169,9 +1305,10 @@ class TaskOutput(backboneelement.BackboneElement):
     valueTime: fhirtypes.Time = Field(
         None,
         alias="valueTime",
-        title="Type `Time`",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1181,18 +1318,20 @@ class TaskOutput(backboneelement.BackboneElement):
     valueTiming: fhirtypes.TimingType = Field(
         None,
         alias="valueTiming",
-        title="Type `Timing` (represented as `dict` in JSON)",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueUnsignedInt: fhirtypes.UnsignedInt = Field(
         None,
         alias="valueUnsignedInt",
-        title="Type `UnsignedInt`",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1204,9 +1343,10 @@ class TaskOutput(backboneelement.BackboneElement):
     valueUri: fhirtypes.Uri = Field(
         None,
         alias="valueUri",
-        title="Type `Uri`",
-        description="Result of output",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Result of output",
+        description="The value of the Output parameter as a basic type.",
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1305,21 +1445,28 @@ class TaskRequester(backboneelement.BackboneElement):
     agent: fhirtypes.ReferenceType = Field(
         ...,
         alias="agent",
-        title=(
-            "Type `Reference` referencing `Device, Organization, Patient, "
-            "Practitioner, RelatedPerson` (represented as `dict` in JSON)"
-        ),
-        description="Individual asking for task",
+        title="Individual asking for task",
+        description="The device, practitioner, etc. who initiated the task.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Device",
+            "Organization",
+            "Patient",
+            "Practitioner",
+            "RelatedPerson",
+        ],
     )
 
     onBehalfOf: fhirtypes.ReferenceType = Field(
         None,
         alias="onBehalfOf",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
+        title="Organization individual is acting for",
+        description=(
+            "The organization the device or practitioner was acting on behalf of "
+            "when they initiated the task."
         ),
-        description="Organization individual is acting for",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
 
@@ -1339,25 +1486,33 @@ class TaskRestriction(backboneelement.BackboneElement):
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="When fulfillment sought",
+        title="When fulfillment sought",
+        description="Over what time-period is fulfillment sought.",
     )
 
     recipient: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="recipient",
-        title=(
-            "List of `Reference` items referencing `Patient, Practitioner, "
-            "RelatedPerson, Group, Organization` (represented as `dict` in JSON)"
+        title="For whom is fulfillment sought?",
+        description=(
+            "For requests that are targeted to more than on potential "
+            "recipient/target, for whom is fulfillment sought?"
         ),
-        description="For whom is fulfillment sought?",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Patient",
+            "Practitioner",
+            "RelatedPerson",
+            "Group",
+            "Organization",
+        ],
     )
 
     repetitions: fhirtypes.PositiveInt = Field(
         None,
         alias="repetitions",
-        title="Type `PositiveInt`",
-        description="How many times to repeat",
+        title="How many times to repeat",
+        description="Indicates the number of times the requested action should occur.",
     )
     repetitions__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_repetitions", title="Extension field for ``repetitions``."

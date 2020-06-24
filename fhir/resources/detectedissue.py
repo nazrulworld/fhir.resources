@@ -31,25 +31,28 @@ class DetectedIssue(domainresource.DomainResource):
     author: fhirtypes.ReferenceType = Field(
         None,
         alias="author",
-        title=(
-            "Type `Reference` referencing `Practitioner, PractitionerRole, Device` "
-            "(represented as `dict` in JSON)"
+        title="The provider or device that identified the issue",
+        description=(
+            "Individual or device responsible for the issue being raised.  For "
+            "example, a decision support application or a pharmacist conducting a "
+            "medication review."
         ),
-        description="The provider or device that identified the issue",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner", "PractitionerRole", "Device"],
     )
 
     code: fhirtypes.CodeableConceptType = Field(
         None,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Issue Category, e.g. drug-drug, duplicate therapy, etc.",
+        title="Issue Category, e.g. drug-drug, duplicate therapy, etc.",
+        description="Identifies the general type of issue identified.",
     )
 
     detail: fhirtypes.String = Field(
         None,
         alias="detail",
-        title="Type `String`",
-        description="Description and context",
+        title="Description and context",
+        description="A textual explanation of the detected issue.",
     )
     detail__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_detail", title="Extension field for ``detail``."
@@ -58,16 +61,21 @@ class DetectedIssue(domainresource.DomainResource):
     evidence: ListType[fhirtypes.DetectedIssueEvidenceType] = Field(
         None,
         alias="evidence",
-        title="List of `DetectedIssueEvidence` items (represented as `dict` in JSON)",
-        description="Supporting evidence",
+        title="Supporting evidence",
+        description=(
+            "Supporting evidence or manifestations that provide the basis for "
+            "identifying the detected issue such as a GuidanceResponse or "
+            "MeasureReport."
+        ),
     )
 
     identifiedDateTime: fhirtypes.DateTime = Field(
         None,
         alias="identifiedDateTime",
-        title="Type `DateTime`",
-        description="When identified",
-        one_of_many="identified",  # Choice of Data Types. i.e value[x]
+        title="When identified",
+        description="The date or period when the detected issue was initially identified.",
+        # Choice of Data Types. i.e identified[x]
+        one_of_many="identified",
         one_of_many_required=False,
     )
     identifiedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -79,54 +87,80 @@ class DetectedIssue(domainresource.DomainResource):
     identifiedPeriod: fhirtypes.PeriodType = Field(
         None,
         alias="identifiedPeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="When identified",
-        one_of_many="identified",  # Choice of Data Types. i.e value[x]
+        title="When identified",
+        description="The date or period when the detected issue was initially identified.",
+        # Choice of Data Types. i.e identified[x]
+        one_of_many="identified",
         one_of_many_required=False,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Unique id for the detected issue",
+        title="Unique id for the detected issue",
+        description="Business identifier associated with the detected issue record.",
     )
 
     implicated: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="implicated",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
+        title="Problem resource",
+        description=(
+            "Indicates the resource representing the current activity or proposed "
+            "activity that is potentially problematic."
         ),
-        description="Problem resource",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     mitigation: ListType[fhirtypes.DetectedIssueMitigationType] = Field(
         None,
         alias="mitigation",
-        title=(
-            "List of `DetectedIssueMitigation` items (represented as `dict` in " "JSON)"
+        title="Step taken to address",
+        description=(
+            "Indicates an action that has been taken or is committed to reduce or "
+            "eliminate the likelihood of the risk identified by the detected issue "
+            "from manifesting.  Can also reflect an observation of known mitigating"
+            " factors that may reduce/eliminate the need for any action."
         ),
-        description="Step taken to address",
     )
 
     patient: fhirtypes.ReferenceType = Field(
         None,
         alias="patient",
-        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
-        description="Associated patient",
+        title="Associated patient",
+        description=(
+            "Indicates the patient whose record the detected issue is associated "
+            "with."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient"],
     )
 
     reference: fhirtypes.Uri = Field(
-        None, alias="reference", title="Type `Uri`", description="Authority for issue"
+        None,
+        alias="reference",
+        title="Authority for issue",
+        description=(
+            "The literature, knowledge-base or similar reference that describes the"
+            " propensity for the detected issue identified."
+        ),
     )
     reference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_reference", title="Extension field for ``reference``."
     )
 
     severity: fhirtypes.Code = Field(
-        None, alias="severity", title="Type `Code`", description="high | moderate | low"
+        None,
+        alias="severity",
+        title="high | moderate | low",
+        description=(
+            "Indicates the degree of importance associated with the identified "
+            "issue based on the potential impact on the patient."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["high", "moderate", "low"],
     )
     severity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_severity", title="Extension field for ``severity``."
@@ -135,8 +169,11 @@ class DetectedIssue(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="registered | preliminary | final | amended +",
+        title="registered | preliminary | final | amended +",
+        description="Indicates the status of the detected issue.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["registered", "preliminary", "final", "amended +"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -194,18 +231,20 @@ class DetectedIssueEvidence(backboneelement.BackboneElement):
     code: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="code",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Manifestation",
+        title="Manifestation",
+        description="A manifestation that led to the recording of this detected issue.",
     )
 
     detail: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="detail",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
+        title="Supporting information",
+        description=(
+            "Links to resources that constitute evidence for the detected issue "
+            "such as a GuidanceResponse or MeasureReport."
         ),
-        description="Supporting information",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
 
@@ -226,22 +265,30 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
     action: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="action",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="What mitigation?",
+        title="What mitigation?",
+        description=(
+            "Describes the action that was taken or the observation that was made "
+            "that reduces/eliminates the risk associated with the identified issue."
+        ),
     )
 
     author: fhirtypes.ReferenceType = Field(
         None,
         alias="author",
-        title=(
-            "Type `Reference` referencing `Practitioner, PractitionerRole` "
-            "(represented as `dict` in JSON)"
+        title="Who is committing?",
+        description=(
+            "Identifies the practitioner who determined the mitigation and takes "
+            "responsibility for the mitigation step occurring."
         ),
-        description="Who is committing?",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner", "PractitionerRole"],
     )
 
     date: fhirtypes.DateTime = Field(
-        None, alias="date", title="Type `DateTime`", description="Date committed"
+        None,
+        alias="date",
+        title="Date committed",
+        description="Indicates when the mitigating action was documented.",
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."

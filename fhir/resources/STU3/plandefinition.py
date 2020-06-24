@@ -33,15 +33,19 @@ class PlanDefinition(domainresource.DomainResource):
     action: ListType[fhirtypes.PlanDefinitionActionType] = Field(
         None,
         alias="action",
-        title="List of `PlanDefinitionAction` items (represented as `dict` in JSON)",
-        description="Action defined by the plan",
+        title="Action defined by the plan",
+        description="An action to be taken as part of the plan.",
     )
 
     approvalDate: fhirtypes.Date = Field(
         None,
         alias="approvalDate",
-        title="Type `Date`",
-        description="When the plan definition was approved by publisher",
+        title="When the plan definition was approved by publisher",
+        description=(
+            "The date on which the resource content was approved by the publisher. "
+            "Approval happens once when the content is officially approved for "
+            "usage."
+        ),
     )
     approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_approvalDate", title="Extension field for ``approvalDate``."
@@ -50,22 +54,32 @@ class PlanDefinition(domainresource.DomainResource):
     contact: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="contact",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Contact details for the publisher",
+        title="Contact details for the publisher",
+        description=(
+            "Contact details to assist a user in finding and communicating with the"
+            " publisher."
+        ),
     )
 
     contributor: ListType[fhirtypes.ContributorType] = Field(
         None,
         alias="contributor",
-        title="List of `Contributor` items (represented as `dict` in JSON)",
-        description="A content contributor",
+        title="A content contributor",
+        description=(
+            "A contributor to the content of the asset, including authors, editors,"
+            " reviewers, and endorsers."
+        ),
     )
 
     copyright: fhirtypes.Markdown = Field(
         None,
         alias="copyright",
-        title="Type `Markdown`",
-        description="Use and/or publishing restrictions",
+        title="Use and/or publishing restrictions",
+        description=(
+            "A copyright statement relating to the plan definition and/or its "
+            "contents. Copyright statements are generally legal restrictions on the"
+            " use and publishing of the plan definition."
+        ),
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
@@ -74,8 +88,14 @@ class PlanDefinition(domainresource.DomainResource):
     date: fhirtypes.DateTime = Field(
         None,
         alias="date",
-        title="Type `DateTime`",
-        description="Date this was last changed",
+        title="Date this was last changed",
+        description=(
+            "The date  (and optionally time) when the plan definition was "
+            "published. The date must change if and when the business version "
+            "changes and it must change if the status code changes. In addition, it"
+            " should change when the substantive content of the plan definition "
+            "changes."
+        ),
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -84,8 +104,11 @@ class PlanDefinition(domainresource.DomainResource):
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown`",
-        description="Natural language description of the plan definition",
+        title="Natural language description of the plan definition",
+        description=(
+            "A free text natural language description of the plan definition from a"
+            " consumer's perspective."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -94,15 +117,22 @@ class PlanDefinition(domainresource.DomainResource):
     effectivePeriod: fhirtypes.PeriodType = Field(
         None,
         alias="effectivePeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="When the plan definition is expected to be used",
+        title="When the plan definition is expected to be used",
+        description=(
+            "The period during which the plan definition content was or is planned "
+            "to be in active use."
+        ),
     )
 
     experimental: bool = Field(
         None,
         alias="experimental",
-        title="Type `bool`",
-        description="For testing purposes, not real usage",
+        title="For testing purposes, not real usage",
+        description=(
+            "A boolean value to indicate that this plan definition is authored for "
+            "testing purposes (or education/evaluation/marketing), and is not "
+            "intended to be used for genuine usage."
+        ),
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -111,29 +141,45 @@ class PlanDefinition(domainresource.DomainResource):
     goal: ListType[fhirtypes.PlanDefinitionGoalType] = Field(
         None,
         alias="goal",
-        title="List of `PlanDefinitionGoal` items (represented as `dict` in JSON)",
-        description="What the plan is trying to accomplish",
+        title="What the plan is trying to accomplish",
+        description=(
+            "Goals that describe what the activities within the plan are intended "
+            "to achieve. For example, weight loss, restoring an activity of daily "
+            "living, obtaining herd immunity via immunization, meeting a process "
+            "improvement objective, etc."
+        ),
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Additional identifier for the plan definition",
+        title="Additional identifier for the plan definition",
+        description=(
+            "A formal identifier that is used to identify this plan definition when"
+            " it is represented in other formats, or referenced in a specification,"
+            " model, design or an instance."
+        ),
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="jurisdiction",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Intended jurisdiction for plan definition (if applicable)",
+        title="Intended jurisdiction for plan definition (if applicable)",
+        description=(
+            "A legal or geographic region in which the plan definition is intended "
+            "to be used."
+        ),
     )
 
     lastReviewDate: fhirtypes.Date = Field(
         None,
         alias="lastReviewDate",
-        title="Type `Date`",
-        description="When the plan definition was last reviewed",
+        title="When the plan definition was last reviewed",
+        description=(
+            "The date on which the resource content was last reviewed. Review "
+            "happens periodically after approval, but doesn't change the original "
+            "approval date."
+        ),
     )
     lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
@@ -142,18 +188,24 @@ class PlanDefinition(domainresource.DomainResource):
     library: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="library",
-        title=(
-            "List of `Reference` items referencing `Library` (represented as `dict`"
-            " in JSON)"
+        title="Logic used by the plan definition",
+        description=(
+            "A reference to a Library resource containing any formal logic used by "
+            "the plan definition."
         ),
-        description="Logic used by the plan definition",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Library"],
     )
 
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String`",
-        description="Name for this plan definition (computer friendly)",
+        title="Name for this plan definition (computer friendly)",
+        description=(
+            "A natural language name identifying the plan definition. This name "
+            "should be usable as an identifier for the module by machine processing"
+            " applications such as code generation."
+        ),
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -162,8 +214,11 @@ class PlanDefinition(domainresource.DomainResource):
     publisher: fhirtypes.String = Field(
         None,
         alias="publisher",
-        title="Type `String`",
-        description="Name of the publisher (organization or individual)",
+        title="Name of the publisher (organization or individual)",
+        description=(
+            "The name of the individual or organization that published the plan "
+            "definition."
+        ),
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -172,8 +227,11 @@ class PlanDefinition(domainresource.DomainResource):
     purpose: fhirtypes.Markdown = Field(
         None,
         alias="purpose",
-        title="Type `Markdown`",
-        description="Why this plan definition is defined",
+        title="Why this plan definition is defined",
+        description=(
+            "Explaination of why this plan definition is needed and why it has been"
+            " designed as it has."
+        ),
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_purpose", title="Extension field for ``purpose``."
@@ -182,15 +240,24 @@ class PlanDefinition(domainresource.DomainResource):
     relatedArtifact: ListType[fhirtypes.RelatedArtifactType] = Field(
         None,
         alias="relatedArtifact",
-        title="List of `RelatedArtifact` items (represented as `dict` in JSON)",
-        description="Related artifacts for the asset",
+        title="Related artifacts for the asset",
+        description=(
+            "Related artifacts such as additional documentation, justification, or "
+            "bibliographic references."
+        ),
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="draft | active | retired | unknown",
+        title="draft | active | retired | unknown",
+        description=(
+            "The status of this plan definition. Enables tracking the life-cycle of"
+            " the content."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["draft", "active", "retired", "unknown"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -199,8 +266,8 @@ class PlanDefinition(domainresource.DomainResource):
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String`",
-        description="Name for this plan definition (human friendly)",
+        title="Name for this plan definition (human friendly)",
+        description="A short, descriptive, user-friendly title for the plan definition.",
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -209,22 +276,36 @@ class PlanDefinition(domainresource.DomainResource):
     topic: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="topic",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="E.g. Education, Treatment, Assessment, etc",
+        title="E.g. Education, Treatment, Assessment, etc",
+        description=(
+            "Descriptive topics related to the content of the plan definition. "
+            "Topics provide a high-level categorization of the definition that can "
+            "be useful for filtering and searching."
+        ),
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="order-set | protocol | eca-rule",
+        title="order-set | protocol | eca-rule",
+        description=(
+            "The type of asset the plan definition represents, e.g. an order set, "
+            "protocol, or event-condition-action rule."
+        ),
     )
 
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
-        title="Type `Uri`",
-        description="Logical URI to reference this plan definition (globally unique)",
+        title="Logical URI to reference this plan definition (globally unique)",
+        description=(
+            "An absolute URI that is used to identify this plan definition when it "
+            "is referenced in a specification, model, design or an instance. This "
+            "SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at"
+            " which this plan definition is (or will be) published. The URL SHOULD "
+            "include the major version of the plan definition. For more information"
+            " see [Technical and Business Versions](resource.html#versions)."
+        ),
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -233,8 +314,11 @@ class PlanDefinition(domainresource.DomainResource):
     usage: fhirtypes.String = Field(
         None,
         alias="usage",
-        title="Type `String`",
-        description="Describes the clinical usage of the asset",
+        title="Describes the clinical usage of the asset",
+        description=(
+            "A detailed description of how the asset is used from a clinical "
+            "perspective."
+        ),
     )
     usage__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_usage", title="Extension field for ``usage``."
@@ -243,15 +327,32 @@ class PlanDefinition(domainresource.DomainResource):
     useContext: ListType[fhirtypes.UsageContextType] = Field(
         None,
         alias="useContext",
-        title="List of `UsageContext` items (represented as `dict` in JSON)",
-        description="Context the content is intended to support",
+        title="Context the content is intended to support",
+        description=(
+            "The content was developed with a focus and intent of supporting the "
+            "contexts that are listed. These terms may be used to assist with "
+            "indexing and searching for appropriate plan definition instances."
+        ),
     )
 
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String`",
-        description="Business version of the plan definition",
+        title="Business version of the plan definition",
+        description=(
+            "The identifier that is used to identify this version of the plan "
+            "definition when it is referenced in a specification, model, design or "
+            "instance. This is an arbitrary value managed by the plan definition "
+            "author and is not expected to be globally unique. For example, it "
+            "might be a timestamp (e.g. yyyymmdd) if a managed version is not "
+            "available. There is also no expectation that versions can be placed in"
+            " a lexicographical sequence. To provide a version consistent with the "
+            "Decision Support Service specification, use the format "
+            "Major.Minor.Revision (e.g. 1.0.0). For more information on versioning "
+            "knowledge assets, refer to the Decision Support Service specification."
+            " Note that a version is required for non-experimental active "
+            "artifacts."
+        ),
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -272,15 +373,23 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
     action: ListType[fhirtypes.PlanDefinitionActionType] = Field(
         None,
         alias="action",
-        title="List of `PlanDefinitionAction` items (represented as `dict` in JSON)",
-        description="A sub-action",
+        title="A sub-action",
+        description=(
+            "Sub actions that are contained within the action. The behavior of this"
+            " action determines the functionality of the sub-actions. For example, "
+            "a selection behavior of at-most-one indicates that of the sub-actions,"
+            " at most one may be chosen as part of realizing the action definition."
+        ),
     )
 
     cardinalityBehavior: fhirtypes.Code = Field(
         None,
         alias="cardinalityBehavior",
-        title="Type `Code`",
-        description="single | multiple",
+        title="single | multiple",
+        description="Defines whether the action can be selected multiple times.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["single", "multiple"],
     )
     cardinalityBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -291,35 +400,45 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
     code: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="code",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Code representing the meaning of the action or sub-actions",
+        title="Code representing the meaning of the action or sub-actions",
+        description=(
+            "A code that provides meaning for the action or action group. For "
+            "example, a section may have a LOINC code for a the section of a "
+            "documentation template."
+        ),
     )
 
     condition: ListType[fhirtypes.PlanDefinitionActionConditionType] = Field(
         None,
         alias="condition",
-        title=(
-            "List of `PlanDefinitionActionCondition` items (represented as `dict` "
-            "in JSON)"
+        title="Whether or not the action is applicable",
+        description=(
+            "An expression that describes applicability criteria, or start/stop "
+            "conditions for the action."
         ),
-        description="Whether or not the action is applicable",
     )
 
     definition: fhirtypes.ReferenceType = Field(
         None,
         alias="definition",
-        title=(
-            "Type `Reference` referencing `ActivityDefinition, PlanDefinition` "
-            "(represented as `dict` in JSON)"
+        title="Description of the activity to be performed",
+        description=(
+            "A reference to an ActivityDefinition that describes the action to be "
+            "taken in detail, or a PlanDefinition that describes a series of "
+            "actions to be taken."
         ),
-        description="Description of the activity to be performed",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ActivityDefinition", "PlanDefinition"],
     )
 
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Short description of the action",
+        title="Short description of the action",
+        description=(
+            "A short description of the action used to provide a summary to display"
+            " to the user."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -328,25 +447,35 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
     documentation: ListType[fhirtypes.RelatedArtifactType] = Field(
         None,
         alias="documentation",
-        title="List of `RelatedArtifact` items (represented as `dict` in JSON)",
-        description="Supporting documentation for the intended performer of the action",
+        title="Supporting documentation for the intended performer of the action",
+        description=(
+            "Didactic or other informational resources associated with the action "
+            "that can be provided to the CDS recipient. Information resources can "
+            "include inline text commentary and links to web resources."
+        ),
     )
 
     dynamicValue: ListType[fhirtypes.PlanDefinitionActionDynamicValueType] = Field(
         None,
         alias="dynamicValue",
-        title=(
-            "List of `PlanDefinitionActionDynamicValue` items (represented as "
-            "`dict` in JSON)"
+        title="Dynamic aspects of the definition",
+        description=(
+            "Customizations that should be applied to the statically defined "
+            "resource. For example, if the dosage of a medication must be computed "
+            "based on the patient's weight, a customization would be used to "
+            "specify an expression that calculated the weight, and the path on the "
+            "resource that would contain the result."
         ),
-        description="Dynamic aspects of the definition",
     )
 
     goalId: ListType[fhirtypes.Id] = Field(
         None,
         alias="goalId",
-        title="List of `Id` items",
-        description="What goals this action supports",
+        title="What goals this action supports",
+        description=(
+            "Identifies goals that this action supports. The reference must be to a"
+            " goal element defined within this plan definition."
+        ),
     )
     goalId__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_goalId", title="Extension field for ``goalId``."
@@ -355,8 +484,11 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
     groupingBehavior: fhirtypes.Code = Field(
         None,
         alias="groupingBehavior",
-        title="Type `Code`",
-        description="visual-group | logical-group | sentence-group",
+        title="visual-group | logical-group | sentence-group",
+        description="Defines the grouping behavior for the action and its children.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["visual-group", "logical-group", "sentence-group"],
     )
     groupingBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -367,15 +499,15 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
     input: ListType[fhirtypes.DataRequirementType] = Field(
         None,
         alias="input",
-        title="List of `DataRequirement` items (represented as `dict` in JSON)",
-        description="Input data requirements",
+        title="Input data requirements",
+        description="Defines input data requirements for the action.",
     )
 
     label: fhirtypes.String = Field(
         None,
         alias="label",
-        title="Type `String`",
-        description="User-visible label for the action (e.g. 1. or A.)",
+        title="User-visible label for the action (e.g. 1. or A.)",
+        description="A user-visible label for the action.",
     )
     label__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_label", title="Extension field for ``label``."
@@ -384,22 +516,25 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
     output: ListType[fhirtypes.DataRequirementType] = Field(
         None,
         alias="output",
-        title="List of `DataRequirement` items (represented as `dict` in JSON)",
-        description="Output data definition",
+        title="Output data definition",
+        description="Defines the outputs of the action, if any.",
     )
 
     participant: ListType[fhirtypes.PlanDefinitionActionParticipantType] = Field(
         None,
         alias="participant",
-        title=(
-            "List of `PlanDefinitionActionParticipant` items (represented as `dict`"
-            " in JSON)"
-        ),
-        description="Who should participate in the action",
+        title="Who should participate in the action",
+        description="Indicates who should participate in performing the action described.",
     )
 
     precheckBehavior: fhirtypes.Code = Field(
-        None, alias="precheckBehavior", title="Type `Code`", description="yes | no"
+        None,
+        alias="precheckBehavior",
+        title="yes | no",
+        description="Defines whether the action should usually be preselected.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["yes", "no"],
     )
     precheckBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -410,25 +545,28 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
     reason: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="reason",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Why the action should be performed",
+        title="Why the action should be performed",
+        description="A description of why this action is necessary or appropriate.",
     )
 
     relatedAction: ListType[fhirtypes.PlanDefinitionActionRelatedActionType] = Field(
         None,
         alias="relatedAction",
-        title=(
-            "List of `PlanDefinitionActionRelatedAction` items (represented as "
-            "`dict` in JSON)"
+        title="Relationship to another action",
+        description=(
+            'A relationship to another action such as "before" or "30-60 minutes '
+            'after start of".'
         ),
-        description="Relationship to another action",
     )
 
     requiredBehavior: fhirtypes.Code = Field(
         None,
         alias="requiredBehavior",
-        title="Type `Code`",
-        description="must | could | must-unless-documented",
+        title="must | could | must-unless-documented",
+        description="Defines the requiredness behavior for the action.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["must", "could", "must-unless-documented"],
     )
     requiredBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -439,8 +577,18 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
     selectionBehavior: fhirtypes.Code = Field(
         None,
         alias="selectionBehavior",
-        title="Type `Code`",
-        description="any | all | all-or-none | exactly-one | at-most-one | one-or-more",
+        title="any | all | all-or-none | exactly-one | at-most-one | one-or-more",
+        description="Defines the selection behavior for the action and its children.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "any",
+            "all",
+            "all-or-none",
+            "exactly-one",
+            "at-most-one",
+            "one-or-more",
+        ],
     )
     selectionBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -451,10 +599,15 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
     textEquivalent: fhirtypes.String = Field(
         None,
         alias="textEquivalent",
-        title="Type `String`",
-        description=(
+        title=(
             "Static text equivalent of the action, used if the dynamic aspects "
             "cannot be interpreted by the receiving system"
+        ),
+        description=(
+            "A text equivalent of the action to be performed. This provides a "
+            "human-interpretable description of the action when the definition is "
+            "consumed by a system that may not be capable of interpreting it "
+            "dynamically."
         ),
     )
     textEquivalent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -464,9 +617,10 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
     timingDateTime: fhirtypes.DateTime = Field(
         None,
         alias="timingDateTime",
-        title="Type `DateTime`",
-        description="When the action should take place",
-        one_of_many="timing",  # Choice of Data Types. i.e value[x]
+        title="When the action should take place",
+        description="An optional value describing when the action should be performed.",
+        # Choice of Data Types. i.e timing[x]
+        one_of_many="timing",
         one_of_many_required=False,
     )
     timingDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -476,41 +630,48 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
     timingDuration: fhirtypes.DurationType = Field(
         None,
         alias="timingDuration",
-        title="Type `Duration` (represented as `dict` in JSON)",
-        description="When the action should take place",
-        one_of_many="timing",  # Choice of Data Types. i.e value[x]
+        title="When the action should take place",
+        description="An optional value describing when the action should be performed.",
+        # Choice of Data Types. i.e timing[x]
+        one_of_many="timing",
         one_of_many_required=False,
     )
 
     timingPeriod: fhirtypes.PeriodType = Field(
         None,
         alias="timingPeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="When the action should take place",
-        one_of_many="timing",  # Choice of Data Types. i.e value[x]
+        title="When the action should take place",
+        description="An optional value describing when the action should be performed.",
+        # Choice of Data Types. i.e timing[x]
+        one_of_many="timing",
         one_of_many_required=False,
     )
 
     timingRange: fhirtypes.RangeType = Field(
         None,
         alias="timingRange",
-        title="Type `Range` (represented as `dict` in JSON)",
-        description="When the action should take place",
-        one_of_many="timing",  # Choice of Data Types. i.e value[x]
+        title="When the action should take place",
+        description="An optional value describing when the action should be performed.",
+        # Choice of Data Types. i.e timing[x]
+        one_of_many="timing",
         one_of_many_required=False,
     )
 
     timingTiming: fhirtypes.TimingType = Field(
         None,
         alias="timingTiming",
-        title="Type `Timing` (represented as `dict` in JSON)",
-        description="When the action should take place",
-        one_of_many="timing",  # Choice of Data Types. i.e value[x]
+        title="When the action should take place",
+        description="An optional value describing when the action should be performed.",
+        # Choice of Data Types. i.e timing[x]
+        one_of_many="timing",
         one_of_many_required=False,
     )
 
     title: fhirtypes.String = Field(
-        None, alias="title", title="Type `String`", description="User-visible title"
+        None,
+        alias="title",
+        title="User-visible title",
+        description="The title of the action displayed to a user.",
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -519,25 +680,28 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
     transform: fhirtypes.ReferenceType = Field(
         None,
         alias="transform",
-        title=(
-            "Type `Reference` referencing `StructureMap` (represented as `dict` in "
-            "JSON)"
+        title="Transform to apply the template",
+        description=(
+            "A reference to a StructureMap resource that defines a transform that "
+            "can be executed to produce the intent resource using the "
+            "ActivityDefinition instance as the input."
         ),
-        description="Transform to apply the template",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["StructureMap"],
     )
 
     triggerDefinition: ListType[fhirtypes.TriggerDefinitionType] = Field(
         None,
         alias="triggerDefinition",
-        title="List of `TriggerDefinition` items (represented as `dict` in JSON)",
-        description="When the action should be triggered",
+        title="When the action should be triggered",
+        description="A description of when the action should be triggered.",
     )
 
     type: fhirtypes.CodingType = Field(
         None,
         alias="type",
-        title="Type `Coding` (represented as `dict` in JSON)",
-        description="create | update | remove | fire-event",
+        title="create | update | remove | fire-event",
+        description="The type of action to perform (create, update, remove).",
     )
 
     @root_validator(pre=True)
@@ -600,8 +764,11 @@ class PlanDefinitionActionCondition(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Natural language description of the condition",
+        title="Natural language description of the condition",
+        description=(
+            "A brief, natural language description of the condition that "
+            "effectively communicates the intended semantics."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -610,8 +777,11 @@ class PlanDefinitionActionCondition(backboneelement.BackboneElement):
     expression: fhirtypes.String = Field(
         None,
         alias="expression",
-        title="Type `String`",
-        description="Boolean-valued expression",
+        title="Boolean-valued expression",
+        description=(
+            "An expression that returns true or false, indicating whether or not "
+            "the condition is satisfied."
+        ),
     )
     expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_expression", title="Extension field for ``expression``."
@@ -620,8 +790,11 @@ class PlanDefinitionActionCondition(backboneelement.BackboneElement):
     kind: fhirtypes.Code = Field(
         ...,
         alias="kind",
-        title="Type `Code`",
-        description="applicability | start | stop",
+        title="applicability | start | stop",
+        description="The kind of condition.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["applicability", "start", "stop"],
     )
     kind__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_kind", title="Extension field for ``kind``."
@@ -630,8 +803,8 @@ class PlanDefinitionActionCondition(backboneelement.BackboneElement):
     language: fhirtypes.String = Field(
         None,
         alias="language",
-        title="Type `String`",
-        description="Language of the expression",
+        title="Language of the expression",
+        description="The media type of the language for the expression.",
     )
     language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_language", title="Extension field for ``language``."
@@ -656,8 +829,11 @@ class PlanDefinitionActionDynamicValue(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Natural language description of the dynamic value",
+        title="Natural language description of the dynamic value",
+        description=(
+            "A brief, natural language description of the intended semantics of the"
+            " dynamic value."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -666,8 +842,8 @@ class PlanDefinitionActionDynamicValue(backboneelement.BackboneElement):
     expression: fhirtypes.String = Field(
         None,
         alias="expression",
-        title="Type `String`",
-        description="An expression that provides the dynamic value for the customization",
+        title="An expression that provides the dynamic value for the customization",
+        description="An expression specifying the value of the customized element.",
     )
     expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_expression", title="Extension field for ``expression``."
@@ -676,8 +852,8 @@ class PlanDefinitionActionDynamicValue(backboneelement.BackboneElement):
     language: fhirtypes.String = Field(
         None,
         alias="language",
-        title="Type `String`",
-        description="Language of the expression",
+        title="Language of the expression",
+        description="The media type of the language for the expression.",
     )
     language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_language", title="Extension field for ``language``."
@@ -686,8 +862,12 @@ class PlanDefinitionActionDynamicValue(backboneelement.BackboneElement):
     path: fhirtypes.String = Field(
         None,
         alias="path",
-        title="Type `String`",
-        description="The path to the element to be set dynamically",
+        title="The path to the element to be set dynamically",
+        description=(
+            "The path to the element to be customized. This is the path on the "
+            "resource that will hold the result of the calculation defined by the "
+            "expression."
+        ),
     )
     path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_path", title="Extension field for ``path``."
@@ -708,15 +888,21 @@ class PlanDefinitionActionParticipant(backboneelement.BackboneElement):
     role: fhirtypes.CodeableConceptType = Field(
         None,
         alias="role",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="E.g. Nurse, Surgeon, Parent, etc",
+        title="E.g. Nurse, Surgeon, Parent, etc",
+        description=(
+            "The role the participant should play in performing the described "
+            "action."
+        ),
     )
 
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code`",
-        description="patient | practitioner | related-person",
+        title="patient | practitioner | related-person",
+        description="The type of participant in the action.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["patient", "practitioner", "related-person"],
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -738,8 +924,8 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
     actionId: fhirtypes.Id = Field(
         ...,
         alias="actionId",
-        title="Type `Id`",
-        description="What action is this related to",
+        title="What action is this related to",
+        description="The element id of the related action.",
     )
     actionId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_actionId", title="Extension field for ``actionId``."
@@ -748,29 +934,50 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
     offsetDuration: fhirtypes.DurationType = Field(
         None,
         alias="offsetDuration",
-        title="Type `Duration` (represented as `dict` in JSON)",
-        description="Time offset for the relationship",
-        one_of_many="offset",  # Choice of Data Types. i.e value[x]
+        title="Time offset for the relationship",
+        description=(
+            "A duration or range of durations to apply to the relationship. For "
+            "example, 30-60 minutes before."
+        ),
+        # Choice of Data Types. i.e offset[x]
+        one_of_many="offset",
         one_of_many_required=False,
     )
 
     offsetRange: fhirtypes.RangeType = Field(
         None,
         alias="offsetRange",
-        title="Type `Range` (represented as `dict` in JSON)",
-        description="Time offset for the relationship",
-        one_of_many="offset",  # Choice of Data Types. i.e value[x]
+        title="Time offset for the relationship",
+        description=(
+            "A duration or range of durations to apply to the relationship. For "
+            "example, 30-60 minutes before."
+        ),
+        # Choice of Data Types. i.e offset[x]
+        one_of_many="offset",
         one_of_many_required=False,
     )
 
     relationship: fhirtypes.Code = Field(
         ...,
         alias="relationship",
-        title="Type `Code`",
-        description=(
+        title=(
             "before-start | before | before-end | concurrent-with-start | "
             "concurrent | concurrent-with-end | after-start | after | after-end"
         ),
+        description="The relationship of this action to the related action.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "before-start",
+            "before",
+            "before-end",
+            "concurrent-with-start",
+            "concurrent",
+            "concurrent-with-end",
+            "after-start",
+            "after",
+            "after-end",
+        ],
     )
     relationship__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_relationship", title="Extension field for ``relationship``."
@@ -830,53 +1037,65 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
     addresses: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="addresses",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="What does the goal address",
+        title="What does the goal address",
+        description=(
+            "Identifies problems, conditions, issues, or concerns the goal is "
+            "intended to address."
+        ),
     )
 
     category: fhirtypes.CodeableConceptType = Field(
         None,
         alias="category",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="E.g. Treatment, dietary, behavioral, etc",
+        title="E.g. Treatment, dietary, behavioral, etc",
+        description="Indicates a category the goal falls within.",
     )
 
     description: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="description",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Code or text describing the goal",
+        title="Code or text describing the goal",
+        description=(
+            "Human-readable and/or coded description of a specific desired "
+            'objective of care, such as "control blood pressure" or "negotiate an '
+            'obstacle course" or "dance with child at wedding".'
+        ),
     )
 
     documentation: ListType[fhirtypes.RelatedArtifactType] = Field(
         None,
         alias="documentation",
-        title="List of `RelatedArtifact` items (represented as `dict` in JSON)",
-        description="Supporting documentation for the goal",
+        title="Supporting documentation for the goal",
+        description=(
+            "Didactic or other informational resources associated with the goal "
+            "that provide further supporting information about the goal. "
+            "Information resources can include inline text commentary and links to "
+            "web resources."
+        ),
     )
 
     priority: fhirtypes.CodeableConceptType = Field(
         None,
         alias="priority",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="high-priority | medium-priority | low-priority",
+        title="high-priority | medium-priority | low-priority",
+        description=(
+            "Identifies the expected level of importance associated with "
+            "reaching/sustaining the defined goal."
+        ),
     )
 
     start: fhirtypes.CodeableConceptType = Field(
         None,
         alias="start",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="When goal pursuit begins",
+        title="When goal pursuit begins",
+        description="The event after which the goal should begin being pursued.",
     )
 
     target: ListType[fhirtypes.PlanDefinitionGoalTargetType] = Field(
         None,
         alias="target",
-        title=(
-            "List of `PlanDefinitionGoalTarget` items (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Target outcome for the goal",
+        title="Target outcome for the goal",
+        description="Indicates what should be done and within what timeframe.",
     )
 
 
@@ -894,42 +1113,72 @@ class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
     detailCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="detailCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The target value to be achieved",
-        one_of_many="detail",  # Choice of Data Types. i.e value[x]
+        title="The target value to be achieved",
+        description=(
+            "The target value of the measure to be achieved to signify fulfillment "
+            "of the goal, e.g. 150 pounds or 7.0%. Either the high or low or both "
+            "values of the range can be specified. Whan a low value is missing, it "
+            "indicates that the goal is achieved at any value at or below the high "
+            "value. Similarly, if the high value is missing, it indicates that the "
+            "goal is achieved at any value at or above the low value."
+        ),
+        # Choice of Data Types. i.e detail[x]
+        one_of_many="detail",
         one_of_many_required=False,
     )
 
     detailQuantity: fhirtypes.QuantityType = Field(
         None,
         alias="detailQuantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="The target value to be achieved",
-        one_of_many="detail",  # Choice of Data Types. i.e value[x]
+        title="The target value to be achieved",
+        description=(
+            "The target value of the measure to be achieved to signify fulfillment "
+            "of the goal, e.g. 150 pounds or 7.0%. Either the high or low or both "
+            "values of the range can be specified. Whan a low value is missing, it "
+            "indicates that the goal is achieved at any value at or below the high "
+            "value. Similarly, if the high value is missing, it indicates that the "
+            "goal is achieved at any value at or above the low value."
+        ),
+        # Choice of Data Types. i.e detail[x]
+        one_of_many="detail",
         one_of_many_required=False,
     )
 
     detailRange: fhirtypes.RangeType = Field(
         None,
         alias="detailRange",
-        title="Type `Range` (represented as `dict` in JSON)",
-        description="The target value to be achieved",
-        one_of_many="detail",  # Choice of Data Types. i.e value[x]
+        title="The target value to be achieved",
+        description=(
+            "The target value of the measure to be achieved to signify fulfillment "
+            "of the goal, e.g. 150 pounds or 7.0%. Either the high or low or both "
+            "values of the range can be specified. Whan a low value is missing, it "
+            "indicates that the goal is achieved at any value at or below the high "
+            "value. Similarly, if the high value is missing, it indicates that the "
+            "goal is achieved at any value at or above the low value."
+        ),
+        # Choice of Data Types. i.e detail[x]
+        one_of_many="detail",
         one_of_many_required=False,
     )
 
     due: fhirtypes.DurationType = Field(
         None,
         alias="due",
-        title="Type `Duration` (represented as `dict` in JSON)",
-        description="Reach goal within",
+        title="Reach goal within",
+        description=(
+            "Indicates the timeframe after the start of the goal in which the goal "
+            "should be met."
+        ),
     )
 
     measure: fhirtypes.CodeableConceptType = Field(
         None,
         alias="measure",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The parameter whose value is to be tracked",
+        title="The parameter whose value is to be tracked",
+        description=(
+            "The parameter whose value is to be tracked, e.g. body weigth, blood "
+            "pressure, or hemoglobin A1c level."
+        ),
     )
 
     @root_validator(pre=True)

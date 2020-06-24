@@ -27,11 +27,15 @@ class Sequence(domainresource.DomainResource):
     coordinateSystem: fhirtypes.Integer = Field(
         ...,
         alias="coordinateSystem",
-        title="Type `Integer`",
-        description=(
+        title=(
             "Base number of coordinate system (0 for 0-based numbering or "
             "coordinates, inclusive start, exclusive end, 1 for 1-based numbering, "
             "inclusive start, inclusive end)"
+        ),
+        description=(
+            "Whether the sequence is numbered starting at 0 (0-based numbering or "
+            "coordinates, inclusive start, exclusive end) or starting at 1 (1-based"
+            " numbering, inclusive start and inclusive end)."
         ),
     )
     coordinateSystem__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -43,22 +47,31 @@ class Sequence(domainresource.DomainResource):
     device: fhirtypes.ReferenceType = Field(
         None,
         alias="device",
-        title="Type `Reference` referencing `Device` (represented as `dict` in JSON)",
-        description="The method for sequencing",
+        title="The method for sequencing",
+        description="The method for sequencing, for example, chip information.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Device"],
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Unique ID for this particular sequence. This is a FHIR-defined id",
+        title="Unique ID for this particular sequence. This is a FHIR-defined id",
+        description=(
+            "A unique identifier for this particular sequence instance. This is a "
+            "FHIR-defined id."
+        ),
     )
 
     observedSeq: fhirtypes.String = Field(
         None,
         alias="observedSeq",
-        title="Type `String`",
-        description="Sequence that was observed",
+        title="Sequence that was observed",
+        description=(
+            "Sequence that was observed. It is the result marked by referenceSeq "
+            "along with variant records on referenceSeq. This shall starts from "
+            "referenceSeq.windowStart and end by referenceSeq.windowEnd."
+        ),
     )
     observedSeq__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_observedSeq", title="Extension field for ``observedSeq``."
@@ -67,51 +80,59 @@ class Sequence(domainresource.DomainResource):
     patient: fhirtypes.ReferenceType = Field(
         None,
         alias="patient",
-        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
-        description="Who and/or what this is about",
+        title="Who and/or what this is about",
+        description="The patient whose sequencing results are described by this resource.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient"],
     )
 
     performer: fhirtypes.ReferenceType = Field(
         None,
         alias="performer",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Who should be responsible for test result",
+        title="Who should be responsible for test result",
+        description="The organization or lab that should be responsible for this result.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     pointer: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="pointer",
-        title=(
-            "List of `Reference` items referencing `Sequence` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Pointer to next atomic sequence",
+        title="Pointer to next atomic sequence",
+        description="Pointer to next atomic sequence which at most contains one variant.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Sequence"],
     )
 
     quality: ListType[fhirtypes.SequenceQualityType] = Field(
         None,
         alias="quality",
-        title="List of `SequenceQuality` items (represented as `dict` in JSON)",
-        description="An set of value as quality of sequence",
+        title="An set of value as quality of sequence",
+        description=(
+            "An experimental feature attribute that defines the quality of the "
+            "feature in a quantitative way, such as a phred quality score ([SO:0001"
+            "686](http://www.sequenceontology.org/browser/current_svn/term/SO:00016"
+            "86))."
+        ),
     )
 
     quantity: fhirtypes.QuantityType = Field(
         None,
         alias="quantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="The number of copies of the seqeunce of interest.  (RNASeq)",
+        title="The number of copies of the seqeunce of interest.  (RNASeq)",
+        description="The number of copies of the seqeunce of interest. (RNASeq).",
     )
 
     readCoverage: fhirtypes.Integer = Field(
         None,
         alias="readCoverage",
-        title="Type `Integer`",
-        description=(
+        title=(
             "Average number of reads representing a given nucleotide in the "
             "reconstructed sequence"
+        ),
+        description=(
+            "Coverage (read depth or depth) is the average number of reads "
+            "representing a given nucleotide in the reconstructed sequence."
         ),
     )
     readCoverage__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -121,31 +142,43 @@ class Sequence(domainresource.DomainResource):
     referenceSeq: fhirtypes.SequenceReferenceSeqType = Field(
         None,
         alias="referenceSeq",
-        title="Type `SequenceReferenceSeq` (represented as `dict` in JSON)",
-        description="A sequence used as reference",
+        title="A sequence used as reference",
+        description=(
+            "A sequence that is used as a reference to describe variants that are "
+            "present in a sequence analyzed."
+        ),
     )
 
     repository: ListType[fhirtypes.SequenceRepositoryType] = Field(
         None,
         alias="repository",
-        title="List of `SequenceRepository` items (represented as `dict` in JSON)",
-        description=(
+        title=(
             "External repository which contains detailed report related with "
             "observedSeq in this resource"
+        ),
+        description=(
+            "Configurations of the external repository. The repository shall store "
+            "target's observedSeq or records related with target's observedSeq."
         ),
     )
 
     specimen: fhirtypes.ReferenceType = Field(
         None,
         alias="specimen",
-        title=(
-            "Type `Reference` referencing `Specimen` (represented as `dict` in " "JSON)"
-        ),
-        description="Specimen used for sequencing",
+        title="Specimen used for sequencing",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Specimen"],
     )
 
     type: fhirtypes.Code = Field(
-        None, alias="type", title="Type `Code`", description="aa | dna | rna"
+        None,
+        alias="type",
+        title="aa | dna | rna",
+        description="Amino Acid Sequence/ DNA Sequence / RNA Sequence.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["aa", "dna", "rna"],
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -154,8 +187,14 @@ class Sequence(domainresource.DomainResource):
     variant: ListType[fhirtypes.SequenceVariantType] = Field(
         None,
         alias="variant",
-        title="List of `SequenceVariant` items (represented as `dict` in JSON)",
-        description="Variant in sequence",
+        title="Variant in sequence",
+        description=(
+            "The definition of variant here originates from Sequence ontology ([var"
+            "iant_of](http://www.sequenceontology.org/browser/current_svn/term/vari"
+            "ant_of)). This element can represent amino acid or nucleic sequence "
+            "change(including insertion,deletion,SNP,etc.)  It can represent some "
+            "complex mutation or segment variation with the assist of CIGAR string."
+        ),
     )
 
 
@@ -175,15 +214,26 @@ class SequenceQuality(backboneelement.BackboneElement):
     end: fhirtypes.Integer = Field(
         None,
         alias="end",
-        title="Type `Integer`",
-        description="End position of the sequence",
+        title="End position of the sequence",
+        description=(
+            "End position of the sequence.If the coordinate system is 0-based then "
+            "end is is exclusive and does not include the last position. If the "
+            "coordinate system is 1-base, then end is inclusive and includes the "
+            "last position."
+        ),
     )
     end__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_end", title="Extension field for ``end``."
     )
 
     fScore: fhirtypes.Decimal = Field(
-        None, alias="fScore", title="Type `Decimal`", description="F-score"
+        None,
+        alias="fScore",
+        title="F-score",
+        description=(
+            "Harmonic mean of Recall and Precision, computed as: 2 * precision * "
+            "recall / (precision + recall)."
+        ),
     )
     fScore__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_fScore", title="Extension field for ``fScore``."
@@ -192,10 +242,14 @@ class SequenceQuality(backboneelement.BackboneElement):
     gtFP: fhirtypes.Decimal = Field(
         None,
         alias="gtFP",
-        title="Type `Decimal`",
-        description=(
+        title=(
             "False positives where the non-REF alleles in the Truth and Query Call "
             "Sets match"
+        ),
+        description=(
+            "The number of false positives where the non-REF alleles in the Truth "
+            "and Query Call Sets match (i.e. cases where the truth is 1/1 and the "
+            "query is 0/1 or similar)."
         ),
     )
     gtFP__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -205,22 +259,30 @@ class SequenceQuality(backboneelement.BackboneElement):
     method: fhirtypes.CodeableConceptType = Field(
         None,
         alias="method",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Method to get quality",
+        title="Method to get quality",
+        description="Which method is used to get sequence quality.",
     )
 
     precision: fhirtypes.Decimal = Field(
         None,
         alias="precision",
-        title="Type `Decimal`",
-        description="Precision of comparison",
+        title="Precision of comparison",
+        description="QUERY.TP / (QUERY.TP + QUERY.FP).",
     )
     precision__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_precision", title="Extension field for ``precision``."
     )
 
     queryFP: fhirtypes.Decimal = Field(
-        None, alias="queryFP", title="Type `Decimal`", description="False positives"
+        None,
+        alias="queryFP",
+        title="False positives",
+        description=(
+            "False positives, i.e. the number of sites in the Query Call Set for "
+            "which there is no path through the Truth Call Set that is consistent "
+            "with this site. Sites with correct variant but incorrect genotype are "
+            "counted here."
+        ),
     )
     queryFP__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_queryFP", title="Extension field for ``queryFP``."
@@ -229,15 +291,24 @@ class SequenceQuality(backboneelement.BackboneElement):
     queryTP: fhirtypes.Decimal = Field(
         None,
         alias="queryTP",
-        title="Type `Decimal`",
-        description="True positives from the perspective of the query data",
+        title="True positives from the perspective of the query data",
+        description=(
+            "True positives, from the perspective of the query data, i.e. the "
+            "number of sites in the Query Call Set for which there are paths "
+            "through the Truth Call Set that are consistent with all of the alleles"
+            " at this site, and for which there is an accurate genotype call for "
+            "the event."
+        ),
     )
     queryTP__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_queryTP", title="Extension field for ``queryTP``."
     )
 
     recall: fhirtypes.Decimal = Field(
-        None, alias="recall", title="Type `Decimal`", description="Recall of comparison"
+        None,
+        alias="recall",
+        title="Recall of comparison",
+        description="TRUTH.TP / (TRUTH.TP + TRUTH.FN).",
     )
     recall__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_recall", title="Extension field for ``recall``."
@@ -246,29 +317,45 @@ class SequenceQuality(backboneelement.BackboneElement):
     score: fhirtypes.QuantityType = Field(
         None,
         alias="score",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Quality score for the comparison",
+        title="Quality score for the comparison",
+        description=(
+            "The score of an experimentally derived feature such as a p-value ([SO:"
+            "0001685](http://www.sequenceontology.org/browser/current_svn/term/SO:0"
+            "001685))."
+        ),
     )
 
     standardSequence: fhirtypes.CodeableConceptType = Field(
         None,
         alias="standardSequence",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Standard sequence for comparison",
+        title="Standard sequence for comparison",
+        description="Gold standard sequence used for comparing against.",
     )
 
     start: fhirtypes.Integer = Field(
         None,
         alias="start",
-        title="Type `Integer`",
-        description="Start position of the sequence",
+        title="Start position of the sequence",
+        description=(
+            "Start position of the sequence. If the coordinate system is either "
+            "0-based or 1-based, then start position is inclusive."
+        ),
     )
     start__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_start", title="Extension field for ``start``."
     )
 
     truthFN: fhirtypes.Decimal = Field(
-        None, alias="truthFN", title="Type `Decimal`", description="False negatives"
+        None,
+        alias="truthFN",
+        title="False negatives",
+        description=(
+            "False negatives, i.e. the number of sites in the Truth Call Set for "
+            "which there is no path through the Query Call Set that is consistent "
+            "with all of the alleles at this site, or sites for which there is an "
+            "inaccurate genotype call for the event. Sites with correct variant but"
+            " incorrect genotype are counted here."
+        ),
     )
     truthFN__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_truthFN", title="Extension field for ``truthFN``."
@@ -277,15 +364,27 @@ class SequenceQuality(backboneelement.BackboneElement):
     truthTP: fhirtypes.Decimal = Field(
         None,
         alias="truthTP",
-        title="Type `Decimal`",
-        description="True positives from the perspective of the truth data",
+        title="True positives from the perspective of the truth data",
+        description=(
+            "True positives, from the perspective of the truth data, i.e. the "
+            "number of sites in the Truth Call Set for which there are paths "
+            "through the Query Call Set that are consistent with all of the alleles"
+            " at this site, and for which there is an accurate genotype call for "
+            "the event."
+        ),
     )
     truthTP__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_truthTP", title="Extension field for ``truthTP``."
     )
 
     type: fhirtypes.Code = Field(
-        ..., alias="type", title="Type `Code`", description="indel | snp | unknown"
+        ...,
+        alias="type",
+        title="indel | snp | unknown",
+        description="INDEL / SNP / Undefined variant.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["indel", "snp", "unknown"],
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -307,17 +406,26 @@ class SequenceReferenceSeq(backboneelement.BackboneElement):
     chromosome: fhirtypes.CodeableConceptType = Field(
         None,
         alias="chromosome",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Chromosome containing genetic finding",
+        title="Chromosome containing genetic finding",
+        description=(
+            "Structural unit composed of a nucleic acid molecule which controls its"
+            " own replication through the interaction of specific proteins at one "
+            "or more origins of replication ([SO:0000340](http://www.sequenceontolo"
+            "gy.org/browser/current_svn/term/SO:0000340))."
+        ),
     )
 
     genomeBuild: fhirtypes.String = Field(
         None,
         alias="genomeBuild",
-        title="Type `String`",
+        title=(
+            "The Genome Build used for reference, following GRCh build versions "
+            "e.g. 'GRCh 37'"
+        ),
         description=(
             "The Genome Build used for reference, following GRCh build versions "
-            "e.g. \u0027GRCh 37\u0027"
+            "e.g. 'GRCh 37'.  Version number must be included if a versioned "
+            "release of a primary build was used."
         ),
     )
     genomeBuild__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -327,24 +435,30 @@ class SequenceReferenceSeq(backboneelement.BackboneElement):
     referenceSeqId: fhirtypes.CodeableConceptType = Field(
         None,
         alias="referenceSeqId",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Reference identifier",
+        title="Reference identifier",
+        description=(
+            "Reference identifier of reference sequence submitted to NCBI. It must "
+            "match the type in the Sequence.type field. For example, the prefix, "
+            "\u201cNG_\u201d identifies reference sequence for genes,"
+            " \u201cNM_\u201d for messenger RNA"
+            " transcripts, and \u201cNP_\u201d for amino acid sequences."
+        ),
     )
 
     referenceSeqPointer: fhirtypes.ReferenceType = Field(
         None,
         alias="referenceSeqPointer",
-        title=(
-            "Type `Reference` referencing `Sequence` (represented as `dict` in " "JSON)"
-        ),
-        description="A Pointer to another Sequence entity as reference sequence",
+        title="A Pointer to another Sequence entity as reference sequence",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Sequence"],
     )
 
     referenceSeqString: fhirtypes.String = Field(
         None,
         alias="referenceSeqString",
-        title="Type `String`",
-        description="A string to represent reference sequence",
+        title="A string to represent reference sequence",
+        description='A string like "ACGT".',
     )
     referenceSeqString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -355,8 +469,12 @@ class SequenceReferenceSeq(backboneelement.BackboneElement):
     strand: fhirtypes.Integer = Field(
         None,
         alias="strand",
-        title="Type `Integer`",
-        description="Directionality of DNA ( +1/-1)",
+        title="Directionality of DNA ( +1/-1)",
+        description=(
+            'Directionality of DNA sequence. Available values are "1" for the plus '
+            "strand (5' to 3')/Watson/Sense/positive  and \"-1\" for the minus "
+            "strand(3' to 5')/Crick/Antisense/negative."
+        ),
     )
     strand__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_strand", title="Extension field for ``strand``."
@@ -365,8 +483,13 @@ class SequenceReferenceSeq(backboneelement.BackboneElement):
     windowEnd: fhirtypes.Integer = Field(
         ...,
         alias="windowEnd",
-        title="Type `Integer`",
-        description="End position of the window on the reference sequence",
+        title="End position of the window on the reference sequence",
+        description=(
+            "End position of the window on the reference sequence. If the "
+            "coordinate system is 0-based then end is is exclusive and does not "
+            "include the last position. If the coordinate system is 1-base, then "
+            "end is inclusive and includes the last position."
+        ),
     )
     windowEnd__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_windowEnd", title="Extension field for ``windowEnd``."
@@ -375,8 +498,12 @@ class SequenceReferenceSeq(backboneelement.BackboneElement):
     windowStart: fhirtypes.Integer = Field(
         ...,
         alias="windowStart",
-        title="Type `Integer`",
-        description="Start position of the window on the  reference sequence",
+        title="Start position of the window on the  reference sequence",
+        description=(
+            "Start position of the window on the reference sequence. If the "
+            "coordinate system is either 0-based or 1-based, then start position is"
+            " inclusive."
+        ),
     )
     windowStart__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_windowStart", title="Extension field for ``windowStart``."
@@ -399,22 +526,35 @@ class SequenceRepository(backboneelement.BackboneElement):
     datasetId: fhirtypes.String = Field(
         None,
         alias="datasetId",
-        title="Type `String`",
-        description="Id of the dataset that used to call for dataset in repository",
+        title="Id of the dataset that used to call for dataset in repository",
+        description=(
+            "Id of the variant in this external repository. The server will "
+            "understand how to use this id to call for more info about datasets in "
+            "external repository."
+        ),
     )
     datasetId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_datasetId", title="Extension field for ``datasetId``."
     )
 
     name: fhirtypes.String = Field(
-        None, alias="name", title="Type `String`", description="Repository\u0027s name"
+        None,
+        alias="name",
+        title="Repository's name",
+        description=(
+            "URI of an external repository which contains further details about the"
+            " genetics data."
+        ),
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
     )
 
     readsetId: fhirtypes.String = Field(
-        None, alias="readsetId", title="Type `String`", description="Id of the read"
+        None,
+        alias="readsetId",
+        title="Id of the read",
+        description="Id of the read in this external repository.",
     )
     readsetId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_readsetId", title="Extension field for ``readsetId``."
@@ -423,15 +563,27 @@ class SequenceRepository(backboneelement.BackboneElement):
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code`",
-        description="directlink | openapi | login | oauth | other",
+        title="directlink | openapi | login | oauth | other",
+        description=(
+            "Click and see / RESTful API / Need login to see / RESTful API with "
+            "authentication / Other ways to see resource."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["directlink", "openapi", "login", "oauth", "other"],
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
     )
 
     url: fhirtypes.Uri = Field(
-        None, alias="url", title="Type `Uri`", description="URI of the repository"
+        None,
+        alias="url",
+        title="URI of the repository",
+        description=(
+            "URI of an external repository which contains further details about the"
+            " genetics data."
+        ),
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -440,8 +592,12 @@ class SequenceRepository(backboneelement.BackboneElement):
     variantsetId: fhirtypes.String = Field(
         None,
         alias="variantsetId",
-        title="Type `String`",
-        description="Id of the variantset that used to call for variantset in repository",
+        title="Id of the variantset that used to call for variantset in repository",
+        description=(
+            "Id of the variantset in this external repository. The server will "
+            "understand how to use this id to call for more info about variantsets "
+            "in external repository."
+        ),
     )
     variantsetId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_variantsetId", title="Extension field for ``variantsetId``."
@@ -466,8 +622,13 @@ class SequenceVariant(backboneelement.BackboneElement):
     cigar: fhirtypes.String = Field(
         None,
         alias="cigar",
-        title="Type `String`",
-        description="Extended CIGAR string for aligning the sequence with reference bases",
+        title="Extended CIGAR string for aligning the sequence with reference bases",
+        description=(
+            "Extended CIGAR string for aligning the sequence with reference bases. "
+            "See detailed documentation [here](http://support.illumina.com/help/Seq"
+            "uencingAnalysisWorkflow/Content/Vault/Informatics/Sequencing_Analysis/"
+            "CASAVA/swSEQ_mCA_ExtendedCIGARFormat.htm)."
+        ),
     )
     cigar__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_cigar", title="Extension field for ``cigar``."
@@ -476,8 +637,13 @@ class SequenceVariant(backboneelement.BackboneElement):
     end: fhirtypes.Integer = Field(
         None,
         alias="end",
-        title="Type `Integer`",
-        description="End position of the variant on the reference sequence",
+        title="End position of the variant on the reference sequence",
+        description=(
+            "End position of the variant on the reference sequence.If the "
+            "coordinate system is 0-based then end is is exclusive and does not "
+            "include the last position. If the coordinate system is 1-base, then "
+            "end is inclusive and includes the last position."
+        ),
     )
     end__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_end", title="Extension field for ``end``."
@@ -486,8 +652,16 @@ class SequenceVariant(backboneelement.BackboneElement):
     observedAllele: fhirtypes.String = Field(
         None,
         alias="observedAllele",
-        title="Type `String`",
-        description="Allele that was observed",
+        title="Allele that was observed",
+        description=(
+            "An allele is one of a set of coexisting sequence variants of a gene (["
+            "SO:0001023](http://www.sequenceontology.org/browser/current_svn/term/S"
+            "O:0001023)).  Nucleotide(s)/amino acids from start position of "
+            "sequence to stop position of sequence on the positive (+) strand of "
+            "the observed  sequence. When the sequence  type is DNA, it should be "
+            "the sequence on the positive (+) strand. This will lay in the range "
+            "between variant.start and variant.end."
+        ),
     )
     observedAllele__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_observedAllele", title="Extension field for ``observedAllele``."
@@ -496,8 +670,16 @@ class SequenceVariant(backboneelement.BackboneElement):
     referenceAllele: fhirtypes.String = Field(
         None,
         alias="referenceAllele",
-        title="Type `String`",
-        description="Allele in the reference sequence",
+        title="Allele in the reference sequence",
+        description=(
+            "An allele is one of a set of coexisting sequence variants of a gene (["
+            "SO:0001023](http://www.sequenceontology.org/browser/current_svn/term/S"
+            "O:0001023)). Nucleotide(s)/amino acids from start position of sequence"
+            " to stop position of sequence on the positive (+) strand of the "
+            "reference sequence. When the sequence  type is DNA, it should be the "
+            "sequence on the positive (+) strand. This will lay in the range "
+            "between variant.start and variant.end."
+        ),
     )
     referenceAllele__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_referenceAllele", title="Extension field for ``referenceAllele``."
@@ -506,8 +688,12 @@ class SequenceVariant(backboneelement.BackboneElement):
     start: fhirtypes.Integer = Field(
         None,
         alias="start",
-        title="Type `Integer`",
-        description="Start position of the variant on the  reference sequence",
+        title="Start position of the variant on the  reference sequence",
+        description=(
+            "Start position of the variant on the  reference sequence.If the "
+            "coordinate system is either 0-based or 1-based, then start position is"
+            " inclusive."
+        ),
     )
     start__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_start", title="Extension field for ``start``."
@@ -516,9 +702,8 @@ class SequenceVariant(backboneelement.BackboneElement):
     variantPointer: fhirtypes.ReferenceType = Field(
         None,
         alias="variantPointer",
-        title=(
-            "Type `Reference` referencing `Observation` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Pointer to observed variant information",
+        title="Pointer to observed variant information",
+        description="A pointer to an Observation containing variant information.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Observation"],
     )

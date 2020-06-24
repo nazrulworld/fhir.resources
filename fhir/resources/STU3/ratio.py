@@ -26,13 +26,13 @@ class Ratio(element.Element):
     denominator: fhirtypes.QuantityType = Field(
         None,
         alias="denominator",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Denominator value",
+        title="Denominator value",
+        description="The value of the denominator.",
     )
 
     numerator: fhirtypes.QuantityType = Field(
         None,
         alias="numerator",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Numerator value",
+        title="Numerator value",
+        description="The value of the numerator.",
     )

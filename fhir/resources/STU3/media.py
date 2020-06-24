@@ -28,52 +28,61 @@ class Media(domainresource.DomainResource):
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
-        title=(
-            "List of `Reference` items referencing `ProcedureRequest` (represented "
-            "as `dict` in JSON)"
+        title="Procedure that caused this media to be created",
+        description=(
+            "A procedure that is fulfilled in whole or in part by the creation of "
+            "this media."
         ),
-        description="Procedure that caused this media to be created",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ProcedureRequest"],
     )
 
     bodySite: fhirtypes.CodeableConceptType = Field(
         None,
         alias="bodySite",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Body part in media",
+        title="Body part in media",
+        description=(
+            "Indicates the site on the subject's body where the media was collected"
+            " (i.e. the target site)."
+        ),
     )
 
     content: fhirtypes.AttachmentType = Field(
         ...,
         alias="content",
-        title="Type `Attachment` (represented as `dict` in JSON)",
-        description="Actual Media - reference or data",
+        title="Actual Media - reference or data",
+        description=(
+            "The actual content of the media - inline or by direct reference to the"
+            " media source file."
+        ),
     )
 
     context: fhirtypes.ReferenceType = Field(
         None,
         alias="context",
-        title=(
-            "Type `Reference` referencing `Encounter, EpisodeOfCare` (represented "
-            "as `dict` in JSON)"
+        title="Encounter / Episode associated with media",
+        description=(
+            "The encounter or episode of care that establishes the context for this"
+            " media."
         ),
-        description="Encounter / Episode associated with media",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Encounter", "EpisodeOfCare"],
     )
 
     device: fhirtypes.ReferenceType = Field(
         None,
         alias="device",
-        title=(
-            "Type `Reference` referencing `Device, DeviceMetric` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Observing Device",
+        title="Observing Device",
+        description="The device used to collect the media.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Device", "DeviceMetric"],
     )
 
     duration: fhirtypes.UnsignedInt = Field(
         None,
         alias="duration",
-        title="Type `UnsignedInt`",
-        description="Length in seconds (audio / video)",
+        title="Length in seconds (audio / video)",
+        description="The duration of the recording in seconds - for audio and video.",
     )
     duration__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_duration", title="Extension field for ``duration``."
@@ -82,8 +91,14 @@ class Media(domainresource.DomainResource):
     frames: fhirtypes.PositiveInt = Field(
         None,
         alias="frames",
-        title="Type `PositiveInt`",
-        description="Number of frames if \u003e 1 (photo)",
+        title="Number of frames if > 1 (photo)",
+        description=(
+            "The number of frames in a photo. This is used with a multi-page fax, "
+            "or an imaging acquisition context that takes multiple slices in a "
+            "single image, or an animated gif. If there is more than one frame, "
+            "this SHALL have a value in order to alert interface software that a "
+            "multi-frame capable rendering widget is required."
+        ),
     )
     frames__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_frames", title="Extension field for ``frames``."
@@ -92,8 +107,8 @@ class Media(domainresource.DomainResource):
     height: fhirtypes.PositiveInt = Field(
         None,
         alias="height",
-        title="Type `PositiveInt`",
-        description="Height of the image in pixels (photo/video)",
+        title="Height of the image in pixels (photo/video)",
+        description=None,
     )
     height__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_height", title="Extension field for ``height``."
@@ -102,23 +117,32 @@ class Media(domainresource.DomainResource):
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Identifier(s) for the image",
+        title="Identifier(s) for the image",
+        description=(
+            "Identifiers associated with the image - these may include identifiers "
+            "for the image itself, identifiers for the context of its collection "
+            "(e.g. series ids) and context ids such as accession numbers or other "
+            "workflow identifiers."
+        ),
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
-        title="List of `Annotation` items (represented as `dict` in JSON)",
-        description="Comments made about the media",
+        title="Comments made about the media",
+        description=(
+            "Comments made about the media by the performer, subject or other "
+            "participants."
+        ),
     )
 
     occurrenceDateTime: fhirtypes.DateTime = Field(
         None,
         alias="occurrenceDateTime",
-        title="Type `DateTime`",
-        description="When Media was collected",
-        one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
+        title="When Media was collected",
+        description="The date and time(s) at which the media was collected.",
+        # Choice of Data Types. i.e occurrence[x]
+        one_of_many="occurrence",
         one_of_many_required=False,
     )
     occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -130,48 +154,60 @@ class Media(domainresource.DomainResource):
     occurrencePeriod: fhirtypes.PeriodType = Field(
         None,
         alias="occurrencePeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="When Media was collected",
-        one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
+        title="When Media was collected",
+        description="The date and time(s) at which the media was collected.",
+        # Choice of Data Types. i.e occurrence[x]
+        one_of_many="occurrence",
         one_of_many_required=False,
     )
 
     operator: fhirtypes.ReferenceType = Field(
         None,
         alias="operator",
-        title=(
-            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="The person who generated the image",
+        title="The person who generated the image",
+        description="The person who administered the collection of the image.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner"],
     )
 
     reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="reasonCode",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Why was event performed?",
+        title="Why was event performed?",
+        description="Describes why the event occurred in coded or textual form.",
     )
 
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title=(
-            "Type `Reference` referencing `Patient, Practitioner, Group, Device, "
-            "Specimen` (represented as `dict` in JSON)"
-        ),
-        description="Who/What this Media is a record of",
+        title="Who/What this Media is a record of",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "Practitioner", "Group", "Device", "Specimen"],
     )
 
     subtype: fhirtypes.CodeableConceptType = Field(
         None,
         alias="subtype",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The type of acquisition equipment/process",
+        title="The type of acquisition equipment/process",
+        description=(
+            "Details of the type of the media - usually, how it was acquired (what "
+            "type of device). If images sourced from a DICOM system, are wrapped in"
+            " a Media resource, then this is the modality."
+        ),
     )
 
     type: fhirtypes.Code = Field(
-        ..., alias="type", title="Type `Code`", description="photo | video | audio"
+        ...,
+        alias="type",
+        title="photo | video | audio",
+        description=(
+            "Whether the media is a photo (still image), an audio recording, or a "
+            "video recording."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["photo", "video", "audio"],
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -180,15 +216,15 @@ class Media(domainresource.DomainResource):
     view: fhirtypes.CodeableConceptType = Field(
         None,
         alias="view",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Imaging view, e.g. Lateral or Antero-posterior",
+        title="Imaging view, e.g. Lateral or Antero-posterior",
+        description="The name of the imaging view e.g. Lateral or Antero-posterior (AP).",
     )
 
     width: fhirtypes.PositiveInt = Field(
         None,
         alias="width",
-        title="Type `PositiveInt`",
-        description="Width of the image in pixels (photo/video)",
+        title="Width of the image in pixels (photo/video)",
+        description=None,
     )
     width__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_width", title="Extension field for ``width``."

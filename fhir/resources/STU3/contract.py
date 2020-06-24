@@ -29,105 +29,145 @@ class Contract(domainresource.DomainResource):
     action: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="action",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Action stipulated by this Contract",
+        title="Action stipulated by this Contract",
+        description=None,
     )
 
     actionReason: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="actionReason",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Rationale for the stiplulated action",
+        title="Rationale for the stiplulated action",
+        description="Reason for action stipulated by this Contract.",
     )
 
     agent: ListType[fhirtypes.ContractAgentType] = Field(
         None,
         alias="agent",
-        title="List of `ContractAgent` items (represented as `dict` in JSON)",
-        description="Entity being ascribed responsibility",
+        title="Entity being ascribed responsibility",
+        description=(
+            "An actor taking a role in an activity for which it can be assigned "
+            "some degree of responsibility for the activity taking place."
+        ),
     )
 
     applies: fhirtypes.PeriodType = Field(
         None,
         alias="applies",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Effective time",
+        title="Effective time",
+        description="Relevant time or time-period when this Contract is applicable.",
     )
 
     authority: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="authority",
-        title=(
-            "List of `Reference` items referencing `Organization` (represented as "
-            "`dict` in JSON)"
+        title="Authority under which this Contract has standing",
+        description=(
+            "A formally or informally recognized grouping of people, principals, "
+            "organizations, or jurisdictions formed for the purpose of achieving "
+            "some form of collective action such as the promulgation, "
+            "administration and enforcement of contracts and policies."
         ),
-        description="Authority under which this Contract has standing",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     bindingAttachment: fhirtypes.AttachmentType = Field(
         None,
         alias="bindingAttachment",
-        title="Type `Attachment` (represented as `dict` in JSON)",
-        description="Binding Contract",
-        one_of_many="binding",  # Choice of Data Types. i.e value[x]
+        title="Binding Contract",
+        description=(
+            "Legally binding Contract: This is the signed and legally recognized "
+            'representation of the Contract, which is considered the "source of '
+            'truth" and which would be the basis for legal action related to '
+            "enforcement of this Contract."
+        ),
+        # Choice of Data Types. i.e binding[x]
+        one_of_many="binding",
         one_of_many_required=False,
     )
 
     bindingReference: fhirtypes.ReferenceType = Field(
         None,
         alias="bindingReference",
-        title=(
-            "Type `Reference` referencing `Composition, DocumentReference, "
-            "QuestionnaireResponse` (represented as `dict` in JSON)"
+        title="Binding Contract",
+        description=(
+            "Legally binding Contract: This is the signed and legally recognized "
+            'representation of the Contract, which is considered the "source of '
+            'truth" and which would be the basis for legal action related to '
+            "enforcement of this Contract."
         ),
-        description="Binding Contract",
-        one_of_many="binding",  # Choice of Data Types. i.e value[x]
+        # Choice of Data Types. i.e binding[x]
+        one_of_many="binding",
         one_of_many_required=False,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Composition",
+            "DocumentReference",
+            "QuestionnaireResponse",
+        ],
     )
 
     contentDerivative: fhirtypes.CodeableConceptType = Field(
         None,
         alias="contentDerivative",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Content derived from the basal information",
+        title="Content derived from the basal information",
+        description=(
+            "The minimal content derived from the basal information source at a "
+            "specific stage in its lifecycle."
+        ),
     )
 
     decisionType: fhirtypes.CodeableConceptType = Field(
         None,
         alias="decisionType",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Decision by Grantor",
+        title="Decision by Grantor",
+        description=(
+            "The type of decision made by a grantor with respect to an offer made "
+            "by a grantee."
+        ),
     )
 
     domain: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="domain",
-        title=(
-            "List of `Reference` items referencing `Location` (represented as "
-            "`dict` in JSON)"
+        title="Domain in which this Contract applies",
+        description=(
+            "Recognized governance framework or system operating with a "
+            "circumscribed scope in accordance with specified principles, policies,"
+            " processes or procedures for managing rights, actions, or behaviors of"
+            " parties or principals relative to resources."
         ),
-        description="Domain in which this Contract applies",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Location"],
     )
 
     friendly: ListType[fhirtypes.ContractFriendlyType] = Field(
         None,
         alias="friendly",
-        title="List of `ContractFriendly` items (represented as `dict` in JSON)",
-        description="Contract Friendly Language",
+        title="Contract Friendly Language",
+        description=(
+            'The "patient friendly language" versionof the Contract in whole or in '
+            'parts. "Patient friendly language" means the representation of the '
+            "Contract and Contract Provisions in a manner that is readily "
+            "accessible and understandable by a layperson in accordance with best "
+            "practices for communication styles that ensure that those agreeing to "
+            "or signing the Contract understand the roles, actions, obligations, "
+            "responsibilities, and implication of the agreement."
+        ),
     )
 
     identifier: fhirtypes.IdentifierType = Field(
         None,
         alias="identifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Contract number",
+        title="Contract number",
+        description="Unique identifier for this Contract.",
     )
 
     issued: fhirtypes.DateTime = Field(
         None,
         alias="issued",
-        title="Type `DateTime`",
-        description="When this Contract was issued",
+        title="When this Contract was issued",
+        description="When this  Contract was issued.",
     )
     issued__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_issued", title="Extension field for ``issued``."
@@ -136,40 +176,71 @@ class Contract(domainresource.DomainResource):
     legal: ListType[fhirtypes.ContractLegalType] = Field(
         None,
         alias="legal",
-        title="List of `ContractLegal` items (represented as `dict` in JSON)",
-        description="Contract Legal Language",
+        title="Contract Legal Language",
+        description="List of Legal expressions or representations of this Contract.",
     )
 
     rule: ListType[fhirtypes.ContractRuleType] = Field(
         None,
         alias="rule",
-        title="List of `ContractRule` items (represented as `dict` in JSON)",
-        description="Computable Contract Language",
+        title="Computable Contract Language",
+        description=(
+            "List of Computable Policy Rule Language Representations of this "
+            "Contract."
+        ),
     )
 
     securityLabel: ListType[fhirtypes.CodingType] = Field(
         None,
         alias="securityLabel",
-        title="List of `Coding` items (represented as `dict` in JSON)",
-        description="Security Labels that define affected resources",
+        title="Security Labels that define affected resources",
+        description=(
+            "A set of security labels that define which resources are controlled by"
+            " this consent. If more than one label is specified, all resources must"
+            " have all the specified labels."
+        ),
     )
 
     signer: ListType[fhirtypes.ContractSignerType] = Field(
         None,
         alias="signer",
-        title="List of `ContractSigner` items (represented as `dict` in JSON)",
-        description="Contract Signatory",
+        title="Contract Signatory",
+        description=(
+            "Parties with legal standing in the Contract, including the principal "
+            "parties, the grantor(s) and grantee(s), which are any person or "
+            "organization bound by the contract, and any ancillary parties, which "
+            "facilitate the execution of the contract such as a notary or witness."
+        ),
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code`",
-        description=(
+        title=(
             "amended | appended | cancelled | disputed | entered-in-error | "
             "executable | executed | negotiable | offered | policy | rejected | "
             "renewed | revoked | resolved | terminated"
         ),
+        description="The status of the resource instance.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "amended",
+            "appended",
+            "cancelled",
+            "disputed",
+            "entered-in-error",
+            "executable",
+            "executed",
+            "negotiable",
+            "offered",
+            "policy",
+            "rejected",
+            "renewed",
+            "revoked",
+            "resolved",
+            "terminated",
+        ],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -178,49 +249,58 @@ class Contract(domainresource.DomainResource):
     subType: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="subType",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Subtype within the context of type",
+        title="Subtype within the context of type",
+        description=(
+            "More specific type or specialization of an overarching or more general"
+            " contract such as auto insurance, home owner  insurance, prenupial "
+            "agreement, Advanced-Directive, or privacy consent."
+        ),
     )
 
     subject: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="subject",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
+        title="Contract Target Entity",
+        description=(
+            "The target entity impacted by or of interest to parties to the "
+            "agreement."
         ),
-        description="Contract Target Entity",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     term: ListType[fhirtypes.ContractTermType] = Field(
         None,
         alias="term",
-        title="List of `ContractTerm` items (represented as `dict` in JSON)",
-        description="Contract Term List",
+        title="Contract Term List",
+        description=(
+            "One or more Contract Provisions, which may be related and conveyed as "
+            "a group, and may contain nested groups."
+        ),
     )
 
     topic: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="topic",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Context of the Contract",
+        title="Context of the Contract",
+        description="The matter of concern in the context of this agreement.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type or form",
+        title="Type or form",
+        description=(
+            "Type of Contract such as an insurance policy, real estate contract, a "
+            "will, power of attorny, Privacy or Security policy , trust framework "
+            "agreement, etc."
+        ),
     )
 
     valuedItem: ListType[fhirtypes.ContractValuedItemType] = Field(
-        None,
-        alias="valuedItem",
-        title="List of `ContractValuedItem` items (represented as `dict` in JSON)",
-        description="Contract Valued Item List",
+        None, alias="valuedItem", title="Contract Valued Item List", description=None,
     )
 
     @root_validator(pre=True)
@@ -275,19 +355,27 @@ class ContractAgent(backboneelement.BackboneElement):
     actor: fhirtypes.ReferenceType = Field(
         ...,
         alias="actor",
-        title=(
-            "Type `Reference` referencing `Contract, Device, Group, Location, "
-            "Organization, Patient, Practitioner, RelatedPerson, Substance` "
-            "(represented as `dict` in JSON)"
-        ),
-        description="Contract Agent Type",
+        title="Contract Agent Type",
+        description="Who or what parties are assigned roles in this Contract.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Contract",
+            "Device",
+            "Group",
+            "Location",
+            "Organization",
+            "Patient",
+            "Practitioner",
+            "RelatedPerson",
+            "Substance",
+        ],
     )
 
     role: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="role",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Role type of the agent",
+        title="Role type of the agent",
+        description="Role type of agent assigned roles in this Contract.",
     )
 
 
@@ -311,22 +399,35 @@ class ContractFriendly(backboneelement.BackboneElement):
     contentAttachment: fhirtypes.AttachmentType = Field(
         None,
         alias="contentAttachment",
-        title="Type `Attachment` (represented as `dict` in JSON)",
-        description="Easily comprehended representation of this Contract",
-        one_of_many="content",  # Choice of Data Types. i.e value[x]
+        title="Easily comprehended representation of this Contract",
+        description=(
+            "Human readable rendering of this Contract in a format and "
+            "representation intended to enhance comprehension and ensure "
+            "understandability."
+        ),
+        # Choice of Data Types. i.e content[x]
+        one_of_many="content",
         one_of_many_required=True,
     )
 
     contentReference: fhirtypes.ReferenceType = Field(
         None,
         alias="contentReference",
-        title=(
-            "Type `Reference` referencing `Composition, DocumentReference, "
-            "QuestionnaireResponse` (represented as `dict` in JSON)"
+        title="Easily comprehended representation of this Contract",
+        description=(
+            "Human readable rendering of this Contract in a format and "
+            "representation intended to enhance comprehension and ensure "
+            "understandability."
         ),
-        description="Easily comprehended representation of this Contract",
-        one_of_many="content",  # Choice of Data Types. i.e value[x]
+        # Choice of Data Types. i.e content[x]
+        one_of_many="content",
         one_of_many_required=True,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Composition",
+            "DocumentReference",
+            "QuestionnaireResponse",
+        ],
     )
 
     @root_validator(pre=True)
@@ -380,22 +481,27 @@ class ContractLegal(backboneelement.BackboneElement):
     contentAttachment: fhirtypes.AttachmentType = Field(
         None,
         alias="contentAttachment",
-        title="Type `Attachment` (represented as `dict` in JSON)",
-        description="Contract Legal Text",
-        one_of_many="content",  # Choice of Data Types. i.e value[x]
+        title="Contract Legal Text",
+        description="Contract legal text in human renderable form.",
+        # Choice of Data Types. i.e content[x]
+        one_of_many="content",
         one_of_many_required=True,
     )
 
     contentReference: fhirtypes.ReferenceType = Field(
         None,
         alias="contentReference",
-        title=(
-            "Type `Reference` referencing `Composition, DocumentReference, "
-            "QuestionnaireResponse` (represented as `dict` in JSON)"
-        ),
-        description="Contract Legal Text",
-        one_of_many="content",  # Choice of Data Types. i.e value[x]
+        title="Contract Legal Text",
+        description="Contract legal text in human renderable form.",
+        # Choice of Data Types. i.e content[x]
+        one_of_many="content",
         one_of_many_required=True,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Composition",
+            "DocumentReference",
+            "QuestionnaireResponse",
+        ],
     )
 
     @root_validator(pre=True)
@@ -449,22 +555,29 @@ class ContractRule(backboneelement.BackboneElement):
     contentAttachment: fhirtypes.AttachmentType = Field(
         None,
         alias="contentAttachment",
-        title="Type `Attachment` (represented as `dict` in JSON)",
-        description="Computable Contract Rules",
-        one_of_many="content",  # Choice of Data Types. i.e value[x]
+        title="Computable Contract Rules",
+        description=(
+            "Computable Contract conveyed using a policy rule language (e.g. XACML,"
+            " DKAL, SecPal)."
+        ),
+        # Choice of Data Types. i.e content[x]
+        one_of_many="content",
         one_of_many_required=True,
     )
 
     contentReference: fhirtypes.ReferenceType = Field(
         None,
         alias="contentReference",
-        title=(
-            "Type `Reference` referencing `DocumentReference` (represented as "
-            "`dict` in JSON)"
+        title="Computable Contract Rules",
+        description=(
+            "Computable Contract conveyed using a policy rule language (e.g. XACML,"
+            " DKAL, SecPal)."
         ),
-        description="Computable Contract Rules",
-        one_of_many="content",  # Choice of Data Types. i.e value[x]
+        # Choice of Data Types. i.e content[x]
+        one_of_many="content",
         one_of_many_required=True,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["DocumentReference"],
     )
 
     @root_validator(pre=True)
@@ -521,25 +634,29 @@ class ContractSigner(backboneelement.BackboneElement):
     party: fhirtypes.ReferenceType = Field(
         ...,
         alias="party",
-        title=(
-            "Type `Reference` referencing `Organization, Patient, Practitioner, "
-            "RelatedPerson` (represented as `dict` in JSON)"
-        ),
-        description="Contract Signatory Party",
+        title="Contract Signatory Party",
+        description="Party which is a signator to this Contract.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Organization",
+            "Patient",
+            "Practitioner",
+            "RelatedPerson",
+        ],
     )
 
     signature: ListType[fhirtypes.SignatureType] = Field(
         ...,
         alias="signature",
-        title="List of `Signature` items (represented as `dict` in JSON)",
-        description="Contract Documentation Signature",
+        title="Contract Documentation Signature",
+        description="Legally binding Contract DSIG signature contents in Base64.",
     )
 
     type: fhirtypes.CodingType = Field(
         ...,
         alias="type",
-        title="Type `Coding` (represented as `dict` in JSON)",
-        description="Contract Signatory Role",
+        title="Contract Signatory Role",
+        description="Role of this Contract signer, e.g. notary, grantee.",
     )
 
 
@@ -558,50 +675,58 @@ class ContractTerm(backboneelement.BackboneElement):
     action: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="action",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Contract Term Activity",
+        title="Contract Term Activity",
+        description="Action stipulated by this Contract Provision.",
     )
 
     actionReason: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="actionReason",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Purpose for the Contract Term Action",
+        title="Purpose for the Contract Term Action",
+        description=(
+            "Reason or purpose for the action stipulated by this Contract " "Provision."
+        ),
     )
 
     agent: ListType[fhirtypes.ContractTermAgentType] = Field(
         None,
         alias="agent",
-        title="List of `ContractTermAgent` items (represented as `dict` in JSON)",
-        description="Contract Term Agent List",
+        title="Contract Term Agent List",
+        description=(
+            "An actor taking a role in an activity for which it can be assigned "
+            "some degree of responsibility for the activity taking place."
+        ),
     )
 
     applies: fhirtypes.PeriodType = Field(
         None,
         alias="applies",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Contract Term Effective Time",
+        title="Contract Term Effective Time",
+        description=(
+            "Relevant time or time-period when this Contract Provision is "
+            "applicable."
+        ),
     )
 
     group: ListType[fhirtypes.ContractTermType] = Field(
         None,
         alias="group",
-        title="List of `ContractTerm` items (represented as `dict` in JSON)",
-        description="Nested Contract Term Group",
+        title="Nested Contract Term Group",
+        description="Nested group of Contract Provisions.",
     )
 
     identifier: fhirtypes.IdentifierType = Field(
         None,
         alias="identifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Contract Term Number",
+        title="Contract Term Number",
+        description="Unique identifier for this particular Contract Provision.",
     )
 
     issued: fhirtypes.DateTime = Field(
         None,
         alias="issued",
-        title="Type `DateTime`",
-        description="Contract Term Issue Date Time",
+        title="Contract Term Issue Date Time",
+        description="When this Contract Provision was issued.",
     )
     issued__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_issued", title="Extension field for ``issued``."
@@ -610,22 +735,28 @@ class ContractTerm(backboneelement.BackboneElement):
     securityLabel: ListType[fhirtypes.CodingType] = Field(
         None,
         alias="securityLabel",
-        title="List of `Coding` items (represented as `dict` in JSON)",
-        description="Security Labels that define affected terms",
+        title="Security Labels that define affected terms",
+        description=(
+            "A set of security labels that define which terms are controlled by "
+            "this condition."
+        ),
     )
 
     subType: fhirtypes.CodeableConceptType = Field(
         None,
         alias="subType",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Contract Term Type specific classification",
+        title="Contract Term Type specific classification",
+        description=(
+            "Subtype of this Contract Provision, e.g. life time maximum payment for"
+            " a contract term for specific valued item, e.g. disability payment."
+        ),
     )
 
     text: fhirtypes.String = Field(
         None,
         alias="text",
-        title="Type `String`",
-        description="Human readable Contract term text",
+        title="Human readable Contract term text",
+        description="Human readable form of this Contract Provision.",
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_text", title="Extension field for ``text``."
@@ -634,25 +765,29 @@ class ContractTerm(backboneelement.BackboneElement):
     topic: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="topic",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
+        title="Context of the Contract term",
+        description=(
+            "The matter of concern in the context of this provision of the " "agrement."
         ),
-        description="Context of the Contract term",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Contract Term Type or Form",
+        title="Contract Term Type or Form",
+        description=(
+            "Type of Contract Provision such as specific requirements, purposes for"
+            " actions, obligations, prohibitions, e.g. life time maximum benefit."
+        ),
     )
 
     valuedItem: ListType[fhirtypes.ContractTermValuedItemType] = Field(
         None,
         alias="valuedItem",
-        title="List of `ContractTermValuedItem` items (represented as `dict` in JSON)",
-        description="Contract Term Valued Item List",
+        title="Contract Term Valued Item List",
+        description="Contract Provision Valued Item List.",
     )
 
 
@@ -671,19 +806,30 @@ class ContractTermAgent(backboneelement.BackboneElement):
     actor: fhirtypes.ReferenceType = Field(
         ...,
         alias="actor",
-        title=(
-            "Type `Reference` referencing `Contract, Device, Group, Location, "
-            "Organization, Patient, Practitioner, RelatedPerson, Substance` "
-            "(represented as `dict` in JSON)"
-        ),
-        description="Contract Term Agent Subject",
+        title="Contract Term Agent Subject",
+        description="The agent assigned a role in this Contract Provision.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Contract",
+            "Device",
+            "Group",
+            "Location",
+            "Organization",
+            "Patient",
+            "Practitioner",
+            "RelatedPerson",
+            "Substance",
+        ],
     )
 
     role: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="role",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Type of the Contract Term Agent",
+        title="Type of the Contract Term Agent",
+        description=(
+            "Role played by the agent assigned this role in the execution of this "
+            "Contract Provision."
+        ),
     )
 
 
@@ -701,8 +847,11 @@ class ContractTermValuedItem(backboneelement.BackboneElement):
     effectiveTime: fhirtypes.DateTime = Field(
         None,
         alias="effectiveTime",
-        title="Type `DateTime`",
-        description="Contract Term Valued Item Effective Tiem",
+        title="Contract Term Valued Item Effective Tiem",
+        description=(
+            "Indicates the time during which this Contract Term ValuedItem "
+            "information is effective."
+        ),
     )
     effectiveTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_effectiveTime", title="Extension field for ``effectiveTime``."
@@ -711,28 +860,35 @@ class ContractTermValuedItem(backboneelement.BackboneElement):
     entityCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="entityCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Contract Term Valued Item Type",
-        one_of_many="entity",  # Choice of Data Types. i.e value[x]
+        title="Contract Term Valued Item Type",
+        description="Specific type of Contract Provision Valued Item that may be priced.",
+        # Choice of Data Types. i.e entity[x]
+        one_of_many="entity",
         one_of_many_required=False,
     )
 
     entityReference: fhirtypes.ReferenceType = Field(
         None,
         alias="entityReference",
-        title=(
-            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
-        ),
-        description="Contract Term Valued Item Type",
-        one_of_many="entity",  # Choice of Data Types. i.e value[x]
+        title="Contract Term Valued Item Type",
+        description="Specific type of Contract Provision Valued Item that may be priced.",
+        # Choice of Data Types. i.e entity[x]
+        one_of_many="entity",
         one_of_many_required=False,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     factor: fhirtypes.Decimal = Field(
         None,
         alias="factor",
-        title="Type `Decimal`",
-        description="Contract Term Valued Item Price Scaling Factor",
+        title="Contract Term Valued Item Price Scaling Factor",
+        description=(
+            "A real number that represents a multiplier used in determining the "
+            "overall value of the Contract Provision Valued Item delivered. The "
+            "concept of a Factor allows for a discount or surcharge multiplier to "
+            "be applied to a monetary amount."
+        ),
     )
     factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_factor", title="Extension field for ``factor``."
@@ -741,22 +897,34 @@ class ContractTermValuedItem(backboneelement.BackboneElement):
     identifier: fhirtypes.IdentifierType = Field(
         None,
         alias="identifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Contract Term Valued Item Number",
+        title="Contract Term Valued Item Number",
+        description="Identifies a Contract Provision Valued Item instance.",
     )
 
     net: fhirtypes.MoneyType = Field(
         None,
         alias="net",
-        title="Type `Money` (represented as `dict` in JSON)",
-        description="Total Contract Term Valued Item Value",
+        title="Total Contract Term Valued Item Value",
+        description=(
+            "Expresses the product of the Contract Provision Valued Item "
+            "unitQuantity and the unitPriceAmt. For example, the formula: unit "
+            "Quantity * unit Price (Cost per Point) * factor Number  * points = net"
+            " Amount. Quantity, factor and points are assumed to be 1 if not "
+            "supplied."
+        ),
     )
 
     points: fhirtypes.Decimal = Field(
         None,
         alias="points",
-        title="Type `Decimal`",
-        description="Contract Term Valued Item Difficulty Scaling Factor",
+        title="Contract Term Valued Item Difficulty Scaling Factor",
+        description=(
+            "An amount that expresses the weighting (based on difficulty, cost "
+            "and/or resource intensiveness) associated with the Contract Provision "
+            "Valued Item delivered. The concept of Points allows for assignment of "
+            "point values for a Contract ProvisionValued Item, such that a monetary"
+            " amount can be assigned to each point."
+        ),
     )
     points__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_points", title="Extension field for ``points``."
@@ -765,15 +933,19 @@ class ContractTermValuedItem(backboneelement.BackboneElement):
     quantity: fhirtypes.QuantityType = Field(
         None,
         alias="quantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Contract Term Valued Item Count",
+        title="Contract Term Valued Item Count",
+        description=(
+            "Specifies the units by which the Contract Provision Valued Item is "
+            "measured or counted, and quantifies the countable or measurable "
+            "Contract Term Valued Item instances."
+        ),
     )
 
     unitPrice: fhirtypes.MoneyType = Field(
         None,
         alias="unitPrice",
-        title="Type `Money` (represented as `dict` in JSON)",
-        description="Contract Term Valued Item fee, charge, or cost",
+        title="Contract Term Valued Item fee, charge, or cost",
+        description="A Contract Provision Valued Item unit valuation measure.",
     )
 
     @root_validator(pre=True)
@@ -826,8 +998,11 @@ class ContractValuedItem(backboneelement.BackboneElement):
     effectiveTime: fhirtypes.DateTime = Field(
         None,
         alias="effectiveTime",
-        title="Type `DateTime`",
-        description="Contract Valued Item Effective Tiem",
+        title="Contract Valued Item Effective Tiem",
+        description=(
+            "Indicates the time during which this Contract ValuedItem information "
+            "is effective."
+        ),
     )
     effectiveTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_effectiveTime", title="Extension field for ``effectiveTime``."
@@ -836,28 +1011,35 @@ class ContractValuedItem(backboneelement.BackboneElement):
     entityCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="entityCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Contract Valued Item Type",
-        one_of_many="entity",  # Choice of Data Types. i.e value[x]
+        title="Contract Valued Item Type",
+        description="Specific type of Contract Valued Item that may be priced.",
+        # Choice of Data Types. i.e entity[x]
+        one_of_many="entity",
         one_of_many_required=False,
     )
 
     entityReference: fhirtypes.ReferenceType = Field(
         None,
         alias="entityReference",
-        title=(
-            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
-        ),
-        description="Contract Valued Item Type",
-        one_of_many="entity",  # Choice of Data Types. i.e value[x]
+        title="Contract Valued Item Type",
+        description="Specific type of Contract Valued Item that may be priced.",
+        # Choice of Data Types. i.e entity[x]
+        one_of_many="entity",
         one_of_many_required=False,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     factor: fhirtypes.Decimal = Field(
         None,
         alias="factor",
-        title="Type `Decimal`",
-        description="Contract Valued Item Price Scaling Factor",
+        title="Contract Valued Item Price Scaling Factor",
+        description=(
+            "A real number that represents a multiplier used in determining the "
+            "overall value of the Contract Valued Item delivered. The concept of a "
+            "Factor allows for a discount or surcharge multiplier to be applied to "
+            "a monetary amount."
+        ),
     )
     factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_factor", title="Extension field for ``factor``."
@@ -866,22 +1048,33 @@ class ContractValuedItem(backboneelement.BackboneElement):
     identifier: fhirtypes.IdentifierType = Field(
         None,
         alias="identifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Contract Valued Item Number",
+        title="Contract Valued Item Number",
+        description="Identifies a Contract Valued Item instance.",
     )
 
     net: fhirtypes.MoneyType = Field(
         None,
         alias="net",
-        title="Type `Money` (represented as `dict` in JSON)",
-        description="Total Contract Valued Item Value",
+        title="Total Contract Valued Item Value",
+        description=(
+            "Expresses the product of the Contract Valued Item unitQuantity and the"
+            " unitPriceAmt. For example, the formula: unit Quantity * unit Price "
+            "(Cost per Point) * factor Number  * points = net Amount. Quantity, "
+            "factor and points are assumed to be 1 if not supplied."
+        ),
     )
 
     points: fhirtypes.Decimal = Field(
         None,
         alias="points",
-        title="Type `Decimal`",
-        description="Contract Valued Item Difficulty Scaling Factor",
+        title="Contract Valued Item Difficulty Scaling Factor",
+        description=(
+            "An amount that expresses the weighting (based on difficulty, cost "
+            "and/or resource intensiveness) associated with the Contract Valued "
+            "Item delivered. The concept of Points allows for assignment of point "
+            "values for a Contract Valued Item, such that a monetary amount can be "
+            "assigned to each point."
+        ),
     )
     points__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_points", title="Extension field for ``points``."
@@ -890,15 +1083,19 @@ class ContractValuedItem(backboneelement.BackboneElement):
     quantity: fhirtypes.QuantityType = Field(
         None,
         alias="quantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Count of Contract Valued Items",
+        title="Count of Contract Valued Items",
+        description=(
+            "Specifies the units by which the Contract Valued Item is measured or "
+            "counted, and quantifies the countable or measurable Contract Valued "
+            "Item instances."
+        ),
     )
 
     unitPrice: fhirtypes.MoneyType = Field(
         None,
         alias="unitPrice",
-        title="Type `Money` (represented as `dict` in JSON)",
-        description="Contract Valued Item fee, charge, or cost",
+        title="Contract Valued Item fee, charge, or cost",
+        description="A Contract Valued Item unit valuation measure.",
     )
 
     @root_validator(pre=True)

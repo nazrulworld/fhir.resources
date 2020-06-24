@@ -31,8 +31,8 @@ class Organization(domainresource.DomainResource):
     active: bool = Field(
         None,
         alias="active",
-        title="Type `bool`",
-        description="Whether the organization\u0027s record is still in active use",
+        title="Whether the organization's record is still in active use",
+        description=None,
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_active", title="Extension field for ``active``."
@@ -41,18 +41,18 @@ class Organization(domainresource.DomainResource):
     address: ListType[fhirtypes.AddressType] = Field(
         None,
         alias="address",
-        title="List of `Address` items (represented as `dict` in JSON)",
-        description="An address for the organization",
+        title="An address for the organization",
+        description=None,
     )
 
     alias: ListType[fhirtypes.String] = Field(
         None,
         alias="alias",
-        title="List of `String` items",
-        description=(
+        title=(
             "A list of alternate names that the organization is known as, or was "
             "known as in the past"
         ),
+        description=None,
     )
     alias__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_alias", title="Extension field for ``alias``."
@@ -61,35 +61,37 @@ class Organization(domainresource.DomainResource):
     contact: ListType[fhirtypes.OrganizationContactType] = Field(
         None,
         alias="contact",
-        title="List of `OrganizationContact` items (represented as `dict` in JSON)",
-        description="Contact for the organization for a certain purpose",
+        title="Contact for the organization for a certain purpose",
+        description=None,
     )
 
     endpoint: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="endpoint",
         title=(
-            "List of `Reference` items referencing `Endpoint` (represented as "
-            "`dict` in JSON)"
-        ),
-        description=(
             "Technical endpoints providing access to services operated for the "
             "organization"
         ),
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Endpoint"],
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Identifies this organization  across multiple systems",
+        title="Identifies this organization  across multiple systems",
+        description=(
+            "Identifier for the organization that is used to identify the "
+            "organization across multiple disparate systems."
+        ),
     )
 
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String`",
-        description="Name used for the organization",
+        title="Name used for the organization",
+        description="A name associated with the organization.",
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -98,25 +100,24 @@ class Organization(domainresource.DomainResource):
     partOf: fhirtypes.ReferenceType = Field(
         None,
         alias="partOf",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="The organization of which this organization forms a part",
+        title="The organization of which this organization forms a part",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     telecom: ListType[fhirtypes.ContactPointType] = Field(
         None,
         alias="telecom",
-        title="List of `ContactPoint` items (represented as `dict` in JSON)",
-        description="A contact detail for the organization",
+        title="A contact detail for the organization",
+        description=None,
     )
 
     type: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="type",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Kind of organization",
+        title="Kind of organization",
+        description="The kind(s) of organization that this is.",
     )
 
 
@@ -133,27 +134,30 @@ class OrganizationContact(backboneelement.BackboneElement):
     address: fhirtypes.AddressType = Field(
         None,
         alias="address",
-        title="Type `Address` (represented as `dict` in JSON)",
-        description="Visiting or postal addresses for the contact",
+        title="Visiting or postal addresses for the contact",
+        description=None,
     )
 
     name: fhirtypes.HumanNameType = Field(
         None,
         alias="name",
-        title="Type `HumanName` (represented as `dict` in JSON)",
-        description="A name associated with the contact",
+        title="A name associated with the contact",
+        description=None,
     )
 
     purpose: fhirtypes.CodeableConceptType = Field(
         None,
         alias="purpose",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The type of contact",
+        title="The type of contact",
+        description="Indicates a purpose for which the contact can be reached.",
     )
 
     telecom: ListType[fhirtypes.ContactPointType] = Field(
         None,
         alias="telecom",
-        title="List of `ContactPoint` items (represented as `dict` in JSON)",
-        description="Contact details (telephone, email, etc.)  for a contact",
+        title="Contact details (telephone, email, etc.)  for a contact",
+        description=(
+            "A contact detail (e.g. a telephone number or an email address) by "
+            "which the party may be contacted."
+        ),
     )

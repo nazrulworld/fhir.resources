@@ -32,29 +32,40 @@ class ResearchStudy(domainresource.DomainResource):
     arm: ListType[fhirtypes.ResearchStudyArmType] = Field(
         None,
         alias="arm",
-        title="List of `ResearchStudyArm` items (represented as `dict` in JSON)",
-        description="Defined path through the study for a subject",
+        title="Defined path through the study for a subject",
+        description=(
+            "Describes an expected sequence of events for one of the participants "
+            "of a study.  E.g. Exposure to drug A, wash-out, exposure to drug B, "
+            "wash-out, follow-up."
+        ),
     )
 
     category: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="category",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Classifications for the study",
+        title="Classifications for the study",
+        description=(
+            "Codes categorizing the type of study such as investigational vs. "
+            "observational, type of blinding, type of randomization, safety vs. "
+            "efficacy, etc."
+        ),
     )
 
     contact: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="contact",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Contact details for the study",
+        title="Contact details for the study",
+        description=(
+            "Contact details to assist a user in learning more about or engaging "
+            "with the study."
+        ),
     )
 
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown`",
-        description="What this is study doing",
+        title="What this is study doing",
+        description="A full description of how the study is being conducted.",
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -63,134 +74,176 @@ class ResearchStudy(domainresource.DomainResource):
     enrollment: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="enrollment",
-        title=(
-            "List of `Reference` items referencing `Group` (represented as `dict` "
-            "in JSON)"
+        title="Inclusion & exclusion criteria",
+        description=(
+            "Reference to a Group that defines the criteria for and quantity of "
+            'subjects participating in the study.  E.g. " 200 female Europeans '
+            'between the ages of 20 and 45 with early onset diabetes".'
         ),
-        description="Inclusion \u0026 exclusion criteria",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Group"],
     )
 
     focus: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="focus",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Drugs, devices, conditions, etc. under study",
+        title="Drugs, devices, conditions, etc. under study",
+        description=(
+            "The condition(s), medication(s), food(s), therapy(ies), device(s) or "
+            "other concerns or interventions that the study is seeking to gain more"
+            " information about."
+        ),
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Business Identifier for study",
+        title="Business Identifier for study",
+        description=(
+            "Identifiers assigned to this research study by the sponsor or other "
+            "systems."
+        ),
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="jurisdiction",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Geographic region(s) for study",
+        title="Geographic region(s) for study",
+        description=(
+            "Indicates a country, state or other region where the study is taking "
+            "place."
+        ),
     )
 
     keyword: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="keyword",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Used to search for the study",
+        title="Used to search for the study",
+        description="Key terms to aid in searching for or filtering the study.",
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
-        title="List of `Annotation` items (represented as `dict` in JSON)",
-        description="Comments made about the event",
+        title="Comments made about the event",
+        description=(
+            "Comments made about the event by the performer, subject or other "
+            "participants."
+        ),
     )
 
     partOf: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="partOf",
-        title=(
-            "List of `Reference` items referencing `ResearchStudy` (represented as "
-            "`dict` in JSON)"
+        title="Part of larger study",
+        description=(
+            "A larger research study of which this particular study is a component "
+            "or step."
         ),
-        description="Part of larger study",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ResearchStudy"],
     )
 
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="When the study began and ended",
+        title="When the study began and ended",
+        description=(
+            "Identifies the start date and the expected (or actual, depending on "
+            "status) end date for the study."
+        ),
     )
 
     principalInvestigator: fhirtypes.ReferenceType = Field(
         None,
         alias="principalInvestigator",
-        title=(
-            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
-            "JSON)"
+        title="The individual responsible for the study",
+        description=(
+            "Indicates the individual who has primary oversite of the execution of "
+            "the study."
         ),
-        description="The individual responsible for the study",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner"],
     )
 
     protocol: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="protocol",
-        title=(
-            "List of `Reference` items referencing `PlanDefinition` (represented as"
-            " `dict` in JSON)"
+        title="Steps followed in executing study",
+        description=(
+            "The set of steps expected to be performed as part of the execution of "
+            "the study."
         ),
-        description="Steps followed in executing study",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["PlanDefinition"],
     )
 
     reasonStopped: fhirtypes.CodeableConceptType = Field(
         None,
         alias="reasonStopped",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Reason for terminating study early",
+        title="Reason for terminating study early",
+        description=(
+            "A description and/or code explaining the premature termination of the "
+            "study."
+        ),
     )
 
     relatedArtifact: ListType[fhirtypes.RelatedArtifactType] = Field(
         None,
         alias="relatedArtifact",
-        title="List of `RelatedArtifact` items (represented as `dict` in JSON)",
-        description="References and dependencies",
+        title="References and dependencies",
+        description="Citations, references and other related documents.",
     )
 
     site: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="site",
-        title=(
-            "List of `Reference` items referencing `Location` (represented as "
-            "`dict` in JSON)"
+        title="Location involved in study execution",
+        description=(
+            "Clinic, hospital or other healthcare location that is participating in"
+            " the study."
         ),
-        description="Location involved in study execution",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Location"],
     )
 
     sponsor: fhirtypes.ReferenceType = Field(
         None,
         alias="sponsor",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Organization responsible for the study",
+        title="Organization responsible for the study",
+        description="The organization responsible for the execution of the study.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description=(
+        title=(
             "draft | in-progress | suspended | stopped | completed | entered-in-"
             "error"
         ),
+        description="The current state of the study.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "draft",
+            "in-progress",
+            "suspended",
+            "stopped",
+            "completed",
+            "entered-in-error",
+        ],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
     )
 
     title: fhirtypes.String = Field(
-        None, alias="title", title="Type `String`", description="Name for this study"
+        None,
+        alias="title",
+        title="Name for this study",
+        description="A short, descriptive user-friendly label for the study.",
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -213,22 +266,31 @@ class ResearchStudyArm(backboneelement.BackboneElement):
     code: fhirtypes.CodeableConceptType = Field(
         None,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Categorization of study arm",
+        title="Categorization of study arm",
+        description=(
+            "Categorization of study arm, e.g. experimental, active comparator, "
+            "placebo comparater."
+        ),
     )
 
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Short explanation of study path",
+        title="Short explanation of study path",
+        description=(
+            "A succinct description of the path through the study that would be "
+            "followed by a subject adhering to this arm."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
     )
 
     name: fhirtypes.String = Field(
-        ..., alias="name", title="Type `String`", description="Label for study arm"
+        ...,
+        alias="name",
+        title="Label for study arm",
+        description="Unique, human-readable label for this arm of the study.",
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."

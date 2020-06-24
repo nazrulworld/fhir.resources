@@ -29,15 +29,20 @@ class Invoice(domainresource.DomainResource):
     account: fhirtypes.ReferenceType = Field(
         None,
         alias="account",
-        title="Type `Reference` referencing `Account` (represented as `dict` in JSON)",
-        description="Account that is being balanced",
+        title="Account that is being balanced",
+        description="Account which is supposed to be balanced with this Invoice.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Account"],
     )
 
     cancelledReason: fhirtypes.String = Field(
         None,
         alias="cancelledReason",
-        title="Type `String`",
-        description="Reason for cancellation of this Invoice",
+        title="Reason for cancellation of this Invoice",
+        description=(
+            "In case of Invoice cancellation a reason must be given (entered in "
+            "error, superseded by corrected invoice etc.)."
+        ),
     )
     cancelledReason__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_cancelledReason", title="Extension field for ``cancelledReason``."
@@ -46,8 +51,8 @@ class Invoice(domainresource.DomainResource):
     date: fhirtypes.DateTime = Field(
         None,
         alias="date",
-        title="Type `DateTime`",
-        description="Invoice date / posting date",
+        title="Invoice date / posting date",
+        description="Date/time(s) of when this Invoice was posted.",
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -56,46 +61,60 @@ class Invoice(domainresource.DomainResource):
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Business Identifier for item",
+        title="Business Identifier for item",
+        description=(
+            "Identifier of this Invoice, often used for reference in correspondence"
+            " about this invoice or for tracking of payments."
+        ),
     )
 
     issuer: fhirtypes.ReferenceType = Field(
         None,
         alias="issuer",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Issuing Organization of Invoice",
+        title="Issuing Organization of Invoice",
+        description="The organizationissuing the Invoice.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     lineItem: ListType[fhirtypes.InvoiceLineItemType] = Field(
         None,
         alias="lineItem",
-        title="List of `InvoiceLineItem` items (represented as `dict` in JSON)",
-        description="Line items of this Invoice",
+        title="Line items of this Invoice",
+        description=(
+            "Each line item represents one charge for goods and services rendered. "
+            "Details such as date, code and amount are found in the referenced "
+            "ChargeItem resource."
+        ),
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
-        title="List of `Annotation` items (represented as `dict` in JSON)",
-        description="Comments made about the invoice",
+        title="Comments made about the invoice",
+        description=(
+            "Comments made about the invoice by the issuer, subject, or other "
+            "participants."
+        ),
     )
 
     participant: ListType[fhirtypes.InvoiceParticipantType] = Field(
         None,
         alias="participant",
-        title="List of `InvoiceParticipant` items (represented as `dict` in JSON)",
-        description="Participant in creation of this Invoice",
+        title="Participant in creation of this Invoice",
+        description=(
+            "Indicates who or what performed or participated in the charged " "service."
+        ),
     )
 
     paymentTerms: fhirtypes.Markdown = Field(
         None,
         alias="paymentTerms",
-        title="Type `Markdown`",
-        description="Payment details",
+        title="Payment details",
+        description=(
+            "Payment details such as banking details, period of payment, "
+            "deductibles, methods of payment."
+        ),
     )
     paymentTerms__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_paymentTerms", title="Extension field for ``paymentTerms``."
@@ -104,18 +123,23 @@ class Invoice(domainresource.DomainResource):
     recipient: fhirtypes.ReferenceType = Field(
         None,
         alias="recipient",
-        title=(
-            "Type `Reference` referencing `Organization, Patient, RelatedPerson` "
-            "(represented as `dict` in JSON)"
+        title="Recipient of this invoice",
+        description=(
+            "The individual or Organization responsible for balancing of this "
+            "invoice."
         ),
-        description="Recipient of this invoice",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization", "Patient", "RelatedPerson"],
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="draft | issued | balanced | cancelled | entered-in-error",
+        title="draft | issued | balanced | cancelled | entered-in-error",
+        description="The current state of the Invoice.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["draft", "issued", "balanced", "cancelled", "entered-in-error"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -124,42 +148,50 @@ class Invoice(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title=(
-            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
-            "in JSON)"
+        title="Recipient(s) of goods and services",
+        description=(
+            "The individual or set of individuals receiving the goods and services "
+            "billed in this invoice."
         ),
-        description="Recipient(s) of goods and services",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "Group"],
     )
 
     totalGross: fhirtypes.MoneyType = Field(
         None,
         alias="totalGross",
-        title="Type `Money` (represented as `dict` in JSON)",
-        description="Gross total of this Invoice",
+        title="Gross total of this Invoice",
+        description="Invoice total, tax included.",
     )
 
     totalNet: fhirtypes.MoneyType = Field(
         None,
         alias="totalNet",
-        title="Type `Money` (represented as `dict` in JSON)",
-        description="Net total of this Invoice",
+        title="Net total of this Invoice",
+        description="Invoice total , taxes excluded.",
     )
 
     totalPriceComponent: ListType[fhirtypes.InvoiceLineItemPriceComponentType] = Field(
         None,
         alias="totalPriceComponent",
-        title=(
-            "List of `InvoiceLineItemPriceComponent` items (represented as `dict` "
-            "in JSON)"
+        title="Components of Invoice total",
+        description=(
+            "The total amount for the Invoice may be calculated as the sum of the "
+            "line items with surcharges/deductions that apply in certain "
+            "conditions.  The priceComponent element can be used to offer "
+            "transparency to the recipient of the Invoice of how the total price "
+            "was calculated."
         ),
-        description="Components of Invoice total",
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type of Invoice",
+        title="Type of Invoice",
+        description=(
+            "Type of Invoice depending on domain, realm an usage (e.g. "
+            "internal/external, dental, preliminary)."
+        ),
     )
 
 
@@ -179,12 +211,18 @@ class InvoiceLineItem(backboneelement.BackboneElement):
     chargeItemCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="chargeItemCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Reference to ChargeItem containing details of this line item or an "
             "inline billing code"
         ),
-        one_of_many="chargeItem",  # Choice of Data Types. i.e value[x]
+        description=(
+            "The ChargeItem contains information such as the billing code, date, "
+            "amount etc. If no further details are required for the lineItem, "
+            "inline billing codes can be added using the CodeableConcept data type "
+            "instead of the Reference."
+        ),
+        # Choice of Data Types. i.e chargeItem[x]
+        one_of_many="chargeItem",
         one_of_many_required=True,
     )
 
@@ -192,32 +230,42 @@ class InvoiceLineItem(backboneelement.BackboneElement):
         None,
         alias="chargeItemReference",
         title=(
-            "Type `Reference` referencing `ChargeItem` (represented as `dict` in "
-            "JSON)"
-        ),
-        description=(
             "Reference to ChargeItem containing details of this line item or an "
             "inline billing code"
         ),
-        one_of_many="chargeItem",  # Choice of Data Types. i.e value[x]
+        description=(
+            "The ChargeItem contains information such as the billing code, date, "
+            "amount etc. If no further details are required for the lineItem, "
+            "inline billing codes can be added using the CodeableConcept data type "
+            "instead of the Reference."
+        ),
+        # Choice of Data Types. i.e chargeItem[x]
+        one_of_many="chargeItem",
         one_of_many_required=True,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ChargeItem"],
     )
 
     priceComponent: ListType[fhirtypes.InvoiceLineItemPriceComponentType] = Field(
         None,
         alias="priceComponent",
-        title=(
-            "List of `InvoiceLineItemPriceComponent` items (represented as `dict` "
-            "in JSON)"
+        title="Components of total line item price",
+        description=(
+            "The price for a ChargeItem may be calculated as a base price with "
+            "surcharges/deductions that apply in certain conditions. A "
+            "ChargeItemDefinition resource that defines the prices, factors and "
+            "conditions that apply to a billing code is currently under "
+            "development. The priceComponent element can be used to offer "
+            "transparency to the recipient of the Invoice as to how the prices have"
+            " been calculated."
         ),
-        description="Components of total line item price",
     )
 
     sequence: fhirtypes.PositiveInt = Field(
         None,
         alias="sequence",
-        title="Type `PositiveInt`",
-        description="Sequence number of line item",
+        title="Sequence number of line item",
+        description="Sequence in which the items appear on the invoice.",
     )
     sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sequence", title="Extension field for ``sequence``."
@@ -281,22 +329,28 @@ class InvoiceLineItemPriceComponent(backboneelement.BackboneElement):
     amount: fhirtypes.MoneyType = Field(
         None,
         alias="amount",
-        title="Type `Money` (represented as `dict` in JSON)",
-        description="Monetary amount associated with this component",
+        title="Monetary amount associated with this component",
+        description="The amount calculated for this component.",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
         None,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Code identifying the specific component",
+        title="Code identifying the specific component",
+        description=(
+            "A code that identifies the component. Codes may be used to "
+            "differentiate between kinds of taxes, surcharges, discounts etc."
+        ),
     )
 
     factor: fhirtypes.Decimal = Field(
         None,
         alias="factor",
-        title="Type `Decimal`",
-        description="Factor used for calculating this component",
+        title="Factor used for calculating this component",
+        description=(
+            "The factor that has been applied on the base price for calculating "
+            "this component."
+        ),
     )
     factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_factor", title="Extension field for ``factor``."
@@ -305,8 +359,18 @@ class InvoiceLineItemPriceComponent(backboneelement.BackboneElement):
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code`",
-        description="base | surcharge | deduction | discount | tax | informational",
+        title="base | surcharge | deduction | discount | tax | informational",
+        description="This code identifies the type of the component.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "base",
+            "surcharge",
+            "deduction",
+            "discount",
+            "tax",
+            "informational",
+        ],
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -327,17 +391,29 @@ class InvoiceParticipant(backboneelement.BackboneElement):
     actor: fhirtypes.ReferenceType = Field(
         ...,
         alias="actor",
-        title=(
-            "Type `Reference` referencing `Practitioner, Organization, Patient, "
-            "PractitionerRole, Device, RelatedPerson` (represented as `dict` in "
-            "JSON)"
+        title="Individual who was involved",
+        description=(
+            "The device, practitioner, etc. who performed or participated in the "
+            "service."
         ),
-        description="Individual who was involved",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Practitioner",
+            "Organization",
+            "Patient",
+            "PractitionerRole",
+            "Device",
+            "RelatedPerson",
+        ],
     )
 
     role: fhirtypes.CodeableConceptType = Field(
         None,
         alias="role",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type of involvement in creation of this Invoice",
+        title="Type of involvement in creation of this Invoice",
+        description=(
+            "Describes the type of involvement (e.g. transcriptionist, creator "
+            "etc.). If the invoice has been created automatically, the Participant "
+            "may be a billing engine or another kind of device."
+        ),
     )

@@ -31,8 +31,8 @@ class Endpoint(domainresource.DomainResource):
     address: fhirtypes.Url = Field(
         ...,
         alias="address",
-        title="Type `Url`",
-        description="The technical base address for connecting to this endpoint",
+        title="The technical base address for connecting to this endpoint",
+        description="The uri that describes the actual end-point to connect to.",
     )
     address__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_address", title="Extension field for ``address``."
@@ -41,22 +41,29 @@ class Endpoint(domainresource.DomainResource):
     connectionType: fhirtypes.CodingType = Field(
         ...,
         alias="connectionType",
-        title="Type `Coding` (represented as `dict` in JSON)",
-        description="Protocol/Profile/Standard to be used with this endpoint connection",
+        title="Protocol/Profile/Standard to be used with this endpoint connection",
+        description=(
+            "A coded value that represents the technical details of the usage of "
+            "this endpoint, such as what WSDLs should be used in what way. (e.g. "
+            "XDS.b/DICOM/cds-hook)."
+        ),
     )
 
     contact: ListType[fhirtypes.ContactPointType] = Field(
         None,
         alias="contact",
-        title="List of `ContactPoint` items (represented as `dict` in JSON)",
-        description="Contact details for source (e.g. troubleshooting)",
+        title="Contact details for source (e.g. troubleshooting)",
+        description=(
+            "Contact details for a human to contact about the subscription. The "
+            "primary use of this for system administrator troubleshooting."
+        ),
     )
 
     header: ListType[fhirtypes.String] = Field(
         None,
         alias="header",
-        title="List of `String` items",
-        description="Usage depends on the channel type",
+        title="Usage depends on the channel type",
+        description="Additional headers / information to send as part of the notification.",
     )
     header__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_header", title="Extension field for ``header``."
@@ -65,28 +72,34 @@ class Endpoint(domainresource.DomainResource):
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Identifies this endpoint across multiple systems",
+        title="Identifies this endpoint across multiple systems",
+        description=(
+            "Identifier for the organization that is used to identify the endpoint "
+            "across multiple disparate systems."
+        ),
     )
 
     managingOrganization: fhirtypes.ReferenceType = Field(
         None,
         alias="managingOrganization",
         title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description=(
             "Organization that manages this endpoint (might not be the organization"
             " that exposes the endpoint)"
         ),
+        description=(
+            "The organization that manages this endpoint (even if technically "
+            "another organization is hosting this in the cloud, it is the "
+            "organization associated with the data)."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String`",
-        description="A name that this endpoint can be identified by",
+        title="A name that this endpoint can be identified by",
+        description="A friendly name that this endpoint can be referred to with.",
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -95,10 +108,15 @@ class Endpoint(domainresource.DomainResource):
     payloadMimeType: ListType[fhirtypes.Code] = Field(
         None,
         alias="payloadMimeType",
-        title="List of `Code` items",
-        description=(
+        title=(
             "Mimetype to send. If not specified, the content could be anything "
             "(including no payload, if the connectionType defined this)"
+        ),
+        description=(
+            "The mime type to send the payload in - e.g. application/fhir+xml, "
+            "application/fhir+json. If the mime type is not specified, then the "
+            "sender could send any content (including no content depending on the "
+            "connectionType)."
         ),
     )
     payloadMimeType__ext: ListType[
@@ -110,25 +128,31 @@ class Endpoint(domainresource.DomainResource):
     payloadType: ListType[fhirtypes.CodeableConceptType] = Field(
         ...,
         alias="payloadType",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The type of content that may be used at this endpoint (e.g. XDS "
             "Discharge summaries)"
+        ),
+        description=(
+            "The payload type describes the acceptable content that can be "
+            "communicated on the endpoint."
         ),
     )
 
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Interval the endpoint is expected to be operational",
+        title="Interval the endpoint is expected to be operational",
+        description="The interval during which the endpoint is expected to be operational.",
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="active | suspended | error | off | entered-in-error | test",
+        title="active | suspended | error | off | entered-in-error | test",
+        description="active | suspended | error | off | test.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["active", "suspended", "error", "off", "entered-in-error", "test"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."

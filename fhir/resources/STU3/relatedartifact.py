@@ -26,8 +26,11 @@ class RelatedArtifact(element.Element):
     citation: fhirtypes.String = Field(
         None,
         alias="citation",
-        title="Type `String`",
-        description="Bibliographic citation for the artifact",
+        title="Bibliographic citation for the artifact",
+        description=(
+            "A bibliographic citation for the related artifact. This text SHOULD be"
+            " formatted according to an accepted citation format."
+        ),
     )
     citation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_citation", title="Extension field for ``citation``."
@@ -36,8 +39,11 @@ class RelatedArtifact(element.Element):
     display: fhirtypes.String = Field(
         None,
         alias="display",
-        title="Type `String`",
-        description="Brief description of the related artifact",
+        title="Brief description of the related artifact",
+        description=(
+            "A brief description of the document or knowledge resource being "
+            "referenced, suitable for display to a consumer."
+        ),
     )
     display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_display", title="Extension field for ``display``."
@@ -46,27 +52,45 @@ class RelatedArtifact(element.Element):
     document: fhirtypes.AttachmentType = Field(
         None,
         alias="document",
-        title="Type `Attachment` (represented as `dict` in JSON)",
-        description="What document is being referenced",
+        title="What document is being referenced",
+        description=(
+            "The document being referenced, represented as an attachment. This is "
+            "exclusive with the resource element."
+        ),
     )
 
     resource: fhirtypes.ReferenceType = Field(
         None,
         alias="resource",
-        title=(
-            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        title="What resource is being referenced",
+        description=(
+            "The related resource, such as a library, value set, profile, or other "
+            "knowledge resource."
         ),
-        description="What resource is being referenced",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code`",
-        description=(
+        title=(
             "documentation | justification | citation | predecessor | successor | "
             "derived-from | depends-on | composed-of"
         ),
+        description="The type of relationship to the related artifact.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "documentation",
+            "justification",
+            "citation",
+            "predecessor",
+            "successor",
+            "derived-from",
+            "depends-on",
+            "composed-of",
+        ],
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -75,8 +99,11 @@ class RelatedArtifact(element.Element):
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
-        title="Type `Uri`",
-        description="Where the artifact can be accessed",
+        title="Where the artifact can be accessed",
+        description=(
+            "A url for the artifact that can be followed to access the actual "
+            "content."
+        ),
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."

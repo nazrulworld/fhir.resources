@@ -30,55 +30,62 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
     collection: fhirtypes.BiologicallyDerivedProductCollectionType = Field(
         None,
         alias="collection",
-        title=(
-            "Type `BiologicallyDerivedProductCollection` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="How this product was collected",
+        title="How this product was collected",
+        description=None,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="External ids for this item",
+        title="External ids for this item",
+        description=(
+            "This records identifiers associated with this biologically derived "
+            "product instance that are defined by business processes and/or used to"
+            " refer to it when a direct URL reference to the resource itself is not"
+            " appropriate (e.g. in CDA documents, or in written / printed "
+            "documentation)."
+        ),
     )
 
     manipulation: fhirtypes.BiologicallyDerivedProductManipulationType = Field(
         None,
         alias="manipulation",
-        title=(
-            "Type `BiologicallyDerivedProductManipulation` (represented as `dict` "
-            "in JSON)"
+        title="Any manipulation of product post-collection",
+        description=(
+            "Any manipulation of product post-collection that is intended to alter "
+            "the product.  For example a buffy-coat enrichment or CD8 reduction of "
+            "Peripheral Blood Stem Cells to make it more suitable for infusion."
         ),
-        description="Any manipulation of product post-collection",
     )
 
     parent: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="parent",
-        title=(
-            "List of `Reference` items referencing `BiologicallyDerivedProduct` "
-            "(represented as `dict` in JSON)"
-        ),
-        description="BiologicallyDerivedProduct parent",
+        title="BiologicallyDerivedProduct parent",
+        description="Parent product (if any).",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["BiologicallyDerivedProduct"],
     )
 
     processing: ListType[fhirtypes.BiologicallyDerivedProductProcessingType] = Field(
         None,
         alias="processing",
-        title=(
-            "List of `BiologicallyDerivedProductProcessing` items (represented as "
-            "`dict` in JSON)"
+        title="Any processing of the product during collection",
+        description=(
+            "Any processing of the product during collection that does not change "
+            "the fundamental nature of the product. For example adding anti-"
+            "coagulants during the collection of Peripheral Blood Stem Cells."
         ),
-        description="Any processing of the product during collection",
     )
 
     productCategory: fhirtypes.Code = Field(
         None,
         alias="productCategory",
-        title="Type `Code`",
-        description="organ | tissue | fluid | cells | biologicalAgent",
+        title="organ | tissue | fluid | cells | biologicalAgent",
+        description="Broad category of this product.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["organ", "tissue", "fluid", "cells", "biologicalAgent"],
     )
     productCategory__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_productCategory", title="Extension field for ``productCategory``."
@@ -87,15 +94,18 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
     productCode: fhirtypes.CodeableConceptType = Field(
         None,
         alias="productCode",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="What this biologically derived product is",
+        title="What this biologically derived product is",
+        description=(
+            "A code that identifies the kind of this biologically derived product "
+            "(SNOMED Ctcode)."
+        ),
     )
 
     quantity: fhirtypes.Integer = Field(
         None,
         alias="quantity",
-        title="Type `Integer`",
-        description="The amount of this biologically derived product",
+        title="The amount of this biologically derived product",
+        description="Number of discrete units within this product.",
     )
     quantity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_quantity", title="Extension field for ``quantity``."
@@ -104,28 +114,27 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
     request: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="request",
-        title=(
-            "List of `Reference` items referencing `ServiceRequest` (represented as"
-            " `dict` in JSON)"
-        ),
-        description="Procedure request",
+        title="Procedure request",
+        description="Procedure request to obtain this biologically derived product.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ServiceRequest"],
     )
 
     status: fhirtypes.Code = Field(
-        None, alias="status", title="Type `Code`", description="available | unavailable"
+        None,
+        alias="status",
+        title="available | unavailable",
+        description="Whether the product is currently available.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["available", "unavailable"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
     )
 
     storage: ListType[fhirtypes.BiologicallyDerivedProductStorageType] = Field(
-        None,
-        alias="storage",
-        title=(
-            "List of `BiologicallyDerivedProductStorage` items (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Product storage",
+        None, alias="storage", title="Product storage", description=None,
     )
 
 
@@ -142,9 +151,10 @@ class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
     collectedDateTime: fhirtypes.DateTime = Field(
         None,
         alias="collectedDateTime",
-        title="Type `DateTime`",
-        description="Time of product collection",
-        one_of_many="collected",  # Choice of Data Types. i.e value[x]
+        title="Time of product collection",
+        description=None,
+        # Choice of Data Types. i.e collected[x]
+        one_of_many="collected",
         one_of_many_required=False,
     )
     collectedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -156,30 +166,32 @@ class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
     collectedPeriod: fhirtypes.PeriodType = Field(
         None,
         alias="collectedPeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Time of product collection",
-        one_of_many="collected",  # Choice of Data Types. i.e value[x]
+        title="Time of product collection",
+        description=None,
+        # Choice of Data Types. i.e collected[x]
+        one_of_many="collected",
         one_of_many_required=False,
     )
 
     collector: fhirtypes.ReferenceType = Field(
         None,
         alias="collector",
-        title=(
-            "Type `Reference` referencing `Practitioner, PractitionerRole` "
-            "(represented as `dict` in JSON)"
-        ),
-        description="Individual performing collection",
+        title="Individual performing collection",
+        description="Healthcare professional who is performing the collection.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner", "PractitionerRole"],
     )
 
     source: fhirtypes.ReferenceType = Field(
         None,
         alias="source",
-        title=(
-            "Type `Reference` referencing `Patient, Organization` (represented as "
-            "`dict` in JSON)"
+        title="Who is product from",
+        description=(
+            "The patient or entity, such as a hospital or vendor in the case of a "
+            "processed/manipulated/manufactured product, providing the product."
         ),
-        description="Who is product from",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "Organization"],
     )
 
     @root_validator(pre=True)
@@ -235,8 +247,8 @@ class BiologicallyDerivedProductManipulation(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Description of manipulation",
+        title="Description of manipulation",
+        description=None,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -245,9 +257,10 @@ class BiologicallyDerivedProductManipulation(backboneelement.BackboneElement):
     timeDateTime: fhirtypes.DateTime = Field(
         None,
         alias="timeDateTime",
-        title="Type `DateTime`",
-        description="Time of manipulation",
-        one_of_many="time",  # Choice of Data Types. i.e value[x]
+        title="Time of manipulation",
+        description=None,
+        # Choice of Data Types. i.e time[x]
+        one_of_many="time",
         one_of_many_required=False,
     )
     timeDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -257,9 +270,10 @@ class BiologicallyDerivedProductManipulation(backboneelement.BackboneElement):
     timePeriod: fhirtypes.PeriodType = Field(
         None,
         alias="timePeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Time of manipulation",
-        one_of_many="time",  # Choice of Data Types. i.e value[x]
+        title="Time of manipulation",
+        description=None,
+        # Choice of Data Types. i.e time[x]
+        one_of_many="time",
         one_of_many_required=False,
     )
 
@@ -316,36 +330,33 @@ class BiologicallyDerivedProductProcessing(backboneelement.BackboneElement):
     additive: fhirtypes.ReferenceType = Field(
         None,
         alias="additive",
-        title=(
-            "Type `Reference` referencing `Substance` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Substance added during processing",
+        title="Substance added during processing",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Substance"],
     )
 
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Description of of processing",
+        title="Description of of processing",
+        description=None,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
     )
 
     procedure: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="procedure",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Procesing code",
+        None, alias="procedure", title="Procesing code", description=None,
     )
 
     timeDateTime: fhirtypes.DateTime = Field(
         None,
         alias="timeDateTime",
-        title="Type `DateTime`",
-        description="Time of processing",
-        one_of_many="time",  # Choice of Data Types. i.e value[x]
+        title="Time of processing",
+        description=None,
+        # Choice of Data Types. i.e time[x]
+        one_of_many="time",
         one_of_many_required=False,
     )
     timeDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -355,9 +366,10 @@ class BiologicallyDerivedProductProcessing(backboneelement.BackboneElement):
     timePeriod: fhirtypes.PeriodType = Field(
         None,
         alias="timePeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Time of processing",
-        one_of_many="time",  # Choice of Data Types. i.e value[x]
+        title="Time of processing",
+        description=None,
+        # Choice of Data Types. i.e time[x]
+        one_of_many="time",
         one_of_many_required=False,
     )
 
@@ -409,37 +421,31 @@ class BiologicallyDerivedProductStorage(backboneelement.BackboneElement):
     resource_type = Field("BiologicallyDerivedProductStorage", const=True)
 
     description: fhirtypes.String = Field(
-        None,
-        alias="description",
-        title="Type `String`",
-        description="Description of storage",
+        None, alias="description", title="Description of storage", description=None,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
     )
 
     duration: fhirtypes.PeriodType = Field(
-        None,
-        alias="duration",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Storage timeperiod",
+        None, alias="duration", title="Storage timeperiod", description=None,
     )
 
     scale: fhirtypes.Code = Field(
         None,
         alias="scale",
-        title="Type `Code`",
-        description="farenheit | celsius | kelvin",
+        title="farenheit | celsius | kelvin",
+        description="Temperature scale used.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["farenheit", "celsius", "kelvin"],
     )
     scale__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_scale", title="Extension field for ``scale``."
     )
 
     temperature: fhirtypes.Decimal = Field(
-        None,
-        alias="temperature",
-        title="Type `Decimal`",
-        description="Storage temperature",
+        None, alias="temperature", title="Storage temperature", description=None,
     )
     temperature__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_temperature", title="Extension field for ``temperature``."

@@ -29,148 +29,186 @@ class Encounter(domainresource.DomainResource):
     account: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="account",
-        title=(
-            "List of `Reference` items referencing `Account` (represented as `dict`"
-            " in JSON)"
-        ),
-        description="The set of accounts that may be used for billing for this Encounter",
+        title="The set of accounts that may be used for billing for this Encounter",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Account"],
     )
 
     appointment: fhirtypes.ReferenceType = Field(
         None,
         alias="appointment",
-        title=(
-            "Type `Reference` referencing `Appointment` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="The appointment that scheduled this encounter",
+        title="The appointment that scheduled this encounter",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Appointment"],
     )
 
     classHistory: ListType[fhirtypes.EncounterClassHistoryType] = Field(
         None,
         alias="classHistory",
-        title="List of `EncounterClassHistory` items (represented as `dict` in JSON)",
-        description="List of past encounter classes",
+        title="List of past encounter classes",
+        description=(
+            "The class history permits the tracking of the encounters transitions "
+            "without needing to go  through the resource history.  This would be "
+            "used for a case where an admission starts of as an emergency "
+            "encounter, then transisions into an inpatient scenario. Doing this and"
+            " not restarting a new encounter ensures that any lab/diagnostic "
+            "results can more easily follow the patient and not require re-"
+            "processing and not get lost or cancelled during a kindof discharge "
+            "from emergency to inpatient."
+        ),
     )
 
     class_fhir: fhirtypes.CodingType = Field(
         None,
         alias="class",
-        title="Type `Coding` (represented as `dict` in JSON)",
-        description="inpatient | outpatient | ambulatory | emergency +",
+        title="inpatient | outpatient | ambulatory | emergency +",
+        description=None,
     )
 
     diagnosis: ListType[fhirtypes.EncounterDiagnosisType] = Field(
         None,
         alias="diagnosis",
-        title="List of `EncounterDiagnosis` items (represented as `dict` in JSON)",
-        description="The list of diagnosis relevant to this encounter",
+        title="The list of diagnosis relevant to this encounter",
+        description=None,
     )
 
     episodeOfCare: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="episodeOfCare",
-        title=(
-            "List of `Reference` items referencing `EpisodeOfCare` (represented as "
-            "`dict` in JSON)"
+        title="Episode(s) of care that this encounter should be recorded against",
+        description=(
+            "Where a specific encounter should be classified as a part of a "
+            "specific episode(s) of care this field should be used. This "
+            "association can facilitate grouping of related encounters together for"
+            " a specific purpose, such as government reporting, issue tracking, "
+            "association via a common problem.  The association is recorded on the "
+            "encounter as these are typically created after the episode of care, "
+            "and grouped on entry rather than editing the episode of care to append"
+            " another encounter to it (the episode of care could span years)."
         ),
-        description="Episode(s) of care that this encounter should be recorded against",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["EpisodeOfCare"],
     )
 
     hospitalization: fhirtypes.EncounterHospitalizationType = Field(
         None,
         alias="hospitalization",
-        title="Type `EncounterHospitalization` (represented as `dict` in JSON)",
-        description="Details about the admission to a healthcare service",
+        title="Details about the admission to a healthcare service",
+        description=None,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Identifier(s) by which this encounter is known",
+        title="Identifier(s) by which this encounter is known",
+        description=None,
     )
 
     incomingReferral: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="incomingReferral",
-        title=(
-            "List of `Reference` items referencing `ReferralRequest` (represented "
-            "as `dict` in JSON)"
-        ),
-        description="The ReferralRequest that initiated this encounter",
+        title="The ReferralRequest that initiated this encounter",
+        description="The referral request this encounter satisfies (incoming referral).",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ReferralRequest"],
     )
 
     length: fhirtypes.DurationType = Field(
         None,
         alias="length",
-        title="Type `Duration` (represented as `dict` in JSON)",
-        description="Quantity of time the encounter lasted (less time absent)",
+        title="Quantity of time the encounter lasted (less time absent)",
+        description=(
+            "Quantity of time the encounter lasted. This excludes the time during "
+            "leaves of absence."
+        ),
     )
 
     location: ListType[fhirtypes.EncounterLocationType] = Field(
         None,
         alias="location",
-        title="List of `EncounterLocation` items (represented as `dict` in JSON)",
-        description="List of locations where the patient has been",
+        title="List of locations where the patient has been",
+        description="List of locations where  the patient has been during this encounter.",
     )
 
     partOf: fhirtypes.ReferenceType = Field(
         None,
         alias="partOf",
-        title=(
-            "Type `Reference` referencing `Encounter` (represented as `dict` in "
-            "JSON)"
+        title="Another Encounter this encounter is part of",
+        description=(
+            "Another Encounter of which this encounter is a part of "
+            "(administratively or in time)."
         ),
-        description="Another Encounter this encounter is part of",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Encounter"],
     )
 
     participant: ListType[fhirtypes.EncounterParticipantType] = Field(
         None,
         alias="participant",
-        title="List of `EncounterParticipant` items (represented as `dict` in JSON)",
-        description="List of participants involved in the encounter",
+        title="List of participants involved in the encounter",
+        description="The\u00a0list of\u00a0people\u00a0responsible for providing the service.",
     )
 
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="The start and end time of the encounter",
+        title="The start and end time of the encounter",
+        description=None,
     )
 
     priority: fhirtypes.CodeableConceptType = Field(
         None,
         alias="priority",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Indicates the urgency of the encounter",
+        title="Indicates the urgency of the encounter",
+        description=None,
     )
 
     reason: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="reason",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Reason the encounter takes place (code)",
+        title="Reason the encounter takes place (code)",
+        description=(
+            "Reason the encounter takes place, expressed as a code. For admissions,"
+            " this can be used for a coded admission diagnosis."
+        ),
     )
 
     serviceProvider: fhirtypes.ReferenceType = Field(
         None,
         alias="serviceProvider",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
+        title="The custodian organization of this Encounter record",
+        description=(
+            "An organization that is in charge of maintaining the information of "
+            "this Encounter (e.g. who maintains the report or the master service "
+            "catalog item, etc.). This MAY be the same as the organization on the "
+            "Patient record, however it could be different. This MAY not be not the"
+            " Service Delivery Location's Organization."
         ),
-        description="The custodian organization of this Encounter record",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description=(
+        title=(
             "planned | arrived | triaged | in-progress | onleave | finished | "
             "cancelled +"
         ),
+        description=None,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "planned",
+            "arrived",
+            "triaged",
+            "in-progress",
+            "onleave",
+            "finished",
+            "cancelled +",
+        ],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -179,25 +217,31 @@ class Encounter(domainresource.DomainResource):
     statusHistory: ListType[fhirtypes.EncounterStatusHistoryType] = Field(
         None,
         alias="statusHistory",
-        title="List of `EncounterStatusHistory` items (represented as `dict` in JSON)",
-        description="List of past encounter statuses",
+        title="List of past encounter statuses",
+        description=(
+            "The status history permits the encounter resource to contain the "
+            "status history without needing to read through the historical versions"
+            " of the resource, or even have the server store them."
+        ),
     )
 
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title=(
-            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
-            "in JSON)"
-        ),
-        description="The patient ro group present at the encounter",
+        title="The patient ro group present at the encounter",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "Group"],
     )
 
     type: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="type",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Specific type of encounter",
+        title="Specific type of encounter",
+        description=(
+            "Specific type of encounter (e.g. e-mail consultation, surgical day-"
+            "care, skilled nursing, rehabilitation)."
+        ),
     )
 
 
@@ -222,15 +266,15 @@ class EncounterClassHistory(backboneelement.BackboneElement):
     class_fhir: fhirtypes.CodingType = Field(
         ...,
         alias="class",
-        title="Type `Coding` (represented as `dict` in JSON)",
-        description="inpatient | outpatient | ambulatory | emergency +",
+        title="inpatient | outpatient | ambulatory | emergency +",
+        description=None,
     )
 
     period: fhirtypes.PeriodType = Field(
         ...,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="The time that the episode was in the specified class",
+        title="The time that the episode was in the specified class",
+        description=None,
     )
 
 
@@ -247,18 +291,22 @@ class EncounterDiagnosis(backboneelement.BackboneElement):
     condition: fhirtypes.ReferenceType = Field(
         ...,
         alias="condition",
-        title=(
-            "Type `Reference` referencing `Condition, Procedure` (represented as "
-            "`dict` in JSON)"
+        title="Reason the encounter takes place (resource)",
+        description=(
+            "Reason the encounter takes place, as specified using information from "
+            "another resource. For admissions, this is the admission diagnosis. The"
+            " indication will typically be a Condition (with other resources "
+            "referenced in the evidence.detail), or a Procedure."
         ),
-        description="Reason the encounter takes place (resource)",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Condition", "Procedure"],
     )
 
     rank: fhirtypes.PositiveInt = Field(
         None,
         alias="rank",
-        title="Type `PositiveInt`",
-        description="Ranking of the diagnosis (for each role type)",
+        title="Ranking of the diagnosis (for each role type)",
+        description=None,
     )
     rank__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_rank", title="Extension field for ``rank``."
@@ -267,11 +315,11 @@ class EncounterDiagnosis(backboneelement.BackboneElement):
     role: fhirtypes.CodeableConceptType = Field(
         None,
         alias="role",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Role that this diagnosis has within the encounter (e.g. admission, "
             "billing, discharge \u2026)"
         ),
+        description=None,
     )
 
 
@@ -288,71 +336,75 @@ class EncounterHospitalization(backboneelement.BackboneElement):
     admitSource: fhirtypes.CodeableConceptType = Field(
         None,
         alias="admitSource",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="From where patient was admitted (physician referral, transfer)",
+        title="From where patient was admitted (physician referral, transfer)",
+        description=None,
     )
 
     destination: fhirtypes.ReferenceType = Field(
         None,
         alias="destination",
-        title=(
-            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
-        ),
-        description="Location to which the patient is discharged",
+        title="Location to which the patient is discharged",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Location"],
     )
 
     dietPreference: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="dietPreference",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Diet preferences reported by the patient",
+        title="Diet preferences reported by the patient",
+        description=None,
     )
 
     dischargeDisposition: fhirtypes.CodeableConceptType = Field(
         None,
         alias="dischargeDisposition",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Category or kind of location after discharge",
+        title="Category or kind of location after discharge",
+        description=None,
     )
 
     origin: fhirtypes.ReferenceType = Field(
         None,
         alias="origin",
-        title=(
-            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
-        ),
-        description="The location from which the patient came before admission",
+        title="The location from which the patient came before admission",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Location"],
     )
 
     preAdmissionIdentifier: fhirtypes.IdentifierType = Field(
         None,
         alias="preAdmissionIdentifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Pre-admission identifier",
+        title="Pre-admission identifier",
+        description=None,
     )
 
     reAdmission: fhirtypes.CodeableConceptType = Field(
         None,
         alias="reAdmission",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The type of hospital re-admission that has occurred (if any). If the "
             "value is absent, then this is not identified as a readmission"
         ),
+        description="Whether this hospitalization is a readmission and why if known.",
     )
 
     specialArrangement: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="specialArrangement",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Wheelchair, translator, stretcher, etc.",
+        title="Wheelchair, translator, stretcher, etc.",
+        description=(
+            "Any special requests that have been made for this hospitalization "
+            "encounter, such as the provision of specific equipment or other "
+            "things."
+        ),
     )
 
     specialCourtesy: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="specialCourtesy",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Special courtesies (VIP, board member)",
+        title="Special courtesies (VIP, board member)",
+        description=None,
     )
 
 
@@ -370,24 +422,31 @@ class EncounterLocation(backboneelement.BackboneElement):
     location: fhirtypes.ReferenceType = Field(
         ...,
         alias="location",
-        title=(
-            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
-        ),
-        description="Location the encounter takes place",
+        title="Location the encounter takes place",
+        description="The location where the encounter takes place.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Location"],
     )
 
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Time period during which the patient was present at the location",
+        title="Time period during which the patient was present at the location",
+        description=None,
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code`",
-        description="planned | active | reserved | completed",
+        title="planned | active | reserved | completed",
+        description=(
+            "The status of the participants' presence at the specified location "
+            "during the period specified. If the participant is is no longer at the"
+            " location, then the period will have an end date/time."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["planned", "active", "reserved", "completed"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -408,25 +467,25 @@ class EncounterParticipant(backboneelement.BackboneElement):
     individual: fhirtypes.ReferenceType = Field(
         None,
         alias="individual",
-        title=(
-            "Type `Reference` referencing `Practitioner, RelatedPerson` "
-            "(represented as `dict` in JSON)"
-        ),
-        description="Persons involved in the encounter other than the patient",
+        title="Persons involved in the encounter other than the patient",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner", "RelatedPerson"],
     )
 
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Period of time during the encounter that the participant participated",
+        title="Period of time during the encounter that the participant participated",
+        description=(
+            "The period of time that the specified participant participated in the "
+            "encounter. These can overlap or be sub-sets of the overall encounter's"
+            " period."
+        ),
     )
 
     type: ListType[fhirtypes.CodeableConceptType] = Field(
-        None,
-        alias="type",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Role of participant in encounter",
+        None, alias="type", title="Role of participant in encounter", description=None,
     )
 
 
@@ -446,18 +505,29 @@ class EncounterStatusHistory(backboneelement.BackboneElement):
     period: fhirtypes.PeriodType = Field(
         ...,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="The time that the episode was in the specified status",
+        title="The time that the episode was in the specified status",
+        description=None,
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description=(
+        title=(
             "planned | arrived | triaged | in-progress | onleave | finished | "
             "cancelled +"
         ),
+        description=None,
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "planned",
+            "arrived",
+            "triaged",
+            "in-progress",
+            "onleave",
+            "finished",
+            "cancelled +",
+        ],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."

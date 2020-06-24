@@ -30,8 +30,8 @@ class RelatedPerson(domainresource.DomainResource):
     active: bool = Field(
         None,
         alias="active",
-        title="Type `bool`",
-        description="Whether this related person\u0027s record is in active use",
+        title="Whether this related person's record is in active use",
+        description="Whether this related person record is in active use.",
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_active", title="Extension field for ``active``."
@@ -40,15 +40,15 @@ class RelatedPerson(domainresource.DomainResource):
     address: ListType[fhirtypes.AddressType] = Field(
         None,
         alias="address",
-        title="List of `Address` items (represented as `dict` in JSON)",
-        description="Address where the related person can be contacted or visited",
+        title="Address where the related person can be contacted or visited",
+        description=None,
     )
 
     birthDate: fhirtypes.Date = Field(
         None,
         alias="birthDate",
-        title="Type `Date`",
-        description="The date on which the related person was born",
+        title="The date on which the related person was born",
+        description=None,
     )
     birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_birthDate", title="Extension field for ``birthDate``."
@@ -57,8 +57,14 @@ class RelatedPerson(domainresource.DomainResource):
     gender: fhirtypes.Code = Field(
         None,
         alias="gender",
-        title="Type `Code`",
-        description="male | female | other | unknown",
+        title="male | female | other | unknown",
+        description=(
+            "Administrative Gender - the gender that the person is considered to "
+            "have for administration and record keeping purposes."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["male", "female", "other", "unknown"],
     )
     gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_gender", title="Extension field for ``gender``."
@@ -67,48 +73,53 @@ class RelatedPerson(domainresource.DomainResource):
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="A human identifier for this person",
+        title="A human identifier for this person",
+        description="Identifier for a person within a particular scope.",
     )
 
     name: ListType[fhirtypes.HumanNameType] = Field(
-        None,
-        alias="name",
-        title="List of `HumanName` items (represented as `dict` in JSON)",
-        description="A name associated with the person",
+        None, alias="name", title="A name associated with the person", description=None,
     )
 
     patient: fhirtypes.ReferenceType = Field(
         ...,
         alias="patient",
-        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
-        description="The patient this person is related to",
+        title="The patient this person is related to",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient"],
     )
 
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Period of time that this relationship is considered valid",
+        title="Period of time that this relationship is considered valid",
+        description=(
+            "The period of time that this relationship is considered to be valid. "
+            "If there are no dates defined, then the interval is unknown."
+        ),
     )
 
     photo: ListType[fhirtypes.AttachmentType] = Field(
-        None,
-        alias="photo",
-        title="List of `Attachment` items (represented as `dict` in JSON)",
-        description="Image of the person",
+        None, alias="photo", title="Image of the person", description=None,
     )
 
     relationship: fhirtypes.CodeableConceptType = Field(
         None,
         alias="relationship",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The nature of the relationship",
+        title="The nature of the relationship",
+        description=(
+            "The nature of the relationship between a patient and the related "
+            "person."
+        ),
     )
 
     telecom: ListType[fhirtypes.ContactPointType] = Field(
         None,
         alias="telecom",
-        title="List of `ContactPoint` items (represented as `dict` in JSON)",
-        description="A contact detail for the person",
+        title="A contact detail for the person",
+        description=(
+            "A contact detail for the person, e.g. a telephone number or an email "
+            "address."
+        ),
     )

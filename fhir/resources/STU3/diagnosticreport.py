@@ -33,40 +33,53 @@ class DiagnosticReport(domainresource.DomainResource):
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
-        title=(
-            "List of `Reference` items referencing `CarePlan, "
-            "ImmunizationRecommendation, MedicationRequest, NutritionOrder, "
-            "ProcedureRequest, ReferralRequest` (represented as `dict` in JSON)"
-        ),
-        description="What was requested",
+        title="What was requested",
+        description="Details concerning a test or procedure requested.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "CarePlan",
+            "ImmunizationRecommendation",
+            "MedicationRequest",
+            "NutritionOrder",
+            "ProcedureRequest",
+            "ReferralRequest",
+        ],
     )
 
     category: fhirtypes.CodeableConceptType = Field(
         None,
         alias="category",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Service category",
+        title="Service category",
+        description=(
+            "A code that classifies the clinical discipline, department or "
+            "diagnostic service that created the report (e.g. cardiology, "
+            "biochemistry, hematology, MRI). This is used for searching, sorting "
+            "and display purposes."
+        ),
     )
 
     code: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Name/Code for this diagnostic report",
+        title="Name/Code for this diagnostic report",
+        description="A code or name that describes this diagnostic report.",
     )
 
     codedDiagnosis: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="codedDiagnosis",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Codes for the conclusion",
+        title="Codes for the conclusion",
+        description=None,
     )
 
     conclusion: fhirtypes.String = Field(
         None,
         alias="conclusion",
-        title="Type `String`",
-        description="Clinical Interpretation of test results",
+        title="Clinical Interpretation of test results",
+        description=(
+            "Concise and clinically contextualized impression / summary of the "
+            "diagnostic report."
+        ),
     )
     conclusion__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_conclusion", title="Extension field for ``conclusion``."
@@ -75,19 +88,27 @@ class DiagnosticReport(domainresource.DomainResource):
     context: fhirtypes.ReferenceType = Field(
         None,
         alias="context",
-        title=(
-            "Type `Reference` referencing `Encounter, EpisodeOfCare` (represented "
-            "as `dict` in JSON)"
+        title="Health care event when test ordered",
+        description=(
+            "The healthcare event  (e.g. a patient and healthcare provider "
+            "interaction) which this DiagnosticReport per is about."
         ),
-        description="Health care event when test ordered",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Encounter", "EpisodeOfCare"],
     )
 
     effectiveDateTime: fhirtypes.DateTime = Field(
         None,
         alias="effectiveDateTime",
-        title="Type `DateTime`",
-        description="Clinically relevant time/time-period for report",
-        one_of_many="effective",  # Choice of Data Types. i.e value[x]
+        title="Clinically relevant time/time-period for report",
+        description=(
+            "The time or time-period the observed values are related to. When the "
+            "subject of the report is a patient, this is usually either the time of"
+            " the procedure or of specimen collection(s), but very often the source"
+            " of the date/time is not known, only the date/time itself."
+        ),
+        # Choice of Data Types. i.e effective[x]
+        one_of_many="effective",
         one_of_many_required=False,
     )
     effectiveDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -99,44 +120,62 @@ class DiagnosticReport(domainresource.DomainResource):
     effectivePeriod: fhirtypes.PeriodType = Field(
         None,
         alias="effectivePeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Clinically relevant time/time-period for report",
-        one_of_many="effective",  # Choice of Data Types. i.e value[x]
+        title="Clinically relevant time/time-period for report",
+        description=(
+            "The time or time-period the observed values are related to. When the "
+            "subject of the report is a patient, this is usually either the time of"
+            " the procedure or of specimen collection(s), but very often the source"
+            " of the date/time is not known, only the date/time itself."
+        ),
+        # Choice of Data Types. i.e effective[x]
+        one_of_many="effective",
         one_of_many_required=False,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Business identifier for report",
+        title="Business identifier for report",
+        description="Identifiers assigned to this report by the performer or other systems.",
     )
 
     image: ListType[fhirtypes.DiagnosticReportImageType] = Field(
         None,
         alias="image",
-        title="List of `DiagnosticReportImage` items (represented as `dict` in JSON)",
-        description="Key images associated with this report",
+        title="Key images associated with this report",
+        description=(
+            "A list of key images associated with this report. The images are "
+            "generally created during the diagnostic process, and may be directly "
+            "of the patient, or of treated specimens (i.e. slides of interest)."
+        ),
     )
 
     imagingStudy: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="imagingStudy",
         title=(
-            "List of `Reference` items referencing `ImagingStudy, ImagingManifest` "
-            "(represented as `dict` in JSON)"
-        ),
-        description=(
             "Reference to full details of imaging associated with the diagnostic "
             "report"
         ),
+        description=(
+            "One or more links to full details of any imaging performed during the "
+            "diagnostic investigation. Typically, this is imaging performed by "
+            "DICOM enabled modalities, but this is not required. A fully enabled "
+            "PACS viewer can use this information to provide views of the source "
+            "images."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ImagingStudy", "ImagingManifest"],
     )
 
     issued: fhirtypes.Instant = Field(
         None,
         alias="issued",
-        title="Type `Instant`",
-        description="DateTime this version was released",
+        title="DateTime this version was released",
+        description=(
+            "The date and time that this version of the report was released from "
+            "the source diagnostic service."
+        ),
     )
     issued__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_issued", title="Extension field for ``issued``."
@@ -145,45 +184,52 @@ class DiagnosticReport(domainresource.DomainResource):
     performer: ListType[fhirtypes.DiagnosticReportPerformerType] = Field(
         None,
         alias="performer",
-        title=(
-            "List of `DiagnosticReportPerformer` items (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Participants in producing the report",
+        title="Participants in producing the report",
+        description="Indicates who or what participated in producing the report.",
     )
 
     presentedForm: ListType[fhirtypes.AttachmentType] = Field(
         None,
         alias="presentedForm",
-        title="List of `Attachment` items (represented as `dict` in JSON)",
-        description="Entire report as issued",
+        title="Entire report as issued",
+        description=(
+            "Rich text representation of the entire result as issued by the "
+            "diagnostic service. Multiple formats are allowed but they SHALL be "
+            "semantically equivalent."
+        ),
     )
 
     result: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="result",
-        title=(
-            "List of `Reference` items referencing `Observation` (represented as "
-            "`dict` in JSON)"
+        title="Observations - simple, or complex nested groups",
+        description=(
+            "Observations that are part of this diagnostic report. Observations can"
+            ' be simple name/value pairs (e.g. "atomic" results), or they can be '
+            "grouping observations that include references to other members of the "
+            'group (e.g. "panels").'
         ),
-        description="Observations - simple, or complex nested groups",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Observation"],
     )
 
     specimen: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="specimen",
-        title=(
-            "List of `Reference` items referencing `Specimen` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Specimens this report is based on",
+        title="Specimens this report is based on",
+        description="Details about the specimens on which this diagnostic report is based.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Specimen"],
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="registered | partial | preliminary | final +",
+        title="registered | partial | preliminary | final +",
+        description="The status of the diagnostic report as a whole.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["registered", "partial", "preliminary", "final +"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -192,11 +238,14 @@ class DiagnosticReport(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title=(
-            "Type `Reference` referencing `Patient, Group, Device, Location` "
-            "(represented as `dict` in JSON)"
+        title="The subject of the report - usually, but not always, the patient",
+        description=(
+            "The subject of the report. Usually, but not always, this is a patient."
+            " However diagnostic services also perform analyses on specimens "
+            "collected from a variety of other sources."
         ),
-        description="The subject of the report - usually, but not always, the patient",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "Group", "Device", "Location"],
     )
 
     @root_validator(pre=True)
@@ -252,8 +301,12 @@ class DiagnosticReportImage(backboneelement.BackboneElement):
     comment: fhirtypes.String = Field(
         None,
         alias="comment",
-        title="Type `String`",
-        description="Comment about the image (e.g. explanation)",
+        title="Comment about the image (e.g. explanation)",
+        description=(
+            "A comment about the image. Typically, this is used to provide an "
+            "explanation for why the image is included, or to draw the viewer's "
+            "attention to important features."
+        ),
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comment", title="Extension field for ``comment``."
@@ -262,8 +315,10 @@ class DiagnosticReportImage(backboneelement.BackboneElement):
     link: fhirtypes.ReferenceType = Field(
         ...,
         alias="link",
-        title="Type `Reference` referencing `Media` (represented as `dict` in JSON)",
-        description="Reference to the image source",
+        title="Reference to the image source",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Media"],
     )
 
 
@@ -281,16 +336,22 @@ class DiagnosticReportPerformer(backboneelement.BackboneElement):
     actor: fhirtypes.ReferenceType = Field(
         ...,
         alias="actor",
-        title=(
-            "Type `Reference` referencing `Practitioner, Organization` (represented"
-            " as `dict` in JSON)"
+        title="Practitioner or Organization  participant",
+        description=(
+            "The reference to the  practitioner or organization involved in "
+            "producing the report. For example, the diagnostic service that is "
+            "responsible for issuing the report."
         ),
-        description="Practitioner or Organization  participant",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner", "Organization"],
     )
 
     role: fhirtypes.CodeableConceptType = Field(
         None,
         alias="role",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type of performer",
+        title="Type of performer",
+        description=(
+            "Describes the type of participation (e.g.  a responsible party, "
+            "author, or verifier)."
+        ),
     )

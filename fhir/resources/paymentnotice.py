@@ -28,12 +28,15 @@ class PaymentNotice(domainresource.DomainResource):
     amount: fhirtypes.MoneyType = Field(
         ...,
         alias="amount",
-        title="Type `Money` (represented as `dict` in JSON)",
-        description="Monetary amount of the payment",
+        title="Monetary amount of the payment",
+        description="The amount sent to the payee.",
     )
 
     created: fhirtypes.DateTime = Field(
-        ..., alias="created", title="Type `DateTime`", description="Creation date"
+        ...,
+        alias="created",
+        title="Creation date",
+        description="The date when this resource was created.",
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_created", title="Extension field for ``created``."
@@ -42,35 +45,36 @@ class PaymentNotice(domainresource.DomainResource):
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Business Identifier for the payment noctice",
+        title="Business Identifier for the payment noctice",
+        description="A unique identifier assigned to this payment notice.",
     )
 
     payee: fhirtypes.ReferenceType = Field(
         None,
         alias="payee",
-        title=(
-            "Type `Reference` referencing `Practitioner, PractitionerRole, "
-            "Organization` (represented as `dict` in JSON)"
+        title="Party being paid",
+        description=(
+            "The party who will receive or has received payment that is the subject"
+            " of this notification."
         ),
-        description="Party being paid",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
     )
 
     payment: fhirtypes.ReferenceType = Field(
         ...,
         alias="payment",
-        title=(
-            "Type `Reference` referencing `PaymentReconciliation` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Payment reference",
+        title="Payment reference",
+        description="A reference to the payment which is the subject of this notice.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["PaymentReconciliation"],
     )
 
     paymentDate: fhirtypes.Date = Field(
         None,
         alias="paymentDate",
-        title="Type `Date`",
-        description="Payment or clearing date",
+        title="Payment or clearing date",
+        description="The date when the above payment action occurred.",
     )
     paymentDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_paymentDate", title="Extension field for ``paymentDate``."
@@ -79,53 +83,57 @@ class PaymentNotice(domainresource.DomainResource):
     paymentStatus: fhirtypes.CodeableConceptType = Field(
         None,
         alias="paymentStatus",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Issued or cleared Status of the payment",
+        title="Issued or cleared Status of the payment",
+        description="A code indicating whether payment has been sent or cleared.",
     )
 
     provider: fhirtypes.ReferenceType = Field(
         None,
         alias="provider",
-        title=(
-            "Type `Reference` referencing `Practitioner, PractitionerRole, "
-            "Organization` (represented as `dict` in JSON)"
+        title="Responsible practitioner",
+        description=(
+            "The practitioner who is responsible for the services rendered to the "
+            "patient."
         ),
-        description="Responsible practitioner",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
     )
 
     recipient: fhirtypes.ReferenceType = Field(
         ...,
         alias="recipient",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Party being notified",
+        title="Party being notified",
+        description="The party who is notified of the payment status.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     request: fhirtypes.ReferenceType = Field(
         None,
         alias="request",
-        title=(
-            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
-        ),
-        description="Request reference",
+        title="Request reference",
+        description="Reference of resource for which payment is being made.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     response: fhirtypes.ReferenceType = Field(
         None,
         alias="response",
-        title=(
-            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
-        ),
-        description="Response reference",
+        title="Response reference",
+        description="Reference of response to resource for which payment is being made.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="active | cancelled | draft | entered-in-error",
+        title="active | cancelled | draft | entered-in-error",
+        description="The status of the resource instance.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["active", "cancelled", "draft", "entered-in-error"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."

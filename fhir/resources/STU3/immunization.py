@@ -30,8 +30,8 @@ class Immunization(domainresource.DomainResource):
     date: fhirtypes.DateTime = Field(
         None,
         alias="date",
-        title="Type `DateTime`",
-        description="Vaccination administration date",
+        title="Vaccination administration date",
+        description="Date vaccine administered or was to be administered.",
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -40,25 +40,27 @@ class Immunization(domainresource.DomainResource):
     doseQuantity: fhirtypes.QuantityType = Field(
         None,
         alias="doseQuantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Amount of vaccine administered",
+        title="Amount of vaccine administered",
+        description="The quantity of vaccine product that was administered.",
     )
 
     encounter: fhirtypes.ReferenceType = Field(
         None,
         alias="encounter",
-        title=(
-            "Type `Reference` referencing `Encounter` (represented as `dict` in "
-            "JSON)"
+        title="Encounter administered as part of",
+        description=(
+            "The visit or admission or other contact between patient and health "
+            "care provider the immunization was performed as part of."
         ),
-        description="Encounter administered as part of",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Encounter"],
     )
 
     expirationDate: fhirtypes.Date = Field(
         None,
         alias="expirationDate",
-        title="Type `Date`",
-        description="Vaccine expiration date",
+        title="Vaccine expiration date",
+        description="Date vaccine batch expires.",
     )
     expirationDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_expirationDate", title="Extension field for ``expirationDate``."
@@ -67,28 +69,34 @@ class Immunization(domainresource.DomainResource):
     explanation: fhirtypes.ImmunizationExplanationType = Field(
         None,
         alias="explanation",
-        title="Type `ImmunizationExplanation` (represented as `dict` in JSON)",
-        description="Administration/non-administration reasons",
+        title="Administration/non-administration reasons",
+        description="Reasons why a vaccine was or was not administered.",
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Business identifier",
+        title="Business identifier",
+        description="A unique identifier assigned to this immunization record.",
     )
 
     location: fhirtypes.ReferenceType = Field(
         None,
         alias="location",
-        title=(
-            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
+        title="Where vaccination occurred",
+        description=(
+            "The service delivery location where the vaccine administration "
+            "occurred."
         ),
-        description="Where vaccination occurred",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Location"],
     )
 
     lotNumber: fhirtypes.String = Field(
-        None, alias="lotNumber", title="Type `String`", description="Vaccine lot number"
+        None,
+        alias="lotNumber",
+        title="Vaccine lot number",
+        description="Lot number of the  vaccine product.",
     )
     lotNumber__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lotNumber", title="Extension field for ``lotNumber``."
@@ -97,18 +105,17 @@ class Immunization(domainresource.DomainResource):
     manufacturer: fhirtypes.ReferenceType = Field(
         None,
         alias="manufacturer",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Vaccine manufacturer",
+        title="Vaccine manufacturer",
+        description="Name of vaccine manufacturer.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     notGiven: bool = Field(
         ...,
         alias="notGiven",
-        title="Type `bool`",
-        description="Flag for whether immunization was given",
+        title="Flag for whether immunization was given",
+        description="Indicates if the vaccination was or was not given.",
     )
     notGiven__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_notGiven", title="Extension field for ``notGiven``."
@@ -117,32 +124,38 @@ class Immunization(domainresource.DomainResource):
     note: ListType[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
-        title="List of `Annotation` items (represented as `dict` in JSON)",
-        description="Vaccination notes",
+        title="Vaccination notes",
+        description=(
+            "Extra information about the immunization that is not conveyed by the "
+            "other attributes."
+        ),
     )
 
     patient: fhirtypes.ReferenceType = Field(
         ...,
         alias="patient",
-        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
-        description="Who was immunized",
+        title="Who was immunized",
+        description="The patient who either received or did not receive the immunization.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient"],
     )
 
     practitioner: ListType[fhirtypes.ImmunizationPractitionerType] = Field(
         None,
         alias="practitioner",
-        title=(
-            "List of `ImmunizationPractitioner` items (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Who performed event",
+        title="Who performed event",
+        description="Indicates who or what performed the event.",
     )
 
     primarySource: bool = Field(
         ...,
         alias="primarySource",
-        title="Type `bool`",
-        description="Indicates context the data was recorded in",
+        title="Indicates context the data was recorded in",
+        description=(
+            "An indication that the content of the record is based on information "
+            "from the person who administered the vaccine. This reflects the "
+            "context under which the data was originally recorded."
+        ),
     )
     primarySource__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_primarySource", title="Extension field for ``primarySource``."
@@ -151,36 +164,45 @@ class Immunization(domainresource.DomainResource):
     reaction: ListType[fhirtypes.ImmunizationReactionType] = Field(
         None,
         alias="reaction",
-        title="List of `ImmunizationReaction` items (represented as `dict` in JSON)",
-        description="Details of a reaction that follows immunization",
+        title="Details of a reaction that follows immunization",
+        description=(
+            "Categorical data indicating that an adverse event is associated in "
+            "time to an immunization."
+        ),
     )
 
     reportOrigin: fhirtypes.CodeableConceptType = Field(
         None,
         alias="reportOrigin",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Indicates the source of a secondarily reported record",
+        title="Indicates the source of a secondarily reported record",
+        description=(
+            "The source of the data when the report of the immunization event is "
+            "not based on information from the person who administered the vaccine."
+        ),
     )
 
     route: fhirtypes.CodeableConceptType = Field(
         None,
         alias="route",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="How vaccine entered body",
+        title="How vaccine entered body",
+        description="The path by which the vaccine product is taken into the body.",
     )
 
     site: fhirtypes.CodeableConceptType = Field(
         None,
         alias="site",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Body site vaccine  was administered",
+        title="Body site vaccine  was administered",
+        description="Body site where vaccine was administered.",
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="completed | entered-in-error",
+        title="completed | entered-in-error",
+        description="Indicates the current status of the vaccination event.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["completed", "entered-in-error"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -191,18 +213,18 @@ class Immunization(domainresource.DomainResource):
     ] = Field(
         None,
         alias="vaccinationProtocol",
-        title=(
-            "List of `ImmunizationVaccinationProtocol` items (represented as `dict`"
-            " in JSON)"
+        title="What protocol was followed",
+        description=(
+            "Contains information about the protocol(s) under which the vaccine was"
+            " administered."
         ),
-        description="What protocol was followed",
     )
 
     vaccineCode: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="vaccineCode",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Vaccine product administered",
+        title="Vaccine product administered",
+        description="Vaccine that was administered or was to be administered.",
     )
 
 
@@ -220,15 +242,15 @@ class ImmunizationExplanation(backboneelement.BackboneElement):
     reason: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="reason",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Why immunization occurred",
+        title="Why immunization occurred",
+        description="Reasons why a vaccine was administered.",
     )
 
     reasonNotGiven: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="reasonNotGiven",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Why immunization did not occur",
+        title="Why immunization did not occur",
+        description="Reason why a vaccine was not administered.",
     )
 
 
@@ -246,18 +268,20 @@ class ImmunizationPractitioner(backboneelement.BackboneElement):
     actor: fhirtypes.ReferenceType = Field(
         ...,
         alias="actor",
-        title=(
-            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Individual who was performing",
+        title="Individual who was performing",
+        description="The device, practitioner, etc. who performed the action.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner"],
     )
 
     role: fhirtypes.CodeableConceptType = Field(
         None,
         alias="role",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="What type of performance was done",
+        title="What type of performance was done",
+        description=(
+            "Describes the type of performance (e.g. ordering provider, "
+            "administering provider, etc.)."
+        ),
     )
 
 
@@ -274,7 +298,10 @@ class ImmunizationReaction(backboneelement.BackboneElement):
     resource_type = Field("ImmunizationReaction", const=True)
 
     date: fhirtypes.DateTime = Field(
-        None, alias="date", title="Type `DateTime`", description="When reaction started"
+        None,
+        alias="date",
+        title="When reaction started",
+        description="Date of reaction to the immunization.",
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -283,18 +310,17 @@ class ImmunizationReaction(backboneelement.BackboneElement):
     detail: fhirtypes.ReferenceType = Field(
         None,
         alias="detail",
-        title=(
-            "Type `Reference` referencing `Observation` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Additional information on reaction",
+        title="Additional information on reaction",
+        description="Details of the reaction.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Observation"],
     )
 
     reported: bool = Field(
         None,
         alias="reported",
-        title="Type `bool`",
-        description="Indicates self-reported reaction",
+        title="Indicates self-reported reaction",
+        description="Self-reported indicator.",
     )
     reported__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_reported", title="Extension field for ``reported``."
@@ -316,18 +342,20 @@ class ImmunizationVaccinationProtocol(backboneelement.BackboneElement):
     authority: fhirtypes.ReferenceType = Field(
         None,
         alias="authority",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Who is responsible for protocol",
+        title="Who is responsible for protocol",
+        description="Indicates the authority who published the protocol.  E.g. ACIP.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Details of vaccine protocol",
+        title="Details of vaccine protocol",
+        description=(
+            "Contains the description about the protocol under which the vaccine "
+            "was administered."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -336,8 +364,8 @@ class ImmunizationVaccinationProtocol(backboneelement.BackboneElement):
     doseSequence: fhirtypes.PositiveInt = Field(
         None,
         alias="doseSequence",
-        title="Type `PositiveInt`",
-        description="Dose number within series",
+        title="Dose number within series",
+        description="Nominal position in a series.",
     )
     doseSequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_doseSequence", title="Extension field for ``doseSequence``."
@@ -346,22 +374,31 @@ class ImmunizationVaccinationProtocol(backboneelement.BackboneElement):
     doseStatus: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="doseStatus",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Indicates if dose counts towards immunity",
+        title="Indicates if dose counts towards immunity",
+        description=(
+            'Indicates if the immunization event should "count" against  the '
+            "protocol."
+        ),
     )
 
     doseStatusReason: fhirtypes.CodeableConceptType = Field(
         None,
         alias="doseStatusReason",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Why dose does (not) count",
+        title="Why dose does (not) count",
+        description=(
+            "Provides an explanation as to why an immunization event should or "
+            "should not count against the protocol."
+        ),
     )
 
     series: fhirtypes.String = Field(
         None,
         alias="series",
-        title="Type `String`",
-        description="Name of vaccine series",
+        title="Name of vaccine series",
+        description=(
+            "One possible path to achieve presumed immunity against a disease - "
+            "within the context of an authority."
+        ),
     )
     series__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_series", title="Extension field for ``series``."
@@ -370,8 +407,8 @@ class ImmunizationVaccinationProtocol(backboneelement.BackboneElement):
     seriesDoses: fhirtypes.PositiveInt = Field(
         None,
         alias="seriesDoses",
-        title="Type `PositiveInt`",
-        description="Recommended number of doses for immunity",
+        title="Recommended number of doses for immunity",
+        description="The recommended number of doses to achieve immunity.",
     )
     seriesDoses__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_seriesDoses", title="Extension field for ``seriesDoses``."
@@ -380,6 +417,6 @@ class ImmunizationVaccinationProtocol(backboneelement.BackboneElement):
     targetDisease: ListType[fhirtypes.CodeableConceptType] = Field(
         ...,
         alias="targetDisease",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Disease immunized against",
+        title="Disease immunized against",
+        description="The targeted disease.",
     )

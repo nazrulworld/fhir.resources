@@ -30,8 +30,11 @@ class AllergyIntolerance(domainresource.DomainResource):
     assertedDate: fhirtypes.DateTime = Field(
         None,
         alias="assertedDate",
-        title="Type `DateTime`",
-        description="Date record was believed accurate",
+        title="Date record was believed accurate",
+        description=(
+            "The date on which the existance of the AllergyIntolerance was first "
+            "asserted or acknowledged."
+        ),
     )
     assertedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_assertedDate", title="Extension field for ``assertedDate``."
@@ -40,18 +43,20 @@ class AllergyIntolerance(domainresource.DomainResource):
     asserter: fhirtypes.ReferenceType = Field(
         None,
         alias="asserter",
-        title=(
-            "Type `Reference` referencing `Patient, RelatedPerson, Practitioner` "
-            "(represented as `dict` in JSON)"
-        ),
-        description="Source of the information about the allergy",
+        title="Source of the information about the allergy",
+        description="The source of the information about the allergy that is recorded.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "RelatedPerson", "Practitioner"],
     )
 
     category: ListType[fhirtypes.Code] = Field(
         None,
         alias="category",
-        title="List of `Code` items",
-        description="food | medication | environment | biologic",
+        title="food | medication | environment | biologic",
+        description="Category of the identified substance.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["food", "medication", "environment", "biologic"],
     )
     category__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_category", title="Extension field for ``category``."
@@ -60,8 +65,11 @@ class AllergyIntolerance(domainresource.DomainResource):
     clinicalStatus: fhirtypes.Code = Field(
         None,
         alias="clinicalStatus",
-        title="Type `Code`",
-        description="active | inactive | resolved",
+        title="active | inactive | resolved",
+        description="The clinical status of the allergy or intolerance.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["active", "inactive", "resolved"],
     )
     clinicalStatus__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_clinicalStatus", title="Extension field for ``clinicalStatus``."
@@ -70,15 +78,30 @@ class AllergyIntolerance(domainresource.DomainResource):
     code: fhirtypes.CodeableConceptType = Field(
         None,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Code that identifies the allergy or intolerance",
+        title="Code that identifies the allergy or intolerance",
+        description=(
+            "Code for an allergy or intolerance statement (either a positive or a "
+            "negated/excluded statement).  This may be a code for a substance or "
+            "pharmaceutical product that is considered to be responsible for the "
+            'adverse reaction risk (e.g., "Latex"), an allergy or intolerance '
+            'condition (e.g., "Latex allergy"), or a negated/excluded code for a '
+            'specific substance or class (e.g., "No latex allergy") or a general or'
+            ' categorical negated statement (e.g.,  "No known allergy", "No known '
+            'drug allergies").'
+        ),
     )
 
     criticality: fhirtypes.Code = Field(
         None,
         alias="criticality",
-        title="Type `Code`",
-        description="low | high | unable-to-assess",
+        title="low | high | unable-to-assess",
+        description=(
+            "Estimate of the potential clinical harm, or seriousness, of the "
+            "reaction to the identified substance."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["low", "high", "unable-to-assess"],
     )
     criticality__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_criticality", title="Extension field for ``criticality``."
@@ -87,15 +110,24 @@ class AllergyIntolerance(domainresource.DomainResource):
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="External ids for this item",
+        title="External ids for this item",
+        description=(
+            "This records identifiers associated with this allergy/intolerance "
+            "concern that are defined by business processes and/or used to refer to"
+            " it when a direct URL reference to the resource itself is not "
+            "appropriate (e.g. in CDA documents, or in written / printed "
+            "documentation)."
+        ),
     )
 
     lastOccurrence: fhirtypes.DateTime = Field(
         None,
         alias="lastOccurrence",
-        title="Type `DateTime`",
-        description="Date(/time) of last known occurrence of a reaction",
+        title="Date(/time) of last known occurrence of a reaction",
+        description=(
+            "Represents the date and/or time of the last known occurrence of a "
+            "reaction event."
+        ),
     )
     lastOccurrence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastOccurrence", title="Extension field for ``lastOccurrence``."
@@ -104,25 +136,36 @@ class AllergyIntolerance(domainresource.DomainResource):
     note: ListType[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
-        title="List of `Annotation` items (represented as `dict` in JSON)",
-        description="Additional text not captured in other fields",
+        title="Additional text not captured in other fields",
+        description=(
+            "Additional narrative about the propensity for the Adverse Reaction, "
+            "not captured in other fields."
+        ),
     )
 
     onsetAge: fhirtypes.AgeType = Field(
         None,
         alias="onsetAge",
-        title="Type `Age` (represented as `dict` in JSON)",
-        description="When allergy or intolerance was identified",
-        one_of_many="onset",  # Choice of Data Types. i.e value[x]
+        title="When allergy or intolerance was identified",
+        description=(
+            "Estimated or actual date,  date-time, or age when allergy or "
+            "intolerance was identified."
+        ),
+        # Choice of Data Types. i.e onset[x]
+        one_of_many="onset",
         one_of_many_required=False,
     )
 
     onsetDateTime: fhirtypes.DateTime = Field(
         None,
         alias="onsetDateTime",
-        title="Type `DateTime`",
-        description="When allergy or intolerance was identified",
-        one_of_many="onset",  # Choice of Data Types. i.e value[x]
+        title="When allergy or intolerance was identified",
+        description=(
+            "Estimated or actual date,  date-time, or age when allergy or "
+            "intolerance was identified."
+        ),
+        # Choice of Data Types. i.e onset[x]
+        one_of_many="onset",
         one_of_many_required=False,
     )
     onsetDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -132,27 +175,39 @@ class AllergyIntolerance(domainresource.DomainResource):
     onsetPeriod: fhirtypes.PeriodType = Field(
         None,
         alias="onsetPeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="When allergy or intolerance was identified",
-        one_of_many="onset",  # Choice of Data Types. i.e value[x]
+        title="When allergy or intolerance was identified",
+        description=(
+            "Estimated or actual date,  date-time, or age when allergy or "
+            "intolerance was identified."
+        ),
+        # Choice of Data Types. i.e onset[x]
+        one_of_many="onset",
         one_of_many_required=False,
     )
 
     onsetRange: fhirtypes.RangeType = Field(
         None,
         alias="onsetRange",
-        title="Type `Range` (represented as `dict` in JSON)",
-        description="When allergy or intolerance was identified",
-        one_of_many="onset",  # Choice of Data Types. i.e value[x]
+        title="When allergy or intolerance was identified",
+        description=(
+            "Estimated or actual date,  date-time, or age when allergy or "
+            "intolerance was identified."
+        ),
+        # Choice of Data Types. i.e onset[x]
+        one_of_many="onset",
         one_of_many_required=False,
     )
 
     onsetString: fhirtypes.String = Field(
         None,
         alias="onsetString",
-        title="Type `String`",
-        description="When allergy or intolerance was identified",
-        one_of_many="onset",  # Choice of Data Types. i.e value[x]
+        title="When allergy or intolerance was identified",
+        description=(
+            "Estimated or actual date,  date-time, or age when allergy or "
+            "intolerance was identified."
+        ),
+        # Choice of Data Types. i.e onset[x]
+        one_of_many="onset",
         one_of_many_required=False,
     )
     onsetString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -162,35 +217,45 @@ class AllergyIntolerance(domainresource.DomainResource):
     patient: fhirtypes.ReferenceType = Field(
         ...,
         alias="patient",
-        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
-        description="Who the sensitivity is for",
+        title="Who the sensitivity is for",
+        description="The patient who has the allergy or intolerance.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient"],
     )
 
     reaction: ListType[fhirtypes.AllergyIntoleranceReactionType] = Field(
         None,
         alias="reaction",
-        title=(
-            "List of `AllergyIntoleranceReaction` items (represented as `dict` in "
-            "JSON)"
+        title="Adverse Reaction Events linked to exposure to substance",
+        description=(
+            "Details about each adverse reaction event linked to exposure to the "
+            "identified substance."
         ),
-        description="Adverse Reaction Events linked to exposure to substance",
     )
 
     recorder: fhirtypes.ReferenceType = Field(
         None,
         alias="recorder",
-        title=(
-            "Type `Reference` referencing `Practitioner, Patient` (represented as "
-            "`dict` in JSON)"
+        title="Who recorded the sensitivity",
+        description=(
+            "Individual who recorded the record and takes responsibility for its "
+            "content."
         ),
-        description="Who recorded the sensitivity",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner", "Patient"],
     )
 
     type: fhirtypes.Code = Field(
         None,
         alias="type",
-        title="Type `Code`",
-        description="allergy | intolerance - Underlying mechanism (if known)",
+        title="allergy | intolerance - Underlying mechanism (if known)",
+        description=(
+            "Identification of the underlying physiological mechanism for the "
+            "reaction risk."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["allergy", "intolerance - Underlying mechanism (if known)"],
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -199,8 +264,15 @@ class AllergyIntolerance(domainresource.DomainResource):
     verificationStatus: fhirtypes.Code = Field(
         ...,
         alias="verificationStatus",
-        title="Type `Code`",
-        description="unconfirmed | confirmed | refuted | entered-in-error",
+        title="unconfirmed | confirmed | refuted | entered-in-error",
+        description=(
+            "Assertion about certainty associated with the propensity, or potential"
+            " risk, of a reaction to the identified substance (including "
+            "pharmaceutical product)."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["unconfirmed", "confirmed", "refuted", "entered-in-error"],
     )
     verificationStatus__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -268,8 +340,11 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Description of the event as a whole",
+        title="Description of the event as a whole",
+        description=(
+            "Text description about the reaction as a whole, including details of "
+            "the manifestation if required."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -278,29 +353,38 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
     exposureRoute: fhirtypes.CodeableConceptType = Field(
         None,
         alias="exposureRoute",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="How the subject was exposed to the substance",
+        title="How the subject was exposed to the substance",
+        description=(
+            "Identification of the route by which the subject was exposed to the "
+            "substance."
+        ),
     )
 
     manifestation: ListType[fhirtypes.CodeableConceptType] = Field(
         ...,
         alias="manifestation",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Clinical symptoms/signs associated with the Event",
+        title="Clinical symptoms/signs associated with the Event",
+        description=(
+            "Clinical symptoms and/or signs that are observed or associated with "
+            "the adverse reaction event."
+        ),
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
-        title="List of `Annotation` items (represented as `dict` in JSON)",
-        description="Text about event not captured in other fields",
+        title="Text about event not captured in other fields",
+        description=(
+            "Additional text about the adverse reaction event not captured in other"
+            " fields."
+        ),
     )
 
     onset: fhirtypes.DateTime = Field(
         None,
         alias="onset",
-        title="Type `DateTime`",
-        description="Date(/time) when manifestations showed",
+        title="Date(/time) when manifestations showed",
+        description="Record of the date and/or time of the onset of the Reaction.",
     )
     onset__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_onset", title="Extension field for ``onset``."
@@ -309,8 +393,14 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
     severity: fhirtypes.Code = Field(
         None,
         alias="severity",
-        title="Type `Code`",
-        description="mild | moderate | severe (of event as a whole)",
+        title="mild | moderate | severe (of event as a whole)",
+        description=(
+            "Clinical assessment of the severity of the reaction event as a whole, "
+            "potentially considering multiple different manifestations."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["mild", "moderate", "severe (of event as a whole)"],
     )
     severity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_severity", title="Extension field for ``severity``."
@@ -319,9 +409,18 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
     substance: fhirtypes.CodeableConceptType = Field(
         None,
         alias="substance",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Specific substance or pharmaceutical product considered to be "
             "responsible for event"
+        ),
+        description=(
+            "Identification of the specific substance (or pharmaceutical product) "
+            "considered to be responsible for the Adverse Reaction event. Note: the"
+            " substance for a specific reaction may be different from the substance"
+            " identified as the cause of the risk, but it must be consistent with "
+            "it. For instance, it may be a more specific substance (e.g. a brand "
+            "medication) or a composite product that includes the identified "
+            "substance. It must be clinically safe to only process the 'code' and "
+            "ignore the 'reaction.substance'."
         ),
     )

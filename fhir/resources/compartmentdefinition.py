@@ -29,8 +29,11 @@ class CompartmentDefinition(domainresource.DomainResource):
     code: fhirtypes.Code = Field(
         ...,
         alias="code",
-        title="Type `Code`",
-        description="Patient | Encounter | RelatedPerson | Practitioner | Device",
+        title="Patient | Encounter | RelatedPerson | Practitioner | Device",
+        description="Which compartment this definition describes.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["Patient", "Encounter", "RelatedPerson", "Practitioner", "Device"],
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -39,12 +42,24 @@ class CompartmentDefinition(domainresource.DomainResource):
     contact: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="contact",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Contact details for the publisher",
+        title="Contact details for the publisher",
+        description=(
+            "Contact details to assist a user in finding and communicating with the"
+            " publisher."
+        ),
     )
 
     date: fhirtypes.DateTime = Field(
-        None, alias="date", title="Type `DateTime`", description="Date last changed"
+        None,
+        alias="date",
+        title="Date last changed",
+        description=(
+            "The date  (and optionally time) when the compartment definition was "
+            "published. The date must change when the business version changes and "
+            "it must change if the status code changes. In addition, it should "
+            "change when the substantive content of the compartment definition "
+            "changes."
+        ),
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -53,8 +68,11 @@ class CompartmentDefinition(domainresource.DomainResource):
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown`",
-        description="Natural language description of the compartment definition",
+        title="Natural language description of the compartment definition",
+        description=(
+            "A free text natural language description of the compartment definition"
+            " from a consumer's perspective."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -63,8 +81,12 @@ class CompartmentDefinition(domainresource.DomainResource):
     experimental: bool = Field(
         None,
         alias="experimental",
-        title="Type `bool`",
-        description="For testing purposes, not real usage",
+        title="For testing purposes, not real usage",
+        description=(
+            "A Boolean value to indicate that this compartment definition is "
+            "authored for testing purposes (or education/evaluation/marketing) and "
+            "is not intended to be used for genuine usage."
+        ),
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -73,8 +95,12 @@ class CompartmentDefinition(domainresource.DomainResource):
     name: fhirtypes.String = Field(
         ...,
         alias="name",
-        title="Type `String`",
-        description="Name for this compartment definition (computer friendly)",
+        title="Name for this compartment definition (computer friendly)",
+        description=(
+            "A natural language name identifying the compartment definition. This "
+            "name should be usable as an identifier for the module by machine "
+            "processing applications such as code generation."
+        ),
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -83,8 +109,11 @@ class CompartmentDefinition(domainresource.DomainResource):
     publisher: fhirtypes.String = Field(
         None,
         alias="publisher",
-        title="Type `String`",
-        description="Name of the publisher (organization or individual)",
+        title="Name of the publisher (organization or individual)",
+        description=(
+            "The name of the organization or individual that published the "
+            "compartment definition."
+        ),
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -93,8 +122,11 @@ class CompartmentDefinition(domainresource.DomainResource):
     purpose: fhirtypes.Markdown = Field(
         None,
         alias="purpose",
-        title="Type `Markdown`",
-        description="Why this compartment definition is defined",
+        title="Why this compartment definition is defined",
+        description=(
+            "Explanation of why this compartment definition is needed and why it "
+            "has been designed as it has."
+        ),
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_purpose", title="Extension field for ``purpose``."
@@ -103,18 +135,15 @@ class CompartmentDefinition(domainresource.DomainResource):
     resource: ListType[fhirtypes.CompartmentDefinitionResourceType] = Field(
         None,
         alias="resource",
-        title=(
-            "List of `CompartmentDefinitionResource` items (represented as `dict` "
-            "in JSON)"
-        ),
-        description="How a resource is related to the compartment",
+        title="How a resource is related to the compartment",
+        description="Information about how a resource is related to the compartment.",
     )
 
     search: bool = Field(
         ...,
         alias="search",
-        title="Type `bool`",
-        description="Whether the search syntax is supported",
+        title="Whether the search syntax is supported",
+        description="Whether the search syntax is supported,.",
     )
     search__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_search", title="Extension field for ``search``."
@@ -123,8 +152,14 @@ class CompartmentDefinition(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="draft | active | retired | unknown",
+        title="draft | active | retired | unknown",
+        description=(
+            "The status of this compartment definition. Enables tracking the life-"
+            "cycle of the content."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["draft", "active", "retired", "unknown"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -133,10 +168,19 @@ class CompartmentDefinition(domainresource.DomainResource):
     url: fhirtypes.Uri = Field(
         ...,
         alias="url",
-        title="Type `Uri`",
-        description=(
+        title=(
             "Canonical identifier for this compartment definition, represented as a"
             " URI (globally unique)"
+        ),
+        description=(
+            "An absolute URI that is used to identify this compartment definition "
+            "when it is referenced in a specification, model, design or an "
+            "instance; also called its canonical identifier. This SHOULD be "
+            "globally unique and SHOULD be a literal address at which at which an "
+            "authoritative instance of this compartment definition is (or will be) "
+            "published. This URL can be the target of a canonical reference. It "
+            "SHALL remain the same when the compartment definition is stored on "
+            "different servers."
         ),
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -146,15 +190,30 @@ class CompartmentDefinition(domainresource.DomainResource):
     useContext: ListType[fhirtypes.UsageContextType] = Field(
         None,
         alias="useContext",
-        title="List of `UsageContext` items (represented as `dict` in JSON)",
-        description="The context that the content is intended to support",
+        title="The context that the content is intended to support",
+        description=(
+            "The content was developed with a focus and intent of supporting the "
+            "contexts that are listed. These contexts may be general categories "
+            "(gender, age, ...) or may be references to specific programs "
+            "(insurance plans, studies, ...) and may be used to assist with "
+            "indexing and searching for appropriate compartment definition "
+            "instances."
+        ),
     )
 
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String`",
-        description="Business version of the compartment definition",
+        title="Business version of the compartment definition",
+        description=(
+            "The identifier that is used to identify this version of the "
+            "compartment definition when it is referenced in a specification, "
+            "model, design or instance. This is an arbitrary value managed by the "
+            "compartment definition author and is not expected to be globally "
+            "unique. For example, it might be a timestamp (e.g. yyyymmdd) if a "
+            "managed version is not available. There is also no expectation that "
+            "versions can be placed in a lexicographical sequence."
+        ),
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -173,7 +232,10 @@ class CompartmentDefinitionResource(backboneelement.BackboneElement):
     resource_type = Field("CompartmentDefinitionResource", const=True)
 
     code: fhirtypes.Code = Field(
-        ..., alias="code", title="Type `Code`", description="Name of resource type"
+        ...,
+        alias="code",
+        title="Name of resource type",
+        description="The name of a resource supported by the server.",
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -182,8 +244,8 @@ class CompartmentDefinitionResource(backboneelement.BackboneElement):
     documentation: fhirtypes.String = Field(
         None,
         alias="documentation",
-        title="Type `String`",
-        description="Additional documentation about the resource and compartment",
+        title="Additional documentation about the resource and compartment",
+        description=None,
     )
     documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_documentation", title="Extension field for ``documentation``."
@@ -192,8 +254,12 @@ class CompartmentDefinitionResource(backboneelement.BackboneElement):
     param: ListType[fhirtypes.String] = Field(
         None,
         alias="param",
-        title="List of `String` items",
-        description="Search Parameter Name, or chained parameters",
+        title="Search Parameter Name, or chained parameters",
+        description=(
+            "The name of a search parameter that represents the link to the "
+            "compartment. More than one may be listed because a resource may be "
+            "linked to a compartment in more than one way,."
+        ),
     )
     param__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_param", title="Extension field for ``param``."

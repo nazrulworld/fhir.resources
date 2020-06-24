@@ -29,18 +29,17 @@ class ImmunizationRecommendation(domainresource.DomainResource):
     authority: fhirtypes.ReferenceType = Field(
         None,
         alias="authority",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Who is responsible for protocol",
+        title="Who is responsible for protocol",
+        description="Indicates the authority who published the protocol (e.g. ACIP).",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     date: fhirtypes.DateTime = Field(
         ...,
         alias="date",
-        title="Type `DateTime`",
-        description="Date recommendation(s) created",
+        title="Date recommendation(s) created",
+        description="The date the immunization recommendation(s) were created.",
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -49,15 +48,17 @@ class ImmunizationRecommendation(domainresource.DomainResource):
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Business identifier",
+        title="Business identifier",
+        description="A unique identifier assigned to this particular recommendation record.",
     )
 
     patient: fhirtypes.ReferenceType = Field(
         ...,
         alias="patient",
-        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
-        description="Who this profile is for",
+        title="Who this profile is for",
+        description="The patient the recommendation(s) are for.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient"],
     )
 
     recommendation: ListType[
@@ -65,11 +66,8 @@ class ImmunizationRecommendation(domainresource.DomainResource):
     ] = Field(
         ...,
         alias="recommendation",
-        title=(
-            "List of `ImmunizationRecommendationRecommendation` items (represented "
-            "as `dict` in JSON)"
-        ),
-        description="Vaccine administration recommendations",
+        title="Vaccine administration recommendations",
+        description=None,
     )
 
 
@@ -86,8 +84,8 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
     contraindicatedVaccineCode: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="contraindicatedVaccineCode",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Vaccine which is contraindicated to fulfill the recommendation",
+        title="Vaccine which is contraindicated to fulfill the recommendation",
+        description="Vaccine(s) which should not be used to fulfill the recommendation.",
     )
 
     dateCriterion: ListType[
@@ -95,15 +93,21 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="dateCriterion",
-        title=(
-            "List of `ImmunizationRecommendationRecommendationDateCriterion` items "
-            "(represented as `dict` in JSON)"
+        title="Dates governing proposed immunization",
+        description=(
+            "Vaccine date recommendations.  For example, earliest date to "
+            "administer, latest date to administer, etc."
         ),
-        description="Dates governing proposed immunization",
     )
 
     description: fhirtypes.String = Field(
-        None, alias="description", title="Type `String`", description="Protocol details"
+        None,
+        alias="description",
+        title="Protocol details",
+        description=(
+            "Contains the description about the protocol under which the vaccine "
+            "was administered."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -112,9 +116,13 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
     doseNumberPositiveInt: fhirtypes.PositiveInt = Field(
         None,
         alias="doseNumberPositiveInt",
-        title="Type `PositiveInt`",
-        description="Recommended dose number within series",
-        one_of_many="doseNumber",  # Choice of Data Types. i.e value[x]
+        title="Recommended dose number within series",
+        description=(
+            "Nominal position of the recommended dose in a series (e.g. dose 2 is "
+            "the next recommended dose)."
+        ),
+        # Choice of Data Types. i.e doseNumber[x]
+        one_of_many="doseNumber",
         one_of_many_required=False,
     )
     doseNumberPositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -126,9 +134,13 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
     doseNumberString: fhirtypes.String = Field(
         None,
         alias="doseNumberString",
-        title="Type `String`",
-        description="Recommended dose number within series",
-        one_of_many="doseNumber",  # Choice of Data Types. i.e value[x]
+        title="Recommended dose number within series",
+        description=(
+            "Nominal position of the recommended dose in a series (e.g. dose 2 is "
+            "the next recommended dose)."
+        ),
+        # Choice of Data Types. i.e doseNumber[x]
+        one_of_many="doseNumber",
         one_of_many_required=False,
     )
     doseNumberString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -140,22 +152,28 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
     forecastReason: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="forecastReason",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Vaccine administration status reason",
+        title="Vaccine administration status reason",
+        description="The reason for the assigned forecast status.",
     )
 
     forecastStatus: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="forecastStatus",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Vaccine recommendation status",
+        title="Vaccine recommendation status",
+        description=(
+            "Indicates the patient status with respect to the path to immunity for "
+            "the target disease."
+        ),
     )
 
     series: fhirtypes.String = Field(
         None,
         alias="series",
-        title="Type `String`",
-        description="Name of vaccination series",
+        title="Name of vaccination series",
+        description=(
+            "One possible path to achieve presumed immunity against a disease - "
+            "within the context of an authority."
+        ),
     )
     series__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_series", title="Extension field for ``series``."
@@ -164,9 +182,10 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
     seriesDosesPositiveInt: fhirtypes.PositiveInt = Field(
         None,
         alias="seriesDosesPositiveInt",
-        title="Type `PositiveInt`",
-        description="Recommended number of doses for immunity",
-        one_of_many="seriesDoses",  # Choice of Data Types. i.e value[x]
+        title="Recommended number of doses for immunity",
+        description="The recommended number of doses to achieve immunity.",
+        # Choice of Data Types. i.e seriesDoses[x]
+        one_of_many="seriesDoses",
         one_of_many_required=False,
     )
     seriesDosesPositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -178,9 +197,10 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
     seriesDosesString: fhirtypes.String = Field(
         None,
         alias="seriesDosesString",
-        title="Type `String`",
-        description="Recommended number of doses for immunity",
-        one_of_many="seriesDoses",  # Choice of Data Types. i.e value[x]
+        title="Recommended number of doses for immunity",
+        description="The recommended number of doses to achieve immunity.",
+        # Choice of Data Types. i.e seriesDoses[x]
+        one_of_many="seriesDoses",
         one_of_many_required=False,
     )
     seriesDosesString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -192,35 +212,40 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
     supportingImmunization: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="supportingImmunization",
-        title=(
-            "List of `Reference` items referencing `Immunization, "
-            "ImmunizationEvaluation` (represented as `dict` in JSON)"
+        title="Past immunizations supporting recommendation",
+        description=(
+            "Immunization event history and/or evaluation that supports the status "
+            "and recommendation."
         ),
-        description="Past immunizations supporting recommendation",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Immunization", "ImmunizationEvaluation"],
     )
 
     supportingPatientInformation: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="supportingPatientInformation",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
+        title="Patient observations supporting recommendation",
+        description=(
+            "Patient Information that supports the status and recommendation.  This"
+            " includes patient observations, adverse reactions and "
+            "allergy/intolerance information."
         ),
-        description="Patient observations supporting recommendation",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     targetDisease: fhirtypes.CodeableConceptType = Field(
         None,
         alias="targetDisease",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Disease to be immunized against",
+        title="Disease to be immunized against",
+        description="The targeted disease for the recommendation.",
     )
 
     vaccineCode: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="vaccineCode",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Vaccine  or vaccine group recommendation applies to",
+        title="Vaccine  or vaccine group recommendation applies to",
+        description="Vaccine(s) or vaccine group that pertain to the recommendation.",
     )
 
     @root_validator(pre=True)
@@ -282,12 +307,18 @@ class ImmunizationRecommendationRecommendationDateCriterion(
     code: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type of date",
+        title="Type of date",
+        description=(
+            "Date classification of recommendation.  For example, earliest date to "
+            "give, latest date to give, etc."
+        ),
     )
 
     value: fhirtypes.DateTime = Field(
-        ..., alias="value", title="Type `DateTime`", description="Recommended date"
+        ...,
+        alias="value",
+        title="Recommended date",
+        description="The date whose meaning is specified by dateCriterion.code.",
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."

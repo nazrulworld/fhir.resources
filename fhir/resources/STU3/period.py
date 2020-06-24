@@ -25,8 +25,13 @@ class Period(element.Element):
     end: fhirtypes.DateTime = Field(
         None,
         alias="end",
-        title="Type `DateTime`",
-        description="End time with inclusive boundary, if not ongoing",
+        title="End time with inclusive boundary, if not ongoing",
+        description=(
+            "The end of the period. If the end of the period is missing, it means "
+            "that the period is ongoing. The start may be in the past, and the end "
+            "date in the future, which means that period is expected/planned to end"
+            " at that time."
+        ),
     )
     end__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_end", title="Extension field for ``end``."
@@ -35,8 +40,8 @@ class Period(element.Element):
     start: fhirtypes.DateTime = Field(
         None,
         alias="start",
-        title="Type `DateTime`",
-        description="Starting time with inclusive boundary",
+        title="Starting time with inclusive boundary",
+        description="The start of the period. The boundary is inclusive.",
     )
     start__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_start", title="Extension field for ``start``."

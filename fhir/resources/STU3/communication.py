@@ -30,59 +30,73 @@ class Communication(domainresource.DomainResource):
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
+        title="Request fulfilled by this communication",
+        description=(
+            "An order, proposal or plan fulfilled in whole or in part by this "
+            "Communication."
         ),
-        description="Request fulfilled by this communication",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     category: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="category",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Message category",
+        title="Message category",
+        description=(
+            "The type of message conveyed such as alert, notification, reminder, "
+            "instruction, etc."
+        ),
     )
 
     context: fhirtypes.ReferenceType = Field(
         None,
         alias="context",
-        title=(
-            "Type `Reference` referencing `Encounter, EpisodeOfCare` (represented "
-            "as `dict` in JSON)"
-        ),
-        description="Encounter or episode leading to message",
+        title="Encounter or episode leading to message",
+        description="The encounter within which the communication was sent.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Encounter", "EpisodeOfCare"],
     )
 
     definition: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="definition",
-        title=(
-            "List of `Reference` items referencing `PlanDefinition, "
-            "ActivityDefinition` (represented as `dict` in JSON)"
+        title="Instantiates protocol or definition",
+        description=(
+            "A protocol, guideline, or other definition that was adhered to in "
+            "whole or in part by this communication event."
         ),
-        description="Instantiates protocol or definition",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["PlanDefinition", "ActivityDefinition"],
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Unique identifier",
+        title="Unique identifier",
+        description=(
+            "Identifiers associated with this Communication that are defined by "
+            "business processes and/ or used to refer to it when a direct URL "
+            "reference to the resource itself is not appropriate (e.g. in CDA "
+            "documents, or in written / printed documentation)."
+        ),
     )
 
     medium: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="medium",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="A channel of communication",
+        title="A channel of communication",
+        description="A channel that was used for this communication (e.g. email, fax).",
     )
 
     notDone: bool = Field(
         None,
         alias="notDone",
-        title="Type `bool`",
-        description="Communication did not occur",
+        title="Communication did not occur",
+        description=(
+            "If true, indicates that the described communication event did not "
+            "actually occur."
+        ),
     )
     notDone__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_notDone", title="Extension field for ``notDone``."
@@ -91,53 +105,66 @@ class Communication(domainresource.DomainResource):
     notDoneReason: fhirtypes.CodeableConceptType = Field(
         None,
         alias="notDoneReason",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Why communication did not occur",
+        title="Why communication did not occur",
+        description=(
+            "Describes why the communication event did not occur in coded and/or "
+            "textual form."
+        ),
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
-        title="List of `Annotation` items (represented as `dict` in JSON)",
-        description="Comments made about the communication",
+        title="Comments made about the communication",
+        description=(
+            "Additional notes or commentary about the communication by the sender, "
+            "receiver or other interested parties."
+        ),
     )
 
     partOf: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="partOf",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Part of this action",
+        title="Part of this action",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     payload: ListType[fhirtypes.CommunicationPayloadType] = Field(
         None,
         alias="payload",
-        title="List of `CommunicationPayload` items (represented as `dict` in JSON)",
-        description="Message payload",
+        title="Message payload",
+        description=(
+            "Text, attachment(s), or resource(s) that was communicated to the "
+            "recipient."
+        ),
     )
 
     reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="reasonCode",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Indication for message",
+        title="Indication for message",
+        description="The reason or justification for the communication.",
     )
 
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="reasonReference",
-        title=(
-            "List of `Reference` items referencing `Condition, Observation` "
-            "(represented as `dict` in JSON)"
+        title="Why was communication done?",
+        description=(
+            "Indicates another resource whose existence justifies this "
+            "communication."
         ),
-        description="Why was communication done?",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Condition", "Observation"],
     )
 
     received: fhirtypes.DateTime = Field(
-        None, alias="received", title="Type `DateTime`", description="When received"
+        None,
+        alias="received",
+        title="When received",
+        description="The time when this communication arrived at the destination.",
     )
     received__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_received", title="Extension field for ``received``."
@@ -146,25 +173,50 @@ class Communication(domainresource.DomainResource):
     recipient: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="recipient",
-        title=(
-            "List of `Reference` items referencing `Device, Organization, Patient, "
-            "Practitioner, RelatedPerson, Group` (represented as `dict` in JSON)"
+        title="Message recipient",
+        description=(
+            "The entity (e.g. person, organization, clinical information system, or"
+            " device) which was the target of the communication. If receipts need "
+            "to be tracked by individual, a separate resource instance will need to"
+            " be created for each recipient. \u00a0Multiple recipient communications are"
+            " intended where either a receipt(s) is not tracked (e.g. a mass mail-"
+            "out) or is captured in aggregate (all emails confirmed received by a "
+            "particular time)."
         ),
-        description="Message recipient",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Device",
+            "Organization",
+            "Patient",
+            "Practitioner",
+            "RelatedPerson",
+            "Group",
+        ],
     )
 
     sender: fhirtypes.ReferenceType = Field(
         None,
         alias="sender",
-        title=(
-            "Type `Reference` referencing `Device, Organization, Patient, "
-            "Practitioner, RelatedPerson` (represented as `dict` in JSON)"
+        title="Message sender",
+        description=(
+            "The entity (e.g. person, organization, clinical information system, or"
+            " device) which was the source of the communication."
         ),
-        description="Message sender",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Device",
+            "Organization",
+            "Patient",
+            "Practitioner",
+            "RelatedPerson",
+        ],
     )
 
     sent: fhirtypes.DateTime = Field(
-        None, alias="sent", title="Type `DateTime`", description="When sent"
+        None,
+        alias="sent",
+        title="When sent",
+        description="The time when this communication was sent.",
     )
     sent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sent", title="Extension field for ``sent``."
@@ -173,11 +225,21 @@ class Communication(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description=(
+        title=(
             "preparation | in-progress | suspended | aborted | completed | entered-"
             "in-error"
         ),
+        description="The status of the transmission.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "preparation",
+            "in-progress",
+            "suspended",
+            "aborted",
+            "completed",
+            "entered-in-error",
+        ],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -186,21 +248,22 @@ class Communication(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title=(
-            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
-            "in JSON)"
-        ),
-        description="Focus of message",
+        title="Focus of message",
+        description="The patient or group that was the focus of this communication.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "Group"],
     )
 
     topic: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="topic",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
+        title="Focal resources",
+        description=(
+            "The resources which were responsible for or related to producing this "
+            "communication."
         ),
-        description="Focal resources",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
 
@@ -218,29 +281,41 @@ class CommunicationPayload(backboneelement.BackboneElement):
     contentAttachment: fhirtypes.AttachmentType = Field(
         None,
         alias="contentAttachment",
-        title="Type `Attachment` (represented as `dict` in JSON)",
-        description="Message part content",
-        one_of_many="content",  # Choice of Data Types. i.e value[x]
+        title="Message part content",
+        description=(
+            "A communicated content (or for multi-part communications, one portion "
+            "of the communication)."
+        ),
+        # Choice of Data Types. i.e content[x]
+        one_of_many="content",
         one_of_many_required=True,
     )
 
     contentReference: fhirtypes.ReferenceType = Field(
         None,
         alias="contentReference",
-        title=(
-            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        title="Message part content",
+        description=(
+            "A communicated content (or for multi-part communications, one portion "
+            "of the communication)."
         ),
-        description="Message part content",
-        one_of_many="content",  # Choice of Data Types. i.e value[x]
+        # Choice of Data Types. i.e content[x]
+        one_of_many="content",
         one_of_many_required=True,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     contentString: fhirtypes.String = Field(
         None,
         alias="contentString",
-        title="Type `String`",
-        description="Message part content",
-        one_of_many="content",  # Choice of Data Types. i.e value[x]
+        title="Message part content",
+        description=(
+            "A communicated content (or for multi-part communications, one portion "
+            "of the communication)."
+        ),
+        # Choice of Data Types. i.e content[x]
+        one_of_many="content",
         one_of_many_required=True,
     )
     contentString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(

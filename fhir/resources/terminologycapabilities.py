@@ -31,15 +31,24 @@ class TerminologyCapabilities(domainresource.DomainResource):
     closure: fhirtypes.TerminologyCapabilitiesClosureType = Field(
         None,
         alias="closure",
-        title="Type `TerminologyCapabilitiesClosure` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Information about the [ConceptMap/$closure](conceptmap-operation-"
             "closure.html) operation"
         ),
+        description="Whether the $closure operation is supported.",
     )
 
     codeSearch: fhirtypes.Code = Field(
-        None, alias="codeSearch", title="Type `Code`", description="explicit | all"
+        None,
+        alias="codeSearch",
+        title="explicit | all",
+        description=(
+            "The degree to which the server supports the code search parameter on "
+            "ValueSet, if it is supported."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["explicit", "all"],
     )
     codeSearch__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_codeSearch", title="Extension field for ``codeSearch``."
@@ -48,32 +57,49 @@ class TerminologyCapabilities(domainresource.DomainResource):
     codeSystem: ListType[fhirtypes.TerminologyCapabilitiesCodeSystemType] = Field(
         None,
         alias="codeSystem",
-        title=(
-            "List of `TerminologyCapabilitiesCodeSystem` items (represented as "
-            "`dict` in JSON)"
+        title="A code system supported by the server",
+        description=(
+            "Identifies a code system that is supported by the server. If there is "
+            "a no code system URL, then this declares the general assumptions a "
+            "client can make about support for any CodeSystem resource."
         ),
-        description="A code system supported by the server",
     )
 
     contact: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="contact",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Contact details for the publisher",
+        title="Contact details for the publisher",
+        description=(
+            "Contact details to assist a user in finding and communicating with the"
+            " publisher."
+        ),
     )
 
     copyright: fhirtypes.Markdown = Field(
         None,
         alias="copyright",
-        title="Type `Markdown`",
-        description="Use and/or publishing restrictions",
+        title="Use and/or publishing restrictions",
+        description=(
+            "A copyright statement relating to the terminology capabilities and/or "
+            "its contents. Copyright statements are generally legal restrictions on"
+            " the use and publishing of the terminology capabilities."
+        ),
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
     date: fhirtypes.DateTime = Field(
-        ..., alias="date", title="Type `DateTime`", description="Date last changed"
+        ...,
+        alias="date",
+        title="Date last changed",
+        description=(
+            "The date  (and optionally time) when the terminology capabilities was "
+            "published. The date must change when the business version changes and "
+            "it must change if the status code changes. In addition, it should "
+            "change when the substantive content of the terminology capabilities "
+            "changes."
+        ),
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -82,8 +108,14 @@ class TerminologyCapabilities(domainresource.DomainResource):
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown`",
-        description="Natural language description of the terminology capabilities",
+        title="Natural language description of the terminology capabilities",
+        description=(
+            "A free text natural language description of the terminology "
+            "capabilities from a consumer's perspective. Typically, this is used "
+            "when the capability statement describes a desired rather than an "
+            "actual solution, for example as a formal expression of requirements as"
+            " part of an RFP."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -93,19 +125,21 @@ class TerminologyCapabilities(domainresource.DomainResource):
         None,
         alias="expansion",
         title=(
-            "Type `TerminologyCapabilitiesExpansion` (represented as `dict` in " "JSON)"
-        ),
-        description=(
             "Information about the [ValueSet/$expand](valueset-operation-"
             "expand.html) operation"
         ),
+        description=None,
     )
 
     experimental: bool = Field(
         None,
         alias="experimental",
-        title="Type `bool`",
-        description="For testing purposes, not real usage",
+        title="For testing purposes, not real usage",
+        description=(
+            "A Boolean value to indicate that this terminology capabilities is "
+            "authored for testing purposes (or education/evaluation/marketing) and "
+            "is not intended to be used for genuine usage."
+        ),
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -114,25 +148,37 @@ class TerminologyCapabilities(domainresource.DomainResource):
     implementation: fhirtypes.TerminologyCapabilitiesImplementationType = Field(
         None,
         alias="implementation",
-        title=(
-            "Type `TerminologyCapabilitiesImplementation` (represented as `dict` in"
-            " JSON)"
+        title="If this describes a specific instance",
+        description=(
+            "Identifies a specific implementation instance that is described by the"
+            " terminology capability statement - i.e. a particular installation, "
+            "rather than the capabilities of a software program."
         ),
-        description="If this describes a specific instance",
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="jurisdiction",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Intended jurisdiction for terminology capabilities (if applicable)",
+        title="Intended jurisdiction for terminology capabilities (if applicable)",
+        description=(
+            "A legal or geographic region in which the terminology capabilities is "
+            "intended to be used."
+        ),
     )
 
     kind: fhirtypes.Code = Field(
         ...,
         alias="kind",
-        title="Type `Code`",
-        description="instance | capability | requirements",
+        title="instance | capability | requirements",
+        description=(
+            "The way that this statement is intended to be used, to describe an "
+            "actual running instance of software, a particular product (kind, not "
+            "instance of software) or a class of implementation (e.g. a desired "
+            "purchase)."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["instance", "capability", "requirements"],
     )
     kind__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_kind", title="Extension field for ``kind``."
@@ -141,8 +187,8 @@ class TerminologyCapabilities(domainresource.DomainResource):
     lockedDate: bool = Field(
         None,
         alias="lockedDate",
-        title="Type `bool`",
-        description="Whether lockedDate is supported",
+        title="Whether lockedDate is supported",
+        description="Whether the server supports lockedDate.",
     )
     lockedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lockedDate", title="Extension field for ``lockedDate``."
@@ -151,8 +197,12 @@ class TerminologyCapabilities(domainresource.DomainResource):
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String`",
-        description="Name for this terminology capabilities (computer friendly)",
+        title="Name for this terminology capabilities (computer friendly)",
+        description=(
+            "A natural language name identifying the terminology capabilities. This"
+            " name should be usable as an identifier for the module by machine "
+            "processing applications such as code generation."
+        ),
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -161,8 +211,11 @@ class TerminologyCapabilities(domainresource.DomainResource):
     publisher: fhirtypes.String = Field(
         None,
         alias="publisher",
-        title="Type `String`",
-        description="Name of the publisher (organization or individual)",
+        title="Name of the publisher (organization or individual)",
+        description=(
+            "The name of the organization or individual that published the "
+            "terminology capabilities."
+        ),
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -171,8 +224,11 @@ class TerminologyCapabilities(domainresource.DomainResource):
     purpose: fhirtypes.Markdown = Field(
         None,
         alias="purpose",
-        title="Type `Markdown`",
-        description="Why this terminology capabilities is defined",
+        title="Why this terminology capabilities is defined",
+        description=(
+            "Explanation of why this terminology capabilities is needed and why it "
+            "has been designed as it has."
+        ),
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_purpose", title="Extension field for ``purpose``."
@@ -181,15 +237,25 @@ class TerminologyCapabilities(domainresource.DomainResource):
     software: fhirtypes.TerminologyCapabilitiesSoftwareType = Field(
         None,
         alias="software",
-        title="Type `TerminologyCapabilitiesSoftware` (represented as `dict` in JSON)",
-        description="Software that is covered by this terminology capability statement",
+        title="Software that is covered by this terminology capability statement",
+        description=(
+            "Software that is covered by this terminology capability statement.  It"
+            " is used when the statement describes the capabilities of a particular"
+            " software version, independent of an installation."
+        ),
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="draft | active | retired | unknown",
+        title="draft | active | retired | unknown",
+        description=(
+            "The status of this terminology capabilities. Enables tracking the "
+            "life-cycle of the content."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["draft", "active", "retired", "unknown"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -198,8 +264,11 @@ class TerminologyCapabilities(domainresource.DomainResource):
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String`",
-        description="Name for this terminology capabilities (human friendly)",
+        title="Name for this terminology capabilities (human friendly)",
+        description=(
+            "A short, descriptive, user-friendly title for the terminology "
+            "capabilities."
+        ),
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -209,22 +278,28 @@ class TerminologyCapabilities(domainresource.DomainResource):
         None,
         alias="translation",
         title=(
-            "Type `TerminologyCapabilitiesTranslation` (represented as `dict` in "
-            "JSON)"
-        ),
-        description=(
             "Information about the [ConceptMap/$translate](conceptmap-operation-"
             "translate.html) operation"
         ),
+        description=None,
     )
 
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
-        title="Type `Uri`",
-        description=(
+        title=(
             "Canonical identifier for this terminology capabilities, represented as"
             " a URI (globally unique)"
+        ),
+        description=(
+            "An absolute URI that is used to identify this terminology capabilities"
+            " when it is referenced in a specification, model, design or an "
+            "instance; also called its canonical identifier. This SHOULD be "
+            "globally unique and SHOULD be a literal address at which at which an "
+            "authoritative instance of this terminology capabilities is (or will "
+            "be) published. This URL can be the target of a canonical reference. It"
+            " SHALL remain the same when the terminology capabilities is stored on "
+            "different servers."
         ),
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -234,28 +309,40 @@ class TerminologyCapabilities(domainresource.DomainResource):
     useContext: ListType[fhirtypes.UsageContextType] = Field(
         None,
         alias="useContext",
-        title="List of `UsageContext` items (represented as `dict` in JSON)",
-        description="The context that the content is intended to support",
+        title="The context that the content is intended to support",
+        description=(
+            "The content was developed with a focus and intent of supporting the "
+            "contexts that are listed. These contexts may be general categories "
+            "(gender, age, ...) or may be references to specific programs "
+            "(insurance plans, studies, ...) and may be used to assist with "
+            "indexing and searching for appropriate terminology capabilities "
+            "instances."
+        ),
     )
 
     validateCode: fhirtypes.TerminologyCapabilitiesValidateCodeType = Field(
         None,
         alias="validateCode",
         title=(
-            "Type `TerminologyCapabilitiesValidateCode` (represented as `dict` in "
-            "JSON)"
-        ),
-        description=(
             "Information about the [ValueSet/$validate-code](valueset-operation-"
             "validate-code.html) operation"
         ),
+        description=None,
     )
 
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String`",
-        description="Business version of the terminology capabilities",
+        title="Business version of the terminology capabilities",
+        description=(
+            "The identifier that is used to identify this version of the "
+            "terminology capabilities when it is referenced in a specification, "
+            "model, design or instance. This is an arbitrary value managed by the "
+            "terminology capabilities author and is not expected to be globally "
+            "unique. For example, it might be a timestamp (e.g. yyyymmdd) if a "
+            "managed version is not available. There is also no expectation that "
+            "versions can be placed in a lexicographical sequence."
+        ),
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -277,8 +364,8 @@ class TerminologyCapabilitiesClosure(backboneelement.BackboneElement):
     translation: bool = Field(
         None,
         alias="translation",
-        title="Type `bool`",
-        description="If cross-system closure is supported",
+        title="If cross-system closure is supported",
+        description=None,
     )
     translation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_translation", title="Extension field for ``translation``."
@@ -301,8 +388,8 @@ class TerminologyCapabilitiesCodeSystem(backboneelement.BackboneElement):
     subsumption: bool = Field(
         None,
         alias="subsumption",
-        title="Type `bool`",
-        description="Whether subsumption is supported",
+        title="Whether subsumption is supported",
+        description="True if subsumption is supported for this version of the code system.",
     )
     subsumption__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_subsumption", title="Extension field for ``subsumption``."
@@ -311,8 +398,10 @@ class TerminologyCapabilitiesCodeSystem(backboneelement.BackboneElement):
     uri: fhirtypes.Canonical = Field(
         None,
         alias="uri",
-        title="Type `Canonical` referencing `CodeSystem`",
-        description="URI for the Code System",
+        title="URI for the Code System",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["CodeSystem"],
     )
     uri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uri", title="Extension field for ``uri``."
@@ -321,11 +410,11 @@ class TerminologyCapabilitiesCodeSystem(backboneelement.BackboneElement):
     version: ListType[fhirtypes.TerminologyCapabilitiesCodeSystemVersionType] = Field(
         None,
         alias="version",
-        title=(
-            "List of `TerminologyCapabilitiesCodeSystemVersion` items (represented "
-            "as `dict` in JSON)"
+        title="Version of Code System supported",
+        description=(
+            "For the code system, a list of versions that are supported by the "
+            "server."
         ),
-        description="Version of Code System supported",
     )
 
 
@@ -343,8 +432,11 @@ class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
     code: fhirtypes.String = Field(
         None,
         alias="code",
-        title="Type `String`",
-        description="Version identifier for this version",
+        title="Version identifier for this version",
+        description=(
+            "For version-less code systems, there should be a single version with "
+            "no identifier."
+        ),
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -353,8 +445,8 @@ class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
     compositional: bool = Field(
         None,
         alias="compositional",
-        title="Type `bool`",
-        description="If compositional grammar is supported",
+        title="If compositional grammar is supported",
+        description="If the compositional grammar defined by the code system is supported.",
     )
     compositional__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_compositional", title="Extension field for ``compositional``."
@@ -363,30 +455,21 @@ class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
     filter: ListType[
         fhirtypes.TerminologyCapabilitiesCodeSystemVersionFilterType
     ] = Field(
-        None,
-        alias="filter",
-        title=(
-            "List of `TerminologyCapabilitiesCodeSystemVersionFilter` items "
-            "(represented as `dict` in JSON)"
-        ),
-        description="Filter Properties supported",
+        None, alias="filter", title="Filter Properties supported", description=None,
     )
 
     isDefault: bool = Field(
         None,
         alias="isDefault",
-        title="Type `bool`",
-        description="If this is the default version for this code system",
+        title="If this is the default version for this code system",
+        description=None,
     )
     isDefault__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_isDefault", title="Extension field for ``isDefault``."
     )
 
     language: ListType[fhirtypes.Code] = Field(
-        None,
-        alias="language",
-        title="List of `Code` items",
-        description="Language Displays supported",
+        None, alias="language", title="Language Displays supported", description=None,
     )
     language__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_language", title="Extension field for ``language``."
@@ -395,8 +478,8 @@ class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
     property: ListType[fhirtypes.Code] = Field(
         None,
         alias="property",
-        title="List of `Code` items",
-        description="Properties supported for $lookup",
+        title="Properties supported for $lookup",
+        description=None,
     )
     property__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_property", title="Extension field for ``property``."
@@ -414,10 +497,7 @@ class TerminologyCapabilitiesCodeSystemVersionFilter(backboneelement.BackboneEle
     resource_type = Field("TerminologyCapabilitiesCodeSystemVersionFilter", const=True)
 
     code: fhirtypes.Code = Field(
-        ...,
-        alias="code",
-        title="Type `Code`",
-        description="Code of the property supported",
+        ..., alias="code", title="Code of the property supported", description=None,
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -426,8 +506,8 @@ class TerminologyCapabilitiesCodeSystemVersionFilter(backboneelement.BackboneEle
     op: ListType[fhirtypes.Code] = Field(
         ...,
         alias="op",
-        title="List of `Code` items",
-        description="Operations supported for the property",
+        title="Operations supported for the property",
+        description=None,
     )
     op__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_op", title="Extension field for ``op``."
@@ -448,8 +528,8 @@ class TerminologyCapabilitiesExpansion(backboneelement.BackboneElement):
     hierarchical: bool = Field(
         None,
         alias="hierarchical",
-        title="Type `bool`",
-        description="Whether the server can return nested value sets",
+        title="Whether the server can return nested value sets",
+        description=None,
     )
     hierarchical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_hierarchical", title="Extension field for ``hierarchical``."
@@ -458,7 +538,7 @@ class TerminologyCapabilitiesExpansion(backboneelement.BackboneElement):
     incomplete: bool = Field(
         None,
         alias="incomplete",
-        title="Type `bool`",
+        title="Allow request for incomplete expansions?",
         description="Allow request for incomplete expansions?",
     )
     incomplete__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -468,8 +548,8 @@ class TerminologyCapabilitiesExpansion(backboneelement.BackboneElement):
     paging: bool = Field(
         None,
         alias="paging",
-        title="Type `bool`",
-        description="Whether the server supports paging on expansion",
+        title="Whether the server supports paging on expansion",
+        description=None,
     )
     paging__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_paging", title="Extension field for ``paging``."
@@ -480,18 +560,15 @@ class TerminologyCapabilitiesExpansion(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="parameter",
-        title=(
-            "List of `TerminologyCapabilitiesExpansionParameter` items (represented"
-            " as `dict` in JSON)"
-        ),
-        description="Supported expansion parameter",
+        title="Supported expansion parameter",
+        description=None,
     )
 
     textFilter: fhirtypes.Markdown = Field(
         None,
         alias="textFilter",
-        title="Type `Markdown`",
-        description="Documentation about text searching works",
+        title="Documentation about text searching works",
+        description=None,
     )
     textFilter__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_textFilter", title="Extension field for ``textFilter``."
@@ -511,15 +588,15 @@ class TerminologyCapabilitiesExpansionParameter(backboneelement.BackboneElement)
     documentation: fhirtypes.String = Field(
         None,
         alias="documentation",
-        title="Type `String`",
-        description="Description of support for parameter",
+        title="Description of support for parameter",
+        description=None,
     )
     documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_documentation", title="Extension field for ``documentation``."
     )
 
     name: fhirtypes.Code = Field(
-        ..., alias="name", title="Type `Code`", description="Expansion Parameter name"
+        ..., alias="name", title="Expansion Parameter name", description=None,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -542,8 +619,11 @@ class TerminologyCapabilitiesImplementation(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         ...,
         alias="description",
-        title="Type `String`",
-        description="Describes this specific instance",
+        title="Describes this specific instance",
+        description=(
+            "Information about the specific installation that this terminology "
+            "capability statement relates to."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -552,8 +632,8 @@ class TerminologyCapabilitiesImplementation(backboneelement.BackboneElement):
     url: fhirtypes.Url = Field(
         None,
         alias="url",
-        title="Type `Url`",
-        description="Base URL for the implementation",
+        title="Base URL for the implementation",
+        description="An absolute base URL for the implementation.",
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -576,8 +656,8 @@ class TerminologyCapabilitiesSoftware(backboneelement.BackboneElement):
     name: fhirtypes.String = Field(
         ...,
         alias="name",
-        title="Type `String`",
-        description="A name the software is known by",
+        title="A name the software is known by",
+        description="Name the software is known by.",
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -586,8 +666,8 @@ class TerminologyCapabilitiesSoftware(backboneelement.BackboneElement):
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String`",
-        description="Version covered by this statement",
+        title="Version covered by this statement",
+        description="The version identifier for the software covered by this statement.",
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -608,8 +688,8 @@ class TerminologyCapabilitiesTranslation(backboneelement.BackboneElement):
     needsMap: bool = Field(
         ...,
         alias="needsMap",
-        title="Type `bool`",
-        description="Whether the client must identify the map",
+        title="Whether the client must identify the map",
+        description=None,
     )
     needsMap__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_needsMap", title="Extension field for ``needsMap``."
@@ -630,8 +710,8 @@ class TerminologyCapabilitiesValidateCode(backboneelement.BackboneElement):
     translations: bool = Field(
         ...,
         alias="translations",
-        title="Type `bool`",
-        description="Whether translations are validated",
+        title="Whether translations are validated",
+        description=None,
     )
     translations__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_translations", title="Extension field for ``translations``."

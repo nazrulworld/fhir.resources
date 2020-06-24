@@ -29,32 +29,29 @@ class Patient(domainresource.DomainResource):
     active: bool = Field(
         None,
         alias="active",
-        title="Type `bool`",
-        description="Whether this patient\u0027s record is in active use",
+        title="Whether this patient's record is in active use",
+        description="Whether this patient record is in active use.",
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_active", title="Extension field for ``active``."
     )
 
     address: ListType[fhirtypes.AddressType] = Field(
-        None,
-        alias="address",
-        title="List of `Address` items (represented as `dict` in JSON)",
-        description="Addresses for the individual",
+        None, alias="address", title="Addresses for the individual", description=None,
     )
 
     animal: fhirtypes.PatientAnimalType = Field(
         None,
         alias="animal",
-        title="Type `PatientAnimal` (represented as `dict` in JSON)",
-        description="This patient is known to be an animal (non-human)",
+        title="This patient is known to be an animal (non-human)",
+        description="This patient is known to be an animal.",
     )
 
     birthDate: fhirtypes.Date = Field(
         None,
         alias="birthDate",
-        title="Type `Date`",
-        description="The date of birth for the individual",
+        title="The date of birth for the individual",
+        description=None,
     )
     birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_birthDate", title="Extension field for ``birthDate``."
@@ -63,26 +60,30 @@ class Patient(domainresource.DomainResource):
     communication: ListType[fhirtypes.PatientCommunicationType] = Field(
         None,
         alias="communication",
-        title="List of `PatientCommunication` items (represented as `dict` in JSON)",
-        description=(
+        title=(
             "A list of Languages which may be used to communicate with the patient "
             "about his or her health"
+        ),
+        description=(
+            "Languages which may be used to communicate with the patient about his "
+            "or her health."
         ),
     )
 
     contact: ListType[fhirtypes.PatientContactType] = Field(
         None,
         alias="contact",
-        title="List of `PatientContact` items (represented as `dict` in JSON)",
-        description="A contact party (e.g. guardian, partner, friend) for the patient",
+        title="A contact party (e.g. guardian, partner, friend) for the patient",
+        description=None,
     )
 
     deceasedBoolean: bool = Field(
         None,
         alias="deceasedBoolean",
-        title="Type `bool`",
-        description="Indicates if the individual is deceased or not",
-        one_of_many="deceased",  # Choice of Data Types. i.e value[x]
+        title="Indicates if the individual is deceased or not",
+        description=None,
+        # Choice of Data Types. i.e deceased[x]
+        one_of_many="deceased",
         one_of_many_required=False,
     )
     deceasedBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -92,9 +93,10 @@ class Patient(domainresource.DomainResource):
     deceasedDateTime: fhirtypes.DateTime = Field(
         None,
         alias="deceasedDateTime",
-        title="Type `DateTime`",
-        description="Indicates if the individual is deceased or not",
-        one_of_many="deceased",  # Choice of Data Types. i.e value[x]
+        title="Indicates if the individual is deceased or not",
+        description=None,
+        # Choice of Data Types. i.e deceased[x]
+        one_of_many="deceased",
         one_of_many_required=False,
     )
     deceasedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -106,8 +108,14 @@ class Patient(domainresource.DomainResource):
     gender: fhirtypes.Code = Field(
         None,
         alias="gender",
-        title="Type `Code`",
-        description="male | female | other | unknown",
+        title="male | female | other | unknown",
+        description=(
+            "Administrative Gender - the gender that the patient is considered to "
+            "have for administration and record keeping purposes."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["male", "female", "other", "unknown"],
     )
     gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_gender", title="Extension field for ``gender``."
@@ -116,50 +124,54 @@ class Patient(domainresource.DomainResource):
     generalPractitioner: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="generalPractitioner",
-        title=(
-            "List of `Reference` items referencing `Organization, Practitioner` "
-            "(represented as `dict` in JSON)"
-        ),
-        description="Patient\u0027s nominated primary care provider",
+        title="Patient's nominated primary care provider",
+        description="Patient's nominated care provider.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization", "Practitioner"],
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="An identifier for this patient",
+        title="An identifier for this patient",
+        description=None,
     )
 
     link: ListType[fhirtypes.PatientLinkType] = Field(
         None,
         alias="link",
-        title="List of `PatientLink` items (represented as `dict` in JSON)",
-        description="Link to another patient resource that concerns the same actual person",
+        title="Link to another patient resource that concerns the same actual person",
+        description=(
+            "Link to another patient resource that concerns the same actual " "patient."
+        ),
     )
 
     managingOrganization: fhirtypes.ReferenceType = Field(
         None,
         alias="managingOrganization",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Organization that is the custodian of the patient record",
+        title="Organization that is the custodian of the patient record",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     maritalStatus: fhirtypes.CodeableConceptType = Field(
         None,
         alias="maritalStatus",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Marital (civil) status of a patient",
+        title="Marital (civil) status of a patient",
+        description="This field contains a patient's most recent marital (civil) status.",
     )
 
     multipleBirthBoolean: bool = Field(
         None,
         alias="multipleBirthBoolean",
-        title="Type `bool`",
-        description="Whether patient is part of a multiple birth",
-        one_of_many="multipleBirth",  # Choice of Data Types. i.e value[x]
+        title="Whether patient is part of a multiple birth",
+        description=(
+            "Indicates whether the patient is part of a multiple (bool) or "
+            "indicates the actual birth order (integer)."
+        ),
+        # Choice of Data Types. i.e multipleBirth[x]
+        one_of_many="multipleBirth",
         one_of_many_required=False,
     )
     multipleBirthBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -171,9 +183,13 @@ class Patient(domainresource.DomainResource):
     multipleBirthInteger: fhirtypes.Integer = Field(
         None,
         alias="multipleBirthInteger",
-        title="Type `Integer`",
-        description="Whether patient is part of a multiple birth",
-        one_of_many="multipleBirth",  # Choice of Data Types. i.e value[x]
+        title="Whether patient is part of a multiple birth",
+        description=(
+            "Indicates whether the patient is part of a multiple (bool) or "
+            "indicates the actual birth order (integer)."
+        ),
+        # Choice of Data Types. i.e multipleBirth[x]
+        one_of_many="multipleBirth",
         one_of_many_required=False,
     )
     multipleBirthInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -185,22 +201,22 @@ class Patient(domainresource.DomainResource):
     name: ListType[fhirtypes.HumanNameType] = Field(
         None,
         alias="name",
-        title="List of `HumanName` items (represented as `dict` in JSON)",
-        description="A name associated with the patient",
+        title="A name associated with the patient",
+        description="A name associated with the individual.",
     )
 
     photo: ListType[fhirtypes.AttachmentType] = Field(
-        None,
-        alias="photo",
-        title="List of `Attachment` items (represented as `dict` in JSON)",
-        description="Image of the patient",
+        None, alias="photo", title="Image of the patient", description=None,
     )
 
     telecom: ListType[fhirtypes.ContactPointType] = Field(
         None,
         alias="telecom",
-        title="List of `ContactPoint` items (represented as `dict` in JSON)",
-        description="A contact detail for the individual",
+        title="A contact detail for the individual",
+        description=(
+            "A contact detail (e.g. a telephone number or an email address) by "
+            "which the individual may be contacted."
+        ),
     )
 
     @root_validator(pre=True)
@@ -257,22 +273,25 @@ class PatientAnimal(backboneelement.BackboneElement):
     breed: fhirtypes.CodeableConceptType = Field(
         None,
         alias="breed",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="E.g. Poodle, Angus",
+        title="E.g. Poodle, Angus",
+        description="Identifies the detailed categorization of the kind of animal.",
     )
 
     genderStatus: fhirtypes.CodeableConceptType = Field(
         None,
         alias="genderStatus",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="E.g. Neutered, Intact",
+        title="E.g. Neutered, Intact",
+        description="Indicates the current state of the animal's reproductive organs.",
     )
 
     species: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="species",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="E.g. Dog, Cow",
+        title="E.g. Dog, Cow",
+        description=(
+            "Identifies the high level taxonomic categorization of the kind of "
+            "animal."
+        ),
     )
 
 
@@ -292,18 +311,26 @@ class PatientCommunication(backboneelement.BackboneElement):
     language: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="language",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The language which can be used to communicate with the patient about "
             "his or her health"
+        ),
+        description=(
+            "The ISO-639-1 alpha 2 code in lower case for the language, optionally "
+            "followed by a hyphen and the ISO-3166-1 alpha 2 code for the region in"
+            ' upper case; e.g. "en" for English, or "en-US" for American English '
+            'versus "en-EN" for England English.'
         ),
     )
 
     preferred: bool = Field(
         None,
         alias="preferred",
-        title="Type `bool`",
-        description="Language preference indicator",
+        title="Language preference indicator",
+        description=(
+            "Indicates whether or not the patient prefers this language (over other"
+            " languages he masters up a certain level)."
+        ),
     )
     preferred__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_preferred", title="Extension field for ``preferred``."
@@ -321,17 +348,20 @@ class PatientContact(backboneelement.BackboneElement):
     resource_type = Field("PatientContact", const=True)
 
     address: fhirtypes.AddressType = Field(
-        None,
-        alias="address",
-        title="Type `Address` (represented as `dict` in JSON)",
-        description="Address for the contact person",
+        None, alias="address", title="Address for the contact person", description=None,
     )
 
     gender: fhirtypes.Code = Field(
         None,
         alias="gender",
-        title="Type `Code`",
-        description="male | female | other | unknown",
+        title="male | female | other | unknown",
+        description=(
+            "Administrative Gender - the gender that the contact person is "
+            "considered to have for administration and record keeping purposes."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["male", "female", "other", "unknown"],
     )
     gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_gender", title="Extension field for ``gender``."
@@ -340,42 +370,50 @@ class PatientContact(backboneelement.BackboneElement):
     name: fhirtypes.HumanNameType = Field(
         None,
         alias="name",
-        title="Type `HumanName` (represented as `dict` in JSON)",
-        description="A name associated with the contact person",
+        title="A name associated with the contact person",
+        description=None,
     )
 
     organization: fhirtypes.ReferenceType = Field(
         None,
         alias="organization",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
+        title="Organization that is associated with the contact",
+        description=(
+            "Organization on behalf of which the contact is acting or for which the"
+            " contact is working."
         ),
-        description="Organization that is associated with the contact",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The period during which this contact person or organization is valid "
             "to be contacted relating to this patient"
         ),
+        description=None,
     )
 
     relationship: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="relationship",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="The kind of relationship",
+        title="The kind of relationship",
+        description=(
+            "The nature of the relationship between the patient and the contact "
+            "person."
+        ),
     )
 
     telecom: ListType[fhirtypes.ContactPointType] = Field(
         None,
         alias="telecom",
-        title="List of `ContactPoint` items (represented as `dict` in JSON)",
-        description="A contact detail for the person",
+        title="A contact detail for the person",
+        description=(
+            "A contact detail for the person, e.g. a telephone number or an email "
+            "address."
+        ),
     )
 
 
@@ -393,18 +431,23 @@ class PatientLink(backboneelement.BackboneElement):
     other: fhirtypes.ReferenceType = Field(
         ...,
         alias="other",
-        title=(
-            "Type `Reference` referencing `Patient, RelatedPerson` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="The other patient or related person resource that the link refers to",
+        title="The other patient or related person resource that the link refers to",
+        description="The other patient resource that the link refers to.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "RelatedPerson"],
     )
 
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code`",
-        description="replaced-by | replaces | refer | seealso - type of link",
+        title="replaced-by | replaces | refer | seealso - type of link",
+        description=(
+            "The type of link between this patient resource and another patient "
+            "resource."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["replaced-by", "replaces", "refer", "seealso - type of link"],
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."

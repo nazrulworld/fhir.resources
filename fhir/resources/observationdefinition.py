@@ -30,59 +30,71 @@ class ObservationDefinition(domainresource.DomainResource):
         None,
         alias="abnormalCodedValueSet",
         title=(
-            "Type `Reference` referencing `ValueSet` (represented as `dict` in " "JSON)"
-        ),
-        description=(
             "Value set of abnormal coded values for the observations conforming to "
             "this ObservationDefinition"
         ),
+        description=(
+            "The set of abnormal coded results for the observation conforming to "
+            "this ObservationDefinition."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ValueSet"],
     )
 
     category: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="category",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Category of observation",
+        title="Category of observation",
+        description="A code that classifies the general type of observation.",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type of observation (code / type)",
+        title="Type of observation (code / type)",
+        description=(
+            "Describes what will be observed. Sometimes this is called the "
+            'observation "name".'
+        ),
     )
 
     criticalCodedValueSet: fhirtypes.ReferenceType = Field(
         None,
         alias="criticalCodedValueSet",
         title=(
-            "Type `Reference` referencing `ValueSet` (represented as `dict` in " "JSON)"
-        ),
-        description=(
             "Value set of critical coded values for the observations conforming to "
             "this ObservationDefinition"
         ),
+        description=(
+            "The set of critical coded results for the observation conforming to "
+            "this ObservationDefinition."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ValueSet"],
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Business identifier for this ObservationDefinition instance",
+        title="Business identifier for this ObservationDefinition instance",
+        description="A unique identifier assigned to this ObservationDefinition artifact.",
     )
 
     method: fhirtypes.CodeableConceptType = Field(
         None,
         alias="method",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Method used to produce the observation",
+        title="Method used to produce the observation",
+        description="The method or technique used to perform the observation.",
     )
 
     multipleResultsAllowed: bool = Field(
         None,
         alias="multipleResultsAllowed",
-        title="Type `bool`",
-        description="Multiple results allowed",
+        title="Multiple results allowed",
+        description=(
+            "Multiple results allowed for observations conforming to this "
+            "ObservationDefinition."
+        ),
     )
     multipleResultsAllowed__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -94,22 +106,43 @@ class ObservationDefinition(domainresource.DomainResource):
         None,
         alias="normalCodedValueSet",
         title=(
-            "Type `Reference` referencing `ValueSet` (represented as `dict` in " "JSON)"
-        ),
-        description=(
             "Value set of normal coded values for the observations conforming to "
             "this ObservationDefinition"
         ),
+        description=(
+            "The set of normal coded results for the observations conforming to "
+            "this ObservationDefinition."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ValueSet"],
     )
 
     permittedDataType: ListType[fhirtypes.Code] = Field(
         None,
         alias="permittedDataType",
-        title="List of `Code` items",
-        description=(
+        title=(
             "Quantity | CodeableConcept | string | boolean | integer | Range | "
             "Ratio | SampledData | time | dateTime | Period"
         ),
+        description=(
+            "The data types allowed for the value element of the instance "
+            "observations conforming to this ObservationDefinition."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "Quantity",
+            "CodeableConcept",
+            "string",
+            "boolean",
+            "integer",
+            "Range",
+            "Ratio",
+            "SampledData",
+            "time",
+            "dateTime",
+            "Period",
+        ],
     )
     permittedDataType__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -122,8 +155,11 @@ class ObservationDefinition(domainresource.DomainResource):
     preferredReportName: fhirtypes.String = Field(
         None,
         alias="preferredReportName",
-        title="Type `String`",
-        description="Preferred report name",
+        title="Preferred report name",
+        description=(
+            "The preferred name to be used when reporting the results of "
+            "observations conforming to this ObservationDefinition."
+        ),
     )
     preferredReportName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -136,33 +172,34 @@ class ObservationDefinition(domainresource.DomainResource):
     ] = Field(
         None,
         alias="qualifiedInterval",
-        title=(
-            "List of `ObservationDefinitionQualifiedInterval` items (represented as"
-            " `dict` in JSON)"
+        title="Qualified range for continuous and ordinal observation results",
+        description=(
+            "Multiple  ranges of results qualified by different contexts for "
+            "ordinal or continuous observations conforming to this "
+            "ObservationDefinition."
         ),
-        description="Qualified range for continuous and ordinal observation results",
     )
 
     quantitativeDetails: fhirtypes.ObservationDefinitionQuantitativeDetailsType = Field(
         None,
         alias="quantitativeDetails",
-        title=(
-            "Type `ObservationDefinitionQuantitativeDetails` (represented as `dict`"
-            " in JSON)"
-        ),
-        description="Characteristics of quantitative results",
+        title="Characteristics of quantitative results",
+        description="Characteristics for quantitative results of this observation.",
     )
 
     validCodedValueSet: fhirtypes.ReferenceType = Field(
         None,
         alias="validCodedValueSet",
         title=(
-            "Type `Reference` referencing `ValueSet` (represented as `dict` in " "JSON)"
-        ),
-        description=(
             "Value set of valid coded values for the observations conforming to "
             "this ObservationDefinition"
         ),
+        description=(
+            "The set of valid coded results for the observations  conforming to "
+            "this ObservationDefinition."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ValueSet"],
     )
 
 
@@ -181,22 +218,34 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
     age: fhirtypes.RangeType = Field(
         None,
         alias="age",
-        title="Type `Range` (represented as `dict` in JSON)",
-        description="Applicable age range, if relevant",
+        title="Applicable age range, if relevant",
+        description=(
+            "The age at which this reference range is applicable. This is a "
+            "neonatal age (e.g. number of weeks at term) if the meaning says so."
+        ),
     )
 
     appliesTo: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="appliesTo",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Targetted population of the range",
+        title="Targetted population of the range",
+        description=(
+            "Codes to indicate the target population this reference range applies "
+            "to."
+        ),
     )
 
     category: fhirtypes.Code = Field(
         None,
         alias="category",
-        title="Type `Code`",
-        description="reference | critical | absolute",
+        title="reference | critical | absolute",
+        description=(
+            "The category of interval of values for continuous or ordinal "
+            "observations conforming to this ObservationDefinition."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["reference", "critical", "absolute"],
     )
     category__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_category", title="Extension field for ``category``."
@@ -205,8 +254,8 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
     condition: fhirtypes.String = Field(
         None,
         alias="condition",
-        title="Type `String`",
-        description="Condition associated with the reference range",
+        title="Condition associated with the reference range",
+        description="Text based condition for which the reference range is valid.",
     )
     condition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_condition", title="Extension field for ``condition``."
@@ -215,15 +264,21 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
     context: fhirtypes.CodeableConceptType = Field(
         None,
         alias="context",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Range context qualifier",
+        title="Range context qualifier",
+        description=(
+            "Codes to indicate the health context the range applies to. For "
+            "example, the normal or therapeutic range."
+        ),
     )
 
     gender: fhirtypes.Code = Field(
         None,
         alias="gender",
-        title="Type `Code`",
-        description="male | female | other | unknown",
+        title="male | female | other | unknown",
+        description="Sex of the population the range applies to.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["male", "female", "other", "unknown"],
     )
     gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_gender", title="Extension field for ``gender``."
@@ -232,15 +287,21 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
     gestationalAge: fhirtypes.RangeType = Field(
         None,
         alias="gestationalAge",
-        title="Type `Range` (represented as `dict` in JSON)",
-        description="Applicable gestational age range, if relevant",
+        title="Applicable gestational age range, if relevant",
+        description=(
+            "The gestational age to which this reference range is applicable, in "
+            "the context of pregnancy."
+        ),
     )
 
     range: fhirtypes.RangeType = Field(
         None,
         alias="range",
-        title="Type `Range` (represented as `dict` in JSON)",
-        description="The interval itself, for continuous or ordinal observations",
+        title="The interval itself, for continuous or ordinal observations",
+        description=(
+            "The low and high values determining the interval. There may be only "
+            "one of the two."
+        ),
     )
 
 
@@ -258,8 +319,11 @@ class ObservationDefinitionQuantitativeDetails(backboneelement.BackboneElement):
     conversionFactor: fhirtypes.Decimal = Field(
         None,
         alias="conversionFactor",
-        title="Type `Decimal`",
-        description="SI to Customary unit conversion factor",
+        title="SI to Customary unit conversion factor",
+        description=(
+            "Factor for converting value expressed with SI unit to value expressed "
+            "with customary unit."
+        ),
     )
     conversionFactor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -270,15 +334,21 @@ class ObservationDefinitionQuantitativeDetails(backboneelement.BackboneElement):
     customaryUnit: fhirtypes.CodeableConceptType = Field(
         None,
         alias="customaryUnit",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Customary unit for quantitative results",
+        title="Customary unit for quantitative results",
+        description=(
+            "Customary unit used to report quantitative results of observations "
+            "conforming to this ObservationDefinition."
+        ),
     )
 
     decimalPrecision: fhirtypes.Integer = Field(
         None,
         alias="decimalPrecision",
-        title="Type `Integer`",
-        description="Decimal precision of observation quantitative results",
+        title="Decimal precision of observation quantitative results",
+        description=(
+            "Number of digits after decimal separator when the results of such "
+            "observations are of type Quantity."
+        ),
     )
     decimalPrecision__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -289,6 +359,9 @@ class ObservationDefinitionQuantitativeDetails(backboneelement.BackboneElement):
     unit: fhirtypes.CodeableConceptType = Field(
         None,
         alias="unit",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="SI unit for quantitative results",
+        title="SI unit for quantitative results",
+        description=(
+            "SI unit used to report quantitative results of observations conforming"
+            " to this ObservationDefinition."
+        ),
     )

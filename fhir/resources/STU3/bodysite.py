@@ -29,8 +29,8 @@ class BodySite(domainresource.DomainResource):
     active: bool = Field(
         None,
         alias="active",
-        title="Type `bool`",
-        description="Whether this body site record is in active use",
+        title="Whether this body site record is in active use",
+        description="Whether this body site is in active use.",
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_active", title="Extension field for ``active``."
@@ -39,15 +39,15 @@ class BodySite(domainresource.DomainResource):
     code: fhirtypes.CodeableConceptType = Field(
         None,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Named anatomical location",
+        title="Named anatomical location",
+        description="Named anatomical location - ideally coded where possible.",
     )
 
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Anatomical location description",
+        title="Anatomical location description",
+        description="A summary, charactarization or explanation of the anatomic location.",
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -56,27 +56,32 @@ class BodySite(domainresource.DomainResource):
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Bodysite identifier",
+        title="Bodysite identifier",
+        description="Identifier for this instance of the anatomical location.",
     )
 
     image: ListType[fhirtypes.AttachmentType] = Field(
         None,
         alias="image",
-        title="List of `Attachment` items (represented as `dict` in JSON)",
-        description="Attached images",
+        title="Attached images",
+        description="Image or images used to identify a location.",
     )
 
     patient: fhirtypes.ReferenceType = Field(
         ...,
         alias="patient",
-        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
-        description="Who this is about",
+        title="Who this is about",
+        description="The person to which the body site belongs.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient"],
     )
 
     qualifier: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="qualifier",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Modification to location code",
+        title="Modification to location code",
+        description=(
+            "Qualifier to refine the anatomical location.  These include qualifiers"
+            " for laterality, relative location, directionality, number, and plane."
+        ),
     )

@@ -28,22 +28,29 @@ class Coverage(domainresource.DomainResource):
     beneficiary: fhirtypes.ReferenceType = Field(
         None,
         alias="beneficiary",
-        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
-        description="Plan Beneficiary",
+        title="Plan Beneficiary",
+        description=(
+            "The party who benefits from the insurance coverage., the patient when "
+            "services are provided."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient"],
     )
 
     contract: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="contract",
-        title=(
-            "List of `Reference` items referencing `Contract` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Contract details",
+        title="Contract details",
+        description="The policy(s) which constitute this insurance coverage.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Contract"],
     )
 
     dependent: fhirtypes.String = Field(
-        None, alias="dependent", title="Type `String`", description="Dependent number"
+        None,
+        alias="dependent",
+        title="Dependent number",
+        description="A unique identifier for a dependent under the coverage.",
     )
     dependent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_dependent", title="Extension field for ``dependent``."
@@ -52,19 +59,35 @@ class Coverage(domainresource.DomainResource):
     grouping: fhirtypes.CoverageGroupingType = Field(
         None,
         alias="grouping",
-        title="Type `CoverageGrouping` (represented as `dict` in JSON)",
-        description="Additional coverage classifications",
+        title="Additional coverage classifications",
+        description=(
+            "A suite of underwrite specific classifiers, for example may be used to"
+            " identify a class of coverage or employer group, Policy, Plan."
+        ),
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="The primary coverage ID",
+        title="The primary coverage ID",
+        description=(
+            "The main (and possibly only) identifier for the coverage - often "
+            "referred to as a Member Id, Certificate number, Personal Health Number"
+            " or Case ID. May be constructed as the concatination of the "
+            "Coverage.SubscriberID and the Coverage.dependant."
+        ),
     )
 
     network: fhirtypes.String = Field(
-        None, alias="network", title="Type `String`", description="Insurer network"
+        None,
+        alias="network",
+        title="Insurer network",
+        description=(
+            "The insurer-specific identifier for the insurer-defined network of "
+            "providers to which the beneficiary may seek treatment which will be "
+            "covered at the 'in-network' rate, otherwise 'out of network' terms and"
+            " conditions apply."
+        ),
     )
     network__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_network", title="Extension field for ``network``."
@@ -73,8 +96,13 @@ class Coverage(domainresource.DomainResource):
     order: fhirtypes.PositiveInt = Field(
         None,
         alias="order",
-        title="Type `PositiveInt`",
-        description="Relative order of the coverage",
+        title="Relative order of the coverage",
+        description=(
+            "The order of applicability of this coverage relative to other "
+            "coverages which are currently inforce. Note, there may be gaps in the "
+            "numbering and this does not imply primary, secondard etc. as the "
+            "specific positioning of coverages depends upon the episode of care."
+        ),
     )
     order__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_order", title="Extension field for ``order``."
@@ -83,42 +111,55 @@ class Coverage(domainresource.DomainResource):
     payor: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="payor",
-        title=(
-            "List of `Reference` items referencing `Organization, Patient, "
-            "RelatedPerson` (represented as `dict` in JSON)"
+        title="Identifier for the plan or agreement issuer",
+        description=(
+            "The program or plan underwriter or payor including both insurance and "
+            "non-insurance agreements, such as patient-pay agreements. May provide "
+            "multiple identifiers such as insurance company identifier or business "
+            "identifier (BIN number)."
         ),
-        description="Identifier for the plan or agreement issuer",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization", "Patient", "RelatedPerson"],
     )
 
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Coverage start and end dates",
+        title="Coverage start and end dates",
+        description=(
+            "Time period during which the coverage is in force. A missing start "
+            "date indicates the start date isn't known, a missing end date means "
+            "the coverage is continuing to be in force."
+        ),
     )
 
     policyHolder: fhirtypes.ReferenceType = Field(
         None,
         alias="policyHolder",
-        title=(
-            "Type `Reference` referencing `Patient, RelatedPerson, Organization` "
-            "(represented as `dict` in JSON)"
+        title="Owner of the policy",
+        description=(
+            "The party who 'owns' the insurance policy,  may be an individual, "
+            "corporation or the subscriber's employer."
         ),
-        description="Owner of the policy",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "RelatedPerson", "Organization"],
     )
 
     relationship: fhirtypes.CodeableConceptType = Field(
         None,
         alias="relationship",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Beneficiary relationship to the Subscriber",
+        title="Beneficiary relationship to the Subscriber",
+        description="The relationship of beneficiary (patient) to the subscriber.",
     )
 
     sequence: fhirtypes.String = Field(
         None,
         alias="sequence",
-        title="Type `String`",
-        description="The plan instance or sequence counter",
+        title="The plan instance or sequence counter",
+        description=(
+            "An optional counter for a particular instance of the identified "
+            "coverage which increments upon each renewal."
+        ),
     )
     sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sequence", title="Extension field for ``sequence``."
@@ -127,8 +168,11 @@ class Coverage(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code`",
-        description="active | cancelled | draft | entered-in-error",
+        title="active | cancelled | draft | entered-in-error",
+        description="The status of the resource instance.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["active", "cancelled", "draft", "entered-in-error"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -137,18 +181,21 @@ class Coverage(domainresource.DomainResource):
     subscriber: fhirtypes.ReferenceType = Field(
         None,
         alias="subscriber",
-        title=(
-            "Type `Reference` referencing `Patient, RelatedPerson` (represented as "
-            "`dict` in JSON)"
+        title="Subscriber to the policy",
+        description=(
+            "The party who has signed-up for or 'owns' the contractual relationship"
+            " to the policy or to whom the benefit of the policy for services "
+            "rendered to them or their family is due."
         ),
-        description="Subscriber to the policy",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "RelatedPerson"],
     )
 
     subscriberId: fhirtypes.String = Field(
         None,
         alias="subscriberId",
-        title="Type `String`",
-        description="ID assigned to the Subscriber",
+        title="ID assigned to the Subscriber",
+        description="The insurer assigned ID for the Subscriber.",
     )
     subscriberId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_subscriberId", title="Extension field for ``subscriberId``."
@@ -157,8 +204,12 @@ class Coverage(domainresource.DomainResource):
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type of coverage such as medical or accident",
+        title="Type of coverage such as medical or accident",
+        description=(
+            "The type of coverage: social program, medical plan, accident coverage "
+            "(workers compensation, auto), group health or payment by an individual"
+            " or organization."
+        ),
     )
 
 
@@ -177,8 +228,8 @@ class CoverageGrouping(backboneelement.BackboneElement):
     classDisplay: fhirtypes.String = Field(
         None,
         alias="classDisplay",
-        title="Type `String`",
-        description="Display text for the class",
+        title="Display text for the class",
+        description="A short description for the class.",
     )
     classDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_classDisplay", title="Extension field for ``classDisplay``."
@@ -187,8 +238,12 @@ class CoverageGrouping(backboneelement.BackboneElement):
     class_fhir: fhirtypes.String = Field(
         None,
         alias="class",
-        title="Type `String`",
-        description="An identifier for the class",
+        title="An identifier for the class",
+        description=(
+            "Identifies a style or collective of coverage issues by the "
+            "underwriter, for example may be used to identify a class of coverage "
+            "such as a level of deductables or co-payment."
+        ),
     )
     class__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_class", title="Extension field for ``class_fhir``."
@@ -197,8 +252,12 @@ class CoverageGrouping(backboneelement.BackboneElement):
     group: fhirtypes.String = Field(
         None,
         alias="group",
-        title="Type `String`",
-        description="An identifier for the group",
+        title="An identifier for the group",
+        description=(
+            "Identifies a style or collective of coverage issued by the "
+            "underwriter, for example may be used to identify an employer group. "
+            "May also be referred to as a Policy or Group ID."
+        ),
     )
     group__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_group", title="Extension field for ``group``."
@@ -207,8 +266,8 @@ class CoverageGrouping(backboneelement.BackboneElement):
     groupDisplay: fhirtypes.String = Field(
         None,
         alias="groupDisplay",
-        title="Type `String`",
-        description="Display text for an identifier for the group",
+        title="Display text for an identifier for the group",
+        description="A short description for the group.",
     )
     groupDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_groupDisplay", title="Extension field for ``groupDisplay``."
@@ -217,8 +276,13 @@ class CoverageGrouping(backboneelement.BackboneElement):
     plan: fhirtypes.String = Field(
         None,
         alias="plan",
-        title="Type `String`",
-        description="An identifier for the plan",
+        title="An identifier for the plan",
+        description=(
+            "Identifies a style or collective of coverage issued by the "
+            "underwriter, for example may be used to identify a collection of "
+            "benefits provided to employees. May be referred to as a Section or "
+            "Division ID."
+        ),
     )
     plan__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_plan", title="Extension field for ``plan``."
@@ -227,8 +291,8 @@ class CoverageGrouping(backboneelement.BackboneElement):
     planDisplay: fhirtypes.String = Field(
         None,
         alias="planDisplay",
-        title="Type `String`",
-        description="Display text for the plan",
+        title="Display text for the plan",
+        description="A short description for the plan.",
     )
     planDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_planDisplay", title="Extension field for ``planDisplay``."
@@ -237,8 +301,12 @@ class CoverageGrouping(backboneelement.BackboneElement):
     subClass: fhirtypes.String = Field(
         None,
         alias="subClass",
-        title="Type `String`",
-        description="An identifier for the subsection of the class",
+        title="An identifier for the subsection of the class",
+        description=(
+            "Identifies a sub-style or sub-collective of coverage issues by the "
+            "underwriter, for example may be used to identify a subclass of "
+            "coverage such as a sub-level of deductables or co-payment."
+        ),
     )
     subClass__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_subClass", title="Extension field for ``subClass``."
@@ -247,8 +315,8 @@ class CoverageGrouping(backboneelement.BackboneElement):
     subClassDisplay: fhirtypes.String = Field(
         None,
         alias="subClassDisplay",
-        title="Type `String`",
-        description="Display text for the subsection of the subclass",
+        title="Display text for the subsection of the subclass",
+        description="A short description for the subclass.",
     )
     subClassDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_subClassDisplay", title="Extension field for ``subClassDisplay``."
@@ -257,8 +325,12 @@ class CoverageGrouping(backboneelement.BackboneElement):
     subGroup: fhirtypes.String = Field(
         None,
         alias="subGroup",
-        title="Type `String`",
-        description="An identifier for the subsection of the group",
+        title="An identifier for the subsection of the group",
+        description=(
+            "Identifies a style or collective of coverage issued by the "
+            "underwriter, for example may be used to identify a subset of an "
+            "employer group."
+        ),
     )
     subGroup__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_subGroup", title="Extension field for ``subGroup``."
@@ -267,8 +339,8 @@ class CoverageGrouping(backboneelement.BackboneElement):
     subGroupDisplay: fhirtypes.String = Field(
         None,
         alias="subGroupDisplay",
-        title="Type `String`",
-        description="Display text for the subsection of the group",
+        title="Display text for the subsection of the group",
+        description="A short description for the subgroup.",
     )
     subGroupDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_subGroupDisplay", title="Extension field for ``subGroupDisplay``."
@@ -277,8 +349,12 @@ class CoverageGrouping(backboneelement.BackboneElement):
     subPlan: fhirtypes.String = Field(
         None,
         alias="subPlan",
-        title="Type `String`",
-        description="An identifier for the subsection of the plan",
+        title="An identifier for the subsection of the plan",
+        description=(
+            "Identifies a sub-style or sub-collective of coverage issued by the "
+            "underwriter, for example may be used to identify a subset of a "
+            "collection of benefits provided to employees."
+        ),
     )
     subPlan__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_subPlan", title="Extension field for ``subPlan``."
@@ -287,8 +363,8 @@ class CoverageGrouping(backboneelement.BackboneElement):
     subPlanDisplay: fhirtypes.String = Field(
         None,
         alias="subPlanDisplay",
-        title="Type `String`",
-        description="Display text for the subsection of the plan",
+        title="Display text for the subsection of the plan",
+        description="A short description for the subplan.",
     )
     subPlanDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_subPlanDisplay", title="Extension field for ``subPlanDisplay``."

@@ -31,91 +31,114 @@ class Goal(domainresource.DomainResource):
     addresses: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="addresses",
-        title=(
-            "List of `Reference` items referencing `Condition, Observation, "
-            "MedicationStatement, NutritionOrder, ProcedureRequest, RiskAssessment`"
-            " (represented as `dict` in JSON)"
+        title="Issues addressed by this goal",
+        description=(
+            "The identified conditions and other health record elements that are "
+            "intended to be addressed by the goal."
         ),
-        description="Issues addressed by this goal",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Condition",
+            "Observation",
+            "MedicationStatement",
+            "NutritionOrder",
+            "ProcedureRequest",
+            "RiskAssessment",
+        ],
     )
 
     category: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="category",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="E.g. Treatment, dietary, behavioral, etc.",
+        title="E.g. Treatment, dietary, behavioral, etc.",
+        description="Indicates a category the goal falls within.",
     )
 
     description: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="description",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Code or text describing goal",
+        title="Code or text describing goal",
+        description=(
+            "Human-readable and/or coded description of a specific desired "
+            'objective of care, such as "control blood pressure" or "negotiate an '
+            'obstacle course" or "dance with child at wedding".'
+        ),
     )
 
     expressedBy: fhirtypes.ReferenceType = Field(
         None,
         alias="expressedBy",
-        title=(
-            "Type `Reference` referencing `Patient, Practitioner, RelatedPerson` "
-            "(represented as `dict` in JSON)"
-        ),
-        description="Who\u0027s responsible for creating Goal?",
+        title="Who's responsible for creating Goal?",
+        description="Indicates whose goal this is - patient goal, practitioner goal, etc.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "Practitioner", "RelatedPerson"],
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="External Ids for this goal",
+        title="External Ids for this goal",
+        description=(
+            "This records identifiers associated with this care plan that are "
+            "defined by business processes and/or used to refer to it when a direct"
+            " URL reference to the resource itself is not appropriate (e.g. in CDA "
+            "documents, or in written / printed documentation)."
+        ),
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
-        title="List of `Annotation` items (represented as `dict` in JSON)",
-        description="Comments about the goal",
+        title="Comments about the goal",
+        description="Any comments related to the goal.",
     )
 
     outcomeCode: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="outcomeCode",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="What result was achieved regarding the goal?",
+        title="What result was achieved regarding the goal?",
+        description=(
+            "Identifies the change (or lack of change) at the point when the status"
+            " of the goal is assessed."
+        ),
     )
 
     outcomeReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="outcomeReference",
-        title=(
-            "List of `Reference` items referencing `Observation` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Observation that resulted from goal",
+        title="Observation that resulted from goal",
+        description="Details of what's changed (or not changed).",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Observation"],
     )
 
     priority: fhirtypes.CodeableConceptType = Field(
         None,
         alias="priority",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="high-priority | medium-priority | low-priority",
+        title="high-priority | medium-priority | low-priority",
+        description=(
+            "Identifies the mutually agreed level of importance associated with "
+            "reaching/sustaining the goal."
+        ),
     )
 
     startCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="startCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="When goal pursuit begins",
-        one_of_many="start",  # Choice of Data Types. i.e value[x]
+        title="When goal pursuit begins",
+        description="The date or event after which the goal should begin being pursued.",
+        # Choice of Data Types. i.e start[x]
+        one_of_many="start",
         one_of_many_required=False,
     )
 
     startDate: fhirtypes.Date = Field(
         None,
         alias="startDate",
-        title="Type `Date`",
-        description="When goal pursuit begins",
-        one_of_many="start",  # Choice of Data Types. i.e value[x]
+        title="When goal pursuit begins",
+        description="The date or event after which the goal should begin being pursued.",
+        # Choice of Data Types. i.e start[x]
+        one_of_many="start",
         one_of_many_required=False,
     )
     startDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -125,12 +148,32 @@ class Goal(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description=(
+        title=(
             "proposed | accepted | planned | in-progress | on-target | ahead-of-"
             "target | behind-target | sustaining | achieved | on-hold | cancelled |"
             " entered-in-error | rejected"
         ),
+        description=(
+            "Indicates whether the goal has been reached and is still considered "
+            "relevant."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "proposed",
+            "accepted",
+            "planned",
+            "in-progress",
+            "on-target",
+            "ahead-of-target",
+            "behind-target",
+            "sustaining",
+            "achieved",
+            "on-hold",
+            "cancelled",
+            "entered-in-error",
+            "rejected",
+        ],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -139,8 +182,11 @@ class Goal(domainresource.DomainResource):
     statusDate: fhirtypes.Date = Field(
         None,
         alias="statusDate",
-        title="Type `Date`",
-        description="When goal status took effect",
+        title="When goal status took effect",
+        description=(
+            "Identifies when the current status.  I.e. When initially created, when"
+            " achieved, when cancelled, etc."
+        ),
     )
     statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_statusDate", title="Extension field for ``statusDate``."
@@ -149,8 +195,8 @@ class Goal(domainresource.DomainResource):
     statusReason: fhirtypes.String = Field(
         None,
         alias="statusReason",
-        title="Type `String`",
-        description="Reason for current status",
+        title="Reason for current status",
+        description="Captures the reason for the current status.",
     )
     statusReason__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_statusReason", title="Extension field for ``statusReason``."
@@ -159,18 +205,20 @@ class Goal(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title=(
-            "Type `Reference` referencing `Patient, Group, Organization` "
-            "(represented as `dict` in JSON)"
+        title="Who this goal is intended for",
+        description=(
+            "Identifies the patient, group or organization for whom the goal is "
+            "being established."
         ),
-        description="Who this goal is intended for",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "Group", "Organization"],
     )
 
     target: fhirtypes.GoalTargetType = Field(
         None,
         alias="target",
-        title="Type `GoalTarget` (represented as `dict` in JSON)",
-        description="Target outcome for the goal",
+        title="Target outcome for the goal",
+        description="Indicates what should be done by when.",
     )
 
     @root_validator(pre=True)
@@ -224,36 +272,67 @@ class GoalTarget(backboneelement.BackboneElement):
     detailCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="detailCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The target value to be achieved",
-        one_of_many="detail",  # Choice of Data Types. i.e value[x]
+        title="The target value to be achieved",
+        description=(
+            "The target value of the focus to be achieved to signify the "
+            "fulfillment of the goal, e.g. 150 pounds, 7.0%. Either the high or low"
+            " or both values of the range can be specified. When a low value is "
+            "missing, it indicates that the goal is achieved at any focus value at "
+            "or below the high value. Similarly, if the high value is missing, it "
+            "indicates that the goal is achieved at any focus value at or above the"
+            " low value."
+        ),
+        # Choice of Data Types. i.e detail[x]
+        one_of_many="detail",
         one_of_many_required=False,
     )
 
     detailQuantity: fhirtypes.QuantityType = Field(
         None,
         alias="detailQuantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="The target value to be achieved",
-        one_of_many="detail",  # Choice of Data Types. i.e value[x]
+        title="The target value to be achieved",
+        description=(
+            "The target value of the focus to be achieved to signify the "
+            "fulfillment of the goal, e.g. 150 pounds, 7.0%. Either the high or low"
+            " or both values of the range can be specified. When a low value is "
+            "missing, it indicates that the goal is achieved at any focus value at "
+            "or below the high value. Similarly, if the high value is missing, it "
+            "indicates that the goal is achieved at any focus value at or above the"
+            " low value."
+        ),
+        # Choice of Data Types. i.e detail[x]
+        one_of_many="detail",
         one_of_many_required=False,
     )
 
     detailRange: fhirtypes.RangeType = Field(
         None,
         alias="detailRange",
-        title="Type `Range` (represented as `dict` in JSON)",
-        description="The target value to be achieved",
-        one_of_many="detail",  # Choice of Data Types. i.e value[x]
+        title="The target value to be achieved",
+        description=(
+            "The target value of the focus to be achieved to signify the "
+            "fulfillment of the goal, e.g. 150 pounds, 7.0%. Either the high or low"
+            " or both values of the range can be specified. When a low value is "
+            "missing, it indicates that the goal is achieved at any focus value at "
+            "or below the high value. Similarly, if the high value is missing, it "
+            "indicates that the goal is achieved at any focus value at or above the"
+            " low value."
+        ),
+        # Choice of Data Types. i.e detail[x]
+        one_of_many="detail",
         one_of_many_required=False,
     )
 
     dueDate: fhirtypes.Date = Field(
         None,
         alias="dueDate",
-        title="Type `Date`",
-        description="Reach goal on or before",
-        one_of_many="due",  # Choice of Data Types. i.e value[x]
+        title="Reach goal on or before",
+        description=(
+            "Indicates either the date or the duration after start by which the "
+            "goal should be met."
+        ),
+        # Choice of Data Types. i.e due[x]
+        one_of_many="due",
         one_of_many_required=False,
     )
     dueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -263,17 +342,24 @@ class GoalTarget(backboneelement.BackboneElement):
     dueDuration: fhirtypes.DurationType = Field(
         None,
         alias="dueDuration",
-        title="Type `Duration` (represented as `dict` in JSON)",
-        description="Reach goal on or before",
-        one_of_many="due",  # Choice of Data Types. i.e value[x]
+        title="Reach goal on or before",
+        description=(
+            "Indicates either the date or the duration after start by which the "
+            "goal should be met."
+        ),
+        # Choice of Data Types. i.e due[x]
+        one_of_many="due",
         one_of_many_required=False,
     )
 
     measure: fhirtypes.CodeableConceptType = Field(
         None,
         alias="measure",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The parameter whose value is being tracked",
+        title="The parameter whose value is being tracked",
+        description=(
+            "The parameter whose value is being tracked, e.g. body weight, blood "
+            "pressure, or hemoglobin A1c level."
+        ),
     )
 
     @root_validator(pre=True)

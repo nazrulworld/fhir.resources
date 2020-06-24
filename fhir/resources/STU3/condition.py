@@ -29,18 +29,30 @@ class Condition(domainresource.DomainResource):
     abatementAge: fhirtypes.AgeType = Field(
         None,
         alias="abatementAge",
-        title="Type `Age` (represented as `dict` in JSON)",
-        description="If/when in resolution/remission",
-        one_of_many="abatement",  # Choice of Data Types. i.e value[x]
+        title="If/when in resolution/remission",
+        description=(
+            "The date or estimated date that the condition resolved or went into "
+            'remission. This is called "abatement" because of the many overloaded '
+            'connotations associated with "remission" or "resolution" - Conditions '
+            "are never really resolved, but they can abate."
+        ),
+        # Choice of Data Types. i.e abatement[x]
+        one_of_many="abatement",
         one_of_many_required=False,
     )
 
     abatementBoolean: bool = Field(
         None,
         alias="abatementBoolean",
-        title="Type `bool`",
-        description="If/when in resolution/remission",
-        one_of_many="abatement",  # Choice of Data Types. i.e value[x]
+        title="If/when in resolution/remission",
+        description=(
+            "The date or estimated date that the condition resolved or went into "
+            'remission. This is called "abatement" because of the many overloaded '
+            'connotations associated with "remission" or "resolution" - Conditions '
+            "are never really resolved, but they can abate."
+        ),
+        # Choice of Data Types. i.e abatement[x]
+        one_of_many="abatement",
         one_of_many_required=False,
     )
     abatementBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -52,9 +64,15 @@ class Condition(domainresource.DomainResource):
     abatementDateTime: fhirtypes.DateTime = Field(
         None,
         alias="abatementDateTime",
-        title="Type `DateTime`",
-        description="If/when in resolution/remission",
-        one_of_many="abatement",  # Choice of Data Types. i.e value[x]
+        title="If/when in resolution/remission",
+        description=(
+            "The date or estimated date that the condition resolved or went into "
+            'remission. This is called "abatement" because of the many overloaded '
+            'connotations associated with "remission" or "resolution" - Conditions '
+            "are never really resolved, but they can abate."
+        ),
+        # Choice of Data Types. i.e abatement[x]
+        one_of_many="abatement",
         one_of_many_required=False,
     )
     abatementDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -66,27 +84,45 @@ class Condition(domainresource.DomainResource):
     abatementPeriod: fhirtypes.PeriodType = Field(
         None,
         alias="abatementPeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="If/when in resolution/remission",
-        one_of_many="abatement",  # Choice of Data Types. i.e value[x]
+        title="If/when in resolution/remission",
+        description=(
+            "The date or estimated date that the condition resolved or went into "
+            'remission. This is called "abatement" because of the many overloaded '
+            'connotations associated with "remission" or "resolution" - Conditions '
+            "are never really resolved, but they can abate."
+        ),
+        # Choice of Data Types. i.e abatement[x]
+        one_of_many="abatement",
         one_of_many_required=False,
     )
 
     abatementRange: fhirtypes.RangeType = Field(
         None,
         alias="abatementRange",
-        title="Type `Range` (represented as `dict` in JSON)",
-        description="If/when in resolution/remission",
-        one_of_many="abatement",  # Choice of Data Types. i.e value[x]
+        title="If/when in resolution/remission",
+        description=(
+            "The date or estimated date that the condition resolved or went into "
+            'remission. This is called "abatement" because of the many overloaded '
+            'connotations associated with "remission" or "resolution" - Conditions '
+            "are never really resolved, but they can abate."
+        ),
+        # Choice of Data Types. i.e abatement[x]
+        one_of_many="abatement",
         one_of_many_required=False,
     )
 
     abatementString: fhirtypes.String = Field(
         None,
         alias="abatementString",
-        title="Type `String`",
-        description="If/when in resolution/remission",
-        one_of_many="abatement",  # Choice of Data Types. i.e value[x]
+        title="If/when in resolution/remission",
+        description=(
+            "The date or estimated date that the condition resolved or went into "
+            'remission. This is called "abatement" because of the many overloaded '
+            'connotations associated with "remission" or "resolution" - Conditions '
+            "are never really resolved, but they can abate."
+        ),
+        # Choice of Data Types. i.e abatement[x]
+        one_of_many="abatement",
         one_of_many_required=False,
     )
     abatementString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -96,8 +132,11 @@ class Condition(domainresource.DomainResource):
     assertedDate: fhirtypes.DateTime = Field(
         None,
         alias="assertedDate",
-        title="Type `DateTime`",
-        description="Date record was believed accurate",
+        title="Date record was believed accurate",
+        description=(
+            "The date on which the existance of the Condition was first asserted or"
+            " acknowledged."
+        ),
     )
     assertedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_assertedDate", title="Extension field for ``assertedDate``."
@@ -106,32 +145,34 @@ class Condition(domainresource.DomainResource):
     asserter: fhirtypes.ReferenceType = Field(
         None,
         alias="asserter",
-        title=(
-            "Type `Reference` referencing `Practitioner, Patient, RelatedPerson` "
-            "(represented as `dict` in JSON)"
-        ),
-        description="Person who asserts this condition",
+        title="Person who asserts this condition",
+        description="Individual who is making the condition statement.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner", "Patient", "RelatedPerson"],
     )
 
     bodySite: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="bodySite",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Anatomical location, if relevant",
+        title="Anatomical location, if relevant",
+        description="The anatomical location where this condition manifests itself.",
     )
 
     category: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="category",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="problem-list-item | encounter-diagnosis",
+        title="problem-list-item | encounter-diagnosis",
+        description="A category assigned to the condition.",
     )
 
     clinicalStatus: fhirtypes.Code = Field(
         None,
         alias="clinicalStatus",
-        title="Type `Code`",
-        description="active | recurrence | inactive | remission | resolved",
+        title="active | recurrence | inactive | remission | resolved",
+        description="The clinical status of the condition.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["active", "recurrence", "inactive", "remission", "resolved"],
     )
     clinicalStatus__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_clinicalStatus", title="Extension field for ``clinicalStatus``."
@@ -140,56 +181,75 @@ class Condition(domainresource.DomainResource):
     code: fhirtypes.CodeableConceptType = Field(
         None,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Identification of the condition, problem or diagnosis",
+        title="Identification of the condition, problem or diagnosis",
+        description=None,
     )
 
     context: fhirtypes.ReferenceType = Field(
         None,
         alias="context",
-        title=(
-            "Type `Reference` referencing `Encounter, EpisodeOfCare` (represented "
-            "as `dict` in JSON)"
-        ),
-        description="Encounter or episode when condition first asserted",
+        title="Encounter or episode when condition first asserted",
+        description="Encounter during which the condition was first asserted.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Encounter", "EpisodeOfCare"],
     )
 
     evidence: ListType[fhirtypes.ConditionEvidenceType] = Field(
         None,
         alias="evidence",
-        title="List of `ConditionEvidence` items (represented as `dict` in JSON)",
-        description="Supporting evidence",
+        title="Supporting evidence",
+        description=(
+            "Supporting Evidence / manifestations that are the basis on which this "
+            "condition is suspected or confirmed."
+        ),
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="External Ids for this condition",
+        title="External Ids for this condition",
+        description=(
+            "This records identifiers associated with this condition that are "
+            "defined by business processes and/or used to refer to it when a direct"
+            " URL reference to the resource itself is not appropriate (e.g. in CDA "
+            "documents, or in written / printed documentation)."
+        ),
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
-        title="List of `Annotation` items (represented as `dict` in JSON)",
-        description="Additional information about the Condition",
+        title="Additional information about the Condition",
+        description=(
+            "Additional information about the Condition. This is a general "
+            "notes/comments entry  for description of the Condition, its diagnosis "
+            "and prognosis."
+        ),
     )
 
     onsetAge: fhirtypes.AgeType = Field(
         None,
         alias="onsetAge",
-        title="Type `Age` (represented as `dict` in JSON)",
-        description="Estimated or actual date,  date-time, or age",
-        one_of_many="onset",  # Choice of Data Types. i.e value[x]
+        title="Estimated or actual date,  date-time, or age",
+        description=(
+            "Estimated or actual date or date-time  the condition began, in the "
+            "opinion of the clinician."
+        ),
+        # Choice of Data Types. i.e onset[x]
+        one_of_many="onset",
         one_of_many_required=False,
     )
 
     onsetDateTime: fhirtypes.DateTime = Field(
         None,
         alias="onsetDateTime",
-        title="Type `DateTime`",
-        description="Estimated or actual date,  date-time, or age",
-        one_of_many="onset",  # Choice of Data Types. i.e value[x]
+        title="Estimated or actual date,  date-time, or age",
+        description=(
+            "Estimated or actual date or date-time  the condition began, in the "
+            "opinion of the clinician."
+        ),
+        # Choice of Data Types. i.e onset[x]
+        one_of_many="onset",
         one_of_many_required=False,
     )
     onsetDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -199,27 +259,39 @@ class Condition(domainresource.DomainResource):
     onsetPeriod: fhirtypes.PeriodType = Field(
         None,
         alias="onsetPeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Estimated or actual date,  date-time, or age",
-        one_of_many="onset",  # Choice of Data Types. i.e value[x]
+        title="Estimated or actual date,  date-time, or age",
+        description=(
+            "Estimated or actual date or date-time  the condition began, in the "
+            "opinion of the clinician."
+        ),
+        # Choice of Data Types. i.e onset[x]
+        one_of_many="onset",
         one_of_many_required=False,
     )
 
     onsetRange: fhirtypes.RangeType = Field(
         None,
         alias="onsetRange",
-        title="Type `Range` (represented as `dict` in JSON)",
-        description="Estimated or actual date,  date-time, or age",
-        one_of_many="onset",  # Choice of Data Types. i.e value[x]
+        title="Estimated or actual date,  date-time, or age",
+        description=(
+            "Estimated or actual date or date-time  the condition began, in the "
+            "opinion of the clinician."
+        ),
+        # Choice of Data Types. i.e onset[x]
+        one_of_many="onset",
         one_of_many_required=False,
     )
 
     onsetString: fhirtypes.String = Field(
         None,
         alias="onsetString",
-        title="Type `String`",
-        description="Estimated or actual date,  date-time, or age",
-        one_of_many="onset",  # Choice of Data Types. i.e value[x]
+        title="Estimated or actual date,  date-time, or age",
+        description=(
+            "Estimated or actual date or date-time  the condition began, in the "
+            "opinion of the clinician."
+        ),
+        # Choice of Data Types. i.e onset[x]
+        one_of_many="onset",
         one_of_many_required=False,
     )
     onsetString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -229,35 +301,56 @@ class Condition(domainresource.DomainResource):
     severity: fhirtypes.CodeableConceptType = Field(
         None,
         alias="severity",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Subjective severity of condition",
+        title="Subjective severity of condition",
+        description=(
+            "A subjective assessment of the severity of the condition as evaluated "
+            "by the clinician."
+        ),
     )
 
     stage: fhirtypes.ConditionStageType = Field(
         None,
         alias="stage",
-        title="Type `ConditionStage` (represented as `dict` in JSON)",
-        description="Stage/grade, usually assessed formally",
+        title="Stage/grade, usually assessed formally",
+        description=(
+            "Clinical stage or grade of a condition. May include formal severity "
+            "assessments."
+        ),
     )
 
     subject: fhirtypes.ReferenceType = Field(
         ...,
         alias="subject",
-        title=(
-            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
-            "in JSON)"
+        title="Who has the condition?",
+        description=(
+            "Indicates the patient or group who the condition record is associated "
+            "with."
         ),
-        description="Who has the condition?",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "Group"],
     )
 
     verificationStatus: fhirtypes.Code = Field(
         None,
         alias="verificationStatus",
-        title="Type `Code`",
-        description=(
+        title=(
             "provisional | differential | confirmed | refuted | entered-in-error | "
             "unknown"
         ),
+        description=(
+            "The verification status to support the clinical status of the "
+            "condition."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "provisional",
+            "differential",
+            "confirmed",
+            "refuted",
+            "entered-in-error",
+            "unknown",
+        ],
     )
     verificationStatus__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -333,18 +426,19 @@ class ConditionEvidence(backboneelement.BackboneElement):
     code: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="code",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Manifestation/symptom",
+        title="Manifestation/symptom",
+        description=(
+            "A manifestation or symptom that led to the recording of this " "condition."
+        ),
     )
 
     detail: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="detail",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Supporting information found elsewhere",
+        title="Supporting information found elsewhere",
+        description="Links to other relevant information, including pathology reports.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
 
@@ -363,16 +457,21 @@ class ConditionStage(backboneelement.BackboneElement):
     assessment: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="assessment",
-        title=(
-            "List of `Reference` items referencing `ClinicalImpression, "
-            "DiagnosticReport, Observation` (represented as `dict` in JSON)"
+        title="Formal record of assessment",
+        description=(
+            "Reference to a formal record of the evidence on which the staging "
+            "assessment is based."
         ),
-        description="Formal record of assessment",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ClinicalImpression", "DiagnosticReport", "Observation"],
     )
 
     summary: fhirtypes.CodeableConceptType = Field(
         None,
         alias="summary",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Simple summary (disease specific)",
+        title="Simple summary (disease specific)",
+        description=(
+            'A simple summary of the stage such as "Stage 3". The determination of '
+            "the stage is disease-specific."
+        ),
     )

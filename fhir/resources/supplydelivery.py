@@ -28,35 +28,44 @@ class SupplyDelivery(domainresource.DomainResource):
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
-        title=(
-            "List of `Reference` items referencing `SupplyRequest` (represented as "
-            "`dict` in JSON)"
+        title="Fulfills plan, proposal or order",
+        description=(
+            "A plan, proposal or order that is fulfilled in whole or in part by "
+            "this event."
         ),
-        description="Fulfills plan, proposal or order",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["SupplyRequest"],
     )
 
     destination: fhirtypes.ReferenceType = Field(
         None,
         alias="destination",
-        title=(
-            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
+        title="Where the Supply was sent",
+        description=(
+            "Identification of the facility/location where the Supply was shipped "
+            "to, as part of the dispense event."
         ),
-        description="Where the Supply was sent",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Location"],
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="External identifier",
+        title="External identifier",
+        description=(
+            "Identifier for the supply delivery event that is used to identify it "
+            "across multiple disparate systems."
+        ),
     )
 
     occurrenceDateTime: fhirtypes.DateTime = Field(
         None,
         alias="occurrenceDateTime",
-        title="Type `DateTime`",
-        description="When event occurred",
-        one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
+        title="When event occurred",
+        description="The date or time(s) the activity occurred.",
+        # Choice of Data Types. i.e occurrence[x]
+        one_of_many="occurrence",
         one_of_many_required=False,
     )
     occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -68,53 +77,61 @@ class SupplyDelivery(domainresource.DomainResource):
     occurrencePeriod: fhirtypes.PeriodType = Field(
         None,
         alias="occurrencePeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="When event occurred",
-        one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
+        title="When event occurred",
+        description="The date or time(s) the activity occurred.",
+        # Choice of Data Types. i.e occurrence[x]
+        one_of_many="occurrence",
         one_of_many_required=False,
     )
 
     occurrenceTiming: fhirtypes.TimingType = Field(
         None,
         alias="occurrenceTiming",
-        title="Type `Timing` (represented as `dict` in JSON)",
-        description="When event occurred",
-        one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
+        title="When event occurred",
+        description="The date or time(s) the activity occurred.",
+        # Choice of Data Types. i.e occurrence[x]
+        one_of_many="occurrence",
         one_of_many_required=False,
     )
 
     partOf: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="partOf",
-        title=(
-            "List of `Reference` items referencing `SupplyDelivery, Contract` "
-            "(represented as `dict` in JSON)"
-        ),
-        description="Part of referenced event",
+        title="Part of referenced event",
+        description="A larger event of which this particular event is a component or step.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["SupplyDelivery", "Contract"],
     )
 
     patient: fhirtypes.ReferenceType = Field(
         None,
         alias="patient",
-        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
-        description="Patient for whom the item is supplied",
+        title="Patient for whom the item is supplied",
+        description=(
+            "A link to a resource representing the person whom the delivered item "
+            "is for."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient"],
     )
 
     receiver: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="receiver",
-        title=(
-            "List of `Reference` items referencing `Practitioner, PractitionerRole`"
-            " (represented as `dict` in JSON)"
-        ),
-        description="Who collected the Supply",
+        title="Who collected the Supply",
+        description="Identifies the person who picked up the Supply.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner", "PractitionerRole"],
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code`",
-        description="in-progress | completed | abandoned | entered-in-error",
+        title="in-progress | completed | abandoned | entered-in-error",
+        description="A code specifying the state of the dispense event.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["in-progress", "completed", "abandoned", "entered-in-error"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -123,25 +140,31 @@ class SupplyDelivery(domainresource.DomainResource):
     suppliedItem: fhirtypes.SupplyDeliverySuppliedItemType = Field(
         None,
         alias="suppliedItem",
-        title="Type `SupplyDeliverySuppliedItem` (represented as `dict` in JSON)",
-        description="The item that is delivered or supplied",
+        title="The item that is delivered or supplied",
+        description="The item that is being delivered or has been supplied.",
     )
 
     supplier: fhirtypes.ReferenceType = Field(
         None,
         alias="supplier",
-        title=(
-            "Type `Reference` referencing `Practitioner, PractitionerRole, "
-            "Organization` (represented as `dict` in JSON)"
+        title="Dispenser",
+        description=(
+            "The individual responsible for dispensing the medication, supplier or "
+            "device."
         ),
-        description="Dispenser",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Category of dispense event",
+        title="Category of dispense event",
+        description=(
+            "Indicates the type of dispensing event that is performed. Examples "
+            "include: Trial Fill, Completion of Trial, Partial Fill, Emergency "
+            "Fill, Samples, etc."
+        ),
     )
 
     @root_validator(pre=True)
@@ -197,29 +220,40 @@ class SupplyDeliverySuppliedItem(backboneelement.BackboneElement):
     itemCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="itemCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Medication, Substance, or Device supplied",
-        one_of_many="item",  # Choice of Data Types. i.e value[x]
+        title="Medication, Substance, or Device supplied",
+        description=(
+            "Identifies the medication, substance or device being dispensed. This "
+            "is either a link to a resource representing the details of the item or"
+            " a code that identifies the item from a known list."
+        ),
+        # Choice of Data Types. i.e item[x]
+        one_of_many="item",
         one_of_many_required=False,
     )
 
     itemReference: fhirtypes.ReferenceType = Field(
         None,
         alias="itemReference",
-        title=(
-            "Type `Reference` referencing `Medication, Substance, Device` "
-            "(represented as `dict` in JSON)"
+        title="Medication, Substance, or Device supplied",
+        description=(
+            "Identifies the medication, substance or device being dispensed. This "
+            "is either a link to a resource representing the details of the item or"
+            " a code that identifies the item from a known list."
         ),
-        description="Medication, Substance, or Device supplied",
-        one_of_many="item",  # Choice of Data Types. i.e value[x]
+        # Choice of Data Types. i.e item[x]
+        one_of_many="item",
         one_of_many_required=False,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Medication", "Substance", "Device"],
     )
 
     quantity: fhirtypes.QuantityType = Field(
         None,
         alias="quantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Amount dispensed",
+        title="Amount dispensed",
+        description=(
+            "The amount of supply that has been dispensed. Includes unit of " "measure."
+        ),
     )
 
     @root_validator(pre=True)

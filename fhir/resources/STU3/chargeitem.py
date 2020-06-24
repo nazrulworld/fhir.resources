@@ -35,42 +35,46 @@ class ChargeItem(domainresource.DomainResource):
     account: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="account",
-        title=(
-            "List of `Reference` items referencing `Account` (represented as `dict`"
-            " in JSON)"
-        ),
-        description="Account to place this charge",
+        title="Account to place this charge",
+        description="Account into which this ChargeItems belongs.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Account"],
     )
 
     bodysite: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="bodysite",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Anatomical location, if relevant",
+        title="Anatomical location, if relevant",
+        description="The anatomical location where the related service has been applied.",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="A code that identifies the charge, like a billing code",
+        title="A code that identifies the charge, like a billing code",
+        description=None,
     )
 
     context: fhirtypes.ReferenceType = Field(
         None,
         alias="context",
-        title=(
-            "Type `Reference` referencing `Encounter, EpisodeOfCare` (represented "
-            "as `dict` in JSON)"
+        title="Encounter / Episode associated with event",
+        description=(
+            "The encounter or episode of care that establishes the context for this"
+            " event."
         ),
-        description="Encounter / Episode associated with event",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Encounter", "EpisodeOfCare"],
     )
 
     definition: ListType[fhirtypes.Uri] = Field(
         None,
         alias="definition",
-        title="List of `Uri` items",
-        description="Defining information about the code of this charge item",
+        title="Defining information about the code of this charge item",
+        description=(
+            "References the source of pricing information, rules of application for"
+            " the code this ChargeItem uses."
+        ),
     )
     definition__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -79,8 +83,8 @@ class ChargeItem(domainresource.DomainResource):
     enteredDate: fhirtypes.DateTime = Field(
         None,
         alias="enteredDate",
-        title="Type `DateTime`",
-        description="Date the charge item was entered",
+        title="Date the charge item was entered",
+        description=None,
     )
     enteredDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_enteredDate", title="Extension field for ``enteredDate``."
@@ -89,18 +93,26 @@ class ChargeItem(domainresource.DomainResource):
     enterer: fhirtypes.ReferenceType = Field(
         None,
         alias="enterer",
-        title=(
-            "Type `Reference` referencing `Practitioner, Organization, Patient, "
-            "Device, RelatedPerson` (represented as `dict` in JSON)"
-        ),
-        description="Individual who was entering",
+        title="Individual who was entering",
+        description="The device, practitioner, etc. who entered the charge item.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Practitioner",
+            "Organization",
+            "Patient",
+            "Device",
+            "RelatedPerson",
+        ],
     )
 
     factorOverride: fhirtypes.Decimal = Field(
         None,
         alias="factorOverride",
-        title="Type `Decimal`",
-        description="Factor overriding the associated rules",
+        title="Factor overriding the associated rules",
+        description=(
+            "Factor overriding the factor determined by the rules associated with "
+            "the code."
+        ),
     )
     factorOverride__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_factorOverride", title="Extension field for ``factorOverride``."
@@ -109,23 +121,27 @@ class ChargeItem(domainresource.DomainResource):
     identifier: fhirtypes.IdentifierType = Field(
         None,
         alias="identifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Business Identifier for item",
+        title="Business Identifier for item",
+        description="Identifiers assigned to this event performer or other systems.",
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
-        title="List of `Annotation` items (represented as `dict` in JSON)",
-        description="Comments made about the ChargeItem",
+        title="Comments made about the ChargeItem",
+        description=(
+            "Comments made about the event by the performer, subject or other "
+            "participants."
+        ),
     )
 
     occurrenceDateTime: fhirtypes.DateTime = Field(
         None,
         alias="occurrenceDateTime",
-        title="Type `DateTime`",
-        description="When the charged service was applied",
-        one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
+        title="When the charged service was applied",
+        description="Date/time(s) or duration when the charged service was applied.",
+        # Choice of Data Types. i.e occurrence[x]
+        one_of_many="occurrence",
         one_of_many_required=False,
     )
     occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -137,26 +153,32 @@ class ChargeItem(domainresource.DomainResource):
     occurrencePeriod: fhirtypes.PeriodType = Field(
         None,
         alias="occurrencePeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="When the charged service was applied",
-        one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
+        title="When the charged service was applied",
+        description="Date/time(s) or duration when the charged service was applied.",
+        # Choice of Data Types. i.e occurrence[x]
+        one_of_many="occurrence",
         one_of_many_required=False,
     )
 
     occurrenceTiming: fhirtypes.TimingType = Field(
         None,
         alias="occurrenceTiming",
-        title="Type `Timing` (represented as `dict` in JSON)",
-        description="When the charged service was applied",
-        one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
+        title="When the charged service was applied",
+        description="Date/time(s) or duration when the charged service was applied.",
+        # Choice of Data Types. i.e occurrence[x]
+        one_of_many="occurrence",
         one_of_many_required=False,
     )
 
     overrideReason: fhirtypes.String = Field(
         None,
         alias="overrideReason",
-        title="Type `String`",
-        description="Reason for overriding the list price/factor",
+        title="Reason for overriding the list price/factor",
+        description=(
+            "If the list price or the rule based factor associated with the code is"
+            " overridden, this attribute can capture a text to indicate the  reason"
+            " for this action."
+        ),
     )
     overrideReason__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_overrideReason", title="Extension field for ``overrideReason``."
@@ -165,81 +187,103 @@ class ChargeItem(domainresource.DomainResource):
     partOf: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="partOf",
-        title=(
-            "List of `Reference` items referencing `ChargeItem` (represented as "
-            "`dict` in JSON)"
+        title="Part of referenced ChargeItem",
+        description=(
+            "ChargeItems can be grouped to larger ChargeItems covering the whole "
+            "set."
         ),
-        description="Part of referenced ChargeItem",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ChargeItem"],
     )
 
     participant: ListType[fhirtypes.ChargeItemParticipantType] = Field(
         None,
         alias="participant",
-        title="List of `ChargeItemParticipant` items (represented as `dict` in JSON)",
-        description="Who performed charged service",
+        title="Who performed charged service",
+        description=(
+            "Indicates who or what performed or participated in the charged " "service."
+        ),
     )
 
     performingOrganization: fhirtypes.ReferenceType = Field(
         None,
         alias="performingOrganization",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Organization providing the charged sevice",
+        title="Organization providing the charged sevice",
+        description="The organization requesting the service.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     priceOverride: fhirtypes.MoneyType = Field(
         None,
         alias="priceOverride",
-        title="Type `Money` (represented as `dict` in JSON)",
-        description="Price overriding the associated rules",
+        title="Price overriding the associated rules",
+        description=(
+            "Total price of the charge overriding the list price associated with "
+            "the code."
+        ),
     )
 
     quantity: fhirtypes.QuantityType = Field(
         None,
         alias="quantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Quantity of which the charge item has been serviced",
+        title="Quantity of which the charge item has been serviced",
+        description=None,
     )
 
     reason: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="reason",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Why was the charged  service rendered?",
+        title="Why was the charged  service rendered?",
+        description="Describes why the event occurred in coded or textual form.",
     )
 
     requestingOrganization: fhirtypes.ReferenceType = Field(
         None,
         alias="requestingOrganization",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Organization requesting the charged service",
+        title="Organization requesting the charged service",
+        description="The organization performing the service.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     service: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="service",
-        title=(
-            "List of `Reference` items referencing `DiagnosticReport, ImagingStudy,"
-            " Immunization, MedicationAdministration, MedicationDispense, "
-            "Observation, Procedure, SupplyDelivery` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Which rendered service is being charged?",
+        title="Which rendered service is being charged?",
+        description="Indicated the rendered service that caused this charge.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "DiagnosticReport",
+            "ImagingStudy",
+            "Immunization",
+            "MedicationAdministration",
+            "MedicationDispense",
+            "Observation",
+            "Procedure",
+            "SupplyDelivery",
+        ],
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description=(
+        title=(
             "planned | billable | not-billable | aborted | billed | entered-in-"
             "error | unknown"
         ),
+        description="The current state of the ChargeItem.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "planned",
+            "billable",
+            "not-billable",
+            "aborted",
+            "billed",
+            "entered-in-error",
+            "unknown",
+        ],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -248,21 +292,22 @@ class ChargeItem(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         ...,
         alias="subject",
-        title=(
-            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
-            "in JSON)"
+        title="Individual service was done for/to",
+        description=(
+            "The individual or set of individuals the action is being or was "
+            "performed on."
         ),
-        description="Individual service was done for/to",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "Group"],
     )
 
     supportingInformation: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="supportingInformation",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Further information supporting the this charge",
+        title="Further information supporting the this charge",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     @root_validator(pre=True)
@@ -318,16 +363,27 @@ class ChargeItemParticipant(backboneelement.BackboneElement):
     actor: fhirtypes.ReferenceType = Field(
         ...,
         alias="actor",
-        title=(
-            "Type `Reference` referencing `Practitioner, Organization, Patient, "
-            "Device, RelatedPerson` (represented as `dict` in JSON)"
+        title="Individual who was performing",
+        description=(
+            "The device, practitioner, etc. who performed or participated in the "
+            "service."
         ),
-        description="Individual who was performing",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Practitioner",
+            "Organization",
+            "Patient",
+            "Device",
+            "RelatedPerson",
+        ],
     )
 
     role: fhirtypes.CodeableConceptType = Field(
         None,
         alias="role",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="What type of performance was done",
+        title="What type of performance was done",
+        description=(
+            "Describes the type of performance or participation(e.g. primary "
+            "surgeon, anaesthesiologiest, etc.)."
+        ),
     )

@@ -28,8 +28,11 @@ class HumanName(element.Element):
     family: fhirtypes.String = Field(
         None,
         alias="family",
-        title="Type `String`",
-        description="Family name (often called \u0027Surname\u0027)",
+        title="Family name (often called 'Surname')",
+        description=(
+            "The part of a name that links to the genealogy. In some cultures (e.g."
+            " Eritrea) the family name of a son is the first name of his father."
+        ),
     )
     family__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_family", title="Extension field for ``family``."
@@ -38,8 +41,8 @@ class HumanName(element.Element):
     given: ListType[fhirtypes.String] = Field(
         None,
         alias="given",
-        title="List of `String` items",
-        description="Given names (not always \u0027first\u0027). Includes middle names",
+        title="Given names (not always 'first'). Includes middle names",
+        description="Given name.",
     )
     given__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_given", title="Extension field for ``given``."
@@ -48,15 +51,22 @@ class HumanName(element.Element):
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Time period when name was/is in use",
+        title="Time period when name was/is in use",
+        description=(
+            "Indicates the period of time when this name was valid for the named "
+            "person."
+        ),
     )
 
     prefix: ListType[fhirtypes.String] = Field(
         None,
         alias="prefix",
-        title="List of `String` items",
-        description="Parts that come before the name",
+        title="Parts that come before the name",
+        description=(
+            "Part of the name that is acquired as a title due to academic, legal, "
+            "employment or nobility status, etc. and that appears at the start of "
+            "the name."
+        ),
     )
     prefix__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_prefix", title="Extension field for ``prefix``."
@@ -65,8 +75,12 @@ class HumanName(element.Element):
     suffix: ListType[fhirtypes.String] = Field(
         None,
         alias="suffix",
-        title="List of `String` items",
-        description="Parts that come after the name",
+        title="Parts that come after the name",
+        description=(
+            "Part of the name that is acquired as a title due to academic, legal, "
+            "employment or nobility status, etc. and that appears at the end of the"
+            " name."
+        ),
     )
     suffix__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_suffix", title="Extension field for ``suffix``."
@@ -75,8 +89,8 @@ class HumanName(element.Element):
     text: fhirtypes.String = Field(
         None,
         alias="text",
-        title="Type `String`",
-        description="Text representation of the full name",
+        title="Text representation of the full name",
+        description="A full text representation of the name.",
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_text", title="Extension field for ``text``."
@@ -85,8 +99,19 @@ class HumanName(element.Element):
     use: fhirtypes.Code = Field(
         None,
         alias="use",
-        title="Type `Code`",
-        description="usual | official | temp | nickname | anonymous | old | maiden",
+        title="usual | official | temp | nickname | anonymous | old | maiden",
+        description="Identifies the purpose for this name.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "usual",
+            "official",
+            "temp",
+            "nickname",
+            "anonymous",
+            "old",
+            "maiden",
+        ],
     )
     use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_use", title="Extension field for ``use``."

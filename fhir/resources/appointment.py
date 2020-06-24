@@ -28,32 +28,41 @@ class Appointment(domainresource.DomainResource):
     appointmentType: fhirtypes.CodeableConceptType = Field(
         None,
         alias="appointmentType",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The style of appointment or patient that has been booked in the slot "
             "(not service type)"
         ),
+        description=None,
     )
 
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
-        title=(
-            "List of `Reference` items referencing `ServiceRequest` (represented as"
-            " `dict` in JSON)"
+        title="The service request this appointment is allocated to assess",
+        description=(
+            "The service request this appointment is allocated to assess (e.g. "
+            "incoming referral or procedure request)."
         ),
-        description="The service request this appointment is allocated to assess",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ServiceRequest"],
     )
 
     cancelationReason: fhirtypes.CodeableConceptType = Field(
         None,
         alias="cancelationReason",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The coded reason for the appointment being cancelled",
+        title="The coded reason for the appointment being cancelled",
+        description=(
+            "The coded reason for the appointment being cancelled. This is often "
+            "used in reporting/billing/futher processing to determine if further "
+            "actions are required, or specific fees apply."
+        ),
     )
 
     comment: fhirtypes.String = Field(
-        None, alias="comment", title="Type `String`", description="Additional comments"
+        None,
+        alias="comment",
+        title="Additional comments",
+        description="Additional comments about the appointment.",
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comment", title="Extension field for ``comment``."
@@ -62,8 +71,13 @@ class Appointment(domainresource.DomainResource):
     created: fhirtypes.DateTime = Field(
         None,
         alias="created",
-        title="Type `DateTime`",
-        description="The date that this appointment was initially created",
+        title="The date that this appointment was initially created",
+        description=(
+            "The date that this appointment was initially created. This could be "
+            "different to the meta.lastModified value on the initial entry, as this"
+            " could have been before the resource was created on the FHIR server, "
+            "and should remain unchanged over the lifespan of the appointment."
+        ),
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_created", title="Extension field for ``created``."
@@ -72,8 +86,12 @@ class Appointment(domainresource.DomainResource):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Shown on a subject line in a meeting request, or appointment list",
+        title="Shown on a subject line in a meeting request, or appointment list",
+        description=(
+            "The brief description of the appointment as would be shown on a "
+            "subject line in a meeting request, or appointment list. Detailed or "
+            "expanded information should be put in the comment field."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -82,8 +100,8 @@ class Appointment(domainresource.DomainResource):
     end: fhirtypes.Instant = Field(
         None,
         alias="end",
-        title="Type `Instant`",
-        description="When appointment is to conclude",
+        title="When appointment is to conclude",
+        description="Date/Time that the appointment is to conclude.",
     )
     end__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_end", title="Extension field for ``end``."
@@ -92,15 +110,28 @@ class Appointment(domainresource.DomainResource):
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="External Ids for this item",
+        title="External Ids for this item",
+        description=(
+            "This records identifiers associated with this appointment concern that"
+            " are defined by business processes and/or used to refer to it when a "
+            "direct URL reference to the resource itself is not appropriate (e.g. "
+            "in CDA documents, or in written / printed documentation)."
+        ),
     )
 
     minutesDuration: fhirtypes.PositiveInt = Field(
         None,
         alias="minutesDuration",
-        title="Type `PositiveInt`",
-        description="Can be less than start/end (e.g. estimate)",
+        title="Can be less than start/end (e.g. estimate)",
+        description=(
+            "Number of minutes that the appointment is to take. This can be less "
+            "than the duration between the start and end times.  For example, where"
+            " the actual time of appointment is only an estimate or if a 30 minute "
+            "appointment is being requested, but any time would work.  Also, if "
+            "there is, for example, a planned 15 minute break in the middle of a "
+            "long appointment, the duration may be 15 minutes less than the "
+            "difference between the start and end."
+        ),
     )
     minutesDuration__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_minutesDuration", title="Extension field for ``minutesDuration``."
@@ -109,15 +140,20 @@ class Appointment(domainresource.DomainResource):
     participant: ListType[fhirtypes.AppointmentParticipantType] = Field(
         ...,
         alias="participant",
-        title="List of `AppointmentParticipant` items (represented as `dict` in JSON)",
-        description="Participants involved in appointment",
+        title="Participants involved in appointment",
+        description="List of participants involved in the appointment.",
     )
 
     patientInstruction: fhirtypes.String = Field(
         None,
         alias="patientInstruction",
-        title="Type `String`",
-        description="Detailed information and instructions for the patient",
+        title="Detailed information and instructions for the patient",
+        description=(
+            "While Appointment.comment contains information for internal use, "
+            "Appointment.patientInstructions is used to capture patient facing "
+            "information about the Appointment (e.g. please bring your referral or "
+            "fast from 8pm night before)."
+        ),
     )
     patientInstruction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -128,8 +164,12 @@ class Appointment(domainresource.DomainResource):
     priority: fhirtypes.UnsignedInt = Field(
         None,
         alias="priority",
-        title="Type `UnsignedInt`",
-        description="Used to make informed decisions if needing to re-prioritize",
+        title="Used to make informed decisions if needing to re-prioritize",
+        description=(
+            "The priority of the appointment. Can be used to make informed "
+            "decisions if needing to re-prioritize appointments. (The iCal Standard"
+            " specifies 0 as undefined, 1 as highest, 9 as lowest priority)."
+        ),
     )
     priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_priority", title="Extension field for ``priority``."
@@ -138,73 +178,94 @@ class Appointment(domainresource.DomainResource):
     reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="reasonCode",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Coded reason this appointment is scheduled",
+        title="Coded reason this appointment is scheduled",
+        description=(
+            "The coded reason that this appointment is being scheduled. This is "
+            "more clinical than administrative."
+        ),
     )
 
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="reasonReference",
-        title=(
-            "List of `Reference` items referencing `Condition, Procedure, "
-            "Observation, ImmunizationRecommendation` (represented as `dict` in "
-            "JSON)"
+        title="Reason the appointment is to take place (resource)",
+        description=(
+            "Reason the appointment has been scheduled to take place, as specified "
+            "using information from another resource. When the patient arrives and "
+            "the encounter begins it may be used as the admission diagnosis. The "
+            "indication will typically be a Condition (with other resources "
+            "referenced in the evidence.detail), or a Procedure."
         ),
-        description="Reason the appointment is to take place (resource)",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Condition",
+            "Procedure",
+            "Observation",
+            "ImmunizationRecommendation",
+        ],
     )
 
     requestedPeriod: ListType[fhirtypes.PeriodType] = Field(
         None,
         alias="requestedPeriod",
-        title="List of `Period` items (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Potential date/time interval(s) requested to allocate the appointment "
             "within"
+        ),
+        description=(
+            "A set of date ranges (potentially including times) that the "
+            "appointment is preferred to be scheduled within.  The duration "
+            "(usually in minutes) could also be provided to indicate the length of "
+            "the appointment to fill and populate the start/end times for the "
+            "actual allocated time. However, in other situations the duration may "
+            "be calculated by the scheduling system."
         ),
     )
 
     serviceCategory: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="serviceCategory",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description=(
+        title=(
             "A broad categorization of the service that is to be performed during "
             "this appointment"
         ),
+        description=None,
     )
 
     serviceType: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="serviceType",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="The specific service that is to be performed during this appointment",
+        title="The specific service that is to be performed during this appointment",
+        description=None,
     )
 
     slot: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="slot",
-        title=(
-            "List of `Reference` items referencing `Slot` (represented as `dict` in"
-            " JSON)"
+        title="The slots that this appointment is filling",
+        description=(
+            "The slots from the participants' schedules that will be filled by the "
+            "appointment."
         ),
-        description="The slots that this appointment is filling",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Slot"],
     )
 
     specialty: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="specialty",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The specialty of a practitioner that would be required to perform the "
             "service requested in this appointment"
         ),
+        description=None,
     )
 
     start: fhirtypes.Instant = Field(
         None,
         alias="start",
-        title="Type `Instant`",
-        description="When appointment is to take place",
+        title="When appointment is to take place",
+        description="Date/Time that the appointment is to take place.",
     )
     start__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_start", title="Extension field for ``start``."
@@ -213,11 +274,29 @@ class Appointment(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description=(
+        title=(
             "proposed | pending | booked | arrived | fulfilled | cancelled | noshow"
             " | entered-in-error | checked-in | waitlist"
         ),
+        description=(
+            "The overall status of the Appointment. Each of the participants has "
+            "their own participation status which indicates their involvement in "
+            "the process, however this status indicates the shared status."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "proposed",
+            "pending",
+            "booked",
+            "arrived",
+            "fulfilled",
+            "cancelled",
+            "noshow",
+            "entered-in-error",
+            "checked-in",
+            "waitlist",
+        ],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -226,11 +305,13 @@ class Appointment(domainresource.DomainResource):
     supportingInformation: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="supportingInformation",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
+        title="Additional information to support the appointment",
+        description=(
+            "Additional information to support the appointment provided when making"
+            " the appointment."
         ),
-        description="Additional information to support the appointment",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
 
@@ -248,26 +329,43 @@ class AppointmentParticipant(backboneelement.BackboneElement):
     actor: fhirtypes.ReferenceType = Field(
         None,
         alias="actor",
-        title=(
-            "Type `Reference` referencing `Patient, Practitioner, PractitionerRole,"
-            " RelatedPerson, Device, HealthcareService, Location` (represented as "
-            "`dict` in JSON)"
+        title="Person, Location/HealthcareService or Device",
+        description=(
+            "A Person, Location/HealthcareService or Device that is participating "
+            "in the appointment."
         ),
-        description="Person, Location/HealthcareService or Device",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Patient",
+            "Practitioner",
+            "PractitionerRole",
+            "RelatedPerson",
+            "Device",
+            "HealthcareService",
+            "Location",
+        ],
     )
 
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Participation period of the actor",
+        title="Participation period of the actor",
+        description=None,
     )
 
     required: fhirtypes.Code = Field(
         None,
         alias="required",
-        title="Type `Code`",
-        description="required | optional | information-only",
+        title="required | optional | information-only",
+        description=(
+            "Whether this participant is required to be present at the meeting. "
+            "This covers a use-case where two doctors need to meet to discuss the "
+            "results for a specific patient, and the patient is not required to be "
+            "present."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["required", "optional", "information-only"],
     )
     required__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_required", title="Extension field for ``required``."
@@ -276,8 +374,11 @@ class AppointmentParticipant(backboneelement.BackboneElement):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="accepted | declined | tentative | needs-action",
+        title="accepted | declined | tentative | needs-action",
+        description="Participation status of the actor.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["accepted", "declined", "tentative", "needs-action"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -286,6 +387,6 @@ class AppointmentParticipant(backboneelement.BackboneElement):
     type: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="type",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Role of participant in the appointment",
+        title="Role of participant in the appointment",
+        description=None,
     )

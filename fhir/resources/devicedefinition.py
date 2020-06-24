@@ -28,67 +28,65 @@ class DeviceDefinition(domainresource.DomainResource):
     resource_type = Field("DeviceDefinition", const=True)
 
     capability: ListType[fhirtypes.DeviceDefinitionCapabilityType] = Field(
-        None,
-        alias="capability",
-        title=(
-            "List of `DeviceDefinitionCapability` items (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Device capabilities",
+        None, alias="capability", title="Device capabilities", description=None,
     )
 
     contact: ListType[fhirtypes.ContactPointType] = Field(
         None,
         alias="contact",
-        title="List of `ContactPoint` items (represented as `dict` in JSON)",
-        description="Details for human/organization for support",
+        title="Details for human/organization for support",
+        description=(
+            "Contact details for an organization or a particular human that is "
+            "responsible for the device."
+        ),
     )
 
     deviceName: ListType[fhirtypes.DeviceDefinitionDeviceNameType] = Field(
         None,
         alias="deviceName",
-        title=(
-            "List of `DeviceDefinitionDeviceName` items (represented as `dict` in "
-            "JSON)"
-        ),
-        description="A name given to the device to identify it",
+        title="A name given to the device to identify it",
+        description=None,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Instance identifier",
+        title="Instance identifier",
+        description=(
+            "Unique instance identifiers assigned to a device by the software, "
+            "manufacturers, other organizations or owners. For example: handle ID."
+        ),
     )
 
     languageCode: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="languageCode",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Language code for the human-readable text strings produced by the "
             "device (all supported)"
         ),
+        description=None,
     )
 
     manufacturerReference: fhirtypes.ReferenceType = Field(
         None,
         alias="manufacturerReference",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Name of device manufacturer",
-        one_of_many="manufacturer",  # Choice of Data Types. i.e value[x]
+        title="Name of device manufacturer",
+        description="A name of the manufacturer.",
+        # Choice of Data Types. i.e manufacturer[x]
+        one_of_many="manufacturer",
         one_of_many_required=False,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     manufacturerString: fhirtypes.String = Field(
         None,
         alias="manufacturerString",
-        title="Type `String`",
-        description="Name of device manufacturer",
-        one_of_many="manufacturer",  # Choice of Data Types. i.e value[x]
+        title="Name of device manufacturer",
+        description="A name of the manufacturer.",
+        # Choice of Data Types. i.e manufacturer[x]
+        one_of_many="manufacturer",
         one_of_many_required=False,
     )
     manufacturerString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -100,18 +98,15 @@ class DeviceDefinition(domainresource.DomainResource):
     material: ListType[fhirtypes.DeviceDefinitionMaterialType] = Field(
         None,
         alias="material",
-        title=(
-            "List of `DeviceDefinitionMaterial` items (represented as `dict` in "
-            "JSON)"
-        ),
-        description="A substance used to create the material(s) of which the device is made",
+        title="A substance used to create the material(s) of which the device is made",
+        description=None,
     )
 
     modelNumber: fhirtypes.String = Field(
         None,
         alias="modelNumber",
-        title="Type `String`",
-        description="The model number for the device",
+        title="The model number for the device",
+        description=None,
     )
     modelNumber__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_modelNumber", title="Extension field for ``modelNumber``."
@@ -120,15 +115,18 @@ class DeviceDefinition(domainresource.DomainResource):
     note: ListType[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
-        title="List of `Annotation` items (represented as `dict` in JSON)",
-        description="Device notes and comments",
+        title="Device notes and comments",
+        description=(
+            "Descriptive information, usage information or implantation information"
+            " that is not captured in an existing element."
+        ),
     )
 
     onlineInformation: fhirtypes.Uri = Field(
         None,
         alias="onlineInformation",
-        title="Type `Uri`",
-        description="Access to on-line information",
+        title="Access to on-line information",
+        description="Access to on-line information about the device.",
     )
     onlineInformation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -139,27 +137,28 @@ class DeviceDefinition(domainresource.DomainResource):
     owner: fhirtypes.ReferenceType = Field(
         None,
         alias="owner",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
+        title="Organization responsible for device",
+        description=(
+            "An organization that is responsible for the provision and ongoing "
+            "maintenance of the device."
         ),
-        description="Organization responsible for device",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     parentDevice: fhirtypes.ReferenceType = Field(
         None,
         alias="parentDevice",
-        title=(
-            "Type `Reference` referencing `DeviceDefinition` (represented as `dict`"
-            " in JSON)"
-        ),
-        description="The parent device it can be part of",
+        title="The parent device it can be part of",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["DeviceDefinition"],
     )
 
     physicalCharacteristics: fhirtypes.ProdCharacteristicType = Field(
         None,
         alias="physicalCharacteristics",
-        title="Type `ProdCharacteristic` (represented as `dict` in JSON)",
+        title="Dimensions, color etc.",
         description="Dimensions, color etc.",
     )
 
@@ -167,59 +166,53 @@ class DeviceDefinition(domainresource.DomainResource):
         None,
         alias="property",
         title=(
-            "List of `DeviceDefinitionProperty` items (represented as `dict` in "
-            "JSON)"
-        ),
-        description=(
             "The actual configuration settings of a device as it actually operates,"
             " e.g., regulation status, time properties"
         ),
+        description=None,
     )
 
     quantity: fhirtypes.QuantityType = Field(
         None,
         alias="quantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The quantity of the device present in the packaging (e.g. the number "
             "of devices present in a pack, or the number of devices in the same "
             "package of the medicinal product)"
         ),
+        description=None,
     )
 
     safety: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="safety",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Safety characteristics of the device",
+        title="Safety characteristics of the device",
+        description=None,
     )
 
     shelfLifeStorage: ListType[fhirtypes.ProductShelfLifeType] = Field(
         None,
         alias="shelfLifeStorage",
-        title="List of `ProductShelfLife` items (represented as `dict` in JSON)",
-        description="Shelf Life and storage information",
+        title="Shelf Life and storage information",
+        description=None,
     )
 
     specialization: ListType[fhirtypes.DeviceDefinitionSpecializationType] = Field(
         None,
         alias="specialization",
         title=(
-            "List of `DeviceDefinitionSpecialization` items (represented as `dict` "
-            "in JSON)"
-        ),
-        description=(
             "The capabilities supported on a  device, the standards to which the "
             "device conforms for a particular purpose, and used for the "
             "communication"
         ),
+        description=None,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="What kind of device or device system this is",
+        title="What kind of device or device system this is",
+        description=None,
     )
 
     udiDeviceIdentifier: ListType[
@@ -227,18 +220,20 @@ class DeviceDefinition(domainresource.DomainResource):
     ] = Field(
         None,
         alias="udiDeviceIdentifier",
-        title=(
-            "List of `DeviceDefinitionUdiDeviceIdentifier` items (represented as "
-            "`dict` in JSON)"
+        title="Unique Device Identifier (UDI) Barcode string",
+        description=(
+            "Unique device identifier (UDI) assigned to device label or package.  "
+            "Note that the Device may include multiple udiCarriers as it either may"
+            " include just the udiCarrier for the jurisdiction it is sold, or for "
+            "multiple jurisdictions it could have been sold."
         ),
-        description="Unique Device Identifier (UDI) Barcode string",
     )
 
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
-        title="Type `Uri`",
-        description="Network address to contact device",
+        title="Network address to contact device",
+        description="A network address on which the device may be contacted directly.",
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -247,8 +242,8 @@ class DeviceDefinition(domainresource.DomainResource):
     version: ListType[fhirtypes.String] = Field(
         None,
         alias="version",
-        title="List of `String` items",
-        description="Available versions",
+        title="Available versions",
+        description="The available versions of the device, e.g., software versions.",
     )
     version__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -304,17 +299,11 @@ class DeviceDefinitionCapability(backboneelement.BackboneElement):
     resource_type = Field("DeviceDefinitionCapability", const=True)
 
     description: ListType[fhirtypes.CodeableConceptType] = Field(
-        None,
-        alias="description",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Description of capability",
+        None, alias="description", title="Description of capability", description=None,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
-        ...,
-        alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type of capability",
+        ..., alias="type", title="Type of capability", description=None,
     )
 
 
@@ -329,7 +318,7 @@ class DeviceDefinitionDeviceName(backboneelement.BackboneElement):
     resource_type = Field("DeviceDefinitionDeviceName", const=True)
 
     name: fhirtypes.String = Field(
-        ..., alias="name", title="Type `String`", description="The name of the device"
+        ..., alias="name", title="The name of the device", description=None,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -338,11 +327,24 @@ class DeviceDefinitionDeviceName(backboneelement.BackboneElement):
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code`",
-        description=(
+        title=(
             "udi-label-name | user-friendly-name | patient-reported-name | "
             "manufacturer-name | model-name | other"
         ),
+        description=(
+            "The type of deviceName. UDILabelName | UserFriendlyName | "
+            "PatientReportedName | ManufactureDeviceName | ModelName."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "udi-label-name",
+            "user-friendly-name",
+            "patient-reported-name",
+            "manufacturer-name",
+            "model-name",
+            "other",
+        ],
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -362,8 +364,8 @@ class DeviceDefinitionMaterial(backboneelement.BackboneElement):
     allergenicIndicator: bool = Field(
         None,
         alias="allergenicIndicator",
-        title="Type `bool`",
-        description="Whether the substance is a known or suspected allergen",
+        title="Whether the substance is a known or suspected allergen",
+        description=None,
     )
     allergenicIndicator__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -374,18 +376,15 @@ class DeviceDefinitionMaterial(backboneelement.BackboneElement):
     alternate: bool = Field(
         None,
         alias="alternate",
-        title="Type `bool`",
-        description="Indicates an alternative material of the device",
+        title="Indicates an alternative material of the device",
+        description=None,
     )
     alternate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_alternate", title="Extension field for ``alternate``."
     )
 
     substance: fhirtypes.CodeableConceptType = Field(
-        ...,
-        alias="substance",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The substance",
+        ..., alias="substance", title="The substance", description=None,
     )
 
 
@@ -403,25 +402,25 @@ class DeviceDefinitionProperty(backboneelement.BackboneElement):
     type: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Code that specifies the property DeviceDefinitionPropetyCode "
             "(Extensible)"
         ),
+        description=None,
     )
 
     valueCode: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="valueCode",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Property value as a code, e.g., NTP4 (synced to NTP)",
+        title="Property value as a code, e.g., NTP4 (synced to NTP)",
+        description=None,
     )
 
     valueQuantity: ListType[fhirtypes.QuantityType] = Field(
         None,
         alias="valueQuantity",
-        title="List of `Quantity` items (represented as `dict` in JSON)",
-        description="Property value as a quantity",
+        title="Property value as a quantity",
+        description=None,
     )
 
 
@@ -439,8 +438,8 @@ class DeviceDefinitionSpecialization(backboneelement.BackboneElement):
     systemType: fhirtypes.String = Field(
         ...,
         alias="systemType",
-        title="Type `String`",
-        description="The standard that is used to operate and communicate",
+        title="The standard that is used to operate and communicate",
+        description=None,
     )
     systemType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_systemType", title="Extension field for ``systemType``."
@@ -449,8 +448,8 @@ class DeviceDefinitionSpecialization(backboneelement.BackboneElement):
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String`",
-        description="The version of the standard that is used to operate and communicate",
+        title="The version of the standard that is used to operate and communicate",
+        description=None,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -474,12 +473,12 @@ class DeviceDefinitionUdiDeviceIdentifier(backboneelement.BackboneElement):
     deviceIdentifier: fhirtypes.String = Field(
         ...,
         alias="deviceIdentifier",
-        title="Type `String`",
-        description=(
+        title=(
             "The identifier that is to be associated with every Device that "
             "references this DeviceDefintiion for the issuer and jurisdication "
             "porvided in the DeviceDefinition.udiDeviceIdentifier"
         ),
+        description=None,
     )
     deviceIdentifier__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -490,8 +489,8 @@ class DeviceDefinitionUdiDeviceIdentifier(backboneelement.BackboneElement):
     issuer: fhirtypes.Uri = Field(
         ...,
         alias="issuer",
-        title="Type `Uri`",
-        description="The organization that assigns the identifier algorithm",
+        title="The organization that assigns the identifier algorithm",
+        description=None,
     )
     issuer__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_issuer", title="Extension field for ``issuer``."
@@ -500,8 +499,8 @@ class DeviceDefinitionUdiDeviceIdentifier(backboneelement.BackboneElement):
     jurisdiction: fhirtypes.Uri = Field(
         ...,
         alias="jurisdiction",
-        title="Type `Uri`",
-        description="The jurisdiction to which the deviceIdentifier applies",
+        title="The jurisdiction to which the deviceIdentifier applies",
+        description=None,
     )
     jurisdiction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_jurisdiction", title="Extension field for ``jurisdiction``."

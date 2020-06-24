@@ -27,8 +27,11 @@ class Expression(element.Element):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Natural language description of the condition",
+        title="Natural language description of the condition",
+        description=(
+            "A brief, natural language description of the condition that "
+            "effectively communicates the intended semantics."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -37,8 +40,8 @@ class Expression(element.Element):
     expression: fhirtypes.String = Field(
         None,
         alias="expression",
-        title="Type `String`",
-        description="Expression in specified language",
+        title="Expression in specified language",
+        description="An expression in the specified language that returns a value.",
     )
     expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_expression", title="Extension field for ``expression``."
@@ -47,8 +50,11 @@ class Expression(element.Element):
     language: fhirtypes.Code = Field(
         ...,
         alias="language",
-        title="Type `Code`",
-        description="text/cql | text/fhirpath | application/x-fhir-query | etc.",
+        title="text/cql | text/fhirpath | application/x-fhir-query | etc.",
+        description="The media type of the language for the expression.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["text/cql", "text/fhirpath", "application/x-fhir-query", "etc."],
     )
     language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_language", title="Extension field for ``language``."
@@ -57,8 +63,11 @@ class Expression(element.Element):
     name: fhirtypes.Id = Field(
         None,
         alias="name",
-        title="Type `Id`",
-        description="Short name assigned to expression for reuse",
+        title="Short name assigned to expression for reuse",
+        description=(
+            "A short name assigned to the expression to allow for multiple reuse of"
+            " the expression in the context where it is defined."
+        ),
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -67,8 +76,8 @@ class Expression(element.Element):
     reference: fhirtypes.Uri = Field(
         None,
         alias="reference",
-        title="Type `Uri`",
-        description="Where the expression is found",
+        title="Where the expression is found",
+        description="A URI that defines where the expression is found.",
     )
     reference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_reference", title="Extension field for ``reference``."

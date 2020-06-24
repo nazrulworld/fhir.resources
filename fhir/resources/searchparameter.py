@@ -29,8 +29,11 @@ class SearchParameter(domainresource.DomainResource):
     base: ListType[fhirtypes.Code] = Field(
         ...,
         alias="base",
-        title="List of `Code` items",
-        description="The resource type(s) this search parameter applies to",
+        title="The resource type(s) this search parameter applies to",
+        description=(
+            "The base resource type(s) that this search parameter can be used "
+            "against."
+        ),
     )
     base__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_base", title="Extension field for ``base``."
@@ -39,15 +42,29 @@ class SearchParameter(domainresource.DomainResource):
     chain: ListType[fhirtypes.String] = Field(
         None,
         alias="chain",
-        title="List of `String` items",
-        description="Chained names supported",
+        title="Chained names supported",
+        description=(
+            "Contains the names of any search parameters which may be chained to "
+            "the containing search parameter. Chained parameters may be added to "
+            "search parameters of type reference and specify that resources will "
+            "only be returned if they contain a reference to a resource which "
+            "matches the chained parameter value. Values for this field should be "
+            "drawn from SearchParameter.code for a parameter on the target resource"
+            " type."
+        ),
     )
     chain__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_chain", title="Extension field for ``chain``."
     )
 
     code: fhirtypes.Code = Field(
-        ..., alias="code", title="Type `Code`", description="Code used in URL"
+        ...,
+        alias="code",
+        title="Code used in URL",
+        description=(
+            "The code used in the URL or the parameter name in a parameters "
+            "resource for this search parameter."
+        ),
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -56,8 +73,11 @@ class SearchParameter(domainresource.DomainResource):
     comparator: ListType[fhirtypes.Code] = Field(
         None,
         alias="comparator",
-        title="List of `Code` items",
-        description="eq | ne | gt | lt | ge | le | sa | eb | ap",
+        title="eq | ne | gt | lt | ge | le | sa | eb | ap",
+        description="Comparators supported for the search parameter.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["eq", "ne", "gt", "lt", "ge", "le", "sa", "eb", "ap"],
     )
     comparator__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -66,22 +86,30 @@ class SearchParameter(domainresource.DomainResource):
     component: ListType[fhirtypes.SearchParameterComponentType] = Field(
         None,
         alias="component",
-        title=(
-            "List of `SearchParameterComponent` items (represented as `dict` in "
-            "JSON)"
-        ),
-        description="For Composite resources to define the parts",
+        title="For Composite resources to define the parts",
+        description="Used to define the parts of a composite search parameter.",
     )
 
     contact: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="contact",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Contact details for the publisher",
+        title="Contact details for the publisher",
+        description=(
+            "Contact details to assist a user in finding and communicating with the"
+            " publisher."
+        ),
     )
 
     date: fhirtypes.DateTime = Field(
-        None, alias="date", title="Type `DateTime`", description="Date last changed"
+        None,
+        alias="date",
+        title="Date last changed",
+        description=(
+            "The date  (and optionally time) when the search parameter was "
+            "published. The date must change when the business version changes and "
+            "it must change if the status code changes. In addition, it should "
+            "change when the substantive content of the search parameter changes."
+        ),
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -90,8 +118,16 @@ class SearchParameter(domainresource.DomainResource):
     derivedFrom: fhirtypes.Canonical = Field(
         None,
         alias="derivedFrom",
-        title="Type `Canonical` referencing `SearchParameter`",
-        description="Original definition for the search parameter",
+        title="Original definition for the search parameter",
+        description=(
+            "Where this search parameter is originally defined. If a derivedFrom is"
+            " provided, then the details in the search parameter must be consistent"
+            " with the definition from which it is defined. i.e. the parameter "
+            "should have the same meaning, and (usually) the functionality should "
+            "be a proper subset of the underlying search parameter."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["SearchParameter"],
     )
     derivedFrom__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_derivedFrom", title="Extension field for ``derivedFrom``."
@@ -100,8 +136,8 @@ class SearchParameter(domainresource.DomainResource):
     description: fhirtypes.Markdown = Field(
         ...,
         alias="description",
-        title="Type `Markdown`",
-        description="Natural language description of the search parameter",
+        title="Natural language description of the search parameter",
+        description="And how it used.",
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -110,8 +146,12 @@ class SearchParameter(domainresource.DomainResource):
     experimental: bool = Field(
         None,
         alias="experimental",
-        title="Type `bool`",
-        description="For testing purposes, not real usage",
+        title="For testing purposes, not real usage",
+        description=(
+            "A Boolean value to indicate that this search parameter is authored for"
+            " testing purposes (or education/evaluation/marketing) and is not "
+            "intended to be used for genuine usage."
+        ),
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -120,8 +160,11 @@ class SearchParameter(domainresource.DomainResource):
     expression: fhirtypes.String = Field(
         None,
         alias="expression",
-        title="Type `String`",
-        description="FHIRPath expression that extracts the values",
+        title="FHIRPath expression that extracts the values",
+        description=(
+            "A FHIRPath expression that returns a set of elements for the search "
+            "parameter."
+        ),
     )
     expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_expression", title="Extension field for ``expression``."
@@ -130,18 +173,37 @@ class SearchParameter(domainresource.DomainResource):
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="jurisdiction",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Intended jurisdiction for search parameter (if applicable)",
+        title="Intended jurisdiction for search parameter (if applicable)",
+        description=(
+            "A legal or geographic region in which the search parameter is intended"
+            " to be used."
+        ),
     )
 
     modifier: ListType[fhirtypes.Code] = Field(
         None,
         alias="modifier",
-        title="List of `Code` items",
-        description=(
+        title=(
             "missing | exact | contains | not | text | in | not-in | below | above "
             "| type | identifier | ofType"
         ),
+        description="A modifier supported for the search parameter.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "missing",
+            "exact",
+            "contains",
+            "not",
+            "text",
+            "in",
+            "not-in",
+            "below",
+            "above",
+            "type",
+            "identifier",
+            "ofType",
+        ],
     )
     modifier__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_modifier", title="Extension field for ``modifier``."
@@ -150,8 +212,11 @@ class SearchParameter(domainresource.DomainResource):
     multipleAnd: bool = Field(
         None,
         alias="multipleAnd",
-        title="Type `bool`",
-        description="Allow multiple parameters (and)",
+        title="Allow multiple parameters (and)",
+        description=(
+            "Whether multiple parameters are allowed - e.g. more than one parameter"
+            " with the same name. The search matches if all the parameters match."
+        ),
     )
     multipleAnd__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_multipleAnd", title="Extension field for ``multipleAnd``."
@@ -160,8 +225,12 @@ class SearchParameter(domainresource.DomainResource):
     multipleOr: bool = Field(
         None,
         alias="multipleOr",
-        title="Type `bool`",
-        description="Allow multiple values per parameter (or)",
+        title="Allow multiple values per parameter (or)",
+        description=(
+            "Whether multiple values are allowed for each time the parameter "
+            "exists. Values are separated by commas, and the parameter matches if "
+            "any of the values match."
+        ),
     )
     multipleOr__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_multipleOr", title="Extension field for ``multipleOr``."
@@ -170,8 +239,12 @@ class SearchParameter(domainresource.DomainResource):
     name: fhirtypes.String = Field(
         ...,
         alias="name",
-        title="Type `String`",
-        description="Name for this search parameter (computer friendly)",
+        title="Name for this search parameter (computer friendly)",
+        description=(
+            "A natural language name identifying the search parameter. This name "
+            "should be usable as an identifier for the module by machine processing"
+            " applications such as code generation."
+        ),
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -180,8 +253,11 @@ class SearchParameter(domainresource.DomainResource):
     publisher: fhirtypes.String = Field(
         None,
         alias="publisher",
-        title="Type `String`",
-        description="Name of the publisher (organization or individual)",
+        title="Name of the publisher (organization or individual)",
+        description=(
+            "The name of the organization or individual that published the search "
+            "parameter."
+        ),
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -190,8 +266,11 @@ class SearchParameter(domainresource.DomainResource):
     purpose: fhirtypes.Markdown = Field(
         None,
         alias="purpose",
-        title="Type `Markdown`",
-        description="Why this search parameter is defined",
+        title="Why this search parameter is defined",
+        description=(
+            "Explanation of why this search parameter is needed and why it has been"
+            " designed as it has."
+        ),
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_purpose", title="Extension field for ``purpose``."
@@ -200,8 +279,14 @@ class SearchParameter(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="draft | active | retired | unknown",
+        title="draft | active | retired | unknown",
+        description=(
+            "The status of this search parameter. Enables tracking the life-cycle "
+            "of the content."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["draft", "active", "retired", "unknown"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -210,8 +295,8 @@ class SearchParameter(domainresource.DomainResource):
     target: ListType[fhirtypes.Code] = Field(
         None,
         alias="target",
-        title="List of `Code` items",
-        description="Types of resource (if a resource reference)",
+        title="Types of resource (if a resource reference)",
+        description="Types of resource (if a resource is referenced).",
     )
     target__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_target", title="Extension field for ``target``."
@@ -220,11 +305,27 @@ class SearchParameter(domainresource.DomainResource):
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code`",
-        description=(
+        title=(
             "number | date | string | token | reference | composite | quantity | "
             "uri | special"
         ),
+        description=(
+            "The type of value that a search parameter may contain, and how the "
+            "content is interpreted."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "number",
+            "date",
+            "string",
+            "token",
+            "reference",
+            "composite",
+            "quantity",
+            "uri",
+            "special",
+        ],
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -233,10 +334,18 @@ class SearchParameter(domainresource.DomainResource):
     url: fhirtypes.Uri = Field(
         ...,
         alias="url",
-        title="Type `Uri`",
-        description=(
+        title=(
             "Canonical identifier for this search parameter, represented as a URI "
             "(globally unique)"
+        ),
+        description=(
+            "An absolute URI that is used to identify this search parameter when it"
+            " is referenced in a specification, model, design or an instance; also "
+            "called its canonical identifier. This SHOULD be globally unique and "
+            "SHOULD be a literal address at which at which an authoritative "
+            "instance of this search parameter is (or will be) published. This URL "
+            "can be the target of a canonical reference. It SHALL remain the same "
+            "when the search parameter is stored on different servers."
         ),
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -246,15 +355,29 @@ class SearchParameter(domainresource.DomainResource):
     useContext: ListType[fhirtypes.UsageContextType] = Field(
         None,
         alias="useContext",
-        title="List of `UsageContext` items (represented as `dict` in JSON)",
-        description="The context that the content is intended to support",
+        title="The context that the content is intended to support",
+        description=(
+            "The content was developed with a focus and intent of supporting the "
+            "contexts that are listed. These contexts may be general categories "
+            "(gender, age, ...) or may be references to specific programs "
+            "(insurance plans, studies, ...) and may be used to assist with "
+            "indexing and searching for appropriate search parameter instances."
+        ),
     )
 
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String`",
-        description="Business version of the search parameter",
+        title="Business version of the search parameter",
+        description=(
+            "The identifier that is used to identify this version of the search "
+            "parameter when it is referenced in a specification, model, design or "
+            "instance. This is an arbitrary value managed by the search parameter "
+            "author and is not expected to be globally unique. For example, it "
+            "might be a timestamp (e.g. yyyymmdd) if a managed version is not "
+            "available. There is also no expectation that versions can be placed in"
+            " a lexicographical sequence."
+        ),
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -263,8 +386,11 @@ class SearchParameter(domainresource.DomainResource):
     xpath: fhirtypes.String = Field(
         None,
         alias="xpath",
-        title="Type `String`",
-        description="XPath that extracts the values",
+        title="XPath that extracts the values",
+        description=(
+            "An XPath expression that returns a set of elements for the search "
+            "parameter."
+        ),
     )
     xpath__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_xpath", title="Extension field for ``xpath``."
@@ -273,8 +399,14 @@ class SearchParameter(domainresource.DomainResource):
     xpathUsage: fhirtypes.Code = Field(
         None,
         alias="xpathUsage",
-        title="Type `Code`",
-        description="normal | phonetic | nearby | distance | other",
+        title="normal | phonetic | nearby | distance | other",
+        description=(
+            "How the search parameter relates to the set of elements returned by "
+            "evaluating the xpath query."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["normal", "phonetic", "nearby", "distance", "other"],
     )
     xpathUsage__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_xpathUsage", title="Extension field for ``xpathUsage``."
@@ -295,8 +427,10 @@ class SearchParameterComponent(backboneelement.BackboneElement):
     definition: fhirtypes.Canonical = Field(
         ...,
         alias="definition",
-        title="Type `Canonical` referencing `SearchParameter`",
-        description="Defines how the part works",
+        title="Defines how the part works",
+        description="The definition of the search parameter that describes this part.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["SearchParameter"],
     )
     definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_definition", title="Extension field for ``definition``."
@@ -305,8 +439,11 @@ class SearchParameterComponent(backboneelement.BackboneElement):
     expression: fhirtypes.String = Field(
         ...,
         alias="expression",
-        title="Type `String`",
-        description="Subexpression relative to main expression",
+        title="Subexpression relative to main expression",
+        description=(
+            "A sub-expression that defines how to extract values for this component"
+            " from the output of the main SearchParameter.expression."
+        ),
     )
     expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_expression", title="Extension field for ``expression``."

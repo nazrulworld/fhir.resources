@@ -30,43 +30,62 @@ class GuidanceResponse(domainresource.DomainResource):
     dataRequirement: ListType[fhirtypes.DataRequirementType] = Field(
         None,
         alias="dataRequirement",
-        title="List of `DataRequirement` items (represented as `dict` in JSON)",
-        description="Additional required data",
+        title="Additional required data",
+        description=(
+            "If the evaluation could not be completed due to lack of information, "
+            "or additional information would potentially result in a more accurate "
+            "response, this element will a description of the data required in "
+            "order to proceed with the evaluation. A subsequent request to the "
+            "service should include this data."
+        ),
     )
 
     encounter: fhirtypes.ReferenceType = Field(
         None,
         alias="encounter",
-        title=(
-            "Type `Reference` referencing `Encounter` (represented as `dict` in "
-            "JSON)"
+        title="Encounter during which the response was returned",
+        description=(
+            "The encounter during which this response was created or to which the "
+            "creation of this record is tightly associated."
         ),
-        description="Encounter during which the response was returned",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Encounter"],
     )
 
     evaluationMessage: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="evaluationMessage",
-        title=(
-            "List of `Reference` items referencing `OperationOutcome` (represented "
-            "as `dict` in JSON)"
+        title="Messages resulting from the evaluation of the artifact or artifacts",
+        description=(
+            "Messages resulting from the evaluation of the artifact or artifacts. "
+            "As part of evaluating the request, the engine may produce "
+            "informational or warning messages. These messages will be provided by "
+            "this element."
         ),
-        description="Messages resulting from the evaluation of the artifact or artifacts",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["OperationOutcome"],
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Business identifier",
+        title="Business identifier",
+        description=(
+            "Allows a service to provide  unique, business identifiers for the "
+            "response."
+        ),
     )
 
     moduleCanonical: fhirtypes.Canonical = Field(
         None,
         alias="moduleCanonical",
-        title="Type `Canonical`",
-        description="What guidance was requested",
-        one_of_many="module",  # Choice of Data Types. i.e value[x]
+        title="What guidance was requested",
+        description=(
+            "An identifier, CodeableConcept or canonical reference to the guidance "
+            "that was requested."
+        ),
+        # Choice of Data Types. i.e module[x]
+        one_of_many="module",
         one_of_many_required=True,
     )
     moduleCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -76,18 +95,26 @@ class GuidanceResponse(domainresource.DomainResource):
     moduleCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="moduleCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="What guidance was requested",
-        one_of_many="module",  # Choice of Data Types. i.e value[x]
+        title="What guidance was requested",
+        description=(
+            "An identifier, CodeableConcept or canonical reference to the guidance "
+            "that was requested."
+        ),
+        # Choice of Data Types. i.e module[x]
+        one_of_many="module",
         one_of_many_required=True,
     )
 
     moduleUri: fhirtypes.Uri = Field(
         None,
         alias="moduleUri",
-        title="Type `Uri`",
-        description="What guidance was requested",
-        one_of_many="module",  # Choice of Data Types. i.e value[x]
+        title="What guidance was requested",
+        description=(
+            "An identifier, CodeableConcept or canonical reference to the guidance "
+            "that was requested."
+        ),
+        # Choice of Data Types. i.e module[x]
+        one_of_many="module",
         one_of_many_required=True,
     )
     moduleUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -97,15 +124,18 @@ class GuidanceResponse(domainresource.DomainResource):
     note: ListType[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
-        title="List of `Annotation` items (represented as `dict` in JSON)",
-        description="Additional notes about the response",
+        title="Additional notes about the response",
+        description=(
+            "Provides a mechanism to communicate additional information about the "
+            "response."
+        ),
     )
 
     occurrenceDateTime: fhirtypes.DateTime = Field(
         None,
         alias="occurrenceDateTime",
-        title="Type `DateTime`",
-        description="When the guidance response was processed",
+        title="When the guidance response was processed",
+        description="Indicates when the guidance response was processed.",
     )
     occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -116,62 +146,106 @@ class GuidanceResponse(domainresource.DomainResource):
     outputParameters: fhirtypes.ReferenceType = Field(
         None,
         alias="outputParameters",
-        title=(
-            "Type `Reference` referencing `Parameters` (represented as `dict` in "
-            "JSON)"
+        title="The output parameters of the evaluation, if any",
+        description=(
+            "The output parameters of the evaluation, if any. Many modules will "
+            "result in the return of specific resources such as procedure or "
+            "communication requests that are returned as part of the operation "
+            "result. However, modules may define specific outputs that would be "
+            "returned as the result of the evaluation, and these would be returned "
+            "in this element."
         ),
-        description="The output parameters of the evaluation, if any",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Parameters"],
     )
 
     performer: fhirtypes.ReferenceType = Field(
         None,
         alias="performer",
-        title="Type `Reference` referencing `Device` (represented as `dict` in JSON)",
-        description="Device returning the guidance",
+        title="Device returning the guidance",
+        description="Provides a reference to the device that performed the guidance.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Device"],
     )
 
     reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="reasonCode",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Why guidance is needed",
+        title="Why guidance is needed",
+        description=(
+            "Describes the reason for the guidance response in coded or textual "
+            "form."
+        ),
     )
 
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="reasonReference",
-        title=(
-            "List of `Reference` items referencing `Condition, Observation, "
-            "DiagnosticReport, DocumentReference` (represented as `dict` in JSON)"
+        title="Why guidance is needed",
+        description=(
+            "Indicates the reason the request was initiated. This is typically "
+            "provided as a parameter to the evaluation and echoed by the service, "
+            "although for some use cases, such as subscription- or event-based "
+            "scenarios, it may provide an indication of the cause for the response."
         ),
-        description="Why guidance is needed",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Condition",
+            "Observation",
+            "DiagnosticReport",
+            "DocumentReference",
+        ],
     )
 
     requestIdentifier: fhirtypes.IdentifierType = Field(
         None,
         alias="requestIdentifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="The identifier of the request associated with this response, if any",
+        title="The identifier of the request associated with this response, if any",
+        description=(
+            "The identifier of the request associated with this response. If an "
+            "identifier was given as part of the request, it will be reproduced "
+            "here to enable the requester to more easily identify the response in a"
+            " multi-request scenario."
+        ),
     )
 
     result: fhirtypes.ReferenceType = Field(
         None,
         alias="result",
-        title=(
-            "Type `Reference` referencing `CarePlan, RequestGroup` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Proposed actions, if any",
+        title="Proposed actions, if any",
+        description="The actions, if any, produced by the evaluation of the artifact.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["CarePlan", "RequestGroup"],
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description=(
+        title=(
             "success | data-requested | data-required | in-progress | failure | "
             "entered-in-error"
         ),
+        description=(
+            "The status of the response. If the evaluation is completed "
+            "successfully, the status will indicate success. However, in order to "
+            "complete the evaluation, the engine may require more information. In "
+            "this case, the status will be data-required, and the response will "
+            "contain a description of the additional required information. If the "
+            "evaluation completed successfully, but the engine determines that a "
+            "potentially more accurate response could be provided if more data was "
+            "available, the status will be data-requested, and the response will "
+            "contain a description of the additional requested information."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "success",
+            "data-requested",
+            "data-required",
+            "in-progress",
+            "failure",
+            "entered-in-error",
+        ],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -180,11 +254,10 @@ class GuidanceResponse(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title=(
-            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
-            "in JSON)"
-        ),
-        description="Patient the request was performed for",
+        title="Patient the request was performed for",
+        description="The patient for which the request was processed.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "Group"],
     )
 
     @root_validator(pre=True)

@@ -5,14 +5,14 @@ from typing import Any, Dict, Union
 from .fhirabstractmodel import FHIRAbstractModel
 from .fhirtypesvalidators import get_fhir_model_class
 
-__version__ = "6.0.0"
 __fhir_version__ = "4.0.1"
+__version__ = "6.0.0"
 
 
 def construct_fhir_element(
     element_type: str, data: Union[Dict[str, Any], str, bytes, Path]
 ) -> FHIRAbstractModel:
-    """ """
+
     try:
         klass = get_fhir_model_class(element_type)
     except KeyError:

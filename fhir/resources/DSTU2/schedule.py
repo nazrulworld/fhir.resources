@@ -60,7 +60,7 @@ class Schedule(DomainResource):
         description=(
             "The period of time that the slots that are attached to this Schedule "
             "resource cover (even if none exist). These  cover the amount of time "
-            "that an organization\u0027s planning horizon; the interval for which they "
+            "that an organization's planning horizon; the interval for which they "
             "are currently accepting appointments. This does not define a "
             '"template" for planning outside these dates'
         ),

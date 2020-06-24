@@ -29,8 +29,8 @@ class Practitioner(domainresource.DomainResource):
     active: bool = Field(
         None,
         alias="active",
-        title="Type `bool`",
-        description="Whether this practitioner\u0027s record is in active use",
+        title="Whether this practitioner's record is in active use",
+        description=None,
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_active", title="Extension field for ``active``."
@@ -39,18 +39,22 @@ class Practitioner(domainresource.DomainResource):
     address: ListType[fhirtypes.AddressType] = Field(
         None,
         alias="address",
-        title="List of `Address` items (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Address(es) of the practitioner that are not role specific (typically "
             "home address)"
+        ),
+        description=(
+            "Address(es) of the practitioner that are not role specific (typically "
+            "home address).  Work addresses are not typically entered in this "
+            "property as they are usually role dependent."
         ),
     )
 
     birthDate: fhirtypes.Date = Field(
         None,
         alias="birthDate",
-        title="Type `Date`",
-        description="The date  on which the practitioner was born",
+        title="The date  on which the practitioner was born",
+        description="The date of birth for the practitioner.",
     )
     birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_birthDate", title="Extension field for ``birthDate``."
@@ -59,15 +63,21 @@ class Practitioner(domainresource.DomainResource):
     communication: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="communication",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="A language the practitioner can use in patient communication",
+        title="A language the practitioner can use in patient communication",
+        description=None,
     )
 
     gender: fhirtypes.Code = Field(
         None,
         alias="gender",
-        title="Type `Code`",
-        description="male | female | other | unknown",
+        title="male | female | other | unknown",
+        description=(
+            "Administrative Gender - the gender that the person is considered to "
+            "have for administration and record keeping purposes."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["male", "female", "other", "unknown"],
     )
     gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_gender", title="Extension field for ``gender``."
@@ -76,42 +86,44 @@ class Practitioner(domainresource.DomainResource):
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="An identifier for the person as this agent",
+        title="An identifier for the person as this agent",
+        description="An identifier that applies to this person in this role.",
     )
 
     name: ListType[fhirtypes.HumanNameType] = Field(
         None,
         alias="name",
-        title="List of `HumanName` items (represented as `dict` in JSON)",
-        description="The name(s) associated with the practitioner",
+        title="The name(s) associated with the practitioner",
+        description=None,
     )
 
     photo: ListType[fhirtypes.AttachmentType] = Field(
-        None,
-        alias="photo",
-        title="List of `Attachment` items (represented as `dict` in JSON)",
-        description="Image of the person",
+        None, alias="photo", title="Image of the person", description=None,
     )
 
     qualification: ListType[fhirtypes.PractitionerQualificationType] = Field(
         None,
         alias="qualification",
         title=(
-            "List of `PractitionerQualification` items (represented as `dict` in "
-            "JSON)"
-        ),
-        description=(
             "Certification, licenses, or training pertaining to the provision of "
             "care"
+        ),
+        description=(
+            "The official certifications, training, and licenses that authorize or "
+            "otherwise pertain to the provision of care by the practitioner.  For "
+            "example, a medical license issued by a medical board authorizing the "
+            "practitioner to practice medicine within a certian locality."
         ),
     )
 
     telecom: ListType[fhirtypes.ContactPointType] = Field(
         None,
         alias="telecom",
-        title="List of `ContactPoint` items (represented as `dict` in JSON)",
-        description="A contact detail for the practitioner (that apply to all roles)",
+        title="A contact detail for the practitioner (that apply to all roles)",
+        description=(
+            "A contact detail for the practitioner, e.g. a telephone number or an "
+            "email address."
+        ),
     )
 
 
@@ -132,30 +144,31 @@ class PractitionerQualification(backboneelement.BackboneElement):
     code: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Coded representation of the qualification",
+        title="Coded representation of the qualification",
+        description=None,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="An identifier for this qualification for the practitioner",
+        title="An identifier for this qualification for the practitioner",
+        description=(
+            "An identifier that applies to this person's qualification in this " "role."
+        ),
     )
 
     issuer: fhirtypes.ReferenceType = Field(
         None,
         alias="issuer",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Organization that regulates and issues the qualification",
+        title="Organization that regulates and issues the qualification",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Period during which the qualification is valid",
+        title="Period during which the qualification is valid",
+        description=None,
     )

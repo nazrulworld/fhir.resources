@@ -33,18 +33,19 @@ class ChargeItemDefinition(domainresource.DomainResource):
     applicability: ListType[fhirtypes.ChargeItemDefinitionApplicabilityType] = Field(
         None,
         alias="applicability",
-        title=(
-            "List of `ChargeItemDefinitionApplicability` items (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Whether or not the billing code is applicable",
+        title="Whether or not the billing code is applicable",
+        description="Expressions that describe applicability criteria for the billing code.",
     )
 
     approvalDate: fhirtypes.Date = Field(
         None,
         alias="approvalDate",
-        title="Type `Date`",
-        description="When the charge item definition was approved by publisher",
+        title="When the charge item definition was approved by publisher",
+        description=(
+            "The date on which the resource content was approved by the publisher. "
+            "Approval happens once when the content is officially approved for "
+            "usage."
+        ),
     )
     approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_approvalDate", title="Extension field for ``approvalDate``."
@@ -53,29 +54,48 @@ class ChargeItemDefinition(domainresource.DomainResource):
     code: fhirtypes.CodeableConceptType = Field(
         None,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Billing codes or product types this definition applies to",
+        title="Billing codes or product types this definition applies to",
+        description=(
+            "The defined billing details in this resource pertain to the given "
+            "billing code."
+        ),
     )
 
     contact: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="contact",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Contact details for the publisher",
+        title="Contact details for the publisher",
+        description=(
+            "Contact details to assist a user in finding and communicating with the"
+            " publisher."
+        ),
     )
 
     copyright: fhirtypes.Markdown = Field(
         None,
         alias="copyright",
-        title="Type `Markdown`",
-        description="Use and/or publishing restrictions",
+        title="Use and/or publishing restrictions",
+        description=(
+            "A copyright statement relating to the charge item definition and/or "
+            "its contents. Copyright statements are generally legal restrictions on"
+            " the use and publishing of the charge item definition."
+        ),
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
     date: fhirtypes.DateTime = Field(
-        None, alias="date", title="Type `DateTime`", description="Date last changed"
+        None,
+        alias="date",
+        title="Date last changed",
+        description=(
+            "The date  (and optionally time) when the charge item definition was "
+            "published. The date must change when the business version changes and "
+            "it must change if the status code changes. In addition, it should "
+            "change when the substantive content of the charge item definition "
+            "changes."
+        ),
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -84,8 +104,11 @@ class ChargeItemDefinition(domainresource.DomainResource):
     derivedFromUri: ListType[fhirtypes.Uri] = Field(
         None,
         alias="derivedFromUri",
-        title="List of `Uri` items",
-        description="Underlying externally-defined charge item definition",
+        title="Underlying externally-defined charge item definition",
+        description=(
+            "The URL pointing to an externally-defined charge item definition that "
+            "is adhered to in whole or in part by this definition."
+        ),
     )
     derivedFromUri__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -96,8 +119,11 @@ class ChargeItemDefinition(domainresource.DomainResource):
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown`",
-        description="Natural language description of the charge item definition",
+        title="Natural language description of the charge item definition",
+        description=(
+            "A free text natural language description of the charge item definition"
+            " from a consumer's perspective."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -106,15 +132,22 @@ class ChargeItemDefinition(domainresource.DomainResource):
     effectivePeriod: fhirtypes.PeriodType = Field(
         None,
         alias="effectivePeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="When the charge item definition is expected to be used",
+        title="When the charge item definition is expected to be used",
+        description=(
+            "The period during which the charge item definition content was or is "
+            "planned to be in active use."
+        ),
     )
 
     experimental: bool = Field(
         None,
         alias="experimental",
-        title="Type `bool`",
-        description="For testing purposes, not real usage",
+        title="For testing purposes, not real usage",
+        description=(
+            "A Boolean value to indicate that this charge item definition is "
+            "authored for testing purposes (or education/evaluation/marketing) and "
+            "is not intended to be used for genuine usage."
+        ),
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -123,32 +156,45 @@ class ChargeItemDefinition(domainresource.DomainResource):
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Additional identifier for the charge item definition",
+        title="Additional identifier for the charge item definition",
+        description=(
+            "A formal identifier that is used to identify this charge item "
+            "definition when it is represented in other formats, or referenced in a"
+            " specification, model, design or an instance."
+        ),
     )
 
     instance: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="instance",
-        title=(
-            "List of `Reference` items referencing `Medication, Substance, Device` "
-            "(represented as `dict` in JSON)"
+        title="Instances this definition applies to",
+        description=(
+            "The defined billing details in this resource pertain to the given "
+            "product instance(s)."
         ),
-        description="Instances this definition applies to",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Medication", "Substance", "Device"],
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="jurisdiction",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Intended jurisdiction for charge item definition (if applicable)",
+        title="Intended jurisdiction for charge item definition (if applicable)",
+        description=(
+            "A legal or geographic region in which the charge item definition is "
+            "intended to be used."
+        ),
     )
 
     lastReviewDate: fhirtypes.Date = Field(
         None,
         alias="lastReviewDate",
-        title="Type `Date`",
-        description="When the charge item definition was last reviewed",
+        title="When the charge item definition was last reviewed",
+        description=(
+            "The date on which the resource content was last reviewed. Review "
+            "happens periodically after approval but does not change the original "
+            "approval date."
+        ),
     )
     lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
@@ -157,11 +203,13 @@ class ChargeItemDefinition(domainresource.DomainResource):
     partOf: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="partOf",
-        title="List of `Canonical` items referencing `ChargeItemDefinition`",
-        description=(
+        title=(
             "A larger definition of which this particular definition is a component"
             " or step"
         ),
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ChargeItemDefinition"],
     )
     partOf__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_partOf", title="Extension field for ``partOf``."
@@ -170,18 +218,22 @@ class ChargeItemDefinition(domainresource.DomainResource):
     propertyGroup: ListType[fhirtypes.ChargeItemDefinitionPropertyGroupType] = Field(
         None,
         alias="propertyGroup",
-        title=(
-            "List of `ChargeItemDefinitionPropertyGroup` items (represented as "
-            "`dict` in JSON)"
+        title="Group of properties which are applicable under the same conditions",
+        description=(
+            "Group of properties which are applicable under the same conditions. If"
+            " no applicability rules are established for the group, then all "
+            "properties always apply."
         ),
-        description="Group of properties which are applicable under the same conditions",
     )
 
     publisher: fhirtypes.String = Field(
         None,
         alias="publisher",
-        title="Type `String`",
-        description="Name of the publisher (organization or individual)",
+        title="Name of the publisher (organization or individual)",
+        description=(
+            "The name of the organization or individual that published the charge "
+            "item definition."
+        ),
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -190,11 +242,16 @@ class ChargeItemDefinition(domainresource.DomainResource):
     replaces: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="replaces",
-        title="List of `Canonical` items referencing `ChargeItemDefinition`",
-        description=(
+        title=(
             "Completed or terminated request(s) whose function is taken by this new"
             " request"
         ),
+        description=(
+            "As new versions of a protocol or guideline are defined, allows "
+            "identification of what versions are replaced by a new instance."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ChargeItemDefinition"],
     )
     replaces__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_replaces", title="Extension field for ``replaces``."
@@ -203,8 +260,11 @@ class ChargeItemDefinition(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="draft | active | retired | unknown",
+        title="draft | active | retired | unknown",
+        description="The current state of the ChargeItemDefinition.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["draft", "active", "retired", "unknown"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -213,8 +273,11 @@ class ChargeItemDefinition(domainresource.DomainResource):
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String`",
-        description="Name for this charge item definition (human friendly)",
+        title="Name for this charge item definition (human friendly)",
+        description=(
+            "A short, descriptive, user-friendly title for the charge item "
+            "definition."
+        ),
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -223,10 +286,19 @@ class ChargeItemDefinition(domainresource.DomainResource):
     url: fhirtypes.Uri = Field(
         ...,
         alias="url",
-        title="Type `Uri`",
-        description=(
+        title=(
             "Canonical identifier for this charge item definition, represented as a"
             " URI (globally unique)"
+        ),
+        description=(
+            "An absolute URI that is used to identify this charge item definition "
+            "when it is referenced in a specification, model, design or an "
+            "instance; also called its canonical identifier. This SHOULD be "
+            "globally unique and SHOULD be a literal address at which at which an "
+            "authoritative instance of this charge item definition is (or will be) "
+            "published. This URL can be the target of a canonical reference. It "
+            "SHALL remain the same when the charge item definition is stored on "
+            "different servers."
         ),
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -236,15 +308,34 @@ class ChargeItemDefinition(domainresource.DomainResource):
     useContext: ListType[fhirtypes.UsageContextType] = Field(
         None,
         alias="useContext",
-        title="List of `UsageContext` items (represented as `dict` in JSON)",
-        description="The context that the content is intended to support",
+        title="The context that the content is intended to support",
+        description=(
+            "The content was developed with a focus and intent of supporting the "
+            "contexts that are listed. These contexts may be general categories "
+            "(gender, age, ...) or may be references to specific programs "
+            "(insurance plans, studies, ...) and may be used to assist with "
+            "indexing and searching for appropriate charge item definition "
+            "instances."
+        ),
     )
 
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String`",
-        description="Business version of the charge item definition",
+        title="Business version of the charge item definition",
+        description=(
+            "The identifier that is used to identify this version of the charge "
+            "item definition when it is referenced in a specification, model, "
+            "design or instance. This is an arbitrary value managed by the charge "
+            "item definition author and is not expected to be globally unique. For "
+            "example, it might be a timestamp (e.g. yyyymmdd) if a managed version "
+            "is not available. There is also no expectation that versions can be "
+            "placed in a lexicographical sequence. To provide a version consistent "
+            "with the Decision Support Service specification, use the format "
+            "Major.Minor.Revision (e.g. 1.0.0). For more information on versioning "
+            "knowledge assets, refer to the Decision Support Service specification."
+            " Note that a version is required for non-experimental active assets."
+        ),
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -265,8 +356,11 @@ class ChargeItemDefinitionApplicability(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Natural language description of the condition",
+        title="Natural language description of the condition",
+        description=(
+            "A brief, natural language description of the condition that "
+            "effectively communicates the intended semantics."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -275,8 +369,13 @@ class ChargeItemDefinitionApplicability(backboneelement.BackboneElement):
     expression: fhirtypes.String = Field(
         None,
         alias="expression",
-        title="Type `String`",
-        description="Boolean-valued expression",
+        title="Boolean-valued expression",
+        description=(
+            "An expression that returns true or false, indicating whether the "
+            "condition is satisfied. When using FHIRPath expressions, the %context "
+            "environment variable must be replaced at runtime with the ChargeItem "
+            "resource to which this definition is applied."
+        ),
     )
     expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_expression", title="Extension field for ``expression``."
@@ -285,8 +384,12 @@ class ChargeItemDefinitionApplicability(backboneelement.BackboneElement):
     language: fhirtypes.String = Field(
         None,
         alias="language",
-        title="Type `String`",
-        description="Language of the expression",
+        title="Language of the expression",
+        description=(
+            'The media type of the language for the expression, e.g. "text/cql" for'
+            ' Clinical Query Language expressions or "text/fhirpath" for FHIRPath '
+            "expressions."
+        ),
     )
     language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_language", title="Extension field for ``language``."
@@ -309,11 +412,11 @@ class ChargeItemDefinitionPropertyGroup(backboneelement.BackboneElement):
     applicability: ListType[fhirtypes.ChargeItemDefinitionApplicabilityType] = Field(
         None,
         alias="applicability",
-        title=(
-            "List of `ChargeItemDefinitionApplicability` items (represented as "
-            "`dict` in JSON)"
+        title="Conditions under which the priceComponent is applicable",
+        description=(
+            "Expressions that describe applicability criteria for the "
+            "priceComponent."
         ),
-        description="Conditions under which the priceComponent is applicable",
     )
 
     priceComponent: ListType[
@@ -321,11 +424,16 @@ class ChargeItemDefinitionPropertyGroup(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="priceComponent",
-        title=(
-            "List of `ChargeItemDefinitionPropertyGroupPriceComponent` items "
-            "(represented as `dict` in JSON)"
+        title="Components of total line item price",
+        description=(
+            "The price for a ChargeItem may be calculated as a base price with "
+            "surcharges/deductions that apply in certain conditions. A "
+            "ChargeItemDefinition resource that defines the prices, factors and "
+            "conditions that apply to a billing code is currently under "
+            "development. The priceComponent element can be used to offer "
+            "transparency to the recipient of the Invoice of how the prices have "
+            "been calculated."
         ),
-        description="Components of total line item price",
     )
 
 
@@ -348,22 +456,28 @@ class ChargeItemDefinitionPropertyGroupPriceComponent(backboneelement.BackboneEl
     amount: fhirtypes.MoneyType = Field(
         None,
         alias="amount",
-        title="Type `Money` (represented as `dict` in JSON)",
-        description="Monetary amount associated with this component",
+        title="Monetary amount associated with this component",
+        description="The amount calculated for this component.",
     )
 
     code: fhirtypes.CodeableConceptType = Field(
         None,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Code identifying the specific component",
+        title="Code identifying the specific component",
+        description=(
+            "A code that identifies the component. Codes may be used to "
+            "differentiate between kinds of taxes, surcharges, discounts etc."
+        ),
     )
 
     factor: fhirtypes.Decimal = Field(
         None,
         alias="factor",
-        title="Type `Decimal`",
-        description="Factor used for calculating this component",
+        title="Factor used for calculating this component",
+        description=(
+            "The factor that has been applied on the base price for calculating "
+            "this component."
+        ),
     )
     factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_factor", title="Extension field for ``factor``."
@@ -372,8 +486,18 @@ class ChargeItemDefinitionPropertyGroupPriceComponent(backboneelement.BackboneEl
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code`",
-        description="base | surcharge | deduction | discount | tax | informational",
+        title="base | surcharge | deduction | discount | tax | informational",
+        description="This code identifies the type of the component.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "base",
+            "surcharge",
+            "deduction",
+            "discount",
+            "tax",
+            "informational",
+        ],
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."

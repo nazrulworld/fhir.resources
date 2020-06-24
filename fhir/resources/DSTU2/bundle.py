@@ -185,7 +185,7 @@ class BundleEntryResponse(BackboneElement):
         None,
         alias="lastModified",
         title="Type `Instant` (represented as `dict` in JSON)",
-        description="Server\u0027s date time modified",
+        description="Server's date time modified",
     )
 
     location: fhirtypes.Uri = Field(

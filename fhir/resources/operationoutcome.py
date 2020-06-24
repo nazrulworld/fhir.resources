@@ -29,8 +29,11 @@ class OperationOutcome(domainresource.DomainResource):
     issue: ListType[fhirtypes.OperationOutcomeIssueType] = Field(
         ...,
         alias="issue",
-        title="List of `OperationOutcomeIssue` items (represented as `dict` in JSON)",
-        description="A single issue associated with the action",
+        title="A single issue associated with the action",
+        description=(
+            "An error, warning, or information message that results from a system "
+            "action."
+        ),
     )
 
 
@@ -47,7 +50,15 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
     resource_type = Field("OperationOutcomeIssue", const=True)
 
     code: fhirtypes.Code = Field(
-        ..., alias="code", title="Type `Code`", description="Error or warning code"
+        ...,
+        alias="code",
+        title="Error or warning code",
+        description=(
+            "Describes the type of the issue. The system that creates an "
+            "OperationOutcome SHALL choose the most applicable code from the "
+            "IssueType value set, and may additional provide its own code for the "
+            "error in the details element."
+        ),
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -56,15 +67,18 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
     details: fhirtypes.CodeableConceptType = Field(
         None,
         alias="details",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Additional details about the error",
+        title="Additional details about the error",
+        description=(
+            "Additional details about the error. This may be a text description of "
+            "the error or a system code that identifies the error."
+        ),
     )
 
     diagnostics: fhirtypes.String = Field(
         None,
         alias="diagnostics",
-        title="Type `String`",
-        description="Additional diagnostic information about the issue",
+        title="Additional diagnostic information about the issue",
+        description=None,
     )
     diagnostics__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_diagnostics", title="Extension field for ``diagnostics``."
@@ -73,8 +87,13 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
     expression: ListType[fhirtypes.String] = Field(
         None,
         alias="expression",
-        title="List of `String` items",
-        description="FHIRPath of element(s) related to issue",
+        title="FHIRPath of element(s) related to issue",
+        description=(
+            "A [simple subset of FHIRPath](fhirpath.html#simple) limited to element"
+            " names, repetition indicators and the default child accessor that "
+            "identifies one of the elements in the resource that caused this issue "
+            "to be raised."
+        ),
     )
     expression__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -83,8 +102,16 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
     location: ListType[fhirtypes.String] = Field(
         None,
         alias="location",
-        title="List of `String` items",
-        description="Deprecated: Path of element(s) related to issue",
+        title="Deprecated: Path of element(s) related to issue",
+        description=(
+            "This element is deprecated because it is XML specific. It is replaced "
+            "by issue.expression, which is format independent, and simpler to "
+            "parse.   For resource issues, this will be a simple XPath limited to "
+            "element names, repetition indicators and the default child accessor "
+            "that identifies one of the elements in the resource that caused this "
+            'issue to be raised.  For HTTP errors, will be "http." + the parameter '
+            "name."
+        ),
     )
     location__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_location", title="Extension field for ``location``."
@@ -93,8 +120,14 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
     severity: fhirtypes.Code = Field(
         ...,
         alias="severity",
-        title="Type `Code`",
-        description="fatal | error | warning | information",
+        title="fatal | error | warning | information",
+        description=(
+            "Indicates whether the issue indicates a variation from successful "
+            "processing."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["fatal", "error", "warning", "information"],
     )
     severity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_severity", title="Extension field for ``severity``."

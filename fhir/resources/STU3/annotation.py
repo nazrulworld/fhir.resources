@@ -28,21 +28,22 @@ class Annotation(element.Element):
     authorReference: fhirtypes.ReferenceType = Field(
         None,
         alias="authorReference",
-        title=(
-            "Type `Reference` referencing `Practitioner, Patient, RelatedPerson` "
-            "(represented as `dict` in JSON)"
-        ),
-        description="Individual responsible for the annotation",
-        one_of_many="author",  # Choice of Data Types. i.e value[x]
+        title="Individual responsible for the annotation",
+        description="The individual responsible for making the annotation.",
+        # Choice of Data Types. i.e author[x]
+        one_of_many="author",
         one_of_many_required=False,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner", "Patient", "RelatedPerson"],
     )
 
     authorString: fhirtypes.String = Field(
         None,
         alias="authorString",
-        title="Type `String`",
-        description="Individual responsible for the annotation",
-        one_of_many="author",  # Choice of Data Types. i.e value[x]
+        title="Individual responsible for the annotation",
+        description="The individual responsible for making the annotation.",
+        # Choice of Data Types. i.e author[x]
+        one_of_many="author",
         one_of_many_required=False,
     )
     authorString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -52,8 +53,8 @@ class Annotation(element.Element):
     text: fhirtypes.String = Field(
         ...,
         alias="text",
-        title="Type `String`",
-        description="The annotation  - text content",
+        title="The annotation  - text content",
+        description="The text of the annotation.",
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_text", title="Extension field for ``text``."
@@ -62,8 +63,8 @@ class Annotation(element.Element):
     time: fhirtypes.DateTime = Field(
         None,
         alias="time",
-        title="Type `DateTime`",
-        description="When the annotation was made",
+        title="When the annotation was made",
+        description="Indicates when this particular annotation was made.",
     )
     time__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_time", title="Extension field for ``time``."

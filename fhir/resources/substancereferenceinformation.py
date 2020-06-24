@@ -27,52 +27,28 @@ class SubstanceReferenceInformation(domainresource.DomainResource):
     classification: ListType[
         fhirtypes.SubstanceReferenceInformationClassificationType
     ] = Field(
-        None,
-        alias="classification",
-        title=(
-            "List of `SubstanceReferenceInformationClassification` items "
-            "(represented as `dict` in JSON)"
-        ),
-        description="Todo",
+        None, alias="classification", title="Todo", description=None,
     )
 
     comment: fhirtypes.String = Field(
-        None, alias="comment", title="Type `String`", description="Todo"
+        None, alias="comment", title="Todo", description=None,
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comment", title="Extension field for ``comment``."
     )
 
     gene: ListType[fhirtypes.SubstanceReferenceInformationGeneType] = Field(
-        None,
-        alias="gene",
-        title=(
-            "List of `SubstanceReferenceInformationGene` items (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Todo",
+        None, alias="gene", title="Todo", description=None,
     )
 
     geneElement: ListType[
         fhirtypes.SubstanceReferenceInformationGeneElementType
     ] = Field(
-        None,
-        alias="geneElement",
-        title=(
-            "List of `SubstanceReferenceInformationGeneElement` items (represented "
-            "as `dict` in JSON)"
-        ),
-        description="Todo",
+        None, alias="geneElement", title="Todo", description=None,
     )
 
     target: ListType[fhirtypes.SubstanceReferenceInformationTargetType] = Field(
-        None,
-        alias="target",
-        title=(
-            "List of `SubstanceReferenceInformationTarget` items (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Todo",
+        None, alias="target", title="Todo", description=None,
     )
 
 
@@ -87,34 +63,24 @@ class SubstanceReferenceInformationClassification(backboneelement.BackboneElemen
     resource_type = Field("SubstanceReferenceInformationClassification", const=True)
 
     classification: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="classification",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="classification", title="Todo", description=None,
     )
 
     domain: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="domain",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="domain", title="Todo", description=None,
     )
 
     source: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="source",
-        title=(
-            "List of `Reference` items referencing `DocumentReference` (represented"
-            " as `dict` in JSON)"
-        ),
-        description="Todo",
+        title="Todo",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["DocumentReference"],
     )
 
     subtype: ListType[fhirtypes.CodeableConceptType] = Field(
-        None,
-        alias="subtype",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="subtype", title="Todo", description=None,
     )
 
 
@@ -129,27 +95,20 @@ class SubstanceReferenceInformationGene(backboneelement.BackboneElement):
     resource_type = Field("SubstanceReferenceInformationGene", const=True)
 
     gene: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="gene",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="gene", title="Todo", description=None,
     )
 
     geneSequenceOrigin: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="geneSequenceOrigin",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="geneSequenceOrigin", title="Todo", description=None,
     )
 
     source: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="source",
-        title=(
-            "List of `Reference` items referencing `DocumentReference` (represented"
-            " as `dict` in JSON)"
-        ),
-        description="Todo",
+        title="Todo",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["DocumentReference"],
     )
 
 
@@ -164,27 +123,20 @@ class SubstanceReferenceInformationGeneElement(backboneelement.BackboneElement):
     resource_type = Field("SubstanceReferenceInformationGeneElement", const=True)
 
     element: fhirtypes.IdentifierType = Field(
-        None,
-        alias="element",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="element", title="Todo", description=None,
     )
 
     source: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="source",
-        title=(
-            "List of `Reference` items referencing `DocumentReference` (represented"
-            " as `dict` in JSON)"
-        ),
-        description="Todo",
+        title="Todo",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["DocumentReference"],
     )
 
     type: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="type", title="Todo", description=None,
     )
 
 
@@ -201,27 +153,30 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
     amountQuantity: fhirtypes.QuantityType = Field(
         None,
         alias="amountQuantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Todo",
-        one_of_many="amount",  # Choice of Data Types. i.e value[x]
+        title="Todo",
+        description=None,
+        # Choice of Data Types. i.e amount[x]
+        one_of_many="amount",
         one_of_many_required=False,
     )
 
     amountRange: fhirtypes.RangeType = Field(
         None,
         alias="amountRange",
-        title="Type `Range` (represented as `dict` in JSON)",
-        description="Todo",
-        one_of_many="amount",  # Choice of Data Types. i.e value[x]
+        title="Todo",
+        description=None,
+        # Choice of Data Types. i.e amount[x]
+        one_of_many="amount",
         one_of_many_required=False,
     )
 
     amountString: fhirtypes.String = Field(
         None,
         alias="amountString",
-        title="Type `String`",
-        description="Todo",
-        one_of_many="amount",  # Choice of Data Types. i.e value[x]
+        title="Todo",
+        description=None,
+        # Choice of Data Types. i.e amount[x]
+        one_of_many="amount",
         one_of_many_required=False,
     )
     amountString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -229,55 +184,36 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
     )
 
     amountType: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="amountType",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="amountType", title="Todo", description=None,
     )
 
     interaction: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="interaction",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="interaction", title="Todo", description=None,
     )
 
     organism: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="organism",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="organism", title="Todo", description=None,
     )
 
     organismType: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="organismType",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="organismType", title="Todo", description=None,
     )
 
     source: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="source",
-        title=(
-            "List of `Reference` items referencing `DocumentReference` (represented"
-            " as `dict` in JSON)"
-        ),
-        description="Todo",
+        title="Todo",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["DocumentReference"],
     )
 
     target: fhirtypes.IdentifierType = Field(
-        None,
-        alias="target",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="target", title="Todo", description=None,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="type", title="Todo", description=None,
     )
 
     @root_validator(pre=True)

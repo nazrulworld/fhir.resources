@@ -30,25 +30,35 @@ class DataRequirement(element.Element):
     codeFilter: ListType[fhirtypes.DataRequirementCodeFilterType] = Field(
         None,
         alias="codeFilter",
-        title=(
-            "List of `DataRequirementCodeFilter` items (represented as `dict` in "
-            "JSON)"
+        title="What codes are expected",
+        description=(
+            "Code filters specify additional constraints on the data, specifying "
+            "the value set of interest for a particular element of the data. Each "
+            "code filter defines an additional constraint on the data, i.e. code "
+            "filters are AND'ed, not OR'ed."
         ),
-        description="What codes are expected",
     )
 
     dateFilter: ListType[fhirtypes.DataRequirementDateFilterType] = Field(
         None,
         alias="dateFilter",
-        title=(
-            "List of `DataRequirementDateFilter` items (represented as `dict` in "
-            "JSON)"
+        title="What dates/date ranges are expected",
+        description=(
+            "Date filters specify additional constraints on the data in terms of "
+            "the applicable date range for specific elements. Each date filter "
+            "specifies an additional constraint on the data, i.e. date filters are "
+            "AND'ed, not OR'ed."
         ),
-        description="What dates/date ranges are expected",
     )
 
     limit: fhirtypes.PositiveInt = Field(
-        None, alias="limit", title="Type `PositiveInt`", description="Number of results"
+        None,
+        alias="limit",
+        title="Number of results",
+        description=(
+            "Specifies a maximum number of results that are required (uses the "
+            "_count search parameter)."
+        ),
     )
     limit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_limit", title="Extension field for ``limit``."
@@ -57,10 +67,20 @@ class DataRequirement(element.Element):
     mustSupport: ListType[fhirtypes.String] = Field(
         None,
         alias="mustSupport",
-        title="List of `String` items",
-        description=(
+        title=(
             "Indicates specific structure elements that are referenced by the "
             "knowledge module"
+        ),
+        description=(
+            "Indicates that specific elements of the type are referenced by the "
+            "knowledge module and must be supported by the consumer in order to "
+            "obtain an effective evaluation. This does not mean that a value is "
+            "required for this element, only that the consuming system must "
+            "understand the element and be able to provide values for it if they "
+            "are available.   The value of mustSupport SHALL be a FHIRPath "
+            "resolveable on the type of the DataRequirement. The path SHALL consist"
+            " only of identifiers, constant indexers, and .resolve() (see the "
+            "[Simple FHIRPath Profile](fhirpath.html#simple) for full details)."
         ),
     )
     mustSupport__ext: ListType[
@@ -70,8 +90,13 @@ class DataRequirement(element.Element):
     profile: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="profile",
-        title="List of `Canonical` items referencing `StructureDefinition`",
-        description="The profile of the required data",
+        title="The profile of the required data",
+        description=(
+            "The profile of the required data, specified as the uri of the profile "
+            "definition."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["StructureDefinition"],
     )
     profile__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_profile", title="Extension field for ``profile``."
@@ -80,39 +105,53 @@ class DataRequirement(element.Element):
     sort: ListType[fhirtypes.DataRequirementSortType] = Field(
         None,
         alias="sort",
-        title="List of `DataRequirementSort` items (represented as `dict` in JSON)",
-        description="Order of the results",
+        title="Order of the results",
+        description="Specifies the order of the results to be returned.",
     )
 
     subjectCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="subjectCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "E.g. Patient, Practitioner, RelatedPerson, Organization, Location, "
             "Device"
         ),
-        one_of_many="subject",  # Choice of Data Types. i.e value[x]
+        description=(
+            "The intended subjects of the data requirement. If this element is not "
+            "provided, a Patient subject is assumed."
+        ),
+        # Choice of Data Types. i.e subject[x]
+        one_of_many="subject",
         one_of_many_required=False,
     )
 
     subjectReference: fhirtypes.ReferenceType = Field(
         None,
         alias="subjectReference",
-        title="Type `Reference` referencing `Group` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "E.g. Patient, Practitioner, RelatedPerson, Organization, Location, "
             "Device"
         ),
-        one_of_many="subject",  # Choice of Data Types. i.e value[x]
+        description=(
+            "The intended subjects of the data requirement. If this element is not "
+            "provided, a Patient subject is assumed."
+        ),
+        # Choice of Data Types. i.e subject[x]
+        one_of_many="subject",
         one_of_many_required=False,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Group"],
     )
 
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code`",
-        description="The type of the required data",
+        title="The type of the required data",
+        description=(
+            "The type of the required data, specified as the type name of a "
+            "resource. For profiles, this value is set to the type of the base "
+            "resource of the profile."
+        ),
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -172,15 +211,31 @@ class DataRequirementCodeFilter(element.Element):
     code: ListType[fhirtypes.CodingType] = Field(
         None,
         alias="code",
-        title="List of `Coding` items (represented as `dict` in JSON)",
-        description="What code is expected",
+        title="What code is expected",
+        description=(
+            "The codes for the code filter. If values are given, the filter will "
+            "return only those data items for which the code-valued attribute "
+            "specified by the path has a value that is one of the specified codes. "
+            "If codes are specified in addition to a value set, the filter returns "
+            "items matching a code in the value set or one of the specified codes."
+        ),
     )
 
     path: fhirtypes.String = Field(
         None,
         alias="path",
-        title="Type `String`",
-        description="A code-valued attribute to filter on",
+        title="A code-valued attribute to filter on",
+        description=(
+            "The code-valued attribute of the filter. The specified path SHALL be a"
+            " FHIRPath resolveable on the specified type of the DataRequirement, "
+            "and SHALL consist only of identifiers, constant indexers, and "
+            ".resolve(). The path is allowed to contain qualifiers (.) to traverse "
+            "sub-elements, as well as indexers ([x]) to traverse multiple-"
+            "cardinality sub-elements (see the [Simple FHIRPath "
+            "Profile](fhirpath.html#simple) for full details). Note that the index "
+            "must be an integer constant. The path must resolve to an element of "
+            "type code, Coding, or CodeableConcept."
+        ),
     )
     path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_path", title="Extension field for ``path``."
@@ -189,8 +244,12 @@ class DataRequirementCodeFilter(element.Element):
     searchParam: fhirtypes.String = Field(
         None,
         alias="searchParam",
-        title="Type `String`",
-        description="A coded (token) parameter to search on",
+        title="A coded (token) parameter to search on",
+        description=(
+            "A token parameter that refers to a search parameter defined on the "
+            "specified type of the DataRequirement, and which searches on elements "
+            "of type code, Coding, or CodeableConcept."
+        ),
     )
     searchParam__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_searchParam", title="Extension field for ``searchParam``."
@@ -199,8 +258,15 @@ class DataRequirementCodeFilter(element.Element):
     valueSet: fhirtypes.Canonical = Field(
         None,
         alias="valueSet",
-        title="Type `Canonical` referencing `ValueSet`",
-        description="Valueset for the filter",
+        title="Valueset for the filter",
+        description=(
+            "The valueset for the code filter. The valueSet and code elements are "
+            "additive. If valueSet is specified, the filter will return only those "
+            "data items for which the value of the code-valued element specified in"
+            " the path is a member of the specified valueset."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ValueSet"],
     )
     valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueSet", title="Extension field for ``valueSet``."
@@ -223,8 +289,18 @@ class DataRequirementDateFilter(element.Element):
     path: fhirtypes.String = Field(
         None,
         alias="path",
-        title="Type `String`",
-        description="A date-valued attribute to filter on",
+        title="A date-valued attribute to filter on",
+        description=(
+            "The date-valued attribute of the filter. The specified path SHALL be a"
+            " FHIRPath resolveable on the specified type of the DataRequirement, "
+            "and SHALL consist only of identifiers, constant indexers, and "
+            ".resolve(). The path is allowed to contain qualifiers (.) to traverse "
+            "sub-elements, as well as indexers ([x]) to traverse multiple-"
+            "cardinality sub-elements (see the [Simple FHIRPath "
+            "Profile](fhirpath.html#simple) for full details). Note that the index "
+            "must be an integer constant. The path must resolve to an element of "
+            "type date, dateTime, Period, Schedule, or Timing."
+        ),
     )
     path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_path", title="Extension field for ``path``."
@@ -233,8 +309,12 @@ class DataRequirementDateFilter(element.Element):
     searchParam: fhirtypes.String = Field(
         None,
         alias="searchParam",
-        title="Type `String`",
-        description="A date valued parameter to search on",
+        title="A date valued parameter to search on",
+        description=(
+            "A date parameter that refers to a search parameter defined on the "
+            "specified type of the DataRequirement, and which searches on elements "
+            "of type date, dateTime, Period, Schedule, or Timing."
+        ),
     )
     searchParam__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_searchParam", title="Extension field for ``searchParam``."
@@ -243,9 +323,18 @@ class DataRequirementDateFilter(element.Element):
     valueDateTime: fhirtypes.DateTime = Field(
         None,
         alias="valueDateTime",
-        title="Type `DateTime`",
-        description="The value of the filter, as a Period, DateTime, or Duration value",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="The value of the filter, as a Period, DateTime, or Duration value",
+        description=(
+            "The value of the filter. If period is specified, the filter will "
+            "return only those data items that fall within the bounds determined by"
+            " the Period, inclusive of the period boundaries. If dateTime is "
+            "specified, the filter will return only those data items that are equal"
+            " to the specified dateTime. If a Duration is specified, the filter "
+            "will return only those data items that fall within Duration before "
+            "now."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=False,
     )
     valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -255,18 +344,36 @@ class DataRequirementDateFilter(element.Element):
     valueDuration: fhirtypes.DurationType = Field(
         None,
         alias="valueDuration",
-        title="Type `Duration` (represented as `dict` in JSON)",
-        description="The value of the filter, as a Period, DateTime, or Duration value",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="The value of the filter, as a Period, DateTime, or Duration value",
+        description=(
+            "The value of the filter. If period is specified, the filter will "
+            "return only those data items that fall within the bounds determined by"
+            " the Period, inclusive of the period boundaries. If dateTime is "
+            "specified, the filter will return only those data items that are equal"
+            " to the specified dateTime. If a Duration is specified, the filter "
+            "will return only those data items that fall within Duration before "
+            "now."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=False,
     )
 
     valuePeriod: fhirtypes.PeriodType = Field(
         None,
         alias="valuePeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="The value of the filter, as a Period, DateTime, or Duration value",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="The value of the filter, as a Period, DateTime, or Duration value",
+        description=(
+            "The value of the filter. If period is specified, the filter will "
+            "return only those data items that fall within the bounds determined by"
+            " the Period, inclusive of the period boundaries. If dateTime is "
+            "specified, the filter will return only those data items that are equal"
+            " to the specified dateTime. If a Duration is specified, the filter "
+            "will return only those data items that fall within Duration before "
+            "now."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=False,
     )
 
@@ -323,8 +430,11 @@ class DataRequirementSort(element.Element):
     direction: fhirtypes.Code = Field(
         ...,
         alias="direction",
-        title="Type `Code`",
-        description="ascending | descending",
+        title="ascending | descending",
+        description="The direction of the sort, ascending or descending.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["ascending", "descending"],
     )
     direction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_direction", title="Extension field for ``direction``."
@@ -333,8 +443,14 @@ class DataRequirementSort(element.Element):
     path: fhirtypes.String = Field(
         ...,
         alias="path",
-        title="Type `String`",
-        description="The name of the attribute to perform the sort",
+        title="The name of the attribute to perform the sort",
+        description=(
+            "The attribute of the sort. The specified path must be resolvable from "
+            "the type of the required data. The path is allowed to contain "
+            "qualifiers (.) to traverse sub-elements, as well as indexers ([x]) to "
+            "traverse multiple-cardinality sub-elements. Note that the index must "
+            "be an integer constant."
+        ),
     )
     path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_path", title="Extension field for ``path``."

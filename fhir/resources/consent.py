@@ -31,15 +31,18 @@ class Consent(domainresource.DomainResource):
     category: ListType[fhirtypes.CodeableConceptType] = Field(
         ...,
         alias="category",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Classification of the consent statement - for indexing/retrieval",
+        title="Classification of the consent statement - for indexing/retrieval",
+        description=(
+            "A classification of the type of consents found in the statement. This "
+            "element supports indexing and retrieval of consent statements."
+        ),
     )
 
     dateTime: fhirtypes.DateTime = Field(
         None,
         alias="dateTime",
-        title="Type `DateTime`",
-        description="When this Consent was created or indexed",
+        title="When this Consent was created or indexed",
+        description="When this  Consent was issued / created / indexed.",
     )
     dateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_dateTime", title="Extension field for ``dateTime``."
@@ -48,92 +51,142 @@ class Consent(domainresource.DomainResource):
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Identifier for this record (external references)",
+        title="Identifier for this record (external references)",
+        description="Unique identifier for this copy of the Consent Statement.",
     )
 
     organization: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="organization",
-        title=(
-            "List of `Reference` items referencing `Organization` (represented as "
-            "`dict` in JSON)"
+        title="Custodian of the consent",
+        description=(
+            "The organization that manages the consent, and the framework within "
+            "which it is executed."
         ),
-        description="Custodian of the consent",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     patient: fhirtypes.ReferenceType = Field(
         None,
         alias="patient",
-        title="Type `Reference` referencing `Patient` (represented as `dict` in JSON)",
-        description="Who the consent applies to",
+        title="Who the consent applies to",
+        description="The patient/healthcare consumer to whom this consent applies.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient"],
     )
 
     performer: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="performer",
-        title=(
-            "List of `Reference` items referencing `Organization, Patient, "
-            "Practitioner, RelatedPerson, PractitionerRole` (represented as `dict` "
-            "in JSON)"
+        title="Who is agreeing to the policy and rules",
+        description=(
+            "Either the Grantor, which is the entity responsible for granting the "
+            "rights listed in a Consent Directive or the Grantee, which is the "
+            "entity responsible for complying with the Consent Directive, including"
+            " any obligations or limitations on authorizations and enforcement of "
+            "prohibitions."
         ),
-        description="Who is agreeing to the policy and rules",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Organization",
+            "Patient",
+            "Practitioner",
+            "RelatedPerson",
+            "PractitionerRole",
+        ],
     )
 
     policy: ListType[fhirtypes.ConsentPolicyType] = Field(
         None,
         alias="policy",
-        title="List of `ConsentPolicy` items (represented as `dict` in JSON)",
-        description="Policies covered by this consent",
+        title="Policies covered by this consent",
+        description=(
+            "The references to the policies that are included in this consent "
+            "scope. Policies may be organizational, but are often defined "
+            "jurisdictionally, or in law."
+        ),
     )
 
     policyRule: fhirtypes.CodeableConceptType = Field(
         None,
         alias="policyRule",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Regulation that this consents to",
+        title="Regulation that this consents to",
+        description="A reference to the specific base computable regulation or policy.",
     )
 
     provision: fhirtypes.ConsentProvisionType = Field(
         None,
         alias="provision",
-        title="Type `ConsentProvision` (represented as `dict` in JSON)",
-        description="Constraints to the base Consent.policyRule",
+        title="Constraints to the base Consent.policyRule",
+        description=(
+            "An exception to the base policy of this consent. An exception can be "
+            "an addition or removal of access permissions."
+        ),
     )
 
     scope: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="scope",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Which of the four areas this resource covers (extensible)",
+        title="Which of the four areas this resource covers (extensible)",
+        description=(
+            "A selector of the type of consent being presented: ADR, Privacy, "
+            "Treatment, Research.  This list is now extensible."
+        ),
     )
 
     sourceAttachment: fhirtypes.AttachmentType = Field(
         None,
         alias="sourceAttachment",
-        title="Type `Attachment` (represented as `dict` in JSON)",
-        description="Source from which this consent is taken",
-        one_of_many="source",  # Choice of Data Types. i.e value[x]
+        title="Source from which this consent is taken",
+        description=(
+            "The source on which this consent statement is based. The source might "
+            "be a scanned original paper form, or a reference to a consent that "
+            "links back to such a source, a reference to a document repository "
+            "(e.g. XDS) that stores the original consent document."
+        ),
+        # Choice of Data Types. i.e source[x]
+        one_of_many="source",
         one_of_many_required=False,
     )
 
     sourceReference: fhirtypes.ReferenceType = Field(
         None,
         alias="sourceReference",
-        title=(
-            "Type `Reference` referencing `Consent, DocumentReference, Contract, "
-            "QuestionnaireResponse` (represented as `dict` in JSON)"
+        title="Source from which this consent is taken",
+        description=(
+            "The source on which this consent statement is based. The source might "
+            "be a scanned original paper form, or a reference to a consent that "
+            "links back to such a source, a reference to a document repository "
+            "(e.g. XDS) that stores the original consent document."
         ),
-        description="Source from which this consent is taken",
-        one_of_many="source",  # Choice of Data Types. i.e value[x]
+        # Choice of Data Types. i.e source[x]
+        one_of_many="source",
         one_of_many_required=False,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Consent",
+            "DocumentReference",
+            "Contract",
+            "QuestionnaireResponse",
+        ],
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="draft | proposed | active | rejected | inactive | entered-in-error",
+        title="draft | proposed | active | rejected | inactive | entered-in-error",
+        description="Indicates the current state of this consent.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "draft",
+            "proposed",
+            "active",
+            "rejected",
+            "inactive",
+            "entered-in-error",
+        ],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -142,8 +195,12 @@ class Consent(domainresource.DomainResource):
     verification: ListType[fhirtypes.ConsentVerificationType] = Field(
         None,
         alias="verification",
-        title="List of `ConsentVerification` items (represented as `dict` in JSON)",
-        description="Consent Verified by patient or family",
+        title="Consent Verified by patient or family",
+        description=(
+            "Whether a treatment instruction (e.g. artificial respiration yes or "
+            "no) was verified with the patient, his/her family or another "
+            "authorized person."
+        ),
     )
 
     @root_validator(pre=True)
@@ -199,8 +256,12 @@ class ConsentPolicy(backboneelement.BackboneElement):
     authority: fhirtypes.Uri = Field(
         None,
         alias="authority",
-        title="Type `Uri`",
-        description="Enforcement source for policy",
+        title="Enforcement source for policy",
+        description=(
+            "Entity or Organization having regulatory jurisdiction or "
+            "accountability for  enforcing policies pertaining to Consent "
+            "Directives."
+        ),
     )
     authority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_authority", title="Extension field for ``authority``."
@@ -209,8 +270,12 @@ class ConsentPolicy(backboneelement.BackboneElement):
     uri: fhirtypes.Uri = Field(
         None,
         alias="uri",
-        title="Type `Uri`",
-        description="Specific policy covered by this consent",
+        title="Specific policy covered by this consent",
+        description=(
+            "The references to the policies that are included in this consent "
+            "scope. Policies may be organizational, but are often defined "
+            "jurisdictionally, or in law."
+        ),
     )
     uri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uri", title="Extension field for ``uri``."
@@ -232,75 +297,103 @@ class ConsentProvision(backboneelement.BackboneElement):
     action: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="action",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Actions controlled by this rule",
+        title="Actions controlled by this rule",
+        description="Actions controlled by this Rule.",
     )
 
     actor: ListType[fhirtypes.ConsentProvisionActorType] = Field(
         None,
         alias="actor",
-        title="List of `ConsentProvisionActor` items (represented as `dict` in JSON)",
-        description="Who|what controlled by this rule (or group, by role)",
+        title="Who|what controlled by this rule (or group, by role)",
+        description=(
+            "Who or what is controlled by this rule. Use group to identify a set of"
+            " actors by some property they share (e.g. 'admitting officers')."
+        ),
     )
 
     class_fhir: ListType[fhirtypes.CodingType] = Field(
         None,
         alias="class",
-        title="List of `Coding` items (represented as `dict` in JSON)",
-        description="e.g. Resource Type, Profile, CDA, etc.",
+        title="e.g. Resource Type, Profile, CDA, etc.",
+        description=(
+            "The class of information covered by this rule. The type can be a FHIR "
+            "resource type, a profile on a type, or a CDA document, or some other "
+            "type that indicates what sort of information the consent relates to."
+        ),
     )
 
     code: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="code",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="e.g. LOINC or SNOMED CT code, etc. in the content",
+        title="e.g. LOINC or SNOMED CT code, etc. in the content",
+        description="If this code is found in an instance, then the rule applies.",
     )
 
     data: ListType[fhirtypes.ConsentProvisionDataType] = Field(
         None,
         alias="data",
-        title="List of `ConsentProvisionData` items (represented as `dict` in JSON)",
-        description="Data controlled by this rule",
+        title="Data controlled by this rule",
+        description=(
+            "The resources controlled by this rule if specific resources are "
+            "referenced."
+        ),
     )
 
     dataPeriod: fhirtypes.PeriodType = Field(
         None,
         alias="dataPeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Timeframe for data controlled by this rule",
+        title="Timeframe for data controlled by this rule",
+        description=(
+            "Clinical or Operational Relevant period of time that bounds the data "
+            "controlled by this rule."
+        ),
     )
 
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Timeframe for this rule",
+        title="Timeframe for this rule",
+        description="The timeframe in this rule is valid.",
     )
 
     provision: ListType[fhirtypes.ConsentProvisionType] = Field(
         None,
         alias="provision",
-        title="List of `ConsentProvision` items (represented as `dict` in JSON)",
-        description="Nested Exception Rules",
+        title="Nested Exception Rules",
+        description="Rules which provide exceptions to the base rule or subrules.",
     )
 
     purpose: ListType[fhirtypes.CodingType] = Field(
         None,
         alias="purpose",
-        title="List of `Coding` items (represented as `dict` in JSON)",
-        description="Context of activities covered by this rule",
+        title="Context of activities covered by this rule",
+        description=(
+            "The context of the activities a user is taking - why the user is "
+            "accessing the data - that are controlled by this rule."
+        ),
     )
 
     securityLabel: ListType[fhirtypes.CodingType] = Field(
         None,
         alias="securityLabel",
-        title="List of `Coding` items (represented as `dict` in JSON)",
-        description="Security Labels that define affected resources",
+        title="Security Labels that define affected resources",
+        description=(
+            "A security label, comprised of 0..* security label fields (Privacy "
+            "tags), which define which resources are controlled by this exception."
+        ),
     )
 
     type: fhirtypes.Code = Field(
-        None, alias="type", title="Type `Code`", description="deny | permit"
+        None,
+        alias="type",
+        title="deny | permit",
+        description=(
+            "Action  to take - permit or deny - when the rule conditions are met.  "
+            "Not permitted in root rule, required in all nested rules."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["deny", "permit"],
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -322,19 +415,33 @@ class ConsentProvisionActor(backboneelement.BackboneElement):
     reference: fhirtypes.ReferenceType = Field(
         ...,
         alias="reference",
-        title=(
-            "Type `Reference` referencing `Device, Group, CareTeam, Organization, "
-            "Patient, Practitioner, RelatedPerson, PractitionerRole` (represented "
-            "as `dict` in JSON)"
+        title="Resource for the actor (or group, by role)",
+        description=(
+            "The resource that identifies the actor. To identify actors by type, "
+            "use group to identify a set of actors by some property they share "
+            "(e.g. 'admitting officers')."
         ),
-        description="Resource for the actor (or group, by role)",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Device",
+            "Group",
+            "CareTeam",
+            "Organization",
+            "Patient",
+            "Practitioner",
+            "RelatedPerson",
+            "PractitionerRole",
+        ],
     )
 
     role: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="role",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="How the actor is involved",
+        title="How the actor is involved",
+        description=(
+            "How the individual is involved in the resources content that is "
+            "described in the exception."
+        ),
     )
 
 
@@ -352,8 +459,14 @@ class ConsentProvisionData(backboneelement.BackboneElement):
     meaning: fhirtypes.Code = Field(
         ...,
         alias="meaning",
-        title="Type `Code`",
-        description="instance | related | dependents | authoredby",
+        title="instance | related | dependents | authoredby",
+        description=(
+            "How the resource reference is interpreted when testing consent "
+            "restrictions."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["instance", "related", "dependents", "authoredby"],
     )
     meaning__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_meaning", title="Extension field for ``meaning``."
@@ -362,10 +475,13 @@ class ConsentProvisionData(backboneelement.BackboneElement):
     reference: fhirtypes.ReferenceType = Field(
         ...,
         alias="reference",
-        title=(
-            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        title="The actual data reference",
+        description=(
+            "A reference to a specific resource that defines which resources are "
+            "covered by this consent."
         ),
-        description="The actual data reference",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
 
@@ -384,8 +500,8 @@ class ConsentVerification(backboneelement.BackboneElement):
     verificationDate: fhirtypes.DateTime = Field(
         None,
         alias="verificationDate",
-        title="Type `DateTime`",
-        description="When consent verified",
+        title="When consent verified",
+        description="Date verification was collected.",
     )
     verificationDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -394,7 +510,10 @@ class ConsentVerification(backboneelement.BackboneElement):
     )
 
     verified: bool = Field(
-        ..., alias="verified", title="Type `bool`", description="Has been verified"
+        ...,
+        alias="verified",
+        title="Has been verified",
+        description="Has the instruction been verified.",
     )
     verified__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_verified", title="Extension field for ``verified``."
@@ -403,9 +522,11 @@ class ConsentVerification(backboneelement.BackboneElement):
     verifiedWith: fhirtypes.ReferenceType = Field(
         None,
         alias="verifiedWith",
-        title=(
-            "Type `Reference` referencing `Patient, RelatedPerson` (represented as "
-            "`dict` in JSON)"
+        title="Person who verified",
+        description=(
+            "Who verified the instruction (Patient, Relative or other Authorized "
+            "Person)."
         ),
-        description="Person who verified",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "RelatedPerson"],
     )

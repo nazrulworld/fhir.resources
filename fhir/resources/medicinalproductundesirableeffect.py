@@ -27,37 +27,36 @@ class MedicinalProductUndesirableEffect(domainresource.DomainResource):
     classification: fhirtypes.CodeableConceptType = Field(
         None,
         alias="classification",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Classification of the effect",
+        title="Classification of the effect",
+        description=None,
     )
 
     frequencyOfOccurrence: fhirtypes.CodeableConceptType = Field(
         None,
         alias="frequencyOfOccurrence",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The frequency of occurrence of the effect",
+        title="The frequency of occurrence of the effect",
+        description=None,
     )
 
     population: ListType[fhirtypes.PopulationType] = Field(
         None,
         alias="population",
-        title="List of `Population` items (represented as `dict` in JSON)",
-        description="The population group to which this applies",
+        title="The population group to which this applies",
+        description=None,
     )
 
     subject: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="subject",
-        title=(
-            "List of `Reference` items referencing `MedicinalProduct, Medication` "
-            "(represented as `dict` in JSON)"
-        ),
-        description="The medication for which this is an indication",
+        title="The medication for which this is an indication",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["MedicinalProduct", "Medication"],
     )
 
     symptomConditionEffect: fhirtypes.CodeableConceptType = Field(
         None,
         alias="symptomConditionEffect",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The symptom, condition or undesirable effect",
+        title="The symptom, condition or undesirable effect",
+        description=None,
     )

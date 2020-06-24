@@ -28,7 +28,10 @@ class ElementDefinition(backboneelement.BackboneElement):
     resource_type = Field("ElementDefinition", const=True)
 
     alias: ListType[fhirtypes.String] = Field(
-        None, alias="alias", title="List of `String` items", description="Other names"
+        None,
+        alias="alias",
+        title="Other names",
+        description="Identifies additional names by which this element might also be known.",
     )
     alias__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_alias", title="Extension field for ``alias``."
@@ -37,29 +40,49 @@ class ElementDefinition(backboneelement.BackboneElement):
     base: fhirtypes.ElementDefinitionBaseType = Field(
         None,
         alias="base",
-        title="Type `ElementDefinitionBase` (represented as `dict` in JSON)",
-        description="Base definition information for tools",
+        title="Base definition information for tools",
+        description=(
+            "Information about the base definition of the element, provided to make"
+            " it unnecessary for tools to trace the deviation of the element "
+            "through the derived and related profiles. When the element definition "
+            "is not the original definition of an element - i.g. either in a "
+            "constraint on another type, or for elements from a super type in a "
+            "snap shot - then the information in provided in the element definition"
+            " may be different to the base definition. On the original definition "
+            "of the element, it will be same."
+        ),
     )
 
     binding: fhirtypes.ElementDefinitionBindingType = Field(
         None,
         alias="binding",
-        title="Type `ElementDefinitionBinding` (represented as `dict` in JSON)",
-        description="ValueSet details if this is coded",
+        title="ValueSet details if this is coded",
+        description=(
+            "Binds to a value set if this element is coded (code, Coding, "
+            "CodeableConcept, Quantity), or the data types (string, uri)."
+        ),
     )
 
     code: ListType[fhirtypes.CodingType] = Field(
         None,
         alias="code",
-        title="List of `Coding` items (represented as `dict` in JSON)",
-        description="Corresponding codes in terminologies",
+        title="Corresponding codes in terminologies",
+        description=(
+            "A code that has the same meaning as the element in a particular "
+            "terminology."
+        ),
     )
 
     comment: fhirtypes.Markdown = Field(
         None,
         alias="comment",
-        title="Type `Markdown`",
-        description="Comments about the use of this element",
+        title="Comments about the use of this element",
+        description=(
+            "Explanatory notes and implementation guidance about the data element, "
+            "including notes about how to use the data properly, exceptions to "
+            "proper use, etc. (Note: The text you are reading is specified in "
+            "ElementDefinition.comment)."
+        ),
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comment", title="Extension field for ``comment``."
@@ -68,8 +91,11 @@ class ElementDefinition(backboneelement.BackboneElement):
     condition: ListType[fhirtypes.Id] = Field(
         None,
         alias="condition",
-        title="List of `Id` items",
-        description="Reference to invariant about presence",
+        title="Reference to invariant about presence",
+        description=(
+            "A reference to an invariant that may make additional statements about "
+            "the cardinality or value in the instance."
+        ),
     )
     condition__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_condition", title="Extension field for ``condition``."
@@ -78,18 +104,24 @@ class ElementDefinition(backboneelement.BackboneElement):
     constraint: ListType[fhirtypes.ElementDefinitionConstraintType] = Field(
         None,
         alias="constraint",
-        title=(
-            "List of `ElementDefinitionConstraint` items (represented as `dict` in "
-            "JSON)"
+        title="Condition that must evaluate to true",
+        description=(
+            "Formal constraints such as co-occurrence and other constraints that "
+            "can be computationally evaluated within the context of the instance."
         ),
-        description="Condition that must evaluate to true",
     )
 
     contentReference: fhirtypes.Uri = Field(
         None,
         alias="contentReference",
-        title="Type `Uri`",
-        description="Reference to definition of content for the element",
+        title="Reference to definition of content for the element",
+        description=(
+            "Identifies an element defined elsewhere in the definition whose "
+            "content rules should be applied to the current element. "
+            "ContentReferences bring across all the rules that are in the "
+            "ElementDefinition for the element, including definitions, cardinality "
+            "constraints, bindings, invariants etc."
+        ),
     )
     contentReference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -100,45 +132,65 @@ class ElementDefinition(backboneelement.BackboneElement):
     defaultValueAddress: fhirtypes.AddressType = Field(
         None,
         alias="defaultValueAddress",
-        title="Type `Address` (represented as `dict` in JSON)",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
 
     defaultValueAge: fhirtypes.AgeType = Field(
         None,
         alias="defaultValueAge",
-        title="Type `Age` (represented as `dict` in JSON)",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
 
     defaultValueAnnotation: fhirtypes.AnnotationType = Field(
         None,
         alias="defaultValueAnnotation",
-        title="Type `Annotation` (represented as `dict` in JSON)",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
 
     defaultValueAttachment: fhirtypes.AttachmentType = Field(
         None,
         alias="defaultValueAttachment",
-        title="Type `Attachment` (represented as `dict` in JSON)",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
 
     defaultValueBase64Binary: fhirtypes.Base64Binary = Field(
         None,
         alias="defaultValueBase64Binary",
-        title="Type `Base64Binary`",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
     defaultValueBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -150,9 +202,13 @@ class ElementDefinition(backboneelement.BackboneElement):
     defaultValueBoolean: bool = Field(
         None,
         alias="defaultValueBoolean",
-        title="Type `bool`",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
     defaultValueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -164,9 +220,13 @@ class ElementDefinition(backboneelement.BackboneElement):
     defaultValueCanonical: fhirtypes.Canonical = Field(
         None,
         alias="defaultValueCanonical",
-        title="Type `Canonical`",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
     defaultValueCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -178,9 +238,13 @@ class ElementDefinition(backboneelement.BackboneElement):
     defaultValueCode: fhirtypes.Code = Field(
         None,
         alias="defaultValueCode",
-        title="Type `Code`",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
     defaultValueCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -192,72 +256,104 @@ class ElementDefinition(backboneelement.BackboneElement):
     defaultValueCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="defaultValueCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
 
     defaultValueCoding: fhirtypes.CodingType = Field(
         None,
         alias="defaultValueCoding",
-        title="Type `Coding` (represented as `dict` in JSON)",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
 
     defaultValueContactDetail: fhirtypes.ContactDetailType = Field(
         None,
         alias="defaultValueContactDetail",
-        title="Type `ContactDetail` (represented as `dict` in JSON)",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
 
     defaultValueContactPoint: fhirtypes.ContactPointType = Field(
         None,
         alias="defaultValueContactPoint",
-        title="Type `ContactPoint` (represented as `dict` in JSON)",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
 
     defaultValueContributor: fhirtypes.ContributorType = Field(
         None,
         alias="defaultValueContributor",
-        title="Type `Contributor` (represented as `dict` in JSON)",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
 
     defaultValueCount: fhirtypes.CountType = Field(
         None,
         alias="defaultValueCount",
-        title="Type `Count` (represented as `dict` in JSON)",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
 
     defaultValueDataRequirement: fhirtypes.DataRequirementType = Field(
         None,
         alias="defaultValueDataRequirement",
-        title="Type `DataRequirement` (represented as `dict` in JSON)",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
 
     defaultValueDate: fhirtypes.Date = Field(
         None,
         alias="defaultValueDate",
-        title="Type `Date`",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
     defaultValueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -269,9 +365,13 @@ class ElementDefinition(backboneelement.BackboneElement):
     defaultValueDateTime: fhirtypes.DateTime = Field(
         None,
         alias="defaultValueDateTime",
-        title="Type `DateTime`",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
     defaultValueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -283,9 +383,13 @@ class ElementDefinition(backboneelement.BackboneElement):
     defaultValueDecimal: fhirtypes.Decimal = Field(
         None,
         alias="defaultValueDecimal",
-        title="Type `Decimal`",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
     defaultValueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -297,54 +401,78 @@ class ElementDefinition(backboneelement.BackboneElement):
     defaultValueDistance: fhirtypes.DistanceType = Field(
         None,
         alias="defaultValueDistance",
-        title="Type `Distance` (represented as `dict` in JSON)",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
 
     defaultValueDosage: fhirtypes.DosageType = Field(
         None,
         alias="defaultValueDosage",
-        title="Type `Dosage` (represented as `dict` in JSON)",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
 
     defaultValueDuration: fhirtypes.DurationType = Field(
         None,
         alias="defaultValueDuration",
-        title="Type `Duration` (represented as `dict` in JSON)",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
 
     defaultValueExpression: fhirtypes.ExpressionType = Field(
         None,
         alias="defaultValueExpression",
-        title="Type `Expression` (represented as `dict` in JSON)",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
 
     defaultValueHumanName: fhirtypes.HumanNameType = Field(
         None,
         alias="defaultValueHumanName",
-        title="Type `HumanName` (represented as `dict` in JSON)",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
 
     defaultValueId: fhirtypes.Id = Field(
         None,
         alias="defaultValueId",
-        title="Type `Id`",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
     defaultValueId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -354,18 +482,26 @@ class ElementDefinition(backboneelement.BackboneElement):
     defaultValueIdentifier: fhirtypes.IdentifierType = Field(
         None,
         alias="defaultValueIdentifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
 
     defaultValueInstant: fhirtypes.Instant = Field(
         None,
         alias="defaultValueInstant",
-        title="Type `Instant`",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
     defaultValueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -377,9 +513,13 @@ class ElementDefinition(backboneelement.BackboneElement):
     defaultValueInteger: fhirtypes.Integer = Field(
         None,
         alias="defaultValueInteger",
-        title="Type `Integer`",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
     defaultValueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -391,9 +531,13 @@ class ElementDefinition(backboneelement.BackboneElement):
     defaultValueMarkdown: fhirtypes.Markdown = Field(
         None,
         alias="defaultValueMarkdown",
-        title="Type `Markdown`",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
     defaultValueMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -405,27 +549,39 @@ class ElementDefinition(backboneelement.BackboneElement):
     defaultValueMeta: fhirtypes.MetaType = Field(
         None,
         alias="defaultValueMeta",
-        title="Type `Meta` (represented as `dict` in JSON)",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
 
     defaultValueMoney: fhirtypes.MoneyType = Field(
         None,
         alias="defaultValueMoney",
-        title="Type `Money` (represented as `dict` in JSON)",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
 
     defaultValueOid: fhirtypes.Oid = Field(
         None,
         alias="defaultValueOid",
-        title="Type `Oid`",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
     defaultValueOid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -435,27 +591,39 @@ class ElementDefinition(backboneelement.BackboneElement):
     defaultValueParameterDefinition: fhirtypes.ParameterDefinitionType = Field(
         None,
         alias="defaultValueParameterDefinition",
-        title="Type `ParameterDefinition` (represented as `dict` in JSON)",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
 
     defaultValuePeriod: fhirtypes.PeriodType = Field(
         None,
         alias="defaultValuePeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
 
     defaultValuePositiveInt: fhirtypes.PositiveInt = Field(
         None,
         alias="defaultValuePositiveInt",
-        title="Type `PositiveInt`",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
     defaultValuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -467,72 +635,104 @@ class ElementDefinition(backboneelement.BackboneElement):
     defaultValueQuantity: fhirtypes.QuantityType = Field(
         None,
         alias="defaultValueQuantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
 
     defaultValueRange: fhirtypes.RangeType = Field(
         None,
         alias="defaultValueRange",
-        title="Type `Range` (represented as `dict` in JSON)",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
 
     defaultValueRatio: fhirtypes.RatioType = Field(
         None,
         alias="defaultValueRatio",
-        title="Type `Ratio` (represented as `dict` in JSON)",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
 
     defaultValueReference: fhirtypes.ReferenceType = Field(
         None,
         alias="defaultValueReference",
-        title="Type `Reference` (represented as `dict` in JSON)",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
 
     defaultValueRelatedArtifact: fhirtypes.RelatedArtifactType = Field(
         None,
         alias="defaultValueRelatedArtifact",
-        title="Type `RelatedArtifact` (represented as `dict` in JSON)",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
 
     defaultValueSampledData: fhirtypes.SampledDataType = Field(
         None,
         alias="defaultValueSampledData",
-        title="Type `SampledData` (represented as `dict` in JSON)",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
 
     defaultValueSignature: fhirtypes.SignatureType = Field(
         None,
         alias="defaultValueSignature",
-        title="Type `Signature` (represented as `dict` in JSON)",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
 
     defaultValueString: fhirtypes.String = Field(
         None,
         alias="defaultValueString",
-        title="Type `String`",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
     defaultValueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -544,9 +744,13 @@ class ElementDefinition(backboneelement.BackboneElement):
     defaultValueTime: fhirtypes.Time = Field(
         None,
         alias="defaultValueTime",
-        title="Type `Time`",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
     defaultValueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -558,27 +762,39 @@ class ElementDefinition(backboneelement.BackboneElement):
     defaultValueTiming: fhirtypes.TimingType = Field(
         None,
         alias="defaultValueTiming",
-        title="Type `Timing` (represented as `dict` in JSON)",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
 
     defaultValueTriggerDefinition: fhirtypes.TriggerDefinitionType = Field(
         None,
         alias="defaultValueTriggerDefinition",
-        title="Type `TriggerDefinition` (represented as `dict` in JSON)",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
 
     defaultValueUnsignedInt: fhirtypes.UnsignedInt = Field(
         None,
         alias="defaultValueUnsignedInt",
-        title="Type `UnsignedInt`",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
     defaultValueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -590,9 +806,13 @@ class ElementDefinition(backboneelement.BackboneElement):
     defaultValueUri: fhirtypes.Uri = Field(
         None,
         alias="defaultValueUri",
-        title="Type `Uri`",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
     defaultValueUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -602,9 +822,13 @@ class ElementDefinition(backboneelement.BackboneElement):
     defaultValueUrl: fhirtypes.Url = Field(
         None,
         alias="defaultValueUrl",
-        title="Type `Url`",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
     defaultValueUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -614,18 +838,26 @@ class ElementDefinition(backboneelement.BackboneElement):
     defaultValueUsageContext: fhirtypes.UsageContextType = Field(
         None,
         alias="defaultValueUsageContext",
-        title="Type `UsageContext` (represented as `dict` in JSON)",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
 
     defaultValueUuid: fhirtypes.Uuid = Field(
         None,
         alias="defaultValueUuid",
-        title="Type `Uuid`",
-        description="Specified value if missing from instance",
-        one_of_many="defaultValue",  # Choice of Data Types. i.e value[x]
+        title="Specified value if missing from instance",
+        description=(
+            "The value that should be used if there is no value stated in the "
+            "instance (e.g. 'if not otherwise specified, the abstract is false')."
+        ),
+        # Choice of Data Types. i.e defaultValue[x]
+        one_of_many="defaultValue",
         one_of_many_required=False,
     )
     defaultValueUuid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -637,8 +869,15 @@ class ElementDefinition(backboneelement.BackboneElement):
     definition: fhirtypes.Markdown = Field(
         None,
         alias="definition",
-        title="Type `Markdown`",
-        description="Full formal definition as narrative text",
+        title="Full formal definition as narrative text",
+        description=(
+            "Provides a complete explanation of the meaning of the data element for"
+            " human readability.  For the case of elements derived from existing "
+            "elements (e.g. constraints), the definition SHALL be consistent with "
+            "the base definition, but convey the meaning of the element in the "
+            "particular context of use of the resource. (Note: The text you are "
+            "reading is specified in ElementDefinition.definition)."
+        ),
     )
     definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_definition", title="Extension field for ``definition``."
@@ -647,55 +886,85 @@ class ElementDefinition(backboneelement.BackboneElement):
     example: ListType[fhirtypes.ElementDefinitionExampleType] = Field(
         None,
         alias="example",
-        title=(
-            "List of `ElementDefinitionExample` items (represented as `dict` in "
-            "JSON)"
+        title="Example value (as defined for type)",
+        description=(
+            "A sample value for this element demonstrating the type of information "
+            "that would typically be found in the element."
         ),
-        description="Example value (as defined for type)",
     )
 
     fixedAddress: fhirtypes.AddressType = Field(
         None,
         alias="fixedAddress",
-        title="Type `Address` (represented as `dict` in JSON)",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
 
     fixedAge: fhirtypes.AgeType = Field(
         None,
         alias="fixedAge",
-        title="Type `Age` (represented as `dict` in JSON)",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
 
     fixedAnnotation: fhirtypes.AnnotationType = Field(
         None,
         alias="fixedAnnotation",
-        title="Type `Annotation` (represented as `dict` in JSON)",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
 
     fixedAttachment: fhirtypes.AttachmentType = Field(
         None,
         alias="fixedAttachment",
-        title="Type `Attachment` (represented as `dict` in JSON)",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
 
     fixedBase64Binary: fhirtypes.Base64Binary = Field(
         None,
         alias="fixedBase64Binary",
-        title="Type `Base64Binary`",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
     fixedBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -707,9 +976,15 @@ class ElementDefinition(backboneelement.BackboneElement):
     fixedBoolean: bool = Field(
         None,
         alias="fixedBoolean",
-        title="Type `bool`",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
     fixedBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -719,9 +994,15 @@ class ElementDefinition(backboneelement.BackboneElement):
     fixedCanonical: fhirtypes.Canonical = Field(
         None,
         alias="fixedCanonical",
-        title="Type `Canonical`",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
     fixedCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -731,9 +1012,15 @@ class ElementDefinition(backboneelement.BackboneElement):
     fixedCode: fhirtypes.Code = Field(
         None,
         alias="fixedCode",
-        title="Type `Code`",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
     fixedCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -743,72 +1030,120 @@ class ElementDefinition(backboneelement.BackboneElement):
     fixedCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="fixedCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
 
     fixedCoding: fhirtypes.CodingType = Field(
         None,
         alias="fixedCoding",
-        title="Type `Coding` (represented as `dict` in JSON)",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
 
     fixedContactDetail: fhirtypes.ContactDetailType = Field(
         None,
         alias="fixedContactDetail",
-        title="Type `ContactDetail` (represented as `dict` in JSON)",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
 
     fixedContactPoint: fhirtypes.ContactPointType = Field(
         None,
         alias="fixedContactPoint",
-        title="Type `ContactPoint` (represented as `dict` in JSON)",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
 
     fixedContributor: fhirtypes.ContributorType = Field(
         None,
         alias="fixedContributor",
-        title="Type `Contributor` (represented as `dict` in JSON)",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
 
     fixedCount: fhirtypes.CountType = Field(
         None,
         alias="fixedCount",
-        title="Type `Count` (represented as `dict` in JSON)",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
 
     fixedDataRequirement: fhirtypes.DataRequirementType = Field(
         None,
         alias="fixedDataRequirement",
-        title="Type `DataRequirement` (represented as `dict` in JSON)",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
 
     fixedDate: fhirtypes.Date = Field(
         None,
         alias="fixedDate",
-        title="Type `Date`",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
     fixedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -818,9 +1153,15 @@ class ElementDefinition(backboneelement.BackboneElement):
     fixedDateTime: fhirtypes.DateTime = Field(
         None,
         alias="fixedDateTime",
-        title="Type `DateTime`",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
     fixedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -830,9 +1171,15 @@ class ElementDefinition(backboneelement.BackboneElement):
     fixedDecimal: fhirtypes.Decimal = Field(
         None,
         alias="fixedDecimal",
-        title="Type `Decimal`",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
     fixedDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -842,54 +1189,90 @@ class ElementDefinition(backboneelement.BackboneElement):
     fixedDistance: fhirtypes.DistanceType = Field(
         None,
         alias="fixedDistance",
-        title="Type `Distance` (represented as `dict` in JSON)",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
 
     fixedDosage: fhirtypes.DosageType = Field(
         None,
         alias="fixedDosage",
-        title="Type `Dosage` (represented as `dict` in JSON)",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
 
     fixedDuration: fhirtypes.DurationType = Field(
         None,
         alias="fixedDuration",
-        title="Type `Duration` (represented as `dict` in JSON)",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
 
     fixedExpression: fhirtypes.ExpressionType = Field(
         None,
         alias="fixedExpression",
-        title="Type `Expression` (represented as `dict` in JSON)",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
 
     fixedHumanName: fhirtypes.HumanNameType = Field(
         None,
         alias="fixedHumanName",
-        title="Type `HumanName` (represented as `dict` in JSON)",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
 
     fixedId: fhirtypes.Id = Field(
         None,
         alias="fixedId",
-        title="Type `Id`",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
     fixedId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -899,18 +1282,30 @@ class ElementDefinition(backboneelement.BackboneElement):
     fixedIdentifier: fhirtypes.IdentifierType = Field(
         None,
         alias="fixedIdentifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
 
     fixedInstant: fhirtypes.Instant = Field(
         None,
         alias="fixedInstant",
-        title="Type `Instant`",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
     fixedInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -920,9 +1315,15 @@ class ElementDefinition(backboneelement.BackboneElement):
     fixedInteger: fhirtypes.Integer = Field(
         None,
         alias="fixedInteger",
-        title="Type `Integer`",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
     fixedInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -932,9 +1333,15 @@ class ElementDefinition(backboneelement.BackboneElement):
     fixedMarkdown: fhirtypes.Markdown = Field(
         None,
         alias="fixedMarkdown",
-        title="Type `Markdown`",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
     fixedMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -944,27 +1351,45 @@ class ElementDefinition(backboneelement.BackboneElement):
     fixedMeta: fhirtypes.MetaType = Field(
         None,
         alias="fixedMeta",
-        title="Type `Meta` (represented as `dict` in JSON)",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
 
     fixedMoney: fhirtypes.MoneyType = Field(
         None,
         alias="fixedMoney",
-        title="Type `Money` (represented as `dict` in JSON)",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
 
     fixedOid: fhirtypes.Oid = Field(
         None,
         alias="fixedOid",
-        title="Type `Oid`",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
     fixedOid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -974,27 +1399,45 @@ class ElementDefinition(backboneelement.BackboneElement):
     fixedParameterDefinition: fhirtypes.ParameterDefinitionType = Field(
         None,
         alias="fixedParameterDefinition",
-        title="Type `ParameterDefinition` (represented as `dict` in JSON)",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
 
     fixedPeriod: fhirtypes.PeriodType = Field(
         None,
         alias="fixedPeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
 
     fixedPositiveInt: fhirtypes.PositiveInt = Field(
         None,
         alias="fixedPositiveInt",
-        title="Type `PositiveInt`",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
     fixedPositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1006,72 +1449,120 @@ class ElementDefinition(backboneelement.BackboneElement):
     fixedQuantity: fhirtypes.QuantityType = Field(
         None,
         alias="fixedQuantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
 
     fixedRange: fhirtypes.RangeType = Field(
         None,
         alias="fixedRange",
-        title="Type `Range` (represented as `dict` in JSON)",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
 
     fixedRatio: fhirtypes.RatioType = Field(
         None,
         alias="fixedRatio",
-        title="Type `Ratio` (represented as `dict` in JSON)",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
 
     fixedReference: fhirtypes.ReferenceType = Field(
         None,
         alias="fixedReference",
-        title="Type `Reference` (represented as `dict` in JSON)",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
 
     fixedRelatedArtifact: fhirtypes.RelatedArtifactType = Field(
         None,
         alias="fixedRelatedArtifact",
-        title="Type `RelatedArtifact` (represented as `dict` in JSON)",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
 
     fixedSampledData: fhirtypes.SampledDataType = Field(
         None,
         alias="fixedSampledData",
-        title="Type `SampledData` (represented as `dict` in JSON)",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
 
     fixedSignature: fhirtypes.SignatureType = Field(
         None,
         alias="fixedSignature",
-        title="Type `Signature` (represented as `dict` in JSON)",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
 
     fixedString: fhirtypes.String = Field(
         None,
         alias="fixedString",
-        title="Type `String`",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
     fixedString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1081,9 +1572,15 @@ class ElementDefinition(backboneelement.BackboneElement):
     fixedTime: fhirtypes.Time = Field(
         None,
         alias="fixedTime",
-        title="Type `Time`",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
     fixedTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1093,27 +1590,45 @@ class ElementDefinition(backboneelement.BackboneElement):
     fixedTiming: fhirtypes.TimingType = Field(
         None,
         alias="fixedTiming",
-        title="Type `Timing` (represented as `dict` in JSON)",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
 
     fixedTriggerDefinition: fhirtypes.TriggerDefinitionType = Field(
         None,
         alias="fixedTriggerDefinition",
-        title="Type `TriggerDefinition` (represented as `dict` in JSON)",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
 
     fixedUnsignedInt: fhirtypes.UnsignedInt = Field(
         None,
         alias="fixedUnsignedInt",
-        title="Type `UnsignedInt`",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
     fixedUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1125,9 +1640,15 @@ class ElementDefinition(backboneelement.BackboneElement):
     fixedUri: fhirtypes.Uri = Field(
         None,
         alias="fixedUri",
-        title="Type `Uri`",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
     fixedUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1137,9 +1658,15 @@ class ElementDefinition(backboneelement.BackboneElement):
     fixedUrl: fhirtypes.Url = Field(
         None,
         alias="fixedUrl",
-        title="Type `Url`",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
     fixedUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1149,18 +1676,30 @@ class ElementDefinition(backboneelement.BackboneElement):
     fixedUsageContext: fhirtypes.UsageContextType = Field(
         None,
         alias="fixedUsageContext",
-        title="Type `UsageContext` (represented as `dict` in JSON)",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
 
     fixedUuid: fhirtypes.Uuid = Field(
         None,
         alias="fixedUuid",
-        title="Type `Uuid`",
-        description="Value must be exactly this",
-        one_of_many="fixed",  # Choice of Data Types. i.e value[x]
+        title="Value must be exactly this",
+        description=(
+            "Specifies a value that SHALL be exactly the value  for this element in"
+            " the instance. For purposes of comparison, non-significant whitespace "
+            "is ignored, and all values must be an exact match (case and accent "
+            "sensitive). Missing elements/attributes must also be missing."
+        ),
+        # Choice of Data Types. i.e fixed[x]
+        one_of_many="fixed",
         one_of_many_required=False,
     )
     fixedUuid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1170,8 +1709,16 @@ class ElementDefinition(backboneelement.BackboneElement):
     isModifier: bool = Field(
         None,
         alias="isModifier",
-        title="Type `bool`",
-        description="If this modifies the meaning of other elements",
+        title="If this modifies the meaning of other elements",
+        description=(
+            "If true, the value of this element affects the interpretation of the "
+            "element or resource that contains it, and the value of the element "
+            "cannot be ignored. Typically, this is used for status, negation and "
+            "qualification codes. The effect of this is that the element cannot be "
+            "ignored by systems: they SHALL either recognize the element and "
+            "process it, and/or a pre-determination has been made that it is not "
+            "relevant to their particular system."
+        ),
     )
     isModifier__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_isModifier", title="Extension field for ``isModifier``."
@@ -1180,8 +1727,11 @@ class ElementDefinition(backboneelement.BackboneElement):
     isModifierReason: fhirtypes.String = Field(
         None,
         alias="isModifierReason",
-        title="Type `String`",
-        description="Reason that this element is marked as a modifier",
+        title="Reason that this element is marked as a modifier",
+        description=(
+            "Explains how that element affects the interpretation of the resource "
+            "or element that contains it."
+        ),
     )
     isModifierReason__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -1192,8 +1742,11 @@ class ElementDefinition(backboneelement.BackboneElement):
     isSummary: bool = Field(
         None,
         alias="isSummary",
-        title="Type `bool`",
-        description="Include when _summary = true?",
+        title="Include when _summary = true?",
+        description=(
+            "Whether the element should be included if a client requests a search "
+            "with the parameter _summary=true."
+        ),
     )
     isSummary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_isSummary", title="Extension field for ``isSummary``."
@@ -1202,8 +1755,12 @@ class ElementDefinition(backboneelement.BackboneElement):
     label: fhirtypes.String = Field(
         None,
         alias="label",
-        title="Type `String`",
-        description="Name for element to display with or prompt for element",
+        title="Name for element to display with or prompt for element",
+        description=(
+            "A single preferred label which is the text to display beside the "
+            "element indicating its meaning or to use to prompt for the element in "
+            "a user display or form."
+        ),
     )
     label__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_label", title="Extension field for ``label``."
@@ -1212,18 +1769,21 @@ class ElementDefinition(backboneelement.BackboneElement):
     mapping: ListType[fhirtypes.ElementDefinitionMappingType] = Field(
         None,
         alias="mapping",
-        title=(
-            "List of `ElementDefinitionMapping` items (represented as `dict` in "
-            "JSON)"
+        title="Map element to another set of definitions",
+        description=(
+            "Identifies a concept from an external specification that roughly "
+            "corresponds to this element."
         ),
-        description="Map element to another set of definitions",
     )
 
     max: fhirtypes.String = Field(
         None,
         alias="max",
-        title="Type `String`",
-        description="Maximum Cardinality (a number or *)",
+        title="Maximum Cardinality (a number or *)",
+        description=(
+            "The maximum number of times this element is permitted to appear in the"
+            " instance."
+        ),
     )
     max__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_max", title="Extension field for ``max``."
@@ -1232,8 +1792,12 @@ class ElementDefinition(backboneelement.BackboneElement):
     maxLength: fhirtypes.Integer = Field(
         None,
         alias="maxLength",
-        title="Type `Integer`",
-        description="Max length for strings",
+        title="Max length for strings",
+        description=(
+            "Indicates the maximum length in characters that is permitted to be "
+            "present in conformant instances and which is expected to be supported "
+            "by conformant consumers that support the element."
+        ),
     )
     maxLength__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_maxLength", title="Extension field for ``maxLength``."
@@ -1242,9 +1806,14 @@ class ElementDefinition(backboneelement.BackboneElement):
     maxValueDate: fhirtypes.Date = Field(
         None,
         alias="maxValueDate",
-        title="Type `Date`",
-        description="Maximum Allowed Value (for some types)",
-        one_of_many="maxValue",  # Choice of Data Types. i.e value[x]
+        title="Maximum Allowed Value (for some types)",
+        description=(
+            "The maximum allowed value for the element. The value is inclusive. "
+            "This is allowed for the types date, dateTime, instant, time, decimal, "
+            "integer, and Quantity."
+        ),
+        # Choice of Data Types. i.e maxValue[x]
+        one_of_many="maxValue",
         one_of_many_required=False,
     )
     maxValueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1254,9 +1823,14 @@ class ElementDefinition(backboneelement.BackboneElement):
     maxValueDateTime: fhirtypes.DateTime = Field(
         None,
         alias="maxValueDateTime",
-        title="Type `DateTime`",
-        description="Maximum Allowed Value (for some types)",
-        one_of_many="maxValue",  # Choice of Data Types. i.e value[x]
+        title="Maximum Allowed Value (for some types)",
+        description=(
+            "The maximum allowed value for the element. The value is inclusive. "
+            "This is allowed for the types date, dateTime, instant, time, decimal, "
+            "integer, and Quantity."
+        ),
+        # Choice of Data Types. i.e maxValue[x]
+        one_of_many="maxValue",
         one_of_many_required=False,
     )
     maxValueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1268,9 +1842,14 @@ class ElementDefinition(backboneelement.BackboneElement):
     maxValueDecimal: fhirtypes.Decimal = Field(
         None,
         alias="maxValueDecimal",
-        title="Type `Decimal`",
-        description="Maximum Allowed Value (for some types)",
-        one_of_many="maxValue",  # Choice of Data Types. i.e value[x]
+        title="Maximum Allowed Value (for some types)",
+        description=(
+            "The maximum allowed value for the element. The value is inclusive. "
+            "This is allowed for the types date, dateTime, instant, time, decimal, "
+            "integer, and Quantity."
+        ),
+        # Choice of Data Types. i.e maxValue[x]
+        one_of_many="maxValue",
         one_of_many_required=False,
     )
     maxValueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1280,9 +1859,14 @@ class ElementDefinition(backboneelement.BackboneElement):
     maxValueInstant: fhirtypes.Instant = Field(
         None,
         alias="maxValueInstant",
-        title="Type `Instant`",
-        description="Maximum Allowed Value (for some types)",
-        one_of_many="maxValue",  # Choice of Data Types. i.e value[x]
+        title="Maximum Allowed Value (for some types)",
+        description=(
+            "The maximum allowed value for the element. The value is inclusive. "
+            "This is allowed for the types date, dateTime, instant, time, decimal, "
+            "integer, and Quantity."
+        ),
+        # Choice of Data Types. i.e maxValue[x]
+        one_of_many="maxValue",
         one_of_many_required=False,
     )
     maxValueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1292,9 +1876,14 @@ class ElementDefinition(backboneelement.BackboneElement):
     maxValueInteger: fhirtypes.Integer = Field(
         None,
         alias="maxValueInteger",
-        title="Type `Integer`",
-        description="Maximum Allowed Value (for some types)",
-        one_of_many="maxValue",  # Choice of Data Types. i.e value[x]
+        title="Maximum Allowed Value (for some types)",
+        description=(
+            "The maximum allowed value for the element. The value is inclusive. "
+            "This is allowed for the types date, dateTime, instant, time, decimal, "
+            "integer, and Quantity."
+        ),
+        # Choice of Data Types. i.e maxValue[x]
+        one_of_many="maxValue",
         one_of_many_required=False,
     )
     maxValueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1304,9 +1893,14 @@ class ElementDefinition(backboneelement.BackboneElement):
     maxValuePositiveInt: fhirtypes.PositiveInt = Field(
         None,
         alias="maxValuePositiveInt",
-        title="Type `PositiveInt`",
-        description="Maximum Allowed Value (for some types)",
-        one_of_many="maxValue",  # Choice of Data Types. i.e value[x]
+        title="Maximum Allowed Value (for some types)",
+        description=(
+            "The maximum allowed value for the element. The value is inclusive. "
+            "This is allowed for the types date, dateTime, instant, time, decimal, "
+            "integer, and Quantity."
+        ),
+        # Choice of Data Types. i.e maxValue[x]
+        one_of_many="maxValue",
         one_of_many_required=False,
     )
     maxValuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1318,18 +1912,28 @@ class ElementDefinition(backboneelement.BackboneElement):
     maxValueQuantity: fhirtypes.QuantityType = Field(
         None,
         alias="maxValueQuantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Maximum Allowed Value (for some types)",
-        one_of_many="maxValue",  # Choice of Data Types. i.e value[x]
+        title="Maximum Allowed Value (for some types)",
+        description=(
+            "The maximum allowed value for the element. The value is inclusive. "
+            "This is allowed for the types date, dateTime, instant, time, decimal, "
+            "integer, and Quantity."
+        ),
+        # Choice of Data Types. i.e maxValue[x]
+        one_of_many="maxValue",
         one_of_many_required=False,
     )
 
     maxValueTime: fhirtypes.Time = Field(
         None,
         alias="maxValueTime",
-        title="Type `Time`",
-        description="Maximum Allowed Value (for some types)",
-        one_of_many="maxValue",  # Choice of Data Types. i.e value[x]
+        title="Maximum Allowed Value (for some types)",
+        description=(
+            "The maximum allowed value for the element. The value is inclusive. "
+            "This is allowed for the types date, dateTime, instant, time, decimal, "
+            "integer, and Quantity."
+        ),
+        # Choice of Data Types. i.e maxValue[x]
+        one_of_many="maxValue",
         one_of_many_required=False,
     )
     maxValueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1339,9 +1943,14 @@ class ElementDefinition(backboneelement.BackboneElement):
     maxValueUnsignedInt: fhirtypes.UnsignedInt = Field(
         None,
         alias="maxValueUnsignedInt",
-        title="Type `UnsignedInt`",
-        description="Maximum Allowed Value (for some types)",
-        one_of_many="maxValue",  # Choice of Data Types. i.e value[x]
+        title="Maximum Allowed Value (for some types)",
+        description=(
+            "The maximum allowed value for the element. The value is inclusive. "
+            "This is allowed for the types date, dateTime, instant, time, decimal, "
+            "integer, and Quantity."
+        ),
+        # Choice of Data Types. i.e maxValue[x]
+        one_of_many="maxValue",
         one_of_many_required=False,
     )
     maxValueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1353,8 +1962,11 @@ class ElementDefinition(backboneelement.BackboneElement):
     meaningWhenMissing: fhirtypes.Markdown = Field(
         None,
         alias="meaningWhenMissing",
-        title="Type `Markdown`",
-        description="Implicit meaning when this element is missing",
+        title="Implicit meaning when this element is missing",
+        description=(
+            "The Implicit meaning that is to be understood when this element is "
+            "missing (e.g. 'when this element is missing, the period is ongoing')."
+        ),
     )
     meaningWhenMissing__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -1363,7 +1975,10 @@ class ElementDefinition(backboneelement.BackboneElement):
     )
 
     min: fhirtypes.UnsignedInt = Field(
-        None, alias="min", title="Type `UnsignedInt`", description="Minimum Cardinality"
+        None,
+        alias="min",
+        title="Minimum Cardinality",
+        description="The minimum number of times this element SHALL appear in the instance.",
     )
     min__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_min", title="Extension field for ``min``."
@@ -1372,9 +1987,14 @@ class ElementDefinition(backboneelement.BackboneElement):
     minValueDate: fhirtypes.Date = Field(
         None,
         alias="minValueDate",
-        title="Type `Date`",
-        description="Minimum Allowed Value (for some types)",
-        one_of_many="minValue",  # Choice of Data Types. i.e value[x]
+        title="Minimum Allowed Value (for some types)",
+        description=(
+            "The minimum allowed value for the element. The value is inclusive. "
+            "This is allowed for the types date, dateTime, instant, time, decimal, "
+            "integer, and Quantity."
+        ),
+        # Choice of Data Types. i.e minValue[x]
+        one_of_many="minValue",
         one_of_many_required=False,
     )
     minValueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1384,9 +2004,14 @@ class ElementDefinition(backboneelement.BackboneElement):
     minValueDateTime: fhirtypes.DateTime = Field(
         None,
         alias="minValueDateTime",
-        title="Type `DateTime`",
-        description="Minimum Allowed Value (for some types)",
-        one_of_many="minValue",  # Choice of Data Types. i.e value[x]
+        title="Minimum Allowed Value (for some types)",
+        description=(
+            "The minimum allowed value for the element. The value is inclusive. "
+            "This is allowed for the types date, dateTime, instant, time, decimal, "
+            "integer, and Quantity."
+        ),
+        # Choice of Data Types. i.e minValue[x]
+        one_of_many="minValue",
         one_of_many_required=False,
     )
     minValueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1398,9 +2023,14 @@ class ElementDefinition(backboneelement.BackboneElement):
     minValueDecimal: fhirtypes.Decimal = Field(
         None,
         alias="minValueDecimal",
-        title="Type `Decimal`",
-        description="Minimum Allowed Value (for some types)",
-        one_of_many="minValue",  # Choice of Data Types. i.e value[x]
+        title="Minimum Allowed Value (for some types)",
+        description=(
+            "The minimum allowed value for the element. The value is inclusive. "
+            "This is allowed for the types date, dateTime, instant, time, decimal, "
+            "integer, and Quantity."
+        ),
+        # Choice of Data Types. i.e minValue[x]
+        one_of_many="minValue",
         one_of_many_required=False,
     )
     minValueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1410,9 +2040,14 @@ class ElementDefinition(backboneelement.BackboneElement):
     minValueInstant: fhirtypes.Instant = Field(
         None,
         alias="minValueInstant",
-        title="Type `Instant`",
-        description="Minimum Allowed Value (for some types)",
-        one_of_many="minValue",  # Choice of Data Types. i.e value[x]
+        title="Minimum Allowed Value (for some types)",
+        description=(
+            "The minimum allowed value for the element. The value is inclusive. "
+            "This is allowed for the types date, dateTime, instant, time, decimal, "
+            "integer, and Quantity."
+        ),
+        # Choice of Data Types. i.e minValue[x]
+        one_of_many="minValue",
         one_of_many_required=False,
     )
     minValueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1422,9 +2057,14 @@ class ElementDefinition(backboneelement.BackboneElement):
     minValueInteger: fhirtypes.Integer = Field(
         None,
         alias="minValueInteger",
-        title="Type `Integer`",
-        description="Minimum Allowed Value (for some types)",
-        one_of_many="minValue",  # Choice of Data Types. i.e value[x]
+        title="Minimum Allowed Value (for some types)",
+        description=(
+            "The minimum allowed value for the element. The value is inclusive. "
+            "This is allowed for the types date, dateTime, instant, time, decimal, "
+            "integer, and Quantity."
+        ),
+        # Choice of Data Types. i.e minValue[x]
+        one_of_many="minValue",
         one_of_many_required=False,
     )
     minValueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1434,9 +2074,14 @@ class ElementDefinition(backboneelement.BackboneElement):
     minValuePositiveInt: fhirtypes.PositiveInt = Field(
         None,
         alias="minValuePositiveInt",
-        title="Type `PositiveInt`",
-        description="Minimum Allowed Value (for some types)",
-        one_of_many="minValue",  # Choice of Data Types. i.e value[x]
+        title="Minimum Allowed Value (for some types)",
+        description=(
+            "The minimum allowed value for the element. The value is inclusive. "
+            "This is allowed for the types date, dateTime, instant, time, decimal, "
+            "integer, and Quantity."
+        ),
+        # Choice of Data Types. i.e minValue[x]
+        one_of_many="minValue",
         one_of_many_required=False,
     )
     minValuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1448,18 +2093,28 @@ class ElementDefinition(backboneelement.BackboneElement):
     minValueQuantity: fhirtypes.QuantityType = Field(
         None,
         alias="minValueQuantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Minimum Allowed Value (for some types)",
-        one_of_many="minValue",  # Choice of Data Types. i.e value[x]
+        title="Minimum Allowed Value (for some types)",
+        description=(
+            "The minimum allowed value for the element. The value is inclusive. "
+            "This is allowed for the types date, dateTime, instant, time, decimal, "
+            "integer, and Quantity."
+        ),
+        # Choice of Data Types. i.e minValue[x]
+        one_of_many="minValue",
         one_of_many_required=False,
     )
 
     minValueTime: fhirtypes.Time = Field(
         None,
         alias="minValueTime",
-        title="Type `Time`",
-        description="Minimum Allowed Value (for some types)",
-        one_of_many="minValue",  # Choice of Data Types. i.e value[x]
+        title="Minimum Allowed Value (for some types)",
+        description=(
+            "The minimum allowed value for the element. The value is inclusive. "
+            "This is allowed for the types date, dateTime, instant, time, decimal, "
+            "integer, and Quantity."
+        ),
+        # Choice of Data Types. i.e minValue[x]
+        one_of_many="minValue",
         one_of_many_required=False,
     )
     minValueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1469,9 +2124,14 @@ class ElementDefinition(backboneelement.BackboneElement):
     minValueUnsignedInt: fhirtypes.UnsignedInt = Field(
         None,
         alias="minValueUnsignedInt",
-        title="Type `UnsignedInt`",
-        description="Minimum Allowed Value (for some types)",
-        one_of_many="minValue",  # Choice of Data Types. i.e value[x]
+        title="Minimum Allowed Value (for some types)",
+        description=(
+            "The minimum allowed value for the element. The value is inclusive. "
+            "This is allowed for the types date, dateTime, instant, time, decimal, "
+            "integer, and Quantity."
+        ),
+        # Choice of Data Types. i.e minValue[x]
+        one_of_many="minValue",
         one_of_many_required=False,
     )
     minValueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1483,8 +2143,14 @@ class ElementDefinition(backboneelement.BackboneElement):
     mustSupport: bool = Field(
         None,
         alias="mustSupport",
-        title="Type `bool`",
-        description="If the element must be supported",
+        title="If the element must be supported",
+        description=(
+            "If true, implementations that produce or consume resources SHALL "
+            'provide "support" for the element in some meaningful way.  If false, '
+            "the element may be ignored and not supported. If false, whether to "
+            "populate or use the data element in any way is at the discretion of "
+            "the implementation."
+        ),
     )
     mustSupport__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_mustSupport", title="Extension field for ``mustSupport``."
@@ -1493,8 +2159,12 @@ class ElementDefinition(backboneelement.BackboneElement):
     orderMeaning: fhirtypes.String = Field(
         None,
         alias="orderMeaning",
-        title="Type `String`",
-        description="What the order of the elements means",
+        title="What the order of the elements means",
+        description=(
+            "If present, indicates that the order of the repeating element has "
+            "meaning and describes what that meaning is.  If absent, it means that "
+            "the order of the element has no meaning."
+        ),
     )
     orderMeaning__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_orderMeaning", title="Extension field for ``orderMeaning``."
@@ -1503,8 +2173,12 @@ class ElementDefinition(backboneelement.BackboneElement):
     path: fhirtypes.String = Field(
         ...,
         alias="path",
-        title="Type `String`",
-        description="Path of the element in the hierarchy of elements",
+        title="Path of the element in the hierarchy of elements",
+        description=(
+            'The path identifies the element and is expressed as a "."-separated '
+            "list of ancestor elements, beginning with the name of the resource or "
+            "extension."
+        ),
     )
     path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_path", title="Extension field for ``path``."
@@ -1513,45 +2187,125 @@ class ElementDefinition(backboneelement.BackboneElement):
     patternAddress: fhirtypes.AddressType = Field(
         None,
         alias="patternAddress",
-        title="Type `Address` (represented as `dict` in JSON)",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
 
     patternAge: fhirtypes.AgeType = Field(
         None,
         alias="patternAge",
-        title="Type `Age` (represented as `dict` in JSON)",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
 
     patternAnnotation: fhirtypes.AnnotationType = Field(
         None,
         alias="patternAnnotation",
-        title="Type `Annotation` (represented as `dict` in JSON)",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
 
     patternAttachment: fhirtypes.AttachmentType = Field(
         None,
         alias="patternAttachment",
-        title="Type `Attachment` (represented as `dict` in JSON)",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
 
     patternBase64Binary: fhirtypes.Base64Binary = Field(
         None,
         alias="patternBase64Binary",
-        title="Type `Base64Binary`",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
     patternBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1563,9 +2317,25 @@ class ElementDefinition(backboneelement.BackboneElement):
     patternBoolean: bool = Field(
         None,
         alias="patternBoolean",
-        title="Type `bool`",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
     patternBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1575,9 +2345,25 @@ class ElementDefinition(backboneelement.BackboneElement):
     patternCanonical: fhirtypes.Canonical = Field(
         None,
         alias="patternCanonical",
-        title="Type `Canonical`",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
     patternCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1589,9 +2375,25 @@ class ElementDefinition(backboneelement.BackboneElement):
     patternCode: fhirtypes.Code = Field(
         None,
         alias="patternCode",
-        title="Type `Code`",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
     patternCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1601,72 +2403,200 @@ class ElementDefinition(backboneelement.BackboneElement):
     patternCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="patternCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
 
     patternCoding: fhirtypes.CodingType = Field(
         None,
         alias="patternCoding",
-        title="Type `Coding` (represented as `dict` in JSON)",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
 
     patternContactDetail: fhirtypes.ContactDetailType = Field(
         None,
         alias="patternContactDetail",
-        title="Type `ContactDetail` (represented as `dict` in JSON)",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
 
     patternContactPoint: fhirtypes.ContactPointType = Field(
         None,
         alias="patternContactPoint",
-        title="Type `ContactPoint` (represented as `dict` in JSON)",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
 
     patternContributor: fhirtypes.ContributorType = Field(
         None,
         alias="patternContributor",
-        title="Type `Contributor` (represented as `dict` in JSON)",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
 
     patternCount: fhirtypes.CountType = Field(
         None,
         alias="patternCount",
-        title="Type `Count` (represented as `dict` in JSON)",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
 
     patternDataRequirement: fhirtypes.DataRequirementType = Field(
         None,
         alias="patternDataRequirement",
-        title="Type `DataRequirement` (represented as `dict` in JSON)",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
 
     patternDate: fhirtypes.Date = Field(
         None,
         alias="patternDate",
-        title="Type `Date`",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
     patternDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1676,9 +2606,25 @@ class ElementDefinition(backboneelement.BackboneElement):
     patternDateTime: fhirtypes.DateTime = Field(
         None,
         alias="patternDateTime",
-        title="Type `DateTime`",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
     patternDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1688,9 +2634,25 @@ class ElementDefinition(backboneelement.BackboneElement):
     patternDecimal: fhirtypes.Decimal = Field(
         None,
         alias="patternDecimal",
-        title="Type `Decimal`",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
     patternDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1700,54 +2662,150 @@ class ElementDefinition(backboneelement.BackboneElement):
     patternDistance: fhirtypes.DistanceType = Field(
         None,
         alias="patternDistance",
-        title="Type `Distance` (represented as `dict` in JSON)",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
 
     patternDosage: fhirtypes.DosageType = Field(
         None,
         alias="patternDosage",
-        title="Type `Dosage` (represented as `dict` in JSON)",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
 
     patternDuration: fhirtypes.DurationType = Field(
         None,
         alias="patternDuration",
-        title="Type `Duration` (represented as `dict` in JSON)",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
 
     patternExpression: fhirtypes.ExpressionType = Field(
         None,
         alias="patternExpression",
-        title="Type `Expression` (represented as `dict` in JSON)",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
 
     patternHumanName: fhirtypes.HumanNameType = Field(
         None,
         alias="patternHumanName",
-        title="Type `HumanName` (represented as `dict` in JSON)",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
 
     patternId: fhirtypes.Id = Field(
         None,
         alias="patternId",
-        title="Type `Id`",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
     patternId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1757,18 +2815,50 @@ class ElementDefinition(backboneelement.BackboneElement):
     patternIdentifier: fhirtypes.IdentifierType = Field(
         None,
         alias="patternIdentifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
 
     patternInstant: fhirtypes.Instant = Field(
         None,
         alias="patternInstant",
-        title="Type `Instant`",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
     patternInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1778,9 +2868,25 @@ class ElementDefinition(backboneelement.BackboneElement):
     patternInteger: fhirtypes.Integer = Field(
         None,
         alias="patternInteger",
-        title="Type `Integer`",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
     patternInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1790,9 +2896,25 @@ class ElementDefinition(backboneelement.BackboneElement):
     patternMarkdown: fhirtypes.Markdown = Field(
         None,
         alias="patternMarkdown",
-        title="Type `Markdown`",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
     patternMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1802,27 +2924,75 @@ class ElementDefinition(backboneelement.BackboneElement):
     patternMeta: fhirtypes.MetaType = Field(
         None,
         alias="patternMeta",
-        title="Type `Meta` (represented as `dict` in JSON)",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
 
     patternMoney: fhirtypes.MoneyType = Field(
         None,
         alias="patternMoney",
-        title="Type `Money` (represented as `dict` in JSON)",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
 
     patternOid: fhirtypes.Oid = Field(
         None,
         alias="patternOid",
-        title="Type `Oid`",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
     patternOid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1832,27 +3002,75 @@ class ElementDefinition(backboneelement.BackboneElement):
     patternParameterDefinition: fhirtypes.ParameterDefinitionType = Field(
         None,
         alias="patternParameterDefinition",
-        title="Type `ParameterDefinition` (represented as `dict` in JSON)",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
 
     patternPeriod: fhirtypes.PeriodType = Field(
         None,
         alias="patternPeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
 
     patternPositiveInt: fhirtypes.PositiveInt = Field(
         None,
         alias="patternPositiveInt",
-        title="Type `PositiveInt`",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
     patternPositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1864,72 +3082,200 @@ class ElementDefinition(backboneelement.BackboneElement):
     patternQuantity: fhirtypes.QuantityType = Field(
         None,
         alias="patternQuantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
 
     patternRange: fhirtypes.RangeType = Field(
         None,
         alias="patternRange",
-        title="Type `Range` (represented as `dict` in JSON)",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
 
     patternRatio: fhirtypes.RatioType = Field(
         None,
         alias="patternRatio",
-        title="Type `Ratio` (represented as `dict` in JSON)",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
 
     patternReference: fhirtypes.ReferenceType = Field(
         None,
         alias="patternReference",
-        title="Type `Reference` (represented as `dict` in JSON)",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
 
     patternRelatedArtifact: fhirtypes.RelatedArtifactType = Field(
         None,
         alias="patternRelatedArtifact",
-        title="Type `RelatedArtifact` (represented as `dict` in JSON)",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
 
     patternSampledData: fhirtypes.SampledDataType = Field(
         None,
         alias="patternSampledData",
-        title="Type `SampledData` (represented as `dict` in JSON)",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
 
     patternSignature: fhirtypes.SignatureType = Field(
         None,
         alias="patternSignature",
-        title="Type `Signature` (represented as `dict` in JSON)",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
 
     patternString: fhirtypes.String = Field(
         None,
         alias="patternString",
-        title="Type `String`",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
     patternString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1939,9 +3285,25 @@ class ElementDefinition(backboneelement.BackboneElement):
     patternTime: fhirtypes.Time = Field(
         None,
         alias="patternTime",
-        title="Type `Time`",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
     patternTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1951,27 +3313,75 @@ class ElementDefinition(backboneelement.BackboneElement):
     patternTiming: fhirtypes.TimingType = Field(
         None,
         alias="patternTiming",
-        title="Type `Timing` (represented as `dict` in JSON)",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
 
     patternTriggerDefinition: fhirtypes.TriggerDefinitionType = Field(
         None,
         alias="patternTriggerDefinition",
-        title="Type `TriggerDefinition` (represented as `dict` in JSON)",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
 
     patternUnsignedInt: fhirtypes.UnsignedInt = Field(
         None,
         alias="patternUnsignedInt",
-        title="Type `UnsignedInt`",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
     patternUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1983,9 +3393,25 @@ class ElementDefinition(backboneelement.BackboneElement):
     patternUri: fhirtypes.Uri = Field(
         None,
         alias="patternUri",
-        title="Type `Uri`",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
     patternUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -1995,9 +3421,25 @@ class ElementDefinition(backboneelement.BackboneElement):
     patternUrl: fhirtypes.Url = Field(
         None,
         alias="patternUrl",
-        title="Type `Url`",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
     patternUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -2007,18 +3449,50 @@ class ElementDefinition(backboneelement.BackboneElement):
     patternUsageContext: fhirtypes.UsageContextType = Field(
         None,
         alias="patternUsageContext",
-        title="Type `UsageContext` (represented as `dict` in JSON)",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
 
     patternUuid: fhirtypes.Uuid = Field(
         None,
         alias="patternUuid",
-        title="Type `Uuid`",
-        description="Value must have at least these property values",
-        one_of_many="pattern",  # Choice of Data Types. i.e value[x]
+        title="Value must have at least these property values",
+        description=(
+            "Specifies a value that the value in the instance SHALL follow - that "
+            "is, any value in the pattern must be found in the instance. Other "
+            "additional values may be found too. This is effectively constraint by "
+            "example.    When pattern[x] is used to constrain a primitive, it means"
+            " that the value provided in the pattern[x] must match the instance "
+            "value exactly.  When pattern[x] is used to constrain an array, it "
+            "means that each element provided in the pattern[x] array must "
+            "(recursively) match at least one element from the instance array.  "
+            "When pattern[x] is used to constrain a complex object, it means that "
+            "each property in the pattern must be present in the complex object, "
+            "and its value must recursively match -- i.e.,  1. If primitive: it "
+            "must match exactly the pattern value 2. If a complex object: it must "
+            "match (recursively) the pattern value 3. If an array: it must match "
+            "(recursively) the pattern value."
+        ),
+        # Choice of Data Types. i.e pattern[x]
+        one_of_many="pattern",
         one_of_many_required=False,
     )
     patternUuid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -2028,8 +3502,14 @@ class ElementDefinition(backboneelement.BackboneElement):
     representation: ListType[fhirtypes.Code] = Field(
         None,
         alias="representation",
-        title="List of `Code` items",
-        description="xmlAttr | xmlText | typeAttr | cdaText | xhtml",
+        title="xmlAttr | xmlText | typeAttr | cdaText | xhtml",
+        description=(
+            "Codes that define how this element is represented in instances, when "
+            "the deviation varies from the normal case."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["xmlAttr", "xmlText", "typeAttr", "cdaText", "xhtml"],
     )
     representation__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -2040,8 +3520,13 @@ class ElementDefinition(backboneelement.BackboneElement):
     requirements: fhirtypes.Markdown = Field(
         None,
         alias="requirements",
-        title="Type `Markdown`",
-        description="Why this resource has been created",
+        title="Why this resource has been created",
+        description=(
+            "This element is for traceability of why the element was created and "
+            "why the constraints exist as they do. This may be used to point to "
+            "source materials or specifications that drove the structure of this "
+            "element."
+        ),
     )
     requirements__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_requirements", title="Extension field for ``requirements``."
@@ -2050,8 +3535,11 @@ class ElementDefinition(backboneelement.BackboneElement):
     short: fhirtypes.String = Field(
         None,
         alias="short",
-        title="Type `String`",
-        description="Concise definition for space-constrained presentation",
+        title="Concise definition for space-constrained presentation",
+        description=(
+            "A concise description of what this element means (e.g. for use in "
+            "autogenerated summaries)."
+        ),
     )
     short__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_short", title="Extension field for ``short``."
@@ -2060,10 +3548,16 @@ class ElementDefinition(backboneelement.BackboneElement):
     sliceIsConstraining: bool = Field(
         None,
         alias="sliceIsConstraining",
-        title="Type `bool`",
-        description=(
+        title=(
             "If this slice definition constrains an inherited slice definition (or "
             "not)"
+        ),
+        description=(
+            "If true, indicates that this slice definition is constraining a slice "
+            "definition with the same name in an inherited profile. If false, the "
+            "slice is not overriding any slice in an inherited profile. If missing,"
+            " the slice might or might not be overriding a slice in an inherited "
+            "profile, depending on the sliceName."
         ),
     )
     sliceIsConstraining__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -2075,8 +3569,13 @@ class ElementDefinition(backboneelement.BackboneElement):
     sliceName: fhirtypes.String = Field(
         None,
         alias="sliceName",
-        title="Type `String`",
-        description="Name for this particular element (in a set of slices)",
+        title="Name for this particular element (in a set of slices)",
+        description=(
+            "The name of this element definition slice, when slicing is working. "
+            "The name must be a token with no dots or spaces. This is a unique name"
+            " referring to a specific set of constraints applied to this element, "
+            "used to provide a name to different slices of the same element."
+        ),
     )
     sliceName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sliceName", title="Extension field for ``sliceName``."
@@ -2085,15 +3584,27 @@ class ElementDefinition(backboneelement.BackboneElement):
     slicing: fhirtypes.ElementDefinitionSlicingType = Field(
         None,
         alias="slicing",
-        title="Type `ElementDefinitionSlicing` (represented as `dict` in JSON)",
-        description="This element is sliced - slices follow",
+        title="This element is sliced - slices follow",
+        description=(
+            "Indicates that the element is sliced into a set of alternative "
+            "definitions (i.e. in a structure definition, there are multiple "
+            "different constraints on a single element in the base resource). "
+            "Slicing can be used in any resource that has cardinality ..* on the "
+            "base resource, or any resource with a choice of types. The set of "
+            "slices is any elements that come after this in the element sequence "
+            "that have the same path, until a shorter path occurs (the shorter path"
+            " terminates the set)."
+        ),
     )
 
     type: ListType[fhirtypes.ElementDefinitionTypeType] = Field(
         None,
         alias="type",
-        title="List of `ElementDefinitionType` items (represented as `dict` in JSON)",
-        description="Data type and Profile for this element",
+        title="Data type and Profile for this element",
+        description=(
+            "The data type or resource that the value of this element is permitted "
+            "to be."
+        ),
     )
 
     @root_validator(pre=True)
@@ -2333,8 +3844,8 @@ class ElementDefinitionBase(element.Element):
     max: fhirtypes.String = Field(
         ...,
         alias="max",
-        title="Type `String`",
-        description="Max cardinality of the base element",
+        title="Max cardinality of the base element",
+        description="Maximum cardinality of the base element identified by the path.",
     )
     max__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_max", title="Extension field for ``max``."
@@ -2343,8 +3854,8 @@ class ElementDefinitionBase(element.Element):
     min: fhirtypes.UnsignedInt = Field(
         ...,
         alias="min",
-        title="Type `UnsignedInt`",
-        description="Min cardinality of the base element",
+        title="Min cardinality of the base element",
+        description="Minimum cardinality of the base element identified by the path.",
     )
     min__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_min", title="Extension field for ``min``."
@@ -2353,8 +3864,14 @@ class ElementDefinitionBase(element.Element):
     path: fhirtypes.String = Field(
         ...,
         alias="path",
-        title="Type `String`",
-        description="Path that identifies the base element",
+        title="Path that identifies the base element",
+        description=(
+            "The Path that identifies the base element - this matches the "
+            "ElementDefinition.path for that element. Across FHIR, there is only "
+            "one base definition of any element - that is, an element definition on"
+            " a [StructureDefinition](structuredefinition.html#) without a "
+            "StructureDefinition.base."
+        ),
     )
     path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_path", title="Extension field for ``path``."
@@ -2376,8 +3893,8 @@ class ElementDefinitionBinding(element.Element):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Human explanation of the value set",
+        title="Human explanation of the value set",
+        description="Describes the intended use of this particular set of codes.",
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -2386,8 +3903,15 @@ class ElementDefinitionBinding(element.Element):
     strength: fhirtypes.Code = Field(
         ...,
         alias="strength",
-        title="Type `Code`",
-        description="required | extensible | preferred | example",
+        title="required | extensible | preferred | example",
+        description=(
+            "Indicates the degree of conformance expectations associated with this "
+            "binding - that is, the degree to which the provided value set must be "
+            "adhered to in the instances."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["required", "extensible", "preferred", "example"],
     )
     strength__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_strength", title="Extension field for ``strength``."
@@ -2396,8 +3920,13 @@ class ElementDefinitionBinding(element.Element):
     valueSet: fhirtypes.Canonical = Field(
         None,
         alias="valueSet",
-        title="Type `Canonical` referencing `ValueSet`",
-        description="Source of value set",
+        title="Source of value set",
+        description=(
+            "Refers to the value set that identifies the set of codes the binding "
+            "refers to."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ValueSet"],
     )
     valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueSet", title="Extension field for ``valueSet``."
@@ -2419,8 +3948,11 @@ class ElementDefinitionConstraint(element.Element):
     expression: fhirtypes.String = Field(
         None,
         alias="expression",
-        title="Type `String`",
-        description="FHIRPath expression of constraint",
+        title="FHIRPath expression of constraint",
+        description=(
+            "A [FHIRPath](fhirpath.html) expression of constraint that can be "
+            "executed to see if this constraint is met."
+        ),
     )
     expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_expression", title="Extension field for ``expression``."
@@ -2429,8 +3961,11 @@ class ElementDefinitionConstraint(element.Element):
     human: fhirtypes.String = Field(
         ...,
         alias="human",
-        title="Type `String`",
-        description="Human description of constraint",
+        title="Human description of constraint",
+        description=(
+            "Text that can be used to describe the constraint in messages "
+            "identifying that the constraint has been violated."
+        ),
     )
     human__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_human", title="Extension field for ``human``."
@@ -2439,8 +3974,12 @@ class ElementDefinitionConstraint(element.Element):
     key: fhirtypes.Id = Field(
         ...,
         alias="key",
-        title="Type `Id`",
-        description="Target of \u0027condition\u0027 reference above",
+        title="Target of 'condition' reference above",
+        description=(
+            "Allows identification of which elements have their cardinalities "
+            "impacted by the constraint.  Will not be referenced for constraints "
+            "that do not affect cardinality."
+        ),
     )
     key__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_key", title="Extension field for ``key``."
@@ -2449,15 +3988,24 @@ class ElementDefinitionConstraint(element.Element):
     requirements: fhirtypes.String = Field(
         None,
         alias="requirements",
-        title="Type `String`",
-        description="Why this constraint is necessary or appropriate",
+        title="Why this constraint is necessary or appropriate",
+        description="Description of why this constraint is necessary or appropriate.",
     )
     requirements__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_requirements", title="Extension field for ``requirements``."
     )
 
     severity: fhirtypes.Code = Field(
-        ..., alias="severity", title="Type `Code`", description="error | warning"
+        ...,
+        alias="severity",
+        title="error | warning",
+        description=(
+            "Identifies the impact constraint violation has on the conformance of "
+            "the instance."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["error", "warning"],
     )
     severity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_severity", title="Extension field for ``severity``."
@@ -2466,8 +4014,13 @@ class ElementDefinitionConstraint(element.Element):
     source: fhirtypes.Canonical = Field(
         None,
         alias="source",
-        title="Type `Canonical` referencing `StructureDefinition`",
-        description="Reference to original source of constraint",
+        title="Reference to original source of constraint",
+        description=(
+            "A reference to the original source of the constraint, for traceability"
+            " purposes."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["StructureDefinition"],
     )
     source__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_source", title="Extension field for ``source``."
@@ -2476,8 +4029,11 @@ class ElementDefinitionConstraint(element.Element):
     xpath: fhirtypes.String = Field(
         None,
         alias="xpath",
-        title="Type `String`",
-        description="XPath expression of constraint",
+        title="XPath expression of constraint",
+        description=(
+            "An XPath expression of constraint that can be executed to see if this "
+            "constraint is met."
+        ),
     )
     xpath__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_xpath", title="Extension field for ``xpath``."
@@ -2499,8 +4055,8 @@ class ElementDefinitionExample(element.Element):
     label: fhirtypes.String = Field(
         ...,
         alias="label",
-        title="Type `String`",
-        description="Describes the purpose of this example",
+        title="Describes the purpose of this example",
+        description="Describes the purpose of this example amoung the set of examples.",
     )
     label__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_label", title="Extension field for ``label``."
@@ -2509,45 +4065,65 @@ class ElementDefinitionExample(element.Element):
     valueAddress: fhirtypes.AddressType = Field(
         None,
         alias="valueAddress",
-        title="Type `Address` (represented as `dict` in JSON)",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueAge: fhirtypes.AgeType = Field(
         None,
         alias="valueAge",
-        title="Type `Age` (represented as `dict` in JSON)",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueAnnotation: fhirtypes.AnnotationType = Field(
         None,
         alias="valueAnnotation",
-        title="Type `Annotation` (represented as `dict` in JSON)",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueAttachment: fhirtypes.AttachmentType = Field(
         None,
         alias="valueAttachment",
-        title="Type `Attachment` (represented as `dict` in JSON)",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueBase64Binary: fhirtypes.Base64Binary = Field(
         None,
         alias="valueBase64Binary",
-        title="Type `Base64Binary`",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -2559,9 +4135,13 @@ class ElementDefinitionExample(element.Element):
     valueBoolean: bool = Field(
         None,
         alias="valueBoolean",
-        title="Type `bool`",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -2571,9 +4151,13 @@ class ElementDefinitionExample(element.Element):
     valueCanonical: fhirtypes.Canonical = Field(
         None,
         alias="valueCanonical",
-        title="Type `Canonical`",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -2583,9 +4167,13 @@ class ElementDefinitionExample(element.Element):
     valueCode: fhirtypes.Code = Field(
         None,
         alias="valueCode",
-        title="Type `Code`",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -2595,72 +4183,104 @@ class ElementDefinitionExample(element.Element):
     valueCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="valueCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueCoding: fhirtypes.CodingType = Field(
         None,
         alias="valueCoding",
-        title="Type `Coding` (represented as `dict` in JSON)",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueContactDetail: fhirtypes.ContactDetailType = Field(
         None,
         alias="valueContactDetail",
-        title="Type `ContactDetail` (represented as `dict` in JSON)",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueContactPoint: fhirtypes.ContactPointType = Field(
         None,
         alias="valueContactPoint",
-        title="Type `ContactPoint` (represented as `dict` in JSON)",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueContributor: fhirtypes.ContributorType = Field(
         None,
         alias="valueContributor",
-        title="Type `Contributor` (represented as `dict` in JSON)",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueCount: fhirtypes.CountType = Field(
         None,
         alias="valueCount",
-        title="Type `Count` (represented as `dict` in JSON)",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueDataRequirement: fhirtypes.DataRequirementType = Field(
         None,
         alias="valueDataRequirement",
-        title="Type `DataRequirement` (represented as `dict` in JSON)",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueDate: fhirtypes.Date = Field(
         None,
         alias="valueDate",
-        title="Type `Date`",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -2670,9 +4290,13 @@ class ElementDefinitionExample(element.Element):
     valueDateTime: fhirtypes.DateTime = Field(
         None,
         alias="valueDateTime",
-        title="Type `DateTime`",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -2682,9 +4306,13 @@ class ElementDefinitionExample(element.Element):
     valueDecimal: fhirtypes.Decimal = Field(
         None,
         alias="valueDecimal",
-        title="Type `Decimal`",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -2694,54 +4322,78 @@ class ElementDefinitionExample(element.Element):
     valueDistance: fhirtypes.DistanceType = Field(
         None,
         alias="valueDistance",
-        title="Type `Distance` (represented as `dict` in JSON)",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueDosage: fhirtypes.DosageType = Field(
         None,
         alias="valueDosage",
-        title="Type `Dosage` (represented as `dict` in JSON)",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueDuration: fhirtypes.DurationType = Field(
         None,
         alias="valueDuration",
-        title="Type `Duration` (represented as `dict` in JSON)",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueExpression: fhirtypes.ExpressionType = Field(
         None,
         alias="valueExpression",
-        title="Type `Expression` (represented as `dict` in JSON)",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueHumanName: fhirtypes.HumanNameType = Field(
         None,
         alias="valueHumanName",
-        title="Type `HumanName` (represented as `dict` in JSON)",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueId: fhirtypes.Id = Field(
         None,
         alias="valueId",
-        title="Type `Id`",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -2751,18 +4403,26 @@ class ElementDefinitionExample(element.Element):
     valueIdentifier: fhirtypes.IdentifierType = Field(
         None,
         alias="valueIdentifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueInstant: fhirtypes.Instant = Field(
         None,
         alias="valueInstant",
-        title="Type `Instant`",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueInstant__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -2772,9 +4432,13 @@ class ElementDefinitionExample(element.Element):
     valueInteger: fhirtypes.Integer = Field(
         None,
         alias="valueInteger",
-        title="Type `Integer`",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -2784,9 +4448,13 @@ class ElementDefinitionExample(element.Element):
     valueMarkdown: fhirtypes.Markdown = Field(
         None,
         alias="valueMarkdown",
-        title="Type `Markdown`",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -2796,27 +4464,39 @@ class ElementDefinitionExample(element.Element):
     valueMeta: fhirtypes.MetaType = Field(
         None,
         alias="valueMeta",
-        title="Type `Meta` (represented as `dict` in JSON)",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueMoney: fhirtypes.MoneyType = Field(
         None,
         alias="valueMoney",
-        title="Type `Money` (represented as `dict` in JSON)",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueOid: fhirtypes.Oid = Field(
         None,
         alias="valueOid",
-        title="Type `Oid`",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueOid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -2826,27 +4506,39 @@ class ElementDefinitionExample(element.Element):
     valueParameterDefinition: fhirtypes.ParameterDefinitionType = Field(
         None,
         alias="valueParameterDefinition",
-        title="Type `ParameterDefinition` (represented as `dict` in JSON)",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valuePeriod: fhirtypes.PeriodType = Field(
         None,
         alias="valuePeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valuePositiveInt: fhirtypes.PositiveInt = Field(
         None,
         alias="valuePositiveInt",
-        title="Type `PositiveInt`",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valuePositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -2858,72 +4550,104 @@ class ElementDefinitionExample(element.Element):
     valueQuantity: fhirtypes.QuantityType = Field(
         None,
         alias="valueQuantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueRange: fhirtypes.RangeType = Field(
         None,
         alias="valueRange",
-        title="Type `Range` (represented as `dict` in JSON)",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueRatio: fhirtypes.RatioType = Field(
         None,
         alias="valueRatio",
-        title="Type `Ratio` (represented as `dict` in JSON)",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueReference: fhirtypes.ReferenceType = Field(
         None,
         alias="valueReference",
-        title="Type `Reference` (represented as `dict` in JSON)",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueRelatedArtifact: fhirtypes.RelatedArtifactType = Field(
         None,
         alias="valueRelatedArtifact",
-        title="Type `RelatedArtifact` (represented as `dict` in JSON)",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueSampledData: fhirtypes.SampledDataType = Field(
         None,
         alias="valueSampledData",
-        title="Type `SampledData` (represented as `dict` in JSON)",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueSignature: fhirtypes.SignatureType = Field(
         None,
         alias="valueSignature",
-        title="Type `Signature` (represented as `dict` in JSON)",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueString: fhirtypes.String = Field(
         None,
         alias="valueString",
-        title="Type `String`",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -2933,9 +4657,13 @@ class ElementDefinitionExample(element.Element):
     valueTime: fhirtypes.Time = Field(
         None,
         alias="valueTime",
-        title="Type `Time`",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -2945,27 +4673,39 @@ class ElementDefinitionExample(element.Element):
     valueTiming: fhirtypes.TimingType = Field(
         None,
         alias="valueTiming",
-        title="Type `Timing` (represented as `dict` in JSON)",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueTriggerDefinition: fhirtypes.TriggerDefinitionType = Field(
         None,
         alias="valueTriggerDefinition",
-        title="Type `TriggerDefinition` (represented as `dict` in JSON)",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueUnsignedInt: fhirtypes.UnsignedInt = Field(
         None,
         alias="valueUnsignedInt",
-        title="Type `UnsignedInt`",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -2977,9 +4717,13 @@ class ElementDefinitionExample(element.Element):
     valueUri: fhirtypes.Uri = Field(
         None,
         alias="valueUri",
-        title="Type `Uri`",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -2989,9 +4733,13 @@ class ElementDefinitionExample(element.Element):
     valueUrl: fhirtypes.Url = Field(
         None,
         alias="valueUrl",
-        title="Type `Url`",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -3001,18 +4749,26 @@ class ElementDefinitionExample(element.Element):
     valueUsageContext: fhirtypes.UsageContextType = Field(
         None,
         alias="valueUsageContext",
-        title="Type `UsageContext` (represented as `dict` in JSON)",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
 
     valueUuid: fhirtypes.Uuid = Field(
         None,
         alias="valueUuid",
-        title="Type `Uuid`",
-        description="Value of Example (one of allowed types)",
-        one_of_many="value",  # Choice of Data Types. i.e value[x]
+        title="Value of Example (one of allowed types)",
+        description=(
+            "The actual value for the element, which must be one of the types "
+            "allowed for this element."
+        ),
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
         one_of_many_required=True,
     )
     valueUuid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -3124,8 +4880,8 @@ class ElementDefinitionMapping(element.Element):
     comment: fhirtypes.String = Field(
         None,
         alias="comment",
-        title="Type `String`",
-        description="Comments about the mapping or its use",
+        title="Comments about the mapping or its use",
+        description="Comments that provide information about the mapping or its use.",
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comment", title="Extension field for ``comment``."
@@ -3134,8 +4890,8 @@ class ElementDefinitionMapping(element.Element):
     identity: fhirtypes.Id = Field(
         ...,
         alias="identity",
-        title="Type `Id`",
-        description="Reference to mapping declaration",
+        title="Reference to mapping declaration",
+        description="An internal reference to the definition of a mapping.",
     )
     identity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_identity", title="Extension field for ``identity``."
@@ -3144,15 +4900,21 @@ class ElementDefinitionMapping(element.Element):
     language: fhirtypes.Code = Field(
         None,
         alias="language",
-        title="Type `Code`",
-        description="Computable language of mapping",
+        title="Computable language of mapping",
+        description="Identifies the computable language in which mapping.map is expressed.",
     )
     language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_language", title="Extension field for ``language``."
     )
 
     map: fhirtypes.String = Field(
-        ..., alias="map", title="Type `String`", description="Details of the mapping"
+        ...,
+        alias="map",
+        title="Details of the mapping",
+        description=(
+            "Expresses what part of the target specification corresponds to this "
+            "element."
+        ),
     )
     map__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_map", title="Extension field for ``map``."
@@ -3179,8 +4941,13 @@ class ElementDefinitionSlicing(element.Element):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Text description of how slicing works (or not)",
+        title="Text description of how slicing works (or not)",
+        description=(
+            "A human-readable text description of how the slicing works. If there "
+            "is no discriminator, this is required to be present to provide "
+            "whatever information is possible about how the slices can be "
+            "differentiated."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -3191,25 +4958,41 @@ class ElementDefinitionSlicing(element.Element):
     ] = Field(
         None,
         alias="discriminator",
-        title=(
-            "List of `ElementDefinitionSlicingDiscriminator` items (represented as "
-            "`dict` in JSON)"
+        title="Element values that are used to distinguish the slices",
+        description=(
+            "Designates which child elements are used to discriminate between the "
+            "slices when processing an instance. If one or more discriminators are "
+            "provided, the value of the child elements in the instance data SHALL "
+            "completely distinguish which slice the element in the resource matches"
+            " based on the allowed values for those elements in each of the slices."
         ),
-        description="Element values that are used to distinguish the slices",
     )
 
     ordered: bool = Field(
         None,
         alias="ordered",
-        title="Type `bool`",
-        description="If elements must be in same order as slices",
+        title="If elements must be in same order as slices",
+        description=(
+            "If the matching elements have to occur in the same order as defined in"
+            " the profile."
+        ),
     )
     ordered__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_ordered", title="Extension field for ``ordered``."
     )
 
     rules: fhirtypes.Code = Field(
-        ..., alias="rules", title="Type `Code`", description="closed | open | openAtEnd"
+        ...,
+        alias="rules",
+        title="closed | open | openAtEnd",
+        description=(
+            "Whether additional slices are allowed or not. When the slices are "
+            "ordered, profile authors can also say that additional slices are only "
+            "allowed at the end."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["closed", "open", "openAtEnd"],
     )
     rules__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_rules", title="Extension field for ``rules``."
@@ -3232,7 +5015,14 @@ class ElementDefinitionSlicingDiscriminator(element.Element):
     resource_type = Field("ElementDefinitionSlicingDiscriminator", const=True)
 
     path: fhirtypes.String = Field(
-        ..., alias="path", title="Type `String`", description="Path to element value"
+        ...,
+        alias="path",
+        title="Path to element value",
+        description=(
+            "A FHIRPath expression, using [the simple subset of "
+            "FHIRPath](fhirpath.html#simple), that is used to identify the element "
+            "on which discrimination is based."
+        ),
     )
     path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_path", title="Extension field for ``path``."
@@ -3241,8 +5031,11 @@ class ElementDefinitionSlicingDiscriminator(element.Element):
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code`",
-        description="value | exists | pattern | type | profile",
+        title="value | exists | pattern | type | profile",
+        description="How the element value is interpreted when discrimination is evaluated.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["value", "exists", "pattern", "type", "profile"],
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -3264,8 +5057,15 @@ class ElementDefinitionType(element.Element):
     aggregation: ListType[fhirtypes.Code] = Field(
         None,
         alias="aggregation",
-        title="List of `Code` items",
-        description="contained | referenced | bundled - how aggregated",
+        title="contained | referenced | bundled - how aggregated",
+        description=(
+            "If the type is a reference to another resource, how the resource is or"
+            " can be aggregated - is it a contained resource, or a reference, and "
+            "if the context is a bundle, is it included in the bundle."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["contained", "referenced", "bundled - how aggregated"],
     )
     aggregation__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -3274,8 +5074,14 @@ class ElementDefinitionType(element.Element):
     code: fhirtypes.Uri = Field(
         ...,
         alias="code",
-        title="Type `Uri`",
-        description="Data type or Resource (reference to definition)",
+        title="Data type or Resource (reference to definition)",
+        description=(
+            "URL of Data type or Resource that is a(or the) type used for this "
+            "element. References are URLs that are relative to "
+            'http://hl7.org/fhir/StructureDefinition e.g. "string" is a reference '
+            "to http://hl7.org/fhir/StructureDefinition/string. Absolute URLs are "
+            "only allowed in logical models."
+        ),
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -3284,11 +5090,18 @@ class ElementDefinitionType(element.Element):
     profile: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="profile",
-        title=(
-            "List of `Canonical` items referencing `StructureDefinition, "
-            "ImplementationGuide`"
+        title="Profiles (StructureDefinition or IG) - one must apply",
+        description=(
+            "Identifies a profile structure or implementation Guide that applies to"
+            " the datatype this element refers to. If any profiles are specified, "
+            "then the content must conform to at least one of them. The URL can be "
+            "a local reference - to a contained StructureDefinition, or a reference"
+            " to another StructureDefinition or Implementation Guide by a canonical"
+            " URL. When an implementation guide is specified, the type SHALL "
+            "conform to at least one profile defined in the implementation guide."
         ),
-        description="Profiles (StructureDefinition or IG) - one must apply",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["StructureDefinition", "ImplementationGuide"],
     )
     profile__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_profile", title="Extension field for ``profile``."
@@ -3298,13 +5111,22 @@ class ElementDefinitionType(element.Element):
         None,
         alias="targetProfile",
         title=(
-            "List of `Canonical` items referencing `StructureDefinition, "
-            "ImplementationGuide`"
-        ),
-        description=(
             "Profile (StructureDefinition or IG) on the Reference/canonical target "
             "- one must apply"
         ),
+        description=(
+            'Used when the type is "Reference" or "canonical", and identifies a '
+            "profile structure or implementation Guide that applies to the target "
+            "of the reference this element refers to. If any profiles are "
+            "specified, then the content must conform to at least one of them. The "
+            "URL can be a local reference - to a contained StructureDefinition, or "
+            "a reference to another StructureDefinition or Implementation Guide by "
+            "a canonical URL. When an implementation guide is specified, the target"
+            " resource SHALL conform to at least one profile defined in the "
+            "implementation guide."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["StructureDefinition", "ImplementationGuide"],
     )
     targetProfile__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -3315,8 +5137,14 @@ class ElementDefinitionType(element.Element):
     versioning: fhirtypes.Code = Field(
         None,
         alias="versioning",
-        title="Type `Code`",
-        description="either | independent | specific",
+        title="either | independent | specific",
+        description=(
+            "Whether this reference needs to be version specific or version "
+            "independent, or whether either can be used."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["either", "independent", "specific"],
     )
     versioning__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_versioning", title="Extension field for ``versioning``."

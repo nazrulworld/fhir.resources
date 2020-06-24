@@ -27,15 +27,18 @@ class TestReport(domainresource.DomainResource):
     identifier: fhirtypes.IdentifierType = Field(
         None,
         alias="identifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="External identifier",
+        title="External identifier",
+        description=(
+            "Identifier for the TestScript assigned for external purposes outside "
+            "the context of FHIR."
+        ),
     )
 
     issued: fhirtypes.DateTime = Field(
         None,
         alias="issued",
-        title="Type `DateTime`",
-        description="When the TestScript was executed and this TestReport was generated",
+        title="When the TestScript was executed and this TestReport was generated",
+        description=None,
     )
     issued__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_issued", title="Extension field for ``issued``."
@@ -44,8 +47,8 @@ class TestReport(domainresource.DomainResource):
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String`",
-        description="Informal name of the executed TestScript",
+        title="Informal name of the executed TestScript",
+        description="A free text natural language name identifying the executed TestScript.",
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -54,15 +57,21 @@ class TestReport(domainresource.DomainResource):
     participant: ListType[fhirtypes.TestReportParticipantType] = Field(
         None,
         alias="participant",
-        title="List of `TestReportParticipant` items (represented as `dict` in JSON)",
-        description=(
+        title=(
             "A participant in the test execution, either the execution engine, a "
             "client, or a server"
         ),
+        description=None,
     )
 
     result: fhirtypes.Code = Field(
-        ..., alias="result", title="Type `Code`", description="pass | fail | pending"
+        ...,
+        alias="result",
+        title="pass | fail | pending",
+        description="The overall result from the execution of the TestScript.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["pass", "fail", "pending"],
     )
     result__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_result", title="Extension field for ``result``."
@@ -71,11 +80,11 @@ class TestReport(domainresource.DomainResource):
     score: fhirtypes.Decimal = Field(
         None,
         alias="score",
-        title="Type `Decimal`",
-        description=(
+        title=(
             "The final score (percentage of tests passed) resulting from the "
             "execution of the TestScript"
         ),
+        description=None,
     )
     score__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_score", title="Extension field for ``score``."
@@ -84,18 +93,27 @@ class TestReport(domainresource.DomainResource):
     setup: fhirtypes.TestReportSetupType = Field(
         None,
         alias="setup",
-        title="Type `TestReportSetup` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The results of the series of required setup operations before the "
             "tests were executed"
         ),
+        description=None,
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="completed | in-progress | waiting | stopped | entered-in-error",
+        title="completed | in-progress | waiting | stopped | entered-in-error",
+        description="The current state of this test report.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "completed",
+            "in-progress",
+            "waiting",
+            "stopped",
+            "entered-in-error",
+        ],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -104,35 +122,40 @@ class TestReport(domainresource.DomainResource):
     teardown: fhirtypes.TestReportTeardownType = Field(
         None,
         alias="teardown",
-        title="Type `TestReportTeardown` (represented as `dict` in JSON)",
-        description="The results of running the series of required clean up steps",
+        title="The results of running the series of required clean up steps",
+        description=(
+            "The results of the series of operations required to clean up after all"
+            " the tests were executed (successfully or otherwise)."
+        ),
     )
 
     test: ListType[fhirtypes.TestReportTestType] = Field(
         None,
         alias="test",
-        title="List of `TestReportTest` items (represented as `dict` in JSON)",
-        description="A test executed from the test script",
+        title="A test executed from the test script",
+        description=None,
     )
 
     testScript: fhirtypes.ReferenceType = Field(
         ...,
         alias="testScript",
         title=(
-            "Type `Reference` referencing `TestScript` (represented as `dict` in "
-            "JSON)"
-        ),
-        description=(
             "Reference to the  version-specific TestScript that was executed to "
             "produce this TestReport"
         ),
+        description=(
+            "Ideally this is an absolute URL that is used to identify the version-"
+            "specific TestScript that was executed, matching the `TestScript.url`."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["TestScript"],
     )
 
     tester: fhirtypes.String = Field(
         None,
         alias="tester",
-        title="Type `String`",
-        description="Name of the tester producing this report (Organization or individual)",
+        title="Name of the tester producing this report (Organization or individual)",
+        description=None,
     )
     tester__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_tester", title="Extension field for ``tester``."
@@ -153,8 +176,8 @@ class TestReportParticipant(backboneelement.BackboneElement):
     display: fhirtypes.String = Field(
         None,
         alias="display",
-        title="Type `String`",
-        description="The display name of the participant",
+        title="The display name of the participant",
+        description=None,
     )
     display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_display", title="Extension field for ``display``."
@@ -163,8 +186,11 @@ class TestReportParticipant(backboneelement.BackboneElement):
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code`",
-        description="test-engine | client | server",
+        title="test-engine | client | server",
+        description="The type of participant.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["test-engine", "client", "server"],
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -173,8 +199,8 @@ class TestReportParticipant(backboneelement.BackboneElement):
     uri: fhirtypes.Uri = Field(
         ...,
         alias="uri",
-        title="Type `Uri`",
-        description="The uri of the participant. An absolute URL is preferred",
+        title="The uri of the participant. An absolute URL is preferred",
+        description=None,
     )
     uri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uri", title="Extension field for ``uri``."
@@ -195,8 +221,8 @@ class TestReportSetup(backboneelement.BackboneElement):
     action: ListType[fhirtypes.TestReportSetupActionType] = Field(
         ...,
         alias="action",
-        title="List of `TestReportSetupAction` items (represented as `dict` in JSON)",
-        description="A setup operation or assert that was executed",
+        title="A setup operation or assert that was executed",
+        description="Action would contain either an operation or an assertion.",
     )
 
 
@@ -214,15 +240,15 @@ class TestReportSetupAction(backboneelement.BackboneElement):
     assert_fhir: fhirtypes.TestReportSetupActionAssertType = Field(
         None,
         alias="assert",
-        title="Type `TestReportSetupActionAssert` (represented as `dict` in JSON)",
-        description="The assertion to perform",
+        title="The assertion to perform",
+        description="The results of the assertion performed on the previous operations.",
     )
 
     operation: fhirtypes.TestReportSetupActionOperationType = Field(
         None,
         alias="operation",
-        title="Type `TestReportSetupActionOperation` (represented as `dict` in JSON)",
-        description="The operation to perform",
+        title="The operation to perform",
+        description="The operation performed.",
     )
 
 
@@ -240,8 +266,8 @@ class TestReportSetupActionAssert(backboneelement.BackboneElement):
     detail: fhirtypes.String = Field(
         None,
         alias="detail",
-        title="Type `String`",
-        description="A link to further details on the result",
+        title="A link to further details on the result",
+        description=None,
     )
     detail__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_detail", title="Extension field for ``detail``."
@@ -250,8 +276,8 @@ class TestReportSetupActionAssert(backboneelement.BackboneElement):
     message: fhirtypes.Markdown = Field(
         None,
         alias="message",
-        title="Type `Markdown`",
-        description="A message associated with the result",
+        title="A message associated with the result",
+        description="An explanatory message associated with the result.",
     )
     message__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_message", title="Extension field for ``message``."
@@ -260,8 +286,11 @@ class TestReportSetupActionAssert(backboneelement.BackboneElement):
     result: fhirtypes.Code = Field(
         ...,
         alias="result",
-        title="Type `Code`",
-        description="pass | skip | fail | warning | error",
+        title="pass | skip | fail | warning | error",
+        description="The result of this assertion.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["pass", "skip", "fail", "warning", "error"],
     )
     result__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_result", title="Extension field for ``result``."
@@ -282,8 +311,8 @@ class TestReportSetupActionOperation(backboneelement.BackboneElement):
     detail: fhirtypes.Uri = Field(
         None,
         alias="detail",
-        title="Type `Uri`",
-        description="A link to further details on the result",
+        title="A link to further details on the result",
+        description=None,
     )
     detail__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_detail", title="Extension field for ``detail``."
@@ -292,8 +321,8 @@ class TestReportSetupActionOperation(backboneelement.BackboneElement):
     message: fhirtypes.Markdown = Field(
         None,
         alias="message",
-        title="Type `Markdown`",
-        description="A message associated with the result",
+        title="A message associated with the result",
+        description="An explanatory message associated with the result.",
     )
     message__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_message", title="Extension field for ``message``."
@@ -302,8 +331,11 @@ class TestReportSetupActionOperation(backboneelement.BackboneElement):
     result: fhirtypes.Code = Field(
         ...,
         alias="result",
-        title="Type `Code`",
-        description="pass | skip | fail | warning | error",
+        title="pass | skip | fail | warning | error",
+        description="The result of this operation.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["pass", "skip", "fail", "warning", "error"],
     )
     result__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_result", title="Extension field for ``result``."
@@ -325,11 +357,8 @@ class TestReportTeardown(backboneelement.BackboneElement):
     action: ListType[fhirtypes.TestReportTeardownActionType] = Field(
         ...,
         alias="action",
-        title=(
-            "List of `TestReportTeardownAction` items (represented as `dict` in "
-            "JSON)"
-        ),
-        description="One or more teardown operations performed",
+        title="One or more teardown operations performed",
+        description="The teardown action will only contain an operation.",
     )
 
 
@@ -347,8 +376,8 @@ class TestReportTeardownAction(backboneelement.BackboneElement):
     operation: fhirtypes.TestReportSetupActionOperationType = Field(
         ...,
         alias="operation",
-        title="Type `TestReportSetupActionOperation` (represented as `dict` in JSON)",
-        description="The teardown operation performed",
+        title="The teardown operation performed",
+        description="An operation would involve a REST request to a server.",
     )
 
 
@@ -365,15 +394,18 @@ class TestReportTest(backboneelement.BackboneElement):
     action: ListType[fhirtypes.TestReportTestActionType] = Field(
         ...,
         alias="action",
-        title="List of `TestReportTestAction` items (represented as `dict` in JSON)",
-        description="A test operation or assert that was performed",
+        title="A test operation or assert that was performed",
+        description="Action would contain either an operation or an assertion.",
     )
 
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Tracking/reporting short description of the test",
+        title="Tracking/reporting short description of the test",
+        description=(
+            "A short description of the test used by test engines for tracking and "
+            "reporting purposes."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -382,8 +414,11 @@ class TestReportTest(backboneelement.BackboneElement):
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String`",
-        description="Tracking/logging name of this test",
+        title="Tracking/logging name of this test",
+        description=(
+            "The name of this test used for tracking/logging purposes by test "
+            "engines."
+        ),
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -404,13 +439,13 @@ class TestReportTestAction(backboneelement.BackboneElement):
     assert_fhir: fhirtypes.TestReportSetupActionAssertType = Field(
         None,
         alias="assert",
-        title="Type `TestReportSetupActionAssert` (represented as `dict` in JSON)",
-        description="The assertion performed",
+        title="The assertion performed",
+        description="The results of the assertion performed on the previous operations.",
     )
 
     operation: fhirtypes.TestReportSetupActionOperationType = Field(
         None,
         alias="operation",
-        title="Type `TestReportSetupActionOperation` (represented as `dict` in JSON)",
-        description="The operation performed",
+        title="The operation performed",
+        description="An operation would involve a REST request to a server.",
     )

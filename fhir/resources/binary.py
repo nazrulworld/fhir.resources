@@ -27,8 +27,11 @@ class Binary(resource.Resource):
     contentType: fhirtypes.Code = Field(
         ...,
         alias="contentType",
-        title="Type `Code`",
-        description="MimeType of the binary content",
+        title="MimeType of the binary content",
+        description=(
+            "MimeType of the binary content represented as a standard MimeType (BCP"
+            " 13)."
+        ),
     )
     contentType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_contentType", title="Extension field for ``contentType``."
@@ -37,8 +40,8 @@ class Binary(resource.Resource):
     data: fhirtypes.Base64Binary = Field(
         None,
         alias="data",
-        title="Type `Base64Binary`",
-        description="The actual content",
+        title="The actual content",
+        description="The actual content, base64 encoded.",
     )
     data__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_data", title="Extension field for ``data``."
@@ -48,10 +51,22 @@ class Binary(resource.Resource):
         None,
         alias="securityContext",
         title=(
-            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
-        ),
-        description=(
             "Identifies another resource to use as proxy when enforcing access "
             "control"
         ),
+        description=(
+            "This element identifies another resource that can be used as a proxy "
+            "of the security sensitivity to use when deciding and enforcing access "
+            "control rules for the Binary resource. Given that the Binary resource "
+            "contains very few elements that can be used to determine the "
+            "sensitivity of the data and relationships to individuals, the "
+            "referenced resource stands in as a proxy equivalent for this purpose. "
+            "This referenced resource may be related to the Binary (e.g. Media, "
+            "DocumentReference), or may be some non-related Resource purely as a "
+            "security proxy. E.g. to identify that the binary resource relates to a"
+            " patient, and access should only be granted to applications that have "
+            "access to the patient."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )

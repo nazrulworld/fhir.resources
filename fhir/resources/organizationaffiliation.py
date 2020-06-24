@@ -27,8 +27,8 @@ class OrganizationAffiliation(domainresource.DomainResource):
     active: bool = Field(
         None,
         alias="active",
-        title="Type `bool`",
-        description="Whether this organization affiliation record is in active use",
+        title="Whether this organization affiliation record is in active use",
+        description=None,
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_active", title="Extension field for ``active``."
@@ -37,112 +37,116 @@ class OrganizationAffiliation(domainresource.DomainResource):
     code: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="code",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Definition of the role the participatingOrganization plays",
+        title="Definition of the role the participatingOrganization plays",
+        description=(
+            "Definition of the role the participatingOrganization plays in the "
+            "association."
+        ),
     )
 
     endpoint: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="endpoint",
         title=(
-            "List of `Reference` items referencing `Endpoint` (represented as "
-            "`dict` in JSON)"
-        ),
-        description=(
             "Technical endpoints providing access to services operated for this " "role"
         ),
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Endpoint"],
     )
 
     healthcareService: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="healthcareService",
-        title=(
-            "List of `Reference` items referencing `HealthcareService` (represented"
-            " as `dict` in JSON)"
-        ),
-        description="Healthcare services provided through the role",
+        title="Healthcare services provided through the role",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["HealthcareService"],
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Business identifiers that are specific to this role",
+        title="Business identifiers that are specific to this role",
+        description=None,
     )
 
     location: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="location",
-        title=(
-            "List of `Reference` items referencing `Location` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="The location(s) at which the role occurs",
+        title="The location(s) at which the role occurs",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Location"],
     )
 
     network: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="network",
         title=(
-            "List of `Reference` items referencing `Organization` (represented as "
-            "`dict` in JSON)"
-        ),
-        description=(
             "Health insurance provider network in which the "
-            "participatingOrganization provides the role\u0027s services (if defined) at"
+            "participatingOrganization provides the role's services (if defined) at"
             " the indicated locations (if defined)"
         ),
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     organization: fhirtypes.ReferenceType = Field(
         None,
         alias="organization",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
+        title="Organization where the role is available",
+        description=(
+            "Organization where the role is available (primary organization/has "
+            "members)."
         ),
-        description="Organization where the role is available",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     participatingOrganization: fhirtypes.ReferenceType = Field(
         None,
         alias="participatingOrganization",
         title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description=(
             "Organization that provides/performs the role (e.g. providing services "
             "or is a member of)"
         ),
+        description=(
+            "The Participating Organization provides/performs the role(s) defined "
+            "by the code to the Primary Organization (e.g. providing services or is"
+            " a member of)."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The period during which the participatingOrganization is affiliated "
             "with the primary organization"
         ),
+        description=None,
     )
 
     specialty: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="specialty",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Specific specialty of the participatingOrganization in the context of "
             "the role"
         ),
+        description=None,
     )
 
     telecom: ListType[fhirtypes.ContactPointType] = Field(
         None,
         alias="telecom",
-        title="List of `ContactPoint` items (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Contact details at the participatingOrganization relevant to this "
             "Affiliation"
         ),
+        description=None,
     )

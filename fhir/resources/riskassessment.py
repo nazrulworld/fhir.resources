@@ -29,68 +29,74 @@ class RiskAssessment(domainresource.DomainResource):
     basedOn: fhirtypes.ReferenceType = Field(
         None,
         alias="basedOn",
-        title=(
-            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
-        ),
-        description="Request fulfilled by this assessment",
+        title="Request fulfilled by this assessment",
+        description="A reference to the request that is fulfilled by this risk assessment.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     basis: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basis",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
+        title="Information used in assessment",
+        description=(
+            "Indicates the source data considered as part of the assessment (for "
+            "example, FamilyHistory, Observations, Procedures, Conditions, etc.)."
         ),
-        description="Information used in assessment",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     code: fhirtypes.CodeableConceptType = Field(
         None,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type of assessment",
+        title="Type of assessment",
+        description="The type of the risk assessment performed.",
     )
 
     condition: fhirtypes.ReferenceType = Field(
         None,
         alias="condition",
-        title=(
-            "Type `Reference` referencing `Condition` (represented as `dict` in "
-            "JSON)"
+        title="Condition assessed",
+        description=(
+            "For assessments or prognosis specific to a particular condition, "
+            "indicates the condition being assessed."
         ),
-        description="Condition assessed",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Condition"],
     )
 
     encounter: fhirtypes.ReferenceType = Field(
         None,
         alias="encounter",
-        title=(
-            "Type `Reference` referencing `Encounter` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Where was assessment performed?",
+        title="Where was assessment performed?",
+        description="The encounter where the assessment was performed.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Encounter"],
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Unique identifier for the assessment",
+        title="Unique identifier for the assessment",
+        description="Business identifier assigned to the risk assessment.",
     )
 
     method: fhirtypes.CodeableConceptType = Field(
         None,
         alias="method",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Evaluation mechanism",
+        title="Evaluation mechanism",
+        description="The algorithm, process or mechanism used to evaluate the risk.",
     )
 
     mitigation: fhirtypes.String = Field(
         None,
         alias="mitigation",
-        title="Type `String`",
-        description="How to reduce risk",
+        title="How to reduce risk",
+        description=(
+            "A description of the steps that might be taken to reduce the "
+            "identified risk(s)."
+        ),
     )
     mitigation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_mitigation", title="Extension field for ``mitigation``."
@@ -99,16 +105,17 @@ class RiskAssessment(domainresource.DomainResource):
     note: ListType[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
-        title="List of `Annotation` items (represented as `dict` in JSON)",
-        description="Comments on the risk assessment",
+        title="Comments on the risk assessment",
+        description="Additional comments about the risk assessment.",
     )
 
     occurrenceDateTime: fhirtypes.DateTime = Field(
         None,
         alias="occurrenceDateTime",
-        title="Type `DateTime`",
-        description="When was assessment made?",
-        one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
+        title="When was assessment made?",
+        description="The date (and possibly time) the risk assessment was performed.",
+        # Choice of Data Types. i.e occurrence[x]
+        one_of_many="occurrence",
         one_of_many_required=False,
     )
     occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -120,63 +127,73 @@ class RiskAssessment(domainresource.DomainResource):
     occurrencePeriod: fhirtypes.PeriodType = Field(
         None,
         alias="occurrencePeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="When was assessment made?",
-        one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
+        title="When was assessment made?",
+        description="The date (and possibly time) the risk assessment was performed.",
+        # Choice of Data Types. i.e occurrence[x]
+        one_of_many="occurrence",
         one_of_many_required=False,
     )
 
     parent: fhirtypes.ReferenceType = Field(
         None,
         alias="parent",
-        title=(
-            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        title="Part of this occurrence",
+        description=(
+            "A reference to a resource that this risk assessment is part of, such "
+            "as a Procedure."
         ),
-        description="Part of this occurrence",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     performer: fhirtypes.ReferenceType = Field(
         None,
         alias="performer",
-        title=(
-            "Type `Reference` referencing `Practitioner, PractitionerRole, Device` "
-            "(represented as `dict` in JSON)"
-        ),
-        description="Who did assessment?",
+        title="Who did assessment?",
+        description="The provider or software application that performed the assessment.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner", "PractitionerRole", "Device"],
     )
 
     prediction: ListType[fhirtypes.RiskAssessmentPredictionType] = Field(
         None,
         alias="prediction",
-        title=(
-            "List of `RiskAssessmentPrediction` items (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Outcome predicted",
+        title="Outcome predicted",
+        description="Describes the expected outcome for the subject.",
     )
 
     reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="reasonCode",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Why the assessment was necessary?",
+        title="Why the assessment was necessary?",
+        description="The reason the risk assessment was performed.",
     )
 
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="reasonReference",
-        title=(
-            "List of `Reference` items referencing `Condition, Observation, "
-            "DiagnosticReport, DocumentReference` (represented as `dict` in JSON)"
-        ),
-        description="Why the assessment was necessary?",
+        title="Why the assessment was necessary?",
+        description="Resources supporting the reason the risk assessment was performed.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Condition",
+            "Observation",
+            "DiagnosticReport",
+            "DocumentReference",
+        ],
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="registered | preliminary | final | amended +",
+        title="registered | preliminary | final | amended +",
+        description=(
+            "The status of the RiskAssessment, using the same statuses as an "
+            "Observation."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["registered", "preliminary", "final", "amended +"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -185,11 +202,10 @@ class RiskAssessment(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         ...,
         alias="subject",
-        title=(
-            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
-            "in JSON)"
-        ),
-        description="Who/what does assessment apply to?",
+        title="Who/what does assessment apply to?",
+        description="The patient or group the risk assessment applies to.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "Group"],
     )
 
     @root_validator(pre=True)
@@ -243,16 +259,20 @@ class RiskAssessmentPrediction(backboneelement.BackboneElement):
     outcome: fhirtypes.CodeableConceptType = Field(
         None,
         alias="outcome",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Possible outcome for the subject",
+        title="Possible outcome for the subject",
+        description=(
+            "One of the potential outcomes for the patient (e.g. remission, death,"
+            "  a particular condition)."
+        ),
     )
 
     probabilityDecimal: fhirtypes.Decimal = Field(
         None,
         alias="probabilityDecimal",
-        title="Type `Decimal`",
-        description="Likelihood of specified outcome",
-        one_of_many="probability",  # Choice of Data Types. i.e value[x]
+        title="Likelihood of specified outcome",
+        description="Indicates how likely the outcome is (in the specified timeframe).",
+        # Choice of Data Types. i.e probability[x]
+        one_of_many="probability",
         one_of_many_required=False,
     )
     probabilityDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -264,24 +284,28 @@ class RiskAssessmentPrediction(backboneelement.BackboneElement):
     probabilityRange: fhirtypes.RangeType = Field(
         None,
         alias="probabilityRange",
-        title="Type `Range` (represented as `dict` in JSON)",
-        description="Likelihood of specified outcome",
-        one_of_many="probability",  # Choice of Data Types. i.e value[x]
+        title="Likelihood of specified outcome",
+        description="Indicates how likely the outcome is (in the specified timeframe).",
+        # Choice of Data Types. i.e probability[x]
+        one_of_many="probability",
         one_of_many_required=False,
     )
 
     qualitativeRisk: fhirtypes.CodeableConceptType = Field(
         None,
         alias="qualitativeRisk",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Likelihood of specified outcome as a qualitative value",
+        title="Likelihood of specified outcome as a qualitative value",
+        description=(
+            "Indicates how likely the outcome is (in the specified timeframe), "
+            "expressed as a qualitative value (e.g. low, medium, or high)."
+        ),
     )
 
     rationale: fhirtypes.String = Field(
         None,
         alias="rationale",
-        title="Type `String`",
-        description="Explanation of prediction",
+        title="Explanation of prediction",
+        description="Additional information explaining the basis for the prediction.",
     )
     rationale__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_rationale", title="Extension field for ``rationale``."
@@ -290,8 +314,13 @@ class RiskAssessmentPrediction(backboneelement.BackboneElement):
     relativeRisk: fhirtypes.Decimal = Field(
         None,
         alias="relativeRisk",
-        title="Type `Decimal`",
-        description="Relative likelihood",
+        title="Relative likelihood",
+        description=(
+            "Indicates the risk for this particular subject (with their specific "
+            "characteristics) divided by the risk of the population in general.  "
+            "(Numbers greater than 1 = higher risk than the population, numbers "
+            "less than 1 = lower risk.)."
+        ),
     )
     relativeRisk__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_relativeRisk", title="Extension field for ``relativeRisk``."
@@ -300,18 +329,26 @@ class RiskAssessmentPrediction(backboneelement.BackboneElement):
     whenPeriod: fhirtypes.PeriodType = Field(
         None,
         alias="whenPeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Timeframe or age range",
-        one_of_many="when",  # Choice of Data Types. i.e value[x]
+        title="Timeframe or age range",
+        description=(
+            "Indicates the period of time or age range of the subject to which the "
+            "specified probability applies."
+        ),
+        # Choice of Data Types. i.e when[x]
+        one_of_many="when",
         one_of_many_required=False,
     )
 
     whenRange: fhirtypes.RangeType = Field(
         None,
         alias="whenRange",
-        title="Type `Range` (represented as `dict` in JSON)",
-        description="Timeframe or age range",
-        one_of_many="when",  # Choice of Data Types. i.e value[x]
+        title="Timeframe or age range",
+        description=(
+            "Indicates the period of time or age range of the subject to which the "
+            "specified probability applies."
+        ),
+        # Choice of Data Types. i.e when[x]
+        one_of_many="when",
         one_of_many_required=False,
     )
 

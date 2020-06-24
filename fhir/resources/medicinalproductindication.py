@@ -28,39 +28,39 @@ class MedicinalProductIndication(domainresource.DomainResource):
     comorbidity: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="comorbidity",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Comorbidity (concurrent condition) or co-infection as part of the "
             "indication"
         ),
+        description=None,
     )
 
     diseaseStatus: fhirtypes.CodeableConceptType = Field(
         None,
         alias="diseaseStatus",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The status of the disease or symptom for which the indication applies",
+        title="The status of the disease or symptom for which the indication applies",
+        description=None,
     )
 
     diseaseSymptomProcedure: fhirtypes.CodeableConceptType = Field(
         None,
         alias="diseaseSymptomProcedure",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The disease, symptom or procedure that is the indication for treatment",
+        title="The disease, symptom or procedure that is the indication for treatment",
+        description=None,
     )
 
     duration: fhirtypes.QuantityType = Field(
         None,
         alias="duration",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Timing or duration information as part of the indication",
+        title="Timing or duration information as part of the indication",
+        description=None,
     )
 
     intendedEffect: fhirtypes.CodeableConceptType = Field(
         None,
         alias="intendedEffect",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The intended effect, aim or strategy to be achieved by the indication",
+        title="The intended effect, aim or strategy to be achieved by the indication",
+        description=None,
     )
 
     otherTherapy: ListType[
@@ -69,40 +69,35 @@ class MedicinalProductIndication(domainresource.DomainResource):
         None,
         alias="otherTherapy",
         title=(
-            "List of `MedicinalProductIndicationOtherTherapy` items (represented as"
-            " `dict` in JSON)"
-        ),
-        description=(
             "Information about the use of the medicinal product in relation to "
             "other therapies described as part of the indication"
         ),
+        description=None,
     )
 
     population: ListType[fhirtypes.PopulationType] = Field(
         None,
         alias="population",
-        title="List of `Population` items (represented as `dict` in JSON)",
-        description="The population group to which this applies",
+        title="The population group to which this applies",
+        description=None,
     )
 
     subject: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="subject",
-        title=(
-            "List of `Reference` items referencing `MedicinalProduct, Medication` "
-            "(represented as `dict` in JSON)"
-        ),
-        description="The medication for which this is an indication",
+        title="The medication for which this is an indication",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["MedicinalProduct", "Medication"],
     )
 
     undesirableEffect: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="undesirableEffect",
-        title=(
-            "List of `Reference` items referencing "
-            "`MedicinalProductUndesirableEffect` (represented as `dict` in JSON)"
-        ),
-        description="Describe the undesirable effects of the medicinal product",
+        title="Describe the undesirable effects of the medicinal product",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["MedicinalProductUndesirableEffect"],
     )
 
 
@@ -120,13 +115,14 @@ class MedicinalProductIndicationOtherTherapy(backboneelement.BackboneElement):
     medicationCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="medicationCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Reference to a specific medication (active substance, medicinal "
             "product or class of products) as part of an indication or "
             "contraindication"
         ),
-        one_of_many="medication",  # Choice of Data Types. i.e value[x]
+        description=None,
+        # Choice of Data Types. i.e medication[x]
+        one_of_many="medication",
         one_of_many_required=True,
     )
 
@@ -134,26 +130,31 @@ class MedicinalProductIndicationOtherTherapy(backboneelement.BackboneElement):
         None,
         alias="medicationReference",
         title=(
-            "Type `Reference` referencing `MedicinalProduct, Medication, Substance,"
-            " SubstanceSpecification` (represented as `dict` in JSON)"
-        ),
-        description=(
             "Reference to a specific medication (active substance, medicinal "
             "product or class of products) as part of an indication or "
             "contraindication"
         ),
-        one_of_many="medication",  # Choice of Data Types. i.e value[x]
+        description=None,
+        # Choice of Data Types. i.e medication[x]
+        one_of_many="medication",
         one_of_many_required=True,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "MedicinalProduct",
+            "Medication",
+            "Substance",
+            "SubstanceSpecification",
+        ],
     )
 
     therapyRelationshipType: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="therapyRelationshipType",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The type of relationship between the medicinal product indication or "
             "contraindication and another therapy"
         ),
+        description=None,
     )
 
     @root_validator(pre=True)

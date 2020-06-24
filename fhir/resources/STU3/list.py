@@ -27,15 +27,15 @@ class List(domainresource.DomainResource):
     code: fhirtypes.CodeableConceptType = Field(
         None,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="What the purpose of this list is",
+        title="What the purpose of this list is",
+        description="This code defines the purpose of the list - why it was created.",
     )
 
     date: fhirtypes.DateTime = Field(
         None,
         alias="date",
-        title="Type `DateTime`",
-        description="When the list was prepared",
+        title="When the list was prepared",
+        description="The date that the list was prepared.",
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -44,39 +44,50 @@ class List(domainresource.DomainResource):
     emptyReason: fhirtypes.CodeableConceptType = Field(
         None,
         alias="emptyReason",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Why list is empty",
+        title="Why list is empty",
+        description="If the list is empty, why the list is empty.",
     )
 
     encounter: fhirtypes.ReferenceType = Field(
         None,
         alias="encounter",
-        title=(
-            "Type `Reference` referencing `Encounter` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Context in which list created",
+        title="Context in which list created",
+        description="The encounter that is the context in which this list was created.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Encounter"],
     )
 
     entry: ListType[fhirtypes.ListEntryType] = Field(
         None,
         alias="entry",
-        title="List of `ListEntry` items (represented as `dict` in JSON)",
-        description="Entries in the list",
+        title="Entries in the list",
+        description="Entries in this list.",
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Business identifier",
+        title="Business identifier",
+        description=(
+            "Identifier for the List assigned for business purposes outside the "
+            "context of FHIR."
+        ),
     )
 
     mode: fhirtypes.Code = Field(
         ...,
         alias="mode",
-        title="Type `Code`",
-        description="working | snapshot | changes",
+        title="working | snapshot | changes",
+        description=(
+            "How this list was prepared - whether it is a working list that is "
+            "suitable for being maintained on an ongoing basis, or if it represents"
+            " a snapshot of a list of items from another source, or whether it is a"
+            " prepared list where items may be marked as added, modified or "
+            "deleted."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["working", "snapshot", "changes"],
     )
     mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_mode", title="Extension field for ``mode``."
@@ -85,32 +96,38 @@ class List(domainresource.DomainResource):
     note: ListType[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
-        title="List of `Annotation` items (represented as `dict` in JSON)",
-        description="Comments about the list",
+        title="Comments about the list",
+        description="Comments that apply to the overall list.",
     )
 
     orderedBy: fhirtypes.CodeableConceptType = Field(
         None,
         alias="orderedBy",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="What order the list has",
+        title="What order the list has",
+        description="What order applies to the items in the list.",
     )
 
     source: fhirtypes.ReferenceType = Field(
         None,
         alias="source",
-        title=(
-            "Type `Reference` referencing `Practitioner, Patient, Device` "
-            "(represented as `dict` in JSON)"
+        title="Who and/or what defined the list contents (aka Author)",
+        description=(
+            "The entity responsible for deciding what the contents of the list "
+            "were. Where the list was created by a human, this is the same as the "
+            "author of the list."
         ),
-        description="Who and/or what defined the list contents (aka Author)",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner", "Patient", "Device"],
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="current | retired | entered-in-error",
+        title="current | retired | entered-in-error",
+        description="Indicates the current state of this list.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["current", "retired", "entered-in-error"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -119,18 +136,20 @@ class List(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title=(
-            "Type `Reference` referencing `Patient, Group, Device, Location` "
-            "(represented as `dict` in JSON)"
+        title="If all resources have the same subject",
+        description=(
+            "The common subject (or patient) of the resources that are in the list,"
+            " if there is one."
         ),
-        description="If all resources have the same subject",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "Group", "Device", "Location"],
     )
 
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String`",
-        description="Descriptive name for the list",
+        title="Descriptive name for the list",
+        description="A label for the list assigned by the author.",
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -151,8 +170,8 @@ class ListEntry(backboneelement.BackboneElement):
     date: fhirtypes.DateTime = Field(
         None,
         alias="date",
-        title="Type `DateTime`",
-        description="When item added to list",
+        title="When item added to list",
+        description="When this item was added to the list.",
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -161,8 +180,8 @@ class ListEntry(backboneelement.BackboneElement):
     deleted: bool = Field(
         None,
         alias="deleted",
-        title="Type `bool`",
-        description="If this item is actually marked as deleted",
+        title="If this item is actually marked as deleted",
+        description="True if this item is marked as deleted in the list.",
     )
     deleted__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_deleted", title="Extension field for ``deleted``."
@@ -171,15 +190,18 @@ class ListEntry(backboneelement.BackboneElement):
     flag: fhirtypes.CodeableConceptType = Field(
         None,
         alias="flag",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Status/Workflow information about this item",
+        title="Status/Workflow information about this item",
+        description=(
+            "The flag allows the system constructing the list to indicate the role "
+            "and significance of the item in the list."
+        ),
     )
 
     item: fhirtypes.ReferenceType = Field(
         ...,
         alias="item",
-        title=(
-            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
-        ),
-        description="Actual entry",
+        title="Actual entry",
+        description="A reference to the actual resource from which data was derived.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )

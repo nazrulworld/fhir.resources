@@ -32,42 +32,45 @@ class SubstanceAmount(backboneelement.BackboneElement):
     amountQuantity: fhirtypes.QuantityType = Field(
         None,
         alias="amountQuantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Used to capture quantitative values for a variety of elements. If only"
             " limits are given, the arithmetic mean would be the average. If only a"
             " single definite value for a given element is given, it would be "
             "captured in this field"
         ),
-        one_of_many="amount",  # Choice of Data Types. i.e value[x]
+        description=None,
+        # Choice of Data Types. i.e amount[x]
+        one_of_many="amount",
         one_of_many_required=False,
     )
 
     amountRange: fhirtypes.RangeType = Field(
         None,
         alias="amountRange",
-        title="Type `Range` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Used to capture quantitative values for a variety of elements. If only"
             " limits are given, the arithmetic mean would be the average. If only a"
             " single definite value for a given element is given, it would be "
             "captured in this field"
         ),
-        one_of_many="amount",  # Choice of Data Types. i.e value[x]
+        description=None,
+        # Choice of Data Types. i.e amount[x]
+        one_of_many="amount",
         one_of_many_required=False,
     )
 
     amountString: fhirtypes.String = Field(
         None,
         alias="amountString",
-        title="Type `String`",
-        description=(
+        title=(
             "Used to capture quantitative values for a variety of elements. If only"
             " limits are given, the arithmetic mean would be the average. If only a"
             " single definite value for a given element is given, it would be "
             "captured in this field"
         ),
-        one_of_many="amount",  # Choice of Data Types. i.e value[x]
+        description=None,
+        # Choice of Data Types. i.e amount[x]
+        one_of_many="amount",
         one_of_many_required=False,
     )
     amountString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -77,8 +80,8 @@ class SubstanceAmount(backboneelement.BackboneElement):
     amountText: fhirtypes.String = Field(
         None,
         alias="amountText",
-        title="Type `String`",
-        description="A textual comment on a numeric value",
+        title="A textual comment on a numeric value",
+        description=None,
     )
     amountText__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_amountText", title="Extension field for ``amountText``."
@@ -87,8 +90,7 @@ class SubstanceAmount(backboneelement.BackboneElement):
     amountType: fhirtypes.CodeableConceptType = Field(
         None,
         alias="amountType",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Most elements that require a quantitative value will also have a field"
             " called amount type. Amount type should always be specified because "
             "the actual value of the amount is often dependent on it. EXAMPLE: In "
@@ -97,13 +99,14 @@ class SubstanceAmount(backboneelement.BackboneElement):
             "mole ratio or weight ratio. For any given element an effort should be "
             "made to use same the amount type for all related definitional elements"
         ),
+        description=None,
     )
 
     referenceRange: fhirtypes.SubstanceAmountReferenceRangeType = Field(
         None,
         alias="referenceRange",
-        title="Type `SubstanceAmountReferenceRange` (represented as `dict` in JSON)",
-        description="Reference range of possible or expected values",
+        title="Reference range of possible or expected values",
+        description=None,
     )
 
     @root_validator(pre=True)
@@ -158,13 +161,13 @@ class SubstanceAmountReferenceRange(element.Element):
     highLimit: fhirtypes.QuantityType = Field(
         None,
         alias="highLimit",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Upper limit possible or expected",
+        title="Upper limit possible or expected",
+        description=None,
     )
 
     lowLimit: fhirtypes.QuantityType = Field(
         None,
         alias="lowLimit",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Lower limit possible or expected",
+        title="Lower limit possible or expected",
+        description=None,
     )

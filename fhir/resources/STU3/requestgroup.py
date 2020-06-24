@@ -29,25 +29,24 @@ class RequestGroup(domainresource.DomainResource):
     action: ListType[fhirtypes.RequestGroupActionType] = Field(
         None,
         alias="action",
-        title="List of `RequestGroupAction` items (represented as `dict` in JSON)",
-        description="Proposed actions, if any",
+        title="Proposed actions, if any",
+        description="The actions, if any, produced by the evaluation of the artifact.",
     )
 
     author: fhirtypes.ReferenceType = Field(
         None,
         alias="author",
-        title=(
-            "Type `Reference` referencing `Device, Practitioner` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Device or practitioner that authored the request group",
+        title="Device or practitioner that authored the request group",
+        description="Provides a reference to the author of the request group.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Device", "Practitioner"],
     )
 
     authoredOn: fhirtypes.DateTime = Field(
         None,
         alias="authoredOn",
-        title="Type `DateTime`",
-        description="When the request group was authored",
+        title="When the request group was authored",
+        description="Indicates when the request group was created.",
     )
     authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_authoredOn", title="Extension field for ``authoredOn``."
@@ -56,49 +55,68 @@ class RequestGroup(domainresource.DomainResource):
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
+        title="Fulfills plan, proposal, or order",
+        description=(
+            "A plan, proposal or order that is fulfilled in whole or in part by "
+            "this request."
         ),
-        description="Fulfills plan, proposal, or order",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     context: fhirtypes.ReferenceType = Field(
         None,
         alias="context",
-        title=(
-            "Type `Reference` referencing `Encounter, EpisodeOfCare` (represented "
-            "as `dict` in JSON)"
-        ),
-        description="Encounter or Episode for the request group",
+        title="Encounter or Episode for the request group",
+        description="Describes the context of the request group, if any.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Encounter", "EpisodeOfCare"],
     )
 
     definition: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="definition",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
+        title="Instantiates protocol or definition",
+        description=(
+            "A protocol, guideline, orderset or other definition that is adhered to"
+            " in whole or in part by this request."
         ),
-        description="Instantiates protocol or definition",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     groupIdentifier: fhirtypes.IdentifierType = Field(
         None,
         alias="groupIdentifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Composite request this is part of",
+        title="Composite request this is part of",
+        description=(
+            "A shared identifier common to all requests that were authorized more "
+            "or less simultaneously by a single author, representing the identifier"
+            " of the requisition, prescription or similar form."
+        ),
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Business identifier",
+        title="Business identifier",
+        description=(
+            "Allows a service to provide a unique, business identifier for the "
+            "request."
+        ),
     )
 
     intent: fhirtypes.Code = Field(
-        ..., alias="intent", title="Type `Code`", description="proposal | plan | order"
+        ...,
+        alias="intent",
+        title="proposal | plan | order",
+        description=(
+            "Indicates the level of authority/intentionality associated with the "
+            "request and where the request fits into the workflow chain."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["proposal", "plan", "order"],
     )
     intent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_intent", title="Extension field for ``intent``."
@@ -107,15 +125,24 @@ class RequestGroup(domainresource.DomainResource):
     note: ListType[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
-        title="List of `Annotation` items (represented as `dict` in JSON)",
-        description="Additional notes about the response",
+        title="Additional notes about the response",
+        description=(
+            "Provides a mechanism to communicate additional information about the "
+            "response."
+        ),
     )
 
     priority: fhirtypes.Code = Field(
         None,
         alias="priority",
-        title="Type `Code`",
-        description="routine | urgent | asap | stat",
+        title="routine | urgent | asap | stat",
+        description=(
+            "Indicates how quickly the request should be addressed with respect to "
+            "other requests."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["routine", "urgent", "asap", "stat"],
     )
     priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_priority", title="Extension field for ``priority``."
@@ -124,41 +151,69 @@ class RequestGroup(domainresource.DomainResource):
     reasonCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="reasonCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Reason for the request group",
-        one_of_many="reason",  # Choice of Data Types. i.e value[x]
+        title="Reason for the request group",
+        description=(
+            "Indicates the reason the request group was created. This is typically "
+            "provided as a parameter to the evaluation and echoed by the service, "
+            "although for some use cases, such as subscription- or event-based "
+            "scenarios, it may provide an indication of the cause for the response."
+        ),
+        # Choice of Data Types. i.e reason[x]
+        one_of_many="reason",
         one_of_many_required=False,
     )
 
     reasonReference: fhirtypes.ReferenceType = Field(
         None,
         alias="reasonReference",
-        title=(
-            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        title="Reason for the request group",
+        description=(
+            "Indicates the reason the request group was created. This is typically "
+            "provided as a parameter to the evaluation and echoed by the service, "
+            "although for some use cases, such as subscription- or event-based "
+            "scenarios, it may provide an indication of the cause for the response."
         ),
-        description="Reason for the request group",
-        one_of_many="reason",  # Choice of Data Types. i.e value[x]
+        # Choice of Data Types. i.e reason[x]
+        one_of_many="reason",
         one_of_many_required=False,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     replaces: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="replaces",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
+        title="Request(s) replaced by this request",
+        description=(
+            "Completed or terminated request(s) whose function is taken by this new"
+            " request."
         ),
-        description="Request(s) replaced by this request",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description=(
+        title=(
             "draft | active | suspended | cancelled | completed | entered-in-error "
             "| unknown"
         ),
+        description=(
+            "The current state of the request. For request groups, the status "
+            "reflects the status of all the requests in the group."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "draft",
+            "active",
+            "suspended",
+            "cancelled",
+            "completed",
+            "entered-in-error",
+            "unknown",
+        ],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -167,11 +222,10 @@ class RequestGroup(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title=(
-            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
-            "in JSON)"
-        ),
-        description="Who the request group is about",
+        title="Who the request group is about",
+        description="The subject for which the request group was created.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "Group"],
     )
 
     @root_validator(pre=True)
@@ -223,17 +277,17 @@ class RequestGroupAction(backboneelement.BackboneElement):
     resource_type = Field("RequestGroupAction", const=True)
 
     action: ListType[fhirtypes.RequestGroupActionType] = Field(
-        None,
-        alias="action",
-        title="List of `RequestGroupAction` items (represented as `dict` in JSON)",
-        description="Sub action",
+        None, alias="action", title="Sub action", description="Sub actions.",
     )
 
     cardinalityBehavior: fhirtypes.Code = Field(
         None,
         alias="cardinalityBehavior",
-        title="Type `Code`",
-        description="single | multiple",
+        title="single | multiple",
+        description="Defines whether the action can be selected multiple times.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["single", "multiple"],
     )
     cardinalityBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -244,25 +298,32 @@ class RequestGroupAction(backboneelement.BackboneElement):
     code: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="code",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Code representing the meaning of the action or sub-actions",
+        title="Code representing the meaning of the action or sub-actions",
+        description=(
+            "A code that provides meaning for the action or action group. For "
+            "example, a section may have a LOINC code for a the section of a "
+            "documentation template."
+        ),
     )
 
     condition: ListType[fhirtypes.RequestGroupActionConditionType] = Field(
         None,
         alias="condition",
-        title=(
-            "List of `RequestGroupActionCondition` items (represented as `dict` in "
-            "JSON)"
+        title="Whether or not the action is applicable",
+        description=(
+            "An expression that describes applicability criteria, or start/stop "
+            "conditions for the action."
         ),
-        description="Whether or not the action is applicable",
     )
 
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Short description of the action",
+        title="Short description of the action",
+        description=(
+            "A short description of the action used to provide a summary to display"
+            " to the user."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -271,15 +332,22 @@ class RequestGroupAction(backboneelement.BackboneElement):
     documentation: ListType[fhirtypes.RelatedArtifactType] = Field(
         None,
         alias="documentation",
-        title="List of `RelatedArtifact` items (represented as `dict` in JSON)",
-        description="Supporting documentation for the intended performer of the action",
+        title="Supporting documentation for the intended performer of the action",
+        description=(
+            "Didactic or other informational resources associated with the action "
+            "that can be provided to the CDS recipient. Information resources can "
+            "include inline text commentary and links to web resources."
+        ),
     )
 
     groupingBehavior: fhirtypes.Code = Field(
         None,
         alias="groupingBehavior",
-        title="Type `Code`",
-        description="visual-group | logical-group | sentence-group",
+        title="visual-group | logical-group | sentence-group",
+        description="Defines the grouping behavior for the action and its children.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["visual-group", "logical-group", "sentence-group"],
     )
     groupingBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -290,8 +358,8 @@ class RequestGroupAction(backboneelement.BackboneElement):
     label: fhirtypes.String = Field(
         None,
         alias="label",
-        title="Type `String`",
-        description="User-visible label for the action (e.g. 1. or A.)",
+        title="User-visible label for the action (e.g. 1. or A.)",
+        description="A user-visible label for the action.",
     )
     label__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_label", title="Extension field for ``label``."
@@ -300,15 +368,20 @@ class RequestGroupAction(backboneelement.BackboneElement):
     participant: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="participant",
-        title=(
-            "List of `Reference` items referencing `Patient, Person, Practitioner, "
-            "RelatedPerson` (represented as `dict` in JSON)"
-        ),
-        description="Who should perform the action",
+        title="Who should perform the action",
+        description="The participant that should perform or be responsible for this action.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "Person", "Practitioner", "RelatedPerson"],
     )
 
     precheckBehavior: fhirtypes.Code = Field(
-        None, alias="precheckBehavior", title="Type `Code`", description="yes | no"
+        None,
+        alias="precheckBehavior",
+        title="yes | no",
+        description="Defines whether the action should usually be preselected.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["yes", "no"],
     )
     precheckBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -319,18 +392,21 @@ class RequestGroupAction(backboneelement.BackboneElement):
     relatedAction: ListType[fhirtypes.RequestGroupActionRelatedActionType] = Field(
         None,
         alias="relatedAction",
-        title=(
-            "List of `RequestGroupActionRelatedAction` items (represented as `dict`"
-            " in JSON)"
+        title="Relationship to another action",
+        description=(
+            'A relationship to another action such as "before" or "30-60 minutes '
+            'after start of".'
         ),
-        description="Relationship to another action",
     )
 
     requiredBehavior: fhirtypes.Code = Field(
         None,
         alias="requiredBehavior",
-        title="Type `Code`",
-        description="must | could | must-unless-documented",
+        title="must | could | must-unless-documented",
+        description="Defines the requiredness behavior for the action.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["must", "could", "must-unless-documented"],
     )
     requiredBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -341,17 +417,30 @@ class RequestGroupAction(backboneelement.BackboneElement):
     resource: fhirtypes.ReferenceType = Field(
         None,
         alias="resource",
-        title=(
-            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        title="The target of the action",
+        description=(
+            "The resource that is the target of the action (e.g. "
+            "CommunicationRequest)."
         ),
-        description="The target of the action",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     selectionBehavior: fhirtypes.Code = Field(
         None,
         alias="selectionBehavior",
-        title="Type `Code`",
-        description="any | all | all-or-none | exactly-one | at-most-one | one-or-more",
+        title="any | all | all-or-none | exactly-one | at-most-one | one-or-more",
+        description="Defines the selection behavior for the action and its children.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "any",
+            "all",
+            "all-or-none",
+            "exactly-one",
+            "at-most-one",
+            "one-or-more",
+        ],
     )
     selectionBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -362,10 +451,15 @@ class RequestGroupAction(backboneelement.BackboneElement):
     textEquivalent: fhirtypes.String = Field(
         None,
         alias="textEquivalent",
-        title="Type `String`",
-        description=(
+        title=(
             "Static text equivalent of the action, used if the dynamic aspects "
             "cannot be interpreted by the receiving system"
+        ),
+        description=(
+            "A text equivalent of the action to be performed. This provides a "
+            "human-interpretable description of the action when the definition is "
+            "consumed by a system that may not be capable of interpreting it "
+            "dynamically."
         ),
     )
     textEquivalent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -375,9 +469,10 @@ class RequestGroupAction(backboneelement.BackboneElement):
     timingDateTime: fhirtypes.DateTime = Field(
         None,
         alias="timingDateTime",
-        title="Type `DateTime`",
-        description="When the action should take place",
-        one_of_many="timing",  # Choice of Data Types. i.e value[x]
+        title="When the action should take place",
+        description="An optional value describing when the action should be performed.",
+        # Choice of Data Types. i.e timing[x]
+        one_of_many="timing",
         one_of_many_required=False,
     )
     timingDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -387,41 +482,48 @@ class RequestGroupAction(backboneelement.BackboneElement):
     timingDuration: fhirtypes.DurationType = Field(
         None,
         alias="timingDuration",
-        title="Type `Duration` (represented as `dict` in JSON)",
-        description="When the action should take place",
-        one_of_many="timing",  # Choice of Data Types. i.e value[x]
+        title="When the action should take place",
+        description="An optional value describing when the action should be performed.",
+        # Choice of Data Types. i.e timing[x]
+        one_of_many="timing",
         one_of_many_required=False,
     )
 
     timingPeriod: fhirtypes.PeriodType = Field(
         None,
         alias="timingPeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="When the action should take place",
-        one_of_many="timing",  # Choice of Data Types. i.e value[x]
+        title="When the action should take place",
+        description="An optional value describing when the action should be performed.",
+        # Choice of Data Types. i.e timing[x]
+        one_of_many="timing",
         one_of_many_required=False,
     )
 
     timingRange: fhirtypes.RangeType = Field(
         None,
         alias="timingRange",
-        title="Type `Range` (represented as `dict` in JSON)",
-        description="When the action should take place",
-        one_of_many="timing",  # Choice of Data Types. i.e value[x]
+        title="When the action should take place",
+        description="An optional value describing when the action should be performed.",
+        # Choice of Data Types. i.e timing[x]
+        one_of_many="timing",
         one_of_many_required=False,
     )
 
     timingTiming: fhirtypes.TimingType = Field(
         None,
         alias="timingTiming",
-        title="Type `Timing` (represented as `dict` in JSON)",
-        description="When the action should take place",
-        one_of_many="timing",  # Choice of Data Types. i.e value[x]
+        title="When the action should take place",
+        description="An optional value describing when the action should be performed.",
+        # Choice of Data Types. i.e timing[x]
+        one_of_many="timing",
         one_of_many_required=False,
     )
 
     title: fhirtypes.String = Field(
-        None, alias="title", title="Type `String`", description="User-visible title"
+        None,
+        alias="title",
+        title="User-visible title",
+        description="The title of the action displayed to a user.",
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -430,8 +532,8 @@ class RequestGroupAction(backboneelement.BackboneElement):
     type: fhirtypes.CodingType = Field(
         None,
         alias="type",
-        title="Type `Coding` (represented as `dict` in JSON)",
-        description="create | update | remove | fire-event",
+        title="create | update | remove | fire-event",
+        description="The type of action to perform (create, update, remove).",
     )
 
     @root_validator(pre=True)
@@ -494,8 +596,11 @@ class RequestGroupActionCondition(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Natural language description of the condition",
+        title="Natural language description of the condition",
+        description=(
+            "A brief, natural language description of the condition that "
+            "effectively communicates the intended semantics."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -504,8 +609,11 @@ class RequestGroupActionCondition(backboneelement.BackboneElement):
     expression: fhirtypes.String = Field(
         None,
         alias="expression",
-        title="Type `String`",
-        description="Boolean-valued expression",
+        title="Boolean-valued expression",
+        description=(
+            "An expression that returns true or false, indicating whether or not "
+            "the condition is satisfied."
+        ),
     )
     expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_expression", title="Extension field for ``expression``."
@@ -514,8 +622,11 @@ class RequestGroupActionCondition(backboneelement.BackboneElement):
     kind: fhirtypes.Code = Field(
         ...,
         alias="kind",
-        title="Type `Code`",
-        description="applicability | start | stop",
+        title="applicability | start | stop",
+        description="The kind of condition.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["applicability", "start", "stop"],
     )
     kind__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_kind", title="Extension field for ``kind``."
@@ -524,8 +635,8 @@ class RequestGroupActionCondition(backboneelement.BackboneElement):
     language: fhirtypes.String = Field(
         None,
         alias="language",
-        title="Type `String`",
-        description="Language of the expression",
+        title="Language of the expression",
+        description="The media type of the language for the expression.",
     )
     language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_language", title="Extension field for ``language``."
@@ -547,8 +658,8 @@ class RequestGroupActionRelatedAction(backboneelement.BackboneElement):
     actionId: fhirtypes.Id = Field(
         ...,
         alias="actionId",
-        title="Type `Id`",
-        description="What action this is related to",
+        title="What action this is related to",
+        description="The element id of the action this is related to.",
     )
     actionId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_actionId", title="Extension field for ``actionId``."
@@ -557,29 +668,50 @@ class RequestGroupActionRelatedAction(backboneelement.BackboneElement):
     offsetDuration: fhirtypes.DurationType = Field(
         None,
         alias="offsetDuration",
-        title="Type `Duration` (represented as `dict` in JSON)",
-        description="Time offset for the relationship",
-        one_of_many="offset",  # Choice of Data Types. i.e value[x]
+        title="Time offset for the relationship",
+        description=(
+            "A duration or range of durations to apply to the relationship. For "
+            "example, 30-60 minutes before."
+        ),
+        # Choice of Data Types. i.e offset[x]
+        one_of_many="offset",
         one_of_many_required=False,
     )
 
     offsetRange: fhirtypes.RangeType = Field(
         None,
         alias="offsetRange",
-        title="Type `Range` (represented as `dict` in JSON)",
-        description="Time offset for the relationship",
-        one_of_many="offset",  # Choice of Data Types. i.e value[x]
+        title="Time offset for the relationship",
+        description=(
+            "A duration or range of durations to apply to the relationship. For "
+            "example, 30-60 minutes before."
+        ),
+        # Choice of Data Types. i.e offset[x]
+        one_of_many="offset",
         one_of_many_required=False,
     )
 
     relationship: fhirtypes.Code = Field(
         ...,
         alias="relationship",
-        title="Type `Code`",
-        description=(
+        title=(
             "before-start | before | before-end | concurrent-with-start | "
             "concurrent | concurrent-with-end | after-start | after | after-end"
         ),
+        description="The relationship of this action to the related action.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "before-start",
+            "before",
+            "before-end",
+            "concurrent-with-start",
+            "concurrent",
+            "concurrent-with-end",
+            "after-start",
+            "after",
+            "after-end",
+        ],
     )
     relationship__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_relationship", title="Extension field for ``relationship``."

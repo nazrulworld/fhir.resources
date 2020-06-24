@@ -29,8 +29,8 @@ class PractitionerRole(domainresource.DomainResource):
     active: bool = Field(
         None,
         alias="active",
-        title="Type `bool`",
-        description="Whether this practitioner\u0027s record is in active use",
+        title="Whether this practitioner's record is in active use",
+        description=None,
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_active", title="Extension field for ``active``."
@@ -39,8 +39,13 @@ class PractitionerRole(domainresource.DomainResource):
     availabilityExceptions: fhirtypes.String = Field(
         None,
         alias="availabilityExceptions",
-        title="Type `String`",
-        description="Description of availability exceptions",
+        title="Description of availability exceptions",
+        description=(
+            "A description of site availability exceptions, e.g. public holiday "
+            "availability. Succinctly describing all possible exceptions to normal "
+            "site availability as details in the available Times and not available "
+            "Times."
+        ),
     )
     availabilityExceptions__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -51,90 +56,89 @@ class PractitionerRole(domainresource.DomainResource):
     availableTime: ListType[fhirtypes.PractitionerRoleAvailableTimeType] = Field(
         None,
         alias="availableTime",
-        title=(
-            "List of `PractitionerRoleAvailableTime` items (represented as `dict` "
-            "in JSON)"
-        ),
-        description="Times the Service Site is available",
+        title="Times the Service Site is available",
+        description="A collection of times that the Service Site is available.",
     )
 
     code: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="code",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Roles which this practitioner may perform",
+        title="Roles which this practitioner may perform",
+        description=(
+            "Roles which this practitioner is authorized to perform for the "
+            "organization."
+        ),
     )
 
     endpoint: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="endpoint",
         title=(
-            "List of `Reference` items referencing `Endpoint` (represented as "
-            "`dict` in JSON)"
-        ),
-        description=(
             "Technical endpoints providing access to services operated for the "
             "practitioner with this role"
         ),
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Endpoint"],
     )
 
     healthcareService: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="healthcareService",
         title=(
-            "List of `Reference` items referencing `HealthcareService` (represented"
-            " as `dict` in JSON)"
-        ),
-        description=(
             "The list of healthcare services that this worker provides for this "
-            "role\u0027s Organization/Location(s)"
+            "role's Organization/Location(s)"
         ),
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["HealthcareService"],
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Business Identifiers that are specific to a role/location",
+        title="Business Identifiers that are specific to a role/location",
+        description=None,
     )
 
     location: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="location",
-        title=(
-            "List of `Reference` items referencing `Location` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="The location(s) at which this practitioner provides care",
+        title="The location(s) at which this practitioner provides care",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Location"],
     )
 
     notAvailable: ListType[fhirtypes.PractitionerRoleNotAvailableType] = Field(
         None,
         alias="notAvailable",
-        title=(
-            "List of `PractitionerRoleNotAvailable` items (represented as `dict` in"
-            " JSON)"
+        title="Not available during this time due to provided reason",
+        description=(
+            "The HealthcareService is not available during this period of time due "
+            "to the provided reason."
         ),
-        description="Not available during this time due to provided reason",
     )
 
     organization: fhirtypes.ReferenceType = Field(
         None,
         alias="organization",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Organization where the roles are available",
+        title="Organization where the roles are available",
+        description="The organization where the Practitioner performs the roles associated.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The period during which the practitioner is authorized to perform in "
             "these role(s)"
+        ),
+        description=(
+            "The period during which the person is authorized to act as a "
+            "practitioner in these role(s) for the organization."
         ),
     )
 
@@ -142,27 +146,26 @@ class PractitionerRole(domainresource.DomainResource):
         None,
         alias="practitioner",
         title=(
-            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
-            "JSON)"
-        ),
-        description=(
             "Practitioner that is able to provide the defined services for the "
             "organation"
         ),
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner"],
     )
 
     specialty: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="specialty",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Specific specialty of the practitioner",
+        title="Specific specialty of the practitioner",
+        description=None,
     )
 
     telecom: ListType[fhirtypes.ContactPointType] = Field(
         None,
         alias="telecom",
-        title="List of `ContactPoint` items (represented as `dict` in JSON)",
-        description="Contact details that are specific to the role/location/service",
+        title="Contact details that are specific to the role/location/service",
+        description=None,
     )
 
 
@@ -180,8 +183,11 @@ class PractitionerRoleAvailableTime(backboneelement.BackboneElement):
     allDay: bool = Field(
         None,
         alias="allDay",
-        title="Type `bool`",
-        description="Always available? e.g. 24 hour service",
+        title="Always available? e.g. 24 hour service",
+        description=(
+            "Is this always available? (hence times are irrelevant) e.g. 24 hour "
+            "service."
+        ),
     )
     allDay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_allDay", title="Extension field for ``allDay``."
@@ -190,8 +196,11 @@ class PractitionerRoleAvailableTime(backboneelement.BackboneElement):
     availableEndTime: fhirtypes.Time = Field(
         None,
         alias="availableEndTime",
-        title="Type `Time`",
-        description="Closing time of day (ignored if allDay = true)",
+        title="Closing time of day (ignored if allDay = true)",
+        description=(
+            "The closing time of day. Note: If the AllDay flag is set, then this "
+            "time is ignored."
+        ),
     )
     availableEndTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -202,8 +211,11 @@ class PractitionerRoleAvailableTime(backboneelement.BackboneElement):
     availableStartTime: fhirtypes.Time = Field(
         None,
         alias="availableStartTime",
-        title="Type `Time`",
-        description="Opening time of day (ignored if allDay = true)",
+        title="Opening time of day (ignored if allDay = true)",
+        description=(
+            "The opening time of day. Note: If the AllDay flag is set, then this "
+            "time is ignored."
+        ),
     )
     availableStartTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -214,8 +226,14 @@ class PractitionerRoleAvailableTime(backboneelement.BackboneElement):
     daysOfWeek: ListType[fhirtypes.Code] = Field(
         None,
         alias="daysOfWeek",
-        title="List of `Code` items",
-        description="mon | tue | wed | thu | fri | sat | sun",
+        title="mon | tue | wed | thu | fri | sat | sun",
+        description=(
+            "Indicates which days of the week are available between the start and "
+            "end Times."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["mon", "tue", "wed", "thu", "fri", "sat", "sun"],
     )
     daysOfWeek__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -237,8 +255,11 @@ class PractitionerRoleNotAvailable(backboneelement.BackboneElement):
     description: fhirtypes.String = Field(
         ...,
         alias="description",
-        title="Type `String`",
-        description="Reason presented to the user explaining why time not available",
+        title="Reason presented to the user explaining why time not available",
+        description=(
+            "The reason that can be presented to the user as to why this time is "
+            "not available."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -247,6 +268,9 @@ class PractitionerRoleNotAvailable(backboneelement.BackboneElement):
     during: fhirtypes.PeriodType = Field(
         None,
         alias="during",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Service not availablefrom this date",
+        title="Service not availablefrom this date",
+        description=(
+            "Service is not available (seasonally or for a public holiday) from "
+            "this date."
+        ),
     )

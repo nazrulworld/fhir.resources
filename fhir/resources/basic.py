@@ -29,22 +29,33 @@ class Basic(domainresource.DomainResource):
     author: fhirtypes.ReferenceType = Field(
         None,
         alias="author",
-        title=(
-            "Type `Reference` referencing `Practitioner, PractitionerRole, Patient,"
-            " RelatedPerson, Organization` (represented as `dict` in JSON)"
-        ),
-        description="Who created",
+        title="Who created",
+        description="Indicates who was responsible for creating the resource instance.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Practitioner",
+            "PractitionerRole",
+            "Patient",
+            "RelatedPerson",
+            "Organization",
+        ],
     )
 
     code: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Kind of Resource",
+        title="Kind of Resource",
+        description=(
+            "Identifies the 'type' of resource - equivalent to the resource name "
+            "for other resources."
+        ),
     )
 
     created: fhirtypes.Date = Field(
-        None, alias="created", title="Type `Date`", description="When created"
+        None,
+        alias="created",
+        title="When created",
+        description="Identifies when the resource was first created.",
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_created", title="Extension field for ``created``."
@@ -53,15 +64,21 @@ class Basic(domainresource.DomainResource):
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Business identifier",
+        title="Business identifier",
+        description=(
+            "Identifier assigned to the resource for business purposes, outside the"
+            " context of FHIR."
+        ),
     )
 
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title=(
-            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
+        title="Identifies the focus of this resource",
+        description=(
+            "Identifies the patient, practitioner, device or any other resource "
+            'that is the "focus" of this resource.'
         ),
-        description="Identifies the focus of this resource",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )

@@ -25,13 +25,13 @@ class Range(element.Element):
     high: fhirtypes.QuantityType = Field(
         None,
         alias="high",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="High limit",
+        title="High limit",
+        description="The high limit. The boundary is inclusive.",
     )
 
     low: fhirtypes.QuantityType = Field(
         None,
         alias="low",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Low limit",
+        title="Low limit",
+        description="The low limit. The boundary is inclusive.",
     )

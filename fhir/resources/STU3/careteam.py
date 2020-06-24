@@ -29,90 +29,107 @@ class CareTeam(domainresource.DomainResource):
     category: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="category",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Type of team",
+        title="Type of team",
+        description=(
+            "Identifies what kind of team.  This is to support differentiation "
+            "between multiple co-existing teams, such as care plan team, episode of"
+            " care team, longitudinal care team."
+        ),
     )
 
     context: fhirtypes.ReferenceType = Field(
         None,
         alias="context",
-        title=(
-            "Type `Reference` referencing `Encounter, EpisodeOfCare` (represented "
-            "as `dict` in JSON)"
+        title="Encounter or episode associated with CareTeam",
+        description=(
+            "The encounter or episode of care that establishes the context for this"
+            " care team."
         ),
-        description="Encounter or episode associated with CareTeam",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Encounter", "EpisodeOfCare"],
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="External Ids for this team",
+        title="External Ids for this team",
+        description=(
+            "This records identifiers associated with this care team that are "
+            "defined by business processes and/or used to refer to it when a direct"
+            " URL reference to the resource itself is not appropriate."
+        ),
     )
 
     managingOrganization: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="managingOrganization",
-        title=(
-            "List of `Reference` items referencing `Organization` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Organization responsible for the care team",
+        title="Organization responsible for the care team",
+        description="The organization responsible for the care team.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String`",
-        description="Name of the team, such as crisis assessment team",
+        title="Name of the team, such as crisis assessment team",
+        description=(
+            "A label for human use intended to distinguish like teams.  E.g. the "
+            '"red" vs. "green" trauma teams.'
+        ),
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
-        None,
-        alias="note",
-        title="List of `Annotation` items (represented as `dict` in JSON)",
-        description="Comments made about the CareTeam",
+        None, alias="note", title="Comments made about the CareTeam", description=None,
     )
 
     participant: ListType[fhirtypes.CareTeamParticipantType] = Field(
         None,
         alias="participant",
-        title="List of `CareTeamParticipant` items (represented as `dict` in JSON)",
-        description="Members of the team",
+        title="Members of the team",
+        description=(
+            "Identifies all people and organizations who are expected to be "
+            "involved in the care team."
+        ),
     )
 
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Time period team covers",
+        title="Time period team covers",
+        description=(
+            "Indicates when the team did (or is intended to) come into effect and "
+            "end."
+        ),
     )
 
     reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="reasonCode",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Why the care team exists",
+        title="Why the care team exists",
+        description="Describes why the care team exists.",
     )
 
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="reasonReference",
-        title=(
-            "List of `Reference` items referencing `Condition` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Why the care team exists",
+        title="Why the care team exists",
+        description="Condition(s) that this care team addresses.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Condition"],
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code`",
-        description="proposed | active | suspended | inactive | entered-in-error",
+        title="proposed | active | suspended | inactive | entered-in-error",
+        description="Indicates the current state of the care team.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["proposed", "active", "suspended", "inactive", "entered-in-error"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -121,11 +138,13 @@ class CareTeam(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title=(
-            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
-            "in JSON)"
+        title="Who care team is for",
+        description=(
+            "Identifies the patient or group whose intended care is handled by the "
+            "team."
         ),
-        description="Who care team is for",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "Group"],
     )
 
 
@@ -144,33 +163,47 @@ class CareTeamParticipant(backboneelement.BackboneElement):
     member: fhirtypes.ReferenceType = Field(
         None,
         alias="member",
-        title=(
-            "Type `Reference` referencing `Practitioner, RelatedPerson, Patient, "
-            "Organization, CareTeam` (represented as `dict` in JSON)"
+        title="Who is involved",
+        description=(
+            "The specific person or organization who is participating/expected to "
+            "participate in the care team."
         ),
-        description="Who is involved",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Practitioner",
+            "RelatedPerson",
+            "Patient",
+            "Organization",
+            "CareTeam",
+        ],
     )
 
     onBehalfOf: fhirtypes.ReferenceType = Field(
         None,
         alias="onBehalfOf",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Organization of the practitioner",
+        title="Organization of the practitioner",
+        description="The organization of the practitioner.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Time period of participant",
+        title="Time period of participant",
+        description=(
+            "Indicates when the specific member or organization did (or is intended"
+            " to) come into effect and end."
+        ),
     )
 
     role: fhirtypes.CodeableConceptType = Field(
         None,
         alias="role",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type of involvement",
+        title="Type of involvement",
+        description=(
+            "Indicates specific responsibility of an individual within the care "
+            'team, such as "Primary care physician", "Trained social worker '
+            'counselor", "Caregiver", etc.'
+        ),
     )

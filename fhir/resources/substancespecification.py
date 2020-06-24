@@ -28,18 +28,15 @@ class SubstanceSpecification(domainresource.DomainResource):
     code: ListType[fhirtypes.SubstanceSpecificationCodeType] = Field(
         None,
         alias="code",
-        title=(
-            "List of `SubstanceSpecificationCode` items (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Codes associated with the substance",
+        title="Codes associated with the substance",
+        description=None,
     )
 
     comment: fhirtypes.String = Field(
         None,
         alias="comment",
-        title="Type `String`",
-        description="Textual comment about this record of a substance",
+        title="Textual comment about this record of a substance",
+        description=None,
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comment", title="Extension field for ``comment``."
@@ -48,8 +45,8 @@ class SubstanceSpecification(domainresource.DomainResource):
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="Textual description of the substance",
+        title="Textual description of the substance",
+        description=None,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -58,25 +55,22 @@ class SubstanceSpecification(domainresource.DomainResource):
     domain: fhirtypes.CodeableConceptType = Field(
         None,
         alias="domain",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="If the substance applies to only human or veterinary use",
+        title="If the substance applies to only human or veterinary use",
+        description=None,
     )
 
     identifier: fhirtypes.IdentifierType = Field(
         None,
         alias="identifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Identifier by which this substance is known",
+        title="Identifier by which this substance is known",
+        description=None,
     )
 
     moiety: ListType[fhirtypes.SubstanceSpecificationMoietyType] = Field(
         None,
         alias="moiety",
-        title=(
-            "List of `SubstanceSpecificationMoiety` items (represented as `dict` in"
-            " JSON)"
-        ),
-        description="Moiety, for structural modifications",
+        title="Moiety, for structural modifications",
+        description=None,
     )
 
     molecularWeight: ListType[
@@ -85,130 +79,109 @@ class SubstanceSpecification(domainresource.DomainResource):
         None,
         alias="molecularWeight",
         title=(
-            "List of `SubstanceSpecificationStructureIsotopeMolecularWeight` items "
-            "(represented as `dict` in JSON)"
-        ),
-        description=(
             "The molecular weight or weight range (for proteins, polymers or "
             "nucleic acids)"
         ),
+        description=None,
     )
 
     name: ListType[fhirtypes.SubstanceSpecificationNameType] = Field(
         None,
         alias="name",
-        title=(
-            "List of `SubstanceSpecificationName` items (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Names applicable to this substance",
+        title="Names applicable to this substance",
+        description=None,
     )
 
     nucleicAcid: fhirtypes.ReferenceType = Field(
         None,
         alias="nucleicAcid",
-        title=(
-            "Type `Reference` referencing `SubstanceNucleicAcid` (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Data items specific to nucleic acids",
+        title="Data items specific to nucleic acids",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["SubstanceNucleicAcid"],
     )
 
     polymer: fhirtypes.ReferenceType = Field(
         None,
         alias="polymer",
-        title=(
-            "Type `Reference` referencing `SubstancePolymer` (represented as `dict`"
-            " in JSON)"
-        ),
-        description="Data items specific to polymers",
+        title="Data items specific to polymers",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["SubstancePolymer"],
     )
 
     property: ListType[fhirtypes.SubstanceSpecificationPropertyType] = Field(
         None,
         alias="property",
         title=(
-            "List of `SubstanceSpecificationProperty` items (represented as `dict` "
-            "in JSON)"
-        ),
-        description=(
             "General specifications for this substance, including how it is related"
             " to other substances"
         ),
+        description=None,
     )
 
     protein: fhirtypes.ReferenceType = Field(
         None,
         alias="protein",
-        title=(
-            "Type `Reference` referencing `SubstanceProtein` (represented as `dict`"
-            " in JSON)"
-        ),
-        description="Data items specific to proteins",
+        title="Data items specific to proteins",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["SubstanceProtein"],
     )
 
     referenceInformation: fhirtypes.ReferenceType = Field(
         None,
         alias="referenceInformation",
-        title=(
-            "Type `Reference` referencing `SubstanceReferenceInformation` "
-            "(represented as `dict` in JSON)"
-        ),
-        description="General information detailing this substance",
+        title="General information detailing this substance",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["SubstanceReferenceInformation"],
     )
 
     relationship: ListType[fhirtypes.SubstanceSpecificationRelationshipType] = Field(
         None,
         alias="relationship",
         title=(
-            "List of `SubstanceSpecificationRelationship` items (represented as "
-            "`dict` in JSON)"
-        ),
-        description=(
             "A link between this substance and another, with details of the "
             "relationship"
         ),
+        description=None,
     )
 
     source: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="source",
-        title=(
-            "List of `Reference` items referencing `DocumentReference` (represented"
-            " as `dict` in JSON)"
-        ),
-        description="Supporting literature",
+        title="Supporting literature",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["DocumentReference"],
     )
 
     sourceMaterial: fhirtypes.ReferenceType = Field(
         None,
         alias="sourceMaterial",
-        title=(
-            "Type `Reference` referencing `SubstanceSourceMaterial` (represented as"
-            " `dict` in JSON)"
-        ),
-        description="Material or taxonomic/anatomical source for the substance",
+        title="Material or taxonomic/anatomical source for the substance",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["SubstanceSourceMaterial"],
     )
 
     status: fhirtypes.CodeableConceptType = Field(
         None,
         alias="status",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Status of substance within the catalogue e.g. approved",
+        title="Status of substance within the catalogue e.g. approved",
+        description=None,
     )
 
     structure: fhirtypes.SubstanceSpecificationStructureType = Field(
-        None,
-        alias="structure",
-        title="Type `SubstanceSpecificationStructure` (represented as `dict` in JSON)",
-        description="Structural information",
+        None, alias="structure", title="Structural information", description=None,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="High level categorization, e.g. polymer or nucleic acid",
+        title="High level categorization, e.g. polymer or nucleic acid",
+        description=None,
     )
 
 
@@ -223,17 +196,14 @@ class SubstanceSpecificationCode(backboneelement.BackboneElement):
     resource_type = Field("SubstanceSpecificationCode", const=True)
 
     code: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The specific code",
+        None, alias="code", title="The specific code", description=None,
     )
 
     comment: fhirtypes.String = Field(
         None,
         alias="comment",
-        title="Type `String`",
-        description="Any comment can be provided in this field, if necessary",
+        title="Any comment can be provided in this field, if necessary",
+        description=None,
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comment", title="Extension field for ``comment``."
@@ -242,28 +212,24 @@ class SubstanceSpecificationCode(backboneelement.BackboneElement):
     source: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="source",
-        title=(
-            "List of `Reference` items referencing `DocumentReference` (represented"
-            " as `dict` in JSON)"
-        ),
-        description="Supporting literature",
+        title="Supporting literature",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["DocumentReference"],
     )
 
     status: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="status",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Status of the code assignment",
+        None, alias="status", title="Status of the code assignment", description=None,
     )
 
     statusDate: fhirtypes.DateTime = Field(
         None,
         alias="statusDate",
-        title="Type `DateTime`",
-        description=(
+        title=(
             "The date at which the code status is changed as part of the "
             "terminology maintenance"
         ),
+        description=None,
     )
     statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_statusDate", title="Extension field for ``statusDate``."
@@ -283,18 +249,20 @@ class SubstanceSpecificationMoiety(backboneelement.BackboneElement):
     amountQuantity: fhirtypes.QuantityType = Field(
         None,
         alias="amountQuantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Quantitative value for this moiety",
-        one_of_many="amount",  # Choice of Data Types. i.e value[x]
+        title="Quantitative value for this moiety",
+        description=None,
+        # Choice of Data Types. i.e amount[x]
+        one_of_many="amount",
         one_of_many_required=False,
     )
 
     amountString: fhirtypes.String = Field(
         None,
         alias="amountString",
-        title="Type `String`",
-        description="Quantitative value for this moiety",
-        one_of_many="amount",  # Choice of Data Types. i.e value[x]
+        title="Quantitative value for this moiety",
+        description=None,
+        # Choice of Data Types. i.e amount[x]
+        one_of_many="amount",
         one_of_many_required=False,
     )
     amountString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -304,15 +272,12 @@ class SubstanceSpecificationMoiety(backboneelement.BackboneElement):
     identifier: fhirtypes.IdentifierType = Field(
         None,
         alias="identifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Identifier by which this moiety substance is known",
+        title="Identifier by which this moiety substance is known",
+        description=None,
     )
 
     molecularFormula: fhirtypes.String = Field(
-        None,
-        alias="molecularFormula",
-        title="Type `String`",
-        description="Molecular formula",
+        None, alias="molecularFormula", title="Molecular formula", description=None,
     )
     molecularFormula__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -323,32 +288,23 @@ class SubstanceSpecificationMoiety(backboneelement.BackboneElement):
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String`",
-        description="Textual name for this moiety substance",
+        title="Textual name for this moiety substance",
+        description=None,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
     )
 
     opticalActivity: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="opticalActivity",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Optical activity type",
+        None, alias="opticalActivity", title="Optical activity type", description=None,
     )
 
     role: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="role",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Role that the moiety is playing",
+        None, alias="role", title="Role that the moiety is playing", description=None,
     )
 
     stereochemistry: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="stereochemistry",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Stereochemistry type",
+        None, alias="stereochemistry", title="Stereochemistry type", description=None,
     )
 
     @root_validator(pre=True)
@@ -401,29 +357,26 @@ class SubstanceSpecificationName(backboneelement.BackboneElement):
     domain: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="domain",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The use context of this name for example if there is a different name "
             "a drug active ingredient as opposed to a food colour additive"
         ),
+        description=None,
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="jurisdiction",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="The jurisdiction where this name applies",
+        title="The jurisdiction where this name applies",
+        description=None,
     )
 
     language: ListType[fhirtypes.CodeableConceptType] = Field(
-        None,
-        alias="language",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Language of the name",
+        None, alias="language", title="Language of the name", description=None,
     )
 
     name: fhirtypes.String = Field(
-        ..., alias="name", title="Type `String`", description="The actual name"
+        ..., alias="name", title="The actual name", description=None,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -432,18 +385,15 @@ class SubstanceSpecificationName(backboneelement.BackboneElement):
     official: ListType[fhirtypes.SubstanceSpecificationNameOfficialType] = Field(
         None,
         alias="official",
-        title=(
-            "List of `SubstanceSpecificationNameOfficial` items (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Details of the official nature of this name",
+        title="Details of the official nature of this name",
+        description=None,
     )
 
     preferred: bool = Field(
         None,
         alias="preferred",
-        title="Type `bool`",
-        description="If this is the preferred name for this substance",
+        title="If this is the preferred name for this substance",
+        description=None,
     )
     preferred__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_preferred", title="Extension field for ``preferred``."
@@ -452,45 +402,29 @@ class SubstanceSpecificationName(backboneelement.BackboneElement):
     source: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="source",
-        title=(
-            "List of `Reference` items referencing `DocumentReference` (represented"
-            " as `dict` in JSON)"
-        ),
-        description="Supporting literature",
+        title="Supporting literature",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["DocumentReference"],
     )
 
     status: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="status",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The status of the name",
+        None, alias="status", title="The status of the name", description=None,
     )
 
     synonym: ListType[fhirtypes.SubstanceSpecificationNameType] = Field(
-        None,
-        alias="synonym",
-        title=(
-            "List of `SubstanceSpecificationName` items (represented as `dict` in "
-            "JSON)"
-        ),
-        description="A synonym of this name",
+        None, alias="synonym", title="A synonym of this name", description=None,
     )
 
     translation: ListType[fhirtypes.SubstanceSpecificationNameType] = Field(
         None,
         alias="translation",
-        title=(
-            "List of `SubstanceSpecificationName` items (represented as `dict` in "
-            "JSON)"
-        ),
-        description="A translation for this name",
+        title="A translation for this name",
+        description=None,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Name type",
+        None, alias="type", title="Name type", description=None,
     )
 
 
@@ -507,25 +441,19 @@ class SubstanceSpecificationNameOfficial(backboneelement.BackboneElement):
     authority: fhirtypes.CodeableConceptType = Field(
         None,
         alias="authority",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Which authority uses this official name",
+        title="Which authority uses this official name",
+        description=None,
     )
 
     date: fhirtypes.DateTime = Field(
-        None,
-        alias="date",
-        title="Type `DateTime`",
-        description="Date of official name change",
+        None, alias="date", title="Date of official name change", description=None,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
     )
 
     status: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="status",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The status of the official name",
+        None, alias="status", title="The status of the official name", description=None,
     )
 
 
@@ -543,18 +471,20 @@ class SubstanceSpecificationProperty(backboneelement.BackboneElement):
     amountQuantity: fhirtypes.QuantityType = Field(
         None,
         alias="amountQuantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Quantitative value for this property",
-        one_of_many="amount",  # Choice of Data Types. i.e value[x]
+        title="Quantitative value for this property",
+        description=None,
+        # Choice of Data Types. i.e amount[x]
+        one_of_many="amount",
         one_of_many_required=False,
     )
 
     amountString: fhirtypes.String = Field(
         None,
         alias="amountString",
-        title="Type `String`",
-        description="Quantitative value for this property",
-        one_of_many="amount",  # Choice of Data Types. i.e value[x]
+        title="Quantitative value for this property",
+        description=None,
+        # Choice of Data Types. i.e amount[x]
+        one_of_many="amount",
         one_of_many_required=False,
     )
     amountString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -564,26 +494,27 @@ class SubstanceSpecificationProperty(backboneelement.BackboneElement):
     category: fhirtypes.CodeableConceptType = Field(
         None,
         alias="category",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="A category for this property, e.g. Physical, Chemical, Enzymatic",
+        title="A category for this property, e.g. Physical, Chemical, Enzymatic",
+        description=None,
     )
 
     code: fhirtypes.CodeableConceptType = Field(
         None,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Property type e.g. viscosity, pH, isoelectric point",
+        title="Property type e.g. viscosity, pH, isoelectric point",
+        description=None,
     )
 
     definingSubstanceCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="definingSubstanceCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "A substance upon which a defining property depends (e.g. for "
             "solubility: in water, in alcohol)"
         ),
-        one_of_many="definingSubstance",  # Choice of Data Types. i.e value[x]
+        description=None,
+        # Choice of Data Types. i.e definingSubstance[x]
+        one_of_many="definingSubstance",
         one_of_many_required=False,
     )
 
@@ -591,25 +522,25 @@ class SubstanceSpecificationProperty(backboneelement.BackboneElement):
         None,
         alias="definingSubstanceReference",
         title=(
-            "Type `Reference` referencing `SubstanceSpecification, Substance` "
-            "(represented as `dict` in JSON)"
-        ),
-        description=(
             "A substance upon which a defining property depends (e.g. for "
             "solubility: in water, in alcohol)"
         ),
-        one_of_many="definingSubstance",  # Choice of Data Types. i.e value[x]
+        description=None,
+        # Choice of Data Types. i.e definingSubstance[x]
+        one_of_many="definingSubstance",
         one_of_many_required=False,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["SubstanceSpecification", "Substance"],
     )
 
     parameters: fhirtypes.String = Field(
         None,
         alias="parameters",
-        title="Type `String`",
-        description=(
+        title=(
             "Parameters that were used in the measurement of a property (e.g. for "
             "viscosity: measured at 20C with a pH of 7.1)"
         ),
+        description=None,
     )
     parameters__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_parameters", title="Extension field for ``parameters``."
@@ -671,59 +602,63 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
     amountQuantity: fhirtypes.QuantityType = Field(
         None,
         alias="amountQuantity",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "A numeric factor for the relationship, for instance to express that "
             "the salt of a substance has some percentage of the active substance in"
             " relation to some other"
         ),
-        one_of_many="amount",  # Choice of Data Types. i.e value[x]
+        description=None,
+        # Choice of Data Types. i.e amount[x]
+        one_of_many="amount",
         one_of_many_required=False,
     )
 
     amountRange: fhirtypes.RangeType = Field(
         None,
         alias="amountRange",
-        title="Type `Range` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "A numeric factor for the relationship, for instance to express that "
             "the salt of a substance has some percentage of the active substance in"
             " relation to some other"
         ),
-        one_of_many="amount",  # Choice of Data Types. i.e value[x]
+        description=None,
+        # Choice of Data Types. i.e amount[x]
+        one_of_many="amount",
         one_of_many_required=False,
     )
 
     amountRatio: fhirtypes.RatioType = Field(
         None,
         alias="amountRatio",
-        title="Type `Ratio` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "A numeric factor for the relationship, for instance to express that "
             "the salt of a substance has some percentage of the active substance in"
             " relation to some other"
         ),
-        one_of_many="amount",  # Choice of Data Types. i.e value[x]
+        description=None,
+        # Choice of Data Types. i.e amount[x]
+        one_of_many="amount",
         one_of_many_required=False,
     )
 
     amountRatioLowLimit: fhirtypes.RatioType = Field(
         None,
         alias="amountRatioLowLimit",
-        title="Type `Ratio` (represented as `dict` in JSON)",
-        description="For use when the numeric",
+        title="For use when the numeric",
+        description=None,
     )
 
     amountString: fhirtypes.String = Field(
         None,
         alias="amountString",
-        title="Type `String`",
-        description=(
+        title=(
             "A numeric factor for the relationship, for instance to express that "
             "the salt of a substance has some percentage of the active substance in"
             " relation to some other"
         ),
-        one_of_many="amount",  # Choice of Data Types. i.e value[x]
+        description=None,
+        # Choice of Data Types. i.e amount[x]
+        one_of_many="amount",
         one_of_many_required=False,
     )
     amountString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -733,22 +668,22 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
     amountType: fhirtypes.CodeableConceptType = Field(
         None,
         alias="amountType",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             'An operator for the amount, for example "average", "approximately", '
             '"less than"'
         ),
+        description=None,
     )
 
     isDefining: bool = Field(
         None,
         alias="isDefining",
-        title="Type `bool`",
-        description=(
+        title=(
             "For example where an enzyme strongly bonds with a particular "
             "substance, this is a defining relationship for that enzyme, out of "
             "several possible substance relationships"
         ),
+        description=None,
     )
     isDefining__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_isDefining", title="Extension field for ``isDefining``."
@@ -757,29 +692,29 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
     relationship: fhirtypes.CodeableConceptType = Field(
         None,
         alias="relationship",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description='For example "salt to parent", "active moiety", "starting material"',
+        title='For example "salt to parent", "active moiety", "starting material"',
+        description=None,
     )
 
     source: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="source",
-        title=(
-            "List of `Reference` items referencing `DocumentReference` (represented"
-            " as `dict` in JSON)"
-        ),
-        description="Supporting literature",
+        title="Supporting literature",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["DocumentReference"],
     )
 
     substanceCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="substanceCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "A pointer to another substance, as a resource or just a "
             "representational code"
         ),
-        one_of_many="substance",  # Choice of Data Types. i.e value[x]
+        description=None,
+        # Choice of Data Types. i.e substance[x]
+        one_of_many="substance",
         one_of_many_required=False,
     )
 
@@ -787,15 +722,15 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
         None,
         alias="substanceReference",
         title=(
-            "Type `Reference` referencing `SubstanceSpecification` (represented as "
-            "`dict` in JSON)"
-        ),
-        description=(
             "A pointer to another substance, as a resource or just a "
             "representational code"
         ),
-        one_of_many="substance",  # Choice of Data Types. i.e value[x]
+        description=None,
+        # Choice of Data Types. i.e substance[x]
+        one_of_many="substance",
         one_of_many_required=False,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["SubstanceSpecification"],
     )
 
     @root_validator(pre=True)
@@ -852,20 +787,14 @@ class SubstanceSpecificationStructure(backboneelement.BackboneElement):
         None,
         alias="isotope",
         title=(
-            "List of `SubstanceSpecificationStructureIsotope` items (represented as"
-            " `dict` in JSON)"
-        ),
-        description=(
             "Applicable for single substances that contain a radionuclide or a non-"
             "natural isotopic ratio"
         ),
+        description=None,
     )
 
     molecularFormula: fhirtypes.String = Field(
-        None,
-        alias="molecularFormula",
-        title="Type `String`",
-        description="Molecular formula",
+        None, alias="molecularFormula", title="Molecular formula", description=None,
     )
     molecularFormula__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -876,11 +805,11 @@ class SubstanceSpecificationStructure(backboneelement.BackboneElement):
     molecularFormulaByMoiety: fhirtypes.String = Field(
         None,
         alias="molecularFormulaByMoiety",
-        title="Type `String`",
-        description=(
+        title=(
             "Specified per moiety according to the Hill system, i.e. first C, then "
             "H, then alphabetical, each moiety separated by a dot"
         ),
+        description=None,
     )
     molecularFormulaByMoiety__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -892,20 +821,14 @@ class SubstanceSpecificationStructure(backboneelement.BackboneElement):
         None,
         alias="molecularWeight",
         title=(
-            "Type `SubstanceSpecificationStructureIsotopeMolecularWeight` "
-            "(represented as `dict` in JSON)"
-        ),
-        description=(
             "The molecular weight or weight range (for proteins, polymers or "
             "nucleic acids)"
         ),
+        description=None,
     )
 
     opticalActivity: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="opticalActivity",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Optical activity type",
+        None, alias="opticalActivity", title="Optical activity type", description=None,
     )
 
     representation: ListType[
@@ -913,28 +836,21 @@ class SubstanceSpecificationStructure(backboneelement.BackboneElement):
     ] = Field(
         None,
         alias="representation",
-        title=(
-            "List of `SubstanceSpecificationStructureRepresentation` items "
-            "(represented as `dict` in JSON)"
-        ),
-        description="Molecular structural representation",
+        title="Molecular structural representation",
+        description=None,
     )
 
     source: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="source",
-        title=(
-            "List of `Reference` items referencing `DocumentReference` (represented"
-            " as `dict` in JSON)"
-        ),
-        description="Supporting literature",
+        title="Supporting literature",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["DocumentReference"],
     )
 
     stereochemistry: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="stereochemistry",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Stereochemistry type",
+        None, alias="stereochemistry", title="Stereochemistry type", description=None,
     )
 
 
@@ -952,42 +868,39 @@ class SubstanceSpecificationStructureIsotope(backboneelement.BackboneElement):
     halfLife: fhirtypes.QuantityType = Field(
         None,
         alias="halfLife",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="Half life - for a non-natural nuclide",
+        title="Half life - for a non-natural nuclide",
+        description=None,
     )
 
     identifier: fhirtypes.IdentifierType = Field(
         None,
         alias="identifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Substance identifier for each non-natural or radioisotope",
+        title="Substance identifier for each non-natural or radioisotope",
+        description=None,
     )
 
     molecularWeight: fhirtypes.SubstanceSpecificationStructureIsotopeMolecularWeightType = Field(  # noqa: B950
         None,
         alias="molecularWeight",
         title=(
-            "Type `SubstanceSpecificationStructureIsotopeMolecularWeight` "
-            "(represented as `dict` in JSON)"
-        ),
-        description=(
             "The molecular weight or weight range (for proteins, polymers or "
             "nucleic acids)"
         ),
+        description=None,
     )
 
     name: fhirtypes.CodeableConceptType = Field(
         None,
         alias="name",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Substance name for each non-natural or radioisotope",
+        title="Substance name for each non-natural or radioisotope",
+        description=None,
     )
 
     substitution: fhirtypes.CodeableConceptType = Field(
         None,
         alias="substitution",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The type of isotopic substitution present in a single substance",
+        title="The type of isotopic substitution present in a single substance",
+        description=None,
     )
 
 
@@ -1009,30 +922,30 @@ class SubstanceSpecificationStructureIsotopeMolecularWeight(
     amount: fhirtypes.QuantityType = Field(
         None,
         alias="amount",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Used to capture quantitative values for a variety of elements. If only"
             " limits are given, the arithmetic mean would be the average. If only a"
             " single definite value for a given element is given, it would be "
             "captured in this field"
         ),
+        description=None,
     )
 
     method: fhirtypes.CodeableConceptType = Field(
         None,
         alias="method",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The method by which the molecular weight was determined",
+        title="The method by which the molecular weight was determined",
+        description=None,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Type of molecular weight such as exact, average (also known as. number"
             " average), weight average"
         ),
+        description=None,
     )
 
 
@@ -1049,18 +962,18 @@ class SubstanceSpecificationStructureRepresentation(backboneelement.BackboneElem
     attachment: fhirtypes.AttachmentType = Field(
         None,
         alias="attachment",
-        title="Type `Attachment` (represented as `dict` in JSON)",
-        description="An attached file with the structural representation",
+        title="An attached file with the structural representation",
+        description=None,
     )
 
     representation: fhirtypes.String = Field(
         None,
         alias="representation",
-        title="Type `String`",
-        description=(
+        title=(
             "The structural representation as text string in a format e.g. InChI, "
             "SMILES, MOLFILE, CDX"
         ),
+        description=None,
     )
     representation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_representation", title="Extension field for ``representation``."
@@ -1069,6 +982,6 @@ class SubstanceSpecificationStructureRepresentation(backboneelement.BackboneElem
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The type of structure (e.g. Full, Partial, Representative)",
+        title="The type of structure (e.g. Full, Partial, Representative)",
+        description=None,
     )

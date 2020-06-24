@@ -28,25 +28,35 @@ class DeviceComponent(domainresource.DomainResource):
     identifier: fhirtypes.IdentifierType = Field(
         ...,
         alias="identifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Instance id assigned by the software stack",
+        title="Instance id assigned by the software stack",
+        description=(
+            "The locally assigned unique identification by the software. For "
+            "example: handle ID."
+        ),
     )
 
     languageCode: fhirtypes.CodeableConceptType = Field(
         None,
         alias="languageCode",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Language code for the human-readable text strings produced by the "
             "device"
+        ),
+        description=(
+            "The language code for the human-readable text string produced by the "
+            "device. This language code will follow the IETF language tag. Example:"
+            " en-US."
         ),
     )
 
     lastSystemChange: fhirtypes.Instant = Field(
         None,
         alias="lastSystemChange",
-        title="Type `Instant`",
-        description="Recent system change timestamp",
+        title="Recent system change timestamp",
+        description=(
+            "The timestamp for the most recent system change which includes device "
+            "configuration or setting change."
+        ),
     )
     lastSystemChange__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -57,11 +67,29 @@ class DeviceComponent(domainresource.DomainResource):
     measurementPrinciple: fhirtypes.Code = Field(
         None,
         alias="measurementPrinciple",
-        title="Type `Code`",
-        description=(
+        title=(
             "other | chemical | electrical | impedance | nuclear | optical | "
             "thermal | biological | mechanical | acoustical | manual+"
         ),
+        description=(
+            "The physical principle of the measurement. For example: thermal, "
+            "chemical, acoustical, etc."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "other",
+            "chemical",
+            "electrical",
+            "impedance",
+            "nuclear",
+            "optical",
+            "thermal",
+            "biological",
+            "mechanical",
+            "acoustical",
+            "manual+",
+        ],
     )
     measurementPrinciple__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -72,28 +100,36 @@ class DeviceComponent(domainresource.DomainResource):
     operationalStatus: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="operationalStatus",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Current operational status of the component, for example On, Off or "
             "Standby"
+        ),
+        description=(
+            "The current operational status of the device. For example: On, Off, "
+            "Standby, etc."
         ),
     )
 
     parameterGroup: fhirtypes.CodeableConceptType = Field(
         None,
         alias="parameterGroup",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Current supported parameter group",
+        title="Current supported parameter group",
+        description=(
+            "The parameter group supported by the current device component that is "
+            "based on some nomenclature, e.g. cardiovascular."
+        ),
     )
 
     parent: fhirtypes.ReferenceType = Field(
         None,
         alias="parent",
-        title=(
-            "Type `Reference` referencing `DeviceComponent` (represented as `dict` "
-            "in JSON)"
+        title="Parent resource link",
+        description=(
+            "The link to the parent resource. For example: Channel is linked to its"
+            " VMD parent."
         ),
-        description="Parent resource link",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["DeviceComponent"],
     )
 
     productionSpecification: ListType[
@@ -101,25 +137,33 @@ class DeviceComponent(domainresource.DomainResource):
     ] = Field(
         None,
         alias="productionSpecification",
-        title=(
-            "List of `DeviceComponentProductionSpecification` items (represented as"
-            " `dict` in JSON)"
+        title="Specification details such as Component Revisions, or Serial Numbers",
+        description=(
+            "The production specification such as component revision, serial "
+            "number, etc."
         ),
-        description="Specification details such as Component Revisions, or Serial Numbers",
     )
 
     source: fhirtypes.ReferenceType = Field(
         None,
         alias="source",
-        title="Type `Reference` referencing `Device` (represented as `dict` in JSON)",
-        description="Top-level device resource link",
+        title="Top-level device resource link",
+        description=(
+            "The link to the source Device that contains administrative device "
+            "information such as manufacture, serial number, etc."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Device"],
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="What kind of component it is",
+        title="What kind of component it is",
+        description=(
+            "The component type as defined in the object-oriented or metric "
+            "nomenclature partition."
+        ),
     )
 
 
@@ -138,15 +182,20 @@ class DeviceComponentProductionSpecification(backboneelement.BackboneElement):
     componentId: fhirtypes.IdentifierType = Field(
         None,
         alias="componentId",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Internal component unique identification",
+        title="Internal component unique identification",
+        description=(
+            "The internal component unique identification. This is a provision for "
+            "manufacture specific standard components using a private OID. "
+            "11073-10101 has a partition for private OID semantic that the "
+            "manufacturer can make use of."
+        ),
     )
 
     productionSpec: fhirtypes.String = Field(
         None,
         alias="productionSpec",
-        title="Type `String`",
-        description="A printable string defining the component",
+        title="A printable string defining the component",
+        description="The printable string defining the component.",
     )
     productionSpec__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_productionSpec", title="Extension field for ``productionSpec``."
@@ -155,9 +204,12 @@ class DeviceComponentProductionSpecification(backboneelement.BackboneElement):
     specType: fhirtypes.CodeableConceptType = Field(
         None,
         alias="specType",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Type or kind of production specification, for example serial number or"
             " software revision"
+        ),
+        description=(
+            "The specification type, such as, serial number, part number, hardware "
+            "revision, software revision, etc."
         ),
     )

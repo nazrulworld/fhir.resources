@@ -24,8 +24,12 @@ class Coding(element.Element):
     code: fhirtypes.Code = Field(
         None,
         alias="code",
-        title="Type `Code`",
-        description="Symbol in syntax defined by the system",
+        title="Symbol in syntax defined by the system",
+        description=(
+            "A symbol in syntax defined by the system. The symbol may be a "
+            "predefined code or an expression in a syntax defined by the coding "
+            "system (e.g. post-coordination)."
+        ),
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -34,8 +38,11 @@ class Coding(element.Element):
     display: fhirtypes.String = Field(
         None,
         alias="display",
-        title="Type `String`",
-        description="Representation defined by the system",
+        title="Representation defined by the system",
+        description=(
+            "A representation of the meaning of the code in the system, following "
+            "the rules of the system."
+        ),
     )
     display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_display", title="Extension field for ``display``."
@@ -44,8 +51,11 @@ class Coding(element.Element):
     system: fhirtypes.Uri = Field(
         None,
         alias="system",
-        title="Type `Uri`",
-        description="Identity of the terminology system",
+        title="Identity of the terminology system",
+        description=(
+            "The identification of the code system that defines the meaning of the "
+            "symbol in the code."
+        ),
     )
     system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_system", title="Extension field for ``system``."
@@ -54,8 +64,11 @@ class Coding(element.Element):
     userSelected: bool = Field(
         None,
         alias="userSelected",
-        title="Type `bool`",
-        description="If this coding was chosen directly by the user",
+        title="If this coding was chosen directly by the user",
+        description=(
+            "Indicates that this coding was chosen by a user directly - e.g. off a "
+            "pick list of available items (codes or displays)."
+        ),
     )
     userSelected__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_userSelected", title="Extension field for ``userSelected``."
@@ -64,8 +77,14 @@ class Coding(element.Element):
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String`",
-        description="Version of the system - if relevant",
+        title="Version of the system - if relevant",
+        description=(
+            "The version of the code system which was used when choosing this code."
+            " Note that a well-maintained code system does not need the version "
+            "reported, because the meaning of codes is consistent across versions. "
+            "However this cannot consistently be assured, and when the meaning is "
+            "not guaranteed to be consistent, the version SHOULD be exchanged."
+        ),
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."

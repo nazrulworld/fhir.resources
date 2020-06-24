@@ -29,19 +29,24 @@ class DeviceMetric(domainresource.DomainResource):
         None,
         alias="calibration",
         title=(
-            "List of `DeviceMetricCalibration` items (represented as `dict` in " "JSON)"
-        ),
-        description=(
             "Describes the calibrations that have been performed or that are "
             "required to be performed"
         ),
+        description=None,
     )
 
     category: fhirtypes.Code = Field(
         ...,
         alias="category",
-        title="Type `Code`",
-        description="measurement | setting | calculation | unspecified",
+        title="measurement | setting | calculation | unspecified",
+        description=(
+            "Indicates the category of the observation generation process. A "
+            "DeviceMetric can be for example a setting, measurement, or "
+            "calculation."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["measurement", "setting", "calculation", "unspecified"],
     )
     category__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_category", title="Extension field for ``category``."
@@ -50,8 +55,26 @@ class DeviceMetric(domainresource.DomainResource):
     color: fhirtypes.Code = Field(
         None,
         alias="color",
-        title="Type `Code`",
-        description="black | red | green | yellow | blue | magenta | cyan | white",
+        title="black | red | green | yellow | blue | magenta | cyan | white",
+        description=(
+            "Describes the color representation for the metric. This is often used "
+            "to aid clinicians to track and identify parameter types by color. In "
+            "practice, consider a Patient Monitor that has ECG/HR and Pleth for "
+            "example; the parameters are displayed in different characteristic "
+            "colors, such as HR-blue, BP-green, and PR and SpO2- magenta."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "black",
+            "red",
+            "green",
+            "yellow",
+            "blue",
+            "magenta",
+            "cyan",
+            "white",
+        ],
     )
     color__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_color", title="Extension field for ``color``."
@@ -60,22 +83,44 @@ class DeviceMetric(domainresource.DomainResource):
     identifier: fhirtypes.IdentifierType = Field(
         ...,
         alias="identifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Unique identifier of this DeviceMetric",
+        title="Unique identifier of this DeviceMetric",
+        description=(
+            "Describes the unique identification of this metric that has been "
+            "assigned by the device or gateway software. For example: handle ID.  "
+            "It should be noted that in order to make the identifier unique, the "
+            "system element of the identifier should be set to the unique "
+            "identifier of the device."
+        ),
     )
 
     measurementPeriod: fhirtypes.TimingType = Field(
         None,
         alias="measurementPeriod",
-        title="Type `Timing` (represented as `dict` in JSON)",
-        description="Describes the measurement repetition time",
+        title="Describes the measurement repetition time",
+        description=(
+            "Describes the measurement repetition time. This is not necessarily the"
+            " same as the update period. The measurement repetition time can range "
+            "from milliseconds up to hours. An example for a measurement repetition"
+            " time in the range of milliseconds is the sampling rate of an ECG. An "
+            "example for a measurement repetition time in the range of hours is a "
+            "NIBP that is triggered automatically every hour. The update period may"
+            " be different than the measurement repetition time, if the device does"
+            " not update the published observed value with the same frequency as it"
+            " was measured."
+        ),
     )
 
     operationalStatus: fhirtypes.Code = Field(
         None,
         alias="operationalStatus",
-        title="Type `Code`",
-        description="on | off | standby | entered-in-error",
+        title="on | off | standby | entered-in-error",
+        description=(
+            "Indicates current operational state of the device. For example: On, "
+            "Off, Standby, etc."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["on", "off", "standby", "entered-in-error"],
     )
     operationalStatus__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -86,32 +131,51 @@ class DeviceMetric(domainresource.DomainResource):
     parent: fhirtypes.ReferenceType = Field(
         None,
         alias="parent",
-        title=(
-            "Type `Reference` referencing `DeviceComponent` (represented as `dict` "
-            "in JSON)"
+        title="Describes the link to the parent DeviceComponent",
+        description=(
+            "Describes the link to the  DeviceComponent that this DeviceMetric "
+            "belongs to and that provide information about the location of this "
+            "DeviceMetric in the containment structure of the parent Device. An "
+            "example would be a DeviceComponent that represents a Channel. This "
+            "reference can be used by a client application to distinguish "
+            "DeviceMetrics that have the same type, but should be interpreted based"
+            " on their containment location."
         ),
-        description="Describes the link to the parent DeviceComponent",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["DeviceComponent"],
     )
 
     source: fhirtypes.ReferenceType = Field(
         None,
         alias="source",
-        title="Type `Reference` referencing `Device` (represented as `dict` in JSON)",
-        description="Describes the link to the source Device",
+        title="Describes the link to the source Device",
+        description=(
+            "Describes the link to the  Device that this DeviceMetric belongs to "
+            "and that contains administrative device information such as "
+            "manufacturer, serial number, etc."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Device"],
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Identity of metric, for example Heart Rate or PEEP Setting",
+        title="Identity of metric, for example Heart Rate or PEEP Setting",
+        description=(
+            "Describes the type of the metric. For example: Heart Rate, PEEP "
+            "Setting, etc."
+        ),
     )
 
     unit: fhirtypes.CodeableConceptType = Field(
         None,
         alias="unit",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Unit of Measure for the Metric",
+        title="Unit of Measure for the Metric",
+        description=(
+            "Describes the unit that an observed value determined for this metric "
+            "will have. For example: Percent, Seconds, etc."
+        ),
     )
 
 
@@ -129,8 +193,16 @@ class DeviceMetricCalibration(backboneelement.BackboneElement):
     state: fhirtypes.Code = Field(
         None,
         alias="state",
-        title="Type `Code`",
-        description="not-calibrated | calibration-required | calibrated | unspecified",
+        title="not-calibrated | calibration-required | calibrated | unspecified",
+        description="Describes the state of the calibration.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "not-calibrated",
+            "calibration-required",
+            "calibrated",
+            "unspecified",
+        ],
     )
     state__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_state", title="Extension field for ``state``."
@@ -139,8 +211,8 @@ class DeviceMetricCalibration(backboneelement.BackboneElement):
     time: fhirtypes.Instant = Field(
         None,
         alias="time",
-        title="Type `Instant`",
-        description="Describes the time last calibration has been performed",
+        title="Describes the time last calibration has been performed",
+        description=None,
     )
     time__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_time", title="Extension field for ``time``."
@@ -149,8 +221,11 @@ class DeviceMetricCalibration(backboneelement.BackboneElement):
     type: fhirtypes.Code = Field(
         None,
         alias="type",
-        title="Type `Code`",
-        description="unspecified | offset | gain | two-point",
+        title="unspecified | offset | gain | two-point",
+        description="Describes the type of the calibration method.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["unspecified", "offset", "gain", "two-point"],
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."

@@ -32,22 +32,31 @@ class Subscription(domainresource.DomainResource):
     channel: fhirtypes.SubscriptionChannelType = Field(
         ...,
         alias="channel",
-        title="Type `SubscriptionChannel` (represented as `dict` in JSON)",
-        description="The channel on which to report matches to the criteria",
+        title="The channel on which to report matches to the criteria",
+        description=(
+            "Details where to send notifications when resources are received that "
+            "meet the criteria."
+        ),
     )
 
     contact: ListType[fhirtypes.ContactPointType] = Field(
         None,
         alias="contact",
-        title="List of `ContactPoint` items (represented as `dict` in JSON)",
-        description="Contact details for source (e.g. troubleshooting)",
+        title="Contact details for source (e.g. troubleshooting)",
+        description=(
+            "Contact details for a human to contact about the subscription. The "
+            "primary use of this for system administrator troubleshooting."
+        ),
     )
 
     criteria: fhirtypes.String = Field(
         ...,
         alias="criteria",
-        title="Type `String`",
-        description="Rule for server push criteria",
+        title="Rule for server push criteria",
+        description=(
+            "The rules that the server should use to determine when to generate "
+            "notifications for this subscription."
+        ),
     )
     criteria__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_criteria", title="Extension field for ``criteria``."
@@ -56,15 +65,21 @@ class Subscription(domainresource.DomainResource):
     end: fhirtypes.Instant = Field(
         None,
         alias="end",
-        title="Type `Instant`",
-        description="When to automatically delete the subscription",
+        title="When to automatically delete the subscription",
+        description="The time for the server to turn the subscription off.",
     )
     end__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_end", title="Extension field for ``end``."
     )
 
     error: fhirtypes.String = Field(
-        None, alias="error", title="Type `String`", description="Latest error note"
+        None,
+        alias="error",
+        title="Latest error note",
+        description=(
+            "A record of the last error that occurred when the server processed a "
+            "notification."
+        ),
     )
     error__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_error", title="Extension field for ``error``."
@@ -73,8 +88,8 @@ class Subscription(domainresource.DomainResource):
     reason: fhirtypes.String = Field(
         ...,
         alias="reason",
-        title="Type `String`",
-        description="Description of why this subscription was created",
+        title="Description of why this subscription was created",
+        description="A description of why this subscription is defined.",
     )
     reason__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_reason", title="Extension field for ``reason``."
@@ -83,8 +98,14 @@ class Subscription(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="requested | active | error | off",
+        title="requested | active | error | off",
+        description=(
+            "The status of the subscription, which marks the server state for "
+            "managing the subscription."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["requested", "active", "error", "off"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -93,8 +114,11 @@ class Subscription(domainresource.DomainResource):
     tag: ListType[fhirtypes.CodingType] = Field(
         None,
         alias="tag",
-        title="List of `Coding` items (represented as `dict` in JSON)",
-        description="A tag to add to matching resources",
+        title="A tag to add to matching resources",
+        description=(
+            "A tag to add to any resource that matches the criteria, after the "
+            "subscription is processed."
+        ),
     )
 
 
@@ -113,8 +137,8 @@ class SubscriptionChannel(backboneelement.BackboneElement):
     endpoint: fhirtypes.Uri = Field(
         None,
         alias="endpoint",
-        title="Type `Uri`",
-        description="Where the channel points to",
+        title="Where the channel points to",
+        description="The uri that describes the actual end-point to send messages to.",
     )
     endpoint__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_endpoint", title="Extension field for ``endpoint``."
@@ -123,8 +147,8 @@ class SubscriptionChannel(backboneelement.BackboneElement):
     header: ListType[fhirtypes.String] = Field(
         None,
         alias="header",
-        title="List of `String` items",
-        description="Usage depends on the channel type",
+        title="Usage depends on the channel type",
+        description="Additional headers / information to send as part of the notification.",
     )
     header__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_header", title="Extension field for ``header``."
@@ -133,8 +157,12 @@ class SubscriptionChannel(backboneelement.BackboneElement):
     payload: fhirtypes.String = Field(
         None,
         alias="payload",
-        title="Type `String`",
-        description="Mimetype to send, or omit for no payload",
+        title="Mimetype to send, or omit for no payload",
+        description=(
+            "The mime type to send the payload in - either application/fhir+xml, or"
+            " application/fhir+json. If the payload is not present, then there is "
+            "no payload in the notification, just a notification."
+        ),
     )
     payload__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_payload", title="Extension field for ``payload``."
@@ -143,8 +171,11 @@ class SubscriptionChannel(backboneelement.BackboneElement):
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code`",
-        description="rest-hook | websocket | email | sms | message",
+        title="rest-hook | websocket | email | sms | message",
+        description="The type of channel to send notifications on.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["rest-hook", "websocket", "email", "sms", "message"],
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."

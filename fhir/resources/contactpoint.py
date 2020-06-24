@@ -26,15 +26,19 @@ class ContactPoint(element.Element):
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Time period when the contact point was/is in use",
+        title="Time period when the contact point was/is in use",
+        description=None,
     )
 
     rank: fhirtypes.PositiveInt = Field(
         None,
         alias="rank",
-        title="Type `PositiveInt`",
-        description="Specify preferred order of use (1 = highest)",
+        title="Specify preferred order of use (1 = highest)",
+        description=(
+            "Specifies a preferred order in which to use a set of contacts. "
+            "ContactPoints with lower rank values are more preferred than those "
+            "with higher rank values."
+        ),
     )
     rank__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_rank", title="Extension field for ``rank``."
@@ -43,8 +47,14 @@ class ContactPoint(element.Element):
     system: fhirtypes.Code = Field(
         None,
         alias="system",
-        title="Type `Code`",
-        description="phone | fax | email | pager | url | sms | other",
+        title="phone | fax | email | pager | url | sms | other",
+        description=(
+            "Telecommunications form for contact point - what communications system"
+            " is required to make use of the contact."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["phone", "fax", "email", "pager", "url", "sms", "other"],
     )
     system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_system", title="Extension field for ``system``."
@@ -53,8 +63,17 @@ class ContactPoint(element.Element):
     use: fhirtypes.Code = Field(
         None,
         alias="use",
-        title="Type `Code`",
-        description="home | work | temp | old | mobile - purpose of this contact point",
+        title="home | work | temp | old | mobile - purpose of this contact point",
+        description="Identifies the purpose for the contact point.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "home",
+            "work",
+            "temp",
+            "old",
+            "mobile - purpose of this contact point",
+        ],
     )
     use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_use", title="Extension field for ``use``."
@@ -63,8 +82,11 @@ class ContactPoint(element.Element):
     value: fhirtypes.String = Field(
         None,
         alias="value",
-        title="Type `String`",
-        description="The actual contact point details",
+        title="The actual contact point details",
+        description=(
+            "The actual contact point details, in a form that is meaningful to the "
+            "designated communication system (i.e. phone number or email address)."
+        ),
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."

@@ -108,6 +108,11 @@ MODEL_CLASSES = {
     "CompositionAttester": (None, ".composition"),
     "CompositionEvent": (None, ".composition"),
     "CompositionSection": (None, ".composition"),
+    "ConceptMap": (None, ".conceptmap"),
+    "ConceptMapContact": (None, ".conceptmap"),
+    "ConceptMapElement": (None, ".conceptmap"),
+    "ConceptMapElementTarget": (None, ".conceptmap"),
+    "ConceptMapElementTargetDependsOn": (None, ".conceptmap"),
 }
 
 
@@ -572,6 +577,30 @@ def compositionsection_validator(v: Union[StrBytes, dict, Path, FHIRAbstractMode
     return fhir_model_validator("CompositionSection", v)
 
 
+def conceptmap_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ConceptMap", v)
+
+
+def conceptmapcontact_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ConceptMapContact", v)
+
+
+def conceptmapelement_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ConceptMapElement", v)
+
+
+def conceptmapelementtarget_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ConceptMapElementTarget", v)
+
+
+def conceptmapelementtargetdependson_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ConceptMapElementTargetDependsOn", v)
+
+
 __all__ = [
     "element_validator",
     "resource_validator",
@@ -668,4 +697,8 @@ __all__ = [
     "compositionattester_validator",
     "compositionevent_validator",
     "compositionsection_validator",
+    "conceptmap_validator",
+    "conceptmapcontact_validator",
+    "conceptmapelement_validator",
+    "conceptmapelementtargetdependson_validator",
 ]

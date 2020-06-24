@@ -25,8 +25,12 @@ class Attachment(element.Element):
     contentType: fhirtypes.Code = Field(
         None,
         alias="contentType",
-        title="Type `Code`",
-        description="Mime type of the content, with charset etc.",
+        title="Mime type of the content, with charset etc.",
+        description=(
+            "Identifies the type of the data in the attachment and allows a method "
+            "to be chosen to interpret or render the data. Includes mime type "
+            "parameters such as charset where appropriate."
+        ),
     )
     contentType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_contentType", title="Extension field for ``contentType``."
@@ -35,8 +39,8 @@ class Attachment(element.Element):
     creation: fhirtypes.DateTime = Field(
         None,
         alias="creation",
-        title="Type `DateTime`",
-        description="Date attachment was first created",
+        title="Date attachment was first created",
+        description="The date that the attachment was first created.",
     )
     creation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_creation", title="Extension field for ``creation``."
@@ -45,8 +49,11 @@ class Attachment(element.Element):
     data: fhirtypes.Base64Binary = Field(
         None,
         alias="data",
-        title="Type `Base64Binary`",
-        description="Data inline, base64ed",
+        title="Data inline, base64ed",
+        description=(
+            "The actual data of the attachment - a sequence of bytes. In XML, "
+            "represented using base64."
+        ),
     )
     data__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_data", title="Extension field for ``data``."
@@ -55,8 +62,8 @@ class Attachment(element.Element):
     hash: fhirtypes.Base64Binary = Field(
         None,
         alias="hash",
-        title="Type `Base64Binary`",
-        description="Hash of the data (sha-1, base64ed)",
+        title="Hash of the data (sha-1, base64ed)",
+        description="The calculated hash of the data using SHA-1. Represented using base64.",
     )
     hash__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_hash", title="Extension field for ``hash``."
@@ -65,8 +72,11 @@ class Attachment(element.Element):
     language: fhirtypes.Code = Field(
         None,
         alias="language",
-        title="Type `Code`",
-        description="Human language of the content (BCP-47)",
+        title="Human language of the content (BCP-47)",
+        description=(
+            "The human language of the content. The value can be any valid value "
+            "according to BCP 47."
+        ),
     )
     language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_language", title="Extension field for ``language``."
@@ -75,8 +85,11 @@ class Attachment(element.Element):
     size: fhirtypes.UnsignedInt = Field(
         None,
         alias="size",
-        title="Type `UnsignedInt`",
-        description="Number of bytes of content (if url provided)",
+        title="Number of bytes of content (if url provided)",
+        description=(
+            "The number of bytes of data that make up this attachment (before "
+            "base64 encoding, if that is done)."
+        ),
     )
     size__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_size", title="Extension field for ``size``."
@@ -85,8 +98,8 @@ class Attachment(element.Element):
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String`",
-        description="Label to display in place of the data",
+        title="Label to display in place of the data",
+        description="A label or set of text to display in place of the data.",
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -95,8 +108,8 @@ class Attachment(element.Element):
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
-        title="Type `Uri`",
-        description="Uri where the data can be found",
+        title="Uri where the data can be found",
+        description="An alternative location where the data can be accessed.",
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."

@@ -27,25 +27,36 @@ class AppointmentResponse(domainresource.DomainResource):
     actor: fhirtypes.ReferenceType = Field(
         None,
         alias="actor",
-        title=(
-            "Type `Reference` referencing `Patient, Practitioner, RelatedPerson, "
-            "Device, HealthcareService, Location` (represented as `dict` in JSON)"
+        title="Person, Location/HealthcareService or Device",
+        description=(
+            "A Person, Location/HealthcareService or Device that is participating "
+            "in the appointment."
         ),
-        description="Person, Location/HealthcareService or Device",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Patient",
+            "Practitioner",
+            "RelatedPerson",
+            "Device",
+            "HealthcareService",
+            "Location",
+        ],
     )
 
     appointment: fhirtypes.ReferenceType = Field(
         ...,
         alias="appointment",
-        title=(
-            "Type `Reference` referencing `Appointment` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Appointment this response relates to",
+        title="Appointment this response relates to",
+        description="Appointment that this response is replying to.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Appointment"],
     )
 
     comment: fhirtypes.String = Field(
-        None, alias="comment", title="Type `String`", description="Additional comments"
+        None,
+        alias="comment",
+        title="Additional comments",
+        description="Additional comments about the appointment.",
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comment", title="Extension field for ``comment``."
@@ -54,8 +65,12 @@ class AppointmentResponse(domainresource.DomainResource):
     end: fhirtypes.Instant = Field(
         None,
         alias="end",
-        title="Type `Instant`",
-        description="Time from appointment, or requested new end time",
+        title="Time from appointment, or requested new end time",
+        description=(
+            "This may be either the same as the appointment request to confirm the "
+            "details of the appointment, or alternately a new time to request a re-"
+            "negotiation of the end time."
+        ),
     )
     end__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_end", title="Extension field for ``end``."
@@ -64,18 +79,40 @@ class AppointmentResponse(domainresource.DomainResource):
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="External Ids for this item",
+        title="External Ids for this item",
+        description=(
+            "This records identifiers associated with this appointment response "
+            "concern that are defined by business processes and/ or used to refer "
+            "to it when a direct URL reference to the resource itself is not "
+            "appropriate."
+        ),
     )
 
     participantStatus: fhirtypes.Code = Field(
         ...,
         alias="participantStatus",
-        title="Type `Code`",
-        description=(
+        title=(
             "accepted | declined | tentative | in-process | completed | needs-"
             "action | entered-in-error"
         ),
+        description=(
+            "Participation status of the participant. When the status is declined "
+            "or tentative if the start/end times are different to the appointment, "
+            "then these times should be interpreted as a requested time change. "
+            "When the status is accepted, the times can either be the time of the "
+            "appointment (as a confirmation of the time) or can be empty."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "accepted",
+            "declined",
+            "tentative",
+            "in-process",
+            "completed",
+            "needs-action",
+            "entered-in-error",
+        ],
     )
     participantStatus__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -86,15 +123,18 @@ class AppointmentResponse(domainresource.DomainResource):
     participantType: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="participantType",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Role of participant in the appointment",
+        title="Role of participant in the appointment",
+        description=None,
     )
 
     start: fhirtypes.Instant = Field(
         None,
         alias="start",
-        title="Type `Instant`",
-        description="Time from appointment, or requested new start time",
+        title="Time from appointment, or requested new start time",
+        description=(
+            "Date/Time that the appointment is to take place, or requested new "
+            "start time."
+        ),
     )
     start__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_start", title="Extension field for ``start``."

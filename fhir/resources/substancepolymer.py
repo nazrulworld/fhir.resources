@@ -25,28 +25,19 @@ class SubstancePolymer(domainresource.DomainResource):
     resource_type = Field("SubstancePolymer", const=True)
 
     class_fhir: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="class",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="class", title="Todo", description=None,
     )
 
     copolymerConnectivity: ListType[fhirtypes.CodeableConceptType] = Field(
-        None,
-        alias="copolymerConnectivity",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="copolymerConnectivity", title="Todo", description=None,
     )
 
     geometry: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="geometry",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="geometry", title="Todo", description=None,
     )
 
     modification: ListType[fhirtypes.String] = Field(
-        None, alias="modification", title="List of `String` items", description="Todo"
+        None, alias="modification", title="Todo", description=None,
     )
     modification__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -55,20 +46,11 @@ class SubstancePolymer(domainresource.DomainResource):
     )
 
     monomerSet: ListType[fhirtypes.SubstancePolymerMonomerSetType] = Field(
-        None,
-        alias="monomerSet",
-        title=(
-            "List of `SubstancePolymerMonomerSet` items (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Todo",
+        None, alias="monomerSet", title="Todo", description=None,
     )
 
     repeat: ListType[fhirtypes.SubstancePolymerRepeatType] = Field(
-        None,
-        alias="repeat",
-        title="List of `SubstancePolymerRepeat` items (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="repeat", title="Todo", description=None,
     )
 
 
@@ -83,22 +65,13 @@ class SubstancePolymerMonomerSet(backboneelement.BackboneElement):
     resource_type = Field("SubstancePolymerMonomerSet", const=True)
 
     ratioType: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="ratioType",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="ratioType", title="Todo", description=None,
     )
 
     startingMaterial: ListType[
         fhirtypes.SubstancePolymerMonomerSetStartingMaterialType
     ] = Field(
-        None,
-        alias="startingMaterial",
-        title=(
-            "List of `SubstancePolymerMonomerSetStartingMaterial` items "
-            "(represented as `dict` in JSON)"
-        ),
-        description="Todo",
+        None, alias="startingMaterial", title="Todo", description=None,
     )
 
 
@@ -113,31 +86,22 @@ class SubstancePolymerMonomerSetStartingMaterial(backboneelement.BackboneElement
     resource_type = Field("SubstancePolymerMonomerSetStartingMaterial", const=True)
 
     amount: fhirtypes.SubstanceAmountType = Field(
-        None,
-        alias="amount",
-        title="Type `SubstanceAmount` (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="amount", title="Todo", description=None,
     )
 
     isDefining: bool = Field(
-        None, alias="isDefining", title="Type `bool`", description="Todo"
+        None, alias="isDefining", title="Todo", description=None,
     )
     isDefining__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_isDefining", title="Extension field for ``isDefining``."
     )
 
     material: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="material",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="material", title="Todo", description=None,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="type", title="Todo", description=None,
     )
 
 
@@ -152,7 +116,7 @@ class SubstancePolymerRepeat(backboneelement.BackboneElement):
     resource_type = Field("SubstancePolymerRepeat", const=True)
 
     averageMolecularFormula: fhirtypes.String = Field(
-        None, alias="averageMolecularFormula", title="Type `String`", description="Todo"
+        None, alias="averageMolecularFormula", title="Todo", description=None,
     )
     averageMolecularFormula__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -161,27 +125,18 @@ class SubstancePolymerRepeat(backboneelement.BackboneElement):
     )
 
     numberOfUnits: fhirtypes.Integer = Field(
-        None, alias="numberOfUnits", title="Type `Integer`", description="Todo"
+        None, alias="numberOfUnits", title="Todo", description=None,
     )
     numberOfUnits__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_numberOfUnits", title="Extension field for ``numberOfUnits``."
     )
 
     repeatUnit: ListType[fhirtypes.SubstancePolymerRepeatRepeatUnitType] = Field(
-        None,
-        alias="repeatUnit",
-        title=(
-            "List of `SubstancePolymerRepeatRepeatUnit` items (represented as "
-            "`dict` in JSON)"
-        ),
-        description="Todo",
+        None, alias="repeatUnit", title="Todo", description=None,
     )
 
     repeatUnitAmountType: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="repeatUnitAmountType",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="repeatUnitAmountType", title="Todo", description=None,
     )
 
 
@@ -196,33 +151,21 @@ class SubstancePolymerRepeatRepeatUnit(backboneelement.BackboneElement):
     resource_type = Field("SubstancePolymerRepeatRepeatUnit", const=True)
 
     amount: fhirtypes.SubstanceAmountType = Field(
-        None,
-        alias="amount",
-        title="Type `SubstanceAmount` (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="amount", title="Todo", description=None,
     )
 
     degreeOfPolymerisation: ListType[
         fhirtypes.SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisationType
     ] = Field(
-        None,
-        alias="degreeOfPolymerisation",
-        title=(
-            "List of `SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation` items"
-            " (represented as `dict` in JSON)"
-        ),
-        description="Todo",
+        None, alias="degreeOfPolymerisation", title="Todo", description=None,
     )
 
     orientationOfPolymerisation: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="orientationOfPolymerisation",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="orientationOfPolymerisation", title="Todo", description=None,
     )
 
     repeatUnit: fhirtypes.String = Field(
-        None, alias="repeatUnit", title="Type `String`", description="Todo"
+        None, alias="repeatUnit", title="Todo", description=None,
     )
     repeatUnit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_repeatUnit", title="Extension field for ``repeatUnit``."
@@ -231,13 +174,7 @@ class SubstancePolymerRepeatRepeatUnit(backboneelement.BackboneElement):
     structuralRepresentation: ListType[
         fhirtypes.SubstancePolymerRepeatRepeatUnitStructuralRepresentationType
     ] = Field(
-        None,
-        alias="structuralRepresentation",
-        title=(
-            "List of `SubstancePolymerRepeatRepeatUnitStructuralRepresentation` "
-            "items (represented as `dict` in JSON)"
-        ),
-        description="Todo",
+        None, alias="structuralRepresentation", title="Todo", description=None,
     )
 
 
@@ -256,17 +193,11 @@ class SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation(
     )
 
     amount: fhirtypes.SubstanceAmountType = Field(
-        None,
-        alias="amount",
-        title="Type `SubstanceAmount` (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="amount", title="Todo", description=None,
     )
 
     degree: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="degree",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="degree", title="Todo", description=None,
     )
 
 
@@ -285,22 +216,16 @@ class SubstancePolymerRepeatRepeatUnitStructuralRepresentation(
     )
 
     attachment: fhirtypes.AttachmentType = Field(
-        None,
-        alias="attachment",
-        title="Type `Attachment` (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="attachment", title="Todo", description=None,
     )
 
     representation: fhirtypes.String = Field(
-        None, alias="representation", title="Type `String`", description="Todo"
+        None, alias="representation", title="Todo", description=None,
     )
     representation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_representation", title="Extension field for ``representation``."
     )
 
     type: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="type", title="Todo", description=None,
     )

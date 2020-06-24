@@ -30,8 +30,11 @@ class ReferralRequest(domainresource.DomainResource):
     authoredOn: fhirtypes.DateTime = Field(
         None,
         alias="authoredOn",
-        title="Type `DateTime`",
-        description="Date of creation/activation",
+        title="Date of creation/activation",
+        description=(
+            "Date/DateTime of creation for draft requests and date of activation "
+            "for active requests."
+        ),
     )
     authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_authoredOn", title="Extension field for ``authoredOn``."
@@ -40,38 +43,48 @@ class ReferralRequest(domainresource.DomainResource):
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
-        title=(
-            "List of `Reference` items referencing `ReferralRequest, CarePlan, "
-            "ProcedureRequest` (represented as `dict` in JSON)"
+        title="Request fulfilled by this request",
+        description=(
+            "Indicates any plans, proposals or orders that this request is intended"
+            " to satisfy - in whole or in part."
         ),
-        description="Request fulfilled by this request",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ReferralRequest", "CarePlan", "ProcedureRequest"],
     )
 
     context: fhirtypes.ReferenceType = Field(
         None,
         alias="context",
-        title=(
-            "Type `Reference` referencing `Encounter, EpisodeOfCare` (represented "
-            "as `dict` in JSON)"
+        title="Originating encounter",
+        description=(
+            "The encounter at which the request for referral or transfer of care is"
+            " initiated."
         ),
-        description="Originating encounter",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Encounter", "EpisodeOfCare"],
     )
 
     definition: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="definition",
-        title=(
-            "List of `Reference` items referencing `ActivityDefinition, "
-            "PlanDefinition` (represented as `dict` in JSON)"
+        title="Instantiates protocol or definition",
+        description=(
+            "A protocol, guideline, orderset or other definition that is adhered to"
+            " in whole or in part by this request."
         ),
-        description="Instantiates protocol or definition",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ActivityDefinition", "PlanDefinition"],
     )
 
     description: fhirtypes.String = Field(
         None,
         alias="description",
-        title="Type `String`",
-        description="A textual description of the referral",
+        title="A textual description of the referral",
+        description=(
+            "The reason element gives a short description of why the referral is "
+            "being made, the description expands on this to support a more complete"
+            " clinical summary."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -80,19 +93,34 @@ class ReferralRequest(domainresource.DomainResource):
     groupIdentifier: fhirtypes.IdentifierType = Field(
         None,
         alias="groupIdentifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Composite request this is part of",
+        title="Composite request this is part of",
+        description=(
+            'The business identifier of the logical "grouping" request/order that '
+            "this referral is a part of."
+        ),
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Business identifier",
+        title="Business identifier",
+        description=(
+            "Business identifier that uniquely identifies the referral/care "
+            "transfer request instance."
+        ),
     )
 
     intent: fhirtypes.Code = Field(
-        ..., alias="intent", title="Type `Code`", description="proposal | plan | order"
+        ...,
+        alias="intent",
+        title="proposal | plan | order",
+        description=(
+            'Distinguishes the "level" of authorization/demand implicit in this '
+            "request."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["proposal", "plan", "order"],
     )
     intent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_intent", title="Extension field for ``intent``."
@@ -101,16 +129,20 @@ class ReferralRequest(domainresource.DomainResource):
     note: ListType[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
-        title="List of `Annotation` items (represented as `dict` in JSON)",
-        description="Comments made about referral request",
+        title="Comments made about referral request",
+        description="Comments made about the referral request by any of the participants.",
     )
 
     occurrenceDateTime: fhirtypes.DateTime = Field(
         None,
         alias="occurrenceDateTime",
-        title="Type `DateTime`",
-        description="When the service(s) requested in the referral should occur",
-        one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
+        title="When the service(s) requested in the referral should occur",
+        description=(
+            "The period of time within which the services identified in the "
+            "referral/transfer of care is specified or required to occur."
+        ),
+        # Choice of Data Types. i.e occurrence[x]
+        one_of_many="occurrence",
         one_of_many_required=False,
     )
     occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -122,17 +154,24 @@ class ReferralRequest(domainresource.DomainResource):
     occurrencePeriod: fhirtypes.PeriodType = Field(
         None,
         alias="occurrencePeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="When the service(s) requested in the referral should occur",
-        one_of_many="occurrence",  # Choice of Data Types. i.e value[x]
+        title="When the service(s) requested in the referral should occur",
+        description=(
+            "The period of time within which the services identified in the "
+            "referral/transfer of care is specified or required to occur."
+        ),
+        # Choice of Data Types. i.e occurrence[x]
+        one_of_many="occurrence",
         one_of_many_required=False,
     )
 
     priority: fhirtypes.Code = Field(
         None,
         alias="priority",
-        title="Type `Code`",
-        description="Urgency of referral / transfer of care request",
+        title="Urgency of referral / transfer of care request",
+        description=(
+            "An indication of the urgency of referral (or where applicable the type"
+            " of transfer of care) request."
+        ),
     )
     priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_priority", title="Extension field for ``priority``."
@@ -141,79 +180,114 @@ class ReferralRequest(domainresource.DomainResource):
     reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="reasonCode",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Reason for referral / transfer of care request",
+        title="Reason for referral / transfer of care request",
+        description=(
+            "Description of clinical condition indicating why referral/transfer of "
+            "care is requested.  For example:  Pathological Anomalies, Disabled "
+            "(physical or mental),  Behavioral Management."
+        ),
     )
 
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="reasonReference",
-        title=(
-            "List of `Reference` items referencing `Condition, Observation` "
-            "(represented as `dict` in JSON)"
-        ),
-        description="Why is service needed?",
+        title="Why is service needed?",
+        description="Indicates another resource whose existence justifies this request.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Condition", "Observation"],
     )
 
     recipient: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="recipient",
-        title=(
-            "List of `Reference` items referencing `Practitioner, Organization, "
-            "HealthcareService` (represented as `dict` in JSON)"
+        title="Receiver of referral / transfer of care request",
+        description=(
+            "The healthcare provider(s) or provider organization(s) who/which is to"
+            " receive the referral/transfer of care request."
         ),
-        description="Receiver of referral / transfer of care request",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner", "Organization", "HealthcareService"],
     )
 
     relevantHistory: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="relevantHistory",
-        title=(
-            "List of `Reference` items referencing `Provenance` (represented as "
-            "`dict` in JSON)"
+        title="Key events in history of request",
+        description=(
+            "Links to Provenance records for past versions of this resource or "
+            "fulfilling request or event resources that identify key state "
+            "transitions or updates that are likely to be relevant to a user "
+            "looking at the current version of the resource."
         ),
-        description="Key events in history of request",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Provenance"],
     )
 
     replaces: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="replaces",
-        title=(
-            "List of `Reference` items referencing `ReferralRequest` (represented "
-            "as `dict` in JSON)"
+        title="Request(s) replaced by this request",
+        description=(
+            "Completed or terminated request(s) whose function is taken by this new"
+            " request."
         ),
-        description="Request(s) replaced by this request",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ReferralRequest"],
     )
 
     requester: fhirtypes.ReferralRequestRequesterType = Field(
         None,
         alias="requester",
-        title="Type `ReferralRequestRequester` (represented as `dict` in JSON)",
-        description="Who/what is requesting service",
+        title="Who/what is requesting service",
+        description=(
+            "The individual who initiated the request and has responsibility for "
+            "its activation."
+        ),
     )
 
     serviceRequested: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="serviceRequested",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Actions requested as part of the referral",
+        title="Actions requested as part of the referral",
+        description=(
+            "The service(s) that is/are requested to be provided to the patient.  "
+            "For example: cardiac pacemaker insertion."
+        ),
     )
 
     specialty: fhirtypes.CodeableConceptType = Field(
         None,
         alias="specialty",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The clinical specialty (discipline) that the referral is requested for",
+        title="The clinical specialty (discipline) that the referral is requested for",
+        description=(
+            "Indication of the clinical domain or discipline to which the referral "
+            "or transfer of care request is sent.  For example: Cardiology "
+            "Gastroenterology Diabetology."
+        ),
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description=(
+        title=(
             "draft | active | suspended | cancelled | completed | entered-in-error "
             "| unknown"
         ),
+        description=(
+            "The status of the authorization/intention reflected by the referral "
+            "request record."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "draft",
+            "active",
+            "suspended",
+            "cancelled",
+            "completed",
+            "entered-in-error",
+            "unknown",
+        ],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -222,28 +296,39 @@ class ReferralRequest(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         ...,
         alias="subject",
-        title=(
-            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
-            "in JSON)"
+        title="Patient referred to care or transfer",
+        description=(
+            "The patient who is the subject of a referral or transfer of care "
+            "request."
         ),
-        description="Patient referred to care or transfer",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "Group"],
     )
 
     supportingInfo: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="supportingInfo",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
+        title="Additonal information to support referral or transfer of care request",
+        description=(
+            "Any additional (administrative, financial or clinical) information "
+            "required to support request for referral or transfer of care.  For "
+            "example: Presenting problems/chief complaints Medical History Family "
+            "History Alerts Allergy/Intolerance and Adverse Reactions Medications "
+            "Observations/Assessments (may include cognitive and fundtional "
+            "assessments) Diagnostic Reports Care Plan."
         ),
-        description="Additonal information to support referral or transfer of care request",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Referral/Transition of care request type",
+        title="Referral/Transition of care request type",
+        description=(
+            "An indication of the type of referral (or where applicable the type of"
+            " transfer of care) request."
+        ),
     )
 
     @root_validator(pre=True)
@@ -298,19 +383,23 @@ class ReferralRequestRequester(backboneelement.BackboneElement):
     agent: fhirtypes.ReferenceType = Field(
         ...,
         alias="agent",
-        title=(
-            "Type `Reference` referencing `Practitioner, Organization, Patient, "
-            "RelatedPerson, Device` (represented as `dict` in JSON)"
-        ),
-        description="Individual making the request",
+        title="Individual making the request",
+        description="The device, practitioner, etc. who initiated the request.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Practitioner",
+            "Organization",
+            "Patient",
+            "RelatedPerson",
+            "Device",
+        ],
     )
 
     onBehalfOf: fhirtypes.ReferenceType = Field(
         None,
         alias="onBehalfOf",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Organization agent is acting for",
+        title="Organization agent is acting for",
+        description="The organization the device or practitioner was acting on behalf of.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )

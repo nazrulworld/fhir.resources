@@ -30,106 +30,149 @@ class Procedure(domainresource.DomainResource):
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
-        title=(
-            "List of `Reference` items referencing `CarePlan, ProcedureRequest, "
-            "ReferralRequest` (represented as `dict` in JSON)"
+        title="A request for this procedure",
+        description=(
+            "A reference to a resource that contains details of the request for "
+            "this procedure."
         ),
-        description="A request for this procedure",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["CarePlan", "ProcedureRequest", "ReferralRequest"],
     )
 
     bodySite: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="bodySite",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Target body sites",
+        title="Target body sites",
+        description=(
+            "Detailed and structured anatomical location information. Multiple "
+            "locations are allowed - e.g. multiple punch biopsies of a lesion."
+        ),
     )
 
     category: fhirtypes.CodeableConceptType = Field(
         None,
         alias="category",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Classification of the procedure",
+        title="Classification of the procedure",
+        description=(
+            "A code that classifies the procedure for searching, sorting and "
+            'display purposes (e.g. "Surgical Procedure").'
+        ),
     )
 
     code: fhirtypes.CodeableConceptType = Field(
         None,
         alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Identification of the procedure",
+        title="Identification of the procedure",
+        description=(
+            "The specific procedure that is performed. Use text if the exact nature"
+            ' of the procedure cannot be coded (e.g. "Laparoscopic Appendectomy").'
+        ),
     )
 
     complication: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="complication",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Complication following the procedure",
+        title="Complication following the procedure",
+        description=(
+            "Any complications that occurred during the procedure, or in the "
+            "immediate post-performance period. These are generally tracked "
+            "separately from the notes, which will typically describe the procedure"
+            " itself rather than any 'post procedure' issues."
+        ),
     )
 
     complicationDetail: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="complicationDetail",
-        title=(
-            "List of `Reference` items referencing `Condition` (represented as "
-            "`dict` in JSON)"
+        title="A condition that\u00a0is a result of the procedure",
+        description=(
+            "Any complications that occurred during the procedure, or in the "
+            "immediate post-performance period."
         ),
-        description="A condition that\u00a0is a result of the procedure",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Condition"],
     )
 
     context: fhirtypes.ReferenceType = Field(
         None,
         alias="context",
-        title=(
-            "Type `Reference` referencing `Encounter, EpisodeOfCare` (represented "
-            "as `dict` in JSON)"
-        ),
-        description="Encounter or episode associated with the procedure",
+        title="Encounter or episode associated with the procedure",
+        description="The encounter during which the procedure was performed.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Encounter", "EpisodeOfCare"],
     )
 
     definition: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="definition",
-        title=(
-            "List of `Reference` items referencing `PlanDefinition, "
-            "ActivityDefinition, HealthcareService` (represented as `dict` in JSON)"
+        title="Instantiates protocol or definition",
+        description=(
+            "A protocol, guideline, orderset or other definition that was adhered "
+            "to in whole or in part by this procedure."
         ),
-        description="Instantiates protocol or definition",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "PlanDefinition",
+            "ActivityDefinition",
+            "HealthcareService",
+        ],
     )
 
     focalDevice: ListType[fhirtypes.ProcedureFocalDeviceType] = Field(
         None,
         alias="focalDevice",
-        title="List of `ProcedureFocalDevice` items (represented as `dict` in JSON)",
-        description="Device changed in procedure",
+        title="Device changed in procedure",
+        description=(
+            "A device that is implanted, removed or otherwise manipulated "
+            "(calibration, battery replacement, fitting a prosthesis, attaching a "
+            "wound-vac, etc.) as a focal portion of the Procedure."
+        ),
     )
 
     followUp: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="followUp",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Instructions for follow up",
+        title="Instructions for follow up",
+        description=(
+            "If the procedure required specific follow up - e.g. removal of "
+            "sutures. The followup may be represented as a simple note, or could "
+            "potentially be more complex in which case the CarePlan resource can be"
+            " used."
+        ),
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="External Identifiers for this procedure",
+        title="External Identifiers for this procedure",
+        description=(
+            "This records identifiers associated with this procedure that are "
+            "defined by business processes and/or used to refer to it when a direct"
+            " URL reference to the resource itself is not appropriate (e.g. in CDA "
+            "documents, or in written / printed documentation)."
+        ),
     )
 
     location: fhirtypes.ReferenceType = Field(
         None,
         alias="location",
-        title=(
-            "Type `Reference` referencing `Location` (represented as `dict` in " "JSON)"
+        title="Where the procedure happened",
+        description=(
+            "The location where the procedure actually happened.  E.g. a newborn at"
+            " home, a tracheostomy at a restaurant."
         ),
-        description="Where the procedure happened",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Location"],
     )
 
     notDone: bool = Field(
         None,
         alias="notDone",
-        title="Type `bool`",
-        description="True if procedure was not performed as scheduled",
+        title="True if procedure was not performed as scheduled",
+        description=(
+            "Set this to true if the record is saying that the procedure was NOT "
+            "performed."
+        ),
     )
     notDone__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_notDone", title="Extension field for ``notDone``."
@@ -138,40 +181,50 @@ class Procedure(domainresource.DomainResource):
     notDoneReason: fhirtypes.CodeableConceptType = Field(
         None,
         alias="notDoneReason",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Reason procedure was not performed",
+        title="Reason procedure was not performed",
+        description="A code indicating why the procedure was not performed.",
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
-        title="List of `Annotation` items (represented as `dict` in JSON)",
-        description="Additional information about the procedure",
+        title="Additional information about the procedure",
+        description="Any other notes about the procedure.  E.g. the operative notes.",
     )
 
     outcome: fhirtypes.CodeableConceptType = Field(
         None,
         alias="outcome",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The result of procedure",
+        title="The result of procedure",
+        description=(
+            "The outcome of the procedure - did it resolve reasons for the "
+            "procedure being performed?"
+        ),
     )
 
     partOf: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="partOf",
-        title=(
-            "List of `Reference` items referencing `Procedure, Observation, "
-            "MedicationAdministration` (represented as `dict` in JSON)"
+        title="Part of referenced event",
+        description=(
+            "A larger event of which this particular procedure is a component or "
+            "step."
         ),
-        description="Part of referenced event",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Procedure", "Observation", "MedicationAdministration"],
     )
 
     performedDateTime: fhirtypes.DateTime = Field(
         None,
         alias="performedDateTime",
-        title="Type `DateTime`",
-        description="Date/Period the procedure was performed",
-        one_of_many="performed",  # Choice of Data Types. i.e value[x]
+        title="Date/Period the procedure was performed",
+        description=(
+            "The date(time)/period over which the procedure was performed. Allows a"
+            " period to support complex procedures that span more than one date, "
+            "and also allows for the length of the procedure to be captured."
+        ),
+        # Choice of Data Types. i.e performed[x]
+        one_of_many="performed",
         one_of_many_required=False,
     )
     performedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -183,54 +236,77 @@ class Procedure(domainresource.DomainResource):
     performedPeriod: fhirtypes.PeriodType = Field(
         None,
         alias="performedPeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Date/Period the procedure was performed",
-        one_of_many="performed",  # Choice of Data Types. i.e value[x]
+        title="Date/Period the procedure was performed",
+        description=(
+            "The date(time)/period over which the procedure was performed. Allows a"
+            " period to support complex procedures that span more than one date, "
+            "and also allows for the length of the procedure to be captured."
+        ),
+        # Choice of Data Types. i.e performed[x]
+        one_of_many="performed",
         one_of_many_required=False,
     )
 
     performer: ListType[fhirtypes.ProcedurePerformerType] = Field(
         None,
         alias="performer",
-        title="List of `ProcedurePerformer` items (represented as `dict` in JSON)",
-        description="The people who performed the procedure",
+        title="The people who performed the procedure",
+        description="Limited to 'real' people rather than equipment.",
     )
 
     reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="reasonCode",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Coded reason procedure performed",
+        title="Coded reason procedure performed",
+        description=(
+            "The coded reason why the procedure was performed. This may be coded "
+            "entity of some type, or may simply be present as text."
+        ),
     )
 
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="reasonReference",
-        title=(
-            "List of `Reference` items referencing `Condition, Observation` "
-            "(represented as `dict` in JSON)"
-        ),
-        description="Condition that is the reason the procedure performed",
+        title="Condition that is the reason the procedure performed",
+        description="The condition that is the reason why the procedure was performed.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Condition", "Observation"],
     )
 
     report: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="report",
-        title=(
-            "List of `Reference` items referencing `DiagnosticReport` (represented "
-            "as `dict` in JSON)"
+        title="Any report resulting from the procedure",
+        description=(
+            "This could be a histology result, pathology report, surgical report, "
+            "etc.."
         ),
-        description="Any report resulting from the procedure",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["DiagnosticReport"],
     )
 
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description=(
+        title=(
             "preparation | in-progress | suspended | aborted | completed | entered-"
             "in-error | unknown"
         ),
+        description=(
+            "A code specifying the state of the procedure. Generally this will be "
+            "in-progress or completed state."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "preparation",
+            "in-progress",
+            "suspended",
+            "aborted",
+            "completed",
+            "entered-in-error",
+            "unknown",
+        ],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -239,28 +315,29 @@ class Procedure(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         ...,
         alias="subject",
-        title=(
-            "Type `Reference` referencing `Patient, Group` (represented as `dict` "
-            "in JSON)"
-        ),
-        description="Who the procedure was performed on",
+        title="Who the procedure was performed on",
+        description="The person, animal or group on which the procedure was performed.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Patient", "Group"],
     )
 
     usedCode: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="usedCode",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Coded items used during the procedure",
+        title="Coded items used during the procedure",
+        description="Identifies coded items that were used as part of the procedure.",
     )
 
     usedReference: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="usedReference",
-        title=(
-            "List of `Reference` items referencing `Device, Medication, Substance` "
-            "(represented as `dict` in JSON)"
+        title="Items used during procedure",
+        description=(
+            "Identifies medications, devices and any other substance used as part "
+            "of the procedure."
         ),
-        description="Items used during procedure",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Device", "Medication", "Substance"],
     )
 
     @root_validator(pre=True)
@@ -316,15 +393,17 @@ class ProcedureFocalDevice(backboneelement.BackboneElement):
     action: fhirtypes.CodeableConceptType = Field(
         None,
         alias="action",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Kind of change to device",
+        title="Kind of change to device",
+        description="The kind of change that happened to the device during the procedure.",
     )
 
     manipulated: fhirtypes.ReferenceType = Field(
         ...,
         alias="manipulated",
-        title="Type `Reference` referencing `Device` (represented as `dict` in JSON)",
-        description="Device that was changed",
+        title="Device that was changed",
+        description="The device that was manipulated (changed) during the procedure.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Device"],
     )
 
 
@@ -342,26 +421,30 @@ class ProcedurePerformer(backboneelement.BackboneElement):
     actor: fhirtypes.ReferenceType = Field(
         ...,
         alias="actor",
-        title=(
-            "Type `Reference` referencing `Practitioner, Organization, Patient, "
-            "RelatedPerson, Device` (represented as `dict` in JSON)"
-        ),
-        description="The reference to the practitioner",
+        title="The reference to the practitioner",
+        description="The practitioner who was involved in the procedure.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Practitioner",
+            "Organization",
+            "Patient",
+            "RelatedPerson",
+            "Device",
+        ],
     )
 
     onBehalfOf: fhirtypes.ReferenceType = Field(
         None,
         alias="onBehalfOf",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Organization the device or practitioner was acting for",
+        title="Organization the device or practitioner was acting for",
+        description="The organization the device or practitioner was acting on behalf of.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     role: fhirtypes.CodeableConceptType = Field(
         None,
         alias="role",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The role the actor was in",
+        title="The role the actor was in",
+        description="For example: surgeon, anaethetist, endoscopist.",
     )

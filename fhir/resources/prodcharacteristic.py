@@ -29,12 +29,12 @@ class ProdCharacteristic(backboneelement.BackboneElement):
     color: ListType[fhirtypes.String] = Field(
         None,
         alias="color",
-        title="List of `String` items",
-        description=(
+        title=(
             "Where applicable, the color can be specified An appropriate controlled"
             " vocabulary shall be used The term and the term identifier shall be "
             "used"
         ),
+        description=None,
     )
     color__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_color", title="Extension field for ``color``."
@@ -43,54 +43,54 @@ class ProdCharacteristic(backboneelement.BackboneElement):
     depth: fhirtypes.QuantityType = Field(
         None,
         alias="depth",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Where applicable, the depth can be specified using a numerical value "
             "and its unit of measurement The unit of measurement shall be specified"
             " in accordance with ISO 11240 and the resulting terminology The symbol"
             " and the symbol identifier shall be used"
         ),
+        description=None,
     )
 
     externalDiameter: fhirtypes.QuantityType = Field(
         None,
         alias="externalDiameter",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Where applicable, the external diameter can be specified using a "
             "numerical value and its unit of measurement The unit of measurement "
             "shall be specified in accordance with ISO 11240 and the resulting "
             "terminology The symbol and the symbol identifier shall be used"
         ),
+        description=None,
     )
 
     height: fhirtypes.QuantityType = Field(
         None,
         alias="height",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Where applicable, the height can be specified using a numerical value "
             "and its unit of measurement The unit of measurement shall be specified"
             " in accordance with ISO 11240 and the resulting terminology The symbol"
             " and the symbol identifier shall be used"
         ),
+        description=None,
     )
 
     image: ListType[fhirtypes.AttachmentType] = Field(
         None,
         alias="image",
-        title="List of `Attachment` items (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Where applicable, the image can be provided The format of the image "
             "attachment shall be specified by regional implementations"
         ),
+        description=None,
     )
 
     imprint: ListType[fhirtypes.String] = Field(
         None,
         alias="imprint",
-        title="List of `String` items",
-        description="Where applicable, the imprint can be specified as text",
+        title="Where applicable, the imprint can be specified as text",
+        description=None,
     )
     imprint__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_imprint", title="Extension field for ``imprint``."
@@ -99,35 +99,35 @@ class ProdCharacteristic(backboneelement.BackboneElement):
     nominalVolume: fhirtypes.QuantityType = Field(
         None,
         alias="nominalVolume",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Where applicable, the nominal volume can be specified using a "
             "numerical value and its unit of measurement The unit of measurement "
             "shall be specified in accordance with ISO 11240 and the resulting "
             "terminology The symbol and the symbol identifier shall be used"
         ),
+        description=None,
     )
 
     scoring: fhirtypes.CodeableConceptType = Field(
         None,
         alias="scoring",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Where applicable, the scoring can be specified An appropriate "
             "controlled vocabulary shall be used The term and the term identifier "
             "shall be used"
         ),
+        description=None,
     )
 
     shape: fhirtypes.String = Field(
         None,
         alias="shape",
-        title="Type `String`",
-        description=(
+        title=(
             "Where applicable, the shape can be specified An appropriate controlled"
             " vocabulary shall be used The term and the term identifier shall be "
             "used"
         ),
+        description=None,
     )
     shape__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_shape", title="Extension field for ``shape``."
@@ -136,23 +136,23 @@ class ProdCharacteristic(backboneelement.BackboneElement):
     weight: fhirtypes.QuantityType = Field(
         None,
         alias="weight",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Where applicable, the weight can be specified using a numerical value "
             "and its unit of measurement The unit of measurement shall be specified"
             " in accordance with ISO 11240 and the resulting terminology The symbol"
             " and the symbol identifier shall be used"
         ),
+        description=None,
     )
 
     width: fhirtypes.QuantityType = Field(
         None,
         alias="width",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Where applicable, the width can be specified using a numerical value "
             "and its unit of measurement The unit of measurement shall be specified"
             " in accordance with ISO 11240 and the resulting terminology The symbol"
             " and the symbol identifier shall be used"
         ),
+        description=None,
     )

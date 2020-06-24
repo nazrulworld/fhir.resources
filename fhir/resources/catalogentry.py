@@ -28,46 +28,52 @@ class CatalogEntry(domainresource.DomainResource):
     additionalCharacteristic: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="additionalCharacteristic",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Additional characteristics of the catalog entry",
+        title="Additional characteristics of the catalog entry",
+        description="Used for examplefor Out of Formulary, or any specifics.",
     )
 
     additionalClassification: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="additionalClassification",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Additional classification of the catalog entry",
+        title="Additional classification of the catalog entry",
+        description="User for example for ATC classification, or.",
     )
 
     additionalIdentifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="additionalIdentifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Any additional identifier(s) for the catalog item, in the same "
             "granularity or concept"
         ),
+        description="Used in supporting related concepts, e.g. NDC to RxNorm.",
     )
 
     classification: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="classification",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Classification (category or class) of the item entry",
+        title="Classification (category or class) of the item entry",
+        description="Classes of devices, or ATC for medication.",
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Unique identifier of the catalog item",
+        title="Unique identifier of the catalog item",
+        description=(
+            "Used in supporting different identifiers for the same product, e.g. "
+            "manufacturer code and retailer code."
+        ),
     )
 
     lastUpdated: fhirtypes.DateTime = Field(
         None,
         alias="lastUpdated",
-        title="Type `DateTime`",
-        description="When was this catalog last updated",
+        title="When was this catalog last updated",
+        description=(
+            "Typically date of issue is different from the beginning of the "
+            "validity. This can be used to see when an item was last updated."
+        ),
     )
     lastUpdated__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastUpdated", title="Extension field for ``lastUpdated``."
@@ -76,8 +82,8 @@ class CatalogEntry(domainresource.DomainResource):
     orderable: bool = Field(
         ...,
         alias="orderable",
-        title="Type `bool`",
-        description="Whether the entry represents an orderable item",
+        title="Whether the entry represents an orderable item",
+        description=None,
     )
     orderable__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_orderable", title="Extension field for ``orderable``."
@@ -86,30 +92,45 @@ class CatalogEntry(domainresource.DomainResource):
     referencedItem: fhirtypes.ReferenceType = Field(
         ...,
         alias="referencedItem",
-        title=(
-            "Type `Reference` referencing `Medication, Device, Organization, "
-            "Practitioner, PractitionerRole, HealthcareService, ActivityDefinition,"
-            " PlanDefinition, SpecimenDefinition, ObservationDefinition, Binary` "
-            "(represented as `dict` in JSON)"
-        ),
-        description="The item that is being defined",
+        title="The item that is being defined",
+        description="The item in a catalog or definition.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=[
+            "Medication",
+            "Device",
+            "Organization",
+            "Practitioner",
+            "PractitionerRole",
+            "HealthcareService",
+            "ActivityDefinition",
+            "PlanDefinition",
+            "SpecimenDefinition",
+            "ObservationDefinition",
+            "Binary",
+        ],
     )
 
     relatedEntry: ListType[fhirtypes.CatalogEntryRelatedEntryType] = Field(
         None,
         alias="relatedEntry",
-        title=(
-            "List of `CatalogEntryRelatedEntry` items (represented as `dict` in "
-            "JSON)"
+        title="An item that this catalog entry is related to",
+        description=(
+            "Used for example, to point to a substance, or to a device used to "
+            "administer a medication."
         ),
-        description="An item that this catalog entry is related to",
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code`",
-        description="draft | active | retired | unknown",
+        title="draft | active | retired | unknown",
+        description=(
+            "Used to support catalog exchange even for unsupported products, e.g. "
+            "getting list of medications even if not prescribable."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["draft", "active", "retired", "unknown"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -118,15 +139,15 @@ class CatalogEntry(domainresource.DomainResource):
     type: fhirtypes.CodeableConceptType = Field(
         None,
         alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The type of item - medication, device, service, protocol or other",
+        title="The type of item - medication, device, service, protocol or other",
+        description=None,
     )
 
     validTo: fhirtypes.DateTime = Field(
         None,
         alias="validTo",
-        title="Type `DateTime`",
-        description="The date until which this catalog entry is expected to be active",
+        title="The date until which this catalog entry is expected to be active",
+        description=None,
     )
     validTo__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_validTo", title="Extension field for ``validTo``."
@@ -135,8 +156,8 @@ class CatalogEntry(domainresource.DomainResource):
     validityPeriod: fhirtypes.PeriodType = Field(
         None,
         alias="validityPeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="The time period in which this catalog entry is expected to be active",
+        title="The time period in which this catalog entry is expected to be active",
+        description=None,
     )
 
 
@@ -155,18 +176,23 @@ class CatalogEntryRelatedEntry(backboneelement.BackboneElement):
     item: fhirtypes.ReferenceType = Field(
         ...,
         alias="item",
-        title=(
-            "Type `Reference` referencing `CatalogEntry` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="The reference to the related item",
+        title="The reference to the related item",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["CatalogEntry"],
     )
 
     relationtype: fhirtypes.Code = Field(
         ...,
         alias="relationtype",
-        title="Type `Code`",
-        description="triggers | is-replaced-by",
+        title="triggers | is-replaced-by",
+        description=(
+            "The type of relation to the related item: child, parent, "
+            "packageContent, containerPackage, usedIn, uses, requires, etc."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["triggers", "is-replaced-by"],
     )
     relationtype__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_relationtype", title="Extension field for ``relationtype``."

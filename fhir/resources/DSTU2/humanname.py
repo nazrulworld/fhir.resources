@@ -26,14 +26,14 @@ class HumanName(Element):
         None,
         alias="family",
         title="Type `String` (represented as `dict` in JSON)",
-        description="Family name (often called \u0027Surname\u0027)",
+        description="Family name (often called 'Surname')",
     )
 
     given: ListType[fhirtypes.String] = Field(
         None,
         alias="given",
         title="List of `String` items (represented as `dict` in JSON)",
-        description="Given names (not always \u0027first\u0027). Includes middle names",
+        description="Given names (not always 'first'). Includes middle names",
     )
 
     period: fhirtypes.PeriodType = Field(

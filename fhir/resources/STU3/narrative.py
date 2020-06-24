@@ -22,7 +22,10 @@ class Narrative(element.Element):
     resource_type = Field("Narrative", const=True)
 
     div: fhirtypes.Xhtml = Field(
-        ..., alias="div", title="Type `Xhtml`", description="Limited xhtml content"
+        ...,
+        alias="div",
+        title="Limited xhtml content",
+        description="The actual narrative content, a stripped down version of XHTML.",
     )
     div__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_div", title="Extension field for ``div``."
@@ -31,8 +34,15 @@ class Narrative(element.Element):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="generated | extensions | additional | empty",
+        title="generated | extensions | additional | empty",
+        description=(
+            "The status of the narrative - whether it's entirely generated (from "
+            "just the defined data or the extensions too), or whether a human "
+            "authored it and it may contain additional data."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["generated", "extensions", "additional", "empty"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."

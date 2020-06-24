@@ -27,28 +27,28 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
     country: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="country",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="The country in which the marketing authorization has been granted",
+        title="The country in which the marketing authorization has been granted",
+        description=None,
     )
 
     dataExclusivityPeriod: fhirtypes.PeriodType = Field(
         None,
         alias="dataExclusivityPeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "A period of time after authorization before generic product "
             "applicatiosn can be submitted"
         ),
+        description=None,
     )
 
     dateOfFirstAuthorization: fhirtypes.DateTime = Field(
         None,
         alias="dateOfFirstAuthorization",
-        title="Type `DateTime`",
-        description=(
+        title=(
             "The date when the first authorization was granted by a Medicines "
             "Regulatory Agency"
         ),
+        description=None,
     )
     dateOfFirstAuthorization__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -59,31 +59,30 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
     holder: fhirtypes.ReferenceType = Field(
         None,
         alias="holder",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Marketing Authorization Holder",
+        title="Marketing Authorization Holder",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Business identifier for the marketing authorization, as assigned by a "
             "regulator"
         ),
+        description=None,
     )
 
     internationalBirthDate: fhirtypes.DateTime = Field(
         None,
         alias="internationalBirthDate",
-        title="Type `DateTime`",
-        description=(
-            "Date of first marketing authorization for a company\u0027s new medicinal "
+        title=(
+            "Date of first marketing authorization for a company's new medicinal "
             "product in any country in the World"
         ),
+        description=None,
     )
     internationalBirthDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -94,8 +93,8 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="jurisdiction",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Jurisdiction within a country",
+        title="Jurisdiction within a country",
+        description=None,
     )
 
     jurisdictionalAuthorization: ListType[
@@ -103,51 +102,44 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
     ] = Field(
         None,
         alias="jurisdictionalAuthorization",
-        title=(
-            "List of `MedicinalProductAuthorizationJurisdictionalAuthorization` "
-            "items (represented as `dict` in JSON)"
-        ),
-        description="Authorization in areas within a country",
+        title="Authorization in areas within a country",
+        description=None,
     )
 
     legalBasis: fhirtypes.CodeableConceptType = Field(
         None,
         alias="legalBasis",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The legal framework against which this authorization is granted",
+        title="The legal framework against which this authorization is granted",
+        description=None,
     )
 
     procedure: fhirtypes.MedicinalProductAuthorizationProcedureType = Field(
         None,
         alias="procedure",
         title=(
-            "Type `MedicinalProductAuthorizationProcedure` (represented as `dict` "
-            "in JSON)"
-        ),
-        description=(
             "The regulatory procedure for granting or amending a marketing "
             "authorization"
         ),
+        description=None,
     )
 
     regulator: fhirtypes.ReferenceType = Field(
         None,
         alias="regulator",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Medicines Regulatory Agency",
+        title="Medicines Regulatory Agency",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     restoreDate: fhirtypes.DateTime = Field(
         None,
         alias="restoreDate",
-        title="Type `DateTime`",
-        description=(
+        title=(
             "The date when a suspended the marketing or the marketing authorization"
             " of the product is anticipated to be restored"
         ),
+        description=None,
     )
     restoreDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_restoreDate", title="Extension field for ``restoreDate``."
@@ -156,15 +148,15 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
     status: fhirtypes.CodeableConceptType = Field(
         None,
         alias="status",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The status of the marketing authorization",
+        title="The status of the marketing authorization",
+        description=None,
     )
 
     statusDate: fhirtypes.DateTime = Field(
         None,
         alias="statusDate",
-        title="Type `DateTime`",
-        description="The date at which the given status has become applicable",
+        title="The date at which the given status has become applicable",
+        description=None,
     )
     statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_statusDate", title="Extension field for ``statusDate``."
@@ -173,23 +165,22 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title=(
-            "Type `Reference` referencing `MedicinalProduct, "
-            "MedicinalProductPackaged` (represented as `dict` in JSON)"
-        ),
-        description="The medicinal product that is being authorized",
+        title="The medicinal product that is being authorized",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["MedicinalProduct", "MedicinalProductPackaged"],
     )
 
     validityPeriod: fhirtypes.PeriodType = Field(
         None,
         alias="validityPeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The beginning of the time period in which the marketing authorization "
             "is in the specific status shall be specified A complete date "
             "consisting of day, month and year shall be specified using the ISO "
             "8601 date format"
         ),
+        description=None,
     )
 
 
@@ -208,38 +199,35 @@ class MedicinalProductAuthorizationJurisdictionalAuthorization(
     )
 
     country: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="country",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Country of authorization",
+        None, alias="country", title="Country of authorization", description=None,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="The assigned number for the marketing authorization",
+        title="The assigned number for the marketing authorization",
+        description=None,
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="jurisdiction",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Jurisdiction within a country",
+        title="Jurisdiction within a country",
+        description=None,
     )
 
     legalStatusOfSupply: fhirtypes.CodeableConceptType = Field(
         None,
         alias="legalStatusOfSupply",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The legal status of supply in a jurisdiction or region",
+        title="The legal status of supply in a jurisdiction or region",
+        description=None,
     )
 
     validityPeriod: fhirtypes.PeriodType = Field(
         None,
         alias="validityPeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="The start and expected end date of the authorization",
+        title="The start and expected end date of the authorization",
+        description=None,
     )
 
 
@@ -256,19 +244,17 @@ class MedicinalProductAuthorizationProcedure(backboneelement.BackboneElement):
     application: ListType[fhirtypes.MedicinalProductAuthorizationProcedureType] = Field(
         None,
         alias="application",
-        title=(
-            "List of `MedicinalProductAuthorizationProcedure` items (represented as"
-            " `dict` in JSON)"
-        ),
-        description="Applcations submitted to obtain a marketing authorization",
+        title="Applcations submitted to obtain a marketing authorization",
+        description=None,
     )
 
     dateDateTime: fhirtypes.DateTime = Field(
         None,
         alias="dateDateTime",
-        title="Type `DateTime`",
-        description="Date of procedure",
-        one_of_many="date",  # Choice of Data Types. i.e value[x]
+        title="Date of procedure",
+        description=None,
+        # Choice of Data Types. i.e date[x]
+        one_of_many="date",
         one_of_many_required=False,
     )
     dateDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -278,24 +264,22 @@ class MedicinalProductAuthorizationProcedure(backboneelement.BackboneElement):
     datePeriod: fhirtypes.PeriodType = Field(
         None,
         alias="datePeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="Date of procedure",
-        one_of_many="date",  # Choice of Data Types. i.e value[x]
+        title="Date of procedure",
+        description=None,
+        # Choice of Data Types. i.e date[x]
+        one_of_many="date",
         one_of_many_required=False,
     )
 
     identifier: fhirtypes.IdentifierType = Field(
         None,
         alias="identifier",
-        title="Type `Identifier` (represented as `dict` in JSON)",
-        description="Identifier for this procedure",
+        title="Identifier for this procedure",
+        description=None,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
-        ...,
-        alias="type",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Type of procedure",
+        ..., alias="type", title="Type of procedure", description=None,
     )
 
     @root_validator(pre=True)

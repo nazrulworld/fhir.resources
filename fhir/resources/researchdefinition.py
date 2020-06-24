@@ -32,8 +32,12 @@ class ResearchDefinition(domainresource.DomainResource):
     approvalDate: fhirtypes.Date = Field(
         None,
         alias="approvalDate",
-        title="Type `Date`",
-        description="When the research definition was approved by publisher",
+        title="When the research definition was approved by publisher",
+        description=(
+            "The date on which the resource content was approved by the publisher. "
+            "Approval happens once when the content is officially approved for "
+            "usage."
+        ),
     )
     approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_approvalDate", title="Extension field for ``approvalDate``."
@@ -42,15 +46,21 @@ class ResearchDefinition(domainresource.DomainResource):
     author: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="author",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Who authored the content",
+        title="Who authored the content",
+        description=(
+            "An individiual or organization primarily involved in the creation and "
+            "maintenance of the content."
+        ),
     )
 
     comment: ListType[fhirtypes.String] = Field(
         None,
         alias="comment",
-        title="List of `String` items",
-        description="Used for footnotes or explanatory notes",
+        title="Used for footnotes or explanatory notes",
+        description=(
+            "A human-readable string to clarify or explain concepts about the "
+            "resource."
+        ),
     )
     comment__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_comment", title="Extension field for ``comment``."
@@ -59,22 +69,38 @@ class ResearchDefinition(domainresource.DomainResource):
     contact: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="contact",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Contact details for the publisher",
+        title="Contact details for the publisher",
+        description=(
+            "Contact details to assist a user in finding and communicating with the"
+            " publisher."
+        ),
     )
 
     copyright: fhirtypes.Markdown = Field(
         None,
         alias="copyright",
-        title="Type `Markdown`",
-        description="Use and/or publishing restrictions",
+        title="Use and/or publishing restrictions",
+        description=(
+            "A copyright statement relating to the research definition and/or its "
+            "contents. Copyright statements are generally legal restrictions on the"
+            " use and publishing of the research definition."
+        ),
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
     date: fhirtypes.DateTime = Field(
-        None, alias="date", title="Type `DateTime`", description="Date last changed"
+        None,
+        alias="date",
+        title="Date last changed",
+        description=(
+            "The date  (and optionally time) when the research definition was "
+            "published. The date must change when the business version changes and "
+            "it must change if the status code changes. In addition, it should "
+            "change when the substantive content of the research definition "
+            "changes."
+        ),
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -83,8 +109,11 @@ class ResearchDefinition(domainresource.DomainResource):
     description: fhirtypes.Markdown = Field(
         None,
         alias="description",
-        title="Type `Markdown`",
-        description="Natural language description of the research definition",
+        title="Natural language description of the research definition",
+        description=(
+            "A free text natural language description of the research definition "
+            "from a consumer's perspective."
+        ),
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -93,29 +122,42 @@ class ResearchDefinition(domainresource.DomainResource):
     editor: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="editor",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Who edited the content",
+        title="Who edited the content",
+        description=(
+            "An individual or organization primarily responsible for internal "
+            "coherence of the content."
+        ),
     )
 
     effectivePeriod: fhirtypes.PeriodType = Field(
         None,
         alias="effectivePeriod",
-        title="Type `Period` (represented as `dict` in JSON)",
-        description="When the research definition is expected to be used",
+        title="When the research definition is expected to be used",
+        description=(
+            "The period during which the research definition content was or is "
+            "planned to be in active use."
+        ),
     )
 
     endorser: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="endorser",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Who endorsed the content",
+        title="Who endorsed the content",
+        description=(
+            "An individual or organization responsible for officially endorsing the"
+            " content for use in some setting."
+        ),
     )
 
     experimental: bool = Field(
         None,
         alias="experimental",
-        title="Type `bool`",
-        description="For testing purposes, not real usage",
+        title="For testing purposes, not real usage",
+        description=(
+            "A Boolean value to indicate that this research definition is authored "
+            "for testing purposes (or education/evaluation/marketing) and is not "
+            "intended to be used for genuine usage."
+        ),
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -124,42 +166,57 @@ class ResearchDefinition(domainresource.DomainResource):
     exposure: fhirtypes.ReferenceType = Field(
         None,
         alias="exposure",
-        title=(
-            "Type `Reference` referencing `ResearchElementDefinition` (represented "
-            "as `dict` in JSON)"
+        title="What exposure?",
+        description=(
+            "A reference to a ResearchElementDefinition resource that defines the "
+            "exposure for the research."
         ),
-        description="What exposure?",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ResearchElementDefinition"],
     )
 
     exposureAlternative: fhirtypes.ReferenceType = Field(
         None,
         alias="exposureAlternative",
-        title=(
-            "Type `Reference` referencing `ResearchElementDefinition` (represented "
-            "as `dict` in JSON)"
+        title="What alternative exposure state?",
+        description=(
+            "A reference to a ResearchElementDefinition resource that defines the "
+            "exposureAlternative for the research."
         ),
-        description="What alternative exposure state?",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ResearchElementDefinition"],
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Additional identifier for the research definition",
+        title="Additional identifier for the research definition",
+        description=(
+            "A formal identifier that is used to identify this research definition "
+            "when it is represented in other formats, or referenced in a "
+            "specification, model, design or an instance."
+        ),
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="jurisdiction",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description="Intended jurisdiction for research definition (if applicable)",
+        title="Intended jurisdiction for research definition (if applicable)",
+        description=(
+            "A legal or geographic region in which the research definition is "
+            "intended to be used."
+        ),
     )
 
     lastReviewDate: fhirtypes.Date = Field(
         None,
         alias="lastReviewDate",
-        title="Type `Date`",
-        description="When the research definition was last reviewed",
+        title="When the research definition was last reviewed",
+        description=(
+            "The date on which the resource content was last reviewed. Review "
+            "happens periodically after approval but does not change the original "
+            "approval date."
+        ),
     )
     lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
@@ -168,8 +225,13 @@ class ResearchDefinition(domainresource.DomainResource):
     library: ListType[fhirtypes.Canonical] = Field(
         None,
         alias="library",
-        title="List of `Canonical` items referencing `Library`",
-        description="Logic used by the ResearchDefinition",
+        title="Logic used by the ResearchDefinition",
+        description=(
+            "A reference to a Library resource containing the formal logic used by "
+            "the ResearchDefinition."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Library"],
     )
     library__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_library", title="Extension field for ``library``."
@@ -178,8 +240,12 @@ class ResearchDefinition(domainresource.DomainResource):
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String`",
-        description="Name for this research definition (computer friendly)",
+        title="Name for this research definition (computer friendly)",
+        description=(
+            "A natural language name identifying the research definition. This name"
+            " should be usable as an identifier for the module by machine "
+            "processing applications such as code generation."
+        ),
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -188,28 +254,35 @@ class ResearchDefinition(domainresource.DomainResource):
     outcome: fhirtypes.ReferenceType = Field(
         None,
         alias="outcome",
-        title=(
-            "Type `Reference` referencing `ResearchElementDefinition` (represented "
-            "as `dict` in JSON)"
+        title="What outcome?",
+        description=(
+            "A reference to a ResearchElementDefinition resomece that defines the "
+            "outcome for the research."
         ),
-        description="What outcome?",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ResearchElementDefinition"],
     )
 
     population: fhirtypes.ReferenceType = Field(
         ...,
         alias="population",
-        title=(
-            "Type `Reference` referencing `ResearchElementDefinition` (represented "
-            "as `dict` in JSON)"
+        title="What population?",
+        description=(
+            "A reference to a ResearchElementDefinition resource that defines the "
+            "population for the research."
         ),
-        description="What population?",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ResearchElementDefinition"],
     )
 
     publisher: fhirtypes.String = Field(
         None,
         alias="publisher",
-        title="Type `String`",
-        description="Name of the publisher (organization or individual)",
+        title="Name of the publisher (organization or individual)",
+        description=(
+            "The name of the organization or individual that published the research"
+            " definition."
+        ),
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -218,8 +291,11 @@ class ResearchDefinition(domainresource.DomainResource):
     purpose: fhirtypes.Markdown = Field(
         None,
         alias="purpose",
-        title="Type `Markdown`",
-        description="Why this research definition is defined",
+        title="Why this research definition is defined",
+        description=(
+            "Explanation of why this research definition is needed and why it has "
+            "been designed as it has."
+        ),
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_purpose", title="Extension field for ``purpose``."
@@ -228,22 +304,31 @@ class ResearchDefinition(domainresource.DomainResource):
     relatedArtifact: ListType[fhirtypes.RelatedArtifactType] = Field(
         None,
         alias="relatedArtifact",
-        title="List of `RelatedArtifact` items (represented as `dict` in JSON)",
-        description="Additional documentation, citations, etc.",
+        title="Additional documentation, citations, etc.",
+        description=(
+            "Related artifacts such as additional documentation, justification, or "
+            "bibliographic references."
+        ),
     )
 
     reviewer: ListType[fhirtypes.ContactDetailType] = Field(
         None,
         alias="reviewer",
-        title="List of `ContactDetail` items (represented as `dict` in JSON)",
-        description="Who reviewed the content",
+        title="Who reviewed the content",
+        description=(
+            "An individual or organization primarily responsible for review of some"
+            " aspect of the content."
+        ),
     )
 
     shortTitle: fhirtypes.String = Field(
         None,
         alias="shortTitle",
-        title="Type `String`",
-        description="Title for use in informal contexts",
+        title="Title for use in informal contexts",
+        description=(
+            "The short title provides an alternate title for use in informal "
+            "descriptive contexts where the full, formal title is not necessary."
+        ),
     )
     shortTitle__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_shortTitle", title="Extension field for ``shortTitle``."
@@ -252,8 +337,14 @@ class ResearchDefinition(domainresource.DomainResource):
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
-        title="Type `Code`",
-        description="draft | active | retired | unknown",
+        title="draft | active | retired | unknown",
+        description=(
+            "The status of this research definition. Enables tracking the life-"
+            "cycle of the content."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["draft", "active", "retired", "unknown"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -262,32 +353,47 @@ class ResearchDefinition(domainresource.DomainResource):
     subjectCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="subjectCodeableConcept",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "E.g. Patient, Practitioner, RelatedPerson, Organization, Location, "
             "Device"
         ),
-        one_of_many="subject",  # Choice of Data Types. i.e value[x]
+        description=(
+            "The intended subjects for the ResearchDefinition. If this element is "
+            "not provided, a Patient subject is assumed, but the subject of the "
+            "ResearchDefinition can be anything."
+        ),
+        # Choice of Data Types. i.e subject[x]
+        one_of_many="subject",
         one_of_many_required=False,
     )
 
     subjectReference: fhirtypes.ReferenceType = Field(
         None,
         alias="subjectReference",
-        title="Type `Reference` referencing `Group` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "E.g. Patient, Practitioner, RelatedPerson, Organization, Location, "
             "Device"
         ),
-        one_of_many="subject",  # Choice of Data Types. i.e value[x]
+        description=(
+            "The intended subjects for the ResearchDefinition. If this element is "
+            "not provided, a Patient subject is assumed, but the subject of the "
+            "ResearchDefinition can be anything."
+        ),
+        # Choice of Data Types. i.e subject[x]
+        one_of_many="subject",
         one_of_many_required=False,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Group"],
     )
 
     subtitle: fhirtypes.String = Field(
         None,
         alias="subtitle",
-        title="Type `String`",
-        description="Subordinate title of the ResearchDefinition",
+        title="Subordinate title of the ResearchDefinition",
+        description=(
+            "An explanatory or alternate title for the ResearchDefinition giving "
+            "additional information about its content."
+        ),
     )
     subtitle__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_subtitle", title="Extension field for ``subtitle``."
@@ -296,8 +402,8 @@ class ResearchDefinition(domainresource.DomainResource):
     title: fhirtypes.String = Field(
         None,
         alias="title",
-        title="Type `String`",
-        description="Name for this research definition (human friendly)",
+        title="Name for this research definition (human friendly)",
+        description="A short, descriptive, user-friendly title for the research definition.",
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -306,20 +412,32 @@ class ResearchDefinition(domainresource.DomainResource):
     topic: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="topic",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The category of the ResearchDefinition, such as Education, Treatment, "
             "Assessment, etc."
+        ),
+        description=(
+            "Descriptive topics related to the content of the ResearchDefinition. "
+            "Topics provide a high-level categorization grouping types of "
+            "ResearchDefinitions that can be useful for filtering and searching."
         ),
     )
 
     url: fhirtypes.Uri = Field(
         None,
         alias="url",
-        title="Type `Uri`",
-        description=(
+        title=(
             "Canonical identifier for this research definition, represented as a "
             "URI (globally unique)"
+        ),
+        description=(
+            "An absolute URI that is used to identify this research definition when"
+            " it is referenced in a specification, model, design or an instance; "
+            "also called its canonical identifier. This SHOULD be globally unique "
+            "and SHOULD be a literal address at which at which an authoritative "
+            "instance of this research definition is (or will be) published. This "
+            "URL can be the target of a canonical reference. It SHALL remain the "
+            "same when the research definition is stored on different servers."
         ),
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -329,8 +447,11 @@ class ResearchDefinition(domainresource.DomainResource):
     usage: fhirtypes.String = Field(
         None,
         alias="usage",
-        title="Type `String`",
-        description="Describes the clinical usage of the ResearchDefinition",
+        title="Describes the clinical usage of the ResearchDefinition",
+        description=(
+            "A detailed description, from a clinical perspective, of how the "
+            "ResearchDefinition is used."
+        ),
     )
     usage__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_usage", title="Extension field for ``usage``."
@@ -339,15 +460,34 @@ class ResearchDefinition(domainresource.DomainResource):
     useContext: ListType[fhirtypes.UsageContextType] = Field(
         None,
         alias="useContext",
-        title="List of `UsageContext` items (represented as `dict` in JSON)",
-        description="The context that the content is intended to support",
+        title="The context that the content is intended to support",
+        description=(
+            "The content was developed with a focus and intent of supporting the "
+            "contexts that are listed. These contexts may be general categories "
+            "(gender, age, ...) or may be references to specific programs "
+            "(insurance plans, studies, ...) and may be used to assist with "
+            "indexing and searching for appropriate research definition instances."
+        ),
     )
 
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String`",
-        description="Business version of the research definition",
+        title="Business version of the research definition",
+        description=(
+            "The identifier that is used to identify this version of the research "
+            "definition when it is referenced in a specification, model, design or "
+            "instance. This is an arbitrary value managed by the research "
+            "definition author and is not expected to be globally unique. For "
+            "example, it might be a timestamp (e.g. yyyymmdd) if a managed version "
+            "is not available. There is also no expectation that versions can be "
+            "placed in a lexicographical sequence. To provide a version consistent "
+            "with the Decision Support Service specification, use the format "
+            "Major.Minor.Revision (e.g. 1.0.0). For more information on versioning "
+            "knowledge assets, refer to the Decision Support Service specification."
+            " Note that a version is required for non-experimental active "
+            "artifacts."
+        ),
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."

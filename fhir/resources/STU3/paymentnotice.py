@@ -26,7 +26,10 @@ class PaymentNotice(domainresource.DomainResource):
     resource_type = Field("PaymentNotice", const=True)
 
     created: fhirtypes.DateTime = Field(
-        None, alias="created", title="Type `DateTime`", description="Creation date"
+        None,
+        alias="created",
+        title="Creation date",
+        description="The date when this resource was created.",
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_created", title="Extension field for ``created``."
@@ -35,60 +38,70 @@ class PaymentNotice(domainresource.DomainResource):
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="Business Identifier",
+        title="Business Identifier",
+        description="The notice business identifier.",
     )
 
     organization: fhirtypes.ReferenceType = Field(
         None,
         alias="organization",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
+        title="Responsible organization",
+        description=(
+            "The organization which is responsible for the services rendered to the"
+            " patient."
         ),
-        description="Responsible organization",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )
 
     paymentStatus: fhirtypes.CodeableConceptType = Field(
         None,
         alias="paymentStatus",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Whether payment has been sent or cleared",
+        title="Whether payment has been sent or cleared",
+        description=(
+            "The payment status, typically paid: payment sent, cleared: payment "
+            "received."
+        ),
     )
 
     provider: fhirtypes.ReferenceType = Field(
         None,
         alias="provider",
-        title=(
-            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
-            "JSON)"
+        title="Responsible practitioner",
+        description=(
+            "The practitioner who is responsible for the services rendered to the "
+            "patient."
         ),
-        description="Responsible practitioner",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner"],
     )
 
     request: fhirtypes.ReferenceType = Field(
         None,
         alias="request",
-        title=(
-            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
-        ),
-        description="Request reference",
+        title="Request reference",
+        description="Reference of resource for which payment is being made.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     response: fhirtypes.ReferenceType = Field(
         None,
         alias="response",
-        title=(
-            "Type `Reference` referencing `Resource` (represented as `dict` in " "JSON)"
-        ),
-        description="Response reference",
+        title="Response reference",
+        description="Reference of response to resource for which payment is being made.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     status: fhirtypes.Code = Field(
         None,
         alias="status",
-        title="Type `Code`",
-        description="active | cancelled | draft | entered-in-error",
+        title="active | cancelled | draft | entered-in-error",
+        description="The status of the resource instance.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["active", "cancelled", "draft", "entered-in-error"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -97,8 +110,8 @@ class PaymentNotice(domainresource.DomainResource):
     statusDate: fhirtypes.Date = Field(
         None,
         alias="statusDate",
-        title="Type `Date`",
-        description="Payment or clearing date",
+        title="Payment or clearing date",
+        description="The date when the above payment action occurrred.",
     )
     statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_statusDate", title="Extension field for ``statusDate``."
@@ -107,9 +120,8 @@ class PaymentNotice(domainresource.DomainResource):
     target: fhirtypes.ReferenceType = Field(
         None,
         alias="target",
-        title=(
-            "Type `Reference` referencing `Organization` (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Insurer or Regulatory body",
+        title="Insurer or Regulatory body",
+        description="The Insurer who is target  of the request.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Organization"],
     )

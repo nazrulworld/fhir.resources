@@ -28,8 +28,11 @@ class ParameterDefinition(element.Element):
     documentation: fhirtypes.String = Field(
         None,
         alias="documentation",
-        title="Type `String`",
-        description="A brief description of the parameter",
+        title="A brief description of the parameter",
+        description=(
+            "A brief discussion of what the parameter is for and how it is used by "
+            "the module."
+        ),
     )
     documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_documentation", title="Extension field for ``documentation``."
@@ -38,15 +41,24 @@ class ParameterDefinition(element.Element):
     max: fhirtypes.String = Field(
         None,
         alias="max",
-        title="Type `String`",
-        description="Maximum cardinality (a number of *)",
+        title="Maximum cardinality (a number of *)",
+        description=(
+            "The maximum number of times this element is permitted to appear in the"
+            " request or response."
+        ),
     )
     max__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_max", title="Extension field for ``max``."
     )
 
     min: fhirtypes.Integer = Field(
-        None, alias="min", title="Type `Integer`", description="Minimum cardinality"
+        None,
+        alias="min",
+        title="Minimum cardinality",
+        description=(
+            "The minimum number of times this parameter SHALL appear in the request"
+            " or response."
+        ),
     )
     min__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_min", title="Extension field for ``min``."
@@ -55,8 +67,11 @@ class ParameterDefinition(element.Element):
     name: fhirtypes.Code = Field(
         None,
         alias="name",
-        title="Type `Code`",
-        description="Name used to access the parameter value",
+        title="Name used to access the parameter value",
+        description=(
+            "The name of the parameter used to allow access to the value of the "
+            "parameter in evaluation contexts."
+        ),
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -65,22 +80,33 @@ class ParameterDefinition(element.Element):
     profile: fhirtypes.ReferenceType = Field(
         None,
         alias="profile",
-        title=(
-            "Type `Reference` referencing `StructureDefinition` (represented as "
-            "`dict` in JSON)"
+        title="What profile the value is expected to be",
+        description=(
+            "If specified, this indicates a profile that the input data must "
+            "conform to, or that the output data will conform to."
         ),
-        description="What profile the value is expected to be",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["StructureDefinition"],
     )
 
     type: fhirtypes.Code = Field(
-        ..., alias="type", title="Type `Code`", description="What type of value"
+        ...,
+        alias="type",
+        title="What type of value",
+        description="The type of the parameter.",
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
     )
 
     use: fhirtypes.Code = Field(
-        ..., alias="use", title="Type `Code`", description="in | out"
+        ...,
+        alias="use",
+        title="in | out",
+        description="Whether the parameter is input or output for the module.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["in", "out"],
     )
     use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_use", title="Extension field for ``use``."

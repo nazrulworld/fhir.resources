@@ -27,8 +27,8 @@ class MedicinalProductPharmaceutical(domainresource.DomainResource):
     administrableDoseForm: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="administrableDoseForm",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The administrable dose form, after necessary reconstitution",
+        title="The administrable dose form, after necessary reconstitution",
+        description=None,
     )
 
     characteristics: ListType[
@@ -36,38 +36,33 @@ class MedicinalProductPharmaceutical(domainresource.DomainResource):
     ] = Field(
         None,
         alias="characteristics",
-        title=(
-            "List of `MedicinalProductPharmaceuticalCharacteristics` items "
-            "(represented as `dict` in JSON)"
-        ),
-        description="Characteristics e.g. a products onset of action",
+        title="Characteristics e.g. a products onset of action",
+        description=None,
     )
 
     device: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="device",
-        title=(
-            "List of `Reference` items referencing `DeviceDefinition` (represented "
-            "as `dict` in JSON)"
-        ),
-        description="Accompanying device",
+        title="Accompanying device",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["DeviceDefinition"],
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
-        title="List of `Identifier` items (represented as `dict` in JSON)",
-        description="An identifier for the pharmaceutical medicinal product",
+        title="An identifier for the pharmaceutical medicinal product",
+        description=None,
     )
 
     ingredient: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="ingredient",
-        title=(
-            "List of `Reference` items referencing `MedicinalProductIngredient` "
-            "(represented as `dict` in JSON)"
-        ),
-        description="Ingredient",
+        title="Ingredient",
+        description=None,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["MedicinalProductIngredient"],
     )
 
     routeOfAdministration: ListType[
@@ -76,20 +71,14 @@ class MedicinalProductPharmaceutical(domainresource.DomainResource):
         ...,
         alias="routeOfAdministration",
         title=(
-            "List of `MedicinalProductPharmaceuticalRouteOfAdministration` items "
-            "(represented as `dict` in JSON)"
-        ),
-        description=(
             "The path by which the pharmaceutical product is taken into or makes "
             "contact with the body"
         ),
+        description=None,
     )
 
     unitOfPresentation: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="unitOfPresentation",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Todo",
+        None, alias="unitOfPresentation", title="Todo", description=None,
     )
 
 
@@ -104,17 +93,14 @@ class MedicinalProductPharmaceuticalCharacteristics(backboneelement.BackboneElem
     resource_type = Field("MedicinalProductPharmaceuticalCharacteristics", const=True)
 
     code: fhirtypes.CodeableConceptType = Field(
-        ...,
-        alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="A coded characteristic",
+        ..., alias="code", title="A coded characteristic", description=None,
     )
 
     status: fhirtypes.CodeableConceptType = Field(
         None,
         alias="status",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="The status of characteristic e.g. assigned or pending",
+        title="The status of characteristic e.g. assigned or pending",
+        description=None,
     )
 
 
@@ -134,64 +120,61 @@ class MedicinalProductPharmaceuticalRouteOfAdministration(
     )
 
     code: fhirtypes.CodeableConceptType = Field(
-        ...,
-        alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Coded expression for the route",
+        ..., alias="code", title="Coded expression for the route", description=None,
     )
 
     firstDose: fhirtypes.QuantityType = Field(
         None,
         alias="firstDose",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The first dose (dose quantity) administered in humans can be "
             "specified, for a product under investigation, using a numerical value "
             "and its unit of measurement"
         ),
+        description=None,
     )
 
     maxDosePerDay: fhirtypes.QuantityType = Field(
         None,
         alias="maxDosePerDay",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The maximum dose per day (maximum dose quantity to be administered in "
             "any one 24-h period) that can be administered as per the protocol "
             "referenced in the clinical trial authorisation"
         ),
+        description=None,
     )
 
     maxDosePerTreatmentPeriod: fhirtypes.RatioType = Field(
         None,
         alias="maxDosePerTreatmentPeriod",
-        title="Type `Ratio` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The maximum dose per treatment period that can be administered as per "
             "the protocol referenced in the clinical trial authorisation"
         ),
+        description=None,
     )
 
     maxSingleDose: fhirtypes.QuantityType = Field(
         None,
         alias="maxSingleDose",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The maximum single dose that can be administered as per the protocol "
             "of a clinical trial can be specified using a numerical value and its "
             "unit of measurement"
         ),
+        description=None,
     )
 
     maxTreatmentPeriod: fhirtypes.DurationType = Field(
         None,
         alias="maxTreatmentPeriod",
-        title="Type `Duration` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "The maximum treatment period during which an Investigational Medicinal"
             " Product can be administered as per the protocol referenced in the "
             "clinical trial authorisation"
         ),
+        description=None,
     )
 
     targetSpecies: ListType[
@@ -199,12 +182,8 @@ class MedicinalProductPharmaceuticalRouteOfAdministration(
     ] = Field(
         None,
         alias="targetSpecies",
-        title=(
-            "List of "
-            "`MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies` "
-            "items (represented as `dict` in JSON)"
-        ),
-        description="A species for which this route applies",
+        title="A species for which this route applies",
+        description=None,
     )
 
 
@@ -223,10 +202,7 @@ class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies(
     )
 
     code: fhirtypes.CodeableConceptType = Field(
-        ...,
-        alias="code",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Coded expression for the species",
+        ..., alias="code", title="Coded expression for the species", description=None,
     )
 
     withdrawalPeriod: ListType[
@@ -235,13 +211,10 @@ class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies(
         None,
         alias="withdrawalPeriod",
         title=(
-            "List of `MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpec"
-            "iesWithdrawalPeriod` items (represented as `dict` in JSON)"
-        ),
-        description=(
             "A species specific time during which consumption of animal product is "
             "not appropriate"
         ),
+        description=None,
     )
 
 
@@ -257,15 +230,15 @@ class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawal
     """
 
     resource_type = Field(
-        "MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod",
+        "MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod",  # noqa: B950
         const=True,
     )
 
     supportingInformation: fhirtypes.String = Field(
         None,
         alias="supportingInformation",
-        title="Type `String`",
-        description="Extra information about the withdrawal period",
+        title="Extra information about the withdrawal period",
+        description=None,
     )
     supportingInformation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -276,16 +249,13 @@ class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawal
     tissue: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="tissue",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description=(
+        title=(
             "Coded expression for the type of tissue for which the withdrawal "
             "period applues, e.g. meat, milk"
         ),
+        description=None,
     )
 
     value: fhirtypes.QuantityType = Field(
-        ...,
-        alias="value",
-        title="Type `Quantity` (represented as `dict` in JSON)",
-        description="A value for the time",
+        ..., alias="value", title="A value for the time", description=None,
     )

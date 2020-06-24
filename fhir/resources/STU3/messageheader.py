@@ -31,106 +31,129 @@ class MessageHeader(domainresource.DomainResource):
     author: fhirtypes.ReferenceType = Field(
         None,
         alias="author",
-        title=(
-            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
-            "JSON)"
+        title="The source of the decision",
+        description=(
+            "The logical author of the message - the person or device that decided "
+            "the described event should happen. When there is more than one "
+            "candidate, pick the most proximal to the MessageHeader. Can provide "
+            "other authors in extensions."
         ),
-        description="The source of the decision",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner"],
     )
 
     destination: ListType[fhirtypes.MessageHeaderDestinationType] = Field(
         None,
         alias="destination",
-        title=(
-            "List of `MessageHeaderDestination` items (represented as `dict` in "
-            "JSON)"
-        ),
-        description="Message destination application(s)",
+        title="Message destination application(s)",
+        description="The destination application which the message is intended for.",
     )
 
     enterer: fhirtypes.ReferenceType = Field(
         None,
         alias="enterer",
-        title=(
-            "Type `Reference` referencing `Practitioner` (represented as `dict` in "
-            "JSON)"
+        title="The source of the data entry",
+        description=(
+            "The person or device that performed the data entry leading to this "
+            "message. When there is more than one candidate, pick the most proximal"
+            " to the message. Can provide other enterers in extensions."
         ),
-        description="The source of the data entry",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner"],
     )
 
     event: fhirtypes.CodingType = Field(
         ...,
         alias="event",
-        title="Type `Coding` (represented as `dict` in JSON)",
-        description="Code for the event this message represents",
+        title="Code for the event this message represents",
+        description=(
+            "Code that identifies the event this message represents and connects it"
+            " with its definition. Events defined as part of the FHIR specification"
+            ' have the system value "http://hl7.org/fhir/message-events".'
+        ),
     )
 
     focus: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="focus",
-        title=(
-            "List of `Reference` items referencing `Resource` (represented as "
-            "`dict` in JSON)"
+        title="The actual content of the message",
+        description=(
+            "The actual data of the message - a reference to the root/focus class "
+            "of the event."
         ),
-        description="The actual content of the message",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Resource"],
     )
 
     reason: fhirtypes.CodeableConceptType = Field(
         None,
         alias="reason",
-        title="Type `CodeableConcept` (represented as `dict` in JSON)",
-        description="Cause of event",
+        title="Cause of event",
+        description=(
+            "Coded indication of the cause for the event - indicates  a reason for "
+            "the occurrence of the event that is a focus of this message."
+        ),
     )
 
     receiver: fhirtypes.ReferenceType = Field(
         None,
         alias="receiver",
-        title=(
-            "Type `Reference` referencing `Practitioner, Organization` (represented"
-            " as `dict` in JSON)"
+        title='Intended "real-world" recipient for the data',
+        description=(
+            "Allows data conveyed by a message to be addressed to a particular "
+            "person or department when routing to a specific application isn't "
+            "sufficient."
         ),
-        description='Intended "real-world" recipient for the data',
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner", "Organization"],
     )
 
     response: fhirtypes.MessageHeaderResponseType = Field(
         None,
         alias="response",
-        title="Type `MessageHeaderResponse` (represented as `dict` in JSON)",
-        description="If this is a reply to prior message",
+        title="If this is a reply to prior message",
+        description=(
+            "Information about the message that this message is a response to.  "
+            "Only present if this message is a response."
+        ),
     )
 
     responsible: fhirtypes.ReferenceType = Field(
         None,
         alias="responsible",
-        title=(
-            "Type `Reference` referencing `Practitioner, Organization` (represented"
-            " as `dict` in JSON)"
+        title="Final responsibility for event",
+        description=(
+            "The person or organization that accepts overall responsibility for the"
+            " contents of the message. The implication is that the message event "
+            "happened under the policies of the responsible party."
         ),
-        description="Final responsibility for event",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner", "Organization"],
     )
 
     sender: fhirtypes.ReferenceType = Field(
         None,
         alias="sender",
-        title=(
-            "Type `Reference` referencing `Practitioner, Organization` (represented"
-            " as `dict` in JSON)"
+        title="Real world sender of the message",
+        description=(
+            "Identifies the sending system to allow the use of a trust " "relationship."
         ),
-        description="Real world sender of the message",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner", "Organization"],
     )
 
     source: fhirtypes.MessageHeaderSourceType = Field(
         ...,
         alias="source",
-        title="Type `MessageHeaderSource` (represented as `dict` in JSON)",
-        description="Message source application",
+        title="Message source application",
+        description="The source application from which this message originated.",
     )
 
     timestamp: fhirtypes.Instant = Field(
         ...,
         alias="timestamp",
-        title="Type `Instant`",
-        description="Time that the message was sent",
+        title="Time that the message was sent",
+        description="The time that the message was sent.",
     )
     timestamp__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_timestamp", title="Extension field for ``timestamp``."
@@ -151,15 +174,18 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
     endpoint: fhirtypes.Uri = Field(
         ...,
         alias="endpoint",
-        title="Type `Uri`",
-        description="Actual destination address or id",
+        title="Actual destination address or id",
+        description="Indicates where the message should be routed to.",
     )
     endpoint__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_endpoint", title="Extension field for ``endpoint``."
     )
 
     name: fhirtypes.String = Field(
-        None, alias="name", title="Type `String`", description="Name of system"
+        None,
+        alias="name",
+        title="Name of system",
+        description="Human-readable name for the target system.",
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -168,8 +194,13 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
     target: fhirtypes.ReferenceType = Field(
         None,
         alias="target",
-        title="Type `Reference` referencing `Device` (represented as `dict` in JSON)",
-        description="Particular delivery destination within the destination",
+        title="Particular delivery destination within the destination",
+        description=(
+            "Identifies the target end system in situations where the initial "
+            "message transmission is to an intermediary system."
+        ),
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Device"],
     )
 
 
@@ -188,8 +219,14 @@ class MessageHeaderResponse(backboneelement.BackboneElement):
     code: fhirtypes.Code = Field(
         ...,
         alias="code",
-        title="Type `Code`",
-        description="ok | transient-error | fatal-error",
+        title="ok | transient-error | fatal-error",
+        description=(
+            "Code that identifies the type of response to the message - whether it "
+            "was successful or not, and whether it should be resent or not."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["ok", "transient-error", "fatal-error"],
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -198,15 +235,20 @@ class MessageHeaderResponse(backboneelement.BackboneElement):
     details: fhirtypes.ReferenceType = Field(
         None,
         alias="details",
-        title=(
-            "Type `Reference` referencing `OperationOutcome` (represented as `dict`"
-            " in JSON)"
-        ),
-        description="Specific list of hints/warnings/errors",
+        title="Specific list of hints/warnings/errors",
+        description="Full details of any issues found in the message.",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["OperationOutcome"],
     )
 
     identifier: fhirtypes.Id = Field(
-        ..., alias="identifier", title="Type `Id`", description="Id of original message"
+        ...,
+        alias="identifier",
+        title="Id of original message",
+        description=(
+            "The MessageHeader.id of the message to which this message is a "
+            "response."
+        ),
     )
     identifier__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_identifier", title="Extension field for ``identifier``."
@@ -227,22 +269,28 @@ class MessageHeaderSource(backboneelement.BackboneElement):
     contact: fhirtypes.ContactPointType = Field(
         None,
         alias="contact",
-        title="Type `ContactPoint` (represented as `dict` in JSON)",
-        description="Human contact for problems",
+        title="Human contact for problems",
+        description=(
+            "An e-mail, phone, website or other contact point to use to resolve "
+            "issues with message communications."
+        ),
     )
 
     endpoint: fhirtypes.Uri = Field(
         ...,
         alias="endpoint",
-        title="Type `Uri`",
-        description="Actual message source address or id",
+        title="Actual message source address or id",
+        description="Identifies the routing target to send acknowledgements to.",
     )
     endpoint__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_endpoint", title="Extension field for ``endpoint``."
     )
 
     name: fhirtypes.String = Field(
-        None, alias="name", title="Type `String`", description="Name of system"
+        None,
+        alias="name",
+        title="Name of system",
+        description="Human-readable name for the source system.",
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -251,8 +299,8 @@ class MessageHeaderSource(backboneelement.BackboneElement):
     software: fhirtypes.String = Field(
         None,
         alias="software",
-        title="Type `String`",
-        description="Name of software running the system",
+        title="Name of software running the system",
+        description="May include configuration or other information useful in debugging.",
     )
     software__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_software", title="Extension field for ``software``."
@@ -261,8 +309,11 @@ class MessageHeaderSource(backboneelement.BackboneElement):
     version: fhirtypes.String = Field(
         None,
         alias="version",
-        title="Type `String`",
-        description="Version of software running",
+        title="Version of software running",
+        description=(
+            "Can convey versions of multiple systems in situations where a message "
+            "passes through multiple hands."
+        ),
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."

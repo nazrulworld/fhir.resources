@@ -28,8 +28,11 @@ class Linkage(domainresource.DomainResource):
     active: bool = Field(
         None,
         alias="active",
-        title="Type `bool`",
-        description="Whether this linkage assertion is active or not",
+        title="Whether this linkage assertion is active or not",
+        description=(
+            "Indicates whether the asserted set of linkages are considered to be "
+            '"in effect".'
+        ),
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_active", title="Extension field for ``active``."
@@ -38,18 +41,25 @@ class Linkage(domainresource.DomainResource):
     author: fhirtypes.ReferenceType = Field(
         None,
         alias="author",
-        title=(
-            "Type `Reference` referencing `Practitioner, Organization` (represented"
-            " as `dict` in JSON)"
+        title="Who is responsible for linkages",
+        description=(
+            "Identifies the user or organization responsible for asserting the "
+            "linkages and who establishes the context for evaluating the nature of "
+            "each linkage."
         ),
-        description="Who is responsible for linkages",
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Practitioner", "Organization"],
     )
 
     item: ListType[fhirtypes.LinkageItemType] = Field(
         ...,
         alias="item",
-        title="List of `LinkageItem` items (represented as `dict` in JSON)",
-        description="Item to be linked",
+        title="Item to be linked",
+        description=(
+            "Identifies one of the records that is considered to refer to the same "
+            "real-world occurrence as well as how the items hould be evaluated "
+            "within the collection of linked items."
+        ),
     )
 
 
@@ -69,15 +79,21 @@ class LinkageItem(backboneelement.BackboneElement):
     resource: fhirtypes.ReferenceType = Field(
         ...,
         alias="resource",
-        title="Type `Reference` (represented as `dict` in JSON)",
-        description="Resource being linked",
+        title="Resource being linked",
+        description="The resource instance being linked as part of the group.",
     )
 
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code`",
-        description="source | alternate | historical",
+        title="source | alternate | historical",
+        description=(
+            'Distinguishes which item is "source of truth" (if any) and which items'
+            " are no longer considered to be current representations."
+        ),
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=["source", "alternate", "historical"],
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."

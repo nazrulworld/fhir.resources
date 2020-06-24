@@ -29,22 +29,34 @@ class TriggerDefinition(element.Element):
     condition: fhirtypes.ExpressionType = Field(
         None,
         alias="condition",
-        title="Type `Expression` (represented as `dict` in JSON)",
-        description="Whether the event triggers (boolean expression)",
+        title="Whether the event triggers (boolean expression)",
+        description=(
+            "A boolean-valued expression that is evaluated in the context of the "
+            "container of the trigger definition and returns whether or not the "
+            "trigger fires."
+        ),
     )
 
     data: ListType[fhirtypes.DataRequirementType] = Field(
         None,
         alias="data",
-        title="List of `DataRequirement` items (represented as `dict` in JSON)",
-        description="Triggering data of the event (multiple = \u0027and\u0027)",
+        title="Triggering data of the event (multiple = 'and')",
+        description=(
+            "The triggering data of the event (if this is a data trigger). If more "
+            "than one data is requirement is specified, then all the data "
+            "requirements must be true."
+        ),
     )
 
     name: fhirtypes.String = Field(
         None,
         alias="name",
-        title="Type `String`",
-        description="Name or URI that identifies the event",
+        title="Name or URI that identifies the event",
+        description=(
+            "A formal name for the event. This may be an absolute URI that "
+            "identifies the event formally (e.g. from a trigger registry), or a "
+            "simple relative URI that identifies the event in a local context."
+        ),
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -53,9 +65,10 @@ class TriggerDefinition(element.Element):
     timingDate: fhirtypes.Date = Field(
         None,
         alias="timingDate",
-        title="Type `Date`",
-        description="Timing of the event",
-        one_of_many="timing",  # Choice of Data Types. i.e value[x]
+        title="Timing of the event",
+        description="The timing of the event (if this is a periodic trigger).",
+        # Choice of Data Types. i.e timing[x]
+        one_of_many="timing",
         one_of_many_required=False,
     )
     timingDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -65,9 +78,10 @@ class TriggerDefinition(element.Element):
     timingDateTime: fhirtypes.DateTime = Field(
         None,
         alias="timingDateTime",
-        title="Type `DateTime`",
-        description="Timing of the event",
-        one_of_many="timing",  # Choice of Data Types. i.e value[x]
+        title="Timing of the event",
+        description="The timing of the event (if this is a periodic trigger).",
+        # Choice of Data Types. i.e timing[x]
+        one_of_many="timing",
         one_of_many_required=False,
     )
     timingDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -77,31 +91,45 @@ class TriggerDefinition(element.Element):
     timingReference: fhirtypes.ReferenceType = Field(
         None,
         alias="timingReference",
-        title=(
-            "Type `Reference` referencing `Schedule` (represented as `dict` in " "JSON)"
-        ),
-        description="Timing of the event",
-        one_of_many="timing",  # Choice of Data Types. i.e value[x]
+        title="Timing of the event",
+        description="The timing of the event (if this is a periodic trigger).",
+        # Choice of Data Types. i.e timing[x]
+        one_of_many="timing",
         one_of_many_required=False,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["Schedule"],
     )
 
     timingTiming: fhirtypes.TimingType = Field(
         None,
         alias="timingTiming",
-        title="Type `Timing` (represented as `dict` in JSON)",
-        description="Timing of the event",
-        one_of_many="timing",  # Choice of Data Types. i.e value[x]
+        title="Timing of the event",
+        description="The timing of the event (if this is a periodic trigger).",
+        # Choice of Data Types. i.e timing[x]
+        one_of_many="timing",
         one_of_many_required=False,
     )
 
     type: fhirtypes.Code = Field(
         ...,
         alias="type",
-        title="Type `Code`",
-        description=(
+        title=(
             "named-event | periodic | data-changed | data-added | data-modified | "
             "data-removed | data-accessed | data-access-ended"
         ),
+        description="The type of triggering event.",
+        # note: Enum values can be used in validation,
+        # but use in your own responsibilities, read official FHIR documentation.
+        enum_values=[
+            "named-event",
+            "periodic",
+            "data-changed",
+            "data-added",
+            "data-modified",
+            "data-removed",
+            "data-accessed",
+            "data-access-ended",
+        ],
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."

@@ -5,7 +5,9 @@ History
 5.1.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+Bugfixes
+
+- Fixed cyclical import that starts in BackboneElement (DSTU2) [mmabey]
 
 
 5.1.0 (2020-04-11)

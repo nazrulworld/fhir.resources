@@ -12,7 +12,7 @@ import six
 
 EXAMPLE_RESOURCES_URL = (
     "https://github.com/nazrulworld/fhir-parser/raw/"
-    "master/archives/HL7/FHIR/R4/"
+    "legacy/archives/HL7/FHIR/R4/"
     "4.0.1-examples-json.zip"
 )
 ROOT_PATH = dirname(dirname(dirname(dirname(os.path.abspath(__file__)))))

@@ -4,6 +4,9 @@ History
 
 5.1.1 (unreleased)
 ------------------
+Improvements
+
+- Strict flag support to FHIRElementFactory classes [mmabey]
 
 Bugfixes
 

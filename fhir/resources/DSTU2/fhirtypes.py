@@ -782,6 +782,18 @@ class ConceptMapElementTargetDependsOnType(AbstractType):
     __resource_type__ = "ConceptMapElementTargetDependsOn"
 
 
+class ConditionType(AbstractType):
+    __resource_type__ = "Condition"
+
+
+class ConditionEvidenceType(AbstractType):
+    __resource_type__ = "ConditionEvidence"
+
+
+class ConditionStageType(AbstractType):
+    __resource_type__ = "ConditionStage"
+
+
 __all__ = [
     "ElementType",
     "ResourceType",
@@ -885,4 +897,7 @@ __all__ = [
     "ConceptMapElementType",
     "ConceptMapElementTargetType",
     "ConceptMapElementTargetDependsOnType",
+    "ConditionType",
+    "ConditionEvidenceType",
+    "ConditionStageType",
 ]

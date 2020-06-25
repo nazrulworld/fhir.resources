@@ -113,6 +113,9 @@ MODEL_CLASSES = {
     "ConceptMapElement": (None, ".conceptmap"),
     "ConceptMapElementTarget": (None, ".conceptmap"),
     "ConceptMapElementTargetDependsOn": (None, ".conceptmap"),
+    "Condition": (None, ".condition"),
+    "ConditionEvidence": (None, ".condition"),
+    "ConditionStage": (None, ".condition"),
 }
 
 
@@ -601,6 +604,18 @@ def conceptmapelementtargetdependson_validator(
     return fhir_model_validator("ConceptMapElementTargetDependsOn", v)
 
 
+def condition_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Condition", v)
+
+
+def conditionevidence_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ConditionEvidence", v)
+
+
+def conditionstage_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ConditionStage", v)
+
+
 __all__ = [
     "element_validator",
     "resource_validator",
@@ -701,4 +716,7 @@ __all__ = [
     "conceptmapcontact_validator",
     "conceptmapelement_validator",
     "conceptmapelementtargetdependson_validator",
+    "condition_validator",
+    "conditionevidence_validator",
+    "conditionstage_validator",
 ]

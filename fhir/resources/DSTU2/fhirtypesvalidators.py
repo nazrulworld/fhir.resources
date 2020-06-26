@@ -132,6 +132,11 @@ MODEL_CLASSES = {
     "ConformanceRestSecurity": (None, ".conformance"),
     "ConformanceRestSecurityCertificate": (None, ".conformance"),
     "ConformanceSoftware": (None, ".conformance"),
+    "Patient": (None, ".patient"),
+    "PatientAnimal": (None, ".patient"),
+    "PatientCommunication": (None, ".patient"),
+    "PatientContact": (None, ".patient"),
+    "PatientLink": (None, ".patient"),
 }
 
 
@@ -716,6 +721,26 @@ def conformancerestresourcesearchparam_validator(
     return fhir_model_validator("ConformanceRestResourceSearchParam", v)
 
 
+def patient_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Patient", v)
+
+
+def patientanimal_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("PatientAnimal", v)
+
+
+def patientcommunication_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("PatientCommunication", v)
+
+
+def patientcontact_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("PatientContact", v)
+
+
+def patientlink_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("PatientLink", v)
+
+
 __all__ = [
     "element_validator",
     "resource_validator",
@@ -835,4 +860,9 @@ __all__ = [
     "conformancerestsecuritycertificate_validator",
     "conformancesoftware_validator",
     "conformancerestresourcesearchparam_validator",
+    "patient_validator",
+    "patientanimal_validator",
+    "patientcommunication_validator",
+    "patientcontact_validator",
+    "patientlink_validator",
 ]

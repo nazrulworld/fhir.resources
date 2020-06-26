@@ -858,6 +858,26 @@ class ConformanceRestResourceSearchParamType(AbstractType):
     __resource_type__ = "ConformanceRestResourceSearchParam"
 
 
+class PatientType(AbstractType):
+    __resource_type__ = "Patient"
+
+
+class PatientAnimalType(AbstractType):
+    __resource_type__ = "PatientAnimal"
+
+
+class PatientCommunicationType(AbstractType):
+    __resource_type__ = "PatientCommunication"
+
+
+class PatientContactType(AbstractType):
+    __resource_type__ = "PatientContact"
+
+
+class PatientLinkType(AbstractType):
+    __resource_type__ = "PatientLink"
+
+
 __all__ = [
     "ElementType",
     "ResourceType",
@@ -980,4 +1000,9 @@ __all__ = [
     "ConformanceRestSecurityCertificateType",
     "ConformanceSoftwareType",
     "ConformanceRestResourceSearchParamType",
+    "PatientType",
+    "PatientAnimalType",
+    "PatientCommunicationType",
+    "PatientContactType",
+    "PatientLinkType",
 ]

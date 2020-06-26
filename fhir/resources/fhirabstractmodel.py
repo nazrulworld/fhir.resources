@@ -197,10 +197,12 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         been provided)
         """
         m = cls.__new__(cls)
-        object.__setattr__(m, '__dict__', {**deepcopy(cls.__field_defaults__), **values})
+        object.__setattr__(
+            m, "__dict__", {**deepcopy(cls.__field_defaults__), **values}
+        )
         if _fields_set is None:
             _fields_set = set(values.keys())
-        object.__setattr__(m, '__fields_set__', _fields_set)
+        object.__setattr__(m, "__fields_set__", _fields_set)
         return m
 
     class Config:

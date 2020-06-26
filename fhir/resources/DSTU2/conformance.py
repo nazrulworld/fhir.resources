@@ -5,11 +5,13 @@ Release: DSTU2
 Version: 1.0.2
 Revision: 7202
 """
-from . import fhirtypes
-from .domainresource import DomainResource
-from .backboneelement import BackboneElement
-from pydantic import Field
 from typing import List as ListType
+
+from pydantic import Field
+
+from . import fhirtypes
+from .backboneelement import BackboneElement
+from .domainresource import DomainResource
 
 
 class Conformance(DomainResource):

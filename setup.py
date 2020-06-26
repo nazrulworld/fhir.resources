@@ -66,6 +66,6 @@ setup(
         "all": (test_requirements + setup_requirements + development_requirements),
     },
     url="https://github.com/nazrulworld/fhir.resources",
-    version="5.1.1.dev0",
+    version="5.1.1",
     zip_safe=False,
 )

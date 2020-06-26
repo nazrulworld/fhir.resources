@@ -191,14 +191,16 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
     def construct(
         cls: Type["Model"], _fields_set: Optional["SetStr"] = None, **values: Any
     ) -> "Model":
-        """Restricted version of ``construct``method.
-        Every data must go through validation process.
-        Any value is ignored by intention."""
+        """Disclaimer: for now this method is 1:1 with BaseModel's method.
+        But in future we may apply some validation, for example disallow
+        unknown field (extra), construct any Model Type field value (if dict value has
+        been provided)
+        """
         m = cls.__new__(cls)
-        object.__setattr__(m, "__dict__", {**deepcopy(cls.__field_defaults__)})
+        object.__setattr__(m, '__dict__', {**deepcopy(cls.__field_defaults__), **values})
         if _fields_set is None:
-            _fields_set = set()
-        object.__setattr__(m, "__fields_set__", _fields_set)
+            _fields_set = set(values.keys())
+        object.__setattr__(m, '__fields_set__', _fields_set)
         return m
 
     class Config:

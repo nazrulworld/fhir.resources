@@ -794,6 +794,70 @@ class ConditionStageType(AbstractType):
     __resource_type__ = "ConditionStage"
 
 
+class ConformanceType(AbstractType):
+    __resource_type__ = "Conformance"
+
+
+class ConformanceContactType(AbstractType):
+    __resource_type__ = "ConformanceContact"
+
+
+class ConformanceDocumentType(AbstractType):
+    __resource_type__ = "ConformanceDocument"
+
+
+class ConformanceImplementationType(AbstractType):
+    __resource_type__ = "ConformanceImplementation"
+
+
+class ConformanceMessagingType(AbstractType):
+    __resource_type__ = "ConformanceMessaging"
+
+
+class ConformanceMessagingEndpointType(AbstractType):
+    __resource_type__ = "ConformanceMessagingEndpoint"
+
+
+class ConformanceMessagingEventType(AbstractType):
+    __resource_type__ = "ConformanceMessagingEvent"
+
+
+class ConformanceRestType(AbstractType):
+    __resource_type__ = "ConformanceRest"
+
+
+class ConformanceRestInteractionType(AbstractType):
+    __resource_type__ = "ConformanceRestInteraction"
+
+
+class ConformanceRestOperationType(AbstractType):
+    __resource_type__ = "ConformanceRestOperation"
+
+
+class ConformanceRestResourceType(AbstractType):
+    __resource_type__ = "ConformanceRestResource"
+
+
+class ConformanceRestResourceInteractionType(AbstractType):
+    __resource_type__ = "ConformanceRestResourceInteraction"
+
+
+class ConformanceRestSecurityType(AbstractType):
+    __resource_type__ = "ConformanceRestSecurity"
+
+
+class ConformanceRestSecurityCertificateType(AbstractType):
+    __resource_type__ = "ConformanceRestSecurityCertificate"
+
+
+class ConformanceSoftwareType(AbstractType):
+    __resource_type__ = "ConformanceSoftware"
+
+
+class ConformanceRestResourceSearchParamType(AbstractType):
+    __resource_type__ = "ConformanceRestResourceSearchParam"
+
+
 __all__ = [
     "ElementType",
     "ResourceType",
@@ -900,4 +964,20 @@ __all__ = [
     "ConditionType",
     "ConditionEvidenceType",
     "ConditionStageType",
+    "ConformanceType",
+    "ConformanceContactType",
+    "ConformanceDocumentType",
+    "ConformanceImplementationType",
+    "ConformanceMessagingType",
+    "ConformanceMessagingEndpointType",
+    "ConformanceMessagingEventType",
+    "ConformanceRestType",
+    "ConformanceRestInteractionType",
+    "ConformanceRestOperationType",
+    "ConformanceRestResourceType",
+    "ConformanceRestResourceInteractionType",
+    "ConformanceRestSecurityType",
+    "ConformanceRestSecurityCertificateType",
+    "ConformanceSoftwareType",
+    "ConformanceRestResourceSearchParamType",
 ]

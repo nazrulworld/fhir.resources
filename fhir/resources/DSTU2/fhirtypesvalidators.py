@@ -116,6 +116,22 @@ MODEL_CLASSES = {
     "Condition": (None, ".condition"),
     "ConditionEvidence": (None, ".condition"),
     "ConditionStage": (None, ".condition"),
+    "Conformance": (None, ".conformance"),
+    "ConformanceContact": (None, ".conformance"),
+    "ConformanceDocument": (None, ".conformance"),
+    "ConformanceImplementation": (None, ".conformance"),
+    "ConformanceMessaging": (None, ".conformance"),
+    "ConformanceMessagingEndpoint": (None, ".conformance"),
+    "ConformanceMessagingEvent": (None, ".conformance"),
+    "ConformanceRest": (None, ".conformance"),
+    "ConformanceRestInteraction": (None, ".conformance"),
+    "ConformanceRestOperation": (None, ".conformance"),
+    "ConformanceRestResource": (None, ".conformance"),
+    "ConformanceRestResourceInteraction": (None, ".conformance"),
+    "ConformanceRestResourceSearchParam": (None, ".conformance"),
+    "ConformanceRestSecurity": (None, ".conformance"),
+    "ConformanceRestSecurityCertificate": (None, ".conformance"),
+    "ConformanceSoftware": (None, ".conformance"),
 }
 
 
@@ -616,6 +632,90 @@ def conditionstage_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("ConditionStage", v)
 
 
+def conformance_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Conformance", v)
+
+
+def conformancecontact_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ConformanceContact", v)
+
+
+def conformancedocument_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ConformanceDocument", v)
+
+
+def conformanceimplementation_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ConformanceImplementation", v)
+
+
+def conformancemessaging_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ConformanceMessaging", v)
+
+
+def conformancemessagingendpoint_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ConformanceMessagingEndpoint", v)
+
+
+def conformancemessagingevent_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ConformanceMessagingEvent", v)
+
+
+def conformancerest_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ConformanceRest", v)
+
+
+def conformancerestinteraction_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ConformanceRestInteraction", v)
+
+
+def conformancerestoperation_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ConformanceRestOperation", v)
+
+
+def conformancerestresource_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ConformanceRestResource", v)
+
+
+def conformancerestresourceinteraction_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ConformanceRestResourceInteraction", v)
+
+
+def conformancerestsecurity_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ConformanceRestSecurity", v)
+
+
+def conformancerestsecuritycertificate_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ConformanceRestSecurityCertificate", v)
+
+
+def conformancesoftware_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ConformanceSoftware", v)
+
+
+def conformancerestresourcesearchparam_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ConformanceRestResourceSearchParam", v)
+
+
 __all__ = [
     "element_validator",
     "resource_validator",
@@ -719,4 +819,20 @@ __all__ = [
     "condition_validator",
     "conditionevidence_validator",
     "conditionstage_validator",
+    "conformance_validator",
+    "conformancecontact_validator",
+    "conformancedocument_validator",
+    "conformanceimplementation_validator",
+    "conformancemessaging_validator",
+    "conformancemessagingendpoint_validator",
+    "conformancemessagingevent_validator",
+    "conformancerest_validator",
+    "conformancerestinteraction_validator",
+    "conformancerestoperation_validator",
+    "conformancerestresource_validator",
+    "conformancerestresourceinteraction_validator",
+    "conformancerestsecurity_validator",
+    "conformancerestsecuritycertificate_validator",
+    "conformancesoftware_validator",
+    "conformancerestresourcesearchparam_validator",
 ]

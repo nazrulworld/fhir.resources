@@ -878,6 +878,34 @@ class PatientLinkType(AbstractType):
     __resource_type__ = "PatientLink"
 
 
+class OrganizationType(AbstractType):
+    __resource_type__ = "Organization"
+
+
+class OrganizationContactType(AbstractType):
+    __resource_type__ = "OrganizationContact"
+
+
+class PersonType(AbstractType):
+    __resource_type__ = "Person"
+
+
+class PersonLinkType(AbstractType):
+    __resource_type__ = "PersonLink"
+
+
+class PractitionerType(AbstractType):
+    __resource_type__ = "Practitioner"
+
+
+class PractitionerPractitionerRoleType(AbstractType):
+    __resource_type__ = "PractitionerPractitionerRole"
+
+
+class PractitionerQualificationType(AbstractType):
+    __resource_type__ = "PractitionerQualification"
+
+
 __all__ = [
     "ElementType",
     "ResourceType",
@@ -1005,4 +1033,11 @@ __all__ = [
     "PatientCommunicationType",
     "PatientContactType",
     "PatientLinkType",
+    "OrganizationType",
+    "OrganizationContactType",
+    "PersonType",
+    "PersonLinkType",
+    "PractitionerType",
+    "PractitionerPractitionerRoleType",
+    "PractitionerQualificationType",
 ]

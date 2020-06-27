@@ -1,131 +1,115 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-#
-#  Generated from FHIR 1.0.2.7202 (http://hl7.org/fhir/StructureDefinition/Organization) on 2019-05-14.
-#  2019, SMART Health IT.
+"""
+Profile: http://hl7.org/fhir/StructureDefinition/Organization
+Release: DSTU2
+Version: 1.0.2
+Revision: 7202
+"""
+from typing import List as ListType
+
+from pydantic import Field
+
+from . import fhirtypes
+from .backboneelement import BackboneElement
+from .domainresource import DomainResource
 
 
-from . import (address, backboneelement, codeableconcept, contactpoint,
-               domainresource, fhirreference, humanname, identifier)
-
-
-class Organization(domainresource.DomainResource):
+class Organization(DomainResource):
     """ A grouping of people or organizations with a common purpose.
-    
+
     A formally or informally recognized grouping of people or organizations
     formed for the purpose of achieving some form of collective action.
     Includes companies, institutions, corporations, departments, community
     groups, healthcare practice groups, etc.
     """
 
-    resource_name = "Organization"
+    resource_name = Field("Organization", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
-        
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    active: bool = Field(
+        None,
+        alias="active",
+        title="Type `bool`.",
+        description="Whether the organization's record is still in active use.",
+    )
+    address: ListType[fhirtypes.AddressType] = Field(
+        None,
+        alias="address",
+        title="List of `Address` items (represented as `dict` in JSON).",
+        description="An address for the organization.",
+    )
 
-        self.active = None
-        """ Whether the organization's record is still in active use.
-        Type `bool`. """
+    contact: ListType[fhirtypes.OrganizationContactType] = Field(
+        None,
+        alias="contact",
+        title="List of `OrganizationContact` items (represented as `dict` in JSON).",
+        description="Contact for the organization for a certain purpose.",
+    )
 
-        self.address = None
-        """ An address for the organization.
-        List of `Address` items (represented as `dict` in JSON). """
+    identifier: ListType[fhirtypes.IdentifierType] = Field(
+        None,
+        alias="identifier",
+        title="List of `Identifier` items (represented as `dict` in JSON).",
+        description="Identifies this organization  across multiple systems.",
+    )
 
-        self.contact = None
-        """ Contact for the organization for a certain purpose.
-        List of `OrganizationContact` items (represented as `dict` in JSON). """
+    name: fhirtypes.String = Field(
+        None,
+        alias="name",
+        title="Type `String`.",
+        description="Name used for the organization.",
+    )
+    partOf: fhirtypes.ReferenceType = Field(
+        None,
+        alias="partOf",
+        title="Type `Reference` referencing `Organization` (represented as `dict` in JSON).",
+        description="The organization of which this organization forms a part.",
+    )
 
-        self.identifier = None
-        """ Identifies this organization  across multiple systems.
-        List of `Identifier` items (represented as `dict` in JSON). """
+    telecom: ListType[fhirtypes.ContactPointType] = Field(
+        None,
+        alias="telecom",
+        title="List of `ContactPoint` items (represented as `dict` in JSON).",
+        description="A contact detail for the organization.",
+    )
 
-        self.name = None
-        """ Name used for the organization.
-        Type `str`. """
-
-        self.partOf = None
-        """ The organization of which this organization forms a part.
-        Type `FHIRReference` referencing `Organization` (represented as `dict` in JSON). """
-
-        self.telecom = None
-        """ A contact detail for the organization.
-        List of `ContactPoint` items (represented as `dict` in JSON). """
-
-        self.type = None
-        """ Kind of organization.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        super(Organization, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(Organization, self).elementProperties()
-        js.extend(
-            [
-                ("active", "active", bool, False, None, False),
-                ("address", "address", address.Address, True, None, False),
-                ("contact", "contact", OrganizationContact, True, None, False),
-                ("identifier", "identifier", identifier.Identifier, True, None, False),
-                ("name", "name", str, False, None, False),
-                ("partOf", "partOf", fhirreference.FHIRReference, False, None, False),
-                ("telecom", "telecom", contactpoint.ContactPoint, True, None, False),
-                ("type", "type", codeableconcept.CodeableConcept, False, None, False),
-            ]
-        )
-        return js
+    type: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="type",
+        title="Type `CodeableConcept` (represented as `dict` in JSON).",
+        description="Kind of organization.",
+    )
 
 
-class OrganizationContact(backboneelement.BackboneElement):
+class OrganizationContact(BackboneElement):
     """ Contact for the organization for a certain purpose.
     """
 
-    resource_name = "OrganizationContact"
+    resource_name = Field("OrganizationContact", const=True)
 
-    def __init__(self, jsondict=None, strict=True):
-        """ Initialize all valid properties.
-        
-        :raises: FHIRValidationError on validation errors, unless strict is False
-        :param dict jsondict: A JSON dictionary to use for initialization
-        :param bool strict: If True (the default), invalid variables will raise a TypeError
-        """
+    address: fhirtypes.AddressType = Field(
+        None,
+        alias="address",
+        title="Type `Address` (represented as `dict` in JSON).",
+        description="Visiting or postal addresses for the contact.",
+    )
 
-        self.address = None
-        """ Visiting or postal addresses for the contact.
-        Type `Address` (represented as `dict` in JSON). """
+    name: fhirtypes.HumanNameType = Field(
+        None,
+        alias="name",
+        title="Type `HumanName` (represented as `dict` in JSON).",
+        description="A name associated with the contact.",
+    )
 
-        self.name = None
-        """ A name associated with the contact.
-        Type `HumanName` (represented as `dict` in JSON). """
+    purpose: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="purpose",
+        title="Type `CodeableConcept` (represented as `dict` in JSON).",
+        description="The type of contact.",
+    )
 
-        self.purpose = None
-        """ The type of contact.
-        Type `CodeableConcept` (represented as `dict` in JSON). """
-
-        self.telecom = None
-        """ Contact details (telephone, email, etc.)  for a contact.
-        List of `ContactPoint` items (represented as `dict` in JSON). """
-
-        super(OrganizationContact, self).__init__(jsondict=jsondict, strict=strict)
-
-    def elementProperties(self):
-        js = super(OrganizationContact, self).elementProperties()
-        js.extend(
-            [
-                ("address", "address", address.Address, False, None, False),
-                ("name", "name", humanname.HumanName, False, None, False),
-                (
-                    "purpose",
-                    "purpose",
-                    codeableconcept.CodeableConcept,
-                    False,
-                    None,
-                    False,
-                ),
-                ("telecom", "telecom", contactpoint.ContactPoint, True, None, False),
-            ]
-        )
-        return js
+    telecom: ListType[fhirtypes.ContactPointType] = Field(
+        None,
+        alias="telecom",
+        title="List of `ContactPoint` items (represented as `dict` in JSON).",
+        description="Contact details (telephone, email, etc.)  for a contact.",
+    )

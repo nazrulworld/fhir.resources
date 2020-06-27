@@ -137,6 +137,13 @@ MODEL_CLASSES = {
     "PatientCommunication": (None, ".patient"),
     "PatientContact": (None, ".patient"),
     "PatientLink": (None, ".patient"),
+    "Organization": (None, ".organization"),
+    "OrganizationContact": (None, ".organization"),
+    "Person": (None, ".person"),
+    "PersonLink": (None, ".person"),
+    "Practitioner": (None, ".practitioner"),
+    "PractitionerPractitionerRole": (None, ".practitioner"),
+    "PractitionerQualification": (None, ".practitioner"),
 }
 
 
@@ -741,6 +748,38 @@ def patientlink_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("PatientLink", v)
 
 
+def organization_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Organization", v)
+
+
+def organizationcontact_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("OrganizationContact", v)
+
+
+def person_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Person", v)
+
+
+def personlink_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("PersonLink", v)
+
+
+def practitioner_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Practitioner", v)
+
+
+def practitionerpractitionerrole_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("PractitionerPractitionerRole", v)
+
+
+def practitionerqualification_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("PractitionerQualification", v)
+
+
 __all__ = [
     "element_validator",
     "resource_validator",
@@ -865,4 +904,11 @@ __all__ = [
     "patientcommunication_validator",
     "patientcontact_validator",
     "patientlink_validator",
+    "organization_validator",
+    "organizationcontact_validator",
+    "person_validator",
+    "personlink_validator",
+    "practitioner_validator",
+    "practitionerpractitionerrole_validator",
+    "practitionerqualification_validator",
 ]

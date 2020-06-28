@@ -144,6 +144,22 @@ MODEL_CLASSES = {
     "Practitioner": (None, ".practitioner"),
     "PractitionerPractitionerRole": (None, ".practitioner"),
     "PractitionerQualification": (None, ".practitioner"),
+    "ValueSet": (None, ".valueset"),
+    "ValueSetCodeSystem": (None, ".valueset"),
+    "ValueSetCodeSystemConcept": (None, ".valueset"),
+    "ValueSetCodeSystemConceptDesignation": (None, ".valueset"),
+    "ValueSetCompose": (None, ".valueset"),
+    "ValueSetComposeInclude": (None, ".valueset"),
+    "ValueSetComposeIncludeConcept": (None, ".valueset"),
+    "ValueSetComposeIncludeFilter": (None, ".valueset"),
+    "ValueSetContact": (None, ".valueset"),
+    "ValueSetExpansion": (None, ".valueset"),
+    "ValueSetExpansionContains": (None, ".valueset"),
+    "ValueSetExpansionParameter": (None, ".valueset"),
+    "Procedure": (None, ".procedure"),
+    "ProcedureFocalDevice": (None, ".procedure"),
+    "ProcedurePerformer": (None, ".procedure"),
+    "ProcedureRequest": (None, ".procedurerequest"),
 }
 
 
@@ -780,6 +796,82 @@ def practitionerqualification_validator(
     return fhir_model_validator("PractitionerQualification", v)
 
 
+def valueset_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ValueSet", v)
+
+
+def valuesetcodesystem_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ValueSetCodeSystem", v)
+
+
+def valuesetcodesystemconcept_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ValueSetCodeSystemConcept", v)
+
+
+def valuesetcodesystemconceptdesignation_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ValueSetCodeSystemConceptDesignation", v)
+
+
+def valuesetcompose_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ValueSetCompose", v)
+
+
+def valuesetcomposeinclude_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ValueSetComposeInclude", v)
+
+
+def valuesetcomposeincludeconcept_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ValueSetComposeIncludeConcept", v)
+
+
+def valuesetcomposeincludefilter_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ValueSetComposeIncludeFilter", v)
+
+
+def valuesetcontact_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ValueSetContact", v)
+
+
+def valuesetexpansion_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ValueSetExpansion", v)
+
+
+def valuesetexpansioncontains_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ValueSetExpansionContains", v)
+
+
+def valuesetexpansionparameter_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ValueSetExpansionParameter", v)
+
+
+def procedure_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Procedure", v)
+
+
+def procedurefocaldevice_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ProcedureFocalDevice", v)
+
+
+def procedureperformer_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ProcedurePerformer", v)
+
+
+def procedurerequest_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ProcedureRequest", v)
+
+
 __all__ = [
     "element_validator",
     "resource_validator",
@@ -911,4 +1003,20 @@ __all__ = [
     "practitioner_validator",
     "practitionerpractitionerrole_validator",
     "practitionerqualification_validator",
+    "valueset_validator",
+    "valuesetcodesystem_validator",
+    "valuesetcodesystemconcept_validator",
+    "valuesetcodesystemconceptdesignation_validator",
+    "valuesetcompose_validator",
+    "valuesetcomposeinclude_validator",
+    "valuesetcomposeincludeconcept_validator",
+    "valuesetcomposeincludefilter_validator",
+    "valuesetcontact_validator",
+    "valuesetexpansion_validator",
+    "valuesetexpansioncontains_validator",
+    "valuesetexpansionparameter_validator",
+    "procedure_validator",
+    "procedurefocaldevice_validator",
+    "procedureperformer_validator",
+    "procedurerequest_validator",
 ]

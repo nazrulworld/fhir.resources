@@ -906,6 +906,70 @@ class PractitionerQualificationType(AbstractType):
     __resource_type__ = "PractitionerQualification"
 
 
+class ValueSetType(AbstractType):
+    __resource_type__ = "ValueSet"
+
+
+class ValueSetCodeSystemType(AbstractType):
+    __resource_type__ = "ValueSetCodeSystem"
+
+
+class ValueSetCodeSystemConceptType(AbstractType):
+    __resource_type__ = "ValueSetCodeSystemConcept"
+
+
+class ValueSetCodeSystemConceptDesignationType(AbstractType):
+    __resource_type__ = "ValueSetCodeSystemConceptDesignation"
+
+
+class ValueSetComposeType(AbstractType):
+    __resource_type__ = "ValueSetCompose"
+
+
+class ValueSetComposeIncludeType(AbstractType):
+    __resource_type__ = "ValueSetComposeInclude"
+
+
+class ValueSetComposeIncludeConceptType(AbstractType):
+    __resource_type__ = "ValueSetComposeIncludeConcept"
+
+
+class ValueSetComposeIncludeFilterType(AbstractType):
+    __resource_type__ = "ValueSetComposeIncludeFilter"
+
+
+class ValueSetContactType(AbstractType):
+    __resource_type__ = "ValueSetContact"
+
+
+class ValueSetExpansionType(AbstractType):
+    __resource_type__ = "ValueSetExpansion"
+
+
+class ValueSetExpansionContainsType(AbstractType):
+    __resource_type__ = "ValueSetExpansionContains"
+
+
+class ValueSetExpansionParameterType(AbstractType):
+    __resource_type__ = "ValueSetExpansionParameter"
+
+
+class ProcedureType(AbstractType):
+    __resource_type__ = "Procedure"
+
+
+class ProcedureFocalDeviceType(AbstractType):
+    __resource_type__ = "ProcedureFocalDevice"
+
+
+class ProcedurePerformerType(AbstractType):
+    __resource_type__ = "ProcedurePerformer"
+
+
+class ProcedureRequestType(AbstractType):
+    __resource_type__ = "ProcedureRequest"
+
+
 __all__ = [
     "ElementType",
     "ResourceType",
@@ -1040,4 +1104,20 @@ __all__ = [
     "PractitionerType",
     "PractitionerPractitionerRoleType",
     "PractitionerQualificationType",
+    "ValueSetType",
+    "ValueSetCodeSystemType",
+    "ValueSetCodeSystemConceptType",
+    "ValueSetCodeSystemConceptDesignationType",
+    "ValueSetComposeType",
+    "ValueSetComposeIncludeType",
+    "ValueSetComposeIncludeConceptType",
+    "ValueSetComposeIncludeFilterType",
+    "ValueSetContactType",
+    "ValueSetExpansionType",
+    "ValueSetExpansionContainsType",
+    "ValueSetExpansionParameterType",
+    "ProcedureType",
+    "ProcedureFocalDeviceType",
+    "ProcedurePerformerType",
+    "ProcedureRequestType",
 ]

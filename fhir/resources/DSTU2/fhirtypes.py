@@ -970,6 +970,34 @@ class ProcedureRequestType(AbstractType):
     __resource_type__ = "ProcedureRequest"
 
 
+class DiagnosticReportType(AbstractType):
+    __resource_type__ = "DiagnosticReport"
+
+
+class DiagnosticReportImageType(AbstractType):
+    __resource_type__ = "DiagnosticReportImage"
+
+
+class GoalType(AbstractType):
+    __resource_type__ = "Goal"
+
+
+class GoalOutcomeType(AbstractType):
+    __resource_type__ = "GoalOutcome"
+
+
+class GroupType(AbstractType):
+    __resource_type__ = "Group"
+
+
+class GroupCharacteristicType(AbstractType):
+    __resource_type__ = "GroupCharacteristic"
+
+
+class GroupMemberType(AbstractType):
+    __resource_type__ = "GroupMember"
+
+
 __all__ = [
     "ElementType",
     "ResourceType",
@@ -1120,4 +1148,11 @@ __all__ = [
     "ProcedureFocalDeviceType",
     "ProcedurePerformerType",
     "ProcedureRequestType",
+    "DiagnosticReportType",
+    "DiagnosticReportImageType",
+    "GoalType",
+    "GoalOutcomeType",
+    "GroupType",
+    "GroupCharacteristicType",
+    "GroupMemberType",
 ]

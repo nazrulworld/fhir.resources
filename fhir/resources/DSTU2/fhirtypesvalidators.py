@@ -160,6 +160,12 @@ MODEL_CLASSES = {
     "ProcedureFocalDevice": (None, ".procedure"),
     "ProcedurePerformer": (None, ".procedure"),
     "ProcedureRequest": (None, ".procedurerequest"),
+    "DiagnosticReport": (None, ".diagnosticreport"),
+    "DiagnosticReportImage": (None, ".diagnosticreport"),
+    "Goal": (None, ".goal"),
+    "GoalOutcome": (None, ".goal"),
+    "GroupCharacteristic": (None, ".group"),
+    "GroupMember": (None, ".group"),
 }
 
 
@@ -872,6 +878,34 @@ def procedurerequest_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]
     return fhir_model_validator("ProcedureRequest", v)
 
 
+def diagnosticreport_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("DiagnosticReport", v)
+
+
+def diagnosticreportimage_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("DiagnosticReportImage", v)
+
+
+def goal_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Goal", v)
+
+
+def goaloutcome_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("GoalOutcome", v)
+
+
+def group_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Group", v)
+
+
+def groupcharacteristic_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("GroupCharacteristic", v)
+
+
+def groupmember_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("GroupMember", v)
+
+
 __all__ = [
     "element_validator",
     "resource_validator",
@@ -1019,4 +1053,11 @@ __all__ = [
     "procedurefocaldevice_validator",
     "procedureperformer_validator",
     "procedurerequest_validator",
+    "diagnosticreport_validator",
+    "diagnosticreportimage_validator",
+    "goal_validator",
+    "goaloutcome_validator",
+    "group_validator",
+    "groupcharacteristic_validator",
+    "groupmember_validator",
 ]

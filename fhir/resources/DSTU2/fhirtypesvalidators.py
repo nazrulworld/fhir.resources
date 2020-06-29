@@ -175,6 +175,8 @@ MODEL_CLASSES = {
     "ImmunizationExplanation": (None, ".immunization"),
     "ImmunizationReaction": (None, ".immunization"),
     "ImmunizationVaccinationProtocol": (None, ".immunization"),
+    "MedicationAdministration": (None, ".medicationadministration"),
+    "MedicationAdministrationDosage": (None, ".medicationadministration"),
 }
 
 
@@ -957,6 +959,18 @@ def immunizationvaccinationprotocol_validator(
     return fhir_model_validator("ImmunizationVaccinationProtocol", v)
 
 
+def medicationadministration_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("MedicationAdministration", v)
+
+
+def medicationadministrationdosage_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("MedicationAdministrationDosage", v)
+
+
 __all__ = [
     "element_validator",
     "resource_validator",
@@ -1120,4 +1134,6 @@ __all__ = [
     "immunizationexplanation_validator",
     "immunizationreaction_validator",
     "immunizationvaccinationprotocol_validator",
+    "medicationadministration_validator",
+    "medicationadministrationdosage_validator",
 ]

@@ -161,10 +161,15 @@ class Immunization(DomainResource):
         description="Details of a reaction that follows immunization.",
     )
 
-    vaccinationProtocol: ListType[fhirtypes.vaccinationProtocolType] = Field(
+    vaccinationProtocol: ListType[
+        fhirtypes.ImmunizationVaccinationProtocolType
+    ] = Field(
         None,
         alias="vaccinationProtocol",
-        title="List of `vaccinationProtocol` items (represented as `dict` in JSON).",
+        title=(
+            "List of `ImmunizationVaccinationProtocol` "
+            "items (represented as `dict` in JSON)."
+        ),
         description="What protocol was followed.",
     )
 

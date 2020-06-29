@@ -1034,6 +1034,14 @@ class ImmunizationVaccinationProtocolType(AbstractType):
     __resource_type__ = "ImmunizationVaccinationProtocol"
 
 
+class MedicationAdministrationType(AbstractType):
+    __resource_type__ = "MedicationAdministration"
+
+
+class MedicationAdministrationDosageType(AbstractType):
+    __resource_type__ = "MedicationAdministrationDosage"
+
+
 __all__ = [
     "ElementType",
     "ResourceType",
@@ -1200,4 +1208,6 @@ __all__ = [
     "ImmunizationExplanationType",
     "ImmunizationReactionType",
     "ImmunizationVaccinationProtocolType",
+    "MedicationAdministrationType",
+    "MedicationAdministrationDosageType",
 ]

@@ -998,6 +998,42 @@ class GroupMemberType(AbstractType):
     __resource_type__ = "GroupMember"
 
 
+class EncounterType(AbstractType):
+    __resource_type__ = "Encounter"
+
+
+class EncounterHospitalizationType(AbstractType):
+    __resource_type__ = "EncounterHospitalization"
+
+
+class EncounterLocationType(AbstractType):
+    __resource_type__ = "EncounterLocation"
+
+
+class EncounterParticipantType(AbstractType):
+    __resource_type__ = "EncounterParticipant"
+
+
+class EncounterStatusHistoryType(AbstractType):
+    __resource_type__ = "EncounterStatusHistory"
+
+
+class ImmunizationType(AbstractType):
+    __resource_type__ = "Immunization"
+
+
+class ImmunizationExplanationType(AbstractType):
+    __resource_type__ = "ImmunizationExplanation"
+
+
+class ImmunizationReactionType(AbstractType):
+    __resource_type__ = "ImmunizationReaction"
+
+
+class ImmunizationVaccinationProtocolType(AbstractType):
+    __resource_type__ = "ImmunizationVaccinationProtocol"
+
+
 __all__ = [
     "ElementType",
     "ResourceType",
@@ -1155,4 +1191,13 @@ __all__ = [
     "GroupType",
     "GroupCharacteristicType",
     "GroupMemberType",
+    "EncounterType",
+    "EncounterHospitalizationType",
+    "EncounterLocationType",
+    "EncounterParticipantType",
+    "EncounterStatusHistoryType",
+    "ImmunizationType",
+    "ImmunizationExplanationType",
+    "ImmunizationReactionType",
+    "ImmunizationVaccinationProtocolType",
 ]

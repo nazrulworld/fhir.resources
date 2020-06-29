@@ -166,6 +166,15 @@ MODEL_CLASSES = {
     "GoalOutcome": (None, ".goal"),
     "GroupCharacteristic": (None, ".group"),
     "GroupMember": (None, ".group"),
+    "Encounter": (None, ".encounter"),
+    "EncounterHospitalization": (None, ".encounter"),
+    "EncounterLocation": (None, ".encounter"),
+    "EncounterParticipant": (None, ".encounter"),
+    "EncounterStatusHistory": (None, ".encounter"),
+    "Immunization": (None, ".immunization"),
+    "ImmunizationExplanation": (None, ".immunization"),
+    "ImmunizationReaction": (None, ".immunization"),
+    "ImmunizationVaccinationProtocol": (None, ".immunization"),
 }
 
 
@@ -906,6 +915,48 @@ def groupmember_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("GroupMember", v)
 
 
+def encounter_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Encounter", v)
+
+
+def encounterhospitalization_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("EncounterHospitalization", v)
+
+
+def encounterlocation_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("EncounterLocation", v)
+
+
+def encounterparticipant_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("EncounterParticipant", v)
+
+
+def encounterstatushistory_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("EncounterStatusHistory", v)
+
+
+def immunization_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Immunization", v)
+
+
+def immunizationexplanation_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ImmunizationExplanation", v)
+
+
+def immunizationreaction_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ImmunizationReaction", v)
+
+
+def immunizationvaccinationprotocol_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ImmunizationVaccinationProtocol", v)
+
+
 __all__ = [
     "element_validator",
     "resource_validator",
@@ -1060,4 +1111,13 @@ __all__ = [
     "group_validator",
     "groupcharacteristic_validator",
     "groupmember_validator",
+    "encounter_validator",
+    "encounterhospitalization_validator",
+    "encounterlocation_validator",
+    "encounterparticipant_validator",
+    "encounterstatushistory_validator",
+    "immunization_validator",
+    "immunizationexplanation_validator",
+    "immunizationreaction_validator",
+    "immunizationvaccinationprotocol_validator",
 ]

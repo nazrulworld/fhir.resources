@@ -177,6 +177,14 @@ MODEL_CLASSES = {
     "ImmunizationVaccinationProtocol": (None, ".immunization"),
     "MedicationAdministration": (None, ".medicationadministration"),
     "MedicationAdministrationDosage": (None, ".medicationadministration"),
+    "MedicationStatement": (None, ".medicationstatement"),
+    "MedicationStatementDosage": (None, ".medicationstatement"),
+    "Observation": (None, ".observation"),
+    "ObservationComponent": (None, ".observation"),
+    "ObservationReferenceRange": (None, ".observation"),
+    "ObservationRelated": (None, ".observation"),
+    "OperationOutcome": (None, ".operationoutcome"),
+    "OperationOutcomeIssue": (None, ".operationoutcome"),
 }
 
 
@@ -971,6 +979,42 @@ def medicationadministrationdosage_validator(
     return fhir_model_validator("MedicationAdministrationDosage", v)
 
 
+def medicationstatement_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("MedicationStatement", v)
+
+
+def medicationstatementdosage_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("MedicationStatementDosage", v)
+
+
+def observation_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Observation", v)
+
+
+def observationcomponent_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ObservationComponent", v)
+
+
+def observationreferencerange_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ObservationReferenceRange", v)
+
+
+def observationrelated_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ObservationRelated", v)
+
+
+def operationoutcome_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("OperationOutcome", v)
+
+
+def operationoutcomeissue_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("OperationOutcomeIssue", v)
+
+
 __all__ = [
     "element_validator",
     "resource_validator",
@@ -1136,4 +1180,12 @@ __all__ = [
     "immunizationvaccinationprotocol_validator",
     "medicationadministration_validator",
     "medicationadministrationdosage_validator",
+    "medicationstatement_validator",
+    "medicationstatementdosage_validator",
+    "observation_validator",
+    "observationcomponent_validator",
+    "observationreferencerange_validator",
+    "observationrelated_validator",
+    "operationoutcome_validator",
+    "operationoutcomeissue_validator",
 ]

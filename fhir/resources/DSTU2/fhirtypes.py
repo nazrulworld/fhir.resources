@@ -1042,6 +1042,38 @@ class MedicationAdministrationDosageType(AbstractType):
     __resource_type__ = "MedicationAdministrationDosage"
 
 
+class MedicationStatementType(AbstractType):
+    __resource_type__ = "MedicationStatement"
+
+
+class MedicationStatementDosageType(AbstractType):
+    __resource_type__ = "MedicationStatementDosage"
+
+
+class ObservationType(AbstractType):
+    __resource_type__ = "Observation"
+
+
+class ObservationComponentType(AbstractType):
+    __resource_type__ = "ObservationComponent"
+
+
+class ObservationReferenceRangeType(AbstractType):
+    __resource_type__ = "ObservationReferenceRange"
+
+
+class ObservationRelatedType(AbstractType):
+    __resource_type__ = "ObservationRelated"
+
+
+class OperationOutcomeType(AbstractType):
+    __resource_type__ = "OperationOutcome"
+
+
+class OperationOutcomeIssueType(AbstractType):
+    __resource_type__ = "OperationOutcomeIssue"
+
+
 __all__ = [
     "ElementType",
     "ResourceType",
@@ -1210,4 +1242,12 @@ __all__ = [
     "ImmunizationVaccinationProtocolType",
     "MedicationAdministrationType",
     "MedicationAdministrationDosageType",
+    "MedicationStatementType",
+    "MedicationStatementDosageType",
+    "ObservationType",
+    "ObservationComponentType",
+    "ObservationReferenceRangeType",
+    "ObservationRelatedType",
+    "OperationOutcomeType",
+    "OperationOutcomeIssueType",
 ]

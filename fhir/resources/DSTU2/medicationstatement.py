@@ -44,7 +44,7 @@ The primary difference between a medication statement and
     missing detailed information.
     """
 
-    resource_name = Field("MedicationStatement", const=True)
+    resource_type = Field("MedicationStatement", const=True)
 
     wasNotTaken: fhirtypes.Boolean = Field(
         None,
@@ -219,7 +219,7 @@ class MedicationStatementDosage(BackboneElement):
     Indicates how the medication is/was used by the patient.
     """
 
-    resource_name = Field("MedicationStatementDosage", const=True)
+    resource_type = Field("MedicationStatementDosage", const=True)
 
     asNeededBoolean: fhirtypes.Boolean = Field(
         None,

@@ -93,10 +93,10 @@ class CarePlan(DomainResource):
         description="External Ids for this plan",
     )
 
-    note: ListType[fhirtypes.AnnotationType] = Field(
+    note: fhirtypes.AnnotationType = Field(
         None,
         alias="note",
-        title="List of `Annotation` items (represented as `dict` in JSON)",
+        title="Type `Annotation` items (represented as `dict` in JSON)",
         description="Comments about the plan",
     )
 
@@ -166,7 +166,7 @@ class CarePlanActivity(BackboneElement):
     etc.
     """
 
-    resource_name = Field("CarePlanActivity", const=True)
+    resource_type = Field("CarePlanActivity", const=True)
 
     actionResulting: ListType[fhirtypes.ReferenceType] = Field(
         None,
@@ -214,7 +214,7 @@ class CarePlanActivityDetail(BackboneElement):
     as procedure etc.
     """
 
-    resource_name = Field("CarePlanActivityDetail", const=True)
+    resource_type = Field("CarePlanActivityDetail", const=True)
     category: fhirtypes.CodeableConceptType = Field(
         None,
         alias="category",
@@ -408,7 +408,7 @@ class CarePlanParticipant(BackboneElement):
     the care envisioned by this plan.
     """
 
-    resource_name = Field("CarePlanParticipant", const=True)
+    resource_type = Field("CarePlanParticipant", const=True)
     member: fhirtypes.ReferenceType = Field(
         None,
         alias="member",
@@ -434,7 +434,7 @@ class CarePlanRelatedPlan(BackboneElement):
     plan.
     """
 
-    resource_name = Field("CarePlanRelatedPlan", const=True)
+    resource_type = Field("CarePlanRelatedPlan", const=True)
 
     code: fhirtypes.Code = Field(
         None,

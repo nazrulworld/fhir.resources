@@ -23,7 +23,7 @@ class ConceptMap(DomainResource):
     models.
     """
 
-    resource_name = Field("ConceptMap", const=True)
+    resource_type = Field("ConceptMap", const=True)
 
     contact: ListType[fhirtypes.ConceptMapContactType] = Field(
         None,
@@ -202,7 +202,7 @@ class ConceptMapContact(BackboneElement):
     Contacts to assist a user in finding and communicating with the publisher.
     """
 
-    resource_name = Field("ConceptMapContact", const=True)
+    resource_type = Field("ConceptMapContact", const=True)
 
     name: fhirtypes.String = Field(
         None,
@@ -225,7 +225,7 @@ class ConceptMapElement(BackboneElement):
     the target.
     """
 
-    resource_name = Field("ConceptMapElement", const=True)
+    resource_type = Field("ConceptMapElement", const=True)
     code: fhirtypes.Code = Field(
         None,
         alias="code",
@@ -253,7 +253,7 @@ class ConceptMapElementTarget(BackboneElement):
     A concept from the target value set that this concept maps to.
     """
 
-    resource_name = Field("ConceptMapElementTarget", const=True)
+    resource_type = Field("ConceptMapElementTarget", const=True)
     code: fhirtypes.Code = Field(
         None,
         alias="code",
@@ -312,7 +312,7 @@ class ConceptMapElementTargetDependsOn(BackboneElement):
     specified value.
     """
 
-    resource_name = Field("ConceptMapElementTargetDependsOn", const=True)
+    resource_type = Field("ConceptMapElementTargetDependsOn", const=True)
 
     code: fhirtypes.String = Field(
         None,

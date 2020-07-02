@@ -1074,6 +1074,30 @@ class OperationOutcomeIssueType(AbstractType):
     __resource_type__ = "OperationOutcomeIssue"
 
 
+class MedicationType(AbstractType):
+    __resource_type__ = "Medication"
+
+
+class MedicationPackageType(AbstractType):
+    __resource_type__ = "MedicationPackage"
+
+
+class MedicationPackageContentType(AbstractType):
+    __resource_type__ = "MedicationPackageContent"
+
+
+class MedicationProductType(AbstractType):
+    __resource_type__ = "MedicationProduct"
+
+
+class MedicationProductBatchType(AbstractType):
+    __resource_type__ = "MedicationProductBatch"
+
+
+class MedicationProductIngredientType(AbstractType):
+    __resource_type__ = "MedicationProductIngredient"
+
+
 __all__ = [
     "ElementType",
     "ResourceType",
@@ -1250,4 +1274,10 @@ __all__ = [
     "ObservationRelatedType",
     "OperationOutcomeType",
     "OperationOutcomeIssueType",
+    "MedicationType",
+    "MedicationPackageType",
+    "MedicationPackageContentType",
+    "MedicationProductType",
+    "MedicationProductBatchType",
+    "MedicationProductIngredientType",
 ]

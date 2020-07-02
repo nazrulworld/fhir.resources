@@ -22,7 +22,7 @@ class Encounter(DomainResource):
     patient.
     """
 
-    resource_name = Field("Encounter", const=True)
+    resource_type = Field("Encounter", const=True)
 
     class_fhir: fhirtypes.Code = Field(
         None,
@@ -166,7 +166,7 @@ class EncounterHospitalization(BackboneElement):
     """ Details about the admission to a healthcare service.
     """
 
-    resource_name = Field("EncounterHospitalization", const=True)
+    resource_type = Field("EncounterHospitalization", const=True)
 
     admitSource: fhirtypes.CodeableConceptType = Field(
         None,
@@ -260,7 +260,7 @@ class EncounterLocation(BackboneElement):
     List of locations where  the patient has been during this encounter.
     """
 
-    resource_name = Field("EncounterLocation", const=True)
+    resource_type = Field("EncounterLocation", const=True)
 
     location: fhirtypes.ReferenceType = Field(
         None,
@@ -289,7 +289,7 @@ class EncounterParticipant(BackboneElement):
     The list of people responsible for providing the service.
     """
 
-    resource_name = Field("EncounterParticipant", const=True)
+    resource_type = Field("EncounterParticipant", const=True)
 
     individual: fhirtypes.ReferenceType = Field(
         None,
@@ -323,7 +323,7 @@ class EncounterStatusHistory(BackboneElement):
     resource, or even have the server store them.
     """
 
-    resource_name = Field("EncounterStatusHistory", const=True)
+    resource_type = Field("EncounterStatusHistory", const=True)
 
     period: fhirtypes.PeriodType = Field(
         None,

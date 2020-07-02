@@ -20,7 +20,7 @@ class ProcedureRequest(DomainResource):
     A request for a procedure to be performed. May be a proposal or an order.
     """
 
-    resource_name = Field("ProcedureRequest", const=True)
+    resource_type = Field("ProcedureRequest", const=True)
 
     asNeededBoolean: fhirtypes.Boolean = Field(
         None,

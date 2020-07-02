@@ -22,7 +22,7 @@ class Practitioner(DomainResource):
     healthcare.
     """
 
-    resource_name = Field("Practitioner", const=True)
+    resource_type = Field("Practitioner", const=True)
 
     active: fhirtypes.Boolean = Field(
         None,
@@ -105,7 +105,7 @@ class PractitionerPractitionerRole(BackboneElement):
     The list of roles/organizations that the practitioner is associated with.
     """
 
-    resource_name = Field("PractitionerPractitionerRole", const=True)
+    resource_type = Field("PractitionerPractitionerRole", const=True)
 
     healthcareService: ListType[fhirtypes.ReferenceType] = Field(
         None,
@@ -165,7 +165,7 @@ class PractitionerQualification(BackboneElement):
     """ Qualifications obtained by training and certification.
     """
 
-    resource_name = Field("PractitionerQualification", const=True)
+    resource_type = Field("PractitionerQualification", const=True)
 
     code: fhirtypes.CodeableConceptType = Field(
         None,

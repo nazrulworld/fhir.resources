@@ -216,7 +216,7 @@ class ClaimResponseAddItem(BackboneElement):
     The first tier service adjudications for payor added services.
     """
 
-    resource_name = Field("ClaimResponseAddItem", const=True)
+    resource_type = Field("ClaimResponseAddItem", const=True)
 
     adjudication: ListType[fhirtypes.ClaimResponseAddItemAdjudicationType] = Field(
         None,
@@ -268,7 +268,7 @@ class ClaimResponseAddItemAdjudication(BackboneElement):
     The adjudications results.
     """
 
-    resource_name = Field("ClaimResponseAddItemAdjudication", const=True)
+    resource_type = Field("ClaimResponseAddItemAdjudication", const=True)
 
     amount: fhirtypes.MoneyType = Field(
         None,
@@ -295,7 +295,7 @@ class ClaimResponseAddItemDetail(BackboneElement):
     The second tier service adjudications for payor added services.
     """
 
-    resource_name = Field("ClaimResponseAddItemDetail", const=True)
+    resource_type = Field("ClaimResponseAddItemDetail", const=True)
 
     adjudication: ListType[
         fhirtypes.ClaimResponseAddItemDetailAdjudicationType
@@ -329,7 +329,7 @@ class ClaimResponseAddItemDetailAdjudication(BackboneElement):
     The adjudications results.
     """
 
-    resource_name = Field("ClaimResponseAddItemDetailAdjudication", const=True)
+    resource_type = Field("ClaimResponseAddItemDetailAdjudication", const=True)
 
     amount: fhirtypes.MoneyType = Field(
         None,
@@ -355,7 +355,7 @@ class ClaimResponseCoverage(BackboneElement):
     Financial instrument by which payment information for health care.
     """
 
-    resource_name = Field("ClaimResponseCoverage", const=True)
+    resource_type = Field("ClaimResponseCoverage", const=True)
 
     businessArrangement: fhirtypes.String = Field(
         None,
@@ -416,7 +416,7 @@ class ClaimResponseError(BackboneElement):
     Mutually exclusive with Services Provided (Item).
     """
 
-    resource_name = Field("ClaimResponseError", const=True)
+    resource_type = Field("ClaimResponseError", const=True)
 
     code: fhirtypes.CodingType = Field(
         None,
@@ -451,7 +451,7 @@ class ClaimResponseItem(BackboneElement):
     The first tier service adjudications for submitted services.
     """
 
-    resource_name = Field("ClaimResponseItem", const=True)
+    resource_type = Field("ClaimResponseItem", const=True)
 
     adjudication: ListType[fhirtypes.ClaimResponseItemAdjudicationType] = Field(
         None,
@@ -486,7 +486,7 @@ class ClaimResponseItemAdjudication(BackboneElement):
     The adjudications results.
     """
 
-    resource_name = Field("ClaimResponseItemAdjudication", const=True)
+    resource_type = Field("ClaimResponseItemAdjudication", const=True)
 
     amount: fhirtypes.MoneyType = Field(
         None,
@@ -512,7 +512,7 @@ class ClaimResponseItemDetail(BackboneElement):
     The second tier service adjudications for submitted services.
     """
 
-    resource_name = Field("ClaimResponseItemDetail", const=True)
+    resource_type = Field("ClaimResponseItemDetail", const=True)
 
     adjudication: ListType[fhirtypes.ClaimResponseItemDetailAdjudicationType] = Field(
         None,
@@ -548,7 +548,7 @@ class ClaimResponseItemDetailAdjudication(BackboneElement):
     The adjudications results.
     """
 
-    resource_name = Field("ClaimResponseItemDetailAdjudication", const=True)
+    resource_type = Field("ClaimResponseItemDetailAdjudication", const=True)
 
     amount: fhirtypes.MoneyType = Field(
         None,
@@ -574,7 +574,7 @@ class ClaimResponseItemDetailSubDetail(BackboneElement):
     The third tier service adjudications for submitted services.
     """
 
-    resource_name = Field("ClaimResponseItemDetailSubDetail", const=True)
+    resource_type = Field("ClaimResponseItemDetailSubDetail", const=True)
 
     adjudication: ListType[
         fhirtypes.ClaimResponseItemDetailSubDetailAdjudicationType
@@ -602,7 +602,7 @@ class ClaimResponseItemDetailSubDetailAdjudication(BackboneElement):
     The adjudications results.
     """
 
-    resource_name = Field("ClaimResponseItemDetailSubDetailAdjudication", const=True)
+    resource_type = Field("ClaimResponseItemDetailSubDetailAdjudication", const=True)
 
     amount: fhirtypes.MoneyType = Field(
         None,
@@ -628,7 +628,7 @@ class ClaimResponseNote(BackboneElement):
     Note text.
     """
 
-    resource_name = Field("ClaimResponseNote", const=True)
+    resource_type = Field("ClaimResponseNote", const=True)
 
     number: fhirtypes.PositiveInt = Field(
         None,

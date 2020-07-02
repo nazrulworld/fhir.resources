@@ -59,7 +59,7 @@ class AuditEventEvent(BackboneElement):
     event.
     """
 
-    resource_name = Field("AuditEventEvent", const=True)
+    resource_type = Field("AuditEventEvent", const=True)
 
     action: fhirtypes.Code = Field(
         None,
@@ -114,7 +114,7 @@ class AuditEventObject(BackboneElement):
     """ Specific instances of data or objects that have been accessed.
     """
 
-    resource_name = Field("AuditEventObject", const=True)
+    resource_type = Field("AuditEventObject", const=True)
 
     description: fhirtypes.String = Field(
         None, alias="description", title="Type `str`.", description="Descriptive text."
@@ -187,7 +187,7 @@ class AuditEventObjectDetail(BackboneElement):
     """ Additional Information about the Object.
     """
 
-    resource_name = Field("AuditEventObjectDetail", const=True)
+    resource_type = Field("AuditEventObjectDetail", const=True)
 
     type: fhirtypes.String = Field(
         ..., alias="type", title="Type `str`.", description="Name of the property."
@@ -201,7 +201,7 @@ class AuditEventParticipant(BackboneElement):
     """ A person, a hardware device or software process.
     """
 
-    resource_name = Field("AuditEventParticipant", const=True)
+    resource_type = Field("AuditEventParticipant", const=True)
 
     altId: fhirtypes.String = Field(
         None,
@@ -291,7 +291,7 @@ class AuditEventParticipantNetwork(BackboneElement):
     network location.
     """
 
-    resource_name = Field("AuditEventParticipantNetwork", const=True)
+    resource_type = Field("AuditEventParticipantNetwork", const=True)
 
     address: fhirtypes.String = Field(
         None,
@@ -312,7 +312,7 @@ class AuditEventSource(BackboneElement):
     """ Application systems and processes.
     """
 
-    resource_name = Field("AuditEventSource", const=True)
+    resource_type = Field("AuditEventSource", const=True)
 
     identifier: fhirtypes.IdentifierType = Field(
         ...,

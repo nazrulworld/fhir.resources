@@ -22,7 +22,7 @@ class Patient(DomainResource):
     animal receiving care or other health-related services.
     """
 
-    resource_name = Field("Patient", const=True)
+    resource_type = Field("Patient", const=True)
 
     active: fhirtypes.Boolean = Field(
         None,
@@ -213,7 +213,7 @@ class PatientAnimal(BackboneElement):
     This patient is known to be an animal.
     """
 
-    resource_name = Field("PatientAnimal", const=True)
+    resource_type = Field("PatientAnimal", const=True)
 
     breed: fhirtypes.CodeableConceptType = Field(
         None,
@@ -245,7 +245,7 @@ class PatientCommunication(BackboneElement):
     her health.
     """
 
-    resource_name = Field("PatientCommunication", const=True)
+    resource_type = Field("PatientCommunication", const=True)
 
     language: fhirtypes.CodeableConceptType = Field(
         None,
@@ -269,7 +269,7 @@ class PatientContact(BackboneElement):
     """ A contact party (e.g. guardian, partner, friend) for the patient.
     """
 
-    resource_name = Field("PatientContact", const=True)
+    resource_type = Field("PatientContact", const=True)
 
     address: fhirtypes.AddressType = Field(
         None,
@@ -329,7 +329,7 @@ class PatientLink(BackboneElement):
     Link to another patient resource that concerns the same actual patient.
     """
 
-    resource_name = Field("PatientLink", const=True)
+    resource_type = Field("PatientLink", const=True)
 
     other: fhirtypes.ReferenceType = Field(
         ...,

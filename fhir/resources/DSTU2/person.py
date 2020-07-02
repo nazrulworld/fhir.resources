@@ -21,7 +21,7 @@ class Person(DomainResource):
     specific health-related context.
     """
 
-    resource_name = Field("Person", const=True)
+    resource_type = Field("Person", const=True)
 
     active: fhirtypes.Boolean = Field(
         None,
@@ -104,7 +104,7 @@ class PersonLink(BackboneElement):
     """ Link to a resource that concerns the same actual person.
     """
 
-    resource_name = Field("PersonLink", const=True)
+    resource_type = Field("PersonLink", const=True)
 
     assurance: fhirtypes.Code = Field(
         None,

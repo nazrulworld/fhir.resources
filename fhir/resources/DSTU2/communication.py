@@ -23,7 +23,7 @@ class Communication(DomainResource):
     reportable condition.
     """
 
-    resource_name = Field("Communication", const=True)
+    resource_type = Field("Communication", const=True)
 
     category: fhirtypes.CodeableConceptType = Field(
         None,
@@ -120,7 +120,7 @@ class CommunicationPayload(BackboneElement):
     Text, attachment(s), or resource(s) that was communicated to the recipient.
     """
 
-    resource_name = Field("CommunicationPayload", const=True)
+    resource_type = Field("CommunicationPayload", const=True)
     contentAttachment: fhirtypes.AttachmentType = Field(
         None,
         alias="contentAttachment",

@@ -23,7 +23,7 @@ class CommunicationRequest(DomainResource):
     health agency be notified about a reportable condition.
     """
 
-    resource_name = Field("CommunicationRequest", const=True)
+    resource_type = Field("CommunicationRequest", const=True)
 
     category: fhirtypes.CodeableConceptType = Field(
         None,
@@ -183,7 +183,7 @@ class CommunicationRequestPayload(BackboneElement):
     Text, attachment(s), or resource(s) to be communicated to the recipient.
     """
 
-    resource_name = Field("CommunicationRequestPayload", const=True)
+    resource_type = Field("CommunicationRequestPayload", const=True)
 
     contentAttachment: fhirtypes.AttachmentType = Field(
         None,

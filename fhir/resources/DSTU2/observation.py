@@ -22,7 +22,7 @@ class Observation(DomainResource):
     subject.
     """
 
-    resource_name = Field("Observation", const=True)
+    resource_type = Field("Observation", const=True)
 
     comments: fhirtypes.String = Field(
         None,
@@ -322,7 +322,7 @@ class ObservationComponent(BackboneElement):
     genetics observations.
     """
 
-    resource_name = Field("ObservationComponent", const=True)
+    resource_type = Field("ObservationComponent", const=True)
 
     code: fhirtypes.CodeableConceptType = Field(
         None,
@@ -491,7 +491,7 @@ class ObservationReferenceRange(BackboneElement):
     recommended range.
     """
 
-    resource_name = Field("ObservationReferenceRange", const=True)
+    resource_type = Field("ObservationReferenceRange", const=True)
 
     age: fhirtypes.RangeType = Field(
         None,
@@ -536,7 +536,7 @@ class ObservationRelated(BackboneElement):
     relationship type code.
     """
 
-    resource_name = Field("ObservationRelated", const=True)
+    resource_type = Field("ObservationRelated", const=True)
 
     target: fhirtypes.ReferenceType = Field(
         None,

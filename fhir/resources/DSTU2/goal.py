@@ -24,7 +24,7 @@ class Goal(DomainResource):
     objective, etc.
     """
 
-    resource_name = Field("Goal", const=True)
+    resource_type = Field("Goal", const=True)
 
     addresses: ListType[fhirtypes.ReferenceType] = Field(
         None,
@@ -201,7 +201,7 @@ class GoalOutcome(BackboneElement):
     deepmed to be cancelled or achieved.
     """
 
-    resource_name = Field("GoalOutcome", const=True)
+    resource_type = Field("GoalOutcome", const=True)
 
     resultCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,

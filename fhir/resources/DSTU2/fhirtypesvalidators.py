@@ -185,6 +185,12 @@ MODEL_CLASSES = {
     "ObservationRelated": (None, ".observation"),
     "OperationOutcome": (None, ".operationoutcome"),
     "OperationOutcomeIssue": (None, ".operationoutcome"),
+    "Medication": (None, ".medication"),
+    "MedicationPackage": (None, ".medication"),
+    "MedicationPackageContent": (None, ".medication"),
+    "MedicationProduct": (None, ".medication"),
+    "MedicationProductBatch": (None, ".medication"),
+    "MedicationProductIngredient": (None, ".medication"),
 }
 
 
@@ -1015,6 +1021,34 @@ def operationoutcomeissue_validator(v: Union[StrBytes, dict, Path, FHIRAbstractM
     return fhir_model_validator("OperationOutcomeIssue", v)
 
 
+def medication_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Medication", v)
+
+
+def medicationpackage_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("MedicationPackage", v)
+
+
+def medicationpackagecontent_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("MedicationPackageContent", v)
+
+
+def medicationproduct_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("MedicationProduct", v)
+
+
+def medicationproductbatch_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("MedicationProductBatch", v)
+
+
+def medicationproductingredient_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("MedicationProductIngredient", v)
+
+
 __all__ = [
     "element_validator",
     "resource_validator",
@@ -1188,4 +1222,10 @@ __all__ = [
     "observationrelated_validator",
     "operationoutcome_validator",
     "operationoutcomeissue_validator",
+    "medication_validator",
+    "medicationpackage_validator",
+    "medicationpackagecontent_validator",
+    "medicationproduct_validator",
+    "medicationproductbatch_validator",
+    "medicationproductingredient_validator",
 ]

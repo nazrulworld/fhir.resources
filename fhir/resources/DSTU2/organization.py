@@ -23,7 +23,7 @@ class Organization(DomainResource):
     groups, healthcare practice groups, etc.
     """
 
-    resource_name = Field("Organization", const=True)
+    resource_type = Field("Organization", const=True)
 
     active: bool = Field(
         None,
@@ -84,7 +84,7 @@ class OrganizationContact(BackboneElement):
     """ Contact for the organization for a certain purpose.
     """
 
-    resource_name = Field("OrganizationContact", const=True)
+    resource_type = Field("OrganizationContact", const=True)
 
     address: fhirtypes.AddressType = Field(
         None,

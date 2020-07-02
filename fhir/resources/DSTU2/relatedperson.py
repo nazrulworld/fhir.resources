@@ -22,7 +22,7 @@ class RelatedPerson(DomainResource):
     care process.
     """
 
-    resource_name = Field("RelatedPerson", const=True)
+    resource_type = Field("RelatedPerson", const=True)
 
     address: ListType[fhirtypes.AddressType] = Field(
         None,

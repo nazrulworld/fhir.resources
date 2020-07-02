@@ -23,7 +23,7 @@ class Immunization(DomainResource):
     protocol was followed.
     """
 
-    resource_name = Field("Immunization", const=True)
+    resource_type = Field("Immunization", const=True)
 
     date: fhirtypes.DateTime = Field(
         None,
@@ -180,7 +180,7 @@ class ImmunizationExplanation(BackboneElement):
     Reasons why a vaccine was or was not administered.
     """
 
-    resource_name = Field("ImmunizationExplanation", const=True)
+    resource_type = Field("ImmunizationExplanation", const=True)
 
     reason: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
@@ -204,7 +204,7 @@ class ImmunizationReaction(BackboneElement):
     an immunization.
     """
 
-    resource_name = Field("ImmunizationReaction", const=True)
+    resource_type = Field("ImmunizationReaction", const=True)
 
     date: fhirtypes.DateTime = Field(
         None,
@@ -234,7 +234,7 @@ class ImmunizationVaccinationProtocol(BackboneElement):
     administered.
     """
 
-    resource_name = Field("ImmunizationVaccinationProtocol", const=True)
+    resource_type = Field("ImmunizationVaccinationProtocol", const=True)
 
     authority: fhirtypes.ReferenceType = Field(
         None,

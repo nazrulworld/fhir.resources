@@ -26,7 +26,7 @@ class DiagnosticReport(DomainResource):
     interpretations, and formatted representation of diagnostic reports.
     """
 
-    resource_name = Field("DiagnosticReport", const=True)
+    resource_type = Field("DiagnosticReport", const=True)
 
     conclusion: fhirtypes.String = Field(
         None,
@@ -227,7 +227,7 @@ class DiagnosticReportImage(BackboneElement):
     or of treated specimens (i.e. slides of interest).
     """
 
-    resource_name = Field("DiagnosticReportImage", const=True)
+    resource_type = Field("DiagnosticReportImage", const=True)
 
     comment: fhirtypes.String = Field(
         None,

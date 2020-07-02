@@ -248,7 +248,7 @@ class ClaimCoverage(BackboneElement):
     Financial instrument by which payment information for health care.
     """
 
-    resource_name = Field("ClaimCoverage", const=True)
+    resource_type = Field("ClaimCoverage", const=True)
 
     businessArrangement: fhirtypes.String = Field(
         None,
@@ -310,7 +310,7 @@ class ClaimDiagnosis(BackboneElement):
     Ordered list of patient diagnosis for which care is sought.
     """
 
-    resource_name = Field("ClaimDiagnosis", const=True)
+    resource_type = Field("ClaimDiagnosis", const=True)
 
     diagnosis: fhirtypes.CodingType = Field(
         ...,
@@ -329,7 +329,7 @@ class ClaimItem(BackboneElement):
     First tier of goods and services.
     """
 
-    resource_name = "ClaimItem"
+    resource_type = "ClaimItem"
 
     bodySite: fhirtypes.CodingType = Field(
         None,
@@ -451,7 +451,7 @@ class ClaimItemDetail(BackboneElement):
     Second tier of goods and services.
     """
 
-    resource_name = Field("ClaimItemDetail", const=True)
+    resource_type = Field("ClaimItemDetail", const=True)
 
     type: fhirtypes.CodingType = Field(
         None,
@@ -520,7 +520,7 @@ class ClaimItemDetailSubDetail(BackboneElement):
     Third tier of goods and services.
     """
 
-    resource_name = Field("ClaimItemDetailSubDetail", const=True)
+    resource_type = Field("ClaimItemDetailSubDetail", const=True)
 
     type: fhirtypes.CodingType = Field(
         None,
@@ -581,7 +581,7 @@ class ClaimItemProsthesis(BackboneElement):
     The materials and placement date of prior fixed prosthesis.
     """
 
-    resource_name = Field("ClaimItemProsthesis", const=True)
+    resource_type = Field("ClaimItemProsthesis", const=True)
 
     initial: fhirtypes.Boolean = Field(
         None,
@@ -612,7 +612,7 @@ class ClaimMissingTeeth(BackboneElement):
     been previously  extracted or for other reasons.
     """
 
-    resource_name = Field("ClaimMissingTeeth", const=True)
+    resource_type = Field("ClaimMissingTeeth", const=True)
 
     extractionDate: fhirtypes.Date = Field(
         None,
@@ -642,7 +642,7 @@ class ClaimPayee(BackboneElement):
     The party to be reimbursed for the services.
     """
 
-    resource_name = Field("ClaimPayee", const=True)
+    resource_type = Field("ClaimPayee", const=True)
 
     organization: fhirtypes.ReferenceType = Field(
         None,

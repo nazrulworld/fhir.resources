@@ -21,7 +21,7 @@ class OperationOutcome(DomainResource):
     system action.
     """
 
-    resource_name = Field("OperationOutcome", const=True)
+    resource_type = Field("OperationOutcome", const=True)
 
     issue: ListType[fhirtypes.OperationOutcomeIssueType] = Field(
         None,
@@ -37,7 +37,7 @@ class OperationOutcomeIssue(BackboneElement):
     An error, warning or information message that results from a system action.
     """
 
-    resource_name = Field("OperationOutcomeIssue", const=True)
+    resource_type = Field("OperationOutcomeIssue", const=True)
 
     code: fhirtypes.Code = Field(
         ..., alias="code", title="Type `Code`.", description="Error or warning code."

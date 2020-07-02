@@ -229,7 +229,7 @@ class ClinicalImpressionFinding(BackboneElement):
     ongoing treatment.
     """
 
-    resource_name = Field("ClinicalImpressionFinding", const=True)
+    resource_type = Field("ClinicalImpressionFinding", const=True)
     cause: fhirtypes.String = Field(
         None,
         alias="cause",
@@ -254,7 +254,7 @@ class ClinicalImpressionInvestigations(BackboneElement):
     pertinent to the outcomes.
     """
 
-    resource_name = Field("ClinicalImpressionInvestigations", const=True)
+    resource_type = Field("ClinicalImpressionInvestigations", const=True)
     item: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="item",
@@ -277,7 +277,7 @@ class ClinicalImpressionRuledOut(BackboneElement):
     """ Diagnosis considered not possible.
     """
 
-    resource_name = Field("ClinicalImpressionRuledOut", const=True)
+    resource_type = Field("ClinicalImpressionRuledOut", const=True)
 
     reason: fhirtypes.String = Field(
         None,

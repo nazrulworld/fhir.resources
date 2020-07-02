@@ -21,7 +21,7 @@ class ValueSet(DomainResource):
     A value set specifies a set of codes drawn from one or more code systems.
     """
 
-    resource_name = Field("ValueSet", const=True)
+    resource_type = Field("ValueSet", const=True)
 
     codeSystem: fhirtypes.ValueSetCodeSystemType = Field(
         None,
@@ -162,7 +162,7 @@ class ValueSetCodeSystem(BackboneElement):
     sets by referring to its (codeSystem.system) directly.
     """
 
-    resource_name = Field("ValueSetCodeSystem", const=True)
+    resource_type = Field("ValueSetCodeSystem", const=True)
 
     caseSensitive: fhirtypes.Boolean = Field(
         None,
@@ -201,7 +201,7 @@ class ValueSetCodeSystemConcept(BackboneElement):
     what the meaning of the hierarchical relationships are.
     """
 
-    resource_name = Field("ValueSetCodeSystemConcept", const=True)
+    resource_type = Field("ValueSetCodeSystemConcept", const=True)
 
     abstract: fhirtypes.Boolean = Field(
         None,
@@ -253,7 +253,7 @@ class ValueSetCodeSystemConceptDesignation(BackboneElement):
     specialized purposes, used for particular purposes, etc.
     """
 
-    resource_name = Field("ValueSetCodeSystemConceptDesignation", const=True)
+    resource_type = Field("ValueSetCodeSystemConceptDesignation", const=True)
 
     language: fhirtypes.Code = Field(
         None,
@@ -283,7 +283,7 @@ class ValueSetCompose(BackboneElement):
     set by including or excluding codes from outside this value set.
     """
 
-    resource_name = Field("ValueSetCompose", const=True)
+    resource_type = Field("ValueSetCompose", const=True)
 
     exclude: ListType[fhirtypes.ValueSetComposeIncludeType] = Field(
         None,
@@ -311,7 +311,7 @@ class ValueSetComposeInclude(BackboneElement):
     """ Include one or more codes from a code system.
     """
 
-    resource_name = Field("ValueSetComposeInclude", const=True)
+    resource_type = Field("ValueSetComposeInclude", const=True)
 
     concept: ListType[fhirtypes.ValueSetComposeIncludeConceptType] = Field(
         None,
@@ -347,7 +347,7 @@ class ValueSetComposeIncludeConcept(BackboneElement):
     Specifies a concept to be included or excluded.
     """
 
-    resource_name = Field("ValueSetComposeIncludeConcept", const=True)
+    resource_type = Field("ValueSetComposeIncludeConcept", const=True)
 
     code: fhirtypes.Code = Field(
         None,
@@ -381,7 +381,7 @@ class ValueSetComposeIncludeFilter(BackboneElement):
     specified, they SHALL all be true.
     """
 
-    resource_name = Field("ValueSetComposeIncludeFilter", const=True)
+    resource_type = Field("ValueSetComposeIncludeFilter", const=True)
 
     op: fhirtypes.Code = Field(
         None,
@@ -411,7 +411,7 @@ class ValueSetContact(BackboneElement):
     Contacts to assist a user in finding and communicating with the publisher.
     """
 
-    resource_name = Field("ValueSetContact", const=True)
+    resource_type = Field("ValueSetContact", const=True)
 
     name: fhirtypes.String = Field(
         None,
@@ -436,7 +436,7 @@ class ValueSetExpansion(BackboneElement):
     it has been performed.
     """
 
-    resource_name = Field("ValueSetExpansion", const=True)
+    resource_type = Field("ValueSetExpansion", const=True)
 
     identifier: fhirtypes.Uri = Field(
         ...,
@@ -486,7 +486,7 @@ class ValueSetExpansionContains(BackboneElement):
     The codes that are contained in the value set expansion.
     """
 
-    resource_name = Field("ValueSetExpansionContains", const=True)
+    resource_type = Field("ValueSetExpansionContains", const=True)
 
     abstract: fhirtypes.Boolean = Field(
         None,
@@ -539,7 +539,7 @@ class ValueSetExpansionParameter(BackboneElement):
     suitable for a particular purpose, or to pick the correct expansion.
     """
 
-    resource_name = Field("ValueSetExpansionParameter", const=True)
+    resource_type = Field("ValueSetExpansionParameter", const=True)
 
     valueBoolean: bool = Field(
         None,

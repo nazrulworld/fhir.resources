@@ -24,7 +24,7 @@ class Condition(DomainResource):
     statement, such as a discharge summary.
     """
 
-    resource_name = Field("Condition", const=True)
+    resource_type = Field("Condition", const=True)
 
     abatementBoolean: bool = Field(
         None,
@@ -116,7 +116,10 @@ class Condition(DomainResource):
         description="Identification of the condition, problem or diagnosis.",
     )
     dateRecorded: fhirtypes.Date = Field(
-        None, alias="code", title="Type `Date`.", description="When first entered."
+        None,
+        alias="dateRecorded",
+        title="Type `Date`.",
+        description="When first entered.",
     )
 
     encounter: fhirtypes.ReferenceType = Field(
@@ -282,7 +285,7 @@ class ConditionEvidence(BackboneElement):
     condition is suspected or confirmed.
     """
 
-    resource_name = Field("ConditionEvidence", const=True)
+    resource_type = Field("ConditionEvidence", const=True)
 
     code: fhirtypes.CodeableConceptType = Field(
         None,
@@ -308,7 +311,7 @@ class ConditionStage(BackboneElement):
     assessments.
     """
 
-    resource_name = Field("ConditionStage", const=True)
+    resource_type = Field("ConditionStage", const=True)
     summary: fhirtypes.CodeableConceptType = Field(
         None,
         alias="summary",

@@ -18,4 +18,4 @@ class Count(Quantity):
     present, the value SHALL a whole number.
     """
 
-    resource_name = Field("Count", const=True)
+    resource_type = Field("Count", const=True)

@@ -17,4 +17,4 @@ class Distance(Quantity):
     length.  If system is present, it SHALL be UCUM.
     """
 
-    resource_name = Field("Distance", const=True)
+    resource_type = Field("Distance", const=True)

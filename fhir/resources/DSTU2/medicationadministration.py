@@ -25,7 +25,7 @@ class MedicationAdministration(DomainResource):
     practitioner.
     """
 
-    resource_name = Field("MedicationAdministration", const=True)
+    resource_type = Field("MedicationAdministration", const=True)
 
     status: fhirtypes.Code = Field(
         None,
@@ -192,7 +192,7 @@ class MedicationAdministrationDosage(BackboneElement):
     route, etc.
     """
 
-    resource_name = Field("MedicationAdministrationDosage", const=True)
+    resource_type = Field("MedicationAdministrationDosage", const=True)
 
     method: fhirtypes.CodeableConceptType = Field(
         None,

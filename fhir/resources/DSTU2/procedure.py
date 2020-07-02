@@ -23,7 +23,7 @@ class Procedure(DomainResource):
     hypnotherapy.
     """
 
-    resource_name = Field("Procedure", const=True)
+    resource_type = Field("Procedure", const=True)
 
     status: fhirtypes.Code = Field(
         None,
@@ -249,7 +249,7 @@ class ProcedureFocalDevice(BackboneElement):
     a focal portion of the Procedure.
     """
 
-    resource_name = Field("ProcedureFocalDevice", const=True)
+    resource_type = Field("ProcedureFocalDevice", const=True)
 
     action: fhirtypes.CodeableConceptType = Field(
         None,
@@ -271,7 +271,7 @@ class ProcedurePerformer(BackboneElement):
     Limited to 'real' people rather than equipment.
     """
 
-    resource_name = Field("ProcedurePerformer", const=True)
+    resource_type = Field("ProcedurePerformer", const=True)
 
     role: fhirtypes.CodeableConceptType = Field(
         None,

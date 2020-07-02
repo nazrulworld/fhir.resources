@@ -26,7 +26,7 @@ class Device(DomainResource):
     items such as a machine, cellphone, computer, application, etc.
     """
 
-    resource_name = Field("Device", const=True)
+    resource_type = Field("Device", const=True)
 
     manufacturer: fhirtypes.String = Field(
         None,

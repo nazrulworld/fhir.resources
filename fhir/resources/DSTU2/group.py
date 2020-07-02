@@ -24,7 +24,7 @@ class Group(DomainResource):
     isn't an Organization.
     """
 
-    resource_name = Field("Group", const=True)
+    resource_type = Field("Group", const=True)
 
     actual: fhirtypes.Boolean = Field(
         None, alias="actual", title="Type `bool`.", description="Descriptive or actual."
@@ -82,7 +82,7 @@ class GroupCharacteristic(BackboneElement):
     Identifies the traits shared by members of the group.
     """
 
-    resource_name = Field("GroupCharacteristic", const=True)
+    resource_type = Field("GroupCharacteristic", const=True)
 
     code: fhirtypes.CodeableConceptType = Field(
         None,
@@ -190,7 +190,7 @@ class GroupMember(BackboneElement):
     Identifies the resource instances that are members of the group.
     """
 
-    resource_name = Field("GroupMember", const=True)
+    resource_type = Field("GroupMember", const=True)
 
     entity: fhirtypes.ReferenceType = Field(
         None,

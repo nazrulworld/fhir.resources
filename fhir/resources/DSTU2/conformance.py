@@ -22,7 +22,7 @@ class Conformance(DomainResource):
     required or desired server implementation.
     """
 
-    resource_name = Field("Conformance", const=True)
+    resource_type = Field("Conformance", const=True)
 
     acceptUnknown: fhirtypes.Code = Field(
         ...,
@@ -174,7 +174,7 @@ class ConformanceContact(BackboneElement):
     Contacts to assist a user in finding and communicating with the publisher.
     """
 
-    resource_name = Field("ConformanceContact", const=True)
+    resource_type = Field("ConformanceContact", const=True)
 
     name: fhirtypes.String = Field(
         None,
@@ -197,7 +197,7 @@ class ConformanceDocument(BackboneElement):
     A document definition.
     """
 
-    resource_name = Field("ConformanceDocument", const=True)
+    resource_type = Field("ConformanceDocument", const=True)
 
     documentation: fhirtypes.String = Field(
         None,
@@ -228,7 +228,7 @@ class ConformanceImplementation(BackboneElement):
     capabilities of a software program.
     """
 
-    resource_name = Field("ConformanceImplementation", const=True)
+    resource_type = Field("ConformanceImplementation", const=True)
 
     description: fhirtypes.String = Field(
         None,
@@ -251,7 +251,7 @@ class ConformanceMessaging(BackboneElement):
     A description of the messaging capabilities of the solution.
     """
 
-    resource_name = Field("ConformanceMessaging", const=True)
+    resource_type = Field("ConformanceMessaging", const=True)
 
     documentation: fhirtypes.String = Field(
         None,
@@ -288,7 +288,7 @@ class ConformanceMessagingEndpoint(BackboneElement):
     are to be sent.
     """
 
-    resource_name = Field("ConformanceMessagingEndpoint", const=True)
+    resource_type = Field("ConformanceMessagingEndpoint", const=True)
 
     address: fhirtypes.Uri = Field(
         None, alias="address", title="Type `Uri`.", description="Address of end-point."
@@ -305,7 +305,7 @@ class ConformanceMessagingEvent(BackboneElement):
     A description of the solution's support for an event at this end-point.
     """
 
-    resource_name = Field("ConformanceMessagingEvent", const=True)
+    resource_type = Field("ConformanceMessagingEvent", const=True)
 
     category: fhirtypes.Code = Field(
         None,
@@ -362,7 +362,7 @@ class ConformanceRest(BackboneElement):
     A definition of the restful capabilities of the solution, if any.
     """
 
-    resource_name = Field("ConformanceRest", const=True)
+    resource_type = Field("ConformanceRest", const=True)
 
     compartment: ListType[fhirtypes.Uri] = Field(
         None,
@@ -432,7 +432,7 @@ class ConformanceRestInteraction(BackboneElement):
     A specification of restful operations supported by the system.
     """
 
-    resource_name = Field("ConformanceRestInteraction", const=True)
+    resource_type = Field("ConformanceRestInteraction", const=True)
 
     code: fhirtypes.Code = Field(
         ...,
@@ -455,7 +455,7 @@ class ConformanceRestOperation(BackboneElement):
     their meaning and type.
     """
 
-    resource_name = Field("ConformanceRestOperation", const=True)
+    resource_type = Field("ConformanceRestOperation", const=True)
 
     name: fhirtypes.String = Field(
         ...,
@@ -481,7 +481,7 @@ class ConformanceRestResource(BackboneElement):
     resource type.
     """
 
-    resource_name = Field("ConformanceRestResource", const=True)
+    resource_type = Field("ConformanceRestResource", const=True)
 
     conditionalCreate: fhirtypes.Boolean = Field(
         None,
@@ -580,7 +580,7 @@ class ConformanceRestResourceInteraction(BackboneElement):
     Identifies a restful operation supported by the solution.
     """
 
-    resource_name = Field("ConformanceRestResourceInteraction", const=True)
+    resource_type = Field("ConformanceRestResourceInteraction", const=True)
 
     code: fhirtypes.Code = Field(
         None,
@@ -608,7 +608,7 @@ class ConformanceRestResourceSearchParam(BackboneElement):
     defined for/by the implementation.
     """
 
-    resource_name = Field("ConformanceRestResourceSearchParam", const=True)
+    resource_type = Field("ConformanceRestResourceSearchParam", const=True)
 
     chain: ListType[fhirtypes.String] = Field(
         None,
@@ -666,7 +666,7 @@ class ConformanceRestSecurity(BackboneElement):
     what a client needs to know.
     """
 
-    resource_name = Field("ConformanceRestSecurity", const=True)
+    resource_type = Field("ConformanceRestSecurity", const=True)
 
     certificate: ListType[fhirtypes.ConformanceRestSecurityCertificateType] = Field(
         None,
@@ -703,7 +703,7 @@ class ConformanceRestSecurityCertificate(BackboneElement):
     """ Certificates associated with security profiles.
     """
 
-    resource_name = Field("ConformanceRestSecurityCertificate", const=True)
+    resource_type = Field("ConformanceRestSecurityCertificate", const=True)
     blob: fhirtypes.Base64Binary = Field(
         None,
         alias="blob",
@@ -726,7 +726,7 @@ class ConformanceSoftware(BackboneElement):
     software version, independent of an installation.
     """
 
-    resource_name = Field("ConformanceSoftware", const=True)
+    resource_type = Field("ConformanceSoftware", const=True)
 
     name: fhirtypes.String = Field(
         None,

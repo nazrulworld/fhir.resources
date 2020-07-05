@@ -2,8 +2,8 @@
 History
 =======
 
-6.0.0 (unreleased)
-------------------
+6.0.0b1 (unreleased)
+--------------------
 
 Revolutionary evolution has been made, now fully rewritten with modern python, underlying APIs (almost all) have been changed.
 Please have look at readme section, for howto.

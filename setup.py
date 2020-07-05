@@ -41,7 +41,7 @@ setup(
     author_email="email2nazrul@gmail.com",
     # Get more from https://pypi.org/pypi?%3Aaction=list_classifiers
     classifiers=[
-        "Development Status :: 5 - Production/Stable",
+        "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: BSD License",
         "Natural Language :: English",
@@ -77,7 +77,7 @@ setup(
         "all": (test_requirements + setup_requirements + development_requirements),
     },
     url="https://github.com/nazrulworld/fhir.resources",
-    version="6.0.0.dev0",
+    version="6.0.0b1.dev0",
     zip_safe=False,
     python_requires=">=3.6",
 )

@@ -1,6 +1,7 @@
 graft fhir
 prune fhir/resources/tests
 prune fhir/resources/STU3/tests
+prune fhir/resources/DSTU2/tests
 prune script
 prune .github
 prune fhir-parser

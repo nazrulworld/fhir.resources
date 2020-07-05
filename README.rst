@@ -44,7 +44,7 @@ FHIR® (Release R4, version 4.0.1) is available as default. Also previous versio
 **Available Previous Versions**:
 
 * ``STU3`` (3.0.2)
-* ``DSTU2`` (1.0.2)
+* ``DSTU2`` (1.0.2) [partially see `issue#13 <https://github.com/nazrulworld/fhir.resources/issues/13>`_]
 
 
 Installation
@@ -175,6 +175,56 @@ Usages
     ...     raise AssertionError("Code should not come here")
     ... except ValueError:
     ...     pass
+
+
+
+
+Migration (from later than ``6.X.X``)
+-------------------------------------
+
+This migration guide states some underlying changes of ``API`` and replacement, those are commonly used from later than ``6.X.X`` version.
+
+
+``fhir.resources.fhirelementfactory.FHIRElementFactory::instantiate``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Replacement:** ``fhir.resources.construct_fhir_element``
+
+- First parameter value is same as previous, the Resource name.
+
+- Second parameter is more flexible than previous! it is possible to provide not only json ``dict`` but also
+  json string or json file path.
+
+- No third parameter, what was in previous version.
+
+
+``fhir.resources.fhirabstractbase.FHIRAbstractBase::__init__``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Replacement:** ``fhir.resources.fhirabstractmodel.FHIRAbstractModel::parse_obj<classmethod>``
+
+- First parameter value is same as previous, json dict.
+
+- No second parameter, what was in previous version.
+
+
+``fhir.resources.fhirabstractbase.FHIRAbstractBase::as_json``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Replacement:** ``fhir.resources.fhirabstractmodel.FHIRAbstractModel::dict``
+
+- Output are almost same previous, but there has some difference in case of some date type, for example py date,
+  datetime, Decimal are in object representation.
+
+- It is possible to use ``fhir.resources.fhirabstractmodel.FHIRAbstractModel::json`` as replacement, when
+  json string is required (so not need further, json dumps from dict)
+
+
+Note:
+
+All resources/classes are derived from ``fhir.resources.fhirabstractmodel.FHIRAbstractModel`` what was previously
+from ``fhir.resources.fhirabstractbase.FHIRAbstractBase``.
+
 
 Release and Version Policy
 --------------------------

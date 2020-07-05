@@ -2,7 +2,7 @@
 History
 =======
 
-6.0.0b1 (unreleased)
+6.0.0b1 (2020-07-05)
 --------------------
 
 Revolutionary evolution has been made, now fully rewritten with modern python, underlying APIs (almost all) have been changed.

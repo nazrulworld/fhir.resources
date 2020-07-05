@@ -27,15 +27,14 @@ development_requirements = [
     "requests==2.23.0",
     "colorlog==2.10.0",
     "certifi",
-    "flake8",
-    "flake8-isort",
-    "flake8-bugbear",
-    "isort",
+    "flake8==3.8.3",
+    "flake8-isort==3.0.0",
+    "flake8-bugbear==20.1.4",
+    "isort==4.3.21",
     "black",
     "mypy",
     "zest-releaser[recommended]",
 ]
-
 setup(
     author="Md Nazrul Islam",
     author_email="email2nazrul@gmail.com",

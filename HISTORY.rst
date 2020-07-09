@@ -2,7 +2,7 @@
 History
 =======
 
-6.0.0b2 (unreleased)
+6.0.0b2 (2020-07-09)
 --------------------
 
 - ``FHIRAbstractModel::element_properties`` class method now available, which returning generator of ``ModelField``,

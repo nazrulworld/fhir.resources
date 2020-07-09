@@ -33,6 +33,8 @@ class DeviceMetric(domainresource.DomainResource):
             "required to be performed"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     category: fhirtypes.Code = Field(
@@ -44,6 +46,8 @@ class DeviceMetric(domainresource.DomainResource):
             "DeviceMetric can be for example a setting, measurement, or "
             "calculation."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["measurement", "setting", "calculation", "unspecified"],
@@ -63,6 +67,8 @@ class DeviceMetric(domainresource.DomainResource):
             "example; the parameters are displayed in different characteristic "
             "colors, such as HR-blue, BP-green, and PR and SpO2- magenta."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -91,6 +97,8 @@ class DeviceMetric(domainresource.DomainResource):
             "system element of the identifier should be set to the unique "
             "identifier of the device."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     measurementPeriod: fhirtypes.TimingType = Field(
@@ -108,6 +116,8 @@ class DeviceMetric(domainresource.DomainResource):
             " not update the published observed value with the same frequency as it"
             " was measured."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     operationalStatus: fhirtypes.Code = Field(
@@ -118,6 +128,8 @@ class DeviceMetric(domainresource.DomainResource):
             "Indicates current operational state of the device. For example: On, "
             "Off, Standby, etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["on", "off", "standby", "entered-in-error"],
@@ -141,6 +153,8 @@ class DeviceMetric(domainresource.DomainResource):
             "DeviceMetrics that have the same type, but should be interpreted based"
             " on their containment location."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DeviceComponent"],
     )
@@ -154,6 +168,8 @@ class DeviceMetric(domainresource.DomainResource):
             "and that contains administrative device information such as "
             "manufacturer, serial number, etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
     )
@@ -166,6 +182,8 @@ class DeviceMetric(domainresource.DomainResource):
             "Describes the type of the metric. For example: Heart Rate, PEEP "
             "Setting, etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     unit: fhirtypes.CodeableConceptType = Field(
@@ -176,6 +194,8 @@ class DeviceMetric(domainresource.DomainResource):
             "Describes the unit that an observed value determined for this metric "
             "will have. For example: Percent, Seconds, etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -195,6 +215,8 @@ class DeviceMetricCalibration(backboneelement.BackboneElement):
         alias="state",
         title="not-calibrated | calibration-required | calibrated | unspecified",
         description="Describes the state of the calibration.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -213,6 +235,8 @@ class DeviceMetricCalibration(backboneelement.BackboneElement):
         alias="time",
         title="Describes the time last calibration has been performed",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     time__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_time", title="Extension field for ``time``."
@@ -223,6 +247,8 @@ class DeviceMetricCalibration(backboneelement.BackboneElement):
         alias="type",
         title="unspecified | offset | gain | two-point",
         description="Describes the type of the calibration method.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["unspecified", "offset", "gain", "two-point"],

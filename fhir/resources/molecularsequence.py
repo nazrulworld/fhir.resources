@@ -38,6 +38,8 @@ class MolecularSequence(domainresource.DomainResource):
             "coordinates, inclusive start, exclusive end) or starting at 1 (1-based"
             " numbering, inclusive start and inclusive end)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     coordinateSystem__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -50,6 +52,8 @@ class MolecularSequence(domainresource.DomainResource):
         alias="device",
         title="The method for sequencing",
         description="The method for sequencing, for example, chip information.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
     )
@@ -62,6 +66,8 @@ class MolecularSequence(domainresource.DomainResource):
             "A unique identifier for this particular sequence instance. This is a "
             "FHIR-defined id."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     observedSeq: fhirtypes.String = Field(
@@ -73,6 +79,8 @@ class MolecularSequence(domainresource.DomainResource):
             "along with variant records on referenceSeq. This shall start from "
             "referenceSeq.windowStart and end by referenceSeq.windowEnd."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     observedSeq__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_observedSeq", title="Extension field for ``observedSeq``."
@@ -83,6 +91,8 @@ class MolecularSequence(domainresource.DomainResource):
         alias="patient",
         title="Who and/or what this is about",
         description="The patient whose sequencing results are described by this resource.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
     )
@@ -92,6 +102,8 @@ class MolecularSequence(domainresource.DomainResource):
         alias="performer",
         title="Who should be responsible for test result",
         description="The organization or lab that should be responsible for this result.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -101,6 +113,8 @@ class MolecularSequence(domainresource.DomainResource):
         alias="pointer",
         title="Pointer to next atomic sequence",
         description="Pointer to next atomic sequence which at most contains one variant.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MolecularSequence"],
     )
@@ -115,6 +129,8 @@ class MolecularSequence(domainresource.DomainResource):
             "686](http://www.sequenceontology.org/browser/current_svn/term/SO:00016"
             "86))."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     quantity: fhirtypes.QuantityType = Field(
@@ -122,6 +138,8 @@ class MolecularSequence(domainresource.DomainResource):
         alias="quantity",
         title="The number of copies of the sequence of interest.  (RNASeq)",
         description="The number of copies of the sequence of interest. (RNASeq).",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     readCoverage: fhirtypes.Integer = Field(
@@ -135,6 +153,8 @@ class MolecularSequence(domainresource.DomainResource):
             "Coverage (read depth or depth) is the average number of reads "
             "representing a given nucleotide in the reconstructed sequence."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     readCoverage__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_readCoverage", title="Extension field for ``readCoverage``."
@@ -148,6 +168,8 @@ class MolecularSequence(domainresource.DomainResource):
             "A sequence that is used as a reference to describe variants that are "
             "present in a sequence analyzed."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     repository: ListType[fhirtypes.MolecularSequenceRepositoryType] = Field(
@@ -161,6 +183,8 @@ class MolecularSequence(domainresource.DomainResource):
             "Configurations of the external repository. The repository shall store "
             "target's observedSeq or records related with target's observedSeq."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     specimen: fhirtypes.ReferenceType = Field(
@@ -168,6 +192,8 @@ class MolecularSequence(domainresource.DomainResource):
         alias="specimen",
         title="Specimen used for sequencing",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Specimen"],
     )
@@ -177,6 +203,8 @@ class MolecularSequence(domainresource.DomainResource):
         alias="structureVariant",
         title="Structural variant",
         description="Information about chromosome structure variation.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.Code = Field(
@@ -184,6 +212,8 @@ class MolecularSequence(domainresource.DomainResource):
         alias="type",
         title="aa | dna | rna",
         description="Amino Acid Sequence/ DNA Sequence / RNA Sequence.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["aa", "dna", "rna"],
@@ -203,6 +233,8 @@ class MolecularSequence(domainresource.DomainResource):
             "change(including insertion,deletion,SNP,etc.)  It can represent some "
             "complex mutation or segment variation with the assist of CIGAR string."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -229,6 +261,8 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
             "coordinate system is 1-base, then end is inclusive and includes the "
             "last position."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     end__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_end", title="Extension field for ``end``."
@@ -242,6 +276,8 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
             "Harmonic mean of Recall and Precision, computed as: 2 * precision * "
             "recall / (precision + recall)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     fScore__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_fScore", title="Extension field for ``fScore``."
@@ -259,6 +295,8 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
             "and Query Call Sets match (i.e. cases where the truth is 1/1 and the "
             "query is 0/1 or similar)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     gtFP__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_gtFP", title="Extension field for ``gtFP``."
@@ -269,6 +307,8 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
         alias="method",
         title="Method to get quality",
         description="Which method is used to get sequence quality.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     precision: fhirtypes.Decimal = Field(
@@ -276,6 +316,8 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
         alias="precision",
         title="Precision of comparison",
         description="QUERY.TP / (QUERY.TP + QUERY.FP).",
+        # if property is element of this resource.
+        element_property=True,
     )
     precision__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_precision", title="Extension field for ``precision``."
@@ -291,6 +333,8 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
             "with this site. Sites with correct variant but incorrect genotype are "
             "counted here."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     queryFP__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_queryFP", title="Extension field for ``queryFP``."
@@ -307,6 +351,8 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
             " at this site, and for which there is an accurate genotype call for "
             "the event."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     queryTP__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_queryTP", title="Extension field for ``queryTP``."
@@ -317,6 +363,8 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
         alias="recall",
         title="Recall of comparison",
         description="TRUTH.TP / (TRUTH.TP + TRUTH.FN).",
+        # if property is element of this resource.
+        element_property=True,
     )
     recall__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_recall", title="Extension field for ``recall``."
@@ -330,6 +378,8 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
             "Receiver Operator Characteristic (ROC) Curve  to give "
             "sensitivity/specificity tradeoff."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     score: fhirtypes.QuantityType = Field(
@@ -341,6 +391,8 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
             "0001685](http://www.sequenceontology.org/browser/current_svn/term/SO:0"
             "001685))."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     standardSequence: fhirtypes.CodeableConceptType = Field(
@@ -348,6 +400,8 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
         alias="standardSequence",
         title="Standard sequence for comparison",
         description="Gold standard sequence used for comparing against.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     start: fhirtypes.Integer = Field(
@@ -358,6 +412,8 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
             "Start position of the sequence. If the coordinate system is either "
             "0-based or 1-based, then start position is inclusive."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     start__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_start", title="Extension field for ``start``."
@@ -374,6 +430,8 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
             "inaccurate genotype call for the event. Sites with correct variant but"
             " incorrect genotype are counted here."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     truthFN__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_truthFN", title="Extension field for ``truthFN``."
@@ -390,6 +448,8 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
             " at this site, and for which there is an accurate genotype call for "
             "the event."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     truthTP__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_truthTP", title="Extension field for ``truthTP``."
@@ -400,6 +460,8 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
         alias="type",
         title="indel | snp | unknown",
         description="INDEL / SNP / Undefined variant.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["indel", "snp", "unknown"],
@@ -429,6 +491,8 @@ class MolecularSequenceQualityRoc(backboneelement.BackboneElement):
             'Calculated fScore if the GQ score threshold was set to "score" field '
             "value."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     fMeasure__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_fMeasure", title="Extension field for ``fMeasure``."
@@ -442,6 +506,8 @@ class MolecularSequenceQualityRoc(backboneelement.BackboneElement):
             "The number of false negatives if the GQ score threshold was set to "
             '"score" field value.'
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     numFN__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_numFN", title="Extension field for ``numFN``."
@@ -455,6 +521,8 @@ class MolecularSequenceQualityRoc(backboneelement.BackboneElement):
             "The number of false positives if the GQ score threshold was set to "
             '"score" field value.'
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     numFP__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_numFP", title="Extension field for ``numFP``."
@@ -468,6 +536,8 @@ class MolecularSequenceQualityRoc(backboneelement.BackboneElement):
             "The number of true positives if the GQ score threshold was set to "
             '"score" field value.'
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     numTP__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_numTP", title="Extension field for ``numTP``."
@@ -481,6 +551,8 @@ class MolecularSequenceQualityRoc(backboneelement.BackboneElement):
             'Calculated precision if the GQ score threshold was set to "score" '
             "field value."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     precision__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_precision", title="Extension field for ``precision``."
@@ -494,6 +566,8 @@ class MolecularSequenceQualityRoc(backboneelement.BackboneElement):
             "Invidual data point representing the GQ (genotype quality) score "
             "threshold."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     score__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_score", title="Extension field for ``score``."
@@ -507,6 +581,8 @@ class MolecularSequenceQualityRoc(backboneelement.BackboneElement):
             'Calculated sensitivity if the GQ score threshold was set to "score" '
             "field value."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     sensitivity__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -535,6 +611,8 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
             "or more origins of replication ([SO:0000340](http://www.sequenceontolo"
             "gy.org/browser/current_svn/term/SO:0000340))."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     genomeBuild: fhirtypes.String = Field(
@@ -549,6 +627,8 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
             "e.g. 'GRCh 37'.  Version number must be included if a versioned "
             "release of a primary build was used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     genomeBuild__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_genomeBuild", title="Extension field for ``genomeBuild``."
@@ -564,6 +644,8 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
             ' strand, and the opposite complementary strand is the "antisense" '
             "strand."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["sense", "antisense"],
@@ -579,10 +661,12 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
         description=(
             "Reference identifier of reference sequence submitted to NCBI. It must "
             "match the type in the MolecularSequence.type field. For example, the "
-            "prefix, \u201cNG_\u201d identifies reference sequence for "
-            "genes, \u201cNM_\u201d for "
+            "prefix, \u201cNG_\u201d identifies reference sequence for genes, "
+            "\u201cNM_\u201d for "
             "messenger RNA transcripts, and \u201cNP_\u201d for amino acid sequences."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     referenceSeqPointer: fhirtypes.ReferenceType = Field(
@@ -590,6 +674,8 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
         alias="referenceSeqPointer",
         title="A pointer to another MolecularSequence entity as reference sequence",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MolecularSequence"],
     )
@@ -599,6 +685,8 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
         alias="referenceSeqString",
         title="A string to represent reference sequence",
         description='A string like "ACGT".',
+        # if property is element of this resource.
+        element_property=True,
     )
     referenceSeqString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -615,6 +703,8 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
             "whose 5'-end is on the short arm of the chromosome, and the Crick "
             "strand as the one whose 5'-end is on the long arm."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["watson", "crick"],
@@ -633,6 +723,8 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
             "include the last position. If the coordinate system is 1-base, then "
             "end is inclusive and includes the last position."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     windowEnd__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_windowEnd", title="Extension field for ``windowEnd``."
@@ -647,6 +739,8 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
             "coordinate system is either 0-based or 1-based, then start position is"
             " inclusive."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     windowStart__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_windowStart", title="Extension field for ``windowStart``."
@@ -675,6 +769,8 @@ class MolecularSequenceRepository(backboneelement.BackboneElement):
             "understand how to use this id to call for more info about datasets in "
             "external repository."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     datasetId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_datasetId", title="Extension field for ``datasetId``."
@@ -688,6 +784,8 @@ class MolecularSequenceRepository(backboneelement.BackboneElement):
             "URI of an external repository which contains further details about the"
             " genetics data."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -698,6 +796,8 @@ class MolecularSequenceRepository(backboneelement.BackboneElement):
         alias="readsetId",
         title="Id of the read",
         description="Id of the read in this external repository.",
+        # if property is element of this resource.
+        element_property=True,
     )
     readsetId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_readsetId", title="Extension field for ``readsetId``."
@@ -711,6 +811,8 @@ class MolecularSequenceRepository(backboneelement.BackboneElement):
             "Click and see / RESTful API / Need login to see / RESTful API with "
             "authentication / Other ways to see resource."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["directlink", "openapi", "login", "oauth", "other"],
@@ -727,6 +829,8 @@ class MolecularSequenceRepository(backboneelement.BackboneElement):
             "URI of an external repository which contains further details about the"
             " genetics data."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -741,6 +845,8 @@ class MolecularSequenceRepository(backboneelement.BackboneElement):
             "understand how to use this id to call for more info about variantsets "
             "in external repository."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     variantsetId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_variantsetId", title="Extension field for ``variantsetId``."
@@ -766,13 +872,20 @@ class MolecularSequenceStructureVariant(backboneelement.BackboneElement):
             "Used to indicate if the outer and inner start-end values have the same"
             " meaning."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     exact__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_exact", title="Extension field for ``exact``."
     )
 
     inner: fhirtypes.MolecularSequenceStructureVariantInnerType = Field(
-        None, alias="inner", title="Structural variant inner", description=None,
+        None,
+        alias="inner",
+        title="Structural variant inner",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     length: fhirtypes.Integer = Field(
@@ -780,13 +893,20 @@ class MolecularSequenceStructureVariant(backboneelement.BackboneElement):
         alias="length",
         title="Structural variant length",
         description="Length of the variant chromosome.",
+        # if property is element of this resource.
+        element_property=True,
     )
     length__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_length", title="Extension field for ``length``."
     )
 
     outer: fhirtypes.MolecularSequenceStructureVariantOuterType = Field(
-        None, alias="outer", title="Structural variant outer", description=None,
+        None,
+        alias="outer",
+        title="Structural variant outer",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     variantType: fhirtypes.CodeableConceptType = Field(
@@ -794,6 +914,8 @@ class MolecularSequenceStructureVariant(backboneelement.BackboneElement):
         alias="variantType",
         title="Structural variant change type",
         description="Information about chromosome structure variation DNA change type.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -817,6 +939,8 @@ class MolecularSequenceStructureVariantInner(backboneelement.BackboneElement):
             "coordinate system is 1-base, then end is inclusive and includes the "
             "last position."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     end__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_end", title="Extension field for ``end``."
@@ -830,6 +954,8 @@ class MolecularSequenceStructureVariantInner(backboneelement.BackboneElement):
             "Structural variant inner start. If the coordinate system is either "
             "0-based or 1-based, then start position is inclusive."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     start__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_start", title="Extension field for ``start``."
@@ -856,6 +982,8 @@ class MolecularSequenceStructureVariantOuter(backboneelement.BackboneElement):
             "coordinate system is 1-base, then end is inclusive and includes the "
             "last position."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     end__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_end", title="Extension field for ``end``."
@@ -869,6 +997,8 @@ class MolecularSequenceStructureVariantOuter(backboneelement.BackboneElement):
             "Structural variant outer start. If the coordinate system is either "
             "0-based or 1-based, then start position is inclusive."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     start__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_start", title="Extension field for ``start``."
@@ -900,6 +1030,8 @@ class MolecularSequenceVariant(backboneelement.BackboneElement):
             "uencingAnalysisWorkflow/Content/Vault/Informatics/Sequencing_Analysis/"
             "CASAVA/swSEQ_mCA_ExtendedCIGARFormat.htm)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     cigar__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_cigar", title="Extension field for ``cigar``."
@@ -915,6 +1047,8 @@ class MolecularSequenceVariant(backboneelement.BackboneElement):
             "include the last position. If the coordinate system is 1-base, then "
             "end is inclusive and includes the last position."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     end__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_end", title="Extension field for ``end``."
@@ -933,6 +1067,8 @@ class MolecularSequenceVariant(backboneelement.BackboneElement):
             "the sequence on the positive (+) strand. This will lay in the range "
             "between variant.start and variant.end."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     observedAllele__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_observedAllele", title="Extension field for ``observedAllele``."
@@ -951,6 +1087,8 @@ class MolecularSequenceVariant(backboneelement.BackboneElement):
             "sequence on the positive (+) strand. This will lay in the range "
             "between variant.start and variant.end."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     referenceAllele__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_referenceAllele", title="Extension field for ``referenceAllele``."
@@ -965,6 +1103,8 @@ class MolecularSequenceVariant(backboneelement.BackboneElement):
             "coordinate system is either 0-based or 1-based, then start position is"
             " inclusive."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     start__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_start", title="Extension field for ``start``."
@@ -975,6 +1115,8 @@ class MolecularSequenceVariant(backboneelement.BackboneElement):
         alias="variantPointer",
         title="Pointer to observed variant information",
         description="A pointer to an Observation containing variant information.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Observation"],
     )

@@ -30,6 +30,8 @@ class Population(backboneelement.BackboneElement):
         alias="ageCodeableConcept",
         title="The age of the specific population",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e age[x]
         one_of_many="age",
         one_of_many_required=False,
@@ -40,6 +42,8 @@ class Population(backboneelement.BackboneElement):
         alias="ageRange",
         title="The age of the specific population",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e age[x]
         one_of_many="age",
         one_of_many_required=False,
@@ -50,6 +54,8 @@ class Population(backboneelement.BackboneElement):
         alias="gender",
         title="The gender of the specific population",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     physiologicalCondition: fhirtypes.CodeableConceptType = Field(
@@ -60,10 +66,17 @@ class Population(backboneelement.BackboneElement):
             "which this applies"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     race: fhirtypes.CodeableConceptType = Field(
-        None, alias="race", title="Race of the specific population", description=None,
+        None,
+        alias="race",
+        title="Race of the specific population",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)

@@ -35,6 +35,8 @@ class Evidence(domainresource.DomainResource):
             "Approval happens once when the content is officially approved for "
             "usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_approvalDate", title="Extension field for ``approvalDate``."
@@ -48,6 +50,8 @@ class Evidence(domainresource.DomainResource):
             "An individiual or organization primarily involved in the creation and "
             "maintenance of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     contact: ListType[fhirtypes.ContactDetailType] = Field(
@@ -58,6 +62,8 @@ class Evidence(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     copyright: fhirtypes.Markdown = Field(
@@ -69,6 +75,8 @@ class Evidence(domainresource.DomainResource):
             "Copyright statements are generally legal restrictions on the use and "
             "publishing of the evidence."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
@@ -84,6 +92,8 @@ class Evidence(domainresource.DomainResource):
             "if the status code changes. In addition, it should change when the "
             "substantive content of the evidence changes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -97,6 +107,8 @@ class Evidence(domainresource.DomainResource):
             "A free text natural language description of the evidence from a "
             "consumer's perspective."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -110,6 +122,8 @@ class Evidence(domainresource.DomainResource):
             "An individual or organization primarily responsible for internal "
             "coherence of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     effectivePeriod: fhirtypes.PeriodType = Field(
@@ -120,6 +134,8 @@ class Evidence(domainresource.DomainResource):
             "The period during which the evidence content was or is planned to be "
             "in active use."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     endorser: ListType[fhirtypes.ContactDetailType] = Field(
@@ -130,6 +146,8 @@ class Evidence(domainresource.DomainResource):
             "An individual or organization responsible for officially endorsing the"
             " content for use in some setting."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     exposureBackground: fhirtypes.ReferenceType = Field(
@@ -140,6 +158,8 @@ class Evidence(domainresource.DomainResource):
             "A reference to a EvidenceVariable resource that defines the population"
             " for the research."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["EvidenceVariable"],
     )
@@ -152,6 +172,8 @@ class Evidence(domainresource.DomainResource):
             "A reference to a EvidenceVariable resource that defines the exposure "
             "for the research."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["EvidenceVariable"],
     )
@@ -165,6 +187,8 @@ class Evidence(domainresource.DomainResource):
             "represented in other formats, or referenced in a specification, model,"
             " design or an instance."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -175,6 +199,8 @@ class Evidence(domainresource.DomainResource):
             "A legal or geographic region in which the evidence is intended to be "
             "used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     lastReviewDate: fhirtypes.Date = Field(
@@ -186,6 +212,8 @@ class Evidence(domainresource.DomainResource):
             "happens periodically after approval but does not change the original "
             "approval date."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
@@ -200,6 +228,8 @@ class Evidence(domainresource.DomainResource):
             "usable as an identifier for the module by machine processing "
             "applications such as code generation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -213,6 +243,8 @@ class Evidence(domainresource.DomainResource):
             "A human-readable string to clarify or explain concepts about the "
             "resource."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     outcome: ListType[fhirtypes.ReferenceType] = Field(
@@ -223,6 +255,8 @@ class Evidence(domainresource.DomainResource):
             "A reference to a EvidenceVariable resomece that defines the outcome "
             "for the research."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["EvidenceVariable"],
     )
@@ -234,6 +268,8 @@ class Evidence(domainresource.DomainResource):
         description=(
             "The name of the organization or individual that published the " "evidence."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -247,6 +283,8 @@ class Evidence(domainresource.DomainResource):
             "Related artifacts such as additional documentation, justification, or "
             "bibliographic references."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reviewer: ListType[fhirtypes.ContactDetailType] = Field(
@@ -257,6 +295,8 @@ class Evidence(domainresource.DomainResource):
             "An individual or organization primarily responsible for review of some"
             " aspect of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     shortTitle: fhirtypes.String = Field(
@@ -267,6 +307,8 @@ class Evidence(domainresource.DomainResource):
             "The short title provides an alternate title for use in informal "
             "descriptive contexts where the full, formal title is not necessary."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     shortTitle__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_shortTitle", title="Extension field for ``shortTitle``."
@@ -280,6 +322,8 @@ class Evidence(domainresource.DomainResource):
             "The status of this evidence. Enables tracking the life-cycle of the "
             "content."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -296,6 +340,8 @@ class Evidence(domainresource.DomainResource):
             "An explanatory or alternate title for the Evidence giving additional "
             "information about its content."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     subtitle__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_subtitle", title="Extension field for ``subtitle``."
@@ -306,6 +352,8 @@ class Evidence(domainresource.DomainResource):
         alias="title",
         title="Name for this evidence (human friendly)",
         description="A short, descriptive, user-friendly title for the evidence.",
+        # if property is element of this resource.
+        element_property=True,
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -323,6 +371,8 @@ class Evidence(domainresource.DomainResource):
             "provide a high-level categorization grouping types of Evidences that "
             "can be useful for filtering and searching."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     url: fhirtypes.Uri = Field(
@@ -341,6 +391,8 @@ class Evidence(domainresource.DomainResource):
             "the target of a canonical reference. It SHALL remain the same when the"
             " evidence is stored on different servers."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -357,6 +409,8 @@ class Evidence(domainresource.DomainResource):
             "(insurance plans, studies, ...) and may be used to assist with "
             "indexing and searching for appropriate evidence instances."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     version: fhirtypes.String = Field(
@@ -376,6 +430,8 @@ class Evidence(domainresource.DomainResource):
             "the Decision Support Service specification. Note that a version is "
             "required for non-experimental active artifacts."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."

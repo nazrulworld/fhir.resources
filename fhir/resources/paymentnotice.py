@@ -30,6 +30,8 @@ class PaymentNotice(domainresource.DomainResource):
         alias="amount",
         title="Monetary amount of the payment",
         description="The amount sent to the payee.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     created: fhirtypes.DateTime = Field(
@@ -37,6 +39,8 @@ class PaymentNotice(domainresource.DomainResource):
         alias="created",
         title="Creation date",
         description="The date when this resource was created.",
+        # if property is element of this resource.
+        element_property=True,
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_created", title="Extension field for ``created``."
@@ -47,6 +51,8 @@ class PaymentNotice(domainresource.DomainResource):
         alias="identifier",
         title="Business Identifier for the payment noctice",
         description="A unique identifier assigned to this payment notice.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     payee: fhirtypes.ReferenceType = Field(
@@ -57,6 +63,8 @@ class PaymentNotice(domainresource.DomainResource):
             "The party who will receive or has received payment that is the subject"
             " of this notification."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
     )
@@ -66,6 +74,8 @@ class PaymentNotice(domainresource.DomainResource):
         alias="payment",
         title="Payment reference",
         description="A reference to the payment which is the subject of this notice.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["PaymentReconciliation"],
     )
@@ -75,6 +85,8 @@ class PaymentNotice(domainresource.DomainResource):
         alias="paymentDate",
         title="Payment or clearing date",
         description="The date when the above payment action occurred.",
+        # if property is element of this resource.
+        element_property=True,
     )
     paymentDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_paymentDate", title="Extension field for ``paymentDate``."
@@ -85,6 +97,8 @@ class PaymentNotice(domainresource.DomainResource):
         alias="paymentStatus",
         title="Issued or cleared Status of the payment",
         description="A code indicating whether payment has been sent or cleared.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     provider: fhirtypes.ReferenceType = Field(
@@ -95,6 +109,8 @@ class PaymentNotice(domainresource.DomainResource):
             "The practitioner who is responsible for the services rendered to the "
             "patient."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
     )
@@ -104,6 +120,8 @@ class PaymentNotice(domainresource.DomainResource):
         alias="recipient",
         title="Party being notified",
         description="The party who is notified of the payment status.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -113,6 +131,8 @@ class PaymentNotice(domainresource.DomainResource):
         alias="request",
         title="Request reference",
         description="Reference of resource for which payment is being made.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -122,6 +142,8 @@ class PaymentNotice(domainresource.DomainResource):
         alias="response",
         title="Response reference",
         description="Reference of response to resource for which payment is being made.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -131,6 +153,8 @@ class PaymentNotice(domainresource.DomainResource):
         alias="status",
         title="active | cancelled | draft | entered-in-error",
         description="The status of the resource instance.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "cancelled", "draft", "entered-in-error"],

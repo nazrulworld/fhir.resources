@@ -33,6 +33,8 @@ class HealthcareService(domainresource.DomainResource):
             "when a center is closed for maintenance, or for holidays, the "
             "notAvailable period is to be used for this."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_active", title="Extension field for ``active``."
@@ -48,6 +50,8 @@ class HealthcareService(domainresource.DomainResource):
             "Organization. Indicates if an appointment is required for access to "
             "this service."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     appointmentRequired__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -65,6 +69,8 @@ class HealthcareService(domainresource.DomainResource):
             "site availability as details in the available Times and not available "
             "Times."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     availabilityExceptions__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -77,6 +83,8 @@ class HealthcareService(domainresource.DomainResource):
         alias="availableTime",
         title="Times the Service Site is available",
         description="A collection of times that the Service Site is available.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     category: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -84,6 +92,8 @@ class HealthcareService(domainresource.DomainResource):
         alias="category",
         title="Broad category of service being performed or delivered",
         description="Identifies the broad category of service being performed or delivered.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     characteristic: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -91,6 +101,8 @@ class HealthcareService(domainresource.DomainResource):
         alias="characteristic",
         title="Collection of characteristics (attributes)",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     comment: fhirtypes.String = Field(
@@ -104,6 +116,8 @@ class HealthcareService(domainresource.DomainResource):
             "not covered by the other attributes, which can be displayed as further"
             " detail under the serviceName."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comment", title="Extension field for ``comment``."
@@ -119,6 +133,8 @@ class HealthcareService(domainresource.DomainResource):
             "offered in. Typically this is only provided where a service operates "
             "in communities with mixed languages used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     coverageArea: ListType[fhirtypes.ReferenceType] = Field(
@@ -129,6 +145,8 @@ class HealthcareService(domainresource.DomainResource):
             "The location(s) that this service is available to (not where the "
             "service is provided)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
     )
@@ -141,6 +159,8 @@ class HealthcareService(domainresource.DomainResource):
             "Does this service have specific eligibility requirements that need to "
             "be met in order to use the service?"
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     endpoint: ListType[fhirtypes.ReferenceType] = Field(
@@ -154,6 +174,8 @@ class HealthcareService(domainresource.DomainResource):
             "Technical endpoints providing access to services operated for the "
             "specific healthcare services defined at this resource."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Endpoint"],
     )
@@ -166,6 +188,8 @@ class HealthcareService(domainresource.DomainResource):
             "fields"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     extraDetails__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_extraDetails", title="Extension field for ``extraDetails``."
@@ -176,6 +200,8 @@ class HealthcareService(domainresource.DomainResource):
         alias="identifier",
         title="External identifiers for this item",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     location: ListType[fhirtypes.ReferenceType] = Field(
@@ -183,6 +209,8 @@ class HealthcareService(domainresource.DomainResource):
         alias="location",
         title="Location(s) where service may be provided",
         description="The location(s) where this healthcare service may be provided.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
     )
@@ -195,6 +223,8 @@ class HealthcareService(domainresource.DomainResource):
             "Further description of the service as it would be presented to a "
             "consumer while searching."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -208,6 +238,8 @@ class HealthcareService(domainresource.DomainResource):
             "The HealthcareService is not available during this period of time due "
             "to the provided reason."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     photo: fhirtypes.AttachmentType = Field(
@@ -219,6 +251,8 @@ class HealthcareService(domainresource.DomainResource):
             "may be included here to facilitate quick identification of the service"
             " in a list."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     program: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -226,6 +260,8 @@ class HealthcareService(domainresource.DomainResource):
         alias="program",
         title="Programs that this service is applicable to",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     providedBy: fhirtypes.ReferenceType = Field(
@@ -233,6 +269,8 @@ class HealthcareService(domainresource.DomainResource):
         alias="providedBy",
         title="Organization that provides this service",
         description="The organization that provides this healthcare service.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -245,6 +283,8 @@ class HealthcareService(domainresource.DomainResource):
             "Ways that the service accepts referrals, if this is not provided then "
             "it is implied that no referral is required."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     serviceProvisionCode: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -255,6 +295,8 @@ class HealthcareService(domainresource.DomainResource):
             "The code(s) that detail the conditions under which the healthcare "
             "service is available/offered."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     specialty: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -265,6 +307,8 @@ class HealthcareService(domainresource.DomainResource):
             "Collection of specialties handled by the service site. This is more of"
             " a medical term."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     telecom: ListType[fhirtypes.ContactPointType] = Field(
@@ -272,6 +316,8 @@ class HealthcareService(domainresource.DomainResource):
         alias="telecom",
         title="Contacts related to the healthcare service",
         description="List of contacts related to this specific healthcare service.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -279,6 +325,8 @@ class HealthcareService(domainresource.DomainResource):
         alias="type",
         title="Type of service that may be delivered or performed",
         description="The specific type of service that may be delivered or performed.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -301,6 +349,8 @@ class HealthcareServiceAvailableTime(backboneelement.BackboneElement):
             "Is this always available? (hence times are irrelevant) e.g. 24 hour "
             "service."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     allDay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_allDay", title="Extension field for ``allDay``."
@@ -314,6 +364,8 @@ class HealthcareServiceAvailableTime(backboneelement.BackboneElement):
             "The closing time of day. Note: If the AllDay flag is set, then this "
             "time is ignored."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     availableEndTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -329,6 +381,8 @@ class HealthcareServiceAvailableTime(backboneelement.BackboneElement):
             "The opening time of day. Note: If the AllDay flag is set, then this "
             "time is ignored."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     availableStartTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -344,6 +398,8 @@ class HealthcareServiceAvailableTime(backboneelement.BackboneElement):
             "Indicates which days of the week are available between the start and "
             "end Times."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["mon", "tue", "wed", "thu", "fri", "sat", "sun"],
@@ -366,7 +422,12 @@ class HealthcareServiceEligibility(backboneelement.BackboneElement):
     resource_type = Field("HealthcareServiceEligibility", const=True)
 
     code: fhirtypes.CodeableConceptType = Field(
-        None, alias="code", title="Coded value for the eligibility", description=None,
+        None,
+        alias="code",
+        title="Coded value for the eligibility",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     comment: fhirtypes.Markdown = Field(
@@ -374,6 +435,8 @@ class HealthcareServiceEligibility(backboneelement.BackboneElement):
         alias="comment",
         title="Describes the eligibility conditions for the service",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comment", title="Extension field for ``comment``."
@@ -400,6 +463,8 @@ class HealthcareServiceNotAvailable(backboneelement.BackboneElement):
             "The reason that can be presented to the user as to why this time is "
             "not available."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -413,4 +478,6 @@ class HealthcareServiceNotAvailable(backboneelement.BackboneElement):
             "Service is not available (seasonally or for a public holiday) from "
             "this date."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )

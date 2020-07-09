@@ -5,11 +5,12 @@ import inspect
 import logging
 from copy import deepcopy
 from functools import lru_cache
-from typing import TYPE_CHECKING, Any, Callable, Optional, Type, Union
+from typing import TYPE_CHECKING, Any, Callable, Generator, Optional, Type, Union
 
 from pydantic import BaseModel, Extra
 from pydantic.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.errors import ConfigError, PydanticValueError
+from pydantic.fields import ModelField
 
 if TYPE_CHECKING:
     from pydantic.typing import AbstractSetIntStr, MappingIntStrAny, DictStrAny, SetStr
@@ -66,7 +67,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
 
     @classmethod
     def add_root_validator(
-        cls,
+        cls: Type["Model"],
         validator: Callable,
         *,
         pre: bool = False,
@@ -109,8 +110,15 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
             cls.__post_root_validators__.insert(index, (skip_on_failure, validator))
 
     @classmethod
+    def element_properties(cls: Type["Model"]) -> Generator[ModelField, None, None]:
+        """ """
+        for model_field in cls.__fields__.values():
+            if model_field.field_info.extra.get("element_property", False):
+                yield model_field
+
+    @classmethod
     @lru_cache(maxsize=1024, typed=True)
-    def has_resource_base(cls) -> bool:
+    def has_resource_base(cls: Type["Model"]) -> bool:
         """ """
         # xxx: calculate metrics, other than cache it!
         for cl in inspect.getmro(cls)[:-4]:

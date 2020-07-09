@@ -56,6 +56,8 @@ class MedicationStatement(domainresource.DomainResource):
             "A plan, proposal or order that is fulfilled in whole or in part by "
             "this event."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicationRequest", "CarePlan", "ServiceRequest"],
     )
@@ -68,6 +70,8 @@ class MedicationStatement(domainresource.DomainResource):
             "Indicates where the medication is expected to be consumed or "
             "administered."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     context: fhirtypes.ReferenceType = Field(
@@ -78,6 +82,8 @@ class MedicationStatement(domainresource.DomainResource):
             "The encounter or episode of care that establishes the context for this"
             " MedicationStatement."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter", "EpisodeOfCare"],
     )
@@ -90,6 +96,8 @@ class MedicationStatement(domainresource.DomainResource):
             "The date when the medication statement was asserted by the information"
             " source."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     dateAsserted__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_dateAsserted", title="Extension field for ``dateAsserted``."
@@ -104,6 +112,8 @@ class MedicationStatement(domainresource.DomainResource):
             "MedicationRequest, or to other information that supports or is used to"
             " derive the MedicationStatement."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -113,6 +123,8 @@ class MedicationStatement(domainresource.DomainResource):
         alias="dosage",
         title="Details of how medication is/was taken or should be taken",
         description="Indicates how the medication is/was or should be taken by the patient.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     effectiveDateTime: fhirtypes.DateTime = Field(
@@ -124,6 +136,8 @@ class MedicationStatement(domainresource.DomainResource):
             "patient is/was/will be taking the medication (or was not taking, when "
             "the MedicationStatement.taken element is No)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e effective[x]
         one_of_many="effective",
         one_of_many_required=False,
@@ -143,6 +157,8 @@ class MedicationStatement(domainresource.DomainResource):
             "patient is/was/will be taking the medication (or was not taking, when "
             "the MedicationStatement.taken element is No)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e effective[x]
         one_of_many="effective",
         one_of_many_required=False,
@@ -160,6 +176,8 @@ class MedicationStatement(domainresource.DomainResource):
             "systems and remain constant as the resource is updated and propagates "
             "from server to server."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     informationSource: fhirtypes.ReferenceType = Field(
@@ -175,6 +193,8 @@ class MedicationStatement(domainresource.DomainResource):
             "MedicationStatement is derived from other resources, e.g. Claim or "
             "MedicationRequest."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Patient",
@@ -195,6 +215,8 @@ class MedicationStatement(domainresource.DomainResource):
             "attribute carrying a code that identifies the medication from a known "
             "list of medications."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e medication[x]
         one_of_many="medication",
         one_of_many_required=True,
@@ -210,6 +232,8 @@ class MedicationStatement(domainresource.DomainResource):
             "attribute carrying a code that identifies the medication from a known "
             "list of medications."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e medication[x]
         one_of_many="medication",
         one_of_many_required=True,
@@ -225,6 +249,8 @@ class MedicationStatement(domainresource.DomainResource):
             "Provides extra information about the medication statement that is not "
             "conveyed by the other attributes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     partOf: ListType[fhirtypes.ReferenceType] = Field(
@@ -232,6 +258,8 @@ class MedicationStatement(domainresource.DomainResource):
         alias="partOf",
         title="Part of referenced event",
         description="A larger event of which this particular event is a component or step.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "MedicationAdministration",
@@ -247,6 +275,8 @@ class MedicationStatement(domainresource.DomainResource):
         alias="reasonCode",
         title="Reason for why the medication is being/was taken",
         description="A reason for why the medication is being/was taken.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
@@ -257,6 +287,8 @@ class MedicationStatement(domainresource.DomainResource):
             " taken"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition", "Observation", "DiagnosticReport"],
     )
@@ -273,6 +305,8 @@ class MedicationStatement(domainresource.DomainResource):
             "state of the medication used that this statement is about.  Generally,"
             " this will be active or completed."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -295,6 +329,8 @@ class MedicationStatement(domainresource.DomainResource):
         alias="statusReason",
         title="Reason for current status",
         description="Captures the reason for the current state of the MedicationStatement.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -302,6 +338,8 @@ class MedicationStatement(domainresource.DomainResource):
         alias="subject",
         title="Who is/was taking  the medication",
         description="The person, animal or group who is/was taking the medication.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
     )

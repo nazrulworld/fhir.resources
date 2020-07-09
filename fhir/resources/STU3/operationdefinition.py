@@ -35,6 +35,8 @@ class OperationDefinition(domainresource.DomainResource):
             "Indicates that this operation definition is a constraining profile on "
             "the base."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["OperationDefinition"],
     )
@@ -44,6 +46,8 @@ class OperationDefinition(domainresource.DomainResource):
         alias="code",
         title="Name used to invoke the operation",
         description="The name used to invoke the operation.",
+        # if property is element of this resource.
+        element_property=True,
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -54,6 +58,8 @@ class OperationDefinition(domainresource.DomainResource):
         alias="comment",
         title="Additional information about use",
         description="Additional information about how to use this operation or named query.",
+        # if property is element of this resource.
+        element_property=True,
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comment", title="Extension field for ``comment``."
@@ -67,6 +73,8 @@ class OperationDefinition(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     date: fhirtypes.DateTime = Field(
@@ -80,6 +88,8 @@ class OperationDefinition(domainresource.DomainResource):
             " should change when the substantive content of the operation "
             "definition changes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -93,6 +103,8 @@ class OperationDefinition(domainresource.DomainResource):
             "A free text natural language description of the operation definition "
             "from a consumer's perspective."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -107,6 +119,8 @@ class OperationDefinition(domainresource.DomainResource):
             " for testing purposes (or education/evaluation/marketing), and is not "
             "intended to be used for genuine usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -121,6 +135,8 @@ class OperationDefinition(domainresource.DomainResource):
             "idempotent](http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html)) "
             "may be invoked by performing an HTTP GET operation instead of a POST."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     idempotent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_idempotent", title="Extension field for ``idempotent``."
@@ -134,6 +150,8 @@ class OperationDefinition(domainresource.DomainResource):
             "Indicates whether this operation can be invoked on a particular "
             "instance of one of the given types."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     instance__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_instance", title="Extension field for ``instance``."
@@ -147,6 +165,8 @@ class OperationDefinition(domainresource.DomainResource):
             "A legal or geographic region in which the operation definition is "
             "intended to be used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     kind: fhirtypes.Code = Field(
@@ -154,6 +174,8 @@ class OperationDefinition(domainresource.DomainResource):
         alias="kind",
         title="operation | query",
         description="Whether this is an operation or a named query.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["operation", "query"],
@@ -171,6 +193,8 @@ class OperationDefinition(domainresource.DomainResource):
             "name should be usable as an identifier for the module by machine "
             "processing applications such as code generation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -185,6 +209,8 @@ class OperationDefinition(domainresource.DomainResource):
             "this operation, to help code generators when generating overloaded "
             "parameter sets for this operation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     parameter: ListType[fhirtypes.OperationDefinitionParameterType] = Field(
@@ -192,6 +218,8 @@ class OperationDefinition(domainresource.DomainResource):
         alias="parameter",
         title="Parameters for the operation/query",
         description="The parameters for the operation/query.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     publisher: fhirtypes.String = Field(
@@ -202,6 +230,8 @@ class OperationDefinition(domainresource.DomainResource):
             "The name of the individual or organization that published the "
             "operation definition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -215,6 +245,8 @@ class OperationDefinition(domainresource.DomainResource):
             "Explaination of why this operation definition is needed and why it has"
             " been designed as it has."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_purpose", title="Extension field for ``purpose``."
@@ -225,6 +257,8 @@ class OperationDefinition(domainresource.DomainResource):
         alias="resource",
         title="Types this operation applies to",
         description="The types on which this operation can be executed.",
+        # if property is element of this resource.
+        element_property=True,
     )
     resource__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_resource", title="Extension field for ``resource``."
@@ -238,6 +272,8 @@ class OperationDefinition(domainresource.DomainResource):
             "The status of this operation definition. Enables tracking the life-"
             "cycle of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -255,6 +291,8 @@ class OperationDefinition(domainresource.DomainResource):
             "system level (e.g. without needing to choose a resource type for the "
             "context)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_system", title="Extension field for ``system``."
@@ -269,6 +307,8 @@ class OperationDefinition(domainresource.DomainResource):
             "resource type level for any given resource type level (e.g. without "
             "needing to choose a specific resource id for the context)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -287,6 +327,8 @@ class OperationDefinition(domainresource.DomainResource):
             "definition. For more information see [Technical and Business "
             "Versions](resource.html#versions)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -301,6 +343,8 @@ class OperationDefinition(domainresource.DomainResource):
             "contexts that are listed. These terms may be used to assist with "
             "indexing and searching for appropriate operation definition instances."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     version: fhirtypes.String = Field(
@@ -316,6 +360,8 @@ class OperationDefinition(domainresource.DomainResource):
             "is not available. There is also no expectation that versions can be "
             "placed in a lexicographical sequence."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -336,7 +382,12 @@ class OperationDefinitionOverload(backboneelement.BackboneElement):
     resource_type = Field("OperationDefinitionOverload", const=True)
 
     comment: fhirtypes.String = Field(
-        None, alias="comment", title="Comments to go on overload", description=None,
+        None,
+        alias="comment",
+        title="Comments to go on overload",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comment", title="Extension field for ``comment``."
@@ -347,6 +398,8 @@ class OperationDefinitionOverload(backboneelement.BackboneElement):
         alias="parameterName",
         title="Name of parameter to include in overload",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     parameterName__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -374,6 +427,8 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
             "Binds to a value set if this parameter is coded (code, Coding, "
             "CodeableConcept)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     documentation: fhirtypes.String = Field(
@@ -381,6 +436,8 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
         alias="documentation",
         title="Description of meaning/use",
         description="Describes the meaning or use of this parameter.",
+        # if property is element of this resource.
+        element_property=True,
     )
     documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_documentation", title="Extension field for ``documentation``."
@@ -394,6 +451,8 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
             "The maximum number of times this element is permitted to appear in the"
             " request or response."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     max__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_max", title="Extension field for ``max``."
@@ -407,6 +466,8 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
             "The minimum number of times this parameter SHALL appear in the request"
             " or response."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     min__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_min", title="Extension field for ``min``."
@@ -417,6 +478,8 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
         alias="name",
         title="Name in Parameters.parameter.name or in URL",
         description="The name of used to identify the parameter.",
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -427,6 +490,8 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
         alias="part",
         title="Parts of a nested Parameter",
         description="The parts of a nested Parameter.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     profile: fhirtypes.ReferenceType = Field(
@@ -434,6 +499,8 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
         alias="profile",
         title="Profile on the type",
         description="A profile the specifies the rules that this parameter must conform to.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
     )
@@ -448,6 +515,8 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
             "How the parameter is understood as a search parameter. This is only "
             "used if the parameter type is 'string'."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -470,6 +539,8 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
         alias="type",
         title="What type this parameter has",
         description="The type for this parameter.",
+        # if property is element of this resource.
+        element_property=True,
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -480,6 +551,8 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
         alias="use",
         title="in | out",
         description="Whether this is an input or an output parameter.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["in", "out"],
@@ -510,6 +583,8 @@ class OperationDefinitionParameterBinding(backboneelement.BackboneElement):
             "binding - that is, the degree to which the provided value set must be "
             "adhered to in the instances."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["required", "extensible", "preferred", "example"],
@@ -526,6 +601,8 @@ class OperationDefinitionParameterBinding(backboneelement.BackboneElement):
             "Points to the value set or external definition (e.g. implicit value "
             "set) that identifies the set of codes to be used."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e valueSet[x]
         one_of_many="valueSet",
         one_of_many_required=True,
@@ -541,6 +618,8 @@ class OperationDefinitionParameterBinding(backboneelement.BackboneElement):
             "Points to the value set or external definition (e.g. implicit value "
             "set) that identifies the set of codes to be used."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e valueSet[x]
         one_of_many="valueSet",
         one_of_many_required=True,

@@ -31,6 +31,8 @@ class CompartmentDefinition(domainresource.DomainResource):
         alias="code",
         title="Patient | Encounter | RelatedPerson | Practitioner | Device",
         description="Which compartment this definition describes.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["Patient", "Encounter", "RelatedPerson", "Practitioner", "Device"],
@@ -47,6 +49,8 @@ class CompartmentDefinition(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     date: fhirtypes.DateTime = Field(
@@ -60,6 +64,8 @@ class CompartmentDefinition(domainresource.DomainResource):
             "change when the substantive content of the compartment definition "
             "changes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -73,6 +79,8 @@ class CompartmentDefinition(domainresource.DomainResource):
             "A free text natural language description of the compartment definition"
             " from a consumer's perspective."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -87,6 +95,8 @@ class CompartmentDefinition(domainresource.DomainResource):
             "authored for testing purposes (or education/evaluation/marketing) and "
             "is not intended to be used for genuine usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -101,6 +111,8 @@ class CompartmentDefinition(domainresource.DomainResource):
             "name should be usable as an identifier for the module by machine "
             "processing applications such as code generation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -114,6 +126,8 @@ class CompartmentDefinition(domainresource.DomainResource):
             "The name of the organization or individual that published the "
             "compartment definition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -127,6 +141,8 @@ class CompartmentDefinition(domainresource.DomainResource):
             "Explanation of why this compartment definition is needed and why it "
             "has been designed as it has."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_purpose", title="Extension field for ``purpose``."
@@ -137,6 +153,8 @@ class CompartmentDefinition(domainresource.DomainResource):
         alias="resource",
         title="How a resource is related to the compartment",
         description="Information about how a resource is related to the compartment.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     search: bool = Field(
@@ -144,6 +162,8 @@ class CompartmentDefinition(domainresource.DomainResource):
         alias="search",
         title="Whether the search syntax is supported",
         description="Whether the search syntax is supported,.",
+        # if property is element of this resource.
+        element_property=True,
     )
     search__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_search", title="Extension field for ``search``."
@@ -157,6 +177,8 @@ class CompartmentDefinition(domainresource.DomainResource):
             "The status of this compartment definition. Enables tracking the life-"
             "cycle of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -182,6 +204,8 @@ class CompartmentDefinition(domainresource.DomainResource):
             "SHALL remain the same when the compartment definition is stored on "
             "different servers."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -199,6 +223,8 @@ class CompartmentDefinition(domainresource.DomainResource):
             "indexing and searching for appropriate compartment definition "
             "instances."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     version: fhirtypes.String = Field(
@@ -214,6 +240,8 @@ class CompartmentDefinition(domainresource.DomainResource):
             "managed version is not available. There is also no expectation that "
             "versions can be placed in a lexicographical sequence."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -236,6 +264,8 @@ class CompartmentDefinitionResource(backboneelement.BackboneElement):
         alias="code",
         title="Name of resource type",
         description="The name of a resource supported by the server.",
+        # if property is element of this resource.
+        element_property=True,
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -246,6 +276,8 @@ class CompartmentDefinitionResource(backboneelement.BackboneElement):
         alias="documentation",
         title="Additional documentation about the resource and compartment",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_documentation", title="Extension field for ``documentation``."
@@ -260,6 +292,8 @@ class CompartmentDefinitionResource(backboneelement.BackboneElement):
             "compartment. More than one may be listed because a resource may be "
             "linked to a compartment in more than one way,."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     param__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_param", title="Extension field for ``param``."

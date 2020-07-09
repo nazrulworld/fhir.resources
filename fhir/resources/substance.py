@@ -32,6 +32,8 @@ class Substance(domainresource.DomainResource):
             "A code that classifies the general type of substance.  This is used  "
             "for searching, sorting and display purposes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -39,6 +41,8 @@ class Substance(domainresource.DomainResource):
         alias="code",
         title="What substance this is",
         description="A code (or set of codes) that identify this substance.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     description: fhirtypes.String = Field(
@@ -49,6 +53,8 @@ class Substance(domainresource.DomainResource):
             "A description of the substance - its appearance, handling "
             "requirements, and other usage notes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -59,6 +65,8 @@ class Substance(domainresource.DomainResource):
         alias="identifier",
         title="Unique identifier",
         description="Unique identifier for the substance.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     ingredient: ListType[fhirtypes.SubstanceIngredientType] = Field(
@@ -66,6 +74,8 @@ class Substance(domainresource.DomainResource):
         alias="ingredient",
         title="Composition information about the substance",
         description="A substance can be composed of other substances.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     instance: ListType[fhirtypes.SubstanceInstanceType] = Field(
@@ -76,6 +86,8 @@ class Substance(domainresource.DomainResource):
             "Substance may be used to describe a kind of substance, or a specific "
             "package/container of the substance: an instance."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     status: fhirtypes.Code = Field(
@@ -83,6 +95,8 @@ class Substance(domainresource.DomainResource):
         alias="status",
         title="active | inactive | entered-in-error",
         description="A code to indicate if the substance is actively used.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "inactive", "entered-in-error"],
@@ -108,6 +122,8 @@ class SubstanceIngredient(backboneelement.BackboneElement):
         alias="quantity",
         title="Optional amount (concentration)",
         description="The amount of the ingredient in the substance - a concentration ratio.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     substanceCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -115,6 +131,8 @@ class SubstanceIngredient(backboneelement.BackboneElement):
         alias="substanceCodeableConcept",
         title="A component of the substance",
         description="Another substance that is a component of this substance.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e substance[x]
         one_of_many="substance",
         one_of_many_required=True,
@@ -125,6 +143,8 @@ class SubstanceIngredient(backboneelement.BackboneElement):
         alias="substanceReference",
         title="A component of the substance",
         description="Another substance that is a component of this substance.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e substance[x]
         one_of_many="substance",
         one_of_many_required=True,
@@ -191,6 +211,8 @@ class SubstanceInstance(backboneelement.BackboneElement):
             "When the substance is no longer valid to use. For some substances, a "
             "single arbitrary date is used for expiry."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     expiry__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_expiry", title="Extension field for ``expiry``."
@@ -204,6 +226,8 @@ class SubstanceInstance(backboneelement.BackboneElement):
             "Identifier associated with the package/container (usually a label "
             "affixed directly)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     quantity: fhirtypes.QuantityType = Field(
@@ -211,4 +235,6 @@ class SubstanceInstance(backboneelement.BackboneElement):
         alias="quantity",
         title="Amount of substance in the package",
         description="The amount of the substance.",
+        # if property is element of this resource.
+        element_property=True,
     )

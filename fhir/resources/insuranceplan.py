@@ -33,6 +33,8 @@ class InsurancePlan(domainresource.DomainResource):
             "customer service and/or claims processing on behalf of the health "
             "insurance product owner."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -45,6 +47,8 @@ class InsurancePlan(domainresource.DomainResource):
             "A list of alternate names that the product is known as, or was known "
             "as in the past."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     alias__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_alias", title="Extension field for ``alias``."
@@ -55,6 +59,8 @@ class InsurancePlan(domainresource.DomainResource):
         alias="contact",
         title="Contact for the product",
         description="The contact for the health insurance product for a certain purpose.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     coverage: ListType[fhirtypes.InsurancePlanCoverageType] = Field(
@@ -62,6 +68,8 @@ class InsurancePlan(domainresource.DomainResource):
         alias="coverage",
         title="Coverage details",
         description="Details about the coverage offered by the insurance product.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     coverageArea: ListType[fhirtypes.ReferenceType] = Field(
@@ -72,6 +80,8 @@ class InsurancePlan(domainresource.DomainResource):
             "The geographic region in which a health insurance product's benefits "
             "apply."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
     )
@@ -84,6 +94,8 @@ class InsurancePlan(domainresource.DomainResource):
             "The technical endpoints providing access to services operated for the "
             "health insurance product."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Endpoint"],
     )
@@ -97,6 +109,8 @@ class InsurancePlan(domainresource.DomainResource):
             "remain constant as the resource is updated and propagates from server "
             "to server."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     name: fhirtypes.String = Field(
@@ -107,6 +121,8 @@ class InsurancePlan(domainresource.DomainResource):
             "Official name of the health insurance product as designated by the "
             "owner."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -117,6 +133,8 @@ class InsurancePlan(domainresource.DomainResource):
         alias="network",
         title="What networks are Included",
         description="Reference to the network included in the health insurance product.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -131,6 +149,8 @@ class InsurancePlan(domainresource.DomainResource):
             " third-party payers, or health plan sponsors comonly referred to as "
             "'payers'."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -140,6 +160,8 @@ class InsurancePlan(domainresource.DomainResource):
         alias="period",
         title="When the product is available",
         description="The period of time that the health insurance product is available.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     plan: ListType[fhirtypes.InsurancePlanPlanType] = Field(
@@ -147,6 +169,8 @@ class InsurancePlan(domainresource.DomainResource):
         alias="plan",
         title="Plan details",
         description="Details about an insurance plan.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     status: fhirtypes.Code = Field(
@@ -154,6 +178,8 @@ class InsurancePlan(domainresource.DomainResource):
         alias="status",
         title="draft | active | retired | unknown",
         description="The current state of the health insurance product.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -167,6 +193,8 @@ class InsurancePlan(domainresource.DomainResource):
         alias="type",
         title="Kind of product",
         description="The kind of health insurance product.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -186,6 +214,8 @@ class InsurancePlanContact(backboneelement.BackboneElement):
         alias="address",
         title="Visiting or postal addresses for the contact",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     name: fhirtypes.HumanNameType = Field(
@@ -193,6 +223,8 @@ class InsurancePlanContact(backboneelement.BackboneElement):
         alias="name",
         title="A name associated with the contact",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     purpose: fhirtypes.CodeableConceptType = Field(
@@ -200,6 +232,8 @@ class InsurancePlanContact(backboneelement.BackboneElement):
         alias="purpose",
         title="The type of contact",
         description="Indicates a purpose for which the contact can be reached.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     telecom: ListType[fhirtypes.ContactPointType] = Field(
@@ -210,6 +244,8 @@ class InsurancePlanContact(backboneelement.BackboneElement):
             "A contact detail (e.g. a telephone number or an email address) by "
             "which the party may be contacted."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -229,6 +265,8 @@ class InsurancePlanCoverage(backboneelement.BackboneElement):
         alias="benefit",
         title="List of benefits",
         description="Specific benefits under this type of coverage.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     network: ListType[fhirtypes.ReferenceType] = Field(
@@ -236,6 +274,8 @@ class InsurancePlanCoverage(backboneelement.BackboneElement):
         alias="network",
         title="What networks provide coverage",
         description="Reference to the network that providing the type of coverage.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -248,6 +288,8 @@ class InsurancePlanCoverage(backboneelement.BackboneElement):
             "Type of coverage  (Medical; Dental; Mental Health; Substance Abuse; "
             "Vision; Drug; Short Term; Long Term Care; Hospice; Home Health)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -267,6 +309,8 @@ class InsurancePlanCoverageBenefit(backboneelement.BackboneElement):
         alias="limit",
         title="Benefit limits",
         description="The specific limits on the benefit.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     requirement: fhirtypes.String = Field(
@@ -274,6 +318,8 @@ class InsurancePlanCoverageBenefit(backboneelement.BackboneElement):
         alias="requirement",
         title="Referral requirements",
         description="The referral requirements to have access/coverage for this benefit.",
+        # if property is element of this resource.
+        element_property=True,
     )
     requirement__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_requirement", title="Extension field for ``requirement``."
@@ -286,6 +332,8 @@ class InsurancePlanCoverageBenefit(backboneelement.BackboneElement):
         description=(
             "Type of benefit (primary care; speciality care; inpatient; " "outpatient)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -305,6 +353,8 @@ class InsurancePlanCoverageBenefitLimit(backboneelement.BackboneElement):
         alias="code",
         title="Benefit limit details",
         description="The specific limit on the benefit.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     value: fhirtypes.QuantityType = Field(
@@ -315,6 +365,8 @@ class InsurancePlanCoverageBenefitLimit(backboneelement.BackboneElement):
             "The maximum amount of a service item a plan will pay for a covered "
             "benefit.  For examples. wellness visits, or eyeglasses."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -337,6 +389,8 @@ class InsurancePlanPlan(backboneelement.BackboneElement):
             "The geographic region in which a health insurance plan's benefits "
             "apply."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
     )
@@ -346,6 +400,8 @@ class InsurancePlanPlan(backboneelement.BackboneElement):
         alias="generalCost",
         title="Overall costs",
         description="Overall costs associated with the plan.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -357,6 +413,8 @@ class InsurancePlanPlan(backboneelement.BackboneElement):
             "remain constant as the resource is updated and propagates from server "
             "to server."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     network: ListType[fhirtypes.ReferenceType] = Field(
@@ -364,6 +422,8 @@ class InsurancePlanPlan(backboneelement.BackboneElement):
         alias="network",
         title="What networks provide coverage",
         description="Reference to the network that providing the type of coverage.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -373,6 +433,8 @@ class InsurancePlanPlan(backboneelement.BackboneElement):
         alias="specificCost",
         title="Specific costs",
         description="Costs associated with the coverage provided by the product.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -380,6 +442,8 @@ class InsurancePlanPlan(backboneelement.BackboneElement):
         alias="type",
         title="Type of plan",
         description='Type of plan. For example, "Platinum" or "High Deductable".',
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -402,13 +466,20 @@ class InsurancePlanPlanGeneralCost(backboneelement.BackboneElement):
             "Additional information about the general costs associated with this "
             "plan."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comment", title="Extension field for ``comment``."
     )
 
     cost: fhirtypes.MoneyType = Field(
-        None, alias="cost", title="Cost value", description="Value of the cost.",
+        None,
+        alias="cost",
+        title="Cost value",
+        description="Value of the cost.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     groupSize: fhirtypes.PositiveInt = Field(
@@ -416,13 +487,20 @@ class InsurancePlanPlanGeneralCost(backboneelement.BackboneElement):
         alias="groupSize",
         title="Number of enrollees",
         description="Number of participants enrolled in the plan.",
+        # if property is element of this resource.
+        element_property=True,
     )
     groupSize__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_groupSize", title="Extension field for ``groupSize``."
     )
 
     type: fhirtypes.CodeableConceptType = Field(
-        None, alias="type", title="Type of cost", description=None,
+        None,
+        alias="type",
+        title="Type of cost",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -442,6 +520,8 @@ class InsurancePlanPlanSpecificCost(backboneelement.BackboneElement):
         alias="benefit",
         title="Benefits list",
         description="List of the specific benefits under this category of benefit.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     category: fhirtypes.CodeableConceptType = Field(
@@ -452,6 +532,8 @@ class InsurancePlanPlanSpecificCost(backboneelement.BackboneElement):
             "General category of benefit (Medical; Dental; Vision; Drug; Mental "
             "Health; Substance Abuse; Hospice, Home Health)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -471,6 +553,8 @@ class InsurancePlanPlanSpecificCostBenefit(backboneelement.BackboneElement):
         alias="cost",
         title="List of the costs",
         description="List of the costs associated with a specific benefit.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -482,6 +566,8 @@ class InsurancePlanPlanSpecificCostBenefit(backboneelement.BackboneElement):
             "speciality office visit; hospitalization; emergency room; urgent "
             "care)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -504,6 +590,8 @@ class InsurancePlanPlanSpecificCostBenefitCost(backboneelement.BackboneElement):
             "Whether the cost applies to in-network or out-of-network providers "
             "(in-network; out-of-network; other)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     qualifiers: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -514,6 +602,8 @@ class InsurancePlanPlanSpecificCostBenefitCost(backboneelement.BackboneElement):
             "Additional information about the cost, such as information about "
             "funding sources (e.g. HSA, HRA, FSA, RRA)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -524,6 +614,8 @@ class InsurancePlanPlanSpecificCostBenefitCost(backboneelement.BackboneElement):
             "Type of cost (copay; individual cap; family cap; coinsurance; "
             "deductible)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     value: fhirtypes.QuantityType = Field(
@@ -534,4 +626,6 @@ class InsurancePlanPlanSpecificCostBenefitCost(backboneelement.BackboneElement):
             "The actual cost value. (some of the costs may be represented as "
             "percentages rather than currency, e.g. 10% coinsurance)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )

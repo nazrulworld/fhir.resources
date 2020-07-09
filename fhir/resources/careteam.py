@@ -35,6 +35,8 @@ class CareTeam(domainresource.DomainResource):
             "between multiple co-existing teams, such as care plan team, episode of"
             " care team, longitudinal care team."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     encounter: fhirtypes.ReferenceType = Field(
@@ -45,6 +47,8 @@ class CareTeam(domainresource.DomainResource):
             "The Encounter during which this CareTeam was created or to which the "
             "creation of this record is tightly associated."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
     )
@@ -58,6 +62,8 @@ class CareTeam(domainresource.DomainResource):
             "other systems which remain constant as the resource is updated and "
             "propagates from server to server."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     managingOrganization: ListType[fhirtypes.ReferenceType] = Field(
@@ -65,6 +71,8 @@ class CareTeam(domainresource.DomainResource):
         alias="managingOrganization",
         title="Organization responsible for the care team",
         description="The organization responsible for the care team.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -77,13 +85,20 @@ class CareTeam(domainresource.DomainResource):
             "A label for human use intended to distinguish like teams.  E.g. the "
             '"red" vs. "green" trauma teams.'
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
-        None, alias="note", title="Comments made about the CareTeam", description=None,
+        None,
+        alias="note",
+        title="Comments made about the CareTeam",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     participant: ListType[fhirtypes.CareTeamParticipantType] = Field(
@@ -94,6 +109,8 @@ class CareTeam(domainresource.DomainResource):
             "Identifies all people and organizations who are expected to be "
             "involved in the care team."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -104,6 +121,8 @@ class CareTeam(domainresource.DomainResource):
             "Indicates when the team did (or is intended to) come into effect and "
             "end."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -111,6 +130,8 @@ class CareTeam(domainresource.DomainResource):
         alias="reasonCode",
         title="Why the care team exists",
         description="Describes why the care team exists.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
@@ -118,6 +139,8 @@ class CareTeam(domainresource.DomainResource):
         alias="reasonReference",
         title="Why the care team exists",
         description="Condition(s) that this care team addresses.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition"],
     )
@@ -127,6 +150,8 @@ class CareTeam(domainresource.DomainResource):
         alias="status",
         title="proposed | active | suspended | inactive | entered-in-error",
         description="Indicates the current state of the care team.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["proposed", "active", "suspended", "inactive", "entered-in-error"],
@@ -143,6 +168,8 @@ class CareTeam(domainresource.DomainResource):
             "Identifies the patient or group whose intended care is handled by the "
             "team."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
     )
@@ -155,6 +182,8 @@ class CareTeam(domainresource.DomainResource):
             "A central contact detail for the care team (that applies to all "
             "members)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -178,6 +207,8 @@ class CareTeamParticipant(backboneelement.BackboneElement):
             "The specific person or organization who is participating/expected to "
             "participate in the care team."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Practitioner",
@@ -194,6 +225,8 @@ class CareTeamParticipant(backboneelement.BackboneElement):
         alias="onBehalfOf",
         title="Organization of the practitioner",
         description="The organization of the practitioner.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -206,6 +239,8 @@ class CareTeamParticipant(backboneelement.BackboneElement):
             "Indicates when the specific member or organization did (or is intended"
             " to) come into effect and end."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     role: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -217,4 +252,6 @@ class CareTeamParticipant(backboneelement.BackboneElement):
             'team, such as "Primary care physician", "Trained social worker '
             'counselor", "Caregiver", etc.'
         ),
+        # if property is element of this resource.
+        element_property=True,
     )

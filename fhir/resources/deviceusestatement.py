@@ -34,6 +34,8 @@ class DeviceUseStatement(domainresource.DomainResource):
             "A plan, proposal or order that is fulfilled in whole or in part by "
             "this DeviceUseStatement."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ServiceRequest"],
     )
@@ -46,6 +48,8 @@ class DeviceUseStatement(domainresource.DomainResource):
             "Indicates the anotomic location on the subject's body where the device"
             " was used ( i.e. the target)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     derivedFrom: ListType[fhirtypes.ReferenceType] = Field(
@@ -57,6 +61,8 @@ class DeviceUseStatement(domainresource.DomainResource):
             " other information that supports or is used to derive the "
             "DeviceUseStatement."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "ServiceRequest",
@@ -73,6 +79,8 @@ class DeviceUseStatement(domainresource.DomainResource):
         alias="device",
         title="Reference to device used",
         description="The details of the device used.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
     )
@@ -82,6 +90,8 @@ class DeviceUseStatement(domainresource.DomainResource):
         alias="identifier",
         title="External identifier for this record",
         description="An external identifier for this statement such as an IRI.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
@@ -94,6 +104,8 @@ class DeviceUseStatement(domainresource.DomainResource):
             "include for example a comment, an instruction, or a note associated "
             "with the statement."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -101,6 +113,8 @@ class DeviceUseStatement(domainresource.DomainResource):
         alias="reasonCode",
         title="Why device was used",
         description="Reason or justification for the use of the device.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
@@ -111,6 +125,8 @@ class DeviceUseStatement(domainresource.DomainResource):
             "Indicates another resource whose existence justifies this "
             "DeviceUseStatement."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Condition",
@@ -126,6 +142,8 @@ class DeviceUseStatement(domainresource.DomainResource):
         alias="recordedOn",
         title="When statement was recorded",
         description="The time at which the statement was made/recorded.",
+        # if property is element of this resource.
+        element_property=True,
     )
     recordedOn__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_recordedOn", title="Extension field for ``recordedOn``."
@@ -136,6 +154,8 @@ class DeviceUseStatement(domainresource.DomainResource):
         alias="source",
         title="Who made the statement",
         description="Who reported the device was being used by the patient.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Patient",
@@ -154,9 +174,11 @@ class DeviceUseStatement(domainresource.DomainResource):
             "state of the device used that this statement is about.  Generally this"
             " will be active or completed."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["active", "completed", "entered-in-error +"],
+        enum_values=["active", "completed", "entered-in-error", "+"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -167,6 +189,8 @@ class DeviceUseStatement(domainresource.DomainResource):
         alias="subject",
         title="Patient using device",
         description="The patient who used the device.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
     )
@@ -176,6 +200,8 @@ class DeviceUseStatement(domainresource.DomainResource):
         alias="timingDateTime",
         title="How often  the device was used",
         description="How often the device was used.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e timing[x]
         one_of_many="timing",
         one_of_many_required=False,
@@ -189,6 +215,8 @@ class DeviceUseStatement(domainresource.DomainResource):
         alias="timingPeriod",
         title="How often  the device was used",
         description="How often the device was used.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e timing[x]
         one_of_many="timing",
         one_of_many_required=False,
@@ -199,6 +227,8 @@ class DeviceUseStatement(domainresource.DomainResource):
         alias="timingTiming",
         title="How often  the device was used",
         description="How often the device was used.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e timing[x]
         one_of_many="timing",
         one_of_many_required=False,

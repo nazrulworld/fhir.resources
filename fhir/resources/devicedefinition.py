@@ -28,7 +28,12 @@ class DeviceDefinition(domainresource.DomainResource):
     resource_type = Field("DeviceDefinition", const=True)
 
     capability: ListType[fhirtypes.DeviceDefinitionCapabilityType] = Field(
-        None, alias="capability", title="Device capabilities", description=None,
+        None,
+        alias="capability",
+        title="Device capabilities",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     contact: ListType[fhirtypes.ContactPointType] = Field(
@@ -39,6 +44,8 @@ class DeviceDefinition(domainresource.DomainResource):
             "Contact details for an organization or a particular human that is "
             "responsible for the device."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     deviceName: ListType[fhirtypes.DeviceDefinitionDeviceNameType] = Field(
@@ -46,6 +53,8 @@ class DeviceDefinition(domainresource.DomainResource):
         alias="deviceName",
         title="A name given to the device to identify it",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -56,6 +65,8 @@ class DeviceDefinition(domainresource.DomainResource):
             "Unique instance identifiers assigned to a device by the software, "
             "manufacturers, other organizations or owners. For example: handle ID."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     languageCode: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -66,6 +77,8 @@ class DeviceDefinition(domainresource.DomainResource):
             "device (all supported)"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     manufacturerReference: fhirtypes.ReferenceType = Field(
@@ -73,6 +86,8 @@ class DeviceDefinition(domainresource.DomainResource):
         alias="manufacturerReference",
         title="Name of device manufacturer",
         description="A name of the manufacturer.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e manufacturer[x]
         one_of_many="manufacturer",
         one_of_many_required=False,
@@ -85,6 +100,8 @@ class DeviceDefinition(domainresource.DomainResource):
         alias="manufacturerString",
         title="Name of device manufacturer",
         description="A name of the manufacturer.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e manufacturer[x]
         one_of_many="manufacturer",
         one_of_many_required=False,
@@ -100,6 +117,8 @@ class DeviceDefinition(domainresource.DomainResource):
         alias="material",
         title="A substance used to create the material(s) of which the device is made",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     modelNumber: fhirtypes.String = Field(
@@ -107,6 +126,8 @@ class DeviceDefinition(domainresource.DomainResource):
         alias="modelNumber",
         title="The model number for the device",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     modelNumber__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_modelNumber", title="Extension field for ``modelNumber``."
@@ -120,6 +141,8 @@ class DeviceDefinition(domainresource.DomainResource):
             "Descriptive information, usage information or implantation information"
             " that is not captured in an existing element."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     onlineInformation: fhirtypes.Uri = Field(
@@ -127,6 +150,8 @@ class DeviceDefinition(domainresource.DomainResource):
         alias="onlineInformation",
         title="Access to on-line information",
         description="Access to on-line information about the device.",
+        # if property is element of this resource.
+        element_property=True,
     )
     onlineInformation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -142,6 +167,8 @@ class DeviceDefinition(domainresource.DomainResource):
             "An organization that is responsible for the provision and ongoing "
             "maintenance of the device."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -151,6 +178,8 @@ class DeviceDefinition(domainresource.DomainResource):
         alias="parentDevice",
         title="The parent device it can be part of",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DeviceDefinition"],
     )
@@ -160,6 +189,8 @@ class DeviceDefinition(domainresource.DomainResource):
         alias="physicalCharacteristics",
         title="Dimensions, color etc.",
         description="Dimensions, color etc.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     property: ListType[fhirtypes.DeviceDefinitionPropertyType] = Field(
@@ -170,6 +201,8 @@ class DeviceDefinition(domainresource.DomainResource):
             " e.g., regulation status, time properties"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     quantity: fhirtypes.QuantityType = Field(
@@ -181,6 +214,8 @@ class DeviceDefinition(domainresource.DomainResource):
             "package of the medicinal product)"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     safety: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -188,6 +223,8 @@ class DeviceDefinition(domainresource.DomainResource):
         alias="safety",
         title="Safety characteristics of the device",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     shelfLifeStorage: ListType[fhirtypes.ProductShelfLifeType] = Field(
@@ -195,6 +232,8 @@ class DeviceDefinition(domainresource.DomainResource):
         alias="shelfLifeStorage",
         title="Shelf Life and storage information",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     specialization: ListType[fhirtypes.DeviceDefinitionSpecializationType] = Field(
@@ -206,6 +245,8 @@ class DeviceDefinition(domainresource.DomainResource):
             "communication"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -213,6 +254,8 @@ class DeviceDefinition(domainresource.DomainResource):
         alias="type",
         title="What kind of device or device system this is",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     udiDeviceIdentifier: ListType[
@@ -227,6 +270,8 @@ class DeviceDefinition(domainresource.DomainResource):
             " include just the udiCarrier for the jurisdiction it is sold, or for "
             "multiple jurisdictions it could have been sold."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     url: fhirtypes.Uri = Field(
@@ -234,6 +279,8 @@ class DeviceDefinition(domainresource.DomainResource):
         alias="url",
         title="Network address to contact device",
         description="A network address on which the device may be contacted directly.",
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -244,6 +291,8 @@ class DeviceDefinition(domainresource.DomainResource):
         alias="version",
         title="Available versions",
         description="The available versions of the device, e.g., software versions.",
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -299,11 +348,21 @@ class DeviceDefinitionCapability(backboneelement.BackboneElement):
     resource_type = Field("DeviceDefinitionCapability", const=True)
 
     description: ListType[fhirtypes.CodeableConceptType] = Field(
-        None, alias="description", title="Description of capability", description=None,
+        None,
+        alias="description",
+        title="Description of capability",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
-        ..., alias="type", title="Type of capability", description=None,
+        ...,
+        alias="type",
+        title="Type of capability",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -318,7 +377,12 @@ class DeviceDefinitionDeviceName(backboneelement.BackboneElement):
     resource_type = Field("DeviceDefinitionDeviceName", const=True)
 
     name: fhirtypes.String = Field(
-        ..., alias="name", title="The name of the device", description=None,
+        ...,
+        alias="name",
+        title="The name of the device",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -335,6 +399,8 @@ class DeviceDefinitionDeviceName(backboneelement.BackboneElement):
             "The type of deviceName. UDILabelName | UserFriendlyName | "
             "PatientReportedName | ManufactureDeviceName | ModelName."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -366,6 +432,8 @@ class DeviceDefinitionMaterial(backboneelement.BackboneElement):
         alias="allergenicIndicator",
         title="Whether the substance is a known or suspected allergen",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     allergenicIndicator__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -378,13 +446,20 @@ class DeviceDefinitionMaterial(backboneelement.BackboneElement):
         alias="alternate",
         title="Indicates an alternative material of the device",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     alternate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_alternate", title="Extension field for ``alternate``."
     )
 
     substance: fhirtypes.CodeableConceptType = Field(
-        ..., alias="substance", title="The substance", description=None,
+        ...,
+        alias="substance",
+        title="The substance",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -407,6 +482,8 @@ class DeviceDefinitionProperty(backboneelement.BackboneElement):
             "(Extensible)"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     valueCode: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -414,6 +491,8 @@ class DeviceDefinitionProperty(backboneelement.BackboneElement):
         alias="valueCode",
         title="Property value as a code, e.g., NTP4 (synced to NTP)",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     valueQuantity: ListType[fhirtypes.QuantityType] = Field(
@@ -421,6 +500,8 @@ class DeviceDefinitionProperty(backboneelement.BackboneElement):
         alias="valueQuantity",
         title="Property value as a quantity",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -440,6 +521,8 @@ class DeviceDefinitionSpecialization(backboneelement.BackboneElement):
         alias="systemType",
         title="The standard that is used to operate and communicate",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     systemType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_systemType", title="Extension field for ``systemType``."
@@ -450,6 +533,8 @@ class DeviceDefinitionSpecialization(backboneelement.BackboneElement):
         alias="version",
         title="The version of the standard that is used to operate and communicate",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -479,6 +564,8 @@ class DeviceDefinitionUdiDeviceIdentifier(backboneelement.BackboneElement):
             "porvided in the DeviceDefinition.udiDeviceIdentifier"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     deviceIdentifier__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -491,6 +578,8 @@ class DeviceDefinitionUdiDeviceIdentifier(backboneelement.BackboneElement):
         alias="issuer",
         title="The organization that assigns the identifier algorithm",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     issuer__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_issuer", title="Extension field for ``issuer``."
@@ -501,6 +590,8 @@ class DeviceDefinitionUdiDeviceIdentifier(backboneelement.BackboneElement):
         alias="jurisdiction",
         title="The jurisdiction to which the deviceIdentifier applies",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     jurisdiction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_jurisdiction", title="Extension field for ``jurisdiction``."

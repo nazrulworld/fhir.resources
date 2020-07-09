@@ -34,6 +34,8 @@ class GraphDefinition(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     date: fhirtypes.DateTime = Field(
@@ -47,6 +49,8 @@ class GraphDefinition(domainresource.DomainResource):
             " should change when the substantive content of the graph definition "
             "changes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -60,6 +64,8 @@ class GraphDefinition(domainresource.DomainResource):
             "A free text natural language description of the graph definition from "
             "a consumer's perspective."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -74,6 +80,8 @@ class GraphDefinition(domainresource.DomainResource):
             " testing purposes (or education/evaluation/marketing), and is not "
             "intended to be used for genuine usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -87,6 +95,8 @@ class GraphDefinition(domainresource.DomainResource):
             "A legal or geographic region in which the graph definition is intended"
             " to be used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     link: ListType[fhirtypes.GraphDefinitionLinkType] = Field(
@@ -94,6 +104,8 @@ class GraphDefinition(domainresource.DomainResource):
         alias="link",
         title="Links this graph makes rules about",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     name: fhirtypes.String = Field(
@@ -105,6 +117,8 @@ class GraphDefinition(domainresource.DomainResource):
             "should be usable as an identifier for the module by machine processing"
             " applications such as code generation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -115,6 +129,8 @@ class GraphDefinition(domainresource.DomainResource):
         alias="profile",
         title="Profile on base resource",
         description="The profile that describes the use of the base resource.",
+        # if property is element of this resource.
+        element_property=True,
     )
     profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_profile", title="Extension field for ``profile``."
@@ -128,6 +144,8 @@ class GraphDefinition(domainresource.DomainResource):
             "The name of the individual or organization that published the graph "
             "definition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -141,6 +159,8 @@ class GraphDefinition(domainresource.DomainResource):
             "Explaination of why this graph definition is needed and why it has "
             "been designed as it has."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_purpose", title="Extension field for ``purpose``."
@@ -151,6 +171,8 @@ class GraphDefinition(domainresource.DomainResource):
         alias="start",
         title="Type of resource at which the graph starts",
         description="The type of FHIR resource at which instances of this graph start.",
+        # if property is element of this resource.
+        element_property=True,
     )
     start__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_start", title="Extension field for ``start``."
@@ -164,6 +186,8 @@ class GraphDefinition(domainresource.DomainResource):
             "The status of this graph definition. Enables tracking the life-cycle "
             "of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -185,6 +209,8 @@ class GraphDefinition(domainresource.DomainResource):
             "information see [Technical and Business "
             "Versions](resource.html#versions)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -199,6 +225,8 @@ class GraphDefinition(domainresource.DomainResource):
             "contexts that are listed. These terms may be used to assist with "
             "indexing and searching for appropriate graph definition instances."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     version: fhirtypes.String = Field(
@@ -214,6 +242,8 @@ class GraphDefinition(domainresource.DomainResource):
             "available. There is also no expectation that versions can be placed in"
             " a lexicographical sequence."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -238,20 +268,32 @@ class GraphDefinitionLink(backboneelement.BackboneElement):
             "Information about why this link is of interest in this graph "
             "definition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
     )
 
     max: fhirtypes.String = Field(
-        None, alias="max", title="Maximum occurrences for this link", description=None,
+        None,
+        alias="max",
+        title="Maximum occurrences for this link",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     max__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_max", title="Extension field for ``max``."
     )
 
     min: fhirtypes.Integer = Field(
-        None, alias="min", title="Minimum occurrences for this link", description=None,
+        None,
+        alias="min",
+        title="Minimum occurrences for this link",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     min__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_min", title="Extension field for ``min``."
@@ -262,20 +304,32 @@ class GraphDefinitionLink(backboneelement.BackboneElement):
         alias="path",
         title="Path in the resource that contains the link",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_path", title="Extension field for ``path``."
     )
 
     sliceName: fhirtypes.String = Field(
-        None, alias="sliceName", title="Which slice (if profiled)", description=None,
+        None,
+        alias="sliceName",
+        title="Which slice (if profiled)",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     sliceName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sliceName", title="Extension field for ``sliceName``."
     )
 
     target: ListType[fhirtypes.GraphDefinitionLinkTargetType] = Field(
-        ..., alias="target", title="Potential target for the link", description=None,
+        ...,
+        alias="target",
+        title="Potential target for the link",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -294,6 +348,8 @@ class GraphDefinitionLinkTarget(backboneelement.BackboneElement):
         alias="compartment",
         title="Compartment Consistency Rules",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     link: ListType[fhirtypes.GraphDefinitionLinkType] = Field(
@@ -301,6 +357,8 @@ class GraphDefinitionLinkTarget(backboneelement.BackboneElement):
         alias="link",
         title="Additional links from target resource",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     profile: fhirtypes.Uri = Field(
@@ -308,6 +366,8 @@ class GraphDefinitionLinkTarget(backboneelement.BackboneElement):
         alias="profile",
         title="Profile for the target resource",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_profile", title="Extension field for ``profile``."
@@ -318,6 +378,8 @@ class GraphDefinitionLinkTarget(backboneelement.BackboneElement):
         alias="type",
         title="Type of resource this link refers to",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -335,7 +397,12 @@ class GraphDefinitionLinkTargetCompartment(backboneelement.BackboneElement):
     resource_type = Field("GraphDefinitionLinkTargetCompartment", const=True)
 
     code: fhirtypes.Code = Field(
-        ..., alias="code", title="Identifies the compartment", description=None,
+        ...,
+        alias="code",
+        title="Identifies the compartment",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -346,6 +413,8 @@ class GraphDefinitionLinkTargetCompartment(backboneelement.BackboneElement):
         alias="description",
         title="Documentation for FHIRPath expression",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -356,6 +425,8 @@ class GraphDefinitionLinkTargetCompartment(backboneelement.BackboneElement):
         alias="expression",
         title="Custom rule, as a FHIRPath expression",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_expression", title="Extension field for ``expression``."
@@ -366,6 +437,8 @@ class GraphDefinitionLinkTargetCompartment(backboneelement.BackboneElement):
         alias="rule",
         title="identical | matching | different | custom",
         description="identical | matching | different | no-rule | custom.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["identical", "matching", "different", "custom"],

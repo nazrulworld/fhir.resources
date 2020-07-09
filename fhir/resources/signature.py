@@ -36,6 +36,8 @@ class Signature(element.Element):
             "The base64 encoding of the Signature content. When signature is not "
             "recorded electronically this element would be empty."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     data__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_data", title="Extension field for ``data``."
@@ -49,6 +51,8 @@ class Signature(element.Element):
             "A reference to an application-usable description of the identity that "
             "is represented by the signature."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Practitioner",
@@ -70,6 +74,8 @@ class Signature(element.Element):
             "application/jose for JWS, and image/* for a graphical image of a "
             "signature, etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     sigFormat__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sigFormat", title="Extension field for ``sigFormat``."
@@ -83,6 +89,8 @@ class Signature(element.Element):
             "A mime type that indicates the technical format of the target "
             "resources signed by the signature."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     targetFormat__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_targetFormat", title="Extension field for ``targetFormat``."
@@ -98,6 +106,8 @@ class Signature(element.Element):
             "can be used when determining accountability for various actions "
             "concerning the document."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     when: fhirtypes.Instant = Field(
@@ -105,6 +115,8 @@ class Signature(element.Element):
         alias="when",
         title="When the signature was created",
         description="When the digital signature was signed.",
+        # if property is element of this resource.
+        element_property=True,
     )
     when__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_when", title="Extension field for ``when``."
@@ -118,6 +130,8 @@ class Signature(element.Element):
             "A reference to an application-usable description of the identity that "
             "signed  (e.g. the signature used their private key)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Practitioner",

@@ -29,6 +29,8 @@ class ProductShelfLife(backboneelement.BackboneElement):
         alias="identifier",
         title="Unique identifier for the packaged Medicinal Product",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     period: fhirtypes.QuantityType = Field(
@@ -42,6 +44,8 @@ class ProductShelfLife(backboneelement.BackboneElement):
             "used"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     specialPrecautionsForStorage: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -53,6 +57,8 @@ class ProductShelfLife(backboneelement.BackboneElement):
             "controlled term identifier shall be specified"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -67,4 +73,6 @@ class ProductShelfLife(backboneelement.BackboneElement):
             "the controlled term identifier shall be specified"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )

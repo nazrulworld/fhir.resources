@@ -36,6 +36,8 @@ class Contract(domainresource.DomainResource):
             "derivative, or instance in any legal state., e.g., a domain specific "
             "contract number related to legislation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     alias__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_alias", title="Extension field for ``alias``."
@@ -46,6 +48,8 @@ class Contract(domainresource.DomainResource):
         alias="applies",
         title="Effective time",
         description="Relevant time or time-period when this Contract is applicable.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     author: fhirtypes.ReferenceType = Field(
@@ -56,6 +60,8 @@ class Contract(domainresource.DomainResource):
             "The individual or organization that authored the Contract definition, "
             "derivative, or instance in any legal state."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Patient",
@@ -75,6 +81,8 @@ class Contract(domainresource.DomainResource):
             "some form of collective action such as the promulgation, "
             "administration and enforcement of contracts and policies."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -88,6 +96,8 @@ class Contract(domainresource.DomainResource):
             "formation a Contract instance, which may be associated with and "
             "transformable into a Contract."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     contentDerivative: fhirtypes.CodeableConceptType = Field(
@@ -98,6 +108,8 @@ class Contract(domainresource.DomainResource):
             "The minimal content derived from the basal information source at a "
             "specific stage in its lifecycle."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     domain: ListType[fhirtypes.ReferenceType] = Field(
@@ -113,6 +125,8 @@ class Contract(domainresource.DomainResource):
             " processes or procedures for managing rights, actions, or behaviors of"
             " parties or principals relative to resources."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
     )
@@ -125,6 +139,8 @@ class Contract(domainresource.DomainResource):
             "Event resulting in discontinuation or termination of this Contract "
             "instance by one or more parties to the contract."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     friendly: ListType[fhirtypes.ContractFriendlyType] = Field(
@@ -140,6 +156,8 @@ class Contract(domainresource.DomainResource):
             "or signing the Contract understand the roles, actions, obligations, "
             "responsibilities, and implication of the agreement."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -150,6 +168,8 @@ class Contract(domainresource.DomainResource):
             "Unique identifier for this Contract or a derivative that references a "
             "Source Contract."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     instantiatesCanonical: fhirtypes.ReferenceType = Field(
@@ -160,6 +180,8 @@ class Contract(domainresource.DomainResource):
             "The URL pointing to a FHIR-defined Contract Definition that is adhered"
             " to in whole or part by this Contract."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Contract"],
     )
@@ -172,6 +194,8 @@ class Contract(domainresource.DomainResource):
             "The URL pointing to an externally maintained definition that is "
             "adhered to in whole or in part by this Contract."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     instantiatesUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_instantiatesUri", title="Extension field for ``instantiatesUri``."
@@ -182,6 +206,8 @@ class Contract(domainresource.DomainResource):
         alias="issued",
         title="When this Contract was issued",
         description="When this  Contract was issued.",
+        # if property is element of this resource.
+        element_property=True,
     )
     issued__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_issued", title="Extension field for ``issued``."
@@ -192,6 +218,8 @@ class Contract(domainresource.DomainResource):
         alias="legal",
         title="Contract Legal Language",
         description="List of Legal expressions or representations of this Contract.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     legalState: fhirtypes.CodeableConceptType = Field(
@@ -205,6 +233,8 @@ class Contract(domainresource.DomainResource):
             "process, or contractual duty, obligation, or right, and therefore "
             "evidences that act, process, or agreement."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     legallyBindingAttachment: fhirtypes.AttachmentType = Field(
@@ -217,6 +247,8 @@ class Contract(domainresource.DomainResource):
             'truth" and which would be the basis for legal action related to '
             "enforcement of this Contract."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e legallyBinding[x]
         one_of_many="legallyBinding",
         one_of_many_required=False,
@@ -232,6 +264,8 @@ class Contract(domainresource.DomainResource):
             'truth" and which would be the basis for legal action related to '
             "enforcement of this Contract."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e legallyBinding[x]
         one_of_many="legallyBinding",
         one_of_many_required=False,
@@ -255,6 +289,8 @@ class Contract(domainresource.DomainResource):
             "identifier for the module by machine processing applications such as "
             "code generation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -272,6 +308,8 @@ class Contract(domainresource.DomainResource):
             "indicates the target that was changed in the update. "
             "http://build.fhir.org/provenance-definitions.html#Provenance.entity."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Provenance"],
     )
@@ -284,6 +322,8 @@ class Contract(domainresource.DomainResource):
             "List of Computable Policy Rule Language Representations of this "
             "Contract."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     scope: fhirtypes.CodeableConceptType = Field(
@@ -294,6 +334,8 @@ class Contract(domainresource.DomainResource):
             "A selector of legal concerns for this Contract definition, derivative,"
             " or instance in any legal state."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     signer: ListType[fhirtypes.ContractSignerType] = Field(
@@ -306,6 +348,8 @@ class Contract(domainresource.DomainResource):
             "organization bound by the contract, and any ancillary parties, which "
             "facilitate the execution of the contract such as a notary or witness."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     site: ListType[fhirtypes.ReferenceType] = Field(
@@ -313,6 +357,8 @@ class Contract(domainresource.DomainResource):
         alias="site",
         title="Specific Location",
         description="Sites in which the contract is complied with,  exercised, or in force.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
     )
@@ -326,6 +372,8 @@ class Contract(domainresource.DomainResource):
             "renewed | revoked | resolved | terminated"
         ),
         description="The status of the resource instance.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -359,6 +407,8 @@ class Contract(domainresource.DomainResource):
             "that would be interested in the Contract within the context of the "
             "Contract's scope."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     subject: ListType[fhirtypes.ReferenceType] = Field(
@@ -369,6 +419,8 @@ class Contract(domainresource.DomainResource):
             "The target entity impacted by or of interest to parties to the "
             "agreement."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -382,6 +434,8 @@ class Contract(domainresource.DomainResource):
             "definition, derivative, or instance in any legal state.t giving "
             "additional information about its content."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     subtitle__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_subtitle", title="Extension field for ``subtitle``."
@@ -395,6 +449,8 @@ class Contract(domainresource.DomainResource):
             "Information that may be needed by/relevant to the performer in their "
             "execution of this term action."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -407,6 +463,8 @@ class Contract(domainresource.DomainResource):
             "One or more Contract Provisions, which may be related and conveyed as "
             "a group, and may contain nested groups."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     title: fhirtypes.String = Field(
@@ -418,6 +476,8 @@ class Contract(domainresource.DomainResource):
             "definition, derivative, or instance in any legal state.t giving "
             "additional information about its content."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -431,6 +491,8 @@ class Contract(domainresource.DomainResource):
             "Narrows the range of legal concerns to focus on the achievement of "
             "specific contractual objectives."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e topic[x]
         one_of_many="topic",
         one_of_many_required=False,
@@ -444,6 +506,8 @@ class Contract(domainresource.DomainResource):
             "Narrows the range of legal concerns to focus on the achievement of "
             "specific contractual objectives."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e topic[x]
         one_of_many="topic",
         one_of_many_required=False,
@@ -462,6 +526,8 @@ class Contract(domainresource.DomainResource):
             "of the Contract's scope to distinguish the kinds of systems that would"
             " be interested in the contract."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     url: fhirtypes.Uri = Field(
@@ -472,6 +538,8 @@ class Contract(domainresource.DomainResource):
             "Canonical identifier for this contract, represented as a URI (globally"
             " unique)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -485,6 +553,8 @@ class Contract(domainresource.DomainResource):
             "An edition identifier used for business purposes to label business "
             "significant variants."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -552,6 +622,8 @@ class ContractContentDefinition(backboneelement.BackboneElement):
             "Copyright statements are generally legal restrictions on the use and "
             "publishing of the Contract precursor content."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
@@ -567,6 +639,8 @@ class ContractContentDefinition(backboneelement.BackboneElement):
             "if the status code changes. In addition, it should change when the "
             "substantive content of the contract changes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     publicationDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publicationDate", title="Extension field for ``publicationDate``."
@@ -581,6 +655,8 @@ class ContractContentDefinition(backboneelement.BackboneElement):
             "renewed | revoked | resolved | terminated"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -615,6 +691,8 @@ class ContractContentDefinition(backboneelement.BackboneElement):
             "The  individual or organization that published the Contract precursor "
             "content."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
     )
@@ -624,6 +702,8 @@ class ContractContentDefinition(backboneelement.BackboneElement):
         alias="subType",
         title="Detailed Content Type Definition",
         description="Detailed Precusory content type.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -635,6 +715,8 @@ class ContractContentDefinition(backboneelement.BackboneElement):
             "application for a contract such as an insurance policy or benefits "
             "under a program, e.g., workers compensation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -664,6 +746,8 @@ class ContractFriendly(backboneelement.BackboneElement):
             "representation intended to enhance comprehension and ensure "
             "understandability."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e content[x]
         one_of_many="content",
         one_of_many_required=True,
@@ -678,6 +762,8 @@ class ContractFriendly(backboneelement.BackboneElement):
             "representation intended to enhance comprehension and ensure "
             "understandability."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e content[x]
         one_of_many="content",
         one_of_many_required=True,
@@ -742,6 +828,8 @@ class ContractLegal(backboneelement.BackboneElement):
         alias="contentAttachment",
         title="Contract Legal Text",
         description="Contract legal text in human renderable form.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e content[x]
         one_of_many="content",
         one_of_many_required=True,
@@ -752,6 +840,8 @@ class ContractLegal(backboneelement.BackboneElement):
         alias="contentReference",
         title="Contract Legal Text",
         description="Contract legal text in human renderable form.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e content[x]
         one_of_many="content",
         one_of_many_required=True,
@@ -819,6 +909,8 @@ class ContractRule(backboneelement.BackboneElement):
             "Computable Contract conveyed using a policy rule language (e.g. XACML,"
             " DKAL, SecPal)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e content[x]
         one_of_many="content",
         one_of_many_required=True,
@@ -832,6 +924,8 @@ class ContractRule(backboneelement.BackboneElement):
             "Computable Contract conveyed using a policy rule language (e.g. XACML,"
             " DKAL, SecPal)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e content[x]
         one_of_many="content",
         one_of_many_required=True,
@@ -895,6 +989,8 @@ class ContractSigner(backboneelement.BackboneElement):
         alias="party",
         title="Contract Signatory Party",
         description="Party which is a signator to this Contract.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Organization",
@@ -910,6 +1006,8 @@ class ContractSigner(backboneelement.BackboneElement):
         alias="signature",
         title="Contract Documentation Signature",
         description="Legally binding Contract DSIG signature contents in Base64.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodingType = Field(
@@ -917,6 +1015,8 @@ class ContractSigner(backboneelement.BackboneElement):
         alias="type",
         title="Contract Signatory Role",
         description="Role of this Contract signer, e.g. notary, grantee.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -940,6 +1040,8 @@ class ContractTerm(backboneelement.BackboneElement):
             "An actor taking a role in an activity for which it can be assigned "
             "some degree of responsibility for the activity taking place."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     applies: fhirtypes.PeriodType = Field(
@@ -950,10 +1052,17 @@ class ContractTerm(backboneelement.BackboneElement):
             "Relevant time or time-period when this Contract Provision is "
             "applicable."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     asset: ListType[fhirtypes.ContractTermAssetType] = Field(
-        None, alias="asset", title="Contract Term Asset List", description=None,
+        None,
+        alias="asset",
+        title="Contract Term Asset List",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     group: ListType[fhirtypes.ContractTermType] = Field(
@@ -961,6 +1070,8 @@ class ContractTerm(backboneelement.BackboneElement):
         alias="group",
         title="Nested Contract Term Group",
         description="Nested group of Contract Provisions.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: fhirtypes.IdentifierType = Field(
@@ -968,6 +1079,8 @@ class ContractTerm(backboneelement.BackboneElement):
         alias="identifier",
         title="Contract Term Number",
         description="Unique identifier for this particular Contract Provision.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     issued: fhirtypes.DateTime = Field(
@@ -975,6 +1088,8 @@ class ContractTerm(backboneelement.BackboneElement):
         alias="issued",
         title="Contract Term Issue Date Time",
         description="When this Contract Provision was issued.",
+        # if property is element of this resource.
+        element_property=True,
     )
     issued__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_issued", title="Extension field for ``issued``."
@@ -987,6 +1102,8 @@ class ContractTerm(backboneelement.BackboneElement):
         description=(
             "The matter of concern in the context of this provision of the " "agrement."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     securityLabel: ListType[fhirtypes.ContractTermSecurityLabelType] = Field(
@@ -997,6 +1114,8 @@ class ContractTerm(backboneelement.BackboneElement):
             "Security labels that protect the handling of information about the "
             "term and its elements, which may be specifically identified.."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     subType: fhirtypes.CodeableConceptType = Field(
@@ -1007,6 +1126,8 @@ class ContractTerm(backboneelement.BackboneElement):
             "A specialized legal clause or condition based on overarching contract "
             "type."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     text: fhirtypes.String = Field(
@@ -1014,6 +1135,8 @@ class ContractTerm(backboneelement.BackboneElement):
         alias="text",
         title="Term Statement",
         description="Statement of a provision in a policy or a contract.",
+        # if property is element of this resource.
+        element_property=True,
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_text", title="Extension field for ``text``."
@@ -1024,6 +1147,8 @@ class ContractTerm(backboneelement.BackboneElement):
         alias="topicCodeableConcept",
         title="Term Concern",
         description="The entity that the term applies to.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e topic[x]
         one_of_many="topic",
         one_of_many_required=False,
@@ -1034,6 +1159,8 @@ class ContractTerm(backboneelement.BackboneElement):
         alias="topicReference",
         title="Term Concern",
         description="The entity that the term applies to.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e topic[x]
         one_of_many="topic",
         one_of_many_required=False,
@@ -1051,6 +1178,8 @@ class ContractTerm(backboneelement.BackboneElement):
             "specified time or prevents one or both parties from performing a "
             "particular requirement by some specified time."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)
@@ -1110,6 +1239,8 @@ class ContractTermAction(backboneelement.BackboneElement):
             "Encounter or Episode with primary association to specified term "
             "activity."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter", "EpisodeOfCare"],
     )
@@ -1123,6 +1254,8 @@ class ContractTermAction(backboneelement.BackboneElement):
             "requester of this action in the referenced form or "
             "QuestionnaireResponse."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     contextLinkId__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -1135,6 +1268,8 @@ class ContractTermAction(backboneelement.BackboneElement):
         alias="doNotPerform",
         title="True if the term prohibits the  action",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     doNotPerform__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_doNotPerform", title="Extension field for ``doNotPerform``."
@@ -1147,6 +1282,8 @@ class ContractTermAction(backboneelement.BackboneElement):
         description=(
             "Reason or purpose for the action stipulated by this Contract " "Provision."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     linkId: ListType[fhirtypes.String] = Field(
@@ -1157,6 +1294,8 @@ class ContractTermAction(backboneelement.BackboneElement):
             "Id [identifier??] of the clause or question text related to this "
             "action in the referenced form or QuestionnaireResponse."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     linkId__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_linkId", title="Extension field for ``linkId``."
@@ -1170,6 +1309,8 @@ class ContractTermAction(backboneelement.BackboneElement):
             "Comments made about the term action made by the requester, performer, "
             "subject or other participants."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     occurrenceDateTime: fhirtypes.DateTime = Field(
@@ -1177,6 +1318,8 @@ class ContractTermAction(backboneelement.BackboneElement):
         alias="occurrenceDateTime",
         title="When action happens",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e occurrence[x]
         one_of_many="occurrence",
         one_of_many_required=False,
@@ -1192,6 +1335,8 @@ class ContractTermAction(backboneelement.BackboneElement):
         alias="occurrencePeriod",
         title="When action happens",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e occurrence[x]
         one_of_many="occurrence",
         one_of_many_required=False,
@@ -1202,6 +1347,8 @@ class ContractTermAction(backboneelement.BackboneElement):
         alias="occurrenceTiming",
         title="When action happens",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e occurrence[x]
         one_of_many="occurrence",
         one_of_many_required=False,
@@ -1215,6 +1362,8 @@ class ContractTermAction(backboneelement.BackboneElement):
             "Indicates who or what is being asked to perform (or not perform) the "
             "ction."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "RelatedPerson",
@@ -1238,6 +1387,8 @@ class ContractTermAction(backboneelement.BackboneElement):
             " type or reference of this  action in the referenced form or "
             "QuestionnaireResponse."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     performerLinkId__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -1253,6 +1404,8 @@ class ContractTermAction(backboneelement.BackboneElement):
             "The type of role or competency of an individual desired or required to"
             " perform or not perform the action."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     performerType: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -1263,6 +1416,8 @@ class ContractTermAction(backboneelement.BackboneElement):
             "The type of individual that is desired or required to perform or not "
             "perform the action."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reason: ListType[fhirtypes.String] = Field(
@@ -1273,6 +1428,8 @@ class ContractTermAction(backboneelement.BackboneElement):
             "Describes why the action is to be performed or not performed in "
             "textual form."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     reason__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_reason", title="Extension field for ``reason``."
@@ -1286,6 +1443,8 @@ class ContractTermAction(backboneelement.BackboneElement):
             "Rationale for the action to be performed or not performed. Describes "
             "why the action is permitted or prohibited."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reasonLinkId: ListType[fhirtypes.String] = Field(
@@ -1297,6 +1456,8 @@ class ContractTermAction(backboneelement.BackboneElement):
             " type or reference of this  action in the referenced form or "
             "QuestionnaireResponse."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     reasonLinkId__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -1312,6 +1473,8 @@ class ContractTermAction(backboneelement.BackboneElement):
             "Indicates another resource whose existence justifies permitting or not"
             " permitting this action."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Condition",
@@ -1331,6 +1494,8 @@ class ContractTermAction(backboneelement.BackboneElement):
             "Who or what initiated the action and has responsibility for its "
             "activation."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Patient",
@@ -1352,6 +1517,8 @@ class ContractTermAction(backboneelement.BackboneElement):
             "requester of this action in the referenced form or "
             "QuestionnaireResponse."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     requesterLinkId__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -1364,6 +1531,8 @@ class ContractTermAction(backboneelement.BackboneElement):
         alias="securityLabelNumber",
         title="Action restriction numbers",
         description="Security labels that protects the action.",
+        # if property is element of this resource.
+        element_property=True,
     )
     securityLabelNumber__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -1378,10 +1547,17 @@ class ContractTermAction(backboneelement.BackboneElement):
         alias="status",
         title="State of the action",
         description="Current state of the term action.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     subject: ListType[fhirtypes.ContractTermActionSubjectType] = Field(
-        None, alias="subject", title="Entity of the action", description=None,
+        None,
+        alias="subject",
+        title="Entity of the action",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -1392,6 +1568,8 @@ class ContractTermAction(backboneelement.BackboneElement):
             "Activity or service obligation to be done or not done, performed or "
             "not performed, effectuated or not by this Contract term."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)
@@ -1448,6 +1626,8 @@ class ContractTermActionSubject(backboneelement.BackboneElement):
         alias="reference",
         title="Entity of the action",
         description="The entity the action is performed or not performed on or for.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Patient",
@@ -1465,6 +1645,8 @@ class ContractTermActionSubject(backboneelement.BackboneElement):
         alias="role",
         title="Role type of the agent",
         description="Role type of agent assigned roles in this Contract.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -1479,7 +1661,12 @@ class ContractTermAsset(backboneelement.BackboneElement):
     resource_type = Field("ContractTermAsset", const=True)
 
     answer: ListType[fhirtypes.ContractTermOfferAnswerType] = Field(
-        None, alias="answer", title="Response to assets", description=None,
+        None,
+        alias="answer",
+        title="Response to assets",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     condition: fhirtypes.String = Field(
@@ -1490,13 +1677,20 @@ class ContractTermAsset(backboneelement.BackboneElement):
             "Description of the quality and completeness of the asset that imay be "
             "a factor in its valuation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     condition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_condition", title="Extension field for ``condition``."
     )
 
     context: ListType[fhirtypes.ContractTermAssetContextType] = Field(
-        None, alias="context", title="Circumstance of the asset", description=None,
+        None,
+        alias="context",
+        title="Circumstance of the asset",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     linkId: ListType[fhirtypes.String] = Field(
@@ -1507,6 +1701,8 @@ class ContractTermAsset(backboneelement.BackboneElement):
             "Id [identifier??] of the clause or question text about the asset in "
             "the referenced form or QuestionnaireResponse."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     linkId__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_linkId", title="Extension field for ``linkId``."
@@ -1517,6 +1713,8 @@ class ContractTermAsset(backboneelement.BackboneElement):
         alias="period",
         title="Time period of the asset",
         description="Asset relevant contractual time period.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     periodType: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -1524,6 +1722,8 @@ class ContractTermAsset(backboneelement.BackboneElement):
         alias="periodType",
         title="Asset availability types",
         description="Type of Asset availability for use or ownership.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     relationship: fhirtypes.CodingType = Field(
@@ -1535,6 +1735,8 @@ class ContractTermAsset(backboneelement.BackboneElement):
             " and instances it refers to orinstances that refer to it, and/or are "
             "owned by the offeree."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     scope: fhirtypes.CodeableConceptType = Field(
@@ -1542,6 +1744,8 @@ class ContractTermAsset(backboneelement.BackboneElement):
         alias="scope",
         title="Range of asset",
         description="Differentiates the kind of the asset .",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     securityLabelNumber: ListType[fhirtypes.UnsignedInt] = Field(
@@ -1549,6 +1753,8 @@ class ContractTermAsset(backboneelement.BackboneElement):
         alias="securityLabelNumber",
         title="Asset restriction numbers",
         description="Security labels that protects the asset.",
+        # if property is element of this resource.
+        element_property=True,
     )
     securityLabelNumber__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -1563,6 +1769,8 @@ class ContractTermAsset(backboneelement.BackboneElement):
         alias="subtype",
         title="Asset sub-category",
         description="May be a subtype or part of an offered asset.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     text: fhirtypes.String = Field(
@@ -1574,6 +1782,8 @@ class ContractTermAsset(backboneelement.BackboneElement):
             "linked form, such as a QuestionnaireResponse used in the formation of "
             "the contract."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_text", title="Extension field for ``text``."
@@ -1584,6 +1794,8 @@ class ContractTermAsset(backboneelement.BackboneElement):
         alias="type",
         title="Asset category",
         description="Target entity type about which the term may be concerned.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     typeReference: ListType[fhirtypes.ReferenceType] = Field(
@@ -1591,6 +1803,8 @@ class ContractTermAsset(backboneelement.BackboneElement):
         alias="typeReference",
         title="Associated entities",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -1600,10 +1814,17 @@ class ContractTermAsset(backboneelement.BackboneElement):
         alias="usePeriod",
         title="Time period",
         description="Time period of asset use.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     valuedItem: ListType[fhirtypes.ContractTermAssetValuedItemType] = Field(
-        None, alias="valuedItem", title="Contract Valued Item List", description=None,
+        None,
+        alias="valuedItem",
+        title="Contract Valued Item List",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -1625,6 +1846,8 @@ class ContractTermAssetContext(backboneelement.BackboneElement):
             "Coded representation of the context generally or of the Referenced "
             "entity, such as the asset holder type or location."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reference: fhirtypes.ReferenceType = Field(
@@ -1636,12 +1859,19 @@ class ContractTermAssetContext(backboneelement.BackboneElement):
             "Person or Organization (e.g., bank, repository),  location held, e.g.,"
             " building,  jurisdiction."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
 
     text: fhirtypes.String = Field(
-        None, alias="text", title="Context description", description=None,
+        None,
+        alias="text",
+        title="Context description",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_text", title="Extension field for ``text``."
@@ -1666,6 +1896,8 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
             "Indicates the time during which this Contract ValuedItem information "
             "is effective."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     effectiveTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_effectiveTime", title="Extension field for ``effectiveTime``."
@@ -1676,6 +1908,8 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
         alias="entityCodeableConcept",
         title="Contract Valued Item Type",
         description="Specific type of Contract Valued Item that may be priced.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e entity[x]
         one_of_many="entity",
         one_of_many_required=False,
@@ -1686,6 +1920,8 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
         alias="entityReference",
         title="Contract Valued Item Type",
         description="Specific type of Contract Valued Item that may be priced.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e entity[x]
         one_of_many="entity",
         one_of_many_required=False,
@@ -1703,6 +1939,8 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
             "Factor allows for a discount or surcharge multiplier to be applied to "
             "a monetary amount."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_factor", title="Extension field for ``factor``."
@@ -1713,6 +1951,8 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
         alias="identifier",
         title="Contract Valued Item Number",
         description="Identifies a Contract Valued Item instance.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     linkId: ListType[fhirtypes.String] = Field(
@@ -1723,6 +1963,8 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
             "Id  of the clause or question text related to the context of this "
             "valuedItem in the referenced form or QuestionnaireResponse."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     linkId__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_linkId", title="Extension field for ``linkId``."
@@ -1738,17 +1980,29 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
             "(Cost per Point) * factor Number  * points = net Amount. Quantity, "
             "factor and points are assumed to be 1 if not supplied."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     payment: fhirtypes.String = Field(
-        None, alias="payment", title="Terms of valuation", description=None,
+        None,
+        alias="payment",
+        title="Terms of valuation",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     payment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_payment", title="Extension field for ``payment``."
     )
 
     paymentDate: fhirtypes.DateTime = Field(
-        None, alias="paymentDate", title="When payment is due", description=None,
+        None,
+        alias="paymentDate",
+        title="When payment is due",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     paymentDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_paymentDate", title="Extension field for ``paymentDate``."
@@ -1765,6 +2019,8 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
             "values for a Contract Valued Item, such that a monetary amount can be "
             "assigned to each point."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     points__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_points", title="Extension field for ``points``."
@@ -1779,6 +2035,8 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
             "counted, and quantifies the countable or measurable Contract Valued "
             "Item instances."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     recipient: fhirtypes.ReferenceType = Field(
@@ -1786,6 +2044,8 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
         alias="recipient",
         title="Who will receive payment",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Organization",
@@ -1801,6 +2061,8 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
         alias="responsible",
         title="Who will make payment",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Organization",
@@ -1819,6 +2081,8 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
             "A set of security labels that define which terms are controlled by "
             "this condition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     securityLabelNumber__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -1833,6 +2097,8 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
         alias="unitPrice",
         title="Contract Valued Item fee, charge, or cost",
         description="A Contract Valued Item unit valuation measure.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)
@@ -1884,7 +2150,12 @@ class ContractTermOffer(backboneelement.BackboneElement):
     resource_type = Field("ContractTermOffer", const=True)
 
     answer: ListType[fhirtypes.ContractTermOfferAnswerType] = Field(
-        None, alias="answer", title="Response to offer text", description=None,
+        None,
+        alias="answer",
+        title="Response to offer text",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     decision: fhirtypes.CodeableConceptType = Field(
@@ -1895,6 +2166,8 @@ class ContractTermOffer(backboneelement.BackboneElement):
             "Type of choice made by accepting party with respect to an offer made "
             "by an offeror/ grantee."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     decisionMode: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -1902,6 +2175,8 @@ class ContractTermOffer(backboneelement.BackboneElement):
         alias="decisionMode",
         title="How decision is conveyed",
         description="How the decision about a Contract was conveyed.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -1909,6 +2184,8 @@ class ContractTermOffer(backboneelement.BackboneElement):
         alias="identifier",
         title="Offer business ID",
         description="Unique identifier for this particular Contract Provision.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     linkId: ListType[fhirtypes.String] = Field(
@@ -1919,13 +2196,20 @@ class ContractTermOffer(backboneelement.BackboneElement):
             "The id of the clause or question text of the offer in the referenced "
             "questionnaire/response."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     linkId__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_linkId", title="Extension field for ``linkId``."
     )
 
     party: ListType[fhirtypes.ContractTermOfferPartyType] = Field(
-        None, alias="party", title="Offer Recipient", description=None,
+        None,
+        alias="party",
+        title="Offer Recipient",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     securityLabelNumber: ListType[fhirtypes.UnsignedInt] = Field(
@@ -1933,6 +2217,8 @@ class ContractTermOffer(backboneelement.BackboneElement):
         alias="securityLabelNumber",
         title="Offer restriction numbers",
         description="Security labels that protects the offer.",
+        # if property is element of this resource.
+        element_property=True,
     )
     securityLabelNumber__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -1947,6 +2233,8 @@ class ContractTermOffer(backboneelement.BackboneElement):
         alias="text",
         title="Human readable offer text",
         description="Human readable form of this Contract Offer.",
+        # if property is element of this resource.
+        element_property=True,
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_text", title="Extension field for ``text``."
@@ -1962,6 +2250,8 @@ class ContractTermOffer(backboneelement.BackboneElement):
             "inconsistent with a prior contract, custom, or law (Hart, 1995, p. "
             "30)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -1974,6 +2264,8 @@ class ContractTermOffer(backboneelement.BackboneElement):
             "Type of Contract Provision such as specific requirements, purposes for"
             " actions, obligations, prohibitions, e.g. life time maximum benefit."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -1997,6 +2289,8 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
             "date of occupancy of a rental, warrently duration, or whether "
             "biospecimen may be used for further research."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -2012,6 +2306,8 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
             "date of occupancy of a rental, warrently duration, or whether "
             "biospecimen may be used for further research."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -2030,6 +2326,8 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
             "date of occupancy of a rental, warrently duration, or whether "
             "biospecimen may be used for further research."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -2045,6 +2343,8 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
             "date of occupancy of a rental, warrently duration, or whether "
             "biospecimen may be used for further research."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -2063,6 +2363,8 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
             "date of occupancy of a rental, warrently duration, or whether "
             "biospecimen may be used for further research."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -2081,6 +2383,8 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
             "date of occupancy of a rental, warrently duration, or whether "
             "biospecimen may be used for further research."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -2099,6 +2403,8 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
             "date of occupancy of a rental, warrently duration, or whether "
             "biospecimen may be used for further research."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -2117,6 +2423,8 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
             "date of occupancy of a rental, warrently duration, or whether "
             "biospecimen may be used for further research."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -2132,6 +2440,8 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
             "date of occupancy of a rental, warrently duration, or whether "
             "biospecimen may be used for further research."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -2149,6 +2459,8 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
             "date of occupancy of a rental, warrently duration, or whether "
             "biospecimen may be used for further research."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -2167,6 +2479,8 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
             "date of occupancy of a rental, warrently duration, or whether "
             "biospecimen may be used for further research."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -2185,6 +2499,8 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
             "date of occupancy of a rental, warrently duration, or whether "
             "biospecimen may be used for further research."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -2260,6 +2576,8 @@ class ContractTermOfferParty(backboneelement.BackboneElement):
         alias="reference",
         title="Referenced entity",
         description="Participant in the offer.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Patient",
@@ -2277,6 +2595,8 @@ class ContractTermOfferParty(backboneelement.BackboneElement):
         alias="role",
         title="Participant engagement type",
         description="How the party participates in the offer.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -2300,6 +2620,8 @@ class ContractTermSecurityLabel(backboneelement.BackboneElement):
             "Security label privacy tag that species the applicable privacy and "
             "security policies governing this term and/or term elements."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     classification: fhirtypes.CodingType = Field(
@@ -2310,6 +2632,8 @@ class ContractTermSecurityLabel(backboneelement.BackboneElement):
             "Security label privacy tag that species the level of confidentiality "
             "protection required for this term and/or term elements."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     control: ListType[fhirtypes.CodingType] = Field(
@@ -2320,6 +2644,8 @@ class ContractTermSecurityLabel(backboneelement.BackboneElement):
             "Security label privacy tag that species the manner in which term "
             "and/or term elements are to be protected."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     number: ListType[fhirtypes.UnsignedInt] = Field(
@@ -2330,6 +2656,8 @@ class ContractTermSecurityLabel(backboneelement.BackboneElement):
             "Number used to link this term or term element to the applicable "
             "Security Label."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     number__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_number", title="Extension field for ``number``."

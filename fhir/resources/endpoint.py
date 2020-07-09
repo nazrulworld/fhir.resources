@@ -33,6 +33,8 @@ class Endpoint(domainresource.DomainResource):
         alias="address",
         title="The technical base address for connecting to this endpoint",
         description="The uri that describes the actual end-point to connect to.",
+        # if property is element of this resource.
+        element_property=True,
     )
     address__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_address", title="Extension field for ``address``."
@@ -47,6 +49,8 @@ class Endpoint(domainresource.DomainResource):
             "this endpoint, such as what WSDLs should be used in what way. (e.g. "
             "XDS.b/DICOM/cds-hook)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     contact: ListType[fhirtypes.ContactPointType] = Field(
@@ -57,6 +61,8 @@ class Endpoint(domainresource.DomainResource):
             "Contact details for a human to contact about the subscription. The "
             "primary use of this for system administrator troubleshooting."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     header: ListType[fhirtypes.String] = Field(
@@ -64,6 +70,8 @@ class Endpoint(domainresource.DomainResource):
         alias="header",
         title="Usage depends on the channel type",
         description="Additional headers / information to send as part of the notification.",
+        # if property is element of this resource.
+        element_property=True,
     )
     header__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_header", title="Extension field for ``header``."
@@ -77,6 +85,8 @@ class Endpoint(domainresource.DomainResource):
             "Identifier for the organization that is used to identify the endpoint "
             "across multiple disparate systems."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     managingOrganization: fhirtypes.ReferenceType = Field(
@@ -91,6 +101,8 @@ class Endpoint(domainresource.DomainResource):
             "another organization is hosting this in the cloud, it is the "
             "organization associated with the data)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -100,6 +112,8 @@ class Endpoint(domainresource.DomainResource):
         alias="name",
         title="A name that this endpoint can be identified by",
         description="A friendly name that this endpoint can be referred to with.",
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -118,6 +132,8 @@ class Endpoint(domainresource.DomainResource):
             "sender could send any content (including no content depending on the "
             "connectionType)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     payloadMimeType__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -136,6 +152,8 @@ class Endpoint(domainresource.DomainResource):
             "The payload type describes the acceptable content that can be "
             "communicated on the endpoint."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -143,6 +161,8 @@ class Endpoint(domainresource.DomainResource):
         alias="period",
         title="Interval the endpoint is expected to be operational",
         description="The interval during which the endpoint is expected to be operational.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     status: fhirtypes.Code = Field(
@@ -150,6 +170,8 @@ class Endpoint(domainresource.DomainResource):
         alias="status",
         title="active | suspended | error | off | entered-in-error | test",
         description="active | suspended | error | off | test.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "suspended", "error", "off", "entered-in-error", "test"],

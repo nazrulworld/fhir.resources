@@ -33,6 +33,8 @@ class HumanName(element.Element):
             "The part of a name that links to the genealogy. In some cultures (e.g."
             " Eritrea) the family name of a son is the first name of his father."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     family__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_family", title="Extension field for ``family``."
@@ -43,6 +45,8 @@ class HumanName(element.Element):
         alias="given",
         title="Given names (not always 'first'). Includes middle names",
         description="Given name.",
+        # if property is element of this resource.
+        element_property=True,
     )
     given__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_given", title="Extension field for ``given``."
@@ -56,6 +60,8 @@ class HumanName(element.Element):
             "Indicates the period of time when this name was valid for the named "
             "person."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     prefix: ListType[fhirtypes.String] = Field(
@@ -67,6 +73,8 @@ class HumanName(element.Element):
             "employment or nobility status, etc. and that appears at the start of "
             "the name."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     prefix__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_prefix", title="Extension field for ``prefix``."
@@ -81,6 +89,8 @@ class HumanName(element.Element):
             "employment or nobility status, etc. and that appears at the end of the"
             " name."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     suffix__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_suffix", title="Extension field for ``suffix``."
@@ -95,6 +105,8 @@ class HumanName(element.Element):
             "application UI. This may be provided instead of or as well as the "
             "specific parts."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_text", title="Extension field for ``text``."
@@ -105,6 +117,8 @@ class HumanName(element.Element):
         alias="use",
         title="usual | official | temp | nickname | anonymous | old | maiden",
         description="Identifies the purpose for this name.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[

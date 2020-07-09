@@ -32,6 +32,8 @@ class Expression(element.Element):
             "A brief, natural language description of the condition that "
             "effectively communicates the intended semantics."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -42,6 +44,8 @@ class Expression(element.Element):
         alias="expression",
         title="Expression in specified language",
         description="An expression in the specified language that returns a value.",
+        # if property is element of this resource.
+        element_property=True,
     )
     expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_expression", title="Extension field for ``expression``."
@@ -52,6 +56,8 @@ class Expression(element.Element):
         alias="language",
         title="text/cql | text/fhirpath | application/x-fhir-query | etc.",
         description="The media type of the language for the expression.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["text/cql", "text/fhirpath", "application/x-fhir-query", "etc."],
@@ -68,6 +74,8 @@ class Expression(element.Element):
             "A short name assigned to the expression to allow for multiple reuse of"
             " the expression in the context where it is defined."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -78,6 +86,8 @@ class Expression(element.Element):
         alias="reference",
         title="Where the expression is found",
         description="A URI that defines where the expression is found.",
+        # if property is element of this resource.
+        element_property=True,
     )
     reference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_reference", title="Extension field for ``reference``."

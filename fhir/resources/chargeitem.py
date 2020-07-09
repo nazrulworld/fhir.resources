@@ -37,6 +37,8 @@ class ChargeItem(domainresource.DomainResource):
         alias="account",
         title="Account to place this charge",
         description="Account into which this ChargeItems belongs.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Account"],
     )
@@ -46,6 +48,8 @@ class ChargeItem(domainresource.DomainResource):
         alias="bodysite",
         title="Anatomical location, if relevant",
         description="The anatomical location where the related service has been applied.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -53,6 +57,8 @@ class ChargeItem(domainresource.DomainResource):
         alias="code",
         title="A code that identifies the charge, like a billing code",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     context: fhirtypes.ReferenceType = Field(
@@ -63,6 +69,8 @@ class ChargeItem(domainresource.DomainResource):
             "The encounter or episode of care that establishes the context for this"
             " event."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter", "EpisodeOfCare"],
     )
@@ -72,6 +80,8 @@ class ChargeItem(domainresource.DomainResource):
         alias="costCenter",
         title="Organization that has ownership of the (potential, future) revenue",
         description="The financial cost center permits the tracking of charge attribution.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -84,6 +94,8 @@ class ChargeItem(domainresource.DomainResource):
             "References the source of pricing information, rules of application for"
             " the code this ChargeItem uses."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ChargeItemDefinition"],
     )
@@ -103,6 +115,8 @@ class ChargeItem(domainresource.DomainResource):
             "References the (external) source of pricing information, rules of "
             "application for the code this ChargeItem uses."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     definitionUri__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -115,6 +129,8 @@ class ChargeItem(domainresource.DomainResource):
         alias="enteredDate",
         title="Date the charge item was entered",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     enteredDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_enteredDate", title="Extension field for ``enteredDate``."
@@ -125,6 +141,8 @@ class ChargeItem(domainresource.DomainResource):
         alias="enterer",
         title="Individual who was entering",
         description="The device, practitioner, etc. who entered the charge item.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Practitioner",
@@ -144,6 +162,8 @@ class ChargeItem(domainresource.DomainResource):
             "Factor overriding the factor determined by the rules associated with "
             "the code."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     factorOverride__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_factorOverride", title="Extension field for ``factorOverride``."
@@ -154,6 +174,8 @@ class ChargeItem(domainresource.DomainResource):
         alias="identifier",
         title="Business Identifier for item",
         description="Identifiers assigned to this event performer or other systems.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
@@ -164,6 +186,8 @@ class ChargeItem(domainresource.DomainResource):
             "Comments made about the event by the performer, subject or other "
             "participants."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     occurrenceDateTime: fhirtypes.DateTime = Field(
@@ -171,6 +195,8 @@ class ChargeItem(domainresource.DomainResource):
         alias="occurrenceDateTime",
         title="When the charged service was applied",
         description="Date/time(s) or duration when the charged service was applied.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e occurrence[x]
         one_of_many="occurrence",
         one_of_many_required=False,
@@ -186,6 +212,8 @@ class ChargeItem(domainresource.DomainResource):
         alias="occurrencePeriod",
         title="When the charged service was applied",
         description="Date/time(s) or duration when the charged service was applied.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e occurrence[x]
         one_of_many="occurrence",
         one_of_many_required=False,
@@ -196,6 +224,8 @@ class ChargeItem(domainresource.DomainResource):
         alias="occurrenceTiming",
         title="When the charged service was applied",
         description="Date/time(s) or duration when the charged service was applied.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e occurrence[x]
         one_of_many="occurrence",
         one_of_many_required=False,
@@ -210,6 +240,8 @@ class ChargeItem(domainresource.DomainResource):
             " overridden, this attribute can capture a text to indicate the  reason"
             " for this action."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     overrideReason__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_overrideReason", title="Extension field for ``overrideReason``."
@@ -223,6 +255,8 @@ class ChargeItem(domainresource.DomainResource):
             "ChargeItems can be grouped to larger ChargeItems covering the whole "
             "set."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ChargeItem"],
     )
@@ -234,6 +268,8 @@ class ChargeItem(domainresource.DomainResource):
         description=(
             "Indicates who or what performed or participated in the charged " "service."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     performingOrganization: fhirtypes.ReferenceType = Field(
@@ -241,6 +277,8 @@ class ChargeItem(domainresource.DomainResource):
         alias="performingOrganization",
         title="Organization providing the charged service",
         description="The organization requesting the service.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -253,6 +291,8 @@ class ChargeItem(domainresource.DomainResource):
             "Total price of the charge overriding the list price associated with "
             "the code."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     productCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -263,6 +303,8 @@ class ChargeItem(domainresource.DomainResource):
             "Identifies the device, food, drug or other product being charged "
             "either by type code or reference to an instance."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e product[x]
         one_of_many="product",
         one_of_many_required=False,
@@ -276,6 +318,8 @@ class ChargeItem(domainresource.DomainResource):
             "Identifies the device, food, drug or other product being charged "
             "either by type code or reference to an instance."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e product[x]
         one_of_many="product",
         one_of_many_required=False,
@@ -288,6 +332,8 @@ class ChargeItem(domainresource.DomainResource):
         alias="quantity",
         title="Quantity of which the charge item has been serviced",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reason: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -295,6 +341,8 @@ class ChargeItem(domainresource.DomainResource):
         alias="reason",
         title="Why was the charged  service rendered?",
         description="Describes why the event occurred in coded or textual form.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     requestingOrganization: fhirtypes.ReferenceType = Field(
@@ -302,6 +350,8 @@ class ChargeItem(domainresource.DomainResource):
         alias="requestingOrganization",
         title="Organization requesting the charged service",
         description="The organization performing the service.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -311,6 +361,8 @@ class ChargeItem(domainresource.DomainResource):
         alias="service",
         title="Which rendered service is being charged?",
         description="Indicated the rendered service that caused this charge.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "DiagnosticReport",
@@ -332,6 +384,8 @@ class ChargeItem(domainresource.DomainResource):
             "error | unknown"
         ),
         description="The current state of the ChargeItem.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -356,6 +410,8 @@ class ChargeItem(domainresource.DomainResource):
             "The individual or set of individuals the action is being or was "
             "performed on."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
     )
@@ -365,6 +421,8 @@ class ChargeItem(domainresource.DomainResource):
         alias="supportingInformation",
         title="Further information supporting this charge",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -432,6 +490,8 @@ class ChargeItemPerformer(backboneelement.BackboneElement):
             "The device, practitioner, etc. who performed or participated in the "
             "service."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Practitioner",
@@ -452,4 +512,6 @@ class ChargeItemPerformer(backboneelement.BackboneElement):
             "Describes the type of performance or participation(e.g. primary "
             "surgeon, anesthesiologiest, etc.)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )

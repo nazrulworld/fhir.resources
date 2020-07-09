@@ -27,7 +27,12 @@ class MedicinalProductInteraction(domainresource.DomainResource):
     resource_type = Field("MedicinalProductInteraction", const=True)
 
     description: fhirtypes.String = Field(
-        None, alias="description", title="The interaction described", description=None,
+        None,
+        alias="description",
+        title="The interaction described",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -41,6 +46,8 @@ class MedicinalProductInteraction(domainresource.DomainResource):
             ' of primary medication"'
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     incidence: fhirtypes.CodeableConceptType = Field(
@@ -48,6 +55,8 @@ class MedicinalProductInteraction(domainresource.DomainResource):
         alias="incidence",
         title="The incidence of the interaction, e.g. theoretical, observed",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     interactant: ListType[fhirtypes.MedicinalProductInteractionInteractantType] = Field(
@@ -55,6 +64,8 @@ class MedicinalProductInteraction(domainresource.DomainResource):
         alias="interactant",
         title="The specific medication, food or laboratory test that interacts",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     management: fhirtypes.CodeableConceptType = Field(
@@ -62,6 +73,8 @@ class MedicinalProductInteraction(domainresource.DomainResource):
         alias="management",
         title="Actions for managing the interaction",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     subject: ListType[fhirtypes.ReferenceType] = Field(
@@ -69,6 +82,8 @@ class MedicinalProductInteraction(domainresource.DomainResource):
         alias="subject",
         title="The medication for which this is a described interaction",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicinalProduct", "Medication", "Substance"],
     )
@@ -81,6 +96,8 @@ class MedicinalProductInteraction(domainresource.DomainResource):
             "interaction, drug-lab test interaction"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -99,6 +116,8 @@ class MedicinalProductInteractionInteractant(backboneelement.BackboneElement):
         alias="itemCodeableConcept",
         title="The specific medication, food or laboratory test that interacts",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e item[x]
         one_of_many="item",
         one_of_many_required=True,
@@ -109,6 +128,8 @@ class MedicinalProductInteractionInteractant(backboneelement.BackboneElement):
         alias="itemReference",
         title="The specific medication, food or laboratory test that interacts",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e item[x]
         one_of_many="item",
         one_of_many_required=True,

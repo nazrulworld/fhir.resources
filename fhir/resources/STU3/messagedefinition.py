@@ -35,6 +35,8 @@ class MessageDefinition(domainresource.DomainResource):
             "Indicates what types of messages may be sent as an application-level "
             "response to this message."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     base: fhirtypes.ReferenceType = Field(
@@ -45,6 +47,8 @@ class MessageDefinition(domainresource.DomainResource):
             "The MessageDefinition that is the basis for the contents of this "
             "resource."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MessageDefinition"],
     )
@@ -54,6 +58,8 @@ class MessageDefinition(domainresource.DomainResource):
         alias="category",
         title="Consequence | Currency | Notification",
         description="The impact of the content of the message.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["Consequence", "Currency", "Notification"],
@@ -70,6 +76,8 @@ class MessageDefinition(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     copyright: fhirtypes.Markdown = Field(
@@ -81,6 +89,8 @@ class MessageDefinition(domainresource.DomainResource):
             "contents. Copyright statements are generally legal restrictions on the"
             " use and publishing of the message definition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
@@ -97,6 +107,8 @@ class MessageDefinition(domainresource.DomainResource):
             " should change when the substantive content of the message definition "
             "changes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -110,6 +122,8 @@ class MessageDefinition(domainresource.DomainResource):
             "A free text natural language description of the message definition "
             "from a consumer's perspective."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -120,6 +134,8 @@ class MessageDefinition(domainresource.DomainResource):
         alias="event",
         title="Event type",
         description="A coded identifier of a supported messaging event.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     experimental: bool = Field(
@@ -131,6 +147,8 @@ class MessageDefinition(domainresource.DomainResource):
             "for testing purposes (or education/evaluation/marketing), and is not "
             "intended to be used for genuine usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -145,6 +163,8 @@ class MessageDefinition(domainresource.DomainResource):
             " event.  For example, the Encounter for an admit message or two "
             "Account records for a merge."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: fhirtypes.IdentifierType = Field(
@@ -156,6 +176,8 @@ class MessageDefinition(domainresource.DomainResource):
             "when it is represented in other formats, or referenced in a "
             "specification, model, design or an instance."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -166,6 +188,8 @@ class MessageDefinition(domainresource.DomainResource):
             "A legal or geographic region in which the message definition is "
             "intended to be used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     name: fhirtypes.String = Field(
@@ -177,6 +201,8 @@ class MessageDefinition(domainresource.DomainResource):
             "should be usable as an identifier for the module by machine processing"
             " applications such as code generation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -190,6 +216,8 @@ class MessageDefinition(domainresource.DomainResource):
             "Identifies a protocol or workflow that this MessageDefinition "
             "represents a step in."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ActivityDefinition", "PlanDefinition"],
     )
@@ -202,6 +230,8 @@ class MessageDefinition(domainresource.DomainResource):
             "The name of the individual or organization that published the message "
             "definition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -215,6 +245,8 @@ class MessageDefinition(domainresource.DomainResource):
             "Explaination of why this message definition is needed and why it has "
             "been designed as it has."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_purpose", title="Extension field for ``purpose``."
@@ -225,6 +257,8 @@ class MessageDefinition(domainresource.DomainResource):
         alias="replaces",
         title="Takes the place of",
         description="A MessageDefinition that is superseded by this definition.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MessageDefinition"],
     )
@@ -234,6 +268,8 @@ class MessageDefinition(domainresource.DomainResource):
         alias="responseRequired",
         title="Is a response required?",
         description="Indicates whether a response is required for this message.",
+        # if property is element of this resource.
+        element_property=True,
     )
     responseRequired__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -249,6 +285,8 @@ class MessageDefinition(domainresource.DomainResource):
             "The status of this message definition. Enables tracking the life-cycle"
             " of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -262,6 +300,8 @@ class MessageDefinition(domainresource.DomainResource):
         alias="title",
         title="Name for this message definition (human friendly)",
         description="A short, descriptive, user-friendly title for the message definition.",
+        # if property is element of this resource.
+        element_property=True,
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -280,6 +320,8 @@ class MessageDefinition(domainresource.DomainResource):
             "For more information see [Technical and Business "
             "Versions](resource.html#versions)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -294,6 +336,8 @@ class MessageDefinition(domainresource.DomainResource):
             "contexts that are listed. These terms may be used to assist with "
             "indexing and searching for appropriate message definition instances."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     version: fhirtypes.String = Field(
@@ -309,6 +353,8 @@ class MessageDefinition(domainresource.DomainResource):
             "available. There is also no expectation that versions can be placed in"
             " a lexicographical sequence."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -335,6 +381,8 @@ class MessageDefinitionAllowedResponse(backboneelement.BackboneElement):
             "A reference to the message definition that must be adhered to by this "
             "supported response."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MessageDefinition"],
     )
@@ -347,6 +395,8 @@ class MessageDefinitionAllowedResponse(backboneelement.BackboneElement):
             "Provides a description of the circumstances in which this response "
             "should be used (as opposed to one of the alternative responses)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     situation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_situation", title="Extension field for ``situation``."
@@ -371,6 +421,8 @@ class MessageDefinitionFocus(backboneelement.BackboneElement):
         alias="code",
         title="Type of resource",
         description="The kind of resource that must be the focus for this message.",
+        # if property is element of this resource.
+        element_property=True,
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -385,6 +437,8 @@ class MessageDefinitionFocus(backboneelement.BackboneElement):
             "pointed to by a message in order for it to be valid against this "
             "MessageDefinition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     max__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_max", title="Extension field for ``max``."
@@ -399,6 +453,8 @@ class MessageDefinitionFocus(backboneelement.BackboneElement):
             "pointed to by a message in order for it to be valid against this "
             "MessageDefinition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     min__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_min", title="Extension field for ``min``."
@@ -412,6 +468,8 @@ class MessageDefinitionFocus(backboneelement.BackboneElement):
             "A profile that reflects constraints for the focal resource (and "
             "potentially for related resources)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
     )

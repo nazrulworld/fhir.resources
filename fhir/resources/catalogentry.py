@@ -30,6 +30,8 @@ class CatalogEntry(domainresource.DomainResource):
         alias="additionalCharacteristic",
         title="Additional characteristics of the catalog entry",
         description="Used for examplefor Out of Formulary, or any specifics.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     additionalClassification: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -37,6 +39,8 @@ class CatalogEntry(domainresource.DomainResource):
         alias="additionalClassification",
         title="Additional classification of the catalog entry",
         description="User for example for ATC classification, or.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     additionalIdentifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -47,6 +51,8 @@ class CatalogEntry(domainresource.DomainResource):
             "granularity or concept"
         ),
         description="Used in supporting related concepts, e.g. NDC to RxNorm.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     classification: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -54,6 +60,8 @@ class CatalogEntry(domainresource.DomainResource):
         alias="classification",
         title="Classification (category or class) of the item entry",
         description="Classes of devices, or ATC for medication.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -64,6 +72,8 @@ class CatalogEntry(domainresource.DomainResource):
             "Used in supporting different identifiers for the same product, e.g. "
             "manufacturer code and retailer code."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     lastUpdated: fhirtypes.DateTime = Field(
@@ -74,6 +84,8 @@ class CatalogEntry(domainresource.DomainResource):
             "Typically date of issue is different from the beginning of the "
             "validity. This can be used to see when an item was last updated."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     lastUpdated__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastUpdated", title="Extension field for ``lastUpdated``."
@@ -84,6 +96,8 @@ class CatalogEntry(domainresource.DomainResource):
         alias="orderable",
         title="Whether the entry represents an orderable item",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     orderable__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_orderable", title="Extension field for ``orderable``."
@@ -94,6 +108,8 @@ class CatalogEntry(domainresource.DomainResource):
         alias="referencedItem",
         title="The item that is being defined",
         description="The item in a catalog or definition.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Medication",
@@ -118,6 +134,8 @@ class CatalogEntry(domainresource.DomainResource):
             "Used for example, to point to a substance, or to a device used to "
             "administer a medication."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     status: fhirtypes.Code = Field(
@@ -128,6 +146,8 @@ class CatalogEntry(domainresource.DomainResource):
             "Used to support catalog exchange even for unsupported products, e.g. "
             "getting list of medications even if not prescribable."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -141,6 +161,8 @@ class CatalogEntry(domainresource.DomainResource):
         alias="type",
         title="The type of item - medication, device, service, protocol or other",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     validTo: fhirtypes.DateTime = Field(
@@ -148,6 +170,8 @@ class CatalogEntry(domainresource.DomainResource):
         alias="validTo",
         title="The date until which this catalog entry is expected to be active",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     validTo__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_validTo", title="Extension field for ``validTo``."
@@ -158,6 +182,8 @@ class CatalogEntry(domainresource.DomainResource):
         alias="validityPeriod",
         title="The time period in which this catalog entry is expected to be active",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -178,6 +204,8 @@ class CatalogEntryRelatedEntry(backboneelement.BackboneElement):
         alias="item",
         title="The reference to the related item",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CatalogEntry"],
     )
@@ -190,6 +218,8 @@ class CatalogEntryRelatedEntry(backboneelement.BackboneElement):
             "The type of relation to the related item: child, parent, "
             "packageContent, containerPackage, usedIn, uses, requires, etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["triggers", "is-replaced-by"],

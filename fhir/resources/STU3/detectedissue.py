@@ -36,6 +36,8 @@ class DetectedIssue(domainresource.DomainResource):
             "example, a decision support application or a pharmacist conducting a "
             "medication review."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "Device"],
     )
@@ -45,6 +47,8 @@ class DetectedIssue(domainresource.DomainResource):
         alias="category",
         title="Issue Category, e.g. drug-drug, duplicate therapy, etc.",
         description="Identifies the general type of issue identified.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     date: fhirtypes.DateTime = Field(
@@ -54,6 +58,8 @@ class DetectedIssue(domainresource.DomainResource):
         description=(
             "The date or date-time when the detected issue was initially " "identified."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -64,6 +70,8 @@ class DetectedIssue(domainresource.DomainResource):
         alias="detail",
         title="Description and context",
         description="A textual explanation of the detected issue.",
+        # if property is element of this resource.
+        element_property=True,
     )
     detail__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_detail", title="Extension field for ``detail``."
@@ -74,6 +82,8 @@ class DetectedIssue(domainresource.DomainResource):
         alias="identifier",
         title="Unique id for the detected issue",
         description="Business identifier associated with the detected issue record.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     implicated: ListType[fhirtypes.ReferenceType] = Field(
@@ -84,6 +94,8 @@ class DetectedIssue(domainresource.DomainResource):
             "Indicates the resource representing the current activity or proposed "
             "activity that is potentially problematic."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -98,6 +110,8 @@ class DetectedIssue(domainresource.DomainResource):
             "issue from manifesting.  Can also reflect an observation of known "
             "mitigating factors that may reduce/eliminate the need for any action."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     patient: fhirtypes.ReferenceType = Field(
@@ -108,6 +122,8 @@ class DetectedIssue(domainresource.DomainResource):
             "Indicates the patient whose record the detected issue is associated "
             "with."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
     )
@@ -120,6 +136,8 @@ class DetectedIssue(domainresource.DomainResource):
             "The literature, knowledge-base or similar reference that describes the"
             " propensity for the detected issue identified."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     reference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_reference", title="Extension field for ``reference``."
@@ -133,6 +151,8 @@ class DetectedIssue(domainresource.DomainResource):
             "Indicates the degree of importance associated with the identified "
             "issue based on the potential impact on the patient."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["high", "moderate", "low"],
@@ -146,9 +166,11 @@ class DetectedIssue(domainresource.DomainResource):
         alias="status",
         title="registered | preliminary | final | amended +",
         description="Indicates the status of the detected issue.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["registered", "preliminary", "final", "amended +"],
+        enum_values=["registered", "preliminary", "final", "amended", "+"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -177,6 +199,8 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
             "Describes the action that was taken or the observation that was made "
             "that reduces/eliminates the risk associated with the identified issue."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     author: fhirtypes.ReferenceType = Field(
@@ -187,6 +211,8 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
             "Identifies the practitioner who determined the mitigation and takes "
             "responsibility for the mitigation step occurring."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner"],
     )
@@ -196,6 +222,8 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
         alias="date",
         title="Date committed",
         description="Indicates when the mitigating action was documented.",
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."

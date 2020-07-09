@@ -32,6 +32,8 @@ class Schedule(domainresource.DomainResource):
             "Whether this schedule record is in active use, or should not be used "
             "(such as was entered in error)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_active", title="Extension field for ``active``."
@@ -47,6 +49,8 @@ class Schedule(domainresource.DomainResource):
             "Patient or RelatedPerson"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Patient",
@@ -67,13 +71,20 @@ class Schedule(domainresource.DomainResource):
             "Such as custom constraints on the slots that may be associated"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comment", title="Extension field for ``comment``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
-        None, alias="identifier", title="External Ids for this item", description=None,
+        None,
+        alias="identifier",
+        title="External Ids for this item",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     planningHorizon: fhirtypes.PeriodType = Field(
@@ -87,6 +98,8 @@ class Schedule(domainresource.DomainResource):
             '"template" for planning outside these dates'
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     serviceCategory: fhirtypes.CodeableConceptType = Field(
@@ -97,6 +110,8 @@ class Schedule(domainresource.DomainResource):
             "this appointment"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     serviceType: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -104,6 +119,8 @@ class Schedule(domainresource.DomainResource):
         alias="serviceType",
         title="The specific service that is to be performed during this appointment",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     specialty: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -114,4 +131,6 @@ class Schedule(domainresource.DomainResource):
             "service requested in this appointment"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )

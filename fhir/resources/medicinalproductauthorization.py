@@ -29,6 +29,8 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
         alias="country",
         title="The country in which the marketing authorization has been granted",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     dataExclusivityPeriod: fhirtypes.PeriodType = Field(
@@ -39,6 +41,8 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
             "applicatiosn can be submitted"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     dateOfFirstAuthorization: fhirtypes.DateTime = Field(
@@ -49,6 +53,8 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
             "Regulatory Agency"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     dateOfFirstAuthorization__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -61,6 +67,8 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
         alias="holder",
         title="Marketing Authorization Holder",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -73,6 +81,8 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
             "regulator"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     internationalBirthDate: fhirtypes.DateTime = Field(
@@ -83,6 +93,8 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
             "product in any country in the World"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     internationalBirthDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -95,6 +107,8 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
         alias="jurisdiction",
         title="Jurisdiction within a country",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     jurisdictionalAuthorization: ListType[
@@ -104,6 +118,8 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
         alias="jurisdictionalAuthorization",
         title="Authorization in areas within a country",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     legalBasis: fhirtypes.CodeableConceptType = Field(
@@ -111,6 +127,8 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
         alias="legalBasis",
         title="The legal framework against which this authorization is granted",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     procedure: fhirtypes.MedicinalProductAuthorizationProcedureType = Field(
@@ -121,6 +139,8 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
             "authorization"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     regulator: fhirtypes.ReferenceType = Field(
@@ -128,6 +148,8 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
         alias="regulator",
         title="Medicines Regulatory Agency",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -140,6 +162,8 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
             " of the product is anticipated to be restored"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     restoreDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_restoreDate", title="Extension field for ``restoreDate``."
@@ -150,6 +174,8 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
         alias="status",
         title="The status of the marketing authorization",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     statusDate: fhirtypes.DateTime = Field(
@@ -157,6 +183,8 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
         alias="statusDate",
         title="The date at which the given status has become applicable",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_statusDate", title="Extension field for ``statusDate``."
@@ -167,6 +195,8 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
         alias="subject",
         title="The medicinal product that is being authorized",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicinalProduct", "MedicinalProductPackaged"],
     )
@@ -181,6 +211,8 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
             "8601 date format"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -199,7 +231,12 @@ class MedicinalProductAuthorizationJurisdictionalAuthorization(
     )
 
     country: fhirtypes.CodeableConceptType = Field(
-        None, alias="country", title="Country of authorization", description=None,
+        None,
+        alias="country",
+        title="Country of authorization",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -207,6 +244,8 @@ class MedicinalProductAuthorizationJurisdictionalAuthorization(
         alias="identifier",
         title="The assigned number for the marketing authorization",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -214,6 +253,8 @@ class MedicinalProductAuthorizationJurisdictionalAuthorization(
         alias="jurisdiction",
         title="Jurisdiction within a country",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     legalStatusOfSupply: fhirtypes.CodeableConceptType = Field(
@@ -221,6 +262,8 @@ class MedicinalProductAuthorizationJurisdictionalAuthorization(
         alias="legalStatusOfSupply",
         title="The legal status of supply in a jurisdiction or region",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     validityPeriod: fhirtypes.PeriodType = Field(
@@ -228,6 +271,8 @@ class MedicinalProductAuthorizationJurisdictionalAuthorization(
         alias="validityPeriod",
         title="The start and expected end date of the authorization",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -246,6 +291,8 @@ class MedicinalProductAuthorizationProcedure(backboneelement.BackboneElement):
         alias="application",
         title="Applcations submitted to obtain a marketing authorization",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     dateDateTime: fhirtypes.DateTime = Field(
@@ -253,6 +300,8 @@ class MedicinalProductAuthorizationProcedure(backboneelement.BackboneElement):
         alias="dateDateTime",
         title="Date of procedure",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e date[x]
         one_of_many="date",
         one_of_many_required=False,
@@ -266,6 +315,8 @@ class MedicinalProductAuthorizationProcedure(backboneelement.BackboneElement):
         alias="datePeriod",
         title="Date of procedure",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e date[x]
         one_of_many="date",
         one_of_many_required=False,
@@ -276,10 +327,17 @@ class MedicinalProductAuthorizationProcedure(backboneelement.BackboneElement):
         alias="identifier",
         title="Identifier for this procedure",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
-        ..., alias="type", title="Type of procedure", description=None,
+        ...,
+        alias="type",
+        title="Type of procedure",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)

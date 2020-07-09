@@ -33,6 +33,8 @@ class Organization(domainresource.DomainResource):
         alias="active",
         title="Whether the organization's record is still in active use",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_active", title="Extension field for ``active``."
@@ -43,6 +45,8 @@ class Organization(domainresource.DomainResource):
         alias="address",
         title="An address for the organization",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     alias: ListType[fhirtypes.String] = Field(
@@ -53,6 +57,8 @@ class Organization(domainresource.DomainResource):
             "known as in the past"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     alias__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_alias", title="Extension field for ``alias``."
@@ -63,6 +69,8 @@ class Organization(domainresource.DomainResource):
         alias="contact",
         title="Contact for the organization for a certain purpose",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     endpoint: ListType[fhirtypes.ReferenceType] = Field(
@@ -73,6 +81,8 @@ class Organization(domainresource.DomainResource):
             "organization"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Endpoint"],
     )
@@ -85,6 +95,8 @@ class Organization(domainresource.DomainResource):
             "Identifier for the organization that is used to identify the "
             "organization across multiple disparate systems."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     name: fhirtypes.String = Field(
@@ -92,6 +104,8 @@ class Organization(domainresource.DomainResource):
         alias="name",
         title="Name used for the organization",
         description="A name associated with the organization.",
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -102,6 +116,8 @@ class Organization(domainresource.DomainResource):
         alias="partOf",
         title="The organization of which this organization forms a part",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -111,6 +127,8 @@ class Organization(domainresource.DomainResource):
         alias="telecom",
         title="A contact detail for the organization",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -118,6 +136,8 @@ class Organization(domainresource.DomainResource):
         alias="type",
         title="Kind of organization",
         description="The kind(s) of organization that this is.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -136,6 +156,8 @@ class OrganizationContact(backboneelement.BackboneElement):
         alias="address",
         title="Visiting or postal addresses for the contact",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     name: fhirtypes.HumanNameType = Field(
@@ -143,6 +165,8 @@ class OrganizationContact(backboneelement.BackboneElement):
         alias="name",
         title="A name associated with the contact",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     purpose: fhirtypes.CodeableConceptType = Field(
@@ -150,6 +174,8 @@ class OrganizationContact(backboneelement.BackboneElement):
         alias="purpose",
         title="The type of contact",
         description="Indicates a purpose for which the contact can be reached.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     telecom: ListType[fhirtypes.ContactPointType] = Field(
@@ -160,4 +186,6 @@ class OrganizationContact(backboneelement.BackboneElement):
             "A contact detail (e.g. a telephone number or an email address) by "
             "which the party may be contacted."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )

@@ -39,6 +39,8 @@ class SubstanceAmount(backboneelement.BackboneElement):
             "captured in this field"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e amount[x]
         one_of_many="amount",
         one_of_many_required=False,
@@ -54,6 +56,8 @@ class SubstanceAmount(backboneelement.BackboneElement):
             "captured in this field"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e amount[x]
         one_of_many="amount",
         one_of_many_required=False,
@@ -69,6 +73,8 @@ class SubstanceAmount(backboneelement.BackboneElement):
             "captured in this field"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e amount[x]
         one_of_many="amount",
         one_of_many_required=False,
@@ -82,6 +88,8 @@ class SubstanceAmount(backboneelement.BackboneElement):
         alias="amountText",
         title="A textual comment on a numeric value",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     amountText__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_amountText", title="Extension field for ``amountText``."
@@ -100,6 +108,8 @@ class SubstanceAmount(backboneelement.BackboneElement):
             "made to use same the amount type for all related definitional elements"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     referenceRange: fhirtypes.SubstanceAmountReferenceRangeType = Field(
@@ -107,6 +117,8 @@ class SubstanceAmount(backboneelement.BackboneElement):
         alias="referenceRange",
         title="Reference range of possible or expected values",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)
@@ -163,6 +175,8 @@ class SubstanceAmountReferenceRange(element.Element):
         alias="highLimit",
         title="Upper limit possible or expected",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     lowLimit: fhirtypes.QuantityType = Field(
@@ -170,4 +184,6 @@ class SubstanceAmountReferenceRange(element.Element):
         alias="lowLimit",
         title="Lower limit possible or expected",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )

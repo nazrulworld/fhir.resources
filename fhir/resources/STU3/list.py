@@ -29,6 +29,8 @@ class List(domainresource.DomainResource):
         alias="code",
         title="What the purpose of this list is",
         description="This code defines the purpose of the list - why it was created.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     date: fhirtypes.DateTime = Field(
@@ -36,6 +38,8 @@ class List(domainresource.DomainResource):
         alias="date",
         title="When the list was prepared",
         description="The date that the list was prepared.",
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -46,6 +50,8 @@ class List(domainresource.DomainResource):
         alias="emptyReason",
         title="Why list is empty",
         description="If the list is empty, why the list is empty.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     encounter: fhirtypes.ReferenceType = Field(
@@ -53,6 +59,8 @@ class List(domainresource.DomainResource):
         alias="encounter",
         title="Context in which list created",
         description="The encounter that is the context in which this list was created.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
     )
@@ -62,6 +70,8 @@ class List(domainresource.DomainResource):
         alias="entry",
         title="Entries in the list",
         description="Entries in this list.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -72,6 +82,8 @@ class List(domainresource.DomainResource):
             "Identifier for the List assigned for business purposes outside the "
             "context of FHIR."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     mode: fhirtypes.Code = Field(
@@ -85,6 +97,8 @@ class List(domainresource.DomainResource):
             " prepared list where items may be marked as added, modified or "
             "deleted."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["working", "snapshot", "changes"],
@@ -98,6 +112,8 @@ class List(domainresource.DomainResource):
         alias="note",
         title="Comments about the list",
         description="Comments that apply to the overall list.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     orderedBy: fhirtypes.CodeableConceptType = Field(
@@ -105,6 +121,8 @@ class List(domainresource.DomainResource):
         alias="orderedBy",
         title="What order the list has",
         description="What order applies to the items in the list.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     source: fhirtypes.ReferenceType = Field(
@@ -116,6 +134,8 @@ class List(domainresource.DomainResource):
             "were. Where the list was created by a human, this is the same as the "
             "author of the list."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "Patient", "Device"],
     )
@@ -125,6 +145,8 @@ class List(domainresource.DomainResource):
         alias="status",
         title="current | retired | entered-in-error",
         description="Indicates the current state of this list.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["current", "retired", "entered-in-error"],
@@ -141,6 +163,8 @@ class List(domainresource.DomainResource):
             "The common subject (or patient) of the resources that are in the list,"
             " if there is one."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group", "Device", "Location"],
     )
@@ -150,6 +174,8 @@ class List(domainresource.DomainResource):
         alias="title",
         title="Descriptive name for the list",
         description="A label for the list assigned by the author.",
+        # if property is element of this resource.
+        element_property=True,
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -172,6 +198,8 @@ class ListEntry(backboneelement.BackboneElement):
         alias="date",
         title="When item added to list",
         description="When this item was added to the list.",
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -182,6 +210,8 @@ class ListEntry(backboneelement.BackboneElement):
         alias="deleted",
         title="If this item is actually marked as deleted",
         description="True if this item is marked as deleted in the list.",
+        # if property is element of this resource.
+        element_property=True,
     )
     deleted__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_deleted", title="Extension field for ``deleted``."
@@ -195,6 +225,8 @@ class ListEntry(backboneelement.BackboneElement):
             "The flag allows the system constructing the list to indicate the role "
             "and significance of the item in the list."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     item: fhirtypes.ReferenceType = Field(
@@ -202,6 +234,8 @@ class ListEntry(backboneelement.BackboneElement):
         alias="item",
         title="Actual entry",
         description="A reference to the actual resource from which data was derived.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )

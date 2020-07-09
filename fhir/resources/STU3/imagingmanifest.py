@@ -36,6 +36,8 @@ class ImagingManifest(domainresource.DomainResource):
             "diagnostic report, and a CAD application may author a selection to "
             "describe SOP instances it used to generate a detection conclusion."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Practitioner",
@@ -56,6 +58,8 @@ class ImagingManifest(domainresource.DomainResource):
             "selection resource, and from dates associated with the referenced "
             "instances (e.g. capture time of the referenced image)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     authoringTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_authoringTime", title="Extension field for ``authoringTime``."
@@ -74,6 +78,8 @@ class ImagingManifest(domainresource.DomainResource):
             "there is no expected behavior associated with descriptions that "
             "suggest referenced images be removed or not used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -87,6 +93,8 @@ class ImagingManifest(domainresource.DomainResource):
             "Unique identifier of the DICOM Key Object Selection (KOS) that this "
             "resource represents."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     patient: fhirtypes.ReferenceType = Field(
@@ -97,6 +105,8 @@ class ImagingManifest(domainresource.DomainResource):
             "A patient resource reference which is the patient subject of all DICOM"
             " SOP Instances in this ImagingManifest."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
     )
@@ -109,6 +119,8 @@ class ImagingManifest(domainresource.DomainResource):
             "Study identity and locating information of the DICOM SOP instances in "
             "the selection."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -135,6 +147,8 @@ class ImagingManifestStudy(backboneelement.BackboneElement):
             "study, unless overridden by a series-level endpoint with the same "
             "Endpoint.type."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Endpoint"],
     )
@@ -144,6 +158,8 @@ class ImagingManifestStudy(backboneelement.BackboneElement):
         alias="imagingStudy",
         title="Reference to ImagingStudy",
         description="Reference to the Imaging Study in FHIR form.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ImagingStudy"],
     )
@@ -156,6 +172,8 @@ class ImagingManifestStudy(backboneelement.BackboneElement):
             "Series identity and locating information of the DICOM SOP instances in"
             " the selection."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     uid: fhirtypes.Oid = Field(
@@ -163,6 +181,8 @@ class ImagingManifestStudy(backboneelement.BackboneElement):
         alias="uid",
         title="Study instance UID",
         description="Study instance UID of the SOP instances in the selection.",
+        # if property is element of this resource.
+        element_property=True,
     )
     uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uid", title="Extension field for ``uid``."
@@ -191,6 +211,8 @@ class ImagingManifestStudySeries(backboneelement.BackboneElement):
             " DICOM endpoints. A series-level endpoint, if present, has precedence "
             "over a study-level endpoint with the same Endpoint.type."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Endpoint"],
     )
@@ -200,6 +222,8 @@ class ImagingManifestStudySeries(backboneelement.BackboneElement):
         alias="instance",
         title="The selected instance",
         description="Identity and locating information of the selected DICOM SOP instances.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     uid: fhirtypes.Oid = Field(
@@ -207,6 +231,8 @@ class ImagingManifestStudySeries(backboneelement.BackboneElement):
         alias="uid",
         title="Series instance UID",
         description="Series instance UID of the SOP instances in the selection.",
+        # if property is element of this resource.
+        element_property=True,
     )
     uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uid", title="Extension field for ``uid``."
@@ -229,6 +255,8 @@ class ImagingManifestStudySeriesInstance(backboneelement.BackboneElement):
         alias="sopClass",
         title="SOP class UID of instance",
         description="SOP class UID of the selected instance.",
+        # if property is element of this resource.
+        element_property=True,
     )
     sopClass__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sopClass", title="Extension field for ``sopClass``."
@@ -239,6 +267,8 @@ class ImagingManifestStudySeriesInstance(backboneelement.BackboneElement):
         alias="uid",
         title="Selected instance UID",
         description="SOP Instance UID of the selected instance.",
+        # if property is element of this resource.
+        element_property=True,
     )
     uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uid", title="Extension field for ``uid``."

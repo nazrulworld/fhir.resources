@@ -33,6 +33,8 @@ class Media(domainresource.DomainResource):
             "A procedure that is fulfilled in whole or in part by the creation of "
             "this media."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ProcedureRequest"],
     )
@@ -45,6 +47,8 @@ class Media(domainresource.DomainResource):
             "Indicates the site on the subject's body where the media was collected"
             " (i.e. the target site)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     content: fhirtypes.AttachmentType = Field(
@@ -55,6 +59,8 @@ class Media(domainresource.DomainResource):
             "The actual content of the media - inline or by direct reference to the"
             " media source file."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     context: fhirtypes.ReferenceType = Field(
@@ -65,6 +71,8 @@ class Media(domainresource.DomainResource):
             "The encounter or episode of care that establishes the context for this"
             " media."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter", "EpisodeOfCare"],
     )
@@ -74,6 +82,8 @@ class Media(domainresource.DomainResource):
         alias="device",
         title="Observing Device",
         description="The device used to collect the media.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device", "DeviceMetric"],
     )
@@ -83,6 +93,8 @@ class Media(domainresource.DomainResource):
         alias="duration",
         title="Length in seconds (audio / video)",
         description="The duration of the recording in seconds - for audio and video.",
+        # if property is element of this resource.
+        element_property=True,
     )
     duration__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_duration", title="Extension field for ``duration``."
@@ -99,6 +111,8 @@ class Media(domainresource.DomainResource):
             "this SHALL have a value in order to alert interface software that a "
             "multi-frame capable rendering widget is required."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     frames__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_frames", title="Extension field for ``frames``."
@@ -109,6 +123,8 @@ class Media(domainresource.DomainResource):
         alias="height",
         title="Height of the image in pixels (photo/video)",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     height__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_height", title="Extension field for ``height``."
@@ -124,6 +140,8 @@ class Media(domainresource.DomainResource):
             "(e.g. series ids) and context ids such as accession numbers or other "
             "workflow identifiers."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
@@ -134,6 +152,8 @@ class Media(domainresource.DomainResource):
             "Comments made about the media by the performer, subject or other "
             "participants."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     occurrenceDateTime: fhirtypes.DateTime = Field(
@@ -141,6 +161,8 @@ class Media(domainresource.DomainResource):
         alias="occurrenceDateTime",
         title="When Media was collected",
         description="The date and time(s) at which the media was collected.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e occurrence[x]
         one_of_many="occurrence",
         one_of_many_required=False,
@@ -156,6 +178,8 @@ class Media(domainresource.DomainResource):
         alias="occurrencePeriod",
         title="When Media was collected",
         description="The date and time(s) at which the media was collected.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e occurrence[x]
         one_of_many="occurrence",
         one_of_many_required=False,
@@ -166,6 +190,8 @@ class Media(domainresource.DomainResource):
         alias="operator",
         title="The person who generated the image",
         description="The person who administered the collection of the image.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner"],
     )
@@ -175,6 +201,8 @@ class Media(domainresource.DomainResource):
         alias="reasonCode",
         title="Why was event performed?",
         description="Describes why the event occurred in coded or textual form.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -182,6 +210,8 @@ class Media(domainresource.DomainResource):
         alias="subject",
         title="Who/What this Media is a record of",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Practitioner", "Group", "Device", "Specimen"],
     )
@@ -195,6 +225,8 @@ class Media(domainresource.DomainResource):
             "type of device). If images sourced from a DICOM system, are wrapped in"
             " a Media resource, then this is the modality."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.Code = Field(
@@ -205,6 +237,8 @@ class Media(domainresource.DomainResource):
             "Whether the media is a photo (still image), an audio recording, or a "
             "video recording."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["photo", "video", "audio"],
@@ -218,6 +252,8 @@ class Media(domainresource.DomainResource):
         alias="view",
         title="Imaging view, e.g. Lateral or Antero-posterior",
         description="The name of the imaging view e.g. Lateral or Antero-posterior (AP).",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     width: fhirtypes.PositiveInt = Field(
@@ -225,6 +261,8 @@ class Media(domainresource.DomainResource):
         alias="width",
         title="Width of the image in pixels (photo/video)",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     width__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_width", title="Extension field for ``width``."

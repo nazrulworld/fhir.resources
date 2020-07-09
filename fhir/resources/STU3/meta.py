@@ -32,6 +32,8 @@ class Meta(element.Element):
         alias="lastUpdated",
         title="When the resource version last changed",
         description="When the resource last changed - e.g. when the version changed.",
+        # if property is element of this resource.
+        element_property=True,
     )
     lastUpdated__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastUpdated", title="Extension field for ``lastUpdated``."
@@ -47,6 +49,8 @@ class Meta(element.Element):
             "resource claims to conform to. The URL is a reference to "
             "[StructureDefinition.url]()."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     profile__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_profile", title="Extension field for ``profile``."
@@ -60,6 +64,8 @@ class Meta(element.Element):
             "Security labels applied to this resource. These tags connect specific "
             "resources to the overall security policy and infrastructure."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     tag: ListType[fhirtypes.CodingType] = Field(
@@ -72,6 +78,8 @@ class Meta(element.Element):
             "applications are not required to consider the tags when interpreting "
             "the meaning of a resource."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     versionId: fhirtypes.Id = Field(
@@ -83,6 +91,8 @@ class Meta(element.Element):
             "of the URL. This values changes when the resource is created, updated,"
             " or deleted."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     versionId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_versionId", title="Extension field for ``versionId``."

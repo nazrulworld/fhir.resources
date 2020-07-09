@@ -38,6 +38,8 @@ class ResearchDefinition(domainresource.DomainResource):
             "Approval happens once when the content is officially approved for "
             "usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_approvalDate", title="Extension field for ``approvalDate``."
@@ -51,6 +53,8 @@ class ResearchDefinition(domainresource.DomainResource):
             "An individiual or organization primarily involved in the creation and "
             "maintenance of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     comment: ListType[fhirtypes.String] = Field(
@@ -61,6 +65,8 @@ class ResearchDefinition(domainresource.DomainResource):
             "A human-readable string to clarify or explain concepts about the "
             "resource."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     comment__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_comment", title="Extension field for ``comment``."
@@ -74,6 +80,8 @@ class ResearchDefinition(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     copyright: fhirtypes.Markdown = Field(
@@ -85,6 +93,8 @@ class ResearchDefinition(domainresource.DomainResource):
             "contents. Copyright statements are generally legal restrictions on the"
             " use and publishing of the research definition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
@@ -101,6 +111,8 @@ class ResearchDefinition(domainresource.DomainResource):
             "change when the substantive content of the research definition "
             "changes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -114,6 +126,8 @@ class ResearchDefinition(domainresource.DomainResource):
             "A free text natural language description of the research definition "
             "from a consumer's perspective."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -127,6 +141,8 @@ class ResearchDefinition(domainresource.DomainResource):
             "An individual or organization primarily responsible for internal "
             "coherence of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     effectivePeriod: fhirtypes.PeriodType = Field(
@@ -137,6 +153,8 @@ class ResearchDefinition(domainresource.DomainResource):
             "The period during which the research definition content was or is "
             "planned to be in active use."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     endorser: ListType[fhirtypes.ContactDetailType] = Field(
@@ -147,6 +165,8 @@ class ResearchDefinition(domainresource.DomainResource):
             "An individual or organization responsible for officially endorsing the"
             " content for use in some setting."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     experimental: bool = Field(
@@ -158,6 +178,8 @@ class ResearchDefinition(domainresource.DomainResource):
             "for testing purposes (or education/evaluation/marketing) and is not "
             "intended to be used for genuine usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -171,6 +193,8 @@ class ResearchDefinition(domainresource.DomainResource):
             "A reference to a ResearchElementDefinition resource that defines the "
             "exposure for the research."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ResearchElementDefinition"],
     )
@@ -183,6 +207,8 @@ class ResearchDefinition(domainresource.DomainResource):
             "A reference to a ResearchElementDefinition resource that defines the "
             "exposureAlternative for the research."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ResearchElementDefinition"],
     )
@@ -196,6 +222,8 @@ class ResearchDefinition(domainresource.DomainResource):
             "when it is represented in other formats, or referenced in a "
             "specification, model, design or an instance."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -206,6 +234,8 @@ class ResearchDefinition(domainresource.DomainResource):
             "A legal or geographic region in which the research definition is "
             "intended to be used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     lastReviewDate: fhirtypes.Date = Field(
@@ -217,6 +247,8 @@ class ResearchDefinition(domainresource.DomainResource):
             "happens periodically after approval but does not change the original "
             "approval date."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
@@ -230,6 +262,8 @@ class ResearchDefinition(domainresource.DomainResource):
             "A reference to a Library resource containing the formal logic used by "
             "the ResearchDefinition."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Library"],
     )
@@ -246,6 +280,8 @@ class ResearchDefinition(domainresource.DomainResource):
             " should be usable as an identifier for the module by machine "
             "processing applications such as code generation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -259,6 +295,8 @@ class ResearchDefinition(domainresource.DomainResource):
             "A reference to a ResearchElementDefinition resomece that defines the "
             "outcome for the research."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ResearchElementDefinition"],
     )
@@ -271,6 +309,8 @@ class ResearchDefinition(domainresource.DomainResource):
             "A reference to a ResearchElementDefinition resource that defines the "
             "population for the research."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ResearchElementDefinition"],
     )
@@ -283,6 +323,8 @@ class ResearchDefinition(domainresource.DomainResource):
             "The name of the organization or individual that published the research"
             " definition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -296,6 +338,8 @@ class ResearchDefinition(domainresource.DomainResource):
             "Explanation of why this research definition is needed and why it has "
             "been designed as it has."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_purpose", title="Extension field for ``purpose``."
@@ -309,6 +353,8 @@ class ResearchDefinition(domainresource.DomainResource):
             "Related artifacts such as additional documentation, justification, or "
             "bibliographic references."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reviewer: ListType[fhirtypes.ContactDetailType] = Field(
@@ -319,6 +365,8 @@ class ResearchDefinition(domainresource.DomainResource):
             "An individual or organization primarily responsible for review of some"
             " aspect of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     shortTitle: fhirtypes.String = Field(
@@ -329,6 +377,8 @@ class ResearchDefinition(domainresource.DomainResource):
             "The short title provides an alternate title for use in informal "
             "descriptive contexts where the full, formal title is not necessary."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     shortTitle__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_shortTitle", title="Extension field for ``shortTitle``."
@@ -342,6 +392,8 @@ class ResearchDefinition(domainresource.DomainResource):
             "The status of this research definition. Enables tracking the life-"
             "cycle of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -362,6 +414,8 @@ class ResearchDefinition(domainresource.DomainResource):
             "not provided, a Patient subject is assumed, but the subject of the "
             "ResearchDefinition can be anything."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e subject[x]
         one_of_many="subject",
         one_of_many_required=False,
@@ -379,6 +433,8 @@ class ResearchDefinition(domainresource.DomainResource):
             "not provided, a Patient subject is assumed, but the subject of the "
             "ResearchDefinition can be anything."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e subject[x]
         one_of_many="subject",
         one_of_many_required=False,
@@ -394,6 +450,8 @@ class ResearchDefinition(domainresource.DomainResource):
             "An explanatory or alternate title for the ResearchDefinition giving "
             "additional information about its content."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     subtitle__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_subtitle", title="Extension field for ``subtitle``."
@@ -404,6 +462,8 @@ class ResearchDefinition(domainresource.DomainResource):
         alias="title",
         title="Name for this research definition (human friendly)",
         description="A short, descriptive, user-friendly title for the research definition.",
+        # if property is element of this resource.
+        element_property=True,
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -421,6 +481,8 @@ class ResearchDefinition(domainresource.DomainResource):
             "Topics provide a high-level categorization grouping types of "
             "ResearchDefinitions that can be useful for filtering and searching."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     url: fhirtypes.Uri = Field(
@@ -439,6 +501,8 @@ class ResearchDefinition(domainresource.DomainResource):
             "URL can be the target of a canonical reference. It SHALL remain the "
             "same when the research definition is stored on different servers."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -452,6 +516,8 @@ class ResearchDefinition(domainresource.DomainResource):
             "A detailed description, from a clinical perspective, of how the "
             "ResearchDefinition is used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     usage__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_usage", title="Extension field for ``usage``."
@@ -468,6 +534,8 @@ class ResearchDefinition(domainresource.DomainResource):
             "(insurance plans, studies, ...) and may be used to assist with "
             "indexing and searching for appropriate research definition instances."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     version: fhirtypes.String = Field(
@@ -488,6 +556,8 @@ class ResearchDefinition(domainresource.DomainResource):
             " Note that a version is required for non-experimental active "
             "artifacts."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."

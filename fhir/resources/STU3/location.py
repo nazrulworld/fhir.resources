@@ -28,7 +28,12 @@ class Location(domainresource.DomainResource):
     resource_type = Field("Location", const=True)
 
     address: fhirtypes.AddressType = Field(
-        None, alias="address", title="Physical location", description=None,
+        None,
+        alias="address",
+        title="Physical location",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     alias: ListType[fhirtypes.String] = Field(
@@ -39,6 +44,8 @@ class Location(domainresource.DomainResource):
             "as in the past"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     alias__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_alias", title="Extension field for ``alias``."
@@ -55,6 +62,8 @@ class Location(domainresource.DomainResource):
             "Description of the Location, which helps in finding or referencing the"
             " place."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -68,6 +77,8 @@ class Location(domainresource.DomainResource):
             "location"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Endpoint"],
     )
@@ -77,6 +88,8 @@ class Location(domainresource.DomainResource):
         alias="identifier",
         title="Unique code or number identifying the location to its users",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     managingOrganization: fhirtypes.ReferenceType = Field(
@@ -87,6 +100,8 @@ class Location(domainresource.DomainResource):
             "The organization responsible for the provisioning and upkeep of the "
             "location."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -99,6 +114,8 @@ class Location(domainresource.DomainResource):
             "Indicates whether a resource instance represents a specific location "
             "or a class of locations."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["instance", "kind"],
@@ -112,6 +129,8 @@ class Location(domainresource.DomainResource):
         alias="name",
         title="Name of the location as used by humans",
         description="Name of the location as used by humans. Does not need to be unique.",
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -127,6 +146,8 @@ class Location(domainresource.DomainResource):
             "unit/dialisys chair). This typically covers concepts such as "
             "contamination, housekeeping and other activities\u00a0like maintenance."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     partOf: fhirtypes.ReferenceType = Field(
@@ -134,6 +155,8 @@ class Location(domainresource.DomainResource):
         alias="partOf",
         title="Another Location this one is physically part of",
         description="Another Location which this Location is physically part of.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
     )
@@ -143,6 +166,8 @@ class Location(domainresource.DomainResource):
         alias="physicalType",
         title="Physical form of the location",
         description="Physical form of the location, e.g. building, room, vehicle, road.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     position: fhirtypes.LocationPositionType = Field(
@@ -153,6 +178,8 @@ class Location(domainresource.DomainResource):
             "The absolute geographic location of the Location, expressed using the "
             "WGS84 datum (This is the same co-ordinate system used in KML)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     status: fhirtypes.Code = Field(
@@ -164,6 +191,8 @@ class Location(domainresource.DomainResource):
             "not the current value which may be covered by the operationStatus, or "
             "by a schedule/slots if they are configured for the location."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "suspended", "inactive"],
@@ -181,6 +210,8 @@ class Location(domainresource.DomainResource):
             "location. This can include phone numbers, fax numbers, mobile numbers,"
             " email addresses and web sites."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -188,6 +219,8 @@ class Location(domainresource.DomainResource):
         alias="type",
         title="Type of function performed",
         description="Indicates the type of function performed at the location.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -211,6 +244,8 @@ class LocationPosition(backboneelement.BackboneElement):
             "Altitude. The value domain and the interpretation are the same as for "
             "the text of the altitude element in KML (see notes below)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     altitude__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_altitude", title="Extension field for ``altitude``."
@@ -224,6 +259,8 @@ class LocationPosition(backboneelement.BackboneElement):
             "Latitude. The value domain and the interpretation are the same as for "
             "the text of the latitude element in KML (see notes below)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     latitude__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_latitude", title="Extension field for ``latitude``."
@@ -237,6 +274,8 @@ class LocationPosition(backboneelement.BackboneElement):
             "Longitude. The value domain and the interpretation are the same as for"
             " the text of the longitude element in KML (see notes below)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     longitude__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_longitude", title="Extension field for ``longitude``."

@@ -36,6 +36,8 @@ class CapabilityStatement(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     copyright: fhirtypes.Markdown = Field(
@@ -47,6 +49,8 @@ class CapabilityStatement(domainresource.DomainResource):
             "contents. Copyright statements are generally legal restrictions on the"
             " use and publishing of the capability statement."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
@@ -63,6 +67,8 @@ class CapabilityStatement(domainresource.DomainResource):
             "change when the substantive content of the capability statement "
             "changes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -79,6 +85,8 @@ class CapabilityStatement(domainresource.DomainResource):
             "solution, for example as a formal expression of requirements as part "
             "of an RFP."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -89,6 +97,8 @@ class CapabilityStatement(domainresource.DomainResource):
         alias="document",
         title="Document definition",
         description="A document definition.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     experimental: bool = Field(
@@ -100,6 +110,8 @@ class CapabilityStatement(domainresource.DomainResource):
             " for testing purposes (or education/evaluation/marketing) and is not "
             "intended to be used for genuine usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -114,6 +126,8 @@ class CapabilityStatement(domainresource.DomainResource):
             "describes (which SHALL be the same as the FHIR version of the "
             "CapabilityStatement itself). There is no default value."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     fhirVersion__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_fhirVersion", title="Extension field for ``fhirVersion``."
@@ -127,9 +141,11 @@ class CapabilityStatement(domainresource.DomainResource):
             "A list of the formats supported by this implementation using their "
             "content types."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["formats supported (xml", "json", "ttl", "mime type)"],
+        enum_values=["formats", "json", "ttl", "mime"],
     )
     format__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_format", title="Extension field for ``format``."
@@ -144,6 +160,8 @@ class CapabilityStatement(domainresource.DomainResource):
             " capability statement - i.e. a particular installation, rather than "
             "the capabilities of a software program."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     implementationGuide: ListType[fhirtypes.Canonical] = Field(
@@ -154,6 +172,8 @@ class CapabilityStatement(domainresource.DomainResource):
             "A list of implementation guides that the server does (or should) "
             "support in their entirety."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ImplementationGuide"],
     )
@@ -176,6 +196,8 @@ class CapabilityStatement(domainresource.DomainResource):
             "the server may repeat the same resources, interactions and operations "
             "to add additional details to them."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CapabilityStatement"],
     )
@@ -195,6 +217,8 @@ class CapabilityStatement(domainresource.DomainResource):
             "implement, so the capability statement must specify the full "
             "capability details."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CapabilityStatement"],
     )
@@ -212,6 +236,8 @@ class CapabilityStatement(domainresource.DomainResource):
             "A legal or geographic region in which the capability statement is "
             "intended to be used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     kind: fhirtypes.Code = Field(
@@ -224,6 +250,8 @@ class CapabilityStatement(domainresource.DomainResource):
             "instance of software) or a class of implementation (e.g. a desired "
             "purchase)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["instance", "capability", "requirements"],
@@ -237,6 +265,8 @@ class CapabilityStatement(domainresource.DomainResource):
         alias="messaging",
         title="If messaging is supported",
         description="A description of the messaging capabilities of the solution.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     name: fhirtypes.String = Field(
@@ -248,6 +278,8 @@ class CapabilityStatement(domainresource.DomainResource):
             "name should be usable as an identifier for the module by machine "
             "processing applications such as code generation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -261,6 +293,8 @@ class CapabilityStatement(domainresource.DomainResource):
             "A list of the patch formats supported by this implementation using "
             "their content types."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     patchFormat__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -274,6 +308,8 @@ class CapabilityStatement(domainresource.DomainResource):
             "The name of the organization or individual that published the "
             "capability statement."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -287,6 +323,8 @@ class CapabilityStatement(domainresource.DomainResource):
             "Explanation of why this capability statement is needed and why it has "
             "been designed as it has."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_purpose", title="Extension field for ``purpose``."
@@ -297,6 +335,8 @@ class CapabilityStatement(domainresource.DomainResource):
         alias="rest",
         title="If the endpoint is a RESTful one",
         description="A definition of the restful capabilities of the solution, if any.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     software: fhirtypes.CapabilityStatementSoftwareType = Field(
@@ -308,6 +348,8 @@ class CapabilityStatement(domainresource.DomainResource):
             "when the capability statement describes the capabilities of a "
             "particular software version, independent of an installation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     status: fhirtypes.Code = Field(
@@ -318,6 +360,8 @@ class CapabilityStatement(domainresource.DomainResource):
             "The status of this capability statement. Enables tracking the life-"
             "cycle of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -333,6 +377,8 @@ class CapabilityStatement(domainresource.DomainResource):
         description=(
             "A short, descriptive, user-friendly title for the capability " "statement."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -355,6 +401,8 @@ class CapabilityStatement(domainresource.DomainResource):
             "SHALL remain the same when the capability statement is stored on "
             "different servers."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -371,6 +419,8 @@ class CapabilityStatement(domainresource.DomainResource):
             "(insurance plans, studies, ...) and may be used to assist with "
             "indexing and searching for appropriate capability statement instances."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     version: fhirtypes.String = Field(
@@ -386,6 +436,8 @@ class CapabilityStatement(domainresource.DomainResource):
             "is not available. There is also no expectation that versions can be "
             "placed in a lexicographical sequence."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -412,6 +464,8 @@ class CapabilityStatementDocument(backboneelement.BackboneElement):
             "document profile.  For example, when documents are created, what "
             "action is taken with consumed documents, etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_documentation", title="Extension field for ``documentation``."
@@ -425,6 +479,8 @@ class CapabilityStatementDocument(backboneelement.BackboneElement):
             "Mode of this document declaration - whether an application is a "
             "producer or consumer."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["producer", "consumer"],
@@ -441,6 +497,8 @@ class CapabilityStatementDocument(backboneelement.BackboneElement):
             "A profile on the document Bundle that constrains which resources are "
             "present, and their contents."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
     )
@@ -470,6 +528,8 @@ class CapabilityStatementImplementation(backboneelement.BackboneElement):
             "The organization responsible for the management of the instance and "
             "oversight of the data on the server at the specified URL."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -482,6 +542,8 @@ class CapabilityStatementImplementation(backboneelement.BackboneElement):
             "Information about the specific installation that this capability "
             "statement relates to."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -495,6 +557,8 @@ class CapabilityStatementImplementation(backboneelement.BackboneElement):
             "An absolute base URL for the implementation.  This forms the base for "
             "REST interfaces as well as the mailbox and document interfaces."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -522,6 +586,8 @@ class CapabilityStatementMessaging(backboneelement.BackboneElement):
             "example, the process for becoming an authorized messaging exchange "
             "partner."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_documentation", title="Extension field for ``documentation``."
@@ -535,6 +601,8 @@ class CapabilityStatementMessaging(backboneelement.BackboneElement):
             "An endpoint (network accessible address) to which messages and/or "
             "replies are to be sent."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reliableCache: fhirtypes.UnsignedInt = Field(
@@ -546,6 +614,8 @@ class CapabilityStatementMessaging(backboneelement.BackboneElement):
             "receiver) or how long the cache length on the receiver should be (if a"
             " sender)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     reliableCache__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_reliableCache", title="Extension field for ``reliableCache``."
@@ -561,6 +631,8 @@ class CapabilityStatementMessaging(backboneelement.BackboneElement):
             "References to message definitions for messages this system can send or"
             " receive."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -584,6 +656,8 @@ class CapabilityStatementMessagingEndpoint(backboneelement.BackboneElement):
             "The network address of the endpoint. For solutions that do not use "
             "network addresses for routing, it can be just an identifier."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     address__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_address", title="Extension field for ``address``."
@@ -597,6 +671,8 @@ class CapabilityStatementMessagingEndpoint(backboneelement.BackboneElement):
             "A list of the messaging transport protocol(s) identifiers, supported "
             "by this endpoint."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -620,6 +696,8 @@ class CapabilityStatementMessagingSupportedMessage(backboneelement.BackboneEleme
             "Points to a message definition that identifies the messaging event, "
             "message structure, allowed responses, etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MessageDefinition"],
     )
@@ -635,6 +713,8 @@ class CapabilityStatementMessagingSupportedMessage(backboneelement.BackboneEleme
             "The mode of this event declaration - whether application is sender or "
             "receiver."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["sender", "receiver"],
@@ -664,6 +744,8 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
             "compartment that the system supports. The reference is to a "
             "CompartmentDefinition resource by its canonical URL ."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CompartmentDefinition"],
     )
@@ -679,6 +761,8 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
             "Information about the system's restful capabilities that apply across "
             "all applications, such as security."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_documentation", title="Extension field for ``documentation``."
@@ -689,6 +773,8 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
         alias="interaction",
         title="What operations are supported?",
         description="A specification of restful operations supported by the system.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     mode: fhirtypes.Code = Field(
@@ -699,6 +785,8 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
             "Identifies whether this portion of the statement is describing the "
             "ability to initiate or receive restful operations."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["client", "server"],
@@ -715,6 +803,8 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
             "Definition of an operation or a named query together with its "
             "parameters and their meaning and type."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     resource: ListType[fhirtypes.CapabilityStatementRestResourceType] = Field(
@@ -725,6 +815,8 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
             "A specification of the restful capabilities of the solution for a "
             "specific resource type."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     searchParam: ListType[
@@ -739,6 +831,8 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
             "ones defined in the specification, or additional ones defined for/by "
             "the implementation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     security: fhirtypes.CapabilityStatementRestSecurityType = Field(
@@ -749,6 +843,8 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
             "Information about security implementation from an interface "
             "perspective - what a client needs to know."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -768,6 +864,8 @@ class CapabilityStatementRestInteraction(backboneelement.BackboneElement):
         alias="code",
         title="transaction | batch | search-system | history-system",
         description="A coded identifier of the operation, supported by the system.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["transaction", "batch", "search-system", "history-system"],
@@ -785,6 +883,8 @@ class CapabilityStatementRestInteraction(backboneelement.BackboneElement):
             "limitations on the kind of transactions allowed, or information about "
             "system wide search is implemented."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_documentation", title="Extension field for ``documentation``."
@@ -808,6 +908,8 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         alias="conditionalCreate",
         title="If allows/uses conditional create",
         description="A flag that indicates that the server supports conditional create.",
+        # if property is element of this resource.
+        element_property=True,
     )
     conditionalCreate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -822,13 +924,11 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
             "not-supported | single | multiple - how conditional delete is " "supported"
         ),
         description="A code that indicates how the server supports conditional delete.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "not-supported",
-            "single",
-            "multiple - how conditional delete is supported",
-        ],
+        enum_values=["not-supported", "single", "multiple"],
     )
     conditionalDelete__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -841,6 +941,8 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         alias="conditionalRead",
         title="not-supported | modified-since | not-match | full-support",
         description="A code that indicates how the server supports conditional read.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["not-supported", "modified-since", "not-match", "full-support"],
@@ -854,6 +956,8 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         alias="conditionalUpdate",
         title="If allows/uses conditional update",
         description="A flag that indicates that the server supports conditional update.",
+        # if property is element of this resource.
+        element_property=True,
     )
     conditionalUpdate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -866,6 +970,8 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         alias="documentation",
         title="Additional information about the use of the resource type",
         description="Additional information about the resource type used by the system.",
+        # if property is element of this resource.
+        element_property=True,
     )
     documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_documentation", title="Extension field for ``documentation``."
@@ -878,6 +984,8 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         alias="interaction",
         title="What operations are supported?",
         description="Identifies a restful operation supported by the solution.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     operation: ListType[fhirtypes.CapabilityStatementRestResourceOperationType] = Field(
@@ -890,6 +998,8 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
             "operation for details about how to invoke the operation, and the "
             "parameters."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     profile: fhirtypes.Canonical = Field(
@@ -902,6 +1012,8 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
             "bindings, lengths or other limitations. See further discussion in "
             "[Using Profiles](profiling.html#profile-uses)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
     )
@@ -917,6 +1029,8 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
             "A flag for whether the server is able to return past versions as part "
             "of the vRead operation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     readHistory__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_readHistory", title="Extension field for ``readHistory``."
@@ -927,6 +1041,8 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         alias="referencePolicy",
         title="literal | logical | resolves | enforced | local",
         description="A set of flags that defines how references are supported.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["literal", "logical", "resolves", "enforced", "local"],
@@ -942,6 +1058,8 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         alias="searchInclude",
         title="_include values supported by the server",
         description="A list of _include values supported by the server.",
+        # if property is element of this resource.
+        element_property=True,
     )
     searchInclude__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -960,6 +1078,8 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
             "either references to ones defined in the specification, or additional "
             "ones defined for/by the implementation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     searchRevInclude: ListType[fhirtypes.String] = Field(
@@ -969,6 +1089,8 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         description=(
             "A list of _revinclude (reverse include) values supported by the " "server."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     searchRevInclude__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -992,6 +1114,8 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
             "guidance implicit in the profile. See further discussion in [Using "
             "Profiles](profiling.html#profile-uses)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
     )
@@ -1008,6 +1132,8 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         alias="type",
         title="A resource type that is supported",
         description="A type of resource exposed via the restful interface.",
+        # if property is element of this resource.
+        element_property=True,
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -1024,6 +1150,8 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
             "operation means that the server allows the client to create new "
             "identities on the server."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     updateCreate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_updateCreate", title="Extension field for ``updateCreate``."
@@ -1041,6 +1169,8 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
             " 'versioned-update', then the server supports all the versioning "
             "features, including using e-tags for version integrity in the API."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["no-version", "versioned", "versioned-update"],
@@ -1069,6 +1199,8 @@ class CapabilityStatementRestResourceInteraction(backboneelement.BackboneElement
             "type | create | search-type"
         ),
         description="Coded identifier of the operation, supported by the system resource.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -1096,6 +1228,8 @@ class CapabilityStatementRestResourceInteraction(backboneelement.BackboneElement
             "'delete is a logical delete' or 'updates are only allowed with version"
             " id' or 'creates permitted from pre-authorized certificates only'."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_documentation", title="Extension field for ``documentation``."
@@ -1130,6 +1264,8 @@ class CapabilityStatementRestResourceOperation(backboneelement.BackboneElement):
             "original OperationDefinition.  The custom definition would describe "
             "the specific subset of functionality supported."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["OperationDefinition"],
     )
@@ -1146,6 +1282,8 @@ class CapabilityStatementRestResourceOperation(backboneelement.BackboneElement):
             "behavior, possibly detailing different behavior for system, type and "
             "instance-level invocation of the operation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_documentation", title="Extension field for ``documentation``."
@@ -1160,6 +1298,8 @@ class CapabilityStatementRestResourceOperation(backboneelement.BackboneElement):
             "  prefixed with $ and used in the URL. For a query, this is the name "
             "used in the _query parameter when the query is called."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -1192,6 +1332,8 @@ class CapabilityStatementRestResourceSearchParam(backboneelement.BackboneElement
             "populated if the search parameter refers to a SearchParameter defined "
             "by the FHIR core specification or externally defined IGs."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SearchParameter"],
     )
@@ -1207,6 +1349,8 @@ class CapabilityStatementRestResourceSearchParam(backboneelement.BackboneElement
             "This allows documentation of any distinct behaviors about how the "
             "search parameter is used.  For example, text matching algorithms."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_documentation", title="Extension field for ``documentation``."
@@ -1217,6 +1361,8 @@ class CapabilityStatementRestResourceSearchParam(backboneelement.BackboneElement
         alias="name",
         title="Name of search parameter",
         description="The name of the search parameter used in the interface.",
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -1233,6 +1379,8 @@ class CapabilityStatementRestResourceSearchParam(backboneelement.BackboneElement
             "The type of value a search parameter refers to, and how the content is"
             " interpreted."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -1272,6 +1420,8 @@ class CapabilityStatementRestSecurity(backboneelement.BackboneElement):
             "Server adds CORS headers when responding to requests - this enables "
             "Javascript applications to use the server."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     cors__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_cors", title="Extension field for ``cors``."
@@ -1282,6 +1432,8 @@ class CapabilityStatementRestSecurity(backboneelement.BackboneElement):
         alias="description",
         title="General description of how security works",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -1292,6 +1444,8 @@ class CapabilityStatementRestSecurity(backboneelement.BackboneElement):
         alias="service",
         title="OAuth | SMART-on-FHIR | NTLM | Basic | Kerberos | Certificates",
         description="Types of security services that are supported/required by the system.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -1313,6 +1467,8 @@ class CapabilityStatementSoftware(backboneelement.BackboneElement):
         alias="name",
         title="A name the software is known by",
         description="Name the software is known by.",
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -1323,6 +1479,8 @@ class CapabilityStatementSoftware(backboneelement.BackboneElement):
         alias="releaseDate",
         title="Date this version was released",
         description="Date this version of the software was released.",
+        # if property is element of this resource.
+        element_property=True,
     )
     releaseDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_releaseDate", title="Extension field for ``releaseDate``."
@@ -1333,6 +1491,8 @@ class CapabilityStatementSoftware(backboneelement.BackboneElement):
         alias="version",
         title="Version covered by this statement",
         description="The version identifier for the software covered by this statement.",
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."

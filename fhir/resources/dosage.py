@@ -40,6 +40,8 @@ class Dosage(backboneelement.BackboneElement):
             'drowsiness" or "avoid exposure of skin to direct sunlight or '
             'sunlamps").'
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     asNeededBoolean: bool = Field(
@@ -51,6 +53,8 @@ class Dosage(backboneelement.BackboneElement):
             "specific dosing schedule (Boolean option), or it indicates the "
             "precondition for taking the Medication (CodeableConcept)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e asNeeded[x]
         one_of_many="asNeeded",
         one_of_many_required=False,
@@ -68,6 +72,8 @@ class Dosage(backboneelement.BackboneElement):
             "specific dosing schedule (Boolean option), or it indicates the "
             "precondition for taking the Medication (CodeableConcept)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e asNeeded[x]
         one_of_many="asNeeded",
         one_of_many_required=False,
@@ -78,6 +84,8 @@ class Dosage(backboneelement.BackboneElement):
         alias="doseAndRate",
         title="Amount of medication administered",
         description="The amount of medication administered.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     maxDosePerAdministration: fhirtypes.QuantityType = Field(
@@ -85,6 +93,8 @@ class Dosage(backboneelement.BackboneElement):
         alias="maxDosePerAdministration",
         title="Upper limit on medication per administration",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     maxDosePerLifetime: fhirtypes.QuantityType = Field(
@@ -92,6 +102,8 @@ class Dosage(backboneelement.BackboneElement):
         alias="maxDosePerLifetime",
         title="Upper limit on medication per lifetime of the patient",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     maxDosePerPeriod: fhirtypes.RatioType = Field(
@@ -99,6 +111,8 @@ class Dosage(backboneelement.BackboneElement):
         alias="maxDosePerPeriod",
         title="Upper limit on medication per unit of time",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     method: fhirtypes.CodeableConceptType = Field(
@@ -106,6 +120,8 @@ class Dosage(backboneelement.BackboneElement):
         alias="method",
         title="Technique for administering medication",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     patientInstruction: fhirtypes.String = Field(
@@ -113,6 +129,8 @@ class Dosage(backboneelement.BackboneElement):
         alias="patientInstruction",
         title="Patient or consumer oriented instructions",
         description="Instructions in terms that are understood by the patient or consumer.",
+        # if property is element of this resource.
+        element_property=True,
     )
     patientInstruction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -121,7 +139,12 @@ class Dosage(backboneelement.BackboneElement):
     )
 
     route: fhirtypes.CodeableConceptType = Field(
-        None, alias="route", title="How drug should enter body", description=None,
+        None,
+        alias="route",
+        title="How drug should enter body",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     sequence: fhirtypes.Integer = Field(
@@ -132,13 +155,20 @@ class Dosage(backboneelement.BackboneElement):
             "Indicates the order in which the dosage instructions should be applied"
             " or interpreted."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
     site: fhirtypes.CodeableConceptType = Field(
-        None, alias="site", title="Body site to administer to", description=None,
+        None,
+        alias="site",
+        title="Body site to administer to",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     text: fhirtypes.String = Field(
@@ -146,6 +176,8 @@ class Dosage(backboneelement.BackboneElement):
         alias="text",
         title="Free text dosage instructions e.g. SIG",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_text", title="Extension field for ``text``."
@@ -156,6 +188,8 @@ class Dosage(backboneelement.BackboneElement):
         alias="timing",
         title="When medication should be administered",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)
@@ -213,6 +247,8 @@ class DosageDoseAndRate(element.Element):
         alias="doseQuantity",
         title="Amount of medication per dose",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e dose[x]
         one_of_many="dose",
         one_of_many_required=False,
@@ -223,6 +259,8 @@ class DosageDoseAndRate(element.Element):
         alias="doseRange",
         title="Amount of medication per dose",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e dose[x]
         one_of_many="dose",
         one_of_many_required=False,
@@ -233,6 +271,8 @@ class DosageDoseAndRate(element.Element):
         alias="rateQuantity",
         title="Amount of medication per unit of time",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e rate[x]
         one_of_many="rate",
         one_of_many_required=False,
@@ -243,6 +283,8 @@ class DosageDoseAndRate(element.Element):
         alias="rateRange",
         title="Amount of medication per unit of time",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e rate[x]
         one_of_many="rate",
         one_of_many_required=False,
@@ -253,6 +295,8 @@ class DosageDoseAndRate(element.Element):
         alias="rateRatio",
         title="Amount of medication per unit of time",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e rate[x]
         one_of_many="rate",
         one_of_many_required=False,
@@ -265,6 +309,8 @@ class DosageDoseAndRate(element.Element):
         description=(
             "The kind of dose or rate specified, for example, ordered or " "calculated."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)

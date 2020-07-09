@@ -36,6 +36,8 @@ class Condition(domainresource.DomainResource):
             'connotations associated with "remission" or "resolution" - Conditions '
             "are never really resolved, but they can abate."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e abatement[x]
         one_of_many="abatement",
         one_of_many_required=False,
@@ -51,6 +53,8 @@ class Condition(domainresource.DomainResource):
             'connotations associated with "remission" or "resolution" - Conditions '
             "are never really resolved, but they can abate."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e abatement[x]
         one_of_many="abatement",
         one_of_many_required=False,
@@ -71,6 +75,8 @@ class Condition(domainresource.DomainResource):
             'connotations associated with "remission" or "resolution" - Conditions '
             "are never really resolved, but they can abate."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e abatement[x]
         one_of_many="abatement",
         one_of_many_required=False,
@@ -91,6 +97,8 @@ class Condition(domainresource.DomainResource):
             'connotations associated with "remission" or "resolution" - Conditions '
             "are never really resolved, but they can abate."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e abatement[x]
         one_of_many="abatement",
         one_of_many_required=False,
@@ -106,6 +114,8 @@ class Condition(domainresource.DomainResource):
             'connotations associated with "remission" or "resolution" - Conditions '
             "are never really resolved, but they can abate."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e abatement[x]
         one_of_many="abatement",
         one_of_many_required=False,
@@ -121,6 +131,8 @@ class Condition(domainresource.DomainResource):
             'connotations associated with "remission" or "resolution" - Conditions '
             "are never really resolved, but they can abate."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e abatement[x]
         one_of_many="abatement",
         one_of_many_required=False,
@@ -137,6 +149,8 @@ class Condition(domainresource.DomainResource):
             "The date on which the existance of the Condition was first asserted or"
             " acknowledged."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     assertedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_assertedDate", title="Extension field for ``assertedDate``."
@@ -147,6 +161,8 @@ class Condition(domainresource.DomainResource):
         alias="asserter",
         title="Person who asserts this condition",
         description="Individual who is making the condition statement.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "Patient", "RelatedPerson"],
     )
@@ -156,6 +172,8 @@ class Condition(domainresource.DomainResource):
         alias="bodySite",
         title="Anatomical location, if relevant",
         description="The anatomical location where this condition manifests itself.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     category: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -163,6 +181,8 @@ class Condition(domainresource.DomainResource):
         alias="category",
         title="problem-list-item | encounter-diagnosis",
         description="A category assigned to the condition.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     clinicalStatus: fhirtypes.Code = Field(
@@ -170,6 +190,8 @@ class Condition(domainresource.DomainResource):
         alias="clinicalStatus",
         title="active | recurrence | inactive | remission | resolved",
         description="The clinical status of the condition.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "recurrence", "inactive", "remission", "resolved"],
@@ -183,6 +205,8 @@ class Condition(domainresource.DomainResource):
         alias="code",
         title="Identification of the condition, problem or diagnosis",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     context: fhirtypes.ReferenceType = Field(
@@ -190,6 +214,8 @@ class Condition(domainresource.DomainResource):
         alias="context",
         title="Encounter or episode when condition first asserted",
         description="Encounter during which the condition was first asserted.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter", "EpisodeOfCare"],
     )
@@ -202,6 +228,8 @@ class Condition(domainresource.DomainResource):
             "Supporting Evidence / manifestations that are the basis on which this "
             "condition is suspected or confirmed."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -214,6 +242,8 @@ class Condition(domainresource.DomainResource):
             " URL reference to the resource itself is not appropriate (e.g. in CDA "
             "documents, or in written / printed documentation)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
@@ -225,6 +255,8 @@ class Condition(domainresource.DomainResource):
             "notes/comments entry  for description of the Condition, its diagnosis "
             "and prognosis."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     onsetAge: fhirtypes.AgeType = Field(
@@ -235,6 +267,8 @@ class Condition(domainresource.DomainResource):
             "Estimated or actual date or date-time  the condition began, in the "
             "opinion of the clinician."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e onset[x]
         one_of_many="onset",
         one_of_many_required=False,
@@ -248,6 +282,8 @@ class Condition(domainresource.DomainResource):
             "Estimated or actual date or date-time  the condition began, in the "
             "opinion of the clinician."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e onset[x]
         one_of_many="onset",
         one_of_many_required=False,
@@ -264,6 +300,8 @@ class Condition(domainresource.DomainResource):
             "Estimated or actual date or date-time  the condition began, in the "
             "opinion of the clinician."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e onset[x]
         one_of_many="onset",
         one_of_many_required=False,
@@ -277,6 +315,8 @@ class Condition(domainresource.DomainResource):
             "Estimated or actual date or date-time  the condition began, in the "
             "opinion of the clinician."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e onset[x]
         one_of_many="onset",
         one_of_many_required=False,
@@ -290,6 +330,8 @@ class Condition(domainresource.DomainResource):
             "Estimated or actual date or date-time  the condition began, in the "
             "opinion of the clinician."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e onset[x]
         one_of_many="onset",
         one_of_many_required=False,
@@ -306,6 +348,8 @@ class Condition(domainresource.DomainResource):
             "A subjective assessment of the severity of the condition as evaluated "
             "by the clinician."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     stage: fhirtypes.ConditionStageType = Field(
@@ -316,6 +360,8 @@ class Condition(domainresource.DomainResource):
             "Clinical stage or grade of a condition. May include formal severity "
             "assessments."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -326,6 +372,8 @@ class Condition(domainresource.DomainResource):
             "Indicates the patient or group who the condition record is associated "
             "with."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
     )
@@ -341,6 +389,8 @@ class Condition(domainresource.DomainResource):
             "The verification status to support the clinical status of the "
             "condition."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -430,6 +480,8 @@ class ConditionEvidence(backboneelement.BackboneElement):
         description=(
             "A manifestation or symptom that led to the recording of this " "condition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     detail: ListType[fhirtypes.ReferenceType] = Field(
@@ -437,6 +489,8 @@ class ConditionEvidence(backboneelement.BackboneElement):
         alias="detail",
         title="Supporting information found elsewhere",
         description="Links to other relevant information, including pathology reports.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -462,6 +516,8 @@ class ConditionStage(backboneelement.BackboneElement):
             "Reference to a formal record of the evidence on which the staging "
             "assessment is based."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ClinicalImpression", "DiagnosticReport", "Observation"],
     )
@@ -474,4 +530,6 @@ class ConditionStage(backboneelement.BackboneElement):
             'A simple summary of the stage such as "Stage 3". The determination of '
             "the stage is disease-specific."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )

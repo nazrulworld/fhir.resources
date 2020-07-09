@@ -25,19 +25,39 @@ class SubstancePolymer(domainresource.DomainResource):
     resource_type = Field("SubstancePolymer", const=True)
 
     class_fhir: fhirtypes.CodeableConceptType = Field(
-        None, alias="class", title="Todo", description=None,
+        None,
+        alias="class",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     copolymerConnectivity: ListType[fhirtypes.CodeableConceptType] = Field(
-        None, alias="copolymerConnectivity", title="Todo", description=None,
+        None,
+        alias="copolymerConnectivity",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     geometry: fhirtypes.CodeableConceptType = Field(
-        None, alias="geometry", title="Todo", description=None,
+        None,
+        alias="geometry",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     modification: ListType[fhirtypes.String] = Field(
-        None, alias="modification", title="Todo", description=None,
+        None,
+        alias="modification",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     modification__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -46,11 +66,21 @@ class SubstancePolymer(domainresource.DomainResource):
     )
 
     monomerSet: ListType[fhirtypes.SubstancePolymerMonomerSetType] = Field(
-        None, alias="monomerSet", title="Todo", description=None,
+        None,
+        alias="monomerSet",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     repeat: ListType[fhirtypes.SubstancePolymerRepeatType] = Field(
-        None, alias="repeat", title="Todo", description=None,
+        None,
+        alias="repeat",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -65,13 +95,23 @@ class SubstancePolymerMonomerSet(backboneelement.BackboneElement):
     resource_type = Field("SubstancePolymerMonomerSet", const=True)
 
     ratioType: fhirtypes.CodeableConceptType = Field(
-        None, alias="ratioType", title="Todo", description=None,
+        None,
+        alias="ratioType",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     startingMaterial: ListType[
         fhirtypes.SubstancePolymerMonomerSetStartingMaterialType
     ] = Field(
-        None, alias="startingMaterial", title="Todo", description=None,
+        None,
+        alias="startingMaterial",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -86,22 +126,42 @@ class SubstancePolymerMonomerSetStartingMaterial(backboneelement.BackboneElement
     resource_type = Field("SubstancePolymerMonomerSetStartingMaterial", const=True)
 
     amount: fhirtypes.SubstanceAmountType = Field(
-        None, alias="amount", title="Todo", description=None,
+        None,
+        alias="amount",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     isDefining: bool = Field(
-        None, alias="isDefining", title="Todo", description=None,
+        None,
+        alias="isDefining",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     isDefining__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_isDefining", title="Extension field for ``isDefining``."
     )
 
     material: fhirtypes.CodeableConceptType = Field(
-        None, alias="material", title="Todo", description=None,
+        None,
+        alias="material",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
-        None, alias="type", title="Todo", description=None,
+        None,
+        alias="type",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -116,7 +176,12 @@ class SubstancePolymerRepeat(backboneelement.BackboneElement):
     resource_type = Field("SubstancePolymerRepeat", const=True)
 
     averageMolecularFormula: fhirtypes.String = Field(
-        None, alias="averageMolecularFormula", title="Todo", description=None,
+        None,
+        alias="averageMolecularFormula",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     averageMolecularFormula__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -125,18 +190,33 @@ class SubstancePolymerRepeat(backboneelement.BackboneElement):
     )
 
     numberOfUnits: fhirtypes.Integer = Field(
-        None, alias="numberOfUnits", title="Todo", description=None,
+        None,
+        alias="numberOfUnits",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     numberOfUnits__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_numberOfUnits", title="Extension field for ``numberOfUnits``."
     )
 
     repeatUnit: ListType[fhirtypes.SubstancePolymerRepeatRepeatUnitType] = Field(
-        None, alias="repeatUnit", title="Todo", description=None,
+        None,
+        alias="repeatUnit",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     repeatUnitAmountType: fhirtypes.CodeableConceptType = Field(
-        None, alias="repeatUnitAmountType", title="Todo", description=None,
+        None,
+        alias="repeatUnitAmountType",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -151,21 +231,41 @@ class SubstancePolymerRepeatRepeatUnit(backboneelement.BackboneElement):
     resource_type = Field("SubstancePolymerRepeatRepeatUnit", const=True)
 
     amount: fhirtypes.SubstanceAmountType = Field(
-        None, alias="amount", title="Todo", description=None,
+        None,
+        alias="amount",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     degreeOfPolymerisation: ListType[
         fhirtypes.SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisationType
     ] = Field(
-        None, alias="degreeOfPolymerisation", title="Todo", description=None,
+        None,
+        alias="degreeOfPolymerisation",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     orientationOfPolymerisation: fhirtypes.CodeableConceptType = Field(
-        None, alias="orientationOfPolymerisation", title="Todo", description=None,
+        None,
+        alias="orientationOfPolymerisation",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     repeatUnit: fhirtypes.String = Field(
-        None, alias="repeatUnit", title="Todo", description=None,
+        None,
+        alias="repeatUnit",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     repeatUnit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_repeatUnit", title="Extension field for ``repeatUnit``."
@@ -174,7 +274,12 @@ class SubstancePolymerRepeatRepeatUnit(backboneelement.BackboneElement):
     structuralRepresentation: ListType[
         fhirtypes.SubstancePolymerRepeatRepeatUnitStructuralRepresentationType
     ] = Field(
-        None, alias="structuralRepresentation", title="Todo", description=None,
+        None,
+        alias="structuralRepresentation",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -193,11 +298,21 @@ class SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation(
     )
 
     amount: fhirtypes.SubstanceAmountType = Field(
-        None, alias="amount", title="Todo", description=None,
+        None,
+        alias="amount",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     degree: fhirtypes.CodeableConceptType = Field(
-        None, alias="degree", title="Todo", description=None,
+        None,
+        alias="degree",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -216,16 +331,31 @@ class SubstancePolymerRepeatRepeatUnitStructuralRepresentation(
     )
 
     attachment: fhirtypes.AttachmentType = Field(
-        None, alias="attachment", title="Todo", description=None,
+        None,
+        alias="attachment",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     representation: fhirtypes.String = Field(
-        None, alias="representation", title="Todo", description=None,
+        None,
+        alias="representation",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     representation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_representation", title="Extension field for ``representation``."
     )
 
     type: fhirtypes.CodeableConceptType = Field(
-        None, alias="type", title="Todo", description=None,
+        None,
+        alias="type",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )

@@ -33,6 +33,8 @@ class ParameterDefinition(element.Element):
             "A brief discussion of what the parameter is for and how it is used by "
             "the module."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_documentation", title="Extension field for ``documentation``."
@@ -46,6 +48,8 @@ class ParameterDefinition(element.Element):
             "The maximum number of times this element is permitted to appear in the"
             " request or response."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     max__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_max", title="Extension field for ``max``."
@@ -59,6 +63,8 @@ class ParameterDefinition(element.Element):
             "The minimum number of times this parameter SHALL appear in the request"
             " or response."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     min__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_min", title="Extension field for ``min``."
@@ -72,6 +78,8 @@ class ParameterDefinition(element.Element):
             "The name of the parameter used to allow access to the value of the "
             "parameter in evaluation contexts."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -85,6 +93,8 @@ class ParameterDefinition(element.Element):
             "If specified, this indicates a profile that the input data must "
             "conform to, or that the output data will conform to."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
     )
@@ -94,6 +104,8 @@ class ParameterDefinition(element.Element):
         alias="type",
         title="What type of value",
         description="The type of the parameter.",
+        # if property is element of this resource.
+        element_property=True,
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -104,6 +116,8 @@ class ParameterDefinition(element.Element):
         alias="use",
         title="in | out",
         description="Whether the parameter is input or output for the module.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["in", "out"],

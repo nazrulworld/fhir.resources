@@ -29,6 +29,8 @@ class OrganizationAffiliation(domainresource.DomainResource):
         alias="active",
         title="Whether this organization affiliation record is in active use",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_active", title="Extension field for ``active``."
@@ -42,6 +44,8 @@ class OrganizationAffiliation(domainresource.DomainResource):
             "Definition of the role the participatingOrganization plays in the "
             "association."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     endpoint: ListType[fhirtypes.ReferenceType] = Field(
@@ -51,6 +55,8 @@ class OrganizationAffiliation(domainresource.DomainResource):
             "Technical endpoints providing access to services operated for this " "role"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Endpoint"],
     )
@@ -60,6 +66,8 @@ class OrganizationAffiliation(domainresource.DomainResource):
         alias="healthcareService",
         title="Healthcare services provided through the role",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["HealthcareService"],
     )
@@ -69,6 +77,8 @@ class OrganizationAffiliation(domainresource.DomainResource):
         alias="identifier",
         title="Business identifiers that are specific to this role",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     location: ListType[fhirtypes.ReferenceType] = Field(
@@ -76,6 +86,8 @@ class OrganizationAffiliation(domainresource.DomainResource):
         alias="location",
         title="The location(s) at which the role occurs",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
     )
@@ -89,6 +101,8 @@ class OrganizationAffiliation(domainresource.DomainResource):
             " the indicated locations (if defined)"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -101,6 +115,8 @@ class OrganizationAffiliation(domainresource.DomainResource):
             "Organization where the role is available (primary organization/has "
             "members)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -117,6 +133,8 @@ class OrganizationAffiliation(domainresource.DomainResource):
             "by the code to the Primary Organization (e.g. providing services or is"
             " a member of)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -129,6 +147,8 @@ class OrganizationAffiliation(domainresource.DomainResource):
             "with the primary organization"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     specialty: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -139,6 +159,8 @@ class OrganizationAffiliation(domainresource.DomainResource):
             "the role"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     telecom: ListType[fhirtypes.ContactPointType] = Field(
@@ -149,4 +171,6 @@ class OrganizationAffiliation(domainresource.DomainResource):
             "Affiliation"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )

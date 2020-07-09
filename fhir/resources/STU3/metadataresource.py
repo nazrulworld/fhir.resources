@@ -33,6 +33,8 @@ class MetadataResource(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     date: fhirtypes.DateTime = Field(
@@ -46,6 +48,8 @@ class MetadataResource(domainresource.DomainResource):
             " should change when the substantive content of the metadata resource "
             "changes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -59,6 +63,8 @@ class MetadataResource(domainresource.DomainResource):
             "A free text natural language description of the metadata resource from"
             " a consumer's perspective."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -73,6 +79,8 @@ class MetadataResource(domainresource.DomainResource):
             "for testing purposes (or education/evaluation/marketing), and is not "
             "intended to be used for genuine usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -86,6 +94,8 @@ class MetadataResource(domainresource.DomainResource):
             "A legal or geographic region in which the metadata resource is "
             "intended to be used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     name: fhirtypes.String = Field(
@@ -97,6 +107,8 @@ class MetadataResource(domainresource.DomainResource):
             "should be usable as an identifier for the module by machine processing"
             " applications such as code generation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -110,6 +122,8 @@ class MetadataResource(domainresource.DomainResource):
             "The name of the individual or organization that published the metadata"
             " resource."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -123,6 +137,8 @@ class MetadataResource(domainresource.DomainResource):
             "The status of this metadata resource. Enables tracking the life-cycle "
             "of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -136,6 +152,8 @@ class MetadataResource(domainresource.DomainResource):
         alias="title",
         title="Name for this metadata resource (human friendly)",
         description="A short, descriptive, user-friendly title for the metadata resource.",
+        # if property is element of this resource.
+        element_property=True,
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -154,6 +172,8 @@ class MetadataResource(domainresource.DomainResource):
             "more information see [Technical and Business "
             "Versions](resource.html#versions)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -168,6 +188,8 @@ class MetadataResource(domainresource.DomainResource):
             "contexts that are listed. These terms may be used to assist with "
             "indexing and searching for appropriate metadata resource instances."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     version: fhirtypes.String = Field(
@@ -183,6 +205,8 @@ class MetadataResource(domainresource.DomainResource):
             "available. There is also no expectation that versions can be placed in"
             " a lexicographical sequence."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."

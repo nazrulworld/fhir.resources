@@ -35,6 +35,8 @@ class AuditEvent(domainresource.DomainResource):
             "Indicator for type of action performed during the event that generated"
             " the audit."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     action__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_action", title="Extension field for ``action``."
@@ -47,6 +49,8 @@ class AuditEvent(domainresource.DomainResource):
         description=(
             "An actor taking an active role in the event or activity that is " "logged."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     entity: ListType[fhirtypes.AuditEventEntityType] = Field(
@@ -54,6 +58,8 @@ class AuditEvent(domainresource.DomainResource):
         alias="entity",
         title="Data or objects used",
         description="Specific instances of data or objects that have been accessed.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     outcome: fhirtypes.Code = Field(
@@ -61,6 +67,8 @@ class AuditEvent(domainresource.DomainResource):
         alias="outcome",
         title="Whether the event succeeded or failed",
         description="Indicates whether the event succeeded or failed.",
+        # if property is element of this resource.
+        element_property=True,
     )
     outcome__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_outcome", title="Extension field for ``outcome``."
@@ -71,6 +79,8 @@ class AuditEvent(domainresource.DomainResource):
         alias="outcomeDesc",
         title="Description of the event outcome",
         description="A free text description of the outcome of the event.",
+        # if property is element of this resource.
+        element_property=True,
     )
     outcomeDesc__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_outcomeDesc", title="Extension field for ``outcomeDesc``."
@@ -84,6 +94,8 @@ class AuditEvent(domainresource.DomainResource):
             "The purposeOfUse (reason) that was used during the event being "
             "recorded."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     recorded: fhirtypes.Instant = Field(
@@ -91,6 +103,8 @@ class AuditEvent(domainresource.DomainResource):
         alias="recorded",
         title="Time when the event occurred on source",
         description="The time when the event occurred on the source.",
+        # if property is element of this resource.
+        element_property=True,
     )
     recorded__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_recorded", title="Extension field for ``recorded``."
@@ -101,6 +115,8 @@ class AuditEvent(domainresource.DomainResource):
         alias="source",
         title="Audit Event Reporter",
         description="The system that is reporting the event.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     subtype: ListType[fhirtypes.CodingType] = Field(
@@ -108,6 +124,8 @@ class AuditEvent(domainresource.DomainResource):
         alias="subtype",
         title="More specific type/id for the event",
         description="Identifier for the category of event.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodingType = Field(
@@ -119,6 +137,8 @@ class AuditEvent(domainresource.DomainResource):
             "program, rule, policy, function code, application name or URL. It "
             "identifies the performed function."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -143,6 +163,8 @@ class AuditEventAgent(backboneelement.BackboneElement):
             "would be one known to a common authentication system (e.g. single "
             "sign-on), if available."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     altId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_altId", title="Extension field for ``altId``."
@@ -153,6 +175,8 @@ class AuditEventAgent(backboneelement.BackboneElement):
         alias="location",
         title="Where",
         description="Where the event occurred.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
     )
@@ -165,6 +189,8 @@ class AuditEventAgent(backboneelement.BackboneElement):
             "Type of media involved. Used when the event is about "
             "exporting/importing onto media."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     name: fhirtypes.String = Field(
@@ -172,6 +198,8 @@ class AuditEventAgent(backboneelement.BackboneElement):
         alias="name",
         title="Human-meaningful name for the agent",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -185,6 +213,8 @@ class AuditEventAgent(backboneelement.BackboneElement):
             "Logical network location for application activity, if the activity has"
             " a network location."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     policy: ListType[fhirtypes.Uri] = Field(
@@ -197,6 +227,8 @@ class AuditEventAgent(backboneelement.BackboneElement):
             "such as patient consent, guarantor funding, etc. The policy would also"
             " indicate the security token used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     policy__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_policy", title="Extension field for ``policy``."
@@ -210,6 +242,8 @@ class AuditEventAgent(backboneelement.BackboneElement):
             "The reason (purpose of use), specific to this agent, that was used "
             "during the event being recorded."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reference: fhirtypes.ReferenceType = Field(
@@ -217,6 +251,8 @@ class AuditEventAgent(backboneelement.BackboneElement):
         alias="reference",
         title="Direct reference to resource",
         description="Direct reference to a resource that identifies the agent.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Practitioner",
@@ -235,6 +271,8 @@ class AuditEventAgent(backboneelement.BackboneElement):
             "Indicator that the user is or is not the requestor, or initiator, for "
             "the event being audited."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     requestor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_requestor", title="Extension field for ``requestor``."
@@ -249,6 +287,8 @@ class AuditEventAgent(backboneelement.BackboneElement):
             " codes defined by the access control security system (e.g. RBAC, ABAC)"
             " used in the local context."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     userId: fhirtypes.IdentifierType = Field(
@@ -256,6 +296,8 @@ class AuditEventAgent(backboneelement.BackboneElement):
         alias="userId",
         title="Unique identifier for the user",
         description="Unique identifier for the user actively participating in the event.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -279,6 +321,8 @@ class AuditEventAgentNetwork(backboneelement.BackboneElement):
             "An identifier for the network access point of the user device for the "
             "audit event."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     address__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_address", title="Extension field for ``address``."
@@ -292,6 +336,8 @@ class AuditEventAgentNetwork(backboneelement.BackboneElement):
             "An identifier for the type of network access point that originated the"
             " audit event."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -314,6 +360,8 @@ class AuditEventEntity(backboneelement.BackboneElement):
         alias="description",
         title="Descriptive text",
         description="Text that describes the entity in more detail.",
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -327,6 +375,8 @@ class AuditEventEntity(backboneelement.BackboneElement):
             "Tagged value pairs for conveying additional information about the "
             "entity."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: fhirtypes.IdentifierType = Field(
@@ -337,6 +387,8 @@ class AuditEventEntity(backboneelement.BackboneElement):
             "Identifies a specific instance of the entity. The reference should "
             "always be version specific."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     lifecycle: fhirtypes.CodingType = Field(
@@ -344,6 +396,8 @@ class AuditEventEntity(backboneelement.BackboneElement):
         alias="lifecycle",
         title="Life-cycle stage for the entity",
         description="Identifier for the data life-cycle stage for the entity.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     name: fhirtypes.String = Field(
@@ -351,6 +405,8 @@ class AuditEventEntity(backboneelement.BackboneElement):
         alias="name",
         title="Descriptor for entity",
         description="A name of the entity in the audit event.",
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -361,6 +417,8 @@ class AuditEventEntity(backboneelement.BackboneElement):
         alias="query",
         title="Query parameters",
         description="The query parameters for a query-type entities.",
+        # if property is element of this resource.
+        element_property=True,
     )
     query__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_query", title="Extension field for ``query``."
@@ -374,6 +432,8 @@ class AuditEventEntity(backboneelement.BackboneElement):
             "Identifies a specific instance of the entity. The reference should be "
             "version specific."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -386,6 +446,8 @@ class AuditEventEntity(backboneelement.BackboneElement):
             "Code representing the role the entity played in the event being "
             "audited."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     securityLabel: ListType[fhirtypes.CodingType] = Field(
@@ -393,6 +455,8 @@ class AuditEventEntity(backboneelement.BackboneElement):
         alias="securityLabel",
         title="Security labels on the entity",
         description="Security labels for the identified entity.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodingType = Field(
@@ -400,6 +464,8 @@ class AuditEventEntity(backboneelement.BackboneElement):
         alias="type",
         title="Type of entity involved",
         description="The type of the object that was involved in this audit event.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -419,6 +485,8 @@ class AuditEventEntityDetail(backboneelement.BackboneElement):
         alias="type",
         title="Name of the property",
         description="The type of extra detail provided in the value.",
+        # if property is element of this resource.
+        element_property=True,
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -429,6 +497,8 @@ class AuditEventEntityDetail(backboneelement.BackboneElement):
         alias="value",
         title="Property value",
         description="The details, base64 encoded. Used to carry bulk information.",
+        # if property is element of this resource.
+        element_property=True,
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."
@@ -451,6 +521,8 @@ class AuditEventSource(backboneelement.BackboneElement):
         alias="identifier",
         title="The identity of source detecting the event",
         description="Identifier of the source where the event was detected.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     site: fhirtypes.String = Field(
@@ -462,6 +534,8 @@ class AuditEventSource(backboneelement.BackboneElement):
             " example, a hospital or other provider location within a multi-entity "
             "provider group."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     site__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_site", title="Extension field for ``site``."
@@ -472,4 +546,6 @@ class AuditEventSource(backboneelement.BackboneElement):
         alias="type",
         title="The type of source where event originated",
         description="Code specifying the type of source where event originated.",
+        # if property is element of this resource.
+        element_property=True,
     )

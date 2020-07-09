@@ -37,6 +37,8 @@ class Library(domainresource.DomainResource):
             "Approval happens once when the content is officially approved for "
             "usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_approvalDate", title="Extension field for ``approvalDate``."
@@ -50,6 +52,8 @@ class Library(domainresource.DomainResource):
             "An individiual or organization primarily involved in the creation and "
             "maintenance of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     contact: ListType[fhirtypes.ContactDetailType] = Field(
@@ -60,6 +64,8 @@ class Library(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     content: ListType[fhirtypes.AttachmentType] = Field(
@@ -72,6 +78,8 @@ class Library(domainresource.DomainResource):
             "Either way, the contentType of the attachment determines how to "
             "interpret the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     copyright: fhirtypes.Markdown = Field(
@@ -83,6 +91,8 @@ class Library(domainresource.DomainResource):
             "Copyright statements are generally legal restrictions on the use and "
             "publishing of the library."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
@@ -96,6 +106,8 @@ class Library(domainresource.DomainResource):
             "Describes a set of data that must be provided in order to be able to "
             "successfully perform the computations defined by the library."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     date: fhirtypes.DateTime = Field(
@@ -108,6 +120,8 @@ class Library(domainresource.DomainResource):
             "if the status code changes. In addition, it should change when the "
             "substantive content of the library changes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -121,6 +135,8 @@ class Library(domainresource.DomainResource):
             "A free text natural language description of the library from a "
             "consumer's perspective."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -134,6 +150,8 @@ class Library(domainresource.DomainResource):
             "An individual or organization primarily responsible for internal "
             "coherence of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     effectivePeriod: fhirtypes.PeriodType = Field(
@@ -144,6 +162,8 @@ class Library(domainresource.DomainResource):
             "The period during which the library content was or is planned to be in"
             " active use."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     endorser: ListType[fhirtypes.ContactDetailType] = Field(
@@ -154,6 +174,8 @@ class Library(domainresource.DomainResource):
             "An individual or organization responsible for officially endorsing the"
             " content for use in some setting."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     experimental: bool = Field(
@@ -165,6 +187,8 @@ class Library(domainresource.DomainResource):
             "purposes (or education/evaluation/marketing) and is not intended to be"
             " used for genuine usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -181,6 +205,8 @@ class Library(domainresource.DomainResource):
             "artifact. Note that at least one identifier is required for non-"
             "experimental active artifacts."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -191,6 +217,8 @@ class Library(domainresource.DomainResource):
             "A legal or geographic region in which the library is intended to be "
             "used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     lastReviewDate: fhirtypes.Date = Field(
@@ -202,6 +230,8 @@ class Library(domainresource.DomainResource):
             "happens periodically after approval but does not change the original "
             "approval date."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
@@ -216,6 +246,8 @@ class Library(domainresource.DomainResource):
             "usable as an identifier for the module by machine processing "
             "applications such as code generation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -226,6 +258,8 @@ class Library(domainresource.DomainResource):
         alias="parameter",
         title="Parameters defined by the library",
         description="The parameter element defines parameters used by the library.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     publisher: fhirtypes.String = Field(
@@ -233,6 +267,8 @@ class Library(domainresource.DomainResource):
         alias="publisher",
         title="Name of the publisher (organization or individual)",
         description="The name of the organization or individual that published the library.",
+        # if property is element of this resource.
+        element_property=True,
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -246,6 +282,8 @@ class Library(domainresource.DomainResource):
             "Explanation of why this library is needed and why it has been designed"
             " as it has."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_purpose", title="Extension field for ``purpose``."
@@ -259,6 +297,8 @@ class Library(domainresource.DomainResource):
             "Related artifacts such as additional documentation, justification, or "
             "bibliographic references."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reviewer: ListType[fhirtypes.ContactDetailType] = Field(
@@ -269,6 +309,8 @@ class Library(domainresource.DomainResource):
             "An individual or organization primarily responsible for review of some"
             " aspect of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     status: fhirtypes.Code = Field(
@@ -279,6 +321,8 @@ class Library(domainresource.DomainResource):
             "The status of this library. Enables tracking the life-cycle of the "
             "content."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -295,6 +339,8 @@ class Library(domainresource.DomainResource):
             "A code or group definition that describes the intended subject of the "
             "contents of the library."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e subject[x]
         one_of_many="subject",
         one_of_many_required=False,
@@ -308,6 +354,8 @@ class Library(domainresource.DomainResource):
             "A code or group definition that describes the intended subject of the "
             "contents of the library."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e subject[x]
         one_of_many="subject",
         one_of_many_required=False,
@@ -323,6 +371,8 @@ class Library(domainresource.DomainResource):
             "An explanatory or alternate title for the library giving additional "
             "information about its content."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     subtitle__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_subtitle", title="Extension field for ``subtitle``."
@@ -333,6 +383,8 @@ class Library(domainresource.DomainResource):
         alias="title",
         title="Name for this library (human friendly)",
         description="A short, descriptive, user-friendly title for the library.",
+        # if property is element of this resource.
+        element_property=True,
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -347,6 +399,8 @@ class Library(domainresource.DomainResource):
             "provide a high-level categorization of the library that can be useful "
             "for filtering and searching."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -359,6 +413,8 @@ class Library(domainresource.DomainResource):
             "Identifies the type of library such as a Logic Library, Model "
             "Definition, Asset Collection, or Module Definition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     url: fhirtypes.Uri = Field(
@@ -377,6 +433,8 @@ class Library(domainresource.DomainResource):
             "the target of a canonical reference. It SHALL remain the same when the"
             " library is stored on different servers."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -390,6 +448,8 @@ class Library(domainresource.DomainResource):
             "A detailed description of how the library is used from a clinical "
             "perspective."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     usage__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_usage", title="Extension field for ``usage``."
@@ -406,6 +466,8 @@ class Library(domainresource.DomainResource):
             "(insurance plans, studies, ...) and may be used to assist with "
             "indexing and searching for appropriate library instances."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     version: fhirtypes.String = Field(
@@ -425,6 +487,8 @@ class Library(domainresource.DomainResource):
             "the Decision Support Service specification. Note that a version is "
             "required for non-experimental active artifacts."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."

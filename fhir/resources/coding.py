@@ -30,6 +30,8 @@ class Coding(element.Element):
             "predefined code or an expression in a syntax defined by the coding "
             "system (e.g. post-coordination)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -43,6 +45,8 @@ class Coding(element.Element):
             "A representation of the meaning of the code in the system, following "
             "the rules of the system."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_display", title="Extension field for ``display``."
@@ -56,6 +60,8 @@ class Coding(element.Element):
             "The identification of the code system that defines the meaning of the "
             "symbol in the code."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_system", title="Extension field for ``system``."
@@ -69,6 +75,8 @@ class Coding(element.Element):
             "Indicates that this coding was chosen by a user directly - e.g. off a "
             "pick list of available items (codes or displays)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     userSelected__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_userSelected", title="Extension field for ``userSelected``."
@@ -85,6 +93,8 @@ class Coding(element.Element):
             "However this cannot consistently be assured, and when the meaning is "
             "not guaranteed to be consistent, the version SHOULD be exchanged."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."

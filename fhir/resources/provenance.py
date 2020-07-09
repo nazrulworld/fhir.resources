@@ -44,6 +44,8 @@ class Provenance(domainresource.DomainResource):
             "upon or with entities; it may include consuming, processing, "
             "transforming, modifying, relocating, using, or generating entities."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     agent: ListType[fhirtypes.ProvenanceAgentType] = Field(
@@ -54,10 +56,17 @@ class Provenance(domainresource.DomainResource):
             "An actor taking a role in an activity  for which it can be assigned "
             "some degree of responsibility for the activity taking place."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     entity: ListType[fhirtypes.ProvenanceEntityType] = Field(
-        None, alias="entity", title="An entity used in this activity", description=None,
+        None,
+        alias="entity",
+        title="An entity used in this activity",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     location: fhirtypes.ReferenceType = Field(
@@ -65,6 +74,8 @@ class Provenance(domainresource.DomainResource):
         alias="location",
         title="Where the activity occurred, if relevant",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
     )
@@ -74,6 +85,8 @@ class Provenance(domainresource.DomainResource):
         alias="occurredDateTime",
         title="When the activity occurred",
         description="The period during which the activity occurred.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e occurred[x]
         one_of_many="occurred",
         one_of_many_required=False,
@@ -89,6 +102,8 @@ class Provenance(domainresource.DomainResource):
         alias="occurredPeriod",
         title="When the activity occurred",
         description="The period during which the activity occurred.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e occurred[x]
         one_of_many="occurred",
         one_of_many_required=False,
@@ -103,6 +118,8 @@ class Provenance(domainresource.DomainResource):
             "activity may have multiple applicable policy documents, such as "
             "patient consent, guarantor funding, etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     policy__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_policy", title="Extension field for ``policy``."
@@ -113,6 +130,8 @@ class Provenance(domainresource.DomainResource):
         alias="reason",
         title="Reason the activity is occurring",
         description="The reason that the activity was taking place.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     recorded: fhirtypes.Instant = Field(
@@ -120,6 +139,8 @@ class Provenance(domainresource.DomainResource):
         alias="recorded",
         title="When the activity was recorded / updated",
         description="The instant of time at which the activity was recorded.",
+        # if property is element of this resource.
+        element_property=True,
     )
     recorded__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_recorded", title="Extension field for ``recorded``."
@@ -133,6 +154,8 @@ class Provenance(domainresource.DomainResource):
             "A digital signature on the target Reference(s). The signer should "
             "match a Provenance.agent. The purpose of the signature is indicated."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     target: ListType[fhirtypes.ReferenceType] = Field(
@@ -145,6 +168,8 @@ class Provenance(domainresource.DomainResource):
             "target if multiple resources were created/updated by the same "
             "activity."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -203,6 +228,8 @@ class ProvenanceAgent(backboneelement.BackboneElement):
         alias="onBehalfOf",
         title="Who the agent is representing",
         description="The individual, device, or organization for whom the change was made.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Practitioner",
@@ -222,6 +249,8 @@ class ProvenanceAgent(backboneelement.BackboneElement):
             "The function of the agent with respect to the activity. The security "
             "role enabling the agent with respect to the activity."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -229,6 +258,8 @@ class ProvenanceAgent(backboneelement.BackboneElement):
         alias="type",
         title="How the agent participated",
         description="The participation the agent had with respect to the activity.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     who: fhirtypes.ReferenceType = Field(
@@ -236,6 +267,8 @@ class ProvenanceAgent(backboneelement.BackboneElement):
         alias="who",
         title="Who participated",
         description="The individual, device or organization that participated in the event.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Practitioner",
@@ -268,6 +301,8 @@ class ProvenanceEntity(backboneelement.BackboneElement):
             " description can be understood as shorthand for saying that the agent "
             "was responsible for the activity which generated the entity."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     role: fhirtypes.Code = Field(
@@ -275,6 +310,8 @@ class ProvenanceEntity(backboneelement.BackboneElement):
         alias="role",
         title="derivation | revision | quotation | source | removal",
         description="How the entity was used during the activity.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["derivation", "revision", "quotation", "source", "removal"],
@@ -291,6 +328,8 @@ class ProvenanceEntity(backboneelement.BackboneElement):
             "Identity of the  Entity used. May be a logical or physical uri and "
             "maybe absolute or relative."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )

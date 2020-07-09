@@ -29,6 +29,8 @@ class Task(domainresource.DomainResource):
         alias="authoredOn",
         title="Task Creation Date",
         description="The date and time this task was created.",
+        # if property is element of this resource.
+        element_property=True,
     )
     authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_authoredOn", title="Extension field for ``authoredOn``."
@@ -47,6 +49,8 @@ class Task(domainresource.DomainResource):
             " based on a ServiceRequest (= BasedOn), a task is created to fulfill a"
             " procedureRequest ( = FocusOn ) to collect a specimen from a patient."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -56,6 +60,8 @@ class Task(domainresource.DomainResource):
         alias="businessStatus",
         title='E.g. "Specimen collected", "IV prepped"',
         description="Contains business-specific nuances of the business state.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -63,6 +69,8 @@ class Task(domainresource.DomainResource):
         alias="code",
         title="Task Type",
         description="A name or code (or both) briefly describing what the task involves.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     description: fhirtypes.String = Field(
@@ -70,6 +78,8 @@ class Task(domainresource.DomainResource):
         alias="description",
         title="Human-readable explanation of task",
         description="A free-text description of what is to be performed.",
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -83,6 +93,8 @@ class Task(domainresource.DomainResource):
             "The healthcare event  (e.g. a patient and healthcare provider "
             "interaction) during which this task was created."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
     )
@@ -96,6 +108,8 @@ class Task(domainresource.DomainResource):
             "and/or the time final action was taken against the task prior to "
             "marking it as completed (end)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     focus: fhirtypes.ReferenceType = Field(
@@ -106,6 +120,8 @@ class Task(domainresource.DomainResource):
             "The request being actioned or the resource being manipulated by this "
             "task."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -118,6 +134,8 @@ class Task(domainresource.DomainResource):
             "The entity who benefits from the performance of the service specified "
             "in the task (e.g., the patient)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -130,6 +148,8 @@ class Task(domainresource.DomainResource):
             "An identifier that links together multiple tasks and other requests "
             "that were created in the same context."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -137,6 +157,8 @@ class Task(domainresource.DomainResource):
         alias="identifier",
         title="Task Instance Identifier",
         description="The business identifier for this task.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     input: ListType[fhirtypes.TaskInputType] = Field(
@@ -146,6 +168,8 @@ class Task(domainresource.DomainResource):
         description=(
             "Additional information that may be needed in the execution of the " "task."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     instantiatesCanonical: fhirtypes.Canonical = Field(
@@ -156,6 +180,8 @@ class Task(domainresource.DomainResource):
             "The URL pointing to a *FHIR*-defined protocol, guideline, orderset or "
             "other definition that is adhered to in whole or in part by this Task."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ActivityDefinition"],
     )
@@ -174,6 +200,8 @@ class Task(domainresource.DomainResource):
             "orderset or other definition that is adhered to in whole or in part by"
             " this Task."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     instantiatesUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_instantiatesUri", title="Extension field for ``instantiatesUri``."
@@ -187,6 +215,8 @@ class Task(domainresource.DomainResource):
             "Insurance plans, coverage extensions, pre-authorizations and/or pre-"
             "determinations that may be relevant to the Task."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Coverage", "ClaimResponse"],
     )
@@ -203,6 +233,8 @@ class Task(domainresource.DomainResource):
             "i+R[9]Cs this a proposed task, a planned task, an actionable task, "
             "etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -226,6 +258,8 @@ class Task(domainresource.DomainResource):
         alias="lastModified",
         title="Task Last Modified Date",
         description="The date and time of last modification to this task.",
+        # if property is element of this resource.
+        element_property=True,
     )
     lastModified__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastModified", title="Extension field for ``lastModified``."
@@ -236,6 +270,8 @@ class Task(domainresource.DomainResource):
         alias="location",
         title="Where task occurs",
         description="Principal physical location where the this task is performed.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
     )
@@ -245,6 +281,8 @@ class Task(domainresource.DomainResource):
         alias="note",
         title="Comments made about the task",
         description="Free-text information captured about the task as it progresses.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     output: ListType[fhirtypes.TaskOutputType] = Field(
@@ -252,6 +290,8 @@ class Task(domainresource.DomainResource):
         alias="output",
         title="Information produced as part of task",
         description="Outputs produced by the Task.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     owner: fhirtypes.ReferenceType = Field(
@@ -262,6 +302,8 @@ class Task(domainresource.DomainResource):
             "Individual organization or Device currently responsible for task "
             "execution."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Practitioner",
@@ -280,6 +322,8 @@ class Task(domainresource.DomainResource):
         alias="partOf",
         title="Composite task",
         description="Task that this particular task is part of.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Task"],
     )
@@ -289,6 +333,8 @@ class Task(domainresource.DomainResource):
         alias="performerType",
         title="Requested performer",
         description="The kind of participant that should perform the task.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     priority: fhirtypes.Code = Field(
@@ -299,6 +345,8 @@ class Task(domainresource.DomainResource):
             "Indicates how quickly the Task should be addressed with respect to "
             "other requests."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["routine", "urgent", "asap", "stat"],
@@ -312,6 +360,8 @@ class Task(domainresource.DomainResource):
         alias="reasonCode",
         title="Why task is needed",
         description="A description or code indicating why this task needs to be performed.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reasonReference: fhirtypes.ReferenceType = Field(
@@ -319,6 +369,8 @@ class Task(domainresource.DomainResource):
         alias="reasonReference",
         title="Why task is needed",
         description="A resource reference indicating why this task needs to be performed.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -332,6 +384,8 @@ class Task(domainresource.DomainResource):
             "identify key state transitions or updates that are likely to be "
             "relevant to a user looking at the current version of the task."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Provenance"],
     )
@@ -341,6 +395,8 @@ class Task(domainresource.DomainResource):
         alias="requester",
         title="Who is asking for task to be done",
         description="The creator of the task.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Device",
@@ -362,6 +418,8 @@ class Task(domainresource.DomainResource):
             "element identifies any limitations on what parts of the referenced "
             "request should be actioned."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     status: fhirtypes.Code = Field(
@@ -369,6 +427,8 @@ class Task(domainresource.DomainResource):
         alias="status",
         title="draft | requested | received | accepted | +",
         description="The current status of the task.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "requested", "received", "accepted", "+"],
@@ -382,6 +442,8 @@ class Task(domainresource.DomainResource):
         alias="statusReason",
         title="Reason for current status",
         description="An explanation as to why this task is held, failed, was refused, etc.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -404,6 +466,8 @@ class TaskInput(backboneelement.BackboneElement):
             "A code or description indicating how the input is intended to be used "
             "as part of the task execution."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     valueAddress: fhirtypes.AddressType = Field(
@@ -411,6 +475,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueAddress",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -421,6 +487,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueAge",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -431,6 +499,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueAnnotation",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -441,6 +511,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueAttachment",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -451,6 +523,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueBase64Binary",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -466,6 +540,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueBoolean",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -479,6 +555,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueCanonical",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -492,6 +570,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueCode",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -505,6 +585,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueCodeableConcept",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -515,6 +597,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueCoding",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -525,6 +609,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueContactDetail",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -535,6 +621,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueContactPoint",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -545,6 +633,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueContributor",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -555,6 +645,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueCount",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -565,6 +657,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueDataRequirement",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -575,6 +669,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueDate",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -588,6 +684,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueDateTime",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -601,6 +699,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueDecimal",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -614,6 +714,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueDistance",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -624,6 +726,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueDosage",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -634,6 +738,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueDuration",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -644,6 +750,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueExpression",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -654,6 +762,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueHumanName",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -664,6 +774,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueId",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -677,6 +789,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueIdentifier",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -687,6 +801,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueInstant",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -700,6 +816,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueInteger",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -713,6 +831,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueMarkdown",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -726,6 +846,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueMeta",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -736,6 +858,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueMoney",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -746,6 +870,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueOid",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -759,6 +885,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueParameterDefinition",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -769,6 +897,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valuePeriod",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -779,6 +909,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valuePositiveInt",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -794,6 +926,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueQuantity",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -804,6 +938,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueRange",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -814,6 +950,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueRatio",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -824,6 +962,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueReference",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -834,6 +974,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueRelatedArtifact",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -844,6 +986,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueSampledData",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -854,6 +998,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueSignature",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -864,6 +1010,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueString",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -877,6 +1025,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueTime",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -890,6 +1040,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueTiming",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -900,6 +1052,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueTriggerDefinition",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -910,6 +1064,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueUnsignedInt",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -925,6 +1081,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueUri",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -938,6 +1096,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueUrl",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -951,6 +1111,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueUsageContext",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -961,6 +1123,8 @@ class TaskInput(backboneelement.BackboneElement):
         alias="valueUuid",
         title="Content to use in performing the task",
         description="The value of the input parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1075,6 +1239,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="type",
         title="Label for output",
         description="The name of the Output parameter.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     valueAddress: fhirtypes.AddressType = Field(
@@ -1082,6 +1248,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueAddress",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1092,6 +1260,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueAge",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1102,6 +1272,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueAnnotation",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1112,6 +1284,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueAttachment",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1122,6 +1296,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueBase64Binary",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1137,6 +1313,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueBoolean",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1150,6 +1328,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueCanonical",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1163,6 +1343,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueCode",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1176,6 +1358,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueCodeableConcept",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1186,6 +1370,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueCoding",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1196,6 +1382,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueContactDetail",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1206,6 +1394,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueContactPoint",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1216,6 +1406,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueContributor",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1226,6 +1418,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueCount",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1236,6 +1430,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueDataRequirement",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1246,6 +1442,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueDate",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1259,6 +1457,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueDateTime",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1272,6 +1472,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueDecimal",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1285,6 +1487,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueDistance",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1295,6 +1499,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueDosage",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1305,6 +1511,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueDuration",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1315,6 +1523,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueExpression",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1325,6 +1535,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueHumanName",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1335,6 +1547,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueId",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1348,6 +1562,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueIdentifier",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1358,6 +1574,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueInstant",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1371,6 +1589,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueInteger",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1384,6 +1604,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueMarkdown",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1397,6 +1619,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueMeta",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1407,6 +1631,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueMoney",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1417,6 +1643,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueOid",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1430,6 +1658,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueParameterDefinition",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1440,6 +1670,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valuePeriod",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1450,6 +1682,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valuePositiveInt",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1465,6 +1699,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueQuantity",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1475,6 +1711,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueRange",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1485,6 +1723,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueRatio",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1495,6 +1735,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueReference",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1505,6 +1747,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueRelatedArtifact",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1515,6 +1759,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueSampledData",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1525,6 +1771,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueSignature",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1535,6 +1783,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueString",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1548,6 +1798,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueTime",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1561,6 +1813,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueTiming",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1571,6 +1825,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueTriggerDefinition",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1581,6 +1837,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueUnsignedInt",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1596,6 +1854,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueUri",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1609,6 +1869,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueUrl",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1622,6 +1884,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueUsageContext",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1632,6 +1896,8 @@ class TaskOutput(backboneelement.BackboneElement):
         alias="valueUuid",
         title="Result of output",
         description="The value of the Output parameter as a basic type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1748,6 +2014,8 @@ class TaskRestriction(backboneelement.BackboneElement):
         alias="period",
         title="When fulfillment sought",
         description="Over what time-period is fulfillment sought.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     recipient: ListType[fhirtypes.ReferenceType] = Field(
@@ -1758,6 +2026,8 @@ class TaskRestriction(backboneelement.BackboneElement):
             "For requests that are targeted to more than on potential "
             "recipient/target, for whom is fulfillment sought?"
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Patient",
@@ -1774,6 +2044,8 @@ class TaskRestriction(backboneelement.BackboneElement):
         alias="repetitions",
         title="How many times to repeat",
         description="Indicates the number of times the requested action should occur.",
+        # if property is element of this resource.
+        element_property=True,
     )
     repetitions__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_repetitions", title="Extension field for ``repetitions``."

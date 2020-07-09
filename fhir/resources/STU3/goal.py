@@ -36,6 +36,8 @@ class Goal(domainresource.DomainResource):
             "The identified conditions and other health record elements that are "
             "intended to be addressed by the goal."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Condition",
@@ -52,6 +54,8 @@ class Goal(domainresource.DomainResource):
         alias="category",
         title="E.g. Treatment, dietary, behavioral, etc.",
         description="Indicates a category the goal falls within.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     description: fhirtypes.CodeableConceptType = Field(
@@ -63,6 +67,8 @@ class Goal(domainresource.DomainResource):
             'objective of care, such as "control blood pressure" or "negotiate an '
             'obstacle course" or "dance with child at wedding".'
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     expressedBy: fhirtypes.ReferenceType = Field(
@@ -70,6 +76,8 @@ class Goal(domainresource.DomainResource):
         alias="expressedBy",
         title="Who's responsible for creating Goal?",
         description="Indicates whose goal this is - patient goal, practitioner goal, etc.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Practitioner", "RelatedPerson"],
     )
@@ -84,6 +92,8 @@ class Goal(domainresource.DomainResource):
             " URL reference to the resource itself is not appropriate (e.g. in CDA "
             "documents, or in written / printed documentation)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
@@ -91,6 +101,8 @@ class Goal(domainresource.DomainResource):
         alias="note",
         title="Comments about the goal",
         description="Any comments related to the goal.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     outcomeCode: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -101,6 +113,8 @@ class Goal(domainresource.DomainResource):
             "Identifies the change (or lack of change) at the point when the status"
             " of the goal is assessed."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     outcomeReference: ListType[fhirtypes.ReferenceType] = Field(
@@ -108,6 +122,8 @@ class Goal(domainresource.DomainResource):
         alias="outcomeReference",
         title="Observation that resulted from goal",
         description="Details of what's changed (or not changed).",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Observation"],
     )
@@ -120,6 +136,8 @@ class Goal(domainresource.DomainResource):
             "Identifies the mutually agreed level of importance associated with "
             "reaching/sustaining the goal."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     startCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -127,6 +145,8 @@ class Goal(domainresource.DomainResource):
         alias="startCodeableConcept",
         title="When goal pursuit begins",
         description="The date or event after which the goal should begin being pursued.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e start[x]
         one_of_many="start",
         one_of_many_required=False,
@@ -137,6 +157,8 @@ class Goal(domainresource.DomainResource):
         alias="startDate",
         title="When goal pursuit begins",
         description="The date or event after which the goal should begin being pursued.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e start[x]
         one_of_many="start",
         one_of_many_required=False,
@@ -157,6 +179,8 @@ class Goal(domainresource.DomainResource):
             "Indicates whether the goal has been reached and is still considered "
             "relevant."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -187,6 +211,8 @@ class Goal(domainresource.DomainResource):
             "Identifies when the current status.  I.e. When initially created, when"
             " achieved, when cancelled, etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_statusDate", title="Extension field for ``statusDate``."
@@ -197,6 +223,8 @@ class Goal(domainresource.DomainResource):
         alias="statusReason",
         title="Reason for current status",
         description="Captures the reason for the current status.",
+        # if property is element of this resource.
+        element_property=True,
     )
     statusReason__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_statusReason", title="Extension field for ``statusReason``."
@@ -210,6 +238,8 @@ class Goal(domainresource.DomainResource):
             "Identifies the patient, group or organization for whom the goal is "
             "being established."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group", "Organization"],
     )
@@ -219,6 +249,8 @@ class Goal(domainresource.DomainResource):
         alias="target",
         title="Target outcome for the goal",
         description="Indicates what should be done by when.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)
@@ -282,6 +314,8 @@ class GoalTarget(backboneelement.BackboneElement):
             "indicates that the goal is achieved at any focus value at or above the"
             " low value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e detail[x]
         one_of_many="detail",
         one_of_many_required=False,
@@ -300,6 +334,8 @@ class GoalTarget(backboneelement.BackboneElement):
             "indicates that the goal is achieved at any focus value at or above the"
             " low value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e detail[x]
         one_of_many="detail",
         one_of_many_required=False,
@@ -318,6 +354,8 @@ class GoalTarget(backboneelement.BackboneElement):
             "indicates that the goal is achieved at any focus value at or above the"
             " low value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e detail[x]
         one_of_many="detail",
         one_of_many_required=False,
@@ -331,6 +369,8 @@ class GoalTarget(backboneelement.BackboneElement):
             "Indicates either the date or the duration after start by which the "
             "goal should be met."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e due[x]
         one_of_many="due",
         one_of_many_required=False,
@@ -347,6 +387,8 @@ class GoalTarget(backboneelement.BackboneElement):
             "Indicates either the date or the duration after start by which the "
             "goal should be met."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e due[x]
         one_of_many="due",
         one_of_many_required=False,
@@ -360,6 +402,8 @@ class GoalTarget(backboneelement.BackboneElement):
             "The parameter whose value is being tracked, e.g. body weight, blood "
             "pressure, or hemoglobin A1c level."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)

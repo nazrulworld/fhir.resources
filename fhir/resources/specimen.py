@@ -34,6 +34,8 @@ class Specimen(domainresource.DomainResource):
             " is not necessarily the same as the specimen identifier, depending on "
             "local lab procedures."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     collection: fhirtypes.SpecimenCollectionType = Field(
@@ -41,6 +43,8 @@ class Specimen(domainresource.DomainResource):
         alias="collection",
         title="Collection details",
         description="Details concerning the specimen collection.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     condition: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -48,6 +52,8 @@ class Specimen(domainresource.DomainResource):
         alias="condition",
         title="State of the specimen",
         description="A mode or state of being that describes the nature of the specimen.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     container: ListType[fhirtypes.SpecimenContainerType] = Field(
@@ -58,6 +64,8 @@ class Specimen(domainresource.DomainResource):
             "The container holding the specimen.  The recursive nature of "
             "containers; i.e. blood in tube in tray in rack is not addressed here."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -65,6 +73,8 @@ class Specimen(domainresource.DomainResource):
         alias="identifier",
         title="External Identifier",
         description="Id for specimen.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
@@ -76,6 +86,8 @@ class Specimen(domainresource.DomainResource):
             "specimen collection. (for example: broken vial, sent with patient, "
             "frozen)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     parent: ListType[fhirtypes.ReferenceType] = Field(
@@ -86,6 +98,8 @@ class Specimen(domainresource.DomainResource):
             "Reference to the parent (source) specimen which is used when the "
             "specimen was either derived from or a component of another specimen."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Specimen"],
     )
@@ -95,6 +109,8 @@ class Specimen(domainresource.DomainResource):
         alias="processing",
         title="Processing and processing step details",
         description="Details concerning processing and processing steps for the specimen.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     receivedTime: fhirtypes.DateTime = Field(
@@ -102,6 +118,8 @@ class Specimen(domainresource.DomainResource):
         alias="receivedTime",
         title="The time when specimen was received for processing",
         description="Time when specimen was received for processing or testing.",
+        # if property is element of this resource.
+        element_property=True,
     )
     receivedTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_receivedTime", title="Extension field for ``receivedTime``."
@@ -115,6 +133,8 @@ class Specimen(domainresource.DomainResource):
             "Details concerning a service request that required a specimen to be "
             "collected."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ServiceRequest"],
     )
@@ -124,6 +144,8 @@ class Specimen(domainresource.DomainResource):
         alias="status",
         title="available | unavailable | unsatisfactory | entered-in-error",
         description="The availability of the specimen.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["available", "unavailable", "unsatisfactory", "entered-in-error"],
@@ -141,6 +163,8 @@ class Specimen(domainresource.DomainResource):
             "of a substance or a device"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group", "Device", "Substance", "Location"],
     )
@@ -150,6 +174,8 @@ class Specimen(domainresource.DomainResource):
         alias="type",
         title="Kind of material that forms the specimen",
         description="The kind of material that forms the specimen.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -173,6 +199,8 @@ class SpecimenCollection(backboneelement.BackboneElement):
             "is a patient). This is the target site.  This element is not used for "
             "environmental specimens."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     collectedDateTime: fhirtypes.DateTime = Field(
@@ -183,6 +211,8 @@ class SpecimenCollection(backboneelement.BackboneElement):
             "Time when specimen was collected from subject - the physiologically "
             "relevant time."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e collected[x]
         one_of_many="collected",
         one_of_many_required=False,
@@ -201,6 +231,8 @@ class SpecimenCollection(backboneelement.BackboneElement):
             "Time when specimen was collected from subject - the physiologically "
             "relevant time."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e collected[x]
         one_of_many="collected",
         one_of_many_required=False,
@@ -211,6 +243,8 @@ class SpecimenCollection(backboneelement.BackboneElement):
         alias="collector",
         title="Who collected the specimen",
         description="Person who collected the specimen.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
     )
@@ -220,6 +254,8 @@ class SpecimenCollection(backboneelement.BackboneElement):
         alias="duration",
         title="How long it took to collect specimen",
         description="The span of time over which the collection of a specimen occurred.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     fastingStatusCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -230,6 +266,8 @@ class SpecimenCollection(backboneelement.BackboneElement):
             "Abstinence or reduction from some or all food, drink, or both, for a "
             "period of time prior to sample collection."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fastingStatus[x]
         one_of_many="fastingStatus",
         one_of_many_required=False,
@@ -243,6 +281,8 @@ class SpecimenCollection(backboneelement.BackboneElement):
             "Abstinence or reduction from some or all food, drink, or both, for a "
             "period of time prior to sample collection."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fastingStatus[x]
         one_of_many="fastingStatus",
         one_of_many_required=False,
@@ -256,6 +296,8 @@ class SpecimenCollection(backboneelement.BackboneElement):
             "A coded value specifying the technique that is used to perform the "
             "procedure."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     quantity: fhirtypes.QuantityType = Field(
@@ -266,6 +308,8 @@ class SpecimenCollection(backboneelement.BackboneElement):
             "The quantity of specimen collected; for instance the volume of a blood"
             " sample, or the physical measurement of an anatomic pathology sample."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)
@@ -328,6 +372,8 @@ class SpecimenContainer(backboneelement.BackboneElement):
             "Introduced substance to preserve, maintain or enhance the specimen. "
             "Examples: Formalin, Citrate, EDTA."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e additive[x]
         one_of_many="additive",
         one_of_many_required=False,
@@ -341,6 +387,8 @@ class SpecimenContainer(backboneelement.BackboneElement):
             "Introduced substance to preserve, maintain or enhance the specimen. "
             "Examples: Formalin, Citrate, EDTA."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e additive[x]
         one_of_many="additive",
         one_of_many_required=False,
@@ -353,6 +401,8 @@ class SpecimenContainer(backboneelement.BackboneElement):
         alias="capacity",
         title="Container volume or size",
         description="The capacity (volume or other measure) the container may contain.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     description: fhirtypes.String = Field(
@@ -360,6 +410,8 @@ class SpecimenContainer(backboneelement.BackboneElement):
         alias="description",
         title="Textual description of the container",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -374,6 +426,8 @@ class SpecimenContainer(backboneelement.BackboneElement):
             "lab assigned identifier, etc. The container ID may differ from the "
             "specimen id in some circumstances."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     specimenQuantity: fhirtypes.QuantityType = Field(
@@ -384,6 +438,8 @@ class SpecimenContainer(backboneelement.BackboneElement):
             "The quantity of specimen in the container; may be volume, dimensions, "
             "or other appropriate measurements, depending on the specimen type."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -394,6 +450,8 @@ class SpecimenContainer(backboneelement.BackboneElement):
             "The type of container associated with the specimen (e.g. slide, "
             "aliquot, etc.)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)
@@ -451,6 +509,8 @@ class SpecimenProcessing(backboneelement.BackboneElement):
         alias="additive",
         title="Material used in the processing step",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance"],
     )
@@ -460,6 +520,8 @@ class SpecimenProcessing(backboneelement.BackboneElement):
         alias="description",
         title="Textual description of procedure",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -470,6 +532,8 @@ class SpecimenProcessing(backboneelement.BackboneElement):
         alias="procedure",
         title="Indicates the treatment step  applied to the specimen",
         description="A coded value specifying the procedure used to process the specimen.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     timeDateTime: fhirtypes.DateTime = Field(
@@ -481,6 +545,8 @@ class SpecimenProcessing(backboneelement.BackboneElement):
             "  For example the time of sample fixation or the period of time the "
             "sample was in formalin."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e time[x]
         one_of_many="time",
         one_of_many_required=False,
@@ -498,6 +564,8 @@ class SpecimenProcessing(backboneelement.BackboneElement):
             "  For example the time of sample fixation or the period of time the "
             "sample was in formalin."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e time[x]
         one_of_many="time",
         one_of_many_required=False,

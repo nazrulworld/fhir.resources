@@ -37,6 +37,8 @@ class Element(fhirabstractmodel.FHIRAbstractModel):
             "requirements that SHALL be met as part of the definition of the "
             "extension."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     id: fhirtypes.String = Field(
@@ -47,6 +49,8 @@ class Element(fhirabstractmodel.FHIRAbstractModel):
             "unique id for the element within a resource (for internal references)."
             " This may be any string value that does not contain spaces."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     id__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_id", title="Extension field for ``id``."

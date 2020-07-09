@@ -33,6 +33,8 @@ class MedicationKnowledge(domainresource.DomainResource):
         alias="administrationGuidelines",
         title="Guidelines for administration of the medication",
         description="Guidelines for the administration of the medication.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     amount: fhirtypes.QuantityType = Field(
@@ -46,6 +48,8 @@ class MedicationKnowledge(domainresource.DomainResource):
             "attribute provides additional clarification of the package amount (For"
             " example, 3 mL, 10mL, etc.)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     associatedMedication: ListType[fhirtypes.ReferenceType] = Field(
@@ -58,6 +62,8 @@ class MedicationKnowledge(domainresource.DomainResource):
             " Rosuvastatin) or if this is a generic medication (e.g. Rosuvastatin),"
             " this would link to a branded product (e.g. Crestor)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Medication"],
     )
@@ -73,6 +79,8 @@ class MedicationKnowledge(domainresource.DomainResource):
             " a national or local formulary code, optionally with translations to "
             "other code systems."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     contraindication: ListType[fhirtypes.ReferenceType] = Field(
@@ -84,6 +92,8 @@ class MedicationKnowledge(domainresource.DomainResource):
             "drug-drug interaction, drug-disease contraindication, drug-allergy "
             "interaction, etc.)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DetectedIssue"],
     )
@@ -93,6 +103,8 @@ class MedicationKnowledge(domainresource.DomainResource):
         alias="cost",
         title="The pricing of the medication",
         description="The price of the medication.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     doseForm: fhirtypes.CodeableConceptType = Field(
@@ -100,6 +112,8 @@ class MedicationKnowledge(domainresource.DomainResource):
         alias="doseForm",
         title="powder | tablets | capsule +",
         description="Describes the form of the item.  Powder; tablets; capsule.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     drugCharacteristic: ListType[
@@ -112,6 +126,8 @@ class MedicationKnowledge(domainresource.DomainResource):
             "Specifies descriptive properties of the medicine, such as color, "
             "shape, imprints, etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     ingredient: ListType[fhirtypes.MedicationKnowledgeIngredientType] = Field(
@@ -119,6 +135,8 @@ class MedicationKnowledge(domainresource.DomainResource):
         alias="ingredient",
         title="Active or inactive ingredient",
         description="Identifies a particular constituent of interest in the product.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     intendedRoute: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -126,6 +144,8 @@ class MedicationKnowledge(domainresource.DomainResource):
         alias="intendedRoute",
         title="The intended or approved route of administration",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     kinetics: ListType[fhirtypes.MedicationKnowledgeKineticsType] = Field(
@@ -136,6 +156,8 @@ class MedicationKnowledge(domainresource.DomainResource):
             "excretion of a medication from the body"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     manufacturer: fhirtypes.ReferenceType = Field(
@@ -147,6 +169,8 @@ class MedicationKnowledge(domainresource.DomainResource):
             "This is not intended to represent the distributor of a medication "
             "product."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -161,6 +185,8 @@ class MedicationKnowledge(domainresource.DomainResource):
             "system"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     monitoringProgram: ListType[
@@ -170,6 +196,8 @@ class MedicationKnowledge(domainresource.DomainResource):
         alias="monitoringProgram",
         title="Program under which a medication is reviewed",
         description="The program under which the medication is reviewed.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     monograph: ListType[fhirtypes.MedicationKnowledgeMonographType] = Field(
@@ -177,6 +205,8 @@ class MedicationKnowledge(domainresource.DomainResource):
         alias="monograph",
         title="Associated documentation about the medication",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     packaging: fhirtypes.MedicationKnowledgePackagingType = Field(
@@ -184,6 +214,8 @@ class MedicationKnowledge(domainresource.DomainResource):
         alias="packaging",
         title="Details about packaged medications",
         description="Information that only applies to packages (not products).",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     preparationInstruction: fhirtypes.Markdown = Field(
@@ -191,6 +223,8 @@ class MedicationKnowledge(domainresource.DomainResource):
         alias="preparationInstruction",
         title="The instructions for preparing the medication",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     preparationInstruction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -206,6 +240,8 @@ class MedicationKnowledge(domainresource.DomainResource):
             "Category of the medication or product (e.g. branded product, "
             "therapeutic moeity, generic product, innovator product, etc.)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     regulatory: ListType[fhirtypes.MedicationKnowledgeRegulatoryType] = Field(
@@ -213,6 +249,8 @@ class MedicationKnowledge(domainresource.DomainResource):
         alias="regulatory",
         title="Regulatory information about a medication",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     relatedMedicationKnowledge: ListType[
@@ -222,6 +260,8 @@ class MedicationKnowledge(domainresource.DomainResource):
         alias="relatedMedicationKnowledge",
         title="Associated or related medication information",
         description="Associated or related knowledge about a medication.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     status: fhirtypes.Code = Field(
@@ -233,6 +273,8 @@ class MedicationKnowledge(domainresource.DomainResource):
             "refers to the validity about the information of the medication and not"
             " to its medicinal properties."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "inactive", "entered-in-error"],
@@ -250,6 +292,8 @@ class MedicationKnowledge(domainresource.DomainResource):
             " medication in different countries.  For example, acetaminophen and "
             "paracetamol or salbutamol and albuterol."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     synonym__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_synonym", title="Extension field for ``synonym``."
@@ -274,6 +318,8 @@ class MedicationKnowledgeAdministrationGuidelines(backboneelement.BackboneElemen
         alias="dosage",
         title="Dosage for the medication for the specific guidelines",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     indicationCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -283,6 +329,8 @@ class MedicationKnowledgeAdministrationGuidelines(backboneelement.BackboneElemen
             "Indication for use that apply to the specific administration " "guidelines"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e indication[x]
         one_of_many="indication",
         one_of_many_required=False,
@@ -295,6 +343,8 @@ class MedicationKnowledgeAdministrationGuidelines(backboneelement.BackboneElemen
             "Indication for use that apply to the specific administration " "guidelines"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e indication[x]
         one_of_many="indication",
         one_of_many_required=False,
@@ -315,6 +365,8 @@ class MedicationKnowledgeAdministrationGuidelines(backboneelement.BackboneElemen
             "Characteristics of the patient that are relevant to the administration"
             " guidelines (for example, height, weight, gender, etc.)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)
@@ -375,6 +427,8 @@ class MedicationKnowledgeAdministrationGuidelinesDosage(
         alias="dosage",
         title="Dosage for the medication for the specific guidelines",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -385,6 +439,8 @@ class MedicationKnowledgeAdministrationGuidelinesDosage(
             "The type of dosage (for example, prophylaxis, maintenance, "
             "therapeutic, etc.)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -416,6 +472,8 @@ class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics(
             "Specific characteristic that is relevant to the administration "
             "guideline (e.g. height, weight, gender)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e characteristic[x]
         one_of_many="characteristic",
         one_of_many_required=True,
@@ -432,6 +490,8 @@ class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics(
             "Specific characteristic that is relevant to the administration "
             "guideline (e.g. height, weight, gender)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e characteristic[x]
         one_of_many="characteristic",
         one_of_many_required=True,
@@ -442,6 +502,8 @@ class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics(
         alias="value",
         title="The specific characteristic",
         description="The specific characteristic (e.g. height, weight, gender, etc.).",
+        # if property is element of this resource.
+        element_property=True,
     )
     value__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_value", title="Extension field for ``value``."
@@ -501,7 +563,12 @@ class MedicationKnowledgeCost(backboneelement.BackboneElement):
     resource_type = Field("MedicationKnowledgeCost", const=True)
 
     cost: fhirtypes.MoneyType = Field(
-        ..., alias="cost", title="The price of the medication", description=None,
+        ...,
+        alias="cost",
+        title="The price of the medication",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     source: fhirtypes.String = Field(
@@ -509,6 +576,8 @@ class MedicationKnowledgeCost(backboneelement.BackboneElement):
         alias="source",
         title="The source or owner for the price information",
         description="The source or owner that assigns the price to the medication.",
+        # if property is element of this resource.
+        element_property=True,
     )
     source__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_source", title="Extension field for ``source``."
@@ -522,6 +591,8 @@ class MedicationKnowledgeCost(backboneelement.BackboneElement):
             "The category of the cost information.  For example, manufacturers' "
             "cost, patient cost, claim reimbursement cost, actual acquisition cost."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -545,6 +616,8 @@ class MedicationKnowledgeDrugCharacteristic(backboneelement.BackboneElement):
             "A code specifying which characteristic of the medicine is being "
             "described (for example, colour, shape, imprint)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     valueBase64Binary: fhirtypes.Base64Binary = Field(
@@ -552,6 +625,8 @@ class MedicationKnowledgeDrugCharacteristic(backboneelement.BackboneElement):
         alias="valueBase64Binary",
         title="Description of the characteristic",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -567,6 +642,8 @@ class MedicationKnowledgeDrugCharacteristic(backboneelement.BackboneElement):
         alias="valueCodeableConcept",
         title="Description of the characteristic",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -577,6 +654,8 @@ class MedicationKnowledgeDrugCharacteristic(backboneelement.BackboneElement):
         alias="valueQuantity",
         title="Description of the characteristic",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -587,6 +666,8 @@ class MedicationKnowledgeDrugCharacteristic(backboneelement.BackboneElement):
         alias="valueString",
         title="Description of the characteristic",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -658,6 +739,8 @@ class MedicationKnowledgeIngredient(backboneelement.BackboneElement):
             "Indication of whether this ingredient affects the therapeutic action "
             "of the drug."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     isActive__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_isActive", title="Extension field for ``isActive``."
@@ -671,6 +754,8 @@ class MedicationKnowledgeIngredient(backboneelement.BackboneElement):
             "The actual ingredient - either a substance (simple ingredient) or "
             "another medication."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e item[x]
         one_of_many="item",
         one_of_many_required=True,
@@ -684,6 +769,8 @@ class MedicationKnowledgeIngredient(backboneelement.BackboneElement):
             "The actual ingredient - either a substance (simple ingredient) or "
             "another medication."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e item[x]
         one_of_many="item",
         one_of_many_required=True,
@@ -700,6 +787,8 @@ class MedicationKnowledgeIngredient(backboneelement.BackboneElement):
             "Medication.  For example, 250 mg per tablet.  This is expressed as a "
             "ratio where the numerator is 250mg and the denominator is 1 tablet."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)
@@ -755,6 +844,8 @@ class MedicationKnowledgeKinetics(backboneelement.BackboneElement):
         alias="areaUnderCurve",
         title="The drug concentration measured at certain discrete points in time",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     halfLifePeriod: fhirtypes.DurationType = Field(
@@ -765,6 +856,8 @@ class MedicationKnowledgeKinetics(backboneelement.BackboneElement):
             "The time required for any specified property (e.g., the concentration "
             "of a substance in the body) to decrease by half."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     lethalDose50: ListType[fhirtypes.QuantityType] = Field(
@@ -772,6 +865,8 @@ class MedicationKnowledgeKinetics(backboneelement.BackboneElement):
         alias="lethalDose50",
         title="The median lethal dose of a drug",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -794,6 +889,8 @@ class MedicationKnowledgeMedicineClassification(backboneelement.BackboneElement)
             "Specific category assigned to the medication (e.g. anti-infective, "
             "anti-hypertensive, antibiotic, etc.)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -804,6 +901,8 @@ class MedicationKnowledgeMedicineClassification(backboneelement.BackboneElement)
             "classification, therapeutic sub-classification)"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -819,7 +918,12 @@ class MedicationKnowledgeMonitoringProgram(backboneelement.BackboneElement):
     resource_type = Field("MedicationKnowledgeMonitoringProgram", const=True)
 
     name: fhirtypes.String = Field(
-        None, alias="name", title="Name of the reviewing program", description=None,
+        None,
+        alias="name",
+        title="Name of the reviewing program",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -830,6 +934,8 @@ class MedicationKnowledgeMonitoringProgram(backboneelement.BackboneElement):
         alias="type",
         title="Type of program under which the medication is monitored",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -848,6 +954,8 @@ class MedicationKnowledgeMonograph(backboneelement.BackboneElement):
         alias="source",
         title="Associated documentation about the medication",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference", "Media"],
     )
@@ -860,6 +968,8 @@ class MedicationKnowledgeMonograph(backboneelement.BackboneElement):
             "The category of documentation about the medication. (e.g. professional"
             " monograph, patient education monograph)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -879,6 +989,8 @@ class MedicationKnowledgePackaging(backboneelement.BackboneElement):
         alias="quantity",
         title="The number of product units the package would contain if fully loaded",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -892,6 +1004,8 @@ class MedicationKnowledgePackaging(backboneelement.BackboneElement):
             "A code that defines the specific type of packaging that the medication"
             " can be found in (e.g. blister sleeve, tube, bottle)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -913,6 +1027,8 @@ class MedicationKnowledgeRegulatory(backboneelement.BackboneElement):
             " a period"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     regulatoryAuthority: fhirtypes.ReferenceType = Field(
@@ -920,6 +1036,8 @@ class MedicationKnowledgeRegulatory(backboneelement.BackboneElement):
         alias="regulatoryAuthority",
         title="Specifies the authority of the regulation",
         description="The authority that is specifying the regulations.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -929,6 +1047,8 @@ class MedicationKnowledgeRegulatory(backboneelement.BackboneElement):
         alias="schedule",
         title="Specifies the schedule of a medication in jurisdiction",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     substitution: ListType[
@@ -941,6 +1061,8 @@ class MedicationKnowledgeRegulatory(backboneelement.BackboneElement):
             "regulatory perspective"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -960,6 +1082,8 @@ class MedicationKnowledgeRegulatoryMaxDispense(backboneelement.BackboneElement):
         alias="period",
         title="The period that applies to the maximum number of units",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     quantity: fhirtypes.QuantityType = Field(
@@ -967,6 +1091,8 @@ class MedicationKnowledgeRegulatoryMaxDispense(backboneelement.BackboneElement):
         alias="quantity",
         title="The maximum number of units of the medication that can be dispensed",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -985,6 +1111,8 @@ class MedicationKnowledgeRegulatorySchedule(backboneelement.BackboneElement):
         alias="schedule",
         title="Specifies the specific drug schedule",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -1007,6 +1135,8 @@ class MedicationKnowledgeRegulatorySubstitution(backboneelement.BackboneElement)
             "dispensing"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     allowed__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_allowed", title="Extension field for ``allowed``."
@@ -1017,6 +1147,8 @@ class MedicationKnowledgeRegulatorySubstitution(backboneelement.BackboneElement)
         alias="type",
         title="Specifies the type of substitution allowed",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -1036,6 +1168,8 @@ class MedicationKnowledgeRelatedMedicationKnowledge(backboneelement.BackboneElem
         alias="reference",
         title="Associated documentation about the associated medication knowledge",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicationKnowledge"],
     )
@@ -1045,4 +1179,6 @@ class MedicationKnowledgeRelatedMedicationKnowledge(backboneelement.BackboneElem
         alias="type",
         title="Category of medicationKnowledge",
         description="The category of the associated medication knowledge reference.",
+        # if property is element of this resource.
+        element_property=True,
     )

@@ -33,6 +33,8 @@ class ProcessResponse(domainresource.DomainResource):
             "Request for additional supporting or authorizing information, such as:"
             " documents, images or resources."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CommunicationRequest"],
     )
@@ -45,6 +47,8 @@ class ProcessResponse(domainresource.DomainResource):
             "The date when the enclosed suite of services were performed or "
             "completed."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_created", title="Extension field for ``created``."
@@ -55,13 +59,20 @@ class ProcessResponse(domainresource.DomainResource):
         alias="disposition",
         title="Disposition Message",
         description="A description of the status of the adjudication or processing.",
+        # if property is element of this resource.
+        element_property=True,
     )
     disposition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_disposition", title="Extension field for ``disposition``."
     )
 
     error: ListType[fhirtypes.CodeableConceptType] = Field(
-        None, alias="error", title="Error code", description="Processing errors.",
+        None,
+        alias="error",
+        title="Error code",
+        description="Processing errors.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     form: fhirtypes.CodeableConceptType = Field(
@@ -69,6 +80,8 @@ class ProcessResponse(domainresource.DomainResource):
         alias="form",
         title="Printed Form Identifier",
         description="The form to be used for printing the content.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -76,6 +89,8 @@ class ProcessResponse(domainresource.DomainResource):
         alias="identifier",
         title="Business Identifier",
         description="The Response business identifier.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     organization: fhirtypes.ReferenceType = Field(
@@ -83,6 +98,8 @@ class ProcessResponse(domainresource.DomainResource):
         alias="organization",
         title="Authoring Organization",
         description="The organization who produced this adjudicated response.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -92,6 +109,8 @@ class ProcessResponse(domainresource.DomainResource):
         alias="outcome",
         title="Processing outcome",
         description="Transaction status: error, complete, held.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     processNote: ListType[fhirtypes.ProcessResponseProcessNoteType] = Field(
@@ -102,6 +121,8 @@ class ProcessResponse(domainresource.DomainResource):
             "Suite of processing notes or additional requirements if the processing"
             " has been held."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     request: fhirtypes.ReferenceType = Field(
@@ -109,6 +130,8 @@ class ProcessResponse(domainresource.DomainResource):
         alias="request",
         title="Request reference",
         description="Original request resource reference.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -121,6 +144,8 @@ class ProcessResponse(domainresource.DomainResource):
             "The organization which is responsible for the services rendered to the"
             " patient."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -133,6 +158,8 @@ class ProcessResponse(domainresource.DomainResource):
             "The practitioner who is responsible for the services rendered to the "
             "patient."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner"],
     )
@@ -142,6 +169,8 @@ class ProcessResponse(domainresource.DomainResource):
         alias="status",
         title="active | cancelled | draft | entered-in-error",
         description="The status of the resource instance.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "cancelled", "draft", "entered-in-error"],
@@ -168,6 +197,8 @@ class ProcessResponseProcessNote(backboneelement.BackboneElement):
         alias="text",
         title="Comment on the processing",
         description="The note text.",
+        # if property is element of this resource.
+        element_property=True,
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_text", title="Extension field for ``text``."
@@ -178,4 +209,6 @@ class ProcessResponseProcessNote(backboneelement.BackboneElement):
         alias="type",
         title="display | print | printoper",
         description="The note purpose: Print/Display.",
+        # if property is element of this resource.
+        element_property=True,
     )

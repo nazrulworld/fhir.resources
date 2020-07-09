@@ -27,6 +27,8 @@ class Range(element.Element):
         alias="high",
         title="High limit",
         description="The high limit. The boundary is inclusive.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     low: fhirtypes.QuantityType = Field(
@@ -34,4 +36,6 @@ class Range(element.Element):
         alias="low",
         title="Low limit",
         description="The low limit. The boundary is inclusive.",
+        # if property is element of this resource.
+        element_property=True,
     )

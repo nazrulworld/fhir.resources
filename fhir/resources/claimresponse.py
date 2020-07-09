@@ -35,6 +35,8 @@ class ClaimResponse(domainresource.DomainResource):
             "The first-tier service adjudications for payor added product or "
             "service lines."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     adjudication: ListType[fhirtypes.ClaimResponseItemAdjudicationType] = Field(
@@ -45,6 +47,8 @@ class ClaimResponse(domainresource.DomainResource):
             "The adjudication results which are presented at the header level "
             "rather than at the line-item or add-item levels."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     communicationRequest: ListType[fhirtypes.ReferenceType] = Field(
@@ -52,6 +56,8 @@ class ClaimResponse(domainresource.DomainResource):
         alias="communicationRequest",
         title="Request for additional information",
         description="Request for additional supporting or authorizing information.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CommunicationRequest"],
     )
@@ -61,6 +67,8 @@ class ClaimResponse(domainresource.DomainResource):
         alias="created",
         title="Response creation date",
         description="The date this resource was created.",
+        # if property is element of this resource.
+        element_property=True,
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_created", title="Extension field for ``created``."
@@ -71,6 +79,8 @@ class ClaimResponse(domainresource.DomainResource):
         alias="disposition",
         title="Disposition Message",
         description="A human readable description of the status of the adjudication.",
+        # if property is element of this resource.
+        element_property=True,
     )
     disposition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_disposition", title="Extension field for ``disposition``."
@@ -81,6 +91,8 @@ class ClaimResponse(domainresource.DomainResource):
         alias="error",
         title="Processing errors",
         description="Errors encountered during the processing of the adjudication.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     form: fhirtypes.AttachmentType = Field(
@@ -91,6 +103,8 @@ class ClaimResponse(domainresource.DomainResource):
             "The actual form, by reference or inclusion, for printing the content "
             "or an EOB."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     formCode: fhirtypes.CodeableConceptType = Field(
@@ -98,6 +112,8 @@ class ClaimResponse(domainresource.DomainResource):
         alias="formCode",
         title="Printed form identifier",
         description="A code for the form to be used for printing the content.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     fundsReserve: fhirtypes.CodeableConceptType = Field(
@@ -108,6 +124,8 @@ class ClaimResponse(domainresource.DomainResource):
             "A code, used only on a response to a preauthorization, to indicate "
             "whether the benefits payable have been reserved and for whom."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -115,6 +133,8 @@ class ClaimResponse(domainresource.DomainResource):
         alias="identifier",
         title="Business Identifier for a claim response",
         description="A unique identifier assigned to this claim response.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     insurance: ListType[fhirtypes.ClaimResponseInsuranceType] = Field(
@@ -125,6 +145,8 @@ class ClaimResponse(domainresource.DomainResource):
             "Financial instruments for reimbursement for the health care products "
             "and services specified on the claim."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     insurer: fhirtypes.ReferenceType = Field(
@@ -135,6 +157,8 @@ class ClaimResponse(domainresource.DomainResource):
             "The party responsible for authorization, adjudication and "
             "reimbursement."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -147,6 +171,8 @@ class ClaimResponse(domainresource.DomainResource):
             "A claim line. Either a simple (a product or service) or a 'group' of "
             "details which can also be a simple items or groups of sub-details."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     outcome: fhirtypes.Code = Field(
@@ -157,6 +183,8 @@ class ClaimResponse(domainresource.DomainResource):
             "The outcome of the claim, predetermination, or preauthorization "
             "processing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["queued", "complete", "error", "partial"],
@@ -174,6 +202,8 @@ class ClaimResponse(domainresource.DomainResource):
             "supplied or are being considered and for whom actual for facast "
             "reimbursement is sought."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
     )
@@ -183,6 +213,8 @@ class ClaimResponse(domainresource.DomainResource):
         alias="payeeType",
         title="Party to be paid any benefits payable",
         description="Type of Party to be reimbursed: subscriber, provider, other.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     payment: fhirtypes.ClaimResponsePaymentType = Field(
@@ -190,6 +222,8 @@ class ClaimResponse(domainresource.DomainResource):
         alias="payment",
         title="Payment Details",
         description="Payment details for the adjudication of the claim.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     preAuthPeriod: fhirtypes.PeriodType = Field(
@@ -197,6 +231,8 @@ class ClaimResponse(domainresource.DomainResource):
         alias="preAuthPeriod",
         title="Preauthorization reference effective period",
         description="The time frame during which this authorization is effective.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     preAuthRef: fhirtypes.String = Field(
@@ -207,6 +243,8 @@ class ClaimResponse(domainresource.DomainResource):
             "Reference from the Insurer which is used in later communications which"
             " refers to this adjudication."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     preAuthRef__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_preAuthRef", title="Extension field for ``preAuthRef``."
@@ -220,6 +258,8 @@ class ClaimResponse(domainresource.DomainResource):
             "A note that describes or explains adjudication results in a human "
             "readable form."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     request: fhirtypes.ReferenceType = Field(
@@ -227,6 +267,8 @@ class ClaimResponse(domainresource.DomainResource):
         alias="request",
         title="Id of resource triggering adjudication",
         description="Original request resource reference.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Claim"],
     )
@@ -239,6 +281,8 @@ class ClaimResponse(domainresource.DomainResource):
             "The provider which is responsible for the claim, predetermination or "
             "preauthorization."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
     )
@@ -248,6 +292,8 @@ class ClaimResponse(domainresource.DomainResource):
         alias="status",
         title="active | cancelled | draft | entered-in-error",
         description="The status of the resource instance.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "cancelled", "draft", "entered-in-error"],
@@ -265,6 +311,8 @@ class ClaimResponse(domainresource.DomainResource):
             "information such as Inpatient vs Outpatient and/or a specialty "
             "service."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     total: ListType[fhirtypes.ClaimResponseTotalType] = Field(
@@ -272,6 +320,8 @@ class ClaimResponse(domainresource.DomainResource):
         alias="total",
         title="Adjudication totals",
         description="Categorized monetary totals for the adjudication.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -283,6 +333,8 @@ class ClaimResponse(domainresource.DomainResource):
             "information such as Inpatient vs Outpatient and/or a specialty "
             "service."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     use: fhirtypes.Code = Field(
@@ -296,6 +348,8 @@ class ClaimResponse(domainresource.DomainResource):
             " or requesting the non-binding adjudication of the listed products and"
             " services which could be provided in the future."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["claim", "preauthorization", "predetermination"],
@@ -322,6 +376,8 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
         alias="adjudication",
         title="Added items adjudication",
         description="The adjudication results.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     bodySite: fhirtypes.CodeableConceptType = Field(
@@ -329,6 +385,8 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
         alias="bodySite",
         title="Anatomical location",
         description="Physical service site on the patient (limb, tooth, etc.).",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     detail: ListType[fhirtypes.ClaimResponseAddItemDetailType] = Field(
@@ -336,6 +394,8 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
         alias="detail",
         title="Insurer added line details",
         description="The second-tier service adjudications for payor added services.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     detailSequence: ListType[fhirtypes.PositiveInt] = Field(
@@ -346,6 +406,8 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
             "The sequence number of the details within the claim item which this "
             "line is intended to replace."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     detailSequence__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -363,6 +425,8 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
             " of a Factor allows for a discount or surcharge multiplier to be "
             "applied to a monetary amount."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_factor", title="Extension field for ``factor``."
@@ -373,6 +437,8 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
         alias="itemSequence",
         title="Item sequence number",
         description="Claim items which this service line is intended to replace.",
+        # if property is element of this resource.
+        element_property=True,
     )
     itemSequence__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -385,6 +451,8 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
         alias="locationAddress",
         title="Place of service or where product was supplied",
         description="Where the product or service was provided.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e location[x]
         one_of_many="location",
         one_of_many_required=False,
@@ -395,6 +463,8 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
         alias="locationCodeableConcept",
         title="Place of service or where product was supplied",
         description="Where the product or service was provided.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e location[x]
         one_of_many="location",
         one_of_many_required=False,
@@ -405,6 +475,8 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
         alias="locationReference",
         title="Place of service or where product was supplied",
         description="Where the product or service was provided.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e location[x]
         one_of_many="location",
         one_of_many_required=False,
@@ -420,6 +492,8 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
             "Item typification or modifiers codes to convey additional context for "
             "the product or service."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     net: fhirtypes.MoneyType = Field(
@@ -430,6 +504,8 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
             "The quantity times the unit price for an additional service or product"
             " or charge."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     noteNumber: ListType[fhirtypes.PositiveInt] = Field(
@@ -440,6 +516,8 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
             "The numbers associated with notes below which apply to the "
             "adjudication of this item."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     noteNumber__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -454,6 +532,8 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
             "related claim details, otherwise this contains the product, service, "
             "drug or other billing code for the item."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     programCode: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -461,6 +541,8 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
         alias="programCode",
         title="Program the product or service is provided under",
         description="Identifies the program under which this may be recovered.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     provider: ListType[fhirtypes.ReferenceType] = Field(
@@ -471,6 +553,8 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
             "The providers who are authorized for the services rendered to the "
             "patient."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
     )
@@ -480,6 +564,8 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
         alias="quantity",
         title="Count of products or services",
         description="The number of repetitions of a service or product.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     servicedDate: fhirtypes.Date = Field(
@@ -490,6 +576,8 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
             "The date or dates when the service or product was supplied, performed "
             "or completed."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e serviced[x]
         one_of_many="serviced",
         one_of_many_required=False,
@@ -506,6 +594,8 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
             "The date or dates when the service or product was supplied, performed "
             "or completed."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e serviced[x]
         one_of_many="serviced",
         one_of_many_required=False,
@@ -519,6 +609,8 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
             "A region or surface of the bodySite, e.g. limb region or tooth "
             "surface(s)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     subdetailSequence: ListType[fhirtypes.PositiveInt] = Field(
@@ -529,6 +621,8 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
             "The sequence number of the sub-details within the details within the "
             "claim item which this line is intended to replace."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     subdetailSequence__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -547,6 +641,8 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
             "service, otherwise this is the total of the fees for the details of "
             "the group."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)
@@ -609,6 +705,8 @@ class ClaimResponseAddItemDetail(backboneelement.BackboneElement):
         alias="adjudication",
         title="Added items detail adjudication",
         description="The adjudication results.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     factor: fhirtypes.Decimal = Field(
@@ -621,6 +719,8 @@ class ClaimResponseAddItemDetail(backboneelement.BackboneElement):
             " of a Factor allows for a discount or surcharge multiplier to be "
             "applied to a monetary amount."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_factor", title="Extension field for ``factor``."
@@ -634,6 +734,8 @@ class ClaimResponseAddItemDetail(backboneelement.BackboneElement):
             "Item typification or modifiers codes to convey additional context for "
             "the product or service."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     net: fhirtypes.MoneyType = Field(
@@ -644,6 +746,8 @@ class ClaimResponseAddItemDetail(backboneelement.BackboneElement):
             "The quantity times the unit price for an additional service or product"
             " or charge."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     noteNumber: ListType[fhirtypes.PositiveInt] = Field(
@@ -654,6 +758,8 @@ class ClaimResponseAddItemDetail(backboneelement.BackboneElement):
             "The numbers associated with notes below which apply to the "
             "adjudication of this item."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     noteNumber__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -668,6 +774,8 @@ class ClaimResponseAddItemDetail(backboneelement.BackboneElement):
             "related claim details, otherwise this contains the product, service, "
             "drug or other billing code for the item."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     quantity: fhirtypes.QuantityType = Field(
@@ -675,6 +783,8 @@ class ClaimResponseAddItemDetail(backboneelement.BackboneElement):
         alias="quantity",
         title="Count of products or services",
         description="The number of repetitions of a service or product.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     subDetail: ListType[fhirtypes.ClaimResponseAddItemDetailSubDetailType] = Field(
@@ -682,6 +792,8 @@ class ClaimResponseAddItemDetail(backboneelement.BackboneElement):
         alias="subDetail",
         title="Insurer added line items",
         description="The third-tier service adjudications for payor added services.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     unitPrice: fhirtypes.MoneyType = Field(
@@ -693,6 +805,8 @@ class ClaimResponseAddItemDetail(backboneelement.BackboneElement):
             "service, otherwise this is the total of the fees for the details of "
             "the group."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -712,6 +826,8 @@ class ClaimResponseAddItemDetailSubDetail(backboneelement.BackboneElement):
         alias="adjudication",
         title="Added items detail adjudication",
         description="The adjudication results.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     factor: fhirtypes.Decimal = Field(
@@ -724,6 +840,8 @@ class ClaimResponseAddItemDetailSubDetail(backboneelement.BackboneElement):
             " of a Factor allows for a discount or surcharge multiplier to be "
             "applied to a monetary amount."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_factor", title="Extension field for ``factor``."
@@ -737,6 +855,8 @@ class ClaimResponseAddItemDetailSubDetail(backboneelement.BackboneElement):
             "Item typification or modifiers codes to convey additional context for "
             "the product or service."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     net: fhirtypes.MoneyType = Field(
@@ -747,6 +867,8 @@ class ClaimResponseAddItemDetailSubDetail(backboneelement.BackboneElement):
             "The quantity times the unit price for an additional service or product"
             " or charge."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     noteNumber: ListType[fhirtypes.PositiveInt] = Field(
@@ -757,6 +879,8 @@ class ClaimResponseAddItemDetailSubDetail(backboneelement.BackboneElement):
             "The numbers associated with notes below which apply to the "
             "adjudication of this item."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     noteNumber__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -771,6 +895,8 @@ class ClaimResponseAddItemDetailSubDetail(backboneelement.BackboneElement):
             "related claim details, otherwise this contains the product, service, "
             "drug or other billing code for the item."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     quantity: fhirtypes.QuantityType = Field(
@@ -778,6 +904,8 @@ class ClaimResponseAddItemDetailSubDetail(backboneelement.BackboneElement):
         alias="quantity",
         title="Count of products or services",
         description="The number of repetitions of a service or product.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     unitPrice: fhirtypes.MoneyType = Field(
@@ -789,6 +917,8 @@ class ClaimResponseAddItemDetailSubDetail(backboneelement.BackboneElement):
             "service, otherwise this is the total of the fees for the details of "
             "the group."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -811,6 +941,8 @@ class ClaimResponseError(backboneelement.BackboneElement):
             "An error code, from a specified code system, which details why the "
             "claim could not be adjudicated."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     detailSequence: fhirtypes.PositiveInt = Field(
@@ -822,6 +954,8 @@ class ClaimResponseError(backboneelement.BackboneElement):
             " contains the error. This value is omitted when the error occurs "
             "outside of the item structure."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     detailSequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_detailSequence", title="Extension field for ``detailSequence``."
@@ -836,6 +970,8 @@ class ClaimResponseError(backboneelement.BackboneElement):
             "error. This value is omitted when the error occurs outside of the item"
             " structure."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     itemSequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_itemSequence", title="Extension field for ``itemSequence``."
@@ -850,6 +986,8 @@ class ClaimResponseError(backboneelement.BackboneElement):
             "line item submitted which contains the error. This value is omitted "
             "when the error occurs outside of the item structure."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     subDetailSequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -878,6 +1016,8 @@ class ClaimResponseInsurance(backboneelement.BackboneElement):
             "A business agreement number established between the provider and the "
             "insurer for special business processing purposes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     businessArrangement__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -893,6 +1033,8 @@ class ClaimResponseInsurance(backboneelement.BackboneElement):
             "The result of the adjudication of the line items for the Coverage "
             "specified in this insurance."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ClaimResponse"],
     )
@@ -907,6 +1049,8 @@ class ClaimResponseInsurance(backboneelement.BackboneElement):
             " to locate the patient's actual coverage within the insurer's "
             "information system."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Coverage"],
     )
@@ -919,6 +1063,8 @@ class ClaimResponseInsurance(backboneelement.BackboneElement):
             "A flag to indicate that this Coverage is to be used for adjudication "
             "of this claim when set to true."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     focal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_focal", title="Extension field for ``focal``."
@@ -932,6 +1078,8 @@ class ClaimResponseInsurance(backboneelement.BackboneElement):
             "A number to uniquely identify insurance entries and provide a sequence"
             " of coverages to convey coordination of benefit order."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sequence", title="Extension field for ``sequence``."
@@ -959,6 +1107,8 @@ class ClaimResponseItem(backboneelement.BackboneElement):
             "adjudication of the detail items. If this item is a simple product or "
             "service then this is the result of the adjudication of this item."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     detail: ListType[fhirtypes.ClaimResponseItemDetailType] = Field(
@@ -969,6 +1119,8 @@ class ClaimResponseItem(backboneelement.BackboneElement):
             "A claim detail. Either a simple (a product or service) or a 'group' of"
             " sub-details which are simple items."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     itemSequence: fhirtypes.PositiveInt = Field(
@@ -976,6 +1128,8 @@ class ClaimResponseItem(backboneelement.BackboneElement):
         alias="itemSequence",
         title="Claim item instance identifier",
         description="A number to uniquely reference the claim item entries.",
+        # if property is element of this resource.
+        element_property=True,
     )
     itemSequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_itemSequence", title="Extension field for ``itemSequence``."
@@ -989,6 +1143,8 @@ class ClaimResponseItem(backboneelement.BackboneElement):
             "The numbers associated with notes below which apply to the "
             "adjudication of this item."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     noteNumber__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -1013,6 +1169,8 @@ class ClaimResponseItemAdjudication(backboneelement.BackboneElement):
         alias="amount",
         title="Monetary amount",
         description="Monetary amount associated with the category.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     category: fhirtypes.CodeableConceptType = Field(
@@ -1027,6 +1185,8 @@ class ClaimResponseItemAdjudication(backboneelement.BackboneElement):
             "amounts paid by other coverages; and, the benefit payable for this "
             "item."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reason: fhirtypes.CodeableConceptType = Field(
@@ -1037,6 +1197,8 @@ class ClaimResponseItemAdjudication(backboneelement.BackboneElement):
             "A code supporting the understanding of the adjudication result and "
             "explaining variance from expected amount."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     value: fhirtypes.Decimal = Field(
@@ -1047,6 +1209,8 @@ class ClaimResponseItemAdjudication(backboneelement.BackboneElement):
             "A non-monetary value associated with the category. Mutually exclusive "
             "to the amount element above."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."
@@ -1070,6 +1234,8 @@ class ClaimResponseItemDetail(backboneelement.BackboneElement):
         alias="adjudication",
         title="Detail level adjudication details",
         description="The adjudication results.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     detailSequence: fhirtypes.PositiveInt = Field(
@@ -1077,6 +1243,8 @@ class ClaimResponseItemDetail(backboneelement.BackboneElement):
         alias="detailSequence",
         title="Claim detail instance identifier",
         description="A number to uniquely reference the claim detail entry.",
+        # if property is element of this resource.
+        element_property=True,
     )
     detailSequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_detailSequence", title="Extension field for ``detailSequence``."
@@ -1090,6 +1258,8 @@ class ClaimResponseItemDetail(backboneelement.BackboneElement):
             "The numbers associated with notes below which apply to the "
             "adjudication of this item."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     noteNumber__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -1100,6 +1270,8 @@ class ClaimResponseItemDetail(backboneelement.BackboneElement):
         alias="subDetail",
         title="Adjudication for claim sub-details",
         description="A sub-detail adjudication of a simple product or service.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -1119,6 +1291,8 @@ class ClaimResponseItemDetailSubDetail(backboneelement.BackboneElement):
         alias="adjudication",
         title="Subdetail level adjudication details",
         description="The adjudication results.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     noteNumber: ListType[fhirtypes.PositiveInt] = Field(
@@ -1129,6 +1303,8 @@ class ClaimResponseItemDetailSubDetail(backboneelement.BackboneElement):
             "The numbers associated with notes below which apply to the "
             "adjudication of this item."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     noteNumber__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -1139,6 +1315,8 @@ class ClaimResponseItemDetailSubDetail(backboneelement.BackboneElement):
         alias="subDetailSequence",
         title="Claim sub-detail instance identifier",
         description="A number to uniquely reference the claim sub-detail entry.",
+        # if property is element of this resource.
+        element_property=True,
     )
     subDetailSequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -1166,6 +1344,8 @@ class ClaimResponsePayment(backboneelement.BackboneElement):
             "Total amount of all adjustments to this payment included in this "
             "transaction which are not related to this claim's adjudication."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     adjustmentReason: fhirtypes.CodeableConceptType = Field(
@@ -1173,6 +1353,8 @@ class ClaimResponsePayment(backboneelement.BackboneElement):
         alias="adjustmentReason",
         title="Explanation for the adjustment",
         description="Reason for the payment adjustment.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     amount: fhirtypes.MoneyType = Field(
@@ -1180,6 +1362,8 @@ class ClaimResponsePayment(backboneelement.BackboneElement):
         alias="amount",
         title="Payable amount after adjustment",
         description="Benefits payable less any payment adjustment.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     date: fhirtypes.Date = Field(
@@ -1190,6 +1374,8 @@ class ClaimResponsePayment(backboneelement.BackboneElement):
             "Estimated date the payment will be issued or the actual issue date of "
             "payment."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -1200,6 +1386,8 @@ class ClaimResponsePayment(backboneelement.BackboneElement):
         alias="identifier",
         title="Business identifier for the payment",
         description="Issuer's unique identifier for the payment instrument.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -1210,6 +1398,8 @@ class ClaimResponsePayment(backboneelement.BackboneElement):
             "Whether this represents partial or complete payment of the benefits "
             "payable."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -1230,6 +1420,8 @@ class ClaimResponseProcessNote(backboneelement.BackboneElement):
         alias="language",
         title="Language of the text",
         description="A code to define the language used in the text of the note.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     number: fhirtypes.PositiveInt = Field(
@@ -1237,6 +1429,8 @@ class ClaimResponseProcessNote(backboneelement.BackboneElement):
         alias="number",
         title="Note instance identifier",
         description="A number to uniquely identify a note entry.",
+        # if property is element of this resource.
+        element_property=True,
     )
     number__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_number", title="Extension field for ``number``."
@@ -1247,6 +1441,8 @@ class ClaimResponseProcessNote(backboneelement.BackboneElement):
         alias="text",
         title="Note explanatory text",
         description="The explanation or description associated with the processing.",
+        # if property is element of this resource.
+        element_property=True,
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_text", title="Extension field for ``text``."
@@ -1257,6 +1453,8 @@ class ClaimResponseProcessNote(backboneelement.BackboneElement):
         alias="type",
         title="display | print | printoper",
         description="The business purpose of the note text.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["display", "print", "printoper"],
@@ -1282,6 +1480,8 @@ class ClaimResponseTotal(backboneelement.BackboneElement):
         alias="amount",
         title="Financial total for the category",
         description="Monetary total amount associated with the category.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     category: fhirtypes.CodeableConceptType = Field(
@@ -1296,4 +1496,6 @@ class ClaimResponseTotal(backboneelement.BackboneElement):
             "amounts paid by other coverages, and the benefit payable for this "
             "item."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )

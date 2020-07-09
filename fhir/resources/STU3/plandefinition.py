@@ -35,6 +35,8 @@ class PlanDefinition(domainresource.DomainResource):
         alias="action",
         title="Action defined by the plan",
         description="An action to be taken as part of the plan.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     approvalDate: fhirtypes.Date = Field(
@@ -46,6 +48,8 @@ class PlanDefinition(domainresource.DomainResource):
             "Approval happens once when the content is officially approved for "
             "usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_approvalDate", title="Extension field for ``approvalDate``."
@@ -59,6 +63,8 @@ class PlanDefinition(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     contributor: ListType[fhirtypes.ContributorType] = Field(
@@ -69,6 +75,8 @@ class PlanDefinition(domainresource.DomainResource):
             "A contributor to the content of the asset, including authors, editors,"
             " reviewers, and endorsers."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     copyright: fhirtypes.Markdown = Field(
@@ -80,6 +88,8 @@ class PlanDefinition(domainresource.DomainResource):
             "contents. Copyright statements are generally legal restrictions on the"
             " use and publishing of the plan definition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
@@ -96,6 +106,8 @@ class PlanDefinition(domainresource.DomainResource):
             " should change when the substantive content of the plan definition "
             "changes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -109,6 +121,8 @@ class PlanDefinition(domainresource.DomainResource):
             "A free text natural language description of the plan definition from a"
             " consumer's perspective."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -122,6 +136,8 @@ class PlanDefinition(domainresource.DomainResource):
             "The period during which the plan definition content was or is planned "
             "to be in active use."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     experimental: bool = Field(
@@ -133,6 +149,8 @@ class PlanDefinition(domainresource.DomainResource):
             "testing purposes (or education/evaluation/marketing), and is not "
             "intended to be used for genuine usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -148,6 +166,8 @@ class PlanDefinition(domainresource.DomainResource):
             "living, obtaining herd immunity via immunization, meeting a process "
             "improvement objective, etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -159,6 +179,8 @@ class PlanDefinition(domainresource.DomainResource):
             " it is represented in other formats, or referenced in a specification,"
             " model, design or an instance."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -169,6 +191,8 @@ class PlanDefinition(domainresource.DomainResource):
             "A legal or geographic region in which the plan definition is intended "
             "to be used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     lastReviewDate: fhirtypes.Date = Field(
@@ -180,6 +204,8 @@ class PlanDefinition(domainresource.DomainResource):
             "happens periodically after approval, but doesn't change the original "
             "approval date."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
@@ -193,6 +219,8 @@ class PlanDefinition(domainresource.DomainResource):
             "A reference to a Library resource containing any formal logic used by "
             "the plan definition."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Library"],
     )
@@ -206,6 +234,8 @@ class PlanDefinition(domainresource.DomainResource):
             "should be usable as an identifier for the module by machine processing"
             " applications such as code generation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -219,6 +249,8 @@ class PlanDefinition(domainresource.DomainResource):
             "The name of the individual or organization that published the plan "
             "definition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -232,6 +264,8 @@ class PlanDefinition(domainresource.DomainResource):
             "Explaination of why this plan definition is needed and why it has been"
             " designed as it has."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_purpose", title="Extension field for ``purpose``."
@@ -245,6 +279,8 @@ class PlanDefinition(domainresource.DomainResource):
             "Related artifacts such as additional documentation, justification, or "
             "bibliographic references."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     status: fhirtypes.Code = Field(
@@ -255,6 +291,8 @@ class PlanDefinition(domainresource.DomainResource):
             "The status of this plan definition. Enables tracking the life-cycle of"
             " the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -268,6 +306,8 @@ class PlanDefinition(domainresource.DomainResource):
         alias="title",
         title="Name for this plan definition (human friendly)",
         description="A short, descriptive, user-friendly title for the plan definition.",
+        # if property is element of this resource.
+        element_property=True,
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -282,6 +322,8 @@ class PlanDefinition(domainresource.DomainResource):
             "Topics provide a high-level categorization of the definition that can "
             "be useful for filtering and searching."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -292,6 +334,8 @@ class PlanDefinition(domainresource.DomainResource):
             "The type of asset the plan definition represents, e.g. an order set, "
             "protocol, or event-condition-action rule."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     url: fhirtypes.Uri = Field(
@@ -306,6 +350,8 @@ class PlanDefinition(domainresource.DomainResource):
             "include the major version of the plan definition. For more information"
             " see [Technical and Business Versions](resource.html#versions)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -319,6 +365,8 @@ class PlanDefinition(domainresource.DomainResource):
             "A detailed description of how the asset is used from a clinical "
             "perspective."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     usage__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_usage", title="Extension field for ``usage``."
@@ -333,6 +381,8 @@ class PlanDefinition(domainresource.DomainResource):
             "contexts that are listed. These terms may be used to assist with "
             "indexing and searching for appropriate plan definition instances."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     version: fhirtypes.String = Field(
@@ -353,6 +403,8 @@ class PlanDefinition(domainresource.DomainResource):
             " Note that a version is required for non-experimental active "
             "artifacts."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -380,6 +432,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "a selection behavior of at-most-one indicates that of the sub-actions,"
             " at most one may be chosen as part of realizing the action definition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     cardinalityBehavior: fhirtypes.Code = Field(
@@ -387,6 +441,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         alias="cardinalityBehavior",
         title="single | multiple",
         description="Defines whether the action can be selected multiple times.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["single", "multiple"],
@@ -406,6 +462,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "example, a section may have a LOINC code for a the section of a "
             "documentation template."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     condition: ListType[fhirtypes.PlanDefinitionActionConditionType] = Field(
@@ -416,6 +474,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "An expression that describes applicability criteria, or start/stop "
             "conditions for the action."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     definition: fhirtypes.ReferenceType = Field(
@@ -427,6 +487,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "taken in detail, or a PlanDefinition that describes a series of "
             "actions to be taken."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ActivityDefinition", "PlanDefinition"],
     )
@@ -439,6 +501,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "A short description of the action used to provide a summary to display"
             " to the user."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -453,6 +517,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "that can be provided to the CDS recipient. Information resources can "
             "include inline text commentary and links to web resources."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     dynamicValue: ListType[fhirtypes.PlanDefinitionActionDynamicValueType] = Field(
@@ -466,6 +532,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "specify an expression that calculated the weight, and the path on the "
             "resource that would contain the result."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     goalId: ListType[fhirtypes.Id] = Field(
@@ -476,6 +544,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "Identifies goals that this action supports. The reference must be to a"
             " goal element defined within this plan definition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     goalId__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_goalId", title="Extension field for ``goalId``."
@@ -486,6 +556,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         alias="groupingBehavior",
         title="visual-group | logical-group | sentence-group",
         description="Defines the grouping behavior for the action and its children.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["visual-group", "logical-group", "sentence-group"],
@@ -501,6 +573,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         alias="input",
         title="Input data requirements",
         description="Defines input data requirements for the action.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     label: fhirtypes.String = Field(
@@ -508,6 +582,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         alias="label",
         title="User-visible label for the action (e.g. 1. or A.)",
         description="A user-visible label for the action.",
+        # if property is element of this resource.
+        element_property=True,
     )
     label__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_label", title="Extension field for ``label``."
@@ -518,6 +594,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         alias="output",
         title="Output data definition",
         description="Defines the outputs of the action, if any.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     participant: ListType[fhirtypes.PlanDefinitionActionParticipantType] = Field(
@@ -525,6 +603,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         alias="participant",
         title="Who should participate in the action",
         description="Indicates who should participate in performing the action described.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     precheckBehavior: fhirtypes.Code = Field(
@@ -532,6 +612,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         alias="precheckBehavior",
         title="yes | no",
         description="Defines whether the action should usually be preselected.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["yes", "no"],
@@ -547,6 +629,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         alias="reason",
         title="Why the action should be performed",
         description="A description of why this action is necessary or appropriate.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     relatedAction: ListType[fhirtypes.PlanDefinitionActionRelatedActionType] = Field(
@@ -557,6 +641,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             'A relationship to another action such as "before" or "30-60 minutes '
             'after start of".'
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     requiredBehavior: fhirtypes.Code = Field(
@@ -564,6 +650,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         alias="requiredBehavior",
         title="must | could | must-unless-documented",
         description="Defines the requiredness behavior for the action.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["must", "could", "must-unless-documented"],
@@ -579,6 +667,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         alias="selectionBehavior",
         title="any | all | all-or-none | exactly-one | at-most-one | one-or-more",
         description="Defines the selection behavior for the action and its children.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -609,6 +699,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "consumed by a system that may not be capable of interpreting it "
             "dynamically."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     textEquivalent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_textEquivalent", title="Extension field for ``textEquivalent``."
@@ -619,6 +711,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         alias="timingDateTime",
         title="When the action should take place",
         description="An optional value describing when the action should be performed.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e timing[x]
         one_of_many="timing",
         one_of_many_required=False,
@@ -632,6 +726,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         alias="timingDuration",
         title="When the action should take place",
         description="An optional value describing when the action should be performed.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e timing[x]
         one_of_many="timing",
         one_of_many_required=False,
@@ -642,6 +738,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         alias="timingPeriod",
         title="When the action should take place",
         description="An optional value describing when the action should be performed.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e timing[x]
         one_of_many="timing",
         one_of_many_required=False,
@@ -652,6 +750,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         alias="timingRange",
         title="When the action should take place",
         description="An optional value describing when the action should be performed.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e timing[x]
         one_of_many="timing",
         one_of_many_required=False,
@@ -662,6 +762,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         alias="timingTiming",
         title="When the action should take place",
         description="An optional value describing when the action should be performed.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e timing[x]
         one_of_many="timing",
         one_of_many_required=False,
@@ -672,6 +774,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         alias="title",
         title="User-visible title",
         description="The title of the action displayed to a user.",
+        # if property is element of this resource.
+        element_property=True,
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -686,6 +790,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
             "can be executed to produce the intent resource using the "
             "ActivityDefinition instance as the input."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureMap"],
     )
@@ -695,6 +801,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         alias="triggerDefinition",
         title="When the action should be triggered",
         description="A description of when the action should be triggered.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodingType = Field(
@@ -702,6 +810,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         alias="type",
         title="create | update | remove | fire-event",
         description="The type of action to perform (create, update, remove).",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)
@@ -769,6 +879,8 @@ class PlanDefinitionActionCondition(backboneelement.BackboneElement):
             "A brief, natural language description of the condition that "
             "effectively communicates the intended semantics."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -782,6 +894,8 @@ class PlanDefinitionActionCondition(backboneelement.BackboneElement):
             "An expression that returns true or false, indicating whether or not "
             "the condition is satisfied."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_expression", title="Extension field for ``expression``."
@@ -792,6 +906,8 @@ class PlanDefinitionActionCondition(backboneelement.BackboneElement):
         alias="kind",
         title="applicability | start | stop",
         description="The kind of condition.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["applicability", "start", "stop"],
@@ -805,6 +921,8 @@ class PlanDefinitionActionCondition(backboneelement.BackboneElement):
         alias="language",
         title="Language of the expression",
         description="The media type of the language for the expression.",
+        # if property is element of this resource.
+        element_property=True,
     )
     language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_language", title="Extension field for ``language``."
@@ -834,6 +952,8 @@ class PlanDefinitionActionDynamicValue(backboneelement.BackboneElement):
             "A brief, natural language description of the intended semantics of the"
             " dynamic value."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -844,6 +964,8 @@ class PlanDefinitionActionDynamicValue(backboneelement.BackboneElement):
         alias="expression",
         title="An expression that provides the dynamic value for the customization",
         description="An expression specifying the value of the customized element.",
+        # if property is element of this resource.
+        element_property=True,
     )
     expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_expression", title="Extension field for ``expression``."
@@ -854,6 +976,8 @@ class PlanDefinitionActionDynamicValue(backboneelement.BackboneElement):
         alias="language",
         title="Language of the expression",
         description="The media type of the language for the expression.",
+        # if property is element of this resource.
+        element_property=True,
     )
     language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_language", title="Extension field for ``language``."
@@ -868,6 +992,8 @@ class PlanDefinitionActionDynamicValue(backboneelement.BackboneElement):
             "resource that will hold the result of the calculation defined by the "
             "expression."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_path", title="Extension field for ``path``."
@@ -893,6 +1019,8 @@ class PlanDefinitionActionParticipant(backboneelement.BackboneElement):
             "The role the participant should play in performing the described "
             "action."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.Code = Field(
@@ -900,6 +1028,8 @@ class PlanDefinitionActionParticipant(backboneelement.BackboneElement):
         alias="type",
         title="patient | practitioner | related-person",
         description="The type of participant in the action.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["patient", "practitioner", "related-person"],
@@ -926,6 +1056,8 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
         alias="actionId",
         title="What action is this related to",
         description="The element id of the related action.",
+        # if property is element of this resource.
+        element_property=True,
     )
     actionId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_actionId", title="Extension field for ``actionId``."
@@ -939,6 +1071,8 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
             "A duration or range of durations to apply to the relationship. For "
             "example, 30-60 minutes before."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e offset[x]
         one_of_many="offset",
         one_of_many_required=False,
@@ -952,6 +1086,8 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
             "A duration or range of durations to apply to the relationship. For "
             "example, 30-60 minutes before."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e offset[x]
         one_of_many="offset",
         one_of_many_required=False,
@@ -965,6 +1101,8 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
             "concurrent | concurrent-with-end | after-start | after | after-end"
         ),
         description="The relationship of this action to the related action.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -1042,6 +1180,8 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
             "Identifies problems, conditions, issues, or concerns the goal is "
             "intended to address."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     category: fhirtypes.CodeableConceptType = Field(
@@ -1049,6 +1189,8 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
         alias="category",
         title="E.g. Treatment, dietary, behavioral, etc",
         description="Indicates a category the goal falls within.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     description: fhirtypes.CodeableConceptType = Field(
@@ -1060,6 +1202,8 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
             'objective of care, such as "control blood pressure" or "negotiate an '
             'obstacle course" or "dance with child at wedding".'
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     documentation: ListType[fhirtypes.RelatedArtifactType] = Field(
@@ -1072,6 +1216,8 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
             "Information resources can include inline text commentary and links to "
             "web resources."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     priority: fhirtypes.CodeableConceptType = Field(
@@ -1082,6 +1228,8 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
             "Identifies the expected level of importance associated with "
             "reaching/sustaining the defined goal."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     start: fhirtypes.CodeableConceptType = Field(
@@ -1089,6 +1237,8 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
         alias="start",
         title="When goal pursuit begins",
         description="The event after which the goal should begin being pursued.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     target: ListType[fhirtypes.PlanDefinitionGoalTargetType] = Field(
@@ -1096,6 +1246,8 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
         alias="target",
         title="Target outcome for the goal",
         description="Indicates what should be done and within what timeframe.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -1122,6 +1274,8 @@ class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
             "value. Similarly, if the high value is missing, it indicates that the "
             "goal is achieved at any value at or above the low value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e detail[x]
         one_of_many="detail",
         one_of_many_required=False,
@@ -1139,6 +1293,8 @@ class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
             "value. Similarly, if the high value is missing, it indicates that the "
             "goal is achieved at any value at or above the low value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e detail[x]
         one_of_many="detail",
         one_of_many_required=False,
@@ -1156,6 +1312,8 @@ class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
             "value. Similarly, if the high value is missing, it indicates that the "
             "goal is achieved at any value at or above the low value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e detail[x]
         one_of_many="detail",
         one_of_many_required=False,
@@ -1169,6 +1327,8 @@ class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
             "Indicates the timeframe after the start of the goal in which the goal "
             "should be met."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     measure: fhirtypes.CodeableConceptType = Field(
@@ -1179,6 +1339,8 @@ class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
             "The parameter whose value is to be tracked, e.g. body weigth, blood "
             "pressure, or hemoglobin A1c level."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)

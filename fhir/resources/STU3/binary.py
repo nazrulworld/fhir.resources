@@ -28,6 +28,8 @@ class Binary(resource.Resource):
         alias="content",
         title="The actual content",
         description="The actual content, base64 encoded.",
+        # if property is element of this resource.
+        element_property=True,
     )
     content__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_content", title="Extension field for ``content``."
@@ -41,6 +43,8 @@ class Binary(resource.Resource):
             "MimeType of the binary content represented as a standard MimeType (BCP"
             " 13)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     contentType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_contentType", title="Extension field for ``contentType``."
@@ -54,6 +58,8 @@ class Binary(resource.Resource):
             "Treat this binary as if it was this other resource for access control "
             "purposes."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )

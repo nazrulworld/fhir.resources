@@ -36,6 +36,8 @@ class ImplementationGuide(domainresource.DomainResource):
             "A binary file that is included in the  implementation guide when it is"
             " published."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     binary__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_binary", title="Extension field for ``binary``."
@@ -49,6 +51,8 @@ class ImplementationGuide(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     copyright: fhirtypes.Markdown = Field(
@@ -60,6 +64,8 @@ class ImplementationGuide(domainresource.DomainResource):
             "contents. Copyright statements are generally legal restrictions on the"
             " use and publishing of the implementation guide."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
@@ -76,6 +82,8 @@ class ImplementationGuide(domainresource.DomainResource):
             " should change when the substantive content of the implementation "
             "guide changes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -90,6 +98,8 @@ class ImplementationGuide(domainresource.DomainResource):
             "Typically, an implementation guide uses value sets, profiles "
             "etc.defined in other implementation guides."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     description: fhirtypes.Markdown = Field(
@@ -100,6 +110,8 @@ class ImplementationGuide(domainresource.DomainResource):
             "A free text natural language description of the implementation guide "
             "from a consumer's perspective."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -114,6 +126,8 @@ class ImplementationGuide(domainresource.DomainResource):
             " for testing purposes (or education/evaluation/marketing), and is not "
             "intended to be used for genuine usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -129,6 +143,8 @@ class ImplementationGuide(domainresource.DomainResource):
             "specification, without the revision number, e.g. "
             "[publication].[major].[minor], which is 3.0.2 for this version."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     fhirVersion__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_fhirVersion", title="Extension field for ``fhirVersion``."
@@ -142,6 +158,8 @@ class ImplementationGuide(domainresource.DomainResource):
             "A set of profiles that all resources covered by this implementation "
             "guide must conform to."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -152,6 +170,8 @@ class ImplementationGuide(domainresource.DomainResource):
             "A legal or geographic region in which the implementation guide is "
             "intended to be used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     name: fhirtypes.String = Field(
@@ -163,6 +183,8 @@ class ImplementationGuide(domainresource.DomainResource):
             "name should be usable as an identifier for the module by machine "
             "processing applications such as code generation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -176,6 +198,8 @@ class ImplementationGuide(domainresource.DomainResource):
             "A logical group of resources. Logical groups can be used when building"
             " pages."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     page: fhirtypes.ImplementationGuidePageType = Field(
@@ -186,6 +210,8 @@ class ImplementationGuide(domainresource.DomainResource):
             "A page / section in the implementation guide. The root page is the "
             "implementation guide home page."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     publisher: fhirtypes.String = Field(
@@ -196,6 +222,8 @@ class ImplementationGuide(domainresource.DomainResource):
             "The name of the individual or organization that published the "
             "implementation guide."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -209,6 +237,8 @@ class ImplementationGuide(domainresource.DomainResource):
             "The status of this implementation guide. Enables tracking the life-"
             "cycle of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -230,6 +260,8 @@ class ImplementationGuide(domainresource.DomainResource):
             "implementation guide. For more information see [Technical and Business"
             " Versions](resource.html#versions)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -244,6 +276,8 @@ class ImplementationGuide(domainresource.DomainResource):
             "contexts that are listed. These terms may be used to assist with "
             "indexing and searching for appropriate implementation guide instances."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     version: fhirtypes.String = Field(
@@ -259,6 +293,8 @@ class ImplementationGuide(domainresource.DomainResource):
             "version is not available. There is also no expectation that versions "
             "can be placed in a lexicographical sequence."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -283,6 +319,8 @@ class ImplementationGuideDependency(backboneelement.BackboneElement):
         alias="type",
         title="reference | inclusion",
         description="How the dependency is represented when the guide is published.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["reference", "inclusion"],
@@ -296,6 +334,8 @@ class ImplementationGuideDependency(backboneelement.BackboneElement):
         alias="uri",
         title="Where to find dependency",
         description="Where the dependency is located.",
+        # if property is element of this resource.
+        element_property=True,
     )
     uri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uri", title="Extension field for ``uri``."
@@ -319,6 +359,8 @@ class ImplementationGuideGlobal(backboneelement.BackboneElement):
         alias="profile",
         title="Profile that all resources must conform to",
         description="A reference to the profile that all instances must conform to.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
     )
@@ -328,6 +370,8 @@ class ImplementationGuideGlobal(backboneelement.BackboneElement):
         alias="type",
         title="Type this profiles applies to",
         description="The type of resource that all instances must conform to.",
+        # if property is element of this resource.
+        element_property=True,
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -351,6 +395,8 @@ class ImplementationGuidePackage(backboneelement.BackboneElement):
         alias="description",
         title="Human readable text describing the package",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -361,6 +407,8 @@ class ImplementationGuidePackage(backboneelement.BackboneElement):
         alias="name",
         title="Name used .page.package",
         description="The name for the group, as used in page.package.",
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -376,6 +424,8 @@ class ImplementationGuidePackage(backboneelement.BackboneElement):
             "etc.) are obvious candidates for inclusion, but any kind of resource "
             "can be included as an example resource."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -401,6 +451,8 @@ class ImplementationGuidePackageResource(backboneelement.BackboneElement):
             "A short code that may be used to identify the resource throughout the "
             "implementation guide."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     acronym__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_acronym", title="Extension field for ``acronym``."
@@ -414,6 +466,8 @@ class ImplementationGuidePackageResource(backboneelement.BackboneElement):
             "A description of the reason that a resource has been included in the "
             "implementation guide."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -429,6 +483,8 @@ class ImplementationGuidePackageResource(backboneelement.BackboneElement):
             "conforms to the rules and/or help implementers understand the intent "
             "of the guide."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     example__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_example", title="Extension field for ``example``."
@@ -443,6 +499,8 @@ class ImplementationGuidePackageResource(backboneelement.BackboneElement):
             "used for resources that are included as examples of "
             "StructureDefinitions."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
     )
@@ -456,6 +514,8 @@ class ImplementationGuidePackageResource(backboneelement.BackboneElement):
             "name, but the name may be extracted from the resource (e.g. "
             "ValueSet.name)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -466,6 +526,8 @@ class ImplementationGuidePackageResource(backboneelement.BackboneElement):
         alias="sourceReference",
         title="Location of the resource",
         description="Where this resource is found.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e source[x]
         one_of_many="source",
         one_of_many_required=True,
@@ -478,6 +540,8 @@ class ImplementationGuidePackageResource(backboneelement.BackboneElement):
         alias="sourceUri",
         title="Location of the resource",
         description="Where this resource is found.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e source[x]
         one_of_many="source",
         one_of_many_required=True,
@@ -540,6 +604,8 @@ class ImplementationGuidePage(backboneelement.BackboneElement):
         alias="format",
         title="Format of the page (e.g. html, markdown, etc.)",
         description="The format of the page.",
+        # if property is element of this resource.
+        element_property=True,
     )
     format__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_format", title="Extension field for ``format``."
@@ -557,6 +623,8 @@ class ImplementationGuidePage(backboneelement.BackboneElement):
             "example), and other kinds are of interest so that tools can navigate "
             "the user to the page of interest."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -582,6 +650,8 @@ class ImplementationGuidePage(backboneelement.BackboneElement):
             "For constructed pages, a list of packages to include in the page (or "
             "else empty for everything)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     package__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_package", title="Extension field for ``package``."
@@ -592,6 +662,8 @@ class ImplementationGuidePage(backboneelement.BackboneElement):
         alias="page",
         title="Nested Pages / Sections",
         description="Nested Pages/Sections under this page.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     source: fhirtypes.Uri = Field(
@@ -599,6 +671,8 @@ class ImplementationGuidePage(backboneelement.BackboneElement):
         alias="source",
         title="Where to find that page",
         description="The source address for the page.",
+        # if property is element of this resource.
+        element_property=True,
     )
     source__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_source", title="Extension field for ``source``."
@@ -612,6 +686,8 @@ class ImplementationGuidePage(backboneelement.BackboneElement):
             "A short title used to represent this page in navigational structures "
             "such as table of contents, bread crumbs, etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -622,6 +698,8 @@ class ImplementationGuidePage(backboneelement.BackboneElement):
         alias="type",
         title="Kind of resource to include in the list",
         description="For constructed pages, what kind of resources to include in the list.",
+        # if property is element of this resource.
+        element_property=True,
     )
     type__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_type", title="Extension field for ``type``."

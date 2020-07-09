@@ -32,6 +32,8 @@ class ElementDefinition(backboneelement.BackboneElement):
         alias="alias",
         title="Other names",
         description="Identifies additional names by which this element might also be known.",
+        # if property is element of this resource.
+        element_property=True,
     )
     alias__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_alias", title="Extension field for ``alias``."
@@ -51,6 +53,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             " may be different to the base definition. On the original definition "
             "of the element, it will be same."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     binding: fhirtypes.ElementDefinitionBindingType = Field(
@@ -61,6 +65,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "Binds to a value set if this element is coded (code, Coding, "
             "CodeableConcept, Quantity), or the data types (string, uri)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     code: ListType[fhirtypes.CodingType] = Field(
@@ -71,6 +77,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "A code that has the same meaning as the element in a particular "
             "terminology."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     comment: fhirtypes.Markdown = Field(
@@ -83,6 +91,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "proper use, etc. (Note: The text you are reading is specified in "
             "ElementDefinition.comment)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comment", title="Extension field for ``comment``."
@@ -96,6 +106,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "A reference to an invariant that may make additional statements about "
             "the cardinality or value in the instance."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     condition__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_condition", title="Extension field for ``condition``."
@@ -109,6 +121,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "Formal constraints such as co-occurrence and other constraints that "
             "can be computationally evaluated within the context of the instance."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     contentReference: fhirtypes.Uri = Field(
@@ -122,6 +136,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "ElementDefinition for the element, including definitions, cardinality "
             "constraints, bindings, invariants etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     contentReference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -137,6 +153,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -150,6 +168,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -163,6 +183,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -176,6 +198,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -189,6 +213,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -207,6 +233,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -225,6 +253,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -243,6 +273,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -261,6 +293,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -274,6 +308,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -287,6 +323,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -300,6 +338,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -313,6 +353,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -326,6 +368,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -339,6 +383,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -352,6 +398,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -370,6 +418,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -388,6 +438,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -406,6 +458,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -419,6 +473,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -432,6 +488,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -445,6 +503,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -458,6 +518,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -471,6 +533,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -487,6 +551,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -500,6 +566,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -518,6 +586,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -536,6 +606,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -554,6 +626,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -567,6 +641,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -580,6 +656,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -596,6 +674,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -609,6 +689,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -622,6 +704,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -640,6 +724,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -653,6 +739,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -666,6 +754,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -679,6 +769,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -692,6 +784,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -705,6 +799,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -718,6 +814,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -731,6 +829,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -749,6 +849,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -767,6 +869,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -780,6 +884,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -793,6 +899,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -811,6 +919,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -827,6 +937,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -843,6 +955,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -856,6 +970,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The value that should be used if there is no value stated in the "
             "instance (e.g. 'if not otherwise specified, the abstract is false')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -878,6 +994,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "particular context of use of the resource. (Note: The text you are "
             "reading is specified in ElementDefinition.definition)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_definition", title="Extension field for ``definition``."
@@ -891,6 +1009,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "A sample value for this element demonstrating the type of information "
             "that would typically be found in the element."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     fixedAddress: fhirtypes.AddressType = Field(
@@ -903,6 +1023,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -918,6 +1040,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -933,6 +1057,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -948,6 +1074,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -963,6 +1091,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -983,6 +1113,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1001,6 +1133,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1019,6 +1153,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1037,6 +1173,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1052,6 +1190,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1067,6 +1207,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1082,6 +1224,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1097,6 +1241,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1112,6 +1258,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1127,6 +1275,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1142,6 +1292,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1160,6 +1312,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1178,6 +1332,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1196,6 +1352,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1211,6 +1369,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1226,6 +1386,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1241,6 +1403,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1256,6 +1420,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1271,6 +1437,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1289,6 +1457,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1304,6 +1474,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1322,6 +1494,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1340,6 +1514,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1358,6 +1534,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1373,6 +1551,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1388,6 +1568,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1406,6 +1588,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1421,6 +1605,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1436,6 +1622,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1456,6 +1644,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1471,6 +1661,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1486,6 +1678,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1501,6 +1695,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1516,6 +1712,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1531,6 +1729,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1546,6 +1746,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1561,6 +1763,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1579,6 +1783,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1597,6 +1803,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1612,6 +1820,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1627,6 +1837,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1647,6 +1859,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1665,6 +1879,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1683,6 +1899,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1698,6 +1916,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "is ignored, and all values must be an exact match (case and accent "
             "sensitive). Missing elements/attributes must also be missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e fixed[x]
         one_of_many="fixed",
         one_of_many_required=False,
@@ -1719,6 +1939,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "process it, and/or a pre-determination has been made that it is not "
             "relevant to their particular system."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     isModifier__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_isModifier", title="Extension field for ``isModifier``."
@@ -1732,6 +1954,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "Explains how that element affects the interpretation of the resource "
             "or element that contains it."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     isModifierReason__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -1747,6 +1971,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "Whether the element should be included if a client requests a search "
             "with the parameter _summary=true."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     isSummary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_isSummary", title="Extension field for ``isSummary``."
@@ -1761,6 +1987,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "element indicating its meaning or to use to prompt for the element in "
             "a user display or form."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     label__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_label", title="Extension field for ``label``."
@@ -1774,6 +2002,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "Identifies a concept from an external specification that roughly "
             "corresponds to this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     max: fhirtypes.String = Field(
@@ -1784,6 +2014,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The maximum number of times this element is permitted to appear in the"
             " instance."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     max__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_max", title="Extension field for ``max``."
@@ -1798,6 +2030,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "present in conformant instances and which is expected to be supported "
             "by conformant consumers that support the element."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     maxLength__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_maxLength", title="Extension field for ``maxLength``."
@@ -1812,6 +2046,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e maxValue[x]
         one_of_many="maxValue",
         one_of_many_required=False,
@@ -1829,6 +2065,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e maxValue[x]
         one_of_many="maxValue",
         one_of_many_required=False,
@@ -1848,6 +2086,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e maxValue[x]
         one_of_many="maxValue",
         one_of_many_required=False,
@@ -1865,6 +2105,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e maxValue[x]
         one_of_many="maxValue",
         one_of_many_required=False,
@@ -1882,6 +2124,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e maxValue[x]
         one_of_many="maxValue",
         one_of_many_required=False,
@@ -1899,6 +2143,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e maxValue[x]
         one_of_many="maxValue",
         one_of_many_required=False,
@@ -1918,6 +2164,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e maxValue[x]
         one_of_many="maxValue",
         one_of_many_required=False,
@@ -1932,6 +2180,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e maxValue[x]
         one_of_many="maxValue",
         one_of_many_required=False,
@@ -1949,6 +2199,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e maxValue[x]
         one_of_many="maxValue",
         one_of_many_required=False,
@@ -1967,6 +2219,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The Implicit meaning that is to be understood when this element is "
             "missing (e.g. 'when this element is missing, the period is ongoing')."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     meaningWhenMissing__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -1979,6 +2233,8 @@ class ElementDefinition(backboneelement.BackboneElement):
         alias="min",
         title="Minimum Cardinality",
         description="The minimum number of times this element SHALL appear in the instance.",
+        # if property is element of this resource.
+        element_property=True,
     )
     min__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_min", title="Extension field for ``min``."
@@ -1993,6 +2249,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e minValue[x]
         one_of_many="minValue",
         one_of_many_required=False,
@@ -2010,6 +2268,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e minValue[x]
         one_of_many="minValue",
         one_of_many_required=False,
@@ -2029,6 +2289,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e minValue[x]
         one_of_many="minValue",
         one_of_many_required=False,
@@ -2046,6 +2308,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e minValue[x]
         one_of_many="minValue",
         one_of_many_required=False,
@@ -2063,6 +2327,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e minValue[x]
         one_of_many="minValue",
         one_of_many_required=False,
@@ -2080,6 +2346,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e minValue[x]
         one_of_many="minValue",
         one_of_many_required=False,
@@ -2099,6 +2367,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e minValue[x]
         one_of_many="minValue",
         one_of_many_required=False,
@@ -2113,6 +2383,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e minValue[x]
         one_of_many="minValue",
         one_of_many_required=False,
@@ -2130,6 +2402,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "This is allowed for the types date, dateTime, instant, time, decimal, "
             "integer, and Quantity."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e minValue[x]
         one_of_many="minValue",
         one_of_many_required=False,
@@ -2151,6 +2425,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "populate or use the data element in any way is at the discretion of "
             "the implementation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     mustSupport__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_mustSupport", title="Extension field for ``mustSupport``."
@@ -2165,6 +2441,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "meaning and describes what that meaning is.  If absent, it means that "
             "the order of the element has no meaning."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     orderMeaning__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_orderMeaning", title="Extension field for ``orderMeaning``."
@@ -2179,6 +2457,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "list of ancestor elements, beginning with the name of the resource or "
             "extension."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_path", title="Extension field for ``path``."
@@ -2204,6 +2484,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -2229,6 +2511,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -2254,6 +2538,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -2279,6 +2565,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -2304,6 +2592,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -2334,6 +2624,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -2362,6 +2654,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -2392,6 +2686,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -2420,6 +2716,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -2445,6 +2743,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -2470,6 +2770,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -2495,6 +2797,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -2520,6 +2824,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -2545,6 +2851,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -2570,6 +2878,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -2595,6 +2905,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -2623,6 +2935,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -2651,6 +2965,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -2679,6 +2995,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -2704,6 +3022,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -2729,6 +3049,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -2754,6 +3076,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -2779,6 +3103,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -2804,6 +3130,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -2832,6 +3160,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -2857,6 +3187,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -2885,6 +3217,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -2913,6 +3247,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -2941,6 +3277,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -2966,6 +3304,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -2991,6 +3331,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -3019,6 +3361,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -3044,6 +3388,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -3069,6 +3415,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -3099,6 +3447,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -3124,6 +3474,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -3149,6 +3501,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -3174,6 +3528,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -3199,6 +3555,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -3224,6 +3582,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -3249,6 +3609,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -3274,6 +3636,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -3302,6 +3666,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -3330,6 +3696,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -3355,6 +3723,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -3380,6 +3750,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -3410,6 +3782,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -3438,6 +3812,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -3466,6 +3842,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -3491,6 +3869,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "match (recursively) the pattern value 3. If an array: it must match "
             "(recursively) the pattern value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e pattern[x]
         one_of_many="pattern",
         one_of_many_required=False,
@@ -3507,6 +3887,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "Codes that define how this element is represented in instances, when "
             "the deviation varies from the normal case."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["xmlAttr", "xmlText", "typeAttr", "cdaText", "xhtml"],
@@ -3527,6 +3909,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "source materials or specifications that drove the structure of this "
             "element."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     requirements__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_requirements", title="Extension field for ``requirements``."
@@ -3540,6 +3924,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "A concise description of what this element means (e.g. for use in "
             "autogenerated summaries)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     short__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_short", title="Extension field for ``short``."
@@ -3559,6 +3945,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             " the slice might or might not be overriding a slice in an inherited "
             "profile, depending on the sliceName."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     sliceIsConstraining__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -3576,6 +3964,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             " referring to a specific set of constraints applied to this element, "
             "used to provide a name to different slices of the same element."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     sliceName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sliceName", title="Extension field for ``sliceName``."
@@ -3595,6 +3985,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "that have the same path, until a shorter path occurs (the shorter path"
             " terminates the set)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: ListType[fhirtypes.ElementDefinitionTypeType] = Field(
@@ -3605,6 +3997,8 @@ class ElementDefinition(backboneelement.BackboneElement):
             "The data type or resource that the value of this element is permitted "
             "to be."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)
@@ -3846,6 +4240,8 @@ class ElementDefinitionBase(element.Element):
         alias="max",
         title="Max cardinality of the base element",
         description="Maximum cardinality of the base element identified by the path.",
+        # if property is element of this resource.
+        element_property=True,
     )
     max__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_max", title="Extension field for ``max``."
@@ -3856,6 +4252,8 @@ class ElementDefinitionBase(element.Element):
         alias="min",
         title="Min cardinality of the base element",
         description="Minimum cardinality of the base element identified by the path.",
+        # if property is element of this resource.
+        element_property=True,
     )
     min__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_min", title="Extension field for ``min``."
@@ -3872,6 +4270,8 @@ class ElementDefinitionBase(element.Element):
             " a [StructureDefinition](structuredefinition.html#) without a "
             "StructureDefinition.base."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_path", title="Extension field for ``path``."
@@ -3895,6 +4295,8 @@ class ElementDefinitionBinding(element.Element):
         alias="description",
         title="Human explanation of the value set",
         description="Describes the intended use of this particular set of codes.",
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -3909,6 +4311,8 @@ class ElementDefinitionBinding(element.Element):
             "binding - that is, the degree to which the provided value set must be "
             "adhered to in the instances."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["required", "extensible", "preferred", "example"],
@@ -3925,6 +4329,8 @@ class ElementDefinitionBinding(element.Element):
             "Refers to the value set that identifies the set of codes the binding "
             "refers to."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
     )
@@ -3953,6 +4359,8 @@ class ElementDefinitionConstraint(element.Element):
             "A [FHIRPath](fhirpath.html) expression of constraint that can be "
             "executed to see if this constraint is met."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_expression", title="Extension field for ``expression``."
@@ -3966,6 +4374,8 @@ class ElementDefinitionConstraint(element.Element):
             "Text that can be used to describe the constraint in messages "
             "identifying that the constraint has been violated."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     human__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_human", title="Extension field for ``human``."
@@ -3980,6 +4390,8 @@ class ElementDefinitionConstraint(element.Element):
             "impacted by the constraint.  Will not be referenced for constraints "
             "that do not affect cardinality."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     key__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_key", title="Extension field for ``key``."
@@ -3990,6 +4402,8 @@ class ElementDefinitionConstraint(element.Element):
         alias="requirements",
         title="Why this constraint is necessary or appropriate",
         description="Description of why this constraint is necessary or appropriate.",
+        # if property is element of this resource.
+        element_property=True,
     )
     requirements__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_requirements", title="Extension field for ``requirements``."
@@ -4003,6 +4417,8 @@ class ElementDefinitionConstraint(element.Element):
             "Identifies the impact constraint violation has on the conformance of "
             "the instance."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["error", "warning"],
@@ -4019,6 +4435,8 @@ class ElementDefinitionConstraint(element.Element):
             "A reference to the original source of the constraint, for traceability"
             " purposes."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
     )
@@ -4034,6 +4452,8 @@ class ElementDefinitionConstraint(element.Element):
             "An XPath expression of constraint that can be executed to see if this "
             "constraint is met."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     xpath__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_xpath", title="Extension field for ``xpath``."
@@ -4057,6 +4477,8 @@ class ElementDefinitionExample(element.Element):
         alias="label",
         title="Describes the purpose of this example",
         description="Describes the purpose of this example amoung the set of examples.",
+        # if property is element of this resource.
+        element_property=True,
     )
     label__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_label", title="Extension field for ``label``."
@@ -4070,6 +4492,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4083,6 +4507,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4096,6 +4522,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4109,6 +4537,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4122,6 +4552,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4140,6 +4572,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4156,6 +4590,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4172,6 +4608,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4188,6 +4626,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4201,6 +4641,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4214,6 +4656,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4227,6 +4671,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4240,6 +4686,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4253,6 +4701,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4266,6 +4716,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4279,6 +4731,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4295,6 +4749,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4311,6 +4767,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4327,6 +4785,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4340,6 +4800,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4353,6 +4815,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4366,6 +4830,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4379,6 +4845,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4392,6 +4860,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4408,6 +4878,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4421,6 +4893,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4437,6 +4911,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4453,6 +4929,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4469,6 +4947,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4482,6 +4962,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4495,6 +4977,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4511,6 +4995,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4524,6 +5010,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4537,6 +5025,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4555,6 +5045,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4568,6 +5060,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4581,6 +5075,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4594,6 +5090,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4607,6 +5105,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4620,6 +5120,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4633,6 +5135,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4646,6 +5150,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4662,6 +5168,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4678,6 +5186,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4691,6 +5201,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4704,6 +5216,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4722,6 +5236,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4738,6 +5254,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4754,6 +5272,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4767,6 +5287,8 @@ class ElementDefinitionExample(element.Element):
             "The actual value for the element, which must be one of the types "
             "allowed for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -4882,6 +5404,8 @@ class ElementDefinitionMapping(element.Element):
         alias="comment",
         title="Comments about the mapping or its use",
         description="Comments that provide information about the mapping or its use.",
+        # if property is element of this resource.
+        element_property=True,
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comment", title="Extension field for ``comment``."
@@ -4892,6 +5416,8 @@ class ElementDefinitionMapping(element.Element):
         alias="identity",
         title="Reference to mapping declaration",
         description="An internal reference to the definition of a mapping.",
+        # if property is element of this resource.
+        element_property=True,
     )
     identity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_identity", title="Extension field for ``identity``."
@@ -4902,6 +5428,8 @@ class ElementDefinitionMapping(element.Element):
         alias="language",
         title="Computable language of mapping",
         description="Identifies the computable language in which mapping.map is expressed.",
+        # if property is element of this resource.
+        element_property=True,
     )
     language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_language", title="Extension field for ``language``."
@@ -4915,6 +5443,8 @@ class ElementDefinitionMapping(element.Element):
             "Expresses what part of the target specification corresponds to this "
             "element."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     map__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_map", title="Extension field for ``map``."
@@ -4948,6 +5478,8 @@ class ElementDefinitionSlicing(element.Element):
             "whatever information is possible about how the slices can be "
             "differentiated."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -4966,6 +5498,8 @@ class ElementDefinitionSlicing(element.Element):
             "completely distinguish which slice the element in the resource matches"
             " based on the allowed values for those elements in each of the slices."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     ordered: bool = Field(
@@ -4976,6 +5510,8 @@ class ElementDefinitionSlicing(element.Element):
             "If the matching elements have to occur in the same order as defined in"
             " the profile."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     ordered__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_ordered", title="Extension field for ``ordered``."
@@ -4990,6 +5526,8 @@ class ElementDefinitionSlicing(element.Element):
             "ordered, profile authors can also say that additional slices are only "
             "allowed at the end."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["closed", "open", "openAtEnd"],
@@ -5023,6 +5561,8 @@ class ElementDefinitionSlicingDiscriminator(element.Element):
             "FHIRPath](fhirpath.html#simple), that is used to identify the element "
             "on which discrimination is based."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_path", title="Extension field for ``path``."
@@ -5033,6 +5573,8 @@ class ElementDefinitionSlicingDiscriminator(element.Element):
         alias="type",
         title="value | exists | pattern | type | profile",
         description="How the element value is interpreted when discrimination is evaluated.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["value", "exists", "pattern", "type", "profile"],
@@ -5063,9 +5605,11 @@ class ElementDefinitionType(element.Element):
             " can be aggregated - is it a contained resource, or a reference, and "
             "if the context is a bundle, is it included in the bundle."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["contained", "referenced", "bundled - how aggregated"],
+        enum_values=["contained", "referenced", "bundled"],
     )
     aggregation__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -5082,6 +5626,8 @@ class ElementDefinitionType(element.Element):
             "to http://hl7.org/fhir/StructureDefinition/string. Absolute URLs are "
             "only allowed in logical models."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -5100,6 +5646,8 @@ class ElementDefinitionType(element.Element):
             " URL. When an implementation guide is specified, the type SHALL "
             "conform to at least one profile defined in the implementation guide."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition", "ImplementationGuide"],
     )
@@ -5125,6 +5673,8 @@ class ElementDefinitionType(element.Element):
             " resource SHALL conform to at least one profile defined in the "
             "implementation guide."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition", "ImplementationGuide"],
     )
@@ -5142,6 +5692,8 @@ class ElementDefinitionType(element.Element):
             "Whether this reference needs to be version specific or version "
             "independent, or whether either can be used."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["either", "independent", "specific"],

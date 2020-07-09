@@ -35,6 +35,8 @@ class ChargeItemDefinition(domainresource.DomainResource):
         alias="applicability",
         title="Whether or not the billing code is applicable",
         description="Expressions that describe applicability criteria for the billing code.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     approvalDate: fhirtypes.Date = Field(
@@ -46,6 +48,8 @@ class ChargeItemDefinition(domainresource.DomainResource):
             "Approval happens once when the content is officially approved for "
             "usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_approvalDate", title="Extension field for ``approvalDate``."
@@ -59,6 +63,8 @@ class ChargeItemDefinition(domainresource.DomainResource):
             "The defined billing details in this resource pertain to the given "
             "billing code."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     contact: ListType[fhirtypes.ContactDetailType] = Field(
@@ -69,6 +75,8 @@ class ChargeItemDefinition(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     copyright: fhirtypes.Markdown = Field(
@@ -80,6 +88,8 @@ class ChargeItemDefinition(domainresource.DomainResource):
             "its contents. Copyright statements are generally legal restrictions on"
             " the use and publishing of the charge item definition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
@@ -96,6 +106,8 @@ class ChargeItemDefinition(domainresource.DomainResource):
             "change when the substantive content of the charge item definition "
             "changes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -109,6 +121,8 @@ class ChargeItemDefinition(domainresource.DomainResource):
             "The URL pointing to an externally-defined charge item definition that "
             "is adhered to in whole or in part by this definition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     derivedFromUri__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -124,6 +138,8 @@ class ChargeItemDefinition(domainresource.DomainResource):
             "A free text natural language description of the charge item definition"
             " from a consumer's perspective."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -137,6 +153,8 @@ class ChargeItemDefinition(domainresource.DomainResource):
             "The period during which the charge item definition content was or is "
             "planned to be in active use."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     experimental: bool = Field(
@@ -148,6 +166,8 @@ class ChargeItemDefinition(domainresource.DomainResource):
             "authored for testing purposes (or education/evaluation/marketing) and "
             "is not intended to be used for genuine usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -162,6 +182,8 @@ class ChargeItemDefinition(domainresource.DomainResource):
             "definition when it is represented in other formats, or referenced in a"
             " specification, model, design or an instance."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     instance: ListType[fhirtypes.ReferenceType] = Field(
@@ -172,6 +194,8 @@ class ChargeItemDefinition(domainresource.DomainResource):
             "The defined billing details in this resource pertain to the given "
             "product instance(s)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Medication", "Substance", "Device"],
     )
@@ -184,6 +208,8 @@ class ChargeItemDefinition(domainresource.DomainResource):
             "A legal or geographic region in which the charge item definition is "
             "intended to be used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     lastReviewDate: fhirtypes.Date = Field(
@@ -195,6 +221,8 @@ class ChargeItemDefinition(domainresource.DomainResource):
             "happens periodically after approval but does not change the original "
             "approval date."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
@@ -208,6 +236,8 @@ class ChargeItemDefinition(domainresource.DomainResource):
             " or step"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ChargeItemDefinition"],
     )
@@ -224,6 +254,8 @@ class ChargeItemDefinition(domainresource.DomainResource):
             " no applicability rules are established for the group, then all "
             "properties always apply."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     publisher: fhirtypes.String = Field(
@@ -234,6 +266,8 @@ class ChargeItemDefinition(domainresource.DomainResource):
             "The name of the organization or individual that published the charge "
             "item definition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -250,6 +284,8 @@ class ChargeItemDefinition(domainresource.DomainResource):
             "As new versions of a protocol or guideline are defined, allows "
             "identification of what versions are replaced by a new instance."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ChargeItemDefinition"],
     )
@@ -262,6 +298,8 @@ class ChargeItemDefinition(domainresource.DomainResource):
         alias="status",
         title="draft | active | retired | unknown",
         description="The current state of the ChargeItemDefinition.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -278,6 +316,8 @@ class ChargeItemDefinition(domainresource.DomainResource):
             "A short, descriptive, user-friendly title for the charge item "
             "definition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -300,6 +340,8 @@ class ChargeItemDefinition(domainresource.DomainResource):
             "SHALL remain the same when the charge item definition is stored on "
             "different servers."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -317,6 +359,8 @@ class ChargeItemDefinition(domainresource.DomainResource):
             "indexing and searching for appropriate charge item definition "
             "instances."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     version: fhirtypes.String = Field(
@@ -336,6 +380,8 @@ class ChargeItemDefinition(domainresource.DomainResource):
             "knowledge assets, refer to the Decision Support Service specification."
             " Note that a version is required for non-experimental active assets."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -361,6 +407,8 @@ class ChargeItemDefinitionApplicability(backboneelement.BackboneElement):
             "A brief, natural language description of the condition that "
             "effectively communicates the intended semantics."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -376,6 +424,8 @@ class ChargeItemDefinitionApplicability(backboneelement.BackboneElement):
             "environment variable must be replaced at runtime with the ChargeItem "
             "resource to which this definition is applied."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_expression", title="Extension field for ``expression``."
@@ -390,6 +440,8 @@ class ChargeItemDefinitionApplicability(backboneelement.BackboneElement):
             ' Clinical Query Language expressions or "text/fhirpath" for FHIRPath '
             "expressions."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_language", title="Extension field for ``language``."
@@ -417,6 +469,8 @@ class ChargeItemDefinitionPropertyGroup(backboneelement.BackboneElement):
             "Expressions that describe applicability criteria for the "
             "priceComponent."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     priceComponent: ListType[
@@ -434,6 +488,8 @@ class ChargeItemDefinitionPropertyGroup(backboneelement.BackboneElement):
             "transparency to the recipient of the Invoice of how the prices have "
             "been calculated."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -458,6 +514,8 @@ class ChargeItemDefinitionPropertyGroupPriceComponent(backboneelement.BackboneEl
         alias="amount",
         title="Monetary amount associated with this component",
         description="The amount calculated for this component.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -468,6 +526,8 @@ class ChargeItemDefinitionPropertyGroupPriceComponent(backboneelement.BackboneEl
             "A code that identifies the component. Codes may be used to "
             "differentiate between kinds of taxes, surcharges, discounts etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     factor: fhirtypes.Decimal = Field(
@@ -478,6 +538,8 @@ class ChargeItemDefinitionPropertyGroupPriceComponent(backboneelement.BackboneEl
             "The factor that has been applied on the base price for calculating "
             "this component."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_factor", title="Extension field for ``factor``."
@@ -488,6 +550,8 @@ class ChargeItemDefinitionPropertyGroupPriceComponent(backboneelement.BackboneEl
         alias="type",
         title="base | surcharge | deduction | discount | tax | informational",
         description="This code identifies the type of the component.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[

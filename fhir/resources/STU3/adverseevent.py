@@ -43,6 +43,8 @@ class AdverseEvent(domainresource.DomainResource):
             " caused harm to the subject, or had the potential to cause harm to the"
             " subject."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["AE", "PAE"],
@@ -56,6 +58,8 @@ class AdverseEvent(domainresource.DomainResource):
         alias="date",
         title="When the event occurred",
         description="The date (and perhaps time) when the adverse event occurred.",
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -66,6 +70,8 @@ class AdverseEvent(domainresource.DomainResource):
         alias="description",
         title="Description of the adverse event",
         description="Describes the adverse event in text.",
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -83,6 +89,8 @@ class AdverseEvent(domainresource.DomainResource):
             "informant of clinical history), or information about what Act was "
             "performed (e.g. informant witness)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "Device"],
     )
@@ -96,6 +104,8 @@ class AdverseEvent(domainresource.DomainResource):
             "processes and/or used to refer to it when a direct URL reference to "
             "the resource itsefl is not appropriate."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     location: fhirtypes.ReferenceType = Field(
@@ -103,6 +113,8 @@ class AdverseEvent(domainresource.DomainResource):
         alias="location",
         title="Location where adverse event occurred",
         description="The information about where the adverse event occurred.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
     )
@@ -115,6 +127,8 @@ class AdverseEvent(domainresource.DomainResource):
             "unknown"
         ),
         description="Describes the type of outcome from the adverse event.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reaction: ListType[fhirtypes.ReferenceType] = Field(
@@ -125,6 +139,8 @@ class AdverseEvent(domainresource.DomainResource):
             "Includes information about the reaction that occurred as a result of "
             "exposure to a substance (for example, a drug or a chemical)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition"],
     )
@@ -137,6 +153,8 @@ class AdverseEvent(domainresource.DomainResource):
             "Information on who recorded the adverse event.  May be the patient or "
             "a practitioner."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Practitioner", "RelatedPerson"],
     )
@@ -146,6 +164,8 @@ class AdverseEvent(domainresource.DomainResource):
         alias="referenceDocument",
         title="AdverseEvent.referenceDocument",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
     )
@@ -155,6 +175,8 @@ class AdverseEvent(domainresource.DomainResource):
         alias="seriousness",
         title="Mild | Moderate | Severe",
         description="Describes the seriousness or severity of the adverse event.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     study: ListType[fhirtypes.ReferenceType] = Field(
@@ -162,6 +184,8 @@ class AdverseEvent(domainresource.DomainResource):
         alias="study",
         title="AdverseEvent.study",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ResearchStudy"],
     )
@@ -175,6 +199,8 @@ class AdverseEvent(domainresource.DomainResource):
             "adverse event, there will be no subject as the adverse event was "
             "prevented."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "ResearchSubject", "Medication", "Device"],
     )
@@ -184,6 +210,8 @@ class AdverseEvent(domainresource.DomainResource):
         alias="subjectMedicalHistory",
         title="AdverseEvent.subjectMedicalHistory",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Condition",
@@ -203,6 +231,8 @@ class AdverseEvent(domainresource.DomainResource):
             "Describes the entity that is suspected to have caused the adverse "
             "event."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -213,6 +243,8 @@ class AdverseEvent(domainresource.DomainResource):
             "This element defines the specific type of event that occurred or that "
             "was prevented from occurring."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -232,6 +264,8 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
         alias="causality",
         title="causality1 | causality2",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["causality1", "causality2"],
@@ -241,7 +275,12 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
     )
 
     causalityAssessment: fhirtypes.CodeableConceptType = Field(
-        None, alias="causalityAssessment", title="assess1 | assess2", description=None,
+        None,
+        alias="causalityAssessment",
+        title="assess1 | assess2",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     causalityAuthor: fhirtypes.ReferenceType = Field(
@@ -249,12 +288,19 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
         alias="causalityAuthor",
         title="AdverseEvent.suspectEntity.causalityAuthor",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
     )
 
     causalityMethod: fhirtypes.CodeableConceptType = Field(
-        None, alias="causalityMethod", title="method1 | method2", description=None,
+        None,
+        alias="causalityMethod",
+        title="method1 | method2",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     causalityProductRelatedness: fhirtypes.String = Field(
@@ -262,6 +308,8 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
         alias="causalityProductRelatedness",
         title="AdverseEvent.suspectEntity.causalityProductRelatedness",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     causalityProductRelatedness__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -270,7 +318,12 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
     )
 
     causalityResult: fhirtypes.CodeableConceptType = Field(
-        None, alias="causalityResult", title="result1 | result2", description=None,
+        None,
+        alias="causalityResult",
+        title="result1 | result2",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     instance: fhirtypes.ReferenceType = Field(
@@ -282,6 +335,8 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
             "be a substance, medication, medication administration, medication "
             "statement or a device."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Substance",

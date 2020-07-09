@@ -31,6 +31,8 @@ class RelatedArtifact(element.Element):
             "A bibliographic citation for the related artifact. This text SHOULD be"
             " formatted according to an accepted citation format."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     citation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_citation", title="Extension field for ``citation``."
@@ -44,6 +46,8 @@ class RelatedArtifact(element.Element):
             "A brief description of the document or knowledge resource being "
             "referenced, suitable for display to a consumer."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_display", title="Extension field for ``display``."
@@ -57,6 +61,8 @@ class RelatedArtifact(element.Element):
             "The document being referenced, represented as an attachment. This is "
             "exclusive with the resource element."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     label: fhirtypes.String = Field(
@@ -67,6 +73,8 @@ class RelatedArtifact(element.Element):
             "A short label that can be used to reference the citation from "
             "elsewhere in the containing artifact, such as a footnote index."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     label__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_label", title="Extension field for ``label``."
@@ -80,6 +88,8 @@ class RelatedArtifact(element.Element):
             "The related resource, such as a library, value set, profile, or other "
             "knowledge resource."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -95,6 +105,8 @@ class RelatedArtifact(element.Element):
             "derived-from | depends-on | composed-of"
         ),
         description="The type of relationship to the related artifact.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -120,6 +132,8 @@ class RelatedArtifact(element.Element):
             "A url for the artifact that can be followed to access the actual "
             "content."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."

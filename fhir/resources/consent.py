@@ -36,6 +36,8 @@ class Consent(domainresource.DomainResource):
             "A classification of the type of consents found in the statement. This "
             "element supports indexing and retrieval of consent statements."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     dateTime: fhirtypes.DateTime = Field(
@@ -43,6 +45,8 @@ class Consent(domainresource.DomainResource):
         alias="dateTime",
         title="When this Consent was created or indexed",
         description="When this  Consent was issued / created / indexed.",
+        # if property is element of this resource.
+        element_property=True,
     )
     dateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_dateTime", title="Extension field for ``dateTime``."
@@ -53,6 +57,8 @@ class Consent(domainresource.DomainResource):
         alias="identifier",
         title="Identifier for this record (external references)",
         description="Unique identifier for this copy of the Consent Statement.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     organization: ListType[fhirtypes.ReferenceType] = Field(
@@ -63,6 +69,8 @@ class Consent(domainresource.DomainResource):
             "The organization that manages the consent, and the framework within "
             "which it is executed."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -72,6 +80,8 @@ class Consent(domainresource.DomainResource):
         alias="patient",
         title="Who the consent applies to",
         description="The patient/healthcare consumer to whom this consent applies.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
     )
@@ -87,6 +97,8 @@ class Consent(domainresource.DomainResource):
             " any obligations or limitations on authorizations and enforcement of "
             "prohibitions."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Organization",
@@ -106,6 +118,8 @@ class Consent(domainresource.DomainResource):
             "scope. Policies may be organizational, but are often defined "
             "jurisdictionally, or in law."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     policyRule: fhirtypes.CodeableConceptType = Field(
@@ -113,6 +127,8 @@ class Consent(domainresource.DomainResource):
         alias="policyRule",
         title="Regulation that this consents to",
         description="A reference to the specific base computable regulation or policy.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     provision: fhirtypes.ConsentProvisionType = Field(
@@ -123,6 +139,8 @@ class Consent(domainresource.DomainResource):
             "An exception to the base policy of this consent. An exception can be "
             "an addition or removal of access permissions."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     scope: fhirtypes.CodeableConceptType = Field(
@@ -133,6 +151,8 @@ class Consent(domainresource.DomainResource):
             "A selector of the type of consent being presented: ADR, Privacy, "
             "Treatment, Research.  This list is now extensible."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     sourceAttachment: fhirtypes.AttachmentType = Field(
@@ -145,6 +165,8 @@ class Consent(domainresource.DomainResource):
             "links back to such a source, a reference to a document repository "
             "(e.g. XDS) that stores the original consent document."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e source[x]
         one_of_many="source",
         one_of_many_required=False,
@@ -160,6 +182,8 @@ class Consent(domainresource.DomainResource):
             "links back to such a source, a reference to a document repository "
             "(e.g. XDS) that stores the original consent document."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e source[x]
         one_of_many="source",
         one_of_many_required=False,
@@ -177,6 +201,8 @@ class Consent(domainresource.DomainResource):
         alias="status",
         title="draft | proposed | active | rejected | inactive | entered-in-error",
         description="Indicates the current state of this consent.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -201,6 +227,8 @@ class Consent(domainresource.DomainResource):
             "no) was verified with the patient, his/her family or another "
             "authorized person."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)
@@ -262,6 +290,8 @@ class ConsentPolicy(backboneelement.BackboneElement):
             "accountability for  enforcing policies pertaining to Consent "
             "Directives."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     authority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_authority", title="Extension field for ``authority``."
@@ -276,6 +306,8 @@ class ConsentPolicy(backboneelement.BackboneElement):
             "scope. Policies may be organizational, but are often defined "
             "jurisdictionally, or in law."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     uri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uri", title="Extension field for ``uri``."
@@ -299,6 +331,8 @@ class ConsentProvision(backboneelement.BackboneElement):
         alias="action",
         title="Actions controlled by this rule",
         description="Actions controlled by this Rule.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     actor: ListType[fhirtypes.ConsentProvisionActorType] = Field(
@@ -309,6 +343,8 @@ class ConsentProvision(backboneelement.BackboneElement):
             "Who or what is controlled by this rule. Use group to identify a set of"
             " actors by some property they share (e.g. 'admitting officers')."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     class_fhir: ListType[fhirtypes.CodingType] = Field(
@@ -320,6 +356,8 @@ class ConsentProvision(backboneelement.BackboneElement):
             "resource type, a profile on a type, or a CDA document, or some other "
             "type that indicates what sort of information the consent relates to."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     code: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -327,6 +365,8 @@ class ConsentProvision(backboneelement.BackboneElement):
         alias="code",
         title="e.g. LOINC or SNOMED CT code, etc. in the content",
         description="If this code is found in an instance, then the rule applies.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     data: ListType[fhirtypes.ConsentProvisionDataType] = Field(
@@ -337,6 +377,8 @@ class ConsentProvision(backboneelement.BackboneElement):
             "The resources controlled by this rule if specific resources are "
             "referenced."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     dataPeriod: fhirtypes.PeriodType = Field(
@@ -347,6 +389,8 @@ class ConsentProvision(backboneelement.BackboneElement):
             "Clinical or Operational Relevant period of time that bounds the data "
             "controlled by this rule."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -354,6 +398,8 @@ class ConsentProvision(backboneelement.BackboneElement):
         alias="period",
         title="Timeframe for this rule",
         description="The timeframe in this rule is valid.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     provision: ListType[fhirtypes.ConsentProvisionType] = Field(
@@ -361,6 +407,8 @@ class ConsentProvision(backboneelement.BackboneElement):
         alias="provision",
         title="Nested Exception Rules",
         description="Rules which provide exceptions to the base rule or subrules.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     purpose: ListType[fhirtypes.CodingType] = Field(
@@ -371,6 +419,8 @@ class ConsentProvision(backboneelement.BackboneElement):
             "The context of the activities a user is taking - why the user is "
             "accessing the data - that are controlled by this rule."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     securityLabel: ListType[fhirtypes.CodingType] = Field(
@@ -381,6 +431,8 @@ class ConsentProvision(backboneelement.BackboneElement):
             "A security label, comprised of 0..* security label fields (Privacy "
             "tags), which define which resources are controlled by this exception."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.Code = Field(
@@ -391,6 +443,8 @@ class ConsentProvision(backboneelement.BackboneElement):
             "Action  to take - permit or deny - when the rule conditions are met.  "
             "Not permitted in root rule, required in all nested rules."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["deny", "permit"],
@@ -421,6 +475,8 @@ class ConsentProvisionActor(backboneelement.BackboneElement):
             "use group to identify a set of actors by some property they share "
             "(e.g. 'admitting officers')."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Device",
@@ -442,6 +498,8 @@ class ConsentProvisionActor(backboneelement.BackboneElement):
             "How the individual is involved in the resources content that is "
             "described in the exception."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -464,6 +522,8 @@ class ConsentProvisionData(backboneelement.BackboneElement):
             "How the resource reference is interpreted when testing consent "
             "restrictions."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["instance", "related", "dependents", "authoredby"],
@@ -480,6 +540,8 @@ class ConsentProvisionData(backboneelement.BackboneElement):
             "A reference to a specific resource that defines which resources are "
             "covered by this consent."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -502,6 +564,8 @@ class ConsentVerification(backboneelement.BackboneElement):
         alias="verificationDate",
         title="When consent verified",
         description="Date verification was collected.",
+        # if property is element of this resource.
+        element_property=True,
     )
     verificationDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -514,6 +578,8 @@ class ConsentVerification(backboneelement.BackboneElement):
         alias="verified",
         title="Has been verified",
         description="Has the instruction been verified.",
+        # if property is element of this resource.
+        element_property=True,
     )
     verified__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_verified", title="Extension field for ``verified``."
@@ -527,6 +593,8 @@ class ConsentVerification(backboneelement.BackboneElement):
             "Who verified the instruction (Patient, Relative or other Authorized "
             "Person)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "RelatedPerson"],
     )

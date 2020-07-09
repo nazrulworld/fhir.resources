@@ -29,6 +29,8 @@ class ContactDetail(element.Element):
         alias="name",
         title="Name of an individual to contact",
         description="The name of an individual to contact.",
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -42,4 +44,6 @@ class ContactDetail(element.Element):
             "The contact details for the individual (if a name was provided) or the"
             " organization."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )

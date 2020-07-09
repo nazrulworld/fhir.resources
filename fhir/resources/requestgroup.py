@@ -32,6 +32,8 @@ class RequestGroup(domainresource.DomainResource):
         alias="action",
         title="Proposed actions, if any",
         description="The actions, if any, produced by the evaluation of the artifact.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     author: fhirtypes.ReferenceType = Field(
@@ -39,6 +41,8 @@ class RequestGroup(domainresource.DomainResource):
         alias="author",
         title="Device or practitioner that authored the request group",
         description="Provides a reference to the author of the request group.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device", "Practitioner", "PractitionerRole"],
     )
@@ -48,6 +52,8 @@ class RequestGroup(domainresource.DomainResource):
         alias="authoredOn",
         title="When the request group was authored",
         description="Indicates when the request group was created.",
+        # if property is element of this resource.
+        element_property=True,
     )
     authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_authoredOn", title="Extension field for ``authoredOn``."
@@ -61,6 +67,8 @@ class RequestGroup(domainresource.DomainResource):
             "A plan, proposal or order that is fulfilled in whole or in part by "
             "this request."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -70,6 +78,8 @@ class RequestGroup(domainresource.DomainResource):
         alias="code",
         title="What's being requested/ordered",
         description="A code that identifies what the overall request group is.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     encounter: fhirtypes.ReferenceType = Field(
@@ -77,6 +87,8 @@ class RequestGroup(domainresource.DomainResource):
         alias="encounter",
         title="Created as part of",
         description="Describes the context of the request group, if any.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
     )
@@ -90,6 +102,8 @@ class RequestGroup(domainresource.DomainResource):
             "or less simultaneously by a single author, representing the identifier"
             " of the requisition, prescription or similar form."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -100,6 +114,8 @@ class RequestGroup(domainresource.DomainResource):
             "Allows a service to provide a unique, business identifier for the "
             "request."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     instantiatesCanonical: ListType[fhirtypes.Canonical] = Field(
@@ -111,6 +127,8 @@ class RequestGroup(domainresource.DomainResource):
             "orderset or other definition that is adhered to in whole or in part by"
             " this request."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     instantiatesCanonical__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -129,6 +147,8 @@ class RequestGroup(domainresource.DomainResource):
             "or other definition that is adhered to in whole or in part by this "
             "request."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     instantiatesUri__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -147,6 +167,8 @@ class RequestGroup(domainresource.DomainResource):
             "Indicates the level of authority/intentionality associated with the "
             "request and where the request fits into the workflow chain."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -173,6 +195,8 @@ class RequestGroup(domainresource.DomainResource):
             "Provides a mechanism to communicate additional information about the "
             "response."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     priority: fhirtypes.Code = Field(
@@ -183,6 +207,8 @@ class RequestGroup(domainresource.DomainResource):
             "Indicates how quickly the request should be addressed with respect to "
             "other requests."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["routine", "urgent", "asap", "stat"],
@@ -196,6 +222,8 @@ class RequestGroup(domainresource.DomainResource):
         alias="reasonCode",
         title="Why the request group is needed",
         description="Describes the reason for the request group in coded or textual form.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
@@ -206,6 +234,8 @@ class RequestGroup(domainresource.DomainResource):
             "Indicates another resource whose existence justifies this request "
             "group."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Condition",
@@ -223,6 +253,8 @@ class RequestGroup(domainresource.DomainResource):
             "Completed or terminated request(s) whose function is taken by this new"
             " request."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -238,6 +270,8 @@ class RequestGroup(domainresource.DomainResource):
             "The current state of the request. For request groups, the status "
             "reflects the status of all the requests in the group."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -259,6 +293,8 @@ class RequestGroup(domainresource.DomainResource):
         alias="subject",
         title="Who the request group is about",
         description="The subject for which the request group was created.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
     )
@@ -276,7 +312,12 @@ class RequestGroupAction(backboneelement.BackboneElement):
     resource_type = Field("RequestGroupAction", const=True)
 
     action: ListType[fhirtypes.RequestGroupActionType] = Field(
-        None, alias="action", title="Sub action", description="Sub actions.",
+        None,
+        alias="action",
+        title="Sub action",
+        description="Sub actions.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     cardinalityBehavior: fhirtypes.Code = Field(
@@ -284,6 +325,8 @@ class RequestGroupAction(backboneelement.BackboneElement):
         alias="cardinalityBehavior",
         title="single | multiple",
         description="Defines whether the action can be selected multiple times.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["single", "multiple"],
@@ -303,6 +346,8 @@ class RequestGroupAction(backboneelement.BackboneElement):
             "example, a section may have a LOINC code for a section of a "
             "documentation template."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     condition: ListType[fhirtypes.RequestGroupActionConditionType] = Field(
@@ -313,6 +358,8 @@ class RequestGroupAction(backboneelement.BackboneElement):
             "An expression that describes applicability criteria, or start/stop "
             "conditions for the action."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     description: fhirtypes.String = Field(
@@ -323,6 +370,8 @@ class RequestGroupAction(backboneelement.BackboneElement):
             "A short description of the action used to provide a summary to display"
             " to the user."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -337,6 +386,8 @@ class RequestGroupAction(backboneelement.BackboneElement):
             "that can be provided to the CDS recipient. Information resources can "
             "include inline text commentary and links to web resources."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     groupingBehavior: fhirtypes.Code = Field(
@@ -344,6 +395,8 @@ class RequestGroupAction(backboneelement.BackboneElement):
         alias="groupingBehavior",
         title="visual-group | logical-group | sentence-group",
         description="Defines the grouping behavior for the action and its children.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["visual-group", "logical-group", "sentence-group"],
@@ -359,6 +412,8 @@ class RequestGroupAction(backboneelement.BackboneElement):
         alias="participant",
         title="Who should perform the action",
         description="The participant that should perform or be responsible for this action.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Patient",
@@ -374,6 +429,8 @@ class RequestGroupAction(backboneelement.BackboneElement):
         alias="precheckBehavior",
         title="yes | no",
         description="Defines whether the action should usually be preselected.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["yes", "no"],
@@ -389,6 +446,8 @@ class RequestGroupAction(backboneelement.BackboneElement):
         alias="prefix",
         title="User-visible prefix for the action (e.g. 1. or A.)",
         description="A user-visible prefix for the action.",
+        # if property is element of this resource.
+        element_property=True,
     )
     prefix__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_prefix", title="Extension field for ``prefix``."
@@ -402,6 +461,8 @@ class RequestGroupAction(backboneelement.BackboneElement):
             "Indicates how quickly the action should be addressed with respect to "
             "other actions."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["routine", "urgent", "asap", "stat"],
@@ -418,6 +479,8 @@ class RequestGroupAction(backboneelement.BackboneElement):
             'A relationship to another action such as "before" or "30-60 minutes '
             'after start of".'
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     requiredBehavior: fhirtypes.Code = Field(
@@ -425,6 +488,8 @@ class RequestGroupAction(backboneelement.BackboneElement):
         alias="requiredBehavior",
         title="must | could | must-unless-documented",
         description="Defines expectations around whether an action is required.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["must", "could", "must-unless-documented"],
@@ -443,6 +508,8 @@ class RequestGroupAction(backboneelement.BackboneElement):
             "The resource that is the target of the action (e.g. "
             "CommunicationRequest)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -452,6 +519,8 @@ class RequestGroupAction(backboneelement.BackboneElement):
         alias="selectionBehavior",
         title="any | all | all-or-none | exactly-one | at-most-one | one-or-more",
         description="Defines the selection behavior for the action and its children.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -482,6 +551,8 @@ class RequestGroupAction(backboneelement.BackboneElement):
             "consumed by a system that might not be capable of interpreting it "
             "dynamically."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     textEquivalent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_textEquivalent", title="Extension field for ``textEquivalent``."
@@ -492,6 +563,8 @@ class RequestGroupAction(backboneelement.BackboneElement):
         alias="timingAge",
         title="When the action should take place",
         description="An optional value describing when the action should be performed.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e timing[x]
         one_of_many="timing",
         one_of_many_required=False,
@@ -502,6 +575,8 @@ class RequestGroupAction(backboneelement.BackboneElement):
         alias="timingDateTime",
         title="When the action should take place",
         description="An optional value describing when the action should be performed.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e timing[x]
         one_of_many="timing",
         one_of_many_required=False,
@@ -515,6 +590,8 @@ class RequestGroupAction(backboneelement.BackboneElement):
         alias="timingDuration",
         title="When the action should take place",
         description="An optional value describing when the action should be performed.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e timing[x]
         one_of_many="timing",
         one_of_many_required=False,
@@ -525,6 +602,8 @@ class RequestGroupAction(backboneelement.BackboneElement):
         alias="timingPeriod",
         title="When the action should take place",
         description="An optional value describing when the action should be performed.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e timing[x]
         one_of_many="timing",
         one_of_many_required=False,
@@ -535,6 +614,8 @@ class RequestGroupAction(backboneelement.BackboneElement):
         alias="timingRange",
         title="When the action should take place",
         description="An optional value describing when the action should be performed.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e timing[x]
         one_of_many="timing",
         one_of_many_required=False,
@@ -545,6 +626,8 @@ class RequestGroupAction(backboneelement.BackboneElement):
         alias="timingTiming",
         title="When the action should take place",
         description="An optional value describing when the action should be performed.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e timing[x]
         one_of_many="timing",
         one_of_many_required=False,
@@ -555,6 +638,8 @@ class RequestGroupAction(backboneelement.BackboneElement):
         alias="title",
         title="User-visible title",
         description="The title of the action displayed to a user.",
+        # if property is element of this resource.
+        element_property=True,
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -565,6 +650,8 @@ class RequestGroupAction(backboneelement.BackboneElement):
         alias="type",
         title="create | update | remove | fire-event",
         description="The type of action to perform (create, update, remove).",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)
@@ -633,6 +720,8 @@ class RequestGroupActionCondition(backboneelement.BackboneElement):
             "An expression that returns true or false, indicating whether or not "
             "the condition is satisfied."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     kind: fhirtypes.Code = Field(
@@ -640,6 +729,8 @@ class RequestGroupActionCondition(backboneelement.BackboneElement):
         alias="kind",
         title="applicability | start | stop",
         description="The kind of condition.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["applicability", "start", "stop"],
@@ -666,6 +757,8 @@ class RequestGroupActionRelatedAction(backboneelement.BackboneElement):
         alias="actionId",
         title="What action this is related to",
         description="The element id of the action this is related to.",
+        # if property is element of this resource.
+        element_property=True,
     )
     actionId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_actionId", title="Extension field for ``actionId``."
@@ -679,6 +772,8 @@ class RequestGroupActionRelatedAction(backboneelement.BackboneElement):
             "A duration or range of durations to apply to the relationship. For "
             "example, 30-60 minutes before."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e offset[x]
         one_of_many="offset",
         one_of_many_required=False,
@@ -692,6 +787,8 @@ class RequestGroupActionRelatedAction(backboneelement.BackboneElement):
             "A duration or range of durations to apply to the relationship. For "
             "example, 30-60 minutes before."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e offset[x]
         one_of_many="offset",
         one_of_many_required=False,
@@ -705,6 +802,8 @@ class RequestGroupActionRelatedAction(backboneelement.BackboneElement):
             "concurrent | concurrent-with-end | after-start | after | after-end"
         ),
         description="The relationship of this action to the related action.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[

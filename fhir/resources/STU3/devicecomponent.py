@@ -33,6 +33,8 @@ class DeviceComponent(domainresource.DomainResource):
             "The locally assigned unique identification by the software. For "
             "example: handle ID."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     languageCode: fhirtypes.CodeableConceptType = Field(
@@ -47,6 +49,8 @@ class DeviceComponent(domainresource.DomainResource):
             "device. This language code will follow the IETF language tag. Example:"
             " en-US."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     lastSystemChange: fhirtypes.Instant = Field(
@@ -57,6 +61,8 @@ class DeviceComponent(domainresource.DomainResource):
             "The timestamp for the most recent system change which includes device "
             "configuration or setting change."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     lastSystemChange__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -75,6 +81,8 @@ class DeviceComponent(domainresource.DomainResource):
             "The physical principle of the measurement. For example: thermal, "
             "chemical, acoustical, etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -108,6 +116,8 @@ class DeviceComponent(domainresource.DomainResource):
             "The current operational status of the device. For example: On, Off, "
             "Standby, etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     parameterGroup: fhirtypes.CodeableConceptType = Field(
@@ -118,6 +128,8 @@ class DeviceComponent(domainresource.DomainResource):
             "The parameter group supported by the current device component that is "
             "based on some nomenclature, e.g. cardiovascular."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     parent: fhirtypes.ReferenceType = Field(
@@ -128,6 +140,8 @@ class DeviceComponent(domainresource.DomainResource):
             "The link to the parent resource. For example: Channel is linked to its"
             " VMD parent."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DeviceComponent"],
     )
@@ -142,6 +156,8 @@ class DeviceComponent(domainresource.DomainResource):
             "The production specification such as component revision, serial "
             "number, etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     source: fhirtypes.ReferenceType = Field(
@@ -152,6 +168,8 @@ class DeviceComponent(domainresource.DomainResource):
             "The link to the source Device that contains administrative device "
             "information such as manufacture, serial number, etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
     )
@@ -164,6 +182,8 @@ class DeviceComponent(domainresource.DomainResource):
             "The component type as defined in the object-oriented or metric "
             "nomenclature partition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -189,6 +209,8 @@ class DeviceComponentProductionSpecification(backboneelement.BackboneElement):
             "11073-10101 has a partition for private OID semantic that the "
             "manufacturer can make use of."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     productionSpec: fhirtypes.String = Field(
@@ -196,6 +218,8 @@ class DeviceComponentProductionSpecification(backboneelement.BackboneElement):
         alias="productionSpec",
         title="A printable string defining the component",
         description="The printable string defining the component.",
+        # if property is element of this resource.
+        element_property=True,
     )
     productionSpec__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_productionSpec", title="Extension field for ``productionSpec``."
@@ -212,4 +236,6 @@ class DeviceComponentProductionSpecification(backboneelement.BackboneElement):
             "The specification type, such as, serial number, part number, hardware "
             "revision, software revision, etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )

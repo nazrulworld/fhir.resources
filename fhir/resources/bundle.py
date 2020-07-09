@@ -32,6 +32,8 @@ class Bundle(resource.Resource):
             "An entry in a bundle resource - will either contain a resource or "
             "information about a resource (transactions and history only)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: fhirtypes.IdentifierType = Field(
@@ -42,6 +44,8 @@ class Bundle(resource.Resource):
             "A persistent identifier for the bundle that won't change as a bundle "
             "is copied from server to server."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     link: ListType[fhirtypes.BundleLinkType] = Field(
@@ -49,6 +53,8 @@ class Bundle(resource.Resource):
         alias="link",
         title="Links related to this Bundle",
         description="A series of links that provide context to this bundle.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     signature: fhirtypes.SignatureType = Field(
@@ -56,6 +62,8 @@ class Bundle(resource.Resource):
         alias="signature",
         title="Digital Signature",
         description="Digital Signature - base64 encoded. XML-DSig or a JWT.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     timestamp: fhirtypes.Instant = Field(
@@ -66,6 +74,8 @@ class Bundle(resource.Resource):
             "The date/time that the bundle was assembled - i.e. when the resources "
             "were placed in the bundle."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     timestamp__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_timestamp", title="Extension field for ``timestamp``."
@@ -81,6 +91,8 @@ class Bundle(resource.Resource):
             "search.mode = 'include' or 'outcome' entries and it does not provide a"
             " count of the number of entries in the Bundle."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     total__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_total", title="Extension field for ``total``."
@@ -94,6 +106,8 @@ class Bundle(resource.Resource):
             "batch-response | history | searchset | collection"
         ),
         description="Indicates the purpose of this bundle - how it is intended to be used.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -139,6 +153,8 @@ class BundleEntry(backboneelement.BackboneElement):
             "specifying a temporary id for reference in the bundle) * Results from "
             "operations might involve resources that are not identified."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     fullUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_fullUrl", title="Extension field for ``fullUrl``."
@@ -149,6 +165,8 @@ class BundleEntry(backboneelement.BackboneElement):
         alias="link",
         title="Links related to this entry",
         description="A series of links that provide context to this entry.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     request: fhirtypes.BundleEntryRequestType = Field(
@@ -160,6 +178,8 @@ class BundleEntry(backboneelement.BackboneElement):
             "part of a transaction or batch.  For history, it shows how the entry "
             "was processed to create the version contained in the entry."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     resource: fhirtypes.ResourceType = Field(
@@ -170,6 +190,8 @@ class BundleEntry(backboneelement.BackboneElement):
             "The Resource for the entry. The purpose/meaning of the resource is "
             "determined by the Bundle.type."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     response: fhirtypes.BundleEntryResponseType = Field(
@@ -181,6 +203,8 @@ class BundleEntry(backboneelement.BackboneElement):
             "in the batch or transaction being responded to or what the results of "
             "an operation where when returning history."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     search: fhirtypes.BundleEntrySearchType = Field(
@@ -191,6 +215,8 @@ class BundleEntry(backboneelement.BackboneElement):
             "Information about the search process that lead to the creation of this"
             " entry."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -216,6 +242,8 @@ class BundleEntryRequest(backboneelement.BackboneElement):
             'information, see the API section ["Managing Resource '
             'Contention"](http.html#concurrency).'
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     ifMatch__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_ifMatch", title="Extension field for ``ifMatch``."
@@ -229,6 +257,8 @@ class BundleEntryRequest(backboneelement.BackboneElement):
             "Only perform the operation if the last updated date matches. See the "
             'API documentation for ["Conditional Read"](http.html#cread).'
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     ifModifiedSince__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_ifModifiedSince", title="Extension field for ``ifModifiedSince``."
@@ -244,6 +274,8 @@ class BundleEntryRequest(backboneelement.BackboneElement):
             ' ["Conditional Create"](http.html#ccreate). This is just the query '
             'portion of the URL - what follows the "?" (not including the "?").'
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     ifNoneExist__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_ifNoneExist", title="Extension field for ``ifNoneExist``."
@@ -257,6 +289,8 @@ class BundleEntryRequest(backboneelement.BackboneElement):
             "If the ETag values match, return a 304 Not Modified status. See the "
             'API documentation for ["Conditional Read"](http.html#cread).'
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     ifNoneMatch__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_ifNoneMatch", title="Extension field for ``ifNoneMatch``."
@@ -271,6 +305,8 @@ class BundleEntryRequest(backboneelement.BackboneElement):
             "this entry. In a history bundle, this indicates the HTTP action that "
             "occurred."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["GET", "HEAD", "POST", "PUT", "DELETE", "PATCH"],
@@ -287,6 +323,8 @@ class BundleEntryRequest(backboneelement.BackboneElement):
             "The URL for this entry, relative to the root (the address to which the"
             " request is posted)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -316,6 +354,8 @@ class BundleEntryResponse(backboneelement.BackboneElement):
             "Versioning](http.html#versioning) and [Managing Resource "
             "Contention](http.html#concurrency))."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     etag__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_etag", title="Extension field for ``etag``."
@@ -326,6 +366,8 @@ class BundleEntryResponse(backboneelement.BackboneElement):
         alias="lastModified",
         title="Server's date time modified",
         description="The date/time that the resource was modified on the server.",
+        # if property is element of this resource.
+        element_property=True,
     )
     lastModified__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastModified", title="Extension field for ``lastModified``."
@@ -339,6 +381,8 @@ class BundleEntryResponse(backboneelement.BackboneElement):
             "The location header created by processing this operation, populated if"
             " the operation returns a location."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     location__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_location", title="Extension field for ``location``."
@@ -352,6 +396,8 @@ class BundleEntryResponse(backboneelement.BackboneElement):
             "An OperationOutcome containing hints and warnings produced as part of "
             "processing this entry in a batch or transaction."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     status: fhirtypes.String = Field(
@@ -363,6 +409,8 @@ class BundleEntryResponse(backboneelement.BackboneElement):
             "start with a 3 digit HTTP code (e.g. 404) and may contain the standard"
             " HTTP description associated with the status code."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -390,9 +438,11 @@ class BundleEntrySearch(backboneelement.BackboneElement):
             " or because of an _include requirement, or to convey information or "
             "warning information about the search process."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["match", "include", "outcome - why this is in the result set"],
+        enum_values=["match", "include", "outcome"],
     )
     mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_mode", title="Extension field for ``mode``."
@@ -403,6 +453,8 @@ class BundleEntrySearch(backboneelement.BackboneElement):
         alias="score",
         title="Search ranking (between 0 and 1)",
         description="When searching, the server's search ranking score for the entry.",
+        # if property is element of this resource.
+        element_property=True,
     )
     score__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_score", title="Extension field for ``score``."
@@ -434,6 +486,8 @@ class BundleLink(backboneelement.BackboneElement):
             "relations-1](http://www.iana.org/assignments/link-relations/link-"
             "relations.xhtml#link-relations-1)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     relation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_relation", title="Extension field for ``relation``."
@@ -444,6 +498,8 @@ class BundleLink(backboneelement.BackboneElement):
         alias="url",
         title="Reference details for the link",
         description="The reference details for the link.",
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."

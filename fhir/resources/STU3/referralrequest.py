@@ -35,6 +35,8 @@ class ReferralRequest(domainresource.DomainResource):
             "Date/DateTime of creation for draft requests and date of activation "
             "for active requests."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_authoredOn", title="Extension field for ``authoredOn``."
@@ -48,6 +50,8 @@ class ReferralRequest(domainresource.DomainResource):
             "Indicates any plans, proposals or orders that this request is intended"
             " to satisfy - in whole or in part."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ReferralRequest", "CarePlan", "ProcedureRequest"],
     )
@@ -60,6 +64,8 @@ class ReferralRequest(domainresource.DomainResource):
             "The encounter at which the request for referral or transfer of care is"
             " initiated."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter", "EpisodeOfCare"],
     )
@@ -72,6 +78,8 @@ class ReferralRequest(domainresource.DomainResource):
             "A protocol, guideline, orderset or other definition that is adhered to"
             " in whole or in part by this request."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ActivityDefinition", "PlanDefinition"],
     )
@@ -85,6 +93,8 @@ class ReferralRequest(domainresource.DomainResource):
             "being made, the description expands on this to support a more complete"
             " clinical summary."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -98,6 +108,8 @@ class ReferralRequest(domainresource.DomainResource):
             'The business identifier of the logical "grouping" request/order that '
             "this referral is a part of."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -108,6 +120,8 @@ class ReferralRequest(domainresource.DomainResource):
             "Business identifier that uniquely identifies the referral/care "
             "transfer request instance."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     intent: fhirtypes.Code = Field(
@@ -118,6 +132,8 @@ class ReferralRequest(domainresource.DomainResource):
             'Distinguishes the "level" of authorization/demand implicit in this '
             "request."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["proposal", "plan", "order"],
@@ -131,6 +147,8 @@ class ReferralRequest(domainresource.DomainResource):
         alias="note",
         title="Comments made about referral request",
         description="Comments made about the referral request by any of the participants.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     occurrenceDateTime: fhirtypes.DateTime = Field(
@@ -141,6 +159,8 @@ class ReferralRequest(domainresource.DomainResource):
             "The period of time within which the services identified in the "
             "referral/transfer of care is specified or required to occur."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e occurrence[x]
         one_of_many="occurrence",
         one_of_many_required=False,
@@ -159,6 +179,8 @@ class ReferralRequest(domainresource.DomainResource):
             "The period of time within which the services identified in the "
             "referral/transfer of care is specified or required to occur."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e occurrence[x]
         one_of_many="occurrence",
         one_of_many_required=False,
@@ -172,6 +194,8 @@ class ReferralRequest(domainresource.DomainResource):
             "An indication of the urgency of referral (or where applicable the type"
             " of transfer of care) request."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_priority", title="Extension field for ``priority``."
@@ -186,6 +210,8 @@ class ReferralRequest(domainresource.DomainResource):
             "care is requested.  For example:  Pathological Anomalies, Disabled "
             "(physical or mental),  Behavioral Management."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
@@ -193,6 +219,8 @@ class ReferralRequest(domainresource.DomainResource):
         alias="reasonReference",
         title="Why is service needed?",
         description="Indicates another resource whose existence justifies this request.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition", "Observation"],
     )
@@ -205,6 +233,8 @@ class ReferralRequest(domainresource.DomainResource):
             "The healthcare provider(s) or provider organization(s) who/which is to"
             " receive the referral/transfer of care request."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "Organization", "HealthcareService"],
     )
@@ -219,6 +249,8 @@ class ReferralRequest(domainresource.DomainResource):
             "transitions or updates that are likely to be relevant to a user "
             "looking at the current version of the resource."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Provenance"],
     )
@@ -231,6 +263,8 @@ class ReferralRequest(domainresource.DomainResource):
             "Completed or terminated request(s) whose function is taken by this new"
             " request."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ReferralRequest"],
     )
@@ -243,6 +277,8 @@ class ReferralRequest(domainresource.DomainResource):
             "The individual who initiated the request and has responsibility for "
             "its activation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     serviceRequested: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -253,6 +289,8 @@ class ReferralRequest(domainresource.DomainResource):
             "The service(s) that is/are requested to be provided to the patient.  "
             "For example: cardiac pacemaker insertion."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     specialty: fhirtypes.CodeableConceptType = Field(
@@ -264,6 +302,8 @@ class ReferralRequest(domainresource.DomainResource):
             "or transfer of care request is sent.  For example: Cardiology "
             "Gastroenterology Diabetology."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     status: fhirtypes.Code = Field(
@@ -277,6 +317,8 @@ class ReferralRequest(domainresource.DomainResource):
             "The status of the authorization/intention reflected by the referral "
             "request record."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -301,6 +343,8 @@ class ReferralRequest(domainresource.DomainResource):
             "The patient who is the subject of a referral or transfer of care "
             "request."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
     )
@@ -317,6 +361,8 @@ class ReferralRequest(domainresource.DomainResource):
             "Observations/Assessments (may include cognitive and fundtional "
             "assessments) Diagnostic Reports Care Plan."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -329,6 +375,8 @@ class ReferralRequest(domainresource.DomainResource):
             "An indication of the type of referral (or where applicable the type of"
             " transfer of care) request."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)
@@ -385,6 +433,8 @@ class ReferralRequestRequester(backboneelement.BackboneElement):
         alias="agent",
         title="Individual making the request",
         description="The device, practitioner, etc. who initiated the request.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Practitioner",
@@ -400,6 +450,8 @@ class ReferralRequestRequester(backboneelement.BackboneElement):
         alias="onBehalfOf",
         title="Organization agent is acting for",
         description="The organization the device or practitioner was acting on behalf of.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )

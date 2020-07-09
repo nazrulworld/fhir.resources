@@ -32,6 +32,8 @@ class MarketingStatus(backboneelement.BackboneElement):
             "alpha-2 code elements"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     dateRange: fhirtypes.PeriodType = Field(
@@ -47,6 +49,8 @@ class MarketingStatus(backboneelement.BackboneElement):
             "chain"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     jurisdiction: fhirtypes.CodeableConceptType = Field(
@@ -60,6 +64,8 @@ class MarketingStatus(backboneelement.BackboneElement):
             "identifier shall be specified"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     restoreDate: fhirtypes.DateTime = Field(
@@ -75,6 +81,8 @@ class MarketingStatus(backboneelement.BackboneElement):
             "chain"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     restoreDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_restoreDate", title="Extension field for ``restoreDate``."
@@ -89,4 +97,6 @@ class MarketingStatus(backboneelement.BackboneElement):
             "examples"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )

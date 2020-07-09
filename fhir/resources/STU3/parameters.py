@@ -32,6 +32,8 @@ class Parameters(resource.Resource):
         alias="parameter",
         title="Operation Parameter",
         description="A parameter passed to or received from the operation.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -51,6 +53,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="name",
         title="Name from the definition",
         description="The name of the parameter (reference to the operation definition).",
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -61,6 +65,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="part",
         title="Named part of a multi-part parameter",
         description="A named part of a multi-part parameter.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     resource: fhirtypes.ResourceType = Field(
@@ -68,6 +74,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="resource",
         title="If parameter is a whole resource",
         description="If the parameter is a whole resource.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     valueAddress: fhirtypes.AddressType = Field(
@@ -75,6 +83,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueAddress",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -85,6 +95,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueAge",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -95,6 +107,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueAnnotation",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -105,6 +119,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueAttachment",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -115,6 +131,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueBase64Binary",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -130,6 +148,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueBoolean",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -143,6 +163,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueCode",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -156,6 +178,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueCodeableConcept",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -166,6 +190,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueCoding",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -176,6 +202,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueContactPoint",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -186,6 +214,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueCount",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -196,6 +226,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueDate",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -209,6 +241,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueDateTime",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -222,6 +256,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueDecimal",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -235,6 +271,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueDistance",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -245,6 +283,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueDuration",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -255,6 +295,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueHumanName",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -265,6 +307,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueId",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -278,6 +322,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueIdentifier",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -288,6 +334,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueInstant",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -301,6 +349,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueInteger",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -314,6 +364,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueMarkdown",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -327,6 +379,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueMeta",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -337,6 +391,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueMoney",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -347,6 +403,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueOid",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -360,6 +418,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valuePeriod",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -370,6 +430,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valuePositiveInt",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -385,6 +447,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueQuantity",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -395,6 +459,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueRange",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -405,6 +471,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueRatio",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -415,6 +483,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueReference",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -425,6 +495,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueSampledData",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -435,6 +507,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueSignature",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -445,6 +519,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueString",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -458,6 +534,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueTime",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -471,6 +549,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueTiming",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -481,6 +561,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueUnsignedInt",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -496,6 +578,8 @@ class ParametersParameter(backboneelement.BackboneElement):
         alias="valueUri",
         title="If parameter is a data type",
         description="If the parameter is a data type.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,

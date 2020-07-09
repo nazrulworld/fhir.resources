@@ -34,6 +34,8 @@ class Account(domainresource.DomainResource):
             "account, and what order should they be applied to the account"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     description: fhirtypes.String = Field(
@@ -44,6 +46,8 @@ class Account(domainresource.DomainResource):
             "Provides additional information about what the account tracks and how "
             "it is used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -57,6 +61,8 @@ class Account(domainresource.DomainResource):
             "The parties responsible for balancing the account if other payment "
             "options fall short."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -67,6 +73,8 @@ class Account(domainresource.DomainResource):
             "Unique identifier used to reference the account.  Might or might not "
             "be intended for human use (e.g. credit card number)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     name: fhirtypes.String = Field(
@@ -76,6 +84,8 @@ class Account(domainresource.DomainResource):
         description=(
             "Name used for the account when displaying it to humans in reports, " "etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -89,6 +99,8 @@ class Account(domainresource.DomainResource):
             "Indicates the service area, hospital, department, etc. with "
             "responsibility for managing the Account."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -98,6 +110,8 @@ class Account(domainresource.DomainResource):
         alias="partOf",
         title="Reference to a parent Account",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Account"],
     )
@@ -107,6 +121,8 @@ class Account(domainresource.DomainResource):
         alias="servicePeriod",
         title="Transaction window",
         description="The date range of services associated with this account.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     status: fhirtypes.Code = Field(
@@ -114,6 +130,8 @@ class Account(domainresource.DomainResource):
         alias="status",
         title="active | inactive | entered-in-error | on-hold | unknown",
         description="Indicates whether the account is presently used/usable or not.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "inactive", "entered-in-error", "on-hold", "unknown"],
@@ -132,6 +150,8 @@ class Account(domainresource.DomainResource):
             "subject, the expenses were ultimately incurred by the subject of the "
             "Account."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Patient",
@@ -149,6 +169,8 @@ class Account(domainresource.DomainResource):
         alias="type",
         title="E.g. patient, expense, depreciation",
         description="Categorizes the account for reporting and searching purposes.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -176,6 +198,8 @@ class AccountCoverage(backboneelement.BackboneElement):
             "responsible for specific types of charges, and the sequence of the "
             "coverages in the account could be important when processing billing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Coverage"],
     )
@@ -185,6 +209,8 @@ class AccountCoverage(backboneelement.BackboneElement):
         alias="priority",
         title="The priority of the coverage in the context of this account",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_priority", title="Extension field for ``priority``."
@@ -211,6 +237,8 @@ class AccountGuarantor(backboneelement.BackboneElement):
             "A guarantor may be placed on credit hold or otherwise have their role "
             "temporarily suspended."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     onHold__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_onHold", title="Extension field for ``onHold``."
@@ -221,6 +249,8 @@ class AccountGuarantor(backboneelement.BackboneElement):
         alias="party",
         title="Responsible entity",
         description="The entity who is responsible.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "RelatedPerson", "Organization"],
     )
@@ -233,4 +263,6 @@ class AccountGuarantor(backboneelement.BackboneElement):
             "The timeframe during which the guarantor accepts responsibility for "
             "the account."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )

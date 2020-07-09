@@ -32,6 +32,8 @@ class DeviceRequest(domainresource.DomainResource):
         alias="authoredOn",
         title="When recorded",
         description="When the request transitioned to being actionable.",
+        # if property is element of this resource.
+        element_property=True,
     )
     authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_authoredOn", title="Extension field for ``authoredOn``."
@@ -42,6 +44,8 @@ class DeviceRequest(domainresource.DomainResource):
         alias="basedOn",
         title="What request fulfills",
         description="Plan/proposal/order fulfilled by this request.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -51,6 +55,8 @@ class DeviceRequest(domainresource.DomainResource):
         alias="codeCodeableConcept",
         title="Device requested",
         description="The details of the device to be used.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e code[x]
         one_of_many="code",
         one_of_many_required=True,
@@ -61,6 +67,8 @@ class DeviceRequest(domainresource.DomainResource):
         alias="codeReference",
         title="Device requested",
         description="The details of the device to be used.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e code[x]
         one_of_many="code",
         one_of_many_required=True,
@@ -76,6 +84,8 @@ class DeviceRequest(domainresource.DomainResource):
             "An encounter that provides additional context in which this request is"
             " made."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter", "EpisodeOfCare"],
     )
@@ -89,6 +99,8 @@ class DeviceRequest(domainresource.DomainResource):
             "proposed act must be performed if the indicated conditions occur, "
             "e.g.., shortness of breath, SpO2 less than x%."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ActivityDefinition", "PlanDefinition"],
     )
@@ -98,6 +110,8 @@ class DeviceRequest(domainresource.DomainResource):
         alias="groupIdentifier",
         title="Identifier of composite request",
         description="Composite request this is part of.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -105,6 +119,8 @@ class DeviceRequest(domainresource.DomainResource):
         alias="identifier",
         title="External Request identifier",
         description="Identifiers assigned to this order by the orderer or by the receiver.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     intent: fhirtypes.CodeableConceptType = Field(
@@ -115,6 +131,8 @@ class DeviceRequest(domainresource.DomainResource):
             "Whether the request is a proposal, plan, an original order or a reflex"
             " order."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
@@ -127,6 +145,8 @@ class DeviceRequest(domainresource.DomainResource):
             "include for example a comment, an instruction, or a note associated "
             "with the statement."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     occurrenceDateTime: fhirtypes.DateTime = Field(
@@ -139,6 +159,8 @@ class DeviceRequest(domainresource.DomainResource):
             '"Three times a day"; "1/2 an hour before breakfast for 10 days from '
             '23-Dec 2011:"; "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".'
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e occurrence[x]
         one_of_many="occurrence",
         one_of_many_required=False,
@@ -159,6 +181,8 @@ class DeviceRequest(domainresource.DomainResource):
             '"Three times a day"; "1/2 an hour before breakfast for 10 days from '
             '23-Dec 2011:"; "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".'
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e occurrence[x]
         one_of_many="occurrence",
         one_of_many_required=False,
@@ -174,6 +198,8 @@ class DeviceRequest(domainresource.DomainResource):
             '"Three times a day"; "1/2 an hour before breakfast for 10 days from '
             '23-Dec 2011:"; "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".'
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e occurrence[x]
         one_of_many="occurrence",
         one_of_many_required=False,
@@ -184,6 +210,8 @@ class DeviceRequest(domainresource.DomainResource):
         alias="performer",
         title="Requested Filler",
         description="The desired perfomer for doing the diagnostic testing.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Practitioner",
@@ -200,6 +228,8 @@ class DeviceRequest(domainresource.DomainResource):
         alias="performerType",
         title="Fille role",
         description="Desired type of performer for doing the diagnostic testing.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     priorRequest: ListType[fhirtypes.ReferenceType] = Field(
@@ -210,6 +240,8 @@ class DeviceRequest(domainresource.DomainResource):
             "The request takes the place of the referenced completed or terminated "
             "request(s)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -222,6 +254,8 @@ class DeviceRequest(domainresource.DomainResource):
             "to other requests"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_priority", title="Extension field for ``priority``."
@@ -232,6 +266,8 @@ class DeviceRequest(domainresource.DomainResource):
         alias="reasonCode",
         title="Coded Reason for request",
         description="Reason or justification for the use of this device.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
@@ -239,6 +275,8 @@ class DeviceRequest(domainresource.DomainResource):
         alias="reasonReference",
         title="Linked Reason for request",
         description="Reason or justification for the use of this device.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -248,6 +286,8 @@ class DeviceRequest(domainresource.DomainResource):
         alias="relevantHistory",
         title="Request provenance",
         description="Key events in the history of the request.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Provenance"],
     )
@@ -260,6 +300,8 @@ class DeviceRequest(domainresource.DomainResource):
             "The individual who initiated the request and has responsibility for "
             "its activation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     status: fhirtypes.Code = Field(
@@ -267,6 +309,8 @@ class DeviceRequest(domainresource.DomainResource):
         alias="status",
         title="draft | active | suspended | completed | entered-in-error | cancelled",
         description="The status of the request.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -287,6 +331,8 @@ class DeviceRequest(domainresource.DomainResource):
         alias="subject",
         title="Focus of request",
         description="The patient who will use the device.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group", "Location", "Device"],
     )
@@ -300,6 +346,8 @@ class DeviceRequest(domainresource.DomainResource):
             "the request fulfilment.  For example, this may includes body where on "
             "the subject's the device will be used ( i.e. the target site)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -365,6 +413,8 @@ class DeviceRequestRequester(backboneelement.BackboneElement):
         alias="agent",
         title="Individual making the request",
         description="The device, practitioner, etc. who initiated the request.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device", "Practitioner", "Organization"],
     )
@@ -374,6 +424,8 @@ class DeviceRequestRequester(backboneelement.BackboneElement):
         alias="onBehalfOf",
         title="Organization agent is acting for",
         description="The organization the device or practitioner was acting on behalf of.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )

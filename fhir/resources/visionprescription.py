@@ -30,6 +30,8 @@ class VisionPrescription(domainresource.DomainResource):
         alias="created",
         title="Response creation date",
         description="The date this resource was created.",
+        # if property is element of this resource.
+        element_property=True,
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_created", title="Extension field for ``created``."
@@ -40,6 +42,8 @@ class VisionPrescription(domainresource.DomainResource):
         alias="dateWritten",
         title="When prescription was authorized",
         description="The date (and perhaps time) when the prescription was written.",
+        # if property is element of this resource.
+        element_property=True,
     )
     dateWritten__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_dateWritten", title="Extension field for ``dateWritten``."
@@ -54,6 +58,8 @@ class VisionPrescription(domainresource.DomainResource):
             " contact between patient and health care provider during which the "
             "prescription was issued."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
     )
@@ -63,6 +69,8 @@ class VisionPrescription(domainresource.DomainResource):
         alias="identifier",
         title="Business Identifier for vision prescription",
         description="A unique identifier assigned to this vision prescription.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     lensSpecification: ListType[
@@ -75,6 +83,8 @@ class VisionPrescription(domainresource.DomainResource):
             "Contain the details of  the individual lens specifications and serves "
             "as the authorization for the fullfillment by certified professionals."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     patient: fhirtypes.ReferenceType = Field(
@@ -85,6 +95,8 @@ class VisionPrescription(domainresource.DomainResource):
             "A resource reference to the person to whom the vision prescription "
             "applies."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
     )
@@ -97,6 +109,8 @@ class VisionPrescription(domainresource.DomainResource):
             "The healthcare professional responsible for authorizing the "
             "prescription."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
     )
@@ -106,6 +120,8 @@ class VisionPrescription(domainresource.DomainResource):
         alias="status",
         title="active | cancelled | draft | entered-in-error",
         description="The status of the resource instance.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "cancelled", "draft", "entered-in-error"],
@@ -135,6 +151,8 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
             "Power adjustment for multifocal lenses measured in dioptres (0.25 "
             "units)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     add__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_add", title="Extension field for ``add``."
@@ -145,6 +163,8 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
         alias="axis",
         title="Lens meridian which contain no power for astigmatism",
         description="Adjustment for astigmatism measured in integer degrees.",
+        # if property is element of this resource.
+        element_property=True,
     )
     axis__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_axis", title="Extension field for ``axis``."
@@ -155,6 +175,8 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
         alias="backCurve",
         title="Contact lens back curvature",
         description="Back curvature measured in millimetres.",
+        # if property is element of this resource.
+        element_property=True,
     )
     backCurve__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_backCurve", title="Extension field for ``backCurve``."
@@ -165,6 +187,8 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
         alias="brand",
         title="Brand required",
         description="Brand recommendations or restrictions.",
+        # if property is element of this resource.
+        element_property=True,
     )
     brand__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_brand", title="Extension field for ``brand``."
@@ -175,6 +199,8 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
         alias="color",
         title="Color required",
         description="Special color or pattern.",
+        # if property is element of this resource.
+        element_property=True,
     )
     color__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_color", title="Extension field for ``color``."
@@ -185,6 +211,8 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
         alias="cylinder",
         title="Lens power for astigmatism",
         description="Power adjustment for astigmatism measured in dioptres (0.25 units).",
+        # if property is element of this resource.
+        element_property=True,
     )
     cylinder__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_cylinder", title="Extension field for ``cylinder``."
@@ -195,6 +223,8 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
         alias="diameter",
         title="Contact lens diameter",
         description="Contact lens diameter measured in millimetres.",
+        # if property is element of this resource.
+        element_property=True,
     )
     diameter__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_diameter", title="Extension field for ``diameter``."
@@ -205,6 +235,8 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
         alias="duration",
         title="Lens wear duration",
         description="The recommended maximum wear period for the lens.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     eye: fhirtypes.Code = Field(
@@ -212,6 +244,8 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
         alias="eye",
         title="right | left",
         description="The eye for which the lens specification applies.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["right", "left"],
@@ -225,6 +259,8 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
         alias="note",
         title="Notes for coatings",
         description="Notes for special requirements such as coatings and lens materials.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     power: fhirtypes.Decimal = Field(
@@ -232,6 +268,8 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
         alias="power",
         title="Contact lens power",
         description="Contact lens power measured in dioptres (0.25 units).",
+        # if property is element of this resource.
+        element_property=True,
     )
     power__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_power", title="Extension field for ``power``."
@@ -242,6 +280,8 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
         alias="prism",
         title="Eye alignment compensation",
         description="Allows for adjustment on two axis.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     product: fhirtypes.CodeableConceptType = Field(
@@ -252,6 +292,8 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
             "Identifies the type of vision correction product which is required for"
             " the patient."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     sphere: fhirtypes.Decimal = Field(
@@ -259,6 +301,8 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
         alias="sphere",
         title="Power of the lens",
         description="Lens power measured in dioptres (0.25 units).",
+        # if property is element of this resource.
+        element_property=True,
     )
     sphere__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sphere", title="Extension field for ``sphere``."
@@ -281,6 +325,8 @@ class VisionPrescriptionLensSpecificationPrism(backboneelement.BackboneElement):
         alias="amount",
         title="Amount of adjustment",
         description="Amount of prism to compensate for eye alignment in fractional units.",
+        # if property is element of this resource.
+        element_property=True,
     )
     amount__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_amount", title="Extension field for ``amount``."
@@ -291,6 +337,8 @@ class VisionPrescriptionLensSpecificationPrism(backboneelement.BackboneElement):
         alias="base",
         title="up | down | in | out",
         description="The relative base, or reference lens edge, for the prism.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["up", "down", "in", "out"],

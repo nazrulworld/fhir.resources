@@ -38,6 +38,8 @@ class Questionnaire(domainresource.DomainResource):
             "Approval happens once when the content is officially approved for "
             "usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_approvalDate", title="Extension field for ``approvalDate``."
@@ -51,6 +53,8 @@ class Questionnaire(domainresource.DomainResource):
             "An identifier for this question or group of questions in a particular "
             "terminology such as LOINC."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     contact: ListType[fhirtypes.ContactDetailType] = Field(
@@ -61,6 +65,8 @@ class Questionnaire(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     copyright: fhirtypes.Markdown = Field(
@@ -72,6 +78,8 @@ class Questionnaire(domainresource.DomainResource):
             "contents. Copyright statements are generally legal restrictions on the"
             " use and publishing of the questionnaire."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
@@ -87,6 +95,8 @@ class Questionnaire(domainresource.DomainResource):
             "must change if the status code changes. In addition, it should change "
             "when the substantive content of the questionnaire changes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -100,6 +110,8 @@ class Questionnaire(domainresource.DomainResource):
             "A free text natural language description of the questionnaire from a "
             "consumer's perspective."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -113,6 +125,8 @@ class Questionnaire(domainresource.DomainResource):
             "The period during which the questionnaire content was or is planned to"
             " be in active use."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     experimental: bool = Field(
@@ -124,6 +138,8 @@ class Questionnaire(domainresource.DomainResource):
             "testing purposes (or education/evaluation/marketing), and is not "
             "intended to be used for genuine usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -138,6 +154,8 @@ class Questionnaire(domainresource.DomainResource):
             "it is represented in other formats, or referenced in a specification, "
             "model, design or an instance."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     item: ListType[fhirtypes.QuestionnaireItemType] = Field(
@@ -148,6 +166,8 @@ class Questionnaire(domainresource.DomainResource):
             "A particular question, question grouping or display text that is part "
             "of the questionnaire."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -158,6 +178,8 @@ class Questionnaire(domainresource.DomainResource):
             "A legal or geographic region in which the questionnaire is intended to"
             " be used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     lastReviewDate: fhirtypes.Date = Field(
@@ -169,6 +191,8 @@ class Questionnaire(domainresource.DomainResource):
             "happens periodically after approval, but doesn't change the original "
             "approval date."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
@@ -183,6 +207,8 @@ class Questionnaire(domainresource.DomainResource):
             "should be usable as an identifier for the module by machine processing"
             " applications such as code generation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -196,6 +222,8 @@ class Questionnaire(domainresource.DomainResource):
             "The name of the individual or organization that published the "
             "questionnaire."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -209,6 +237,8 @@ class Questionnaire(domainresource.DomainResource):
             "Explaination of why this questionnaire is needed and why it has been "
             "designed as it has."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_purpose", title="Extension field for ``purpose``."
@@ -222,6 +252,8 @@ class Questionnaire(domainresource.DomainResource):
             "The status of this questionnaire. Enables tracking the life-cycle of "
             "the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -238,6 +270,8 @@ class Questionnaire(domainresource.DomainResource):
             "The types of subjects that can be the subject of responses created for"
             " the questionnaire."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     subjectType__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -248,6 +282,8 @@ class Questionnaire(domainresource.DomainResource):
         alias="title",
         title="Name for this questionnaire (human friendly)",
         description="A short, descriptive, user-friendly title for the questionnaire.",
+        # if property is element of this resource.
+        element_property=True,
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -265,6 +301,8 @@ class Questionnaire(domainresource.DomainResource):
             "include the major version of the questionnaire. For more information "
             "see [Technical and Business Versions](resource.html#versions)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -279,6 +317,8 @@ class Questionnaire(domainresource.DomainResource):
             "contexts that are listed. These terms may be used to assist with "
             "indexing and searching for appropriate questionnaire instances."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     version: fhirtypes.String = Field(
@@ -294,6 +334,8 @@ class Questionnaire(domainresource.DomainResource):
             "available. There is also no expectation that versions can be placed in"
             " a lexicographical sequence."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -320,6 +362,8 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "A terminology code that corresponds to this group or question (e.g. a "
             "code from LOINC, which defines many questions and answers)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     definition: fhirtypes.Uri = Field(
@@ -337,6 +381,8 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "elements on a Questionnaire Item overrides the information from the "
             "definition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_definition", title="Extension field for ``definition``."
@@ -351,6 +397,8 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "(displayed/allow answers to be captured) when the specified condition "
             "is true."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     initialAttachment: fhirtypes.AttachmentType = Field(
@@ -361,6 +409,8 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "The value that should be defaulted when initially rendering the "
             "questionnaire for user input."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e initial[x]
         one_of_many="initial",
         one_of_many_required=False,
@@ -374,6 +424,8 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "The value that should be defaulted when initially rendering the "
             "questionnaire for user input."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e initial[x]
         one_of_many="initial",
         one_of_many_required=False,
@@ -390,6 +442,8 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "The value that should be defaulted when initially rendering the "
             "questionnaire for user input."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e initial[x]
         one_of_many="initial",
         one_of_many_required=False,
@@ -403,6 +457,8 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "The value that should be defaulted when initially rendering the "
             "questionnaire for user input."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e initial[x]
         one_of_many="initial",
         one_of_many_required=False,
@@ -419,6 +475,8 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "The value that should be defaulted when initially rendering the "
             "questionnaire for user input."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e initial[x]
         one_of_many="initial",
         one_of_many_required=False,
@@ -435,6 +493,8 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "The value that should be defaulted when initially rendering the "
             "questionnaire for user input."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e initial[x]
         one_of_many="initial",
         one_of_many_required=False,
@@ -451,6 +511,8 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "The value that should be defaulted when initially rendering the "
             "questionnaire for user input."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e initial[x]
         one_of_many="initial",
         one_of_many_required=False,
@@ -467,6 +529,8 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "The value that should be defaulted when initially rendering the "
             "questionnaire for user input."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e initial[x]
         one_of_many="initial",
         one_of_many_required=False,
@@ -480,6 +544,8 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "The value that should be defaulted when initially rendering the "
             "questionnaire for user input."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e initial[x]
         one_of_many="initial",
         one_of_many_required=False,
@@ -495,6 +561,8 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "The value that should be defaulted when initially rendering the "
             "questionnaire for user input."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e initial[x]
         one_of_many="initial",
         one_of_many_required=False,
@@ -511,6 +579,8 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "The value that should be defaulted when initially rendering the "
             "questionnaire for user input."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e initial[x]
         one_of_many="initial",
         one_of_many_required=False,
@@ -527,6 +597,8 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "The value that should be defaulted when initially rendering the "
             "questionnaire for user input."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e initial[x]
         one_of_many="initial",
         one_of_many_required=False,
@@ -543,6 +615,8 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "Text, questions and other groups to be nested beneath a question or "
             "group."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     linkId: fhirtypes.String = Field(
@@ -553,6 +627,8 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "An identifier that is unique within the Questionnaire allowing linkage"
             " to the equivalent item in a QuestionnaireResponse resource."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     linkId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_linkId", title="Extension field for ``linkId``."
@@ -566,6 +642,8 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "The maximum number of characters that are permitted in the answer to "
             'be considered a "valid" QuestionnaireResponse.'
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     maxLength__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_maxLength", title="Extension field for ``maxLength``."
@@ -576,6 +654,8 @@ class QuestionnaireItem(backboneelement.BackboneElement):
         alias="option",
         title="Permitted answer",
         description='One of the permitted answers for a "choice" or "open-choice" question.',
+        # if property is element of this resource.
+        element_property=True,
     )
 
     options: fhirtypes.ReferenceType = Field(
@@ -586,6 +666,8 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "A reference to a value set containing a list of codes representing "
             'permitted answers for a "choice" or "open-choice" question.'
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
     )
@@ -599,6 +681,8 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "within the questionnaire used for reference by the individual "
             "completing the questionnaire."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     prefix__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_prefix", title="Extension field for ``prefix``."
@@ -612,6 +696,8 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "An indication, when true, that the value cannot be changed by a human "
             "respondent to the Questionnaire."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     readOnly__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_readOnly", title="Extension field for ``readOnly``."
@@ -626,6 +712,8 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "response, collecting multiple answers answers for questions or "
             "multiple sets of answers for groups."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     repeats__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_repeats", title="Extension field for ``repeats``."
@@ -640,6 +728,8 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             " QuestionnaireResponse.  If false, the item may be skipped when "
             "answering the questionnaire."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     required__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_required", title="Extension field for ``required``."
@@ -653,6 +743,8 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "The name of a section, the text of a question or text content for a "
             "display item."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_text", title="Extension field for ``text``."
@@ -667,6 +759,8 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "grouping of other items or a particular type of data to be captured "
             "(string, integer, coded choice, etc.)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -676,7 +770,8 @@ class QuestionnaireItem(backboneelement.BackboneElement):
             "decimal",
             "integer",
             "date",
-            "dateTime +",
+            "dateTime",
+            "+",
         ],
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
@@ -756,6 +851,8 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
             "An answer that the referenced question must match in order for the "
             "item to be enabled."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e answer[x]
         one_of_many="answer",
         one_of_many_required=False,
@@ -769,6 +866,8 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
             "An answer that the referenced question must match in order for the "
             "item to be enabled."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e answer[x]
         one_of_many="answer",
         one_of_many_required=False,
@@ -785,6 +884,8 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
             "An answer that the referenced question must match in order for the "
             "item to be enabled."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e answer[x]
         one_of_many="answer",
         one_of_many_required=False,
@@ -798,6 +899,8 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
             "An answer that the referenced question must match in order for the "
             "item to be enabled."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e answer[x]
         one_of_many="answer",
         one_of_many_required=False,
@@ -814,6 +917,8 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
             "An answer that the referenced question must match in order for the "
             "item to be enabled."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e answer[x]
         one_of_many="answer",
         one_of_many_required=False,
@@ -830,6 +935,8 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
             "An answer that the referenced question must match in order for the "
             "item to be enabled."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e answer[x]
         one_of_many="answer",
         one_of_many_required=False,
@@ -846,6 +953,8 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
             "An answer that the referenced question must match in order for the "
             "item to be enabled."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e answer[x]
         one_of_many="answer",
         one_of_many_required=False,
@@ -862,6 +971,8 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
             "An answer that the referenced question must match in order for the "
             "item to be enabled."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e answer[x]
         one_of_many="answer",
         one_of_many_required=False,
@@ -875,6 +986,8 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
             "An answer that the referenced question must match in order for the "
             "item to be enabled."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e answer[x]
         one_of_many="answer",
         one_of_many_required=False,
@@ -890,6 +1003,8 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
             "An answer that the referenced question must match in order for the "
             "item to be enabled."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e answer[x]
         one_of_many="answer",
         one_of_many_required=False,
@@ -906,6 +1021,8 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
             "An answer that the referenced question must match in order for the "
             "item to be enabled."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e answer[x]
         one_of_many="answer",
         one_of_many_required=False,
@@ -922,6 +1039,8 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
             "An answer that the referenced question must match in order for the "
             "item to be enabled."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e answer[x]
         one_of_many="answer",
         one_of_many_required=False,
@@ -939,6 +1058,8 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
             "question is answered (hasAnswer=true) or not answered "
             "(hasAnswer=false)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     hasAnswer__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_hasAnswer", title="Extension field for ``hasAnswer``."
@@ -952,6 +1073,8 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
             "The linkId for the question whose answer (or lack of answer) governs "
             "whether this item is enabled."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     question__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_question", title="Extension field for ``question``."
@@ -1025,6 +1148,8 @@ class QuestionnaireItemOption(backboneelement.BackboneElement):
         alias="valueCoding",
         title="Answer value",
         description="A potential answer that's allowed as the answer to this question.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1035,6 +1160,8 @@ class QuestionnaireItemOption(backboneelement.BackboneElement):
         alias="valueDate",
         title="Answer value",
         description="A potential answer that's allowed as the answer to this question.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1048,6 +1175,8 @@ class QuestionnaireItemOption(backboneelement.BackboneElement):
         alias="valueInteger",
         title="Answer value",
         description="A potential answer that's allowed as the answer to this question.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1061,6 +1190,8 @@ class QuestionnaireItemOption(backboneelement.BackboneElement):
         alias="valueString",
         title="Answer value",
         description="A potential answer that's allowed as the answer to this question.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1074,6 +1205,8 @@ class QuestionnaireItemOption(backboneelement.BackboneElement):
         alias="valueTime",
         title="Answer value",
         description="A potential answer that's allowed as the answer to this question.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,

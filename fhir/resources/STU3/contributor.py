@@ -33,6 +33,8 @@ class Contributor(element.Element):
             "Contact details to assist a user in finding and communicating with the"
             " contributor."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     name: fhirtypes.String = Field(
@@ -43,6 +45,8 @@ class Contributor(element.Element):
             "The name of the individual or organization responsible for the "
             "contribution."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -53,6 +57,8 @@ class Contributor(element.Element):
         alias="type",
         title="author | editor | reviewer | endorser",
         description="The type of contributor.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["author", "editor", "reviewer", "endorser"],

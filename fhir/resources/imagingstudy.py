@@ -37,6 +37,8 @@ class ImagingStudy(domainresource.DomainResource):
             "A list of the diagnostic requests that resulted in this imaging study "
             "being performed."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "CarePlan",
@@ -55,6 +57,8 @@ class ImagingStudy(domainresource.DomainResource):
             "The Imaging Manager description of the study. Institution-generated "
             "description or classification of the Study (component) performed."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -68,6 +72,8 @@ class ImagingStudy(domainresource.DomainResource):
             "The healthcare event (e.g. a patient and healthcare provider "
             "interaction) during which this ImagingStudy is made."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
     )
@@ -83,6 +89,8 @@ class ImagingStudy(domainresource.DomainResource):
             "study, unless overridden by a series-level endpoint with the same "
             "Endpoint.connectionType."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Endpoint"],
     )
@@ -95,6 +103,8 @@ class ImagingStudy(domainresource.DomainResource):
             "Identifiers for the ImagingStudy such as DICOM Study Instance UID, and"
             " Accession Number."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     interpreter: ListType[fhirtypes.ReferenceType] = Field(
@@ -102,6 +112,8 @@ class ImagingStudy(domainresource.DomainResource):
         alias="interpreter",
         title="Who interpreted images",
         description="Who read the study and interpreted the images or other content.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
     )
@@ -111,6 +123,8 @@ class ImagingStudy(domainresource.DomainResource):
         alias="location",
         title="Where ImagingStudy occurred",
         description="The principal physical location where the ImagingStudy was performed.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
     )
@@ -124,6 +138,8 @@ class ImagingStudy(domainresource.DomainResource):
             "modalities, i.e. those in the DICOM Context Group 29 (value set OID "
             "1.2.840.10008.6.1.19)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
@@ -136,6 +152,8 @@ class ImagingStudy(domainresource.DomainResource):
             "about the imaging study should be recorded in another resource, e.g. "
             "Observation, and not in this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     numberOfInstances: fhirtypes.UnsignedInt = Field(
@@ -148,6 +166,8 @@ class ImagingStudy(domainresource.DomainResource):
             " availability, security, or other factors. This element should be "
             "present if any instance elements are present."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     numberOfInstances__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -165,6 +185,8 @@ class ImagingStudy(domainresource.DomainResource):
             "availability, security, or other factors. This element should be "
             "present if any series elements are present."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     numberOfSeries__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_numberOfSeries", title="Extension field for ``numberOfSeries``."
@@ -175,6 +197,8 @@ class ImagingStudy(domainresource.DomainResource):
         alias="procedureCode",
         title="The performed procedure code",
         description="The code for the performed procedure type.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     procedureReference: fhirtypes.ReferenceType = Field(
@@ -182,6 +206,8 @@ class ImagingStudy(domainresource.DomainResource):
         alias="procedureReference",
         title="The performed Procedure reference",
         description="The procedure which this ImagingStudy was part of.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Procedure"],
     )
@@ -194,6 +220,8 @@ class ImagingStudy(domainresource.DomainResource):
             "Description of clinical condition indicating why the ImagingStudy was "
             "requested."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
@@ -201,6 +229,8 @@ class ImagingStudy(domainresource.DomainResource):
         alias="reasonReference",
         title="Why was study performed",
         description="Indicates another resource whose existence justifies this Study.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Condition",
@@ -216,6 +246,8 @@ class ImagingStudy(domainresource.DomainResource):
         alias="referrer",
         title="Referring physician",
         description="The requesting/referring physician.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
     )
@@ -225,6 +257,8 @@ class ImagingStudy(domainresource.DomainResource):
         alias="series",
         title="Each study has one or more series of instances",
         description="Each study has one or more series of images or other content.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     started: fhirtypes.DateTime = Field(
@@ -232,6 +266,8 @@ class ImagingStudy(domainresource.DomainResource):
         alias="started",
         title="When the study was started",
         description="Date and time the study started.",
+        # if property is element of this resource.
+        element_property=True,
     )
     started__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_started", title="Extension field for ``started``."
@@ -242,6 +278,8 @@ class ImagingStudy(domainresource.DomainResource):
         alias="status",
         title="registered | available | cancelled | entered-in-error | unknown",
         description="The current state of the ImagingStudy.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -261,6 +299,8 @@ class ImagingStudy(domainresource.DomainResource):
         alias="subject",
         title="Who or what is the subject of the study",
         description="The subject, typically a patient, of the imaging study.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Device", "Group"],
     )
@@ -288,6 +328,8 @@ class ImagingStudySeries(backboneelement.BackboneElement):
             "laterality of body part imaged; if so, it shall be consistent with any"
             " content of ImagingStudy.series.laterality."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     description: fhirtypes.String = Field(
@@ -295,6 +337,8 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         alias="description",
         title="A short human readable summary of the series",
         description="A description of the series.",
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -310,6 +354,8 @@ class ImagingStudySeries(backboneelement.BackboneElement):
             " DICOM endpoints. A series-level endpoint, if present, has precedence "
             "over a study-level endpoint with the same Endpoint.connectionType."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Endpoint"],
     )
@@ -322,6 +368,8 @@ class ImagingStudySeries(backboneelement.BackboneElement):
             "A single SOP instance within the series, e.g. an image, or "
             "presentation state."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     laterality: fhirtypes.CodingType = Field(
@@ -334,6 +382,8 @@ class ImagingStudySeries(backboneelement.BackboneElement):
             "shall be consistent with any laterality information indicated in "
             "ImagingStudy.series.bodySite."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     modality: fhirtypes.CodingType = Field(
@@ -341,6 +391,8 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         alias="modality",
         title="The modality of the instances in the series",
         description="The modality of this series sequence.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     number: fhirtypes.UnsignedInt = Field(
@@ -348,6 +400,8 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         alias="number",
         title="Numeric identifier of this series",
         description="The numeric identifier of this series in the study.",
+        # if property is element of this resource.
+        element_property=True,
     )
     number__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_number", title="Extension field for ``number``."
@@ -363,6 +417,8 @@ class ImagingStudySeries(backboneelement.BackboneElement):
             "resource availability, security, or other factors. This element should"
             " be present if any instance elements are present."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     numberOfInstances__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -375,6 +431,8 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         alias="performer",
         title="Who performed the series",
         description="Indicates who or what performed the series and how they were involved.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     specimen: ListType[fhirtypes.ReferenceType] = Field(
@@ -382,6 +440,8 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         alias="specimen",
         title="Specimen imaged",
         description="The specimen imaged, e.g., for whole slide imaging of a biopsy.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Specimen"],
     )
@@ -391,6 +451,8 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         alias="started",
         title="When the series started",
         description="The date and time the series was started.",
+        # if property is element of this resource.
+        element_property=True,
     )
     started__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_started", title="Extension field for ``started``."
@@ -401,6 +463,8 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         alias="uid",
         title="DICOM Series Instance UID for the series",
         description="The DICOM Series Instance UID for the series.",
+        # if property is element of this resource.
+        element_property=True,
     )
     uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uid", title="Extension field for ``uid``."
@@ -424,6 +488,8 @@ class ImagingStudySeriesInstance(backboneelement.BackboneElement):
         alias="number",
         title="The number of this instance in the series",
         description="The number of instance in the series.",
+        # if property is element of this resource.
+        element_property=True,
     )
     number__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_number", title="Extension field for ``number``."
@@ -434,6 +500,8 @@ class ImagingStudySeriesInstance(backboneelement.BackboneElement):
         alias="sopClass",
         title="DICOM class type",
         description="DICOM instance  type.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     title: fhirtypes.String = Field(
@@ -441,6 +509,8 @@ class ImagingStudySeriesInstance(backboneelement.BackboneElement):
         alias="title",
         title="Description of instance",
         description="The description of the instance.",
+        # if property is element of this resource.
+        element_property=True,
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -451,6 +521,8 @@ class ImagingStudySeriesInstance(backboneelement.BackboneElement):
         alias="uid",
         title="DICOM SOP Instance UID",
         description="The DICOM SOP Instance UID for this image or other DICOM content.",
+        # if property is element of this resource.
+        element_property=True,
     )
     uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uid", title="Extension field for ``uid``."
@@ -473,6 +545,8 @@ class ImagingStudySeriesPerformer(backboneelement.BackboneElement):
         alias="actor",
         title="Who performed the series",
         description="Indicates who or what performed the series.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Practitioner",
@@ -490,4 +564,6 @@ class ImagingStudySeriesPerformer(backboneelement.BackboneElement):
         alias="function",
         title="Type of performance",
         description="Distinguishes the type of involvement of the performer in the series.",
+        # if property is element of this resource.
+        element_property=True,
     )

@@ -29,6 +29,8 @@ class TriggerDefinition(element.Element):
         alias="eventData",
         title="Triggering data of the event",
         description="The triggering data of the event (if this is a data trigger).",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     eventName: fhirtypes.String = Field(
@@ -36,6 +38,8 @@ class TriggerDefinition(element.Element):
         alias="eventName",
         title="Triggering event name",
         description="The name of the event (if this is a named-event trigger).",
+        # if property is element of this resource.
+        element_property=True,
     )
     eventName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_eventName", title="Extension field for ``eventName``."
@@ -46,6 +50,8 @@ class TriggerDefinition(element.Element):
         alias="eventTimingDate",
         title="Timing of the event",
         description="The timing of the event (if this is a period trigger).",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e eventTiming[x]
         one_of_many="eventTiming",
         one_of_many_required=False,
@@ -59,6 +65,8 @@ class TriggerDefinition(element.Element):
         alias="eventTimingDateTime",
         title="Timing of the event",
         description="The timing of the event (if this is a period trigger).",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e eventTiming[x]
         one_of_many="eventTiming",
         one_of_many_required=False,
@@ -74,6 +82,8 @@ class TriggerDefinition(element.Element):
         alias="eventTimingReference",
         title="Timing of the event",
         description="The timing of the event (if this is a period trigger).",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e eventTiming[x]
         one_of_many="eventTiming",
         one_of_many_required=False,
@@ -86,6 +96,8 @@ class TriggerDefinition(element.Element):
         alias="eventTimingTiming",
         title="Timing of the event",
         description="The timing of the event (if this is a period trigger).",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e eventTiming[x]
         one_of_many="eventTiming",
         one_of_many_required=False,
@@ -99,6 +111,8 @@ class TriggerDefinition(element.Element):
             "data-accessed | data-access-ended"
         ),
         description="The type of triggering event.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[

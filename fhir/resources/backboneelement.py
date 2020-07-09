@@ -44,4 +44,6 @@ class BackboneElement(element.Element):
             "elements on Resource or DomainResource (including cannot change the "
             "meaning of modifierExtension itself)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )

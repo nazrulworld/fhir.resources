@@ -30,6 +30,8 @@ class Person(domainresource.DomainResource):
         alias="active",
         title="This person's record is in active use",
         description="Whether this person's record is in active use.",
+        # if property is element of this resource.
+        element_property=True,
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_active", title="Extension field for ``active``."
@@ -40,6 +42,8 @@ class Person(domainresource.DomainResource):
         alias="address",
         title="One or more addresses for the person",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     birthDate: fhirtypes.Date = Field(
@@ -47,6 +51,8 @@ class Person(domainresource.DomainResource):
         alias="birthDate",
         title="The date on which the person was born",
         description="The birth date for the person.",
+        # if property is element of this resource.
+        element_property=True,
     )
     birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_birthDate", title="Extension field for ``birthDate``."
@@ -57,6 +63,8 @@ class Person(domainresource.DomainResource):
         alias="gender",
         title="male | female | other | unknown",
         description="Administrative Gender.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["male", "female", "other", "unknown"],
@@ -70,6 +78,8 @@ class Person(domainresource.DomainResource):
         alias="identifier",
         title="A human identifier for this person",
         description="Identifier for a person within a particular scope.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     link: ListType[fhirtypes.PersonLinkType] = Field(
@@ -77,6 +87,8 @@ class Person(domainresource.DomainResource):
         alias="link",
         title="Link to a resource that concerns the same actual person",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     managingOrganization: fhirtypes.ReferenceType = Field(
@@ -84,12 +96,19 @@ class Person(domainresource.DomainResource):
         alias="managingOrganization",
         title="The organization that is the custodian of the person record",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
 
     name: ListType[fhirtypes.HumanNameType] = Field(
-        None, alias="name", title="A name associated with the person", description=None,
+        None,
+        alias="name",
+        title="A name associated with the person",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     photo: fhirtypes.AttachmentType = Field(
@@ -100,6 +119,8 @@ class Person(domainresource.DomainResource):
             "An image that can be displayed as a thumbnail of the person to enhance"
             " the identification of the individual."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     telecom: ListType[fhirtypes.ContactPointType] = Field(
@@ -110,6 +131,8 @@ class Person(domainresource.DomainResource):
             "A contact detail for the person, e.g. a telephone number or an email "
             "address."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -131,6 +154,8 @@ class PersonLink(backboneelement.BackboneElement):
             "Level of assurance that this link is associated with the target "
             "resource."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["level1", "level2", "level3", "level4"],
@@ -144,6 +169,8 @@ class PersonLink(backboneelement.BackboneElement):
         alias="target",
         title="The resource to which this actual person is associated",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Practitioner", "RelatedPerson", "Person"],
     )

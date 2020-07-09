@@ -30,6 +30,8 @@ class Annotation(element.Element):
         alias="authorReference",
         title="Individual responsible for the annotation",
         description="The individual responsible for making the annotation.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e author[x]
         one_of_many="author",
         one_of_many_required=False,
@@ -42,6 +44,8 @@ class Annotation(element.Element):
         alias="authorString",
         title="Individual responsible for the annotation",
         description="The individual responsible for making the annotation.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e author[x]
         one_of_many="author",
         one_of_many_required=False,
@@ -55,6 +59,8 @@ class Annotation(element.Element):
         alias="text",
         title="The annotation  - text content",
         description="The text of the annotation.",
+        # if property is element of this resource.
+        element_property=True,
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_text", title="Extension field for ``text``."
@@ -65,6 +71,8 @@ class Annotation(element.Element):
         alias="time",
         title="When the annotation was made",
         description="Indicates when this particular annotation was made.",
+        # if property is element of this resource.
+        element_property=True,
     )
     time__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_time", title="Extension field for ``time``."

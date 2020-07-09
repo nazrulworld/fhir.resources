@@ -39,6 +39,8 @@ class MessageHeader(domainresource.DomainResource):
             "candidate, pick the most proximal to the MessageHeader. Can provide "
             "other authors in extensions."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
     )
@@ -48,6 +50,8 @@ class MessageHeader(domainresource.DomainResource):
         alias="definition",
         title="Link to the definition for this message",
         description="Permanent link to the MessageDefinition for this message.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MessageDefinition"],
     )
@@ -60,6 +64,8 @@ class MessageHeader(domainresource.DomainResource):
         alias="destination",
         title="Message destination application(s)",
         description="The destination application which the message is intended for.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     enterer: fhirtypes.ReferenceType = Field(
@@ -71,6 +77,8 @@ class MessageHeader(domainresource.DomainResource):
             "message. When there is more than one candidate, pick the most proximal"
             " to the message. Can provide other enterers in extensions."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
     )
@@ -85,6 +93,8 @@ class MessageHeader(domainresource.DomainResource):
             ' have the system value "http://terminology.hl7.org/CodeSystem/message-'
             'events".  Alternatively uri to the EventDefinition.'
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e event[x]
         one_of_many="event",
         one_of_many_required=True,
@@ -100,6 +110,8 @@ class MessageHeader(domainresource.DomainResource):
             ' have the system value "http://terminology.hl7.org/CodeSystem/message-'
             'events".  Alternatively uri to the EventDefinition.'
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e event[x]
         one_of_many="event",
         one_of_many_required=True,
@@ -116,6 +128,8 @@ class MessageHeader(domainresource.DomainResource):
             "The actual data of the message - a reference to the root/focus class "
             "of the event."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -128,6 +142,8 @@ class MessageHeader(domainresource.DomainResource):
             "Coded indication of the cause for the event - indicates  a reason for "
             "the occurrence of the event that is a focus of this message."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     response: fhirtypes.MessageHeaderResponseType = Field(
@@ -138,6 +154,8 @@ class MessageHeader(domainresource.DomainResource):
             "Information about the message that this message is a response to.  "
             "Only present if this message is a response."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     responsible: fhirtypes.ReferenceType = Field(
@@ -149,6 +167,8 @@ class MessageHeader(domainresource.DomainResource):
             " contents of the message. The implication is that the message event "
             "happened under the policies of the responsible party."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
     )
@@ -160,6 +180,8 @@ class MessageHeader(domainresource.DomainResource):
         description=(
             "Identifies the sending system to allow the use of a trust " "relationship."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
     )
@@ -169,6 +191,8 @@ class MessageHeader(domainresource.DomainResource):
         alias="source",
         title="Message source application",
         description="The source application from which this message originated.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)
@@ -224,6 +248,8 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
         alias="endpoint",
         title="Actual destination address or id",
         description="Indicates where the message should be routed to.",
+        # if property is element of this resource.
+        element_property=True,
     )
     endpoint__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_endpoint", title="Extension field for ``endpoint``."
@@ -234,6 +260,8 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
         alias="name",
         title="Name of system",
         description="Human-readable name for the target system.",
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -248,6 +276,8 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
             "person or department when routing to a specific application isn't "
             "sufficient."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
     )
@@ -260,6 +290,8 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
             "Identifies the target end system in situations where the initial "
             "message transmission is to an intermediary system."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
     )
@@ -285,6 +317,8 @@ class MessageHeaderResponse(backboneelement.BackboneElement):
             "Code that identifies the type of response to the message - whether it "
             "was successful or not, and whether it should be resent or not."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["ok", "transient-error", "fatal-error"],
@@ -298,6 +332,8 @@ class MessageHeaderResponse(backboneelement.BackboneElement):
         alias="details",
         title="Specific list of hints/warnings/errors",
         description="Full details of any issues found in the message.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["OperationOutcome"],
     )
@@ -310,6 +346,8 @@ class MessageHeaderResponse(backboneelement.BackboneElement):
             "The MessageHeader.id of the message to which this message is a "
             "response."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     identifier__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_identifier", title="Extension field for ``identifier``."
@@ -335,6 +373,8 @@ class MessageHeaderSource(backboneelement.BackboneElement):
             "An e-mail, phone, website or other contact point to use to resolve "
             "issues with message communications."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     endpoint: fhirtypes.Url = Field(
@@ -342,6 +382,8 @@ class MessageHeaderSource(backboneelement.BackboneElement):
         alias="endpoint",
         title="Actual message source address or id",
         description="Identifies the routing target to send acknowledgements to.",
+        # if property is element of this resource.
+        element_property=True,
     )
     endpoint__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_endpoint", title="Extension field for ``endpoint``."
@@ -352,6 +394,8 @@ class MessageHeaderSource(backboneelement.BackboneElement):
         alias="name",
         title="Name of system",
         description="Human-readable name for the source system.",
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -362,6 +406,8 @@ class MessageHeaderSource(backboneelement.BackboneElement):
         alias="software",
         title="Name of software running the system",
         description="May include configuration or other information useful in debugging.",
+        # if property is element of this resource.
+        element_property=True,
     )
     software__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_software", title="Extension field for ``software``."
@@ -375,6 +421,8 @@ class MessageHeaderSource(backboneelement.BackboneElement):
             "Can convey versions of multiple systems in situations where a message "
             "passes through multiple hands."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."

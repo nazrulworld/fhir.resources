@@ -30,6 +30,8 @@ class PaymentNotice(domainresource.DomainResource):
         alias="created",
         title="Creation date",
         description="The date when this resource was created.",
+        # if property is element of this resource.
+        element_property=True,
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_created", title="Extension field for ``created``."
@@ -40,6 +42,8 @@ class PaymentNotice(domainresource.DomainResource):
         alias="identifier",
         title="Business Identifier",
         description="The notice business identifier.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     organization: fhirtypes.ReferenceType = Field(
@@ -50,6 +54,8 @@ class PaymentNotice(domainresource.DomainResource):
             "The organization which is responsible for the services rendered to the"
             " patient."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -62,6 +68,8 @@ class PaymentNotice(domainresource.DomainResource):
             "The payment status, typically paid: payment sent, cleared: payment "
             "received."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     provider: fhirtypes.ReferenceType = Field(
@@ -72,6 +80,8 @@ class PaymentNotice(domainresource.DomainResource):
             "The practitioner who is responsible for the services rendered to the "
             "patient."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner"],
     )
@@ -81,6 +91,8 @@ class PaymentNotice(domainresource.DomainResource):
         alias="request",
         title="Request reference",
         description="Reference of resource for which payment is being made.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -90,6 +102,8 @@ class PaymentNotice(domainresource.DomainResource):
         alias="response",
         title="Response reference",
         description="Reference of response to resource for which payment is being made.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -99,6 +113,8 @@ class PaymentNotice(domainresource.DomainResource):
         alias="status",
         title="active | cancelled | draft | entered-in-error",
         description="The status of the resource instance.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "cancelled", "draft", "entered-in-error"],
@@ -112,6 +128,8 @@ class PaymentNotice(domainresource.DomainResource):
         alias="statusDate",
         title="Payment or clearing date",
         description="The date when the above payment action occurrred.",
+        # if property is element of this resource.
+        element_property=True,
     )
     statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_statusDate", title="Extension field for ``statusDate``."
@@ -122,6 +140,8 @@ class PaymentNotice(domainresource.DomainResource):
         alias="target",
         title="Insurer or Regulatory body",
         description="The Insurer who is target  of the request.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )

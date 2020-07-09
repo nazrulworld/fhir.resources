@@ -34,6 +34,8 @@ class EligibilityResponse(domainresource.DomainResource):
             "The date when the enclosed suite of services were performed or "
             "completed."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_created", title="Extension field for ``created``."
@@ -44,6 +46,8 @@ class EligibilityResponse(domainresource.DomainResource):
         alias="disposition",
         title="Disposition Message",
         description="A description of the status of the adjudication.",
+        # if property is element of this resource.
+        element_property=True,
     )
     disposition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_disposition", title="Extension field for ``disposition``."
@@ -54,6 +58,8 @@ class EligibilityResponse(domainresource.DomainResource):
         alias="error",
         title="Processing errors",
         description="Mutually exclusive with Services Provided (Item).",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     form: fhirtypes.CodeableConceptType = Field(
@@ -61,6 +67,8 @@ class EligibilityResponse(domainresource.DomainResource):
         alias="form",
         title="Printed Form Identifier",
         description="The form to be used for printing the content.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -68,6 +76,8 @@ class EligibilityResponse(domainresource.DomainResource):
         alias="identifier",
         title="Business Identifier",
         description="The Response business identifier.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     inforce: bool = Field(
@@ -79,6 +89,8 @@ class EligibilityResponse(domainresource.DomainResource):
             "service date(s) specified or for the whole duration of the service "
             "dates."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     inforce__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_inforce", title="Extension field for ``inforce``."
@@ -92,6 +104,8 @@ class EligibilityResponse(domainresource.DomainResource):
             "The insurer may provide both the details for the requested coverage as"
             " well as details for additional coverages known to the insurer."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     insurer: fhirtypes.ReferenceType = Field(
@@ -99,6 +113,8 @@ class EligibilityResponse(domainresource.DomainResource):
         alias="insurer",
         title="Insurer issuing the coverage",
         description="The Insurer who produced this adjudicated response.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -108,6 +124,8 @@ class EligibilityResponse(domainresource.DomainResource):
         alias="outcome",
         title="complete | error | partial",
         description="Transaction status: error, complete.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     request: fhirtypes.ReferenceType = Field(
@@ -115,6 +133,8 @@ class EligibilityResponse(domainresource.DomainResource):
         alias="request",
         title="Eligibility reference",
         description="Original request resource reference.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["EligibilityRequest"],
     )
@@ -127,6 +147,8 @@ class EligibilityResponse(domainresource.DomainResource):
             "The organization which is responsible for the services rendered to the"
             " patient."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -139,6 +161,8 @@ class EligibilityResponse(domainresource.DomainResource):
             "The practitioner who is responsible for the services rendered to the "
             "patient."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner"],
     )
@@ -148,6 +172,8 @@ class EligibilityResponse(domainresource.DomainResource):
         alias="status",
         title="active | cancelled | draft | entered-in-error",
         description="The status of the resource instance.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "cancelled", "draft", "entered-in-error"],
@@ -176,6 +202,8 @@ class EligibilityResponseError(backboneelement.BackboneElement):
             "An error code,from a specified code system, which details why the "
             "eligibility check could not be performed."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -198,6 +226,8 @@ class EligibilityResponseInsurance(backboneelement.BackboneElement):
         alias="benefitBalance",
         title="Benefits by Category",
         description="Benefits and optionally current balances by Category.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     contract: fhirtypes.ReferenceType = Field(
@@ -205,6 +235,8 @@ class EligibilityResponseInsurance(backboneelement.BackboneElement):
         alias="contract",
         title="Contract details",
         description="The contract resource which may provide more detailed information.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Contract"],
     )
@@ -214,6 +246,8 @@ class EligibilityResponseInsurance(backboneelement.BackboneElement):
         alias="coverage",
         title="Updated Coverage details",
         description="A suite of updated or additional Coverages from the Insurer.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Coverage"],
     )
@@ -235,6 +269,8 @@ class EligibilityResponseInsuranceBenefitBalance(backboneelement.BackboneElement
         alias="category",
         title="Type of services covered",
         description="Dental, Vision, Medical, Pharmacy, Rehab etc.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     description: fhirtypes.String = Field(
@@ -246,6 +282,8 @@ class EligibilityResponseInsuranceBenefitBalance(backboneelement.BackboneElement
             " basic, 50% of major but exclused Ortho, Implants and Costmetic "
             "services'."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -259,6 +297,8 @@ class EligibilityResponseInsuranceBenefitBalance(backboneelement.BackboneElement
             "True if the indicated class of service is excluded from the plan, "
             "missing or False indicated the service is included in the coverage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     excluded__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_excluded", title="Extension field for ``excluded``."
@@ -271,6 +311,8 @@ class EligibilityResponseInsuranceBenefitBalance(backboneelement.BackboneElement
         alias="financial",
         title="Benefit Summary",
         description="Benefits Used to date.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     name: fhirtypes.String = Field(
@@ -278,6 +320,8 @@ class EligibilityResponseInsuranceBenefitBalance(backboneelement.BackboneElement
         alias="name",
         title="Short name for the benefit",
         description="A short name or tag for the benefit, for example MED01, or DENT2.",
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -288,6 +332,8 @@ class EligibilityResponseInsuranceBenefitBalance(backboneelement.BackboneElement
         alias="network",
         title="In or out of network",
         description="Network designation.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     subCategory: fhirtypes.CodeableConceptType = Field(
@@ -295,6 +341,8 @@ class EligibilityResponseInsuranceBenefitBalance(backboneelement.BackboneElement
         alias="subCategory",
         title="Detailed services covered within the type",
         description="Dental: basic, major, ortho; Vision exam, glasses, contacts; etc.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     term: fhirtypes.CodeableConceptType = Field(
@@ -305,6 +353,8 @@ class EligibilityResponseInsuranceBenefitBalance(backboneelement.BackboneElement
             "The term or period of the values such as 'maximum lifetime benefit' or"
             " 'maximum annual vistis'."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     unit: fhirtypes.CodeableConceptType = Field(
@@ -312,6 +362,8 @@ class EligibilityResponseInsuranceBenefitBalance(backboneelement.BackboneElement
         alias="unit",
         title="Individual or family",
         description="Unit designation: individual or family.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -335,6 +387,8 @@ class EligibilityResponseInsuranceBenefitBalanceFinancial(
         alias="allowedMoney",
         title="Benefits allowed",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e allowed[x]
         one_of_many="allowed",
         one_of_many_required=False,
@@ -345,6 +399,8 @@ class EligibilityResponseInsuranceBenefitBalanceFinancial(
         alias="allowedString",
         title="Benefits allowed",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e allowed[x]
         one_of_many="allowed",
         one_of_many_required=False,
@@ -358,6 +414,8 @@ class EligibilityResponseInsuranceBenefitBalanceFinancial(
         alias="allowedUnsignedInt",
         title="Benefits allowed",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e allowed[x]
         one_of_many="allowed",
         one_of_many_required=False,
@@ -369,7 +427,12 @@ class EligibilityResponseInsuranceBenefitBalanceFinancial(
     )
 
     type: fhirtypes.CodeableConceptType = Field(
-        ..., alias="type", title="Deductable, visits, benefit amount", description=None,
+        ...,
+        alias="type",
+        title="Deductable, visits, benefit amount",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     usedMoney: fhirtypes.MoneyType = Field(
@@ -377,6 +440,8 @@ class EligibilityResponseInsuranceBenefitBalanceFinancial(
         alias="usedMoney",
         title="Benefits used",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e used[x]
         one_of_many="used",
         one_of_many_required=False,
@@ -387,6 +452,8 @@ class EligibilityResponseInsuranceBenefitBalanceFinancial(
         alias="usedUnsignedInt",
         title="Benefits used",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e used[x]
         one_of_many="used",
         one_of_many_required=False,

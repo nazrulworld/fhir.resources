@@ -35,6 +35,8 @@ class AllergyIntolerance(domainresource.DomainResource):
             "The date on which the existance of the AllergyIntolerance was first "
             "asserted or acknowledged."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     assertedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_assertedDate", title="Extension field for ``assertedDate``."
@@ -45,6 +47,8 @@ class AllergyIntolerance(domainresource.DomainResource):
         alias="asserter",
         title="Source of the information about the allergy",
         description="The source of the information about the allergy that is recorded.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "RelatedPerson", "Practitioner"],
     )
@@ -54,6 +58,8 @@ class AllergyIntolerance(domainresource.DomainResource):
         alias="category",
         title="food | medication | environment | biologic",
         description="Category of the identified substance.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["food", "medication", "environment", "biologic"],
@@ -67,6 +73,8 @@ class AllergyIntolerance(domainresource.DomainResource):
         alias="clinicalStatus",
         title="active | inactive | resolved",
         description="The clinical status of the allergy or intolerance.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "inactive", "resolved"],
@@ -89,6 +97,8 @@ class AllergyIntolerance(domainresource.DomainResource):
             ' categorical negated statement (e.g.,  "No known allergy", "No known '
             'drug allergies").'
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     criticality: fhirtypes.Code = Field(
@@ -99,6 +109,8 @@ class AllergyIntolerance(domainresource.DomainResource):
             "Estimate of the potential clinical harm, or seriousness, of the "
             "reaction to the identified substance."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["low", "high", "unable-to-assess"],
@@ -118,6 +130,8 @@ class AllergyIntolerance(domainresource.DomainResource):
             "appropriate (e.g. in CDA documents, or in written / printed "
             "documentation)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     lastOccurrence: fhirtypes.DateTime = Field(
@@ -128,6 +142,8 @@ class AllergyIntolerance(domainresource.DomainResource):
             "Represents the date and/or time of the last known occurrence of a "
             "reaction event."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     lastOccurrence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastOccurrence", title="Extension field for ``lastOccurrence``."
@@ -141,6 +157,8 @@ class AllergyIntolerance(domainresource.DomainResource):
             "Additional narrative about the propensity for the Adverse Reaction, "
             "not captured in other fields."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     onsetAge: fhirtypes.AgeType = Field(
@@ -151,6 +169,8 @@ class AllergyIntolerance(domainresource.DomainResource):
             "Estimated or actual date,  date-time, or age when allergy or "
             "intolerance was identified."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e onset[x]
         one_of_many="onset",
         one_of_many_required=False,
@@ -164,6 +184,8 @@ class AllergyIntolerance(domainresource.DomainResource):
             "Estimated or actual date,  date-time, or age when allergy or "
             "intolerance was identified."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e onset[x]
         one_of_many="onset",
         one_of_many_required=False,
@@ -180,6 +202,8 @@ class AllergyIntolerance(domainresource.DomainResource):
             "Estimated or actual date,  date-time, or age when allergy or "
             "intolerance was identified."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e onset[x]
         one_of_many="onset",
         one_of_many_required=False,
@@ -193,6 +217,8 @@ class AllergyIntolerance(domainresource.DomainResource):
             "Estimated or actual date,  date-time, or age when allergy or "
             "intolerance was identified."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e onset[x]
         one_of_many="onset",
         one_of_many_required=False,
@@ -206,6 +232,8 @@ class AllergyIntolerance(domainresource.DomainResource):
             "Estimated or actual date,  date-time, or age when allergy or "
             "intolerance was identified."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e onset[x]
         one_of_many="onset",
         one_of_many_required=False,
@@ -219,6 +247,8 @@ class AllergyIntolerance(domainresource.DomainResource):
         alias="patient",
         title="Who the sensitivity is for",
         description="The patient who has the allergy or intolerance.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
     )
@@ -231,6 +261,8 @@ class AllergyIntolerance(domainresource.DomainResource):
             "Details about each adverse reaction event linked to exposure to the "
             "identified substance."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     recorder: fhirtypes.ReferenceType = Field(
@@ -241,6 +273,8 @@ class AllergyIntolerance(domainresource.DomainResource):
             "Individual who recorded the record and takes responsibility for its "
             "content."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "Patient"],
     )
@@ -253,9 +287,11 @@ class AllergyIntolerance(domainresource.DomainResource):
             "Identification of the underlying physiological mechanism for the "
             "reaction risk."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["allergy", "intolerance - Underlying mechanism (if known)"],
+        enum_values=["allergy", "intolerance"],
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -270,6 +306,8 @@ class AllergyIntolerance(domainresource.DomainResource):
             " risk, of a reaction to the identified substance (including "
             "pharmaceutical product)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["unconfirmed", "confirmed", "refuted", "entered-in-error"],
@@ -345,6 +383,8 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
             "Text description about the reaction as a whole, including details of "
             "the manifestation if required."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -358,6 +398,8 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
             "Identification of the route by which the subject was exposed to the "
             "substance."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     manifestation: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -368,6 +410,8 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
             "Clinical symptoms and/or signs that are observed or associated with "
             "the adverse reaction event."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
@@ -378,6 +422,8 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
             "Additional text about the adverse reaction event not captured in other"
             " fields."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     onset: fhirtypes.DateTime = Field(
@@ -385,6 +431,8 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
         alias="onset",
         title="Date(/time) when manifestations showed",
         description="Record of the date and/or time of the onset of the Reaction.",
+        # if property is element of this resource.
+        element_property=True,
     )
     onset__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_onset", title="Extension field for ``onset``."
@@ -398,9 +446,11 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
             "Clinical assessment of the severity of the reaction event as a whole, "
             "potentially considering multiple different manifestations."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["mild", "moderate", "severe (of event as a whole)"],
+        enum_values=["mild", "moderate", "severe"],
     )
     severity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_severity", title="Extension field for ``severity``."
@@ -423,4 +473,6 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
             "substance. It must be clinically safe to only process the 'code' and "
             "ignore the 'reaction.substance'."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )

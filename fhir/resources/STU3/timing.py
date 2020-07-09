@@ -43,6 +43,8 @@ class Timing(element.Element):
             "exception that .repeat.bounds still applies over the code (and is not "
             "contained in the code)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     event: ListType[fhirtypes.DateTime] = Field(
@@ -50,6 +52,8 @@ class Timing(element.Element):
         alias="event",
         title="When the event occurs",
         description="Identifies specific times when the event occurs.",
+        # if property is element of this resource.
+        element_property=True,
     )
     event__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_event", title="Extension field for ``event``."
@@ -60,6 +64,8 @@ class Timing(element.Element):
         alias="repeat",
         title="When the event is to occur",
         description="A set of rules that describe when the event is scheduled.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -83,6 +89,8 @@ class TimingRepeat(element.Element):
             "possible length, or outer bounds for start and/or end limits of the "
             "timing schedule."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e bounds[x]
         one_of_many="bounds",
         one_of_many_required=False,
@@ -97,6 +105,8 @@ class TimingRepeat(element.Element):
             "possible length, or outer bounds for start and/or end limits of the "
             "timing schedule."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e bounds[x]
         one_of_many="bounds",
         one_of_many_required=False,
@@ -111,6 +121,8 @@ class TimingRepeat(element.Element):
             "possible length, or outer bounds for start and/or end limits of the "
             "timing schedule."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e bounds[x]
         one_of_many="bounds",
         one_of_many_required=False,
@@ -121,6 +133,8 @@ class TimingRepeat(element.Element):
         alias="count",
         title="Number of times to repeat",
         description="A total count of the desired number of repetitions.",
+        # if property is element of this resource.
+        element_property=True,
     )
     count__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_count", title="Extension field for ``count``."
@@ -134,6 +148,8 @@ class TimingRepeat(element.Element):
             "A maximum value for the count of the desired repetitions (e.g. do "
             "something 6-8 times)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     countMax__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_countMax", title="Extension field for ``countMax``."
@@ -147,6 +163,8 @@ class TimingRepeat(element.Element):
             "If one or more days of week is provided, then the action happens only "
             "on the specified day(s)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["mon", "tue", "wed", "thu", "fri", "sat", "sun"],
@@ -160,6 +178,8 @@ class TimingRepeat(element.Element):
         alias="duration",
         title="How long when it happens",
         description="How long this thing happens for when it happens.",
+        # if property is element of this resource.
+        element_property=True,
     )
     duration__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_duration", title="Extension field for ``duration``."
@@ -170,6 +190,8 @@ class TimingRepeat(element.Element):
         alias="durationMax",
         title="How long when it happens (Max)",
         description="The upper limit of how long this thing happens for when it happens.",
+        # if property is element of this resource.
+        element_property=True,
     )
     durationMax__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_durationMax", title="Extension field for ``durationMax``."
@@ -180,9 +202,11 @@ class TimingRepeat(element.Element):
         alias="durationUnit",
         title="s | min | h | d | wk | mo | a - unit of time (UCUM)",
         description="The units of time for the duration, in UCUM units.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["s", "min", "h", "d", "wk", "mo", "a - unit of time (UCUM)"],
+        enum_values=["s", "min", "h", "d", "wk", "mo", "a"],
     )
     durationUnit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_durationUnit", title="Extension field for ``durationUnit``."
@@ -196,6 +220,8 @@ class TimingRepeat(element.Element):
             "The number of times to repeat the action within the specified period /"
             " period range (i.e. both period and periodMax provided)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     frequency__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_frequency", title="Extension field for ``frequency``."
@@ -210,6 +236,8 @@ class TimingRepeat(element.Element):
             "between [frequency] and [frequencyMax] times within the period or "
             "period range."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     frequencyMax__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_frequencyMax", title="Extension field for ``frequencyMax``."
@@ -224,6 +252,8 @@ class TimingRepeat(element.Element):
             "indicate whether the minutes is before or after the event, then the "
             "offset is assumed to be after the event."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     offset__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_offset", title="Extension field for ``offset``."
@@ -238,6 +268,8 @@ class TimingRepeat(element.Element):
             'e.g. to express "3 times per day", 3 would be the frequency and "1 '
             'day" would be the period.'
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     period__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_period", title="Extension field for ``period``."
@@ -252,6 +284,8 @@ class TimingRepeat(element.Element):
             '[periodMax], allowing expressing concepts such as "do this once every '
             "3-5 days."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     periodMax__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_periodMax", title="Extension field for ``periodMax``."
@@ -262,9 +296,11 @@ class TimingRepeat(element.Element):
         alias="periodUnit",
         title="s | min | h | d | wk | mo | a - unit of time (UCUM)",
         description="The units of time for the period in UCUM units.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["s", "min", "h", "d", "wk", "mo", "a - unit of time (UCUM)"],
+        enum_values=["s", "min", "h", "d", "wk", "mo", "a"],
     )
     periodUnit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_periodUnit", title="Extension field for ``periodUnit``."
@@ -275,6 +311,8 @@ class TimingRepeat(element.Element):
         alias="timeOfDay",
         title="Time of day for action",
         description="Specified time of day for action to take place.",
+        # if property is element of this resource.
+        element_property=True,
     )
     timeOfDay__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_timeOfDay", title="Extension field for ``timeOfDay``."
@@ -285,6 +323,8 @@ class TimingRepeat(element.Element):
         alias="when",
         title="Regular life events the event is tied to",
         description="Real world events that the occurrence of the event should be tied to.",
+        # if property is element of this resource.
+        element_property=True,
     )
     when__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_when", title="Extension field for ``when``."

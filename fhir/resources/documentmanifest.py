@@ -33,6 +33,8 @@ class DocumentManifest(domainresource.DomainResource):
             "Identifies who is the author of the manifest. Manifest author is not "
             "necessarly the author of the references included."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Practitioner",
@@ -49,6 +51,8 @@ class DocumentManifest(domainresource.DomainResource):
         alias="content",
         title="Items in manifest",
         description="The list of Resources that consist of the parts of this manifest.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -62,6 +66,8 @@ class DocumentManifest(domainresource.DomainResource):
             "(not necessarily the same thing as the actual resource last modified "
             "time, since it may be modified, replicated, etc.)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_created", title="Extension field for ``created``."
@@ -75,6 +81,8 @@ class DocumentManifest(domainresource.DomainResource):
             "Human-readable description of the source document. This is sometimes "
             'known as the "title".'
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -88,6 +96,8 @@ class DocumentManifest(domainresource.DomainResource):
             "Other identifiers associated with the document manifest, including "
             "version independent  identifiers."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     masterIdentifier: fhirtypes.IdentifierType = Field(
@@ -98,6 +108,8 @@ class DocumentManifest(domainresource.DomainResource):
             "A single identifier that uniquely identifies this manifest. "
             "Principally used to refer to the manifest in non-FHIR contexts."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     recipient: ListType[fhirtypes.ReferenceType] = Field(
@@ -108,6 +120,8 @@ class DocumentManifest(domainresource.DomainResource):
             "A patient, practitioner, or organization for which this set of "
             "documents is intended."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Patient",
@@ -123,6 +137,8 @@ class DocumentManifest(domainresource.DomainResource):
         alias="related",
         title="Related things",
         description="Related identifiers or resources associated with the DocumentManifest.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     source: fhirtypes.Uri = Field(
@@ -133,6 +149,8 @@ class DocumentManifest(domainresource.DomainResource):
             "Identifies the source system, application, or software that produced "
             "the document manifest."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     source__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_source", title="Extension field for ``source``."
@@ -143,6 +161,8 @@ class DocumentManifest(domainresource.DomainResource):
         alias="status",
         title="current | superseded | entered-in-error",
         description="The status of this document manifest.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["current", "superseded", "entered-in-error"],
@@ -163,6 +183,8 @@ class DocumentManifest(domainresource.DomainResource):
             "If the documents cross more than one subject, then more than one "
             "subject is allowed here (unusual use case)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Practitioner", "Group", "Device"],
     )
@@ -175,6 +197,8 @@ class DocumentManifest(domainresource.DomainResource):
             "The code specifying the type of clinical activity that resulted in "
             "placing the associated content into the DocumentManifest."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -197,6 +221,8 @@ class DocumentManifestRelated(backboneelement.BackboneElement):
             "Related identifier to this DocumentManifest.  For example, Order "
             "numbers, accession numbers, XDW workflow numbers."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     ref: fhirtypes.ReferenceType = Field(
@@ -207,6 +233,8 @@ class DocumentManifestRelated(backboneelement.BackboneElement):
             "Related Resource to this DocumentManifest. For example, Order, "
             "ServiceRequest,  Procedure, EligibilityRequest, etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )

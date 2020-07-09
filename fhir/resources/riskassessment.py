@@ -31,6 +31,8 @@ class RiskAssessment(domainresource.DomainResource):
         alias="basedOn",
         title="Request fulfilled by this assessment",
         description="A reference to the request that is fulfilled by this risk assessment.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -43,6 +45,8 @@ class RiskAssessment(domainresource.DomainResource):
             "Indicates the source data considered as part of the assessment (for "
             "example, FamilyHistory, Observations, Procedures, Conditions, etc.)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -52,6 +56,8 @@ class RiskAssessment(domainresource.DomainResource):
         alias="code",
         title="Type of assessment",
         description="The type of the risk assessment performed.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     condition: fhirtypes.ReferenceType = Field(
@@ -62,6 +68,8 @@ class RiskAssessment(domainresource.DomainResource):
             "For assessments or prognosis specific to a particular condition, "
             "indicates the condition being assessed."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition"],
     )
@@ -71,6 +79,8 @@ class RiskAssessment(domainresource.DomainResource):
         alias="encounter",
         title="Where was assessment performed?",
         description="The encounter where the assessment was performed.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
     )
@@ -80,6 +90,8 @@ class RiskAssessment(domainresource.DomainResource):
         alias="identifier",
         title="Unique identifier for the assessment",
         description="Business identifier assigned to the risk assessment.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     method: fhirtypes.CodeableConceptType = Field(
@@ -87,6 +99,8 @@ class RiskAssessment(domainresource.DomainResource):
         alias="method",
         title="Evaluation mechanism",
         description="The algorithm, process or mechanism used to evaluate the risk.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     mitigation: fhirtypes.String = Field(
@@ -97,6 +111,8 @@ class RiskAssessment(domainresource.DomainResource):
             "A description of the steps that might be taken to reduce the "
             "identified risk(s)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     mitigation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_mitigation", title="Extension field for ``mitigation``."
@@ -107,6 +123,8 @@ class RiskAssessment(domainresource.DomainResource):
         alias="note",
         title="Comments on the risk assessment",
         description="Additional comments about the risk assessment.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     occurrenceDateTime: fhirtypes.DateTime = Field(
@@ -114,6 +132,8 @@ class RiskAssessment(domainresource.DomainResource):
         alias="occurrenceDateTime",
         title="When was assessment made?",
         description="The date (and possibly time) the risk assessment was performed.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e occurrence[x]
         one_of_many="occurrence",
         one_of_many_required=False,
@@ -129,6 +149,8 @@ class RiskAssessment(domainresource.DomainResource):
         alias="occurrencePeriod",
         title="When was assessment made?",
         description="The date (and possibly time) the risk assessment was performed.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e occurrence[x]
         one_of_many="occurrence",
         one_of_many_required=False,
@@ -142,6 +164,8 @@ class RiskAssessment(domainresource.DomainResource):
             "A reference to a resource that this risk assessment is part of, such "
             "as a Procedure."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -151,6 +175,8 @@ class RiskAssessment(domainresource.DomainResource):
         alias="performer",
         title="Who did assessment?",
         description="The provider or software application that performed the assessment.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Device"],
     )
@@ -160,6 +186,8 @@ class RiskAssessment(domainresource.DomainResource):
         alias="prediction",
         title="Outcome predicted",
         description="Describes the expected outcome for the subject.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -167,6 +195,8 @@ class RiskAssessment(domainresource.DomainResource):
         alias="reasonCode",
         title="Why the assessment was necessary?",
         description="The reason the risk assessment was performed.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
@@ -174,6 +204,8 @@ class RiskAssessment(domainresource.DomainResource):
         alias="reasonReference",
         title="Why the assessment was necessary?",
         description="Resources supporting the reason the risk assessment was performed.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Condition",
@@ -191,9 +223,11 @@ class RiskAssessment(domainresource.DomainResource):
             "The status of the RiskAssessment, using the same statuses as an "
             "Observation."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["registered", "preliminary", "final", "amended +"],
+        enum_values=["registered", "preliminary", "final", "amended", "+"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -204,6 +238,8 @@ class RiskAssessment(domainresource.DomainResource):
         alias="subject",
         title="Who/what does assessment apply to?",
         description="The patient or group the risk assessment applies to.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
     )
@@ -264,6 +300,8 @@ class RiskAssessmentPrediction(backboneelement.BackboneElement):
             "One of the potential outcomes for the patient (e.g. remission, death,"
             "  a particular condition)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     probabilityDecimal: fhirtypes.Decimal = Field(
@@ -271,6 +309,8 @@ class RiskAssessmentPrediction(backboneelement.BackboneElement):
         alias="probabilityDecimal",
         title="Likelihood of specified outcome",
         description="Indicates how likely the outcome is (in the specified timeframe).",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e probability[x]
         one_of_many="probability",
         one_of_many_required=False,
@@ -286,6 +326,8 @@ class RiskAssessmentPrediction(backboneelement.BackboneElement):
         alias="probabilityRange",
         title="Likelihood of specified outcome",
         description="Indicates how likely the outcome is (in the specified timeframe).",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e probability[x]
         one_of_many="probability",
         one_of_many_required=False,
@@ -299,6 +341,8 @@ class RiskAssessmentPrediction(backboneelement.BackboneElement):
             "Indicates how likely the outcome is (in the specified timeframe), "
             "expressed as a qualitative value (e.g. low, medium, or high)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     rationale: fhirtypes.String = Field(
@@ -306,6 +350,8 @@ class RiskAssessmentPrediction(backboneelement.BackboneElement):
         alias="rationale",
         title="Explanation of prediction",
         description="Additional information explaining the basis for the prediction.",
+        # if property is element of this resource.
+        element_property=True,
     )
     rationale__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_rationale", title="Extension field for ``rationale``."
@@ -321,6 +367,8 @@ class RiskAssessmentPrediction(backboneelement.BackboneElement):
             "(Numbers greater than 1 = higher risk than the population, numbers "
             "less than 1 = lower risk.)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     relativeRisk__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_relativeRisk", title="Extension field for ``relativeRisk``."
@@ -334,6 +382,8 @@ class RiskAssessmentPrediction(backboneelement.BackboneElement):
             "Indicates the period of time or age range of the subject to which the "
             "specified probability applies."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e when[x]
         one_of_many="when",
         one_of_many_required=False,
@@ -347,6 +397,8 @@ class RiskAssessmentPrediction(backboneelement.BackboneElement):
             "Indicates the period of time or age range of the subject to which the "
             "specified probability applies."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e when[x]
         one_of_many="when",
         one_of_many_required=False,

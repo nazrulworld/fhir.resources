@@ -32,6 +32,8 @@ class Extension(element.Element):
             "Source of the definition for the extension code - a logical name or a "
             "URL."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     valueAddress: fhirtypes.AddressType = Field(
@@ -42,6 +44,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -55,6 +59,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -68,6 +74,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -81,6 +89,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -94,6 +104,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -107,6 +119,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -120,6 +134,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -133,6 +149,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -146,6 +164,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -159,6 +179,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -172,6 +194,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -185,6 +209,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -198,6 +224,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -211,6 +239,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -224,6 +254,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -237,6 +269,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -250,6 +284,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -263,6 +299,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -276,6 +314,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -289,6 +329,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -302,6 +344,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -315,6 +359,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -328,6 +374,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -341,6 +389,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -354,6 +404,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -367,6 +419,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -380,6 +434,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -393,6 +449,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -406,6 +464,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -419,6 +479,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -432,6 +494,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -445,6 +509,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -458,6 +524,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -471,6 +539,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -484,6 +554,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -497,6 +569,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -510,6 +584,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -523,6 +599,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -536,6 +614,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -549,6 +629,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -562,6 +644,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -575,6 +659,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -588,6 +674,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -601,6 +689,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -614,6 +704,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -627,6 +719,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -640,6 +734,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -653,6 +749,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -666,6 +764,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -679,6 +779,8 @@ class Extension(element.Element):
             "Value of extension - must be one of a constrained set of the data "
             "types (see [Extensibility](extensibility.html) for a list)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,

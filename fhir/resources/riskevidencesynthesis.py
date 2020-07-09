@@ -35,6 +35,8 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
             "Approval happens once when the content is officially approved for "
             "usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_approvalDate", title="Extension field for ``approvalDate``."
@@ -48,6 +50,8 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
             "An individiual or organization primarily involved in the creation and "
             "maintenance of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     certainty: ListType[fhirtypes.RiskEvidenceSynthesisCertaintyType] = Field(
@@ -55,6 +59,8 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
         alias="certainty",
         title="How certain is the risk",
         description="A description of the certainty of the risk estimate.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     contact: ListType[fhirtypes.ContactDetailType] = Field(
@@ -65,6 +71,8 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     copyright: fhirtypes.Markdown = Field(
@@ -76,6 +84,8 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
             "its contents. Copyright statements are generally legal restrictions on"
             " the use and publishing of the risk evidence synthesis."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
@@ -92,6 +102,8 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
             "change when the substantive content of the risk evidence synthesis "
             "changes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -105,6 +117,8 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
             "A free text natural language description of the risk evidence "
             "synthesis from a consumer's perspective."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -118,6 +132,8 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
             "An individual or organization primarily responsible for internal "
             "coherence of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     effectivePeriod: fhirtypes.PeriodType = Field(
@@ -128,6 +144,8 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
             "The period during which the risk evidence synthesis content was or is "
             "planned to be in active use."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     endorser: ListType[fhirtypes.ContactDetailType] = Field(
@@ -138,6 +156,8 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
             "An individual or organization responsible for officially endorsing the"
             " content for use in some setting."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     exposure: fhirtypes.ReferenceType = Field(
@@ -148,6 +168,8 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
             "A reference to a EvidenceVariable resource that defines the exposure "
             "for the research."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["EvidenceVariable"],
     )
@@ -161,6 +183,8 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
             "synthesis when it is represented in other formats, or referenced in a "
             "specification, model, design or an instance."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -171,6 +195,8 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
             "A legal or geographic region in which the risk evidence synthesis is "
             "intended to be used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     lastReviewDate: fhirtypes.Date = Field(
@@ -182,6 +208,8 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
             "happens periodically after approval but does not change the original "
             "approval date."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
@@ -196,6 +224,8 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
             "name should be usable as an identifier for the module by machine "
             "processing applications such as code generation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -209,6 +239,8 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
             "A human-readable string to clarify or explain concepts about the "
             "resource."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     outcome: fhirtypes.ReferenceType = Field(
@@ -219,6 +251,8 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
             "A reference to a EvidenceVariable resomece that defines the outcome "
             "for the research."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["EvidenceVariable"],
     )
@@ -231,6 +265,8 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
             "A reference to a EvidenceVariable resource that defines the population"
             " for the research."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["EvidenceVariable"],
     )
@@ -243,6 +279,8 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
             "The name of the organization or individual that published the risk "
             "evidence synthesis."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -256,6 +294,8 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
             "Related artifacts such as additional documentation, justification, or "
             "bibliographic references."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reviewer: ListType[fhirtypes.ContactDetailType] = Field(
@@ -266,6 +306,8 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
             "An individual or organization primarily responsible for review of some"
             " aspect of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     riskEstimate: fhirtypes.RiskEvidenceSynthesisRiskEstimateType = Field(
@@ -273,6 +315,8 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
         alias="riskEstimate",
         title="What was the estimated risk",
         description="The estimated risk of the outcome.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     sampleSize: fhirtypes.RiskEvidenceSynthesisSampleSizeType = Field(
@@ -280,6 +324,8 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
         alias="sampleSize",
         title="What sample size was involved?",
         description="A description of the size of the sample involved in the synthesis.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     status: fhirtypes.Code = Field(
@@ -290,6 +336,8 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
             "The status of this risk evidence synthesis. Enables tracking the life-"
             "cycle of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -303,6 +351,8 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
         alias="studyType",
         title="Type of study",
         description="Type of study eg randomized trial.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     synthesisType: fhirtypes.CodeableConceptType = Field(
@@ -310,6 +360,8 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
         alias="synthesisType",
         title="Type of synthesis",
         description="Type of synthesis eg meta-analysis.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     title: fhirtypes.String = Field(
@@ -320,6 +372,8 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
             "A short, descriptive, user-friendly title for the risk evidence "
             "synthesis."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -338,6 +392,8 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
             "grouping types of EffectEvidenceSynthesiss that can be useful for "
             "filtering and searching."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     url: fhirtypes.Uri = Field(
@@ -357,6 +413,8 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
             "SHALL remain the same when the risk evidence synthesis is stored on "
             "different servers."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -374,6 +432,8 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
             "indexing and searching for appropriate risk evidence synthesis "
             "instances."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     version: fhirtypes.String = Field(
@@ -389,6 +449,8 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
             "version is not available. There is also no expectation that versions "
             "can be placed in a lexicographical sequence."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -413,6 +475,8 @@ class RiskEvidenceSynthesisCertainty(backboneelement.BackboneElement):
         alias="certaintySubcomponent",
         title="A component that contributes to the overall certainty",
         description="A description of a component of the overall certainty.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
@@ -423,6 +487,8 @@ class RiskEvidenceSynthesisCertainty(backboneelement.BackboneElement):
             "A human-readable string to clarify or explain concepts about the "
             "resource."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     rating: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -430,6 +496,8 @@ class RiskEvidenceSynthesisCertainty(backboneelement.BackboneElement):
         alias="rating",
         title="Certainty rating",
         description="A rating of the certainty of the effect estimate.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -456,6 +524,8 @@ class RiskEvidenceSynthesisCertaintyCertaintySubcomponent(
             "A human-readable string to clarify or explain concepts about the "
             "resource."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     rating: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -463,6 +533,8 @@ class RiskEvidenceSynthesisCertaintyCertaintySubcomponent(
         alias="rating",
         title="Subcomponent certainty rating",
         description="A rating of a subcomponent of rating certainty.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -470,6 +542,8 @@ class RiskEvidenceSynthesisCertaintyCertaintySubcomponent(
         alias="type",
         title="Type of subcomponent of certainty rating",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -491,6 +565,8 @@ class RiskEvidenceSynthesisRiskEstimate(backboneelement.BackboneElement):
         description=(
             "The sample size for the group that was measured for this risk " "estimate."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     denominatorCount__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -503,6 +579,8 @@ class RiskEvidenceSynthesisRiskEstimate(backboneelement.BackboneElement):
         alias="description",
         title="Description of risk estimate",
         description="Human-readable summary of risk estimate.",
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -513,6 +591,8 @@ class RiskEvidenceSynthesisRiskEstimate(backboneelement.BackboneElement):
         alias="numeratorCount",
         title="Number with the outcome",
         description="The number of group members with the outcome of interest.",
+        # if property is element of this resource.
+        element_property=True,
     )
     numeratorCount__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_numeratorCount", title="Extension field for ``numeratorCount``."
@@ -525,6 +605,8 @@ class RiskEvidenceSynthesisRiskEstimate(backboneelement.BackboneElement):
         alias="precisionEstimate",
         title="How precise the estimate is",
         description="A description of the precision of the estimate for the effect.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -532,6 +614,8 @@ class RiskEvidenceSynthesisRiskEstimate(backboneelement.BackboneElement):
         alias="type",
         title="Type of risk estimate",
         description="Examples include proportion and mean.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     unitOfMeasure: fhirtypes.CodeableConceptType = Field(
@@ -539,6 +623,8 @@ class RiskEvidenceSynthesisRiskEstimate(backboneelement.BackboneElement):
         alias="unitOfMeasure",
         title="What unit is the outcome described in?",
         description="Specifies the UCUM unit for the outcome.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     value: fhirtypes.Decimal = Field(
@@ -546,6 +632,8 @@ class RiskEvidenceSynthesisRiskEstimate(backboneelement.BackboneElement):
         alias="value",
         title="Point estimate",
         description="The point estimate of the risk estimate.",
+        # if property is element of this resource.
+        element_property=True,
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."
@@ -572,6 +660,8 @@ class RiskEvidenceSynthesisRiskEstimatePrecisionEstimate(
         alias="from",
         title="Lower bound",
         description="Lower bound of confidence interval.",
+        # if property is element of this resource.
+        element_property=True,
     )
     from__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_from", title="Extension field for ``from_fhir``."
@@ -582,6 +672,8 @@ class RiskEvidenceSynthesisRiskEstimatePrecisionEstimate(
         alias="level",
         title="Level of confidence interval",
         description="Use 95 for a 95% confidence interval.",
+        # if property is element of this resource.
+        element_property=True,
     )
     level__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_level", title="Extension field for ``level``."
@@ -592,6 +684,8 @@ class RiskEvidenceSynthesisRiskEstimatePrecisionEstimate(
         alias="to",
         title="Upper bound",
         description="Upper bound of confidence interval.",
+        # if property is element of this resource.
+        element_property=True,
     )
     to__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_to", title="Extension field for ``to``."
@@ -602,6 +696,8 @@ class RiskEvidenceSynthesisRiskEstimatePrecisionEstimate(
         alias="type",
         title="Type of precision estimate",
         description="Examples include confidence interval and interquartile range.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -621,6 +717,8 @@ class RiskEvidenceSynthesisSampleSize(backboneelement.BackboneElement):
         alias="description",
         title="Description of sample size",
         description="Human-readable summary of sample size.",
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -631,6 +729,8 @@ class RiskEvidenceSynthesisSampleSize(backboneelement.BackboneElement):
         alias="numberOfParticipants",
         title="How many participants?",
         description="Number of participants included in this evidence synthesis.",
+        # if property is element of this resource.
+        element_property=True,
     )
     numberOfParticipants__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -643,6 +743,8 @@ class RiskEvidenceSynthesisSampleSize(backboneelement.BackboneElement):
         alias="numberOfStudies",
         title="How many studies?",
         description="Number of studies included in this evidence synthesis.",
+        # if property is element of this resource.
+        element_property=True,
     )
     numberOfStudies__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_numberOfStudies", title="Extension field for ``numberOfStudies``."

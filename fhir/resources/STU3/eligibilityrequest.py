@@ -33,6 +33,8 @@ class EligibilityRequest(domainresource.DomainResource):
         alias="benefitCategory",
         title="Type of services covered",
         description="Dental, Vision, Medical, Pharmacy, Rehab etc.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     benefitSubCategory: fhirtypes.CodeableConceptType = Field(
@@ -40,6 +42,8 @@ class EligibilityRequest(domainresource.DomainResource):
         alias="benefitSubCategory",
         title="Detailed services covered within the type",
         description="Dental: basic, major, ortho; Vision exam, glasses, contacts; etc.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     businessArrangement: fhirtypes.String = Field(
@@ -50,6 +54,8 @@ class EligibilityRequest(domainresource.DomainResource):
             "The contract number of a business agreement which describes the terms "
             "and conditions."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     businessArrangement__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -62,6 +68,8 @@ class EligibilityRequest(domainresource.DomainResource):
         alias="coverage",
         title="Insurance or medical plan",
         description="Financial instrument by which payment information for health care.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Coverage"],
     )
@@ -71,6 +79,8 @@ class EligibilityRequest(domainresource.DomainResource):
         alias="created",
         title="Creation date",
         description="The date when this resource was created.",
+        # if property is element of this resource.
+        element_property=True,
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_created", title="Extension field for ``created``."
@@ -84,6 +94,8 @@ class EligibilityRequest(domainresource.DomainResource):
             "Person who created the invoice/claim/pre-determination or pre-"
             "authorization."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner"],
     )
@@ -93,6 +105,8 @@ class EligibilityRequest(domainresource.DomainResource):
         alias="facility",
         title="Servicing Facility",
         description="Facility where the services were provided.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
     )
@@ -102,6 +116,8 @@ class EligibilityRequest(domainresource.DomainResource):
         alias="identifier",
         title="Business Identifier",
         description="The Response business identifier.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     insurer: fhirtypes.ReferenceType = Field(
@@ -109,6 +125,8 @@ class EligibilityRequest(domainresource.DomainResource):
         alias="insurer",
         title="Target",
         description="The Insurer who is target  of the request.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -121,6 +139,8 @@ class EligibilityRequest(domainresource.DomainResource):
             "The organization which is responsible for the services rendered to the"
             " patient."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -130,6 +150,8 @@ class EligibilityRequest(domainresource.DomainResource):
         alias="patient",
         title="The subject of the Products and Services",
         description="Patient Resource.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
     )
@@ -139,6 +161,8 @@ class EligibilityRequest(domainresource.DomainResource):
         alias="priority",
         title="Desired processing priority",
         description="Immediate (STAT), best effort (NORMAL), deferred (DEFER).",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     provider: fhirtypes.ReferenceType = Field(
@@ -149,6 +173,8 @@ class EligibilityRequest(domainresource.DomainResource):
             "The practitioner who is responsible for the services rendered to the "
             "patient."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner"],
     )
@@ -161,6 +187,8 @@ class EligibilityRequest(domainresource.DomainResource):
             "The date or dates when the enclosed suite of services were performed "
             "or completed."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e serviced[x]
         one_of_many="serviced",
         one_of_many_required=False,
@@ -177,6 +205,8 @@ class EligibilityRequest(domainresource.DomainResource):
             "The date or dates when the enclosed suite of services were performed "
             "or completed."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e serviced[x]
         one_of_many="serviced",
         one_of_many_required=False,
@@ -187,6 +217,8 @@ class EligibilityRequest(domainresource.DomainResource):
         alias="status",
         title="active | cancelled | draft | entered-in-error",
         description="The status of the resource instance.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "cancelled", "draft", "entered-in-error"],

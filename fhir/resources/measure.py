@@ -35,6 +35,8 @@ class Measure(domainresource.DomainResource):
             "Approval happens once when the content is officially approved for "
             "usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_approvalDate", title="Extension field for ``approvalDate``."
@@ -48,6 +50,8 @@ class Measure(domainresource.DomainResource):
             "An individiual or organization primarily involved in the creation and "
             "maintenance of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     clinicalRecommendationStatement: fhirtypes.Markdown = Field(
@@ -58,6 +62,8 @@ class Measure(domainresource.DomainResource):
             "Provides a summary of relevant clinical guidelines or other clinical "
             "recommendations supporting the measure."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     clinicalRecommendationStatement__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -73,6 +79,8 @@ class Measure(domainresource.DomainResource):
             "If this is a composite measure, the scoring method used to combine the"
             " component measures to determine the composite score."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     contact: ListType[fhirtypes.ContactDetailType] = Field(
@@ -83,6 +91,8 @@ class Measure(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     copyright: fhirtypes.Markdown = Field(
@@ -94,6 +104,8 @@ class Measure(domainresource.DomainResource):
             "Copyright statements are generally legal restrictions on the use and "
             "publishing of the measure."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
@@ -109,6 +121,8 @@ class Measure(domainresource.DomainResource):
             "if the status code changes. In addition, it should change when the "
             "substantive content of the measure changes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -119,6 +133,8 @@ class Measure(domainresource.DomainResource):
         alias="definition",
         title="Defined terms used in the measure documentation",
         description="Provides a description of an individual term used within the measure.",
+        # if property is element of this resource.
+        element_property=True,
     )
     definition__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -132,6 +148,8 @@ class Measure(domainresource.DomainResource):
             "A free text natural language description of the measure from a "
             "consumer's perspective."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -146,6 +164,8 @@ class Measure(domainresource.DomainResource):
             " intellectual property (such as code systems) referenced by the "
             "measure."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     disclaimer__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_disclaimer", title="Extension field for ``disclaimer``."
@@ -159,6 +179,8 @@ class Measure(domainresource.DomainResource):
             "An individual or organization primarily responsible for internal "
             "coherence of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     effectivePeriod: fhirtypes.PeriodType = Field(
@@ -169,6 +191,8 @@ class Measure(domainresource.DomainResource):
             "The period during which the measure content was or is planned to be in"
             " active use."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     endorser: ListType[fhirtypes.ContactDetailType] = Field(
@@ -179,6 +203,8 @@ class Measure(domainresource.DomainResource):
             "An individual or organization responsible for officially endorsing the"
             " content for use in some setting."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     experimental: bool = Field(
@@ -190,6 +216,8 @@ class Measure(domainresource.DomainResource):
             "purposes (or education/evaluation/marketing) and is not intended to be"
             " used for genuine usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -200,6 +228,8 @@ class Measure(domainresource.DomainResource):
         alias="group",
         title="Population criteria group",
         description="A group of population criteria for the measure.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     guidance: fhirtypes.Markdown = Field(
@@ -210,6 +240,8 @@ class Measure(domainresource.DomainResource):
             "Additional guidance for the measure including how it can be used in a "
             "clinical context, and the intent of the measure."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     guidance__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_guidance", title="Extension field for ``guidance``."
@@ -224,6 +256,8 @@ class Measure(domainresource.DomainResource):
             "represented in other formats, or referenced in a specification, model,"
             " design or an instance."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     improvementNotation: fhirtypes.CodeableConceptType = Field(
@@ -235,6 +269,8 @@ class Measure(domainresource.DomainResource):
             "preferred result (e.g., a higher score indicates better quality OR a "
             "lower score indicates better quality OR quality is within a range)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -245,6 +281,8 @@ class Measure(domainresource.DomainResource):
             "A legal or geographic region in which the measure is intended to be "
             "used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     lastReviewDate: fhirtypes.Date = Field(
@@ -256,6 +294,8 @@ class Measure(domainresource.DomainResource):
             "happens periodically after approval but does not change the original "
             "approval date."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
@@ -269,6 +309,8 @@ class Measure(domainresource.DomainResource):
             "A reference to a Library resource containing the formal logic used by "
             "the measure."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Library"],
     )
@@ -285,6 +327,8 @@ class Measure(domainresource.DomainResource):
             "usable as an identifier for the module by machine processing "
             "applications such as code generation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -295,6 +339,8 @@ class Measure(domainresource.DomainResource):
         alias="publisher",
         title="Name of the publisher (organization or individual)",
         description="The name of the organization or individual that published the measure.",
+        # if property is element of this resource.
+        element_property=True,
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -308,6 +354,8 @@ class Measure(domainresource.DomainResource):
             "Explanation of why this measure is needed and why it has been designed"
             " as it has."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_purpose", title="Extension field for ``purpose``."
@@ -321,6 +369,8 @@ class Measure(domainresource.DomainResource):
             "Describes how to combine the information calculated, based on logic in"
             " each of several populations, into one summarized result."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     rateAggregation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_rateAggregation", title="Extension field for ``rateAggregation``."
@@ -335,6 +385,8 @@ class Measure(domainresource.DomainResource):
             "includes statements pertaining to importance criterion: impact, gap in"
             " care, and evidence."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     rationale__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_rationale", title="Extension field for ``rationale``."
@@ -348,6 +400,8 @@ class Measure(domainresource.DomainResource):
             "Related artifacts such as additional documentation, justification, or "
             "bibliographic references."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reviewer: ListType[fhirtypes.ContactDetailType] = Field(
@@ -358,6 +412,8 @@ class Measure(domainresource.DomainResource):
             "An individual or organization primarily responsible for review of some"
             " aspect of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     riskAdjustment: fhirtypes.String = Field(
@@ -369,6 +425,8 @@ class Measure(domainresource.DomainResource):
             "resulting score for the measure and how they may be accounted for when"
             " computing and reporting measure results."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     riskAdjustment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_riskAdjustment", title="Extension field for ``riskAdjustment``."
@@ -384,6 +442,8 @@ class Measure(domainresource.DomainResource):
             "extensible, allowing additional measure scoring types to be "
             "represented."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     status: fhirtypes.Code = Field(
@@ -394,6 +454,8 @@ class Measure(domainresource.DomainResource):
             "The status of this measure. Enables tracking the life-cycle of the "
             "content."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -414,6 +476,8 @@ class Measure(domainresource.DomainResource):
             "provided, a Patient subject is assumed, but the subject of the measure"
             " can be anything."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e subject[x]
         one_of_many="subject",
         one_of_many_required=False,
@@ -431,6 +495,8 @@ class Measure(domainresource.DomainResource):
             "provided, a Patient subject is assumed, but the subject of the measure"
             " can be anything."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e subject[x]
         one_of_many="subject",
         one_of_many_required=False,
@@ -446,6 +512,8 @@ class Measure(domainresource.DomainResource):
             "An explanatory or alternate title for the measure giving additional "
             "information about its content."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     subtitle__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_subtitle", title="Extension field for ``subtitle``."
@@ -460,6 +528,8 @@ class Measure(domainresource.DomainResource):
             "either the name of a valid CQL expression within a referenced library,"
             " or a valid FHIR Resource Path."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     title: fhirtypes.String = Field(
@@ -467,6 +537,8 @@ class Measure(domainresource.DomainResource):
         alias="title",
         title="Name for this measure (human friendly)",
         description="A short, descriptive, user-friendly title for the measure.",
+        # if property is element of this resource.
+        element_property=True,
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -484,6 +556,8 @@ class Measure(domainresource.DomainResource):
             "provide a high-level categorization grouping types of measures that "
             "can be useful for filtering and searching."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -495,6 +569,8 @@ class Measure(domainresource.DomainResource):
             " over time, a patient-reported outcome, or a structure measure such as"
             " utilization."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     url: fhirtypes.Uri = Field(
@@ -513,6 +589,8 @@ class Measure(domainresource.DomainResource):
             "the target of a canonical reference. It SHALL remain the same when the"
             " measure is stored on different servers."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -526,6 +604,8 @@ class Measure(domainresource.DomainResource):
             "A detailed description, from a clinical perspective, of how the "
             "measure is used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     usage__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_usage", title="Extension field for ``usage``."
@@ -542,6 +622,8 @@ class Measure(domainresource.DomainResource):
             "(insurance plans, studies, ...) and may be used to assist with "
             "indexing and searching for appropriate measure instances."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     version: fhirtypes.String = Field(
@@ -561,6 +643,8 @@ class Measure(domainresource.DomainResource):
             "the Decision Support Service specification. Note that a version is "
             "required for non-experimental active artifacts."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -624,6 +708,8 @@ class MeasureGroup(backboneelement.BackboneElement):
             "drawing from a terminology, allowing groups to be correlated across "
             "measures."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     description: fhirtypes.String = Field(
@@ -631,6 +717,8 @@ class MeasureGroup(backboneelement.BackboneElement):
         alias="description",
         title="Summary description",
         description="The human readable description of this population group.",
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -641,6 +729,8 @@ class MeasureGroup(backboneelement.BackboneElement):
         alias="population",
         title="Population criteria",
         description="A population criteria for the measure.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     stratifier: ListType[fhirtypes.MeasureGroupStratifierType] = Field(
@@ -652,6 +742,8 @@ class MeasureGroup(backboneelement.BackboneElement):
             "the name of a valid CQL expression defined within a referenced library"
             " or a valid FHIR Resource Path."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -675,6 +767,8 @@ class MeasureGroupPopulation(backboneelement.BackboneElement):
             "measure-population-exclusion | measure-observation"
         ),
         description="The type of population criteria.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     criteria: fhirtypes.ExpressionType = Field(
@@ -685,6 +779,8 @@ class MeasureGroupPopulation(backboneelement.BackboneElement):
             "An expression that specifies the criteria for the population, "
             "typically the name of an expression in a library."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     description: fhirtypes.String = Field(
@@ -692,6 +788,8 @@ class MeasureGroupPopulation(backboneelement.BackboneElement):
         alias="description",
         title="The human readable description of this population criteria",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -721,6 +819,8 @@ class MeasureGroupStratifier(backboneelement.BackboneElement):
             " drawing from a terminology, allowing stratifiers to be correlated "
             "across measures."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     component: ListType[fhirtypes.MeasureGroupStratifierComponentType] = Field(
@@ -732,6 +832,8 @@ class MeasureGroupStratifier(backboneelement.BackboneElement):
             "specified as either the name of a valid CQL expression defined within "
             "a referenced library or a valid FHIR Resource Path."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     criteria: fhirtypes.ExpressionType = Field(
@@ -743,6 +845,8 @@ class MeasureGroupStratifier(backboneelement.BackboneElement):
             "typically the name of an expression defined within a referenced "
             "library, but it may also be a path to a stratifier element."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     description: fhirtypes.String = Field(
@@ -750,6 +854,8 @@ class MeasureGroupStratifier(backboneelement.BackboneElement):
         alias="description",
         title="The human readable description of this stratifier",
         description="The human readable description of this stratifier criteria.",
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -779,6 +885,8 @@ class MeasureGroupStratifierComponent(backboneelement.BackboneElement):
             "broader context by drawing from a terminology, allowing stratifiers to"
             " be correlated across measures."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     criteria: fhirtypes.ExpressionType = Field(
@@ -791,6 +899,8 @@ class MeasureGroupStratifierComponent(backboneelement.BackboneElement):
             " a referenced library, but it may also be a path to a stratifier "
             "element."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     description: fhirtypes.String = Field(
@@ -798,6 +908,8 @@ class MeasureGroupStratifierComponent(backboneelement.BackboneElement):
         alias="description",
         title="The human readable description of this stratifier component",
         description="The human readable description of this stratifier criteria component.",
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -827,6 +939,8 @@ class MeasureSupplementalData(backboneelement.BackboneElement):
             "context by drawing from a terminology, allowing supplemental data to "
             "be correlated across measures."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     criteria: fhirtypes.ExpressionType = Field(
@@ -839,6 +953,8 @@ class MeasureSupplementalData(backboneelement.BackboneElement):
             "also be a path to a specific data element. The criteria defines the "
             "data to be returned for this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     description: fhirtypes.String = Field(
@@ -846,6 +962,8 @@ class MeasureSupplementalData(backboneelement.BackboneElement):
         alias="description",
         title="The human readable description of this supplemental data",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -863,4 +981,6 @@ class MeasureSupplementalData(backboneelement.BackboneElement):
             "adjustment factors when applying a risk model to the measure "
             "calculation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )

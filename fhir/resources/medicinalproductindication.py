@@ -33,6 +33,8 @@ class MedicinalProductIndication(domainresource.DomainResource):
             "indication"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     diseaseStatus: fhirtypes.CodeableConceptType = Field(
@@ -40,6 +42,8 @@ class MedicinalProductIndication(domainresource.DomainResource):
         alias="diseaseStatus",
         title="The status of the disease or symptom for which the indication applies",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     diseaseSymptomProcedure: fhirtypes.CodeableConceptType = Field(
@@ -47,6 +51,8 @@ class MedicinalProductIndication(domainresource.DomainResource):
         alias="diseaseSymptomProcedure",
         title="The disease, symptom or procedure that is the indication for treatment",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     duration: fhirtypes.QuantityType = Field(
@@ -54,6 +60,8 @@ class MedicinalProductIndication(domainresource.DomainResource):
         alias="duration",
         title="Timing or duration information as part of the indication",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     intendedEffect: fhirtypes.CodeableConceptType = Field(
@@ -61,6 +69,8 @@ class MedicinalProductIndication(domainresource.DomainResource):
         alias="intendedEffect",
         title="The intended effect, aim or strategy to be achieved by the indication",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     otherTherapy: ListType[
@@ -73,6 +83,8 @@ class MedicinalProductIndication(domainresource.DomainResource):
             "other therapies described as part of the indication"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     population: ListType[fhirtypes.PopulationType] = Field(
@@ -80,6 +92,8 @@ class MedicinalProductIndication(domainresource.DomainResource):
         alias="population",
         title="The population group to which this applies",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     subject: ListType[fhirtypes.ReferenceType] = Field(
@@ -87,6 +101,8 @@ class MedicinalProductIndication(domainresource.DomainResource):
         alias="subject",
         title="The medication for which this is an indication",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicinalProduct", "Medication"],
     )
@@ -96,6 +112,8 @@ class MedicinalProductIndication(domainresource.DomainResource):
         alias="undesirableEffect",
         title="Describe the undesirable effects of the medicinal product",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicinalProductUndesirableEffect"],
     )
@@ -121,6 +139,8 @@ class MedicinalProductIndicationOtherTherapy(backboneelement.BackboneElement):
             "contraindication"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e medication[x]
         one_of_many="medication",
         one_of_many_required=True,
@@ -135,6 +155,8 @@ class MedicinalProductIndicationOtherTherapy(backboneelement.BackboneElement):
             "contraindication"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e medication[x]
         one_of_many="medication",
         one_of_many_required=True,
@@ -155,6 +177,8 @@ class MedicinalProductIndicationOtherTherapy(backboneelement.BackboneElement):
             "contraindication and another therapy"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)

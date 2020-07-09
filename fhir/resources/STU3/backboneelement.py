@@ -41,4 +41,6 @@ class BackboneElement(element.Element):
             "extension. Applications processing a resource are required to check "
             "for modifier extensions."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )

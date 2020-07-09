@@ -34,6 +34,8 @@ class Observation(domainresource.DomainResource):
             "A plan, proposal or order that is fulfilled in whole or in part by "
             "this event."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "CarePlan",
@@ -54,6 +56,8 @@ class Observation(domainresource.DomainResource):
             "Indicates the site on the subject's body where the observation was "
             "made (i.e. the target site)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     category: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -61,6 +65,8 @@ class Observation(domainresource.DomainResource):
         alias="category",
         title="Classification of  type of observation",
         description="A code that classifies the general type of observation being made.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -71,6 +77,8 @@ class Observation(domainresource.DomainResource):
             "Describes what was observed. Sometimes this is called the observation "
             '"name".'
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     comment: fhirtypes.String = Field(
@@ -82,6 +90,8 @@ class Observation(domainresource.DomainResource):
             "values, or information about the source of the value where this may be"
             " relevant to the interpretation of the result."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comment", title="Extension field for ``comment``."
@@ -98,6 +108,8 @@ class Observation(domainresource.DomainResource):
             "component observations for blood pressure measurement and multiple "
             "component observations for genetics observations."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     context: fhirtypes.ReferenceType = Field(
@@ -108,6 +120,8 @@ class Observation(domainresource.DomainResource):
             "The healthcare event  (e.g. a patient and healthcare provider "
             "interaction) during which this observation is made."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter", "EpisodeOfCare"],
     )
@@ -120,6 +134,8 @@ class Observation(domainresource.DomainResource):
             "Provides a reason why the expected value in the element "
             "Observation.value[x] is missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     device: fhirtypes.ReferenceType = Field(
@@ -127,6 +143,8 @@ class Observation(domainresource.DomainResource):
         alias="device",
         title="(Measurement) Device",
         description="The device used to generate the observation data.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device", "DeviceMetric"],
     )
@@ -142,6 +160,8 @@ class Observation(domainresource.DomainResource):
             "of the procedure or of specimen collection, but very often the source "
             "of the date/time is not known, only the date/time itself."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e effective[x]
         one_of_many="effective",
         one_of_many_required=False,
@@ -163,6 +183,8 @@ class Observation(domainresource.DomainResource):
             "of the procedure or of specimen collection, but very often the source "
             "of the date/time is not known, only the date/time itself."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e effective[x]
         one_of_many="effective",
         one_of_many_required=False,
@@ -173,6 +195,8 @@ class Observation(domainresource.DomainResource):
         alias="identifier",
         title="Business Identifier for observation",
         description="A unique identifier assigned to this observation.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     interpretation: fhirtypes.CodeableConceptType = Field(
@@ -185,6 +209,8 @@ class Observation(domainresource.DomainResource):
             "reports and flow sheets to signal the meaning/normalcy status of the "
             "result. Otherwise known as abnormal flag."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     issued: fhirtypes.Instant = Field(
@@ -195,6 +221,8 @@ class Observation(domainresource.DomainResource):
             "The date and time this observation was made available to providers, "
             "typically after the results have been reviewed and verified."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     issued__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_issued", title="Extension field for ``issued``."
@@ -205,6 +233,8 @@ class Observation(domainresource.DomainResource):
         alias="method",
         title="How it was done",
         description="Indicates the mechanism used to perform the observation.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     performer: ListType[fhirtypes.ReferenceType] = Field(
@@ -212,6 +242,8 @@ class Observation(domainresource.DomainResource):
         alias="performer",
         title="Who is responsible for the observation",
         description='Who was responsible for asserting the observed value as "true".',
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Practitioner",
@@ -229,6 +261,8 @@ class Observation(domainresource.DomainResource):
             "Guidance on how to interpret the value by comparison to a normal or "
             "recommended range."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     related: ListType[fhirtypes.ObservationRelatedType] = Field(
@@ -239,6 +273,8 @@ class Observation(domainresource.DomainResource):
             "A  reference to another resource (usually another Observation) whose "
             "relationship is defined by the relationship type code."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     specimen: fhirtypes.ReferenceType = Field(
@@ -246,6 +282,8 @@ class Observation(domainresource.DomainResource):
         alias="specimen",
         title="Specimen used for this observation",
         description="The specimen that was used when this observation was made.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Specimen"],
     )
@@ -255,9 +293,11 @@ class Observation(domainresource.DomainResource):
         alias="status",
         title="registered | preliminary | final | amended +",
         description="The status of the result value.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["registered", "preliminary", "final", "amended +"],
+        enum_values=["registered", "preliminary", "final", "amended", "+"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -275,6 +315,8 @@ class Observation(domainresource.DomainResource):
             "observer (for example a relative or EMT), or any observation made "
             "about the subject."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group", "Device", "Location"],
     )
@@ -287,6 +329,8 @@ class Observation(domainresource.DomainResource):
             "The information determined as a result of making the observation, if "
             "the information has a simple value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -300,6 +344,8 @@ class Observation(domainresource.DomainResource):
             "The information determined as a result of making the observation, if "
             "the information has a simple value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -316,6 +362,8 @@ class Observation(domainresource.DomainResource):
             "The information determined as a result of making the observation, if "
             "the information has a simple value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -329,6 +377,8 @@ class Observation(domainresource.DomainResource):
             "The information determined as a result of making the observation, if "
             "the information has a simple value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -345,6 +395,8 @@ class Observation(domainresource.DomainResource):
             "The information determined as a result of making the observation, if "
             "the information has a simple value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -358,6 +410,8 @@ class Observation(domainresource.DomainResource):
             "The information determined as a result of making the observation, if "
             "the information has a simple value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -371,6 +425,8 @@ class Observation(domainresource.DomainResource):
             "The information determined as a result of making the observation, if "
             "the information has a simple value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -384,6 +440,8 @@ class Observation(domainresource.DomainResource):
             "The information determined as a result of making the observation, if "
             "the information has a simple value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -397,6 +455,8 @@ class Observation(domainresource.DomainResource):
             "The information determined as a result of making the observation, if "
             "the information has a simple value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -410,6 +470,8 @@ class Observation(domainresource.DomainResource):
             "The information determined as a result of making the observation, if "
             "the information has a simple value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -426,6 +488,8 @@ class Observation(domainresource.DomainResource):
             "The information determined as a result of making the observation, if "
             "the information has a simple value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -509,6 +573,8 @@ class ObservationComponent(backboneelement.BackboneElement):
             "Describes what was observed. Sometimes this is called the observation "
             '"code".'
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     dataAbsentReason: fhirtypes.CodeableConceptType = Field(
@@ -519,6 +585,8 @@ class ObservationComponent(backboneelement.BackboneElement):
             "Provides a reason why the expected value in the element "
             "Observation.value[x] is missing."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     interpretation: fhirtypes.CodeableConceptType = Field(
@@ -531,6 +599,8 @@ class ObservationComponent(backboneelement.BackboneElement):
             "reports and flow sheets to signal the meaning/normalcy status of the "
             "result. Otherwise known as abnormal flag."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     referenceRange: ListType[fhirtypes.ObservationReferenceRangeType] = Field(
@@ -541,6 +611,8 @@ class ObservationComponent(backboneelement.BackboneElement):
             "Guidance on how to interpret the value by comparison to a normal or "
             "recommended range."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     valueAttachment: fhirtypes.AttachmentType = Field(
@@ -551,6 +623,8 @@ class ObservationComponent(backboneelement.BackboneElement):
             "The information determined as a result of making the observation, if "
             "the information has a simple value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -564,6 +638,8 @@ class ObservationComponent(backboneelement.BackboneElement):
             "The information determined as a result of making the observation, if "
             "the information has a simple value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -577,6 +653,8 @@ class ObservationComponent(backboneelement.BackboneElement):
             "The information determined as a result of making the observation, if "
             "the information has a simple value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -593,6 +671,8 @@ class ObservationComponent(backboneelement.BackboneElement):
             "The information determined as a result of making the observation, if "
             "the information has a simple value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -606,6 +686,8 @@ class ObservationComponent(backboneelement.BackboneElement):
             "The information determined as a result of making the observation, if "
             "the information has a simple value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -619,6 +701,8 @@ class ObservationComponent(backboneelement.BackboneElement):
             "The information determined as a result of making the observation, if "
             "the information has a simple value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -632,6 +716,8 @@ class ObservationComponent(backboneelement.BackboneElement):
             "The information determined as a result of making the observation, if "
             "the information has a simple value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -645,6 +731,8 @@ class ObservationComponent(backboneelement.BackboneElement):
             "The information determined as a result of making the observation, if "
             "the information has a simple value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -658,6 +746,8 @@ class ObservationComponent(backboneelement.BackboneElement):
             "The information determined as a result of making the observation, if "
             "the information has a simple value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -674,6 +764,8 @@ class ObservationComponent(backboneelement.BackboneElement):
             "The information determined as a result of making the observation, if "
             "the information has a simple value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -752,6 +844,8 @@ class ObservationReferenceRange(backboneelement.BackboneElement):
             "The age at which this reference range is applicable. This is a "
             "neonatal age (e.g. number of weeks at term) if the meaning says so."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     appliesTo: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -763,6 +857,8 @@ class ObservationReferenceRange(backboneelement.BackboneElement):
             "to.  For example, a reference range may be based on the normal "
             "population or a particular sex or race."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     high: fhirtypes.QuantityType = Field(
@@ -775,6 +871,8 @@ class ObservationReferenceRange(backboneelement.BackboneElement):
             "reference range is >=5 - <=9).   If the high bound is omitted,  it is "
             "assumed to be meaningless (e.g. reference range is >= 2.3)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     low: fhirtypes.QuantityType = Field(
@@ -787,6 +885,8 @@ class ObservationReferenceRange(backboneelement.BackboneElement):
             "reference range is >=5 - <=9).   If the low bound is omitted,  it is "
             "assumed to be meaningless (e.g. reference range is <=2.3)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     text: fhirtypes.String = Field(
@@ -799,6 +899,8 @@ class ObservationReferenceRange(backboneelement.BackboneElement):
             'would be a reference value of "Negative" or a list or table of '
             "'normals'."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_text", title="Extension field for ``text``."
@@ -812,6 +914,8 @@ class ObservationReferenceRange(backboneelement.BackboneElement):
             "Codes to indicate the what part of the targeted reference population "
             "it applies to. For example, the normal or therapeutic range."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -836,6 +940,8 @@ class ObservationRelated(backboneelement.BackboneElement):
             "[QuestionnaireResponse](questionnaireresponse.html#) resource that is "
             "related to this observation."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Observation", "QuestionnaireResponse", "Sequence"],
     )
@@ -851,6 +957,8 @@ class ObservationRelated(backboneelement.BackboneElement):
             "A code specifying the kind of relationship that exists with the target"
             " resource."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[

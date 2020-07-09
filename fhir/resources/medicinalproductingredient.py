@@ -28,6 +28,8 @@ class MedicinalProductIngredient(domainresource.DomainResource):
         alias="allergenicIndicator",
         title="If the ingredient is a known or suspected allergen",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     allergenicIndicator__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -44,6 +46,8 @@ class MedicinalProductIngredient(domainresource.DomainResource):
             "processes and/or used to refer to it when a direct URL reference to "
             "the resource itself is not appropriate."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     manufacturer: ListType[fhirtypes.ReferenceType] = Field(
@@ -51,6 +55,8 @@ class MedicinalProductIngredient(domainresource.DomainResource):
         alias="manufacturer",
         title="Manufacturer of this Ingredient",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -60,6 +66,8 @@ class MedicinalProductIngredient(domainresource.DomainResource):
         alias="role",
         title="Ingredient role e.g. Active ingredient, excipient",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     specifiedSubstance: ListType[
@@ -69,10 +77,17 @@ class MedicinalProductIngredient(domainresource.DomainResource):
         alias="specifiedSubstance",
         title="A specified substance that comprises this ingredient",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     substance: fhirtypes.MedicinalProductIngredientSubstanceType = Field(
-        None, alias="substance", title="The ingredient substance", description=None,
+        None,
+        alias="substance",
+        title="The ingredient substance",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -87,7 +102,12 @@ class MedicinalProductIngredientSpecifiedSubstance(backboneelement.BackboneEleme
     resource_type = Field("MedicinalProductIngredientSpecifiedSubstance", const=True)
 
     code: fhirtypes.CodeableConceptType = Field(
-        ..., alias="code", title="The specified substance", description=None,
+        ...,
+        alias="code",
+        title="The specified substance",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     confidentiality: fhirtypes.CodeableConceptType = Field(
@@ -95,6 +115,8 @@ class MedicinalProductIngredientSpecifiedSubstance(backboneelement.BackboneEleme
         alias="confidentiality",
         title="Confidentiality level of the specified substance as the ingredient",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     group: fhirtypes.CodeableConceptType = Field(
@@ -102,6 +124,8 @@ class MedicinalProductIngredientSpecifiedSubstance(backboneelement.BackboneEleme
         alias="group",
         title="The group of specified substance, e.g. group 1 to 4",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     strength: ListType[
@@ -114,6 +138,8 @@ class MedicinalProductIngredientSpecifiedSubstance(backboneelement.BackboneEleme
             "manufactured item or pharmaceutical product"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -137,6 +163,8 @@ class MedicinalProductIngredientSpecifiedSubstanceStrength(
         alias="concentration",
         title="The strength per unitary volume (or mass)",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     concentrationLowLimit: fhirtypes.RatioType = Field(
@@ -148,6 +176,8 @@ class MedicinalProductIngredientSpecifiedSubstanceStrength(
             "limit"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     country: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -155,6 +185,8 @@ class MedicinalProductIngredientSpecifiedSubstanceStrength(
         alias="country",
         title="The country or countries for which the strength range applies",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     measurementPoint: fhirtypes.String = Field(
@@ -162,6 +194,8 @@ class MedicinalProductIngredientSpecifiedSubstanceStrength(
         alias="measurementPoint",
         title="For when strength is measured at a particular point or distance",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     measurementPoint__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -178,6 +212,8 @@ class MedicinalProductIngredientSpecifiedSubstanceStrength(
             "item"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     presentationLowLimit: fhirtypes.RatioType = Field(
@@ -189,6 +225,8 @@ class MedicinalProductIngredientSpecifiedSubstanceStrength(
             "lower limit, with the presentation attribute becoming the upper limit"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     referenceStrength: ListType[
@@ -198,6 +236,8 @@ class MedicinalProductIngredientSpecifiedSubstanceStrength(
         alias="referenceStrength",
         title="Strength expressed in terms of a reference substance",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -221,6 +261,8 @@ class MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength(
         alias="country",
         title="The country or countries for which the strength range applies",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     measurementPoint: fhirtypes.String = Field(
@@ -228,6 +270,8 @@ class MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength(
         alias="measurementPoint",
         title="For when strength is measured at a particular point or distance",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     measurementPoint__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -240,6 +284,8 @@ class MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength(
         alias="strength",
         title="Strength expressed in terms of a reference substance",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     strengthLowLimit: fhirtypes.RatioType = Field(
@@ -247,10 +293,17 @@ class MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength(
         alias="strengthLowLimit",
         title="Strength expressed in terms of a reference substance",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     substance: fhirtypes.CodeableConceptType = Field(
-        None, alias="substance", title="Relevant reference substance", description=None,
+        None,
+        alias="substance",
+        title="Relevant reference substance",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -265,7 +318,12 @@ class MedicinalProductIngredientSubstance(backboneelement.BackboneElement):
     resource_type = Field("MedicinalProductIngredientSubstance", const=True)
 
     code: fhirtypes.CodeableConceptType = Field(
-        ..., alias="code", title="The ingredient substance", description=None,
+        ...,
+        alias="code",
+        title="The ingredient substance",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     strength: ListType[
@@ -278,4 +336,6 @@ class MedicinalProductIngredientSubstance(backboneelement.BackboneElement):
             "manufactured item or pharmaceutical product"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )

@@ -31,6 +31,8 @@ class BodySite(domainresource.DomainResource):
         alias="active",
         title="Whether this body site record is in active use",
         description="Whether this body site is in active use.",
+        # if property is element of this resource.
+        element_property=True,
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_active", title="Extension field for ``active``."
@@ -41,6 +43,8 @@ class BodySite(domainresource.DomainResource):
         alias="code",
         title="Named anatomical location",
         description="Named anatomical location - ideally coded where possible.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     description: fhirtypes.String = Field(
@@ -48,6 +52,8 @@ class BodySite(domainresource.DomainResource):
         alias="description",
         title="Anatomical location description",
         description="A summary, charactarization or explanation of the anatomic location.",
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -58,6 +64,8 @@ class BodySite(domainresource.DomainResource):
         alias="identifier",
         title="Bodysite identifier",
         description="Identifier for this instance of the anatomical location.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     image: ListType[fhirtypes.AttachmentType] = Field(
@@ -65,6 +73,8 @@ class BodySite(domainresource.DomainResource):
         alias="image",
         title="Attached images",
         description="Image or images used to identify a location.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     patient: fhirtypes.ReferenceType = Field(
@@ -72,6 +82,8 @@ class BodySite(domainresource.DomainResource):
         alias="patient",
         title="Who this is about",
         description="The person to which the body site belongs.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
     )
@@ -84,4 +96,6 @@ class BodySite(domainresource.DomainResource):
             "Qualifier to refine the anatomical location.  These include qualifiers"
             " for laterality, relative location, directionality, number, and plane."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )

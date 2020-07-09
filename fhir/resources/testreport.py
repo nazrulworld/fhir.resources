@@ -32,6 +32,8 @@ class TestReport(domainresource.DomainResource):
             "Identifier for the TestScript assigned for external purposes outside "
             "the context of FHIR."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     issued: fhirtypes.DateTime = Field(
@@ -39,6 +41,8 @@ class TestReport(domainresource.DomainResource):
         alias="issued",
         title="When the TestScript was executed and this TestReport was generated",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     issued__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_issued", title="Extension field for ``issued``."
@@ -49,6 +53,8 @@ class TestReport(domainresource.DomainResource):
         alias="name",
         title="Informal name of the executed TestScript",
         description="A free text natural language name identifying the executed TestScript.",
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -62,6 +68,8 @@ class TestReport(domainresource.DomainResource):
             "client, or a server"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     result: fhirtypes.Code = Field(
@@ -69,6 +77,8 @@ class TestReport(domainresource.DomainResource):
         alias="result",
         title="pass | fail | pending",
         description="The overall result from the execution of the TestScript.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["pass", "fail", "pending"],
@@ -85,6 +95,8 @@ class TestReport(domainresource.DomainResource):
             "execution of the TestScript"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     score__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_score", title="Extension field for ``score``."
@@ -98,6 +110,8 @@ class TestReport(domainresource.DomainResource):
             "tests were executed"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     status: fhirtypes.Code = Field(
@@ -105,6 +119,8 @@ class TestReport(domainresource.DomainResource):
         alias="status",
         title="completed | in-progress | waiting | stopped | entered-in-error",
         description="The current state of this test report.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -127,6 +143,8 @@ class TestReport(domainresource.DomainResource):
             "The results of the series of operations required to clean up after all"
             " the tests were executed (successfully or otherwise)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     test: ListType[fhirtypes.TestReportTestType] = Field(
@@ -134,6 +152,8 @@ class TestReport(domainresource.DomainResource):
         alias="test",
         title="A test executed from the test script",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     testScript: fhirtypes.ReferenceType = Field(
@@ -147,6 +167,8 @@ class TestReport(domainresource.DomainResource):
             "Ideally this is an absolute URL that is used to identify the version-"
             "specific TestScript that was executed, matching the `TestScript.url`."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["TestScript"],
     )
@@ -156,6 +178,8 @@ class TestReport(domainresource.DomainResource):
         alias="tester",
         title="Name of the tester producing this report (Organization or individual)",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     tester__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_tester", title="Extension field for ``tester``."
@@ -178,6 +202,8 @@ class TestReportParticipant(backboneelement.BackboneElement):
         alias="display",
         title="The display name of the participant",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_display", title="Extension field for ``display``."
@@ -188,6 +214,8 @@ class TestReportParticipant(backboneelement.BackboneElement):
         alias="type",
         title="test-engine | client | server",
         description="The type of participant.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["test-engine", "client", "server"],
@@ -201,6 +229,8 @@ class TestReportParticipant(backboneelement.BackboneElement):
         alias="uri",
         title="The uri of the participant. An absolute URL is preferred",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     uri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uri", title="Extension field for ``uri``."
@@ -223,6 +253,8 @@ class TestReportSetup(backboneelement.BackboneElement):
         alias="action",
         title="A setup operation or assert that was executed",
         description="Action would contain either an operation or an assertion.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -242,6 +274,8 @@ class TestReportSetupAction(backboneelement.BackboneElement):
         alias="assert",
         title="The assertion to perform",
         description="The results of the assertion performed on the previous operations.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     operation: fhirtypes.TestReportSetupActionOperationType = Field(
@@ -249,6 +283,8 @@ class TestReportSetupAction(backboneelement.BackboneElement):
         alias="operation",
         title="The operation to perform",
         description="The operation performed.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -268,6 +304,8 @@ class TestReportSetupActionAssert(backboneelement.BackboneElement):
         alias="detail",
         title="A link to further details on the result",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     detail__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_detail", title="Extension field for ``detail``."
@@ -278,6 +316,8 @@ class TestReportSetupActionAssert(backboneelement.BackboneElement):
         alias="message",
         title="A message associated with the result",
         description="An explanatory message associated with the result.",
+        # if property is element of this resource.
+        element_property=True,
     )
     message__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_message", title="Extension field for ``message``."
@@ -288,6 +328,8 @@ class TestReportSetupActionAssert(backboneelement.BackboneElement):
         alias="result",
         title="pass | skip | fail | warning | error",
         description="The result of this assertion.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["pass", "skip", "fail", "warning", "error"],
@@ -313,6 +355,8 @@ class TestReportSetupActionOperation(backboneelement.BackboneElement):
         alias="detail",
         title="A link to further details on the result",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     detail__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_detail", title="Extension field for ``detail``."
@@ -323,6 +367,8 @@ class TestReportSetupActionOperation(backboneelement.BackboneElement):
         alias="message",
         title="A message associated with the result",
         description="An explanatory message associated with the result.",
+        # if property is element of this resource.
+        element_property=True,
     )
     message__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_message", title="Extension field for ``message``."
@@ -333,6 +379,8 @@ class TestReportSetupActionOperation(backboneelement.BackboneElement):
         alias="result",
         title="pass | skip | fail | warning | error",
         description="The result of this operation.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["pass", "skip", "fail", "warning", "error"],
@@ -359,6 +407,8 @@ class TestReportTeardown(backboneelement.BackboneElement):
         alias="action",
         title="One or more teardown operations performed",
         description="The teardown action will only contain an operation.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -378,6 +428,8 @@ class TestReportTeardownAction(backboneelement.BackboneElement):
         alias="operation",
         title="The teardown operation performed",
         description="An operation would involve a REST request to a server.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -396,6 +448,8 @@ class TestReportTest(backboneelement.BackboneElement):
         alias="action",
         title="A test operation or assert that was performed",
         description="Action would contain either an operation or an assertion.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     description: fhirtypes.String = Field(
@@ -406,6 +460,8 @@ class TestReportTest(backboneelement.BackboneElement):
             "A short description of the test used by test engines for tracking and "
             "reporting purposes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -419,6 +475,8 @@ class TestReportTest(backboneelement.BackboneElement):
             "The name of this test used for tracking/logging purposes by test "
             "engines."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -441,6 +499,8 @@ class TestReportTestAction(backboneelement.BackboneElement):
         alias="assert",
         title="The assertion performed",
         description="The results of the assertion performed on the previous operations.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     operation: fhirtypes.TestReportSetupActionOperationType = Field(
@@ -448,4 +508,6 @@ class TestReportTestAction(backboneelement.BackboneElement):
         alias="operation",
         title="The operation performed",
         description="An operation would involve a REST request to a server.",
+        # if property is element of this resource.
+        element_property=True,
     )

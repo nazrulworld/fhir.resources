@@ -26,18 +26,33 @@ class MedicinalProductPackaged(domainresource.DomainResource):
     batchIdentifier: ListType[
         fhirtypes.MedicinalProductPackagedBatchIdentifierType
     ] = Field(
-        None, alias="batchIdentifier", title="Batch numbering", description=None,
+        None,
+        alias="batchIdentifier",
+        title="Batch numbering",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     description: fhirtypes.String = Field(
-        None, alias="description", title="Textual description", description=None,
+        None,
+        alias="description",
+        title="Textual description",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
-        None, alias="identifier", title="Unique identifier", description=None,
+        None,
+        alias="identifier",
+        title="Unique identifier",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     legalStatusOfSupply: fhirtypes.CodeableConceptType = Field(
@@ -48,6 +63,8 @@ class MedicinalProductPackaged(domainresource.DomainResource):
             "the regulator"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     manufacturer: ListType[fhirtypes.ReferenceType] = Field(
@@ -55,6 +72,8 @@ class MedicinalProductPackaged(domainresource.DomainResource):
         alias="manufacturer",
         title="Manufacturer of this Package Item",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -64,12 +83,19 @@ class MedicinalProductPackaged(domainresource.DomainResource):
         alias="marketingAuthorization",
         title="Manufacturer of this Package Item",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicinalProductAuthorization"],
     )
 
     marketingStatus: ListType[fhirtypes.MarketingStatusType] = Field(
-        None, alias="marketingStatus", title="Marketing information", description=None,
+        None,
+        alias="marketingStatus",
+        title="Marketing information",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     packageItem: ListType[fhirtypes.MedicinalProductPackagedPackageItemType] = Field(
@@ -80,6 +106,8 @@ class MedicinalProductPackaged(domainresource.DomainResource):
             "packaging items within"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     subject: ListType[fhirtypes.ReferenceType] = Field(
@@ -87,6 +115,8 @@ class MedicinalProductPackaged(domainresource.DomainResource):
         alias="subject",
         title="The product with this is a pack for",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicinalProduct"],
     )
@@ -110,6 +140,8 @@ class MedicinalProductPackagedBatchIdentifier(backboneelement.BackboneElement):
             "packaging)"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     outerPackaging: fhirtypes.IdentifierType = Field(
@@ -117,6 +149,8 @@ class MedicinalProductPackagedBatchIdentifier(backboneelement.BackboneElement):
         alias="outerPackaging",
         title="A number appearing on the outer packaging of a specific batch",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -136,6 +170,8 @@ class MedicinalProductPackagedPackageItem(backboneelement.BackboneElement):
         alias="alternateMaterial",
         title="A possible alternate material for the packaging",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     device: ListType[fhirtypes.ReferenceType] = Field(
@@ -143,6 +179,8 @@ class MedicinalProductPackagedPackageItem(backboneelement.BackboneElement):
         alias="device",
         title="A device accompanying a medicinal product",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DeviceDefinition"],
     )
@@ -152,6 +190,8 @@ class MedicinalProductPackagedPackageItem(backboneelement.BackboneElement):
         alias="identifier",
         title="Including possibly Data Carrier Identifier",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     manufacturedItem: ListType[fhirtypes.ReferenceType] = Field(
@@ -159,6 +199,8 @@ class MedicinalProductPackagedPackageItem(backboneelement.BackboneElement):
         alias="manufacturedItem",
         title="The manufactured item as contained in the packaged medicinal product",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicinalProductManufactured"],
     )
@@ -168,6 +210,8 @@ class MedicinalProductPackagedPackageItem(backboneelement.BackboneElement):
         alias="manufacturer",
         title="Manufacturer of this Package Item",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -177,6 +221,8 @@ class MedicinalProductPackagedPackageItem(backboneelement.BackboneElement):
         alias="material",
         title="Material type of the package item",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     otherCharacteristics: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -184,6 +230,8 @@ class MedicinalProductPackagedPackageItem(backboneelement.BackboneElement):
         alias="otherCharacteristics",
         title="Other codeable characteristics",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     packageItem: ListType[fhirtypes.MedicinalProductPackagedPackageItemType] = Field(
@@ -191,6 +239,8 @@ class MedicinalProductPackagedPackageItem(backboneelement.BackboneElement):
         alias="packageItem",
         title="Allows containers within containers",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     physicalCharacteristics: fhirtypes.ProdCharacteristicType = Field(
@@ -198,6 +248,8 @@ class MedicinalProductPackagedPackageItem(backboneelement.BackboneElement):
         alias="physicalCharacteristics",
         title="Dimensions, color etc.",
         description="Dimensions, color etc.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     quantity: fhirtypes.QuantityType = Field(
@@ -208,6 +260,8 @@ class MedicinalProductPackagedPackageItem(backboneelement.BackboneElement):
             "level of packaging. The outermost is always 1"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     shelfLifeStorage: ListType[fhirtypes.ProductShelfLifeType] = Field(
@@ -215,6 +269,8 @@ class MedicinalProductPackagedPackageItem(backboneelement.BackboneElement):
         alias="shelfLifeStorage",
         title="Shelf Life and storage information",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -222,4 +278,6 @@ class MedicinalProductPackagedPackageItem(backboneelement.BackboneElement):
         alias="type",
         title="The physical type of the container of the medicine",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )

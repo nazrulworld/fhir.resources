@@ -28,6 +28,8 @@ class ContactPoint(element.Element):
         alias="period",
         title="Time period when the contact point was/is in use",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     rank: fhirtypes.PositiveInt = Field(
@@ -39,6 +41,8 @@ class ContactPoint(element.Element):
             "ContactPoints with lower rank values are more preferred than those "
             "with higher rank values."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     rank__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_rank", title="Extension field for ``rank``."
@@ -52,6 +56,8 @@ class ContactPoint(element.Element):
             "Telecommunications form for contact point - what communications system"
             " is required to make use of the contact."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["phone", "fax", "email", "pager", "url", "sms", "other"],
@@ -65,15 +71,11 @@ class ContactPoint(element.Element):
         alias="use",
         title="home | work | temp | old | mobile - purpose of this contact point",
         description="Identifies the purpose for the contact point.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "home",
-            "work",
-            "temp",
-            "old",
-            "mobile - purpose of this contact point",
-        ],
+        enum_values=["home", "work", "temp", "old", "mobile"],
     )
     use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_use", title="Extension field for ``use``."
@@ -87,6 +89,8 @@ class ContactPoint(element.Element):
             "The actual contact point details, in a form that is meaningful to the "
             "designated communication system (i.e. phone number or email address)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."

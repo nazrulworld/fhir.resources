@@ -36,6 +36,8 @@ class Signature(element.Element):
             "The base64 encoding of the Signature content. When signature is not "
             "recorded electronically this element would be empty."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     blob__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_blob", title="Extension field for ``blob``."
@@ -51,6 +53,8 @@ class Signature(element.Element):
             "application/jwt for JWT, and image/* for a graphical image of a "
             "signature, etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     contentType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_contentType", title="Extension field for ``contentType``."
@@ -64,6 +68,8 @@ class Signature(element.Element):
             "A reference to an application-usable description of the identity that "
             "is represented by the signature."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e onBehalfOf[x]
         one_of_many="onBehalfOf",
         one_of_many_required=False,
@@ -85,6 +91,8 @@ class Signature(element.Element):
             "A reference to an application-usable description of the identity that "
             "is represented by the signature."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e onBehalfOf[x]
         one_of_many="onBehalfOf",
         one_of_many_required=False,
@@ -103,6 +111,8 @@ class Signature(element.Element):
             "can be used when determining accountability for various actions "
             "concerning the document."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     when: fhirtypes.Instant = Field(
@@ -110,6 +120,8 @@ class Signature(element.Element):
         alias="when",
         title="When the signature was created",
         description="When the digital signature was signed.",
+        # if property is element of this resource.
+        element_property=True,
     )
     when__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_when", title="Extension field for ``when``."
@@ -123,6 +135,8 @@ class Signature(element.Element):
             "A reference to an application-usable description of the identity that "
             "signed  (e.g. the signature used their private key)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e who[x]
         one_of_many="who",
         one_of_many_required=True,
@@ -144,6 +158,8 @@ class Signature(element.Element):
             "A reference to an application-usable description of the identity that "
             "signed  (e.g. the signature used their private key)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e who[x]
         one_of_many="who",
         one_of_many_required=True,

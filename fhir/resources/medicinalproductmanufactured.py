@@ -28,6 +28,8 @@ class MedicinalProductManufactured(domainresource.DomainResource):
         alias="ingredient",
         title="Ingredient",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicinalProductIngredient"],
     )
@@ -40,6 +42,8 @@ class MedicinalProductManufactured(domainresource.DomainResource):
             "pharmaceutical product"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     manufacturer: ListType[fhirtypes.ReferenceType] = Field(
@@ -50,6 +54,8 @@ class MedicinalProductManufactured(domainresource.DomainResource):
             '"manufacturer" but it currently causes technical issues)'
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -59,6 +65,8 @@ class MedicinalProductManufactured(domainresource.DomainResource):
         alias="otherCharacteristics",
         title="Other codeable characteristics",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     physicalCharacteristics: fhirtypes.ProdCharacteristicType = Field(
@@ -66,6 +74,8 @@ class MedicinalProductManufactured(domainresource.DomainResource):
         alias="physicalCharacteristics",
         title="Dimensions, color etc.",
         description="Dimensions, color etc.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     quantity: fhirtypes.QuantityType = Field(
@@ -73,6 +83,8 @@ class MedicinalProductManufactured(domainresource.DomainResource):
         alias="quantity",
         title='The quantity or "count number" of the manufactured item',
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     unitOfPresentation: fhirtypes.CodeableConceptType = Field(
@@ -83,4 +95,6 @@ class MedicinalProductManufactured(domainresource.DomainResource):
             "is described"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )

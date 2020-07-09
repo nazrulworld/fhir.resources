@@ -38,6 +38,8 @@ class MedicationRequest(domainresource.DomainResource):
             "The date (and perhaps time) when the prescription was initially "
             "written or authored on."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_authoredOn", title="Extension field for ``authoredOn``."
@@ -51,6 +53,8 @@ class MedicationRequest(domainresource.DomainResource):
             "A plan or request that is fulfilled in whole or in part by this "
             "medication request."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "CarePlan",
@@ -68,6 +72,8 @@ class MedicationRequest(domainresource.DomainResource):
             "Indicates the type of medication order and where the medication is "
             "expected to be consumed or administered."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     context: fhirtypes.ReferenceType = Field(
@@ -79,6 +85,8 @@ class MedicationRequest(domainresource.DomainResource):
             "particular occurrence or set occurrences of contact between patient "
             "and health care provider."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter", "EpisodeOfCare"],
     )
@@ -88,6 +96,8 @@ class MedicationRequest(domainresource.DomainResource):
         alias="definition",
         title="Protocol or definition",
         description="Protocol or definition followed by this request.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ActivityDefinition", "PlanDefinition"],
     )
@@ -101,6 +111,8 @@ class MedicationRequest(domainresource.DomainResource):
             " more active or proposed clinical actions for a patient; e.g. Drug-"
             "drug interaction, duplicate therapy, dosage alert etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DetectedIssue"],
     )
@@ -117,6 +129,8 @@ class MedicationRequest(domainresource.DomainResource):
             "institutional or system support for completing the dispense details in"
             " the pharmacy department."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     dosageInstruction: ListType[fhirtypes.DosageType] = Field(
@@ -124,6 +138,8 @@ class MedicationRequest(domainresource.DomainResource):
         alias="dosageInstruction",
         title="How the medication should be taken",
         description="Indicates how the medication is to be used by the patient.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     eventHistory: ListType[fhirtypes.ReferenceType] = Field(
@@ -136,6 +152,8 @@ class MedicationRequest(domainresource.DomainResource):
             "transitions or updates that are likely to be relevant to a user "
             "looking at the current version of the resource."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Provenance"],
     )
@@ -149,6 +167,8 @@ class MedicationRequest(domainresource.DomainResource):
             "or less simultaneously by a single author, representing the identifier"
             " of the requisition or prescription."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -164,6 +184,8 @@ class MedicationRequest(domainresource.DomainResource):
             "FHIR only provides part of an entire workflow process where records "
             "must be tracked through an entire system."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     intent: fhirtypes.Code = Field(
@@ -171,6 +193,8 @@ class MedicationRequest(domainresource.DomainResource):
         alias="intent",
         title="proposal | plan | order | instance-order",
         description="Whether the request is a proposal, plan, or an original order.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["proposal", "plan", "order", "instance-order"],
@@ -189,6 +213,8 @@ class MedicationRequest(domainresource.DomainResource):
             "the medication or simply an attribute carrying a code that identifies "
             "the medication from a known list of medications."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e medication[x]
         one_of_many="medication",
         one_of_many_required=True,
@@ -204,6 +230,8 @@ class MedicationRequest(domainresource.DomainResource):
             "the medication or simply an attribute carrying a code that identifies "
             "the medication from a known list of medications."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e medication[x]
         one_of_many="medication",
         one_of_many_required=True,
@@ -219,6 +247,8 @@ class MedicationRequest(domainresource.DomainResource):
             "Extra information about the prescription that could not be conveyed by"
             " the other attributes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     priorPrescription: fhirtypes.ReferenceType = Field(
@@ -229,6 +259,8 @@ class MedicationRequest(domainresource.DomainResource):
             "A link to a resource representing an earlier order related order or "
             "prescription."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicationRequest"],
     )
@@ -241,6 +273,8 @@ class MedicationRequest(domainresource.DomainResource):
             "Indicates how quickly the Medication Request should be addressed with "
             "respect to other requests."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["routine", "urgent", "stat", "asap"],
@@ -254,6 +288,8 @@ class MedicationRequest(domainresource.DomainResource):
         alias="reasonCode",
         title="Reason or indication for writing the prescription",
         description="The reason or the indication for ordering the medication.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
@@ -264,6 +300,8 @@ class MedicationRequest(domainresource.DomainResource):
             "written"
         ),
         description="Condition or observation that supports why the medication was ordered.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition", "Observation"],
     )
@@ -276,6 +314,8 @@ class MedicationRequest(domainresource.DomainResource):
             "The person who entered the order on behalf of another individual for "
             "example in the case of a verbal or a telephone order."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner"],
     )
@@ -288,6 +328,8 @@ class MedicationRequest(domainresource.DomainResource):
             "The individual, organization or device that initiated the request and "
             "has responsibility for its activation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     status: fhirtypes.Code = Field(
@@ -301,6 +343,8 @@ class MedicationRequest(domainresource.DomainResource):
             "A code specifying the current state of the order.  Generally this will"
             " be active or completed state."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -326,6 +370,8 @@ class MedicationRequest(domainresource.DomainResource):
             "A link to a resource representing the person or set of individuals to "
             "whom the medication will be given."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
     )
@@ -340,6 +386,8 @@ class MedicationRequest(domainresource.DomainResource):
             "substitution must not happen. This block explains the prescriber's "
             "intent. If nothing is specified substitution may be done."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     supportingInformation: ListType[fhirtypes.ReferenceType] = Field(
@@ -350,6 +398,8 @@ class MedicationRequest(domainresource.DomainResource):
             "Include additional information (for example, patient height and "
             "weight) that supports the ordering of the medication."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -417,6 +467,8 @@ class MedicationRequestDispenseRequest(backboneelement.BackboneElement):
             "Identifies the period time over which the supplied product is expected"
             " to be used, or the length of time the dispense is expected to last."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     numberOfRepeatsAllowed: fhirtypes.PositiveInt = Field(
@@ -431,6 +483,8 @@ class MedicationRequestDispenseRequest(backboneelement.BackboneElement):
             'dispense 30 tablets plus "3 repeats", then the order can be dispensed '
             "a total of 4 times and the patient can receive a total of 120 tablets."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     numberOfRepeatsAllowed__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -446,6 +500,8 @@ class MedicationRequestDispenseRequest(backboneelement.BackboneElement):
             "Indicates the intended dispensing Organization specified by the "
             "prescriber."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -455,6 +511,8 @@ class MedicationRequestDispenseRequest(backboneelement.BackboneElement):
         alias="quantity",
         title="Amount of medication to supply per dispense",
         description="The amount that is to be dispensed for one fill.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     validityPeriod: fhirtypes.PeriodType = Field(
@@ -465,6 +523,8 @@ class MedicationRequestDispenseRequest(backboneelement.BackboneElement):
             "This indicates the validity period of a prescription (stale dating the"
             " Prescription)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -488,6 +548,8 @@ class MedicationRequestRequester(backboneelement.BackboneElement):
             "The healthcare professional responsible for authorizing the initial "
             "prescription."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Practitioner",
@@ -503,6 +565,8 @@ class MedicationRequestRequester(backboneelement.BackboneElement):
         alias="onBehalfOf",
         title="Organization agent is acting for",
         description="The organization the device or practitioner was acting on behalf of.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -530,6 +594,8 @@ class MedicationRequestSubstitution(backboneelement.BackboneElement):
             "True if the prescriber allows a different drug to be dispensed from "
             "what was prescribed."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     allowed__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_allowed", title="Extension field for ``allowed``."
@@ -543,4 +609,6 @@ class MedicationRequestSubstitution(backboneelement.BackboneElement):
             "Indicates the reason for the substitution, or why substitution must or"
             " must not be performed."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )

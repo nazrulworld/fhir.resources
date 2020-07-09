@@ -32,6 +32,8 @@ class Quantity(element.Element):
             "A computer processable form of the unit in some unit representation "
             "system."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -47,14 +49,11 @@ class Quantity(element.Element):
             'measurement issues; e.g. if the comparator is "<" , then the real '
             "value is < stated value."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "\u003c",
-            "\u003c=",
-            "\u003e=",
-            "\u003e - how to understand the value",
-        ],
+        enum_values=["\u003c", "\u003c=", "\u003e=", "\u003e"],
     )
     comparator__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comparator", title="Extension field for ``comparator``."
@@ -68,6 +67,8 @@ class Quantity(element.Element):
             "The identification of the system that provides the coded form of the "
             "unit."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_system", title="Extension field for ``system``."
@@ -78,6 +79,8 @@ class Quantity(element.Element):
         alias="unit",
         title="Unit representation",
         description="A human-readable form of the unit.",
+        # if property is element of this resource.
+        element_property=True,
     )
     unit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_unit", title="Extension field for ``unit``."
@@ -91,6 +94,8 @@ class Quantity(element.Element):
             "The value of the measured amount. The value includes an implicit "
             "precision in the presentation of the value."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."

@@ -34,6 +34,8 @@ class MedicinalProduct(domainresource.DomainResource):
             "regulatory reasons"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     attachedDocument: ListType[fhirtypes.ReferenceType] = Field(
@@ -41,6 +43,8 @@ class MedicinalProduct(domainresource.DomainResource):
         alias="attachedDocument",
         title="Supporting documentation, typically for regulatory submission",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
     )
@@ -50,6 +54,8 @@ class MedicinalProduct(domainresource.DomainResource):
         alias="clinicalTrial",
         title="Clinical trials or studies that this product is involved in",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ResearchStudy"],
     )
@@ -62,6 +68,8 @@ class MedicinalProduct(domainresource.DomainResource):
             "multiple part product"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     contact: ListType[fhirtypes.ReferenceType] = Field(
@@ -69,6 +77,8 @@ class MedicinalProduct(domainresource.DomainResource):
         alias="contact",
         title="A product specific contact, person (in a role), or an organization",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "PractitionerRole"],
     )
@@ -81,6 +91,8 @@ class MedicinalProduct(domainresource.DomainResource):
             "investigational product"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     domain: fhirtypes.CodingType = Field(
@@ -88,6 +100,8 @@ class MedicinalProduct(domainresource.DomainResource):
         alias="domain",
         title="If this medicine applies to human or veterinary uses",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -95,6 +109,8 @@ class MedicinalProduct(domainresource.DomainResource):
         alias="identifier",
         title="Business identifier for this product. Could be an MPID",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     legalStatusOfSupply: fhirtypes.CodeableConceptType = Field(
@@ -105,6 +121,8 @@ class MedicinalProduct(domainresource.DomainResource):
             "the regulator"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     manufacturingBusinessOperation: ListType[
@@ -117,6 +135,8 @@ class MedicinalProduct(domainresource.DomainResource):
             "adminsitrative purpose"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     marketingStatus: ListType[fhirtypes.MarketingStatusType] = Field(
@@ -127,6 +147,8 @@ class MedicinalProduct(domainresource.DomainResource):
             "authorizaton"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     masterFile: ListType[fhirtypes.ReferenceType] = Field(
@@ -137,6 +159,8 @@ class MedicinalProduct(domainresource.DomainResource):
             "System Master File)"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
     )
@@ -146,6 +170,8 @@ class MedicinalProduct(domainresource.DomainResource):
         alias="name",
         title="The product's name, including full name and possibly coded parts",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     packagedMedicinalProduct: ListType[fhirtypes.ReferenceType] = Field(
@@ -153,6 +179,8 @@ class MedicinalProduct(domainresource.DomainResource):
         alias="packagedMedicinalProduct",
         title="Package representation for the product",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicinalProductPackaged"],
     )
@@ -162,6 +190,8 @@ class MedicinalProduct(domainresource.DomainResource):
         alias="paediatricUseIndicator",
         title="If authorised for use in children",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     pharmaceuticalProduct: ListType[fhirtypes.ReferenceType] = Field(
@@ -169,6 +199,8 @@ class MedicinalProduct(domainresource.DomainResource):
         alias="pharmaceuticalProduct",
         title="Pharmaceutical aspects of product",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicinalProductPharmaceutical"],
     )
@@ -178,6 +210,8 @@ class MedicinalProduct(domainresource.DomainResource):
         alias="productClassification",
         title="Allows the product to be classified by various systems",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     specialDesignation: ListType[
@@ -190,6 +224,8 @@ class MedicinalProduct(domainresource.DomainResource):
             "treatment of a rare disease"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     specialMeasures: ListType[fhirtypes.String] = Field(
@@ -200,6 +236,8 @@ class MedicinalProduct(domainresource.DomainResource):
             "regulatory reasons"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     specialMeasures__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -212,6 +250,8 @@ class MedicinalProduct(domainresource.DomainResource):
         alias="type",
         title="Regulatory type, e.g. Investigational or Authorized",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -231,6 +271,8 @@ class MedicinalProductManufacturingBusinessOperation(backboneelement.BackboneEle
         alias="authorisationReferenceNumber",
         title="Regulatory authorization reference number",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     confidentialityIndicator: fhirtypes.CodeableConceptType = Field(
@@ -238,6 +280,8 @@ class MedicinalProductManufacturingBusinessOperation(backboneelement.BackboneEle
         alias="confidentialityIndicator",
         title="To indicate if this proces is commercially confidential",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     effectiveDate: fhirtypes.DateTime = Field(
@@ -245,6 +289,8 @@ class MedicinalProductManufacturingBusinessOperation(backboneelement.BackboneEle
         alias="effectiveDate",
         title="Regulatory authorization date",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     effectiveDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_effectiveDate", title="Extension field for ``effectiveDate``."
@@ -255,6 +301,8 @@ class MedicinalProductManufacturingBusinessOperation(backboneelement.BackboneEle
         alias="manufacturer",
         title="The manufacturer or establishment associated with the process",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -264,6 +312,8 @@ class MedicinalProductManufacturingBusinessOperation(backboneelement.BackboneEle
         alias="operationType",
         title="The type of manufacturing operation",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     regulator: fhirtypes.ReferenceType = Field(
@@ -271,6 +321,8 @@ class MedicinalProductManufacturingBusinessOperation(backboneelement.BackboneEle
         alias="regulator",
         title="A regulator which oversees the operation",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -293,6 +345,8 @@ class MedicinalProductName(backboneelement.BackboneElement):
         alias="countryLanguage",
         title="Country where the name applies",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     namePart: ListType[fhirtypes.MedicinalProductNameNamePartType] = Field(
@@ -300,10 +354,17 @@ class MedicinalProductName(backboneelement.BackboneElement):
         alias="namePart",
         title="Coding words or phrases of the name",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     productName: fhirtypes.String = Field(
-        ..., alias="productName", title="The full product name", description=None,
+        ...,
+        alias="productName",
+        title="The full product name",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     productName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_productName", title="Extension field for ``productName``."
@@ -325,6 +386,8 @@ class MedicinalProductNameCountryLanguage(backboneelement.BackboneElement):
         alias="country",
         title="Country code for where this name applies",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     jurisdiction: fhirtypes.CodeableConceptType = Field(
@@ -332,10 +395,17 @@ class MedicinalProductNameCountryLanguage(backboneelement.BackboneElement):
         alias="jurisdiction",
         title="Jurisdiction code for where this name applies",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     language: fhirtypes.CodeableConceptType = Field(
-        ..., alias="language", title="Language code for this name", description=None,
+        ...,
+        alias="language",
+        title="Language code for this name",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -350,7 +420,12 @@ class MedicinalProductNameNamePart(backboneelement.BackboneElement):
     resource_type = Field("MedicinalProductNameNamePart", const=True)
 
     part: fhirtypes.String = Field(
-        ..., alias="part", title="A fragment of a product name", description=None,
+        ...,
+        alias="part",
+        title="A fragment of a product name",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     part__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_part", title="Extension field for ``part``."
@@ -361,6 +436,8 @@ class MedicinalProductNameNamePart(backboneelement.BackboneElement):
         alias="type",
         title="Idenifying type for this part of the name (e.g. strength part)",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -380,6 +457,8 @@ class MedicinalProductSpecialDesignation(backboneelement.BackboneElement):
         alias="date",
         title="Date when the designation was granted",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -390,6 +469,8 @@ class MedicinalProductSpecialDesignation(backboneelement.BackboneElement):
         alias="identifier",
         title="Identifier for the designation, or procedure number",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     indicationCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -397,6 +478,8 @@ class MedicinalProductSpecialDesignation(backboneelement.BackboneElement):
         alias="indicationCodeableConcept",
         title="Condition for which the medicinal use applies",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e indication[x]
         one_of_many="indication",
         one_of_many_required=False,
@@ -407,6 +490,8 @@ class MedicinalProductSpecialDesignation(backboneelement.BackboneElement):
         alias="indicationReference",
         title="Condition for which the medicinal use applies",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e indication[x]
         one_of_many="indication",
         one_of_many_required=False,
@@ -419,6 +504,8 @@ class MedicinalProductSpecialDesignation(backboneelement.BackboneElement):
         alias="intendedUse",
         title="The intended use of the product, e.g. prevention, treatment",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     species: fhirtypes.CodeableConceptType = Field(
@@ -426,6 +513,8 @@ class MedicinalProductSpecialDesignation(backboneelement.BackboneElement):
         alias="species",
         title="Animal species for which this applies",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     status: fhirtypes.CodeableConceptType = Field(
@@ -433,6 +522,8 @@ class MedicinalProductSpecialDesignation(backboneelement.BackboneElement):
         alias="status",
         title="For example granted, pending, expired or withdrawn",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -440,6 +531,8 @@ class MedicinalProductSpecialDesignation(backboneelement.BackboneElement):
         alias="type",
         title="The type of special designation, e.g. orphan drug, minor use",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)

@@ -33,6 +33,8 @@ class DomainResource(resource.Resource):
             "resource that contains them - they cannot be identified independently,"
             " and nor can they have their own independent transaction scope."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     extension: ListType[fhirtypes.ExtensionType] = Field(
@@ -48,6 +50,8 @@ class DomainResource(resource.Resource):
             "requirements that SHALL be met as part of the definition of the "
             "extension."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     modifierExtension: ListType[fhirtypes.ExtensionType] = Field(
@@ -66,6 +70,8 @@ class DomainResource(resource.Resource):
             "extension. Applications processing a resource are required to check "
             "for modifier extensions."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     text: fhirtypes.NarrativeType = Field(
@@ -81,4 +87,6 @@ class DomainResource(resource.Resource):
             "content should be represented in the narrative to ensure clinical "
             "safety."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )

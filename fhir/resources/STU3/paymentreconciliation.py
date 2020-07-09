@@ -33,6 +33,8 @@ class PaymentReconciliation(domainresource.DomainResource):
             "The date when the enclosed suite of services were performed or "
             "completed."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_created", title="Extension field for ``created``."
@@ -46,6 +48,8 @@ class PaymentReconciliation(domainresource.DomainResource):
             "List of individual settlement amounts and the corresponding "
             "transaction."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     disposition: fhirtypes.String = Field(
@@ -53,6 +57,8 @@ class PaymentReconciliation(domainresource.DomainResource):
         alias="disposition",
         title="Disposition Message",
         description="A description of the status of the adjudication.",
+        # if property is element of this resource.
+        element_property=True,
     )
     disposition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_disposition", title="Extension field for ``disposition``."
@@ -63,6 +69,8 @@ class PaymentReconciliation(domainresource.DomainResource):
         alias="form",
         title="Printed Form Identifier",
         description="The form to be used for printing the content.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -70,6 +78,8 @@ class PaymentReconciliation(domainresource.DomainResource):
         alias="identifier",
         title="Business Identifier",
         description="The Response business identifier.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     organization: fhirtypes.ReferenceType = Field(
@@ -77,6 +87,8 @@ class PaymentReconciliation(domainresource.DomainResource):
         alias="organization",
         title="Insurer",
         description="The Insurer who produced this adjudicated response.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -86,6 +98,8 @@ class PaymentReconciliation(domainresource.DomainResource):
         alias="outcome",
         title="complete | error | partial",
         description="Transaction status: error, complete.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -96,6 +110,8 @@ class PaymentReconciliation(domainresource.DomainResource):
             "The period of time for which payments have been gathered into this "
             "bulk payment for settlement."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     processNote: ListType[fhirtypes.PaymentReconciliationProcessNoteType] = Field(
@@ -103,6 +119,8 @@ class PaymentReconciliation(domainresource.DomainResource):
         alias="processNote",
         title="Processing comments",
         description="Suite of notes.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     request: fhirtypes.ReferenceType = Field(
@@ -110,6 +128,8 @@ class PaymentReconciliation(domainresource.DomainResource):
         alias="request",
         title="Claim reference",
         description="Original request resource reference.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ProcessRequest"],
     )
@@ -122,6 +142,8 @@ class PaymentReconciliation(domainresource.DomainResource):
             "The organization which is responsible for the services rendered to the"
             " patient."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -134,6 +156,8 @@ class PaymentReconciliation(domainresource.DomainResource):
             "The practitioner who is responsible for the services rendered to the "
             "patient."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner"],
     )
@@ -143,6 +167,8 @@ class PaymentReconciliation(domainresource.DomainResource):
         alias="status",
         title="active | cancelled | draft | entered-in-error",
         description="The status of the resource instance.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "cancelled", "draft", "entered-in-error"],
@@ -156,6 +182,8 @@ class PaymentReconciliation(domainresource.DomainResource):
         alias="total",
         title="Total amount of Payment",
         description="Total payment amount.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -175,6 +203,8 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
         alias="amount",
         title="Amount being paid",
         description="Amount paid for this detail.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     date: fhirtypes.Date = Field(
@@ -182,6 +212,8 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
         alias="date",
         title="Invoice date",
         description="The date of the invoice or financial resource.",
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -192,6 +224,8 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
         alias="payee",
         title="Organization which is receiving the payment",
         description="The organization which is receiving the payment.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -201,6 +235,8 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
         alias="request",
         title="Claim",
         description="The claim or financial resource.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -210,6 +246,8 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
         alias="response",
         title="Claim Response",
         description="The claim response resource.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -219,6 +257,8 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
         alias="submitter",
         title="Organization which submitted the claim",
         description="The Organization which submitted the claim or financial transaction.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -231,6 +271,8 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
             "Code to indicate the nature of the payment, adjustment, funds advance,"
             " etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -250,6 +292,8 @@ class PaymentReconciliationProcessNote(backboneelement.BackboneElement):
         alias="text",
         title="Comment on the processing",
         description="The note text.",
+        # if property is element of this resource.
+        element_property=True,
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_text", title="Extension field for ``text``."
@@ -260,4 +304,6 @@ class PaymentReconciliationProcessNote(backboneelement.BackboneElement):
         alias="type",
         title="display | print | printoper",
         description="The note purpose: Print/Display.",
+        # if property is element of this resource.
+        element_property=True,
     )

@@ -29,6 +29,8 @@ class ExampleScenario(domainresource.DomainResource):
         alias="actor",
         title="Actor participating in the resource",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     contact: ListType[fhirtypes.ContactDetailType] = Field(
@@ -39,6 +41,8 @@ class ExampleScenario(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     copyright: fhirtypes.Markdown = Field(
@@ -50,6 +54,8 @@ class ExampleScenario(domainresource.DomainResource):
             "contents. Copyright statements are generally legal restrictions on the"
             " use and publishing of the example scenario."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
@@ -66,6 +72,8 @@ class ExampleScenario(domainresource.DomainResource):
             "change when the substantive content of the example scenario changes. "
             "(e.g. the 'content logical definition')."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -80,6 +88,8 @@ class ExampleScenario(domainresource.DomainResource):
             " testing purposes (or education/evaluation/marketing) and is not "
             "intended to be used for genuine usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -94,6 +104,8 @@ class ExampleScenario(domainresource.DomainResource):
             "when it is represented in other formats, or referenced in a "
             "specification, model, design or an instance."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     instance: ListType[fhirtypes.ExampleScenarioInstanceType] = Field(
@@ -101,6 +113,8 @@ class ExampleScenario(domainresource.DomainResource):
         alias="instance",
         title="Each resource and each version that is present in the workflow",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -111,6 +125,8 @@ class ExampleScenario(domainresource.DomainResource):
             "A legal or geographic region in which the example scenario is intended"
             " to be used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     name: fhirtypes.String = Field(
@@ -122,6 +138,8 @@ class ExampleScenario(domainresource.DomainResource):
             "should be usable as an identifier for the module by machine processing"
             " applications such as code generation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -132,6 +150,8 @@ class ExampleScenario(domainresource.DomainResource):
         alias="process",
         title="Each major process - a group of operations",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     publisher: fhirtypes.String = Field(
@@ -142,6 +162,8 @@ class ExampleScenario(domainresource.DomainResource):
             "The name of the organization or individual that published the example "
             "scenario."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -156,6 +178,8 @@ class ExampleScenario(domainresource.DomainResource):
             "used to show the business purpose of the scenario itself, but the "
             "purpose of documenting a scenario."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_purpose", title="Extension field for ``purpose``."
@@ -169,6 +193,8 @@ class ExampleScenario(domainresource.DomainResource):
             "The status of this example scenario. Enables tracking the life-cycle "
             "of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -193,6 +219,8 @@ class ExampleScenario(domainresource.DomainResource):
             "can be the target of a canonical reference. It SHALL remain the same "
             "when the example scenario is stored on different servers."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -209,6 +237,8 @@ class ExampleScenario(domainresource.DomainResource):
             "(insurance plans, studies, ...) and may be used to assist with "
             "indexing and searching for appropriate example scenario instances."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     version: fhirtypes.String = Field(
@@ -224,6 +254,8 @@ class ExampleScenario(domainresource.DomainResource):
             "available. There is also no expectation that versions can be placed in"
             " a lexicographical sequence."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -234,6 +266,8 @@ class ExampleScenario(domainresource.DomainResource):
         alias="workflow",
         title="Another nested workflow",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ExampleScenario"],
     )
@@ -257,6 +291,8 @@ class ExampleScenarioActor(backboneelement.BackboneElement):
         alias="actorId",
         title="ID or acronym of the actor",
         description="ID or acronym of actor.",
+        # if property is element of this resource.
+        element_property=True,
     )
     actorId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_actorId", title="Extension field for ``actorId``."
@@ -267,6 +303,8 @@ class ExampleScenarioActor(backboneelement.BackboneElement):
         alias="description",
         title="The description of the actor",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -277,6 +315,8 @@ class ExampleScenarioActor(backboneelement.BackboneElement):
         alias="name",
         title="The name of the actor as shown in the page",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -287,6 +327,8 @@ class ExampleScenarioActor(backboneelement.BackboneElement):
         alias="type",
         title="person | entity",
         description="The type of actor - person or system.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["person", "entity"],
@@ -316,6 +358,8 @@ class ExampleScenarioInstance(backboneelement.BackboneElement):
             "Resources contained in the instance (e.g. the observations contained "
             "in a bundle)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     description: fhirtypes.Markdown = Field(
@@ -323,6 +367,8 @@ class ExampleScenarioInstance(backboneelement.BackboneElement):
         alias="description",
         title="Human-friendly description of the resource instance",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -333,6 +379,8 @@ class ExampleScenarioInstance(backboneelement.BackboneElement):
         alias="name",
         title="A short name for the resource instance",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -343,13 +391,20 @@ class ExampleScenarioInstance(backboneelement.BackboneElement):
         alias="resourceId",
         title="The id of the resource for referencing",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     resourceId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_resourceId", title="Extension field for ``resourceId``."
     )
 
     resourceType: fhirtypes.Code = Field(
-        ..., alias="resourceType", title="The type of the resource", description=None,
+        ...,
+        alias="resourceType",
+        title="The type of the resource",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     resourceType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_resourceType", title="Extension field for ``resourceType``."
@@ -360,6 +415,8 @@ class ExampleScenarioInstance(backboneelement.BackboneElement):
         alias="version",
         title="A specific version of the resource",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -380,6 +437,8 @@ class ExampleScenarioInstanceContainedInstance(backboneelement.BackboneElement):
         alias="resourceId",
         title="Each resource contained in the instance",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     resourceId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_resourceId", title="Extension field for ``resourceId``."
@@ -390,6 +449,8 @@ class ExampleScenarioInstanceContainedInstance(backboneelement.BackboneElement):
         alias="versionId",
         title="A specific version of a resource contained in the instance",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     versionId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_versionId", title="Extension field for ``versionId``."
@@ -411,6 +472,8 @@ class ExampleScenarioInstanceVersion(backboneelement.BackboneElement):
         alias="description",
         title="The description of the resource version",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -421,6 +484,8 @@ class ExampleScenarioInstanceVersion(backboneelement.BackboneElement):
         alias="versionId",
         title="The identifier of a specific version of a resource",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     versionId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_versionId", title="Extension field for ``versionId``."
@@ -442,6 +507,8 @@ class ExampleScenarioProcess(backboneelement.BackboneElement):
         alias="description",
         title="A longer description of the group of operations",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -452,6 +519,8 @@ class ExampleScenarioProcess(backboneelement.BackboneElement):
         alias="postConditions",
         title="Description of final status after the process ends",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     postConditions__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_postConditions", title="Extension field for ``postConditions``."
@@ -462,13 +531,20 @@ class ExampleScenarioProcess(backboneelement.BackboneElement):
         alias="preConditions",
         title="Description of initial status before the process starts",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     preConditions__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_preConditions", title="Extension field for ``preConditions``."
     )
 
     step: ListType[fhirtypes.ExampleScenarioProcessStepType] = Field(
-        None, alias="step", title="Each step of the process", description=None,
+        None,
+        alias="step",
+        title="Each step of the process",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     title: fhirtypes.String = Field(
@@ -476,6 +552,8 @@ class ExampleScenarioProcess(backboneelement.BackboneElement):
         alias="title",
         title="The diagram title of the group of operations",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -500,21 +578,38 @@ class ExampleScenarioProcessStep(backboneelement.BackboneElement):
             "Indicates an alternative step that can be taken instead of the "
             "operations on the base step in exceptional/atypical circumstances."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     operation: fhirtypes.ExampleScenarioProcessStepOperationType = Field(
-        None, alias="operation", title="Each interaction or action", description=None,
+        None,
+        alias="operation",
+        title="Each interaction or action",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     pause: bool = Field(
-        None, alias="pause", title="If there is a pause in the flow", description=None,
+        None,
+        alias="pause",
+        title="If there is a pause in the flow",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     pause__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_pause", title="Extension field for ``pause``."
     )
 
     process: ListType[fhirtypes.ExampleScenarioProcessType] = Field(
-        None, alias="process", title="Nested process", description=None,
+        None,
+        alias="process",
+        title="Nested process",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -538,6 +633,8 @@ class ExampleScenarioProcessStepAlternative(backboneelement.BackboneElement):
             "A human-readable description of the alternative explaining when the "
             "alternative should occur rather than the base step."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -548,6 +645,8 @@ class ExampleScenarioProcessStepAlternative(backboneelement.BackboneElement):
         alias="step",
         title="What happens in each alternative option",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     title: fhirtypes.String = Field(
@@ -558,6 +657,8 @@ class ExampleScenarioProcessStepAlternative(backboneelement.BackboneElement):
             "The label to display for the alternative that gives a sense of the "
             "circumstance in which the alternative should be invoked."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -579,13 +680,20 @@ class ExampleScenarioProcessStepOperation(backboneelement.BackboneElement):
         alias="description",
         title="A comment to be inserted in the diagram",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
     )
 
     initiator: fhirtypes.String = Field(
-        None, alias="initiator", title="Who starts the transaction", description=None,
+        None,
+        alias="initiator",
+        title="Who starts the transaction",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     initiator__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_initiator", title="Extension field for ``initiator``."
@@ -596,6 +704,8 @@ class ExampleScenarioProcessStepOperation(backboneelement.BackboneElement):
         alias="initiatorActive",
         title="Whether the initiator is deactivated right after the transaction",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     initiatorActive__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_initiatorActive", title="Extension field for ``initiatorActive``."
@@ -606,6 +716,8 @@ class ExampleScenarioProcessStepOperation(backboneelement.BackboneElement):
         alias="name",
         title="The human-friendly name of the interaction",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -616,13 +728,20 @@ class ExampleScenarioProcessStepOperation(backboneelement.BackboneElement):
         alias="number",
         title="The sequential number of the interaction",
         description="The sequential number of the interaction, e.g. 1.2.5.",
+        # if property is element of this resource.
+        element_property=True,
     )
     number__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_number", title="Extension field for ``number``."
     )
 
     receiver: fhirtypes.String = Field(
-        None, alias="receiver", title="Who receives the transaction", description=None,
+        None,
+        alias="receiver",
+        title="Who receives the transaction",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     receiver__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_receiver", title="Extension field for ``receiver``."
@@ -633,6 +752,8 @@ class ExampleScenarioProcessStepOperation(backboneelement.BackboneElement):
         alias="receiverActive",
         title="Whether the receiver is deactivated right after the transaction",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     receiverActive__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_receiverActive", title="Extension field for ``receiverActive``."
@@ -643,6 +764,8 @@ class ExampleScenarioProcessStepOperation(backboneelement.BackboneElement):
         alias="request",
         title="Each resource instance used by the initiator",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     response: fhirtypes.ExampleScenarioInstanceContainedInstanceType = Field(
@@ -650,10 +773,17 @@ class ExampleScenarioProcessStepOperation(backboneelement.BackboneElement):
         alias="response",
         title="Each resource instance used by the responder",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.String = Field(
-        None, alias="type", title="The type of operation - CRUD", description=None,
+        None,
+        alias="type",
+        title="The type of operation - CRUD",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."

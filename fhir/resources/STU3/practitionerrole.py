@@ -31,6 +31,8 @@ class PractitionerRole(domainresource.DomainResource):
         alias="active",
         title="Whether this practitioner's record is in active use",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_active", title="Extension field for ``active``."
@@ -46,6 +48,8 @@ class PractitionerRole(domainresource.DomainResource):
             "site availability as details in the available Times and not available "
             "Times."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     availabilityExceptions__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -58,6 +62,8 @@ class PractitionerRole(domainresource.DomainResource):
         alias="availableTime",
         title="Times the Service Site is available",
         description="A collection of times that the Service Site is available.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     code: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -68,6 +74,8 @@ class PractitionerRole(domainresource.DomainResource):
             "Roles which this practitioner is authorized to perform for the "
             "organization."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     endpoint: ListType[fhirtypes.ReferenceType] = Field(
@@ -78,6 +86,8 @@ class PractitionerRole(domainresource.DomainResource):
             "practitioner with this role"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Endpoint"],
     )
@@ -90,6 +100,8 @@ class PractitionerRole(domainresource.DomainResource):
             "role's Organization/Location(s)"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["HealthcareService"],
     )
@@ -99,6 +111,8 @@ class PractitionerRole(domainresource.DomainResource):
         alias="identifier",
         title="Business Identifiers that are specific to a role/location",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     location: ListType[fhirtypes.ReferenceType] = Field(
@@ -106,6 +120,8 @@ class PractitionerRole(domainresource.DomainResource):
         alias="location",
         title="The location(s) at which this practitioner provides care",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
     )
@@ -118,6 +134,8 @@ class PractitionerRole(domainresource.DomainResource):
             "The HealthcareService is not available during this period of time due "
             "to the provided reason."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     organization: fhirtypes.ReferenceType = Field(
@@ -125,6 +143,8 @@ class PractitionerRole(domainresource.DomainResource):
         alias="organization",
         title="Organization where the roles are available",
         description="The organization where the Practitioner performs the roles associated.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -140,6 +160,8 @@ class PractitionerRole(domainresource.DomainResource):
             "The period during which the person is authorized to act as a "
             "practitioner in these role(s) for the organization."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     practitioner: fhirtypes.ReferenceType = Field(
@@ -150,6 +172,8 @@ class PractitionerRole(domainresource.DomainResource):
             "organation"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner"],
     )
@@ -159,6 +183,8 @@ class PractitionerRole(domainresource.DomainResource):
         alias="specialty",
         title="Specific specialty of the practitioner",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     telecom: ListType[fhirtypes.ContactPointType] = Field(
@@ -166,6 +192,8 @@ class PractitionerRole(domainresource.DomainResource):
         alias="telecom",
         title="Contact details that are specific to the role/location/service",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -188,6 +216,8 @@ class PractitionerRoleAvailableTime(backboneelement.BackboneElement):
             "Is this always available? (hence times are irrelevant) e.g. 24 hour "
             "service."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     allDay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_allDay", title="Extension field for ``allDay``."
@@ -201,6 +231,8 @@ class PractitionerRoleAvailableTime(backboneelement.BackboneElement):
             "The closing time of day. Note: If the AllDay flag is set, then this "
             "time is ignored."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     availableEndTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -216,6 +248,8 @@ class PractitionerRoleAvailableTime(backboneelement.BackboneElement):
             "The opening time of day. Note: If the AllDay flag is set, then this "
             "time is ignored."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     availableStartTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -231,6 +265,8 @@ class PractitionerRoleAvailableTime(backboneelement.BackboneElement):
             "Indicates which days of the week are available between the start and "
             "end Times."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["mon", "tue", "wed", "thu", "fri", "sat", "sun"],
@@ -260,6 +296,8 @@ class PractitionerRoleNotAvailable(backboneelement.BackboneElement):
             "The reason that can be presented to the user as to why this time is "
             "not available."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -273,4 +311,6 @@ class PractitionerRoleNotAvailable(backboneelement.BackboneElement):
             "Service is not available (seasonally or for a public holiday) from "
             "this date."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )

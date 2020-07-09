@@ -34,6 +34,8 @@ class ProcedureRequest(domainresource.DomainResource):
             "If a CodeableConcept is present, it indicates the pre-condition for "
             'performing the procedure.  For example "pain", "on flare-up", etc.'
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e asNeeded[x]
         one_of_many="asNeeded",
         one_of_many_required=False,
@@ -50,6 +52,8 @@ class ProcedureRequest(domainresource.DomainResource):
             "If a CodeableConcept is present, it indicates the pre-condition for "
             'performing the procedure.  For example "pain", "on flare-up", etc.'
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e asNeeded[x]
         one_of_many="asNeeded",
         one_of_many_required=False,
@@ -60,6 +64,8 @@ class ProcedureRequest(domainresource.DomainResource):
         alias="authoredOn",
         title="Date request signed",
         description="When the request transitioned to being actionable.",
+        # if property is element of this resource.
+        element_property=True,
     )
     authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_authoredOn", title="Extension field for ``authoredOn``."
@@ -70,6 +76,8 @@ class ProcedureRequest(domainresource.DomainResource):
         alias="basedOn",
         title="What request fulfills",
         description="Plan/proposal/order fulfilled by this request.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -82,6 +90,8 @@ class ProcedureRequest(domainresource.DomainResource):
             "Anatomic location where the procedure should be performed. This is the"
             " target site."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     category: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -92,6 +102,8 @@ class ProcedureRequest(domainresource.DomainResource):
             "A code that classifies the procedure for searching, sorting and "
             'display purposes (e.g. "Surgical Procedure").'
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -102,6 +114,8 @@ class ProcedureRequest(domainresource.DomainResource):
             "A code that identifies a particular procedure, diagnostic "
             "investigation, or panel of investigations, that have been requested."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     context: fhirtypes.ReferenceType = Field(
@@ -112,6 +126,8 @@ class ProcedureRequest(domainresource.DomainResource):
             "An encounter or episode of care that provides additional information "
             "about the healthcare context in which this request is made."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter", "EpisodeOfCare"],
     )
@@ -121,6 +137,8 @@ class ProcedureRequest(domainresource.DomainResource):
         alias="definition",
         title="Protocol or definition",
         description="Protocol or definition followed by this request.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ActivityDefinition", "PlanDefinition"],
     )
@@ -133,6 +151,8 @@ class ProcedureRequest(domainresource.DomainResource):
             "Set this to true if the record is saying that the procedure should NOT"
             " be performed."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     doNotPerform__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_doNotPerform", title="Extension field for ``doNotPerform``."
@@ -146,6 +166,8 @@ class ProcedureRequest(domainresource.DomainResource):
             "Identifiers assigned to this order instance by the orderer and/or the "
             "receiver and/or order fulfiller."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     intent: fhirtypes.Code = Field(
@@ -156,9 +178,11 @@ class ProcedureRequest(domainresource.DomainResource):
             "Whether the request is a proposal, plan, an original order or a reflex"
             " order."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["proposal", "plan", "order +"],
+        enum_values=["proposal", "plan", "order", "+"],
     )
     intent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_intent", title="Extension field for ``intent``."
@@ -173,6 +197,8 @@ class ProcedureRequest(domainresource.DomainResource):
             'example, letting provider know that "patient hates needles" or other '
             "provider instructions."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     occurrenceDateTime: fhirtypes.DateTime = Field(
@@ -180,6 +206,8 @@ class ProcedureRequest(domainresource.DomainResource):
         alias="occurrenceDateTime",
         title="When procedure should occur",
         description="The date/time at which the diagnostic testing should occur.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e occurrence[x]
         one_of_many="occurrence",
         one_of_many_required=False,
@@ -195,6 +223,8 @@ class ProcedureRequest(domainresource.DomainResource):
         alias="occurrencePeriod",
         title="When procedure should occur",
         description="The date/time at which the diagnostic testing should occur.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e occurrence[x]
         one_of_many="occurrence",
         one_of_many_required=False,
@@ -205,6 +235,8 @@ class ProcedureRequest(domainresource.DomainResource):
         alias="occurrenceTiming",
         title="When procedure should occur",
         description="The date/time at which the diagnostic testing should occur.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e occurrence[x]
         one_of_many="occurrence",
         one_of_many_required=False,
@@ -218,6 +250,8 @@ class ProcedureRequest(domainresource.DomainResource):
             "The desired perfomer for doing the diagnostic testing.  For example, "
             "the surgeon, dermatopathologist, endoscopist, etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Practitioner",
@@ -234,6 +268,8 @@ class ProcedureRequest(domainresource.DomainResource):
         alias="performerType",
         title="Performer role",
         description="Desired type of performer for doing the diagnostic testing.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     priority: fhirtypes.Code = Field(
@@ -244,6 +280,8 @@ class ProcedureRequest(domainresource.DomainResource):
             "Indicates how quickly the ProcedureRequest should be addressed with "
             "respect to other requests."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["routine", "urgent", "asap", "stat"],
@@ -262,6 +300,8 @@ class ProcedureRequest(domainresource.DomainResource):
             "billing purposes.  May relate to the resources referred to in "
             "supportingInformation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
@@ -273,6 +313,8 @@ class ProcedureRequest(domainresource.DomainResource):
             "diagnostic investigation is being requested.   May relate to the "
             "resources referred to in supportingInformation."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition", "Observation"],
     )
@@ -282,6 +324,8 @@ class ProcedureRequest(domainresource.DomainResource):
         alias="relevantHistory",
         title="Request provenance",
         description="Key events in the history of the request.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Provenance"],
     )
@@ -294,6 +338,8 @@ class ProcedureRequest(domainresource.DomainResource):
             "The request takes the place of the referenced completed or terminated "
             "request(s)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -306,6 +352,8 @@ class ProcedureRequest(domainresource.DomainResource):
             "The individual who initiated the request and has responsibility for "
             "its activation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     requisition: fhirtypes.IdentifierType = Field(
@@ -317,6 +365,8 @@ class ProcedureRequest(domainresource.DomainResource):
             "that were authorized more or less simultaneously by a single author, "
             "representing the composite or group identifier."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     specimen: ListType[fhirtypes.ReferenceType] = Field(
@@ -324,6 +374,8 @@ class ProcedureRequest(domainresource.DomainResource):
         alias="specimen",
         title="Procedure Samples",
         description="One or more specimens that the laboratory procedure will use.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Specimen"],
     )
@@ -333,6 +385,8 @@ class ProcedureRequest(domainresource.DomainResource):
         alias="status",
         title="draft | active | suspended | completed | entered-in-error | cancelled",
         description="The status of the order.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -358,6 +412,8 @@ class ProcedureRequest(domainresource.DomainResource):
             "groups of humans or animals, devices such as dialysis machines, or "
             "even locations (typically for environmental scans)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group", "Location", "Device"],
     )
@@ -376,6 +432,8 @@ class ProcedureRequest(domainresource.DomainResource):
             "supporting information needed to complete the order. For example,  "
             "reporting the amount of inspired oxygen for blood gas measurements."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -441,6 +499,8 @@ class ProcedureRequestRequester(backboneelement.BackboneElement):
         alias="agent",
         title="Individual making the request",
         description="The device, practitioner or organization who initiated the request.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device", "Practitioner", "Organization"],
     )
@@ -450,6 +510,8 @@ class ProcedureRequestRequester(backboneelement.BackboneElement):
         alias="onBehalfOf",
         title="Organization agent is acting for",
         description="The organization the device or practitioner was acting on behalf of.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )

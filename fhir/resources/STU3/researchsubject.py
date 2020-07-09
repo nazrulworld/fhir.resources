@@ -35,6 +35,8 @@ class ResearchSubject(domainresource.DomainResource):
             "The name of the arm in the study the subject actually followed as part"
             " of this study."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     actualArm__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_actualArm", title="Extension field for ``actualArm``."
@@ -48,6 +50,8 @@ class ResearchSubject(domainresource.DomainResource):
             "The name of the arm in the study the subject is expected to follow as "
             "part of this study."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     assignedArm__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_assignedArm", title="Extension field for ``assignedArm``."
@@ -61,6 +65,8 @@ class ResearchSubject(domainresource.DomainResource):
             "A record of the patient's informed agreement to participate in the "
             "study."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Consent"],
     )
@@ -73,6 +79,8 @@ class ResearchSubject(domainresource.DomainResource):
             "Identifiers assigned to this research study by the sponsor or other "
             "systems."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     individual: fhirtypes.ReferenceType = Field(
@@ -80,6 +88,8 @@ class ResearchSubject(domainresource.DomainResource):
         alias="individual",
         title="Who is part of study",
         description="The record of the person or animal who is involved in the study.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
     )
@@ -91,6 +101,8 @@ class ResearchSubject(domainresource.DomainResource):
         description=(
             "The dates the subject began and ended their participation in the " "study."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     status: fhirtypes.Code = Field(
@@ -98,6 +110,8 @@ class ResearchSubject(domainresource.DomainResource):
         alias="status",
         title="candidate | enrolled | active | suspended | withdrawn | completed",
         description="The current state of the subject.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -118,6 +132,8 @@ class ResearchSubject(domainresource.DomainResource):
         alias="study",
         title="Study subject is part of",
         description="Reference to the study the subject is participating in.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ResearchStudy"],
     )

@@ -31,6 +31,8 @@ class BodyStructure(domainresource.DomainResource):
         alias="active",
         title="Whether this record is in active use",
         description="Whether this body site is in active use.",
+        # if property is element of this resource.
+        element_property=True,
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_active", title="Extension field for ``active``."
@@ -41,6 +43,8 @@ class BodyStructure(domainresource.DomainResource):
         alias="description",
         title="Text description",
         description="A summary, characterization or explanation of the body structure.",
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -51,6 +55,8 @@ class BodyStructure(domainresource.DomainResource):
         alias="identifier",
         title="Bodystructure identifier",
         description="Identifier for this instance of the anatomical structure.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     image: ListType[fhirtypes.AttachmentType] = Field(
@@ -58,6 +64,8 @@ class BodyStructure(domainresource.DomainResource):
         alias="image",
         title="Attached images",
         description="Image or images used to identify a location.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     location: fhirtypes.CodeableConceptType = Field(
@@ -68,6 +76,8 @@ class BodyStructure(domainresource.DomainResource):
             "The anatomical location or region of the specimen, lesion, or body "
             "structure."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     locationQualifier: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -78,6 +88,8 @@ class BodyStructure(domainresource.DomainResource):
             "Qualifier to refine the anatomical location.  These include qualifiers"
             " for laterality, relative location, directionality, number, and plane."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     morphology: fhirtypes.CodeableConceptType = Field(
@@ -89,6 +101,8 @@ class BodyStructure(domainresource.DomainResource):
             "`BodyStructure.location`.  This can define both normal and abnormal "
             "morphologies."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     patient: fhirtypes.ReferenceType = Field(
@@ -96,6 +110,8 @@ class BodyStructure(domainresource.DomainResource):
         alias="patient",
         title="Who this is about",
         description="The person to which the body site belongs.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
     )

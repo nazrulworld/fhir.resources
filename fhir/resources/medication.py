@@ -38,6 +38,8 @@ class Medication(domainresource.DomainResource):
             "attribute provides additional clarification of the package amount (For"
             " example, 3 mL, 10mL, etc.)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     batch: fhirtypes.MedicationBatchType = Field(
@@ -45,6 +47,8 @@ class Medication(domainresource.DomainResource):
         alias="batch",
         title="Details about packaged medications",
         description="Information that only applies to packages (not products).",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -58,6 +62,8 @@ class Medication(domainresource.DomainResource):
             "etc. It could also be a national or local formulary code, optionally "
             "with translations to other code systems."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     form: fhirtypes.CodeableConceptType = Field(
@@ -65,6 +71,8 @@ class Medication(domainresource.DomainResource):
         alias="form",
         title="powder | tablets | capsule +",
         description="Describes the form of the item.  Powder; tablets; capsule.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -72,6 +80,8 @@ class Medication(domainresource.DomainResource):
         alias="identifier",
         title="Business identifier for this medication",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     ingredient: ListType[fhirtypes.MedicationIngredientType] = Field(
@@ -79,6 +89,8 @@ class Medication(domainresource.DomainResource):
         alias="ingredient",
         title="Active or inactive ingredient",
         description="Identifies a particular constituent of interest in the product.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     manufacturer: fhirtypes.ReferenceType = Field(
@@ -90,6 +102,8 @@ class Medication(domainresource.DomainResource):
             "This is not intended to represent the distributor of a medication "
             "product."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -99,6 +113,8 @@ class Medication(domainresource.DomainResource):
         alias="status",
         title="active | inactive | entered-in-error",
         description="A code to indicate if the medication is in active use.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "inactive", "entered-in-error"],
@@ -124,6 +140,8 @@ class MedicationBatch(backboneelement.BackboneElement):
         alias="expirationDate",
         title="When batch will expire",
         description="When this specific batch of product will expire.",
+        # if property is element of this resource.
+        element_property=True,
     )
     expirationDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_expirationDate", title="Extension field for ``expirationDate``."
@@ -134,6 +152,8 @@ class MedicationBatch(backboneelement.BackboneElement):
         alias="lotNumber",
         title="Identifier assigned to batch",
         description="The assigned lot number of a batch of the specified product.",
+        # if property is element of this resource.
+        element_property=True,
     )
     lotNumber__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lotNumber", title="Extension field for ``lotNumber``."
@@ -159,6 +179,8 @@ class MedicationIngredient(backboneelement.BackboneElement):
             "Indication of whether this ingredient affects the therapeutic action "
             "of the drug."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     isActive__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_isActive", title="Extension field for ``isActive``."
@@ -172,6 +194,8 @@ class MedicationIngredient(backboneelement.BackboneElement):
             "The actual ingredient - either a substance (simple ingredient) or "
             "another medication of a medication."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e item[x]
         one_of_many="item",
         one_of_many_required=True,
@@ -185,6 +209,8 @@ class MedicationIngredient(backboneelement.BackboneElement):
             "The actual ingredient - either a substance (simple ingredient) or "
             "another medication of a medication."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e item[x]
         one_of_many="item",
         one_of_many_required=True,
@@ -201,6 +227,8 @@ class MedicationIngredient(backboneelement.BackboneElement):
             "Medication.  For example, 250 mg per tablet.  This is expressed as a "
             "ratio where the numerator is 250mg and the denominator is 1 tablet."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)

@@ -37,6 +37,8 @@ class CarePlan(domainresource.DomainResource):
             "example, a medication to be used, lab tests to perform, self-"
             "monitoring, education, etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     addresses: ListType[fhirtypes.ReferenceType] = Field(
@@ -47,6 +49,8 @@ class CarePlan(domainresource.DomainResource):
             "Identifies the conditions/problems/concerns/diagnoses/etc. whose "
             "management and/or mitigation are handled by this plan."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition"],
     )
@@ -59,6 +63,8 @@ class CarePlan(domainresource.DomainResource):
             "When populated, the author is responsible for the care plan.  The care"
             " plan is attributed to the author."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Patient",
@@ -76,6 +82,8 @@ class CarePlan(domainresource.DomainResource):
         alias="basedOn",
         title="Fulfills CarePlan",
         description="A care plan that is fulfilled in whole or in part by this care plan.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CarePlan"],
     )
@@ -88,6 +96,8 @@ class CarePlan(domainresource.DomainResource):
             "Identifies all people and organizations who are expected to be "
             "involved in the care envisioned by this plan."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CareTeam"],
     )
@@ -101,6 +111,8 @@ class CarePlan(domainresource.DomainResource):
             'between multiple co-existing plans; e.g. "Home health", "psychiatric",'
             ' "asthma", "disease management", "wellness plan", etc.'
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     contributor: ListType[fhirtypes.ReferenceType] = Field(
@@ -111,6 +123,8 @@ class CarePlan(domainresource.DomainResource):
             "Identifies the individual(s) or organization who provided the contents"
             " of the care plan."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Patient",
@@ -131,6 +145,8 @@ class CarePlan(domainresource.DomainResource):
             "Represents when this particular CarePlan record was created in the "
             "system, which is often a system-generated date."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_created", title="Extension field for ``created``."
@@ -141,6 +157,8 @@ class CarePlan(domainresource.DomainResource):
         alias="description",
         title="Summary of nature of plan",
         description="A description of the scope and nature of the plan.",
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -154,6 +172,8 @@ class CarePlan(domainresource.DomainResource):
             "The Encounter during which this CarePlan was created or to which the "
             "creation of this record is tightly associated."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
     )
@@ -163,6 +183,8 @@ class CarePlan(domainresource.DomainResource):
         alias="goal",
         title="Desired outcome of plan",
         description="Describes the intended objective(s) of carrying out the care plan.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Goal"],
     )
@@ -176,6 +198,8 @@ class CarePlan(domainresource.DomainResource):
             "other systems which remain constant as the resource is updated and "
             "propagates from server to server."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     instantiatesCanonical: ListType[fhirtypes.Canonical] = Field(
@@ -187,6 +211,8 @@ class CarePlan(domainresource.DomainResource):
             "or other definition that is adhered to in whole or in part by this "
             "CarePlan."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "PlanDefinition",
@@ -213,6 +239,8 @@ class CarePlan(domainresource.DomainResource):
             "questionnaire or other definition that is adhered to in whole or in "
             "part by this CarePlan."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     instantiatesUri__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -228,6 +256,8 @@ class CarePlan(domainresource.DomainResource):
             "Indicates the level of authority/intentionality associated with the "
             "care plan and where the care plan fits into the workflow chain."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["proposal", "plan", "order", "option"],
@@ -241,6 +271,8 @@ class CarePlan(domainresource.DomainResource):
         alias="note",
         title="Comments about the plan",
         description="General notes about the care plan not covered elsewhere.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     partOf: ListType[fhirtypes.ReferenceType] = Field(
@@ -251,6 +283,8 @@ class CarePlan(domainresource.DomainResource):
             "A larger care plan of which this particular care plan is a component "
             "or step."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CarePlan"],
     )
@@ -263,6 +297,8 @@ class CarePlan(domainresource.DomainResource):
             "Indicates when the plan did (or is intended to) come into effect and "
             "end."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     replaces: ListType[fhirtypes.ReferenceType] = Field(
@@ -273,6 +309,8 @@ class CarePlan(domainresource.DomainResource):
             "Completed or terminated care plan whose function is taken by this new "
             "care plan."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CarePlan"],
     )
@@ -288,6 +326,8 @@ class CarePlan(domainresource.DomainResource):
             "Indicates whether the plan is currently being acted upon, represents "
             "future intentions or is now a historical record."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -312,6 +352,8 @@ class CarePlan(domainresource.DomainResource):
             "Identifies the patient or group whose intended care is described by "
             "the plan."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
     )
@@ -326,6 +368,8 @@ class CarePlan(domainresource.DomainResource):
             "comorbidities, recent procedures, limitations, recent assessments, "
             "etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -335,6 +379,8 @@ class CarePlan(domainresource.DomainResource):
         alias="title",
         title="Human-friendly name for the care plan",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -363,6 +409,8 @@ class CarePlanActivity(backboneelement.BackboneElement):
             "plan system (e.g. form driven) that doesn't know about specific "
             "resources such as procedure etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     outcomeCodeableConcept: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -374,6 +422,8 @@ class CarePlanActivity(backboneelement.BackboneElement):
             " assessed.  For example, the outcome of an education activity could be"
             " patient understands (or not)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     outcomeReference: ListType[fhirtypes.ReferenceType] = Field(
@@ -387,6 +437,8 @@ class CarePlanActivity(backboneelement.BackboneElement):
             "activity can be conveyed using CarePlan.activity.detail OR using the "
             "CarePlan.activity.reference (a reference to a \u201crequest\u201d resource)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -396,6 +448,8 @@ class CarePlanActivity(backboneelement.BackboneElement):
         alias="progress",
         title="Comments about the activity status/progress",
         description="Notes about the adherence/status/progress of the activity.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reference: fhirtypes.ReferenceType = Field(
@@ -406,6 +460,8 @@ class CarePlanActivity(backboneelement.BackboneElement):
             "The details of the proposed activity represented in a specific "
             "resource."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Appointment",
@@ -442,6 +498,8 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "Detailed description of the type of planned activity; e.g. what lab "
             "test, what procedure, what kind of encounter."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     dailyAmount: fhirtypes.QuantityType = Field(
@@ -449,6 +507,8 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
         alias="dailyAmount",
         title="How to consume/day?",
         description="Identifies the quantity expected to be consumed in a given day.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     description: fhirtypes.String = Field(
@@ -462,6 +522,8 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "it may convey specifics about the activity such as body site, method, "
             "route, etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -477,6 +539,8 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "that the described activity is one that should be engaged in when "
             "following the plan."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     doNotPerform__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_doNotPerform", title="Extension field for ``doNotPerform``."
@@ -490,6 +554,8 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "Internal reference that identifies the goals that this activity is "
             "intended to contribute towards meeting."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Goal"],
     )
@@ -503,6 +569,8 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "or other definition that is adhered to in whole or in part by this "
             "CarePlan activity."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "PlanDefinition",
@@ -529,6 +597,8 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "questionnaire or other definition that is adhered to in whole or in "
             "part by this CarePlan activity."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     instantiatesUri__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -550,6 +620,8 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "CarePlan.activity.reference.  For example, a MedicationRequest, a "
             "ServiceRequest, or a CommunicationRequest."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -575,6 +647,8 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "Identifies the facility where the activity will occur; e.g. home, "
             "hospital, specific clinic, etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
     )
@@ -584,6 +658,8 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
         alias="performer",
         title="Who will be responsible?",
         description="Identifies who's expected to be involved in the activity.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Practitioner",
@@ -605,6 +681,8 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "Identifies the food, drug or other product to be consumed or supplied "
             "in the activity."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e product[x]
         one_of_many="product",
         one_of_many_required=False,
@@ -618,6 +696,8 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "Identifies the food, drug or other product to be consumed or supplied "
             "in the activity."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e product[x]
         one_of_many="product",
         one_of_many_required=False,
@@ -633,6 +713,8 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "Identifies the quantity expected to be supplied, administered or "
             "consumed by the subject."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -644,6 +726,8 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "activity as part of the plan or the reason why the activity was "
             "prohibited."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
@@ -655,6 +739,8 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "existence justifies this request and drove the inclusion of this "
             "particular activity as part of the plan."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Condition",
@@ -672,6 +758,8 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "The period, timing or frequency upon which the described activity is "
             "to occur."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e scheduled[x]
         one_of_many="scheduled",
         one_of_many_required=False,
@@ -685,6 +773,8 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "The period, timing or frequency upon which the described activity is "
             "to occur."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e scheduled[x]
         one_of_many="scheduled",
         one_of_many_required=False,
@@ -701,6 +791,8 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "The period, timing or frequency upon which the described activity is "
             "to occur."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e scheduled[x]
         one_of_many="scheduled",
         one_of_many_required=False,
@@ -714,6 +806,8 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "cancelled | stopped | unknown | entered-in-error"
         ),
         description="Identifies what progress is being made for the specific activity.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -740,6 +834,8 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
             "Provides reason why the activity isn't yet started, is on hold, was "
             "cancelled, etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)

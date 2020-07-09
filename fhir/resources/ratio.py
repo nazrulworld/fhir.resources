@@ -28,6 +28,8 @@ class Ratio(element.Element):
         alias="denominator",
         title="Denominator value",
         description="The value of the denominator.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     numerator: fhirtypes.QuantityType = Field(
@@ -35,4 +37,6 @@ class Ratio(element.Element):
         alias="numerator",
         title="Numerator value",
         description="The value of the numerator.",
+        # if property is element of this resource.
+        element_property=True,
     )

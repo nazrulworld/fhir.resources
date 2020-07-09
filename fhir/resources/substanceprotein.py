@@ -44,6 +44,8 @@ class SubstanceProtein(domainresource.DomainResource):
             "Cysteine at the respective positions"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     disulfideLinkage__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -63,6 +65,8 @@ class SubstanceProtein(domainresource.DomainResource):
             "variable"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     numberOfSubunits__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -79,6 +83,8 @@ class SubstanceProtein(domainresource.DomainResource):
             " a nucleic acid sequence"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     subunit: ListType[fhirtypes.SubstanceProteinSubunitType] = Field(
@@ -95,6 +101,8 @@ class SubstanceProtein(domainresource.DomainResource):
             "subunits that have identical sequences will be repeated multiple times"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -120,6 +128,8 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
         alias="cTerminalModification",
         title="The modification at the C-terminal shall be specified",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     cTerminalModification__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -135,6 +145,8 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
             " 11238 Substance ID"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     length: fhirtypes.Integer = Field(
@@ -142,6 +154,8 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
         alias="length",
         title="Length of linear sequences of amino acids contained in the subunit",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     length__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_length", title="Extension field for ``length``."
@@ -155,6 +169,8 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
             "SubstanceProtein shall be specified"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     nTerminalModification__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -170,6 +186,8 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
             " 11238 Substance ID"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     sequence: fhirtypes.String = Field(
@@ -186,6 +204,8 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
             "distinguished by their position in the sequence"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sequence", title="Extension field for ``sequence``."
@@ -205,6 +225,8 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
             "distinguished by their position in the sequence"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     subunit: fhirtypes.Integer = Field(
@@ -217,6 +239,8 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
             "will be repeated and have sequential subscripts"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     subunit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_subunit", title="Extension field for ``subunit``."

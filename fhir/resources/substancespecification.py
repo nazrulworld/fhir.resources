@@ -30,6 +30,8 @@ class SubstanceSpecification(domainresource.DomainResource):
         alias="code",
         title="Codes associated with the substance",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     comment: fhirtypes.String = Field(
@@ -37,6 +39,8 @@ class SubstanceSpecification(domainresource.DomainResource):
         alias="comment",
         title="Textual comment about this record of a substance",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comment", title="Extension field for ``comment``."
@@ -47,6 +51,8 @@ class SubstanceSpecification(domainresource.DomainResource):
         alias="description",
         title="Textual description of the substance",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -57,6 +63,8 @@ class SubstanceSpecification(domainresource.DomainResource):
         alias="domain",
         title="If the substance applies to only human or veterinary use",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: fhirtypes.IdentifierType = Field(
@@ -64,6 +72,8 @@ class SubstanceSpecification(domainresource.DomainResource):
         alias="identifier",
         title="Identifier by which this substance is known",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     moiety: ListType[fhirtypes.SubstanceSpecificationMoietyType] = Field(
@@ -71,6 +81,8 @@ class SubstanceSpecification(domainresource.DomainResource):
         alias="moiety",
         title="Moiety, for structural modifications",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     molecularWeight: ListType[
@@ -83,6 +95,8 @@ class SubstanceSpecification(domainresource.DomainResource):
             "nucleic acids)"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     name: ListType[fhirtypes.SubstanceSpecificationNameType] = Field(
@@ -90,6 +104,8 @@ class SubstanceSpecification(domainresource.DomainResource):
         alias="name",
         title="Names applicable to this substance",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     nucleicAcid: fhirtypes.ReferenceType = Field(
@@ -97,6 +113,8 @@ class SubstanceSpecification(domainresource.DomainResource):
         alias="nucleicAcid",
         title="Data items specific to nucleic acids",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SubstanceNucleicAcid"],
     )
@@ -106,6 +124,8 @@ class SubstanceSpecification(domainresource.DomainResource):
         alias="polymer",
         title="Data items specific to polymers",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SubstancePolymer"],
     )
@@ -118,6 +138,8 @@ class SubstanceSpecification(domainresource.DomainResource):
             " to other substances"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     protein: fhirtypes.ReferenceType = Field(
@@ -125,6 +147,8 @@ class SubstanceSpecification(domainresource.DomainResource):
         alias="protein",
         title="Data items specific to proteins",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SubstanceProtein"],
     )
@@ -134,6 +158,8 @@ class SubstanceSpecification(domainresource.DomainResource):
         alias="referenceInformation",
         title="General information detailing this substance",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SubstanceReferenceInformation"],
     )
@@ -146,6 +172,8 @@ class SubstanceSpecification(domainresource.DomainResource):
             "relationship"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     source: ListType[fhirtypes.ReferenceType] = Field(
@@ -153,6 +181,8 @@ class SubstanceSpecification(domainresource.DomainResource):
         alias="source",
         title="Supporting literature",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
     )
@@ -162,6 +192,8 @@ class SubstanceSpecification(domainresource.DomainResource):
         alias="sourceMaterial",
         title="Material or taxonomic/anatomical source for the substance",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SubstanceSourceMaterial"],
     )
@@ -171,10 +203,17 @@ class SubstanceSpecification(domainresource.DomainResource):
         alias="status",
         title="Status of substance within the catalogue e.g. approved",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     structure: fhirtypes.SubstanceSpecificationStructureType = Field(
-        None, alias="structure", title="Structural information", description=None,
+        None,
+        alias="structure",
+        title="Structural information",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -182,6 +221,8 @@ class SubstanceSpecification(domainresource.DomainResource):
         alias="type",
         title="High level categorization, e.g. polymer or nucleic acid",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -196,7 +237,12 @@ class SubstanceSpecificationCode(backboneelement.BackboneElement):
     resource_type = Field("SubstanceSpecificationCode", const=True)
 
     code: fhirtypes.CodeableConceptType = Field(
-        None, alias="code", title="The specific code", description=None,
+        None,
+        alias="code",
+        title="The specific code",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     comment: fhirtypes.String = Field(
@@ -204,6 +250,8 @@ class SubstanceSpecificationCode(backboneelement.BackboneElement):
         alias="comment",
         title="Any comment can be provided in this field, if necessary",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comment", title="Extension field for ``comment``."
@@ -214,12 +262,19 @@ class SubstanceSpecificationCode(backboneelement.BackboneElement):
         alias="source",
         title="Supporting literature",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
     )
 
     status: fhirtypes.CodeableConceptType = Field(
-        None, alias="status", title="Status of the code assignment", description=None,
+        None,
+        alias="status",
+        title="Status of the code assignment",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     statusDate: fhirtypes.DateTime = Field(
@@ -230,6 +285,8 @@ class SubstanceSpecificationCode(backboneelement.BackboneElement):
             "terminology maintenance"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_statusDate", title="Extension field for ``statusDate``."
@@ -251,6 +308,8 @@ class SubstanceSpecificationMoiety(backboneelement.BackboneElement):
         alias="amountQuantity",
         title="Quantitative value for this moiety",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e amount[x]
         one_of_many="amount",
         one_of_many_required=False,
@@ -261,6 +320,8 @@ class SubstanceSpecificationMoiety(backboneelement.BackboneElement):
         alias="amountString",
         title="Quantitative value for this moiety",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e amount[x]
         one_of_many="amount",
         one_of_many_required=False,
@@ -274,10 +335,17 @@ class SubstanceSpecificationMoiety(backboneelement.BackboneElement):
         alias="identifier",
         title="Identifier by which this moiety substance is known",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     molecularFormula: fhirtypes.String = Field(
-        None, alias="molecularFormula", title="Molecular formula", description=None,
+        None,
+        alias="molecularFormula",
+        title="Molecular formula",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     molecularFormula__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -290,21 +358,38 @@ class SubstanceSpecificationMoiety(backboneelement.BackboneElement):
         alias="name",
         title="Textual name for this moiety substance",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
     )
 
     opticalActivity: fhirtypes.CodeableConceptType = Field(
-        None, alias="opticalActivity", title="Optical activity type", description=None,
+        None,
+        alias="opticalActivity",
+        title="Optical activity type",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     role: fhirtypes.CodeableConceptType = Field(
-        None, alias="role", title="Role that the moiety is playing", description=None,
+        None,
+        alias="role",
+        title="Role that the moiety is playing",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     stereochemistry: fhirtypes.CodeableConceptType = Field(
-        None, alias="stereochemistry", title="Stereochemistry type", description=None,
+        None,
+        alias="stereochemistry",
+        title="Stereochemistry type",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)
@@ -362,6 +447,8 @@ class SubstanceSpecificationName(backboneelement.BackboneElement):
             "a drug active ingredient as opposed to a food colour additive"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -369,14 +456,26 @@ class SubstanceSpecificationName(backboneelement.BackboneElement):
         alias="jurisdiction",
         title="The jurisdiction where this name applies",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     language: ListType[fhirtypes.CodeableConceptType] = Field(
-        None, alias="language", title="Language of the name", description=None,
+        None,
+        alias="language",
+        title="Language of the name",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     name: fhirtypes.String = Field(
-        ..., alias="name", title="The actual name", description=None,
+        ...,
+        alias="name",
+        title="The actual name",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -387,6 +486,8 @@ class SubstanceSpecificationName(backboneelement.BackboneElement):
         alias="official",
         title="Details of the official nature of this name",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     preferred: bool = Field(
@@ -394,6 +495,8 @@ class SubstanceSpecificationName(backboneelement.BackboneElement):
         alias="preferred",
         title="If this is the preferred name for this substance",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     preferred__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_preferred", title="Extension field for ``preferred``."
@@ -404,16 +507,28 @@ class SubstanceSpecificationName(backboneelement.BackboneElement):
         alias="source",
         title="Supporting literature",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
     )
 
     status: fhirtypes.CodeableConceptType = Field(
-        None, alias="status", title="The status of the name", description=None,
+        None,
+        alias="status",
+        title="The status of the name",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     synonym: ListType[fhirtypes.SubstanceSpecificationNameType] = Field(
-        None, alias="synonym", title="A synonym of this name", description=None,
+        None,
+        alias="synonym",
+        title="A synonym of this name",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     translation: ListType[fhirtypes.SubstanceSpecificationNameType] = Field(
@@ -421,10 +536,17 @@ class SubstanceSpecificationName(backboneelement.BackboneElement):
         alias="translation",
         title="A translation for this name",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
-        None, alias="type", title="Name type", description=None,
+        None,
+        alias="type",
+        title="Name type",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -443,17 +565,29 @@ class SubstanceSpecificationNameOfficial(backboneelement.BackboneElement):
         alias="authority",
         title="Which authority uses this official name",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     date: fhirtypes.DateTime = Field(
-        None, alias="date", title="Date of official name change", description=None,
+        None,
+        alias="date",
+        title="Date of official name change",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
     )
 
     status: fhirtypes.CodeableConceptType = Field(
-        None, alias="status", title="The status of the official name", description=None,
+        None,
+        alias="status",
+        title="The status of the official name",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -473,6 +607,8 @@ class SubstanceSpecificationProperty(backboneelement.BackboneElement):
         alias="amountQuantity",
         title="Quantitative value for this property",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e amount[x]
         one_of_many="amount",
         one_of_many_required=False,
@@ -483,6 +619,8 @@ class SubstanceSpecificationProperty(backboneelement.BackboneElement):
         alias="amountString",
         title="Quantitative value for this property",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e amount[x]
         one_of_many="amount",
         one_of_many_required=False,
@@ -496,6 +634,8 @@ class SubstanceSpecificationProperty(backboneelement.BackboneElement):
         alias="category",
         title="A category for this property, e.g. Physical, Chemical, Enzymatic",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -503,6 +643,8 @@ class SubstanceSpecificationProperty(backboneelement.BackboneElement):
         alias="code",
         title="Property type e.g. viscosity, pH, isoelectric point",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     definingSubstanceCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -513,6 +655,8 @@ class SubstanceSpecificationProperty(backboneelement.BackboneElement):
             "solubility: in water, in alcohol)"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e definingSubstance[x]
         one_of_many="definingSubstance",
         one_of_many_required=False,
@@ -526,6 +670,8 @@ class SubstanceSpecificationProperty(backboneelement.BackboneElement):
             "solubility: in water, in alcohol)"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e definingSubstance[x]
         one_of_many="definingSubstance",
         one_of_many_required=False,
@@ -541,6 +687,8 @@ class SubstanceSpecificationProperty(backboneelement.BackboneElement):
             "viscosity: measured at 20C with a pH of 7.1)"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     parameters__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_parameters", title="Extension field for ``parameters``."
@@ -608,6 +756,8 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
             " relation to some other"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e amount[x]
         one_of_many="amount",
         one_of_many_required=False,
@@ -622,6 +772,8 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
             " relation to some other"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e amount[x]
         one_of_many="amount",
         one_of_many_required=False,
@@ -636,6 +788,8 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
             " relation to some other"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e amount[x]
         one_of_many="amount",
         one_of_many_required=False,
@@ -646,6 +800,8 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
         alias="amountRatioLowLimit",
         title="For use when the numeric",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     amountString: fhirtypes.String = Field(
@@ -657,6 +813,8 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
             " relation to some other"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e amount[x]
         one_of_many="amount",
         one_of_many_required=False,
@@ -673,6 +831,8 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
             '"less than"'
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     isDefining: bool = Field(
@@ -684,6 +844,8 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
             "several possible substance relationships"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     isDefining__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_isDefining", title="Extension field for ``isDefining``."
@@ -694,6 +856,8 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
         alias="relationship",
         title='For example "salt to parent", "active moiety", "starting material"',
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     source: ListType[fhirtypes.ReferenceType] = Field(
@@ -701,6 +865,8 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
         alias="source",
         title="Supporting literature",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
     )
@@ -713,6 +879,8 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
             "representational code"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e substance[x]
         one_of_many="substance",
         one_of_many_required=False,
@@ -726,6 +894,8 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
             "representational code"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e substance[x]
         one_of_many="substance",
         one_of_many_required=False,
@@ -791,10 +961,17 @@ class SubstanceSpecificationStructure(backboneelement.BackboneElement):
             "natural isotopic ratio"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     molecularFormula: fhirtypes.String = Field(
-        None, alias="molecularFormula", title="Molecular formula", description=None,
+        None,
+        alias="molecularFormula",
+        title="Molecular formula",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     molecularFormula__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -810,6 +987,8 @@ class SubstanceSpecificationStructure(backboneelement.BackboneElement):
             "H, then alphabetical, each moiety separated by a dot"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     molecularFormulaByMoiety__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -825,10 +1004,17 @@ class SubstanceSpecificationStructure(backboneelement.BackboneElement):
             "nucleic acids)"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     opticalActivity: fhirtypes.CodeableConceptType = Field(
-        None, alias="opticalActivity", title="Optical activity type", description=None,
+        None,
+        alias="opticalActivity",
+        title="Optical activity type",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     representation: ListType[
@@ -838,6 +1024,8 @@ class SubstanceSpecificationStructure(backboneelement.BackboneElement):
         alias="representation",
         title="Molecular structural representation",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     source: ListType[fhirtypes.ReferenceType] = Field(
@@ -845,12 +1033,19 @@ class SubstanceSpecificationStructure(backboneelement.BackboneElement):
         alias="source",
         title="Supporting literature",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
     )
 
     stereochemistry: fhirtypes.CodeableConceptType = Field(
-        None, alias="stereochemistry", title="Stereochemistry type", description=None,
+        None,
+        alias="stereochemistry",
+        title="Stereochemistry type",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -870,6 +1065,8 @@ class SubstanceSpecificationStructureIsotope(backboneelement.BackboneElement):
         alias="halfLife",
         title="Half life - for a non-natural nuclide",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: fhirtypes.IdentifierType = Field(
@@ -877,6 +1074,8 @@ class SubstanceSpecificationStructureIsotope(backboneelement.BackboneElement):
         alias="identifier",
         title="Substance identifier for each non-natural or radioisotope",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     molecularWeight: fhirtypes.SubstanceSpecificationStructureIsotopeMolecularWeightType = Field(  # noqa: B950
@@ -887,6 +1086,8 @@ class SubstanceSpecificationStructureIsotope(backboneelement.BackboneElement):
             "nucleic acids)"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     name: fhirtypes.CodeableConceptType = Field(
@@ -894,6 +1095,8 @@ class SubstanceSpecificationStructureIsotope(backboneelement.BackboneElement):
         alias="name",
         title="Substance name for each non-natural or radioisotope",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     substitution: fhirtypes.CodeableConceptType = Field(
@@ -901,6 +1104,8 @@ class SubstanceSpecificationStructureIsotope(backboneelement.BackboneElement):
         alias="substitution",
         title="The type of isotopic substitution present in a single substance",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -929,6 +1134,8 @@ class SubstanceSpecificationStructureIsotopeMolecularWeight(
             "captured in this field"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     method: fhirtypes.CodeableConceptType = Field(
@@ -936,6 +1143,8 @@ class SubstanceSpecificationStructureIsotopeMolecularWeight(
         alias="method",
         title="The method by which the molecular weight was determined",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -946,6 +1155,8 @@ class SubstanceSpecificationStructureIsotopeMolecularWeight(
             " average), weight average"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -964,6 +1175,8 @@ class SubstanceSpecificationStructureRepresentation(backboneelement.BackboneElem
         alias="attachment",
         title="An attached file with the structural representation",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     representation: fhirtypes.String = Field(
@@ -974,6 +1187,8 @@ class SubstanceSpecificationStructureRepresentation(backboneelement.BackboneElem
             "SMILES, MOLFILE, CDX"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     representation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_representation", title="Extension field for ``representation``."
@@ -984,4 +1199,6 @@ class SubstanceSpecificationStructureRepresentation(backboneelement.BackboneElem
         alias="type",
         title="The type of structure (e.g. Full, Partial, Representative)",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )

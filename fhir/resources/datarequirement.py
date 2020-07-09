@@ -37,6 +37,8 @@ class DataRequirement(element.Element):
             "code filter defines an additional constraint on the data, i.e. code "
             "filters are AND'ed, not OR'ed."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     dateFilter: ListType[fhirtypes.DataRequirementDateFilterType] = Field(
@@ -49,6 +51,8 @@ class DataRequirement(element.Element):
             "specifies an additional constraint on the data, i.e. date filters are "
             "AND'ed, not OR'ed."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     limit: fhirtypes.PositiveInt = Field(
@@ -59,6 +63,8 @@ class DataRequirement(element.Element):
             "Specifies a maximum number of results that are required (uses the "
             "_count search parameter)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     limit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_limit", title="Extension field for ``limit``."
@@ -82,6 +88,8 @@ class DataRequirement(element.Element):
             " only of identifiers, constant indexers, and .resolve() (see the "
             "[Simple FHIRPath Profile](fhirpath.html#simple) for full details)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     mustSupport__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -95,6 +103,8 @@ class DataRequirement(element.Element):
             "The profile of the required data, specified as the uri of the profile "
             "definition."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
     )
@@ -107,6 +117,8 @@ class DataRequirement(element.Element):
         alias="sort",
         title="Order of the results",
         description="Specifies the order of the results to be returned.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     subjectCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -120,6 +132,8 @@ class DataRequirement(element.Element):
             "The intended subjects of the data requirement. If this element is not "
             "provided, a Patient subject is assumed."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e subject[x]
         one_of_many="subject",
         one_of_many_required=False,
@@ -136,6 +150,8 @@ class DataRequirement(element.Element):
             "The intended subjects of the data requirement. If this element is not "
             "provided, a Patient subject is assumed."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e subject[x]
         one_of_many="subject",
         one_of_many_required=False,
@@ -152,6 +168,8 @@ class DataRequirement(element.Element):
             "resource. For profiles, this value is set to the type of the base "
             "resource of the profile."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -219,6 +237,8 @@ class DataRequirementCodeFilter(element.Element):
             "If codes are specified in addition to a value set, the filter returns "
             "items matching a code in the value set or one of the specified codes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     path: fhirtypes.String = Field(
@@ -236,6 +256,8 @@ class DataRequirementCodeFilter(element.Element):
             "must be an integer constant. The path must resolve to an element of "
             "type code, Coding, or CodeableConcept."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_path", title="Extension field for ``path``."
@@ -250,6 +272,8 @@ class DataRequirementCodeFilter(element.Element):
             "specified type of the DataRequirement, and which searches on elements "
             "of type code, Coding, or CodeableConcept."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     searchParam__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_searchParam", title="Extension field for ``searchParam``."
@@ -265,6 +289,8 @@ class DataRequirementCodeFilter(element.Element):
             "data items for which the value of the code-valued element specified in"
             " the path is a member of the specified valueset."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
     )
@@ -301,6 +327,8 @@ class DataRequirementDateFilter(element.Element):
             "must be an integer constant. The path must resolve to an element of "
             "type date, dateTime, Period, Schedule, or Timing."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_path", title="Extension field for ``path``."
@@ -315,6 +343,8 @@ class DataRequirementDateFilter(element.Element):
             "specified type of the DataRequirement, and which searches on elements "
             "of type date, dateTime, Period, Schedule, or Timing."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     searchParam__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_searchParam", title="Extension field for ``searchParam``."
@@ -333,6 +363,8 @@ class DataRequirementDateFilter(element.Element):
             "will return only those data items that fall within Duration before "
             "now."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -354,6 +386,8 @@ class DataRequirementDateFilter(element.Element):
             "will return only those data items that fall within Duration before "
             "now."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -372,6 +406,8 @@ class DataRequirementDateFilter(element.Element):
             "will return only those data items that fall within Duration before "
             "now."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -432,6 +468,8 @@ class DataRequirementSort(element.Element):
         alias="direction",
         title="ascending | descending",
         description="The direction of the sort, ascending or descending.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["ascending", "descending"],
@@ -451,6 +489,8 @@ class DataRequirementSort(element.Element):
             "traverse multiple-cardinality sub-elements. Note that the index must "
             "be an integer constant."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_path", title="Extension field for ``path``."

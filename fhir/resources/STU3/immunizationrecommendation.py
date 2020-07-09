@@ -31,6 +31,8 @@ class ImmunizationRecommendation(domainresource.DomainResource):
         alias="identifier",
         title="Business identifier",
         description="A unique identifier assigned to this particular recommendation record.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     patient: fhirtypes.ReferenceType = Field(
@@ -38,6 +40,8 @@ class ImmunizationRecommendation(domainresource.DomainResource):
         alias="patient",
         title="Who this profile is for",
         description="The patient the recommendations are for.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
     )
@@ -49,6 +53,8 @@ class ImmunizationRecommendation(domainresource.DomainResource):
         alias="recommendation",
         title="Vaccine administration recommendations",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -67,6 +73,8 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         alias="date",
         title="Date recommendation created",
         description="The date the immunization recommendation was created.",
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -82,6 +90,8 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
             "Vaccine date recommendations.  For example, earliest date to "
             "administer, latest date to administer, etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     doseNumber: fhirtypes.PositiveInt = Field(
@@ -92,6 +102,8 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
             "The next recommended dose number (e.g. dose 2 is the next recommended "
             "dose)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     doseNumber__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_doseNumber", title="Extension field for ``doseNumber``."
@@ -102,6 +114,8 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         alias="forecastStatus",
         title="Vaccine administration status",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     protocol: fhirtypes.ImmunizationRecommendationRecommendationProtocolType = Field(
@@ -112,6 +126,8 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
             "Contains information about the protocol under which the vaccine was "
             "administered."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     supportingImmunization: ListType[fhirtypes.ReferenceType] = Field(
@@ -121,6 +137,8 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         description=(
             "Immunization event history that supports the status and " "recommendation."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Immunization"],
     )
@@ -134,6 +152,8 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
             " includes patient observations, adverse reactions and "
             "allergy/intolerance information."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Observation", "AllergyIntolerance"],
     )
@@ -143,6 +163,8 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         alias="targetDisease",
         title="Disease to be immunized against",
         description="The targeted disease for the recommendation.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     vaccineCode: fhirtypes.CodeableConceptType = Field(
@@ -150,6 +172,8 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         alias="vaccineCode",
         title="Vaccine recommendation applies to",
         description="Vaccine that pertains to the recommendation.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -177,6 +201,8 @@ class ImmunizationRecommendationRecommendationDateCriterion(
             "Date classification of recommendation.  For example, earliest date to "
             "give, latest date to give, etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     value: fhirtypes.DateTime = Field(
@@ -184,6 +210,8 @@ class ImmunizationRecommendationRecommendationDateCriterion(
         alias="value",
         title="Recommended date",
         description="The date whose meaning is specified by dateCriterion.code.",
+        # if property is element of this resource.
+        element_property=True,
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."
@@ -211,6 +239,8 @@ class ImmunizationRecommendationRecommendationProtocol(backboneelement.BackboneE
         description=(
             "Indicates the authority who published the protocol.  For example, " "ACIP."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -223,6 +253,8 @@ class ImmunizationRecommendationRecommendationProtocol(backboneelement.BackboneE
             "Contains the description about the protocol under which the vaccine "
             "was administered."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -236,6 +268,8 @@ class ImmunizationRecommendationRecommendationProtocol(backboneelement.BackboneE
             "Indicates the nominal position in a series of the next dose.  This is "
             "the recommended dose number as per a specified protocol."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     doseSequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_doseSequence", title="Extension field for ``doseSequence``."
@@ -249,6 +283,8 @@ class ImmunizationRecommendationRecommendationProtocol(backboneelement.BackboneE
             "One possible path to achieve presumed immunity against a disease - "
             "within the context of an authority."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     series__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_series", title="Extension field for ``series``."

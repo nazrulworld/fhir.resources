@@ -34,6 +34,8 @@ class OperationOutcome(domainresource.DomainResource):
             "An error, warning, or information message that results from a system "
             "action."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -59,6 +61,8 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
             "IssueType value set, and may additional provide its own code for the "
             "error in the details element."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -72,6 +76,8 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
             "Additional details about the error. This may be a text description of "
             "the error or a system code that identifies the error."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     diagnostics: fhirtypes.String = Field(
@@ -79,6 +85,8 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
         alias="diagnostics",
         title="Additional diagnostic information about the issue",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     diagnostics__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_diagnostics", title="Extension field for ``diagnostics``."
@@ -94,6 +102,8 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
             "identifies one of the elements in the resource that caused this issue "
             "to be raised."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     expression__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -112,6 +122,8 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
             'issue to be raised.  For HTTP errors, will be "http." + the parameter '
             "name."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     location__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_location", title="Extension field for ``location``."
@@ -125,6 +137,8 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
             "Indicates whether the issue indicates a variation from successful "
             "processing."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["fatal", "error", "warning", "information"],

@@ -33,6 +33,8 @@ class SupplyDelivery(domainresource.DomainResource):
             "A plan, proposal or order that is fulfilled in whole or in part by "
             "this event."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SupplyRequest"],
     )
@@ -45,6 +47,8 @@ class SupplyDelivery(domainresource.DomainResource):
             "Identification of the facility/location where the Supply was shipped "
             "to, as part of the dispense event."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
     )
@@ -57,6 +61,8 @@ class SupplyDelivery(domainresource.DomainResource):
             "Identifier for the supply delivery event that is used to identify it "
             "across multiple disparate systems."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     occurrenceDateTime: fhirtypes.DateTime = Field(
@@ -64,6 +70,8 @@ class SupplyDelivery(domainresource.DomainResource):
         alias="occurrenceDateTime",
         title="When event occurred",
         description="The date or time(s) the activity occurred.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e occurrence[x]
         one_of_many="occurrence",
         one_of_many_required=False,
@@ -79,6 +87,8 @@ class SupplyDelivery(domainresource.DomainResource):
         alias="occurrencePeriod",
         title="When event occurred",
         description="The date or time(s) the activity occurred.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e occurrence[x]
         one_of_many="occurrence",
         one_of_many_required=False,
@@ -89,6 +99,8 @@ class SupplyDelivery(domainresource.DomainResource):
         alias="occurrenceTiming",
         title="When event occurred",
         description="The date or time(s) the activity occurred.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e occurrence[x]
         one_of_many="occurrence",
         one_of_many_required=False,
@@ -99,6 +111,8 @@ class SupplyDelivery(domainresource.DomainResource):
         alias="partOf",
         title="Part of referenced event",
         description="A larger event of which this particular event is a component or step.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SupplyDelivery", "Contract"],
     )
@@ -111,6 +125,8 @@ class SupplyDelivery(domainresource.DomainResource):
             "A link to a resource representing the person whom the delivered item "
             "is for."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
     )
@@ -120,6 +136,8 @@ class SupplyDelivery(domainresource.DomainResource):
         alias="receiver",
         title="Who collected the Supply",
         description="Identifies the person who picked up the Supply.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
     )
@@ -129,6 +147,8 @@ class SupplyDelivery(domainresource.DomainResource):
         alias="status",
         title="in-progress | completed | abandoned | entered-in-error",
         description="A code specifying the state of the dispense event.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["in-progress", "completed", "abandoned", "entered-in-error"],
@@ -142,6 +162,8 @@ class SupplyDelivery(domainresource.DomainResource):
         alias="suppliedItem",
         title="The item that is delivered or supplied",
         description="The item that is being delivered or has been supplied.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     supplier: fhirtypes.ReferenceType = Field(
@@ -152,6 +174,8 @@ class SupplyDelivery(domainresource.DomainResource):
             "The individual responsible for dispensing the medication, supplier or "
             "device."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
     )
@@ -165,6 +189,8 @@ class SupplyDelivery(domainresource.DomainResource):
             "include: Trial Fill, Completion of Trial, Partial Fill, Emergency "
             "Fill, Samples, etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)
@@ -226,6 +252,8 @@ class SupplyDeliverySuppliedItem(backboneelement.BackboneElement):
             "is either a link to a resource representing the details of the item or"
             " a code that identifies the item from a known list."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e item[x]
         one_of_many="item",
         one_of_many_required=False,
@@ -240,6 +268,8 @@ class SupplyDeliverySuppliedItem(backboneelement.BackboneElement):
             "is either a link to a resource representing the details of the item or"
             " a code that identifies the item from a known list."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e item[x]
         one_of_many="item",
         one_of_many_required=False,
@@ -254,6 +284,8 @@ class SupplyDeliverySuppliedItem(backboneelement.BackboneElement):
         description=(
             "The amount of supply that has been dispensed. Includes unit of " "measure."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)

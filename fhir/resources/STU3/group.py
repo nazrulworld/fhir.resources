@@ -36,6 +36,8 @@ class Group(domainresource.DomainResource):
             "Indicates whether the record for the group is available for use or is "
             "merely being retained for historical purposes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_active", title="Extension field for ``active``."
@@ -50,6 +52,8 @@ class Group(domainresource.DomainResource):
             "real individuals.  If false, the group defines a set of intended "
             "individuals."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     actual__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_actual", title="Extension field for ``actual``."
@@ -60,6 +64,8 @@ class Group(domainresource.DomainResource):
         alias="characteristic",
         title="Trait of group members",
         description="Identifies the traits shared by members of the group.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -70,6 +76,8 @@ class Group(domainresource.DomainResource):
             'Provides a specific type of resource the group includes; e.g. "cow", '
             '"syringe", etc.'
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -77,6 +85,8 @@ class Group(domainresource.DomainResource):
         alias="identifier",
         title="Unique id",
         description="A unique business identifier for this group.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     member: ListType[fhirtypes.GroupMemberType] = Field(
@@ -84,6 +94,8 @@ class Group(domainresource.DomainResource):
         alias="member",
         title="Who or what is in group",
         description="Identifies the resource instances that are members of the group.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     name: fhirtypes.String = Field(
@@ -94,6 +106,8 @@ class Group(domainresource.DomainResource):
             "A label assigned to the group for human identification and "
             "communication."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -106,6 +120,8 @@ class Group(domainresource.DomainResource):
         description=(
             "A count of the number of resource instances that are part of the " "group."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     quantity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_quantity", title="Extension field for ``quantity``."
@@ -119,6 +135,8 @@ class Group(domainresource.DomainResource):
             "Identifies the broad classification of the kind of resources the group"
             " includes."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -151,6 +169,8 @@ class GroupCharacteristic(backboneelement.BackboneElement):
         alias="code",
         title="Kind of characteristic",
         description="A code that identifies the kind of trait being asserted.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     exclude: bool = Field(
@@ -161,6 +181,8 @@ class GroupCharacteristic(backboneelement.BackboneElement):
             "If true, indicates the characteristic is one that is NOT held by "
             "members of the group."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     exclude__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_exclude", title="Extension field for ``exclude``."
@@ -174,6 +196,8 @@ class GroupCharacteristic(backboneelement.BackboneElement):
             "The period over which the characteristic is tested; e.g. the patient "
             "had an operation during the month of June."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     valueBoolean: bool = Field(
@@ -184,6 +208,8 @@ class GroupCharacteristic(backboneelement.BackboneElement):
             "The value of the trait that holds (or does not hold - see 'exclude') "
             "for members of the group."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -200,6 +226,8 @@ class GroupCharacteristic(backboneelement.BackboneElement):
             "The value of the trait that holds (or does not hold - see 'exclude') "
             "for members of the group."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -213,6 +241,8 @@ class GroupCharacteristic(backboneelement.BackboneElement):
             "The value of the trait that holds (or does not hold - see 'exclude') "
             "for members of the group."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -226,6 +256,8 @@ class GroupCharacteristic(backboneelement.BackboneElement):
             "The value of the trait that holds (or does not hold - see 'exclude') "
             "for members of the group."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -294,6 +326,8 @@ class GroupMember(backboneelement.BackboneElement):
             "A reference to the entity that is a member of the group. Must be "
             "consistent with Group.type."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Patient",
@@ -312,6 +346,8 @@ class GroupMember(backboneelement.BackboneElement):
             "A flag to indicate that the member is no longer in the group, but "
             "previously may have been a member."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     inactive__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_inactive", title="Extension field for ``inactive``."
@@ -322,4 +358,6 @@ class GroupMember(backboneelement.BackboneElement):
         alias="period",
         title="Period member belonged to the group",
         description="The period that the member was in the group, if known.",
+        # if property is element of this resource.
+        element_property=True,
     )

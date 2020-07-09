@@ -38,6 +38,8 @@ class ClinicalImpression(domainresource.DomainResource):
         alias="assessor",
         title="The clinician performing the assessment",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
     )
@@ -47,6 +49,8 @@ class ClinicalImpression(domainresource.DomainResource):
         alias="code",
         title="Kind of assessment performed",
         description="Categorizes the type of clinical assessment performed.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     date: fhirtypes.DateTime = Field(
@@ -54,6 +58,8 @@ class ClinicalImpression(domainresource.DomainResource):
         alias="date",
         title="When the assessment was documented",
         description="Indicates when the documentation of the assessment was complete.",
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -67,6 +73,8 @@ class ClinicalImpression(domainresource.DomainResource):
             "A summary of the context and/or cause of the assessment - why / where "
             "it was performed, and what patient events/status prompted it."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -77,6 +85,8 @@ class ClinicalImpression(domainresource.DomainResource):
         alias="effectiveDateTime",
         title="Time of assessment",
         description="The point in time or period over which the subject was assessed.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e effective[x]
         one_of_many="effective",
         one_of_many_required=False,
@@ -92,6 +102,8 @@ class ClinicalImpression(domainresource.DomainResource):
         alias="effectivePeriod",
         title="Time of assessment",
         description="The point in time or period over which the subject was assessed.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e effective[x]
         one_of_many="effective",
         one_of_many_required=False,
@@ -105,6 +117,8 @@ class ClinicalImpression(domainresource.DomainResource):
             "The Encounter during which this ClinicalImpression was created or to "
             "which the creation of this record is tightly associated."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
     )
@@ -117,6 +131,8 @@ class ClinicalImpression(domainresource.DomainResource):
             "Specific findings or diagnoses that were considered likely or relevant"
             " to ongoing treatment."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -128,6 +144,8 @@ class ClinicalImpression(domainresource.DomainResource):
             "performer or other systems which remain constant as the resource is "
             "updated and propagates from server to server."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     investigation: ListType[fhirtypes.ClinicalImpressionInvestigationType] = Field(
@@ -141,6 +159,8 @@ class ClinicalImpression(domainresource.DomainResource):
             "generated during the assessment process, or data previously generated "
             "and recorded that is pertinent to the outcomes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
@@ -152,6 +172,8 @@ class ClinicalImpression(domainresource.DomainResource):
             "impression itself was made, though supplemental notes by the original "
             "author could also appear."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     previous: fhirtypes.ReferenceType = Field(
@@ -164,6 +186,8 @@ class ClinicalImpression(domainresource.DomainResource):
             "(practitioner or team) will make new assessments on an ongoing basis "
             "as new data arises or the patient's conditions changes."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ClinicalImpression"],
     )
@@ -173,6 +197,8 @@ class ClinicalImpression(domainresource.DomainResource):
         alias="problem",
         title="Relevant impressions of patient state",
         description="A list of the relevant problems/conditions for a patient.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition", "AllergyIntolerance"],
     )
@@ -182,6 +208,8 @@ class ClinicalImpression(domainresource.DomainResource):
         alias="prognosisCodeableConcept",
         title="Estimate of likely outcome",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     prognosisReference: ListType[fhirtypes.ReferenceType] = Field(
@@ -189,6 +217,8 @@ class ClinicalImpression(domainresource.DomainResource):
         alias="prognosisReference",
         title="RiskAssessment expressing likely outcome",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["RiskAssessment"],
     )
@@ -202,6 +232,8 @@ class ClinicalImpression(domainresource.DomainResource):
             "during this assessment, and/or that provides evidence in support of "
             "the diagnosis."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     protocol__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_protocol", title="Extension field for ``protocol``."
@@ -212,6 +244,8 @@ class ClinicalImpression(domainresource.DomainResource):
         alias="status",
         title="in-progress | completed | entered-in-error",
         description="Identifies the workflow status of the assessment.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["in-progress", "completed", "entered-in-error"],
@@ -225,6 +259,8 @@ class ClinicalImpression(domainresource.DomainResource):
         alias="statusReason",
         title="Reason for current status",
         description="Captures the reason for the current state of the ClinicalImpression.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -232,6 +268,8 @@ class ClinicalImpression(domainresource.DomainResource):
         alias="subject",
         title="Patient or group assessed",
         description="The patient or group of individuals assessed as part of this record.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
     )
@@ -241,6 +279,8 @@ class ClinicalImpression(domainresource.DomainResource):
         alias="summary",
         title="Summary of the assessment",
         description="A text summary of the investigations and the diagnosis.",
+        # if property is element of this resource.
+        element_property=True,
     )
     summary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_summary", title="Extension field for ``summary``."
@@ -251,6 +291,8 @@ class ClinicalImpression(domainresource.DomainResource):
         alias="supportingInfo",
         title="Information supporting the clinical impression",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -309,6 +351,8 @@ class ClinicalImpressionFinding(backboneelement.BackboneElement):
         alias="basis",
         title="Which investigations support finding",
         description="Which investigations support finding or diagnosis.",
+        # if property is element of this resource.
+        element_property=True,
     )
     basis__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_basis", title="Extension field for ``basis``."
@@ -322,6 +366,8 @@ class ClinicalImpressionFinding(backboneelement.BackboneElement):
             "Specific text or code for finding or diagnosis, which may include "
             "ruled-out or resolved conditions."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     itemReference: fhirtypes.ReferenceType = Field(
@@ -332,6 +378,8 @@ class ClinicalImpressionFinding(backboneelement.BackboneElement):
             "Specific reference for finding or diagnosis, which may include ruled-"
             "out or resolved conditions."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition", "Observation", "Media"],
     )
@@ -362,6 +410,8 @@ class ClinicalImpressionInvestigation(backboneelement.BackboneElement):
             "but the list is not constrained, and others such groups such as "
             "(exposure|family|travel|nutritional) history may be used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     item: ListType[fhirtypes.ReferenceType] = Field(
@@ -369,6 +419,8 @@ class ClinicalImpressionInvestigation(backboneelement.BackboneElement):
         alias="item",
         title="Record of a specific investigation",
         description="A record of a specific investigation that was undertaken.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Observation",

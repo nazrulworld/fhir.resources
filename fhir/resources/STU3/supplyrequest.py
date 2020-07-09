@@ -27,7 +27,12 @@ class SupplyRequest(domainresource.DomainResource):
     resource_type = Field("SupplyRequest", const=True)
 
     authoredOn: fhirtypes.DateTime = Field(
-        None, alias="authoredOn", title="When the request was made", description=None,
+        None,
+        alias="authoredOn",
+        title="When the request was made",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_authoredOn", title="Extension field for ``authoredOn``."
@@ -41,6 +46,8 @@ class SupplyRequest(domainresource.DomainResource):
             "Category of supply, e.g.  central, non-stock, etc. This is used to "
             "support work flows associated with the supply process."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     deliverFrom: fhirtypes.ReferenceType = Field(
@@ -48,6 +55,8 @@ class SupplyRequest(domainresource.DomainResource):
         alias="deliverFrom",
         title="The origin of the supply",
         description="Where the supply is expected to come from.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "Location"],
     )
@@ -57,6 +66,8 @@ class SupplyRequest(domainresource.DomainResource):
         alias="deliverTo",
         title="The destination of the supply",
         description="Where the supply is destined to go.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "Location", "Patient"],
     )
@@ -66,6 +77,8 @@ class SupplyRequest(domainresource.DomainResource):
         alias="identifier",
         title="Unique identifier",
         description="Unique identifier for this supply request.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     occurrenceDateTime: fhirtypes.DateTime = Field(
@@ -73,6 +86,8 @@ class SupplyRequest(domainresource.DomainResource):
         alias="occurrenceDateTime",
         title="When the request should be fulfilled",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e occurrence[x]
         one_of_many="occurrence",
         one_of_many_required=False,
@@ -88,6 +103,8 @@ class SupplyRequest(domainresource.DomainResource):
         alias="occurrencePeriod",
         title="When the request should be fulfilled",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e occurrence[x]
         one_of_many="occurrence",
         one_of_many_required=False,
@@ -98,13 +115,20 @@ class SupplyRequest(domainresource.DomainResource):
         alias="occurrenceTiming",
         title="When the request should be fulfilled",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e occurrence[x]
         one_of_many="occurrence",
         one_of_many_required=False,
     )
 
     orderedItem: fhirtypes.SupplyRequestOrderedItemType = Field(
-        None, alias="orderedItem", title="The item being requested", description=None,
+        None,
+        alias="orderedItem",
+        title="The item being requested",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     priority: fhirtypes.Code = Field(
@@ -115,6 +139,8 @@ class SupplyRequest(domainresource.DomainResource):
             "Indicates how quickly this SupplyRequest should be addressed with "
             "respect to other requests."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["routine", "urgent", "asap", "stat"],
@@ -128,6 +154,8 @@ class SupplyRequest(domainresource.DomainResource):
         alias="reasonCodeableConcept",
         title="Why the supply item was requested",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e reason[x]
         one_of_many="reason",
         one_of_many_required=False,
@@ -138,6 +166,8 @@ class SupplyRequest(domainresource.DomainResource):
         alias="reasonReference",
         title="Why the supply item was requested",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e reason[x]
         one_of_many="reason",
         one_of_many_required=False,
@@ -153,6 +183,8 @@ class SupplyRequest(domainresource.DomainResource):
             "The individual who initiated the request and has responsibility for "
             "its activation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     status: fhirtypes.Code = Field(
@@ -160,9 +192,11 @@ class SupplyRequest(domainresource.DomainResource):
         alias="status",
         title="draft | active | suspended +",
         description="Status of the supply request.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["draft", "active", "suspended +"],
+        enum_values=["draft", "active", "suspended", "+"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -173,6 +207,8 @@ class SupplyRequest(domainresource.DomainResource):
         alias="supplier",
         title="Who is intended to fulfill the request",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -240,6 +276,8 @@ class SupplyRequestOrderedItem(backboneelement.BackboneElement):
             "resource representing the details of the item or a code that "
             "identifies the item from a known list."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e item[x]
         one_of_many="item",
         one_of_many_required=False,
@@ -254,6 +292,8 @@ class SupplyRequestOrderedItem(backboneelement.BackboneElement):
             "resource representing the details of the item or a code that "
             "identifies the item from a known list."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e item[x]
         one_of_many="item",
         one_of_many_required=False,
@@ -266,6 +306,8 @@ class SupplyRequestOrderedItem(backboneelement.BackboneElement):
         alias="quantity",
         title="The requested amount of the item indicated",
         description="The amount that is being ordered of the indicated item.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)
@@ -322,6 +364,8 @@ class SupplyRequestRequester(backboneelement.BackboneElement):
         alias="agent",
         title="Individual making the request",
         description="The device, practitioner, etc. who initiated the request.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Practitioner",
@@ -337,6 +381,8 @@ class SupplyRequestRequester(backboneelement.BackboneElement):
         alias="onBehalfOf",
         title="Organization agent is acting for",
         description="The organization the device or practitioner was acting on behalf of.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )

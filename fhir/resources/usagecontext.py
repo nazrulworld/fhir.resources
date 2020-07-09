@@ -35,6 +35,8 @@ class UsageContext(element.Element):
             "A code that identifies the type of context being specified by this "
             "usage context."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     valueCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -45,6 +47,8 @@ class UsageContext(element.Element):
             "A value that defines the context specified in this context of use. The"
             " interpretation of the value is defined by the code."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -58,6 +62,8 @@ class UsageContext(element.Element):
             "A value that defines the context specified in this context of use. The"
             " interpretation of the value is defined by the code."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -71,6 +77,8 @@ class UsageContext(element.Element):
             "A value that defines the context specified in this context of use. The"
             " interpretation of the value is defined by the code."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -84,6 +92,8 @@ class UsageContext(element.Element):
             "A value that defines the context specified in this context of use. The"
             " interpretation of the value is defined by the code."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,

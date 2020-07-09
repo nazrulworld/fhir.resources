@@ -35,6 +35,8 @@ class EvidenceVariable(domainresource.DomainResource):
             "Approval happens once when the content is officially approved for "
             "usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_approvalDate", title="Extension field for ``approvalDate``."
@@ -48,6 +50,8 @@ class EvidenceVariable(domainresource.DomainResource):
             "An individiual or organization primarily involved in the creation and "
             "maintenance of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     characteristic: ListType[fhirtypes.EvidenceVariableCharacteristicType] = Field(
@@ -58,6 +62,8 @@ class EvidenceVariable(domainresource.DomainResource):
             "A characteristic that defines the members of the evidence element. "
             'Multiple characteristics are applied with "and" semantics.'
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     contact: ListType[fhirtypes.ContactDetailType] = Field(
@@ -68,6 +74,8 @@ class EvidenceVariable(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     copyright: fhirtypes.Markdown = Field(
@@ -79,6 +87,8 @@ class EvidenceVariable(domainresource.DomainResource):
             "contents. Copyright statements are generally legal restrictions on the"
             " use and publishing of the evidence variable."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
@@ -94,6 +104,8 @@ class EvidenceVariable(domainresource.DomainResource):
             "it must change if the status code changes. In addition, it should "
             "change when the substantive content of the evidence variable changes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -107,6 +119,8 @@ class EvidenceVariable(domainresource.DomainResource):
             "A free text natural language description of the evidence variable from"
             " a consumer's perspective."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -120,6 +134,8 @@ class EvidenceVariable(domainresource.DomainResource):
             "An individual or organization primarily responsible for internal "
             "coherence of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     effectivePeriod: fhirtypes.PeriodType = Field(
@@ -130,6 +146,8 @@ class EvidenceVariable(domainresource.DomainResource):
             "The period during which the evidence variable content was or is "
             "planned to be in active use."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     endorser: ListType[fhirtypes.ContactDetailType] = Field(
@@ -140,6 +158,8 @@ class EvidenceVariable(domainresource.DomainResource):
             "An individual or organization responsible for officially endorsing the"
             " content for use in some setting."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -151,6 +171,8 @@ class EvidenceVariable(domainresource.DomainResource):
             "when it is represented in other formats, or referenced in a "
             "specification, model, design or an instance."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -161,6 +183,8 @@ class EvidenceVariable(domainresource.DomainResource):
             "A legal or geographic region in which the evidence variable is "
             "intended to be used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     lastReviewDate: fhirtypes.Date = Field(
@@ -172,6 +196,8 @@ class EvidenceVariable(domainresource.DomainResource):
             "happens periodically after approval but does not change the original "
             "approval date."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
@@ -186,6 +212,8 @@ class EvidenceVariable(domainresource.DomainResource):
             "should be usable as an identifier for the module by machine processing"
             " applications such as code generation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -199,6 +227,8 @@ class EvidenceVariable(domainresource.DomainResource):
             "A human-readable string to clarify or explain concepts about the "
             "resource."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     publisher: fhirtypes.String = Field(
@@ -209,6 +239,8 @@ class EvidenceVariable(domainresource.DomainResource):
             "The name of the organization or individual that published the evidence"
             " variable."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -222,6 +254,8 @@ class EvidenceVariable(domainresource.DomainResource):
             "Related artifacts such as additional documentation, justification, or "
             "bibliographic references."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reviewer: ListType[fhirtypes.ContactDetailType] = Field(
@@ -232,6 +266,8 @@ class EvidenceVariable(domainresource.DomainResource):
             "An individual or organization primarily responsible for review of some"
             " aspect of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     shortTitle: fhirtypes.String = Field(
@@ -242,6 +278,8 @@ class EvidenceVariable(domainresource.DomainResource):
             "The short title provides an alternate title for use in informal "
             "descriptive contexts where the full, formal title is not necessary."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     shortTitle__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_shortTitle", title="Extension field for ``shortTitle``."
@@ -255,6 +293,8 @@ class EvidenceVariable(domainresource.DomainResource):
             "The status of this evidence variable. Enables tracking the life-cycle "
             "of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -271,6 +311,8 @@ class EvidenceVariable(domainresource.DomainResource):
             "An explanatory or alternate title for the EvidenceVariable giving "
             "additional information about its content."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     subtitle__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_subtitle", title="Extension field for ``subtitle``."
@@ -281,6 +323,8 @@ class EvidenceVariable(domainresource.DomainResource):
         alias="title",
         title="Name for this evidence variable (human friendly)",
         description="A short, descriptive, user-friendly title for the evidence variable.",
+        # if property is element of this resource.
+        element_property=True,
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -298,6 +342,8 @@ class EvidenceVariable(domainresource.DomainResource):
             "Topics provide a high-level categorization grouping types of "
             "EvidenceVariables that can be useful for filtering and searching."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.Code = Field(
@@ -307,6 +353,8 @@ class EvidenceVariable(domainresource.DomainResource):
         description=(
             "The type of evidence element, a population, an exposure, or an " "outcome."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["dichotomous", "continuous", "descriptive"],
@@ -331,6 +379,8 @@ class EvidenceVariable(domainresource.DomainResource):
             " can be the target of a canonical reference. It SHALL remain the same "
             "when the evidence variable is stored on different servers."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -347,6 +397,8 @@ class EvidenceVariable(domainresource.DomainResource):
             "(insurance plans, studies, ...) and may be used to assist with "
             "indexing and searching for appropriate evidence variable instances."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     version: fhirtypes.String = Field(
@@ -367,6 +419,8 @@ class EvidenceVariable(domainresource.DomainResource):
             " Note that a version is required for non-experimental active "
             "artifacts."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -395,6 +449,8 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
             "language such as FHIRPath or CQL) or DataRequirements (such as "
             "Diabetes diagnosis onset in the last year)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e definition[x]
         one_of_many="definition",
         one_of_many_required=True,
@@ -417,6 +473,8 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
             "language such as FHIRPath or CQL) or DataRequirements (such as "
             "Diabetes diagnosis onset in the last year)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e definition[x]
         one_of_many="definition",
         one_of_many_required=True,
@@ -432,6 +490,8 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
             "language such as FHIRPath or CQL) or DataRequirements (such as "
             "Diabetes diagnosis onset in the last year)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e definition[x]
         one_of_many="definition",
         one_of_many_required=True,
@@ -447,6 +507,8 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
             "language such as FHIRPath or CQL) or DataRequirements (such as "
             "Diabetes diagnosis onset in the last year)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e definition[x]
         one_of_many="definition",
         one_of_many_required=True,
@@ -462,6 +524,8 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
             "language such as FHIRPath or CQL) or DataRequirements (such as "
             "Diabetes diagnosis onset in the last year)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e definition[x]
         one_of_many="definition",
         one_of_many_required=True,
@@ -479,6 +543,8 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
             "language such as FHIRPath or CQL) or DataRequirements (such as "
             "Diabetes diagnosis onset in the last year)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e definition[x]
         one_of_many="definition",
         one_of_many_required=True,
@@ -492,6 +558,8 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
             "A short, natural language description of the characteristic that could"
             " be used to communicate the criteria to an end-user."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -505,6 +573,8 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
             "When true, members with this characteristic are excluded from the "
             "element."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     exclude__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_exclude", title="Extension field for ``exclude``."
@@ -521,6 +591,8 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
             "Indicates how elements are aggregated within the study effective "
             "period."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -541,6 +613,8 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
         alias="participantEffectiveDateTime",
         title="What time period do participants cover",
         description="Indicates what effective period the study covers.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e participantEffective[x]
         one_of_many="participantEffective",
         one_of_many_required=False,
@@ -556,6 +630,8 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
         alias="participantEffectiveDuration",
         title="What time period do participants cover",
         description="Indicates what effective period the study covers.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e participantEffective[x]
         one_of_many="participantEffective",
         one_of_many_required=False,
@@ -566,6 +642,8 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
         alias="participantEffectivePeriod",
         title="What time period do participants cover",
         description="Indicates what effective period the study covers.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e participantEffective[x]
         one_of_many="participantEffective",
         one_of_many_required=False,
@@ -576,6 +654,8 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
         alias="participantEffectiveTiming",
         title="What time period do participants cover",
         description="Indicates what effective period the study covers.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e participantEffective[x]
         one_of_many="participantEffective",
         one_of_many_required=False,
@@ -586,6 +666,8 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
         alias="timeFromStart",
         title="Observation time from study start",
         description="Indicates duration from the participant's study entry.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     usageContext: ListType[fhirtypes.UsageContextType] = Field(
@@ -596,6 +678,8 @@ class EvidenceVariableCharacteristic(backboneelement.BackboneElement):
             "Use UsageContext to define the members of the population, such as Age "
             "Ranges, Genders, Settings."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)

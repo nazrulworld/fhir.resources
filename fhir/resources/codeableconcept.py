@@ -30,6 +30,8 @@ class CodeableConcept(element.Element):
         alias="coding",
         title="Code defined by a terminology system",
         description="A reference to a code defined by a terminology system.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     text: fhirtypes.String = Field(
@@ -41,6 +43,8 @@ class CodeableConcept(element.Element):
             "seen/selected/uttered by the user who entered the data and/or which "
             "represents the intended meaning of the user."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_text", title="Extension field for ``text``."

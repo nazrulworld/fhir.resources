@@ -33,6 +33,8 @@ class Coverage(domainresource.DomainResource):
             "The party who benefits from the insurance coverage., the patient when "
             "services are provided."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
     )
@@ -42,6 +44,8 @@ class Coverage(domainresource.DomainResource):
         alias="contract",
         title="Contract details",
         description="The policy(s) which constitute this insurance coverage.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Contract"],
     )
@@ -51,6 +55,8 @@ class Coverage(domainresource.DomainResource):
         alias="dependent",
         title="Dependent number",
         description="A unique identifier for a dependent under the coverage.",
+        # if property is element of this resource.
+        element_property=True,
     )
     dependent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_dependent", title="Extension field for ``dependent``."
@@ -64,6 +70,8 @@ class Coverage(domainresource.DomainResource):
             "A suite of underwrite specific classifiers, for example may be used to"
             " identify a class of coverage or employer group, Policy, Plan."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -76,6 +84,8 @@ class Coverage(domainresource.DomainResource):
             " or Case ID. May be constructed as the concatination of the "
             "Coverage.SubscriberID and the Coverage.dependant."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     network: fhirtypes.String = Field(
@@ -88,6 +98,8 @@ class Coverage(domainresource.DomainResource):
             "covered at the 'in-network' rate, otherwise 'out of network' terms and"
             " conditions apply."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     network__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_network", title="Extension field for ``network``."
@@ -103,6 +115,8 @@ class Coverage(domainresource.DomainResource):
             "numbering and this does not imply primary, secondard etc. as the "
             "specific positioning of coverages depends upon the episode of care."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     order__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_order", title="Extension field for ``order``."
@@ -118,6 +132,8 @@ class Coverage(domainresource.DomainResource):
             "multiple identifiers such as insurance company identifier or business "
             "identifier (BIN number)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "Patient", "RelatedPerson"],
     )
@@ -131,6 +147,8 @@ class Coverage(domainresource.DomainResource):
             "date indicates the start date isn't known, a missing end date means "
             "the coverage is continuing to be in force."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     policyHolder: fhirtypes.ReferenceType = Field(
@@ -141,6 +159,8 @@ class Coverage(domainresource.DomainResource):
             "The party who 'owns' the insurance policy,  may be an individual, "
             "corporation or the subscriber's employer."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "RelatedPerson", "Organization"],
     )
@@ -150,6 +170,8 @@ class Coverage(domainresource.DomainResource):
         alias="relationship",
         title="Beneficiary relationship to the Subscriber",
         description="The relationship of beneficiary (patient) to the subscriber.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     sequence: fhirtypes.String = Field(
@@ -160,6 +182,8 @@ class Coverage(domainresource.DomainResource):
             "An optional counter for a particular instance of the identified "
             "coverage which increments upon each renewal."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sequence", title="Extension field for ``sequence``."
@@ -170,6 +194,8 @@ class Coverage(domainresource.DomainResource):
         alias="status",
         title="active | cancelled | draft | entered-in-error",
         description="The status of the resource instance.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "cancelled", "draft", "entered-in-error"],
@@ -187,6 +213,8 @@ class Coverage(domainresource.DomainResource):
             " to the policy or to whom the benefit of the policy for services "
             "rendered to them or their family is due."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "RelatedPerson"],
     )
@@ -196,6 +224,8 @@ class Coverage(domainresource.DomainResource):
         alias="subscriberId",
         title="ID assigned to the Subscriber",
         description="The insurer assigned ID for the Subscriber.",
+        # if property is element of this resource.
+        element_property=True,
     )
     subscriberId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_subscriberId", title="Extension field for ``subscriberId``."
@@ -210,6 +240,8 @@ class Coverage(domainresource.DomainResource):
             "(workers compensation, auto), group health or payment by an individual"
             " or organization."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -230,6 +262,8 @@ class CoverageGrouping(backboneelement.BackboneElement):
         alias="classDisplay",
         title="Display text for the class",
         description="A short description for the class.",
+        # if property is element of this resource.
+        element_property=True,
     )
     classDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_classDisplay", title="Extension field for ``classDisplay``."
@@ -244,6 +278,8 @@ class CoverageGrouping(backboneelement.BackboneElement):
             "underwriter, for example may be used to identify a class of coverage "
             "such as a level of deductables or co-payment."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     class__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_class", title="Extension field for ``class_fhir``."
@@ -258,6 +294,8 @@ class CoverageGrouping(backboneelement.BackboneElement):
             "underwriter, for example may be used to identify an employer group. "
             "May also be referred to as a Policy or Group ID."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     group__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_group", title="Extension field for ``group``."
@@ -268,6 +306,8 @@ class CoverageGrouping(backboneelement.BackboneElement):
         alias="groupDisplay",
         title="Display text for an identifier for the group",
         description="A short description for the group.",
+        # if property is element of this resource.
+        element_property=True,
     )
     groupDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_groupDisplay", title="Extension field for ``groupDisplay``."
@@ -283,6 +323,8 @@ class CoverageGrouping(backboneelement.BackboneElement):
             "benefits provided to employees. May be referred to as a Section or "
             "Division ID."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     plan__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_plan", title="Extension field for ``plan``."
@@ -293,6 +335,8 @@ class CoverageGrouping(backboneelement.BackboneElement):
         alias="planDisplay",
         title="Display text for the plan",
         description="A short description for the plan.",
+        # if property is element of this resource.
+        element_property=True,
     )
     planDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_planDisplay", title="Extension field for ``planDisplay``."
@@ -307,6 +351,8 @@ class CoverageGrouping(backboneelement.BackboneElement):
             "underwriter, for example may be used to identify a subclass of "
             "coverage such as a sub-level of deductables or co-payment."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     subClass__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_subClass", title="Extension field for ``subClass``."
@@ -317,6 +363,8 @@ class CoverageGrouping(backboneelement.BackboneElement):
         alias="subClassDisplay",
         title="Display text for the subsection of the subclass",
         description="A short description for the subclass.",
+        # if property is element of this resource.
+        element_property=True,
     )
     subClassDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_subClassDisplay", title="Extension field for ``subClassDisplay``."
@@ -331,6 +379,8 @@ class CoverageGrouping(backboneelement.BackboneElement):
             "underwriter, for example may be used to identify a subset of an "
             "employer group."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     subGroup__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_subGroup", title="Extension field for ``subGroup``."
@@ -341,6 +391,8 @@ class CoverageGrouping(backboneelement.BackboneElement):
         alias="subGroupDisplay",
         title="Display text for the subsection of the group",
         description="A short description for the subgroup.",
+        # if property is element of this resource.
+        element_property=True,
     )
     subGroupDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_subGroupDisplay", title="Extension field for ``subGroupDisplay``."
@@ -355,6 +407,8 @@ class CoverageGrouping(backboneelement.BackboneElement):
             "underwriter, for example may be used to identify a subset of a "
             "collection of benefits provided to employees."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     subPlan__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_subPlan", title="Extension field for ``subPlan``."
@@ -365,6 +419,8 @@ class CoverageGrouping(backboneelement.BackboneElement):
         alias="subPlanDisplay",
         title="Display text for the subsection of the plan",
         description="A short description for the subplan.",
+        # if property is element of this resource.
+        element_property=True,
     )
     subPlanDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_subPlanDisplay", title="Extension field for ``subPlanDisplay``."

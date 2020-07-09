@@ -41,6 +41,8 @@ class Composition(domainresource.DomainResource):
             "A participant who has attested to the accuracy of the "
             "composition/document."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     author: ListType[fhirtypes.ReferenceType] = Field(
@@ -51,6 +53,8 @@ class Composition(domainresource.DomainResource):
             "Identifies who is responsible for the information in the composition, "
             "not necessarily who typed it in."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "Device", "Patient", "RelatedPerson"],
     )
@@ -64,6 +68,8 @@ class Composition(domainresource.DomainResource):
             "and searching. This may be implied by or derived from the code "
             "specified in the Composition Type."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     confidentiality: fhirtypes.Code = Field(
@@ -71,6 +77,8 @@ class Composition(domainresource.DomainResource):
         alias="confidentiality",
         title="As defined by affinity domain",
         description="The code specifying the level of confidentiality of the Composition.",
+        # if property is element of this resource.
+        element_property=True,
     )
     confidentiality__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_confidentiality", title="Extension field for ``confidentiality``."
@@ -84,6 +92,8 @@ class Composition(domainresource.DomainResource):
             "Identifies the organization or group who is responsible for ongoing "
             "maintenance of and access to the composition/document information."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -96,6 +106,8 @@ class Composition(domainresource.DomainResource):
             "The composition editing time, when the composition was last logically "
             "changed by the author."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -109,6 +121,8 @@ class Composition(domainresource.DomainResource):
             "Describes the clinical encounter or type of care this documentation is"
             " associated with."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
     )
@@ -121,6 +135,8 @@ class Composition(domainresource.DomainResource):
             "The clinical service, such as a colonoscopy or an appendectomy, being "
             "documented."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: fhirtypes.IdentifierType = Field(
@@ -131,6 +147,8 @@ class Composition(domainresource.DomainResource):
             "Logical identifier for the composition, assigned when created. This "
             "identifier stays constant as the composition is changed over time."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     relatesTo: ListType[fhirtypes.CompositionRelatesToType] = Field(
@@ -141,6 +159,8 @@ class Composition(domainresource.DomainResource):
             "Relationships that this composition has with other compositions or "
             "documents that already exist."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     section: ListType[fhirtypes.CompositionSectionType] = Field(
@@ -148,6 +168,8 @@ class Composition(domainresource.DomainResource):
         alias="section",
         title="Composition is broken into sections",
         description="The root of the sections that make up the composition.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     status: fhirtypes.Code = Field(
@@ -158,6 +180,8 @@ class Composition(domainresource.DomainResource):
             "The workflow/clinical status of this composition. The status is a "
             "marker for the clinical standing of the document."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["preliminary", "final", "amended", "entered-in-error"],
@@ -176,6 +200,8 @@ class Composition(domainresource.DomainResource):
             "machine) or even a group of subjects (such as a document about a herd "
             "of livestock, or a set of patients that share a common exposure)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -185,6 +211,8 @@ class Composition(domainresource.DomainResource):
         alias="title",
         title="Human Readable name/title",
         description="Official human-readable label for the composition.",
+        # if property is element of this resource.
+        element_property=True,
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -199,6 +227,8 @@ class Composition(domainresource.DomainResource):
             "Physical, Discharge Summary, Progress Note). This usually equates to "
             "the purpose of making the composition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -218,6 +248,8 @@ class CompositionAttester(backboneelement.BackboneElement):
         alias="mode",
         title="personal | professional | legal | official",
         description="The type of attestation the authenticator offers.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["personal", "professional", "legal", "official"],
@@ -231,6 +263,8 @@ class CompositionAttester(backboneelement.BackboneElement):
         alias="party",
         title="Who attested the composition",
         description="Who attested the composition in the specified way.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Practitioner", "Organization"],
     )
@@ -240,6 +274,8 @@ class CompositionAttester(backboneelement.BackboneElement):
         alias="time",
         title="When the composition was attested",
         description="When the composition was attested by the party.",
+        # if property is element of this resource.
+        element_property=True,
     )
     time__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_time", title="Extension field for ``time``."
@@ -269,6 +305,8 @@ class CompositionEvent(backboneelement.BackboneElement):
             'Report" in which the procedure being documented is necessarily a '
             '"History and Physical" act.'
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     detail: ListType[fhirtypes.ReferenceType] = Field(
@@ -280,6 +318,8 @@ class CompositionEvent(backboneelement.BackboneElement):
             " example, this could be used to document such a colonoscopy or an "
             "appendectomy."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -293,6 +333,8 @@ class CompositionEvent(backboneelement.BackboneElement):
             " that the documentation is a complete representation for this period, "
             "only that it documents events during this time."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -316,6 +358,8 @@ class CompositionRelatesTo(backboneelement.BackboneElement):
             "The type of relationship that this composition has with anther "
             "composition or document."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["replaces", "transforms", "signs", "appends"],
@@ -329,6 +373,8 @@ class CompositionRelatesTo(backboneelement.BackboneElement):
         alias="targetIdentifier",
         title="Target of the relationship",
         description="The target composition/document of this relationship.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e target[x]
         one_of_many="target",
         one_of_many_required=True,
@@ -339,6 +385,8 @@ class CompositionRelatesTo(backboneelement.BackboneElement):
         alias="targetReference",
         title="Target of the relationship",
         description="The target composition/document of this relationship.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e target[x]
         one_of_many="target",
         one_of_many_required=True,
@@ -402,6 +450,8 @@ class CompositionSection(backboneelement.BackboneElement):
             "A code identifying the kind of content contained within the section. "
             "This must be consistent with the section title."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     emptyReason: fhirtypes.CodeableConceptType = Field(
@@ -412,6 +462,8 @@ class CompositionSection(backboneelement.BackboneElement):
             "If the section is empty, why the list is empty. An empty section "
             "typically has some text explaining the empty reason."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     entry: ListType[fhirtypes.ReferenceType] = Field(
@@ -422,6 +474,8 @@ class CompositionSection(backboneelement.BackboneElement):
             "A reference to the actual resource from which the narrative in the "
             "section is derived."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -437,6 +491,8 @@ class CompositionSection(backboneelement.BackboneElement):
             "whether it is a prepared list where items may be marked as added, "
             "modified or deleted."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["working", "snapshot", "changes"],
@@ -450,6 +506,8 @@ class CompositionSection(backboneelement.BackboneElement):
         alias="orderedBy",
         title="Order of section entries",
         description="Specifies the order applied to the items in the section entries.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     section: ListType[fhirtypes.CompositionSectionType] = Field(
@@ -457,6 +515,8 @@ class CompositionSection(backboneelement.BackboneElement):
         alias="section",
         title="Nested Section",
         description="A nested sub-section within this section.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     text: fhirtypes.NarrativeType = Field(
@@ -470,6 +530,8 @@ class CompositionSection(backboneelement.BackboneElement):
             ' contain sufficient detail to make it "clinically safe" for a human to'
             " just read the narrative."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     title: fhirtypes.String = Field(
@@ -481,6 +543,8 @@ class CompositionSection(backboneelement.BackboneElement):
             "rendered content for the document, and is often used to build a table "
             "of contents."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."

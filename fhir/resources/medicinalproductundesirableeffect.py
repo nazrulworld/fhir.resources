@@ -29,6 +29,8 @@ class MedicinalProductUndesirableEffect(domainresource.DomainResource):
         alias="classification",
         title="Classification of the effect",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     frequencyOfOccurrence: fhirtypes.CodeableConceptType = Field(
@@ -36,6 +38,8 @@ class MedicinalProductUndesirableEffect(domainresource.DomainResource):
         alias="frequencyOfOccurrence",
         title="The frequency of occurrence of the effect",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     population: ListType[fhirtypes.PopulationType] = Field(
@@ -43,6 +47,8 @@ class MedicinalProductUndesirableEffect(domainresource.DomainResource):
         alias="population",
         title="The population group to which this applies",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     subject: ListType[fhirtypes.ReferenceType] = Field(
@@ -50,6 +56,8 @@ class MedicinalProductUndesirableEffect(domainresource.DomainResource):
         alias="subject",
         title="The medication for which this is an indication",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicinalProduct", "Medication"],
     )
@@ -59,4 +67,6 @@ class MedicinalProductUndesirableEffect(domainresource.DomainResource):
         alias="symptomConditionEffect",
         title="The symptom, condition or undesirable effect",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )

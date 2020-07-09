@@ -29,6 +29,8 @@ class Narrative(element.Element):
         alias="div",
         title="Limited xhtml content",
         description="The actual narrative content, a stripped down version of XHTML.",
+        # if property is element of this resource.
+        element_property=True,
     )
     div__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_div", title="Extension field for ``div``."
@@ -43,6 +45,8 @@ class Narrative(element.Element):
             "just the defined data or the extensions too), or whether a human "
             "authored it and it may contain additional data."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["generated", "extensions", "additional", "empty"],

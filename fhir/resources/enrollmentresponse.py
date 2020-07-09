@@ -33,6 +33,8 @@ class EnrollmentResponse(domainresource.DomainResource):
             "The date when the enclosed suite of services were performed or "
             "completed."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_created", title="Extension field for ``created``."
@@ -43,6 +45,8 @@ class EnrollmentResponse(domainresource.DomainResource):
         alias="disposition",
         title="Disposition Message",
         description="A description of the status of the adjudication.",
+        # if property is element of this resource.
+        element_property=True,
     )
     disposition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_disposition", title="Extension field for ``disposition``."
@@ -53,6 +57,8 @@ class EnrollmentResponse(domainresource.DomainResource):
         alias="identifier",
         title="Business Identifier",
         description="The Response business identifier.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     organization: fhirtypes.ReferenceType = Field(
@@ -60,6 +66,8 @@ class EnrollmentResponse(domainresource.DomainResource):
         alias="organization",
         title="Insurer",
         description="The Insurer who produced this adjudicated response.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -69,6 +77,8 @@ class EnrollmentResponse(domainresource.DomainResource):
         alias="outcome",
         title="queued | complete | error | partial",
         description="Processing status: error, complete.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["queued", "complete", "error", "partial"],
@@ -82,6 +92,8 @@ class EnrollmentResponse(domainresource.DomainResource):
         alias="request",
         title="Claim reference",
         description="Original request resource reference.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["EnrollmentRequest"],
     )
@@ -94,6 +106,8 @@ class EnrollmentResponse(domainresource.DomainResource):
             "The practitioner who is responsible for the services rendered to the "
             "patient."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
     )
@@ -103,6 +117,8 @@ class EnrollmentResponse(domainresource.DomainResource):
         alias="status",
         title="active | cancelled | draft | entered-in-error",
         description="The status of the resource instance.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "cancelled", "draft", "entered-in-error"],

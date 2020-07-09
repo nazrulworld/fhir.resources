@@ -5,7 +5,10 @@ History
 6.0.0b2 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- ``FHIRAbstractModel::element_properties`` class method now available, which returning generator of ``ModelField``,
+  those are elements of the resource.
+
+- Minor fixes on ``enum_values``.
 
 
 6.0.0b1 (2020-07-05)

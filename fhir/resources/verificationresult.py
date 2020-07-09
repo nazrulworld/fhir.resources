@@ -30,6 +30,8 @@ class VerificationResult(domainresource.DomainResource):
         alias="attestation",
         title="Information about the entity attesting to information",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     failureAction: fhirtypes.CodeableConceptType = Field(
@@ -37,10 +39,17 @@ class VerificationResult(domainresource.DomainResource):
         alias="failureAction",
         title="fatal | warn | rec-only | none",
         description="The result if validation fails (fatal; warning; record only; none).",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     frequency: fhirtypes.TimingType = Field(
-        None, alias="frequency", title="Frequency of revalidation", description=None,
+        None,
+        alias="frequency",
+        title="Frequency of revalidation",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     lastPerformed: fhirtypes.DateTime = Field(
@@ -51,6 +60,8 @@ class VerificationResult(domainresource.DomainResource):
             "validations)"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     lastPerformed__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastPerformed", title="Extension field for ``lastPerformed``."
@@ -64,6 +75,8 @@ class VerificationResult(domainresource.DomainResource):
             "The frequency with which the target must be validated (none; initial; "
             "periodic)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     nextScheduled: fhirtypes.Date = Field(
@@ -71,6 +84,8 @@ class VerificationResult(domainresource.DomainResource):
         alias="nextScheduled",
         title="The date when target is next validated, if appropriate",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     nextScheduled__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_nextScheduled", title="Extension field for ``nextScheduled``."
@@ -81,6 +96,8 @@ class VerificationResult(domainresource.DomainResource):
         alias="primarySource",
         title="Information about the primary source(s) involved in validation",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     status: fhirtypes.Code = Field(
@@ -93,6 +110,8 @@ class VerificationResult(domainresource.DomainResource):
             "The validation status of the target (attested; validated; in process; "
             "requires revalidation; validation failed; revalidation failed)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -113,6 +132,8 @@ class VerificationResult(domainresource.DomainResource):
         alias="statusDate",
         title="When the validation status was updated",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_statusDate", title="Extension field for ``statusDate``."
@@ -123,6 +144,8 @@ class VerificationResult(domainresource.DomainResource):
         alias="target",
         title="A resource that was validated",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -132,6 +155,8 @@ class VerificationResult(domainresource.DomainResource):
         alias="targetLocation",
         title="The fhirpath location(s) within the resource that was validated",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     targetLocation__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -147,6 +172,8 @@ class VerificationResult(domainresource.DomainResource):
             "value set; primary source; multiple sources; standalone; in context)"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     validationType: fhirtypes.CodeableConceptType = Field(
@@ -157,6 +184,8 @@ class VerificationResult(domainresource.DomainResource):
             "What the target is validated against (nothing; primary source; "
             "multiple sources)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     validator: ListType[fhirtypes.VerificationResultValidatorType] = Field(
@@ -164,6 +193,8 @@ class VerificationResult(domainresource.DomainResource):
         alias="validator",
         title="Information about the entity validating information",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -185,6 +216,8 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
             "The method by which attested information was submitted/retrieved "
             "(manual; API; Push)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     date: fhirtypes.Date = Field(
@@ -192,6 +225,8 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
         alias="date",
         title="The date the information was attested to",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -205,6 +240,8 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
             "individual)"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "Practitioner", "PractitionerRole"],
     )
@@ -217,6 +254,8 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
             "submitting attested information on behalf of the attestation source"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     proxyIdentityCertificate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -233,6 +272,8 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
             "right to submit attested information on behalf of the attestation "
             "source."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     sourceIdentityCertificate: fhirtypes.String = Field(
@@ -240,6 +281,8 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
         alias="sourceIdentityCertificate",
         title="A digital identity certificate associated with the attestation source",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     sourceIdentityCertificate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -255,6 +298,8 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
             "Signed assertion by the attestation source that they have attested to "
             "the information."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     who: fhirtypes.ReferenceType = Field(
@@ -262,6 +307,8 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
         alias="who",
         title="The individual or organization attesting to information",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
     )
@@ -285,6 +332,8 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
             "Ability of the primary source to push updates/alerts (yes; no; "
             "undetermined)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     communicationMethod: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -292,6 +341,8 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
         alias="communicationMethod",
         title="Method for exchanging information with the primary source",
         description="Method for communicating with the primary source (manual; API; Push).",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     pushTypeAvailable: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -302,6 +353,8 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
             "Type of alerts/updates the primary source can send (specific requested"
             " changes; any changes; as defined by source)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -313,6 +366,8 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
             " legal source; issuing source; authoritative source)"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     validationDate: fhirtypes.DateTime = Field(
@@ -320,6 +375,8 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
         alias="validationDate",
         title="When the target was validated against the primary source",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     validationDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_validationDate", title="Extension field for ``validationDate``."
@@ -333,6 +390,8 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
             "Status of the validation of the target against the primary source "
             "(successful; failed; unknown)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     who: fhirtypes.ReferenceType = Field(
@@ -340,6 +399,8 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
         alias="who",
         title="Reference to the primary source",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "Practitioner", "PractitionerRole"],
     )
@@ -363,6 +424,8 @@ class VerificationResultValidator(backboneelement.BackboneElement):
             "Signed assertion by the validator that they have validated the "
             "information."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identityCertificate: fhirtypes.String = Field(
@@ -370,6 +433,8 @@ class VerificationResultValidator(backboneelement.BackboneElement):
         alias="identityCertificate",
         title="A digital identity certificate associated with the validator",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     identityCertificate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -382,6 +447,8 @@ class VerificationResultValidator(backboneelement.BackboneElement):
         alias="organization",
         title="Reference to the organization validating information",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )

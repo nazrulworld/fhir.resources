@@ -35,6 +35,8 @@ class DocumentReference(domainresource.DomainResource):
         description=(
             "Which person or organization authenticates that this document is " "valid."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
     )
@@ -47,6 +49,8 @@ class DocumentReference(domainresource.DomainResource):
             "Identifies who is responsible for adding the information to the "
             "document."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Practitioner",
@@ -67,6 +71,8 @@ class DocumentReference(domainresource.DomainResource):
             "indexing and searching. This may be implied by or derived from the "
             "code specified in the DocumentReference.type."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     content: ListType[fhirtypes.DocumentReferenceContentType] = Field(
@@ -77,6 +83,8 @@ class DocumentReference(domainresource.DomainResource):
             "The document and format referenced. There may be multiple content "
             "element repetitions, each with a different format."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     context: fhirtypes.DocumentReferenceContextType = Field(
@@ -84,6 +92,8 @@ class DocumentReference(domainresource.DomainResource):
         alias="context",
         title="Clinical context of document",
         description="The clinical context in which the document was prepared.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     custodian: fhirtypes.ReferenceType = Field(
@@ -94,6 +104,8 @@ class DocumentReference(domainresource.DomainResource):
             "Identifies the organization or group who is responsible for ongoing "
             "maintenance of and access to the document."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -103,6 +115,8 @@ class DocumentReference(domainresource.DomainResource):
         alias="date",
         title="When this document reference was created",
         description="When the document reference was created.",
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -113,6 +127,8 @@ class DocumentReference(domainresource.DomainResource):
         alias="description",
         title="Human-readable description",
         description="Human-readable description of the source document.",
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -123,6 +139,8 @@ class DocumentReference(domainresource.DomainResource):
         alias="docStatus",
         title="preliminary | final | amended | entered-in-error",
         description="The status of the underlying document.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["preliminary", "final", "amended", "entered-in-error"],
@@ -139,6 +157,8 @@ class DocumentReference(domainresource.DomainResource):
             "Other identifiers associated with the document, including version "
             "independent identifiers."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     masterIdentifier: fhirtypes.IdentifierType = Field(
@@ -151,6 +171,8 @@ class DocumentReference(domainresource.DomainResource):
             "identifier may be used elsewhere to identify this version of the "
             "document."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     relatesTo: ListType[fhirtypes.DocumentReferenceRelatesToType] = Field(
@@ -161,6 +183,8 @@ class DocumentReference(domainresource.DomainResource):
             "Relationships that this document has with other document references "
             "that already exist."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     securityLabel: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -174,6 +198,8 @@ class DocumentReference(domainresource.DomainResource):
             "DocumentReference.securityLabel contains a snapshot of the security "
             "labels on the document the reference refers to."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     status: fhirtypes.Code = Field(
@@ -181,6 +207,8 @@ class DocumentReference(domainresource.DomainResource):
         alias="status",
         title="current | superseded | entered-in-error",
         description="The status of this document reference.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["current", "superseded", "entered-in-error"],
@@ -199,6 +227,8 @@ class DocumentReference(domainresource.DomainResource):
             "even a group of subjects (such as a document about a herd of farm "
             "animals, or a set of patients that share a common exposure)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Practitioner", "Group", "Device"],
     )
@@ -212,6 +242,8 @@ class DocumentReference(domainresource.DomainResource):
             "and Physical, Discharge Summary, Progress Note). This usually equates "
             "to the purpose of making the document referenced."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -235,6 +267,8 @@ class DocumentReferenceContent(backboneelement.BackboneElement):
             "The document or URL of the document along with critical metadata to "
             "prove content has integrity."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     format: fhirtypes.CodingType = Field(
@@ -246,6 +280,8 @@ class DocumentReferenceContent(backboneelement.BackboneElement):
             "the document conforms to beyond the base format indicated in the "
             "mimeType."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -268,6 +304,8 @@ class DocumentReferenceContext(backboneelement.BackboneElement):
             "Describes the clinical encounter or type of care that the document "
             "content is associated with."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter", "EpisodeOfCare"],
     )
@@ -283,6 +321,8 @@ class DocumentReferenceContext(backboneelement.BackboneElement):
             'Report" in which the procedure being documented is necessarily a '
             '"History and Physical" act.'
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     facilityType: fhirtypes.CodeableConceptType = Field(
@@ -290,6 +330,8 @@ class DocumentReferenceContext(backboneelement.BackboneElement):
         alias="facilityType",
         title="Kind of facility where patient was seen",
         description="The kind of facility where the patient was seen.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -300,6 +342,8 @@ class DocumentReferenceContext(backboneelement.BackboneElement):
             "The time period over which the service that is described by the "
             "document was provided."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     practiceSetting: fhirtypes.CodeableConceptType = Field(
@@ -313,6 +357,8 @@ class DocumentReferenceContext(backboneelement.BackboneElement):
             "This property may convey specifics about the practice setting where "
             "the content was created, often reflecting the clinical specialty."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     related: ListType[fhirtypes.ReferenceType] = Field(
@@ -322,6 +368,8 @@ class DocumentReferenceContext(backboneelement.BackboneElement):
         description=(
             "Related identifiers or resources associated with the " "DocumentReference."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -334,6 +382,8 @@ class DocumentReferenceContext(backboneelement.BackboneElement):
             "The Patient Information as known when the document was published. May "
             "be a reference to a version specific, or contained."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
     )
@@ -356,6 +406,8 @@ class DocumentReferenceRelatesTo(backboneelement.BackboneElement):
         alias="code",
         title="replaces | transforms | signs | appends",
         description="The type of relationship that this document has with anther document.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["replaces", "transforms", "signs", "appends"],
@@ -369,6 +421,8 @@ class DocumentReferenceRelatesTo(backboneelement.BackboneElement):
         alias="target",
         title="Target of the relationship",
         description="The target document of this relationship.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
     )

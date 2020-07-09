@@ -29,6 +29,8 @@ class MedicinalProductPharmaceutical(domainresource.DomainResource):
         alias="administrableDoseForm",
         title="The administrable dose form, after necessary reconstitution",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     characteristics: ListType[
@@ -38,6 +40,8 @@ class MedicinalProductPharmaceutical(domainresource.DomainResource):
         alias="characteristics",
         title="Characteristics e.g. a products onset of action",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     device: ListType[fhirtypes.ReferenceType] = Field(
@@ -45,6 +49,8 @@ class MedicinalProductPharmaceutical(domainresource.DomainResource):
         alias="device",
         title="Accompanying device",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DeviceDefinition"],
     )
@@ -54,6 +60,8 @@ class MedicinalProductPharmaceutical(domainresource.DomainResource):
         alias="identifier",
         title="An identifier for the pharmaceutical medicinal product",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     ingredient: ListType[fhirtypes.ReferenceType] = Field(
@@ -61,6 +69,8 @@ class MedicinalProductPharmaceutical(domainresource.DomainResource):
         alias="ingredient",
         title="Ingredient",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["MedicinalProductIngredient"],
     )
@@ -75,10 +85,17 @@ class MedicinalProductPharmaceutical(domainresource.DomainResource):
             "contact with the body"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     unitOfPresentation: fhirtypes.CodeableConceptType = Field(
-        None, alias="unitOfPresentation", title="Todo", description=None,
+        None,
+        alias="unitOfPresentation",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -93,7 +110,12 @@ class MedicinalProductPharmaceuticalCharacteristics(backboneelement.BackboneElem
     resource_type = Field("MedicinalProductPharmaceuticalCharacteristics", const=True)
 
     code: fhirtypes.CodeableConceptType = Field(
-        ..., alias="code", title="A coded characteristic", description=None,
+        ...,
+        alias="code",
+        title="A coded characteristic",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     status: fhirtypes.CodeableConceptType = Field(
@@ -101,6 +123,8 @@ class MedicinalProductPharmaceuticalCharacteristics(backboneelement.BackboneElem
         alias="status",
         title="The status of characteristic e.g. assigned or pending",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -120,7 +144,12 @@ class MedicinalProductPharmaceuticalRouteOfAdministration(
     )
 
     code: fhirtypes.CodeableConceptType = Field(
-        ..., alias="code", title="Coded expression for the route", description=None,
+        ...,
+        alias="code",
+        title="Coded expression for the route",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     firstDose: fhirtypes.QuantityType = Field(
@@ -132,6 +161,8 @@ class MedicinalProductPharmaceuticalRouteOfAdministration(
             "and its unit of measurement"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     maxDosePerDay: fhirtypes.QuantityType = Field(
@@ -143,6 +174,8 @@ class MedicinalProductPharmaceuticalRouteOfAdministration(
             "referenced in the clinical trial authorisation"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     maxDosePerTreatmentPeriod: fhirtypes.RatioType = Field(
@@ -153,6 +186,8 @@ class MedicinalProductPharmaceuticalRouteOfAdministration(
             "the protocol referenced in the clinical trial authorisation"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     maxSingleDose: fhirtypes.QuantityType = Field(
@@ -164,6 +199,8 @@ class MedicinalProductPharmaceuticalRouteOfAdministration(
             "unit of measurement"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     maxTreatmentPeriod: fhirtypes.DurationType = Field(
@@ -175,6 +212,8 @@ class MedicinalProductPharmaceuticalRouteOfAdministration(
             "clinical trial authorisation"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     targetSpecies: ListType[
@@ -184,6 +223,8 @@ class MedicinalProductPharmaceuticalRouteOfAdministration(
         alias="targetSpecies",
         title="A species for which this route applies",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -202,7 +243,12 @@ class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies(
     )
 
     code: fhirtypes.CodeableConceptType = Field(
-        ..., alias="code", title="Coded expression for the species", description=None,
+        ...,
+        alias="code",
+        title="Coded expression for the species",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     withdrawalPeriod: ListType[
@@ -215,6 +261,8 @@ class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies(
             "not appropriate"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -230,7 +278,7 @@ class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawal
     """
 
     resource_type = Field(
-        "MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod",  # noqa: B950
+        "MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod",
         const=True,
     )
 
@@ -239,6 +287,8 @@ class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawal
         alias="supportingInformation",
         title="Extra information about the withdrawal period",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     supportingInformation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -254,8 +304,15 @@ class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawal
             "period applues, e.g. meat, milk"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     value: fhirtypes.QuantityType = Field(
-        ..., alias="value", title="A value for the time", description=None,
+        ...,
+        alias="value",
+        title="A value for the time",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )

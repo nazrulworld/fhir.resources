@@ -34,6 +34,8 @@ class ProcessRequest(domainresource.DomainResource):
             "The type of processing action being requested, for example Reversal, "
             "Readjudication, StatusRequest,PendedRequest."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["cancel", "poll", "reprocess", "status"],
@@ -47,6 +49,8 @@ class ProcessRequest(domainresource.DomainResource):
         alias="created",
         title="Creation date",
         description="The date when this resource was created.",
+        # if property is element of this resource.
+        element_property=True,
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_created", title="Extension field for ``created``."
@@ -57,6 +61,8 @@ class ProcessRequest(domainresource.DomainResource):
         alias="exclude",
         title="Resource type(s) to exclude",
         description="Names of resource types to exclude.",
+        # if property is element of this resource.
+        element_property=True,
     )
     exclude__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_exclude", title="Extension field for ``exclude``."
@@ -67,6 +73,8 @@ class ProcessRequest(domainresource.DomainResource):
         alias="identifier",
         title="Business Identifier",
         description="The ProcessRequest business identifier.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     include: ListType[fhirtypes.String] = Field(
@@ -74,6 +82,8 @@ class ProcessRequest(domainresource.DomainResource):
         alias="include",
         title="Resource type(s) to include",
         description="Names of resource types to include.",
+        # if property is element of this resource.
+        element_property=True,
     )
     include__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_include", title="Extension field for ``include``."
@@ -87,6 +97,8 @@ class ProcessRequest(domainresource.DomainResource):
             "List of top level items to be re-adjudicated, if none specified then "
             "the entire submission is re-adjudicated."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     nullify: bool = Field(
@@ -94,6 +106,8 @@ class ProcessRequest(domainresource.DomainResource):
         alias="nullify",
         title="Remove history",
         description="If true remove all history excluding audit.",
+        # if property is element of this resource.
+        element_property=True,
     )
     nullify__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_nullify", title="Extension field for ``nullify``."
@@ -107,6 +121,8 @@ class ProcessRequest(domainresource.DomainResource):
             "The organization which is responsible for the action speccified in "
             "this request."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -119,6 +135,8 @@ class ProcessRequest(domainresource.DomainResource):
             "A period of time during which the fulfilling resources would have been"
             " created."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     provider: fhirtypes.ReferenceType = Field(
@@ -129,6 +147,8 @@ class ProcessRequest(domainresource.DomainResource):
             "The practitioner who is responsible for the action specified in this "
             "request."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner"],
     )
@@ -138,6 +158,8 @@ class ProcessRequest(domainresource.DomainResource):
         alias="reference",
         title="Reference number/string",
         description="A reference to supply which authenticates the process.",
+        # if property is element of this resource.
+        element_property=True,
     )
     reference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_reference", title="Extension field for ``reference``."
@@ -148,6 +170,8 @@ class ProcessRequest(domainresource.DomainResource):
         alias="request",
         title="Reference to the Request resource",
         description="Reference of resource which is the target or subject of this action.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -160,6 +184,8 @@ class ProcessRequest(domainresource.DomainResource):
             "Reference of a prior response to resource which is the target or "
             "subject of this action."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -169,6 +195,8 @@ class ProcessRequest(domainresource.DomainResource):
         alias="status",
         title="active | cancelled | draft | entered-in-error",
         description="The status of the resource instance.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "cancelled", "draft", "entered-in-error"],
@@ -182,6 +210,8 @@ class ProcessRequest(domainresource.DomainResource):
         alias="target",
         title="Party which is the target of the request",
         description="The organization which is the target of the request.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -204,6 +234,8 @@ class ProcessRequestItem(backboneelement.BackboneElement):
         alias="sequenceLinkId",
         title="Service instance",
         description="A service line number.",
+        # if property is element of this resource.
+        element_property=True,
     )
     sequenceLinkId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sequenceLinkId", title="Extension field for ``sequenceLinkId``."

@@ -37,6 +37,8 @@ class ActivityDefinition(domainresource.DomainResource):
             "Approval happens once when the content is officially approved for "
             "usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_approvalDate", title="Extension field for ``approvalDate``."
@@ -50,6 +52,8 @@ class ActivityDefinition(domainresource.DomainResource):
             "Indicates the sites on the subject's body where the procedure should "
             "be performed (I.e. the target sites)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -60,6 +64,8 @@ class ActivityDefinition(domainresource.DomainResource):
             "Detailed description of the type of activity; e.g. What lab test, what"
             " procedure, what kind of encounter."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     contact: ListType[fhirtypes.ContactDetailType] = Field(
@@ -70,6 +76,8 @@ class ActivityDefinition(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     contributor: ListType[fhirtypes.ContributorType] = Field(
@@ -80,6 +88,8 @@ class ActivityDefinition(domainresource.DomainResource):
             "A contributor to the content of the asset, including authors, editors,"
             " reviewers, and endorsers."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     copyright: fhirtypes.Markdown = Field(
@@ -91,6 +101,8 @@ class ActivityDefinition(domainresource.DomainResource):
             "contents. Copyright statements are generally legal restrictions on the"
             " use and publishing of the activity definition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
@@ -107,6 +119,8 @@ class ActivityDefinition(domainresource.DomainResource):
             " should change when the substantive content of the activity definition"
             " changes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -120,6 +134,8 @@ class ActivityDefinition(domainresource.DomainResource):
             "A free text natural language description of the activity definition "
             "from a consumer's perspective."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -133,6 +149,8 @@ class ActivityDefinition(domainresource.DomainResource):
             "Provides detailed dosage instructions in the same way that they are "
             "described for MedicationRequest resources."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     dynamicValue: ListType[fhirtypes.ActivityDefinitionDynamicValueType] = Field(
@@ -146,6 +164,8 @@ class ActivityDefinition(domainresource.DomainResource):
             "be used to specify an expression that calculated the weight, and the "
             "path on the intent resource that would contain the result."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     effectivePeriod: fhirtypes.PeriodType = Field(
@@ -156,6 +176,8 @@ class ActivityDefinition(domainresource.DomainResource):
             "The period during which the activity definition content was or is "
             "planned to be in active use."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     experimental: bool = Field(
@@ -167,6 +189,8 @@ class ActivityDefinition(domainresource.DomainResource):
             "for testing purposes (or education/evaluation/marketing), and is not "
             "intended to be used for genuine usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -181,6 +205,8 @@ class ActivityDefinition(domainresource.DomainResource):
             "when it is represented in other formats, or referenced in a "
             "specification, model, design or an instance."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -191,6 +217,8 @@ class ActivityDefinition(domainresource.DomainResource):
             "A legal or geographic region in which the activity definition is "
             "intended to be used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     kind: fhirtypes.Code = Field(
@@ -203,6 +231,8 @@ class ActivityDefinition(domainresource.DomainResource):
             " a CommunicationRequest. Typically, but not always, this is a Request "
             "resource."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     kind__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_kind", title="Extension field for ``kind``."
@@ -217,6 +247,8 @@ class ActivityDefinition(domainresource.DomainResource):
             "happens periodically after approval, but doesn't change the original "
             "approval date."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
@@ -230,6 +262,8 @@ class ActivityDefinition(domainresource.DomainResource):
             "A reference to a Library resource containing any formal logic used by "
             "the asset."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Library"],
     )
@@ -242,6 +276,8 @@ class ActivityDefinition(domainresource.DomainResource):
             "Identifies the facility where the activity will occur; e.g. home, "
             "hospital, specific clinic, etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
     )
@@ -255,6 +291,8 @@ class ActivityDefinition(domainresource.DomainResource):
             " should be usable as an identifier for the module by machine "
             "processing applications such as code generation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -265,6 +303,8 @@ class ActivityDefinition(domainresource.DomainResource):
         alias="participant",
         title="Who should participate in the action",
         description="Indicates who should participate in performing the action described.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     productCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -275,6 +315,8 @@ class ActivityDefinition(domainresource.DomainResource):
             "Identifies the food, drug or other product being consumed or supplied "
             "in the activity."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e product[x]
         one_of_many="product",
         one_of_many_required=False,
@@ -288,6 +330,8 @@ class ActivityDefinition(domainresource.DomainResource):
             "Identifies the food, drug or other product being consumed or supplied "
             "in the activity."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e product[x]
         one_of_many="product",
         one_of_many_required=False,
@@ -303,6 +347,8 @@ class ActivityDefinition(domainresource.DomainResource):
             "The name of the individual or organization that published the activity"
             " definition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -316,6 +362,8 @@ class ActivityDefinition(domainresource.DomainResource):
             "Explaination of why this activity definition is needed and why it has "
             "been designed as it has."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_purpose", title="Extension field for ``purpose``."
@@ -329,6 +377,8 @@ class ActivityDefinition(domainresource.DomainResource):
             "Identifies the quantity expected to be consumed at once (per dose, per"
             " meal, etc.)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     relatedArtifact: ListType[fhirtypes.RelatedArtifactType] = Field(
@@ -339,6 +389,8 @@ class ActivityDefinition(domainresource.DomainResource):
             "Related artifacts such as additional documentation, justification, or "
             "bibliographic references."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     status: fhirtypes.Code = Field(
@@ -349,6 +401,8 @@ class ActivityDefinition(domainresource.DomainResource):
             "The status of this activity definition. Enables tracking the life-"
             "cycle of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -365,6 +419,8 @@ class ActivityDefinition(domainresource.DomainResource):
             "The period, timing or frequency upon which the described activity is "
             "to occur."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e timing[x]
         one_of_many="timing",
         one_of_many_required=False,
@@ -381,6 +437,8 @@ class ActivityDefinition(domainresource.DomainResource):
             "The period, timing or frequency upon which the described activity is "
             "to occur."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e timing[x]
         one_of_many="timing",
         one_of_many_required=False,
@@ -394,6 +452,8 @@ class ActivityDefinition(domainresource.DomainResource):
             "The period, timing or frequency upon which the described activity is "
             "to occur."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e timing[x]
         one_of_many="timing",
         one_of_many_required=False,
@@ -407,6 +467,8 @@ class ActivityDefinition(domainresource.DomainResource):
             "The period, timing or frequency upon which the described activity is "
             "to occur."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e timing[x]
         one_of_many="timing",
         one_of_many_required=False,
@@ -417,6 +479,8 @@ class ActivityDefinition(domainresource.DomainResource):
         alias="title",
         title="Name for this activity definition (human friendly)",
         description="A short, descriptive, user-friendly title for the activity definition.",
+        # if property is element of this resource.
+        element_property=True,
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -431,6 +495,8 @@ class ActivityDefinition(domainresource.DomainResource):
             "provide a high-level categorization of the activity that can be useful"
             " for filtering and searching."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     transform: fhirtypes.ReferenceType = Field(
@@ -442,6 +508,8 @@ class ActivityDefinition(domainresource.DomainResource):
             "can be executed to produce the intent resource using the "
             "ActivityDefinition instance as the input."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureMap"],
     )
@@ -459,6 +527,8 @@ class ActivityDefinition(domainresource.DomainResource):
             "For more information see [Technical and Business "
             "Versions](resource.html#versions)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -472,6 +542,8 @@ class ActivityDefinition(domainresource.DomainResource):
             "A detailed description of how the asset is used from a clinical "
             "perspective."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     usage__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_usage", title="Extension field for ``usage``."
@@ -486,6 +558,8 @@ class ActivityDefinition(domainresource.DomainResource):
             "contexts that are listed. These terms may be used to assist with "
             "indexing and searching for appropriate activity definition instances."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     version: fhirtypes.String = Field(
@@ -505,6 +579,8 @@ class ActivityDefinition(domainresource.DomainResource):
             "knowledge assets, refer to the Decision Support Service specification."
             " Note that a version is required for non-experimental active assets."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -573,6 +649,8 @@ class ActivityDefinitionDynamicValue(backboneelement.BackboneElement):
             "A brief, natural language description of the intended semantics of the"
             " dynamic value."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -583,6 +661,8 @@ class ActivityDefinitionDynamicValue(backboneelement.BackboneElement):
         alias="expression",
         title="An expression that provides the dynamic value for the customization",
         description="An expression specifying the value of the customized element.",
+        # if property is element of this resource.
+        element_property=True,
     )
     expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_expression", title="Extension field for ``expression``."
@@ -593,6 +673,8 @@ class ActivityDefinitionDynamicValue(backboneelement.BackboneElement):
         alias="language",
         title="Language of the expression",
         description="The media type of the language for the expression.",
+        # if property is element of this resource.
+        element_property=True,
     )
     language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_language", title="Extension field for ``language``."
@@ -607,6 +689,8 @@ class ActivityDefinitionDynamicValue(backboneelement.BackboneElement):
             "resource that will hold the result of the calculation defined by the "
             "expression."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_path", title="Extension field for ``path``."
@@ -632,6 +716,8 @@ class ActivityDefinitionParticipant(backboneelement.BackboneElement):
             "The role the participant should play in performing the described "
             "action."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.Code = Field(
@@ -639,6 +725,8 @@ class ActivityDefinitionParticipant(backboneelement.BackboneElement):
         alias="type",
         title="patient | practitioner | related-person",
         description="The type of participant in the action.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["patient", "practitioner", "related-person"],

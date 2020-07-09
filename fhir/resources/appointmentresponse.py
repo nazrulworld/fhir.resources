@@ -32,6 +32,8 @@ class AppointmentResponse(domainresource.DomainResource):
             "A Person, Location, HealthcareService, or Device that is participating"
             " in the appointment."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Patient",
@@ -49,6 +51,8 @@ class AppointmentResponse(domainresource.DomainResource):
         alias="appointment",
         title="Appointment this response relates to",
         description="Appointment that this response is replying to.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Appointment"],
     )
@@ -58,6 +62,8 @@ class AppointmentResponse(domainresource.DomainResource):
         alias="comment",
         title="Additional comments",
         description="Additional comments about the appointment.",
+        # if property is element of this resource.
+        element_property=True,
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comment", title="Extension field for ``comment``."
@@ -72,6 +78,8 @@ class AppointmentResponse(domainresource.DomainResource):
             "details of the appointment, or alternately a new time to request a re-"
             "negotiation of the end time."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     end__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_end", title="Extension field for ``end``."
@@ -87,6 +95,8 @@ class AppointmentResponse(domainresource.DomainResource):
             "to it when a direct URL reference to the resource itself is not "
             "appropriate."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     participantStatus: fhirtypes.Code = Field(
@@ -100,6 +110,8 @@ class AppointmentResponse(domainresource.DomainResource):
             "When the status is accepted, the times can either be the time of the "
             "appointment (as a confirmation of the time) or can be empty."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["accepted", "declined", "tentative", "needs-action"],
@@ -115,6 +127,8 @@ class AppointmentResponse(domainresource.DomainResource):
         alias="participantType",
         title="Role of participant in the appointment",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     start: fhirtypes.Instant = Field(
@@ -125,6 +139,8 @@ class AppointmentResponse(domainresource.DomainResource):
             "Date/Time that the appointment is to take place, or requested new "
             "start time."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     start__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_start", title="Extension field for ``start``."

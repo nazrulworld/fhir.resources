@@ -35,6 +35,8 @@ class Communication(domainresource.DomainResource):
             "An order, proposal or plan fulfilled in whole or in part by this "
             "Communication."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -47,6 +49,8 @@ class Communication(domainresource.DomainResource):
             "The type of message conveyed such as alert, notification, reminder, "
             "instruction, etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     context: fhirtypes.ReferenceType = Field(
@@ -54,6 +58,8 @@ class Communication(domainresource.DomainResource):
         alias="context",
         title="Encounter or episode leading to message",
         description="The encounter within which the communication was sent.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter", "EpisodeOfCare"],
     )
@@ -66,6 +72,8 @@ class Communication(domainresource.DomainResource):
             "A protocol, guideline, or other definition that was adhered to in "
             "whole or in part by this communication event."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["PlanDefinition", "ActivityDefinition"],
     )
@@ -80,6 +88,8 @@ class Communication(domainresource.DomainResource):
             "reference to the resource itself is not appropriate (e.g. in CDA "
             "documents, or in written / printed documentation)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     medium: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -87,6 +97,8 @@ class Communication(domainresource.DomainResource):
         alias="medium",
         title="A channel of communication",
         description="A channel that was used for this communication (e.g. email, fax).",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     notDone: bool = Field(
@@ -97,6 +109,8 @@ class Communication(domainresource.DomainResource):
             "If true, indicates that the described communication event did not "
             "actually occur."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     notDone__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_notDone", title="Extension field for ``notDone``."
@@ -110,6 +124,8 @@ class Communication(domainresource.DomainResource):
             "Describes why the communication event did not occur in coded and/or "
             "textual form."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
@@ -120,6 +136,8 @@ class Communication(domainresource.DomainResource):
             "Additional notes or commentary about the communication by the sender, "
             "receiver or other interested parties."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     partOf: ListType[fhirtypes.ReferenceType] = Field(
@@ -127,6 +145,8 @@ class Communication(domainresource.DomainResource):
         alias="partOf",
         title="Part of this action",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -139,6 +159,8 @@ class Communication(domainresource.DomainResource):
             "Text, attachment(s), or resource(s) that was communicated to the "
             "recipient."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -146,6 +168,8 @@ class Communication(domainresource.DomainResource):
         alias="reasonCode",
         title="Indication for message",
         description="The reason or justification for the communication.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
@@ -156,6 +180,8 @@ class Communication(domainresource.DomainResource):
             "Indicates another resource whose existence justifies this "
             "communication."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition", "Observation"],
     )
@@ -165,6 +191,8 @@ class Communication(domainresource.DomainResource):
         alias="received",
         title="When received",
         description="The time when this communication arrived at the destination.",
+        # if property is element of this resource.
+        element_property=True,
     )
     received__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_received", title="Extension field for ``received``."
@@ -183,6 +211,8 @@ class Communication(domainresource.DomainResource):
             "out) or is captured in aggregate (all emails confirmed received by a "
             "particular time)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Device",
@@ -202,6 +232,8 @@ class Communication(domainresource.DomainResource):
             "The entity (e.g. person, organization, clinical information system, or"
             " device) which was the source of the communication."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Device",
@@ -217,6 +249,8 @@ class Communication(domainresource.DomainResource):
         alias="sent",
         title="When sent",
         description="The time when this communication was sent.",
+        # if property is element of this resource.
+        element_property=True,
     )
     sent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sent", title="Extension field for ``sent``."
@@ -230,6 +264,8 @@ class Communication(domainresource.DomainResource):
             "in-error"
         ),
         description="The status of the transmission.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -250,6 +286,8 @@ class Communication(domainresource.DomainResource):
         alias="subject",
         title="Focus of message",
         description="The patient or group that was the focus of this communication.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
     )
@@ -262,6 +300,8 @@ class Communication(domainresource.DomainResource):
             "The resources which were responsible for or related to producing this "
             "communication."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -286,6 +326,8 @@ class CommunicationPayload(backboneelement.BackboneElement):
             "A communicated content (or for multi-part communications, one portion "
             "of the communication)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e content[x]
         one_of_many="content",
         one_of_many_required=True,
@@ -299,6 +341,8 @@ class CommunicationPayload(backboneelement.BackboneElement):
             "A communicated content (or for multi-part communications, one portion "
             "of the communication)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e content[x]
         one_of_many="content",
         one_of_many_required=True,
@@ -314,6 +358,8 @@ class CommunicationPayload(backboneelement.BackboneElement):
             "A communicated content (or for multi-part communications, one portion "
             "of the communication)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e content[x]
         one_of_many="content",
         one_of_many_required=True,

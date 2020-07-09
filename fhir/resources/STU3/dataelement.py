@@ -33,6 +33,8 @@ class DataElement(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     copyright: fhirtypes.Markdown = Field(
@@ -44,6 +46,8 @@ class DataElement(domainresource.DomainResource):
             "contents. Copyright statements are generally legal restrictions on the"
             " use and publishing of the data element."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
@@ -59,6 +63,8 @@ class DataElement(domainresource.DomainResource):
             "must change if the status code changes. In addition, it should change "
             "when the substantive content of the data element changes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -72,6 +78,8 @@ class DataElement(domainresource.DomainResource):
             "Defines the structure, type, allowed values and other constraining "
             "characteristics of the data element."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     experimental: bool = Field(
@@ -83,6 +91,8 @@ class DataElement(domainresource.DomainResource):
             "testing purposes (or education/evaluation/marketing), and is not "
             "intended to be used for genuine usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -97,6 +107,8 @@ class DataElement(domainresource.DomainResource):
             " is represented in other formats, or referenced in a specification, "
             "model, design or an instance."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -107,6 +119,8 @@ class DataElement(domainresource.DomainResource):
             "A legal or geographic region in which the data element is intended to "
             "be used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     mapping: ListType[fhirtypes.DataElementMappingType] = Field(
@@ -117,6 +131,8 @@ class DataElement(domainresource.DomainResource):
             "Identifies a specification (other than a terminology) that the "
             "elements which make up the DataElement have some correspondence with."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     name: fhirtypes.String = Field(
@@ -128,6 +144,8 @@ class DataElement(domainresource.DomainResource):
             " be usable as an identifier for the module by machine processing "
             "applications such as code generation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -141,6 +159,8 @@ class DataElement(domainresource.DomainResource):
             "The name of the individual or organization that published the data "
             "element."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -154,6 +174,8 @@ class DataElement(domainresource.DomainResource):
             "The status of this data element. Enables tracking the life-cycle of "
             "the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -170,6 +192,8 @@ class DataElement(domainresource.DomainResource):
             "flexible"
         ),
         description="Identifies how precise the data element is in its definition.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -190,6 +214,8 @@ class DataElement(domainresource.DomainResource):
         alias="title",
         title="Name for this data element (human friendly)",
         description="A short, descriptive, user-friendly title for the data element.",
+        # if property is element of this resource.
+        element_property=True,
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -207,6 +233,8 @@ class DataElement(domainresource.DomainResource):
             "include the major version of the data element. For more information "
             "see [Technical and Business Versions](resource.html#versions)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -221,6 +249,8 @@ class DataElement(domainresource.DomainResource):
             "contexts that are listed. These terms may be used to assist with "
             "indexing and searching for appropriate data element instances."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     version: fhirtypes.String = Field(
@@ -236,6 +266,8 @@ class DataElement(domainresource.DomainResource):
             "available. There is also no expectation that versions can be placed in"
             " a lexicographical sequence."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -262,6 +294,8 @@ class DataElementMapping(backboneelement.BackboneElement):
             "Comments about this mapping, including version notes, issues, scope "
             "limitations, and other important notes for usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comment", title="Extension field for ``comment``."
@@ -275,6 +309,8 @@ class DataElementMapping(backboneelement.BackboneElement):
             "An internal id that is used to identify this mapping set when specific"
             " mappings are made on a per-element basis."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     identity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_identity", title="Extension field for ``identity``."
@@ -285,6 +321,8 @@ class DataElementMapping(backboneelement.BackboneElement):
         alias="name",
         title="Names what this mapping refers to",
         description="A name for the specification that is being mapped to.",
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -298,6 +336,8 @@ class DataElementMapping(backboneelement.BackboneElement):
             "An absolute URI that identifies the specification that this mapping is"
             " expressed to."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     uri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uri", title="Extension field for ``uri``."

@@ -31,6 +31,8 @@ class Invoice(domainresource.DomainResource):
         alias="account",
         title="Account that is being balanced",
         description="Account which is supposed to be balanced with this Invoice.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Account"],
     )
@@ -43,6 +45,8 @@ class Invoice(domainresource.DomainResource):
             "In case of Invoice cancellation a reason must be given (entered in "
             "error, superseded by corrected invoice etc.)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     cancelledReason__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_cancelledReason", title="Extension field for ``cancelledReason``."
@@ -53,6 +57,8 @@ class Invoice(domainresource.DomainResource):
         alias="date",
         title="Invoice date / posting date",
         description="Date/time(s) of when this Invoice was posted.",
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -66,6 +72,8 @@ class Invoice(domainresource.DomainResource):
             "Identifier of this Invoice, often used for reference in correspondence"
             " about this invoice or for tracking of payments."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     issuer: fhirtypes.ReferenceType = Field(
@@ -73,6 +81,8 @@ class Invoice(domainresource.DomainResource):
         alias="issuer",
         title="Issuing Organization of Invoice",
         description="The organizationissuing the Invoice.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -86,6 +96,8 @@ class Invoice(domainresource.DomainResource):
             "Details such as date, code and amount are found in the referenced "
             "ChargeItem resource."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     note: ListType[fhirtypes.AnnotationType] = Field(
@@ -96,6 +108,8 @@ class Invoice(domainresource.DomainResource):
             "Comments made about the invoice by the issuer, subject, or other "
             "participants."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     participant: ListType[fhirtypes.InvoiceParticipantType] = Field(
@@ -105,6 +119,8 @@ class Invoice(domainresource.DomainResource):
         description=(
             "Indicates who or what performed or participated in the charged " "service."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     paymentTerms: fhirtypes.Markdown = Field(
@@ -115,6 +131,8 @@ class Invoice(domainresource.DomainResource):
             "Payment details such as banking details, period of payment, "
             "deductibles, methods of payment."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     paymentTerms__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_paymentTerms", title="Extension field for ``paymentTerms``."
@@ -128,6 +146,8 @@ class Invoice(domainresource.DomainResource):
             "The individual or Organization responsible for balancing of this "
             "invoice."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization", "Patient", "RelatedPerson"],
     )
@@ -137,6 +157,8 @@ class Invoice(domainresource.DomainResource):
         alias="status",
         title="draft | issued | balanced | cancelled | entered-in-error",
         description="The current state of the Invoice.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "issued", "balanced", "cancelled", "entered-in-error"],
@@ -153,6 +175,8 @@ class Invoice(domainresource.DomainResource):
             "The individual or set of individuals receiving the goods and services "
             "billed in this invoice."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
     )
@@ -162,6 +186,8 @@ class Invoice(domainresource.DomainResource):
         alias="totalGross",
         title="Gross total of this Invoice",
         description="Invoice total, tax included.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     totalNet: fhirtypes.MoneyType = Field(
@@ -169,6 +195,8 @@ class Invoice(domainresource.DomainResource):
         alias="totalNet",
         title="Net total of this Invoice",
         description="Invoice total , taxes excluded.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     totalPriceComponent: ListType[fhirtypes.InvoiceLineItemPriceComponentType] = Field(
@@ -182,6 +210,8 @@ class Invoice(domainresource.DomainResource):
             "transparency to the recipient of the Invoice of how the total price "
             "was calculated."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -192,6 +222,8 @@ class Invoice(domainresource.DomainResource):
             "Type of Invoice depending on domain, realm an usage (e.g. "
             "internal/external, dental, preliminary)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -221,6 +253,8 @@ class InvoiceLineItem(backboneelement.BackboneElement):
             "inline billing codes can be added using the CodeableConcept data type "
             "instead of the Reference."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e chargeItem[x]
         one_of_many="chargeItem",
         one_of_many_required=True,
@@ -239,6 +273,8 @@ class InvoiceLineItem(backboneelement.BackboneElement):
             "inline billing codes can be added using the CodeableConcept data type "
             "instead of the Reference."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e chargeItem[x]
         one_of_many="chargeItem",
         one_of_many_required=True,
@@ -259,6 +295,8 @@ class InvoiceLineItem(backboneelement.BackboneElement):
             "transparency to the recipient of the Invoice as to how the prices have"
             " been calculated."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     sequence: fhirtypes.PositiveInt = Field(
@@ -266,6 +304,8 @@ class InvoiceLineItem(backboneelement.BackboneElement):
         alias="sequence",
         title="Sequence number of line item",
         description="Sequence in which the items appear on the invoice.",
+        # if property is element of this resource.
+        element_property=True,
     )
     sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sequence", title="Extension field for ``sequence``."
@@ -331,6 +371,8 @@ class InvoiceLineItemPriceComponent(backboneelement.BackboneElement):
         alias="amount",
         title="Monetary amount associated with this component",
         description="The amount calculated for this component.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -341,6 +383,8 @@ class InvoiceLineItemPriceComponent(backboneelement.BackboneElement):
             "A code that identifies the component. Codes may be used to "
             "differentiate between kinds of taxes, surcharges, discounts etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     factor: fhirtypes.Decimal = Field(
@@ -351,6 +395,8 @@ class InvoiceLineItemPriceComponent(backboneelement.BackboneElement):
             "The factor that has been applied on the base price for calculating "
             "this component."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_factor", title="Extension field for ``factor``."
@@ -361,6 +407,8 @@ class InvoiceLineItemPriceComponent(backboneelement.BackboneElement):
         alias="type",
         title="base | surcharge | deduction | discount | tax | informational",
         description="This code identifies the type of the component.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -396,6 +444,8 @@ class InvoiceParticipant(backboneelement.BackboneElement):
             "The device, practitioner, etc. who performed or participated in the "
             "service."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Practitioner",
@@ -416,4 +466,6 @@ class InvoiceParticipant(backboneelement.BackboneElement):
             "etc.). If the invoice has been created automatically, the Participant "
             "may be a billing engine or another kind of device."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )

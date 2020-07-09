@@ -34,6 +34,8 @@ class SearchParameter(domainresource.DomainResource):
             "The base resource type(s) that this search parameter can be used "
             "against."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     base__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_base", title="Extension field for ``base``."
@@ -52,6 +54,8 @@ class SearchParameter(domainresource.DomainResource):
             "drawn from SearchParameter.code for a parameter on the target resource"
             " type."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     chain__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_chain", title="Extension field for ``chain``."
@@ -65,6 +69,8 @@ class SearchParameter(domainresource.DomainResource):
             "The code used in the URL or the parameter name in a parameters "
             "resource for this search parameter."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -75,6 +81,8 @@ class SearchParameter(domainresource.DomainResource):
         alias="comparator",
         title="eq | ne | gt | lt | ge | le | sa | eb | ap",
         description="Comparators supported for the search parameter.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["eq", "ne", "gt", "lt", "ge", "le", "sa", "eb", "ap"],
@@ -88,6 +96,8 @@ class SearchParameter(domainresource.DomainResource):
         alias="component",
         title="For Composite resources to define the parts",
         description="Used to define the parts of a composite search parameter.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     contact: ListType[fhirtypes.ContactDetailType] = Field(
@@ -98,6 +108,8 @@ class SearchParameter(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     date: fhirtypes.DateTime = Field(
@@ -111,6 +123,8 @@ class SearchParameter(domainresource.DomainResource):
             " should change when the substantive content of the search parameter "
             "changes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -127,6 +141,8 @@ class SearchParameter(domainresource.DomainResource):
             "should have the same meaning, and (usually) the functionality should "
             "be a proper subset of the underlying search parameter."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     derivedFrom__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_derivedFrom", title="Extension field for ``derivedFrom``."
@@ -140,6 +156,8 @@ class SearchParameter(domainresource.DomainResource):
             "A free text natural language description of the search parameter from "
             "a consumer's perspective. and how it used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -154,6 +172,8 @@ class SearchParameter(domainresource.DomainResource):
             " testing purposes (or education/evaluation/marketing), and is not "
             "intended to be used for genuine usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -167,6 +187,8 @@ class SearchParameter(domainresource.DomainResource):
             "A FHIRPath expression that returns a set of elements for the search "
             "parameter."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_expression", title="Extension field for ``expression``."
@@ -180,6 +202,8 @@ class SearchParameter(domainresource.DomainResource):
             "A legal or geographic region in which the search parameter is intended"
             " to be used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     modifier: ListType[fhirtypes.Code] = Field(
@@ -190,6 +214,8 @@ class SearchParameter(domainresource.DomainResource):
             "| type"
         ),
         description="A modifier supported for the search parameter.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -218,6 +244,8 @@ class SearchParameter(domainresource.DomainResource):
             "should be usable as an identifier for the module by machine processing"
             " applications such as code generation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -231,6 +259,8 @@ class SearchParameter(domainresource.DomainResource):
             "The name of the individual or organization that published the search "
             "parameter."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -244,6 +274,8 @@ class SearchParameter(domainresource.DomainResource):
             "Explaination of why this search parameter is needed and why it has "
             "been designed as it has."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_purpose", title="Extension field for ``purpose``."
@@ -257,6 +289,8 @@ class SearchParameter(domainresource.DomainResource):
             "The status of this search parameter. Enables tracking the life-cycle "
             "of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -270,6 +304,8 @@ class SearchParameter(domainresource.DomainResource):
         alias="target",
         title="Types of resource (if a resource reference)",
         description="Types of resource (if a resource is referenced).",
+        # if property is element of this resource.
+        element_property=True,
     )
     target__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_target", title="Extension field for ``target``."
@@ -285,6 +321,8 @@ class SearchParameter(domainresource.DomainResource):
             "The type of value a search parameter refers to, and how the content is"
             " interpreted."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -315,6 +353,8 @@ class SearchParameter(domainresource.DomainResource):
             "information see [Technical and Business "
             "Versions](resource.html#versions)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -329,6 +369,8 @@ class SearchParameter(domainresource.DomainResource):
             "contexts that are listed. These terms may be used to assist with "
             "indexing and searching for appropriate search parameter instances."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     version: fhirtypes.String = Field(
@@ -344,6 +386,8 @@ class SearchParameter(domainresource.DomainResource):
             "available. There is also no expectation that versions can be placed in"
             " a lexicographical sequence."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -357,6 +401,8 @@ class SearchParameter(domainresource.DomainResource):
             "An XPath expression that returns a set of elements for the search "
             "parameter."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     xpath__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_xpath", title="Extension field for ``xpath``."
@@ -370,6 +416,8 @@ class SearchParameter(domainresource.DomainResource):
             "How the search parameter relates to the set of elements returned by "
             "evaluating the xpath query."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["normal", "phonetic", "nearby", "distance", "other"],
@@ -395,6 +443,8 @@ class SearchParameterComponent(backboneelement.BackboneElement):
         alias="definition",
         title="Defines how the part works",
         description="The definition of the search parameter that describes this part.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["SearchParameter"],
     )
@@ -407,6 +457,8 @@ class SearchParameterComponent(backboneelement.BackboneElement):
             "A sub-expression that defines how to extract values for this component"
             " from the output of the main SearchParameter.expression."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_expression", title="Extension field for ``expression``."

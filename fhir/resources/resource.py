@@ -30,6 +30,8 @@ class Resource(fhirresourcemodel.FHIRResourceModel):
             "The logical id of the resource, as used in the URL for the resource. "
             "Once assigned, this value never changes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     id__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_id", title="Extension field for ``id``."
@@ -45,6 +47,8 @@ class Resource(fhirresourcemodel.FHIRResourceModel):
             "content. Often, this is a reference to an implementation guide that "
             "defines the special rules along with other profiles etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     implicitRules__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_implicitRules", title="Extension field for ``implicitRules``."
@@ -55,6 +59,8 @@ class Resource(fhirresourcemodel.FHIRResourceModel):
         alias="language",
         title="Language of the resource content",
         description="The base language in which the resource is written.",
+        # if property is element of this resource.
+        element_property=True,
     )
     language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_language", title="Extension field for ``language``."
@@ -69,4 +75,6 @@ class Resource(fhirresourcemodel.FHIRResourceModel):
             " the infrastructure. Changes to the content might not always be "
             "associated with version changes to the resource."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )

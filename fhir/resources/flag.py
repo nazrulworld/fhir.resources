@@ -30,6 +30,8 @@ class Flag(domainresource.DomainResource):
         alias="author",
         title="Flag creator",
         description="The person, organization or device that created the flag.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Device",
@@ -49,6 +51,8 @@ class Flag(domainresource.DomainResource):
             "administrative etc. Intended to be used as a means of filtering which "
             "flags are displayed to particular user or in a given context."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -59,6 +63,8 @@ class Flag(domainresource.DomainResource):
             "The coded value or textual component of the flag to display to the "
             "user."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     encounter: fhirtypes.ReferenceType = Field(
@@ -66,6 +72,8 @@ class Flag(domainresource.DomainResource):
         alias="encounter",
         title="Alert relevant during encounter",
         description="This alert is only relevant during the encounter.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
     )
@@ -79,6 +87,8 @@ class Flag(domainresource.DomainResource):
             "systems which remain constant as the resource is updated and "
             "propagates from server to server."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -90,6 +100,8 @@ class Flag(domainresource.DomainResource):
             "the flag. If the flag is active, the end of the period should be "
             "unspecified."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     status: fhirtypes.Code = Field(
@@ -97,6 +109,8 @@ class Flag(domainresource.DomainResource):
         alias="status",
         title="active | inactive | entered-in-error",
         description="Supports basic workflow.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "inactive", "entered-in-error"],
@@ -113,6 +127,8 @@ class Flag(domainresource.DomainResource):
             "The patient, location, group, organization, or practitioner etc. this "
             "is about record this flag is associated with."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Patient",

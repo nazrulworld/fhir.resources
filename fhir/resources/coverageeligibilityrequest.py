@@ -35,6 +35,8 @@ class CoverageEligibilityRequest(domainresource.DomainResource):
         alias="created",
         title="Creation date",
         description="The date when this resource was created.",
+        # if property is element of this resource.
+        element_property=True,
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_created", title="Extension field for ``created``."
@@ -45,6 +47,8 @@ class CoverageEligibilityRequest(domainresource.DomainResource):
         alias="enterer",
         title="Author",
         description="Person who created the request.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
     )
@@ -54,6 +58,8 @@ class CoverageEligibilityRequest(domainresource.DomainResource):
         alias="facility",
         title="Servicing facility",
         description="Facility where the services are intended to be provided.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location"],
     )
@@ -63,6 +69,8 @@ class CoverageEligibilityRequest(domainresource.DomainResource):
         alias="identifier",
         title="Business Identifier for coverage eligiblity request",
         description="A unique identifier assigned to this coverage eligiblity request.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     insurance: ListType[fhirtypes.CoverageEligibilityRequestInsuranceType] = Field(
@@ -73,6 +81,8 @@ class CoverageEligibilityRequest(domainresource.DomainResource):
             "Financial instruments for reimbursement for the health care products "
             "and services."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     insurer: fhirtypes.ReferenceType = Field(
@@ -83,6 +93,8 @@ class CoverageEligibilityRequest(domainresource.DomainResource):
             "The Insurer who issued the coverage in question and is the recipient "
             "of the request."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -96,6 +108,8 @@ class CoverageEligibilityRequest(domainresource.DomainResource):
             "and/or an authorization prior to service delivery may be required by "
             "the payor."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     patient: fhirtypes.ReferenceType = Field(
@@ -106,6 +120,8 @@ class CoverageEligibilityRequest(domainresource.DomainResource):
             "The party who is the beneficiary of the supplied coverage and for whom"
             " eligibility is sought."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
     )
@@ -115,6 +131,8 @@ class CoverageEligibilityRequest(domainresource.DomainResource):
         alias="priority",
         title="Desired processing priority",
         description="When the requestor expects the processor to complete processing.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     provider: fhirtypes.ReferenceType = Field(
@@ -122,6 +140,8 @@ class CoverageEligibilityRequest(domainresource.DomainResource):
         alias="provider",
         title="Party responsible for the request",
         description="The provider which is responsible for the request.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
     )
@@ -137,6 +157,8 @@ class CoverageEligibilityRequest(domainresource.DomainResource):
             "patient; and/or validation that the specified coverage is in-force at "
             "the date/period specified or 'now' if not specified."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["auth-requirements", "benefits", "discovery", "validation"],
@@ -153,6 +175,8 @@ class CoverageEligibilityRequest(domainresource.DomainResource):
             "The date or dates when the enclosed suite of services were performed "
             "or completed."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e serviced[x]
         one_of_many="serviced",
         one_of_many_required=False,
@@ -169,6 +193,8 @@ class CoverageEligibilityRequest(domainresource.DomainResource):
             "The date or dates when the enclosed suite of services were performed "
             "or completed."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e serviced[x]
         one_of_many="serviced",
         one_of_many_required=False,
@@ -179,6 +205,8 @@ class CoverageEligibilityRequest(domainresource.DomainResource):
         alias="status",
         title="active | cancelled | draft | entered-in-error",
         description="The status of the resource instance.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "cancelled", "draft", "entered-in-error"],
@@ -197,6 +225,8 @@ class CoverageEligibilityRequest(domainresource.DomainResource):
             "Additional information codes regarding exceptions, special "
             "considerations, the condition, situation, prior or concurrent issues."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)
@@ -256,6 +286,8 @@ class CoverageEligibilityRequestInsurance(backboneelement.BackboneElement):
             "A business agreement number established between the provider and the "
             "insurer for special business processing purposes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     businessArrangement__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -273,6 +305,8 @@ class CoverageEligibilityRequestInsurance(backboneelement.BackboneElement):
             " to locate the patient's actual coverage within the insurer's "
             "information system."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Coverage"],
     )
@@ -285,6 +319,8 @@ class CoverageEligibilityRequestInsurance(backboneelement.BackboneElement):
             "A flag to indicate that this Coverage is to be used for evaluation of "
             "this request when set to true."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     focal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_focal", title="Extension field for ``focal``."
@@ -311,6 +347,8 @@ class CoverageEligibilityRequestItem(backboneelement.BackboneElement):
             "Code to identify the general type of benefits under which products and"
             " services are provided."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     detail: ListType[fhirtypes.ReferenceType] = Field(
@@ -318,6 +356,8 @@ class CoverageEligibilityRequestItem(backboneelement.BackboneElement):
         alias="detail",
         title="Product or service details",
         description="The plan/proposal/order describing the proposed service in detail.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -327,6 +367,8 @@ class CoverageEligibilityRequestItem(backboneelement.BackboneElement):
         alias="diagnosis",
         title="Applicable diagnosis",
         description="Patient diagnosis for which care is sought.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     facility: fhirtypes.ReferenceType = Field(
@@ -334,6 +376,8 @@ class CoverageEligibilityRequestItem(backboneelement.BackboneElement):
         alias="facility",
         title="Servicing facility",
         description="Facility where the services will be provided.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Location", "Organization"],
     )
@@ -346,6 +390,8 @@ class CoverageEligibilityRequestItem(backboneelement.BackboneElement):
             "Item typification or modifiers codes to convey additional context for "
             "the product or service."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     productOrService: fhirtypes.CodeableConceptType = Field(
@@ -356,6 +402,8 @@ class CoverageEligibilityRequestItem(backboneelement.BackboneElement):
             "This contains the product, service, drug or other billing code for the"
             " item."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     provider: fhirtypes.ReferenceType = Field(
@@ -366,6 +414,8 @@ class CoverageEligibilityRequestItem(backboneelement.BackboneElement):
             "The practitioner who is responsible for the product or service to be "
             "rendered to the patient."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
     )
@@ -375,6 +425,8 @@ class CoverageEligibilityRequestItem(backboneelement.BackboneElement):
         alias="quantity",
         title="Count of products or services",
         description="The number of repetitions of a service or product.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     supportingInfoSequence: ListType[fhirtypes.PositiveInt] = Field(
@@ -385,6 +437,8 @@ class CoverageEligibilityRequestItem(backboneelement.BackboneElement):
             "Exceptions, special conditions and supporting information applicable "
             "for this service or product line."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     supportingInfoSequence__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -399,6 +453,8 @@ class CoverageEligibilityRequestItem(backboneelement.BackboneElement):
         alias="unitPrice",
         title="Fee, charge or cost per item",
         description="The amount charged to the patient by the provider for a single unit.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -421,6 +477,8 @@ class CoverageEligibilityRequestItemDiagnosis(backboneelement.BackboneElement):
             "The nature of illness or problem in a coded form or as a reference to "
             "an external defined Condition."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e diagnosis[x]
         one_of_many="diagnosis",
         one_of_many_required=False,
@@ -434,6 +492,8 @@ class CoverageEligibilityRequestItemDiagnosis(backboneelement.BackboneElement):
             "The nature of illness or problem in a coded form or as a reference to "
             "an external defined Condition."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e diagnosis[x]
         one_of_many="diagnosis",
         one_of_many_required=False,
@@ -500,6 +560,8 @@ class CoverageEligibilityRequestSupportingInfo(backboneelement.BackboneElement):
             "The supporting materials are applicable for all detail items, "
             "product/servce categories and specific billing codes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     appliesToAll__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_appliesToAll", title="Extension field for ``appliesToAll``."
@@ -514,6 +576,8 @@ class CoverageEligibilityRequestSupportingInfo(backboneelement.BackboneElement):
             "etc. including references to the data or the actual inclusion of the "
             "data."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -523,6 +587,8 @@ class CoverageEligibilityRequestSupportingInfo(backboneelement.BackboneElement):
         alias="sequence",
         title="Information instance identifier",
         description="A number to uniquely identify supporting information entries.",
+        # if property is element of this resource.
+        element_property=True,
     )
     sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sequence", title="Extension field for ``sequence``."

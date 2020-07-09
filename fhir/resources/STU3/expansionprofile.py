@@ -32,6 +32,8 @@ class ExpansionProfile(domainresource.DomainResource):
             "Controls whether inactive concepts are included or excluded in value "
             "set expansions."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     activeOnly__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_activeOnly", title="Extension field for ``activeOnly``."
@@ -45,6 +47,8 @@ class ExpansionProfile(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     date: fhirtypes.DateTime = Field(
@@ -58,6 +62,8 @@ class ExpansionProfile(domainresource.DomainResource):
             " should change when the substantive content of the expansion profile "
             "changes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -71,6 +77,8 @@ class ExpansionProfile(domainresource.DomainResource):
             "A free text natural language description of the expansion profile from"
             " a consumer's perspective."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -84,6 +92,8 @@ class ExpansionProfile(domainresource.DomainResource):
             "A set of criteria that provide the constraints imposed on the value "
             "set expansion by including or excluding designations."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     displayLanguage: fhirtypes.Code = Field(
@@ -97,6 +107,8 @@ class ExpansionProfile(domainresource.DomainResource):
             "Specifies the language to be used for description in the expansions "
             "i.e. the language to be used for ValueSet.expansion.contains.display."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     displayLanguage__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_displayLanguage", title="Extension field for ``displayLanguage``."
@@ -110,6 +122,8 @@ class ExpansionProfile(domainresource.DomainResource):
             "Controls whether or not the value set expansion nests codes or not "
             "(i.e. ValueSet.expansion.contains.contains)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     excludeNested__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_excludeNested", title="Extension field for ``excludeNested``."
@@ -126,6 +140,8 @@ class ExpansionProfile(domainresource.DomainResource):
             "Controls whether or not the value set expansion includes codes which "
             "cannot be displayed in user interfaces."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     excludeNotForUI__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_excludeNotForUI", title="Extension field for ``excludeNotForUI``."
@@ -142,6 +158,8 @@ class ExpansionProfile(domainresource.DomainResource):
             "Controls whether or not the value set expansion includes post "
             "coordinated codes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     excludePostCoordinated__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -157,6 +175,8 @@ class ExpansionProfile(domainresource.DomainResource):
             "Code system, or a particular version of a code system to be excluded "
             "from value set expansions."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     experimental: bool = Field(
@@ -168,6 +188,8 @@ class ExpansionProfile(domainresource.DomainResource):
             "for testing purposes (or education/evaluation/marketing), and is not "
             "intended to be used for genuine usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -178,6 +200,8 @@ class ExpansionProfile(domainresource.DomainResource):
         alias="fixedVersion",
         title="Fix use of a code system to a particular version",
         description="Fix use of a particular code system to a particular version.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: fhirtypes.IdentifierType = Field(
@@ -189,6 +213,8 @@ class ExpansionProfile(domainresource.DomainResource):
             "when it is represented in other formats, or referenced in a "
             "specification, model, design or an instance."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     includeDefinition: bool = Field(
@@ -199,6 +225,8 @@ class ExpansionProfile(domainresource.DomainResource):
             "Controls whether the value set definition is included or excluded in "
             "value set expansions."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     includeDefinition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -214,6 +242,8 @@ class ExpansionProfile(domainresource.DomainResource):
             "Controls whether concept designations are to be included or excluded "
             "in value set expansions."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     includeDesignations__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -229,6 +259,8 @@ class ExpansionProfile(domainresource.DomainResource):
             "A legal or geographic region in which the expansion profile is "
             "intended to be used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     limitedExpansion: bool = Field(
@@ -245,6 +277,8 @@ class ExpansionProfile(domainresource.DomainResource):
             "[http://hl7.org/fhir/StructureDefinition/valueset-"
             "toocostly](extension-valueset-toocostly.html)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     limitedExpansion__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -261,6 +295,8 @@ class ExpansionProfile(domainresource.DomainResource):
             "should be usable as an identifier for the module by machine processing"
             " applications such as code generation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -274,6 +310,8 @@ class ExpansionProfile(domainresource.DomainResource):
             "The name of the individual or organization that published the "
             "expansion profile."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -287,6 +325,8 @@ class ExpansionProfile(domainresource.DomainResource):
             "The status of this expansion profile. Enables tracking the life-cycle "
             "of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -308,6 +348,8 @@ class ExpansionProfile(domainresource.DomainResource):
             "more information see [Technical and Business "
             "Versions](resource.html#versions)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -322,6 +364,8 @@ class ExpansionProfile(domainresource.DomainResource):
             "contexts that are listed. These terms may be used to assist with "
             "indexing and searching for appropriate expansion profile instances."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     version: fhirtypes.String = Field(
@@ -337,6 +381,8 @@ class ExpansionProfile(domainresource.DomainResource):
             "available. There is also no expectation that versions can be placed in"
             " a lexicographical sequence."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -356,11 +402,21 @@ class ExpansionProfileDesignation(backboneelement.BackboneElement):
     resource_type = Field("ExpansionProfileDesignation", const=True)
 
     exclude: fhirtypes.ExpansionProfileDesignationExcludeType = Field(
-        None, alias="exclude", title="Designations to be excluded", description=None,
+        None,
+        alias="exclude",
+        title="Designations to be excluded",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     include: fhirtypes.ExpansionProfileDesignationIncludeType = Field(
-        None, alias="include", title="Designations to be included", description=None,
+        None,
+        alias="include",
+        title="Designations to be included",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -381,6 +437,8 @@ class ExpansionProfileDesignationExclude(backboneelement.BackboneElement):
         alias="designation",
         title="The designation to be excluded",
         description="A data group for each designation to be excluded.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -400,6 +458,8 @@ class ExpansionProfileDesignationExcludeDesignation(backboneelement.BackboneElem
         alias="language",
         title="Human language of the designation to be excluded",
         description="The language this designation is defined for.",
+        # if property is element of this resource.
+        element_property=True,
     )
     language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_language", title="Extension field for ``language``."
@@ -410,6 +470,8 @@ class ExpansionProfileDesignationExcludeDesignation(backboneelement.BackboneElem
         alias="use",
         title="What kind of Designation to exclude",
         description="Which kinds of designation to exclude from the expansion.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -430,6 +492,8 @@ class ExpansionProfileDesignationInclude(backboneelement.BackboneElement):
         alias="designation",
         title="The designation to be included",
         description="A data group for each designation to be included.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -449,6 +513,8 @@ class ExpansionProfileDesignationIncludeDesignation(backboneelement.BackboneElem
         alias="language",
         title="Human language of the designation to be included",
         description="The language this designation is defined for.",
+        # if property is element of this resource.
+        element_property=True,
     )
     language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_language", title="Extension field for ``language``."
@@ -459,6 +525,8 @@ class ExpansionProfileDesignationIncludeDesignation(backboneelement.BackboneElem
         alias="use",
         title="What kind of Designation to include",
         description="Which kinds of designation to include in the expansion.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -479,6 +547,8 @@ class ExpansionProfileExcludedSystem(backboneelement.BackboneElement):
         alias="system",
         title="The specific code system to be excluded",
         description="An absolute URI which is the code system to be excluded.",
+        # if property is element of this resource.
+        element_property=True,
     )
     system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_system", title="Extension field for ``system``."
@@ -492,6 +562,8 @@ class ExpansionProfileExcludedSystem(backboneelement.BackboneElement):
             "The version of the code system from which codes in the expansion "
             "should be excluded."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -517,6 +589,8 @@ class ExpansionProfileFixedVersion(backboneelement.BackboneElement):
             "How to manage the intersection between a fixed version in a value set,"
             " and this fixed version of the system in the expansion profile."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["default", "check", "override"],
@@ -530,6 +604,8 @@ class ExpansionProfileFixedVersion(backboneelement.BackboneElement):
         alias="system",
         title="System to have its version fixed",
         description="The specific system for which to fix the version.",
+        # if property is element of this resource.
+        element_property=True,
     )
     system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_system", title="Extension field for ``system``."
@@ -543,6 +619,8 @@ class ExpansionProfileFixedVersion(backboneelement.BackboneElement):
             "The version of the code system from which codes in the expansion "
             "should be included."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."

@@ -35,6 +35,8 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "The age of the relative at the time the family member history is "
             "recorded."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e age[x]
         one_of_many="age",
         one_of_many_required=False,
@@ -48,6 +50,8 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "The age of the relative at the time the family member history is "
             "recorded."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e age[x]
         one_of_many="age",
         one_of_many_required=False,
@@ -61,6 +65,8 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "The age of the relative at the time the family member history is "
             "recorded."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e age[x]
         one_of_many="age",
         one_of_many_required=False,
@@ -74,6 +80,8 @@ class FamilyMemberHistory(domainresource.DomainResource):
         alias="bornDate",
         title="(approximate) date of birth",
         description="The actual or approximate date of birth of the relative.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e born[x]
         one_of_many="born",
         one_of_many_required=False,
@@ -87,6 +95,8 @@ class FamilyMemberHistory(domainresource.DomainResource):
         alias="bornPeriod",
         title="(approximate) date of birth",
         description="The actual or approximate date of birth of the relative.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e born[x]
         one_of_many="born",
         one_of_many_required=False,
@@ -97,6 +107,8 @@ class FamilyMemberHistory(domainresource.DomainResource):
         alias="bornString",
         title="(approximate) date of birth",
         description="The actual or approximate date of birth of the relative.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e born[x]
         one_of_many="born",
         one_of_many_required=False,
@@ -115,6 +127,8 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "one condition per resource, though there is nothing stopping multiple "
             "resources - one per condition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     dataAbsentReason: fhirtypes.CodeableConceptType = Field(
@@ -122,6 +136,8 @@ class FamilyMemberHistory(domainresource.DomainResource):
         alias="dataAbsentReason",
         title="subject-unknown | withheld | unable-to-obtain | deferred",
         description="Describes why the family member's history is not available.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     date: fhirtypes.DateTime = Field(
@@ -132,6 +148,8 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "The date (and possibly time) when the family member history was "
             "recorded or last updated."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -145,6 +163,8 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "Deceased flag or the actual or approximate age of the relative at the "
             "time of death for the family member history record."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e deceased[x]
         one_of_many="deceased",
         one_of_many_required=False,
@@ -158,6 +178,8 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "Deceased flag or the actual or approximate age of the relative at the "
             "time of death for the family member history record."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e deceased[x]
         one_of_many="deceased",
         one_of_many_required=False,
@@ -174,6 +196,8 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "Deceased flag or the actual or approximate age of the relative at the "
             "time of death for the family member history record."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e deceased[x]
         one_of_many="deceased",
         one_of_many_required=False,
@@ -190,6 +214,8 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "Deceased flag or the actual or approximate age of the relative at the "
             "time of death for the family member history record."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e deceased[x]
         one_of_many="deceased",
         one_of_many_required=False,
@@ -203,6 +229,8 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "Deceased flag or the actual or approximate age of the relative at the "
             "time of death for the family member history record."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e deceased[x]
         one_of_many="deceased",
         one_of_many_required=False,
@@ -216,6 +244,8 @@ class FamilyMemberHistory(domainresource.DomainResource):
         alias="estimatedAge",
         title="Age is estimated?",
         description="If true, indicates that the age value specified is an estimated value.",
+        # if property is element of this resource.
+        element_property=True,
     )
     estimatedAge__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_estimatedAge", title="Extension field for ``estimatedAge``."
@@ -230,6 +260,8 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "performer or other systems which remain constant as the resource is "
             "updated and propagates from server to server."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     instantiatesCanonical: ListType[fhirtypes.Canonical] = Field(
@@ -241,6 +273,8 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "other definition that is adhered to in whole or in part by this "
             "FamilyMemberHistory."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "PlanDefinition",
@@ -267,6 +301,8 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "orderset or other definition that is adhered to in whole or in part by"
             " this FamilyMemberHistory."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     instantiatesUri__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -282,6 +318,8 @@ class FamilyMemberHistory(domainresource.DomainResource):
             'This will either be a name or a description; e.g. "Aunt Susan", "my '
             'cousin with the red hair".'
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -296,6 +334,8 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "the related person. Ideally, the note would be in the condition "
             "property, but this is not always possible."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     patient: fhirtypes.ReferenceType = Field(
@@ -303,6 +343,8 @@ class FamilyMemberHistory(domainresource.DomainResource):
         alias="patient",
         title="Patient history is about",
         description="The person who this history concerns.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
     )
@@ -315,6 +357,8 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "Describes why the family member history occurred in coded or textual "
             "form."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
@@ -325,6 +369,8 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "Indicates a Condition, Observation, AllergyIntolerance, or "
             "QuestionnaireResponse that justifies this family member history event."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Condition",
@@ -344,6 +390,8 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "The type of relationship this person has to the patient (father, "
             "mother, brother etc.)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     sex: fhirtypes.CodeableConceptType = Field(
@@ -351,6 +399,8 @@ class FamilyMemberHistory(domainresource.DomainResource):
         alias="sex",
         title="male | female | other | unknown",
         description="The birth sex of the family member.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     status: fhirtypes.Code = Field(
@@ -361,6 +411,8 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "A code specifying the status of the record of the family history of a "
             "specific family member."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["partial", "completed", "entered-in-error", "health-unknown"],
@@ -440,6 +492,8 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
             "much is known about the condition and the capabilities of the creating"
             " system."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     contributedToDeath: bool = Field(
@@ -450,6 +504,8 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
             "This condition contributed to the cause of death of the related "
             "person. If contributedToDeath is not populated, then it is unknown."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     contributedToDeath__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -465,6 +521,8 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
             "An area where general notes can be placed about this specific "
             "condition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     onsetAge: fhirtypes.AgeType = Field(
@@ -476,6 +534,8 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
             "string can be recorded.  For conditions with multiple occurrences, "
             "this describes the first known occurrence."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e onset[x]
         one_of_many="onset",
         one_of_many_required=False,
@@ -490,6 +550,8 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
             "string can be recorded.  For conditions with multiple occurrences, "
             "this describes the first known occurrence."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e onset[x]
         one_of_many="onset",
         one_of_many_required=False,
@@ -504,6 +566,8 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
             "string can be recorded.  For conditions with multiple occurrences, "
             "this describes the first known occurrence."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e onset[x]
         one_of_many="onset",
         one_of_many_required=False,
@@ -518,6 +582,8 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
             "string can be recorded.  For conditions with multiple occurrences, "
             "this describes the first known occurrence."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e onset[x]
         one_of_many="onset",
         one_of_many_required=False,
@@ -534,6 +600,8 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
             "Indicates what happened following the condition.  If the condition "
             "resulted in death, deceased date is captured on the relation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)

@@ -35,6 +35,8 @@ class DataRequirement(element.Element):
             "Code filters specify additional constraints on the data, specifying "
             "the value set of interest for a particular element of the data."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     dateFilter: ListType[fhirtypes.DataRequirementDateFilterType] = Field(
@@ -45,6 +47,8 @@ class DataRequirement(element.Element):
             "Date filters specify additional constraints on the data in terms of "
             "the applicable date range for specific elements."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     mustSupport: ListType[fhirtypes.String] = Field(
@@ -64,6 +68,8 @@ class DataRequirement(element.Element):
             "allow references to nested elements. In that case, all the elements "
             "along the path must be supported."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     mustSupport__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -77,6 +83,8 @@ class DataRequirement(element.Element):
             "The profile of the required data, specified as the uri of the profile "
             "definition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     profile__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_profile", title="Extension field for ``profile``."
@@ -91,6 +99,8 @@ class DataRequirement(element.Element):
             "resource. For profiles, this value is set to the type of the base "
             "resource of the profile."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -121,6 +131,8 @@ class DataRequirementCodeFilter(element.Element):
             "index must be an integer constant. The path must resolve to an element"
             " of type code, Coding, or CodeableConcept."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_path", title="Extension field for ``path``."
@@ -137,6 +149,8 @@ class DataRequirementCodeFilter(element.Element):
             "code-valued attribute specified by the path has a value that is one of"
             " the specified codes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     valueCode__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_valueCode", title="Extension field for ``valueCode``."
@@ -153,6 +167,8 @@ class DataRequirementCodeFilter(element.Element):
             "which the code-valued attribute specified by the path has a value that"
             " is one of the specified CodeableConcepts."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     valueCoding: ListType[fhirtypes.CodingType] = Field(
@@ -166,6 +182,8 @@ class DataRequirementCodeFilter(element.Element):
             "code-valued attribute specified by the path has a value that is one of"
             " the specified Codings."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     valueSetReference: fhirtypes.ReferenceType = Field(
@@ -178,6 +196,8 @@ class DataRequirementCodeFilter(element.Element):
             " data items for which the value of the code-valued element specified "
             "in the path is a member of the specified valueset."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e valueSet[x]
         one_of_many="valueSet",
         one_of_many_required=False,
@@ -195,6 +215,8 @@ class DataRequirementCodeFilter(element.Element):
             " data items for which the value of the code-valued element specified "
             "in the path is a member of the specified valueset."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e valueSet[x]
         one_of_many="valueSet",
         one_of_many_required=False,
@@ -264,6 +286,8 @@ class DataRequirementDateFilter(element.Element):
             "index must be an integer constant. The path must resolve to an element"
             " of type dateTime, Period, Schedule, or Timing."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_path", title="Extension field for ``path``."
@@ -281,6 +305,8 @@ class DataRequirementDateFilter(element.Element):
             " to the specified dateTime. If a Duration is specified, the filter "
             "will return only those data items that fall within Duration from now."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -301,6 +327,8 @@ class DataRequirementDateFilter(element.Element):
             " to the specified dateTime. If a Duration is specified, the filter "
             "will return only those data items that fall within Duration from now."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -318,6 +346,8 @@ class DataRequirementDateFilter(element.Element):
             " to the specified dateTime. If a Duration is specified, the filter "
             "will return only those data items that fall within Duration from now."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,

@@ -35,6 +35,8 @@ class ConceptMap(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     copyright: fhirtypes.Markdown = Field(
@@ -46,6 +48,8 @@ class ConceptMap(domainresource.DomainResource):
             " Copyright statements are generally legal restrictions on the use and "
             "publishing of the concept map."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
@@ -61,6 +65,8 @@ class ConceptMap(domainresource.DomainResource):
             "change if the status code changes. In addition, it should change when "
             "the substantive content of the concept map changes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -74,6 +80,8 @@ class ConceptMap(domainresource.DomainResource):
             "A free text natural language description of the concept map from a "
             "consumer's perspective."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -88,6 +96,8 @@ class ConceptMap(domainresource.DomainResource):
             "testing purposes (or education/evaluation/marketing) and is not "
             "intended to be used for genuine usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -98,6 +108,8 @@ class ConceptMap(domainresource.DomainResource):
         alias="group",
         title="Same source and target systems",
         description="A group of mappings that all have the same source and target system.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: fhirtypes.IdentifierType = Field(
@@ -109,6 +121,8 @@ class ConceptMap(domainresource.DomainResource):
             "is represented in other formats, or referenced in a specification, "
             "model, design or an instance."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -119,6 +133,8 @@ class ConceptMap(domainresource.DomainResource):
             "A legal or geographic region in which the concept map is intended to "
             "be used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     name: fhirtypes.String = Field(
@@ -130,6 +146,8 @@ class ConceptMap(domainresource.DomainResource):
             "be usable as an identifier for the module by machine processing "
             "applications such as code generation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -143,6 +161,8 @@ class ConceptMap(domainresource.DomainResource):
             "The name of the organization or individual that published the concept "
             "map."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -156,6 +176,8 @@ class ConceptMap(domainresource.DomainResource):
             "Explanation of why this concept map is needed and why it has been "
             "designed as it has."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_purpose", title="Extension field for ``purpose``."
@@ -169,6 +191,8 @@ class ConceptMap(domainresource.DomainResource):
             "Identifier for the source value set that contains the concepts that "
             "are being mapped and provides context for the mappings."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e source[x]
         one_of_many="source",
         one_of_many_required=False,
@@ -187,6 +211,8 @@ class ConceptMap(domainresource.DomainResource):
             "Identifier for the source value set that contains the concepts that "
             "are being mapped and provides context for the mappings."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e source[x]
         one_of_many="source",
         one_of_many_required=False,
@@ -203,6 +229,8 @@ class ConceptMap(domainresource.DomainResource):
             "The status of this concept map. Enables tracking the life-cycle of the"
             " content."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -221,6 +249,8 @@ class ConceptMap(domainresource.DomainResource):
             "value set provides important context about how the concept mapping "
             "choices are made."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e target[x]
         one_of_many="target",
         one_of_many_required=False,
@@ -241,6 +271,8 @@ class ConceptMap(domainresource.DomainResource):
             "value set provides important context about how the concept mapping "
             "choices are made."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e target[x]
         one_of_many="target",
         one_of_many_required=False,
@@ -254,6 +286,8 @@ class ConceptMap(domainresource.DomainResource):
         alias="title",
         title="Name for this concept map (human friendly)",
         description="A short, descriptive, user-friendly title for the concept map.",
+        # if property is element of this resource.
+        element_property=True,
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -275,6 +309,8 @@ class ConceptMap(domainresource.DomainResource):
             "be the target of a canonical reference. It SHALL remain the same when "
             "the concept map is stored on different servers."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -291,6 +327,8 @@ class ConceptMap(domainresource.DomainResource):
             "(insurance plans, studies, ...) and may be used to assist with "
             "indexing and searching for appropriate concept map instances."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     version: fhirtypes.String = Field(
@@ -306,6 +344,8 @@ class ConceptMap(domainresource.DomainResource):
             "There is also no expectation that versions can be placed in a "
             "lexicographical sequence."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -370,6 +410,8 @@ class ConceptMapGroup(backboneelement.BackboneElement):
             "Mappings for an individual concept in the source to one or more "
             "concepts in the target."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     source: fhirtypes.Uri = Field(
@@ -380,6 +422,8 @@ class ConceptMapGroup(backboneelement.BackboneElement):
             "An absolute URI that identifies the source system where the concepts "
             "to be mapped are defined."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     source__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_source", title="Extension field for ``source``."
@@ -393,6 +437,8 @@ class ConceptMapGroup(backboneelement.BackboneElement):
             "The specific version of the code system, as determined by the code "
             "system authority."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     sourceVersion__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sourceVersion", title="Extension field for ``sourceVersion``."
@@ -406,6 +452,8 @@ class ConceptMapGroup(backboneelement.BackboneElement):
             "An absolute URI that identifies the target system that the concepts "
             "will be mapped to."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     target__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_target", title="Extension field for ``target``."
@@ -419,6 +467,8 @@ class ConceptMapGroup(backboneelement.BackboneElement):
             "The specific version of the code system, as determined by the code "
             "system authority."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     targetVersion__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_targetVersion", title="Extension field for ``targetVersion``."
@@ -433,6 +483,8 @@ class ConceptMapGroup(backboneelement.BackboneElement):
             " does not include codes that are unmatched, and the unmapped element "
             "is ignored in a code is specified to have equivalence = unmatched."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -453,6 +505,8 @@ class ConceptMapGroupElement(backboneelement.BackboneElement):
         alias="code",
         title="Identifies element being mapped",
         description="Identity (code or path) or the element/item being mapped.",
+        # if property is element of this resource.
+        element_property=True,
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -466,6 +520,8 @@ class ConceptMapGroupElement(backboneelement.BackboneElement):
             "The display for the code. The display is only provided to help editors"
             " when editing the concept map."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_display", title="Extension field for ``display``."
@@ -476,6 +532,8 @@ class ConceptMapGroupElement(backboneelement.BackboneElement):
         alias="target",
         title="Concept in target system for element",
         description="A concept from the target value set that this concept maps to.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -495,6 +553,8 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
         alias="code",
         title="Code that identifies the target element",
         description="Identity (code or path) or the element/item that the map refers to.",
+        # if property is element of this resource.
+        element_property=True,
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -508,6 +568,8 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
             "A description of status/issues in mapping that conveys additional "
             "information not represented in  the structured data."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comment", title="Extension field for ``comment``."
@@ -522,6 +584,8 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
             "mapping is only applicable if the specified element can be resolved, "
             "and it has the specified value."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     display: fhirtypes.String = Field(
@@ -532,6 +596,8 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
             "The display for the code. The display is only provided to help editors"
             " when editing the concept map."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_display", title="Extension field for ``display``."
@@ -549,6 +615,8 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
             "the dependencies and products). The equivalence is read from target to"
             " source (e.g. the target is 'wider' than the source)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -579,6 +647,8 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
             " be useful without a place for the additional data elements, but the "
             "equivalence cannot be relied on."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -603,6 +673,8 @@ class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
             "The display for the code. The display is only provided to help editors"
             " when editing the concept map."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_display", title="Extension field for ``display``."
@@ -618,6 +690,8 @@ class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
             "carries an element somewhere that is labeled to correspond with a code"
             " system property."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     property__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_property", title="Extension field for ``property``."
@@ -631,6 +705,8 @@ class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
             "An absolute URI that identifies the code system of the dependency code"
             " (if the source/dependency is a value set that crosses code systems)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CodeSystem"],
     )
@@ -646,6 +722,8 @@ class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
             "Identity (code or path) or the element/item/ValueSet/text that the map"
             " depends on / refers to."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."
@@ -673,6 +751,8 @@ class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
             "The fixed code to use when the mode = 'fixed'  - all unmapped codes "
             "are mapped to a single fixed code."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -686,6 +766,8 @@ class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
             "The display for the code. The display is only provided to help editors"
             " when editing the concept map."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_display", title="Extension field for ``display``."
@@ -703,6 +785,8 @@ class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
             " fixed code (a default code), or alternatively, a reference to a "
             "different concept map can be provided (by canonical URL)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["provided", "fixed", "other-map"],
@@ -723,6 +807,8 @@ class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
             "to use for mapping if this ConceptMap resource contains no matching "
             "mapping for the source concept."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ConceptMap"],
     )

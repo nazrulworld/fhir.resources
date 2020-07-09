@@ -31,6 +31,8 @@ class Practitioner(domainresource.DomainResource):
         alias="active",
         title="Whether this practitioner's record is in active use",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_active", title="Extension field for ``active``."
@@ -48,6 +50,8 @@ class Practitioner(domainresource.DomainResource):
             "home address).  Work addresses are not typically entered in this "
             "property as they are usually role dependent."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     birthDate: fhirtypes.Date = Field(
@@ -55,6 +59,8 @@ class Practitioner(domainresource.DomainResource):
         alias="birthDate",
         title="The date  on which the practitioner was born",
         description="The date of birth for the practitioner.",
+        # if property is element of this resource.
+        element_property=True,
     )
     birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_birthDate", title="Extension field for ``birthDate``."
@@ -65,6 +71,8 @@ class Practitioner(domainresource.DomainResource):
         alias="communication",
         title="A language the practitioner is able to use in patient communication",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     gender: fhirtypes.Code = Field(
@@ -75,6 +83,8 @@ class Practitioner(domainresource.DomainResource):
             "Administrative Gender - the gender that the person is considered to "
             "have for administration and record keeping purposes."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["male", "female", "other", "unknown"],
@@ -88,6 +98,8 @@ class Practitioner(domainresource.DomainResource):
         alias="identifier",
         title="A identifier for the person as this agent",
         description="An identifier that applies to this person in this role.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     name: ListType[fhirtypes.HumanNameType] = Field(
@@ -95,10 +107,17 @@ class Practitioner(domainresource.DomainResource):
         alias="name",
         title="The name(s) associated with the practitioner",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     photo: ListType[fhirtypes.AttachmentType] = Field(
-        None, alias="photo", title="Image of the person", description=None,
+        None,
+        alias="photo",
+        title="Image of the person",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     qualification: ListType[fhirtypes.PractitionerQualificationType] = Field(
@@ -106,6 +125,8 @@ class Practitioner(domainresource.DomainResource):
         alias="qualification",
         title="Qualifications obtained by training and certification",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     telecom: ListType[fhirtypes.ContactPointType] = Field(
@@ -116,6 +137,8 @@ class Practitioner(domainresource.DomainResource):
             "A contact detail for the practitioner, e.g. a telephone number or an "
             "email address."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -134,6 +157,8 @@ class PractitionerQualification(backboneelement.BackboneElement):
         alias="code",
         title="Coded representation of the qualification",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -143,6 +168,8 @@ class PractitionerQualification(backboneelement.BackboneElement):
         description=(
             "An identifier that applies to this person's qualification in this " "role."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     issuer: fhirtypes.ReferenceType = Field(
@@ -150,6 +177,8 @@ class PractitionerQualification(backboneelement.BackboneElement):
         alias="issuer",
         title="Organization that regulates and issues the qualification",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -159,4 +188,6 @@ class PractitionerQualification(backboneelement.BackboneElement):
         alias="period",
         title="Period during which the qualification is valid",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )

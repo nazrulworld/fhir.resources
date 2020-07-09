@@ -32,6 +32,8 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
         alias="collection",
         title="How this product was collected",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -45,6 +47,8 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
             " appropriate (e.g. in CDA documents, or in written / printed "
             "documentation)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     manipulation: fhirtypes.BiologicallyDerivedProductManipulationType = Field(
@@ -56,6 +60,8 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
             "the product.  For example a buffy-coat enrichment or CD8 reduction of "
             "Peripheral Blood Stem Cells to make it more suitable for infusion."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     parent: ListType[fhirtypes.ReferenceType] = Field(
@@ -63,6 +69,8 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
         alias="parent",
         title="BiologicallyDerivedProduct parent",
         description="Parent product (if any).",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["BiologicallyDerivedProduct"],
     )
@@ -76,6 +84,8 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
             "the fundamental nature of the product. For example adding anti-"
             "coagulants during the collection of Peripheral Blood Stem Cells."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     productCategory: fhirtypes.Code = Field(
@@ -83,6 +93,8 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
         alias="productCategory",
         title="organ | tissue | fluid | cells | biologicalAgent",
         description="Broad category of this product.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["organ", "tissue", "fluid", "cells", "biologicalAgent"],
@@ -99,6 +111,8 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
             "A code that identifies the kind of this biologically derived product "
             "(SNOMED Ctcode)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     quantity: fhirtypes.Integer = Field(
@@ -106,6 +120,8 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
         alias="quantity",
         title="The amount of this biologically derived product",
         description="Number of discrete units within this product.",
+        # if property is element of this resource.
+        element_property=True,
     )
     quantity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_quantity", title="Extension field for ``quantity``."
@@ -116,6 +132,8 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
         alias="request",
         title="Procedure request",
         description="Procedure request to obtain this biologically derived product.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ServiceRequest"],
     )
@@ -125,6 +143,8 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
         alias="status",
         title="available | unavailable",
         description="Whether the product is currently available.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["available", "unavailable"],
@@ -134,7 +154,12 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
     )
 
     storage: ListType[fhirtypes.BiologicallyDerivedProductStorageType] = Field(
-        None, alias="storage", title="Product storage", description=None,
+        None,
+        alias="storage",
+        title="Product storage",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -153,6 +178,8 @@ class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
         alias="collectedDateTime",
         title="Time of product collection",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e collected[x]
         one_of_many="collected",
         one_of_many_required=False,
@@ -168,6 +195,8 @@ class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
         alias="collectedPeriod",
         title="Time of product collection",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e collected[x]
         one_of_many="collected",
         one_of_many_required=False,
@@ -178,6 +207,8 @@ class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
         alias="collector",
         title="Individual performing collection",
         description="Healthcare professional who is performing the collection.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
     )
@@ -190,6 +221,8 @@ class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
             "The patient or entity, such as a hospital or vendor in the case of a "
             "processed/manipulated/manufactured product, providing the product."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Organization"],
     )
@@ -249,6 +282,8 @@ class BiologicallyDerivedProductManipulation(backboneelement.BackboneElement):
         alias="description",
         title="Description of manipulation",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -259,6 +294,8 @@ class BiologicallyDerivedProductManipulation(backboneelement.BackboneElement):
         alias="timeDateTime",
         title="Time of manipulation",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e time[x]
         one_of_many="time",
         one_of_many_required=False,
@@ -272,6 +309,8 @@ class BiologicallyDerivedProductManipulation(backboneelement.BackboneElement):
         alias="timePeriod",
         title="Time of manipulation",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e time[x]
         one_of_many="time",
         one_of_many_required=False,
@@ -332,6 +371,8 @@ class BiologicallyDerivedProductProcessing(backboneelement.BackboneElement):
         alias="additive",
         title="Substance added during processing",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance"],
     )
@@ -341,13 +382,20 @@ class BiologicallyDerivedProductProcessing(backboneelement.BackboneElement):
         alias="description",
         title="Description of of processing",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
     )
 
     procedure: fhirtypes.CodeableConceptType = Field(
-        None, alias="procedure", title="Procesing code", description=None,
+        None,
+        alias="procedure",
+        title="Procesing code",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     timeDateTime: fhirtypes.DateTime = Field(
@@ -355,6 +403,8 @@ class BiologicallyDerivedProductProcessing(backboneelement.BackboneElement):
         alias="timeDateTime",
         title="Time of processing",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e time[x]
         one_of_many="time",
         one_of_many_required=False,
@@ -368,6 +418,8 @@ class BiologicallyDerivedProductProcessing(backboneelement.BackboneElement):
         alias="timePeriod",
         title="Time of processing",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e time[x]
         one_of_many="time",
         one_of_many_required=False,
@@ -421,14 +473,24 @@ class BiologicallyDerivedProductStorage(backboneelement.BackboneElement):
     resource_type = Field("BiologicallyDerivedProductStorage", const=True)
 
     description: fhirtypes.String = Field(
-        None, alias="description", title="Description of storage", description=None,
+        None,
+        alias="description",
+        title="Description of storage",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
     )
 
     duration: fhirtypes.PeriodType = Field(
-        None, alias="duration", title="Storage timeperiod", description=None,
+        None,
+        alias="duration",
+        title="Storage timeperiod",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     scale: fhirtypes.Code = Field(
@@ -436,6 +498,8 @@ class BiologicallyDerivedProductStorage(backboneelement.BackboneElement):
         alias="scale",
         title="farenheit | celsius | kelvin",
         description="Temperature scale used.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["farenheit", "celsius", "kelvin"],
@@ -445,7 +509,12 @@ class BiologicallyDerivedProductStorage(backboneelement.BackboneElement):
     )
 
     temperature: fhirtypes.Decimal = Field(
-        None, alias="temperature", title="Storage temperature", description=None,
+        None,
+        alias="temperature",
+        title="Storage temperature",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     temperature__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_temperature", title="Extension field for ``temperature``."

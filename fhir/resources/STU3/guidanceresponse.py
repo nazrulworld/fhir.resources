@@ -35,6 +35,8 @@ class GuidanceResponse(domainresource.DomainResource):
             "Allows the context of the guidance response to be provided if "
             "available. In a service context, this would likely be unavailable."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter", "EpisodeOfCare"],
     )
@@ -50,6 +52,8 @@ class GuidanceResponse(domainresource.DomainResource):
             "order to proceed with the evaluation. A subsequent request to the "
             "service should include this data."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     evaluationMessage: ListType[fhirtypes.ReferenceType] = Field(
@@ -62,6 +66,8 @@ class GuidanceResponse(domainresource.DomainResource):
             "informational or warning messages. These messages will be provided by "
             "this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["OperationOutcome"],
     )
@@ -74,6 +80,8 @@ class GuidanceResponse(domainresource.DomainResource):
             "Allows a service to provide a unique, business identifier for the "
             "response."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     module: fhirtypes.ReferenceType = Field(
@@ -81,6 +89,8 @@ class GuidanceResponse(domainresource.DomainResource):
         alias="module",
         title="A reference to a knowledge module",
         description="A reference to the knowledge module that was invoked.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ServiceDefinition"],
     )
@@ -93,6 +103,8 @@ class GuidanceResponse(domainresource.DomainResource):
             "Provides a mechanism to communicate additional information about the "
             "response."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     occurrenceDateTime: fhirtypes.DateTime = Field(
@@ -100,6 +112,8 @@ class GuidanceResponse(domainresource.DomainResource):
         alias="occurrenceDateTime",
         title="When the guidance response was processed",
         description="Indicates when the guidance response was processed.",
+        # if property is element of this resource.
+        element_property=True,
     )
     occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -119,6 +133,8 @@ class GuidanceResponse(domainresource.DomainResource):
             "returned as the result of the evaluation, and these would be returned "
             "in this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Parameters"],
     )
@@ -128,6 +144,8 @@ class GuidanceResponse(domainresource.DomainResource):
         alias="performer",
         title="Device returning the guidance",
         description="Provides a reference to the device that performed the guidance.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
     )
@@ -142,6 +160,8 @@ class GuidanceResponse(domainresource.DomainResource):
             "although for some use cases, such as subscription- or event-based "
             "scenarios, it may provide an indication of the cause for the response."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e reason[x]
         one_of_many="reason",
         one_of_many_required=False,
@@ -157,6 +177,8 @@ class GuidanceResponse(domainresource.DomainResource):
             "although for some use cases, such as subscription- or event-based "
             "scenarios, it may provide an indication of the cause for the response."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e reason[x]
         one_of_many="reason",
         one_of_many_required=False,
@@ -174,6 +196,8 @@ class GuidanceResponse(domainresource.DomainResource):
             " requester to more easily identify the response in a multi-request "
             "scenario."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     requestId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_requestId", title="Extension field for ``requestId``."
@@ -184,6 +208,8 @@ class GuidanceResponse(domainresource.DomainResource):
         alias="result",
         title="Proposed actions, if any",
         description="The actions, if any, produced by the evaluation of the artifact.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CarePlan", "RequestGroup"],
     )
@@ -206,6 +232,8 @@ class GuidanceResponse(domainresource.DomainResource):
             "available, the status will be data-requested, and the response will "
             "contain a description of the additional requested information."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -226,6 +254,8 @@ class GuidanceResponse(domainresource.DomainResource):
         alias="subject",
         title="Patient the request was performed for",
         description="The patient for which the request was processed.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
     )

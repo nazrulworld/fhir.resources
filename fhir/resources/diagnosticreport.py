@@ -35,6 +35,8 @@ class DiagnosticReport(domainresource.DomainResource):
         alias="basedOn",
         title="What was requested",
         description="Details concerning a service requested.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "CarePlan",
@@ -55,6 +57,8 @@ class DiagnosticReport(domainresource.DomainResource):
             "biochemistry, hematology, MRI). This is used for searching, sorting "
             "and display purposes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -62,6 +66,8 @@ class DiagnosticReport(domainresource.DomainResource):
         alias="code",
         title="Name/Code for this diagnostic report",
         description="A code or name that describes this diagnostic report.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     conclusion: fhirtypes.String = Field(
@@ -72,6 +78,8 @@ class DiagnosticReport(domainresource.DomainResource):
             "Concise and clinically contextualized summary conclusion "
             "(interpretation/impression) of the diagnostic report."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     conclusion__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_conclusion", title="Extension field for ``conclusion``."
@@ -85,6 +93,8 @@ class DiagnosticReport(domainresource.DomainResource):
             "One or more codes that represent the summary conclusion "
             "(interpretation/impression) of the diagnostic report."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     effectiveDateTime: fhirtypes.DateTime = Field(
@@ -97,6 +107,8 @@ class DiagnosticReport(domainresource.DomainResource):
             " the procedure or of specimen collection(s), but very often the source"
             " of the date/time is not known, only the date/time itself."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e effective[x]
         one_of_many="effective",
         one_of_many_required=False,
@@ -117,6 +129,8 @@ class DiagnosticReport(domainresource.DomainResource):
             " the procedure or of specimen collection(s), but very often the source"
             " of the date/time is not known, only the date/time itself."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e effective[x]
         one_of_many="effective",
         one_of_many_required=False,
@@ -130,6 +144,8 @@ class DiagnosticReport(domainresource.DomainResource):
             "The healthcare event  (e.g. a patient and healthcare provider "
             "interaction) which this DiagnosticReport is about."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
     )
@@ -139,6 +155,8 @@ class DiagnosticReport(domainresource.DomainResource):
         alias="identifier",
         title="Business identifier for report",
         description="Identifiers assigned to this report by the performer or other systems.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     imagingStudy: ListType[fhirtypes.ReferenceType] = Field(
@@ -155,6 +173,8 @@ class DiagnosticReport(domainresource.DomainResource):
             "PACS viewer can use this information to provide views of the source "
             "images."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ImagingStudy"],
     )
@@ -167,6 +187,8 @@ class DiagnosticReport(domainresource.DomainResource):
             "The date and time that this version of the report was made available "
             "to providers, typically after the report was reviewed and verified."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     issued__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_issued", title="Extension field for ``issued``."
@@ -181,6 +203,8 @@ class DiagnosticReport(domainresource.DomainResource):
             "generally created during the diagnostic process, and may be directly "
             "of the patient, or of treated specimens (i.e. slides of interest)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     performer: ListType[fhirtypes.ReferenceType] = Field(
@@ -188,6 +212,8 @@ class DiagnosticReport(domainresource.DomainResource):
         alias="performer",
         title="Responsible Diagnostic Service",
         description="The diagnostic service that is responsible for issuing the report.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Practitioner",
@@ -206,6 +232,8 @@ class DiagnosticReport(domainresource.DomainResource):
             "diagnostic service. Multiple formats are allowed but they SHALL be "
             "semantically equivalent."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     result: ListType[fhirtypes.ReferenceType] = Field(
@@ -216,6 +244,8 @@ class DiagnosticReport(domainresource.DomainResource):
             "[Observations](observation.html)  that are part of this diagnostic "
             "report."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Observation"],
     )
@@ -228,6 +258,8 @@ class DiagnosticReport(domainresource.DomainResource):
             "The practitioner or organization that is responsible for the report's "
             "conclusions and interpretations."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Practitioner",
@@ -242,6 +274,8 @@ class DiagnosticReport(domainresource.DomainResource):
         alias="specimen",
         title="Specimens this report is based on",
         description="Details about the specimens on which this diagnostic report is based.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Specimen"],
     )
@@ -251,9 +285,11 @@ class DiagnosticReport(domainresource.DomainResource):
         alias="status",
         title="registered | partial | preliminary | final +",
         description="The status of the diagnostic report.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["registered", "partial", "preliminary", "final +"],
+        enum_values=["registered", "partial", "preliminary", "final", "+"],
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -268,6 +304,8 @@ class DiagnosticReport(domainresource.DomainResource):
             " However, diagnostic services also perform analyses on specimens "
             "collected from a variety of other sources."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group", "Device", "Location"],
     )
@@ -331,6 +369,8 @@ class DiagnosticReportMedia(backboneelement.BackboneElement):
             "explanation for why the image is included, or to draw the viewer's "
             "attention to important features."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comment", title="Extension field for ``comment``."
@@ -341,6 +381,8 @@ class DiagnosticReportMedia(backboneelement.BackboneElement):
         alias="link",
         title="Reference to the image source",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Media"],
     )

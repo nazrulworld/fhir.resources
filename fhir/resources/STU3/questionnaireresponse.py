@@ -35,6 +35,8 @@ class QuestionnaireResponse(domainresource.DomainResource):
             "Person who received the answers to the questions in the "
             "QuestionnaireResponse and recorded them in the system."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device", "Practitioner", "Patient", "RelatedPerson"],
     )
@@ -44,6 +46,8 @@ class QuestionnaireResponse(domainresource.DomainResource):
         alias="authored",
         title="Date the answers were gathered",
         description="The date and/or time that this set of answers were last changed.",
+        # if property is element of this resource.
+        element_property=True,
     )
     authored__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_authored", title="Extension field for ``authored``."
@@ -59,6 +63,8 @@ class QuestionnaireResponse(domainresource.DomainResource):
             "an intake assessment or a decision support recommendation to assess "
             "for post-partum depression."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ReferralRequest", "CarePlan", "ProcedureRequest"],
     )
@@ -71,6 +77,8 @@ class QuestionnaireResponse(domainresource.DomainResource):
             "The encounter or episode of care with primary association to the "
             "questionnaire response."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter", "EpisodeOfCare"],
     )
@@ -83,6 +91,8 @@ class QuestionnaireResponse(domainresource.DomainResource):
             "A business identifier assigned to a particular completed (or partially"
             " completed) questionnaire."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     item: ListType[fhirtypes.QuestionnaireResponseItemType] = Field(
@@ -93,6 +103,8 @@ class QuestionnaireResponse(domainresource.DomainResource):
             "A group or question item from the original questionnaire for which "
             "answers are provided."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     parent: ListType[fhirtypes.ReferenceType] = Field(
@@ -104,6 +116,8 @@ class QuestionnaireResponse(domainresource.DomainResource):
             "part of the execution of.  For example, the surgery a checklist was "
             "executed as part of."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Observation", "Procedure"],
     )
@@ -116,6 +130,8 @@ class QuestionnaireResponse(domainresource.DomainResource):
             "The Questionnaire that defines and organizes the questions for which "
             "answers are being provided."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Questionnaire"],
     )
@@ -125,6 +141,8 @@ class QuestionnaireResponse(domainresource.DomainResource):
         alias="source",
         title="The person who answered the questions",
         description="The person who answered the questions about the subject.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Practitioner", "RelatedPerson"],
     )
@@ -137,6 +155,8 @@ class QuestionnaireResponse(domainresource.DomainResource):
             "The position of the questionnaire response within its overall "
             "lifecycle."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -160,6 +180,8 @@ class QuestionnaireResponse(domainresource.DomainResource):
             "organization, practitioner, device, etc.  This is who/what the answers"
             " apply to, but is not necessarily the source of information."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -182,6 +204,8 @@ class QuestionnaireResponseItem(backboneelement.BackboneElement):
         alias="answer",
         title="The response(s) to the question",
         description="The respondent's answer(s) to the question.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     definition: fhirtypes.Uri = Field(
@@ -192,6 +216,8 @@ class QuestionnaireResponseItem(backboneelement.BackboneElement):
             "A reference to an [ElementDefinition](elementdefinition.html) that "
             "provides the details for the item."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_definition", title="Extension field for ``definition``."
@@ -202,6 +228,8 @@ class QuestionnaireResponseItem(backboneelement.BackboneElement):
         alias="item",
         title="Nested questionnaire response items",
         description="Questions or sub-groups nested beneath a question or group.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     linkId: fhirtypes.String = Field(
@@ -212,6 +240,8 @@ class QuestionnaireResponseItem(backboneelement.BackboneElement):
             "The item from the Questionnaire that corresponds to this item in the "
             "QuestionnaireResponse resource."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     linkId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_linkId", title="Extension field for ``linkId``."
@@ -225,6 +255,8 @@ class QuestionnaireResponseItem(backboneelement.BackboneElement):
             "More specific subject this section's answers are about, details the "
             "subject given in QuestionnaireResponse."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -237,6 +269,8 @@ class QuestionnaireResponseItem(backboneelement.BackboneElement):
             "Text that is displayed above the contents of the group or as the text "
             "of the question being answered."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_text", title="Extension field for ``text``."
@@ -259,6 +293,8 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
         alias="item",
         title="Nested groups and questions",
         description="Nested groups and/or questions found within this particular answer.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     valueAttachment: fhirtypes.AttachmentType = Field(
@@ -269,6 +305,8 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
             "The answer (or one of the answers) provided by the respondent to the "
             "question."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -282,6 +320,8 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
             "The answer (or one of the answers) provided by the respondent to the "
             "question."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -298,6 +338,8 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
             "The answer (or one of the answers) provided by the respondent to the "
             "question."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -311,6 +353,8 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
             "The answer (or one of the answers) provided by the respondent to the "
             "question."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -327,6 +371,8 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
             "The answer (or one of the answers) provided by the respondent to the "
             "question."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -343,6 +389,8 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
             "The answer (or one of the answers) provided by the respondent to the "
             "question."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -359,6 +407,8 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
             "The answer (or one of the answers) provided by the respondent to the "
             "question."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -375,6 +425,8 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
             "The answer (or one of the answers) provided by the respondent to the "
             "question."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -388,6 +440,8 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
             "The answer (or one of the answers) provided by the respondent to the "
             "question."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -403,6 +457,8 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
             "The answer (or one of the answers) provided by the respondent to the "
             "question."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -419,6 +475,8 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
             "The answer (or one of the answers) provided by the respondent to the "
             "question."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,
@@ -435,6 +493,8 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
             "The answer (or one of the answers) provided by the respondent to the "
             "question."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=False,

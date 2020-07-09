@@ -35,6 +35,8 @@ class ServiceDefinition(domainresource.DomainResource):
             "Approval happens once when the content is officially approved for "
             "usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_approvalDate", title="Extension field for ``approvalDate``."
@@ -48,6 +50,8 @@ class ServiceDefinition(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     contributor: ListType[fhirtypes.ContributorType] = Field(
@@ -58,6 +62,8 @@ class ServiceDefinition(domainresource.DomainResource):
             "A contributor to the content of the module, including authors, "
             "editors, reviewers, and endorsers."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     copyright: fhirtypes.Markdown = Field(
@@ -69,6 +75,8 @@ class ServiceDefinition(domainresource.DomainResource):
             "contents. Copyright statements are generally legal restrictions on the"
             " use and publishing of the service definition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
@@ -82,6 +90,8 @@ class ServiceDefinition(domainresource.DomainResource):
             "Data requirements are a machine processable description of the data "
             "required by the module in order to perform a successful evaluation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     date: fhirtypes.DateTime = Field(
@@ -95,6 +105,8 @@ class ServiceDefinition(domainresource.DomainResource):
             " should change when the substantive content of the service definition "
             "changes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -108,6 +120,8 @@ class ServiceDefinition(domainresource.DomainResource):
             "A free text natural language description of the service definition "
             "from a consumer's perspective."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -121,6 +135,8 @@ class ServiceDefinition(domainresource.DomainResource):
             "The period during which the service definition content was or is "
             "planned to be in active use."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     experimental: bool = Field(
@@ -132,6 +148,8 @@ class ServiceDefinition(domainresource.DomainResource):
             "for testing purposes (or education/evaluation/marketing), and is not "
             "intended to be used for genuine usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -148,6 +166,8 @@ class ServiceDefinition(domainresource.DomainResource):
             "NQF identifiers for a measure artifact. Note that at least one "
             "identifier is required for non-experimental active artifacts."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -158,6 +178,8 @@ class ServiceDefinition(domainresource.DomainResource):
             "A legal or geographic region in which the service definition is "
             "intended to be used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     lastReviewDate: fhirtypes.Date = Field(
@@ -169,6 +191,8 @@ class ServiceDefinition(domainresource.DomainResource):
             "happens periodically after approval, but doesn't change the original "
             "approval date."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
@@ -183,6 +207,8 @@ class ServiceDefinition(domainresource.DomainResource):
             "should be usable as an identifier for the module by machine processing"
             " applications such as code generation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -193,6 +219,8 @@ class ServiceDefinition(domainresource.DomainResource):
         alias="operationDefinition",
         title="Operation to invoke",
         description="A reference to the operation that is used to invoke this service.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["OperationDefinition"],
     )
@@ -205,6 +233,8 @@ class ServiceDefinition(domainresource.DomainResource):
             "The name of the individual or organization that published the service "
             "definition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -218,6 +248,8 @@ class ServiceDefinition(domainresource.DomainResource):
             "Explaination of why this service definition is needed and why it has "
             "been designed as it has."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_purpose", title="Extension field for ``purpose``."
@@ -231,6 +263,8 @@ class ServiceDefinition(domainresource.DomainResource):
             "Related resources such as additional documentation, justification, or "
             "bibliographic references."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     status: fhirtypes.Code = Field(
@@ -241,6 +275,8 @@ class ServiceDefinition(domainresource.DomainResource):
             "The status of this service definition. Enables tracking the life-cycle"
             " of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -254,6 +290,8 @@ class ServiceDefinition(domainresource.DomainResource):
         alias="title",
         title="Name for this service definition (human friendly)",
         description="A short, descriptive, user-friendly title for the service definition.",
+        # if property is element of this resource.
+        element_property=True,
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -268,6 +306,8 @@ class ServiceDefinition(domainresource.DomainResource):
             "categorization of the module that can be useful for filtering and "
             "searching."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     trigger: ListType[fhirtypes.TriggerDefinitionType] = Field(
@@ -279,6 +319,8 @@ class ServiceDefinition(domainresource.DomainResource):
             "information is used by consumers of the rule to determine how to "
             "integrate the rule into a specific workflow."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     url: fhirtypes.Uri = Field(
@@ -294,6 +336,8 @@ class ServiceDefinition(domainresource.DomainResource):
             "For more information see [Technical and Business "
             "Versions](resource.html#versions)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -307,6 +351,8 @@ class ServiceDefinition(domainresource.DomainResource):
             "A detailed description of how the module is used from a clinical "
             "perspective."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     usage__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_usage", title="Extension field for ``usage``."
@@ -321,6 +367,8 @@ class ServiceDefinition(domainresource.DomainResource):
             "contexts that are listed. These terms may be used to assist with "
             "indexing and searching for appropriate service definition instances."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     version: fhirtypes.String = Field(
@@ -336,6 +384,8 @@ class ServiceDefinition(domainresource.DomainResource):
             "available. There is also no expectation that versions can be placed in"
             " a lexicographical sequence."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."

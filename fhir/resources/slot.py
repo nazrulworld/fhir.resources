@@ -31,6 +31,8 @@ class Slot(domainresource.DomainResource):
             "(not service type)"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     comment: fhirtypes.String = Field(
@@ -41,6 +43,8 @@ class Slot(domainresource.DomainResource):
             "custom constraints on the slot"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comment", title="Extension field for ``comment``."
@@ -51,13 +55,20 @@ class Slot(domainresource.DomainResource):
         alias="end",
         title="Date/Time that the slot is to conclude",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     end__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_end", title="Extension field for ``end``."
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
-        None, alias="identifier", title="External Ids for this item", description=None,
+        None,
+        alias="identifier",
+        title="External Ids for this item",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     overbooked: bool = Field(
@@ -68,6 +79,8 @@ class Slot(domainresource.DomainResource):
             " accepted for this time"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     overbooked__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_overbooked", title="Extension field for ``overbooked``."
@@ -81,6 +94,8 @@ class Slot(domainresource.DomainResource):
             "information"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Schedule"],
     )
@@ -93,6 +108,8 @@ class Slot(domainresource.DomainResource):
             "this appointment"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     serviceType: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -105,6 +122,8 @@ class Slot(domainresource.DomainResource):
             "provided on the availability resource"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     specialty: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -115,6 +134,8 @@ class Slot(domainresource.DomainResource):
             "service requested in this appointment"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     start: fhirtypes.Instant = Field(
@@ -122,6 +143,8 @@ class Slot(domainresource.DomainResource):
         alias="start",
         title="Date/Time that the slot is to begin",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     start__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_start", title="Extension field for ``start``."
@@ -132,6 +155,8 @@ class Slot(domainresource.DomainResource):
         alias="status",
         title="busy | free | busy-unavailable | busy-tentative | entered-in-error",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[

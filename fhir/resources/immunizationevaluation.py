@@ -32,6 +32,8 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         alias="authority",
         title="Who is responsible for publishing the recommendations",
         description="Indicates the authority who published the protocol (e.g. ACIP).",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -44,6 +46,8 @@ class ImmunizationEvaluation(domainresource.DomainResource):
             "The date the evaluation of the vaccine administration event was "
             "performed."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -54,6 +58,8 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         alias="description",
         title="Evaluation notes",
         description="Additional information about the evaluation.",
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -64,6 +70,8 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         alias="doseNumberPositiveInt",
         title="Dose number within series",
         description="Nominal position in a series.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e doseNumber[x]
         one_of_many="doseNumber",
         one_of_many_required=False,
@@ -79,6 +87,8 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         alias="doseNumberString",
         title="Dose number within series",
         description="Nominal position in a series.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e doseNumber[x]
         one_of_many="doseNumber",
         one_of_many_required=False,
@@ -97,6 +107,8 @@ class ImmunizationEvaluation(domainresource.DomainResource):
             "Indicates if the dose is valid or not valid with respect to the "
             "published recommendations."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     doseStatusReason: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -107,6 +119,8 @@ class ImmunizationEvaluation(domainresource.DomainResource):
             "Provides an explanation as to why the vaccine administration event is "
             "valid or not relative to the published recommendations."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -114,6 +128,8 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         alias="identifier",
         title="Business identifier",
         description="A unique identifier assigned to this immunization evaluation record.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     immunizationEvent: fhirtypes.ReferenceType = Field(
@@ -121,6 +137,8 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         alias="immunizationEvent",
         title="Immunization being evaluated",
         description="The vaccine administration event being evaluated.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Immunization"],
     )
@@ -130,6 +148,8 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         alias="patient",
         title="Who this evaluation is for",
         description="The individual for whom the evaluation is being done.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
     )
@@ -142,6 +162,8 @@ class ImmunizationEvaluation(domainresource.DomainResource):
             "One possible path to achieve presumed immunity against a disease - "
             "within the context of an authority."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     series__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_series", title="Extension field for ``series``."
@@ -152,6 +174,8 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         alias="seriesDosesPositiveInt",
         title="Recommended number of doses for immunity",
         description="The recommended number of doses to achieve immunity.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e seriesDoses[x]
         one_of_many="seriesDoses",
         one_of_many_required=False,
@@ -167,6 +191,8 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         alias="seriesDosesString",
         title="Recommended number of doses for immunity",
         description="The recommended number of doses to achieve immunity.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e seriesDoses[x]
         one_of_many="seriesDoses",
         one_of_many_required=False,
@@ -185,6 +211,8 @@ class ImmunizationEvaluation(domainresource.DomainResource):
             "Indicates the current status of the evaluation of the vaccination "
             "administration event."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["completed", "entered-in-error"],
@@ -198,6 +226,8 @@ class ImmunizationEvaluation(domainresource.DomainResource):
         alias="targetDisease",
         title="Evaluation target disease",
         description="The vaccine preventable disease the dose is being evaluated against.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)

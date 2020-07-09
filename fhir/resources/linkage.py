@@ -33,6 +33,8 @@ class Linkage(domainresource.DomainResource):
             "Indicates whether the asserted set of linkages are considered to be "
             '"in effect".'
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_active", title="Extension field for ``active``."
@@ -47,6 +49,8 @@ class Linkage(domainresource.DomainResource):
             "linkages as well as the user or organization who establishes the "
             "context in which the nature of each linkage is evaluated."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
     )
@@ -60,6 +64,8 @@ class Linkage(domainresource.DomainResource):
             "world occurrence as well as how the items should be evaluated within "
             "the collection of linked items."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -81,6 +87,8 @@ class LinkageItem(backboneelement.BackboneElement):
         alias="resource",
         title="Resource being linked",
         description="The resource instance being linked as part of the group.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -93,6 +101,8 @@ class LinkageItem(backboneelement.BackboneElement):
             'Distinguishes which item is "source of truth" (if any) and which items'
             " are no longer considered to be current representations."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["source", "alternate", "historical"],

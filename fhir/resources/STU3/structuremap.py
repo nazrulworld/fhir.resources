@@ -34,6 +34,8 @@ class StructureMap(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     copyright: fhirtypes.Markdown = Field(
@@ -45,6 +47,8 @@ class StructureMap(domainresource.DomainResource):
             "contents. Copyright statements are generally legal restrictions on the"
             " use and publishing of the structure map."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
@@ -60,6 +64,8 @@ class StructureMap(domainresource.DomainResource):
             "must change if the status code changes. In addition, it should change "
             "when the substantive content of the structure map changes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -73,6 +79,8 @@ class StructureMap(domainresource.DomainResource):
             "A free text natural language description of the structure map from a "
             "consumer's perspective."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -87,6 +95,8 @@ class StructureMap(domainresource.DomainResource):
             "testing purposes (or education/evaluation/marketing), and is not "
             "intended to be used for genuine usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -100,6 +110,8 @@ class StructureMap(domainresource.DomainResource):
             "Organizes the mapping into managable chunks for human review/ease of "
             "maintenance."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -111,6 +123,8 @@ class StructureMap(domainresource.DomainResource):
             "it is represented in other formats, or referenced in a specification, "
             "model, design or an instance."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     import_fhir: ListType[fhirtypes.Uri] = Field(
@@ -118,6 +132,8 @@ class StructureMap(domainresource.DomainResource):
         alias="import",
         title="Other maps used by this map (canonical URLs)",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     import__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_import", title="Extension field for ``import_fhir``."
@@ -131,6 +147,8 @@ class StructureMap(domainresource.DomainResource):
             "A legal or geographic region in which the structure map is intended to"
             " be used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     name: fhirtypes.String = Field(
@@ -142,6 +160,8 @@ class StructureMap(domainresource.DomainResource):
             "should be usable as an identifier for the module by machine processing"
             " applications such as code generation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -155,6 +175,8 @@ class StructureMap(domainresource.DomainResource):
             "The name of the individual or organization that published the "
             "structure map."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -168,6 +190,8 @@ class StructureMap(domainresource.DomainResource):
             "Explaination of why this structure map is needed and why it has been "
             "designed as it has."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_purpose", title="Extension field for ``purpose``."
@@ -181,6 +205,8 @@ class StructureMap(domainresource.DomainResource):
             "The status of this structure map. Enables tracking the life-cycle of "
             "the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -198,6 +224,8 @@ class StructureMap(domainresource.DomainResource):
             "describe instances that are converted, or the instances that are "
             "produced."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     title: fhirtypes.String = Field(
@@ -205,6 +233,8 @@ class StructureMap(domainresource.DomainResource):
         alias="title",
         title="Name for this structure map (human friendly)",
         description="A short, descriptive, user-friendly title for the structure map.",
+        # if property is element of this resource.
+        element_property=True,
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -222,6 +252,8 @@ class StructureMap(domainresource.DomainResource):
             "include the major version of the structure map. For more information "
             "see [Technical and Business Versions](resource.html#versions)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -236,6 +268,8 @@ class StructureMap(domainresource.DomainResource):
             "contexts that are listed. These terms may be used to assist with "
             "indexing and searching for appropriate structure map instances."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     version: fhirtypes.String = Field(
@@ -251,6 +285,8 @@ class StructureMap(domainresource.DomainResource):
             "available. There is also no expectation that versions can be placed in"
             " a lexicographical sequence."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -277,6 +313,8 @@ class StructureMapGroup(backboneelement.BackboneElement):
             "Additional supporting documentation that explains the purpose of the "
             "group and the types of mappings within it."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_documentation", title="Extension field for ``documentation``."
@@ -287,6 +325,8 @@ class StructureMapGroup(backboneelement.BackboneElement):
         alias="extends",
         title="Another group that this group adds rules to",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     extends__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_extends", title="Extension field for ``extends``."
@@ -300,6 +340,8 @@ class StructureMapGroup(backboneelement.BackboneElement):
             "A name assigned to an instance of data. The instance must be provided "
             "when the mapping is invoked."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     name: fhirtypes.Id = Field(
@@ -307,6 +349,8 @@ class StructureMapGroup(backboneelement.BackboneElement):
         alias="name",
         title="Human-readable label",
         description="A unique name for the group for the convenience of human readers.",
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -317,6 +361,8 @@ class StructureMapGroup(backboneelement.BackboneElement):
         alias="rule",
         title="Transform Rule from source to target",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     typeMode: fhirtypes.Code = Field(
@@ -327,6 +373,8 @@ class StructureMapGroup(backboneelement.BackboneElement):
             "If this is the default rule set to apply for thie source type, or this"
             " combination of types."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["none", "types", "type-and-types"],
@@ -353,6 +401,8 @@ class StructureMapGroupInput(backboneelement.BackboneElement):
         alias="documentation",
         title="Documentation for this instance of data",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_documentation", title="Extension field for ``documentation``."
@@ -363,6 +413,8 @@ class StructureMapGroupInput(backboneelement.BackboneElement):
         alias="mode",
         title="source | target",
         description="Mode for this instance of data.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["source", "target"],
@@ -372,14 +424,24 @@ class StructureMapGroupInput(backboneelement.BackboneElement):
     )
 
     name: fhirtypes.Id = Field(
-        ..., alias="name", title="Name for this instance of data", description=None,
+        ...,
+        alias="name",
+        title="Name for this instance of data",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
     )
 
     type: fhirtypes.String = Field(
-        None, alias="type", title="Type for this instance of data", description=None,
+        None,
+        alias="type",
+        title="Type for this instance of data",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -401,6 +463,8 @@ class StructureMapGroupRule(backboneelement.BackboneElement):
         alias="dependent",
         title="Which other rules to apply in the context of this rule",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     documentation: fhirtypes.String = Field(
@@ -408,6 +472,8 @@ class StructureMapGroupRule(backboneelement.BackboneElement):
         alias="documentation",
         title="Documentation for this instance of data",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_documentation", title="Extension field for ``documentation``."
@@ -418,17 +484,29 @@ class StructureMapGroupRule(backboneelement.BackboneElement):
         alias="name",
         title="Name of the rule for internal references",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
     )
 
     rule: ListType[fhirtypes.StructureMapGroupRuleType] = Field(
-        None, alias="rule", title="Rules contained in this rule", description=None,
+        None,
+        alias="rule",
+        title="Rules contained in this rule",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     source: ListType[fhirtypes.StructureMapGroupRuleSourceType] = Field(
-        ..., alias="source", title="Source inputs to the mapping", description=None,
+        ...,
+        alias="source",
+        title="Source inputs to the mapping",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     target: ListType[fhirtypes.StructureMapGroupRuleTargetType] = Field(
@@ -436,6 +514,8 @@ class StructureMapGroupRule(backboneelement.BackboneElement):
         alias="target",
         title="Content to create because of this mapping rule",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -450,7 +530,12 @@ class StructureMapGroupRuleDependent(backboneelement.BackboneElement):
     resource_type = Field("StructureMapGroupRuleDependent", const=True)
 
     name: fhirtypes.Id = Field(
-        ..., alias="name", title="Name of a rule or group to apply", description=None,
+        ...,
+        alias="name",
+        title="Name of a rule or group to apply",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -461,6 +546,8 @@ class StructureMapGroupRuleDependent(backboneelement.BackboneElement):
         alias="variable",
         title="Variable to pass to the rule or group",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     variable__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_variable", title="Extension field for ``variable``."
@@ -485,6 +572,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "error instead of completing"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     check__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_check", title="Extension field for ``check``."
@@ -495,6 +584,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="condition",
         title="FHIRPath expression  - must be true or the rule does not apply",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     condition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_condition", title="Extension field for ``condition``."
@@ -505,6 +596,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="context",
         title="Type or variable this rule applies to",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     context__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_context", title="Extension field for ``context``."
@@ -515,6 +608,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueAddress",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -525,6 +620,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueAge",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -535,6 +632,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueAnnotation",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -545,6 +644,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueAttachment",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -555,6 +656,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueBase64Binary",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -570,6 +673,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueBoolean",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -585,6 +690,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueCode",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -600,6 +707,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueCodeableConcept",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -610,6 +719,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueCoding",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -620,6 +731,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueContactPoint",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -630,6 +743,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueCount",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -640,6 +755,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueDate",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -655,6 +772,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueDateTime",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -670,6 +789,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueDecimal",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -685,6 +806,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueDistance",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -695,6 +818,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueDuration",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -705,6 +830,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueHumanName",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -715,6 +842,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueId",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -728,6 +857,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueIdentifier",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -738,6 +869,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueInstant",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -753,6 +886,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueInteger",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -768,6 +903,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueMarkdown",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -783,6 +920,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueMeta",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -793,6 +932,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueMoney",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -803,6 +944,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueOid",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -816,6 +959,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValuePeriod",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -826,6 +971,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValuePositiveInt",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -841,6 +988,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueQuantity",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -851,6 +1000,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueRange",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -861,6 +1012,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueRatio",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -871,6 +1024,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueReference",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -881,6 +1036,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueSampledData",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -891,6 +1048,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueSignature",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -901,6 +1060,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueString",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -916,6 +1077,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueTime",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -931,6 +1094,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueTiming",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -941,6 +1106,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueUnsignedInt",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -956,6 +1123,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="defaultValueUri",
         title="Default value if no value exists",
         description="A value to use if there is no existing value in the source object.",
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e defaultValue[x]
         one_of_many="defaultValue",
         one_of_many_required=False,
@@ -965,7 +1134,12 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
     )
 
     element: fhirtypes.String = Field(
-        None, alias="element", title="Optional field for this source", description=None,
+        None,
+        alias="element",
+        title="Optional field for this source",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     element__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_element", title="Extension field for ``element``."
@@ -976,6 +1150,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="listMode",
         title="first | not_first | last | not_last | only_one",
         description="How to handle the list mode for this element.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["first", "not_first", "last", "not_last", "only_one"],
@@ -993,6 +1169,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "This is optional; if present, it acts an implicit check on the input "
             "content (* just serves as documentation; it's the default value)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     max__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_max", title="Extension field for ``max``."
@@ -1006,6 +1184,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "Specified minimum cardinality for the element. This is optional; if "
             "present, it acts an implicit check on the input content."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     min__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_min", title="Extension field for ``min``."
@@ -1019,6 +1199,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
             "Specified type for the element. This works as a condition on the "
             "mapping - use for polymorphic elements."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -1029,6 +1211,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         alias="variable",
         title="Named context for field, if a field is specified",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     variable__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_variable", title="Extension field for ``variable``."
@@ -1127,6 +1311,8 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
         alias="context",
         title="Type or variable this rule applies to",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     context__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_context", title="Extension field for ``context``."
@@ -1137,6 +1323,8 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
         alias="contextType",
         title="type | variable",
         description="How to interpret the context.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["type", "variable"],
@@ -1146,7 +1334,12 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
     )
 
     element: fhirtypes.String = Field(
-        None, alias="element", title="Field to create in the context", description=None,
+        None,
+        alias="element",
+        title="Field to create in the context",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     element__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_element", title="Extension field for ``element``."
@@ -1157,6 +1350,8 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
         alias="listMode",
         title="first | share | last | collate",
         description="If field is a list, how to manage the list.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["first", "share", "last", "collate"],
@@ -1170,13 +1365,20 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
         alias="listRuleId",
         title="Internal rule reference for shared list items",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     listRuleId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_listRuleId", title="Extension field for ``listRuleId``."
     )
 
     parameter: ListType[fhirtypes.StructureMapGroupRuleTargetParameterType] = Field(
-        None, alias="parameter", title="Parameters to the transform", description=None,
+        None,
+        alias="parameter",
+        title="Parameters to the transform",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     transform: fhirtypes.Code = Field(
@@ -1184,9 +1386,11 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
         alias="transform",
         title="create | copy +",
         description="How the data is copied / created.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["create", "copy +"],
+        enum_values=["create", "copy", "+"],
     )
     transform__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_transform", title="Extension field for ``transform``."
@@ -1197,6 +1401,8 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
         alias="variable",
         title="Named context for field, if desired, and a field is specified",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     variable__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_variable", title="Extension field for ``variable``."
@@ -1218,6 +1424,8 @@ class StructureMapGroupRuleTargetParameter(backboneelement.BackboneElement):
         alias="valueBoolean",
         title="Parameter value - variable or literal",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1231,6 +1439,8 @@ class StructureMapGroupRuleTargetParameter(backboneelement.BackboneElement):
         alias="valueDecimal",
         title="Parameter value - variable or literal",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1244,6 +1454,8 @@ class StructureMapGroupRuleTargetParameter(backboneelement.BackboneElement):
         alias="valueId",
         title="Parameter value - variable or literal",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1257,6 +1469,8 @@ class StructureMapGroupRuleTargetParameter(backboneelement.BackboneElement):
         alias="valueInteger",
         title="Parameter value - variable or literal",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1270,6 +1484,8 @@ class StructureMapGroupRuleTargetParameter(backboneelement.BackboneElement):
         alias="valueString",
         title="Parameter value - variable or literal",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e value[x]
         one_of_many="value",
         one_of_many_required=True,
@@ -1340,6 +1556,8 @@ class StructureMapStructure(backboneelement.BackboneElement):
         alias="alias",
         title="Name for type in this map",
         description="The name used for this type in the map.",
+        # if property is element of this resource.
+        element_property=True,
     )
     alias__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_alias", title="Extension field for ``alias``."
@@ -1350,6 +1568,8 @@ class StructureMapStructure(backboneelement.BackboneElement):
         alias="documentation",
         title="Documentation on use of structure",
         description="Documentation that describes how the structure is used in the mapping.",
+        # if property is element of this resource.
+        element_property=True,
     )
     documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_documentation", title="Extension field for ``documentation``."
@@ -1360,6 +1580,8 @@ class StructureMapStructure(backboneelement.BackboneElement):
         alias="mode",
         title="source | queried | target | produced",
         description="How the referenced structure is used in this mapping.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["source", "queried", "target", "produced"],
@@ -1373,6 +1595,8 @@ class StructureMapStructure(backboneelement.BackboneElement):
         alias="url",
         title="Canonical URL for structure definition",
         description="The canonical URL that identifies the structure.",
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."

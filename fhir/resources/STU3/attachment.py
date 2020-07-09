@@ -31,6 +31,8 @@ class Attachment(element.Element):
             "to be chosen to interpret or render the data. Includes mime type "
             "parameters such as charset where appropriate."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     contentType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_contentType", title="Extension field for ``contentType``."
@@ -41,6 +43,8 @@ class Attachment(element.Element):
         alias="creation",
         title="Date attachment was first created",
         description="The date that the attachment was first created.",
+        # if property is element of this resource.
+        element_property=True,
     )
     creation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_creation", title="Extension field for ``creation``."
@@ -54,6 +58,8 @@ class Attachment(element.Element):
             "The actual data of the attachment - a sequence of bytes. In XML, "
             "represented using base64."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     data__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_data", title="Extension field for ``data``."
@@ -64,6 +70,8 @@ class Attachment(element.Element):
         alias="hash",
         title="Hash of the data (sha-1, base64ed)",
         description="The calculated hash of the data using SHA-1. Represented using base64.",
+        # if property is element of this resource.
+        element_property=True,
     )
     hash__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_hash", title="Extension field for ``hash``."
@@ -77,6 +85,8 @@ class Attachment(element.Element):
             "The human language of the content. The value can be any valid value "
             "according to BCP 47."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_language", title="Extension field for ``language``."
@@ -90,6 +100,8 @@ class Attachment(element.Element):
             "The number of bytes of data that make up this attachment (before "
             "base64 encoding, if that is done)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     size__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_size", title="Extension field for ``size``."
@@ -100,6 +112,8 @@ class Attachment(element.Element):
         alias="title",
         title="Label to display in place of the data",
         description="A label or set of text to display in place of the data.",
+        # if property is element of this resource.
+        element_property=True,
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -110,6 +124,8 @@ class Attachment(element.Element):
         alias="url",
         title="Uri where the data can be found",
         description="An alternative location where the data can be accessed.",
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."

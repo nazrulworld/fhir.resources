@@ -33,6 +33,8 @@ class Appointment(domainresource.DomainResource):
             "(not service type)"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     basedOn: ListType[fhirtypes.ReferenceType] = Field(
@@ -43,6 +45,8 @@ class Appointment(domainresource.DomainResource):
             "The service request this appointment is allocated to assess (e.g. "
             "incoming referral or procedure request)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ServiceRequest"],
     )
@@ -56,6 +60,8 @@ class Appointment(domainresource.DomainResource):
             "used in reporting/billing/futher processing to determine if further "
             "actions are required, or specific fees apply."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     comment: fhirtypes.String = Field(
@@ -63,6 +69,8 @@ class Appointment(domainresource.DomainResource):
         alias="comment",
         title="Additional comments",
         description="Additional comments about the appointment.",
+        # if property is element of this resource.
+        element_property=True,
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comment", title="Extension field for ``comment``."
@@ -78,6 +86,8 @@ class Appointment(domainresource.DomainResource):
             " could have been before the resource was created on the FHIR server, "
             "and should remain unchanged over the lifespan of the appointment."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_created", title="Extension field for ``created``."
@@ -92,6 +102,8 @@ class Appointment(domainresource.DomainResource):
             "subject line in a meeting request, or appointment list. Detailed or "
             "expanded information should be put in the comment field."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -102,6 +114,8 @@ class Appointment(domainresource.DomainResource):
         alias="end",
         title="When appointment is to conclude",
         description="Date/Time that the appointment is to conclude.",
+        # if property is element of this resource.
+        element_property=True,
     )
     end__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_end", title="Extension field for ``end``."
@@ -117,6 +131,8 @@ class Appointment(domainresource.DomainResource):
             "direct URL reference to the resource itself is not appropriate (e.g. "
             "in CDA documents, or in written / printed documentation)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     minutesDuration: fhirtypes.PositiveInt = Field(
@@ -132,6 +148,8 @@ class Appointment(domainresource.DomainResource):
             "long appointment, the duration may be 15 minutes less than the "
             "difference between the start and end."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     minutesDuration__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_minutesDuration", title="Extension field for ``minutesDuration``."
@@ -142,6 +160,8 @@ class Appointment(domainresource.DomainResource):
         alias="participant",
         title="Participants involved in appointment",
         description="List of participants involved in the appointment.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     patientInstruction: fhirtypes.String = Field(
@@ -154,6 +174,8 @@ class Appointment(domainresource.DomainResource):
             "information about the Appointment (e.g. please bring your referral or "
             "fast from 8pm night before)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     patientInstruction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -170,6 +192,8 @@ class Appointment(domainresource.DomainResource):
             "decisions if needing to re-prioritize appointments. (The iCal Standard"
             " specifies 0 as undefined, 1 as highest, 9 as lowest priority)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_priority", title="Extension field for ``priority``."
@@ -183,6 +207,8 @@ class Appointment(domainresource.DomainResource):
             "The coded reason that this appointment is being scheduled. This is "
             "more clinical than administrative."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
@@ -196,6 +222,8 @@ class Appointment(domainresource.DomainResource):
             "indication will typically be a Condition (with other resources "
             "referenced in the evidence.detail), or a Procedure."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Condition",
@@ -220,6 +248,8 @@ class Appointment(domainresource.DomainResource):
             "actual allocated time. However, in other situations the duration may "
             "be calculated by the scheduling system."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     serviceCategory: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -230,6 +260,8 @@ class Appointment(domainresource.DomainResource):
             "this appointment"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     serviceType: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -237,6 +269,8 @@ class Appointment(domainresource.DomainResource):
         alias="serviceType",
         title="The specific service that is to be performed during this appointment",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     slot: ListType[fhirtypes.ReferenceType] = Field(
@@ -247,6 +281,8 @@ class Appointment(domainresource.DomainResource):
             "The slots from the participants' schedules that will be filled by the "
             "appointment."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Slot"],
     )
@@ -259,6 +295,8 @@ class Appointment(domainresource.DomainResource):
             "service requested in this appointment"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     start: fhirtypes.Instant = Field(
@@ -266,6 +304,8 @@ class Appointment(domainresource.DomainResource):
         alias="start",
         title="When appointment is to take place",
         description="Date/Time that the appointment is to take place.",
+        # if property is element of this resource.
+        element_property=True,
     )
     start__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_start", title="Extension field for ``start``."
@@ -283,6 +323,8 @@ class Appointment(domainresource.DomainResource):
             "their own participation status which indicates their involvement in "
             "the process, however this status indicates the shared status."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -310,6 +352,8 @@ class Appointment(domainresource.DomainResource):
             "Additional information to support the appointment provided when making"
             " the appointment."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -334,6 +378,8 @@ class AppointmentParticipant(backboneelement.BackboneElement):
             "A Person, Location/HealthcareService or Device that is participating "
             "in the appointment."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Patient",
@@ -351,6 +397,8 @@ class AppointmentParticipant(backboneelement.BackboneElement):
         alias="period",
         title="Participation period of the actor",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     required: fhirtypes.Code = Field(
@@ -363,6 +411,8 @@ class AppointmentParticipant(backboneelement.BackboneElement):
             "results for a specific patient, and the patient is not required to be "
             "present."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["required", "optional", "information-only"],
@@ -376,6 +426,8 @@ class AppointmentParticipant(backboneelement.BackboneElement):
         alias="status",
         title="accepted | declined | tentative | needs-action",
         description="Participation status of the actor.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["accepted", "declined", "tentative", "needs-action"],
@@ -389,4 +441,6 @@ class AppointmentParticipant(backboneelement.BackboneElement):
         alias="type",
         title="Role of participant in the appointment",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )

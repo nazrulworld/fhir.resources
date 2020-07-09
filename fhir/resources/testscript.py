@@ -34,6 +34,8 @@ class TestScript(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     copyright: fhirtypes.Markdown = Field(
@@ -45,6 +47,8 @@ class TestScript(domainresource.DomainResource):
             " Copyright statements are generally legal restrictions on the use and "
             "publishing of the test script."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
@@ -60,6 +64,8 @@ class TestScript(domainresource.DomainResource):
             "change if the status code changes. In addition, it should change when "
             "the substantive content of the test script changes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -73,6 +79,8 @@ class TestScript(domainresource.DomainResource):
             "A free text natural language description of the test script from a "
             "consumer's perspective."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -89,6 +97,8 @@ class TestScript(domainresource.DomainResource):
             "An abstract server used in operations within this test script in the "
             "destination element."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     experimental: bool = Field(
@@ -100,6 +110,8 @@ class TestScript(domainresource.DomainResource):
             "testing purposes (or education/evaluation/marketing) and is not "
             "intended to be used for genuine usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -113,6 +125,8 @@ class TestScript(domainresource.DomainResource):
             "Fixture in the test script - by reference (uri). All fixtures are "
             "required for the test script to execute."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: fhirtypes.IdentifierType = Field(
@@ -124,6 +138,8 @@ class TestScript(domainresource.DomainResource):
             "is represented in other formats, or referenced in a specification, "
             "model, design or an instance."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -134,6 +150,8 @@ class TestScript(domainresource.DomainResource):
             "A legal or geographic region in which the test script is intended to "
             "be used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     metadata: fhirtypes.TestScriptMetadataType = Field(
@@ -147,6 +165,8 @@ class TestScript(domainresource.DomainResource):
             "The required capability must exist and are assumed to function "
             "correctly on the FHIR server being tested."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     name: fhirtypes.String = Field(
@@ -158,6 +178,8 @@ class TestScript(domainresource.DomainResource):
             "be usable as an identifier for the module by machine processing "
             "applications such as code generation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -174,6 +196,8 @@ class TestScript(domainresource.DomainResource):
             "An abstract server used in operations within this test script in the "
             "origin element."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     profile: ListType[fhirtypes.ReferenceType] = Field(
@@ -181,6 +205,8 @@ class TestScript(domainresource.DomainResource):
         alias="profile",
         title="Reference of the validation profile",
         description="Reference to the profile to be used for validation.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -193,6 +219,8 @@ class TestScript(domainresource.DomainResource):
             "The name of the organization or individual that published the test "
             "script."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -206,6 +234,8 @@ class TestScript(domainresource.DomainResource):
             "Explanation of why this test script is needed and why it has been "
             "designed as it has."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_purpose", title="Extension field for ``purpose``."
@@ -216,6 +246,8 @@ class TestScript(domainresource.DomainResource):
         alias="setup",
         title="A series of required setup operations before tests are executed",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     status: fhirtypes.Code = Field(
@@ -226,6 +258,8 @@ class TestScript(domainresource.DomainResource):
             "The status of this test script. Enables tracking the life-cycle of the"
             " content."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -242,10 +276,17 @@ class TestScript(domainresource.DomainResource):
             "A series of operations required to clean up after all the tests are "
             "executed (successfully or otherwise)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     test: ListType[fhirtypes.TestScriptTestType] = Field(
-        None, alias="test", title="A test in this script", description=None,
+        None,
+        alias="test",
+        title="A test in this script",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     title: fhirtypes.String = Field(
@@ -253,6 +294,8 @@ class TestScript(domainresource.DomainResource):
         alias="title",
         title="Name for this test script (human friendly)",
         description="A short, descriptive, user-friendly title for the test script.",
+        # if property is element of this resource.
+        element_property=True,
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -274,6 +317,8 @@ class TestScript(domainresource.DomainResource):
             "be the target of a canonical reference. It SHALL remain the same when "
             "the test script is stored on different servers."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -290,6 +335,8 @@ class TestScript(domainresource.DomainResource):
             "(insurance plans, studies, ...) and may be used to assist with "
             "indexing and searching for appropriate test script instances."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     variable: ListType[fhirtypes.TestScriptVariableType] = Field(
@@ -300,6 +347,8 @@ class TestScript(domainresource.DomainResource):
             "Variable is set based either on element value in response body or on "
             "header field value in the response headers."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     version: fhirtypes.String = Field(
@@ -315,6 +364,8 @@ class TestScript(domainresource.DomainResource):
             "There is also no expectation that versions can be placed in a "
             "lexicographical sequence."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -342,6 +393,8 @@ class TestScriptDestination(backboneelement.BackboneElement):
             "Abstract name given to a destination server in this test script.  The "
             "name is provided as a number starting at 1."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     index__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_index", title="Extension field for ``index``."
@@ -355,6 +408,8 @@ class TestScriptDestination(backboneelement.BackboneElement):
             "FormProcessor"
         ),
         description="The type of destination profile the test system supports.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -380,6 +435,8 @@ class TestScriptFixture(backboneelement.BackboneElement):
             "during setup, therefore no create operation is required for this "
             "fixture in the TestScript.setup section."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     autocreate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_autocreate", title="Extension field for ``autocreate``."
@@ -395,6 +452,8 @@ class TestScriptFixture(backboneelement.BackboneElement):
             " during teardown, therefore no delete operation is required for this "
             "fixture in the TestScript.teardown section."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     autodelete__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_autodelete", title="Extension field for ``autodelete``."
@@ -408,6 +467,8 @@ class TestScriptFixture(backboneelement.BackboneElement):
             "Reference to the resource (containing the contents of the resource "
             "needed for operations)."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
@@ -437,6 +498,8 @@ class TestScriptMetadata(backboneelement.BackboneElement):
             "Capabilities that must exist and are assumed to function correctly on "
             "the FHIR server being tested."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     link: ListType[fhirtypes.TestScriptMetadataLinkType] = Field(
@@ -444,6 +507,8 @@ class TestScriptMetadata(backboneelement.BackboneElement):
         alias="link",
         title="Links to the FHIR specification",
         description="A link to the FHIR specification that this test is covering.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -469,6 +534,8 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
             "successfully.   If server does not meet at a minimum the referenced "
             "capability statement, then all tests in this script are skipped."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CapabilityStatement"],
     )
@@ -484,6 +551,8 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
             "Description of the capabilities that this test script is requiring the"
             " server to support."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -494,6 +563,8 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
         alias="destination",
         title="Which server these requirements apply to",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     destination__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_destination", title="Extension field for ``destination``."
@@ -507,6 +578,8 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
             "Links to the FHIR specification that describes this interaction and "
             "the resources involved in more detail."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     link__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_link", title="Extension field for ``link``."
@@ -517,6 +590,8 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
         alias="origin",
         title="Which origin server these requirements apply to",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     origin__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_origin", title="Extension field for ``origin``."
@@ -530,6 +605,8 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
             "Whether or not the test execution will require the given capabilities "
             "of the server in order for this test script to execute."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     required__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_required", title="Extension field for ``required``."
@@ -543,6 +620,8 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
             "Whether or not the test execution will validate the given capabilities"
             " of the server in order for this test script to execute."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     validated__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_validated", title="Extension field for ``validated``."
@@ -565,6 +644,8 @@ class TestScriptMetadataLink(backboneelement.BackboneElement):
         alias="description",
         title="Short description",
         description="Short description of the link.",
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -578,6 +659,8 @@ class TestScriptMetadataLink(backboneelement.BackboneElement):
             "URL to a particular requirement or feature within the FHIR "
             "specification."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -604,6 +687,8 @@ class TestScriptOrigin(backboneelement.BackboneElement):
             "Abstract name given to an origin server in this test script.  The name"
             " is provided as a number starting at 1."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     index__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_index", title="Extension field for ``index``."
@@ -614,6 +699,8 @@ class TestScriptOrigin(backboneelement.BackboneElement):
         alias="profile",
         title="FHIR-Client | FHIR-SDC-FormFiller",
         description="The type of origin profile the test system supports.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -632,6 +719,8 @@ class TestScriptSetup(backboneelement.BackboneElement):
         alias="action",
         title="A setup operation or assert to perform",
         description="Action would contain either an operation or an assertion.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -654,6 +743,8 @@ class TestScriptSetupAction(backboneelement.BackboneElement):
             "Evaluates the results of previous operations to determine if the "
             "server under test behaves appropriately."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     operation: fhirtypes.TestScriptSetupActionOperationType = Field(
@@ -661,6 +752,8 @@ class TestScriptSetupAction(backboneelement.BackboneElement):
         alias="operation",
         title="The setup operation to perform",
         description="The operation to perform.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -685,6 +778,8 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "compareToSourceId is defined, either compareToSourceExpression or "
             "compareToSourcePath must be defined, but not both."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     compareToSourceExpression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -700,6 +795,8 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "Id of the source fixture used as the contents to be evaluated by "
             'either the "source/expression" or "sourceId/path" definition.'
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     compareToSourceId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -716,6 +813,8 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "When compareToSourceId is defined, either compareToSourceExpression or"
             " compareToSourcePath must be defined, but not both."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     compareToSourcePath__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -731,6 +830,8 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "The mime-type contents to compare against the request or response "
             "message 'Content-Type' header."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     contentType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_contentType", title="Extension field for ``contentType``."
@@ -744,6 +845,8 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "The description would be used by test engines for tracking and "
             "reporting purposes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -754,6 +857,8 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
         alias="direction",
         title="response | request",
         description="The direction to use for the assertion.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["response", "request"],
@@ -770,6 +875,8 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "The FHIRPath expression to be evaluated against the request or "
             "response message contents - HTTP headers and payload."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_expression", title="Extension field for ``expression``."
@@ -780,6 +887,8 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
         alias="headerField",
         title="HTTP header field name",
         description="The HTTP header field name e.g. 'Location'.",
+        # if property is element of this resource.
+        element_property=True,
     )
     headerField__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_headerField", title="Extension field for ``headerField``."
@@ -790,6 +899,8 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
         alias="label",
         title="Tracking/logging assertion label",
         description="The label would be used for tracking/logging purposes by test engines.",
+        # if property is element of this resource.
+        element_property=True,
     )
     label__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_label", title="Extension field for ``label``."
@@ -803,6 +914,8 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "The ID of a fixture.  Asserts that the response contains at a minimum "
             "the fixture specified by minimumId."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     minimumId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_minimumId", title="Extension field for ``minimumId``."
@@ -816,6 +929,8 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "Whether or not the test execution performs validation on the bundle "
             "navigation links."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     navigationLinks__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_navigationLinks", title="Extension field for ``navigationLinks``."
@@ -832,6 +947,8 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "The operator type defines the conditional behavior of the assert. If "
             "not defined, the default is equals."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -860,6 +977,8 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "The XPath or JSONPath expression to be evaluated against the fixture "
             "representing the response received from server."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_path", title="Extension field for ``path``."
@@ -873,6 +992,8 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "The request method or HTTP operation code to compare against that used"
             " by the client system under test."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["delete", "get", "options", "patch", "post", "put", "head"],
@@ -886,6 +1007,8 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
         alias="requestURL",
         title="Request URL comparison value",
         description="The value to use in a comparison against the request URL path string.",
+        # if property is element of this resource.
+        element_property=True,
     )
     requestURL__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_requestURL", title="Extension field for ``requestURL``."
@@ -898,6 +1021,8 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
         description=(
             "The type of the resource.  See " "http://build.fhir.org/resourcelist.html."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     resource__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_resource", title="Extension field for ``resource``."
@@ -912,6 +1037,8 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "unprocessable"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -938,6 +1065,8 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
         alias="responseCode",
         title="HTTP response code to test",
         description="The value of the HTTP response code to be tested.",
+        # if property is element of this resource.
+        element_property=True,
     )
     responseCode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_responseCode", title="Extension field for ``responseCode``."
@@ -951,6 +1080,8 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "Fixture to evaluate the XPath/JSONPath expression or the headerField  "
             "against."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     sourceId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sourceId", title="Extension field for ``sourceId``."
@@ -961,6 +1092,8 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
         alias="validateProfileId",
         title="Profile Id of validation profile reference",
         description="The ID of the Profile to validate against.",
+        # if property is element of this resource.
+        element_property=True,
     )
     validateProfileId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -969,7 +1102,12 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
     )
 
     value: fhirtypes.String = Field(
-        None, alias="value", title="The value to compare to", description=None,
+        None,
+        alias="value",
+        title="The value to compare to",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."
@@ -983,6 +1121,8 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
             "Whether or not the test execution will produce a warning only on error"
             " for this assert."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     warningOnly__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_warningOnly", title="Extension field for ``warningOnly``."
@@ -1005,6 +1145,8 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
         alias="accept",
         title="Mime type to accept in the payload of the response, with charset etc.",
         description="The mime-type to use for RESTful operation in the 'Accept' header.",
+        # if property is element of this resource.
+        element_property=True,
     )
     accept__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_accept", title="Extension field for ``accept``."
@@ -1018,6 +1160,8 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
             "The mime-type to use for RESTful operation in the 'Content-Type' "
             "header."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     contentType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_contentType", title="Extension field for ``contentType``."
@@ -1031,6 +1175,8 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
             "The description would be used by test engines for tracking and "
             "reporting purposes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -1044,6 +1190,8 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
             "The server where the request message is destined for.  Must be one of "
             "the server numbers listed in TestScript.destination section."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     destination__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_destination", title="Extension field for ``destination``."
@@ -1059,6 +1207,8 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
             " to false when communicating with a server that does not support "
             "encoded url paths."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     encodeRequestUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -1071,6 +1221,8 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
         alias="label",
         title="Tracking/logging operation label",
         description="The label would be used for tracking/logging purposes by test engines.",
+        # if property is element of this resource.
+        element_property=True,
     )
     label__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_label", title="Extension field for ``label``."
@@ -1084,6 +1236,8 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
             "The HTTP method the test engine MUST use for this operation regardless"
             " of any other operation details."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["delete", "get", "options", "patch", "post", "put", "head"],
@@ -1100,6 +1254,8 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
             "The server where the request message originates from.  Must be one of "
             "the server numbers listed in TestScript.origin section."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     origin__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_origin", title="Extension field for ``origin``."
@@ -1113,6 +1269,8 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
             "Path plus parameters after [type].  Used to set parts of the request "
             "URL explicitly."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     params__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_params", title="Extension field for ``params``."
@@ -1125,6 +1283,8 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
         alias="requestHeader",
         title="Each operation can have one or more header elements",
         description="Header elements would be used to set HTTP headers.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     requestId: fhirtypes.Id = Field(
@@ -1132,6 +1292,8 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
         alias="requestId",
         title="Fixture Id of mapped request",
         description="The fixture id (maybe new) to map to the request.",
+        # if property is element of this resource.
+        element_property=True,
     )
     requestId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_requestId", title="Extension field for ``requestId``."
@@ -1144,6 +1306,8 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
         description=(
             "The type of the resource.  See " "http://build.fhir.org/resourcelist.html."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     resource__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_resource", title="Extension field for ``resource``."
@@ -1154,6 +1318,8 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
         alias="responseId",
         title="Fixture Id of mapped response",
         description="The fixture id (maybe new) to map to the response.",
+        # if property is element of this resource.
+        element_property=True,
     )
     responseId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_responseId", title="Extension field for ``responseId``."
@@ -1164,6 +1330,8 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
         alias="sourceId",
         title="Fixture Id of body for PUT and POST requests",
         description="The id of the fixture used as the body of a PUT or POST request.",
+        # if property is element of this resource.
+        element_property=True,
     )
     sourceId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sourceId", title="Extension field for ``sourceId``."
@@ -1177,6 +1345,8 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
             " requests"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     targetId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_targetId", title="Extension field for ``targetId``."
@@ -1187,10 +1357,17 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
         alias="type",
         title="The operation code type that will be executed",
         description="Server interaction or operation type.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     url: fhirtypes.String = Field(
-        None, alias="url", title="Request URL", description="Complete request URL.",
+        None,
+        alias="url",
+        title="Request URL",
+        description="Complete request URL.",
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -1213,6 +1390,8 @@ class TestScriptSetupActionOperationRequestHeader(backboneelement.BackboneElemen
         alias="field",
         title="HTTP header field name",
         description='The HTTP header field e.g. "Accept".',
+        # if property is element of this resource.
+        element_property=True,
     )
     field__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_field", title="Extension field for ``field``."
@@ -1223,6 +1402,8 @@ class TestScriptSetupActionOperationRequestHeader(backboneelement.BackboneElemen
         alias="value",
         title="HTTP headerfield value",
         description='The value of the header e.g. "application/fhir+xml".',
+        # if property is element of this resource.
+        element_property=True,
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."
@@ -1246,6 +1427,8 @@ class TestScriptTeardown(backboneelement.BackboneElement):
         alias="action",
         title="One or more teardown operations to perform",
         description="The teardown action will only contain an operation.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -1265,6 +1448,8 @@ class TestScriptTeardownAction(backboneelement.BackboneElement):
         alias="operation",
         title="The teardown operation to perform",
         description="An operation would involve a REST request to a server.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -1283,6 +1468,8 @@ class TestScriptTest(backboneelement.BackboneElement):
         alias="action",
         title="A test operation or assert to perform",
         description="Action would contain either an operation or an assertion.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     description: fhirtypes.String = Field(
@@ -1293,6 +1480,8 @@ class TestScriptTest(backboneelement.BackboneElement):
             "A short description of the test used by test engines for tracking and "
             "reporting purposes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -1306,6 +1495,8 @@ class TestScriptTest(backboneelement.BackboneElement):
             "The name of this test used for tracking/logging purposes by test "
             "engines."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -1331,6 +1522,8 @@ class TestScriptTestAction(backboneelement.BackboneElement):
             "Evaluates the results of previous operations to determine if the "
             "server under test behaves appropriately."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     operation: fhirtypes.TestScriptSetupActionOperationType = Field(
@@ -1338,6 +1531,8 @@ class TestScriptTestAction(backboneelement.BackboneElement):
         alias="operation",
         title="The setup operation to perform",
         description="An operation would involve a REST request to a server.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -1358,6 +1553,8 @@ class TestScriptVariable(backboneelement.BackboneElement):
         alias="defaultValue",
         title="Default, hard-coded, or user-defined value for this variable",
         description="A default, hard-coded, or user-defined value for this variable.",
+        # if property is element of this resource.
+        element_property=True,
     )
     defaultValue__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_defaultValue", title="Extension field for ``defaultValue``."
@@ -1371,6 +1568,8 @@ class TestScriptVariable(backboneelement.BackboneElement):
             "A free text natural language description of the variable and its "
             "purpose."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -1385,6 +1584,8 @@ class TestScriptVariable(backboneelement.BackboneElement):
             "variables are defined, only one of either expression, headerField or "
             "path must be specified."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_expression", title="Extension field for ``expression``."
@@ -1398,6 +1599,8 @@ class TestScriptVariable(backboneelement.BackboneElement):
             "Will be used to grab the HTTP header field value from the headers that"
             " sourceId is pointing to."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     headerField__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_headerField", title="Extension field for ``headerField``."
@@ -1411,13 +1614,20 @@ class TestScriptVariable(backboneelement.BackboneElement):
             "Displayable text string with hint help information to the user when "
             "entering a default value."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     hint__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_hint", title="Extension field for ``hint``."
     )
 
     name: fhirtypes.String = Field(
-        ..., alias="name", title="Descriptive name for this variable", description=None,
+        ...,
+        alias="name",
+        title="Descriptive name for this variable",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -1432,6 +1642,8 @@ class TestScriptVariable(backboneelement.BackboneElement):
             "variables are defined, only one of either expression, headerField or "
             "path must be specified."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_path", title="Extension field for ``path``."
@@ -1445,6 +1657,8 @@ class TestScriptVariable(backboneelement.BackboneElement):
             "Fixture to evaluate the XPath/JSONPath expression or the headerField  "
             "against within this variable."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     sourceId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sourceId", title="Extension field for ``sourceId``."

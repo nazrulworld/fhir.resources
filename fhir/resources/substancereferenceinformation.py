@@ -27,28 +27,53 @@ class SubstanceReferenceInformation(domainresource.DomainResource):
     classification: ListType[
         fhirtypes.SubstanceReferenceInformationClassificationType
     ] = Field(
-        None, alias="classification", title="Todo", description=None,
+        None,
+        alias="classification",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     comment: fhirtypes.String = Field(
-        None, alias="comment", title="Todo", description=None,
+        None,
+        alias="comment",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comment", title="Extension field for ``comment``."
     )
 
     gene: ListType[fhirtypes.SubstanceReferenceInformationGeneType] = Field(
-        None, alias="gene", title="Todo", description=None,
+        None,
+        alias="gene",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     geneElement: ListType[
         fhirtypes.SubstanceReferenceInformationGeneElementType
     ] = Field(
-        None, alias="geneElement", title="Todo", description=None,
+        None,
+        alias="geneElement",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     target: ListType[fhirtypes.SubstanceReferenceInformationTargetType] = Field(
-        None, alias="target", title="Todo", description=None,
+        None,
+        alias="target",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -63,11 +88,21 @@ class SubstanceReferenceInformationClassification(backboneelement.BackboneElemen
     resource_type = Field("SubstanceReferenceInformationClassification", const=True)
 
     classification: fhirtypes.CodeableConceptType = Field(
-        None, alias="classification", title="Todo", description=None,
+        None,
+        alias="classification",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     domain: fhirtypes.CodeableConceptType = Field(
-        None, alias="domain", title="Todo", description=None,
+        None,
+        alias="domain",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     source: ListType[fhirtypes.ReferenceType] = Field(
@@ -75,12 +110,19 @@ class SubstanceReferenceInformationClassification(backboneelement.BackboneElemen
         alias="source",
         title="Todo",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
     )
 
     subtype: ListType[fhirtypes.CodeableConceptType] = Field(
-        None, alias="subtype", title="Todo", description=None,
+        None,
+        alias="subtype",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -95,11 +137,21 @@ class SubstanceReferenceInformationGene(backboneelement.BackboneElement):
     resource_type = Field("SubstanceReferenceInformationGene", const=True)
 
     gene: fhirtypes.CodeableConceptType = Field(
-        None, alias="gene", title="Todo", description=None,
+        None,
+        alias="gene",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     geneSequenceOrigin: fhirtypes.CodeableConceptType = Field(
-        None, alias="geneSequenceOrigin", title="Todo", description=None,
+        None,
+        alias="geneSequenceOrigin",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     source: ListType[fhirtypes.ReferenceType] = Field(
@@ -107,6 +159,8 @@ class SubstanceReferenceInformationGene(backboneelement.BackboneElement):
         alias="source",
         title="Todo",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
     )
@@ -123,7 +177,12 @@ class SubstanceReferenceInformationGeneElement(backboneelement.BackboneElement):
     resource_type = Field("SubstanceReferenceInformationGeneElement", const=True)
 
     element: fhirtypes.IdentifierType = Field(
-        None, alias="element", title="Todo", description=None,
+        None,
+        alias="element",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     source: ListType[fhirtypes.ReferenceType] = Field(
@@ -131,12 +190,19 @@ class SubstanceReferenceInformationGeneElement(backboneelement.BackboneElement):
         alias="source",
         title="Todo",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
     )
 
     type: fhirtypes.CodeableConceptType = Field(
-        None, alias="type", title="Todo", description=None,
+        None,
+        alias="type",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -155,6 +221,8 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
         alias="amountQuantity",
         title="Todo",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e amount[x]
         one_of_many="amount",
         one_of_many_required=False,
@@ -165,6 +233,8 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
         alias="amountRange",
         title="Todo",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e amount[x]
         one_of_many="amount",
         one_of_many_required=False,
@@ -175,6 +245,8 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
         alias="amountString",
         title="Todo",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e amount[x]
         one_of_many="amount",
         one_of_many_required=False,
@@ -184,19 +256,39 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
     )
 
     amountType: fhirtypes.CodeableConceptType = Field(
-        None, alias="amountType", title="Todo", description=None,
+        None,
+        alias="amountType",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     interaction: fhirtypes.CodeableConceptType = Field(
-        None, alias="interaction", title="Todo", description=None,
+        None,
+        alias="interaction",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     organism: fhirtypes.CodeableConceptType = Field(
-        None, alias="organism", title="Todo", description=None,
+        None,
+        alias="organism",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     organismType: fhirtypes.CodeableConceptType = Field(
-        None, alias="organismType", title="Todo", description=None,
+        None,
+        alias="organismType",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     source: ListType[fhirtypes.ReferenceType] = Field(
@@ -204,16 +296,28 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
         alias="source",
         title="Todo",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
     )
 
     target: fhirtypes.IdentifierType = Field(
-        None, alias="target", title="Todo", description=None,
+        None,
+        alias="target",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     type: fhirtypes.CodeableConceptType = Field(
-        None, alias="type", title="Todo", description=None,
+        None,
+        alias="type",
+        title="Todo",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)

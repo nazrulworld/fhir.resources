@@ -36,6 +36,8 @@ class EpisodeOfCare(domainresource.DomainResource):
             "The set of accounts that may be used for billing for this " "EpisodeOfCare"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Account"],
     )
@@ -48,6 +50,8 @@ class EpisodeOfCare(domainresource.DomainResource):
             "The practitioner that is the care manager/care coordinator for this "
             "patient."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "PractitionerRole"],
     )
@@ -57,6 +61,8 @@ class EpisodeOfCare(domainresource.DomainResource):
         alias="diagnosis",
         title="The list of diagnosis relevant to this episode of care",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     identifier: ListType[fhirtypes.IdentifierType] = Field(
@@ -68,6 +74,8 @@ class EpisodeOfCare(domainresource.DomainResource):
             "contexts of use, such as when an external agency is tracking the "
             "Episode for funding purposes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     managingOrganization: fhirtypes.ReferenceType = Field(
@@ -78,6 +86,8 @@ class EpisodeOfCare(domainresource.DomainResource):
             "The organization that has assumed the specific responsibilities for "
             "the specified duration."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
@@ -87,6 +97,8 @@ class EpisodeOfCare(domainresource.DomainResource):
         alias="patient",
         title="The patient who is the focus of this episode of care",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient"],
     )
@@ -99,6 +111,8 @@ class EpisodeOfCare(domainresource.DomainResource):
             "The interval during which the managing organization assumes the "
             "defined responsibility."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     referralRequest: ListType[fhirtypes.ReferenceType] = Field(
@@ -109,6 +123,8 @@ class EpisodeOfCare(domainresource.DomainResource):
             "Referral Request(s) that are fulfilled by this EpisodeOfCare, incoming"
             " referrals."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ServiceRequest"],
     )
@@ -121,6 +137,8 @@ class EpisodeOfCare(domainresource.DomainResource):
             "in-error"
         ),
         description="planned | waitlist | active | onhold | finished | cancelled.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -148,6 +166,8 @@ class EpisodeOfCare(domainresource.DomainResource):
             "The history of statuses that the EpisodeOfCare has been through "
             "(without requiring processing the history of the resource)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     team: ListType[fhirtypes.ReferenceType] = Field(
@@ -158,6 +178,8 @@ class EpisodeOfCare(domainresource.DomainResource):
             "The list of practitioners that may be facilitating this episode of "
             "care for specific purposes."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CareTeam"],
     )
@@ -170,6 +192,8 @@ class EpisodeOfCare(domainresource.DomainResource):
             "A classification of the type of episode of care; e.g. specialist "
             "referral, disease management, type of funded care."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -191,6 +215,8 @@ class EpisodeOfCareDiagnosis(backboneelement.BackboneElement):
             "A list of conditions/problems/diagnoses that this episode of care is "
             "intended to be providing care for."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Condition"],
     )
@@ -200,6 +226,8 @@ class EpisodeOfCareDiagnosis(backboneelement.BackboneElement):
         alias="rank",
         title="Ranking of the diagnosis (for each role type)",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     rank__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_rank", title="Extension field for ``rank``."
@@ -213,6 +241,8 @@ class EpisodeOfCareDiagnosis(backboneelement.BackboneElement):
             "admission, billing, discharge \u2026)"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -234,6 +264,8 @@ class EpisodeOfCareStatusHistory(backboneelement.BackboneElement):
         alias="period",
         title="Duration the EpisodeOfCare was in the specified status",
         description="The period during this EpisodeOfCare that the specific status applied.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     status: fhirtypes.Code = Field(
@@ -244,6 +276,8 @@ class EpisodeOfCareStatusHistory(backboneelement.BackboneElement):
             "in-error"
         ),
         description="planned | waitlist | active | onhold | finished | cancelled.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[

@@ -31,6 +31,8 @@ class Basic(domainresource.DomainResource):
         alias="author",
         title="Who created",
         description="Indicates who was responsible for creating the resource instance.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "Patient", "RelatedPerson"],
     )
@@ -43,6 +45,8 @@ class Basic(domainresource.DomainResource):
             "Identifies the 'type' of resource - equivalent to the resource name "
             "for other resources."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     created: fhirtypes.Date = Field(
@@ -50,6 +54,8 @@ class Basic(domainresource.DomainResource):
         alias="created",
         title="When created",
         description="Identifies when the resource was first created.",
+        # if property is element of this resource.
+        element_property=True,
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_created", title="Extension field for ``created``."
@@ -63,6 +69,8 @@ class Basic(domainresource.DomainResource):
             "Identifier assigned to the resource for business purposes, outside the"
             " context of FHIR."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -73,6 +81,8 @@ class Basic(domainresource.DomainResource):
             "Identifies the patient, practitioner, device or any other resource "
             'that is the "focus" of this resource.'
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )

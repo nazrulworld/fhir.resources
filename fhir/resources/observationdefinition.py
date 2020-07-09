@@ -37,6 +37,8 @@ class ObservationDefinition(domainresource.DomainResource):
             "The set of abnormal coded results for the observation conforming to "
             "this ObservationDefinition."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
     )
@@ -46,6 +48,8 @@ class ObservationDefinition(domainresource.DomainResource):
         alias="category",
         title="Category of observation",
         description="A code that classifies the general type of observation.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -56,6 +60,8 @@ class ObservationDefinition(domainresource.DomainResource):
             "Describes what will be observed. Sometimes this is called the "
             'observation "name".'
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     criticalCodedValueSet: fhirtypes.ReferenceType = Field(
@@ -69,6 +75,8 @@ class ObservationDefinition(domainresource.DomainResource):
             "The set of critical coded results for the observation conforming to "
             "this ObservationDefinition."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
     )
@@ -78,6 +86,8 @@ class ObservationDefinition(domainresource.DomainResource):
         alias="identifier",
         title="Business identifier for this ObservationDefinition instance",
         description="A unique identifier assigned to this ObservationDefinition artifact.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     method: fhirtypes.CodeableConceptType = Field(
@@ -85,6 +95,8 @@ class ObservationDefinition(domainresource.DomainResource):
         alias="method",
         title="Method used to produce the observation",
         description="The method or technique used to perform the observation.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     multipleResultsAllowed: bool = Field(
@@ -95,6 +107,8 @@ class ObservationDefinition(domainresource.DomainResource):
             "Multiple results allowed for observations conforming to this "
             "ObservationDefinition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     multipleResultsAllowed__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -113,6 +127,8 @@ class ObservationDefinition(domainresource.DomainResource):
             "The set of normal coded results for the observations conforming to "
             "this ObservationDefinition."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
     )
@@ -128,6 +144,8 @@ class ObservationDefinition(domainresource.DomainResource):
             "The data types allowed for the value element of the instance "
             "observations conforming to this ObservationDefinition."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -160,6 +178,8 @@ class ObservationDefinition(domainresource.DomainResource):
             "The preferred name to be used when reporting the results of "
             "observations conforming to this ObservationDefinition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     preferredReportName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -178,6 +198,8 @@ class ObservationDefinition(domainresource.DomainResource):
             "ordinal or continuous observations conforming to this "
             "ObservationDefinition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     quantitativeDetails: fhirtypes.ObservationDefinitionQuantitativeDetailsType = Field(
@@ -185,6 +207,8 @@ class ObservationDefinition(domainresource.DomainResource):
         alias="quantitativeDetails",
         title="Characteristics of quantitative results",
         description="Characteristics for quantitative results of this observation.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     validCodedValueSet: fhirtypes.ReferenceType = Field(
@@ -198,6 +222,8 @@ class ObservationDefinition(domainresource.DomainResource):
             "The set of valid coded results for the observations  conforming to "
             "this ObservationDefinition."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
     )
@@ -223,6 +249,8 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
             "The age at which this reference range is applicable. This is a "
             "neonatal age (e.g. number of weeks at term) if the meaning says so."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     appliesTo: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -233,6 +261,8 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
             "Codes to indicate the target population this reference range applies "
             "to."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     category: fhirtypes.Code = Field(
@@ -243,6 +273,8 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
             "The category of interval of values for continuous or ordinal "
             "observations conforming to this ObservationDefinition."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["reference", "critical", "absolute"],
@@ -256,6 +288,8 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
         alias="condition",
         title="Condition associated with the reference range",
         description="Text based condition for which the reference range is valid.",
+        # if property is element of this resource.
+        element_property=True,
     )
     condition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_condition", title="Extension field for ``condition``."
@@ -269,6 +303,8 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
             "Codes to indicate the health context the range applies to. For "
             "example, the normal or therapeutic range."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     gender: fhirtypes.Code = Field(
@@ -276,6 +312,8 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
         alias="gender",
         title="male | female | other | unknown",
         description="Sex of the population the range applies to.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["male", "female", "other", "unknown"],
@@ -292,6 +330,8 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
             "The gestational age to which this reference range is applicable, in "
             "the context of pregnancy."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     range: fhirtypes.RangeType = Field(
@@ -302,6 +342,8 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
             "The low and high values determining the interval. There may be only "
             "one of the two."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -324,6 +366,8 @@ class ObservationDefinitionQuantitativeDetails(backboneelement.BackboneElement):
             "Factor for converting value expressed with SI unit to value expressed "
             "with customary unit."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     conversionFactor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -339,6 +383,8 @@ class ObservationDefinitionQuantitativeDetails(backboneelement.BackboneElement):
             "Customary unit used to report quantitative results of observations "
             "conforming to this ObservationDefinition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     decimalPrecision: fhirtypes.Integer = Field(
@@ -349,6 +395,8 @@ class ObservationDefinitionQuantitativeDetails(backboneelement.BackboneElement):
             "Number of digits after decimal separator when the results of such "
             "observations are of type Quantity."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     decimalPrecision__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -364,4 +412,6 @@ class ObservationDefinitionQuantitativeDetails(backboneelement.BackboneElement):
             "SI unit used to report quantitative results of observations conforming"
             " to this ObservationDefinition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )

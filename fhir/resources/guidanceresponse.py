@@ -38,6 +38,8 @@ class GuidanceResponse(domainresource.DomainResource):
             "order to proceed with the evaluation. A subsequent request to the "
             "service should include this data."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     encounter: fhirtypes.ReferenceType = Field(
@@ -48,6 +50,8 @@ class GuidanceResponse(domainresource.DomainResource):
             "The encounter during which this response was created or to which the "
             "creation of this record is tightly associated."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Encounter"],
     )
@@ -62,6 +66,8 @@ class GuidanceResponse(domainresource.DomainResource):
             "informational or warning messages. These messages will be provided by "
             "this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["OperationOutcome"],
     )
@@ -74,6 +80,8 @@ class GuidanceResponse(domainresource.DomainResource):
             "Allows a service to provide  unique, business identifiers for the "
             "response."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     moduleCanonical: fhirtypes.Canonical = Field(
@@ -84,6 +92,8 @@ class GuidanceResponse(domainresource.DomainResource):
             "An identifier, CodeableConcept or canonical reference to the guidance "
             "that was requested."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e module[x]
         one_of_many="module",
         one_of_many_required=True,
@@ -100,6 +110,8 @@ class GuidanceResponse(domainresource.DomainResource):
             "An identifier, CodeableConcept or canonical reference to the guidance "
             "that was requested."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e module[x]
         one_of_many="module",
         one_of_many_required=True,
@@ -113,6 +125,8 @@ class GuidanceResponse(domainresource.DomainResource):
             "An identifier, CodeableConcept or canonical reference to the guidance "
             "that was requested."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # Choice of Data Types. i.e module[x]
         one_of_many="module",
         one_of_many_required=True,
@@ -129,6 +143,8 @@ class GuidanceResponse(domainresource.DomainResource):
             "Provides a mechanism to communicate additional information about the "
             "response."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     occurrenceDateTime: fhirtypes.DateTime = Field(
@@ -136,6 +152,8 @@ class GuidanceResponse(domainresource.DomainResource):
         alias="occurrenceDateTime",
         title="When the guidance response was processed",
         description="Indicates when the guidance response was processed.",
+        # if property is element of this resource.
+        element_property=True,
     )
     occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -155,6 +173,8 @@ class GuidanceResponse(domainresource.DomainResource):
             "returned as the result of the evaluation, and these would be returned "
             "in this element."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Parameters"],
     )
@@ -164,6 +184,8 @@ class GuidanceResponse(domainresource.DomainResource):
         alias="performer",
         title="Device returning the guidance",
         description="Provides a reference to the device that performed the guidance.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
     )
@@ -176,6 +198,8 @@ class GuidanceResponse(domainresource.DomainResource):
             "Describes the reason for the guidance response in coded or textual "
             "form."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     reasonReference: ListType[fhirtypes.ReferenceType] = Field(
@@ -188,6 +212,8 @@ class GuidanceResponse(domainresource.DomainResource):
             "although for some use cases, such as subscription- or event-based "
             "scenarios, it may provide an indication of the cause for the response."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=[
             "Condition",
@@ -207,6 +233,8 @@ class GuidanceResponse(domainresource.DomainResource):
             "here to enable the requester to more easily identify the response in a"
             " multi-request scenario."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     result: fhirtypes.ReferenceType = Field(
@@ -214,6 +242,8 @@ class GuidanceResponse(domainresource.DomainResource):
         alias="result",
         title="Proposed actions, if any",
         description="The actions, if any, produced by the evaluation of the artifact.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CarePlan", "RequestGroup"],
     )
@@ -236,6 +266,8 @@ class GuidanceResponse(domainresource.DomainResource):
             "available, the status will be data-requested, and the response will "
             "contain a description of the additional requested information."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -256,6 +288,8 @@ class GuidanceResponse(domainresource.DomainResource):
         alias="subject",
         title="Patient the request was performed for",
         description="The patient for which the request was processed.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
     )

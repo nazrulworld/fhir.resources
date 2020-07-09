@@ -33,6 +33,8 @@ class SampledData(element.Element):
             'detection limit) and "U" (above detection limit) can also be used in '
             "place of a decimal value."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     data__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_data", title="Extension field for ``data``."
@@ -47,6 +49,8 @@ class SampledData(element.Element):
             "greater than one, then the dimensions will be interlaced - all the "
             "sample points for a point in time will be recorded at once."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     dimensions__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_dimensions", title="Extension field for ``dimensions``."
@@ -60,6 +64,8 @@ class SampledData(element.Element):
             "A correction factor that is applied to the sampled data points before "
             "they are added to the origin."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_factor", title="Extension field for ``factor``."
@@ -74,6 +80,8 @@ class SampledData(element.Element):
             ' any of the data points have the value "L" (lower than detection '
             "limit)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     lowerLimit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lowerLimit", title="Extension field for ``lowerLimit``."
@@ -87,6 +95,8 @@ class SampledData(element.Element):
             "The base quantity that a measured value of zero represents. In "
             "addition, this provides the units of the entire measurement series."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     period: fhirtypes.Decimal = Field(
@@ -94,6 +104,8 @@ class SampledData(element.Element):
         alias="period",
         title="Number of milliseconds between samples",
         description="The length of time between sampling times, measured in milliseconds.",
+        # if property is element of this resource.
+        element_property=True,
     )
     period__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_period", title="Extension field for ``period``."
@@ -108,6 +120,8 @@ class SampledData(element.Element):
             ' any of the data points have the value "U" (higher than detection '
             "limit)."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     upperLimit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_upperLimit", title="Extension field for ``upperLimit``."

@@ -37,6 +37,8 @@ class StructureDefinition(domainresource.DomainResource):
             "Resources and Data types, abstract types will never be exchanged  "
             "between systems."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     abstract__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_abstract", title="Extension field for ``abstract``."
@@ -50,6 +52,8 @@ class StructureDefinition(domainresource.DomainResource):
             "An absolute URI that is the base structure from which this type is "
             "derived, either by specialization or constraint."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
     )
@@ -65,6 +69,8 @@ class StructureDefinition(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     context: ListType[fhirtypes.StructureDefinitionContextType] = Field(
@@ -75,6 +81,8 @@ class StructureDefinition(domainresource.DomainResource):
             "Identifies the types of resource or data type elements to which the "
             "extension can be applied."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     contextInvariant: ListType[fhirtypes.String] = Field(
@@ -86,6 +94,8 @@ class StructureDefinition(domainresource.DomainResource):
             "used (e.g. co-occurrence variants for the extension). All the rules "
             "must be true."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     contextInvariant__ext: ListType[
         Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -104,6 +114,8 @@ class StructureDefinition(domainresource.DomainResource):
             "contents. Copyright statements are generally legal restrictions on the"
             " use and publishing of the structure definition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
@@ -120,6 +132,8 @@ class StructureDefinition(domainresource.DomainResource):
             "change when the substantive content of the structure definition "
             "changes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -130,9 +144,11 @@ class StructureDefinition(domainresource.DomainResource):
         alias="derivation",
         title="specialization | constraint - How relates to base definition",
         description="How the type relates to the baseDefinition.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["specialization", "constraint - How relates to base definition"],
+        enum_values=["specialization", "constraint"],
     )
     derivation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_derivation", title="Extension field for ``derivation``."
@@ -146,6 +162,8 @@ class StructureDefinition(domainresource.DomainResource):
             "A free text natural language description of the structure definition "
             "from a consumer's perspective."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -159,6 +177,8 @@ class StructureDefinition(domainresource.DomainResource):
             "A differential view is expressed relative to the base "
             "StructureDefinition - a statement of differences that it applies."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     experimental: bool = Field(
@@ -170,6 +190,8 @@ class StructureDefinition(domainresource.DomainResource):
             " for testing purposes (or education/evaluation/marketing) and is not "
             "intended to be used for genuine usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -185,6 +207,8 @@ class StructureDefinition(domainresource.DomainResource):
             "specification, without the revision number, e.g. "
             "[publication].[major].[minor], which is 4.0.1. for this version."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     fhirVersion__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_fhirVersion", title="Extension field for ``fhirVersion``."
@@ -199,6 +223,8 @@ class StructureDefinition(domainresource.DomainResource):
             " when it is represented in other formats, or referenced in a "
             "specification, model, design or an instance."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -209,6 +235,8 @@ class StructureDefinition(domainresource.DomainResource):
             "A legal or geographic region in which the structure definition is "
             "intended to be used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     keyword: ListType[fhirtypes.CodingType] = Field(
@@ -220,6 +248,8 @@ class StructureDefinition(domainresource.DomainResource):
             "used to assist with indexing and searching of templates nby describing"
             " the use of this structure definition, or the content it describes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     kind: fhirtypes.Code = Field(
@@ -227,6 +257,8 @@ class StructureDefinition(domainresource.DomainResource):
         alias="kind",
         title="primitive-type | complex-type | resource | logical",
         description="Defines the kind of structure that this definition is describing.",
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["primitive-type", "complex-type", "resource", "logical"],
@@ -240,6 +272,8 @@ class StructureDefinition(domainresource.DomainResource):
         alias="mapping",
         title="External specification that the content is mapped to",
         description="An external specification that the content is mapped to.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     name: fhirtypes.String = Field(
@@ -251,6 +285,8 @@ class StructureDefinition(domainresource.DomainResource):
             "name should be usable as an identifier for the module by machine "
             "processing applications such as code generation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -264,6 +300,8 @@ class StructureDefinition(domainresource.DomainResource):
             "The name of the organization or individual that published the "
             "structure definition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -277,6 +315,8 @@ class StructureDefinition(domainresource.DomainResource):
             "Explanation of why this structure definition is needed and why it has "
             "been designed as it has."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_purpose", title="Extension field for ``purpose``."
@@ -290,6 +330,8 @@ class StructureDefinition(domainresource.DomainResource):
             "A snapshot view is expressed in a standalone form that can be used and"
             " interpreted without considering the base StructureDefinition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     status: fhirtypes.Code = Field(
@@ -300,6 +342,8 @@ class StructureDefinition(domainresource.DomainResource):
             "The status of this structure definition. Enables tracking the life-"
             "cycle of the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -315,6 +359,8 @@ class StructureDefinition(domainresource.DomainResource):
         description=(
             "A short, descriptive, user-friendly title for the structure " "definition."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -335,6 +381,8 @@ class StructureDefinition(domainresource.DomainResource):
             "to http://hl7.org/fhir/StructureDefinition/string. Absolute URLs are "
             "only allowed in logical models."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -357,6 +405,8 @@ class StructureDefinition(domainresource.DomainResource):
             "SHALL remain the same when the structure definition is stored on "
             "different servers."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -373,6 +423,8 @@ class StructureDefinition(domainresource.DomainResource):
             "(insurance plans, studies, ...) and may be used to assist with "
             "indexing and searching for appropriate structure definition instances."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     version: fhirtypes.String = Field(
@@ -388,6 +440,8 @@ class StructureDefinition(domainresource.DomainResource):
             "is not available. There is also no expectation that versions can be "
             "placed in a lexicographical sequence."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -413,6 +467,8 @@ class StructureDefinitionContext(backboneelement.BackboneElement):
         description=(
             "An expression that defines where an extension can be used in " "resources."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     expression__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_expression", title="Extension field for ``expression``."
@@ -426,6 +482,8 @@ class StructureDefinitionContext(backboneelement.BackboneElement):
             "Defines how to interpret the expression that defines what the context "
             "of the extension is."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["fhirpath", "element", "extension"],
@@ -452,6 +510,8 @@ class StructureDefinitionDifferential(backboneelement.BackboneElement):
         alias="element",
         title="Definition of elements in the resource (if no StructureDefinition)",
         description="Captures constraints on each element within the resource.",
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -474,6 +534,8 @@ class StructureDefinitionMapping(backboneelement.BackboneElement):
             "Comments about this mapping, including version notes, issues, scope "
             "limitations, and other important notes for usage."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comment", title="Extension field for ``comment``."
@@ -487,6 +549,8 @@ class StructureDefinitionMapping(backboneelement.BackboneElement):
             "An Internal id that is used to identify this mapping set when specific"
             " mappings are made."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     identity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_identity", title="Extension field for ``identity``."
@@ -497,6 +561,8 @@ class StructureDefinitionMapping(backboneelement.BackboneElement):
         alias="name",
         title="Names what this mapping refers to",
         description="A name for the specification that is being mapped to.",
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -510,6 +576,8 @@ class StructureDefinitionMapping(backboneelement.BackboneElement):
             "An absolute URI that identifies the specification that this mapping is"
             " expressed to."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     uri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uri", title="Extension field for ``uri``."
@@ -533,4 +601,6 @@ class StructureDefinitionSnapshot(backboneelement.BackboneElement):
         alias="element",
         title="Definition of elements in the resource (if no StructureDefinition)",
         description="Captures constraints on each element within the resource.",
+        # if property is element of this resource.
+        element_property=True,
     )

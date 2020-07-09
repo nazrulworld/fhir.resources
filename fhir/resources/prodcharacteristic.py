@@ -35,6 +35,8 @@ class ProdCharacteristic(backboneelement.BackboneElement):
             "used"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     color__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_color", title="Extension field for ``color``."
@@ -50,6 +52,8 @@ class ProdCharacteristic(backboneelement.BackboneElement):
             " and the symbol identifier shall be used"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     externalDiameter: fhirtypes.QuantityType = Field(
@@ -62,6 +66,8 @@ class ProdCharacteristic(backboneelement.BackboneElement):
             "terminology The symbol and the symbol identifier shall be used"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     height: fhirtypes.QuantityType = Field(
@@ -74,6 +80,8 @@ class ProdCharacteristic(backboneelement.BackboneElement):
             " and the symbol identifier shall be used"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     image: ListType[fhirtypes.AttachmentType] = Field(
@@ -84,6 +92,8 @@ class ProdCharacteristic(backboneelement.BackboneElement):
             "attachment shall be specified by regional implementations"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     imprint: ListType[fhirtypes.String] = Field(
@@ -91,6 +101,8 @@ class ProdCharacteristic(backboneelement.BackboneElement):
         alias="imprint",
         title="Where applicable, the imprint can be specified as text",
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     imprint__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
         None, alias="_imprint", title="Extension field for ``imprint``."
@@ -106,6 +118,8 @@ class ProdCharacteristic(backboneelement.BackboneElement):
             "terminology The symbol and the symbol identifier shall be used"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     scoring: fhirtypes.CodeableConceptType = Field(
@@ -117,6 +131,8 @@ class ProdCharacteristic(backboneelement.BackboneElement):
             "shall be used"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     shape: fhirtypes.String = Field(
@@ -128,6 +144,8 @@ class ProdCharacteristic(backboneelement.BackboneElement):
             "used"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
     shape__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_shape", title="Extension field for ``shape``."
@@ -143,6 +161,8 @@ class ProdCharacteristic(backboneelement.BackboneElement):
             " and the symbol identifier shall be used"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
 
     width: fhirtypes.QuantityType = Field(
@@ -155,4 +175,6 @@ class ProdCharacteristic(backboneelement.BackboneElement):
             " and the symbol identifier shall be used"
         ),
         description=None,
+        # if property is element of this resource.
+        element_property=True,
     )

@@ -34,6 +34,8 @@ class NamingSystem(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     date: fhirtypes.DateTime = Field(
@@ -46,6 +48,8 @@ class NamingSystem(domainresource.DomainResource):
             "change if the status code changes. In addition, it should change when "
             "the substantive content of the naming system changes."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -60,6 +64,8 @@ class NamingSystem(domainresource.DomainResource):
             "consumer's perspective. Details about what the namespace identifies "
             "including scope, granularity, version labeling, etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -73,6 +79,8 @@ class NamingSystem(domainresource.DomainResource):
             "A legal or geographic region in which the naming system is intended to"
             " be used."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     kind: fhirtypes.Code = Field(
@@ -83,6 +91,8 @@ class NamingSystem(domainresource.DomainResource):
             "Indicates the purpose for the naming system - what kinds of things "
             "does it make unique?"
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["codesystem", "identifier", "root"],
@@ -100,6 +110,8 @@ class NamingSystem(domainresource.DomainResource):
             "should be usable as an identifier for the module by machine processing"
             " applications such as code generation."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -113,6 +125,8 @@ class NamingSystem(domainresource.DomainResource):
             "The name of the organization or individual that published the naming "
             "system."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
@@ -127,6 +141,8 @@ class NamingSystem(domainresource.DomainResource):
             "identifiers or codes for this namespace and ensuring their non-"
             "collision."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     responsible__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_responsible", title="Extension field for ``responsible``."
@@ -140,6 +156,8 @@ class NamingSystem(domainresource.DomainResource):
             "The status of this naming system. Enables tracking the life-cycle of "
             "the content."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -156,6 +174,8 @@ class NamingSystem(domainresource.DomainResource):
             "Categorizes a naming system for easier search by grouping related "
             "naming systems."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     uniqueId: ListType[fhirtypes.NamingSystemUniqueIdType] = Field(
@@ -166,6 +186,8 @@ class NamingSystem(domainresource.DomainResource):
             "Indicates how the system may be identified when referenced in "
             "electronic exchange."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     usage: fhirtypes.String = Field(
@@ -176,6 +198,8 @@ class NamingSystem(domainresource.DomainResource):
             "Provides guidance on the use of the namespace, including the handling "
             "of formatting characters, use of upper vs. lower case, etc."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     usage__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_usage", title="Extension field for ``usage``."
@@ -192,6 +216,8 @@ class NamingSystem(domainresource.DomainResource):
             "(insurance plans, studies, ...) and may be used to assist with "
             "indexing and searching for appropriate naming system instances."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
 
@@ -212,6 +238,8 @@ class NamingSystemUniqueId(backboneelement.BackboneElement):
         alias="comment",
         title="Notes about identifier usage",
         description="Notes about the past or intended usage of this identifier.",
+        # if property is element of this resource.
+        element_property=True,
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comment", title="Extension field for ``comment``."
@@ -226,6 +254,8 @@ class NamingSystemUniqueId(backboneelement.BackboneElement):
             " appropriate to refer to the naming system.  Outside of this window, "
             "the identifier might be non-deterministic."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
 
     preferred: bool = Field(
@@ -236,6 +266,8 @@ class NamingSystemUniqueId(backboneelement.BackboneElement):
             'Indicates whether this identifier is the "preferred" identifier of '
             "this type."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     preferred__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_preferred", title="Extension field for ``preferred``."
@@ -249,6 +281,8 @@ class NamingSystemUniqueId(backboneelement.BackboneElement):
             "Identifies the unique identifier scheme used for this particular "
             "identifier."
         ),
+        # if property is element of this resource.
+        element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["oid", "uuid", "uri", "other"],
@@ -265,6 +299,8 @@ class NamingSystemUniqueId(backboneelement.BackboneElement):
             "The string that should be sent over the wire to identify the code "
             "system or identifier system."
         ),
+        # if property is element of this resource.
+        element_property=True,
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."

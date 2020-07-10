@@ -32,7 +32,6 @@ install:
   - pip install codecov
   - sleep 1
 script:
-  - git submodule update --init --recursive
   - make clean
   - make lint
   - mypy fhir/resources/

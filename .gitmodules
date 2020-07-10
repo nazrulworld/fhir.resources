@@ -1,3 +1,0 @@
-[submodule "fhir-parser"]
-	path = fhir-parser
-	url = https://github.com/nazrulworld/fhir-parser.git

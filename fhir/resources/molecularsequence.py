@@ -661,8 +661,8 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
         description=(
             "Reference identifier of reference sequence submitted to NCBI. It must "
             "match the type in the MolecularSequence.type field. For example, the "
-            "prefix, \u201cNG_\u201d identifies reference sequence for genes, "
-            "\u201cNM_\u201d for "
+            "prefix, \u201cNG_\u201d identifies reference sequence "
+            "for genes, \u201cNM_\u201d for "
             "messenger RNA transcripts, and \u201cNP_\u201d for amino acid sequences."
         ),
         # if property is element of this resource.

@@ -10,7 +10,6 @@ History
 
 - Minor fixes on ``enum_values``.
 
-
 6.0.0b1 (2020-07-05)
 --------------------
 

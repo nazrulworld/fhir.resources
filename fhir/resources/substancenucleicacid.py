@@ -233,8 +233,7 @@ class SubstanceNucleicAcidSubunitLinkage(backboneelement.BackboneElement):
             "is a phosphate group. For many synthetic oligonucleotides "
             "phosphorothioate linkages are often seen. Linkage connectivity is "
             "assumed to be 3\u2019-5\u2019. If the linkage is either "
-            "3\u2019-3\u2019 or 5\u2019-5\u2019 this "
-            "should be specified"
+            "3\u2019-3\u2019 or 5\u2019-5\u2019 this should be specified"
         ),
         description=None,
         # if property is element of this resource.

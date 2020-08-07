@@ -126,6 +126,12 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
                 return True
         return False
 
+    @classmethod
+    @lru_cache(maxsize=None, typed=True)
+    def get_resource_type(cls: Type["Model"]) -> str:
+        """ """
+        return cls.__fields__["resource_type"].default
+
     def dict(
         self,
         *,

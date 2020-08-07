@@ -5,7 +5,7 @@ History
 6.0.0b3 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- ``FHIRAbstractModel::get_resource_type`` class method now available, which returning name of the resource.
 
 
 6.0.0b2 (2020-07-09)

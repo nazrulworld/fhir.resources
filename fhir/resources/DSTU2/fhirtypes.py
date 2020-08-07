@@ -1098,6 +1098,46 @@ class MedicationProductIngredientType(AbstractType):
     __resource_type__ = "MedicationProductIngredient"
 
 
+class ContractType(AbstractType):
+    __resource_type__ = "Contract"
+
+
+class ContractActorType(AbstractType):
+    __resource_type__ = "ContractActor"
+
+
+class ContractFriendlyType(AbstractType):
+    __resource_type__ = "ContractFriendly"
+
+
+class ContractLegalType(AbstractType):
+    __resource_type__ = "ContractLegal"
+
+
+class ContractRuleType(AbstractType):
+    __resource_type__ = "ContractRule"
+
+
+class ContractSignerType(AbstractType):
+    __resource_type__ = "ContractSigner"
+
+
+class ContractTermType(AbstractType):
+    __resource_type__ = "ContractTerm"
+
+
+class ContractTermActorType(AbstractType):
+    __resource_type__ = "ContractTermActor"
+
+
+class ContractTermValuedItemType(AbstractType):
+    __resource_type__ = "ContractTermValuedItem"
+
+
+class ContractValuedItemType(AbstractType):
+    __resource_type__ = "ContractValuedItem"
+
+
 __all__ = [
     "ElementType",
     "ResourceType",
@@ -1280,4 +1320,14 @@ __all__ = [
     "MedicationProductType",
     "MedicationProductBatchType",
     "MedicationProductIngredientType",
+    "ContractType",
+    "ContractActorType",
+    "ContractFriendlyType",
+    "ContractLegalType",
+    "ContractRuleType",
+    "ContractSignerType",
+    "ContractTermType",
+    "ContractTermActorType",
+    "ContractTermValuedItemType",
+    "ContractValuedItemType",
 ]

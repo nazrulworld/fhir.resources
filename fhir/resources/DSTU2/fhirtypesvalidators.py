@@ -191,6 +191,16 @@ MODEL_CLASSES = {
     "MedicationProduct": (None, ".medication"),
     "MedicationProductBatch": (None, ".medication"),
     "MedicationProductIngredient": (None, ".medication"),
+    "Contract": (None, ".contract"),
+    "ContractActor": (None, ".contract"),
+    "ContractFriendly": (None, ".contract"),
+    "ContractLegal": (None, ".contract"),
+    "ContractRule": (None, ".contract"),
+    "ContractSigner": (None, ".contract"),
+    "ContractTerm": (None, ".contract"),
+    "ContractTermActor": (None, ".contract"),
+    "ContractTermValuedItem": (None, ".contract"),
+    "ContractValuedItem": (None, ".contract"),
 }
 
 
@@ -1049,6 +1059,46 @@ def medicationproductingredient_validator(
     return fhir_model_validator("MedicationProductIngredient", v)
 
 
+def contract_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Contract", v)
+
+
+def contractactor_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ContractActor", v)
+
+
+def contractfriendly_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ContractFriendly", v)
+
+
+def contractlegal_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ContractLegal", v)
+
+
+def contractrule_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ContractRule", v)
+
+
+def contractsigner_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ContractSigner", v)
+
+
+def contractterm_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ContractTerm", v)
+
+
+def contracttermactor_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ContractTermActor", v)
+
+
+def contracttermvalueditem_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ContractTermValuedItem", v)
+
+
+def contractvalueditem_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ContractValuedItem", v)
+
+
 __all__ = [
     "element_validator",
     "resource_validator",
@@ -1228,4 +1278,14 @@ __all__ = [
     "medicationproduct_validator",
     "medicationproductbatch_validator",
     "medicationproductingredient_validator",
+    "contract_validator",
+    "contractactor_validator",
+    "contractfriendly_validator",
+    "contractlegal_validator",
+    "contractrule_validator",
+    "contractsigner_validator",
+    "contractterm_validator",
+    "contracttermactor_validator",
+    "contracttermvalueditem_validator",
+    "contractvalueditem_validator",
 ]

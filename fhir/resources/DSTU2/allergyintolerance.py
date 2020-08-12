@@ -23,10 +23,10 @@ class AllergyIntolerance(DomainResource):
 
     resource_type = Field("AllergyIntolerance", const=True)
 
-    category: ListType[fhirtypes.Code] = Field(
+    category: fhirtypes.Code = Field(
         None,
         alias="category",
-        title="List of `Code` items (represented as `dict` in JSON)",
+        title="Type `Code` (represented as `dict` in JSON)",
         description="food | medication | environment | biologic",
     )
 

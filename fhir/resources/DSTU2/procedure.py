@@ -26,7 +26,7 @@ class Procedure(DomainResource):
     resource_type = Field("Procedure", const=True)
 
     status: fhirtypes.Code = Field(
-        None,
+        ...,
         alias="status",
         title="Type `Code`",
         description="in-progress | aborted | completed | entered-in-error.",
@@ -49,7 +49,7 @@ class Procedure(DomainResource):
     )
 
     subject: fhirtypes.ReferenceType = Field(
-        None,
+        ...,
         alias="subject",
         title=(
             "Type `Reference` referencing `Patient, Group` "
@@ -99,12 +99,12 @@ class Procedure(DomainResource):
     category: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="category",
-        title="List of `CodeableConcept` items (represented as `dict` in JSON).",
+        title="Type `CodeableConcept` (represented as `dict` in JSON).",
         description="Classification of the procedure.",
     )
 
-    code: ListType[fhirtypes.CodeableConceptType] = Field(
-        None,
+    code: fhirtypes.CodeableConceptType = Field(
+        ...,
         alias="code",
         title="List of `CodeableConcept` items (represented as `dict` in JSON).",
         description="Identification of the procedure.",
@@ -258,7 +258,7 @@ class ProcedureFocalDevice(BackboneElement):
         description="Kind of change to device.",
     )
     manipulated: fhirtypes.ReferenceType = Field(
-        None,
+        ...,
         alias="manipulated",
         title="Type `Reference` referencing `Device` (represented as `dict` in JSON).",
         description="Device that was changed.",

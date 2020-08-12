@@ -307,7 +307,7 @@ class EncounterParticipant(BackboneElement):
         description="Period of time during the encounter participant was present.",
     )
 
-    type: fhirtypes.CodeableConceptType = Field(
+    type: ListType[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="type",
         title="List of `CodeableConcept` items (represented as `dict` in JSON).",

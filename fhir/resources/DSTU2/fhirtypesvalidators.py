@@ -201,6 +201,7 @@ MODEL_CLASSES = {
     "ContractTermActor": (None, ".contract"),
     "ContractTermValuedItem": (None, ".contract"),
     "ContractValuedItem": (None, ".contract"),
+    "Device": (None, ".device"),
 }
 
 
@@ -1099,6 +1100,10 @@ def contractvalueditem_validator(v: Union[StrBytes, dict, Path, FHIRAbstractMode
     return fhir_model_validator("ContractValuedItem", v)
 
 
+def device_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Device", v)
+
+
 __all__ = [
     "element_validator",
     "resource_validator",
@@ -1288,4 +1293,5 @@ __all__ = [
     "contracttermactor_validator",
     "contracttermvalueditem_validator",
     "contractvalueditem_validator",
+    "device_validator",
 ]

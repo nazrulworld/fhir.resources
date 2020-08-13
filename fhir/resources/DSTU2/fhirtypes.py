@@ -1138,6 +1138,14 @@ class ContractValuedItemType(AbstractType):
     __resource_type__ = "ContractValuedItem"
 
 
+class DeviceType(AbstractType):
+    __resource_type__ = "Device"
+
+
+class RelatedPersonType(AbstractType):
+    __resource_type__ = "RelatedPerson"
+
+
 __all__ = [
     "ElementType",
     "ResourceType",
@@ -1330,4 +1338,8 @@ __all__ = [
     "ContractTermActorType",
     "ContractTermValuedItemType",
     "ContractValuedItemType",
+    "DateTime",
+    "Date",
+    "DeviceType",
+    "RelatedPersonType",
 ]

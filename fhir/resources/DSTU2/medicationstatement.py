@@ -256,7 +256,7 @@ class MedicationStatementDosage(BackboneElement):
         alias="quantityQuantity",
         title="Type `quantityQuantity` (represented as `dict` in JSON).",
         description="Amount administered in one dose.",
-        one_of_many="quantity",  # Choice of Data Types. i.e reasonForUse[x]
+        one_of_many="quantity",  # Choice of Data Types. i.e quantity[x]
         one_of_many_required=False,
     )
 
@@ -265,7 +265,7 @@ class MedicationStatementDosage(BackboneElement):
         alias="quantityRange",
         title="Type `Range` (represented as `dict` in JSON).",
         description="Amount administered in one dose.",
-        one_of_many="quantity",  # Choice of Data Types. i.e reasonForUse[x]
+        one_of_many="quantity",  # Choice of Data Types. i.e quantity[x]
         one_of_many_required=False,
     )
 
@@ -343,8 +343,8 @@ class MedicationStatementDosage(BackboneElement):
         one_of_many_fields = {
             "asNeeded": ["asNeededBoolean", "asNeededCodeableConcept"],
             "site": ["siteCodeableConcept", "siteReference"],
-            "quantity": ["quantityQuantity", "quantityQuantity"],
-            "ratio": ["rateRatio", "rateRange"],
+            "quantity": ["quantityQuantity", "quantityRange"],
+            "rate": ["rateRatio", "rateRange"],
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

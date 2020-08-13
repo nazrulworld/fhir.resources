@@ -27,12 +27,16 @@ class ProcedureRequest(DomainResource):
         alias="asNeededBoolean",
         title="Type `bool`.",
         description="Preconditions for procedure.",
+        one_of_many="asNeeded",  # Choice of Data Types. i.e asNeeded[x]
+        one_of_many_required=False,
     )
     asNeededCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
-        alias="asNeededBoolean",
+        alias="asNeededCodeableConcept",
         title="Type `CodeableConcept` (represented as `dict` in JSON).",
         description="Preconditions for procedure.",
+        one_of_many="asNeeded",  # Choice of Data Types. i.e asNeeded[x]
+        one_of_many_required=False,
     )
 
     bodySite: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -180,6 +184,7 @@ class ProcedureRequest(DomainResource):
         one_of_many_fields = {
             "scheduled": ["scheduledDateTime", "scheduledPeriod", "scheduledTiming"],
             "reason": ["reasonCodeableConcept", "reasonReference"],
+            "asNeeded": ["asNeededBoolean", "asNeededCodeableConcept"],
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

@@ -1154,6 +1154,18 @@ class DetectedIssueMitigationType(AbstractType):
     __resource_type__ = "DetectedIssueMitigation"
 
 
+class DataElementType(AbstractType):
+    __resource_type__ = "DataElement"
+
+
+class DataElementContactType(AbstractType):
+    __resource_type__ = "DataElementContact"
+
+
+class DataElementMappingType(AbstractType):
+    __resource_type__ = "DataElementMapping"
+
+
 __all__ = [
     "ElementType",
     "ResourceType",
@@ -1352,4 +1364,7 @@ __all__ = [
     "RelatedPersonType",
     "DetectedIssueType",
     "DetectedIssueMitigationType",
+    "DataElementType",
+    "DataElementContactType",
+    "DataElementMappingType",
 ]

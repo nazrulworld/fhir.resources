@@ -1166,6 +1166,14 @@ class DataElementMappingType(AbstractType):
     __resource_type__ = "DataElementMapping"
 
 
+class DeviceComponentType(AbstractType):
+    __resource_type__ = "DeviceComponent"
+
+
+class DeviceComponentProductionSpecificationType(AbstractType):
+    __resource_type__ = "DeviceComponentProductionSpecification"
+
+
 __all__ = [
     "ElementType",
     "ResourceType",
@@ -1367,4 +1375,6 @@ __all__ = [
     "DataElementType",
     "DataElementContactType",
     "DataElementMappingType",
+    "DeviceComponentType",
+    "DeviceComponentProductionSpecificationType",
 ]

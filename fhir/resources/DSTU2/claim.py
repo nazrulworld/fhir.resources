@@ -412,7 +412,7 @@ class ClaimItem(BackboneElement):
     serviceDate: fhirtypes.Date = Field(
         None,
         alias="serviceDate",
-        title="Type `FHIRDate` (represented as `str` in JSON).",
+        title="Type `Date` (represented as `str` in JSON).",
         description="Date of Service.",
     )
 

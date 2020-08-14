@@ -1146,6 +1146,14 @@ class RelatedPersonType(AbstractType):
     __resource_type__ = "RelatedPerson"
 
 
+class DetectedIssueType(AbstractType):
+    __resource_type__ = "DetectedIssue"
+
+
+class DetectedIssueMitigationType(AbstractType):
+    __resource_type__ = "DetectedIssueMitigation"
+
+
 __all__ = [
     "ElementType",
     "ResourceType",
@@ -1342,4 +1350,6 @@ __all__ = [
     "Date",
     "DeviceType",
     "RelatedPersonType",
+    "DetectedIssueType",
+    "DetectedIssueMitigationType",
 ]

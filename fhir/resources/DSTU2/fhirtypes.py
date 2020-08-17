@@ -1190,6 +1190,18 @@ class DeviceUseStatementType(AbstractType):
     __resource_type__ = "DeviceUseStatement"
 
 
+class DiagnosticOrderType(AbstractType):
+    __resource_type__ = "DiagnosticOrder"
+
+
+class DiagnosticOrderEventType(AbstractType):
+    __resource_type__ = "DiagnosticOrderEvent"
+
+
+class DiagnosticOrderItemType(AbstractType):
+    __resource_type__ = "DiagnosticOrderItem"
+
+
 __all__ = [
     "ElementType",
     "ResourceType",
@@ -1397,4 +1409,7 @@ __all__ = [
     "DeviceMetricCalibrationType",
     "DeviceUseRequestType",
     "DeviceUseStatementType",
+    "DiagnosticOrderType",
+    "DiagnosticOrderEventType",
+    "DiagnosticOrderItemType",
 ]

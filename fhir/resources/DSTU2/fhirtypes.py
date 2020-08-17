@@ -1186,6 +1186,10 @@ class DeviceUseRequestType(AbstractType):
     __resource_type__ = "DeviceUseRequest"
 
 
+class DeviceUseStatementType(AbstractType):
+    __resource_type__ = "DeviceUseStatement"
+
+
 __all__ = [
     "ElementType",
     "ResourceType",
@@ -1392,4 +1396,5 @@ __all__ = [
     "DeviceMetricType",
     "DeviceMetricCalibrationType",
     "DeviceUseRequestType",
+    "DeviceUseStatementType",
 ]

@@ -1182,6 +1182,10 @@ class DeviceMetricCalibrationType(AbstractType):
     __resource_type__ = "DeviceMetricCalibration"
 
 
+class DeviceUseRequestType(AbstractType):
+    __resource_type__ = "DeviceUseRequest"
+
+
 __all__ = [
     "ElementType",
     "ResourceType",
@@ -1387,4 +1391,5 @@ __all__ = [
     "DeviceComponentProductionSpecificationType",
     "DeviceMetricType",
     "DeviceMetricCalibrationType",
+    "DeviceUseRequestType",
 ]

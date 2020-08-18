@@ -978,6 +978,18 @@ class DiagnosticReportImageType(AbstractType):
     __resource_type__ = "DiagnosticReportImage"
 
 
+class DocumentManifestType(AbstractType):
+    __resource_type__ = "DocumentManifest"
+
+
+class DocumentManifestContentType(AbstractType):
+    __resource_type__ = "DocumentManifestContent"
+
+
+class DocumentManifestRelatedType(AbstractType):
+    __resource_type__ = "DocumentManifestRelated"
+
+
 class GoalType(AbstractType):
     __resource_type__ = "Goal"
 

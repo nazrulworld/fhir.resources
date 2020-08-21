@@ -132,6 +132,11 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         """ """
         return cls.__fields__["resource_type"].default
 
+    @classmethod
+    def get_json_encoder(cls) -> Callable[[Any], Any]:
+        """ """
+        return cls.__json_encoder__
+
     def dict(
         self,
         *,

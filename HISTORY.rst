@@ -5,8 +5,9 @@ History
 6.0.0b4 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- Fixes `Issue#19 <https://github.com/nazrulworld/fhir.resources/issues/19>`_ Getting validation errors that don't make sense.
 
+- ``FHIRAbstractModel::get_json_encoder`` class method now available, which return pydantic compatible json encoder callable, can be used with any json serializer.
 
 6.0.0b3 (2020-08-07)
 --------------------

@@ -202,6 +202,13 @@ MODEL_CLASSES = {
     "ContractTermValuedItem": (None, ".contract"),
     "ContractValuedItem": (None, ".contract"),
     "Device": (None, ".device"),
+    "ElementDefinition": (None, ".elementdefinition"),
+    "ElementDefinitionBase": (None, ".elementdefinition"),
+    "ElementDefinitionBinding": (None, ".elementdefinition"),
+    "ElementDefinitionConstraint": (None, ".elementdefinition"),
+    "ElementDefinitionMapping": (None, ".elementdefinition"),
+    "ElementDefinitionSlicing": (None, ".elementdefinition"),
+    "ElementDefinitionType": (None, ".elementdefinition"),
 }
 
 
@@ -1104,6 +1111,42 @@ def device_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("Device", v)
 
 
+def elementdefinition_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ElementDefinition", v)
+
+
+def elementdefinitionbase_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ElementDefinitionBase", v)
+
+
+def elementdefinitionbinding_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ElementDefinitionBinding", v)
+
+
+def elementdefinitionconstraint_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ElementDefinitionConstraint", v)
+
+
+def elementdefinitionmapping_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ElementDefinitionMapping", v)
+
+
+def elementdefinitionslicing_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ElementDefinitionSlicing", v)
+
+
+def elementdefinitiontype_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ElementDefinitionType", v)
+
+
 __all__ = [
     "element_validator",
     "resource_validator",
@@ -1294,4 +1337,11 @@ __all__ = [
     "contracttermvalueditem_validator",
     "contractvalueditem_validator",
     "device_validator",
+    "elementdefinition_validator",
+    "elementdefinitionbase_validator",
+    "elementdefinitionbinding_validator",
+    "elementdefinitionconstraint_validator",
+    "elementdefinitionmapping_validator",
+    "elementdefinitionslicing_validator",
+    "elementdefinitiontype_validator",
 ]

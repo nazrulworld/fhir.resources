@@ -1141,6 +1141,10 @@ class ElementDefinitionBindingValueSetType(AbstractType):
     __resource_type__ = "ElementDefinitionBindingValueSet"
 
 
+class EligibilityRequestType(AbstractType):
+    __resource_type__ = "EligibilityRequest"
+
+
 class EncounterType(AbstractType):
     __resource_type__ = "Encounter"
 
@@ -1467,6 +1471,7 @@ __all__ = [
     "ConformanceRestSecurityCertificateType",
     "ConformanceSoftwareType",
     "ConformanceRestResourceSearchParamType",
+    "EligibilityRequestType",
     "PatientType",
     "PatientAnimalType",
     "PatientCommunicationType",

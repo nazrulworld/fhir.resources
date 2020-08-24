@@ -166,6 +166,7 @@ MODEL_CLASSES = {
     "GoalOutcome": (None, ".goal"),
     "GroupCharacteristic": (None, ".group"),
     "GroupMember": (None, ".group"),
+    "EligibilityRequest": (None, ".eligibilityrequest"),
     "Encounter": (None, ".encounter"),
     "EncounterHospitalization": (None, ".encounter"),
     "EncounterLocation": (None, ".encounter"),
@@ -949,6 +950,10 @@ def groupmember_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("GroupMember", v)
 
 
+def eligibilityrequest_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("EligibilityRequest", v)
+
+
 def encounter_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("Encounter", v)
 
@@ -1301,6 +1306,7 @@ __all__ = [
     "group_validator",
     "groupcharacteristic_validator",
     "groupmember_validator",
+    "eligibilityrequest_validator",
     "encounter_validator",
     "encounterhospitalization_validator",
     "encounterlocation_validator",

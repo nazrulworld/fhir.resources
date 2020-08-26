@@ -1145,6 +1145,10 @@ class EligibilityRequestType(AbstractType):
     __resource_type__ = "EligibilityRequest"
 
 
+class EligibilityResponseType(AbstractType):
+    __resource_type__ = "EligibilityResponse"
+
+
 class EncounterType(AbstractType):
     __resource_type__ = "Encounter"
 
@@ -1472,6 +1476,7 @@ __all__ = [
     "ConformanceSoftwareType",
     "ConformanceRestResourceSearchParamType",
     "EligibilityRequestType",
+    "EligibilityResponseType",
     "PatientType",
     "PatientAnimalType",
     "PatientCommunicationType",

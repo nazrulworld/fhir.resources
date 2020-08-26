@@ -173,6 +173,7 @@ MODEL_CLASSES = {
     "EncounterLocation": (None, ".encounter"),
     "EncounterParticipant": (None, ".encounter"),
     "EncounterStatusHistory": (None, ".encounter"),
+    "EnrollmentRequest": (None, ".enrollmentrequest"),
     "Immunization": (None, ".immunization"),
     "ImmunizationExplanation": (None, ".immunization"),
     "ImmunizationReaction": (None, ".immunization"),
@@ -981,6 +982,10 @@ def encounterstatushistory_validator(v: Union[StrBytes, dict, Path, FHIRAbstract
     return fhir_model_validator("EncounterStatusHistory", v)
 
 
+def enrollmentrequest_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("EnrollmentRequest", v)
+
+
 def immunization_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("Immunization", v)
 
@@ -1318,6 +1323,7 @@ __all__ = [
     "encounterlocation_validator",
     "encounterparticipant_validator",
     "encounterstatushistory_validator",
+    "enrollmentrequest_validator",
     "immunization_validator",
     "immunizationexplanation_validator",
     "immunizationreaction_validator",

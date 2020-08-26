@@ -1169,6 +1169,10 @@ class EncounterStatusHistoryType(AbstractType):
     __resource_type__ = "EncounterStatusHistory"
 
 
+class EnrollmentRequestType(AbstractType):
+    __resource_type__ = "EnrollmentRequest"
+
+
 class ImmunizationType(AbstractType):
     __resource_type__ = "Immunization"
 
@@ -1517,6 +1521,7 @@ __all__ = [
     "EncounterLocationType",
     "EncounterParticipantType",
     "EncounterStatusHistoryType",
+    "EnrollmentRequestType",
     "ImmunizationType",
     "ImmunizationExplanationType",
     "ImmunizationReactionType",

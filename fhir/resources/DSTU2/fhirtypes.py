@@ -978,6 +978,26 @@ class DiagnosticReportImageType(AbstractType):
     __resource_type__ = "DiagnosticReportImage"
 
 
+class DocumentReferenceType(AbstractType):
+    __resource_type__ = "DocumentReference"
+
+
+class DocumentReferenceContentType(AbstractType):
+    __resource_type__ = "DocumentReferenceContent"
+
+
+class DocumentReferenceContextType(AbstractType):
+    __resource_type__ = "DocumentReferenceContext"
+
+
+class DocumentReferenceContextRelatedType(AbstractType):
+    __resource_type__ = "DocumentReferenceContextRelated"
+
+
+class DocumentReferenceRelatesToType(AbstractType):
+    __resource_type__ = "DocumentReferenceRelatesTo"
+
+
 class DocumentManifestType(AbstractType):
     __resource_type__ = "DocumentManifest"
 

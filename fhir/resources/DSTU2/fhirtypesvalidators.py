@@ -174,6 +174,7 @@ MODEL_CLASSES = {
     "EncounterParticipant": (None, ".encounter"),
     "EncounterStatusHistory": (None, ".encounter"),
     "EnrollmentRequest": (None, ".enrollmentrequest"),
+    "EnrollmentResponse": (None, ".enrollmentresponse"),
     "Immunization": (None, ".immunization"),
     "ImmunizationExplanation": (None, ".immunization"),
     "ImmunizationReaction": (None, ".immunization"),
@@ -234,6 +235,24 @@ MODEL_CLASSES = {
     "DocumentReferenceContext": (None, ".documentreference"),
     "DocumentReferenceContextRelated": (None, ".documentreference"),
     "DocumentReferenceRelatesTo": (None, ".documentreference"),
+    "EpisodeOfCare": (None, ".episodeofcare"),
+    "EpisodeOfCareCareTeam": (None, ".episodeofcare"),
+    "EpisodeOfCareStatusHistory": (None, ".episodeofcare"),
+    "FamilyMemberHistory": (None, ".familymemberhistory"),
+    "FamilyMemberHistoryCondition": (None, ".familymemberhistory"),
+    "ExplanationOfBenefit": (None, ".explanationofbenefit"),
+    "HealthcareService": (None, ".healthcareservice"),
+    "HealthcareServiceAvailableTime": (None, ".healthcareservice"),
+    "HealthcareServiceNotAvailable": (None, ".healthcareservice"),
+    "HealthcareServiceServiceType": (None, ".healthcareservice"),
+    "ImagingObjectSelection": (None, ".imagingobjectselection"),
+    "ImagingObjectSelectionStudy": (None, ".imagingobjectselection"),
+    "ImagingObjectSelectionStudySeries": (None, ".imagingobjectselection"),
+    "ImagingObjectSelectionStudySeriesInstance": (None, ".imagingobjectselection"),
+    "ImagingObjectSelectionStudySeriesInstanceFrames": (
+        None,
+        ".imagingobjectselection",
+    ),
 }
 
 
@@ -1007,6 +1026,10 @@ def enrollmentrequest_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel
     return fhir_model_validator("EnrollmentRequest", v)
 
 
+def enrollmentresponse_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("EnrollmentResponse", v)
+
+
 def immunization_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("Immunization", v)
 
@@ -1289,6 +1312,84 @@ def elementdefinitiontype_validator(v: Union[StrBytes, dict, Path, FHIRAbstractM
     return fhir_model_validator("ElementDefinitionType", v)
 
 
+def episodeofcare_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("EpisodeOfCare", v)
+
+
+def episodeofcarecareteam_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("EpisodeOfCareCareTeam", v)
+
+
+def episodeofcarestatushistory_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("EpisodeOfCareStatusHistory", v)
+
+
+def familymemberhistory_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("FamilyMemberHistory", v)
+
+
+def familymemberhistorycondition_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("FamilyMemberHistoryCondition", v)
+
+
+def explanationofbenefit_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ExplanationOfBenefit", v)
+
+
+def healthcareservice_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("HealthcareService", v)
+
+
+def healthcareserviceavailabletime_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("HealthcareServiceAvailableTime", v)
+
+
+def healthcareservicenotavailable_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("HealthcareServiceNotAvailable", v)
+
+
+def healthcareserviceservicetype_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("HealthcareServiceServiceType", v)
+
+
+def imagingobjectselection_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ImagingObjectSelection", v)
+
+
+def imagingobjectselectionstudy_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ImagingObjectSelectionStudy", v)
+
+
+def imagingobjectselectionstudyseries_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ImagingObjectSelectionStudySeries", v)
+
+
+def imagingobjectselectionstudyseriesinstance_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ImagingObjectSelectionStudySeriesInstance", v)
+
+
+def imagingobjectselectionstudyseriesinstanceframes_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ImagingObjectSelectionStudySeriesInstanceFrames", v)
+
+
 __all__ = [
     "element_validator",
     "resource_validator",
@@ -1451,6 +1552,7 @@ __all__ = [
     "encounterparticipant_validator",
     "encounterstatushistory_validator",
     "enrollmentrequest_validator",
+    "enrollmentresponse_validator",
     "immunization_validator",
     "immunizationexplanation_validator",
     "immunizationreaction_validator",
@@ -1511,4 +1613,19 @@ __all__ = [
     "documentreferencecontext_validator",
     "documentreferencecontextrelated_validator",
     "documentreferencerelatesto_validator",
+    "episodeofcare_validator",
+    "episodeofcarecareteam_validator",
+    "episodeofcarestatushistory_validator",
+    "familymemberhistory_validator",
+    "familymemberhistorycondition_validator",
+    "explanationofbenefit_validator",
+    "healthcareservice_validator",
+    "healthcareserviceavailabletime_validator",
+    "healthcareservicenotavailable_validator",
+    "healthcareserviceservicetype_validator",
+    "imagingobjectselection_validator",
+    "imagingobjectselectionstudy_validator",
+    "imagingobjectselectionstudyseries_validator",
+    "imagingobjectselectionstudyseriesinstance_validator",
+    "imagingobjectselectionstudyseriesinstanceframes_validator",
 ]

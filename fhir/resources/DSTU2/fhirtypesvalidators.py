@@ -212,6 +212,28 @@ MODEL_CLASSES = {
     "ElementDefinitionMapping": (None, ".elementdefinition"),
     "ElementDefinitionSlicing": (None, ".elementdefinition"),
     "ElementDefinitionType": (None, ".elementdefinition"),
+    "DataElement": (None, ".dataelement"),
+    "DataElementContact": (None, ".dataelement"),
+    "DataElementMapping": (None, ".dataelement"),
+    "DetectedIssue": (None, ".detectedissue"),
+    "DetectedIssueMitigation": (None, ".detectedissue"),
+    "DeviceComponent": (None, ".devicecomponent"),
+    "DeviceComponentProductionSpecification": (None, ".devicecomponent"),
+    "DeviceMetric": (None, ".devicemetric"),
+    "DeviceMetricCalibration": (None, ".devicemetric"),
+    "DeviceUseRequest": (None, ".deviceuserequest"),
+    "DeviceUseStatement": (None, ".deviceusestatement"),
+    "DiagnosticOrder": (None, ".diagnosticorder"),
+    "DiagnosticOrderEvent": (None, ".diagnosticorder"),
+    "DiagnosticOrderItem": (None, ".diagnosticorder"),
+    "DocumentManifest": (None, ".documentmanifest"),
+    "DocumentManifestContent": (None, ".documentmanifest"),
+    "DocumentManifestRelated": (None, ".documentmanifest"),
+    "DocumentReference": (None, ".documentreference"),
+    "DocumentReferenceContent": (None, ".documentreference"),
+    "DocumentReferenceContext": (None, ".documentreference"),
+    "DocumentReferenceContextRelated": (None, ".documentreference"),
+    "DocumentReferenceRelatesTo": (None, ".documentreference"),
 }
 
 
@@ -1126,6 +1148,112 @@ def device_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("Device", v)
 
 
+def dataelement_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("DataElement", v)
+
+
+def dataelementcontact_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("DataElementContact", v)
+
+
+def dataelementmapping_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("DataElementMapping", v)
+
+
+def detectedissue_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("DetectedIssue", v)
+
+
+def detectedissuemitigation_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("DetectedIssueMitigation", v)
+
+
+def devicecomponent_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("DeviceComponent", v)
+
+
+def devicecomponentproductionspecification_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("DeviceComponentProductionSpecification", v)
+
+
+def devicemetric_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("DeviceMetric", v)
+
+
+def devicemetriccalibration_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("DeviceMetricCalibration", v)
+
+
+def deviceuserequest_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("DeviceUseRequest", v)
+
+
+def deviceusestatement_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("DeviceUseStatement", v)
+
+
+def diagnosticorder_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("DiagnosticOrder", v)
+
+
+def diagnosticorderevent_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("DiagnosticOrderEvent", v)
+
+
+def diagnosticorderitem_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("DiagnosticOrderItem", v)
+
+
+def documentmanifest_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("DocumentManifest", v)
+
+
+def documentmanifestcontent_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("DocumentManifestContent", v)
+
+
+def documentmanifestrelated_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("DocumentManifestRelated", v)
+
+
+def documentreference_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("DocumentReference", v)
+
+
+def documentreferencecontent_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("DocumentReferenceContent", v)
+
+
+def documentreferencecontext_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("DocumentReferenceContext", v)
+
+
+def documentreferencecontextrelated_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("DocumentReferenceContextRelated", v)
+
+
+def documentreferencerelatesto_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("DocumentReferenceRelatesTo", v)
+
+
 def elementdefinition_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("ElementDefinition", v)
 
@@ -1362,4 +1490,26 @@ __all__ = [
     "elementdefinitionmapping_validator",
     "elementdefinitionslicing_validator",
     "elementdefinitiontype_validator",
+    "dataelement_validator",
+    "dataelementcontact_validator",
+    "dataelementmapping_validator",
+    "detectedissue_validator",
+    "detectedissuemitigation_validator",
+    "devicecomponent_validator",
+    "devicecomponentproductionspecification_validator",
+    "devicemetric_validator",
+    "devicemetriccalibration_validator",
+    "deviceuserequest_validator",
+    "deviceusestatement_validator",
+    "diagnosticorder_validator",
+    "diagnosticorderevent_validator",
+    "diagnosticorderitem_validator",
+    "documentmanifest_validator",
+    "documentmanifestcontent_validator",
+    "documentmanifestrelated_validator",
+    "documentreference_validator",
+    "documentreferencecontent_validator",
+    "documentreferencecontext_validator",
+    "documentreferencecontextrelated_validator",
+    "documentreferencerelatesto_validator",
 ]

@@ -70,7 +70,7 @@ class AuditEventEvent(BackboneElement):
     dateTime: fhirtypes.Instant = Field(
         ...,
         alias="dateTime",
-        title="Type `FHIRDate` (represented as `str` in JSON).",
+        title="Type `Instant` (represented as `str` in JSON).",
         description="Time when the event occurred on source.",
     )
 

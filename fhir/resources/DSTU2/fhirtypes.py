@@ -1,10 +1,14 @@
 # _*_ coding: utf-8 _*_
 import datetime
 import re
-from typing import TYPE_CHECKING, Any, Dict, Union
+from email.utils import formataddr, parseaddr
+from typing import TYPE_CHECKING, Any, Dict, Optional, Pattern, Union
+from uuid import UUID
 
+from pydantic import AnyUrl
 from pydantic.errors import DateError, DateTimeError, TimeError
 from pydantic.main import load_str_bytes
+from pydantic.networks import validate_email
 from pydantic.types import (
     ConstrainedBytes,
     ConstrainedDecimal,
@@ -22,6 +26,25 @@ if TYPE_CHECKING:
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 
 FHIR_DATE_PARTS = re.compile(r"(?P<year>\d{4})(-(?P<month>\d{2}))?(-(?P<day>\d{2}))?$")
+
+
+class Primitive:
+    """FHIR Primitive Data Type Base Class"""
+
+    __fhir_release__: str = "R4"
+    __visit_name__: Optional[str] = None
+    regex: Optional[Pattern[str]] = None
+
+    @classmethod
+    def is_primitive(cls) -> bool:
+        """ """
+        return True
+
+    @classmethod
+    def fhir_type_name(cls) -> Optional[str]:
+        """ """
+        return cls.__visit_name__
+
 
 if TYPE_CHECKING:
     Boolean = bool
@@ -86,6 +109,14 @@ class Id(ConstrainedStr):
     min_length = 1
     max_length = 64
     __visit_name__ = "id"
+
+
+class Uuid(UUID, Primitive):
+    """A UUID (aka GUID) represented as a URI (RFC 4122 );
+    e.g. urn:uuid:c757873d-ec9a-4326-a141-556f43239520"""
+
+    __visit_name__ = "uuid"
+    regex = None
 
 
 class Decimal(ConstrainedDecimal):
@@ -368,6 +399,46 @@ class AbstractBaseType(dict):
         type_class = get_fhir_type_class(resource_type)
         v = run_validator_for_fhir_type(type_class, v, values, config, field)
         return v
+
+
+class Canonical(Uri):
+    """A URI that refers to a resource by its canonical URL (resources with a url property).
+    The canonical type differs from a uri in that it has special meaning in this specification,
+    and in that it may have a version appended, separated by a vertical bar (|).
+    Note that the type canonical is not used for the actual canonical URLs that are
+    the target of these references, but for the URIs that refer to them, and may have
+    the version suffix in them. Like other URIs, elements of type canonical may also have
+    #fragment references"""
+
+    __visit_name__ = "canonical"
+
+
+class Url(AnyUrl, Primitive):
+    """A Uniform Resource Locator (RFC 1738 ).
+    Note URLs are accessed directly using the specified protocol.
+    Common URL protocols are http{s}:, ftp:, mailto: and mllp:,
+    though many others are defined"""
+
+    __visit_name__ = "url"
+
+    @classmethod
+    def validate(  # type: ignore
+        cls, value: str, field: "ModelField", config: "BaseConfig"
+    ) -> Union["AnyUrl", str]:
+        """ """
+        if value.startswith("mailto:"):
+            schema = value[0:7]
+            email = value[7:]
+            realname = parseaddr(email)[0]
+            name, email = validate_email(email)
+            if realname:
+                email = formataddr((name, email))
+            return schema + email
+        elif value.startswith("mllp:") or value.startswith("llp:"):
+            # xxx: find validation
+            return value
+
+        return AnyUrl.validate(value, field, config)
 
 
 class ElementType(AbstractBaseType):
@@ -978,6 +1049,38 @@ class DiagnosticReportImageType(AbstractType):
     __resource_type__ = "DiagnosticReportImage"
 
 
+class DocumentReferenceType(AbstractType):
+    __resource_type__ = "DocumentReference"
+
+
+class DocumentReferenceContentType(AbstractType):
+    __resource_type__ = "DocumentReferenceContent"
+
+
+class DocumentReferenceContextType(AbstractType):
+    __resource_type__ = "DocumentReferenceContext"
+
+
+class DocumentReferenceContextRelatedType(AbstractType):
+    __resource_type__ = "DocumentReferenceContextRelated"
+
+
+class DocumentReferenceRelatesToType(AbstractType):
+    __resource_type__ = "DocumentReferenceRelatesTo"
+
+
+class DocumentManifestType(AbstractType):
+    __resource_type__ = "DocumentManifest"
+
+
+class DocumentManifestContentType(AbstractType):
+    __resource_type__ = "DocumentManifestContent"
+
+
+class DocumentManifestRelatedType(AbstractType):
+    __resource_type__ = "DocumentManifestRelated"
+
+
 class GoalType(AbstractType):
     __resource_type__ = "Goal"
 
@@ -998,6 +1101,54 @@ class GroupMemberType(AbstractType):
     __resource_type__ = "GroupMember"
 
 
+class ElementDefinitionType(AbstractType):
+    __resource_type__ = "ElementDefinition"
+
+
+class ElementDefinitionSlicingType(AbstractType):
+    __resource_type__ = "ElementDefinitionSlicing"
+
+
+class ElementDefinitionSlicingDiscriminatorType(AbstractType):
+    __resource_type__ = "ElementDefinitionSlicingDiscriminator"
+
+
+class ElementDefinitionTypeType(AbstractType):
+    __resource_type__ = "ElementDefinitionType"
+
+
+class ElementDefinitionMappingType(AbstractType):
+    __resource_type__ = "ElementDefinitionMapping"
+
+
+class ElementDefinitionExampleType(AbstractType):
+    __resource_type__ = "ElementDefinitionExample"
+
+
+class ElementDefinitionConstraintType(AbstractType):
+    __resource_type__ = "ElementDefinitionConstraint"
+
+
+class ElementDefinitionBaseType(AbstractType):
+    __resource_type__ = "ElementDefinitionBase"
+
+
+class ElementDefinitionBindingType(AbstractType):
+    __resource_type__ = "ElementDefinitionBinding"
+
+
+class ElementDefinitionBindingValueSetType(AbstractType):
+    __resource_type__ = "ElementDefinitionBindingValueSet"
+
+
+class EligibilityRequestType(AbstractType):
+    __resource_type__ = "EligibilityRequest"
+
+
+class EligibilityResponseType(AbstractType):
+    __resource_type__ = "EligibilityResponse"
+
+
 class EncounterType(AbstractType):
     __resource_type__ = "Encounter"
 
@@ -1016,6 +1167,10 @@ class EncounterParticipantType(AbstractType):
 
 class EncounterStatusHistoryType(AbstractType):
     __resource_type__ = "EncounterStatusHistory"
+
+
+class EnrollmentRequestType(AbstractType):
+    __resource_type__ = "EnrollmentRequest"
 
 
 class ImmunizationType(AbstractType):
@@ -1146,6 +1301,62 @@ class RelatedPersonType(AbstractType):
     __resource_type__ = "RelatedPerson"
 
 
+class DetectedIssueType(AbstractType):
+    __resource_type__ = "DetectedIssue"
+
+
+class DetectedIssueMitigationType(AbstractType):
+    __resource_type__ = "DetectedIssueMitigation"
+
+
+class DataElementType(AbstractType):
+    __resource_type__ = "DataElement"
+
+
+class DataElementContactType(AbstractType):
+    __resource_type__ = "DataElementContact"
+
+
+class DataElementMappingType(AbstractType):
+    __resource_type__ = "DataElementMapping"
+
+
+class DeviceComponentType(AbstractType):
+    __resource_type__ = "DeviceComponent"
+
+
+class DeviceComponentProductionSpecificationType(AbstractType):
+    __resource_type__ = "DeviceComponentProductionSpecification"
+
+
+class DeviceMetricType(AbstractType):
+    __resource_type__ = "DeviceMetric"
+
+
+class DeviceMetricCalibrationType(AbstractType):
+    __resource_type__ = "DeviceMetricCalibration"
+
+
+class DeviceUseRequestType(AbstractType):
+    __resource_type__ = "DeviceUseRequest"
+
+
+class DeviceUseStatementType(AbstractType):
+    __resource_type__ = "DeviceUseStatement"
+
+
+class DiagnosticOrderType(AbstractType):
+    __resource_type__ = "DiagnosticOrder"
+
+
+class DiagnosticOrderEventType(AbstractType):
+    __resource_type__ = "DiagnosticOrderEvent"
+
+
+class DiagnosticOrderItemType(AbstractType):
+    __resource_type__ = "DiagnosticOrderItem"
+
+
 __all__ = [
     "ElementType",
     "ResourceType",
@@ -1268,6 +1479,8 @@ __all__ = [
     "ConformanceRestSecurityCertificateType",
     "ConformanceSoftwareType",
     "ConformanceRestResourceSearchParamType",
+    "EligibilityRequestType",
+    "EligibilityResponseType",
     "PatientType",
     "PatientAnimalType",
     "PatientCommunicationType",
@@ -1308,6 +1521,7 @@ __all__ = [
     "EncounterLocationType",
     "EncounterParticipantType",
     "EncounterStatusHistoryType",
+    "EnrollmentRequestType",
     "ImmunizationType",
     "ImmunizationExplanationType",
     "ImmunizationReactionType",
@@ -1342,4 +1556,27 @@ __all__ = [
     "Date",
     "DeviceType",
     "RelatedPersonType",
+    "DetectedIssueType",
+    "DetectedIssueMitigationType",
+    "DataElementType",
+    "DataElementContactType",
+    "DataElementMappingType",
+    "DeviceComponentType",
+    "DeviceComponentProductionSpecificationType",
+    "DeviceMetricType",
+    "DeviceMetricCalibrationType",
+    "DeviceUseRequestType",
+    "DeviceUseStatementType",
+    "DiagnosticOrderType",
+    "DiagnosticOrderEventType",
+    "DiagnosticOrderItemType",
+    "Url",
+    "Primitive",
+    "Uuid",
+    "Canonical",
+    "ElementDefinitionType",
+    "ElementDefinitionBaseType",
+    "ElementDefinitionBindingType",
+    "ElementDefinitionBindingValueSetType",
+    "ElementDefinitionConstraintType",
 ]

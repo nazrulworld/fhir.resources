@@ -211,7 +211,8 @@ class Url(AnyUrl, Primitive):
         elif value.startswith("mllp:") or value.startswith("llp:"):
             # xxx: find validation
             return value
-
+        elif value == "string": # StructureDefinition contain valueUrl: "string" on Resource.id
+            return value
         return AnyUrl.validate(value, field, config)
 
 

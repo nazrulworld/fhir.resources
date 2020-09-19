@@ -148,11 +148,11 @@ class PositiveInt(ConstrainedInt, Primitive):
 class Uri(ConstrainedStr, Primitive):
     """A Uniform Resource Identifier Reference (RFC 3986 ).
     Note: URIs are case sensitive.
-    For UUID (urn:uuid:53fefa32-fcbb-4ff8-8a92-55ee120877b7)
-    use all lowercase	xs:anyURI	A JSON string - a URI
+    For UUID("urn:uuid:53fefa32-fcbb-4ff8-8a92-55ee120877b7")
+    use all lowercase xs:anyURI A JSON string - a URI
     Regex: \\S* (This regex is very permissive, but URIs must be valid.
     Implementers are welcome to use more specific regex statements
-     for a URI in specific contexts)
+    for a URI in specific contexts)
     URIs can be absolute or relative, and may have an optional fragment identifier
     This data type can be bound to a ValueSet"""
 

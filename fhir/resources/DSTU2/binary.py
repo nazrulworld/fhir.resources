@@ -12,7 +12,7 @@ from .resource import Resource
 
 
 class Binary(Resource):
-    """ Pure binary content defined by some other format than FHIR.
+    """Pure binary content defined by some other format than FHIR.
 
     A binary resource can contain any content, whether text, image, pdf, zip
     archive, etc.

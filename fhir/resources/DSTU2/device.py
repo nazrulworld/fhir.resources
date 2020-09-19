@@ -14,7 +14,7 @@ from .domainresource import DomainResource
 
 
 class Device(DomainResource):
-    """ An instance of a manufactured te that is used in the provision of
+    """An instance of a manufactured te that is used in the provision of
     healthcare.
 
     This resource identifies an instance of a manufactured item that is used in

@@ -16,7 +16,7 @@ from .domainresource import DomainResource
 
 
 class ClaimResponse(DomainResource):
-    """ Remittance resource.
+    """Remittance resource.
 
     This resource provides the adjudication details from the processing of a
     Claim resource.
@@ -211,7 +211,7 @@ class ClaimResponse(DomainResource):
 
 
 class ClaimResponseAddItem(BackboneElement):
-    """ Insurer added line items.
+    """Insurer added line items.
 
     The first tier service adjudications for payor added services.
     """
@@ -263,7 +263,7 @@ class ClaimResponseAddItem(BackboneElement):
 
 
 class ClaimResponseAddItemAdjudication(BackboneElement):
-    """ Added items adjudication.
+    """Added items adjudication.
 
     The adjudications results.
     """
@@ -290,7 +290,7 @@ class ClaimResponseAddItemAdjudication(BackboneElement):
 
 
 class ClaimResponseAddItemDetail(BackboneElement):
-    """ Added items details.
+    """Added items details.
 
     The second tier service adjudications for payor added services.
     """
@@ -324,7 +324,7 @@ class ClaimResponseAddItemDetail(BackboneElement):
 
 
 class ClaimResponseAddItemDetailAdjudication(BackboneElement):
-    """ Added items detail adjudication.
+    """Added items detail adjudication.
 
     The adjudications results.
     """
@@ -350,7 +350,7 @@ class ClaimResponseAddItemDetailAdjudication(BackboneElement):
 
 
 class ClaimResponseCoverage(BackboneElement):
-    """ Insurance or medical plan.
+    """Insurance or medical plan.
 
     Financial instrument by which payment information for health care.
     """
@@ -411,7 +411,7 @@ class ClaimResponseCoverage(BackboneElement):
 
 
 class ClaimResponseError(BackboneElement):
-    """ Processing errors.
+    """Processing errors.
 
     Mutually exclusive with Services Provided (Item).
     """
@@ -446,7 +446,7 @@ class ClaimResponseError(BackboneElement):
 
 
 class ClaimResponseItem(BackboneElement):
-    """ Line items.
+    """Line items.
 
     The first tier service adjudications for submitted services.
     """
@@ -481,7 +481,7 @@ class ClaimResponseItem(BackboneElement):
 
 
 class ClaimResponseItemAdjudication(BackboneElement):
-    """ Adjudication details.
+    """Adjudication details.
 
     The adjudications results.
     """
@@ -507,7 +507,7 @@ class ClaimResponseItemAdjudication(BackboneElement):
 
 
 class ClaimResponseItemDetail(BackboneElement):
-    """ Detail line items.
+    """Detail line items.
 
     The second tier service adjudications for submitted services.
     """
@@ -543,7 +543,7 @@ class ClaimResponseItemDetail(BackboneElement):
 
 
 class ClaimResponseItemDetailAdjudication(BackboneElement):
-    """ Detail adjudication.
+    """Detail adjudication.
 
     The adjudications results.
     """
@@ -569,7 +569,7 @@ class ClaimResponseItemDetailAdjudication(BackboneElement):
 
 
 class ClaimResponseItemDetailSubDetail(BackboneElement):
-    """ Subdetail line items.
+    """Subdetail line items.
 
     The third tier service adjudications for submitted services.
     """
@@ -597,7 +597,7 @@ class ClaimResponseItemDetailSubDetail(BackboneElement):
 
 
 class ClaimResponseItemDetailSubDetailAdjudication(BackboneElement):
-    """ Subdetail adjudication.
+    """Subdetail adjudication.
 
     The adjudications results.
     """
@@ -623,7 +623,7 @@ class ClaimResponseItemDetailSubDetailAdjudication(BackboneElement):
 
 
 class ClaimResponseNote(BackboneElement):
-    """ Processing notes.
+    """Processing notes.
 
     Note text.
     """

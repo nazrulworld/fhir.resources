@@ -14,7 +14,7 @@ from .domainresource import DomainResource
 
 
 class BodySite(DomainResource):
-    """ Specific and identified anatomical location.
+    """Specific and identified anatomical location.
 
     Record details about the anatomical location of a specimen or body part.
     This resource may be used when a coded concept does not provide the

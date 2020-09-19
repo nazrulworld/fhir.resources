@@ -16,7 +16,7 @@ from .domainresource import DomainResource
 
 
 class ClinicalImpression(DomainResource):
-    """ A clinical assessment performed when planning treatments and management
+    """A clinical assessment performed when planning treatments and management
     strategies for a patient.
 
     A record of a clinical assessment performed to determine what problem(s)
@@ -223,7 +223,7 @@ class ClinicalImpression(DomainResource):
 
 
 class ClinicalImpressionFinding(BackboneElement):
-    """ Possible or likely findings and diagnoses.
+    """Possible or likely findings and diagnoses.
 
     Specific findings or diagnoses that was considered likely or relevant to
     ongoing treatment.
@@ -245,7 +245,7 @@ class ClinicalImpressionFinding(BackboneElement):
 
 
 class ClinicalImpressionInvestigations(BackboneElement):
-    """ One or more sets of investigations (signs, symptions, etc.).
+    """One or more sets of investigations (signs, symptions, etc.).
 
     One or more sets of investigations (signs, symptions, etc.). The actual
     grouping of investigations vary greatly depending on the type and context
@@ -274,8 +274,7 @@ class ClinicalImpressionInvestigations(BackboneElement):
 
 
 class ClinicalImpressionRuledOut(BackboneElement):
-    """ Diagnosis considered not possible.
-    """
+    """Diagnosis considered not possible."""
 
     resource_type = Field("ClinicalImpressionRuledOut", const=True)
 

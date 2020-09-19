@@ -12,7 +12,7 @@ from .quantity import Quantity
 
 
 class Age(Quantity):
-    """ A duration (length of time) with a UCUM code.
+    """A duration (length of time) with a UCUM code.
 
     There SHALL be a code if there is a value and it SHALL be an expression of
     time.  If system is present, it SHALL be UCUM.  If value is present, it

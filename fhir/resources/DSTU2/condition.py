@@ -16,7 +16,7 @@ from .domainresource import DomainResource
 
 
 class Condition(DomainResource):
-    """ Detailed information about conditions, problems or diagnoses.
+    """Detailed information about conditions, problems or diagnoses.
 
     Use to record detailed information about conditions, problems or diagnoses
     recognized by a clinician. There are many uses including: recording a
@@ -279,7 +279,7 @@ class Condition(DomainResource):
 
 
 class ConditionEvidence(BackboneElement):
-    """ Supporting evidence.
+    """Supporting evidence.
 
     Supporting Evidence / manifestations that are the basis on which this
     condition is suspected or confirmed.
@@ -305,7 +305,7 @@ class ConditionEvidence(BackboneElement):
 
 
 class ConditionStage(BackboneElement):
-    """ Stage/grade, usually assessed formally.
+    """Stage/grade, usually assessed formally.
 
     Clinical stage or grade of a condition. May include formal severity
     assessments.

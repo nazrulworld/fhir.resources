@@ -12,8 +12,7 @@ from .element import Element
 
 
 class Reference(Element):
-    """ A reference from one resource to another.
-    """
+    """A reference from one resource to another."""
 
     resource_type = Field("Reference", const=True)
 

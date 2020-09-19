@@ -15,7 +15,7 @@ from .domainresource import DomainResource
 
 
 class OperationOutcome(DomainResource):
-    """ Information about the success/failure of an action.
+    """Information about the success/failure of an action.
 
     A collection of error, warning or information messages that result from a
     system action.
@@ -32,7 +32,7 @@ class OperationOutcome(DomainResource):
 
 
 class OperationOutcomeIssue(BackboneElement):
-    """ A single issue associated with the action.
+    """A single issue associated with the action.
 
     An error, warning or information message that results from a system action.
     """

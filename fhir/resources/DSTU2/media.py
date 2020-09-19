@@ -14,7 +14,7 @@ from .domainresource import DomainResource
 
 
 class Media(DomainResource):
-    """ A photo, video, or audio recording acquired or used in healthcare. The
+    """A photo, video, or audio recording acquired or used in healthcare. The
     actual content may be inline or provided by direct reference.
     """
 

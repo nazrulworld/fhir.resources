@@ -15,7 +15,7 @@ from .domainresource import DomainResource
 
 
 class AuditEvent(DomainResource):
-    """ Event record kept for security purposes.
+    """Event record kept for security purposes.
 
     A record of an event made for purposes of maintaining a security log.
     Typical uses include detection of intrusion attempts and monitoring for
@@ -53,7 +53,7 @@ class AuditEvent(DomainResource):
 
 
 class AuditEventEvent(BackboneElement):
-    """ What was done.
+    """What was done.
 
     Identifies the name, action type, time, and disposition of the audited
     event.
@@ -111,8 +111,7 @@ class AuditEventEvent(BackboneElement):
 
 
 class AuditEventObject(BackboneElement):
-    """ Specific instances of data or objects that have been accessed.
-    """
+    """Specific instances of data or objects that have been accessed."""
 
     resource_type = Field("AuditEventObject", const=True)
 
@@ -184,8 +183,7 @@ class AuditEventObject(BackboneElement):
 
 
 class AuditEventObjectDetail(BackboneElement):
-    """ Additional Information about the Object.
-    """
+    """Additional Information about the Object."""
 
     resource_type = Field("AuditEventObjectDetail", const=True)
 
@@ -198,8 +196,7 @@ class AuditEventObjectDetail(BackboneElement):
 
 
 class AuditEventParticipant(BackboneElement):
-    """ A person, a hardware device or software process.
-    """
+    """A person, a hardware device or software process."""
 
     resource_type = Field("AuditEventParticipant", const=True)
 
@@ -285,7 +282,7 @@ class AuditEventParticipant(BackboneElement):
 
 
 class AuditEventParticipantNetwork(BackboneElement):
-    """ Logical network location for application activity.
+    """Logical network location for application activity.
 
     Logical network location for application activity, if the activity has a
     network location.
@@ -309,8 +306,7 @@ class AuditEventParticipantNetwork(BackboneElement):
 
 
 class AuditEventSource(BackboneElement):
-    """ Application systems and processes.
-    """
+    """Application systems and processes."""
 
     resource_type = Field("AuditEventSource", const=True)
 

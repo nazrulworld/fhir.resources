@@ -15,7 +15,7 @@ from .element import Element
 
 
 class Timing(Element):
-    """ A timing schedule that specifies an event that may occur multiple times.
+    """A timing schedule that specifies an event that may occur multiple times.
 
     Specifies an event that may occur multiple times. Timing schedules are used
     to record when things are expected or requested to occur. The most common
@@ -48,7 +48,7 @@ class Timing(Element):
 
 
 class TimingRepeat(Element):
-    """ When the event is to occur.
+    """When the event is to occur.
 
     A set of rules that describe when the event should occur.
     """

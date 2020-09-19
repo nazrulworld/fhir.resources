@@ -13,8 +13,7 @@ from .element import Element
 
 
 class Narrative(Element):
-    """ A human-readable formatted text, including images.
-    """
+    """A human-readable formatted text, including images."""
 
     resource_type = Field("Narrative", const=True)
 

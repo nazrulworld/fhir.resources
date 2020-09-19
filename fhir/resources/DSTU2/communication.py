@@ -16,7 +16,7 @@ from .domainresource import DomainResource
 
 
 class Communication(DomainResource):
-    """ A record of information transmitted from a sender to a receiver.
+    """A record of information transmitted from a sender to a receiver.
 
     An occurrence of information being transmitted; e.g. an alert that was sent
     to a responsible provider, a public health agency was notified about a
@@ -115,7 +115,7 @@ class Communication(DomainResource):
 
 
 class CommunicationPayload(BackboneElement):
-    """ Message payload.
+    """Message payload.
 
     Text, attachment(s), or resource(s) that was communicated to the recipient.
     """

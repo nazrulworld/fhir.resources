@@ -16,7 +16,7 @@ from .domainresource import DomainResource
 
 
 class ConceptMap(DomainResource):
-    """ A map from one set of concepts to one or more other concepts.
+    """A map from one set of concepts to one or more other concepts.
 
     A statement of relationships from one set of concepts to one or more other
     concepts - either code systems or data elements, or classes in class
@@ -197,7 +197,7 @@ class ConceptMap(DomainResource):
 
 
 class ConceptMapContact(BackboneElement):
-    """ Contact details of the publisher.
+    """Contact details of the publisher.
 
     Contacts to assist a user in finding and communicating with the publisher.
     """
@@ -219,7 +219,7 @@ class ConceptMapContact(BackboneElement):
 
 
 class ConceptMapElement(BackboneElement):
-    """ Mappings for a concept from the source set.
+    """Mappings for a concept from the source set.
 
     Mappings for an individual concept in the source to one or more concepts in
     the target.
@@ -248,7 +248,7 @@ class ConceptMapElement(BackboneElement):
 
 
 class ConceptMapElementTarget(BackboneElement):
-    """ Concept in target system for element.
+    """Concept in target system for element.
 
     A concept from the target value set that this concept maps to.
     """
@@ -305,7 +305,7 @@ class ConceptMapElementTarget(BackboneElement):
 
 
 class ConceptMapElementTargetDependsOn(BackboneElement):
-    """ Other elements required for this mapping (from context).
+    """Other elements required for this mapping (from context).
 
     A set of additional dependencies for this mapping to hold. This mapping is
     only applicable if the specified element can be resolved, and it has the

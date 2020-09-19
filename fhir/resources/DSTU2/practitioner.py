@@ -15,7 +15,7 @@ from .domainresource import DomainResource
 
 
 class Practitioner(DomainResource):
-    """ A person with a  formal responsibility in the provisioning of healthcare or
+    """A person with a  formal responsibility in the provisioning of healthcare or
     related services.
 
     A person who is directly or indirectly involved in the provisioning of
@@ -100,7 +100,7 @@ class Practitioner(DomainResource):
 
 
 class PractitionerPractitionerRole(BackboneElement):
-    """ Roles/organizations the practitioner is associated with.
+    """Roles/organizations the practitioner is associated with.
 
     The list of roles/organizations that the practitioner is associated with.
     """
@@ -162,8 +162,7 @@ class PractitionerPractitionerRole(BackboneElement):
 
 
 class PractitionerQualification(BackboneElement):
-    """ Qualifications obtained by training and certification.
-    """
+    """Qualifications obtained by training and certification."""
 
     resource_type = Field("PractitionerQualification", const=True)
 

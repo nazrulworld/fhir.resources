@@ -13,7 +13,7 @@ from .element import Element
 
 
 class Period(Element):
-    """ Time range defined by start and end date/time.
+    """Time range defined by start and end date/time.
 
     A time period defined by a start and end date and optionally time.
     """

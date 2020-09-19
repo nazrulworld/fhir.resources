@@ -14,8 +14,7 @@ from .element import Element
 
 
 class Extension(Element):
-    """Optional Extensions Element - found in all resources.
-    """
+    """Optional Extensions Element - found in all resources."""
 
     resource_type = Field("Extension", const=True)
 

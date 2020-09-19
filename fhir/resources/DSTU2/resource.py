@@ -12,7 +12,7 @@ from .fhirresourcemodel import FHIRResourceModel
 
 
 class Resource(FHIRResourceModel):
-    """ Base Resource.
+    """Base Resource.
     This is the base resource type for everything.
     """
 

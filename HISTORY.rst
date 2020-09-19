@@ -5,9 +5,18 @@ History
 6.0.0b4 (unreleased)
 --------------------
 
-- Fixes `Issue#19 <https://github.com/nazrulworld/fhir.resources/issues/19>`_ Getting validation errors that don't make sense.
+Improvements
+
+- `orjson <https://github.com/ijl/orjson>`_ supports have been available as default json ``dumps`` and ``loads`` for Model.
 
 - ``FHIRAbstractModel::get_json_encoder`` class method now available, which return pydantic compatible json encoder callable, can be used with any json serializer.
+
+- More DSTU2 FHIR Resources have added, https://github.com/nazrulworld/fhir.resources/issues/21. Thanks to [mmabey].
+
+Fixes
+
+- Fixes `Issue#19 <https://github.com/nazrulworld/fhir.resources/issues/19>`_ Getting validation errors that don't make sense.
+
 
 6.0.0b3 (2020-08-07)
 --------------------

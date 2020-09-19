@@ -14,7 +14,7 @@ from .domainresource import DomainResource
 
 
 class AppointmentResponse(DomainResource):
-    """ A reply to an appointment request for a patient and/or practitioner(s),
+    """A reply to an appointment request for a patient and/or practitioner(s),
     such as a confirmation or rejection.
     """
 

@@ -16,7 +16,7 @@ from .domainresource import DomainResource
 
 
 class Group(DomainResource):
-    """ Group of multiple entities.
+    """Group of multiple entities.
 
     Represents a defined collection of entities that may be discussed or acted
     upon collectively but which are not expected to act collectively and are
@@ -77,7 +77,7 @@ class Group(DomainResource):
 
 
 class GroupCharacteristic(BackboneElement):
-    """ Trait of group members.
+    """Trait of group members.
 
     Identifies the traits shared by members of the group.
     """
@@ -185,7 +185,7 @@ class GroupCharacteristic(BackboneElement):
 
 
 class GroupMember(BackboneElement):
-    """ Who or what is in group.
+    """Who or what is in group.
 
     Identifies the resource instances that are members of the group.
     """

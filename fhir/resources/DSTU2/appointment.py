@@ -15,7 +15,7 @@ from .domainresource import DomainResource
 
 
 class Appointment(DomainResource):
-    """ A booking of a healthcare event among patient(s), practitioner(s), related
+    """A booking of a healthcare event among patient(s), practitioner(s), related
     person(s) and/or device(s) for a specific date/time. This may result in one
     or more Encounter(s).
     """
@@ -117,7 +117,7 @@ class Appointment(DomainResource):
 
 
 class AppointmentParticipant(BackboneElement):
-    """ Participants involved in appointment.
+    """Participants involved in appointment.
 
     List of participants involved in the appointment.
     """

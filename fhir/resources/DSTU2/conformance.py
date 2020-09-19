@@ -15,7 +15,7 @@ from .domainresource import DomainResource
 
 
 class Conformance(DomainResource):
-    """ A conformance statement.
+    """A conformance statement.
 
     A conformance statement is a set of capabilities of a FHIR Server that may
     be used as a statement of actual server functionality or a statement of
@@ -169,7 +169,7 @@ class Conformance(DomainResource):
 
 
 class ConformanceContact(BackboneElement):
-    """ Contact details of the publisher.
+    """Contact details of the publisher.
 
     Contacts to assist a user in finding and communicating with the publisher.
     """
@@ -192,7 +192,7 @@ class ConformanceContact(BackboneElement):
 
 
 class ConformanceDocument(BackboneElement):
-    """ Document definition.
+    """Document definition.
 
     A document definition.
     """
@@ -221,7 +221,7 @@ class ConformanceDocument(BackboneElement):
 
 
 class ConformanceImplementation(BackboneElement):
-    """ If this describes a specific instance.
+    """If this describes a specific instance.
 
     Identifies a specific implementation instance that is described by the
     conformance statement - i.e. a particular installation, rather than the
@@ -246,7 +246,7 @@ class ConformanceImplementation(BackboneElement):
 
 
 class ConformanceMessaging(BackboneElement):
-    """ If messaging is supported.
+    """If messaging is supported.
 
     A description of the messaging capabilities of the solution.
     """
@@ -282,7 +282,7 @@ class ConformanceMessaging(BackboneElement):
 
 
 class ConformanceMessagingEndpoint(BackboneElement):
-    """ A messaging service end-point.
+    """A messaging service end-point.
 
     An endpoint (network accessible address) to which messages and/or replies
     are to be sent.
@@ -300,7 +300,7 @@ class ConformanceMessagingEndpoint(BackboneElement):
 
 
 class ConformanceMessagingEvent(BackboneElement):
-    """ Declare support for this event.
+    """Declare support for this event.
 
     A description of the solution's support for an event at this end-point.
     """
@@ -357,7 +357,7 @@ class ConformanceMessagingEvent(BackboneElement):
 
 
 class ConformanceRest(BackboneElement):
-    """ If the endpoint is a RESTful one.
+    """If the endpoint is a RESTful one.
 
     A definition of the restful capabilities of the solution, if any.
     """
@@ -427,7 +427,7 @@ class ConformanceRest(BackboneElement):
 
 
 class ConformanceRestInteraction(BackboneElement):
-    """ What operations are supported?.
+    """What operations are supported?.
 
     A specification of restful operations supported by the system.
     """
@@ -449,7 +449,7 @@ class ConformanceRestInteraction(BackboneElement):
 
 
 class ConformanceRestOperation(BackboneElement):
-    """ Definition of an operation or a custom query.
+    """Definition of an operation or a custom query.
 
     Definition of an operation or a named query and with its parameters and
     their meaning and type.
@@ -475,7 +475,7 @@ class ConformanceRestOperation(BackboneElement):
 
 
 class ConformanceRestResource(BackboneElement):
-    """ Resource served on the REST interface.
+    """Resource served on the REST interface.
 
     A specification of the restful capabilities of the solution for a specific
     resource type.
@@ -575,7 +575,7 @@ class ConformanceRestResource(BackboneElement):
 
 
 class ConformanceRestResourceInteraction(BackboneElement):
-    """ What operations are supported?.
+    """What operations are supported?.
 
     Identifies a restful operation supported by the solution.
     """
@@ -601,7 +601,7 @@ class ConformanceRestResourceInteraction(BackboneElement):
 
 
 class ConformanceRestResourceSearchParam(BackboneElement):
-    """ Search params supported by implementation.
+    """Search params supported by implementation.
 
     Search parameters for implementations to support and/or make use of -
     either references to ones defined in the specification, or additional ones
@@ -660,7 +660,7 @@ class ConformanceRestResourceSearchParam(BackboneElement):
 
 
 class ConformanceRestSecurity(BackboneElement):
-    """ Information about security of implementation.
+    """Information about security of implementation.
 
     Information about security implementation from an interface perspective -
     what a client needs to know.
@@ -700,8 +700,7 @@ class ConformanceRestSecurity(BackboneElement):
 
 
 class ConformanceRestSecurityCertificate(BackboneElement):
-    """ Certificates associated with security profiles.
-    """
+    """Certificates associated with security profiles."""
 
     resource_type = Field("ConformanceRestSecurityCertificate", const=True)
     blob: fhirtypes.Base64Binary = Field(
@@ -719,7 +718,7 @@ class ConformanceRestSecurityCertificate(BackboneElement):
 
 
 class ConformanceSoftware(BackboneElement):
-    """ Software that is covered by this conformance statement.
+    """Software that is covered by this conformance statement.
 
     Software that is covered by this conformance statement.  It is used when
     the conformance statement describes the capabilities of a particular

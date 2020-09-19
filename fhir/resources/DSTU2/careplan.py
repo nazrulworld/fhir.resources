@@ -16,7 +16,7 @@ from .domainresource import DomainResource
 
 
 class CarePlan(DomainResource):
-    """ Healthcare plan for patient or group.
+    """Healthcare plan for patient or group.
 
     Describes the intention of how one or more practitioners intend to deliver
     care for a particular patient, group or community for a period of time,
@@ -159,7 +159,7 @@ class CarePlan(DomainResource):
 
 
 class CarePlanActivity(BackboneElement):
-    """ Action to occur as part of plan.
+    """Action to occur as part of plan.
 
     Identifies a planned action to occur as part of the plan.  For example, a
     medication to be used, lab tests to perform, self-monitoring, education,
@@ -207,7 +207,7 @@ class CarePlanActivity(BackboneElement):
 
 
 class CarePlanActivityDetail(BackboneElement):
-    """ In-line definition of activity.
+    """In-line definition of activity.
 
     A simple summary of a planned activity suitable for a general care plan
     system (e.g. form driven) that doesn't know about specific resources such
@@ -402,7 +402,7 @@ class CarePlanActivityDetail(BackboneElement):
 
 
 class CarePlanParticipant(BackboneElement):
-    """ Who's involved in plan?.
+    """Who's involved in plan?.
 
     Identifies all people and organizations who are expected to be involved in
     the care envisioned by this plan.
@@ -428,7 +428,7 @@ class CarePlanParticipant(BackboneElement):
 
 
 class CarePlanRelatedPlan(BackboneElement):
-    """ Plans related to this one.
+    """Plans related to this one.
 
     Identifies CarePlans with some sort of formal relationship to the current
     plan.

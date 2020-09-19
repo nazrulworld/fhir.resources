@@ -14,7 +14,7 @@ from .element import Element
 
 
 class Annotation(Element):
-    """ Text node with attribution.
+    """Text node with attribution.
 
     A  text note which also  contains information about who made the statement
     and when.

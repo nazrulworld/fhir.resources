@@ -16,7 +16,7 @@ from .domainresource import DomainResource
 
 
 class Contract(DomainResource):
-    """ Contract.
+    """Contract.
 
     A formal agreement between parties regarding the conduct of business,
     exchange of information or other matters.
@@ -244,7 +244,7 @@ class Contract(DomainResource):
 
 
 class ContractActor(BackboneElement):
-    """ Contract Actor.
+    """Contract Actor.
 
     List of Contract actors.
     """
@@ -275,7 +275,7 @@ class ContractActor(BackboneElement):
 
 
 class ContractFriendly(BackboneElement):
-    """ Contract Friendly Language.
+    """Contract Friendly Language.
 
     The "patient friendly language" versionof the Contract in whole or in
     parts. "Patient friendly language" means the representation of the Contract
@@ -353,7 +353,7 @@ class ContractFriendly(BackboneElement):
 
 
 class ContractLegal(BackboneElement):
-    """ Contract Legal Language.
+    """Contract Legal Language.
 
     List of Legal expressions or representations of this Contract.
     """
@@ -425,7 +425,7 @@ class ContractLegal(BackboneElement):
 
 
 class ContractRule(BackboneElement):
-    """ Computable Contract Language.
+    """Computable Contract Language.
 
     List of Computable Policy Rule Language Representations of this Contract.
     """
@@ -497,7 +497,7 @@ class ContractRule(BackboneElement):
 
 
 class ContractSigner(BackboneElement):
-    """ Contract Signer.
+    """Contract Signer.
 
     Party signing this Contract.
     """
@@ -535,7 +535,7 @@ class ContractSigner(BackboneElement):
 
 
 class ContractTerm(BackboneElement):
-    """ Contract Term List.
+    """Contract Term List.
 
     One or more Contract Provisions, which may be related and conveyed as a
     group, and may contain nested groups.
@@ -652,7 +652,7 @@ class ContractTerm(BackboneElement):
 
 
 class ContractTermActor(BackboneElement):
-    """ Contract Term Actor List.
+    """Contract Term Actor List.
 
     List of actors participating in this Contract Provision.
     """
@@ -683,7 +683,7 @@ class ContractTermActor(BackboneElement):
 
 
 class ContractTermValuedItem(BackboneElement):
-    """ Contract Term Valued Item.
+    """Contract Term Valued Item.
 
     Contract Provision Valued Item List.
     """
@@ -815,7 +815,7 @@ class ContractTermValuedItem(BackboneElement):
 
 
 class ContractValuedItem(BackboneElement):
-    """ Contract Valued Item.
+    """Contract Valued Item.
 
     Contract Valued Item List.
     """

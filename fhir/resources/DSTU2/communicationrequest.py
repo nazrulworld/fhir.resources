@@ -16,7 +16,7 @@ from .domainresource import DomainResource
 
 
 class CommunicationRequest(DomainResource):
-    """ A request for information to be sent to a receiver.
+    """A request for information to be sent to a receiver.
 
     A request to convey information; e.g. the CDS system proposes that an alert
     be sent to a responsible provider, the CDS system proposes that the public
@@ -178,7 +178,7 @@ class CommunicationRequest(DomainResource):
 
 
 class CommunicationRequestPayload(BackboneElement):
-    """ Message payload.
+    """Message payload.
 
     Text, attachment(s), or resource(s) to be communicated to the recipient.
     """

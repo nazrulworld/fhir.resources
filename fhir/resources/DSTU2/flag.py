@@ -14,7 +14,7 @@ from .domainresource import DomainResource
 
 
 class Flag(DomainResource):
-    """ Key information to flag to healthcare providers.
+    """Key information to flag to healthcare providers.
 
     Prospective warnings of potential issues when providing care to the
     patient.

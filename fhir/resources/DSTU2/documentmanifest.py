@@ -193,7 +193,7 @@ class DocumentManifestRelated(backboneelement.BackboneElement):
 class DocumentManifestContent(backboneelement.BackboneElement):
     """
     The items included
-    The list of references to document content, or Attachment that consist 
+    The list of references to document content, or Attachment that consist
     of the parts of this document manifest. Usually, these would be document
     references, but direct references to Media or Attachments are also allowed.
     """

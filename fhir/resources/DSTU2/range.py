@@ -12,7 +12,7 @@ from .element import Element
 
 
 class Range(Element):
-    """ Set of values bounded by low and high.
+    """Set of values bounded by low and high.
 
     A set of ordered Quantities defined by a low and high limit.
     """

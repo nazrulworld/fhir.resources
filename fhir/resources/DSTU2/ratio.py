@@ -12,7 +12,7 @@ from .element import Element
 
 
 class Ratio(Element):
-    """ A ratio of two Quantity values - a numerator and a denominator.
+    """A ratio of two Quantity values - a numerator and a denominator.
 
     A relationship of two Quantity values - expressed as a numerator and a
     denominator.

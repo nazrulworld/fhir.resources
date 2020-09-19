@@ -14,7 +14,7 @@ from .fhirabstractmodel import FHIRAbstractModel
 
 
 class Element(FHIRAbstractModel):
-    """ Base for all elements.
+    """Base for all elements.
     Base definition for all elements in a resource.
     """
 

@@ -16,7 +16,7 @@ from .domainresource import DomainResource
 
 
 class MedicationAdministration(DomainResource):
-    """ Administration of medication to a patient.
+    """Administration of medication to a patient.
 
     Describes the event of a patient consuming or otherwise being administered
     a medication.  This may be as simple as swallowing a tablet or it may be a
@@ -186,7 +186,7 @@ class MedicationAdministration(DomainResource):
 
 
 class MedicationAdministrationDosage(BackboneElement):
-    """ Details of how medication was taken.
+    """Details of how medication was taken.
 
     Describes the medication dosage information details e.g. dose, rate, site,
     route, etc.

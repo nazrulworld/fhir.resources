@@ -14,7 +14,7 @@ from .element import Element
 
 
 class Address(Element):
-    """ A postal address.
+    """A postal address.
 
     There is a variety of postal address formats defined around the world. This
     format defines a superset that is the basis for all addresses around the

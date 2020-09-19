@@ -15,7 +15,7 @@ from .domainresource import DomainResource
 
 
 class Composition(DomainResource):
-    """ A set of resources composed into a single coherent clinical statement with
+    """A set of resources composed into a single coherent clinical statement with
     clinical attestation.
 
     A set of healthcare-related information that is assembled together into a
@@ -140,7 +140,7 @@ class Composition(DomainResource):
 
 
 class CompositionAttester(BackboneElement):
-    """ Attests to accuracy of composition.
+    """Attests to accuracy of composition.
 
     A participant who has attested to the accuracy of the composition/document.
     """
@@ -173,7 +173,7 @@ class CompositionAttester(BackboneElement):
 
 
 class CompositionEvent(BackboneElement):
-    """ The clinical service(s) being documented.
+    """The clinical service(s) being documented.
 
     The clinical service, such as a colonoscopy or an appendectomy, being
     documented.
@@ -207,7 +207,7 @@ class CompositionEvent(BackboneElement):
 
 
 class CompositionSection(BackboneElement):
-    """ Composition is broken into sections.
+    """Composition is broken into sections.
 
     The root of the sections that make up the composition.
     """

@@ -15,7 +15,7 @@ from .domainresource import DomainResource
 
 
 class Coverage(DomainResource):
-    """ Insurance or medical plan.
+    """Insurance or medical plan.
 
     Financial instrument which may be used to pay for or reimburse health care
     products and services.

@@ -14,7 +14,7 @@ from .domainresource import DomainResource
 
 
 class Basic(DomainResource):
-    """ Resource for non-supported content.
+    """Resource for non-supported content.
 
     Basic is used for handling concepts not yet defined in FHIR, narrative-only
     resources that don't map to an existing resource, and custom resources not

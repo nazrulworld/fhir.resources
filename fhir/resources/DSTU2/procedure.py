@@ -16,7 +16,7 @@ from .domainresource import DomainResource
 
 
 class Procedure(DomainResource):
-    """ An action that is being or was performed on a patient.
+    """An action that is being or was performed on a patient.
 
     An action that is or was performed on a patient. This can be a physical
     intervention like an operation, or less invasive like counseling or
@@ -242,7 +242,7 @@ class Procedure(DomainResource):
 
 
 class ProcedureFocalDevice(BackboneElement):
-    """ Device changed in procedure.
+    """Device changed in procedure.
 
     A device that is implanted, removed or otherwise manipulated (calibration,
     battery replacement, fitting a prosthesis, attaching a wound-vac, etc.) as
@@ -266,7 +266,7 @@ class ProcedureFocalDevice(BackboneElement):
 
 
 class ProcedurePerformer(BackboneElement):
-    """ The people who performed the procedure.
+    """The people who performed the procedure.
 
     Limited to 'real' people rather than equipment.
     """

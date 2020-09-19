@@ -15,7 +15,7 @@ from .resource import Resource
 
 
 class Bundle(Resource):
-    """ Contains a collection of resources.
+    """Contains a collection of resources.
 
     A container for a collection of resources.
     """
@@ -62,7 +62,7 @@ class Bundle(Resource):
 
 
 class BundleEntry(BackboneElement):
-    """ Entry in the bundle - will have a resource, or information.
+    """Entry in the bundle - will have a resource, or information.
 
     An entry in a bundle resource - will either contain a resource, or
     information about a resource (transactions and history only).
@@ -114,7 +114,7 @@ class BundleEntry(BackboneElement):
 
 
 class BundleEntryRequest(BackboneElement):
-    """ Transaction Related Information.
+    """Transaction Related Information.
 
     Additional information about how this entry should be processed as part of
     a transaction.
@@ -166,7 +166,7 @@ class BundleEntryRequest(BackboneElement):
 
 
 class BundleEntryResponse(BackboneElement):
-    """ Transaction Related Information.
+    """Transaction Related Information.
 
     Additional information about how this entry should be processed as part of
     a transaction.
@@ -204,7 +204,7 @@ class BundleEntryResponse(BackboneElement):
 
 
 class BundleEntrySearch(BackboneElement):
-    """ Search related information.
+    """Search related information.
 
     Information about the search process that lead to the creation of this
     entry.
@@ -228,7 +228,7 @@ class BundleEntrySearch(BackboneElement):
 
 
 class BundleLink(BackboneElement):
-    """ Links related to this Bundle.
+    """Links related to this Bundle.
 
     A series of links that provide context to this bundle.
     """

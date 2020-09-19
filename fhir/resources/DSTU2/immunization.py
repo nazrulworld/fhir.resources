@@ -15,7 +15,7 @@ from .domainresource import DomainResource
 
 
 class Immunization(DomainResource):
-    """ Immunization event information.
+    """Immunization event information.
 
     Describes the event of a patient being administered a vaccination or a
     record of a vaccination as reported by a patient, a clinician or another
@@ -175,7 +175,7 @@ class Immunization(DomainResource):
 
 
 class ImmunizationExplanation(BackboneElement):
-    """ Administration/non-administration reasons.
+    """Administration/non-administration reasons.
 
     Reasons why a vaccine was or was not administered.
     """
@@ -198,7 +198,7 @@ class ImmunizationExplanation(BackboneElement):
 
 
 class ImmunizationReaction(BackboneElement):
-    """ Details of a reaction that follows immunization.
+    """Details of a reaction that follows immunization.
 
     Categorical data indicating that an adverse event is associated in time to
     an immunization.
@@ -228,7 +228,7 @@ class ImmunizationReaction(BackboneElement):
 
 
 class ImmunizationVaccinationProtocol(BackboneElement):
-    """ What protocol was followed.
+    """What protocol was followed.
 
     Contains information about the protocol(s) under which the vaccine was
     administered.

@@ -16,7 +16,7 @@ from .domainresource import DomainResource
 
 
 class Observation(DomainResource):
-    """ Measurements and simple assertions.
+    """Measurements and simple assertions.
 
     Measurements and simple assertions made about a patient, device or other
     subject.
@@ -313,7 +313,7 @@ class Observation(DomainResource):
 
 
 class ObservationComponent(BackboneElement):
-    """ Component results.
+    """Component results.
 
     Some observations have multiple component observations.  These component
     observations are expressed as separate code value pairs that share the same
@@ -485,7 +485,7 @@ class ObservationComponent(BackboneElement):
 
 
 class ObservationReferenceRange(BackboneElement):
-    """ Provides guide for interpretation.
+    """Provides guide for interpretation.
 
     Guidance on how to interpret the value by comparison to a normal or
     recommended range.
@@ -529,7 +529,7 @@ class ObservationReferenceRange(BackboneElement):
 
 
 class ObservationRelated(BackboneElement):
-    """ Resource related to this observation.
+    """Resource related to this observation.
 
     A  reference to another resource (usually another Observation but could
     also be a QuestionnaireAnswer) whose relationship is defined by the

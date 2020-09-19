@@ -12,7 +12,7 @@ from .element import Element
 
 
 class Attachment(Element):
-    """ Content in a format defined elsewhere.
+    """Content in a format defined elsewhere.
 
     For referring to data content defined in other formats.
     """

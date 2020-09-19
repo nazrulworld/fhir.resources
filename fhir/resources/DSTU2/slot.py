@@ -14,8 +14,7 @@ from .domainresource import DomainResource
 
 
 class Slot(DomainResource):
-    """ A slot of time on a schedule that may be available for booking appointments.
-    """
+    """A slot of time on a schedule that may be available for booking appointments."""
 
     resource_type = Field("Slot", const=True)
 

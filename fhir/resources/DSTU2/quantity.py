@@ -12,7 +12,7 @@ from .element import Element
 
 
 class Quantity(Element):
-    """ A measured or measurable amount.
+    """A measured or measurable amount.
 
     A measured amount (or an amount that can potentially be measured). Note
     that measured amounts include amounts that are not precisely quantified,

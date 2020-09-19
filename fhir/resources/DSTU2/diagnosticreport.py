@@ -16,7 +16,7 @@ from .domainresource import DomainResource
 
 
 class DiagnosticReport(DomainResource):
-    """ A Diagnostic report - a combination of request information, atomic results,
+    """A Diagnostic report - a combination of request information, atomic results,
     images, interpretation, as well as formatted reports.
 
     The findings and interpretation of diagnostic  tests performed on patients,
@@ -220,7 +220,7 @@ class DiagnosticReport(DomainResource):
 
 
 class DiagnosticReportImage(BackboneElement):
-    """ Key images associated with this report.
+    """Key images associated with this report.
 
     A list of key images associated with this report. The images are generally
     created during the diagnostic process, and may be directly of the patient,

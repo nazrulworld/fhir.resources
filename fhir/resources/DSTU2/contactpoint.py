@@ -12,7 +12,7 @@ from .element import Element
 
 
 class ContactPoint(Element):
-    """ Details of a Technology mediated contact point (phone, fax, email, etc.).
+    """Details of a Technology mediated contact point (phone, fax, email, etc.).
 
     Details for all kinds of technology mediated contact points for a person or
     organization, including telephone, email, etc.

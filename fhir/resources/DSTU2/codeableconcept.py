@@ -14,7 +14,7 @@ from .element import Element
 
 
 class CodeableConcept(Element):
-    """ Concept - reference to a terminology or just  text.
+    """Concept - reference to a terminology or just  text.
 
     A concept that may be defined by a formal reference to a terminology or
     ontology or may be provided by text.

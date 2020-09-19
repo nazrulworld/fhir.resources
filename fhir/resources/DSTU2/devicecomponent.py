@@ -15,7 +15,7 @@ from .domainresource import DomainResource
 
 
 class DeviceComponent(DomainResource):
-    """ An instance of a medical-related component of a medical device.
+    """An instance of a medical-related component of a medical device.
 
     Describes the characteristics, operational status and capabilities of a
     medical-related component of a medical device.
@@ -102,7 +102,10 @@ class DeviceComponent(DomainResource):
     ] = Field(
         None,
         alias="productSpecification",
-        title="List of `DeviceComponentProductionSpecification` items (represented as `dict` in JSON).",
+        title=(
+            "List of `DeviceComponentProductionSpecification` items "
+            "(represented as `dict` in JSON)."
+        ),
         description="Production specification of the component.",
     )
 
@@ -110,12 +113,15 @@ class DeviceComponent(DomainResource):
         None,
         alias="languageCode",
         title="Type `CodeableConcept` (represented as `dict` in JSON).",
-        description="Language code for the human-readable text strings produced by the device.",
+        description=(
+            "Language code for the human-readable text "
+            "strings produced by the device."
+        ),
     )
 
 
 class DeviceComponentProductionSpecification(BackboneElement):
-    """ Production specification of the component.
+    """Production specification of the component.
 
     Describes the production specification such as component revision, serial
     number, etc.

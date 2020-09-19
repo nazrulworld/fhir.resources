@@ -15,7 +15,7 @@ from .domainresource import DomainResource
 
 
 class Person(DomainResource):
-    """ A generic person record.
+    """A generic person record.
 
     Demographics and administrative information about a person independent of a
     specific health-related context.
@@ -101,8 +101,7 @@ class Person(DomainResource):
 
 
 class PersonLink(BackboneElement):
-    """ Link to a resource that concerns the same actual person.
-    """
+    """Link to a resource that concerns the same actual person."""
 
     resource_type = Field("PersonLink", const=True)
 

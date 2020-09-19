@@ -26,7 +26,7 @@ FHIR® Resources (R4, STU3, DSTU2)
 
 
 Powered by pydantic_, all `FHIR Resources <https://www.hl7.org/fhir/resourcelist.html>`_ are available as python class with built-in
-data validation, faster in performance. Written in modern python.
+data validation, faster in performance and by default ``orjson`` is included as performance booster! Written in modern python.
 
 * Easy to construct, easy to extended validation, easy to export.
 * By inheriting behaviour from pydantic_, compatible with `ORM <https://en.wikipedia.org/wiki/Object-relational_mapping>`_.

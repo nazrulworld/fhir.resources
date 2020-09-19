@@ -15,7 +15,7 @@ from .domainresource import DomainResource
 
 
 class Organization(DomainResource):
-    """ A grouping of people or organizations with a common purpose.
+    """A grouping of people or organizations with a common purpose.
 
     A formally or informally recognized grouping of people or organizations
     formed for the purpose of achieving some form of collective action.
@@ -81,8 +81,7 @@ class Organization(DomainResource):
 
 
 class OrganizationContact(BackboneElement):
-    """ Contact for the organization for a certain purpose.
-    """
+    """Contact for the organization for a certain purpose."""
 
     resource_type = Field("OrganizationContact", const=True)
 

@@ -16,7 +16,7 @@ from .domainresource import DomainResource
 
 
 class Medication(DomainResource):
-    """ Definition of a Medication.
+    """Definition of a Medication.
 
     This resource is primarily used for the identification and definition of a
     medication. It covers the ingredients and the packaging for a medication.
@@ -58,7 +58,7 @@ class Medication(DomainResource):
 
 
 class MedicationPackage(BackboneElement):
-    """ Details about packaged medications.
+    """Details about packaged medications.
 
     Information that only applies to packages (not products).
     """
@@ -81,7 +81,7 @@ class MedicationPackage(BackboneElement):
 
 
 class MedicationPackageContent(BackboneElement):
-    """ What is  in the package.
+    """What is  in the package.
 
     A set of components that go to make up the described item.
     """
@@ -104,7 +104,7 @@ class MedicationPackageContent(BackboneElement):
 
 
 class MedicationProduct(BackboneElement):
-    """ Administrable medication details.
+    """Administrable medication details.
 
     Information that only applies to products (not packages).
     """
@@ -133,7 +133,7 @@ class MedicationProduct(BackboneElement):
 
 
 class MedicationProductBatch(BackboneElement):
-    """ None.
+    """None.
 
     Information about a group of medication produced or packaged from one
     production run.
@@ -150,7 +150,7 @@ class MedicationProductBatch(BackboneElement):
 
 
 class MedicationProductIngredient(BackboneElement):
-    """ Active or inactive ingredient.
+    """Active or inactive ingredient.
 
     Identifies a particular constituent of interest in the product.
     """

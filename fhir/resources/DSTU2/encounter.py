@@ -15,7 +15,7 @@ from .domainresource import DomainResource
 
 
 class Encounter(DomainResource):
-    """ An interaction during which services are provided to the patient.
+    """An interaction during which services are provided to the patient.
 
     An interaction between a patient and healthcare provider(s) for the purpose
     of providing healthcare service(s) or assessing the health status of a
@@ -163,8 +163,7 @@ class Encounter(DomainResource):
 
 
 class EncounterHospitalization(BackboneElement):
-    """ Details about the admission to a healthcare service.
-    """
+    """Details about the admission to a healthcare service."""
 
     resource_type = Field("EncounterHospitalization", const=True)
 
@@ -255,7 +254,7 @@ class EncounterHospitalization(BackboneElement):
 
 
 class EncounterLocation(BackboneElement):
-    """ List of locations where the patient has been.
+    """List of locations where the patient has been.
 
     List of locations where  the patient has been during this encounter.
     """
@@ -284,7 +283,7 @@ class EncounterLocation(BackboneElement):
 
 
 class EncounterParticipant(BackboneElement):
-    """ List of participants involved in the encounter.
+    """List of participants involved in the encounter.
 
     The list of people responsible for providing the service.
     """
@@ -316,7 +315,7 @@ class EncounterParticipant(BackboneElement):
 
 
 class EncounterStatusHistory(BackboneElement):
-    """ List of past encounter statuses.
+    """List of past encounter statuses.
 
     The status history permits the encounter resource to contain the status
     history without needing to read through the historical versions of the

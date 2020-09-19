@@ -15,7 +15,7 @@ from .domainresource import DomainResource
 
 
 class AllergyIntolerance(DomainResource):
-    """ Allergy or Intolerance (generally: Risk Of Adverse reaction to a substance).
+    """Allergy or Intolerance (generally: Risk Of Adverse reaction to a substance).
 
     Risk of harmful or undesirable, physiological response which is unique to
     an individual and associated with exposure to a substance.
@@ -133,7 +133,7 @@ class AllergyIntolerance(DomainResource):
 
 
 class AllergyIntoleranceReaction(BackboneElement):
-    """ Adverse Reaction Events linked to exposure to substance.
+    """Adverse Reaction Events linked to exposure to substance.
 
     Details about each adverse reaction event linked to exposure to the
     identified Substance.

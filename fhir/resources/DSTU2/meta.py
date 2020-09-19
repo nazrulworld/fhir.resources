@@ -15,7 +15,7 @@ from .element import Element
 
 
 class Meta(Element):
-    """ Metadata about a resource.
+    """Metadata about a resource.
 
     The metadata about a resource. This is content in the resource that is
     maintained by the infrastructure. Changes to the content may not always be

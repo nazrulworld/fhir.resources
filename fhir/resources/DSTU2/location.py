@@ -15,7 +15,7 @@ from .domainresource import DomainResource
 
 
 class Location(DomainResource):
-    """ Details and position information for a physical place.
+    """Details and position information for a physical place.
 
     Details and position information for a physical place where services are
     provided  and resources and participants may be stored, found, contained or
@@ -118,7 +118,7 @@ class Location(DomainResource):
 
 
 class LocationPosition(BackboneElement):
-    """ The absolute geographic location.
+    """The absolute geographic location.
 
     The absolute geographic location of the Location, expressed using the WGS84
     datum (This is the same co-ordinate system used in KML).

@@ -9,8 +9,7 @@ from .fhirtypes import Id, String
 
 
 class FHIRResourceModel(FHIRAbstractModel):
-    """ Abstract base model class for all FHIR elements.
-    """
+    """Abstract base model class for all FHIR elements."""
 
     resource_type: str = Field("FHIRAbstractResource", const=True)
     id: Optional[Union[Id, String]] = None

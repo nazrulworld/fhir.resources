@@ -16,7 +16,7 @@ from .domainresource import DomainResource
 
 
 class Patient(DomainResource):
-    """ Information about an individual or animal receiving health care services.
+    """Information about an individual or animal receiving health care services.
 
     Demographics and other administrative information about an individual or
     animal receiving care or other health-related services.
@@ -208,7 +208,7 @@ class Patient(DomainResource):
 
 
 class PatientAnimal(BackboneElement):
-    """ This patient is known to be an animal (non-human).
+    """This patient is known to be an animal (non-human).
 
     This patient is known to be an animal.
     """
@@ -238,7 +238,7 @@ class PatientAnimal(BackboneElement):
 
 
 class PatientCommunication(BackboneElement):
-    """ A list of Languages which may be used to communicate with the patient about
+    """A list of Languages which may be used to communicate with the patient about
     his or her health.
 
     Languages which may be used to communicate with the patient about his or
@@ -266,8 +266,7 @@ class PatientCommunication(BackboneElement):
 
 
 class PatientContact(BackboneElement):
-    """ A contact party (e.g. guardian, partner, friend) for the patient.
-    """
+    """A contact party (e.g. guardian, partner, friend) for the patient."""
 
     resource_type = Field("PatientContact", const=True)
 
@@ -324,7 +323,7 @@ class PatientContact(BackboneElement):
 
 
 class PatientLink(BackboneElement):
-    """ Link to another patient resource that concerns the same actual person.
+    """Link to another patient resource that concerns the same actual person.
 
     Link to another patient resource that concerns the same actual patient.
     """

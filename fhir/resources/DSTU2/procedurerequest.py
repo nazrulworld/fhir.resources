@@ -15,7 +15,7 @@ from .domainresource import DomainResource
 
 
 class ProcedureRequest(DomainResource):
-    """ A request for a procedure to be performed.
+    """A request for a procedure to be performed.
 
     A request for a procedure to be performed. May be a proposal or an order.
     """

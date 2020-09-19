@@ -14,7 +14,7 @@ from .domainresource import DomainResource
 
 
 class Schedule(DomainResource):
-    """ A container for slot(s) of time that may be available for booking
+    """A container for slot(s) of time that may be available for booking
     appointments.
     """
 

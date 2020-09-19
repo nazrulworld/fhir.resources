@@ -16,7 +16,7 @@ from .domainresource import DomainResource
 
 
 class ValueSet(DomainResource):
-    """ A set of codes drawn from one or more code systems.
+    """A set of codes drawn from one or more code systems.
 
     A value set specifies a set of codes drawn from one or more code systems.
     """
@@ -155,7 +155,7 @@ class ValueSet(DomainResource):
 
 
 class ValueSetCodeSystem(BackboneElement):
-    """ An inline code system, which is part of this value set.
+    """An inline code system, which is part of this value set.
 
     A definition of a code system, inlined into the value set (as a packaging
     convenience). Note that the inline code system may be used from other value
@@ -194,7 +194,7 @@ class ValueSetCodeSystem(BackboneElement):
 
 
 class ValueSetCodeSystemConcept(BackboneElement):
-    """ Concepts in the code system.
+    """Concepts in the code system.
 
     Concepts that are in the code system. The concept definitions are
     inherently hierarchical, but the definitions must be consulted to determine
@@ -247,7 +247,7 @@ class ValueSetCodeSystemConcept(BackboneElement):
 
 
 class ValueSetCodeSystemConceptDesignation(BackboneElement):
-    """ Additional representations for the concept.
+    """Additional representations for the concept.
 
     Additional representations for the concept - other languages, aliases,
     specialized purposes, used for particular purposes, etc.
@@ -277,7 +277,7 @@ class ValueSetCodeSystemConceptDesignation(BackboneElement):
 
 
 class ValueSetCompose(BackboneElement):
-    """ When value set includes codes from elsewhere.
+    """When value set includes codes from elsewhere.
 
     A set of criteria that provide the content logical definition of the value
     set by including or excluding codes from outside this value set.
@@ -308,8 +308,7 @@ class ValueSetCompose(BackboneElement):
 
 
 class ValueSetComposeInclude(BackboneElement):
-    """ Include one or more codes from a code system.
-    """
+    """Include one or more codes from a code system."""
 
     resource_type = Field("ValueSetComposeInclude", const=True)
 
@@ -342,7 +341,7 @@ class ValueSetComposeInclude(BackboneElement):
 
 
 class ValueSetComposeIncludeConcept(BackboneElement):
-    """ A concept defined in the system.
+    """A concept defined in the system.
 
     Specifies a concept to be included or excluded.
     """
@@ -374,7 +373,7 @@ class ValueSetComposeIncludeConcept(BackboneElement):
 
 
 class ValueSetComposeIncludeFilter(BackboneElement):
-    """ Select codes/concepts by their properties (including relationships).
+    """Select codes/concepts by their properties (including relationships).
 
     Select concepts by specify a matching criteria based on the properties
     (including relationships) defined by the system. If multiple filters are
@@ -406,7 +405,7 @@ class ValueSetComposeIncludeFilter(BackboneElement):
 
 
 class ValueSetContact(BackboneElement):
-    """ Contact details of the publisher.
+    """Contact details of the publisher.
 
     Contacts to assist a user in finding and communicating with the publisher.
     """
@@ -429,7 +428,7 @@ class ValueSetContact(BackboneElement):
 
 
 class ValueSetExpansion(BackboneElement):
-    """ Used when the value set is "expanded".
+    """Used when the value set is "expanded".
 
     A value set can also be "expanded", where the value set is turned into a
     simple collection of enumerated codes. This element holds the expansion, if
@@ -481,7 +480,7 @@ class ValueSetExpansion(BackboneElement):
 
 
 class ValueSetExpansionContains(BackboneElement):
-    """ Codes in the value set.
+    """Codes in the value set.
 
     The codes that are contained in the value set expansion.
     """
@@ -532,7 +531,7 @@ class ValueSetExpansionContains(BackboneElement):
 
 
 class ValueSetExpansionParameter(BackboneElement):
-    """ Parameter that controlled the expansion process.
+    """Parameter that controlled the expansion process.
 
     A parameter that controlled the expansion process. These parameters may be
     used by users of expanded value sets to check whether the expansion is

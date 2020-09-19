@@ -26,8 +26,7 @@ class WrongResourceType(PydanticValueError):
 
 
 class FHIRAbstractModel(BaseModel, abc.ABC):
-    """ Abstract base model class for all FHIR elements.
-    """
+    """Abstract base model class for all FHIR elements."""
 
     resource_type: str = ...  # type: ignore
 

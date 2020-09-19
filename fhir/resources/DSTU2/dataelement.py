@@ -14,7 +14,7 @@ from .domainresource import DomainResource
 
 
 class DataElement(DomainResource):
-    """ Resource data element.
+    """Resource data element.
 
     The formal description of a single piece of information that can be
     gathered and reported.
@@ -106,7 +106,10 @@ class DataElement(DomainResource):
         None,
         alias="stringency",
         title="Type `str`.",
-        description="comparable | fully-specified | equivalent | convertable | scaleable | flexible.",
+        description=(
+            "comparable | fully-specified | equivalent "
+            "| convertable | scaleable | flexible."
+        ),
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -135,7 +138,7 @@ class DataElement(DomainResource):
 
 
 class DataElementContact(DomainResource):
-    """ Contact details of the publisher.
+    """Contact details of the publisher.
 
     Contacts to assist a user in finding and communicating with the publisher.
     """
@@ -158,7 +161,7 @@ class DataElementContact(DomainResource):
 
 
 class DataElementMapping(DomainResource):
-    """ External specification mapped to.
+    """External specification mapped to.
 
     Identifies a specification (other than a terminology) that the elements
     which make up the DataElement have some correspondence with.

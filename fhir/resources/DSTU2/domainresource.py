@@ -14,7 +14,7 @@ from .resource import Resource
 
 
 class DomainResource(Resource):
-    """ A resource with narrative, extensions, and contained resources.
+    """A resource with narrative, extensions, and contained resources.
 
     A resource that includes narrative, extensions, and contained resources.
     """

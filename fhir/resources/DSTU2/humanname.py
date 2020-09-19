@@ -15,7 +15,7 @@ from .element import Element
 
 
 class HumanName(Element):
-    """ Name of a human - parts and usage.
+    """Name of a human - parts and usage.
 
     A human's name with the ability to identify parts and usage.
     """

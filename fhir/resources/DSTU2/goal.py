@@ -16,7 +16,7 @@ from .domainresource import DomainResource
 
 
 class Goal(DomainResource):
-    """ Describes the intended objective(s) for a patient, group or organization.
+    """Describes the intended objective(s) for a patient, group or organization.
 
     Describes the intended objective(s) for a patient, group or organization
     care, for example, weight loss, restoring an activity of daily living,
@@ -195,7 +195,7 @@ class Goal(DomainResource):
 
 
 class GoalOutcome(BackboneElement):
-    """ What was end result of goal?.
+    """What was end result of goal?.
 
     Identifies the change (or lack of change) at the point where the goal was
     deepmed to be cancelled or achieved.

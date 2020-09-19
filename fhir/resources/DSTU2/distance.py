@@ -11,7 +11,7 @@ from .quantity import Quantity
 
 
 class Distance(Quantity):
-    """ A measure of distance.
+    """A measure of distance.
 
     There SHALL be a code if there is a value and it SHALL be an expression of
     length.  If system is present, it SHALL be UCUM.

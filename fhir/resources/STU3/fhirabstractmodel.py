@@ -7,6 +7,7 @@ from copy import deepcopy
 from functools import lru_cache
 from typing import TYPE_CHECKING, Any, Callable, Generator, Optional, Type, Union
 
+import orjson
 from pydantic import BaseModel, Extra
 from pydantic.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.errors import ConfigError, PydanticValueError
@@ -21,14 +22,22 @@ __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 logger = logging.getLogger(__name__)
 
 
+def orjson_dumps(v, *, default, option=0):
+    """orjson.dumps returns bytes, to match standard json.dumps we need to decode"""
+    params = {"default": default}
+    if option > 0:
+        params["option"] = option
+
+    return orjson.dumps(v, **params).decode()
+
+
 class WrongResourceType(PydanticValueError):
     code = "wrong.resource_type"
     msg_template = "Wrong ResourceType: {error}"
 
 
 class FHIRAbstractModel(BaseModel, abc.ABC):
-    """ Abstract base model class for all FHIR elements.
-    """
+    """Abstract base model class for all FHIR elements."""
 
     resource_type: str = ...  # type: ignore
 
@@ -194,6 +203,27 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         if exclude_none is None:
             exclude_none = True
 
+        if self.__config__.json_dumps == orjson_dumps:
+            if "option" not in dumps_kwargs:
+                option = 0
+                if "indent" in dumps_kwargs:
+                    dumps_kwargs.pop("indent")
+                    # only indent 2 is accepted
+                    option |= orjson.OPT_INDENT_2
+
+                sort_keys = dumps_kwargs.pop("sort_keys", False)
+                if sort_keys:
+                    option |= orjson.OPT_SORT_KEYS
+
+                if len(dumps_kwargs) > 0:
+                    logger.warning(
+                        "When ``dumps`` method is used from ``orjson`` "
+                        "all dumps kwargs are ignored except `indent`, `sort_keys` "
+                        "and of course ``option`` from orjson"
+                    )
+                if option > 0:
+                    dumps_kwargs = {"option": option}
+
         return BaseModel.json(
             self,
             include=include,
@@ -225,6 +255,8 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         return m
 
     class Config:
+        json_loads = orjson.loads
+        json_dumps = orjson_dumps
         allow_population_by_field_name = True
         extra = Extra.forbid
         validate_assignment = True

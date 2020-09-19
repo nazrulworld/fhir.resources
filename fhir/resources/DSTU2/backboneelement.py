@@ -14,7 +14,7 @@ from .element import Element
 
 
 class BackboneElement(Element):
-    """ Base for elements defined inside a resource.
+    """Base for elements defined inside a resource.
     Base definition for all elements that are defined inside a resource - but
     not those in a data type.
     """

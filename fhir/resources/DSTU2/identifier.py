@@ -13,7 +13,7 @@ from .element import Element
 
 
 class Identifier(Element):
-    """ An identifier intended for computation.
+    """An identifier intended for computation.
 
     A technical identifier - identifies some entity uniquely and unambiguously.
     """

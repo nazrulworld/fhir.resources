@@ -15,7 +15,7 @@ from .domainresource import DomainResource
 
 
 class Claim(DomainResource):
-    """ Claim, Pre-determination or Pre-authorization.
+    """Claim, Pre-determination or Pre-authorization.
 
     A provider issued list of services and products provided, or to be
     provided, to a patient which is provided to an insurer for payment
@@ -243,7 +243,7 @@ class Claim(DomainResource):
 
 
 class ClaimCoverage(BackboneElement):
-    """ Insurance or medical plan.
+    """Insurance or medical plan.
 
     Financial instrument by which payment information for health care.
     """
@@ -305,7 +305,7 @@ class ClaimCoverage(BackboneElement):
 
 
 class ClaimDiagnosis(BackboneElement):
-    """ Diagnosis.
+    """Diagnosis.
 
     Ordered list of patient diagnosis for which care is sought.
     """
@@ -324,7 +324,7 @@ class ClaimDiagnosis(BackboneElement):
 
 
 class ClaimItem(BackboneElement):
-    """ Goods and Services.
+    """Goods and Services.
 
     First tier of goods and services.
     """
@@ -446,7 +446,7 @@ class ClaimItem(BackboneElement):
 
 
 class ClaimItemDetail(BackboneElement):
-    """ Additional items.
+    """Additional items.
 
     Second tier of goods and services.
     """
@@ -515,7 +515,7 @@ class ClaimItemDetail(BackboneElement):
 
 
 class ClaimItemDetailSubDetail(BackboneElement):
-    """ Additional items.
+    """Additional items.
 
     Third tier of goods and services.
     """
@@ -576,7 +576,7 @@ class ClaimItemDetailSubDetail(BackboneElement):
 
 
 class ClaimItemProsthesis(BackboneElement):
-    """ Prosthetic details.
+    """Prosthetic details.
 
     The materials and placement date of prior fixed prosthesis.
     """
@@ -606,7 +606,7 @@ class ClaimItemProsthesis(BackboneElement):
 
 
 class ClaimMissingTeeth(BackboneElement):
-    """ Only if type = oral.
+    """Only if type = oral.
 
     A list of teeth which would be expected but are not found due to having
     been previously  extracted or for other reasons.
@@ -637,7 +637,7 @@ class ClaimMissingTeeth(BackboneElement):
 
 
 class ClaimPayee(BackboneElement):
-    """ Payee.
+    """Payee.
 
     The party to be reimbursed for the services.
     """

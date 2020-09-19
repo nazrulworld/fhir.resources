@@ -15,7 +15,7 @@ from .element import Element
 
 
 class Signature(Element):
-    """ A digital Signature - XML DigSig, JWT, Graphical image of signature, etc..
+    """A digital Signature - XML DigSig, JWT, Graphical image of signature, etc..
 
     A digital signature along with supporting context. The signature may be
     electronic/cryptographic in nature, or a graphical image representing a

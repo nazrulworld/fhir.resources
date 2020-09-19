@@ -40,8 +40,7 @@ def download_and_store(url, path):
 
 
 def expand(self, local):
-    """ Expand the ZIP file at the given path to the cache directory.
-    """
+    """Expand the ZIP file at the given path to the cache directory."""
     path = os.path.join(self.cache, local)
     assert os.path.exists(path)
     import zipfile  # import here as we can bypass its use with a manual unzip

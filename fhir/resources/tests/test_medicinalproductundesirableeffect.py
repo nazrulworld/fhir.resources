@@ -48,8 +48,10 @@ def test_medicinalproductundesirableeffect_1(base_settings):
         base_settings["unittest_data_dir"]
         / "medicinalproductundesirableeffect-example.json"
     )
-    inst = medicinalproductundesirableeffect.MedicinalProductUndesirableEffect.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = (
+        medicinalproductundesirableeffect.MedicinalProductUndesirableEffect.parse_file(
+            filename, content_type="application/json", encoding="utf-8"
+        )
     )
     assert "MedicinalProductUndesirableEffect" == inst.resource_type
 

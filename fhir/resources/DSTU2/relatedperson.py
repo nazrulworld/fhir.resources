@@ -14,7 +14,7 @@ from .domainresource import DomainResource
 
 
 class RelatedPerson(DomainResource):
-    """ An person that is related to a patient, but who is not a direct target of
+    """An person that is related to a patient, but who is not a direct target of
     care.
 
     Information about a person that is involved in the care for a patient, but

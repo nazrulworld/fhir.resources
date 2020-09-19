@@ -22,6 +22,8 @@ from .fhirtypesvalidators import run_validator_for_fhir_type
 
 if TYPE_CHECKING:
     from pydantic.types import CallableGenerator
+    from pydantic.fields import ModelField
+    from pydantic.fields import BaseConfig
 
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 

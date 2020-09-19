@@ -15,7 +15,7 @@ from .domainresource import DomainResource
 
 
 class DiagnosticOrder(DomainResource):
-    """ A request for a diagnostic service.
+    """A request for a diagnostic service.
 
     A record of a request for a diagnostic investigation service to be
     performed.
@@ -94,7 +94,10 @@ class DiagnosticOrder(DomainResource):
     orderer: fhirtypes.ReferenceType = Field(
         None,
         alias="orderer",
-        title="Type `FHIRReference` referencing `Practitioner` (represented as `dict` in JSON).",
+        title=(
+            "Type `FHIRReference` referencing `Practitioner` "
+            "(represented as `dict` in JSON)."
+        ),
         description="Who ordered the test.",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner"],
@@ -206,7 +209,10 @@ class DiagnosticOrderEvent(BackboneElement):
     actor: fhirtypes.ReferenceType = Field(
         None,
         alias="actor",
-        title="Type `Reference` referencing `Practitioner, Device` (represented as `dict` in JSON).",
+        title=(
+            "Type `Reference` referencing `Practitioner, "
+            "Device` (represented as `dict` in JSON)."
+        ),
         description="Who recorded or did this.",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "Device"],
@@ -214,7 +220,7 @@ class DiagnosticOrderEvent(BackboneElement):
 
 
 class DiagnosticOrderItem(BackboneElement):
-    """ The items the orderer requested.
+    """The items the orderer requested.
 
     The specific diagnostic investigations that are requested as part of this
     request. Sometimes, there can only be one item per request, but in most
@@ -233,7 +239,10 @@ class DiagnosticOrderItem(BackboneElement):
     specimen: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="specimen",
-        title="List of `FHIRReference` items referencing `Specimen` (represented as `dict` in JSON).",
+        title=(
+            "List of `FHIRReference` items referencing `Specimen` "
+            "(represented as `dict` in JSON)."
+        ),
         description="If this item relates to specific specimens.",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Specimen"],

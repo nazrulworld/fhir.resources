@@ -11,7 +11,7 @@ from .quantity import Quantity
 
 
 class Money(Quantity):
-    """ An amount of money. With regard to precision, see [Decimal
+    """An amount of money. With regard to precision, see [Decimal
     Precision](datatypes.html#precision).
 
     There SHALL be a code if there is a value and it SHALL be an expression of

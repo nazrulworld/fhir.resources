@@ -12,8 +12,7 @@ from .element import Element
 
 
 class Coding(Element):
-    """ A reference to a code defined by a terminology system.
-    """
+    """A reference to a code defined by a terminology system."""
 
     resource_type = Field("Coding", const=True)
 

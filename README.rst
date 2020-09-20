@@ -178,6 +178,64 @@ Usages
 
 
 
+Advanced Usages
+---------------
+
+Custom Validators
+~~~~~~~~~~~~~~~~~
+
+``fhir.resources`` is providing extensive API to create and attach custom validator into any model. See more `about root validator <https://pydantic-docs.helpmanual.io/usage/validators/#root-validators>`_
+Some convention you have to follow while creating a root validator.
+
+ 1. Number of arguments are fixed, as well as names are also. i.e ``cls, values: Dict``.
+ 2. Should return ``values``, unless any exception need to be raised.
+ 3. Validator should be attached only one time for individual Model.
+
+Example 1: Validator for Patient::
+
+    from typing import Dict
+    from fhir.resources.patient import Patient
+
+    import datetime
+
+    def validate_birthdate(cls, values: Dict):
+        if not values:
+            return values
+        if "birthDate" not in values:
+            raise ValueError("Patient's ``birthDate`` is required.")
+
+        minimum_date = datetime.date(2002, 1, 1)
+        if values["birthDate"] > minimum_date:
+            raise ValueError("Minimum 18 years patient is allowed to use this system.")
+        return values
+    # we want this validator to execute after data evaluating by individual field validators.
+    Patient.add_root_validator(validate_gender, pre=False)
+
+
+
+ENUM Validator
+~~~~~~~~~~~~~~
+
+``fhir.resources`` is providing API for enum constraint for each field (where applicable), but it-self doesn't
+enforce enum based validation! see `discussion here <https://github.com/nazrulworld/fhir.resources/issues/23>`_.
+If you want to enforce enum constraint, you have to create a validator for that.
+
+Example: Gender Enum::
+
+    from typing import Dict
+    from fhir.resources.patient import Patient
+
+    def validate_gender(cls, values: Dict):
+        if not values:
+            return values
+        enums = cls.__fields__["gender"].field_info.extra["enum_values"]
+        if "gender" in values and values["gender"] not in enums:
+            raise ValueError("write your message")
+        return values
+
+    Patient.add_root_validator(validate_gender, pre=True)
+
+
 
 Migration (from later than ``6.X.X``)
 -------------------------------------

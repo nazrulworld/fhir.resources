@@ -1175,6 +1175,10 @@ class EnrollmentRequestType(AbstractType):
     __resource_type__ = "EnrollmentRequest"
 
 
+class EnrollmentResponseType(AbstractType):
+    __resource_type__ = "EnrollmentResponse"
+
+
 class ImmunizationType(AbstractType):
     __resource_type__ = "Immunization"
 
@@ -1359,6 +1363,66 @@ class DiagnosticOrderItemType(AbstractType):
     __resource_type__ = "DiagnosticOrderItem"
 
 
+class EpisodeOfCareType(AbstractType):
+    __resource_type__ = "EpisodeOfCare"
+
+
+class EpisodeOfCareCareTeamType(AbstractType):
+    __resource_type__ = "EpisodeOfCareCareTeam"
+
+
+class EpisodeOfCareStatusHistoryType(AbstractType):
+    __resource_type__ = "EpisodeOfCareStatusHistory"
+
+
+class FamilyMemberHistoryType(AbstractType):
+    __resource_type__ = "FamilyMemberHistory"
+
+
+class FamilyMemberHistoryConditionType(AbstractType):
+    __resource_type__ = "FamilyMemberHistoryCondition"
+
+
+class ExplanationOfBenefitType(AbstractType):
+    __resource_type__ = "ExplanationOfBenefit"
+
+
+class HealthcareServiceType(AbstractType):
+    __resource_type__ = "HealthcareService"
+
+
+class HealthcareServiceAvailableTimeType(AbstractType):
+    __resource_type__ = "HealthcareServiceAvailableTime"
+
+
+class HealthcareServiceNotAvailableType(AbstractType):
+    __resource_type__ = "HealthcareServiceNotAvailable"
+
+
+class HealthcareServiceServiceTypeType(AbstractType):
+    __resource_type__ = "HealthcareServiceServiceType"
+
+
+class ImagingObjectSelectionType(AbstractType):
+    __resource_type__ = "ImagingObjectSelection"
+
+
+class ImagingObjectSelectionStudyType(AbstractType):
+    __resource_type__ = "ImagingObjectSelectionStudy"
+
+
+class ImagingObjectSelectionStudySeriesType(AbstractType):
+    __resource_type__ = "ImagingObjectSelectionStudySeries"
+
+
+class ImagingObjectSelectionStudySeriesInstanceType(AbstractType):
+    __resource_type__ = "ImagingObjectSelectionStudySeriesInstance"
+
+
+class ImagingObjectSelectionStudySeriesInstanceFramesType(AbstractType):
+    __resource_type__ = "ImagingObjectSelectionStudySeriesInstanceFrames"
+
+
 __all__ = [
     "ElementType",
     "ResourceType",
@@ -1524,6 +1588,7 @@ __all__ = [
     "EncounterParticipantType",
     "EncounterStatusHistoryType",
     "EnrollmentRequestType",
+    "EnrollmentResponseType",
     "ImmunizationType",
     "ImmunizationExplanationType",
     "ImmunizationReactionType",
@@ -1581,4 +1646,19 @@ __all__ = [
     "ElementDefinitionBindingType",
     "ElementDefinitionBindingValueSetType",
     "ElementDefinitionConstraintType",
+    "EpisodeOfCareType",
+    "EpisodeOfCareCareTeamType",
+    "EpisodeOfCareStatusHistoryType",
+    "FamilyMemberHistoryType",
+    "FamilyMemberHistoryConditionType",
+    "ExplanationOfBenefitType",
+    "HealthcareServiceType",
+    "HealthcareServiceAvailableTimeType",
+    "HealthcareServiceNotAvailableType",
+    "HealthcareServiceServiceTypeType",
+    "ImagingObjectSelectionType",
+    "ImagingObjectSelectionStudyType",
+    "ImagingObjectSelectionStudySeriesType",
+    "ImagingObjectSelectionStudySeriesInstanceType",
+    "ImagingObjectSelectionStudySeriesInstanceFramesType",
 ]

@@ -187,9 +187,9 @@ Custom Validators
 ``fhir.resources`` is providing extensive API to create and attach custom validator into any model. See more `about root validator <https://pydantic-docs.helpmanual.io/usage/validators/#root-validators>`_
 Some convention you have to follow while creating a root validator.
 
- 1. Number of arguments are fixed, as well as names are also. i.e ``cls, values: Dict``.
- 2. Should return ``values``, unless any exception need to be raised.
- 3. Validator should be attached only one time for individual Model.
+1. Number of arguments are fixed, as well as names are also. i.e ``(cls, values)``.
+2. Should return ``values``, unless any exception need to be raised.
+3. Validator should be attached only one time for individual Model.
 
 Example 1: Validator for Patient::
 

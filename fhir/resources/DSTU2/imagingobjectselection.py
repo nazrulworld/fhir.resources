@@ -57,7 +57,10 @@ class ImagingObjectSelection(DomainResource):
     )
 
     description: fhirtypes.String = Field(
-        None, alias="description", title="Type `str`.", description="Description text.",
+        None,
+        alias="description",
+        title="Type `str`.",
+        description="Description text.",
     )
 
     patient: fhirtypes.ReferenceType = Field(
@@ -87,7 +90,10 @@ class ImagingObjectSelection(DomainResource):
     )
 
     uid: fhirtypes.Oid = Field(
-        ..., alias="uid", title="Type `Oid`.", description="Instance UID.",
+        ...,
+        alias="uid",
+        title="Type `Oid`.",
+        description="Instance UID.",
     )
 
 
@@ -123,11 +129,17 @@ class ImagingObjectSelectionStudy(BackboneElement):
     )
 
     uid: fhirtypes.Oid = Field(
-        ..., alias="uid", title="Type `Oid`.", description="Study instance UID.",
+        ...,
+        alias="uid",
+        title="Type `Oid`.",
+        description="Study instance UID.",
     )
 
     url: fhirtypes.Uri = Field(
-        None, alias="url", title="Type `Uri`.", description="Retrieve study URL.",
+        None,
+        alias="url",
+        title="Type `Uri`.",
+        description="Retrieve study URL.",
     )
 
 
@@ -151,11 +163,17 @@ class ImagingObjectSelectionStudySeries(BackboneElement):
     )
 
     uid: fhirtypes.Oid = Field(
-        None, alias="uid", title="Type `Oid`.", description="Series instance UID.",
+        None,
+        alias="uid",
+        title="Type `Oid`.",
+        description="Series instance UID.",
     )
 
     url: fhirtypes.Uri = Field(
-        None, alias="url", title="Type `Uri`.", description="Retrieve series URL.",
+        None,
+        alias="url",
+        title="Type `Uri`.",
+        description="Retrieve series URL.",
     )
 
 
@@ -187,11 +205,17 @@ class ImagingObjectSelectionStudySeriesInstance(BackboneElement):
     )
 
     uid: fhirtypes.Oid = Field(
-        ..., alias="uid", title="Type `Oid`.", description="Selected instance UID.",
+        ...,
+        alias="uid",
+        title="Type `Oid`.",
+        description="Selected instance UID.",
     )
 
     url: fhirtypes.Uri = Field(
-        ..., alias="url", title="Type `str`.", description="Retrieve instance URL.",
+        ...,
+        alias="url",
+        title="Type `str`.",
+        description="Retrieve instance URL.",
     )
 
 
@@ -211,5 +235,8 @@ class ImagingObjectSelectionStudySeriesInstanceFrames(BackboneElement):
     )
 
     url: fhirtypes.Uri = Field(
-        ..., alias="url", title="Type `Uri`.", description="Retrieve frame URL.",
+        ...,
+        alias="url",
+        title="Type `Uri`.",
+        description="Retrieve frame URL.",
     )

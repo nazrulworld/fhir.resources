@@ -1423,6 +1423,14 @@ class ImagingObjectSelectionStudySeriesInstanceFramesType(AbstractType):
     __resource_type__ = "ImagingObjectSelectionStudySeriesInstanceFrames"
 
 
+class VisionPrescriptionType(AbstractType):
+    __resource_type__ = "VisionPrescription"
+
+
+class VisionPrescriptionDispenseType(AbstractType):
+    __resource_type__ = "VisionPrescriptionDispense"
+
+
 __all__ = [
     "ElementType",
     "ResourceType",
@@ -1661,4 +1669,6 @@ __all__ = [
     "ImagingObjectSelectionStudySeriesType",
     "ImagingObjectSelectionStudySeriesInstanceType",
     "ImagingObjectSelectionStudySeriesInstanceFramesType",
+    "VisionPrescription",
+    "VisionPrescriptionDispense"
 ]

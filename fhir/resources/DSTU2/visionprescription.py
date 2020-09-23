@@ -28,9 +28,9 @@ class VisionPrescription(domainresource.DomainResource):
         description="A unique identifier assigned to this explanation of benefit.",
     )
 
-    datewritten: fhirtypes.DateTime = Field(
+    dateWritten: fhirtypes.DateTime = Field(
         None,
-        alias = "datewritten",
+        alias = "dateWritten",
         title = "When prescription was authorized",
         description = "The date (and perhaps time) when the prescription was written",
     )

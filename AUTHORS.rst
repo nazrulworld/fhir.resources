@@ -11,3 +11,4 @@ Contributors
 ------------
 
 * Mike Mabey[mmabey]
+* Simon Vadée [simonvadee] <simon@arkhn.com>

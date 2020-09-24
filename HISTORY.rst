@@ -2,6 +2,13 @@
 History
 =======
 
+6.0.0b5 (unreleased)
+--------------------
+
+Fixes
+
+- Fixes URL validation in the case where a primitive type is used as URL (which is allowed in StructureDefinition).
+
 6.0.0b4 (unreleased)
 --------------------
 

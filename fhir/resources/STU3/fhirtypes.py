@@ -29,6 +29,29 @@ __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 
 FHIR_DATE_PARTS = re.compile(r"(?P<year>\d{4})(-(?P<month>\d{2}))?(-(?P<day>\d{2}))?$")
 
+FHIR_PRIMITIVES = [
+    "boolean",
+    "string",
+    "base64Binary",
+    "code",
+    "id",
+    "decimal",
+    "integer",
+    "unsignedInt",
+    "positiveInt",
+    "uri",
+    "oid",
+    "uuid",
+    "canonical",
+    "url",
+    "markdown",
+    "xhtml",
+    "date",
+    "dateTime",
+    "instant",
+    "time",
+]
+
 
 class Primitive:
     """FHIR Primitive Data Type Base Class"""
@@ -210,6 +233,9 @@ class Url(AnyUrl, Primitive):
             return schema + email
         elif value.startswith("mllp:") or value.startswith("llp:"):
             # xxx: find validation
+            return value
+        elif value in FHIR_PRIMITIVES:
+            # Extensions may contain a valueUrl for a primitive FHIR type
             return value
 
         return AnyUrl.validate(value, field, config)

@@ -52,6 +52,7 @@ FHIR_PRIMITIVES = [
     "time",
 ]
 
+
 class Primitive:
     """FHIR Primitive Data Type Base Class"""
 

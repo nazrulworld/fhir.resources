@@ -2,13 +2,6 @@
 History
 =======
 
-6.0.0b5 (unreleased)
---------------------
-
-Fixes
-
-- Fixes URL validation in the case where a primitive type is used as URL (which is allowed in StructureDefinition).
-
 6.0.0b4 (unreleased)
 --------------------
 
@@ -21,6 +14,8 @@ Improvements
 - More DSTU2 FHIR Resources have added, https://github.com/nazrulworld/fhir.resources/issues/21. Thanks to [mmabey].
 
 Fixes
+
+- Fixes URL validation in the case where a primitive type is used as URL (which is allowed in StructureDefinition). [simonvadee]
 
 - Fixes `Issue#19 <https://github.com/nazrulworld/fhir.resources/issues/19>`_ Getting validation errors that don't make sense.
 

@@ -236,6 +236,12 @@ Example: Gender Enum::
     Patient.add_root_validator(validate_gender, pre=True)
 
 
+Reference Validator
+~~~~~~~~~~~~~~~~~~~
+
+``fhir.resources`` is also providing enum like list of permitted resource types through field property ``enum_reference_types``.
+You can get that list by following above (Enum) approaches  ``resource_types = cls.__fields__["managingOrganization"].field_info.extra["enum_reference_types"]``
+
 
 Migration (from later than ``6.X.X``)
 -------------------------------------

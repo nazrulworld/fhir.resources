@@ -7,7 +7,7 @@ Revision: 7202
 """
 from typing import List as ListType
 
-from pydantic import Field
+from pydantic import Field, root_validator
 
 from . import domainresource, fhirtypes
 from .backboneelement import BackboneElement

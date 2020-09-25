@@ -62,13 +62,16 @@ class VisionPrescription(domainresource.DomainResource):
         enum_reference_types = ["Encounter"],
     )
 
-    reasonCode: fhirtypes.CodeableConceptType = Field(
+    reasonCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
-        alias = "reasonCode",
+        alias = "reasonCodeableConcept",
         title = "Reason or indication for writing the prescription",
         description = "Can be the reason or the indication for writing the prescription.",
         # if property is element of this resource.
-        element_property = True,
+        # element_property = True,
+        # 9/24 edit per @nazrulworld comment regarding reason[x]
+        one_of_many = "reason",
+        one_of_many_required = False,
     )
 
     reasonReference: fhirtypes.ReferenceType = Field(
@@ -77,10 +80,60 @@ class VisionPrescription(domainresource.DomainResource):
         title = "Type 'Reference' referencing 'Condition' (represented as 'dict' in JSON).",
         description = "Can be the reason or the indication for writing the prescription.",
         # if property is element of this resource.
-        element_property = True,
+        # element_property = True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types = ["Condition"],
+        # 9/24 edit per @nazrulworld comment regarding reason[x]
+        one_of_many = "reason",
+        one_of_many_required = False,
     )
+
+    # 9/24 edit per @nazrulworld comment regarding `dispense` field is missing
+    dispense: ListType[fhirtypes.VisionPrescriptionDispenseType] = Field(
+        None,
+        alias = "dispense",
+        title = "List of `VisionPrescription` items(represented as `dict` in JSON)",
+        description = "Vision supply authorization",
+    )
+
+    # 9/24 adding special validator per @nazrulworld comment
+    @root_validator(pre=True)
+    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
+        """
+        one_of_many_fields = {
+            "scheduled": ["scheduledPeriod", "scheduledString", "scheduledTiming"],
+            "product": ["productCodeableConcept", "productReference"],
+        }
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
+            )
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
+
+        return values
 
 
 class VisionPrescriptionDispense(backboneelement.BackboneElement):

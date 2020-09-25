@@ -68,7 +68,7 @@ class VisionPrescription(domainresource.DomainResource):
         title = "Reason or indication for writing the prescription",
         description = "Can be the reason or the indication for writing the prescription.",
         # if property is element of this resource.
-        # element_property = True,
+        element_property = True,
         # 9/24 edit per @nazrulworld comment regarding reason[x]
         one_of_many = "reason",
         one_of_many_required = False,
@@ -80,7 +80,7 @@ class VisionPrescription(domainresource.DomainResource):
         title = "Type 'Reference' referencing 'Condition' (represented as 'dict' in JSON).",
         description = "Can be the reason or the indication for writing the prescription.",
         # if property is element of this resource.
-        # element_property = True,
+        element_property = True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types = ["Condition"],
         # 9/24 edit per @nazrulworld comment regarding reason[x]
@@ -111,8 +111,7 @@ class VisionPrescription(domainresource.DomainResource):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "scheduled": ["scheduledPeriod", "scheduledString", "scheduledTiming"],
-            "product": ["productCodeableConcept", "productReference"],
+            "reason": ["reasonCodeableConcept", "reasonReference"],
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

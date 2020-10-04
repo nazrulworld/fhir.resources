@@ -1704,6 +1704,7 @@ __all__ = [
     "ImagingObjectSelectionStudySeriesInstanceType",
     "ImagingObjectSelectionStudySeriesInstanceFramesType",
     "SupplyRequestType",
-    "SupplyRequestWhenType" "VisionPrescriptionType",
+    "SupplyRequestWhenType",
+    "VisionPrescriptionType",
     "VisionPrescriptionDispenseType",
 ]

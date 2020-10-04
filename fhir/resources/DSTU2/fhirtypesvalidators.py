@@ -1651,6 +1651,7 @@ __all__ = [
     "imagingobjectselectionstudyseriesinstance_validator",
     "imagingobjectselectionstudyseriesinstanceframes_validator",
     "supplyrequest_validator",
-    "supplyrequestwhen_validator" "visionprescription_validator",
+    "supplyrequestwhen_validator",
+    "visionprescription_validator",
     "visionprescriptiondispense_validator",
 ]

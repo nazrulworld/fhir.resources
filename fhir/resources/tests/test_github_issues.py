@@ -1,3 +1,7 @@
+from fhir.resources import construct_fhir_element
+from fhir.resources.patient import Patient
+
+
 def test_issue_28():
     """Running the following code:
     from fhir.resources import construct_fhir_element
@@ -10,26 +14,29 @@ def test_issue_28():
     Is it on purpose?
     Thanks,
     Itay"""
-    from fhir.resources import construct_fhir_element
-
-    pat = construct_fhir_element(
-        "Patient",
-        {"resourceType": "Patient", "contained": [{"resourceType": "Patient"}]},
+    data = {"resourceType": "Patient", "contained": [{"resourceType": "Patient"}]}
+    construct_fhir_element(
+        "Patient", data,
     )
-    assert pat.contained[0].__class__ == pat.__class__
-    assert pat.contained[0].resource_type == "Patient"
-    assert pat.resource_type == "Patient"
+    # should not change data
+    assert data == {
+        "resourceType": "Patient",
+        "contained": [{"resourceType": "Patient"}],
+    }
 
-    from fhir.resources.patient import Patient
+    data = {"resourceType": "Patient", "contained": [{"resourceType": "Patient"}]}
+    Patient.parse_obj(data)
 
-    pat = Patient(resourceType="Patient", contained=[{"resourceType": "Patient"}])
-    assert pat.contained[0].__class__ == pat.__class__
-    assert pat.contained[0].resource_type == "Patient"
-    assert pat.resource_type == "Patient"
+    # should not change data
+    assert data == {
+        "resourceType": "Patient",
+        "contained": [{"resourceType": "Patient"}],
+    }
 
-    pat = Patient.parse_obj(
-        {"resourceType": "Patient", "contained": [{"resourceType": "Patient"}]}
-    )
-    assert pat.contained[0].__class__ == pat.__class__
-    assert pat.contained[0].resource_type == "Patient"
-    assert pat.resource_type == "Patient"
+    data = {"resourceType": "Patient", "contained": [{"resourceType": "Patient"}]}
+    Patient(**data)
+    # should not change data
+    assert data == {
+        "resourceType": "Patient",
+        "contained": [{"resourceType": "Patient"}],
+    }

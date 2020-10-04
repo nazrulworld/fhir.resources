@@ -466,11 +466,11 @@ class AbstractBaseType(dict):
         """ """
         if isinstance(v, (bytes, str)):
             input_data = load_str_bytes(v)
-            resource_type = input_data.pop("resourceType", None)
+            resource_type = input_data.get("resourceType", None)
         elif isinstance(v, FHIRAbstractModel):
             resource_type = v.resource_type
         else:
-            resource_type = v.pop("resourceType", None)
+            resource_type = v.get("resourceType", None)
 
         if resource_type is None or resource_type == cls.__resource_type__:
             from . import fhirtypesvalidators

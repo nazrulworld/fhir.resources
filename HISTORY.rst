@@ -5,7 +5,9 @@ History
 6.0.0b5 (unreleased)
 --------------------
 
-- Nothing changed yet.
+Fixes
+
+- Issue #28 `'construct_fhir_element' change the given dict <https://github.com/nazrulworld/fhir.resources/issues/28>`_
 
 
 6.0.0b4 (2020-09-24)

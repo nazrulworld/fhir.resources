@@ -249,10 +249,11 @@ MODEL_CLASSES = {
     "ImagingObjectSelectionStudy": (None, ".imagingobjectselection"),
     "ImagingObjectSelectionStudySeries": (None, ".imagingobjectselection"),
     "ImagingObjectSelectionStudySeriesInstance": (None, ".imagingobjectselection"),
-    "ImagingObjectSelectionStudySeriesInstanceFrames": (
-        None,
-        ".imagingobjectselection",
-    ),
+    "ImagingObjectSelectionStudySeriesInstanceFrames": (None, ".imagingobjectselection"),
+    "SupplyRequest": (None, ".supplyrequest"),
+    "SupplyRequestWhen": (None, ".supplyrequest"),
+    "VisionPrescription": (None, ".visionprescription"),
+    "VisionPrescriptionDispense": (None, ".visionprescription")
 }
 
 
@@ -1390,6 +1391,30 @@ def imagingobjectselectionstudyseriesinstanceframes_validator(
     return fhir_model_validator("ImagingObjectSelectionStudySeriesInstanceFrames", v)
 
 
+def supplyrequest_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("SupplyRequest", v)
+
+
+def supplyrequestwhen_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("SupplyRequestWhen", v)
+
+
+def visionprescription_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("VisionPrescription", v)
+
+
+def visionprescriptiondispense_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("VisionPrescriptionDispense", v)
+
+
 __all__ = [
     "element_validator",
     "resource_validator",
@@ -1628,4 +1653,8 @@ __all__ = [
     "imagingobjectselectionstudyseries_validator",
     "imagingobjectselectionstudyseriesinstance_validator",
     "imagingobjectselectionstudyseriesinstanceframes_validator",
+    "supplyrequest_validator",
+    "supplyrequestwhen_validator"
+    "visionprescription_validator",
+    "visionprescriptiondispense_validator"
 ]

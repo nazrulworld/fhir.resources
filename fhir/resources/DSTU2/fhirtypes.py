@@ -1449,6 +1449,22 @@ class ImagingObjectSelectionStudySeriesInstanceFramesType(AbstractType):
     __resource_type__ = "ImagingObjectSelectionStudySeriesInstanceFrames"
 
 
+class SupplyRequestType(AbstractType):
+    __resource_type__ = "SupplyRequest"
+
+
+class SupplyRequestWhenType(AbstractType):
+    __resource_type__ = "SupplyRequestWhen"
+
+
+class VisionPrescriptionType(AbstractType):
+    __resource_type__ = "VisionPrescription"
+
+
+class VisionPrescriptionDispenseType(AbstractType):
+    __resource_type__ = "VisionPrescriptionDispense"
+
+
 __all__ = [
     "ElementType",
     "ResourceType",
@@ -1687,4 +1703,8 @@ __all__ = [
     "ImagingObjectSelectionStudySeriesType",
     "ImagingObjectSelectionStudySeriesInstanceType",
     "ImagingObjectSelectionStudySeriesInstanceFramesType",
+    "SupplyRequestType",
+    "SupplyRequestWhenType"
+    "VisionPrescriptionType",
+    "VisionPrescriptionDispenseType"
 ]

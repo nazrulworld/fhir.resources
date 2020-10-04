@@ -23,3 +23,6 @@ exclude = '''
   | tests/data
 )/
 '''
+
+[tool.pytest.ini_options]
+minversion = "6.0"

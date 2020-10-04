@@ -5,6 +5,10 @@ History
 6.0.0b5 (unreleased)
 --------------------
 
+Improvements
+
+- ``visionprescription`` and ``supplyrequest`` resources added for DSTU2 [iatechicken]
+
 Fixes
 
 - Issue #28 `'construct_fhir_element' change the given dict <https://github.com/nazrulworld/fhir.resources/issues/28>`_

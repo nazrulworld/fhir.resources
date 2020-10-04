@@ -5,6 +5,7 @@ Release: DSTU2
 Version: 1.0.2
 Revision: 7202
 """
+from typing import Any, Dict
 from typing import List as ListType
 
 from pydantic import Field, root_validator
@@ -23,11 +24,12 @@ class SupplyRequest(domainresource.DomainResource):
 
     patient: fhirtypes.ReferenceType = Field(
         None,
-        alias = "patient",
-        title = "Type 'Reference' referencing 'Patient' (represented as 'dict' in JSON).",
-        description = "Patient for whom the item is supplied",
+        alias="patient",
+        title="Type 'Reference' referencing 'Patient' (represented as 'dict' in JSON).",
+        description="Patient for whom the item is supplied",
         # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types = ["Patient"],
+        enum_reference_types=["Patient"],
+        element_property=True,
     )
 
     source: fhirtypes.ReferenceType = Field(
@@ -39,14 +41,16 @@ class SupplyRequest(domainresource.DomainResource):
         ),
         description="Who initiated this order",
         # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types = ["Practitioner", "Organization", "Patient"],
+        enum_reference_types=["Practitioner", "Organization", "Patient"],
+        element_property=True,
     )
 
     date: fhirtypes.DateTime = Field(
         None,
-        alias = "date",
-        title = "When the request was made",
-        description = "When the request was made",
+        alias="date",
+        title="When the request was made",
+        description="When the request was made",
+        element_property=True,
     )
 
     identifier: fhirtypes.IdentifierType = Field(
@@ -54,76 +58,82 @@ class SupplyRequest(domainresource.DomainResource):
         alias="identifier",
         title="Unique identifier",
         description="Unique identifier for this supply request",
+        element_property=True,
     )
 
     status: fhirtypes.Code = Field(
         None,
-        alias = "status",
-        title = "requested | completed | failed | cancelled",
-        description = "Status of the supply request",
+        alias="status",
+        title="requested | completed | failed | cancelled",
+        description="Status of the supply request",
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["requested", "completed", "failed", "cancelled"],
+        element_property=True,
     )
 
-    kind: fhirtypes.CodeableConcept = Field(
+    kind: fhirtypes.CodeableConceptType = Field(
         None,
-        alias = "kind",
-        title = "Type `CodeableConcept` (represented as `dict` in JSON).",
-        description = "The kind of supply (central, non-stock, etc.)",
+        alias="kind",
+        title="Type `CodeableConcept` (represented as `dict` in JSON).",
+        description="The kind of supply (central, non-stock, etc.)",
+        element_property=True,
     )
 
     orderedItem: fhirtypes.ReferenceType = Field(
         None,
-        alias = "orderedItem",
-        title = (
+        alias="orderedItem",
+        title=(
             "Type `Reference` referencing "
             "`Medication, Substance, Device` (represented as `dict` in JSON)."
         ),
-        description = "Medication, Substance, or Device requested to be supplied",
+        description="Medication, Substance, or Device requested to be supplied",
         # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types = ["Medication", "Substance", "Device"],
+        enum_reference_types=["Medication", "Substance", "Device"],
+        element_property=True,
     )
 
     supplier: ListType[fhirtypes.ReferenceType] = Field(
         None,
-        alias = "supplier",
-        title = (
+        alias="supplier",
+        title=(
             "List of `Reference` items referencing `Organization` (represented as `dict` in"
             " JSON)"
         ),
-        description = "Who is intended to fulfill the request",
-        enum_reference_types = ["Organization"],
+        description="Who is intended to fulfill the request",
+        enum_reference_types=["Organization"],
+        element_property=True,
     )
 
     reasonCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
-        alias = "reasonCodeableConcept",
-        title = "Why the supply item was requested",
-        description = "Why the supply item was requested.",
+        alias="reasonCodeableConcept",
+        title="Why the supply item was requested",
+        description="Why the supply item was requested.",
         # if property is element of this resource.
-        element_property = True,
-        one_of_many = "reason",
-        one_of_many_required = False,
+        element_property=True,
+        one_of_many="reason",
+        one_of_many_required=False,
     )
 
     reasonReference: fhirtypes.ReferenceType = Field(
         None,
-        alias = "reasonReference",
-        title = "Type 'Reference' referencing 'Any' (represented as 'dict' in JSON).",
-        description = "Why the supply item was requested.",
+        alias="reasonReference",
+        title="Type 'Reference' referencing 'Any' (represented as 'dict' in JSON).",
+        description="Why the supply item was requested.",
         # if property is element of this resource.
-        element_property = True,
-        one_of_many = "reason",
-        one_of_many_required = False,
-        enum_reference_types = ["Any"],
+        element_property=True,
+        one_of_many="reason",
+        one_of_many_required=False,
+        enum_reference_types=["Any"],
     )
 
     when: fhirtypes.SupplyRequestWhenType = Field(
         None,
-        alias = "when",
-        title = "Type `SupplyRequestWhen` (represented as `dict` in JSON).",
-        description = "When the request should be fulfilled",
+        alias="when",
+        title="Type `SupplyRequestWhen` (represented as `dict` in JSON).",
+        description="When the request should be fulfilled",
+        element_property=True,
     )
 
     @root_validator(pre=True)
@@ -171,19 +181,20 @@ class SupplyRequestWhen(BackboneElement):
     When the request should be fulfilled.
     """
 
-    resource_type = Field("SupplyRequestWhen", const = True)
+    resource_type = Field("SupplyRequestWhen", const=True)
 
     code: fhirtypes.CodeableConceptType = Field(
         None,
-        alias = "code",
-        title = "Type `CodeableConcept` (represented as `dict` in JSON).",
-        description = "Fulfilment code",
+        alias="code",
+        title="Type `CodeableConcept` (represented as `dict` in JSON).",
+        description="Fulfilment code",
+        element_property=True,
     )
-
 
     schedule: fhirtypes.TimingType = Field(
         None,
-        alias = "schedule",
-        title = "Type `Timing` (represented as `dict` in JSON).",
-        description = "Formal fulfillment schedule",
+        alias="schedule",
+        title="Type `Timing` (represented as `dict` in JSON).",
+        description="Formal fulfillment schedule",
+        element_property=True,
     )

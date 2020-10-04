@@ -16,7 +16,8 @@ def test_issue_28():
     Itay"""
     data = {"resourceType": "Patient", "contained": [{"resourceType": "Patient"}]}
     construct_fhir_element(
-        "Patient", data,
+        "Patient",
+        data,
     )
     # should not change data
     assert data == {

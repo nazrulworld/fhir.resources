@@ -1457,6 +1457,126 @@ class ImagingObjectSelectionStudySeriesInstanceFramesType(AbstractType):
     __resource_type__ = "ImagingObjectSelectionStudySeriesInstanceFrames"
 
 
+class ImagingStudyType(AbstractType):
+    __resource_type__ = "ImagingStudy"
+
+
+class ImagingStudySeriesType(AbstractType):
+    __resource_type__ = "ImagingStudySeries"
+
+
+class ImagingStudySeriesInstanceType(AbstractType):
+    __resource_type__ = "ImagingStudySeriesInstance"
+
+
+class ImmunizationRecommendationType(AbstractType):
+    __resource_type__ = "ImmunizationRecommendation"
+
+
+class ImmunizationRecommendationRecommendationType(AbstractType):
+    __resource_type__ = "ImmunizationRecommendationRecommendation"
+
+
+class ImmunizationRecommendationRecommendationDateCriterionType(AbstractType):
+    __resource_type__ = "ImmunizationRecommendationRecommendationDateCriterion"
+
+
+class ImmunizationRecommendationRecommendationProtocolType(AbstractType):
+    __resource_type__ = "ImmunizationRecommendationRecommendationProtocol"
+
+
+class ImplementationGuideType(AbstractType):
+    __resource_type__ = "ImplementationGuide"
+
+
+class ImplementationGuideContactType(AbstractType):
+    __resource_type__ = "ImplementationGuideContact"
+
+
+class ImplementationGuideDependencyType(AbstractType):
+    __resource_type__ = "ImplementationGuideDependency"
+
+
+class ImplementationGuideGlobalType(AbstractType):
+    __resource_type__ = "ImplementationGuideGlobal"
+
+
+class ImplementationGuidePackageType(AbstractType):
+    __resource_type__ = "ImplementationGuidePackage"
+
+
+class ImplementationGuidePackageResourceType(AbstractType):
+    __resource_type__ = "ImplementationGuidePackageResource"
+
+
+class ImplementationGuidePageType(AbstractType):
+    __resource_type__ = "ImplementationGuidePage"
+
+
+class MedicationDispenseType(AbstractType):
+    __resource_type__ = "MedicationDispense"
+
+
+class MedicationDispenseDosageInstructionType(AbstractType):
+    __resource_type__ = "MedicationDispenseDosageInstruction"
+
+
+class MedicationDispenseSubstitutionType(AbstractType):
+    __resource_type__ = "MedicationDispenseSubstitution"
+
+
+class MedicationOrderType(AbstractType):
+    __resource_type__ = "MedicationOrder"
+
+
+class MedicationOrderDispenseRequestType(AbstractType):
+    __resource_type__ = "MedicationOrderDispenseRequest"
+
+
+class MedicationOrderDosageInstructionType(AbstractType):
+    __resource_type__ = "MedicationOrderDosageInstruction"
+
+
+class MedicationOrderSubstitutionType(AbstractType):
+    __resource_type__ = "MedicationOrderSubstitution"
+
+
+class MessageHeaderType(AbstractType):
+    __resource_type__ = "MessageHeader"
+
+
+class MessageHeaderDestinationType(AbstractType):
+    __resource_type__ = "MessageHeaderDestination"
+
+
+class MessageHeaderResponseType(AbstractType):
+    __resource_type__ = "MessageHeaderResponse"
+
+
+class MessageHeaderSourceType(AbstractType):
+    __resource_type__ = "MessageHeaderSource"
+
+
+class NamingSystemType(AbstractType):
+    __resource_type__ = "NamingSystem"
+
+
+class NamingSystemContactType(AbstractType):
+    __resource_type__ = "NamingSystemContact"
+
+
+class NamingSystemUniqueIdType(AbstractType):
+    __resource_type__ = "NamingSystemUniqueId"
+
+
+class ListType(AbstractType):
+    __resource_type__ = "List"
+
+
+class ListEntryType(AbstractType):
+    __resource_type__ = "ListEntry"
+
+
 class SupplyRequestType(AbstractType):
     __resource_type__ = "SupplyRequest"
 
@@ -1711,6 +1831,36 @@ __all__ = [
     "ImagingObjectSelectionStudySeriesType",
     "ImagingObjectSelectionStudySeriesInstanceType",
     "ImagingObjectSelectionStudySeriesInstanceFramesType",
+    "ImagingStudyType",
+    "ImagingStudySeriesType",
+    "ImagingStudySeriesInstanceType",
+    "ImmunizationRecommendationType",
+    "ImmunizationRecommendationRecommendationType",
+    "ImmunizationRecommendationRecommendationDateCriterionType",
+    "ImmunizationRecommendationRecommendationProtocolType",
+    "ImplementationGuideType",
+    "ImplementationGuideContactType",
+    "ImplementationGuideDependencyType",
+    "ImplementationGuideGlobalType",
+    "ImplementationGuidePackageType",
+    "ImplementationGuidePackageResourceType",
+    "ImplementationGuidePageType",
+    "ListType",
+    "ListEntryType",
+    "MedicationDispenseType",
+    "MedicationDispenseDosageInstructionType",
+    "MedicationDispenseSubstitutionType",
+    "MedicationOrderType",
+    "MedicationOrderDispenseRequestType",
+    "MedicationOrderDosageInstructionType",
+    "MedicationOrderSubstitutionType",
+    "MessageHeaderType",
+    "MessageHeaderDestinationType",
+    "MessageHeaderResponseType",
+    "MessageHeaderSourceType",
+    "NamingSystemType",
+    "NamingSystemContactType",
+    "NamingSystemUniqueIdType",
     "SupplyRequestType",
     "SupplyRequestWhenType",
     "VisionPrescriptionType",

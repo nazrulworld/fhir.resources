@@ -1396,6 +1396,162 @@ def imagingobjectselectionstudyseriesinstanceframes_validator(
     return fhir_model_validator("ImagingObjectSelectionStudySeriesInstanceFrames", v)
 
 
+def imagingstudy_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ImagingStudy", v)
+
+
+def imagingstudyseries_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ImagingStudySeries", v)
+
+
+def imagingstudyseriesinstance_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ImagingStudySeriesInstance", v)
+
+
+def immunizationrecommendation_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ImmunizationRecommendation", v)
+
+
+def immunizationrecommendationrecommendation_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ImmunizationRecommendationRecommendation", v)
+
+
+def immunizationrecommendationrecommendationdatecriterion_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator(
+        "ImmunizationRecommendationRecommendationDateCriterion", v
+    )
+
+
+def immunizationrecommendationrecommendationprotocol_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ImmunizationRecommendationRecommendationProtocol", v)
+
+
+def implementationguide_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ImplementationGuide", v)
+
+
+def implementationguidecontact_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ImplementationGuideContact", v)
+
+
+def implementationguidedependency_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ImplementationGuideDependency", v)
+
+
+def implementationguideglobal_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ImplementationGuideGlobal", v)
+
+
+def implementationguidepackage_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ImplementationGuidePackage", v)
+
+
+def implementationguidepackageresource_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ImplementationGuidePackageResource", v)
+
+
+def implementationguidepage_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("ImplementationGuidePage", v)
+
+
+def list_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("List", v)
+
+
+def listentry_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ListEntry", v)
+
+
+def medicationdispense_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("MedicationDispense", v)
+
+
+def medicationdispensedosageinstruction_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("MedicationDispenseDosageInstruction", v)
+
+
+def medicationdispensesubstitution_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("MedicationDispenseSubstitution", v)
+
+
+def medicationorder_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("MedicationOrder", v)
+
+
+def medicationorderdispenserequest_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("MedicationOrderDispenseRequest", v)
+
+
+def medicationorderdosageinstruction_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("MedicationOrderDosageInstruction", v)
+
+
+def medicationordersubstitution_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("MedicationOrderSubstitution", v)
+
+
+def messageheader_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("MessageHeader", v)
+
+
+def messageheaderdestination_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("MessageHeaderDestination", v)
+
+
+def messageheaderresponse_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("MessageHeaderResponse", v)
+
+
+def messageheadersource_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("MessageHeaderSource", v)
+
+
+def namingsystem_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("NamingSystem", v)
+
+
+def namingsystemcontact_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("NamingSystemContact", v)
+
+
+def namingsystemuniqueid_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("NamingSystemUniqueId", v)
+
+
 def order_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("Order", v)
 
@@ -1660,6 +1816,36 @@ __all__ = [
     "imagingobjectselectionstudyseries_validator",
     "imagingobjectselectionstudyseriesinstance_validator",
     "imagingobjectselectionstudyseriesinstanceframes_validator",
+    "imagingstudy_validator",
+    "imagingstudyseries_validator",
+    "imagingstudyseriesinstance_validator",
+    "immunizationrecommendation_validator",
+    "immunizationrecommendationrecommendation_validator",
+    "immunizationrecommendationrecommendationdatecriterion_validator",
+    "immunizationrecommendationrecommendationprotocol_validator",
+    "implementationguide_validator",
+    "implementationguidecontact_validator",
+    "implementationguidedependency_validator",
+    "implementationguideglobal_validator",
+    "implementationguidepackage_validator",
+    "implementationguidepackageresource_validator",
+    "implementationguidepage_validator",
+    "list_validator",
+    "listentry_validator",
+    "medicationdispense_validator",
+    "medicationdispensedosageinstruction_validator",
+    "medicationdispensesubstitution_validator",
+    "medicationorder_validator",
+    "medicationorderdispenserequest_validator",
+    "medicationorderdosageinstruction_validator",
+    "medicationordersubstitution_validator",
+    "messageheader_validator",
+    "messageheaderdestination_validator",
+    "messageheaderresponse_validator",
+    "messageheadersource_validator",
+    "namingsystem_validator",
+    "namingsystemcontact_validator",
+    "namingsystemuniqueid_validator",
     "supplyrequest_validator",
     "supplyrequestwhen_validator",
     "order_validator",

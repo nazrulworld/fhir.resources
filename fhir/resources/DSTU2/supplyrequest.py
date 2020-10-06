@@ -125,7 +125,7 @@ class SupplyRequest(domainresource.DomainResource):
         element_property=True,
         one_of_many="reason",
         one_of_many_required=False,
-        enum_reference_types=["Any"],
+        enum_reference_types=["Resource"],
     )
 
     when: fhirtypes.SupplyRequestWhenType = Field(

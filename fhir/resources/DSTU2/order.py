@@ -5,6 +5,7 @@ Release: DSTU2
 Version: 1.0.2
 Revision: None
 """
+from typing import Any, Dict
 from typing import List as ListType
 
 from pydantic import Field, root_validator
@@ -164,7 +165,6 @@ class Order(DomainResource):
             if required is True and found is False:
                 raise ValueError(f"Expect any of field value from this list {fields}.")
         return values
-
 
 
 class OrderWhen(BackboneElement):

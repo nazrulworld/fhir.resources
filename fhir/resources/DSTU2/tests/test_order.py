@@ -35,11 +35,11 @@ def impl_Order_1(inst):
     assert inst.subject.reference == "Patient/pat2"
     assert inst.source.reference == "Practitioner/example"
     assert inst.reasonCodeableConcept.text == "Standard admission testing"
-    assert inst.reasonReference == None
+    assert inst.reasonReference is None
     assert inst.when.fhir_comments == ["  Institution local code meaning \"do this today\"  "]
     assert inst.when.code.coding[0].code == "today"
     assert inst.when.code.coding[0].system == "http://acme.com/codes/request-priority"
-    assert inst.when.schedule == None
+    assert inst.when.schedule is None
     assert inst.detail[0].reference == "MedicationOrder/example"
 
 
@@ -68,10 +68,10 @@ def impl_Order_2(inst):
     assert inst.target.reference == "Practitioner/f203"
     assert inst.target.display == "Juri van Gelder"
     assert inst.reasonCodeableConcept.text == "It concerns a one-off order for consultation in order to evaluate the stairs walking ability of Roel."
-    assert inst.reasonReference == None
+    assert inst.reasonReference is None
     assert inst.when.fhir_comments == ["  <authority> and <payment> were registered in the EHR as \"not applicable\"  "]
     assert inst.when.code.coding[0].code == "394848005"
     assert inst.when.code.coding[0].display == "Normal priority"
     assert inst.when.code.coding[0].system == "http://snomed.info/sct"
-    assert inst.when.schedule == None
+    assert inst.when.schedule is None
     assert inst.detail[0].display == "Consultation, not yet developed"

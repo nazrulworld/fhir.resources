@@ -45,7 +45,7 @@ class Order(DomainResource):
         element_property=True,
     )
 
-    date: fhirtypes.Date = Field(
+    date: fhirtypes.DateTime = Field(
         None,
         alias="date",
         title="date",
@@ -120,7 +120,7 @@ class Order(DomainResource):
         element_property=True,
     )
 
-    detail: fhirtypes.ReferenceType = Field(
+    detail: ListType[fhirtypes.ReferenceType] = Field(
         ...,
         alias="detail",
         title="detail",
@@ -140,7 +140,7 @@ class OrderWhen(BackboneElement):
     resource_type = Field("OrderWhen", const=True)
 
     code: fhirtypes.CodeableConceptType = Field(
-        None
+        None,
         alias="code",
         title="code",
         description="Code specifies when request should be done. The code may simply be a priority code.",
@@ -152,7 +152,7 @@ class OrderWhen(BackboneElement):
     )
 
     schedule: fhirtypes.TimingType = Field(
-        None
+        None,
         alias="schedule",
         title="schedule",
         description="   A formal schedule.",

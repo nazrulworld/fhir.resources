@@ -1396,11 +1396,11 @@ def imagingobjectselectionstudyseriesinstanceframes_validator(
     return fhir_model_validator("ImagingObjectSelectionStudySeriesInstanceFrames", v)
 
 
-def order_validatror(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+def order_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("Order", v)
 
 
-def orderwhen_validatror(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+def orderwhen_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("OrderWhen", v)
 
 

@@ -985,6 +985,10 @@ class OrderWhenType(AbstractType):
     __resource_type__ = "OrderWhen"
 
 
+class OrderResponseType(AbstractType):
+    __resource_type__ = "OrderResponse"
+
+
 class OrganizationType(AbstractType):
     __resource_type__ = "Organization"
 

@@ -255,6 +255,7 @@ MODEL_CLASSES = {
     ),
     "Order": (None, ".order"),
     "OrderWhen": (None, ".order"),
+    "OrderResponse": (None, ".orderresponse"),
     "SupplyRequest": (None, ".supplyrequest"),
     "SupplyRequestWhen": (None, ".supplyrequest"),
     "VisionPrescription": (None, ".visionprescription"),
@@ -1404,6 +1405,10 @@ def orderwhen_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("OrderWhen", v)
 
 
+def orderresponse_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("OrderResponse", v)
+
+
 def supplyrequest_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("SupplyRequest", v)
 
@@ -1664,6 +1669,7 @@ __all__ = [
     "supplyrequestwhen_validator",
     "order_validator",
     "orderwhen_validator",
+    "orderresponse_validator",
     "visionprescription_validator",
     "visionprescriptiondispense_validator",
 ]

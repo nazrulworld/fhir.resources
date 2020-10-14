@@ -29,7 +29,7 @@ def impl_Order_1(inst):
     assert inst.id == "example"
     assert inst.text.status == "generated"
     assert inst.text.div == (
-        "<div>Request for Prescription (on patient Donald DUCK @ Acme Healthcare, Inc. MR = 654321)</div>"
+        "<div>Request for Prescription (on patient Donald DUCK @ Acme Healthcare, Inc. MR = 654321)</div>"  # noqa: B950
     )
     assert inst.date == fhirtypes.DateTime.validate("2012-12-28T09:03:04+11:00")
     assert inst.subject.reference == "Patient/pat2"
@@ -67,9 +67,9 @@ def impl_Order_2(inst):
     assert inst.source.reference == "Practitioner/f201"
     assert inst.target.reference == "Practitioner/f203"
     assert inst.target.display == "Juri van Gelder"
-    assert inst.reasonCodeableConcept.text == "It concerns a one-off order for consultation in order to evaluate the stairs walking ability of Roel."
+    assert inst.reasonCodeableConcept.text == "It concerns a one-off order for consultation in order to evaluate the stairs walking ability of Roel."  # noqa: B950
     assert inst.reasonReference is None
-    assert inst.when.fhir_comments == ["  <authority> and <payment> were registered in the EHR as \"not applicable\"  "]
+    assert inst.when.fhir_comments == ["  <authority> and <payment> were registered in the EHR as \"not applicable\"  "]  # noqa: B950
     assert inst.when.code.coding[0].code == "394848005"
     assert inst.when.code.coding[0].display == "Normal priority"
     assert inst.when.code.coding[0].system == "http://snomed.info/sct"

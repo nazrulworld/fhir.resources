@@ -116,7 +116,10 @@ class Order(DomainResource):
         None,
         alias="when",
         title="when",
-        description="When order should be fulfilled. Provide a code or a schedule, but not both.",
+        description=(
+            "When order should be fulfilled. "
+            "Provide a code or a schedule, but not both."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -179,12 +182,12 @@ class OrderWhen(BackboneElement):
         None,
         alias="code",
         title="code",
-        description="Code specifies when request should be done. The code may simply be a priority code.",
+        description=(
+            "Code specifies when request should be done. "
+            "The code may simply be a priority code."
+        ),
         # if property is element of this resource.
         element_property=True,
-        # either code or schedule must be specified
-        one_of_many="when",
-        one_of_many_required=True,
     )
 
     schedule: fhirtypes.TimingType = Field(
@@ -194,7 +197,4 @@ class OrderWhen(BackboneElement):
         description="   A formal schedule.",
         # if property is element of this resource.
         element_property=True,
-        # either code or schedule must be specified
-        one_of_many="when",
-        one_of_many_required=True,
     )

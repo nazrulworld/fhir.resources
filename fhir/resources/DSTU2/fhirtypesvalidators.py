@@ -253,6 +253,8 @@ MODEL_CLASSES = {
         None,
         ".imagingobjectselection",
     ),
+    "Order": (None, ".order"),
+    "OrderWhen": (None, ".order"),
     "SupplyRequest": (None, ".supplyrequest"),
     "SupplyRequestWhen": (None, ".supplyrequest"),
     "VisionPrescription": (None, ".visionprescription"),
@@ -1394,6 +1396,14 @@ def imagingobjectselectionstudyseriesinstanceframes_validator(
     return fhir_model_validator("ImagingObjectSelectionStudySeriesInstanceFrames", v)
 
 
+def order_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Order", v)
+
+
+def orderwhen_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("OrderWhen", v)
+
+
 def supplyrequest_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("SupplyRequest", v)
 
@@ -1652,6 +1662,8 @@ __all__ = [
     "imagingobjectselectionstudyseriesinstanceframes_validator",
     "supplyrequest_validator",
     "supplyrequestwhen_validator",
+    "order_validator",
+    "orderwhen_validator",
     "visionprescription_validator",
     "visionprescriptiondispense_validator",
 ]

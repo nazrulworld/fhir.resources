@@ -977,6 +977,14 @@ class PatientLinkType(AbstractType):
     __resource_type__ = "PatientLink"
 
 
+class OrderType(AbstractType):
+    __resource_type__ = "Order"
+
+
+class OrderWhenType(AbstractType):
+    __resource_type__ = "OrderWhen"
+
+
 class OrganizationType(AbstractType):
     __resource_type__ = "Organization"
 

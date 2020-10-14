@@ -127,3 +127,24 @@ $ git push
 $ git push --tags
 
 Travis will then deploy to PyPI if tests pass.
+
+
+Adding a new resource
+---------------------
+
+Adding a new resource should be done under the relevant directory.
+For R4, the directory is `fhir/resources/` and for DSTU2 and STU3 the
+directories are `fhir/resources/DSTU2/` and `fhir/resources/STU3/`.
+
+After adding you resource, you need to add it to couple of additional places:
+1. `fhirtypes.py` in the FHIR version your resource belongs to. This includes
+   both the reource and the inner elements you created for it.
+2. Add relevant entries inside the list `MODEL_CLASSES` at
+   `fhirtypesvalidators.py`. Probably you will need to add
+   `(None, .your_resource_module_name)`.
+3. Add validator functions in `fhirtypesvalidators.py` for both your resource
+   and the inner resources you created.
+4. Add the validator methods you created to the list at the bottom of the file.
+
+Lastly, add your tests into the `tests` directory inside the relevant directory
+where you created your resource.

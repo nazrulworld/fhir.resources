@@ -69,8 +69,10 @@ class OrderResponse(DomainResource):
         ...,
         alias="orderStatus",
         title="Type `Code`",
-        description=("pending | review | rejected | error | accepted "
-                     "| cancelled | replaced | aborted | completed."),
+        description=(
+            "pending | review | rejected | error | accepted "
+            "| cancelled | replaced | aborted | completed."
+        ),
         # if property is element of this resource.
         element_property=True,
     )

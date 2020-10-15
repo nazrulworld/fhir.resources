@@ -36,7 +36,9 @@ def impl_Order_1(inst):
     assert inst.source.reference == "Practitioner/example"
     assert inst.reasonCodeableConcept.text == "Standard admission testing"
     assert inst.reasonReference is None
-    assert inst.when.fhir_comments == ["  Institution local code meaning \"do this today\"  "]
+    assert inst.when.fhir_comments == [
+        '  Institution local code meaning "do this today"  '
+    ]
     assert inst.when.code.coding[0].code == "today"
     assert inst.when.code.coding[0].system == "http://acme.com/codes/request-priority"
     assert inst.when.schedule is None
@@ -44,7 +46,9 @@ def impl_Order_1(inst):
 
 
 def test_Order_2(base_settings):
-    filename = base_settings["unittest_data_dir"] / "order-example-f201-physiotherapy.json"
+    filename = (
+        base_settings["unittest_data_dir"] / "order-example-f201-physiotherapy.json"
+    )
     inst = order.Order.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -67,9 +71,14 @@ def impl_Order_2(inst):
     assert inst.source.reference == "Practitioner/f201"
     assert inst.target.reference == "Practitioner/f203"
     assert inst.target.display == "Juri van Gelder"
-    assert inst.reasonCodeableConcept.text == "It concerns a one-off order for consultation in order to evaluate the stairs walking ability of Roel."  # noqa: B950
+    assert (
+        inst.reasonCodeableConcept.text
+        == "It concerns a one-off order for consultation in order to evaluate the stairs walking ability of Roel."
+    )  # noqa: B950
     assert inst.reasonReference is None
-    assert inst.when.fhir_comments == ["  <authority> and <payment> were registered in the EHR as \"not applicable\"  "]  # noqa: B950
+    assert inst.when.fhir_comments == [
+        '  <authority> and <payment> were registered in the EHR as "not applicable"  '
+    ]  # noqa: B950
     assert inst.when.code.coding[0].code == "394848005"
     assert inst.when.code.coding[0].display == "Normal priority"
     assert inst.when.code.coding[0].system == "http://snomed.info/sct"

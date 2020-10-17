@@ -224,7 +224,7 @@ class DocumentReferenceContent(backboneelement.BackboneElement):
         ),
     )
 
-    format: fhirtypes.CodingType = Field(
+    format: ListType[fhirtypes.CodingType] = Field(
         None,
         alias="format",
         title="Format/content rules for the document",

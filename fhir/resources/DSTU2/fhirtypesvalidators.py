@@ -260,6 +260,10 @@ MODEL_CLASSES = {
     "SupplyRequestWhen": (None, ".supplyrequest"),
     "VisionPrescription": (None, ".visionprescription"),
     "VisionPrescriptionDispense": (None, ".visionprescription"),
+    "Specimen": (None, ".specimen"),
+    "SpecimenCollection": (None, ".specimen"),
+    "SpecimenTreatment": (None, ".specimen"),
+    "SpecimenContainer": (None, ".specimen"),
 }
 
 
@@ -1583,6 +1587,30 @@ def visionprescriptiondispense_validator(
     return fhir_model_validator("VisionPrescriptionDispense", v)
 
 
+def specimen_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("Specimen", v)
+
+
+def specimencollection_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("SpecimenCollection", v)
+
+
+def specimentreatment_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("SpecimenTreatment", v)
+
+
+def specimencontainer_validator(
+    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
+):
+    return fhir_model_validator("SpecimenContainer", v)
+
+
 __all__ = [
     "element_validator",
     "resource_validator",
@@ -1858,4 +1886,8 @@ __all__ = [
     "orderresponse_validator",
     "visionprescription_validator",
     "visionprescriptiondispense_validator",
+    "specimen_validator",
+    "specimencollection_validator",
+    "specimentreatment_validator",
+    "specimencontainer_validator",
 ]

@@ -1597,6 +1597,22 @@ class VisionPrescriptionDispenseType(AbstractType):
     __resource_type__ = "VisionPrescriptionDispense"
 
 
+class SpecimenType(AbstractType):
+    __resource_type__ = "Specimen"
+
+
+class SpecimenCollectionType(AbstractType):
+    __resource_type__ = "SpecimenCollection"
+
+
+class SpecimenTreatmentType(AbstractType):
+    __resource_type__ = "SpecimenTreatment"
+
+
+class SpecimenContainerType(AbstractType):
+    __resource_type__ = "SpecimenContainer"
+
+
 __all__ = [
     "ElementType",
     "ResourceType",
@@ -1869,4 +1885,8 @@ __all__ = [
     "SupplyRequestWhenType",
     "VisionPrescriptionType",
     "VisionPrescriptionDispenseType",
+    "SpecimenType",
+    "SpecimenCollectionType",
+    "SpecimenTreatmentType",
+    "SpecimenContainerType",
 ]

@@ -139,7 +139,7 @@ class Conformance(DomainResource):
         title="List of `ConformanceRest` (represented as `dict` in JSON).",
         description="If the endpoint is a RESTful one.",
     )
-    software: ListType[fhirtypes.ConformanceSoftwareType] = Field(
+    software: fhirtypes.ConformanceSoftwareType = Field(
         None,
         alias="software",
         title="List of `ConformanceSoftware` (represented as `dict` in JSON).",
@@ -403,7 +403,7 @@ class ConformanceRest(BackboneElement):
     )
     searchParam: ListType[fhirtypes.ConformanceRestResourceSearchParamType] = Field(
         None,
-        alias="resource",
+        alias="searchParam",
         title=(
             "List of `ConformanceRestResourceSearchParam` "
             "items (represented as `dict` in JSON)."
@@ -411,7 +411,7 @@ class ConformanceRest(BackboneElement):
         description="Search params for searching all resources.",
     )
 
-    security: ListType[fhirtypes.ConformanceRestSecurityType] = Field(
+    security: fhirtypes.ConformanceRestSecurityType = Field(
         None,
         alias="security",
         title="List of `ConformanceRestSecurity` items (represented as `dict` in JSON).",

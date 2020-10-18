@@ -58,9 +58,7 @@ class Specimen(DomainResource):
         None,
         alias="status",
         title="Type `Code`",
-        description=(
-            "available | unavailable | unsatisfactory | entered-in-error"
-        ),
+        description=("available | unavailable | unsatisfactory | entered-in-error"),
         enum_values=["available", "unavailable", "unsatisfactory", "entered-in-error"],
         # if property is element of this resource.
         element_property=True,
@@ -79,9 +77,7 @@ class Specimen(DomainResource):
         None,
         alias="parent",
         title="parent",
-        description=(
-            "Specimen from which this specimen originated"
-        ),
+        description=("Specimen from which this specimen originated"),
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
@@ -101,7 +97,7 @@ class Specimen(DomainResource):
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group", "Device", "Substance"],
     )
-    
+
     accessionIdentifier: fhirtypes.IdentifierType = Field(
         None,
         alias="accessionIdentifier",
@@ -110,7 +106,7 @@ class Specimen(DomainResource):
         # if property is element of this resource.
         element_property=True,
     )
-    
+
     receivedTime: fhirtypes.DateTime = Field(
         None,
         alias="receivedTime",
@@ -122,27 +118,27 @@ class Specimen(DomainResource):
 
     collection: fhirtypes.SpecimenCollectionType = Field(
         None,
-        alias='collection',
-        title='collection',
-        description='Collection details',
+        alias="collection",
+        title="collection",
+        description="Collection details",
         # if property is element of this resource.
         element_property=True,
     )
 
     treatment: ListType[fhirtypes.SpecimenTreatmentType] = Field(
         None,
-        alias='treatment',
-        title='treatment',
-        description='Treatment and processing step details',
+        alias="treatment",
+        title="treatment",
+        description="Treatment and processing step details",
         # if property is element of this resource.
         element_property=True,
     )
 
     container: ListType[fhirtypes.SpecimenContainerType] = Field(
         None,
-        alias='container',
-        title='container',
-        description='Direct container of specimen (tube/slide, etc.)',
+        alias="container",
+        title="container",
+        description="Direct container of specimen (tube/slide, etc.)",
         # if property is element of this resource.
         element_property=True,
     )

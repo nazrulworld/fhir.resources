@@ -5,7 +5,9 @@ History
 6.0.0b6 (unreleased)
 --------------------
 
-- Nothing changed yet.
+Improvements
+
+- ``FHIRAbstractModel::json`` now takes additional parameter ``return_bytes``, indicates json string would be bytes. [nazrulworld]
 
 
 6.0.0b5 (2020-10-04)

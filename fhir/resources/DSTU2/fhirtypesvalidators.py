@@ -1587,27 +1587,19 @@ def visionprescriptiondispense_validator(
     return fhir_model_validator("VisionPrescriptionDispense", v)
 
 
-def specimen_validator(
-    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
-):
+def specimen_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("Specimen", v)
 
 
-def specimencollection_validator(
-    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
-):
+def specimencollection_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("SpecimenCollection", v)
 
 
-def specimentreatment_validator(
-    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
-):
+def specimentreatment_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("SpecimenTreatment", v)
 
 
-def specimencontainer_validator(
-    v: Union[StrBytes, dict, Path, FHIRAbstractModel]
-):
+def specimencontainer_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("SpecimenContainer", v)
 
 

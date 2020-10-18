@@ -23,12 +23,12 @@ logger = logging.getLogger(__name__)
 
 
 def orjson_dumps(v, *, default, option=0):
-    """orjson.dumps returns bytes, to match standard json.dumps we need to decode"""
+    """orjson.dumps returns bytes"""
     params = {"default": default}
     if option > 0:
         params["option"] = option
 
-    return orjson.dumps(v, **params).decode()
+    return orjson.dumps(v, **params)
 
 
 class WrongResourceType(PydanticValueError):
@@ -194,6 +194,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         exclude_defaults: bool = False,
         exclude_none: bool = None,
         encoder: Optional[Callable[[Any], Any]] = None,
+        return_bytes: bool = False,
         **dumps_kwargs: Any,
     ) -> str:
         """ """
@@ -224,7 +225,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
                 if option > 0:
                     dumps_kwargs = {"option": option}
 
-        return BaseModel.json(
+        result = BaseModel.json(
             self,
             include=include,
             by_alias=by_alias,
@@ -235,6 +236,13 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
             encoder=encoder,
             **dumps_kwargs,
         )
+        if return_bytes is True:
+            if isinstance(result, str):
+                result = result.encode("utf-8", errors="strict")
+        else:
+            if isinstance(result, bytes):
+                result = result.decode()
+        return result
 
     @classmethod
     def construct(

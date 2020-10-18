@@ -71,10 +71,10 @@ def impl_Order_2(inst):
     assert inst.source.reference == "Practitioner/f201"
     assert inst.target.reference == "Practitioner/f203"
     assert inst.target.display == "Juri van Gelder"
-    assert (
-        inst.reasonCodeableConcept.text
-        == "It concerns a one-off order for consultation in order to evaluate the stairs walking ability of Roel."
-    )  # noqa: B950
+    assert inst.reasonCodeableConcept.text == (
+        "It concerns a one-off order for consultation in order "
+        "to evaluate the stairs walking ability of Roel."
+    )
     assert inst.reasonReference is None
     assert inst.when.fhir_comments == [
         '  <authority> and <payment> were registered in the EHR as "not applicable"  '

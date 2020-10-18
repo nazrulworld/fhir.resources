@@ -22,15 +22,6 @@ __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 logger = logging.getLogger(__name__)
 
 
-def orjson_dumps(v, *, default, option=0):
-    """orjson.dumps returns bytes, to match standard json.dumps we need to decode"""
-    params = {"default": default}
-    if option > 0:
-        params["option"] = option
-
-    return orjson.dumps(v, **params)
-
-
 class WrongResourceType(PydanticValueError):
     code = "wrong.resource_type"
     msg_template = "Wrong ResourceType: {error}"
@@ -183,7 +174,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
             result["resourceType"] = self.resource_type
         return result
 
-    def json(
+    def json(  # type: ignore
         self,
         *,
         include: Union["AbstractSetIntStr", "MappingIntStrAny"] = None,
@@ -204,7 +195,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         if exclude_none is None:
             exclude_none = True
 
-        if self.__config__.json_dumps == orjson_dumps:
+        if self.__config__.json_dumps == orjson.dumps:
             if "option" not in dumps_kwargs:
                 option = 0
                 if "indent" in dumps_kwargs:
@@ -224,6 +215,9 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
                     )
                 if option > 0:
                     dumps_kwargs = {"option": option}
+
+        if TYPE_CHECKING:
+            result: Union[str, bytes]
 
         result = BaseModel.json(
             self,
@@ -264,7 +258,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
 
     class Config:
         json_loads = orjson.loads
-        json_dumps = orjson_dumps
+        json_dumps = orjson.dumps
         allow_population_by_field_name = True
         extra = Extra.forbid
         validate_assignment = True

@@ -43,17 +43,6 @@ class Specimen(DomainResource):
         element_property=True,
     )
 
-    request: fhirtypes.ReferenceType = Field(
-        ...,
-        alias="request",
-        title="request",
-        description="The order that this is a response to.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Order"],
-    )
-
     status: fhirtypes.Code = Field(
         None,
         alias="status",
@@ -84,8 +73,8 @@ class Specimen(DomainResource):
         enum_reference_types=["Specimen"],
     )
 
-    subject: ListType[fhirtypes.ReferenceType] = Field(
-        None,
+    subject: fhirtypes.ReferenceType = Field(
+        ...,
         alias="subject",
         title="subject",
         description=(
@@ -145,7 +134,7 @@ class Specimen(DomainResource):
 
 
 class SpecimenCollection(BackboneElement):
-    collector: ListType[fhirtypes.ReferenceType] = Field(
+    collector: fhirtypes.ReferenceType = Field(
         None,
         alias="collector",
         title="collector",

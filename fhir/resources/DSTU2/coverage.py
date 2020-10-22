@@ -116,11 +116,11 @@ class Coverage(DomainResource):
         element_property=True,
     )
 
-    subPlan: fhirtypes.IdentifierType = Field(
+    subPlan: fhirtypes.String = Field(
         None,
         alias="subPlan",
         title="An identifier for the subsection of the plan.",
-        description="`Identifier` represented as `dict` in JSON.",
+        description="`Identifier` represented as `string`.",
         # if property is element of this resource.
         element_property=True,
     )

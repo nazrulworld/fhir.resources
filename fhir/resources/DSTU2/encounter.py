@@ -30,11 +30,11 @@ class Encounter(DomainResource):
         title="Type `Code`.",
         description="inpatient | outpatient | ambulatory | emergency +.",
     )
-    length: fhirtypes.Code = Field(
+    length: fhirtypes.DurationType = Field(
         None,
         alias="length",
-        title="Type `Quantity` referencing `Duration` (represented as `dict` in JSON).",
-        description="Quantity of time the encounter lasted (less time absent).",
+        title="length",
+        description="Duration of time the encounter lasted (less time absent).",
     )
 
     period: fhirtypes.PeriodType = Field(

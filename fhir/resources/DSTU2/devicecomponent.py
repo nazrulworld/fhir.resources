@@ -97,7 +97,7 @@ class DeviceComponent(DomainResource):
         ],
     )
 
-    productSpecification: ListType[
+    productionSpecification: ListType[
         fhirtypes.DeviceComponentProductionSpecificationType
     ] = Field(
         None,

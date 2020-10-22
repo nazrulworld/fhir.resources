@@ -3,23 +3,37 @@
 import abc
 import inspect
 import logging
+import typing
 from copy import deepcopy
 from functools import lru_cache
-from typing import TYPE_CHECKING, Any, Callable, Generator, Optional, Type, Union
 
 import orjson
-from pydantic import BaseModel, Extra
+from pydantic import BaseModel, Extra, Field
 from pydantic.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.errors import ConfigError, PydanticValueError
 from pydantic.fields import ModelField
 
-if TYPE_CHECKING:
+if typing.TYPE_CHECKING:
     from pydantic.typing import AbstractSetIntStr, MappingIntStrAny, DictStrAny, SetStr
     from pydantic.main import Model
 
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 
 logger = logging.getLogger(__name__)
+
+
+def orjson_dumps(v, *, default, option=0, return_bytes=False):
+    params = {"default": default}
+    if option > 0:
+        params["option"] = option
+    result = orjson.dumps(v, **params)
+    if return_bytes is False:
+        result = result.decode()
+
+    if typing.TYPE_CHECKING and return_bytes is True:
+        result = typing.cast(str, result)
+
+    return result
 
 
 class WrongResourceType(PydanticValueError):
@@ -32,7 +46,11 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
 
     resource_type: str = ...  # type: ignore
 
-    def __init__(__pydantic_self__, **data: Any) -> None:
+    fhir_comments: typing.Union[str, typing.List[str]] = Field(
+        None, alias="fhir_comments", element_property=False
+    )
+
+    def __init__(__pydantic_self__, **data: typing.Any) -> None:
         """ """
         resource_type = data.pop("resource_type", None)
         errors = []
@@ -67,8 +85,8 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
 
     @classmethod
     def add_root_validator(
-        cls: Type["Model"],
-        validator: Callable,
+        cls: typing.Type["Model"],
+        validator: typing.Callable,
         *,
         pre: bool = False,
         skip_on_failure: bool = False,
@@ -110,7 +128,9 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
             cls.__post_root_validators__.insert(index, (skip_on_failure, validator))
 
     @classmethod
-    def element_properties(cls: Type["Model"]) -> Generator[ModelField, None, None]:
+    def element_properties(
+        cls: typing.Type["Model"],
+    ) -> typing.Generator[ModelField, None, None]:
         """ """
         for model_field in cls.__fields__.values():
             if model_field.field_info.extra.get("element_property", False):
@@ -118,7 +138,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
 
     @classmethod
     @lru_cache(maxsize=1024, typed=True)
-    def has_resource_base(cls: Type["Model"]) -> bool:
+    def has_resource_base(cls: typing.Type["Model"]) -> bool:
         """ """
         # xxx: calculate metrics, other than cache it!
         for cl in inspect.getmro(cls)[:-4]:
@@ -128,20 +148,20 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
 
     @classmethod
     @lru_cache(maxsize=None, typed=True)
-    def get_resource_type(cls: Type["Model"]) -> str:
+    def get_resource_type(cls: typing.Type["Model"]) -> str:
         """ """
         return cls.__fields__["resource_type"].default
 
     @classmethod
-    def get_json_encoder(cls) -> Callable[[Any], Any]:
+    def get_json_encoder(cls) -> typing.Callable[[typing.Any], typing.Any]:
         """ """
         return cls.__json_encoder__
 
     def dict(
         self,
         *,
-        include: Union["AbstractSetIntStr", "MappingIntStrAny"] = None,
-        exclude: Union["AbstractSetIntStr", "MappingIntStrAny"] = None,
+        include: typing.Union["AbstractSetIntStr", "MappingIntStrAny"] = None,
+        exclude: typing.Union["AbstractSetIntStr", "MappingIntStrAny"] = None,
         by_alias: bool = None,
         skip_defaults: bool = None,
         exclude_unset: bool = False,
@@ -177,17 +197,17 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
     def json(  # type: ignore
         self,
         *,
-        include: Union["AbstractSetIntStr", "MappingIntStrAny"] = None,
-        exclude: Union["AbstractSetIntStr", "MappingIntStrAny"] = None,
+        include: typing.Union["AbstractSetIntStr", "MappingIntStrAny"] = None,
+        exclude: typing.Union["AbstractSetIntStr", "MappingIntStrAny"] = None,
         by_alias: bool = None,
         skip_defaults: bool = None,
         exclude_unset: bool = False,
         exclude_defaults: bool = False,
         exclude_none: bool = None,
-        encoder: Optional[Callable[[Any], Any]] = None,
+        encoder: typing.Optional[typing.Callable[[typing.Any], typing.Any]] = None,
         return_bytes: bool = False,
-        **dumps_kwargs: Any,
-    ) -> Union[str, bytes]:
+        **dumps_kwargs: typing.Any,
+    ) -> typing.Union[str, bytes]:
         """ """
         if by_alias is None:
             by_alias = True
@@ -215,9 +235,22 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
                     )
                 if option > 0:
                     dumps_kwargs = {"option": option}
+            else:
+                option = dumps_kwargs.pop("option")
+                if len(dumps_kwargs) > 0:
+                    logger.warning(
+                        "When ``dumps`` method is used from ``orjson`` "
+                        "all dumps kwargs are ignored except `indent`, `sort_keys` "
+                        "and of course ``option`` from orjson"
+                    )
+                dumps_kwargs = {}
+                if option > 0:
+                    dumps_kwargs["option"] = option
 
-        if TYPE_CHECKING:
-            result: Union[str, bytes]
+            dumps_kwargs["return_bytes"] = return_bytes
+
+        if typing.TYPE_CHECKING:
+            result: typing.Union[str, bytes]
 
         result = BaseModel.json(
             self,
@@ -240,7 +273,9 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
 
     @classmethod
     def construct(
-        cls: Type["Model"], _fields_set: Optional["SetStr"] = None, **values: Any
+        cls: typing.Type["Model"],
+        _fields_set: typing.Optional["SetStr"] = None,
+        **values: typing.Any,
     ) -> "Model":
         """Disclaimer: for now this method is 1:1 with BaseModel's method.
         But in future we may apply some validation, for example disallow
@@ -258,7 +293,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
 
     class Config:
         json_loads = orjson.loads
-        json_dumps = orjson.dumps
+        json_dumps = orjson_dumps
         allow_population_by_field_name = True
         extra = Extra.forbid
         validate_assignment = True

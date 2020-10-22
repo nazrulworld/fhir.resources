@@ -4,9 +4,11 @@ Extensibility feature for FHIR Primitive Data Types.
 """
 __author__ = "Md Nazrul Islam<email2nazrul>"
 
-from typing import List as ListType
+import typing
 
-from pydantic import Field
+from pydantic import Field, root_validator
+from pydantic.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.errors import MissingError
 
 from . import fhirabstractmodel, fhirtypes
 
@@ -23,9 +25,24 @@ class FHIRPrimitiveExtension(fhirabstractmodel.FHIRAbstractModel):
         description="Unique id for inter-element referencing",
     )
 
-    extension: ListType[fhirtypes.ExtensionType] = Field(
-        ...,
+    extension: typing.List[fhirtypes.ExtensionType] = Field(
+        None,
         alias="extension",
         title="List of `Extension` items (represented as `dict` in JSON)",
         description="Additional content defined by implementations",
     )
+
+    @root_validator(pre=True)
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """Conditional Required Validation"""
+        errors = list()
+        extension = values.get("extension", None)
+        fhir_comments = values.get("fhir_comments", None)
+
+        if extension is None and fhir_comments is None:
+            errors.append(ErrorWrapper(MissingError(), loc="extension"))
+            raise ValidationError(errors, cls)
+
+        return values

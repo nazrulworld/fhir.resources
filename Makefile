@@ -51,7 +51,7 @@ clean-test: ## remove test and coverage artifacts
 	rm -fr .pytest_cache
 
 lint: ## check style with flake8
-	flake8 fhir/resources
+	flake8 --exclude=*/DSTU2/tests/*  fhir/resources
 
 test: ## run tests quickly with the default Python
 	pytest fhir/resources/tests

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from datetime import date
-
+from pydantic.datetime_parse import parse_date
 from .. import fhirtypes  # noqa: F401
 from .. import enrollmentresponse
 
@@ -22,7 +22,7 @@ def test_EnrollmentResponse_1(base_settings):
 
 
 def impl_EnrollmentResponse_1(inst):
-    assert inst.created == date.fromisoformat("2014-08-16")
+    assert inst.created == parse_date("2014-08-16")
     assert inst.disposition == "Dependant added to policy."
     assert inst.id == "ER2500"
     assert inst.identifier[0].system == "http://www.BenefitsInc.com/fhir/enrollmentresponse"

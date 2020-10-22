@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from datetime import date
-
+from pydantic.datetime_parse import parse_date
 from .. import fhirtypes  # noqa: F401
 from .. import enrollmentrequest
 
@@ -23,7 +23,7 @@ def test_EnrollmentRequest_1(base_settings):
 
 def impl_EnrollmentRequest_1(inst):
     assert inst.coverage.reference == "Coverage/9876B1"
-    assert inst.created == date.fromisoformat("2014-08-16")
+    assert inst.created == parse_date("2014-08-16")
     assert inst.id == "22345"
     assert inst.identifier[0].system == "http://happyvalley.com/enrollmentrequest"
     assert inst.identifier[0].value == "EN22345"

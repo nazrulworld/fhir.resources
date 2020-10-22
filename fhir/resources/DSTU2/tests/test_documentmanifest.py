@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-from datetime import date, datetime
-
+from pydantic.datetime_parse import parse_datetime, parse_date
 from .. import fhirtypes  # noqa: F401
 from .. import documentmanifest
 
@@ -32,7 +31,7 @@ def impl_DocumentManifest_1(inst):
     assert inst.contained[0].telecom[0].system == "email"
     assert inst.contained[0].telecom[0].value == "john.doe@healthcare.example.org"
     assert inst.content[0].pReference.reference == "DocumentReference/example"
-    assert inst.created == datetime.fromisoformat("2004-12-25T23:50:50-05:00")
+    assert inst.created == parse_datetime("2004-12-25T23:50:50-05:00")
     assert inst.description == "Physical"
     assert inst.id == "example"
     assert inst.identifier[0].system == "http://example.org/documents"

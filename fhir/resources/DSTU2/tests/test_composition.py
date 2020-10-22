@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-from datetime import date, datetime, timezone
-
+from datetime import datetime, timezone
+from pydantic.datetime_parse import parse_date
 from .. import fhirtypes  # noqa: F401
 from .. import composition
 
@@ -37,8 +37,8 @@ def impl_Composition_1(inst):
     assert inst.event[0].code[0].coding[0].display == "health record"
     assert inst.event[0].code[0].coding[0].system == "http://hl7.org/fhir/v3/ActCode"
     assert inst.event[0].detail[0].reference == "Observation/example"
-    assert inst.event[0].period.end == date.fromisoformat("2012-11-12")
-    assert inst.event[0].period.start == date.fromisoformat("2010-07-18")
+    assert inst.event[0].period.end == parse_date("2012-11-12")
+    assert inst.event[0].period.start == parse_date("2010-07-18")
     assert inst.id == "example"
     assert inst.identifier.system == "http://healthintersections.com.au/test"
     assert inst.identifier.value == "1"

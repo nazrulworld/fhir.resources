@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-from datetime import date
-
+from pydantic.datetime_parse import parse_date
 from .. import fhirtypes  # noqa: F401
 from .. import eligibilityrequest
 
@@ -22,7 +21,7 @@ def test_EligibilityRequest_1(base_settings):
 
 
 def impl_EligibilityRequest_1(inst):
-    assert inst.created == date.fromisoformat("2014-08-16")
+    assert inst.created == parse_date("2014-08-16")
     assert inst.id == "52345"
     assert inst.identifier[0].system == "http://happyvalley.com/elegibilityrequest"
     assert inst.identifier[0].value == "52345"

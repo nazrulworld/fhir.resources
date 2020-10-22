@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from datetime import date, datetime
+from pydantic.datetime_parse import parse_date, parse_datetime
 
 from .. import fhirtypes  # noqa: F401
 from .. import allergyintolerance
@@ -31,7 +31,7 @@ def impl_AllergyIntolerance_1(inst):
     assert inst.identifier[0].system == "http://acme.com/ids/patients/risks"
     assert inst.identifier[0].value == "49476534"
     assert inst.patient.reference == "Patient/example"
-    assert inst.recordedDate == datetime.fromisoformat("2014-10-09T14:58:00+11:00")
+    assert inst.recordedDate == parse_datetime("2014-10-09T14:58:00+11:00")
     assert inst.recorder.reference == "Practitioner/example"
     assert inst.status == "refuted"
     assert inst.substance.coding[0].code == "227493005"
@@ -70,7 +70,7 @@ def impl_AllergyIntolerance_2(inst):
     assert inst.reaction[0].manifestation[0].coding[0].code == "39579001"
     assert inst.reaction[0].manifestation[0].coding[0].display == "Anaphylactic reaction"
     assert inst.reaction[0].manifestation[0].coding[0].system == "http://snomed.info/sct"
-    assert inst.reaction[0].onset == date.fromisoformat("2012-06-12")
+    assert inst.reaction[0].onset == parse_date("2012-06-12")
     assert inst.reaction[0].severity == "severe"
     assert inst.reaction[0].substance.coding[0].code == "C3214954"
     assert inst.reaction[0].substance.coding[0].display == "cashew nut allergenic extract Injectable Product"
@@ -81,7 +81,7 @@ def impl_AllergyIntolerance_2(inst):
     assert inst.reaction[1].manifestation[0].coding[0].system == "http://snomed.info/sct"
     assert inst.reaction[1].onset == "2004"
     assert inst.reaction[1].severity == "moderate"
-    assert inst.recordedDate == datetime.fromisoformat("2014-10-09T14:58:00+11:00")
+    assert inst.recordedDate == parse_datetime("2014-10-09T14:58:00+11:00")
     assert inst.recorder.reference == "Practitioner/example"
     assert inst.status == "confirmed"
     assert inst.substance.coding[0].code == "227493005"
@@ -114,7 +114,7 @@ def impl_AllergyIntolerance_3(inst):
     assert inst.identifier[0].system == "http://acme.com/ids/patients/risks"
     assert inst.identifier[0].value == "49476535"
     assert inst.patient.reference == "Patient/example"
-    assert inst.recordedDate == datetime.fromisoformat("2015-08-06T15:37:31-06:00")
+    assert inst.recordedDate == parse_datetime("2015-08-06T15:37:31-06:00")
     assert inst.recorder.reference == "Practitioner/example"
     assert inst.substance.coding[0].code == "227037002"
     assert inst.substance.coding[0].display == "Fish - dietary (substance)"
@@ -152,7 +152,7 @@ def impl_AllergyIntolerance_4(inst):
     assert inst.reaction[0].manifestation[0].coding[0].code == "247472004"
     assert inst.reaction[0].manifestation[0].coding[0].display == "Hives"
     assert inst.reaction[0].manifestation[0].coding[0].system == "http://snomed.info/sct"
-    assert inst.recordedDate == date.fromisoformat("2010-03-01")
+    assert inst.recordedDate == parse_date("2010-03-01")
     assert inst.recorder.reference == "Practitioner/13"
     assert inst.status == "unconfirmed"
     assert inst.substance.coding[0].code == "314422"

@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-from datetime import date, datetime
-
+from pydantic.datetime_parse import parse_date, parse_datetime
 from .. import fhirtypes  # noqa: F401
 from .. import device
 
@@ -22,12 +21,12 @@ def test_Device_1(base_settings):
 
 
 def impl_Device_1(inst):
-    assert inst.expiry == date.fromisoformat("2020-08-08")
+    assert inst.expiry == parse_date("2020-08-08")
     assert inst.id == "f001"
     assert inst.identifier[0].system == "http:/goodhealthhospital/identifier/devices"
     assert inst.identifier[0].value == "12345"
     assert inst.location.display == "Central Supply"
-    assert inst.manufactureDate == date.fromisoformat("2015-08-08")
+    assert inst.manufactureDate == parse_date("2015-08-08")
     assert inst.owner.reference == "Organization/2.16.840.1.113883.19.5"
     assert inst.status == "available"
     assert inst.text.div == "<div><p><b>Generated Narrative with Details</b></p><p><b>id</b>: f001</p><p><b>identifier</b>: 12345</p><p><b>type</b>: Feeding tube, device <span>(Details : {SNOMED CT code '25062003' = '25062003', given as 'Feeding tube, device'})</span></p><p><b>status</b>: available</p><p><b>manufactureDate</b>: 08/08/2015</p><p><b>expiry</b>: 08/08/2020</p><p><b>udi</b>: (01)00000123000017(10)ABC123(17)120415</p><p><b>owner</b>: <a>Organization/2.16.840.1.113883.19.5</a></p><p><b>location</b>: Central Supply</p></div>"
@@ -164,7 +163,7 @@ def impl_Device_5(inst):
     assert inst.model == "AB 45-J"
     assert inst.note[0].authorReference.reference == "Practitioner/xcda-author"
     assert inst.note[0].text == "QA Checked"
-    assert inst.note[0].time == datetime.fromisoformat("2015-06-28T14:03:32+10:00")
+    assert inst.note[0].time == parse_datetime("2015-06-28T14:03:32+10:00")
     assert inst.status == "available"
     assert inst.text.div == "<div><p><b>Generated Narrative with Details</b></p><p><b>id</b>: example</p><p><b>identifier</b>: 345675, Serial Number = AMID-342135-8464</p><p><b>type</b>: ECG <span>(Details : {SNOMED CT code '86184003' = '86184003', given as 'Electrocardiographic monitor and recorder'})</span></p><p><b>note</b>: QA Checked</p><p><b>status</b>: available</p><p><b>manufacturer</b>: Acme Devices, Inc</p><p><b>model</b>: AB 45-J</p><p><b>lotNumber</b>: 43453424</p><p><b>contact</b>: ph: ext 4352</p></div>"
     assert inst.text.status == "generated"

@@ -35,7 +35,7 @@ script:
   - make clean
   - make lint
   - mypy fhir/resources/
-  - black --check --verbose fhir/resources/
+  - black --check --verbose --exclude 'fhir/resources/DSTU2/tests/' fhir/resources/
   - pytest fhir/resources/DSTU2/tests
   - pytest fhir/resources/STU3/tests
   - pytest -s --cov=fhir/resources/tests -s --tb=native -v --cov-report term-missing --cov-append fhir/resources/tests

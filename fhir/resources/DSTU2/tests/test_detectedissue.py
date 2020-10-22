@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-from datetime import date
-
+from pydantic.datetime_parse import parse_date
 from .. import fhirtypes  # noqa: F401
 from .. import detectedissue
 
@@ -48,7 +47,7 @@ def impl_DetectedIssue_2(inst):
     assert inst.category.coding[0].code == "DUPTHPY"
     assert inst.category.coding[0].display == "Duplicate Therapy Alert"
     assert inst.category.coding[0].system == "http://hl7.org/fhir/v3/ActCode"
-    assert inst.date == date.fromisoformat("2013-05-08")
+    assert inst.date == parse_date("2013-05-08")
     assert inst.detail == "Similar test was performed within the past 14 days"
     assert inst.id == "duplicate"
     assert inst.implicated[0].display == "Chest CT - ordered May 8, 2013 by Dr. Adam Careful"
@@ -112,7 +111,7 @@ def impl_DetectedIssue_4(inst):
     assert inst.category.coding[0].code == "DRG"
     assert inst.category.coding[0].display == "Drug Interaction Alert"
     assert inst.category.coding[0].system == "http://hl7.org/fhir/v3/ActCode"
-    assert inst.date == date.fromisoformat("2014-01-05")
+    assert inst.date == parse_date("2014-01-05")
     assert inst.detail == "Risk of internal bleeding.  Those who take acetaminophen along with the widely used blood-thinning drug warfarin may face the risk of serious internal bleeding. People on warfarin who take acetaminophen for at least seven days in a row should be closely watched for bleeding."
     assert inst.id == "ddi"
     assert inst.implicated[0].display == "500 mg Acetaminophen tablet 1/day, PRN since 2010"
@@ -125,7 +124,7 @@ def impl_DetectedIssue_4(inst):
     assert inst.mitigation[0].action.text == "Asked patient to discontinue regular use of Tylenol and to consult with clinician if they need to resume to allow appropriate INR monitoring"
     assert inst.mitigation[0].author.display == "Dr. Adam Careful"
     assert inst.mitigation[0].author.reference == "Practitioner/example"
-    assert inst.mitigation[0].date == date.fromisoformat("2014-01-05")
+    assert inst.mitigation[0].date == parse_date("2014-01-05")
     assert inst.severity == "high"
     assert inst.text.div == """<div>
       <p><b>Severity: High</b> - Risk of internal bleeding</p>

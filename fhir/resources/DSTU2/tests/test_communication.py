@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from datetime import datetime
+from pydantic.datetime_parse import parse_datetime
 
 from .. import fhirtypes  # noqa: F401
 from .. import communication
@@ -37,7 +37,7 @@ def impl_Communication_1(inst):
     assert inst.payload[1].contentReference.reference == "Observation/643666aa12f"
     assert inst.recipient[0].reference == "Practitioner/21"
     assert inst.sender.reference == "Device/f001"
-    assert inst.sent == datetime.fromisoformat("2014-12-12T18:01:10-08:00")
+    assert inst.sent == parse_datetime("2014-12-12T18:01:10-08:00")
     assert inst.status == "suspended"
     assert inst.subject.reference == "Patient/1"
     assert inst.text.div == "<div>Patient has very high serum potassium</div>"

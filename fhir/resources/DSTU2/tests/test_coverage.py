@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-from datetime import date
-
+from pydantic.datetime_parse import parse_date
 from .. import fhirtypes  # noqa: F401
 from .. import coverage
 
@@ -27,8 +26,8 @@ def impl_Coverage_1(inst):
     assert inst.identifier[0].system == "http://xyz.com/codes/identifier"
     assert inst.identifier[0].value == "AB9876"
     assert inst.issuer.reference == "Organization/2"
-    assert inst.period.end == date.fromisoformat("2012-03-17")
-    assert inst.period.start == date.fromisoformat("2011-03-17")
+    assert inst.period.end == parse_date("2012-03-17")
+    assert inst.period.start == parse_date("2011-03-17")
     assert inst.plan == "11024"
     assert inst.subPlan == "D15C9"
     assert inst.subscriber.reference == "Patient/5"
@@ -61,8 +60,8 @@ def impl_Coverage_2(inst):
     assert inst.identifier[0].system == "http://benefitsinc.com/certificate"
     assert inst.identifier[0].value == "12345"
     assert inst.issuer.reference == "Organization/2"
-    assert inst.period.end == date.fromisoformat("2012-05-23")
-    assert inst.period.start == date.fromisoformat("2011-05-23")
+    assert inst.period.end == parse_date("2012-05-23")
+    assert inst.period.start == parse_date("2011-05-23")
     assert inst.plan == "CBI35"
     assert inst.sequence == 1
     assert inst.subPlan == "123"

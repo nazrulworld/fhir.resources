@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-from datetime import datetime
-
+from pydantic.datetime_parse import parse_datetime
 from .. import fhirtypes  # noqa: F401
 from .. import documentreference
 
@@ -46,8 +45,8 @@ def impl_DocumentReference_1(inst):
     assert inst.context.facilityType.coding[0].code == "Outpatient"
     assert inst.context.facilityType.coding[0].display == "Outpatient"
     assert inst.context.facilityType.coding[0].system == "http://www.ihe.net/xds/connectathon/healthcareFacilityTypeCodes"
-    assert inst.context.period.end == datetime.fromisoformat("2004-12-23T08:01:00+11:00")
-    assert inst.context.period.start == datetime.fromisoformat("2004-12-23T08:00:00+11:00")
+    assert inst.context.period.end == parse_datetime("2004-12-23T08:01:00+11:00")
+    assert inst.context.period.start == parse_datetime("2004-12-23T08:00:00+11:00")
     assert inst.context.practiceSetting.coding[0].code == "General Medicine"
     assert inst.context.practiceSetting.coding[0].display == "General Medicine"
     assert inst.context.practiceSetting.coding[0].system == "http://www.ihe.net/xds/connectathon/practiceSettingCodes"
@@ -55,7 +54,7 @@ def impl_DocumentReference_1(inst):
     assert inst.context.related[0].identifier.value == "urn:oid:1.3.6.1.4.1.21367.2005.3.7.2345"
     assert inst.context.related[0].ref.reference == "Patient/xcda"
     assert inst.context.sourcePatientInfo.reference == "Patient/xcda"
-    assert inst.created == datetime.fromisoformat("2005-12-24T09:35:00+11:00")
+    assert inst.created == parse_datetime("2005-12-24T09:35:00+11:00")
     assert inst.custodian.reference == "Organization/organization-example"
     assert inst.description == "Physical"
     assert inst.docStatus.coding[0].code == "preliminary"
@@ -64,7 +63,7 @@ def impl_DocumentReference_1(inst):
     assert inst.id == "example"
     assert inst.identifier[0].system == "urn:ietf:rfc:3986"
     assert inst.identifier[0].value == "urn:oid:1.3.6.1.4.1.21367.2005.3.7.1234"
-    assert inst.indexed == datetime.fromisoformat("2005-12-24T09:43:41+11:00")
+    assert inst.indexed == parse_datetime("2005-12-24T09:43:41+11:00")
     assert inst.masterIdentifier.system == "urn:ietf:rfc:3986"
     assert inst.masterIdentifier.value == "urn:oid:1.3.6.1.4.1.21367.2005.3.7"
     assert inst.relatesTo[0].code == "appends"

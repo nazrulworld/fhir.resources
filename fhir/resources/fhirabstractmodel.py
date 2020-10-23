@@ -9,6 +9,7 @@ from functools import lru_cache
 
 import orjson
 from pydantic import BaseModel, Extra, Field
+from pydantic.class_validators import ROOT_KEY
 from pydantic.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.errors import ConfigError, PydanticValueError
 from pydantic.fields import ModelField
@@ -20,6 +21,43 @@ if typing.TYPE_CHECKING:
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 
 logger = logging.getLogger(__name__)
+FHIR_COMMENTS_FIELD_NAME = "fhir_comments"
+
+
+def fallback_type_method():
+    return True
+
+
+def filter_empty_list_dict(items):
+    """ """
+    if not isinstance(items, (list, dict)):
+        return items
+
+    if len(items) == 0:
+        return None
+
+    if isinstance(items, list):
+        for idx, item in enumerate(items):
+            if item is None:
+                # may be ``exclude_none`` False
+                continue
+            result = filter_empty_list_dict(item)
+            if result is None:
+                del items[idx]
+    else:
+        for key in tuple(items.keys()):
+            item = items[key]
+            if item is None:
+                # may be ``exclude_none`` False
+                continue
+            result = filter_empty_list_dict(item)
+            if result is None:
+                del items[key]
+
+    if len(items) == 0:
+        return None
+
+    return items
 
 
 def orjson_dumps(v, *, default, option=0, return_bytes=False):
@@ -176,14 +214,54 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         if exclude_none is None:
             exclude_none = True
 
-        exclude_ = {"resource_type"}
-        if isinstance(exclude, (list, tuple, set)):
-            exclude_ = exclude_.union(exclude)
+        if exclude is None:
+            exclude = {"resource_type"}
+        elif isinstance(exclude, set):
+            exclude.add("resource_type")
+        elif isinstance(exclude, dict):
+            if "resource_type" not in exclude:
+                exclude["resource_type"] = ...
+
+        exclude_comments = False
+
+        if FHIR_COMMENTS_FIELD_NAME in exclude:
+            exclude_comments = True
+
+        if exclude_comments:
+            children_excludes: typing.Dict[
+                str, typing.Union[typing.Set[str], typing.Dict[str, typing.Any]]
+            ] = dict()
+            for field in self.__fields__.values():
+                if getattr(field.type_, "is_primitive", fallback_type_method)():
+                    # no treatment for Primitive Type
+                    continue
+                if field.outer_type_ != field.type_ and str(
+                    field.outer_type_
+                ).startswith("typing.List["):
+
+                    children_excludes[field.name] = {
+                        "__all__": {FHIR_COMMENTS_FIELD_NAME}
+                    }
+                else:
+                    children_excludes[field.name] = {FHIR_COMMENTS_FIELD_NAME}
+
+            if len(children_excludes) > 0:
+                if isinstance(exclude, set):
+                    exclude = {e: ... for e in exclude}
+                if typing.TYPE_CHECKING:
+                    exclude = typing.cast(typing.Dict, exclude)
+                exclude.update(children_excludes)
+
+            if FHIR_COMMENTS_FIELD_NAME not in exclude:
+                if isinstance(exclude, set):
+                    exclude.add(FHIR_COMMENTS_FIELD_NAME)
+                elif isinstance(exclude, dict):
+                    exclude[FHIR_COMMENTS_FIELD_NAME] = ...
 
         result = BaseModel.dict(
             self,
             include=include,
-            exclude=exclude_,
+            exclude=exclude,
             by_alias=by_alias,
             skip_defaults=skip_defaults,
             exclude_unset=exclude_unset,
@@ -192,6 +270,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         )
         if self.__class__.has_resource_base():
             result["resourceType"] = self.resource_type
+
         return result
 
     def json(  # type: ignore
@@ -200,10 +279,10 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         include: typing.Union["AbstractSetIntStr", "MappingIntStrAny"] = None,
         exclude: typing.Union["AbstractSetIntStr", "MappingIntStrAny"] = None,
         by_alias: bool = None,
-        skip_defaults: bool = None,
         exclude_unset: bool = False,
         exclude_defaults: bool = False,
         exclude_none: bool = None,
+        exclude_comments: bool = False,
         encoder: typing.Optional[typing.Callable[[typing.Any], typing.Any]] = None,
         return_bytes: bool = False,
         **dumps_kwargs: typing.Any,
@@ -215,9 +294,22 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         if exclude_none is None:
             exclude_none = True
 
-        if self.__config__.json_dumps == orjson.dumps:
-            if "option" not in dumps_kwargs:
-                option = 0
+        if exclude_comments:
+            if exclude is None:
+                exclude = {FHIR_COMMENTS_FIELD_NAME}
+            elif isinstance(exclude, set):
+                exclude.add(FHIR_COMMENTS_FIELD_NAME)
+            elif isinstance(exclude, dict):
+                exclude[FHIR_COMMENTS_FIELD_NAME] = ...
+            else:
+                raise NotImplementedError(
+                    "Only Set or Dict type ``exclude`` value is accepted "
+                    f"but got type ``{type(exclude)}``"
+                )
+
+        if self.__config__.json_dumps == orjson_dumps:
+            option = dumps_kwargs.pop("option", 0)
+            if option == 0:
                 if "indent" in dumps_kwargs:
                     dumps_kwargs.pop("indent")
                     # only indent 2 is accepted
@@ -227,48 +319,49 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
                 if sort_keys:
                     option |= orjson.OPT_SORT_KEYS
 
-                if len(dumps_kwargs) > 0:
-                    logger.warning(
-                        "When ``dumps`` method is used from ``orjson`` "
-                        "all dumps kwargs are ignored except `indent`, `sort_keys` "
-                        "and of course ``option`` from orjson"
-                    )
-                if option > 0:
-                    dumps_kwargs = {"option": option}
-            else:
-                option = dumps_kwargs.pop("option")
-                if len(dumps_kwargs) > 0:
-                    logger.warning(
-                        "When ``dumps`` method is used from ``orjson`` "
-                        "all dumps kwargs are ignored except `indent`, `sort_keys` "
-                        "and of course ``option`` from orjson"
-                    )
+            if len(dumps_kwargs) > 0:
+                logger.warning(
+                    "When ``dumps`` method is used from ``orjson`` "
+                    "all dumps kwargs are ignored except `indent`, `sort_keys` "
+                    "and of course ``option`` from orjson"
+                )
                 dumps_kwargs = {}
-                if option > 0:
-                    dumps_kwargs["option"] = option
+
+            if option > 0:
+                dumps_kwargs["option"] = option
 
             dumps_kwargs["return_bytes"] = return_bytes
+
+        data = self.dict(
+            include=include,
+            exclude=exclude,
+            by_alias=by_alias,
+            exclude_unset=exclude_unset,
+            exclude_defaults=exclude_defaults,
+            exclude_none=exclude_none,
+        )
+        if self.__custom_root_type__:
+            data = data[ROOT_KEY]
+
+        if exclude_comments:
+            data = filter_empty_list_dict(data)
+
+        encoder = typing.cast(
+            typing.Callable[[typing.Any], typing.Any], encoder or self.__json_encoder__
+        )
 
         if typing.TYPE_CHECKING:
             result: typing.Union[str, bytes]
 
-        result = BaseModel.json(
-            self,
-            include=include,
-            by_alias=by_alias,
-            skip_defaults=skip_defaults,
-            exclude_unset=exclude_unset,
-            exclude_defaults=exclude_defaults,
-            exclude_none=exclude_none,
-            encoder=encoder,
-            **dumps_kwargs,
-        )
+        result = self.__config__.json_dumps(data, default=encoder, **dumps_kwargs)
+
         if return_bytes is True:
             if isinstance(result, str):
                 result = result.encode("utf-8", errors="strict")
         else:
             if isinstance(result, bytes):
                 result = result.decode()
+
         return result
 
     @classmethod

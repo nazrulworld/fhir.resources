@@ -2,7 +2,7 @@
 """see: https://www.hl7.org/fhir/extensibility.html
 Extensibility feature for FHIR Primitive Data Types.
 """
-__author__ = "Md Nazrul Islam<email2nazrul>"
+__author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 
 import typing
 
@@ -33,7 +33,7 @@ class FHIRPrimitiveExtension(fhirabstractmodel.FHIRAbstractModel):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(
+    def validate_extension_or_fhir_comment_required(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """Conditional Required Validation"""
@@ -43,6 +43,6 @@ class FHIRPrimitiveExtension(fhirabstractmodel.FHIRAbstractModel):
 
         if extension is None and fhir_comments is None:
             errors.append(ErrorWrapper(MissingError(), loc="extension"))
-            raise ValidationError(errors, cls)
+            raise ValidationError(errors, cls)  # type: ignore
 
         return values

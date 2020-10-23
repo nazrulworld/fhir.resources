@@ -9,6 +9,9 @@ Improvements
 
 - ``FHIRAbstractModel::json`` now takes additional parameter ``return_bytes``, indicates json string would be bytes. [nazrulworld]
 
+- Issue#38 Add support for FHIR comments. As per suggestion of comments in json from `Grahame Grieve <http://www.healthintersections.com.au/?p=2569>`_, now ``fhir_comments`` is accepted. [nazrulworld]
+
+- FHIR comments filter option is added in ``FHIRAbstractModel::json``, means it is possible to exclude any comments while generating json string by providing parameter ``exclude_comments`` value. [nazrulworld]
 
 6.0.0b5 (2020-10-04)
 --------------------

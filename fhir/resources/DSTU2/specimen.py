@@ -105,7 +105,7 @@ class Specimen(DomainResource):
         element_property=True,
     )
 
-    collection: fhirtypes.SpecimenCollectionType = Field(
+    collection_fhir: fhirtypes.SpecimenCollectionType = Field(
         None,
         alias="collection",
         title="collection",
@@ -134,6 +134,9 @@ class Specimen(DomainResource):
 
 
 class SpecimenCollection(BackboneElement):
+
+    resource_type = Field("SpecimenCollection", const=True)
+
     collector: fhirtypes.ReferenceType = Field(
         None,
         alias="collector",
@@ -164,6 +167,9 @@ class SpecimenCollection(BackboneElement):
         one_of_many_required=False,
     )
 
+    collectedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_collectedDateTime", title="Extension field for ``collectedDateTime``."
+    )
     collectedPeriod: fhirtypes.PeriodType = Field(
         None,
         alias="collectedPeriod",
@@ -244,6 +250,7 @@ class SpecimenCollection(BackboneElement):
 
 
 class SpecimenTreatment(BackboneElement):
+    resource_type = Field("SpecimenTreatment", const=True)
     description: fhirtypes.String = Field(
         None,
         alias="description",
@@ -274,6 +281,8 @@ class SpecimenTreatment(BackboneElement):
 
 
 class SpecimenContainer(BackboneElement):
+    resource_type = Field("SpecimenContainer", const=True)
+
     identifier: ListType[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",

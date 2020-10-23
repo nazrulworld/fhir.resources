@@ -24,9 +24,15 @@ class Narrative(Element):
         description="Limited xhtml content",
     )
 
+    div__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_div", title="Extension field for ``div``."
+    )
     status: fhirtypes.Code = Field(
         ...,
         alias="status",
         title="Type `Code` (represented as `dict` in JSON)",
         description="generated | extensions | additional | empty",
+    )
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``div``."
     )

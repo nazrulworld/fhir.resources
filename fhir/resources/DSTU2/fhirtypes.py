@@ -376,6 +376,7 @@ def get_fhir_type_class(model_name):
 class AbstractType(dict):
     """ """
 
+    __fhir_release__: str = "DSTU2"
     __resource_type__: str = ...  # type: ignore
 
     @classmethod
@@ -388,10 +389,21 @@ class AbstractType(dict):
 
         yield getattr(fhirtypesvalidators, cls.__resource_type__.lower() + "_validator")
 
+    @classmethod
+    def is_primitive(cls) -> bool:
+        """ """
+        return False
+
+    @classmethod
+    def fhir_type_name(cls) -> str:
+        """ """
+        return cls.__resource_type__
+
 
 class AbstractBaseType(dict):
     """ """
 
+    __fhir_release__: str = "DSTU2"
     __resource_type__: str = ...  # type: ignore
 
     @classmethod
@@ -401,6 +413,16 @@ class AbstractBaseType(dict):
     @classmethod
     def __get_validators__(cls) -> "CallableGenerator":
         yield cls.validate
+
+    @classmethod
+    def is_primitive(cls) -> bool:
+        """ """
+        return False
+
+    @classmethod
+    def fhir_type_name(cls) -> str:
+        """ """
+        return cls.__resource_type__
 
     @classmethod
     def validate(cls, v, values, config, field):
@@ -467,6 +489,12 @@ class Url(AnyUrl, Primitive):
             return value
 
         return AnyUrl.validate(value, field, config)
+
+
+class FHIRPrimitiveExtensionType(AbstractType):
+    """ """
+
+    __resource_type__ = "FHIRPrimitiveExtension"
 
 
 class ElementType(AbstractBaseType):

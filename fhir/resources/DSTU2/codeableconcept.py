@@ -35,3 +35,6 @@ class CodeableConcept(Element):
         title="Type `String` (represented as `dict` in JSON)",
         description="Plain text representation of the concept",
     )
+    text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_text", title="Extension field for ``text``."
+    )

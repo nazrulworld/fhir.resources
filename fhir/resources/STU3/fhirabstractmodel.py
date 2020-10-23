@@ -25,11 +25,15 @@ FHIR_COMMENTS_FIELD_NAME = "fhir_comments"
 
 
 def fallback_type_method():
+    """lambda like function, is used as fallback of ``is_primitive``
+    method for non FHIR Type class"""
     return True
 
 
 def filter_empty_list_dict(items):
-    """ """
+    """A special helper function, which is removing
+    any item which contains empty list/dict value.
+    It is used by ``FHIRAbstractModel::json``"""
     if not isinstance(items, (list, dict)):
         return items
 
@@ -287,7 +291,9 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         return_bytes: bool = False,
         **dumps_kwargs: typing.Any,
     ) -> typing.Union[str, bytes]:
-        """ """
+        """Fully overridden method but codes are copied from BaseMode and business logic added
+        in according to support ``fhir_comments``filter and other FHIR specific requirments.
+        """
         if by_alias is None:
             by_alias = True
 

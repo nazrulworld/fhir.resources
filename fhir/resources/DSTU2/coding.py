@@ -22,12 +22,17 @@ class Coding(Element):
         title="Type `Code` (represented as `dict` in JSON)",
         description="Symbol in syntax defined by the system",
     )
-
+    code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_code", title="Extension field for ``code``."
+    )
     display: fhirtypes.String = Field(
         None,
         alias="display",
         title="Type `String` (represented as `dict` in JSON)",
         description="Representation defined by the system",
+    )
+    display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_display", title="Extension field for ``display``."
     )
 
     system: fhirtypes.Uri = Field(
@@ -35,6 +40,10 @@ class Coding(Element):
         alias="system",
         title="Type `Uri` (represented as `dict` in JSON)",
         description="Identity of the terminology system",
+    )
+
+    system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_system", title="Extension field for ``system``."
     )
 
     userSelected: bool = Field(
@@ -49,4 +58,8 @@ class Coding(Element):
         alias="version",
         title="Type `String` (represented as `dict` in JSON)",
         description="Version of the system - if relevant",
+    )
+
+    version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_version", title="Extension field for ``version``."
     )

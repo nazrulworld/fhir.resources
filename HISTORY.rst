@@ -13,6 +13,8 @@ Improvements
 
 - FHIR comments filter option is added in ``FHIRAbstractModel::json``, means it is possible to exclude any comments while generating json string by providing parameter ``exclude_comments`` value. [nazrulworld]
 
+- More FHIR DSTU2 resources have been added. [Itay Goren]
+
 6.0.0b5 (2020-10-04)
 --------------------
 

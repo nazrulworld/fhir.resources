@@ -168,7 +168,9 @@ class SpecimenCollection(BackboneElement):
     )
 
     collectedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None, alias="_collectedDateTime", title="Extension field for ``collectedDateTime``."
+        None,
+        alias="_collectedDateTime",
+        title="Extension field for ``collectedDateTime``.",
     )
     collectedPeriod: fhirtypes.PeriodType = Field(
         None,

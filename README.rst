@@ -181,6 +181,109 @@ Usages
 Advanced Usages
 ---------------
 
+FHIR Comments (JSON)
+~~~~~~~~~~~~~~~~~~~~
+
+It is possible to add comments inside json like xml, but need to follow some convention, what is suggested by `Grahame Grieve <http://www.healthintersections.com.au/?p=2569>`_;
+That is implemented here.
+
+Also it is possible to generate json string output without comments.
+
+Examples::
+
+    >>> observation_str = b"""{
+    ...  "resourceType": "Observation",
+    ...  "id": "f001",
+    ...    "fhir_comments": [
+    ...      "   a specimen identifier - e.g. assigned when the specimen was taken by the orderer/placer  use the accession number for the filling lab   ",
+    ...      "  Placer ID  "
+    ...    ],
+    ...  "text": {
+    ...      "fhir_comments": [
+    ...      "   a specimen identifier - e.g. assigned when the specimen was taken by the orderer/placer  use the accession number for the filling lab   ",
+    ...      "  Placer ID  "
+    ...    ],
+    ...    "status": "generated",
+    ...    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">.........</div>"
+    ...  },
+    ...  "identifier": [
+    ...    {
+    ...      "use": "official",
+    ...      "system": "http://www.bmc.nl/zorgportal/identifiers/observations",
+    ...      "value": "6323"
+    ...    }
+    ...  ],
+    ...  "status": "final",
+    ...  "_status": {
+    ...      "fhir_comments": [
+    ...            "  EH: Note to balloters  - lots of choices for whole blood I chose this.  "
+    ...          ]
+    ...  },
+    ...  "code": {
+    ...    "coding": [
+    ...      {
+    ...        "system": "http://loinc.org",
+    ...        "code": "15074-8",
+    ...        "display": "Glucose [Moles/volume] in Blood"
+    ...      }
+    ...    ]
+    ...  },
+    ...  "subject": {
+    ...    "reference": "Patient/f001",
+    ...    "display": "P. van de Heuvel"
+    ...  },
+    ...  "effectivePeriod": {
+    ...    "start": "2013-04-02T09:30:10+01:00"
+    ...  },
+    ...  "issued": "2013-04-03T15:30:10+01:00",
+    ...  "performer": [
+    ...    {
+    ...      "reference": "Practitioner/f005",
+    ...      "display": "A. Langeveld"
+    ...    }
+    ...  ],
+    ...  "valueQuantity": {
+    ...    "value": 6.3,
+    ...    "unit": "mmol/l",
+    ...    "system": "http://unitsofmeasure.org",
+    ...    "code": "mmol/L"
+    ...  },
+    ...  "interpretation": [
+    ...    {
+    ...      "coding": [
+    ...        {
+    ...          "system": "http://terminology.hl7.org/CodeSystem/v3-ObservationInterpretation",
+    ...          "code": "H",
+    ...          "display": "High"
+    ...        }
+    ...      ]
+    ...    }
+    ...  ],
+    ...  "referenceRange": [
+    ...    {
+    ...      "low": {
+    ...        "value": 3.1,
+    ...        "unit": "mmol/l",
+    ...        "system": "http://unitsofmeasure.org",
+    ...        "code": "mmol/L"
+    ...      },
+    ...      "high": {
+    ...        "value": 6.2,
+    ...        "unit": "mmol/l",
+    ...        "system": "http://unitsofmeasure.org",
+    ...        "code": "mmol/L"
+    ...      }
+    ...    }
+    ...  ]
+    ... }"""
+    >>> from fhir.resources.observation import Observation
+    >>> obj = Observation.parse_raw(observation_str)
+    >>> "fhir_comments" in obj.json()
+    >>> # Test comments filtering
+    >>> "fhir_comments" not in obj.json(exclude_comments=True)
+
+*Unfortunately comments filtering is not available for FHIRAbstractModel::dict*
+
 Custom Validators
 ~~~~~~~~~~~~~~~~~
 

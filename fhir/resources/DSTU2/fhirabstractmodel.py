@@ -8,7 +8,7 @@ import typing
 import orjson
 from functools import lru_cache
 from pydantic.class_validators import ROOT_KEY
-from typing import TYPE_CHECKING, Any, Callable, Optional, Type, Union
+from typing import TYPE_CHECKING, Any, Callable, Optional, Type
 
 from pydantic import BaseModel, Extra, Field
 from pydantic.error_wrappers import ErrorWrapper, ValidationError

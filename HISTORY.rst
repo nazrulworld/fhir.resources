@@ -2,7 +2,7 @@
 History
 =======
 
-6.0.0b6 (unreleased)
+6.0.0b6 (2020-10-24)
 --------------------
 
 Improvements

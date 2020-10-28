@@ -3,19 +3,18 @@
 import abc
 import inspect
 import logging
-from copy import deepcopy
 import typing
 import orjson
 from functools import lru_cache
 from pydantic.class_validators import ROOT_KEY
-from typing import TYPE_CHECKING, Any, Callable, Optional, Type
+from typing import TYPE_CHECKING, Any, Callable, Type
 
 from pydantic import BaseModel, Extra, Field
 from pydantic.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.errors import ConfigError, PydanticValueError
 
 if TYPE_CHECKING:
-    from pydantic.typing import AbstractSetIntStr, MappingIntStrAny, DictStrAny, SetStr
+    from pydantic.typing import AbstractSetIntStr, MappingIntStrAny, DictStrAny
     from pydantic.main import Model
 
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
@@ -360,24 +359,6 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
                 result = result.decode()
 
         return result
-
-    @classmethod
-    def construct(
-        cls: Type["Model"], _fields_set: Optional["SetStr"] = None, **values: Any
-    ) -> "Model":
-        """Disclaimer: for now this method is 1:1 with BaseModel's method.
-        But in future we may apply some validation, for example disallow
-        unknown field (extra), construct any Model Type field value (if dict value has
-        been provided)
-        """
-        m = cls.__new__(cls)
-        object.__setattr__(
-            m, "__dict__", {**deepcopy(cls.__field_defaults__), **values}
-        )
-        if _fields_set is None:
-            _fields_set = set(values.keys())
-        object.__setattr__(m, "__fields_set__", _fields_set)
-        return m
 
     class Config:
         json_loads = orjson.loads

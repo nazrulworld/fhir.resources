@@ -5,7 +5,9 @@ History
 6.0.0b7 (unreleased)
 --------------------
 
-- Nothing changed yet.
+Fixes
+
+- `Issue #39 <https://github.com/nazrulworld/fhir.resources/issues/39>`_ added compatibility with ``pydantic`` version between ``1.6.x`` and ``1.7.x`` [nazrulworld]
 
 
 6.0.0b6 (2020-10-24)

@@ -1,13 +1,19 @@
 # _*_ coding: utf-8 _*_
 """Validators for ``pydantic`` Custom DataType"""
 import importlib
+import typing
 from pathlib import Path
 from typing import Union
 
 from pydantic.class_validators import make_generic_validator
+from pydantic.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.types import StrBytes
+from pydantic.utils import ROOT_KEY
 
 from .fhirabstractmodel import FHIRAbstractModel
+
+if typing.TYPE_CHECKING:
+    from pydantic import BaseModel
 
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 
@@ -515,7 +521,7 @@ MODEL_CLASSES = {
 }
 
 
-def get_fhir_model_class(model_name: str) -> FHIRAbstractModel:
+def get_fhir_model_class(model_name: str) -> typing.Type[FHIRAbstractModel]:
     """"""
     global MODEL_CLASSES
     klass, module_name = MODEL_CLASSES[model_name]
@@ -540,17 +546,104 @@ def fhir_model_validator(
     model_name: str, v: Union[StrBytes, dict, Path, FHIRAbstractModel]
 ):
     """ """
+    if typing.TYPE_CHECKING:
+        model_class: typing.Union[
+            typing.Type[BaseModel], typing.Type[FHIRAbstractModel]
+        ]
     model_class = get_fhir_model_class(model_name)
+
     if isinstance(v, (str, bytes)):
-        v = model_class.parse_raw(v)
+        try:
+            v = model_class.parse_raw(v)
+        except ValidationError as exc:
+            if typing.TYPE_CHECKING:
+                model_class = typing.cast(typing.Type[BaseModel], model_class)
+            errors = exc.errors()
+            if (
+                len(errors) == 1
+                and errors[0]["type"] == "value_error.jsondecode"
+                and errors[0]["loc"][0] == ROOT_KEY
+            ):
+                raise ValidationError(
+                    [
+                        ErrorWrapper(
+                            ValueError(
+                                "Invalid json str value has been provided for "
+                                f"class {model_class}"
+                            ),
+                            loc=ROOT_KEY,
+                        )
+                    ],
+                    model_class,
+                )
+
+            raise
+
     elif isinstance(v, Path):
-        v = model_class.parse_file(v)
+        _p = v
+        try:
+            v = model_class.parse_file(_p)
+        except (ValueError, TypeError) as exc:
+            if exc.__class__.__name__ in ("JSONDecodeError", "UnicodeDecodeError"):
+                raise ValidationError(
+                    [
+                        ErrorWrapper(
+                            ValueError(
+                                f"Provided file '{_p}' for class '{model_class.__name__}' "
+                                "as value, contains invalid json data. errors from "
+                                f"decoder-> ''{str(exc)}''"
+                            ),
+                            loc=ROOT_KEY,
+                        )
+                    ],
+                    model_class,
+                )
+
+            raise
+
+        except FileNotFoundError:
+            raise ValidationError(
+                [
+                    ErrorWrapper(
+                        ValueError(
+                            f"Provided file '{_p}' for class {model_class} "
+                            "as value, doesn't exists."
+                        ),
+                        loc=ROOT_KEY,
+                    )
+                ],
+                model_class,
+            )
+
     elif isinstance(v, dict):
         v = model_class.parse_obj(v)
-    if not isinstance(v, FHIRAbstractModel):
-        raise ValueError()
+
+    if not isinstance(v, model_class):
+        raise ValidationError(
+            [
+                ErrorWrapper(
+                    ValueError(
+                        "Value is expected from the instance of "
+                        f"{model_class}, but got type {type(v)}"
+                    ),
+                    loc=ROOT_KEY,
+                )
+            ],
+            model_class,
+        )
     if model_name != v.resource_type:
-        raise ValueError
+        raise ValidationError(
+            [
+                ErrorWrapper(
+                    ValueError(
+                        f"Expected resource_type is '{model_name}', "
+                        f"but value has resource_type '{v.resource_type}'"
+                    ),
+                    loc=ROOT_KEY,
+                )
+            ],
+            model_class,
+        )
     return v
 
 

@@ -6,8 +6,7 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from typing import Any, Dict
-from typing import List as ListType
+import typing
 
 from pydantic import Field, root_validator
 
@@ -38,7 +37,7 @@ class VisionPrescription(domainresource.DomainResource):
         None, alias="_dateWritten", title="Extension field for ``dateWritten``."
     )
 
-    dispense: ListType[fhirtypes.VisionPrescriptionDispenseType] = Field(
+    dispense: typing.List[fhirtypes.VisionPrescriptionDispenseType] = Field(
         None,
         alias="dispense",
         title="Vision supply authorization",
@@ -61,7 +60,7 @@ class VisionPrescription(domainresource.DomainResource):
         enum_reference_types=["Encounter"],
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="Business identifier",
@@ -143,7 +142,9 @@ class VisionPrescription(domainresource.DomainResource):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -316,7 +317,7 @@ class VisionPrescriptionDispense(backboneelement.BackboneElement):
         None, alias="_eye", title="Extension field for ``eye``."
     )
 
-    note: ListType[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
         title="Notes for coatings",

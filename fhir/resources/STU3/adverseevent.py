@@ -6,7 +6,7 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from typing import List as ListType
+import typing
 
 from pydantic import Field
 
@@ -131,7 +131,7 @@ class AdverseEvent(domainresource.DomainResource):
         element_property=True,
     )
 
-    reaction: ListType[fhirtypes.ReferenceType] = Field(
+    reaction: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="reaction",
         title="Adverse Reaction Events linked to exposure to substance",
@@ -159,7 +159,7 @@ class AdverseEvent(domainresource.DomainResource):
         enum_reference_types=["Patient", "Practitioner", "RelatedPerson"],
     )
 
-    referenceDocument: ListType[fhirtypes.ReferenceType] = Field(
+    referenceDocument: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="referenceDocument",
         title="AdverseEvent.referenceDocument",
@@ -179,7 +179,7 @@ class AdverseEvent(domainresource.DomainResource):
         element_property=True,
     )
 
-    study: ListType[fhirtypes.ReferenceType] = Field(
+    study: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="study",
         title="AdverseEvent.study",
@@ -205,7 +205,7 @@ class AdverseEvent(domainresource.DomainResource):
         enum_reference_types=["Patient", "ResearchSubject", "Medication", "Device"],
     )
 
-    subjectMedicalHistory: ListType[fhirtypes.ReferenceType] = Field(
+    subjectMedicalHistory: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="subjectMedicalHistory",
         title="AdverseEvent.subjectMedicalHistory",
@@ -223,7 +223,7 @@ class AdverseEvent(domainresource.DomainResource):
         ],
     )
 
-    suspectEntity: ListType[fhirtypes.AdverseEventSuspectEntityType] = Field(
+    suspectEntity: typing.List[fhirtypes.AdverseEventSuspectEntityType] = Field(
         None,
         alias="suspectEntity",
         title="The suspected agent causing the adverse event",

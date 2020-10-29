@@ -6,7 +6,7 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from typing import List as ListType
+import typing
 
 from pydantic import Field
 
@@ -30,7 +30,7 @@ class Device(domainresource.DomainResource):
 
     resource_type = Field("Device", const=True)
 
-    contact: ListType[fhirtypes.ContactPointType] = Field(
+    contact: typing.List[fhirtypes.ContactPointType] = Field(
         None,
         alias="contact",
         title="Details for human/organization for support",
@@ -57,7 +57,7 @@ class Device(domainresource.DomainResource):
         None, alias="_expirationDate", title="Extension field for ``expirationDate``."
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="Instance identifier",
@@ -132,7 +132,7 @@ class Device(domainresource.DomainResource):
         None, alias="_model", title="Extension field for ``model``."
     )
 
-    note: ListType[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
         title="Device notes and comments",
@@ -169,7 +169,7 @@ class Device(domainresource.DomainResource):
         enum_reference_types=["Patient"],
     )
 
-    safety: ListType[fhirtypes.CodeableConceptType] = Field(
+    safety: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="safety",
         title="Safety Characteristics of Device",

@@ -6,8 +6,7 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import List as ListType
-from typing import Union
+import typing
 
 from pydantic import Field
 
@@ -69,7 +68,7 @@ class Address(element.Element):
         None, alias="_district", title="Extension field for ``district``."
     )
 
-    line: ListType[fhirtypes.String] = Field(
+    line: typing.List[fhirtypes.String] = Field(
         None,
         alias="line",
         title="Street name, number, direction & P.O. Box etc.",
@@ -81,9 +80,9 @@ class Address(element.Element):
         # if property is element of this resource.
         element_property=True,
     )
-    line__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_line", title="Extension field for ``line``."
-    )
+    line__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_line", title="Extension field for ``line``.")
 
     period: fhirtypes.PeriodType = Field(
         None,

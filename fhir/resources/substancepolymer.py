@@ -6,8 +6,7 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import List as ListType
-from typing import Union
+import typing
 
 from pydantic import Field
 
@@ -33,7 +32,7 @@ class SubstancePolymer(domainresource.DomainResource):
         element_property=True,
     )
 
-    copolymerConnectivity: ListType[fhirtypes.CodeableConceptType] = Field(
+    copolymerConnectivity: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="copolymerConnectivity",
         title="Todo",
@@ -51,7 +50,7 @@ class SubstancePolymer(domainresource.DomainResource):
         element_property=True,
     )
 
-    modification: ListType[fhirtypes.String] = Field(
+    modification: typing.List[fhirtypes.String] = Field(
         None,
         alias="modification",
         title="Todo",
@@ -59,13 +58,13 @@ class SubstancePolymer(domainresource.DomainResource):
         # if property is element of this resource.
         element_property=True,
     )
-    modification__ext: ListType[
-        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    modification__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(
         None, alias="_modification", title="Extension field for ``modification``."
     )
 
-    monomerSet: ListType[fhirtypes.SubstancePolymerMonomerSetType] = Field(
+    monomerSet: typing.List[fhirtypes.SubstancePolymerMonomerSetType] = Field(
         None,
         alias="monomerSet",
         title="Todo",
@@ -74,7 +73,7 @@ class SubstancePolymer(domainresource.DomainResource):
         element_property=True,
     )
 
-    repeat: ListType[fhirtypes.SubstancePolymerRepeatType] = Field(
+    repeat: typing.List[fhirtypes.SubstancePolymerRepeatType] = Field(
         None,
         alias="repeat",
         title="Todo",
@@ -103,7 +102,7 @@ class SubstancePolymerMonomerSet(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    startingMaterial: ListType[
+    startingMaterial: typing.List[
         fhirtypes.SubstancePolymerMonomerSetStartingMaterialType
     ] = Field(
         None,
@@ -201,7 +200,7 @@ class SubstancePolymerRepeat(backboneelement.BackboneElement):
         None, alias="_numberOfUnits", title="Extension field for ``numberOfUnits``."
     )
 
-    repeatUnit: ListType[fhirtypes.SubstancePolymerRepeatRepeatUnitType] = Field(
+    repeatUnit: typing.List[fhirtypes.SubstancePolymerRepeatRepeatUnitType] = Field(
         None,
         alias="repeatUnit",
         title="Todo",
@@ -239,7 +238,7 @@ class SubstancePolymerRepeatRepeatUnit(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    degreeOfPolymerisation: ListType[
+    degreeOfPolymerisation: typing.List[
         fhirtypes.SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisationType
     ] = Field(
         None,
@@ -271,7 +270,7 @@ class SubstancePolymerRepeatRepeatUnit(backboneelement.BackboneElement):
         None, alias="_repeatUnit", title="Extension field for ``repeatUnit``."
     )
 
-    structuralRepresentation: ListType[
+    structuralRepresentation: typing.List[
         fhirtypes.SubstancePolymerRepeatRepeatUnitStructuralRepresentationType
     ] = Field(
         None,

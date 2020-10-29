@@ -6,10 +6,11 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from typing import Any, Dict
-from typing import List as ListType
+import typing
 
 from pydantic import Field, root_validator
+from pydantic.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.errors import MissingError, NoneIsNotAllowedError
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -28,7 +29,7 @@ class Consent(domainresource.DomainResource):
 
     resource_type = Field("Consent", const=True)
 
-    action: ListType[fhirtypes.CodeableConceptType] = Field(
+    action: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="action",
         title="Actions controlled by this consent",
@@ -37,7 +38,7 @@ class Consent(domainresource.DomainResource):
         element_property=True,
     )
 
-    actor: ListType[fhirtypes.ConsentActorType] = Field(
+    actor: typing.List[fhirtypes.ConsentActorType] = Field(
         None,
         alias="actor",
         title="Who|what controlled by this consent (or group, by role)",
@@ -49,7 +50,7 @@ class Consent(domainresource.DomainResource):
         element_property=True,
     )
 
-    category: ListType[fhirtypes.CodeableConceptType] = Field(
+    category: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="category",
         title="Classification of the consent statement - for indexing/retrieval",
@@ -61,7 +62,7 @@ class Consent(domainresource.DomainResource):
         element_property=True,
     )
 
-    consentingParty: ListType[fhirtypes.ReferenceType] = Field(
+    consentingParty: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="consentingParty",
         title="Who is agreeing to the policy and exceptions",
@@ -83,7 +84,7 @@ class Consent(domainresource.DomainResource):
         ],
     )
 
-    data: ListType[fhirtypes.ConsentDataType] = Field(
+    data: typing.List[fhirtypes.ConsentDataType] = Field(
         None,
         alias="data",
         title="Data controlled by this consent",
@@ -119,7 +120,7 @@ class Consent(domainresource.DomainResource):
         None, alias="_dateTime", title="Extension field for ``dateTime``."
     )
 
-    except_fhir: ListType[fhirtypes.ConsentExceptType] = Field(
+    except_fhir: typing.List[fhirtypes.ConsentExceptType] = Field(
         None,
         alias="except",
         title="Additional rule -  addition or removal of permissions",
@@ -140,7 +141,7 @@ class Consent(domainresource.DomainResource):
         element_property=True,
     )
 
-    organization: ListType[fhirtypes.ReferenceType] = Field(
+    organization: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="organization",
         title="Custodian of the consent",
@@ -174,7 +175,7 @@ class Consent(domainresource.DomainResource):
         element_property=True,
     )
 
-    policy: ListType[fhirtypes.ConsentPolicyType] = Field(
+    policy: typing.List[fhirtypes.ConsentPolicyType] = Field(
         None,
         alias="policy",
         title="Policies covered by this consent",
@@ -199,7 +200,7 @@ class Consent(domainresource.DomainResource):
         None, alias="_policyRule", title="Extension field for ``policyRule``."
     )
 
-    purpose: ListType[fhirtypes.CodingType] = Field(
+    purpose: typing.List[fhirtypes.CodingType] = Field(
         None,
         alias="purpose",
         title="Context of activities for which the agreement is made",
@@ -211,7 +212,7 @@ class Consent(domainresource.DomainResource):
         element_property=True,
     )
 
-    securityLabel: ListType[fhirtypes.CodingType] = Field(
+    securityLabel: typing.List[fhirtypes.CodingType] = Field(
         None,
         alias="securityLabel",
         title="Security Labels that define affected resources",
@@ -283,12 +284,13 @@ class Consent(domainresource.DomainResource):
     )
 
     status: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="status",
         title="draft | proposed | active | rejected | inactive | entered-in-error",
         description="Indicates the current state of this consent.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -305,7 +307,68 @@ class Consent(domainresource.DomainResource):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("status", "status__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
+
+    @root_validator(pre=True)
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -404,7 +467,7 @@ class ConsentData(backboneelement.BackboneElement):
     resource_type = Field("ConsentData", const=True)
 
     meaning: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="meaning",
         title="instance | related | dependents | authoredby",
         description=(
@@ -413,6 +476,7 @@ class ConsentData(backboneelement.BackboneElement):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["instance", "related", "dependents", "authoredby"],
@@ -435,6 +499,65 @@ class ConsentData(backboneelement.BackboneElement):
         enum_reference_types=["Resource"],
     )
 
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("meaning", "meaning__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
+
 
 class ConsentExcept(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` does't part of
@@ -448,7 +571,7 @@ class ConsentExcept(backboneelement.BackboneElement):
 
     resource_type = Field("ConsentExcept", const=True)
 
-    action: ListType[fhirtypes.CodeableConceptType] = Field(
+    action: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="action",
         title="Actions controlled by this exception",
@@ -457,7 +580,7 @@ class ConsentExcept(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    actor: ListType[fhirtypes.ConsentExceptActorType] = Field(
+    actor: typing.List[fhirtypes.ConsentExceptActorType] = Field(
         None,
         alias="actor",
         title="Who|what controlled by this exception (or group, by role)",
@@ -469,7 +592,7 @@ class ConsentExcept(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    class_fhir: ListType[fhirtypes.CodingType] = Field(
+    class_fhir: typing.List[fhirtypes.CodingType] = Field(
         None,
         alias="class",
         title="e.g. Resource Type, Profile, or CDA etc",
@@ -483,7 +606,7 @@ class ConsentExcept(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    code: ListType[fhirtypes.CodingType] = Field(
+    code: typing.List[fhirtypes.CodingType] = Field(
         None,
         alias="code",
         title="e.g. LOINC or SNOMED CT code, etc in the content",
@@ -492,7 +615,7 @@ class ConsentExcept(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    data: ListType[fhirtypes.ConsentExceptDataType] = Field(
+    data: typing.List[fhirtypes.ConsentExceptDataType] = Field(
         None,
         alias="data",
         title="Data controlled by this exception",
@@ -525,7 +648,7 @@ class ConsentExcept(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    purpose: ListType[fhirtypes.CodingType] = Field(
+    purpose: typing.List[fhirtypes.CodingType] = Field(
         None,
         alias="purpose",
         title="Context of activities covered by this exception",
@@ -537,7 +660,7 @@ class ConsentExcept(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    securityLabel: ListType[fhirtypes.CodingType] = Field(
+    securityLabel: typing.List[fhirtypes.CodingType] = Field(
         None,
         alias="securityLabel",
         title="Security Labels that define affected resources",
@@ -551,7 +674,7 @@ class ConsentExcept(backboneelement.BackboneElement):
     )
 
     type: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="type",
         title="deny | permit",
         description=(
@@ -560,6 +683,7 @@ class ConsentExcept(backboneelement.BackboneElement):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["deny", "permit"],
@@ -567,6 +691,65 @@ class ConsentExcept(backboneelement.BackboneElement):
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("type", "type__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
 
 
 class ConsentExceptActor(backboneelement.BackboneElement):
@@ -630,7 +813,7 @@ class ConsentExceptData(backboneelement.BackboneElement):
     resource_type = Field("ConsentExceptData", const=True)
 
     meaning: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="meaning",
         title="instance | related | dependents | authoredby",
         description=(
@@ -639,6 +822,7 @@ class ConsentExceptData(backboneelement.BackboneElement):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["instance", "related", "dependents", "authoredby"],
@@ -660,6 +844,65 @@ class ConsentExceptData(backboneelement.BackboneElement):
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("meaning", "meaning__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
 
 
 class ConsentPolicy(backboneelement.BackboneElement):

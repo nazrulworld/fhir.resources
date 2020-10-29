@@ -6,9 +6,7 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import Any, Dict
-from typing import List as ListType
-from typing import Union
+import typing
 
 from pydantic import Field, root_validator
 
@@ -43,7 +41,7 @@ class AllergyIntolerance(domainresource.DomainResource):
         ],
     )
 
-    category: ListType[fhirtypes.Code] = Field(
+    category: typing.List[fhirtypes.Code] = Field(
         None,
         alias="category",
         title="food | medication | environment | biologic",
@@ -54,9 +52,9 @@ class AllergyIntolerance(domainresource.DomainResource):
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["food", "medication", "environment", "biologic"],
     )
-    category__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_category", title="Extension field for ``category``."
-    )
+    category__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_category", title="Extension field for ``category``.")
 
     clinicalStatus: fhirtypes.CodeableConceptType = Field(
         None,
@@ -123,7 +121,7 @@ class AllergyIntolerance(domainresource.DomainResource):
         enum_reference_types=["Encounter"],
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="External ids for this item",
@@ -151,7 +149,7 @@ class AllergyIntolerance(domainresource.DomainResource):
         None, alias="_lastOccurrence", title="Extension field for ``lastOccurrence``."
     )
 
-    note: ListType[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
         title="Additional text not captured in other fields",
@@ -255,7 +253,7 @@ class AllergyIntolerance(domainresource.DomainResource):
         enum_reference_types=["Patient"],
     )
 
-    reaction: ListType[fhirtypes.AllergyIntoleranceReactionType] = Field(
+    reaction: typing.List[fhirtypes.AllergyIntoleranceReactionType] = Field(
         None,
         alias="reaction",
         title="Adverse Reaction Events linked to exposure to substance",
@@ -334,7 +332,9 @@ class AllergyIntolerance(domainresource.DomainResource):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -417,7 +417,7 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    manifestation: ListType[fhirtypes.CodeableConceptType] = Field(
+    manifestation: typing.List[fhirtypes.CodeableConceptType] = Field(
         ...,
         alias="manifestation",
         title="Clinical symptoms/signs associated with the Event",
@@ -429,7 +429,7 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    note: ListType[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
         title="Text about event not captured in other fields",

@@ -6,11 +6,11 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import Any, Dict
-from typing import List as ListType
-from typing import Union
+import typing
 
 from pydantic import Field, root_validator
+from pydantic.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.errors import MissingError, NoneIsNotAllowedError
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -27,7 +27,7 @@ class Contract(domainresource.DomainResource):
 
     resource_type = Field("Contract", const=True)
 
-    alias: ListType[fhirtypes.String] = Field(
+    alias: typing.List[fhirtypes.String] = Field(
         None,
         alias="alias",
         title="Acronym or short name",
@@ -39,9 +39,9 @@ class Contract(domainresource.DomainResource):
         # if property is element of this resource.
         element_property=True,
     )
-    alias__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_alias", title="Extension field for ``alias``."
-    )
+    alias__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_alias", title="Extension field for ``alias``.")
 
     applies: fhirtypes.PeriodType = Field(
         None,
@@ -71,7 +71,7 @@ class Contract(domainresource.DomainResource):
         ],
     )
 
-    authority: ListType[fhirtypes.ReferenceType] = Field(
+    authority: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="authority",
         title="Authority under which this Contract has standing",
@@ -112,7 +112,7 @@ class Contract(domainresource.DomainResource):
         element_property=True,
     )
 
-    domain: ListType[fhirtypes.ReferenceType] = Field(
+    domain: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="domain",
         title=(
@@ -143,7 +143,7 @@ class Contract(domainresource.DomainResource):
         element_property=True,
     )
 
-    friendly: ListType[fhirtypes.ContractFriendlyType] = Field(
+    friendly: typing.List[fhirtypes.ContractFriendlyType] = Field(
         None,
         alias="friendly",
         title="Contract Friendly Language",
@@ -160,7 +160,7 @@ class Contract(domainresource.DomainResource):
         element_property=True,
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="Contract number",
@@ -213,7 +213,7 @@ class Contract(domainresource.DomainResource):
         None, alias="_issued", title="Extension field for ``issued``."
     )
 
-    legal: ListType[fhirtypes.ContractLegalType] = Field(
+    legal: typing.List[fhirtypes.ContractLegalType] = Field(
         None,
         alias="legal",
         title="Contract Legal Language",
@@ -296,7 +296,7 @@ class Contract(domainresource.DomainResource):
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    relevantHistory: ListType[fhirtypes.ReferenceType] = Field(
+    relevantHistory: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="relevantHistory",
         title="Key event in Contract History",
@@ -314,7 +314,7 @@ class Contract(domainresource.DomainResource):
         enum_reference_types=["Provenance"],
     )
 
-    rule: ListType[fhirtypes.ContractRuleType] = Field(
+    rule: typing.List[fhirtypes.ContractRuleType] = Field(
         None,
         alias="rule",
         title="Computable Contract Language",
@@ -338,7 +338,7 @@ class Contract(domainresource.DomainResource):
         element_property=True,
     )
 
-    signer: ListType[fhirtypes.ContractSignerType] = Field(
+    signer: typing.List[fhirtypes.ContractSignerType] = Field(
         None,
         alias="signer",
         title="Contract Signatory",
@@ -352,7 +352,7 @@ class Contract(domainresource.DomainResource):
         element_property=True,
     )
 
-    site: ListType[fhirtypes.ReferenceType] = Field(
+    site: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="site",
         title="Specific Location",
@@ -398,7 +398,7 @@ class Contract(domainresource.DomainResource):
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    subType: ListType[fhirtypes.CodeableConceptType] = Field(
+    subType: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="subType",
         title="Subtype within the context of type",
@@ -411,7 +411,7 @@ class Contract(domainresource.DomainResource):
         element_property=True,
     )
 
-    subject: ListType[fhirtypes.ReferenceType] = Field(
+    subject: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="subject",
         title="Contract Target Entity",
@@ -441,7 +441,7 @@ class Contract(domainresource.DomainResource):
         None, alias="_subtitle", title="Extension field for ``subtitle``."
     )
 
-    supportingInfo: ListType[fhirtypes.ReferenceType] = Field(
+    supportingInfo: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="supportingInfo",
         title="Extra Information",
@@ -455,7 +455,7 @@ class Contract(domainresource.DomainResource):
         enum_reference_types=["Resource"],
     )
 
-    term: ListType[fhirtypes.ContractTermType] = Field(
+    term: typing.List[fhirtypes.ContractTermType] = Field(
         None,
         alias="term",
         title="Contract Term List",
@@ -561,7 +561,9 @@ class Contract(domainresource.DomainResource):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -647,7 +649,7 @@ class ContractContentDefinition(backboneelement.BackboneElement):
     )
 
     publicationStatus: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="publicationStatus",
         title=(
             "amended | appended | cancelled | disputed | entered-in-error | "
@@ -657,6 +659,7 @@ class ContractContentDefinition(backboneelement.BackboneElement):
         description=None,
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -719,6 +722,65 @@ class ContractContentDefinition(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("publicationStatus", "publicationStatus__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
+
 
 class ContractFriendly(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` does't part of
@@ -776,7 +838,9 @@ class ContractFriendly(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -854,7 +918,9 @@ class ContractLegal(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -934,7 +1000,9 @@ class ContractRule(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -1001,7 +1069,7 @@ class ContractSigner(backboneelement.BackboneElement):
         ],
     )
 
-    signature: ListType[fhirtypes.SignatureType] = Field(
+    signature: typing.List[fhirtypes.SignatureType] = Field(
         ...,
         alias="signature",
         title="Contract Documentation Signature",
@@ -1032,7 +1100,7 @@ class ContractTerm(backboneelement.BackboneElement):
 
     resource_type = Field("ContractTerm", const=True)
 
-    action: ListType[fhirtypes.ContractTermActionType] = Field(
+    action: typing.List[fhirtypes.ContractTermActionType] = Field(
         None,
         alias="action",
         title="Entity being ascribed responsibility",
@@ -1056,7 +1124,7 @@ class ContractTerm(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    asset: ListType[fhirtypes.ContractTermAssetType] = Field(
+    asset: typing.List[fhirtypes.ContractTermAssetType] = Field(
         None,
         alias="asset",
         title="Contract Term Asset List",
@@ -1065,7 +1133,7 @@ class ContractTerm(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    group: ListType[fhirtypes.ContractTermType] = Field(
+    group: typing.List[fhirtypes.ContractTermType] = Field(
         None,
         alias="group",
         title="Nested Contract Term Group",
@@ -1106,7 +1174,7 @@ class ContractTerm(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    securityLabel: ListType[fhirtypes.ContractTermSecurityLabelType] = Field(
+    securityLabel: typing.List[fhirtypes.ContractTermSecurityLabelType] = Field(
         None,
         alias="securityLabel",
         title="Protection for the Term",
@@ -1183,7 +1251,9 @@ class ContractTerm(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -1245,7 +1315,7 @@ class ContractTermAction(backboneelement.BackboneElement):
         enum_reference_types=["Encounter", "EpisodeOfCare"],
     )
 
-    contextLinkId: ListType[fhirtypes.String] = Field(
+    contextLinkId: typing.List[fhirtypes.String] = Field(
         None,
         alias="contextLinkId",
         title="Pointer to specific item",
@@ -1257,8 +1327,8 @@ class ContractTermAction(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    contextLinkId__ext: ListType[
-        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    contextLinkId__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(
         None, alias="_contextLinkId", title="Extension field for ``contextLinkId``."
     )
@@ -1286,7 +1356,7 @@ class ContractTermAction(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    linkId: ListType[fhirtypes.String] = Field(
+    linkId: typing.List[fhirtypes.String] = Field(
         None,
         alias="linkId",
         title="Pointer to specific item",
@@ -1297,11 +1367,11 @@ class ContractTermAction(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    linkId__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_linkId", title="Extension field for ``linkId``."
-    )
+    linkId__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_linkId", title="Extension field for ``linkId``.")
 
-    note: ListType[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
         title="Comments about the action",
@@ -1378,7 +1448,7 @@ class ContractTermAction(backboneelement.BackboneElement):
         ],
     )
 
-    performerLinkId: ListType[fhirtypes.String] = Field(
+    performerLinkId: typing.List[fhirtypes.String] = Field(
         None,
         alias="performerLinkId",
         title="Pointer to specific item",
@@ -1390,8 +1460,8 @@ class ContractTermAction(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    performerLinkId__ext: ListType[
-        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    performerLinkId__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(
         None, alias="_performerLinkId", title="Extension field for ``performerLinkId``."
     )
@@ -1408,7 +1478,7 @@ class ContractTermAction(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    performerType: ListType[fhirtypes.CodeableConceptType] = Field(
+    performerType: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="performerType",
         title="Kind of service performer",
@@ -1420,7 +1490,7 @@ class ContractTermAction(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    reason: ListType[fhirtypes.String] = Field(
+    reason: typing.List[fhirtypes.String] = Field(
         None,
         alias="reason",
         title="Why action is to be performed",
@@ -1431,11 +1501,11 @@ class ContractTermAction(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    reason__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_reason", title="Extension field for ``reason``."
-    )
+    reason__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_reason", title="Extension field for ``reason``.")
 
-    reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
+    reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="reasonCode",
         title="Why is action (not) needed?",
@@ -1447,7 +1517,7 @@ class ContractTermAction(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    reasonLinkId: ListType[fhirtypes.String] = Field(
+    reasonLinkId: typing.List[fhirtypes.String] = Field(
         None,
         alias="reasonLinkId",
         title="Pointer to specific item",
@@ -1459,13 +1529,13 @@ class ContractTermAction(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    reasonLinkId__ext: ListType[
-        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    reasonLinkId__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(
         None, alias="_reasonLinkId", title="Extension field for ``reasonLinkId``."
     )
 
-    reasonReference: ListType[fhirtypes.ReferenceType] = Field(
+    reasonReference: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="reasonReference",
         title="Why is action (not) needed?",
@@ -1486,7 +1556,7 @@ class ContractTermAction(backboneelement.BackboneElement):
         ],
     )
 
-    requester: ListType[fhirtypes.ReferenceType] = Field(
+    requester: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="requester",
         title="Who asked for action",
@@ -1508,7 +1578,7 @@ class ContractTermAction(backboneelement.BackboneElement):
         ],
     )
 
-    requesterLinkId: ListType[fhirtypes.String] = Field(
+    requesterLinkId: typing.List[fhirtypes.String] = Field(
         None,
         alias="requesterLinkId",
         title="Pointer to specific item",
@@ -1520,13 +1590,13 @@ class ContractTermAction(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    requesterLinkId__ext: ListType[
-        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    requesterLinkId__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(
         None, alias="_requesterLinkId", title="Extension field for ``requesterLinkId``."
     )
 
-    securityLabelNumber: ListType[fhirtypes.UnsignedInt] = Field(
+    securityLabelNumber: typing.List[fhirtypes.UnsignedInt] = Field(
         None,
         alias="securityLabelNumber",
         title="Action restriction numbers",
@@ -1534,8 +1604,8 @@ class ContractTermAction(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    securityLabelNumber__ext: ListType[
-        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    securityLabelNumber__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(
         None,
         alias="_securityLabelNumber",
@@ -1551,7 +1621,7 @@ class ContractTermAction(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    subject: ListType[fhirtypes.ContractTermActionSubjectType] = Field(
+    subject: typing.List[fhirtypes.ContractTermActionSubjectType] = Field(
         None,
         alias="subject",
         title="Entity of the action",
@@ -1573,7 +1643,9 @@ class ContractTermAction(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -1621,7 +1693,7 @@ class ContractTermActionSubject(backboneelement.BackboneElement):
 
     resource_type = Field("ContractTermActionSubject", const=True)
 
-    reference: ListType[fhirtypes.ReferenceType] = Field(
+    reference: typing.List[fhirtypes.ReferenceType] = Field(
         ...,
         alias="reference",
         title="Entity of the action",
@@ -1660,7 +1732,7 @@ class ContractTermAsset(backboneelement.BackboneElement):
 
     resource_type = Field("ContractTermAsset", const=True)
 
-    answer: ListType[fhirtypes.ContractTermOfferAnswerType] = Field(
+    answer: typing.List[fhirtypes.ContractTermOfferAnswerType] = Field(
         None,
         alias="answer",
         title="Response to assets",
@@ -1684,7 +1756,7 @@ class ContractTermAsset(backboneelement.BackboneElement):
         None, alias="_condition", title="Extension field for ``condition``."
     )
 
-    context: ListType[fhirtypes.ContractTermAssetContextType] = Field(
+    context: typing.List[fhirtypes.ContractTermAssetContextType] = Field(
         None,
         alias="context",
         title="Circumstance of the asset",
@@ -1693,7 +1765,7 @@ class ContractTermAsset(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    linkId: ListType[fhirtypes.String] = Field(
+    linkId: typing.List[fhirtypes.String] = Field(
         None,
         alias="linkId",
         title="Pointer to asset text",
@@ -1704,11 +1776,11 @@ class ContractTermAsset(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    linkId__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_linkId", title="Extension field for ``linkId``."
-    )
+    linkId__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_linkId", title="Extension field for ``linkId``.")
 
-    period: ListType[fhirtypes.PeriodType] = Field(
+    period: typing.List[fhirtypes.PeriodType] = Field(
         None,
         alias="period",
         title="Time period of the asset",
@@ -1717,7 +1789,7 @@ class ContractTermAsset(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    periodType: ListType[fhirtypes.CodeableConceptType] = Field(
+    periodType: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="periodType",
         title="Asset availability types",
@@ -1748,7 +1820,7 @@ class ContractTermAsset(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    securityLabelNumber: ListType[fhirtypes.UnsignedInt] = Field(
+    securityLabelNumber: typing.List[fhirtypes.UnsignedInt] = Field(
         None,
         alias="securityLabelNumber",
         title="Asset restriction numbers",
@@ -1756,15 +1828,15 @@ class ContractTermAsset(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    securityLabelNumber__ext: ListType[
-        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    securityLabelNumber__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(
         None,
         alias="_securityLabelNumber",
         title="Extension field for ``securityLabelNumber``.",
     )
 
-    subtype: ListType[fhirtypes.CodeableConceptType] = Field(
+    subtype: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="subtype",
         title="Asset sub-category",
@@ -1789,7 +1861,7 @@ class ContractTermAsset(backboneelement.BackboneElement):
         None, alias="_text", title="Extension field for ``text``."
     )
 
-    type: ListType[fhirtypes.CodeableConceptType] = Field(
+    type: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="type",
         title="Asset category",
@@ -1798,7 +1870,7 @@ class ContractTermAsset(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    typeReference: ListType[fhirtypes.ReferenceType] = Field(
+    typeReference: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="typeReference",
         title="Associated entities",
@@ -1809,7 +1881,7 @@ class ContractTermAsset(backboneelement.BackboneElement):
         enum_reference_types=["Resource"],
     )
 
-    usePeriod: ListType[fhirtypes.PeriodType] = Field(
+    usePeriod: typing.List[fhirtypes.PeriodType] = Field(
         None,
         alias="usePeriod",
         title="Time period",
@@ -1818,7 +1890,7 @@ class ContractTermAsset(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    valuedItem: ListType[fhirtypes.ContractTermAssetValuedItemType] = Field(
+    valuedItem: typing.List[fhirtypes.ContractTermAssetValuedItemType] = Field(
         None,
         alias="valuedItem",
         title="Contract Valued Item List",
@@ -1838,7 +1910,7 @@ class ContractTermAssetContext(backboneelement.BackboneElement):
 
     resource_type = Field("ContractTermAssetContext", const=True)
 
-    code: ListType[fhirtypes.CodeableConceptType] = Field(
+    code: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="code",
         title="Codeable asset context",
@@ -1955,7 +2027,7 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    linkId: ListType[fhirtypes.String] = Field(
+    linkId: typing.List[fhirtypes.String] = Field(
         None,
         alias="linkId",
         title="Pointer to specific item",
@@ -1966,9 +2038,9 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    linkId__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_linkId", title="Extension field for ``linkId``."
-    )
+    linkId__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_linkId", title="Extension field for ``linkId``.")
 
     net: fhirtypes.MoneyType = Field(
         None,
@@ -2073,7 +2145,7 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
         ],
     )
 
-    securityLabelNumber: ListType[fhirtypes.UnsignedInt] = Field(
+    securityLabelNumber: typing.List[fhirtypes.UnsignedInt] = Field(
         None,
         alias="securityLabelNumber",
         title="Security Labels that define affected terms",
@@ -2084,8 +2156,8 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    securityLabelNumber__ext: ListType[
-        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    securityLabelNumber__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(
         None,
         alias="_securityLabelNumber",
@@ -2102,7 +2174,9 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -2149,7 +2223,7 @@ class ContractTermOffer(backboneelement.BackboneElement):
 
     resource_type = Field("ContractTermOffer", const=True)
 
-    answer: ListType[fhirtypes.ContractTermOfferAnswerType] = Field(
+    answer: typing.List[fhirtypes.ContractTermOfferAnswerType] = Field(
         None,
         alias="answer",
         title="Response to offer text",
@@ -2170,7 +2244,7 @@ class ContractTermOffer(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    decisionMode: ListType[fhirtypes.CodeableConceptType] = Field(
+    decisionMode: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="decisionMode",
         title="How decision is conveyed",
@@ -2179,7 +2253,7 @@ class ContractTermOffer(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="Offer business ID",
@@ -2188,7 +2262,7 @@ class ContractTermOffer(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    linkId: ListType[fhirtypes.String] = Field(
+    linkId: typing.List[fhirtypes.String] = Field(
         None,
         alias="linkId",
         title="Pointer to text",
@@ -2199,11 +2273,11 @@ class ContractTermOffer(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    linkId__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_linkId", title="Extension field for ``linkId``."
-    )
+    linkId__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_linkId", title="Extension field for ``linkId``.")
 
-    party: ListType[fhirtypes.ContractTermOfferPartyType] = Field(
+    party: typing.List[fhirtypes.ContractTermOfferPartyType] = Field(
         None,
         alias="party",
         title="Offer Recipient",
@@ -2212,7 +2286,7 @@ class ContractTermOffer(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    securityLabelNumber: ListType[fhirtypes.UnsignedInt] = Field(
+    securityLabelNumber: typing.List[fhirtypes.UnsignedInt] = Field(
         None,
         alias="securityLabelNumber",
         title="Offer restriction numbers",
@@ -2220,8 +2294,8 @@ class ContractTermOffer(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    securityLabelNumber__ext: ListType[
-        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    securityLabelNumber__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(
         None,
         alias="_securityLabelNumber",
@@ -2510,7 +2584,9 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -2571,7 +2647,7 @@ class ContractTermOfferParty(backboneelement.BackboneElement):
 
     resource_type = Field("ContractTermOfferParty", const=True)
 
-    reference: ListType[fhirtypes.ReferenceType] = Field(
+    reference: typing.List[fhirtypes.ReferenceType] = Field(
         ...,
         alias="reference",
         title="Referenced entity",
@@ -2612,7 +2688,7 @@ class ContractTermSecurityLabel(backboneelement.BackboneElement):
 
     resource_type = Field("ContractTermSecurityLabel", const=True)
 
-    category: ListType[fhirtypes.CodingType] = Field(
+    category: typing.List[fhirtypes.CodingType] = Field(
         None,
         alias="category",
         title="Applicable Policy",
@@ -2636,7 +2712,7 @@ class ContractTermSecurityLabel(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    control: ListType[fhirtypes.CodingType] = Field(
+    control: typing.List[fhirtypes.CodingType] = Field(
         None,
         alias="control",
         title="Handling Instructions",
@@ -2648,7 +2724,7 @@ class ContractTermSecurityLabel(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    number: ListType[fhirtypes.UnsignedInt] = Field(
+    number: typing.List[fhirtypes.UnsignedInt] = Field(
         None,
         alias="number",
         title="Link to Security Labels",
@@ -2659,6 +2735,6 @@ class ContractTermSecurityLabel(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    number__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_number", title="Extension field for ``number``."
-    )
+    number__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_number", title="Extension field for ``number``.")

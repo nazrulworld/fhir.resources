@@ -6,7 +6,7 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from typing import List as ListType
+import typing
 
 from pydantic import Field
 
@@ -39,7 +39,7 @@ class Schedule(domainresource.DomainResource):
         None, alias="_active", title="Extension field for ``active``."
     )
 
-    actor: ListType[fhirtypes.ReferenceType] = Field(
+    actor: typing.List[fhirtypes.ReferenceType] = Field(
         ...,
         alias="actor",
         title=(
@@ -78,7 +78,7 @@ class Schedule(domainresource.DomainResource):
         None, alias="_comment", title="Extension field for ``comment``."
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="External Ids for this item",
@@ -114,7 +114,7 @@ class Schedule(domainresource.DomainResource):
         element_property=True,
     )
 
-    serviceType: ListType[fhirtypes.CodeableConceptType] = Field(
+    serviceType: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="serviceType",
         title="The specific service that is to be performed during this appointment",
@@ -123,7 +123,7 @@ class Schedule(domainresource.DomainResource):
         element_property=True,
     )
 
-    specialty: ListType[fhirtypes.CodeableConceptType] = Field(
+    specialty: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="specialty",
         title=(

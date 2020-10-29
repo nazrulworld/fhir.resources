@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
-from pydantic.datetime_parse import parse_datetime, parse_date
+from pydantic.datetime_parse import parse_date, parse_datetime
+
 from .. import fhirtypes  # noqa: F401
 from .. import documentmanifest
 
 
 def test_DocumentManifest_1(base_settings):
-    filename = base_settings["unittest_data_dir"] / "documentmanifest-example.canonical.json"
+    filename = (
+        base_settings["unittest_data_dir"] / "documentmanifest-example.canonical.json"
+    )
     inst = documentmanifest.DocumentManifest.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -25,7 +28,10 @@ def impl_DocumentManifest_1(inst):
     assert inst.contained[0].id == "a1"
     assert inst.contained[0].name.family[0] == "Dopplemeyer"
     assert inst.contained[0].name.given[0] == "Sherry"
-    assert inst.contained[0].practitionerRole[0].managingOrganization.display == "Cleveland Clinic"
+    assert (
+        inst.contained[0].practitionerRole[0].managingOrganization.display
+        == "Cleveland Clinic"
+    )
     assert inst.contained[0].practitionerRole[0].role.text == "Primary Surgon"
     assert inst.contained[0].practitionerRole[0].specialty[0].text == "Orthopedic"
     assert inst.contained[0].telecom[0].system == "email"

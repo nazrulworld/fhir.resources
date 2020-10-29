@@ -6,7 +6,7 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from typing import List as ListType
+import typing
 
 from pydantic import Field
 
@@ -39,7 +39,7 @@ class Coverage(domainresource.DomainResource):
         enum_reference_types=["Patient"],
     )
 
-    contract: ListType[fhirtypes.ReferenceType] = Field(
+    contract: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="contract",
         title="Contract details",
@@ -74,7 +74,7 @@ class Coverage(domainresource.DomainResource):
         element_property=True,
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="The primary coverage ID",
@@ -122,7 +122,7 @@ class Coverage(domainresource.DomainResource):
         None, alias="_order", title="Extension field for ``order``."
     )
 
-    payor: ListType[fhirtypes.ReferenceType] = Field(
+    payor: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="payor",
         title="Identifier for the plan or agreement issuer",

@@ -6,7 +6,7 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import List as ListType
+import typing
 
 from pydantic import Field
 
@@ -87,7 +87,7 @@ class SubstanceNucleicAcid(domainresource.DomainResource):
         element_property=True,
     )
 
-    subunit: ListType[fhirtypes.SubstanceNucleicAcidSubunitType] = Field(
+    subunit: typing.List[fhirtypes.SubstanceNucleicAcidSubunitType] = Field(
         None,
         alias="subunit",
         title=(
@@ -139,7 +139,7 @@ class SubstanceNucleicAcidSubunit(backboneelement.BackboneElement):
         None, alias="_length", title="Extension field for ``length``."
     )
 
-    linkage: ListType[fhirtypes.SubstanceNucleicAcidSubunitLinkageType] = Field(
+    linkage: typing.List[fhirtypes.SubstanceNucleicAcidSubunitLinkageType] = Field(
         None,
         alias="linkage",
         title="The linkages between sugar residues will also be captured",
@@ -190,7 +190,7 @@ class SubstanceNucleicAcidSubunit(backboneelement.BackboneElement):
         None, alias="_subunit", title="Extension field for ``subunit``."
     )
 
-    sugar: ListType[fhirtypes.SubstanceNucleicAcidSubunitSugarType] = Field(
+    sugar: typing.List[fhirtypes.SubstanceNucleicAcidSubunitSugarType] = Field(
         None,
         alias="sugar",
         title="5.3.6.8.1 Sugar ID (Mandatory)",

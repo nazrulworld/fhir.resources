@@ -6,7 +6,10 @@ from .. import appointment
 
 
 def test_Appointment_1(base_settings):
-    filename = base_settings["unittest_data_dir"] / "appointment-example-request.canonical.json"
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "appointment-example-request.canonical.json"
+    )
     inst = appointment.Appointment.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -22,10 +25,15 @@ def test_Appointment_1(base_settings):
 
 
 def impl_Appointment_1(inst):
-    assert inst.comment == "Further expand on the results of the MRI and determine the next actions that may be appropriate."
+    assert (
+        inst.comment
+        == "Further expand on the results of the MRI and determine the next actions that may be appropriate."
+    )
     assert inst.description == "Discussion on the results of your recent MRI"
     assert inst.id == "examplereq"
-    assert inst.identifier[0].system == "http://example.org/sampleappointment-identifier"
+    assert (
+        inst.identifier[0].system == "http://example.org/sampleappointment-identifier"
+    )
     assert inst.identifier[0].value == "123"
     assert inst.minutesDuration == 15
     assert inst.participant[0].actor.display == "Peter James Chalmers"
@@ -66,7 +74,10 @@ def test_Appointment_2(base_settings):
 
 
 def impl_Appointment_2(inst):
-    assert inst.comment == "Further expand on the results of the MRI and determine the next actions that may be appropriate."
+    assert (
+        inst.comment
+        == "Further expand on the results of the MRI and determine the next actions that may be appropriate."
+    )
     assert inst.description == "Discussion on the results of your recent MRI"
     assert inst.end == datetime(2013, 12, 10, 11, 00, 00, tzinfo=timezone.utc)
     assert inst.id == "example"
@@ -93,7 +104,10 @@ def impl_Appointment_2(inst):
 
 
 def test_Appointment_3(base_settings):
-    filename = base_settings["unittest_data_dir"] / "appointment-example2doctors.canonical.json"
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "appointment-example2doctors.canonical.json"
+    )
     inst = appointment.Appointment.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -109,9 +123,12 @@ def test_Appointment_3(base_settings):
 
 
 def impl_Appointment_3(inst):
-    assert inst.comment == "Clarify the results of the MRI to ensure context of test was correct"
+    assert (
+        inst.comment
+        == "Clarify the results of the MRI to ensure context of test was correct"
+    )
     assert inst.description == "Discussion about Peter Chalmers MRI results"
-    assert inst.end == datetime(2013, 12, 9, 11, 00, 00,tzinfo=timezone.utc)
+    assert inst.end == datetime(2013, 12, 9, 11, 00, 00, tzinfo=timezone.utc)
     assert inst.id == "2docs"
     assert inst.participant[0].actor.display == "Peter James Chalmers"
     assert inst.participant[0].actor.reference == "Patient/example"

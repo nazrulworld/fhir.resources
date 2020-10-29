@@ -6,7 +6,7 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import List as ListType
+import typing
 
 from pydantic import Field
 
@@ -23,7 +23,7 @@ class MedicinalProductPackaged(domainresource.DomainResource):
 
     resource_type = Field("MedicinalProductPackaged", const=True)
 
-    batchIdentifier: ListType[
+    batchIdentifier: typing.List[
         fhirtypes.MedicinalProductPackagedBatchIdentifierType
     ] = Field(
         None,
@@ -46,7 +46,7 @@ class MedicinalProductPackaged(domainresource.DomainResource):
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="Unique identifier",
@@ -67,7 +67,7 @@ class MedicinalProductPackaged(domainresource.DomainResource):
         element_property=True,
     )
 
-    manufacturer: ListType[fhirtypes.ReferenceType] = Field(
+    manufacturer: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="manufacturer",
         title="Manufacturer of this Package Item",
@@ -89,7 +89,7 @@ class MedicinalProductPackaged(domainresource.DomainResource):
         enum_reference_types=["MedicinalProductAuthorization"],
     )
 
-    marketingStatus: ListType[fhirtypes.MarketingStatusType] = Field(
+    marketingStatus: typing.List[fhirtypes.MarketingStatusType] = Field(
         None,
         alias="marketingStatus",
         title="Marketing information",
@@ -98,7 +98,7 @@ class MedicinalProductPackaged(domainresource.DomainResource):
         element_property=True,
     )
 
-    packageItem: ListType[fhirtypes.MedicinalProductPackagedPackageItemType] = Field(
+    packageItem: typing.List[fhirtypes.MedicinalProductPackagedPackageItemType] = Field(
         ...,
         alias="packageItem",
         title=(
@@ -110,7 +110,7 @@ class MedicinalProductPackaged(domainresource.DomainResource):
         element_property=True,
     )
 
-    subject: ListType[fhirtypes.ReferenceType] = Field(
+    subject: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="subject",
         title="The product with this is a pack for",
@@ -165,7 +165,7 @@ class MedicinalProductPackagedPackageItem(backboneelement.BackboneElement):
 
     resource_type = Field("MedicinalProductPackagedPackageItem", const=True)
 
-    alternateMaterial: ListType[fhirtypes.CodeableConceptType] = Field(
+    alternateMaterial: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="alternateMaterial",
         title="A possible alternate material for the packaging",
@@ -174,7 +174,7 @@ class MedicinalProductPackagedPackageItem(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    device: ListType[fhirtypes.ReferenceType] = Field(
+    device: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="device",
         title="A device accompanying a medicinal product",
@@ -185,7 +185,7 @@ class MedicinalProductPackagedPackageItem(backboneelement.BackboneElement):
         enum_reference_types=["DeviceDefinition"],
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="Including possibly Data Carrier Identifier",
@@ -194,7 +194,7 @@ class MedicinalProductPackagedPackageItem(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    manufacturedItem: ListType[fhirtypes.ReferenceType] = Field(
+    manufacturedItem: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="manufacturedItem",
         title="The manufactured item as contained in the packaged medicinal product",
@@ -205,7 +205,7 @@ class MedicinalProductPackagedPackageItem(backboneelement.BackboneElement):
         enum_reference_types=["MedicinalProductManufactured"],
     )
 
-    manufacturer: ListType[fhirtypes.ReferenceType] = Field(
+    manufacturer: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="manufacturer",
         title="Manufacturer of this Package Item",
@@ -216,7 +216,7 @@ class MedicinalProductPackagedPackageItem(backboneelement.BackboneElement):
         enum_reference_types=["Organization"],
     )
 
-    material: ListType[fhirtypes.CodeableConceptType] = Field(
+    material: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="material",
         title="Material type of the package item",
@@ -225,7 +225,7 @@ class MedicinalProductPackagedPackageItem(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    otherCharacteristics: ListType[fhirtypes.CodeableConceptType] = Field(
+    otherCharacteristics: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="otherCharacteristics",
         title="Other codeable characteristics",
@@ -234,7 +234,7 @@ class MedicinalProductPackagedPackageItem(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    packageItem: ListType[fhirtypes.MedicinalProductPackagedPackageItemType] = Field(
+    packageItem: typing.List[fhirtypes.MedicinalProductPackagedPackageItemType] = Field(
         None,
         alias="packageItem",
         title="Allows containers within containers",
@@ -264,7 +264,7 @@ class MedicinalProductPackagedPackageItem(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    shelfLifeStorage: ListType[fhirtypes.ProductShelfLifeType] = Field(
+    shelfLifeStorage: typing.List[fhirtypes.ProductShelfLifeType] = Field(
         None,
         alias="shelfLifeStorage",
         title="Shelf Life and storage information",

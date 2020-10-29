@@ -6,7 +6,7 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import List as ListType
+import typing
 
 from pydantic import Field
 
@@ -36,7 +36,7 @@ class ContactDetail(element.Element):
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    telecom: ListType[fhirtypes.ContactPointType] = Field(
+    telecom: typing.List[fhirtypes.ContactPointType] = Field(
         None,
         alias="telecom",
         title="Contact details for individual or organization",

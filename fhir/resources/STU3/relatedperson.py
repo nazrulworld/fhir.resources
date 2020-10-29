@@ -6,7 +6,7 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from typing import List as ListType
+import typing
 
 from pydantic import Field
 
@@ -39,7 +39,7 @@ class RelatedPerson(domainresource.DomainResource):
         None, alias="_active", title="Extension field for ``active``."
     )
 
-    address: ListType[fhirtypes.AddressType] = Field(
+    address: typing.List[fhirtypes.AddressType] = Field(
         None,
         alias="address",
         title="Address where the related person can be contacted or visited",
@@ -78,7 +78,7 @@ class RelatedPerson(domainresource.DomainResource):
         None, alias="_gender", title="Extension field for ``gender``."
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="A human identifier for this person",
@@ -87,7 +87,7 @@ class RelatedPerson(domainresource.DomainResource):
         element_property=True,
     )
 
-    name: ListType[fhirtypes.HumanNameType] = Field(
+    name: typing.List[fhirtypes.HumanNameType] = Field(
         None,
         alias="name",
         title="A name associated with the person",
@@ -119,7 +119,7 @@ class RelatedPerson(domainresource.DomainResource):
         element_property=True,
     )
 
-    photo: ListType[fhirtypes.AttachmentType] = Field(
+    photo: typing.List[fhirtypes.AttachmentType] = Field(
         None,
         alias="photo",
         title="Image of the person",
@@ -140,7 +140,7 @@ class RelatedPerson(domainresource.DomainResource):
         element_property=True,
     )
 
-    telecom: ListType[fhirtypes.ContactPointType] = Field(
+    telecom: typing.List[fhirtypes.ContactPointType] = Field(
         None,
         alias="telecom",
         title="A contact detail for the person",

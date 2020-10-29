@@ -6,7 +6,7 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import List as ListType
+import typing
 
 from pydantic import Field
 
@@ -25,7 +25,7 @@ class BackboneElement(element.Element):
 
     resource_type = Field("BackboneElement", const=True)
 
-    modifierExtension: ListType[fhirtypes.ExtensionType] = Field(
+    modifierExtension: typing.List[fhirtypes.ExtensionType] = Field(
         None,
         alias="modifierExtension",
         title="Extensions that cannot be ignored even if unrecognized",

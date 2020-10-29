@@ -6,8 +6,7 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import List as ListType
-from typing import Union
+import typing
 
 from pydantic import Field
 
@@ -31,7 +30,7 @@ class SubstanceProtein(domainresource.DomainResource):
 
     resource_type = Field("SubstanceProtein", const=True)
 
-    disulfideLinkage: ListType[fhirtypes.String] = Field(
+    disulfideLinkage: typing.List[fhirtypes.String] = Field(
         None,
         alias="disulfideLinkage",
         title=(
@@ -47,8 +46,8 @@ class SubstanceProtein(domainresource.DomainResource):
         # if property is element of this resource.
         element_property=True,
     )
-    disulfideLinkage__ext: ListType[
-        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    disulfideLinkage__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(
         None,
         alias="_disulfideLinkage",
@@ -87,7 +86,7 @@ class SubstanceProtein(domainresource.DomainResource):
         element_property=True,
     )
 
-    subunit: ListType[fhirtypes.SubstanceProteinSubunitType] = Field(
+    subunit: typing.List[fhirtypes.SubstanceProteinSubunitType] = Field(
         None,
         alias="subunit",
         title=(

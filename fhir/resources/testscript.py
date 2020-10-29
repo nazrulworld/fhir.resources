@@ -6,10 +6,11 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import List as ListType
-from typing import Union
+import typing
 
-from pydantic import Field
+from pydantic import Field, root_validator
+from pydantic.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.errors import MissingError, NoneIsNotAllowedError
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -26,7 +27,7 @@ class TestScript(domainresource.DomainResource):
 
     resource_type = Field("TestScript", const=True)
 
-    contact: ListType[fhirtypes.ContactDetailType] = Field(
+    contact: typing.List[fhirtypes.ContactDetailType] = Field(
         None,
         alias="contact",
         title="Contact details for the publisher",
@@ -86,7 +87,7 @@ class TestScript(domainresource.DomainResource):
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    destination: ListType[fhirtypes.TestScriptDestinationType] = Field(
+    destination: typing.List[fhirtypes.TestScriptDestinationType] = Field(
         None,
         alias="destination",
         title=(
@@ -117,7 +118,7 @@ class TestScript(domainresource.DomainResource):
         None, alias="_experimental", title="Extension field for ``experimental``."
     )
 
-    fixture: ListType[fhirtypes.TestScriptFixtureType] = Field(
+    fixture: typing.List[fhirtypes.TestScriptFixtureType] = Field(
         None,
         alias="fixture",
         title="Fixture in the test script - by reference (uri)",
@@ -142,7 +143,7 @@ class TestScript(domainresource.DomainResource):
         element_property=True,
     )
 
-    jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="jurisdiction",
         title="Intended jurisdiction for test script (if applicable)",
@@ -170,7 +171,7 @@ class TestScript(domainresource.DomainResource):
     )
 
     name: fhirtypes.String = Field(
-        ...,
+        None,
         alias="name",
         title="Name for this test script (computer friendly)",
         description=(
@@ -180,12 +181,13 @@ class TestScript(domainresource.DomainResource):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    origin: ListType[fhirtypes.TestScriptOriginType] = Field(
+    origin: typing.List[fhirtypes.TestScriptOriginType] = Field(
         None,
         alias="origin",
         title=(
@@ -200,7 +202,7 @@ class TestScript(domainresource.DomainResource):
         element_property=True,
     )
 
-    profile: ListType[fhirtypes.ReferenceType] = Field(
+    profile: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="profile",
         title="Reference of the validation profile",
@@ -251,7 +253,7 @@ class TestScript(domainresource.DomainResource):
     )
 
     status: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="status",
         title="draft | active | retired | unknown",
         description=(
@@ -260,6 +262,7 @@ class TestScript(domainresource.DomainResource):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -280,7 +283,7 @@ class TestScript(domainresource.DomainResource):
         element_property=True,
     )
 
-    test: ListType[fhirtypes.TestScriptTestType] = Field(
+    test: typing.List[fhirtypes.TestScriptTestType] = Field(
         None,
         alias="test",
         title="A test in this script",
@@ -302,7 +305,7 @@ class TestScript(domainresource.DomainResource):
     )
 
     url: fhirtypes.Uri = Field(
-        ...,
+        None,
         alias="url",
         title=(
             "Canonical identifier for this test script, represented as a URI "
@@ -319,12 +322,13 @@ class TestScript(domainresource.DomainResource):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
     )
 
-    useContext: ListType[fhirtypes.UsageContextType] = Field(
+    useContext: typing.List[fhirtypes.UsageContextType] = Field(
         None,
         alias="useContext",
         title="The context that the content is intended to support",
@@ -339,7 +343,7 @@ class TestScript(domainresource.DomainResource):
         element_property=True,
     )
 
-    variable: ListType[fhirtypes.TestScriptVariableType] = Field(
+    variable: typing.List[fhirtypes.TestScriptVariableType] = Field(
         None,
         alias="variable",
         title="Placeholder for evaluated elements",
@@ -371,6 +375,69 @@ class TestScript(domainresource.DomainResource):
         None, alias="_version", title="Extension field for ``version``."
     )
 
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [
+            ("name", "name__ext"),
+            ("status", "status__ext"),
+            ("url", "url__ext"),
+        ]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
+
 
 class TestScriptDestination(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` does't part of
@@ -386,7 +453,7 @@ class TestScriptDestination(backboneelement.BackboneElement):
     resource_type = Field("TestScriptDestination", const=True)
 
     index: fhirtypes.Integer = Field(
-        ...,
+        None,
         alias="index",
         title="The index of the abstract destination server starting at 1",
         description=(
@@ -395,6 +462,7 @@ class TestScriptDestination(backboneelement.BackboneElement):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     index__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_index", title="Extension field for ``index``."
@@ -412,6 +480,65 @@ class TestScriptDestination(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("index", "index__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
+
 
 class TestScriptFixture(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` does't part of
@@ -426,7 +553,7 @@ class TestScriptFixture(backboneelement.BackboneElement):
     resource_type = Field("TestScriptFixture", const=True)
 
     autocreate: bool = Field(
-        ...,
+        None,
         alias="autocreate",
         title="Whether or not to implicitly create the fixture during setup",
         description=(
@@ -437,13 +564,14 @@ class TestScriptFixture(backboneelement.BackboneElement):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     autocreate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_autocreate", title="Extension field for ``autocreate``."
     )
 
     autodelete: bool = Field(
-        ...,
+        None,
         alias="autodelete",
         title="Whether or not to implicitly delete the fixture during teardown",
         description=(
@@ -454,6 +582,7 @@ class TestScriptFixture(backboneelement.BackboneElement):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     autodelete__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_autodelete", title="Extension field for ``autodelete``."
@@ -473,6 +602,68 @@ class TestScriptFixture(backboneelement.BackboneElement):
         enum_reference_types=["Resource"],
     )
 
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [
+            ("autocreate", "autocreate__ext"),
+            ("autodelete", "autodelete__ext"),
+        ]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
+
 
 class TestScriptMetadata(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` does't part of
@@ -487,7 +678,7 @@ class TestScriptMetadata(backboneelement.BackboneElement):
 
     resource_type = Field("TestScriptMetadata", const=True)
 
-    capability: ListType[fhirtypes.TestScriptMetadataCapabilityType] = Field(
+    capability: typing.List[fhirtypes.TestScriptMetadataCapabilityType] = Field(
         ...,
         alias="capability",
         title=(
@@ -502,7 +693,7 @@ class TestScriptMetadata(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    link: ListType[fhirtypes.TestScriptMetadataLinkType] = Field(
+    link: typing.List[fhirtypes.TestScriptMetadataLinkType] = Field(
         None,
         alias="link",
         title="Links to the FHIR specification",
@@ -526,7 +717,7 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
     resource_type = Field("TestScriptMetadataCapability", const=True)
 
     capabilities: fhirtypes.Canonical = Field(
-        ...,
+        None,
         alias="capabilities",
         title="Required Capability Statement",
         description=(
@@ -536,6 +727,7 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["CapabilityStatement"],
     )
@@ -570,7 +762,7 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
         None, alias="_destination", title="Extension field for ``destination``."
     )
 
-    link: ListType[fhirtypes.Uri] = Field(
+    link: typing.List[fhirtypes.Uri] = Field(
         None,
         alias="link",
         title="Links to the FHIR specification",
@@ -581,11 +773,11 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    link__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_link", title="Extension field for ``link``."
-    )
+    link__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_link", title="Extension field for ``link``.")
 
-    origin: ListType[fhirtypes.Integer] = Field(
+    origin: typing.List[fhirtypes.Integer] = Field(
         None,
         alias="origin",
         title="Which origin server these requirements apply to",
@@ -593,12 +785,12 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    origin__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_origin", title="Extension field for ``origin``."
-    )
+    origin__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_origin", title="Extension field for ``origin``.")
 
     required: bool = Field(
-        ...,
+        None,
         alias="required",
         title="Are the capabilities required?",
         description=(
@@ -607,13 +799,14 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     required__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_required", title="Extension field for ``required``."
     )
 
     validated: bool = Field(
-        ...,
+        None,
         alias="validated",
         title="Are the capabilities validated?",
         description=(
@@ -622,10 +815,74 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     validated__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_validated", title="Extension field for ``validated``."
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [
+            ("capabilities", "capabilities__ext"),
+            ("required", "required__ext"),
+            ("validated", "validated__ext"),
+        ]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
 
 
 class TestScriptMetadataLink(backboneelement.BackboneElement):
@@ -652,7 +909,7 @@ class TestScriptMetadataLink(backboneelement.BackboneElement):
     )
 
     url: fhirtypes.Uri = Field(
-        ...,
+        None,
         alias="url",
         title="URL to the specification",
         description=(
@@ -661,10 +918,70 @@ class TestScriptMetadataLink(backboneelement.BackboneElement):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("url", "url__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
 
 
 class TestScriptOrigin(backboneelement.BackboneElement):
@@ -680,7 +997,7 @@ class TestScriptOrigin(backboneelement.BackboneElement):
     resource_type = Field("TestScriptOrigin", const=True)
 
     index: fhirtypes.Integer = Field(
-        ...,
+        None,
         alias="index",
         title="The index of the abstract origin server starting at 1",
         description=(
@@ -689,6 +1006,7 @@ class TestScriptOrigin(backboneelement.BackboneElement):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     index__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_index", title="Extension field for ``index``."
@@ -703,6 +1021,65 @@ class TestScriptOrigin(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("index", "index__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
+
 
 class TestScriptSetup(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` does't part of
@@ -714,7 +1091,7 @@ class TestScriptSetup(backboneelement.BackboneElement):
 
     resource_type = Field("TestScriptSetup", const=True)
 
-    action: ListType[fhirtypes.TestScriptSetupActionType] = Field(
+    action: typing.List[fhirtypes.TestScriptSetupActionType] = Field(
         ...,
         alias="action",
         title="A setup operation or assert to perform",
@@ -1114,7 +1491,7 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
     )
 
     warningOnly: bool = Field(
-        ...,
+        None,
         alias="warningOnly",
         title="Will this assert produce a warning only on error?",
         description=(
@@ -1123,10 +1500,70 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     warningOnly__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_warningOnly", title="Extension field for ``warningOnly``."
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("warningOnly", "warningOnly__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
 
 
 class TestScriptSetupActionOperation(backboneelement.BackboneElement):
@@ -1198,7 +1635,7 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
     )
 
     encodeRequestUrl: bool = Field(
-        ...,
+        None,
         alias="encodeRequestUrl",
         title="Whether or not to send the request url in encoded format",
         description=(
@@ -1209,6 +1646,7 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     encodeRequestUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -1276,7 +1714,7 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
         None, alias="_params", title="Extension field for ``params``."
     )
 
-    requestHeader: ListType[
+    requestHeader: typing.List[
         fhirtypes.TestScriptSetupActionOperationRequestHeaderType
     ] = Field(
         None,
@@ -1373,6 +1811,65 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
         None, alias="_url", title="Extension field for ``url``."
     )
 
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("encodeRequestUrl", "encodeRequestUrl__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
+
 
 class TestScriptSetupActionOperationRequestHeader(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` does't part of
@@ -1386,28 +1883,89 @@ class TestScriptSetupActionOperationRequestHeader(backboneelement.BackboneElemen
     resource_type = Field("TestScriptSetupActionOperationRequestHeader", const=True)
 
     field: fhirtypes.String = Field(
-        ...,
+        None,
         alias="field",
         title="HTTP header field name",
         description='The HTTP header field e.g. "Accept".',
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     field__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_field", title="Extension field for ``field``."
     )
 
     value: fhirtypes.String = Field(
-        ...,
+        None,
         alias="value",
         title="HTTP headerfield value",
         description='The value of the header e.g. "application/fhir+xml".',
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("field", "field__ext"), ("value", "value__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
 
 
 class TestScriptTeardown(backboneelement.BackboneElement):
@@ -1422,7 +1980,7 @@ class TestScriptTeardown(backboneelement.BackboneElement):
 
     resource_type = Field("TestScriptTeardown", const=True)
 
-    action: ListType[fhirtypes.TestScriptTeardownActionType] = Field(
+    action: typing.List[fhirtypes.TestScriptTeardownActionType] = Field(
         ...,
         alias="action",
         title="One or more teardown operations to perform",
@@ -1463,7 +2021,7 @@ class TestScriptTest(backboneelement.BackboneElement):
 
     resource_type = Field("TestScriptTest", const=True)
 
-    action: ListType[fhirtypes.TestScriptTestActionType] = Field(
+    action: typing.List[fhirtypes.TestScriptTestActionType] = Field(
         ...,
         alias="action",
         title="A test operation or assert to perform",
@@ -1622,12 +2180,13 @@ class TestScriptVariable(backboneelement.BackboneElement):
     )
 
     name: fhirtypes.String = Field(
-        ...,
+        None,
         alias="name",
         title="Descriptive name for this variable",
         description=None,
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -1663,3 +2222,62 @@ class TestScriptVariable(backboneelement.BackboneElement):
     sourceId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sourceId", title="Extension field for ``sourceId``."
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("name", "name__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values

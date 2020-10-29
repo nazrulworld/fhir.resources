@@ -6,7 +6,7 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from typing import List as ListType
+import typing
 
 from pydantic import Field
 
@@ -51,7 +51,7 @@ class Account(domainresource.DomainResource):
         element_property=True,
     )
 
-    coverage: ListType[fhirtypes.AccountCoverageType] = Field(
+    coverage: typing.List[fhirtypes.AccountCoverageType] = Field(
         None,
         alias="coverage",
         title=(
@@ -78,7 +78,7 @@ class Account(domainresource.DomainResource):
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    guarantor: ListType[fhirtypes.AccountGuarantorType] = Field(
+    guarantor: typing.List[fhirtypes.AccountGuarantorType] = Field(
         None,
         alias="guarantor",
         title="Responsible for the account",
@@ -87,7 +87,7 @@ class Account(domainresource.DomainResource):
         element_property=True,
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="Account number",

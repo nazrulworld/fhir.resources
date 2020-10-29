@@ -6,10 +6,11 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import List as ListType
-from typing import Union
+import typing
 
-from pydantic import Field
+from pydantic import Field, root_validator
+from pydantic.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.errors import MissingError, NoneIsNotAllowedError
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -36,7 +37,7 @@ class Location(domainresource.DomainResource):
         element_property=True,
     )
 
-    alias: ListType[fhirtypes.String] = Field(
+    alias: typing.List[fhirtypes.String] = Field(
         None,
         alias="alias",
         title=(
@@ -47,9 +48,9 @@ class Location(domainresource.DomainResource):
         # if property is element of this resource.
         element_property=True,
     )
-    alias__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_alias", title="Extension field for ``alias``."
-    )
+    alias__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_alias", title="Extension field for ``alias``.")
 
     availabilityExceptions: fhirtypes.String = Field(
         None,
@@ -88,7 +89,7 @@ class Location(domainresource.DomainResource):
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    endpoint: ListType[fhirtypes.ReferenceType] = Field(
+    endpoint: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="endpoint",
         title=(
@@ -102,7 +103,7 @@ class Location(domainresource.DomainResource):
         enum_reference_types=["Endpoint"],
     )
 
-    hoursOfOperation: ListType[fhirtypes.LocationHoursOfOperationType] = Field(
+    hoursOfOperation: typing.List[fhirtypes.LocationHoursOfOperationType] = Field(
         None,
         alias="hoursOfOperation",
         title="What days/times during a week is this location usually open",
@@ -111,7 +112,7 @@ class Location(domainresource.DomainResource):
         element_property=True,
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="Unique code or number identifying the location to its users",
@@ -229,7 +230,7 @@ class Location(domainresource.DomainResource):
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    telecom: ListType[fhirtypes.ContactPointType] = Field(
+    telecom: typing.List[fhirtypes.ContactPointType] = Field(
         None,
         alias="telecom",
         title="Contact details of the location",
@@ -242,7 +243,7 @@ class Location(domainresource.DomainResource):
         element_property=True,
     )
 
-    type: ListType[fhirtypes.CodeableConceptType] = Field(
+    type: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="type",
         title="Type of function performed",
@@ -286,7 +287,7 @@ class LocationHoursOfOperation(backboneelement.BackboneElement):
         None, alias="_closingTime", title="Extension field for ``closingTime``."
     )
 
-    daysOfWeek: ListType[fhirtypes.Code] = Field(
+    daysOfWeek: typing.List[fhirtypes.Code] = Field(
         None,
         alias="daysOfWeek",
         title="mon | tue | wed | thu | fri | sat | sun",
@@ -300,8 +301,8 @@ class LocationHoursOfOperation(backboneelement.BackboneElement):
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["mon", "tue", "wed", "thu", "fri", "sat", "sun"],
     )
-    daysOfWeek__ext: ListType[
-        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    daysOfWeek__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_daysOfWeek", title="Extension field for ``daysOfWeek``.")
 
     openingTime: fhirtypes.Time = Field(
@@ -345,7 +346,7 @@ class LocationPosition(backboneelement.BackboneElement):
     )
 
     latitude: fhirtypes.Decimal = Field(
-        ...,
+        None,
         alias="latitude",
         title="Latitude with WGS84 datum",
         description=(
@@ -354,13 +355,14 @@ class LocationPosition(backboneelement.BackboneElement):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     latitude__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_latitude", title="Extension field for ``latitude``."
     )
 
     longitude: fhirtypes.Decimal = Field(
-        ...,
+        None,
         alias="longitude",
         title="Longitude with WGS84 datum",
         description=(
@@ -369,7 +371,70 @@ class LocationPosition(backboneelement.BackboneElement):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     longitude__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_longitude", title="Extension field for ``longitude``."
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [
+            ("latitude", "latitude__ext"),
+            ("longitude", "longitude__ext"),
+        ]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values

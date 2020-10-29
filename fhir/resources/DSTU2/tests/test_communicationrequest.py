@@ -4,7 +4,10 @@ from .. import communicationrequest
 
 
 def test_CommunicationRequest_1(base_settings):
-    filename = base_settings["unittest_data_dir"] / "communicationrequest-example.canonical.json"
+    filename = (
+        base_settings["unittest_data_dir"]
+        / "communicationrequest-example.canonical.json"
+    )
     inst = communicationrequest.CommunicationRequest.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -20,12 +23,24 @@ def test_CommunicationRequest_1(base_settings):
 
 
 def impl_CommunicationRequest_1(inst):
-    assert inst.extension[0].url == "http://hl7.org/fhir/StructureDefinition/communicationrequest-orderedBy"
+    assert (
+        inst.extension[0].url
+        == "http://hl7.org/fhir/StructureDefinition/communicationrequest-orderedBy"
+    )
     assert inst.extension[0].valueReference.reference == "Practitioner/example"
-    assert inst.extension[1].url == "http://hl7.org/fhir/StructureDefinition/communicationrequest-reasonRejected"
+    assert (
+        inst.extension[1].url
+        == "http://hl7.org/fhir/StructureDefinition/communicationrequest-reasonRejected"
+    )
     assert inst.extension[1].valueCodeableConcept.coding[0].code == "NON-AVAIL"
-    assert inst.extension[1].valueCodeableConcept.coding[0].display == "patient not-available"
-    assert inst.extension[1].valueCodeableConcept.coding[0].system == "http://hl7.org/fhir/v3/ActReason"
+    assert (
+        inst.extension[1].valueCodeableConcept.coding[0].display
+        == "patient not-available"
+    )
+    assert (
+        inst.extension[1].valueCodeableConcept.coding[0].system
+        == "http://hl7.org/fhir/v3/ActReason"
+    )
     assert inst.id == "communicationrequest-example"
     assert inst.status == "rejected"
     assert inst.subject.reference == "Patient/example"

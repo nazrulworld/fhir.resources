@@ -6,8 +6,7 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import Any, Dict
-from typing import List as ListType
+import typing
 
 from pydantic import Field, root_validator
 
@@ -36,7 +35,7 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
         element_property=True,
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="External ids for this item",
@@ -64,7 +63,7 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
         element_property=True,
     )
 
-    parent: ListType[fhirtypes.ReferenceType] = Field(
+    parent: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="parent",
         title="BiologicallyDerivedProduct parent",
@@ -75,7 +74,7 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
         enum_reference_types=["BiologicallyDerivedProduct"],
     )
 
-    processing: ListType[fhirtypes.BiologicallyDerivedProductProcessingType] = Field(
+    processing: typing.List[fhirtypes.BiologicallyDerivedProductProcessingType] = Field(
         None,
         alias="processing",
         title="Any processing of the product during collection",
@@ -127,7 +126,7 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
         None, alias="_quantity", title="Extension field for ``quantity``."
     )
 
-    request: ListType[fhirtypes.ReferenceType] = Field(
+    request: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="request",
         title="Procedure request",
@@ -153,7 +152,7 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    storage: ListType[fhirtypes.BiologicallyDerivedProductStorageType] = Field(
+    storage: typing.List[fhirtypes.BiologicallyDerivedProductStorageType] = Field(
         None,
         alias="storage",
         title="Product storage",
@@ -228,7 +227,9 @@ class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -317,7 +318,9 @@ class BiologicallyDerivedProductManipulation(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -426,7 +429,9 @@ class BiologicallyDerivedProductProcessing(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].

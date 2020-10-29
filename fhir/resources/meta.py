@@ -6,8 +6,7 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import List as ListType
-from typing import Union
+import typing
 
 from pydantic import Field
 
@@ -39,7 +38,7 @@ class Meta(element.Element):
         None, alias="_lastUpdated", title="Extension field for ``lastUpdated``."
     )
 
-    profile: ListType[fhirtypes.Canonical] = Field(
+    profile: typing.List[fhirtypes.Canonical] = Field(
         None,
         alias="profile",
         title="Profiles this resource claims to conform to",
@@ -55,11 +54,11 @@ class Meta(element.Element):
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
     )
-    profile__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_profile", title="Extension field for ``profile``."
-    )
+    profile__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_profile", title="Extension field for ``profile``.")
 
-    security: ListType[fhirtypes.CodingType] = Field(
+    security: typing.List[fhirtypes.CodingType] = Field(
         None,
         alias="security",
         title="Security Labels applied to this resource",
@@ -89,7 +88,7 @@ class Meta(element.Element):
         None, alias="_source", title="Extension field for ``source``."
     )
 
-    tag: ListType[fhirtypes.CodingType] = Field(
+    tag: typing.List[fhirtypes.CodingType] = Field(
         None,
         alias="tag",
         title="Tags applied to this resource",

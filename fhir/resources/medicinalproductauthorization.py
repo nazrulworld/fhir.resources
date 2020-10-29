@@ -6,8 +6,7 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import Any, Dict
-from typing import List as ListType
+import typing
 
 from pydantic import Field, root_validator
 
@@ -24,7 +23,7 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
 
     resource_type = Field("MedicinalProductAuthorization", const=True)
 
-    country: ListType[fhirtypes.CodeableConceptType] = Field(
+    country: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="country",
         title="The country in which the marketing authorization has been granted",
@@ -73,7 +72,7 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
         enum_reference_types=["Organization"],
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title=(
@@ -102,7 +101,7 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
         title="Extension field for ``internationalBirthDate``.",
     )
 
-    jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="jurisdiction",
         title="Jurisdiction within a country",
@@ -111,7 +110,7 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
         element_property=True,
     )
 
-    jurisdictionalAuthorization: ListType[
+    jurisdictionalAuthorization: typing.List[
         fhirtypes.MedicinalProductAuthorizationJurisdictionalAuthorizationType
     ] = Field(
         None,
@@ -239,7 +238,7 @@ class MedicinalProductAuthorizationJurisdictionalAuthorization(
         element_property=True,
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="The assigned number for the marketing authorization",
@@ -248,7 +247,7 @@ class MedicinalProductAuthorizationJurisdictionalAuthorization(
         element_property=True,
     )
 
-    jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="jurisdiction",
         title="Jurisdiction within a country",
@@ -286,7 +285,9 @@ class MedicinalProductAuthorizationProcedure(backboneelement.BackboneElement):
 
     resource_type = Field("MedicinalProductAuthorizationProcedure", const=True)
 
-    application: ListType[fhirtypes.MedicinalProductAuthorizationProcedureType] = Field(
+    application: typing.List[
+        fhirtypes.MedicinalProductAuthorizationProcedureType
+    ] = Field(
         None,
         alias="application",
         title="Applcations submitted to obtain a marketing authorization",
@@ -341,7 +342,9 @@ class MedicinalProductAuthorizationProcedure(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].

@@ -6,7 +6,7 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import List as ListType
+import typing
 
 from pydantic import Field
 
@@ -26,7 +26,7 @@ class CareTeam(domainresource.DomainResource):
 
     resource_type = Field("CareTeam", const=True)
 
-    category: ListType[fhirtypes.CodeableConceptType] = Field(
+    category: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="category",
         title="Type of team",
@@ -53,7 +53,7 @@ class CareTeam(domainresource.DomainResource):
         enum_reference_types=["Encounter"],
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="External Ids for this team",
@@ -66,7 +66,7 @@ class CareTeam(domainresource.DomainResource):
         element_property=True,
     )
 
-    managingOrganization: ListType[fhirtypes.ReferenceType] = Field(
+    managingOrganization: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="managingOrganization",
         title="Organization responsible for the care team",
@@ -92,7 +92,7 @@ class CareTeam(domainresource.DomainResource):
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    note: ListType[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
         title="Comments made about the CareTeam",
@@ -101,7 +101,7 @@ class CareTeam(domainresource.DomainResource):
         element_property=True,
     )
 
-    participant: ListType[fhirtypes.CareTeamParticipantType] = Field(
+    participant: typing.List[fhirtypes.CareTeamParticipantType] = Field(
         None,
         alias="participant",
         title="Members of the team",
@@ -125,7 +125,7 @@ class CareTeam(domainresource.DomainResource):
         element_property=True,
     )
 
-    reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
+    reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="reasonCode",
         title="Why the care team exists",
@@ -134,7 +134,7 @@ class CareTeam(domainresource.DomainResource):
         element_property=True,
     )
 
-    reasonReference: ListType[fhirtypes.ReferenceType] = Field(
+    reasonReference: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="reasonReference",
         title="Why the care team exists",
@@ -174,7 +174,7 @@ class CareTeam(domainresource.DomainResource):
         enum_reference_types=["Patient", "Group"],
     )
 
-    telecom: ListType[fhirtypes.ContactPointType] = Field(
+    telecom: typing.List[fhirtypes.ContactPointType] = Field(
         None,
         alias="telecom",
         title="A contact detail for the care team (that applies to all members)",
@@ -243,7 +243,7 @@ class CareTeamParticipant(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    role: ListType[fhirtypes.CodeableConceptType] = Field(
+    role: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="role",
         title="Type of involvement",

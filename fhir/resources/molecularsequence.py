@@ -6,10 +6,11 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import List as ListType
-from typing import Union
+import typing
 
-from pydantic import Field
+from pydantic import Field, root_validator
+from pydantic.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.errors import MissingError, NoneIsNotAllowedError
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -26,7 +27,7 @@ class MolecularSequence(domainresource.DomainResource):
     resource_type = Field("MolecularSequence", const=True)
 
     coordinateSystem: fhirtypes.Integer = Field(
-        ...,
+        None,
         alias="coordinateSystem",
         title=(
             "Base number of coordinate system (0 for 0-based numbering or "
@@ -40,6 +41,7 @@ class MolecularSequence(domainresource.DomainResource):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     coordinateSystem__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -58,7 +60,7 @@ class MolecularSequence(domainresource.DomainResource):
         enum_reference_types=["Device"],
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="Unique ID for this particular sequence. This is a FHIR-defined id",
@@ -108,7 +110,7 @@ class MolecularSequence(domainresource.DomainResource):
         enum_reference_types=["Organization"],
     )
 
-    pointer: ListType[fhirtypes.ReferenceType] = Field(
+    pointer: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="pointer",
         title="Pointer to next atomic sequence",
@@ -119,7 +121,7 @@ class MolecularSequence(domainresource.DomainResource):
         enum_reference_types=["MolecularSequence"],
     )
 
-    quality: ListType[fhirtypes.MolecularSequenceQualityType] = Field(
+    quality: typing.List[fhirtypes.MolecularSequenceQualityType] = Field(
         None,
         alias="quality",
         title="An set of value as quality of sequence",
@@ -172,7 +174,7 @@ class MolecularSequence(domainresource.DomainResource):
         element_property=True,
     )
 
-    repository: ListType[fhirtypes.MolecularSequenceRepositoryType] = Field(
+    repository: typing.List[fhirtypes.MolecularSequenceRepositoryType] = Field(
         None,
         alias="repository",
         title=(
@@ -198,7 +200,9 @@ class MolecularSequence(domainresource.DomainResource):
         enum_reference_types=["Specimen"],
     )
 
-    structureVariant: ListType[fhirtypes.MolecularSequenceStructureVariantType] = Field(
+    structureVariant: typing.List[
+        fhirtypes.MolecularSequenceStructureVariantType
+    ] = Field(
         None,
         alias="structureVariant",
         title="Structural variant",
@@ -222,7 +226,7 @@ class MolecularSequence(domainresource.DomainResource):
         None, alias="_type", title="Extension field for ``type``."
     )
 
-    variant: ListType[fhirtypes.MolecularSequenceVariantType] = Field(
+    variant: typing.List[fhirtypes.MolecularSequenceVariantType] = Field(
         None,
         alias="variant",
         title="Variant in sequence",
@@ -236,6 +240,65 @@ class MolecularSequence(domainresource.DomainResource):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("coordinateSystem", "coordinateSystem__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
 
 
 class MolecularSequenceQuality(backboneelement.BackboneElement):
@@ -456,12 +519,13 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
     )
 
     type: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="type",
         title="indel | snp | unknown",
         description="INDEL / SNP / Undefined variant.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["indel", "snp", "unknown"],
@@ -469,6 +533,65 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("type", "type__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
 
 
 class MolecularSequenceQualityRoc(backboneelement.BackboneElement):
@@ -483,7 +606,7 @@ class MolecularSequenceQualityRoc(backboneelement.BackboneElement):
 
     resource_type = Field("MolecularSequenceQualityRoc", const=True)
 
-    fMeasure: ListType[fhirtypes.Decimal] = Field(
+    fMeasure: typing.List[fhirtypes.Decimal] = Field(
         None,
         alias="fMeasure",
         title="FScore of the GQ score",
@@ -494,11 +617,11 @@ class MolecularSequenceQualityRoc(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    fMeasure__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_fMeasure", title="Extension field for ``fMeasure``."
-    )
+    fMeasure__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_fMeasure", title="Extension field for ``fMeasure``.")
 
-    numFN: ListType[fhirtypes.Integer] = Field(
+    numFN: typing.List[fhirtypes.Integer] = Field(
         None,
         alias="numFN",
         title="Roc score false negative numbers",
@@ -509,11 +632,11 @@ class MolecularSequenceQualityRoc(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    numFN__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_numFN", title="Extension field for ``numFN``."
-    )
+    numFN__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_numFN", title="Extension field for ``numFN``.")
 
-    numFP: ListType[fhirtypes.Integer] = Field(
+    numFP: typing.List[fhirtypes.Integer] = Field(
         None,
         alias="numFP",
         title="Roc score false positive numbers",
@@ -524,11 +647,11 @@ class MolecularSequenceQualityRoc(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    numFP__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_numFP", title="Extension field for ``numFP``."
-    )
+    numFP__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_numFP", title="Extension field for ``numFP``.")
 
-    numTP: ListType[fhirtypes.Integer] = Field(
+    numTP: typing.List[fhirtypes.Integer] = Field(
         None,
         alias="numTP",
         title="Roc score true positive numbers",
@@ -539,11 +662,11 @@ class MolecularSequenceQualityRoc(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    numTP__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_numTP", title="Extension field for ``numTP``."
-    )
+    numTP__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_numTP", title="Extension field for ``numTP``.")
 
-    precision: ListType[fhirtypes.Decimal] = Field(
+    precision: typing.List[fhirtypes.Decimal] = Field(
         None,
         alias="precision",
         title="Precision of the GQ score",
@@ -554,11 +677,11 @@ class MolecularSequenceQualityRoc(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    precision__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_precision", title="Extension field for ``precision``."
-    )
+    precision__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_precision", title="Extension field for ``precision``.")
 
-    score: ListType[fhirtypes.Integer] = Field(
+    score: typing.List[fhirtypes.Integer] = Field(
         None,
         alias="score",
         title="Genotype quality score",
@@ -569,11 +692,11 @@ class MolecularSequenceQualityRoc(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    score__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_score", title="Extension field for ``score``."
-    )
+    score__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_score", title="Extension field for ``score``.")
 
-    sensitivity: ListType[fhirtypes.Decimal] = Field(
+    sensitivity: typing.List[fhirtypes.Decimal] = Field(
         None,
         alias="sensitivity",
         title="Sensitivity of the GQ score",
@@ -584,8 +707,8 @@ class MolecularSequenceQualityRoc(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    sensitivity__ext: ListType[
-        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    sensitivity__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_sensitivity", title="Extension field for ``sensitivity``.")
 
 
@@ -661,9 +784,9 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
         description=(
             "Reference identifier of reference sequence submitted to NCBI. It must "
             "match the type in the MolecularSequence.type field. For example, the "
-            "prefix, \u201cNG_\u201d identifies reference sequence "
-            "for genes, \u201cNM_\u201d for "
-            "messenger RNA transcripts, and \u201cNP_\u201d for amino acid sequences."
+            "prefix, \u201cNG_\u201d identifies reference sequence for genes, "
+            "\u201cNM_\u201d for messenger RNA transcripts, and \u201cNP_\u201d "
+            "for amino acid sequences."
         ),
         # if property is element of this resource.
         element_property=True,
@@ -804,7 +927,7 @@ class MolecularSequenceRepository(backboneelement.BackboneElement):
     )
 
     type: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="type",
         title="directlink | openapi | login | oauth | other",
         description=(
@@ -813,6 +936,7 @@ class MolecularSequenceRepository(backboneelement.BackboneElement):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["directlink", "openapi", "login", "oauth", "other"],
@@ -851,6 +975,65 @@ class MolecularSequenceRepository(backboneelement.BackboneElement):
     variantsetId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_variantsetId", title="Extension field for ``variantsetId``."
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("type", "type__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
 
 
 class MolecularSequenceStructureVariant(backboneelement.BackboneElement):

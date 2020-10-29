@@ -6,7 +6,7 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from typing import Any, Dict
+import typing
 
 from pydantic import Field, root_validator
 
@@ -25,7 +25,7 @@ class Extension(element.Element):
     resource_type = Field("Extension", const=True)
 
     url: fhirtypes.Uri = Field(
-        ...,
+        None,
         alias="url",
         title="identifies the meaning of the extension",
         description=(
@@ -34,6 +34,7 @@ class Extension(element.Element):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
 
     valueAddress: fhirtypes.AddressType = Field(
@@ -607,7 +608,9 @@ class Extension(element.Element):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].

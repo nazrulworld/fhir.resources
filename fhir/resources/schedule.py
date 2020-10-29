@@ -6,7 +6,7 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import List as ListType
+import typing
 
 from pydantic import Field
 
@@ -39,7 +39,7 @@ class Schedule(domainresource.DomainResource):
         None, alias="_active", title="Extension field for ``active``."
     )
 
-    actor: ListType[fhirtypes.ReferenceType] = Field(
+    actor: typing.List[fhirtypes.ReferenceType] = Field(
         ...,
         alias="actor",
         title="Resource(s) that availability information is being provided for",
@@ -76,7 +76,7 @@ class Schedule(domainresource.DomainResource):
         None, alias="_comment", title="Extension field for ``comment``."
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="External Ids for this item",
@@ -100,7 +100,7 @@ class Schedule(domainresource.DomainResource):
         element_property=True,
     )
 
-    serviceCategory: ListType[fhirtypes.CodeableConceptType] = Field(
+    serviceCategory: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="serviceCategory",
         title="High-level category",
@@ -112,7 +112,7 @@ class Schedule(domainresource.DomainResource):
         element_property=True,
     )
 
-    serviceType: ListType[fhirtypes.CodeableConceptType] = Field(
+    serviceType: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="serviceType",
         title="Specific service",
@@ -121,7 +121,7 @@ class Schedule(domainresource.DomainResource):
         element_property=True,
     )
 
-    specialty: ListType[fhirtypes.CodeableConceptType] = Field(
+    specialty: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="specialty",
         title="Type of specialty needed",

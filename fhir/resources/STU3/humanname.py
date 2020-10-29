@@ -6,8 +6,7 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from typing import List as ListType
-from typing import Union
+import typing
 
 from pydantic import Field
 
@@ -40,7 +39,7 @@ class HumanName(element.Element):
         None, alias="_family", title="Extension field for ``family``."
     )
 
-    given: ListType[fhirtypes.String] = Field(
+    given: typing.List[fhirtypes.String] = Field(
         None,
         alias="given",
         title="Given names (not always 'first'). Includes middle names",
@@ -48,9 +47,9 @@ class HumanName(element.Element):
         # if property is element of this resource.
         element_property=True,
     )
-    given__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_given", title="Extension field for ``given``."
-    )
+    given__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_given", title="Extension field for ``given``.")
 
     period: fhirtypes.PeriodType = Field(
         None,
@@ -64,7 +63,7 @@ class HumanName(element.Element):
         element_property=True,
     )
 
-    prefix: ListType[fhirtypes.String] = Field(
+    prefix: typing.List[fhirtypes.String] = Field(
         None,
         alias="prefix",
         title="Parts that come before the name",
@@ -76,11 +75,11 @@ class HumanName(element.Element):
         # if property is element of this resource.
         element_property=True,
     )
-    prefix__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_prefix", title="Extension field for ``prefix``."
-    )
+    prefix__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_prefix", title="Extension field for ``prefix``.")
 
-    suffix: ListType[fhirtypes.String] = Field(
+    suffix: typing.List[fhirtypes.String] = Field(
         None,
         alias="suffix",
         title="Parts that come after the name",
@@ -92,9 +91,9 @@ class HumanName(element.Element):
         # if property is element of this resource.
         element_property=True,
     )
-    suffix__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_suffix", title="Extension field for ``suffix``."
-    )
+    suffix__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_suffix", title="Extension field for ``suffix``.")
 
     text: fhirtypes.String = Field(
         None,

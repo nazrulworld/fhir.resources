@@ -6,7 +6,7 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from typing import List as ListType
+import typing
 
 from pydantic import Field
 
@@ -105,7 +105,7 @@ class DeviceComponent(domainresource.DomainResource):
         title="Extension field for ``measurementPrinciple``.",
     )
 
-    operationalStatus: ListType[fhirtypes.CodeableConceptType] = Field(
+    operationalStatus: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="operationalStatus",
         title=(
@@ -146,7 +146,7 @@ class DeviceComponent(domainresource.DomainResource):
         enum_reference_types=["DeviceComponent"],
     )
 
-    productionSpecification: ListType[
+    productionSpecification: typing.List[
         fhirtypes.DeviceComponentProductionSpecificationType
     ] = Field(
         None,

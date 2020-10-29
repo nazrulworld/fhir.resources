@@ -6,8 +6,7 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import List as ListType
-from typing import Union
+import typing
 
 from pydantic import Field
 
@@ -43,7 +42,7 @@ class ObservationDefinition(domainresource.DomainResource):
         enum_reference_types=["ValueSet"],
     )
 
-    category: ListType[fhirtypes.CodeableConceptType] = Field(
+    category: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="category",
         title="Category of observation",
@@ -81,7 +80,7 @@ class ObservationDefinition(domainresource.DomainResource):
         enum_reference_types=["ValueSet"],
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="Business identifier for this ObservationDefinition instance",
@@ -133,7 +132,7 @@ class ObservationDefinition(domainresource.DomainResource):
         enum_reference_types=["ValueSet"],
     )
 
-    permittedDataType: ListType[fhirtypes.Code] = Field(
+    permittedDataType: typing.List[fhirtypes.Code] = Field(
         None,
         alias="permittedDataType",
         title=(
@@ -162,8 +161,8 @@ class ObservationDefinition(domainresource.DomainResource):
             "Period",
         ],
     )
-    permittedDataType__ext: ListType[
-        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    permittedDataType__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(
         None,
         alias="_permittedDataType",
@@ -187,7 +186,7 @@ class ObservationDefinition(domainresource.DomainResource):
         title="Extension field for ``preferredReportName``.",
     )
 
-    qualifiedInterval: ListType[
+    qualifiedInterval: typing.List[
         fhirtypes.ObservationDefinitionQualifiedIntervalType
     ] = Field(
         None,
@@ -253,7 +252,7 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    appliesTo: ListType[fhirtypes.CodeableConceptType] = Field(
+    appliesTo: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="appliesTo",
         title="Targetted population of the range",

@@ -6,8 +6,7 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from typing import Any, Dict
-from typing import List as ListType
+import typing
 
 from pydantic import Field, root_validator
 
@@ -26,7 +25,7 @@ class Dosage(element.Element):
 
     resource_type = Field("Dosage", const=True)
 
-    additionalInstruction: ListType[fhirtypes.CodeableConceptType] = Field(
+    additionalInstruction: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="additionalInstruction",
         title='Supplemental instruction - e.g. "with meals"',
@@ -235,7 +234,9 @@ class Dosage(element.Element):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].

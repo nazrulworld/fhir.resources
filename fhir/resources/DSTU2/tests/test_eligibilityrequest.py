@@ -1,11 +1,14 @@
 # -*- coding: utf-8 -*-
 from pydantic.datetime_parse import parse_date
+
 from .. import fhirtypes  # noqa: F401
 from .. import eligibilityrequest
 
 
 def test_EligibilityRequest_1(base_settings):
-    filename = base_settings["unittest_data_dir"] / "eligibilityrequest-example.canonical.json"
+    filename = (
+        base_settings["unittest_data_dir"] / "eligibilityrequest-example.canonical.json"
+    )
     inst = eligibilityrequest.EligibilityRequest.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -26,5 +29,8 @@ def impl_EligibilityRequest_1(inst):
     assert inst.identifier[0].system == "http://happyvalley.com/elegibilityrequest"
     assert inst.identifier[0].value == "52345"
     assert inst.organization.reference == "Organization/2"
-    assert inst.text.div == "<div>A human-readable rendering of the EligibilityRequest</div>"
+    assert (
+        inst.text.div
+        == "<div>A human-readable rendering of the EligibilityRequest</div>"
+    )
     assert inst.text.status == "generated"

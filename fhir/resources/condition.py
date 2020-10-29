@@ -6,8 +6,7 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import Any, Dict
-from typing import List as ListType
+import typing
 
 from pydantic import Field, root_validator
 
@@ -135,7 +134,7 @@ class Condition(domainresource.DomainResource):
         ],
     )
 
-    bodySite: ListType[fhirtypes.CodeableConceptType] = Field(
+    bodySite: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="bodySite",
         title="Anatomical location, if relevant",
@@ -144,7 +143,7 @@ class Condition(domainresource.DomainResource):
         element_property=True,
     )
 
-    category: ListType[fhirtypes.CodeableConceptType] = Field(
+    category: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="category",
         title="problem-list-item | encounter-diagnosis",
@@ -185,7 +184,7 @@ class Condition(domainresource.DomainResource):
         enum_reference_types=["Encounter"],
     )
 
-    evidence: ListType[fhirtypes.ConditionEvidenceType] = Field(
+    evidence: typing.List[fhirtypes.ConditionEvidenceType] = Field(
         None,
         alias="evidence",
         title="Supporting evidence",
@@ -198,7 +197,7 @@ class Condition(domainresource.DomainResource):
         element_property=True,
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="External Ids for this condition",
@@ -211,7 +210,7 @@ class Condition(domainresource.DomainResource):
         element_property=True,
     )
 
-    note: ListType[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
         title="Additional information about the Condition",
@@ -351,7 +350,7 @@ class Condition(domainresource.DomainResource):
         element_property=True,
     )
 
-    stage: ListType[fhirtypes.ConditionStageType] = Field(
+    stage: typing.List[fhirtypes.ConditionStageType] = Field(
         None,
         alias="stage",
         title="Stage/grade, usually assessed formally",
@@ -393,7 +392,9 @@ class Condition(domainresource.DomainResource):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -457,7 +458,7 @@ class ConditionEvidence(backboneelement.BackboneElement):
 
     resource_type = Field("ConditionEvidence", const=True)
 
-    code: ListType[fhirtypes.CodeableConceptType] = Field(
+    code: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="code",
         title="Manifestation/symptom",
@@ -468,7 +469,7 @@ class ConditionEvidence(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    detail: ListType[fhirtypes.ReferenceType] = Field(
+    detail: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="detail",
         title="Supporting information found elsewhere",
@@ -492,7 +493,7 @@ class ConditionStage(backboneelement.BackboneElement):
 
     resource_type = Field("ConditionStage", const=True)
 
-    assessment: ListType[fhirtypes.ReferenceType] = Field(
+    assessment: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="assessment",
         title="Formal record of assessment",

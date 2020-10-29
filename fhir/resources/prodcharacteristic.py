@@ -6,8 +6,7 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import List as ListType
-from typing import Union
+import typing
 
 from pydantic import Field
 
@@ -26,7 +25,7 @@ class ProdCharacteristic(backboneelement.BackboneElement):
 
     resource_type = Field("ProdCharacteristic", const=True)
 
-    color: ListType[fhirtypes.String] = Field(
+    color: typing.List[fhirtypes.String] = Field(
         None,
         alias="color",
         title=(
@@ -38,9 +37,9 @@ class ProdCharacteristic(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    color__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_color", title="Extension field for ``color``."
-    )
+    color__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_color", title="Extension field for ``color``.")
 
     depth: fhirtypes.QuantityType = Field(
         None,
@@ -84,7 +83,7 @@ class ProdCharacteristic(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    image: ListType[fhirtypes.AttachmentType] = Field(
+    image: typing.List[fhirtypes.AttachmentType] = Field(
         None,
         alias="image",
         title=(
@@ -96,7 +95,7 @@ class ProdCharacteristic(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    imprint: ListType[fhirtypes.String] = Field(
+    imprint: typing.List[fhirtypes.String] = Field(
         None,
         alias="imprint",
         title="Where applicable, the imprint can be specified as text",
@@ -104,9 +103,9 @@ class ProdCharacteristic(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    imprint__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_imprint", title="Extension field for ``imprint``."
-    )
+    imprint__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_imprint", title="Extension field for ``imprint``.")
 
     nominalVolume: fhirtypes.QuantityType = Field(
         None,

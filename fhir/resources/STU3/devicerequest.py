@@ -6,8 +6,7 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from typing import Any, Dict
-from typing import List as ListType
+import typing
 
 from pydantic import Field, root_validator
 
@@ -39,7 +38,7 @@ class DeviceRequest(domainresource.DomainResource):
         None, alias="_authoredOn", title="Extension field for ``authoredOn``."
     )
 
-    basedOn: ListType[fhirtypes.ReferenceType] = Field(
+    basedOn: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
         title="What request fulfills",
@@ -90,7 +89,7 @@ class DeviceRequest(domainresource.DomainResource):
         enum_reference_types=["Encounter", "EpisodeOfCare"],
     )
 
-    definition: ListType[fhirtypes.ReferenceType] = Field(
+    definition: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="definition",
         title="Protocol or definition",
@@ -114,7 +113,7 @@ class DeviceRequest(domainresource.DomainResource):
         element_property=True,
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="External Request identifier",
@@ -135,7 +134,7 @@ class DeviceRequest(domainresource.DomainResource):
         element_property=True,
     )
 
-    note: ListType[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
         title="Notes or comments",
@@ -232,7 +231,7 @@ class DeviceRequest(domainresource.DomainResource):
         element_property=True,
     )
 
-    priorRequest: ListType[fhirtypes.ReferenceType] = Field(
+    priorRequest: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="priorRequest",
         title="What request replaces",
@@ -261,7 +260,7 @@ class DeviceRequest(domainresource.DomainResource):
         None, alias="_priority", title="Extension field for ``priority``."
     )
 
-    reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
+    reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="reasonCode",
         title="Coded Reason for request",
@@ -270,7 +269,7 @@ class DeviceRequest(domainresource.DomainResource):
         element_property=True,
     )
 
-    reasonReference: ListType[fhirtypes.ReferenceType] = Field(
+    reasonReference: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="reasonReference",
         title="Linked Reason for request",
@@ -281,7 +280,7 @@ class DeviceRequest(domainresource.DomainResource):
         enum_reference_types=["Resource"],
     )
 
-    relevantHistory: ListType[fhirtypes.ReferenceType] = Field(
+    relevantHistory: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="relevantHistory",
         title="Request provenance",
@@ -337,7 +336,7 @@ class DeviceRequest(domainresource.DomainResource):
         enum_reference_types=["Patient", "Group", "Location", "Device"],
     )
 
-    supportingInfo: ListType[fhirtypes.ReferenceType] = Field(
+    supportingInfo: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="supportingInfo",
         title="Additional clinical information",
@@ -353,7 +352,9 @@ class DeviceRequest(domainresource.DomainResource):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].

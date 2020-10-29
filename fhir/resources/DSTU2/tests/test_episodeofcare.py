@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
 from datetime import date
+
 from pydantic.datetime_parse import parse_date
+
 from .. import fhirtypes  # noqa: F401
 from .. import episodeofcare
 
 
 def test_EpisodeOfCare_1(base_settings):
-    filename = base_settings["unittest_data_dir"] / "episodeofcare-example.canonical.json"
+    filename = (
+        base_settings["unittest_data_dir"] / "episodeofcare-example.canonical.json"
+    )
     inst = episodeofcare.EpisodeOfCare.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -30,11 +34,16 @@ def impl_EpisodeOfCare_1(inst):
     assert inst.careTeam[0].period.start == parse_date("2014-09-01")
     assert inst.careTeam[0].role[0].coding[0].code == "AO"
     assert inst.careTeam[0].role[0].coding[0].display == "Assessment Worker"
-    assert inst.careTeam[0].role[0].coding[0].system == "http://example.org/EpisodeOfCare/Role"
+    assert (
+        inst.careTeam[0].role[0].coding[0].system
+        == "http://example.org/EpisodeOfCare/Role"
+    )
     assert inst.condition[0].display == "Severe burn of left ear"
     assert inst.condition[0].reference == "Condition/example"
     assert inst.id == "example"
-    assert inst.identifier[0].system == "http://example.org/sampleepisodeofcare-identifier"
+    assert (
+        inst.identifier[0].system == "http://example.org/sampleepisodeofcare-identifier"
+    )
     assert inst.identifier[0].value == "123"
     assert inst.managingOrganization.reference == "Organization/hl7"
     assert inst.patient.reference == "Patient/example"
@@ -52,10 +61,13 @@ def impl_EpisodeOfCare_1(inst):
     assert inst.statusHistory[2].status == "onhold"
     assert inst.statusHistory[3].period.start == parse_date("2014-09-25")
     assert inst.statusHistory[3].status == "active"
-    assert inst.text.div == """<div>
+    assert (
+        inst.text.div
+        == """<div>
       HACC Program for Peter James Chalmers at HL7 Healthcare 15 Sept 2014 - current<br/>
 			was on leave from 22 Sept - 24 Sept while in respite care
     </div>"""
+    )
     assert inst.text.status == "generated"
     assert inst.type[0].coding[0].code == "HACC"
     assert inst.type[0].coding[0].display == "Home and Community Care Package"

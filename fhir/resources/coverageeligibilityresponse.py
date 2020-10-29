@@ -6,11 +6,11 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import Any, Dict
-from typing import List as ListType
-from typing import Union
+import typing
 
 from pydantic import Field, root_validator
+from pydantic.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.errors import MissingError, NoneIsNotAllowedError
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -28,12 +28,13 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
     resource_type = Field("CoverageEligibilityResponse", const=True)
 
     created: fhirtypes.DateTime = Field(
-        ...,
+        None,
         alias="created",
         title="Response creation date",
         description="The date this resource was created.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_created", title="Extension field for ``created``."
@@ -51,7 +52,7 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         None, alias="_disposition", title="Extension field for ``disposition``."
     )
 
-    error: ListType[fhirtypes.CoverageEligibilityResponseErrorType] = Field(
+    error: typing.List[fhirtypes.CoverageEligibilityResponseErrorType] = Field(
         None,
         alias="error",
         title="Processing errors",
@@ -69,7 +70,7 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         element_property=True,
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="Business Identifier for coverage eligiblity request",
@@ -78,7 +79,7 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         element_property=True,
     )
 
-    insurance: ListType[fhirtypes.CoverageEligibilityResponseInsuranceType] = Field(
+    insurance: typing.List[fhirtypes.CoverageEligibilityResponseInsuranceType] = Field(
         None,
         alias="insurance",
         title="Patient insurance information",
@@ -105,12 +106,13 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
     )
 
     outcome: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="outcome",
         title="queued | complete | error | partial",
         description="The outcome of the request processing.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["queued", "complete", "error", "partial"],
@@ -148,8 +150,8 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         None, alias="_preAuthRef", title="Extension field for ``preAuthRef``."
     )
 
-    purpose: ListType[fhirtypes.Code] = Field(
-        ...,
+    purpose: typing.List[fhirtypes.Code] = Field(
+        None,
         alias="purpose",
         title="auth-requirements | benefits | discovery | validation",
         description=(
@@ -161,13 +163,14 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["auth-requirements", "benefits", "discovery", "validation"],
     )
-    purpose__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_purpose", title="Extension field for ``purpose``."
-    )
+    purpose__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_purpose", title="Extension field for ``purpose``.")
 
     request: fhirtypes.ReferenceType = Field(
         ...,
@@ -225,12 +228,13 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
     )
 
     status: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="status",
         title="active | cancelled | draft | entered-in-error",
         description="The status of the resource instance.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "cancelled", "draft", "entered-in-error"],
@@ -240,7 +244,73 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [
+            ("created", "created__ext"),
+            ("outcome", "outcome__ext"),
+            ("purpose", "purpose__ext"),
+            ("status", "status__ext"),
+        ]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
+
+    @root_validator(pre=True)
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -353,7 +423,7 @@ class CoverageEligibilityResponseInsurance(backboneelement.BackboneElement):
         None, alias="_inforce", title="Extension field for ``inforce``."
     )
 
-    item: ListType[fhirtypes.CoverageEligibilityResponseInsuranceItemType] = Field(
+    item: typing.List[fhirtypes.CoverageEligibilityResponseInsuranceItemType] = Field(
         None,
         alias="item",
         title="Benefits and authorization details",
@@ -395,7 +465,7 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
         title="Extension field for ``authorizationRequired``.",
     )
 
-    authorizationSupporting: ListType[fhirtypes.CodeableConceptType] = Field(
+    authorizationSupporting: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="authorizationSupporting",
         title="Type of required supporting materials",
@@ -424,7 +494,7 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
         title="Extension field for ``authorizationUrl``.",
     )
 
-    benefit: ListType[
+    benefit: typing.List[
         fhirtypes.CoverageEligibilityResponseInsuranceItemBenefitType
     ] = Field(
         None,
@@ -475,7 +545,7 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
         None, alias="_excluded", title="Extension field for ``excluded``."
     )
 
-    modifier: ListType[fhirtypes.CodeableConceptType] = Field(
+    modifier: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="modifier",
         title="Product or service billing modifiers",
@@ -666,7 +736,9 @@ class CoverageEligibilityResponseInsuranceItemBenefit(backboneelement.BackboneEl
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].

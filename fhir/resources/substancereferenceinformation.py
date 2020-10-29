@@ -6,8 +6,7 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import Any, Dict
-from typing import List as ListType
+import typing
 
 from pydantic import Field, root_validator
 
@@ -24,7 +23,7 @@ class SubstanceReferenceInformation(domainresource.DomainResource):
 
     resource_type = Field("SubstanceReferenceInformation", const=True)
 
-    classification: ListType[
+    classification: typing.List[
         fhirtypes.SubstanceReferenceInformationClassificationType
     ] = Field(
         None,
@@ -47,7 +46,7 @@ class SubstanceReferenceInformation(domainresource.DomainResource):
         None, alias="_comment", title="Extension field for ``comment``."
     )
 
-    gene: ListType[fhirtypes.SubstanceReferenceInformationGeneType] = Field(
+    gene: typing.List[fhirtypes.SubstanceReferenceInformationGeneType] = Field(
         None,
         alias="gene",
         title="Todo",
@@ -56,7 +55,7 @@ class SubstanceReferenceInformation(domainresource.DomainResource):
         element_property=True,
     )
 
-    geneElement: ListType[
+    geneElement: typing.List[
         fhirtypes.SubstanceReferenceInformationGeneElementType
     ] = Field(
         None,
@@ -67,7 +66,7 @@ class SubstanceReferenceInformation(domainresource.DomainResource):
         element_property=True,
     )
 
-    target: ListType[fhirtypes.SubstanceReferenceInformationTargetType] = Field(
+    target: typing.List[fhirtypes.SubstanceReferenceInformationTargetType] = Field(
         None,
         alias="target",
         title="Todo",
@@ -105,7 +104,7 @@ class SubstanceReferenceInformationClassification(backboneelement.BackboneElemen
         element_property=True,
     )
 
-    source: ListType[fhirtypes.ReferenceType] = Field(
+    source: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="source",
         title="Todo",
@@ -116,7 +115,7 @@ class SubstanceReferenceInformationClassification(backboneelement.BackboneElemen
         enum_reference_types=["DocumentReference"],
     )
 
-    subtype: ListType[fhirtypes.CodeableConceptType] = Field(
+    subtype: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="subtype",
         title="Todo",
@@ -154,7 +153,7 @@ class SubstanceReferenceInformationGene(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    source: ListType[fhirtypes.ReferenceType] = Field(
+    source: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="source",
         title="Todo",
@@ -185,7 +184,7 @@ class SubstanceReferenceInformationGeneElement(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    source: ListType[fhirtypes.ReferenceType] = Field(
+    source: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="source",
         title="Todo",
@@ -291,7 +290,7 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    source: ListType[fhirtypes.ReferenceType] = Field(
+    source: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="source",
         title="Todo",
@@ -321,7 +320,9 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].

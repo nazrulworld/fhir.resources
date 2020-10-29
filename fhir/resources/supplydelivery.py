@@ -6,8 +6,7 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import Any, Dict
-from typing import List as ListType
+import typing
 
 from pydantic import Field, root_validator
 
@@ -25,7 +24,7 @@ class SupplyDelivery(domainresource.DomainResource):
 
     resource_type = Field("SupplyDelivery", const=True)
 
-    basedOn: ListType[fhirtypes.ReferenceType] = Field(
+    basedOn: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
         title="Fulfills plan, proposal or order",
@@ -53,7 +52,7 @@ class SupplyDelivery(domainresource.DomainResource):
         enum_reference_types=["Location"],
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="External identifier",
@@ -106,7 +105,7 @@ class SupplyDelivery(domainresource.DomainResource):
         one_of_many_required=False,
     )
 
-    partOf: ListType[fhirtypes.ReferenceType] = Field(
+    partOf: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="partOf",
         title="Part of referenced event",
@@ -131,7 +130,7 @@ class SupplyDelivery(domainresource.DomainResource):
         enum_reference_types=["Patient"],
     )
 
-    receiver: ListType[fhirtypes.ReferenceType] = Field(
+    receiver: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="receiver",
         title="Who collected the Supply",
@@ -194,7 +193,9 @@ class SupplyDelivery(domainresource.DomainResource):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -289,7 +290,9 @@ class SupplyDeliverySuppliedItem(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].

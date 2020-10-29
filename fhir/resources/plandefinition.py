@@ -6,11 +6,11 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import Any, Dict
-from typing import List as ListType
-from typing import Union
+import typing
 
 from pydantic import Field, root_validator
+from pydantic.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.errors import MissingError, NoneIsNotAllowedError
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -30,7 +30,7 @@ class PlanDefinition(domainresource.DomainResource):
 
     resource_type = Field("PlanDefinition", const=True)
 
-    action: ListType[fhirtypes.PlanDefinitionActionType] = Field(
+    action: typing.List[fhirtypes.PlanDefinitionActionType] = Field(
         None,
         alias="action",
         title="Action defined by the plan",
@@ -55,7 +55,7 @@ class PlanDefinition(domainresource.DomainResource):
         None, alias="_approvalDate", title="Extension field for ``approvalDate``."
     )
 
-    author: ListType[fhirtypes.ContactDetailType] = Field(
+    author: typing.List[fhirtypes.ContactDetailType] = Field(
         None,
         alias="author",
         title="Who authored the content",
@@ -67,7 +67,7 @@ class PlanDefinition(domainresource.DomainResource):
         element_property=True,
     )
 
-    contact: ListType[fhirtypes.ContactDetailType] = Field(
+    contact: typing.List[fhirtypes.ContactDetailType] = Field(
         None,
         alias="contact",
         title="Contact details for the publisher",
@@ -127,7 +127,7 @@ class PlanDefinition(domainresource.DomainResource):
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    editor: ListType[fhirtypes.ContactDetailType] = Field(
+    editor: typing.List[fhirtypes.ContactDetailType] = Field(
         None,
         alias="editor",
         title="Who edited the content",
@@ -151,7 +151,7 @@ class PlanDefinition(domainresource.DomainResource):
         element_property=True,
     )
 
-    endorser: ListType[fhirtypes.ContactDetailType] = Field(
+    endorser: typing.List[fhirtypes.ContactDetailType] = Field(
         None,
         alias="endorser",
         title="Who endorsed the content",
@@ -179,7 +179,7 @@ class PlanDefinition(domainresource.DomainResource):
         None, alias="_experimental", title="Extension field for ``experimental``."
     )
 
-    goal: ListType[fhirtypes.PlanDefinitionGoalType] = Field(
+    goal: typing.List[fhirtypes.PlanDefinitionGoalType] = Field(
         None,
         alias="goal",
         title="What the plan is trying to accomplish",
@@ -193,7 +193,7 @@ class PlanDefinition(domainresource.DomainResource):
         element_property=True,
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="Additional identifier for the plan definition",
@@ -206,7 +206,7 @@ class PlanDefinition(domainresource.DomainResource):
         element_property=True,
     )
 
-    jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="jurisdiction",
         title="Intended jurisdiction for plan definition (if applicable)",
@@ -234,7 +234,7 @@ class PlanDefinition(domainresource.DomainResource):
         None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
     )
 
-    library: ListType[fhirtypes.Canonical] = Field(
+    library: typing.List[fhirtypes.Canonical] = Field(
         None,
         alias="library",
         title="Logic used by the plan definition",
@@ -247,9 +247,9 @@ class PlanDefinition(domainresource.DomainResource):
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Library"],
     )
-    library__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_library", title="Extension field for ``library``."
-    )
+    library__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_library", title="Extension field for ``library``.")
 
     name: fhirtypes.String = Field(
         None,
@@ -297,7 +297,7 @@ class PlanDefinition(domainresource.DomainResource):
         None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
-    relatedArtifact: ListType[fhirtypes.RelatedArtifactType] = Field(
+    relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] = Field(
         None,
         alias="relatedArtifact",
         title="Additional documentation, citations",
@@ -309,7 +309,7 @@ class PlanDefinition(domainresource.DomainResource):
         element_property=True,
     )
 
-    reviewer: ListType[fhirtypes.ContactDetailType] = Field(
+    reviewer: typing.List[fhirtypes.ContactDetailType] = Field(
         None,
         alias="reviewer",
         title="Who reviewed the content",
@@ -322,7 +322,7 @@ class PlanDefinition(domainresource.DomainResource):
     )
 
     status: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="status",
         title="draft | active | retired | unknown",
         description=(
@@ -331,6 +331,7 @@ class PlanDefinition(domainresource.DomainResource):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -398,7 +399,7 @@ class PlanDefinition(domainresource.DomainResource):
         None, alias="_title", title="Extension field for ``title``."
     )
 
-    topic: ListType[fhirtypes.CodeableConceptType] = Field(
+    topic: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="topic",
         title="E.g. Education, Treatment, Assessment",
@@ -461,7 +462,7 @@ class PlanDefinition(domainresource.DomainResource):
         None, alias="_usage", title="Extension field for ``usage``."
     )
 
-    useContext: ListType[fhirtypes.UsageContextType] = Field(
+    useContext: typing.List[fhirtypes.UsageContextType] = Field(
         None,
         alias="useContext",
         title="The context that the content is intended to support",
@@ -502,7 +503,68 @@ class PlanDefinition(domainresource.DomainResource):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("status", "status__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
+
+    @root_validator(pre=True)
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -549,7 +611,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
 
     resource_type = Field("PlanDefinitionAction", const=True)
 
-    action: ListType[fhirtypes.PlanDefinitionActionType] = Field(
+    action: typing.List[fhirtypes.PlanDefinitionActionType] = Field(
         None,
         alias="action",
         title="A sub-action",
@@ -580,7 +642,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         title="Extension field for ``cardinalityBehavior``.",
     )
 
-    code: ListType[fhirtypes.CodeableConceptType] = Field(
+    code: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="code",
         title="Code representing the meaning of the action or sub-actions",
@@ -593,7 +655,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    condition: ListType[fhirtypes.PlanDefinitionActionConditionType] = Field(
+    condition: typing.List[fhirtypes.PlanDefinitionActionConditionType] = Field(
         None,
         alias="condition",
         title="Whether or not the action is applicable",
@@ -662,7 +724,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    documentation: ListType[fhirtypes.RelatedArtifactType] = Field(
+    documentation: typing.List[fhirtypes.RelatedArtifactType] = Field(
         None,
         alias="documentation",
         title="Supporting documentation for the intended performer of the action",
@@ -675,7 +737,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    dynamicValue: ListType[fhirtypes.PlanDefinitionActionDynamicValueType] = Field(
+    dynamicValue: typing.List[fhirtypes.PlanDefinitionActionDynamicValueType] = Field(
         None,
         alias="dynamicValue",
         title="Dynamic aspects of the definition",
@@ -690,7 +752,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    goalId: ListType[fhirtypes.Id] = Field(
+    goalId: typing.List[fhirtypes.Id] = Field(
         None,
         alias="goalId",
         title="What goals this action supports",
@@ -701,9 +763,9 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    goalId__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_goalId", title="Extension field for ``goalId``."
-    )
+    goalId__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_goalId", title="Extension field for ``goalId``.")
 
     groupingBehavior: fhirtypes.Code = Field(
         None,
@@ -722,7 +784,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         title="Extension field for ``groupingBehavior``.",
     )
 
-    input: ListType[fhirtypes.DataRequirementType] = Field(
+    input: typing.List[fhirtypes.DataRequirementType] = Field(
         None,
         alias="input",
         title="Input data requirements",
@@ -731,7 +793,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    output: ListType[fhirtypes.DataRequirementType] = Field(
+    output: typing.List[fhirtypes.DataRequirementType] = Field(
         None,
         alias="output",
         title="Output data definition",
@@ -740,7 +802,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    participant: ListType[fhirtypes.PlanDefinitionActionParticipantType] = Field(
+    participant: typing.List[fhirtypes.PlanDefinitionActionParticipantType] = Field(
         None,
         alias="participant",
         title="Who should participate in the action",
@@ -796,7 +858,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         None, alias="_priority", title="Extension field for ``priority``."
     )
 
-    reason: ListType[fhirtypes.CodeableConceptType] = Field(
+    reason: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="reason",
         title="Why the action should be performed",
@@ -805,7 +867,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    relatedAction: ListType[fhirtypes.PlanDefinitionActionRelatedActionType] = Field(
+    relatedAction: typing.List[fhirtypes.PlanDefinitionActionRelatedActionType] = Field(
         None,
         alias="relatedAction",
         title="Relationship to another action",
@@ -1015,7 +1077,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         None, alias="_transform", title="Extension field for ``transform``."
     )
 
-    trigger: ListType[fhirtypes.TriggerDefinitionType] = Field(
+    trigger: typing.List[fhirtypes.TriggerDefinitionType] = Field(
         None,
         alias="trigger",
         title="When the action should be triggered",
@@ -1034,7 +1096,9 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -1106,12 +1170,13 @@ class PlanDefinitionActionCondition(backboneelement.BackboneElement):
     )
 
     kind: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="kind",
         title="applicability | start | stop",
         description="The kind of condition.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["applicability", "start", "stop"],
@@ -1119,6 +1184,65 @@ class PlanDefinitionActionCondition(backboneelement.BackboneElement):
     kind__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_kind", title="Extension field for ``kind``."
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("kind", "kind__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
 
 
 class PlanDefinitionActionDynamicValue(backboneelement.BackboneElement):
@@ -1192,12 +1316,13 @@ class PlanDefinitionActionParticipant(backboneelement.BackboneElement):
     )
 
     type: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="type",
         title="patient | practitioner | related-person | device",
         description="The type of participant in the action.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["patient", "practitioner", "related-person", "device"],
@@ -1205,6 +1330,65 @@ class PlanDefinitionActionParticipant(backboneelement.BackboneElement):
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("type", "type__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
 
 
 class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
@@ -1220,12 +1404,13 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
     resource_type = Field("PlanDefinitionActionRelatedAction", const=True)
 
     actionId: fhirtypes.Id = Field(
-        ...,
+        None,
         alias="actionId",
         title="What action is this related to",
         description="The element id of the related action.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     actionId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_actionId", title="Extension field for ``actionId``."
@@ -1262,7 +1447,7 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
     )
 
     relationship: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="relationship",
         title=(
             "before-start | before | before-end | concurrent-with-start | "
@@ -1271,6 +1456,7 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
         description="The relationship of this action to the related action.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -1290,7 +1476,71 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [
+            ("actionId", "actionId__ext"),
+            ("relationship", "relationship__ext"),
+        ]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
+
+    @root_validator(pre=True)
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -1340,7 +1590,7 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
 
     resource_type = Field("PlanDefinitionGoal", const=True)
 
-    addresses: ListType[fhirtypes.CodeableConceptType] = Field(
+    addresses: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="addresses",
         title="What does the goal address",
@@ -1374,7 +1624,7 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    documentation: ListType[fhirtypes.RelatedArtifactType] = Field(
+    documentation: typing.List[fhirtypes.RelatedArtifactType] = Field(
         None,
         alias="documentation",
         title="Supporting documentation for the goal",
@@ -1409,7 +1659,7 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    target: ListType[fhirtypes.PlanDefinitionGoalTargetType] = Field(
+    target: typing.List[fhirtypes.PlanDefinitionGoalTargetType] = Field(
         None,
         alias="target",
         title="Target outcome for the goal",
@@ -1512,7 +1762,9 @@ class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].

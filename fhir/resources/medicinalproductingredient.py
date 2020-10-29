@@ -6,7 +6,7 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import List as ListType
+import typing
 
 from pydantic import Field
 
@@ -50,7 +50,7 @@ class MedicinalProductIngredient(domainresource.DomainResource):
         element_property=True,
     )
 
-    manufacturer: ListType[fhirtypes.ReferenceType] = Field(
+    manufacturer: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="manufacturer",
         title="Manufacturer of this Ingredient",
@@ -70,7 +70,7 @@ class MedicinalProductIngredient(domainresource.DomainResource):
         element_property=True,
     )
 
-    specifiedSubstance: ListType[
+    specifiedSubstance: typing.List[
         fhirtypes.MedicinalProductIngredientSpecifiedSubstanceType
     ] = Field(
         None,
@@ -128,7 +128,7 @@ class MedicinalProductIngredientSpecifiedSubstance(backboneelement.BackboneEleme
         element_property=True,
     )
 
-    strength: ListType[
+    strength: typing.List[
         fhirtypes.MedicinalProductIngredientSpecifiedSubstanceStrengthType
     ] = Field(
         None,
@@ -180,7 +180,7 @@ class MedicinalProductIngredientSpecifiedSubstanceStrength(
         element_property=True,
     )
 
-    country: ListType[fhirtypes.CodeableConceptType] = Field(
+    country: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="country",
         title="The country or countries for which the strength range applies",
@@ -229,7 +229,7 @@ class MedicinalProductIngredientSpecifiedSubstanceStrength(
         element_property=True,
     )
 
-    referenceStrength: ListType[
+    referenceStrength: typing.List[
         fhirtypes.MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrengthType
     ] = Field(
         None,
@@ -256,7 +256,7 @@ class MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength(
         const=True,
     )
 
-    country: ListType[fhirtypes.CodeableConceptType] = Field(
+    country: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="country",
         title="The country or countries for which the strength range applies",
@@ -326,7 +326,7 @@ class MedicinalProductIngredientSubstance(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    strength: ListType[
+    strength: typing.List[
         fhirtypes.MedicinalProductIngredientSpecifiedSubstanceStrengthType
     ] = Field(
         None,

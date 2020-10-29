@@ -6,7 +6,7 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from typing import List as ListType
+import typing
 
 from pydantic import Field
 
@@ -24,7 +24,7 @@ class Element(fhirabstractmodel.FHIRAbstractModel):
 
     resource_type = Field("Element", const=True)
 
-    extension: ListType[fhirtypes.ExtensionType] = Field(
+    extension: typing.List[fhirtypes.ExtensionType] = Field(
         None,
         alias="extension",
         title="Additional Content defined by implementations",

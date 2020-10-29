@@ -6,8 +6,7 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from typing import Any, Dict
-from typing import List as ListType
+import typing
 
 from pydantic import Field, root_validator
 
@@ -47,7 +46,7 @@ class Specimen(domainresource.DomainResource):
         element_property=True,
     )
 
-    container: ListType[fhirtypes.SpecimenContainerType] = Field(
+    container: typing.List[fhirtypes.SpecimenContainerType] = Field(
         None,
         alias="container",
         title="Direct container of specimen (tube/slide, etc.)",
@@ -59,7 +58,7 @@ class Specimen(domainresource.DomainResource):
         element_property=True,
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="External Identifier",
@@ -68,7 +67,7 @@ class Specimen(domainresource.DomainResource):
         element_property=True,
     )
 
-    note: ListType[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
         title="Comments",
@@ -81,7 +80,7 @@ class Specimen(domainresource.DomainResource):
         element_property=True,
     )
 
-    parent: ListType[fhirtypes.ReferenceType] = Field(
+    parent: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="parent",
         title="Specimen from which this specimen originated",
@@ -95,7 +94,7 @@ class Specimen(domainresource.DomainResource):
         enum_reference_types=["Specimen"],
     )
 
-    processing: ListType[fhirtypes.SpecimenProcessingType] = Field(
+    processing: typing.List[fhirtypes.SpecimenProcessingType] = Field(
         None,
         alias="processing",
         title="Processing and processing step details",
@@ -116,7 +115,7 @@ class Specimen(domainresource.DomainResource):
         None, alias="_receivedTime", title="Extension field for ``receivedTime``."
     )
 
-    request: ListType[fhirtypes.ReferenceType] = Field(
+    request: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="request",
         title="Why the specimen was collected",
@@ -264,7 +263,9 @@ class SpecimenCollection(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -365,7 +366,7 @@ class SpecimenContainer(backboneelement.BackboneElement):
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="Id for the container",
@@ -403,7 +404,9 @@ class SpecimenContainer(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -452,7 +455,7 @@ class SpecimenProcessing(backboneelement.BackboneElement):
 
     resource_type = Field("SpecimenProcessing", const=True)
 
-    additive: ListType[fhirtypes.ReferenceType] = Field(
+    additive: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="additive",
         title="Material used in the processing step",
@@ -520,7 +523,9 @@ class SpecimenProcessing(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].

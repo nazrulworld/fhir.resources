@@ -6,9 +6,11 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from typing import List as ListType
+import typing
 
-from pydantic import Field
+from pydantic import Field, root_validator
+from pydantic.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.errors import MissingError, NoneIsNotAllowedError
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -26,7 +28,7 @@ class Encounter(domainresource.DomainResource):
 
     resource_type = Field("Encounter", const=True)
 
-    account: ListType[fhirtypes.ReferenceType] = Field(
+    account: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="account",
         title="The set of accounts that may be used for billing for this Encounter",
@@ -48,7 +50,7 @@ class Encounter(domainresource.DomainResource):
         enum_reference_types=["Appointment"],
     )
 
-    classHistory: ListType[fhirtypes.EncounterClassHistoryType] = Field(
+    classHistory: typing.List[fhirtypes.EncounterClassHistoryType] = Field(
         None,
         alias="classHistory",
         title="List of past encounter classes",
@@ -75,7 +77,7 @@ class Encounter(domainresource.DomainResource):
         element_property=True,
     )
 
-    diagnosis: ListType[fhirtypes.EncounterDiagnosisType] = Field(
+    diagnosis: typing.List[fhirtypes.EncounterDiagnosisType] = Field(
         None,
         alias="diagnosis",
         title="The list of diagnosis relevant to this encounter",
@@ -84,7 +86,7 @@ class Encounter(domainresource.DomainResource):
         element_property=True,
     )
 
-    episodeOfCare: ListType[fhirtypes.ReferenceType] = Field(
+    episodeOfCare: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="episodeOfCare",
         title="Episode(s) of care that this encounter should be recorded against",
@@ -113,7 +115,7 @@ class Encounter(domainresource.DomainResource):
         element_property=True,
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="Identifier(s) by which this encounter is known",
@@ -122,7 +124,7 @@ class Encounter(domainresource.DomainResource):
         element_property=True,
     )
 
-    incomingReferral: ListType[fhirtypes.ReferenceType] = Field(
+    incomingReferral: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="incomingReferral",
         title="The ReferralRequest that initiated this encounter",
@@ -145,7 +147,7 @@ class Encounter(domainresource.DomainResource):
         element_property=True,
     )
 
-    location: ListType[fhirtypes.EncounterLocationType] = Field(
+    location: typing.List[fhirtypes.EncounterLocationType] = Field(
         None,
         alias="location",
         title="List of locations where the patient has been",
@@ -168,7 +170,7 @@ class Encounter(domainresource.DomainResource):
         enum_reference_types=["Encounter"],
     )
 
-    participant: ListType[fhirtypes.EncounterParticipantType] = Field(
+    participant: typing.List[fhirtypes.EncounterParticipantType] = Field(
         None,
         alias="participant",
         title="List of participants involved in the encounter",
@@ -195,7 +197,7 @@ class Encounter(domainresource.DomainResource):
         element_property=True,
     )
 
-    reason: ListType[fhirtypes.CodeableConceptType] = Field(
+    reason: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="reason",
         title="Reason the encounter takes place (code)",
@@ -225,7 +227,7 @@ class Encounter(domainresource.DomainResource):
     )
 
     status: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="status",
         title=(
             "planned | arrived | triaged | in-progress | onleave | finished | "
@@ -234,6 +236,7 @@ class Encounter(domainresource.DomainResource):
         description=None,
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -251,7 +254,7 @@ class Encounter(domainresource.DomainResource):
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    statusHistory: ListType[fhirtypes.EncounterStatusHistoryType] = Field(
+    statusHistory: typing.List[fhirtypes.EncounterStatusHistoryType] = Field(
         None,
         alias="statusHistory",
         title="List of past encounter statuses",
@@ -275,7 +278,7 @@ class Encounter(domainresource.DomainResource):
         enum_reference_types=["Patient", "Group"],
     )
 
-    type: ListType[fhirtypes.CodeableConceptType] = Field(
+    type: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="type",
         title="Specific type of encounter",
@@ -286,6 +289,65 @@ class Encounter(domainresource.DomainResource):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("status", "status__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
 
 
 class EncounterClassHistory(backboneelement.BackboneElement):
@@ -406,7 +468,7 @@ class EncounterHospitalization(backboneelement.BackboneElement):
         enum_reference_types=["Location"],
     )
 
-    dietPreference: ListType[fhirtypes.CodeableConceptType] = Field(
+    dietPreference: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="dietPreference",
         title="Diet preferences reported by the patient",
@@ -456,7 +518,7 @@ class EncounterHospitalization(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    specialArrangement: ListType[fhirtypes.CodeableConceptType] = Field(
+    specialArrangement: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="specialArrangement",
         title="Wheelchair, translator, stretcher, etc.",
@@ -469,7 +531,7 @@ class EncounterHospitalization(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    specialCourtesy: ListType[fhirtypes.CodeableConceptType] = Field(
+    specialCourtesy: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="specialCourtesy",
         title="Special courtesies (VIP, board member)",
@@ -565,7 +627,7 @@ class EncounterParticipant(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    type: ListType[fhirtypes.CodeableConceptType] = Field(
+    type: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="type",
         title="Role of participant in encounter",
@@ -598,7 +660,7 @@ class EncounterStatusHistory(backboneelement.BackboneElement):
     )
 
     status: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="status",
         title=(
             "planned | arrived | triaged | in-progress | onleave | finished | "
@@ -607,6 +669,7 @@ class EncounterStatusHistory(backboneelement.BackboneElement):
         description=None,
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -623,3 +686,62 @@ class EncounterStatusHistory(backboneelement.BackboneElement):
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("status", "status__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values

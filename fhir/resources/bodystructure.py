@@ -6,7 +6,7 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import List as ListType
+import typing
 
 from pydantic import Field
 
@@ -50,7 +50,7 @@ class BodyStructure(domainresource.DomainResource):
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="Bodystructure identifier",
@@ -59,7 +59,7 @@ class BodyStructure(domainresource.DomainResource):
         element_property=True,
     )
 
-    image: ListType[fhirtypes.AttachmentType] = Field(
+    image: typing.List[fhirtypes.AttachmentType] = Field(
         None,
         alias="image",
         title="Attached images",
@@ -80,7 +80,7 @@ class BodyStructure(domainresource.DomainResource):
         element_property=True,
     )
 
-    locationQualifier: ListType[fhirtypes.CodeableConceptType] = Field(
+    locationQualifier: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="locationQualifier",
         title="Body site modifier",

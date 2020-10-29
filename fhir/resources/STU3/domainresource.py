@@ -6,7 +6,7 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from typing import List as ListType
+import typing
 
 from pydantic import Field
 
@@ -24,7 +24,7 @@ class DomainResource(resource.Resource):
 
     resource_type = Field("DomainResource", const=True)
 
-    contained: ListType[fhirtypes.ResourceType] = Field(
+    contained: typing.List[fhirtypes.ResourceType] = Field(
         None,
         alias="contained",
         title="Contained, inline Resources",
@@ -37,7 +37,7 @@ class DomainResource(resource.Resource):
         element_property=True,
     )
 
-    extension: ListType[fhirtypes.ExtensionType] = Field(
+    extension: typing.List[fhirtypes.ExtensionType] = Field(
         None,
         alias="extension",
         title="Additional Content defined by implementations",
@@ -54,7 +54,7 @@ class DomainResource(resource.Resource):
         element_property=True,
     )
 
-    modifierExtension: ListType[fhirtypes.ExtensionType] = Field(
+    modifierExtension: typing.List[fhirtypes.ExtensionType] = Field(
         None,
         alias="modifierExtension",
         title="Extensions that cannot be ignored",

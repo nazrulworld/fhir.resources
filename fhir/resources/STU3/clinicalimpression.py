@@ -6,11 +6,11 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from typing import Any, Dict
-from typing import List as ListType
-from typing import Union
+import typing
 
 from pydantic import Field, root_validator
+from pydantic.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.errors import MissingError, NoneIsNotAllowedError
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -33,7 +33,7 @@ class ClinicalImpression(domainresource.DomainResource):
 
     resource_type = Field("ClinicalImpression", const=True)
 
-    action: ListType[fhirtypes.ReferenceType] = Field(
+    action: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="action",
         title="Action taken as part of assessment procedure",
@@ -140,7 +140,7 @@ class ClinicalImpression(domainresource.DomainResource):
         one_of_many_required=False,
     )
 
-    finding: ListType[fhirtypes.ClinicalImpressionFindingType] = Field(
+    finding: typing.List[fhirtypes.ClinicalImpressionFindingType] = Field(
         None,
         alias="finding",
         title="Possible or likely findings and diagnoses",
@@ -152,7 +152,7 @@ class ClinicalImpression(domainresource.DomainResource):
         element_property=True,
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="Business identifier",
@@ -164,7 +164,7 @@ class ClinicalImpression(domainresource.DomainResource):
         element_property=True,
     )
 
-    investigation: ListType[fhirtypes.ClinicalImpressionInvestigationType] = Field(
+    investigation: typing.List[fhirtypes.ClinicalImpressionInvestigationType] = Field(
         None,
         alias="investigation",
         title="One or more sets of investigations (signs, symptions, etc.)",
@@ -179,7 +179,7 @@ class ClinicalImpression(domainresource.DomainResource):
         element_property=True,
     )
 
-    note: ListType[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
         title="Comments made about the ClinicalImpression",
@@ -208,7 +208,7 @@ class ClinicalImpression(domainresource.DomainResource):
         enum_reference_types=["ClinicalImpression"],
     )
 
-    problem: ListType[fhirtypes.ReferenceType] = Field(
+    problem: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="problem",
         title="Relevant impressions of patient state",
@@ -219,7 +219,7 @@ class ClinicalImpression(domainresource.DomainResource):
         enum_reference_types=["Condition", "AllergyIntolerance"],
     )
 
-    prognosisCodeableConcept: ListType[fhirtypes.CodeableConceptType] = Field(
+    prognosisCodeableConcept: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="prognosisCodeableConcept",
         title="Estimate of likely outcome",
@@ -228,7 +228,7 @@ class ClinicalImpression(domainresource.DomainResource):
         element_property=True,
     )
 
-    prognosisReference: ListType[fhirtypes.ReferenceType] = Field(
+    prognosisReference: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="prognosisReference",
         title="RiskAssessment expressing likely outcome",
@@ -239,7 +239,7 @@ class ClinicalImpression(domainresource.DomainResource):
         enum_reference_types=["RiskAssessment"],
     )
 
-    protocol: ListType[fhirtypes.Uri] = Field(
+    protocol: typing.List[fhirtypes.Uri] = Field(
         None,
         alias="protocol",
         title="Clinical Protocol followed",
@@ -251,17 +251,18 @@ class ClinicalImpression(domainresource.DomainResource):
         # if property is element of this resource.
         element_property=True,
     )
-    protocol__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_protocol", title="Extension field for ``protocol``."
-    )
+    protocol__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_protocol", title="Extension field for ``protocol``.")
 
     status: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="status",
         title="draft | completed | entered-in-error",
         description="Identifies the workflow status of the assessment.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "completed", "entered-in-error"],
@@ -294,7 +295,68 @@ class ClinicalImpression(domainresource.DomainResource):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("status", "status__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
+
+    @root_validator(pre=True)
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -387,7 +449,9 @@ class ClinicalImpressionFinding(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -452,7 +516,7 @@ class ClinicalImpressionInvestigation(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    item: ListType[fhirtypes.ReferenceType] = Field(
+    item: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="item",
         title="Record of a specific investigation",

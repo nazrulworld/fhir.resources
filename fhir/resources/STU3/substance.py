@@ -6,8 +6,7 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from typing import Any, Dict
-from typing import List as ListType
+import typing
 
 from pydantic import Field, root_validator
 
@@ -24,7 +23,7 @@ class Substance(domainresource.DomainResource):
 
     resource_type = Field("Substance", const=True)
 
-    category: ListType[fhirtypes.CodeableConceptType] = Field(
+    category: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="category",
         title="What class/type of substance this is",
@@ -60,7 +59,7 @@ class Substance(domainresource.DomainResource):
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="Unique identifier",
@@ -69,7 +68,7 @@ class Substance(domainresource.DomainResource):
         element_property=True,
     )
 
-    ingredient: ListType[fhirtypes.SubstanceIngredientType] = Field(
+    ingredient: typing.List[fhirtypes.SubstanceIngredientType] = Field(
         None,
         alias="ingredient",
         title="Composition information about the substance",
@@ -78,7 +77,7 @@ class Substance(domainresource.DomainResource):
         element_property=True,
     )
 
-    instance: ListType[fhirtypes.SubstanceInstanceType] = Field(
+    instance: typing.List[fhirtypes.SubstanceInstanceType] = Field(
         None,
         alias="instance",
         title="If this describes a specific package/container of the substance",
@@ -153,7 +152,9 @@ class SubstanceIngredient(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].

@@ -5,8 +5,7 @@ Release: DSTU2
 Version: 1.0.2
 Revision: None
 """
-from .. import fhirtypes
-from .. import order
+from .. import fhirtypes, order
 
 
 def test_Order_1(base_settings):

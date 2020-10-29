@@ -6,9 +6,11 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from typing import List as ListType
+import typing
 
-from pydantic import Field
+from pydantic import Field, root_validator
+from pydantic.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.errors import MissingError, NoneIsNotAllowedError
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -26,7 +28,7 @@ class ImmunizationRecommendation(domainresource.DomainResource):
 
     resource_type = Field("ImmunizationRecommendation", const=True)
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="Business identifier",
@@ -46,7 +48,7 @@ class ImmunizationRecommendation(domainresource.DomainResource):
         enum_reference_types=["Patient"],
     )
 
-    recommendation: ListType[
+    recommendation: typing.List[
         fhirtypes.ImmunizationRecommendationRecommendationType
     ] = Field(
         ...,
@@ -69,18 +71,19 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
     resource_type = Field("ImmunizationRecommendationRecommendation", const=True)
 
     date: fhirtypes.DateTime = Field(
-        ...,
+        None,
         alias="date",
         title="Date recommendation created",
         description="The date the immunization recommendation was created.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    dateCriterion: ListType[
+    dateCriterion: typing.List[
         fhirtypes.ImmunizationRecommendationRecommendationDateCriterionType
     ] = Field(
         None,
@@ -130,7 +133,7 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    supportingImmunization: ListType[fhirtypes.ReferenceType] = Field(
+    supportingImmunization: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="supportingImmunization",
         title="Past immunizations supporting recommendation",
@@ -143,7 +146,7 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         enum_reference_types=["Immunization"],
     )
 
-    supportingPatientInformation: ListType[fhirtypes.ReferenceType] = Field(
+    supportingPatientInformation: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="supportingPatientInformation",
         title="Patient observations supporting recommendation",
@@ -176,6 +179,65 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("date", "date__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
+
 
 class ImmunizationRecommendationRecommendationDateCriterion(
     backboneelement.BackboneElement
@@ -206,16 +268,76 @@ class ImmunizationRecommendationRecommendationDateCriterion(
     )
 
     value: fhirtypes.DateTime = Field(
-        ...,
+        None,
         alias="value",
         title="Recommended date",
         description="The date whose meaning is specified by dateCriterion.code.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("value", "value__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
 
 
 class ImmunizationRecommendationRecommendationProtocol(backboneelement.BackboneElement):

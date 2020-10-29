@@ -6,9 +6,11 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from typing import List as ListType
+import typing
 
-from pydantic import Field
+from pydantic import Field, root_validator
+from pydantic.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.errors import MissingError, NoneIsNotAllowedError
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -36,7 +38,7 @@ class DocumentReference(domainresource.DomainResource):
         enum_reference_types=["Practitioner", "Organization"],
     )
 
-    author: ListType[fhirtypes.ReferenceType] = Field(
+    author: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="author",
         title="Who and/or what authored the document",
@@ -69,7 +71,7 @@ class DocumentReference(domainresource.DomainResource):
         element_property=True,
     )
 
-    content: ListType[fhirtypes.DocumentReferenceContentType] = Field(
+    content: typing.List[fhirtypes.DocumentReferenceContentType] = Field(
         ...,
         alias="content",
         title="Document referenced",
@@ -146,7 +148,7 @@ class DocumentReference(domainresource.DomainResource):
         None, alias="_docStatus", title="Extension field for ``docStatus``."
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="Other identifiers for the document",
@@ -159,12 +161,13 @@ class DocumentReference(domainresource.DomainResource):
     )
 
     indexed: fhirtypes.Instant = Field(
-        ...,
+        None,
         alias="indexed",
         title="When this document reference was created",
         description="When the document reference was created.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     indexed__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_indexed", title="Extension field for ``indexed``."
@@ -184,7 +187,7 @@ class DocumentReference(domainresource.DomainResource):
         element_property=True,
     )
 
-    relatesTo: ListType[fhirtypes.DocumentReferenceRelatesToType] = Field(
+    relatesTo: typing.List[fhirtypes.DocumentReferenceRelatesToType] = Field(
         None,
         alias="relatesTo",
         title="Relationships to other documents",
@@ -196,7 +199,7 @@ class DocumentReference(domainresource.DomainResource):
         element_property=True,
     )
 
-    securityLabel: ListType[fhirtypes.CodeableConceptType] = Field(
+    securityLabel: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="securityLabel",
         title="Document security-tags",
@@ -212,12 +215,13 @@ class DocumentReference(domainresource.DomainResource):
     )
 
     status: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="status",
         title="current | superseded | entered-in-error",
         description="The status of this document reference.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["current", "superseded", "entered-in-error"],
@@ -254,6 +258,65 @@ class DocumentReference(domainresource.DomainResource):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("indexed", "indexed__ext"), ("status", "status__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
 
 
 class DocumentReferenceContent(backboneelement.BackboneElement):
@@ -319,7 +382,7 @@ class DocumentReferenceContext(backboneelement.BackboneElement):
         enum_reference_types=["Encounter"],
     )
 
-    event: ListType[fhirtypes.CodeableConceptType] = Field(
+    event: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="event",
         title="Main clinical acts documented",
@@ -370,7 +433,7 @@ class DocumentReferenceContext(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    related: ListType[fhirtypes.DocumentReferenceContextRelatedType] = Field(
+    related: typing.List[fhirtypes.DocumentReferenceContextRelatedType] = Field(
         None,
         alias="related",
         title="Related identifiers or resources",
@@ -447,12 +510,13 @@ class DocumentReferenceRelatesTo(backboneelement.BackboneElement):
     resource_type = Field("DocumentReferenceRelatesTo", const=True)
 
     code: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="code",
         title="replaces | transforms | signs | appends",
         description="The type of relationship that this document has with anther document.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["replaces", "transforms", "signs", "appends"],
@@ -471,3 +535,62 @@ class DocumentReferenceRelatesTo(backboneelement.BackboneElement):
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("code", "code__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values

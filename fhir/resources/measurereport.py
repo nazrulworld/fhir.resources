@@ -6,9 +6,11 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import List as ListType
+import typing
 
-from pydantic import Field
+from pydantic import Field, root_validator
+from pydantic.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.errors import MissingError, NoneIsNotAllowedError
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -38,7 +40,7 @@ class MeasureReport(domainresource.DomainResource):
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    evaluatedResource: ListType[fhirtypes.ReferenceType] = Field(
+    evaluatedResource: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="evaluatedResource",
         title="What data was used to calculate the measure score",
@@ -52,7 +54,7 @@ class MeasureReport(domainresource.DomainResource):
         enum_reference_types=["Resource"],
     )
 
-    group: ListType[fhirtypes.MeasureReportGroupType] = Field(
+    group: typing.List[fhirtypes.MeasureReportGroupType] = Field(
         None,
         alias="group",
         title="Measure results for each group",
@@ -64,7 +66,7 @@ class MeasureReport(domainresource.DomainResource):
         element_property=True,
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="Additional identifier for the MeasureReport",
@@ -90,12 +92,13 @@ class MeasureReport(domainresource.DomainResource):
     )
 
     measure: fhirtypes.Canonical = Field(
-        ...,
+        None,
         alias="measure",
         title="What measure was calculated",
         description="A reference to the Measure that was calculated to produce this report.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Measure"],
     )
@@ -129,7 +132,7 @@ class MeasureReport(domainresource.DomainResource):
     )
 
     status: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="status",
         title="complete | pending | error",
         description=(
@@ -138,6 +141,7 @@ class MeasureReport(domainresource.DomainResource):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["complete", "pending", "error"],
@@ -169,7 +173,7 @@ class MeasureReport(domainresource.DomainResource):
     )
 
     type: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="type",
         title="individual | subject-list | summary | data-collection",
         description=(
@@ -183,6 +187,7 @@ class MeasureReport(domainresource.DomainResource):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["individual", "subject-list", "summary", "data-collection"],
@@ -190,6 +195,69 @@ class MeasureReport(domainresource.DomainResource):
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [
+            ("measure", "measure__ext"),
+            ("status", "status__ext"),
+            ("type", "type__ext"),
+        ]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
 
 
 class MeasureReportGroup(backboneelement.BackboneElement):
@@ -229,7 +297,7 @@ class MeasureReportGroup(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    population: ListType[fhirtypes.MeasureReportGroupPopulationType] = Field(
+    population: typing.List[fhirtypes.MeasureReportGroupPopulationType] = Field(
         None,
         alias="population",
         title="The populations in the group",
@@ -241,7 +309,7 @@ class MeasureReportGroup(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    stratifier: ListType[fhirtypes.MeasureReportGroupStratifierType] = Field(
+    stratifier: typing.List[fhirtypes.MeasureReportGroupStratifierType] = Field(
         None,
         alias="stratifier",
         title="Stratification results",
@@ -318,7 +386,7 @@ class MeasureReportGroupStratifier(backboneelement.BackboneElement):
 
     resource_type = Field("MeasureReportGroupStratifier", const=True)
 
-    code: ListType[fhirtypes.CodeableConceptType] = Field(
+    code: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="code",
         title="What stratifier of the group",
@@ -327,7 +395,7 @@ class MeasureReportGroupStratifier(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    stratum: ListType[fhirtypes.MeasureReportGroupStratifierStratumType] = Field(
+    stratum: typing.List[fhirtypes.MeasureReportGroupStratifierStratumType] = Field(
         None,
         alias="stratum",
         title=(
@@ -358,7 +426,7 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
 
     resource_type = Field("MeasureReportGroupStratifierStratum", const=True)
 
-    component: ListType[
+    component: typing.List[
         fhirtypes.MeasureReportGroupStratifierStratumComponentType
     ] = Field(
         None,
@@ -382,7 +450,7 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    population: ListType[
+    population: typing.List[
         fhirtypes.MeasureReportGroupStratifierStratumPopulationType
     ] = Field(
         None,

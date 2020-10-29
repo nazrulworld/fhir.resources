@@ -5,8 +5,7 @@ Release: DSTU2
 Version: 1.0.2
 Revision: None
 """
-from .. import fhirtypes
-from .. import orderresponse
+from .. import fhirtypes, orderresponse
 
 
 def test_OrderResponse_1(base_settings):

@@ -6,11 +6,11 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import Any, Dict
-from typing import List as ListType
-from typing import Union
+import typing
 
 from pydantic import Field, root_validator
+from pydantic.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.errors import MissingError, NoneIsNotAllowedError
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -38,7 +38,7 @@ class MedicinalProduct(domainresource.DomainResource):
         element_property=True,
     )
 
-    attachedDocument: ListType[fhirtypes.ReferenceType] = Field(
+    attachedDocument: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="attachedDocument",
         title="Supporting documentation, typically for regulatory submission",
@@ -49,7 +49,7 @@ class MedicinalProduct(domainresource.DomainResource):
         enum_reference_types=["DocumentReference"],
     )
 
-    clinicalTrial: ListType[fhirtypes.ReferenceType] = Field(
+    clinicalTrial: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="clinicalTrial",
         title="Clinical trials or studies that this product is involved in",
@@ -72,7 +72,7 @@ class MedicinalProduct(domainresource.DomainResource):
         element_property=True,
     )
 
-    contact: ListType[fhirtypes.ReferenceType] = Field(
+    contact: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="contact",
         title="A product specific contact, person (in a role), or an organization",
@@ -83,7 +83,7 @@ class MedicinalProduct(domainresource.DomainResource):
         enum_reference_types=["Organization", "PractitionerRole"],
     )
 
-    crossReference: ListType[fhirtypes.IdentifierType] = Field(
+    crossReference: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="crossReference",
         title=(
@@ -104,7 +104,7 @@ class MedicinalProduct(domainresource.DomainResource):
         element_property=True,
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="Business identifier for this product. Could be an MPID",
@@ -125,7 +125,7 @@ class MedicinalProduct(domainresource.DomainResource):
         element_property=True,
     )
 
-    manufacturingBusinessOperation: ListType[
+    manufacturingBusinessOperation: typing.List[
         fhirtypes.MedicinalProductManufacturingBusinessOperationType
     ] = Field(
         None,
@@ -139,7 +139,7 @@ class MedicinalProduct(domainresource.DomainResource):
         element_property=True,
     )
 
-    marketingStatus: ListType[fhirtypes.MarketingStatusType] = Field(
+    marketingStatus: typing.List[fhirtypes.MarketingStatusType] = Field(
         None,
         alias="marketingStatus",
         title=(
@@ -151,7 +151,7 @@ class MedicinalProduct(domainresource.DomainResource):
         element_property=True,
     )
 
-    masterFile: ListType[fhirtypes.ReferenceType] = Field(
+    masterFile: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="masterFile",
         title=(
@@ -165,7 +165,7 @@ class MedicinalProduct(domainresource.DomainResource):
         enum_reference_types=["DocumentReference"],
     )
 
-    name: ListType[fhirtypes.MedicinalProductNameType] = Field(
+    name: typing.List[fhirtypes.MedicinalProductNameType] = Field(
         ...,
         alias="name",
         title="The product's name, including full name and possibly coded parts",
@@ -174,7 +174,7 @@ class MedicinalProduct(domainresource.DomainResource):
         element_property=True,
     )
 
-    packagedMedicinalProduct: ListType[fhirtypes.ReferenceType] = Field(
+    packagedMedicinalProduct: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="packagedMedicinalProduct",
         title="Package representation for the product",
@@ -194,7 +194,7 @@ class MedicinalProduct(domainresource.DomainResource):
         element_property=True,
     )
 
-    pharmaceuticalProduct: ListType[fhirtypes.ReferenceType] = Field(
+    pharmaceuticalProduct: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="pharmaceuticalProduct",
         title="Pharmaceutical aspects of product",
@@ -205,7 +205,7 @@ class MedicinalProduct(domainresource.DomainResource):
         enum_reference_types=["MedicinalProductPharmaceutical"],
     )
 
-    productClassification: ListType[fhirtypes.CodeableConceptType] = Field(
+    productClassification: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="productClassification",
         title="Allows the product to be classified by various systems",
@@ -214,7 +214,7 @@ class MedicinalProduct(domainresource.DomainResource):
         element_property=True,
     )
 
-    specialDesignation: ListType[
+    specialDesignation: typing.List[
         fhirtypes.MedicinalProductSpecialDesignationType
     ] = Field(
         None,
@@ -228,7 +228,7 @@ class MedicinalProduct(domainresource.DomainResource):
         element_property=True,
     )
 
-    specialMeasures: ListType[fhirtypes.String] = Field(
+    specialMeasures: typing.List[fhirtypes.String] = Field(
         None,
         alias="specialMeasures",
         title=(
@@ -239,8 +239,8 @@ class MedicinalProduct(domainresource.DomainResource):
         # if property is element of this resource.
         element_property=True,
     )
-    specialMeasures__ext: ListType[
-        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    specialMeasures__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(
         None, alias="_specialMeasures", title="Extension field for ``specialMeasures``."
     )
@@ -296,7 +296,7 @@ class MedicinalProductManufacturingBusinessOperation(backboneelement.BackboneEle
         None, alias="_effectiveDate", title="Extension field for ``effectiveDate``."
     )
 
-    manufacturer: ListType[fhirtypes.ReferenceType] = Field(
+    manufacturer: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="manufacturer",
         title="The manufacturer or establishment associated with the process",
@@ -338,7 +338,7 @@ class MedicinalProductName(backboneelement.BackboneElement):
 
     resource_type = Field("MedicinalProductName", const=True)
 
-    countryLanguage: ListType[
+    countryLanguage: typing.List[
         fhirtypes.MedicinalProductNameCountryLanguageType
     ] = Field(
         None,
@@ -349,7 +349,7 @@ class MedicinalProductName(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    namePart: ListType[fhirtypes.MedicinalProductNameNamePartType] = Field(
+    namePart: typing.List[fhirtypes.MedicinalProductNameNamePartType] = Field(
         None,
         alias="namePart",
         title="Coding words or phrases of the name",
@@ -359,16 +359,76 @@ class MedicinalProductName(backboneelement.BackboneElement):
     )
 
     productName: fhirtypes.String = Field(
-        ...,
+        None,
         alias="productName",
         title="The full product name",
         description=None,
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     productName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_productName", title="Extension field for ``productName``."
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("productName", "productName__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
 
 
 class MedicinalProductNameCountryLanguage(backboneelement.BackboneElement):
@@ -420,12 +480,13 @@ class MedicinalProductNameNamePart(backboneelement.BackboneElement):
     resource_type = Field("MedicinalProductNameNamePart", const=True)
 
     part: fhirtypes.String = Field(
-        ...,
+        None,
         alias="part",
         title="A fragment of a product name",
         description=None,
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     part__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_part", title="Extension field for ``part``."
@@ -439,6 +500,65 @@ class MedicinalProductNameNamePart(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("part", "part__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
 
 
 class MedicinalProductSpecialDesignation(backboneelement.BackboneElement):
@@ -464,7 +584,7 @@ class MedicinalProductSpecialDesignation(backboneelement.BackboneElement):
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="Identifier for the designation, or procedure number",
@@ -536,7 +656,9 @@ class MedicinalProductSpecialDesignation(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].

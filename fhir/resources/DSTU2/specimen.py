@@ -11,8 +11,8 @@ from typing import List as ListType
 from pydantic import Field, root_validator
 
 from . import fhirtypes
-from .domainresource import DomainResource
 from .backboneelement import BackboneElement
+from .domainresource import DomainResource
 
 
 class Specimen(DomainResource):

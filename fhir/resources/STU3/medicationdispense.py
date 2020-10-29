@@ -6,10 +6,11 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from typing import Any, Dict
-from typing import List as ListType
+import typing
 
 from pydantic import Field, root_validator
+from pydantic.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.errors import MissingError, NoneIsNotAllowedError
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -29,7 +30,7 @@ class MedicationDispense(domainresource.DomainResource):
 
     resource_type = Field("MedicationDispense", const=True)
 
-    authorizingPrescription: ListType[fhirtypes.ReferenceType] = Field(
+    authorizingPrescription: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="authorizingPrescription",
         title="Medication order that authorizes the dispense",
@@ -89,7 +90,7 @@ class MedicationDispense(domainresource.DomainResource):
         enum_reference_types=["Location"],
     )
 
-    detectedIssue: ListType[fhirtypes.ReferenceType] = Field(
+    detectedIssue: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="detectedIssue",
         title="Clinical issue with action",
@@ -104,7 +105,7 @@ class MedicationDispense(domainresource.DomainResource):
         enum_reference_types=["DetectedIssue"],
     )
 
-    dosageInstruction: ListType[fhirtypes.DosageType] = Field(
+    dosageInstruction: typing.List[fhirtypes.DosageType] = Field(
         None,
         alias="dosageInstruction",
         title=(
@@ -116,7 +117,7 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
     )
 
-    eventHistory: ListType[fhirtypes.ReferenceType] = Field(
+    eventHistory: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="eventHistory",
         title="A list of releveant lifecycle events",
@@ -130,7 +131,7 @@ class MedicationDispense(domainresource.DomainResource):
         enum_reference_types=["Provenance"],
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="External identifier",
@@ -216,7 +217,7 @@ class MedicationDispense(domainresource.DomainResource):
         enum_reference_types=["DetectedIssue"],
     )
 
-    note: ListType[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
         title="Information about the dispense",
@@ -228,7 +229,7 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
     )
 
-    partOf: ListType[fhirtypes.ReferenceType] = Field(
+    partOf: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="partOf",
         title="Event that dispense is part of",
@@ -239,7 +240,7 @@ class MedicationDispense(domainresource.DomainResource):
         enum_reference_types=["Procedure"],
     )
 
-    performer: ListType[fhirtypes.MedicationDispensePerformerType] = Field(
+    performer: typing.List[fhirtypes.MedicationDispensePerformerType] = Field(
         None,
         alias="performer",
         title="Who performed event",
@@ -263,7 +264,7 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
     )
 
-    receiver: ListType[fhirtypes.ReferenceType] = Field(
+    receiver: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="receiver",
         title="Who collected the medication",
@@ -332,7 +333,7 @@ class MedicationDispense(domainresource.DomainResource):
         element_property=True,
     )
 
-    supportingInformation: ListType[fhirtypes.ReferenceType] = Field(
+    supportingInformation: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="supportingInformation",
         title="Information that supports the dispensing of the medication",
@@ -384,7 +385,9 @@ class MedicationDispense(domainresource.DomainResource):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -482,7 +485,7 @@ class MedicationDispenseSubstitution(backboneelement.BackboneElement):
 
     resource_type = Field("MedicationDispenseSubstitution", const=True)
 
-    reason: ListType[fhirtypes.CodeableConceptType] = Field(
+    reason: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="reason",
         title="Why was substitution made",
@@ -494,7 +497,7 @@ class MedicationDispenseSubstitution(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    responsibleParty: ListType[fhirtypes.ReferenceType] = Field(
+    responsibleParty: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="responsibleParty",
         title="Who is responsible for the substitution",
@@ -524,7 +527,7 @@ class MedicationDispenseSubstitution(backboneelement.BackboneElement):
     )
 
     wasSubstituted: bool = Field(
-        ...,
+        None,
         alias="wasSubstituted",
         title="Whether a substitution was or was not performed on the dispense",
         description=(
@@ -533,7 +536,67 @@ class MedicationDispenseSubstitution(backboneelement.BackboneElement):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     wasSubstituted__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_wasSubstituted", title="Extension field for ``wasSubstituted``."
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("wasSubstituted", "wasSubstituted__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values

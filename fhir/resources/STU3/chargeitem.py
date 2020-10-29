@@ -6,11 +6,11 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from typing import Any, Dict
-from typing import List as ListType
-from typing import Union
+import typing
 
 from pydantic import Field, root_validator
+from pydantic.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.errors import MissingError, NoneIsNotAllowedError
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -32,7 +32,7 @@ class ChargeItem(domainresource.DomainResource):
 
     resource_type = Field("ChargeItem", const=True)
 
-    account: ListType[fhirtypes.ReferenceType] = Field(
+    account: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="account",
         title="Account to place this charge",
@@ -43,7 +43,7 @@ class ChargeItem(domainresource.DomainResource):
         enum_reference_types=["Account"],
     )
 
-    bodysite: ListType[fhirtypes.CodeableConceptType] = Field(
+    bodysite: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="bodysite",
         title="Anatomical location, if relevant",
@@ -75,7 +75,7 @@ class ChargeItem(domainresource.DomainResource):
         enum_reference_types=["Encounter", "EpisodeOfCare"],
     )
 
-    definition: ListType[fhirtypes.Uri] = Field(
+    definition: typing.List[fhirtypes.Uri] = Field(
         None,
         alias="definition",
         title="Defining information about the code of this charge item",
@@ -86,8 +86,8 @@ class ChargeItem(domainresource.DomainResource):
         # if property is element of this resource.
         element_property=True,
     )
-    definition__ext: ListType[
-        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    definition__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_definition", title="Extension field for ``definition``.")
 
     enteredDate: fhirtypes.DateTime = Field(
@@ -143,7 +143,7 @@ class ChargeItem(domainresource.DomainResource):
         element_property=True,
     )
 
-    note: ListType[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
         title="Comments made about the ChargeItem",
@@ -212,7 +212,7 @@ class ChargeItem(domainresource.DomainResource):
         None, alias="_overrideReason", title="Extension field for ``overrideReason``."
     )
 
-    partOf: ListType[fhirtypes.ReferenceType] = Field(
+    partOf: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="partOf",
         title="Part of referenced ChargeItem",
@@ -226,7 +226,7 @@ class ChargeItem(domainresource.DomainResource):
         enum_reference_types=["ChargeItem"],
     )
 
-    participant: ListType[fhirtypes.ChargeItemParticipantType] = Field(
+    participant: typing.List[fhirtypes.ChargeItemParticipantType] = Field(
         None,
         alias="participant",
         title="Who performed charged service",
@@ -269,7 +269,7 @@ class ChargeItem(domainresource.DomainResource):
         element_property=True,
     )
 
-    reason: ListType[fhirtypes.CodeableConceptType] = Field(
+    reason: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="reason",
         title="Why was the charged  service rendered?",
@@ -289,7 +289,7 @@ class ChargeItem(domainresource.DomainResource):
         enum_reference_types=["Organization"],
     )
 
-    service: ListType[fhirtypes.ReferenceType] = Field(
+    service: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="service",
         title="Which rendered service is being charged?",
@@ -310,7 +310,7 @@ class ChargeItem(domainresource.DomainResource):
     )
 
     status: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="status",
         title=(
             "planned | billable | not-billable | aborted | billed | entered-in-"
@@ -319,6 +319,7 @@ class ChargeItem(domainresource.DomainResource):
         description="The current state of the ChargeItem.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -349,7 +350,7 @@ class ChargeItem(domainresource.DomainResource):
         enum_reference_types=["Patient", "Group"],
     )
 
-    supportingInformation: ListType[fhirtypes.ReferenceType] = Field(
+    supportingInformation: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="supportingInformation",
         title="Further information supporting the this charge",
@@ -361,7 +362,68 @@ class ChargeItem(domainresource.DomainResource):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("status", "status__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
+
+    @root_validator(pre=True)
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].

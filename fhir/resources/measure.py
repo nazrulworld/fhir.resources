@@ -6,11 +6,11 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import Any, Dict
-from typing import List as ListType
-from typing import Union
+import typing
 
 from pydantic import Field, root_validator
+from pydantic.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.errors import MissingError, NoneIsNotAllowedError
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -42,7 +42,7 @@ class Measure(domainresource.DomainResource):
         None, alias="_approvalDate", title="Extension field for ``approvalDate``."
     )
 
-    author: ListType[fhirtypes.ContactDetailType] = Field(
+    author: typing.List[fhirtypes.ContactDetailType] = Field(
         None,
         alias="author",
         title="Who authored the content",
@@ -83,7 +83,7 @@ class Measure(domainresource.DomainResource):
         element_property=True,
     )
 
-    contact: ListType[fhirtypes.ContactDetailType] = Field(
+    contact: typing.List[fhirtypes.ContactDetailType] = Field(
         None,
         alias="contact",
         title="Contact details for the publisher",
@@ -128,7 +128,7 @@ class Measure(domainresource.DomainResource):
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    definition: ListType[fhirtypes.Markdown] = Field(
+    definition: typing.List[fhirtypes.Markdown] = Field(
         None,
         alias="definition",
         title="Defined terms used in the measure documentation",
@@ -136,8 +136,8 @@ class Measure(domainresource.DomainResource):
         # if property is element of this resource.
         element_property=True,
     )
-    definition__ext: ListType[
-        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    definition__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_definition", title="Extension field for ``definition``.")
 
     description: fhirtypes.Markdown = Field(
@@ -171,7 +171,7 @@ class Measure(domainresource.DomainResource):
         None, alias="_disclaimer", title="Extension field for ``disclaimer``."
     )
 
-    editor: ListType[fhirtypes.ContactDetailType] = Field(
+    editor: typing.List[fhirtypes.ContactDetailType] = Field(
         None,
         alias="editor",
         title="Who edited the content",
@@ -195,7 +195,7 @@ class Measure(domainresource.DomainResource):
         element_property=True,
     )
 
-    endorser: ListType[fhirtypes.ContactDetailType] = Field(
+    endorser: typing.List[fhirtypes.ContactDetailType] = Field(
         None,
         alias="endorser",
         title="Who endorsed the content",
@@ -223,7 +223,7 @@ class Measure(domainresource.DomainResource):
         None, alias="_experimental", title="Extension field for ``experimental``."
     )
 
-    group: ListType[fhirtypes.MeasureGroupType] = Field(
+    group: typing.List[fhirtypes.MeasureGroupType] = Field(
         None,
         alias="group",
         title="Population criteria group",
@@ -247,7 +247,7 @@ class Measure(domainresource.DomainResource):
         None, alias="_guidance", title="Extension field for ``guidance``."
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="Additional identifier for the measure",
@@ -273,7 +273,7 @@ class Measure(domainresource.DomainResource):
         element_property=True,
     )
 
-    jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="jurisdiction",
         title="Intended jurisdiction for measure (if applicable)",
@@ -301,7 +301,7 @@ class Measure(domainresource.DomainResource):
         None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
     )
 
-    library: ListType[fhirtypes.Canonical] = Field(
+    library: typing.List[fhirtypes.Canonical] = Field(
         None,
         alias="library",
         title="Logic used by the measure",
@@ -314,9 +314,9 @@ class Measure(domainresource.DomainResource):
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Library"],
     )
-    library__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_library", title="Extension field for ``library``."
-    )
+    library__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_library", title="Extension field for ``library``.")
 
     name: fhirtypes.String = Field(
         None,
@@ -392,7 +392,7 @@ class Measure(domainresource.DomainResource):
         None, alias="_rationale", title="Extension field for ``rationale``."
     )
 
-    relatedArtifact: ListType[fhirtypes.RelatedArtifactType] = Field(
+    relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] = Field(
         None,
         alias="relatedArtifact",
         title="Additional documentation, citations, etc.",
@@ -404,7 +404,7 @@ class Measure(domainresource.DomainResource):
         element_property=True,
     )
 
-    reviewer: ListType[fhirtypes.ContactDetailType] = Field(
+    reviewer: typing.List[fhirtypes.ContactDetailType] = Field(
         None,
         alias="reviewer",
         title="Who reviewed the content",
@@ -447,7 +447,7 @@ class Measure(domainresource.DomainResource):
     )
 
     status: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="status",
         title="draft | active | retired | unknown",
         description=(
@@ -456,6 +456,7 @@ class Measure(domainresource.DomainResource):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -519,7 +520,7 @@ class Measure(domainresource.DomainResource):
         None, alias="_subtitle", title="Extension field for ``subtitle``."
     )
 
-    supplementalData: ListType[fhirtypes.MeasureSupplementalDataType] = Field(
+    supplementalData: typing.List[fhirtypes.MeasureSupplementalDataType] = Field(
         None,
         alias="supplementalData",
         title="What other data should be reported with the measure",
@@ -544,7 +545,7 @@ class Measure(domainresource.DomainResource):
         None, alias="_title", title="Extension field for ``title``."
     )
 
-    topic: ListType[fhirtypes.CodeableConceptType] = Field(
+    topic: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="topic",
         title=(
@@ -560,7 +561,7 @@ class Measure(domainresource.DomainResource):
         element_property=True,
     )
 
-    type: ListType[fhirtypes.CodeableConceptType] = Field(
+    type: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="type",
         title="process | outcome | structure | patient-reported-outcome | composite",
@@ -611,7 +612,7 @@ class Measure(domainresource.DomainResource):
         None, alias="_usage", title="Extension field for ``usage``."
     )
 
-    useContext: ListType[fhirtypes.UsageContextType] = Field(
+    useContext: typing.List[fhirtypes.UsageContextType] = Field(
         None,
         alias="useContext",
         title="The context that the content is intended to support",
@@ -651,7 +652,68 @@ class Measure(domainresource.DomainResource):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("status", "status__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
+
+    @root_validator(pre=True)
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -724,7 +786,7 @@ class MeasureGroup(backboneelement.BackboneElement):
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    population: ListType[fhirtypes.MeasureGroupPopulationType] = Field(
+    population: typing.List[fhirtypes.MeasureGroupPopulationType] = Field(
         None,
         alias="population",
         title="Population criteria",
@@ -733,7 +795,7 @@ class MeasureGroup(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    stratifier: ListType[fhirtypes.MeasureGroupStratifierType] = Field(
+    stratifier: typing.List[fhirtypes.MeasureGroupStratifierType] = Field(
         None,
         alias="stratifier",
         title="Stratifier criteria for the measure",
@@ -823,7 +885,7 @@ class MeasureGroupStratifier(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    component: ListType[fhirtypes.MeasureGroupStratifierComponentType] = Field(
+    component: typing.List[fhirtypes.MeasureGroupStratifierComponentType] = Field(
         None,
         alias="component",
         title="Stratifier criteria component for the measure",
@@ -969,7 +1031,7 @@ class MeasureSupplementalData(backboneelement.BackboneElement):
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    usage: ListType[fhirtypes.CodeableConceptType] = Field(
+    usage: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="usage",
         title="supplemental-data | risk-adjustment-factor",

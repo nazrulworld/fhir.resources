@@ -6,7 +6,7 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import List as ListType
+import typing
 
 from pydantic import Field
 
@@ -25,7 +25,7 @@ class CodeableConcept(element.Element):
 
     resource_type = Field("CodeableConcept", const=True)
 
-    coding: ListType[fhirtypes.CodingType] = Field(
+    coding: typing.List[fhirtypes.CodingType] = Field(
         None,
         alias="coding",
         title="Code defined by a terminology system",

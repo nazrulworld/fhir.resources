@@ -6,11 +6,11 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from typing import Any, Dict
-from typing import List as ListType
-from typing import Union
+import typing
 
 from pydantic import Field, root_validator
+from pydantic.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.errors import MissingError, NoneIsNotAllowedError
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -33,7 +33,7 @@ class Composition(domainresource.DomainResource):
 
     resource_type = Field("Composition", const=True)
 
-    attester: ListType[fhirtypes.CompositionAttesterType] = Field(
+    attester: typing.List[fhirtypes.CompositionAttesterType] = Field(
         None,
         alias="attester",
         title="Attests to accuracy of composition",
@@ -45,7 +45,7 @@ class Composition(domainresource.DomainResource):
         element_property=True,
     )
 
-    author: ListType[fhirtypes.ReferenceType] = Field(
+    author: typing.List[fhirtypes.ReferenceType] = Field(
         ...,
         alias="author",
         title="Who and/or what authored the composition",
@@ -99,7 +99,7 @@ class Composition(domainresource.DomainResource):
     )
 
     date: fhirtypes.DateTime = Field(
-        ...,
+        None,
         alias="date",
         title="Composition editing time",
         description=(
@@ -108,6 +108,7 @@ class Composition(domainresource.DomainResource):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -127,7 +128,7 @@ class Composition(domainresource.DomainResource):
         enum_reference_types=["Encounter"],
     )
 
-    event: ListType[fhirtypes.CompositionEventType] = Field(
+    event: typing.List[fhirtypes.CompositionEventType] = Field(
         None,
         alias="event",
         title="The clinical service(s) being documented",
@@ -151,7 +152,7 @@ class Composition(domainresource.DomainResource):
         element_property=True,
     )
 
-    relatesTo: ListType[fhirtypes.CompositionRelatesToType] = Field(
+    relatesTo: typing.List[fhirtypes.CompositionRelatesToType] = Field(
         None,
         alias="relatesTo",
         title="Relationships to other compositions/documents",
@@ -163,7 +164,7 @@ class Composition(domainresource.DomainResource):
         element_property=True,
     )
 
-    section: ListType[fhirtypes.CompositionSectionType] = Field(
+    section: typing.List[fhirtypes.CompositionSectionType] = Field(
         None,
         alias="section",
         title="Composition is broken into sections",
@@ -173,7 +174,7 @@ class Composition(domainresource.DomainResource):
     )
 
     status: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="status",
         title="preliminary | final | amended | entered-in-error",
         description=(
@@ -182,6 +183,7 @@ class Composition(domainresource.DomainResource):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["preliminary", "final", "amended", "entered-in-error"],
@@ -207,12 +209,13 @@ class Composition(domainresource.DomainResource):
     )
 
     title: fhirtypes.String = Field(
-        ...,
+        None,
         alias="title",
         title="Human Readable name/title",
         description="Official human-readable label for the composition.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -231,6 +234,69 @@ class Composition(domainresource.DomainResource):
         element_property=True,
     )
 
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [
+            ("date", "date__ext"),
+            ("status", "status__ext"),
+            ("title", "title__ext"),
+        ]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
+
 
 class CompositionAttester(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` does't part of
@@ -243,20 +309,21 @@ class CompositionAttester(backboneelement.BackboneElement):
 
     resource_type = Field("CompositionAttester", const=True)
 
-    mode: ListType[fhirtypes.Code] = Field(
-        ...,
+    mode: typing.List[fhirtypes.Code] = Field(
+        None,
         alias="mode",
         title="personal | professional | legal | official",
         description="The type of attestation the authenticator offers.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["personal", "professional", "legal", "official"],
     )
-    mode__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_mode", title="Extension field for ``mode``."
-    )
+    mode__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_mode", title="Extension field for ``mode``.")
 
     party: fhirtypes.ReferenceType = Field(
         None,
@@ -281,6 +348,65 @@ class CompositionAttester(backboneelement.BackboneElement):
         None, alias="_time", title="Extension field for ``time``."
     )
 
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("mode", "mode__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
+
 
 class CompositionEvent(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` does't part of
@@ -294,7 +420,7 @@ class CompositionEvent(backboneelement.BackboneElement):
 
     resource_type = Field("CompositionEvent", const=True)
 
-    code: ListType[fhirtypes.CodeableConceptType] = Field(
+    code: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="code",
         title="Code(s) that apply to the event being documented",
@@ -309,7 +435,7 @@ class CompositionEvent(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    detail: ListType[fhirtypes.ReferenceType] = Field(
+    detail: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="detail",
         title="The event(s) being documented",
@@ -351,7 +477,7 @@ class CompositionRelatesTo(backboneelement.BackboneElement):
     resource_type = Field("CompositionRelatesTo", const=True)
 
     code: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="code",
         title="replaces | transforms | signs | appends",
         description=(
@@ -360,6 +486,7 @@ class CompositionRelatesTo(backboneelement.BackboneElement):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["replaces", "transforms", "signs", "appends"],
@@ -395,7 +522,68 @@ class CompositionRelatesTo(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("code", "code__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
+
+    @root_validator(pre=True)
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -466,7 +654,7 @@ class CompositionSection(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    entry: ListType[fhirtypes.ReferenceType] = Field(
+    entry: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="entry",
         title="A reference to data that supports this section",
@@ -510,7 +698,7 @@ class CompositionSection(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    section: ListType[fhirtypes.CompositionSectionType] = Field(
+    section: typing.List[fhirtypes.CompositionSectionType] = Field(
         None,
         alias="section",
         title="Nested Section",

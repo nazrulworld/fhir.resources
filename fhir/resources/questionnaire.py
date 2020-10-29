@@ -6,11 +6,11 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import Any, Dict
-from typing import List as ListType
-from typing import Union
+import typing
 
 from pydantic import Field, root_validator
+from pydantic.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.errors import MissingError, NoneIsNotAllowedError
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -45,7 +45,7 @@ class Questionnaire(domainresource.DomainResource):
         None, alias="_approvalDate", title="Extension field for ``approvalDate``."
     )
 
-    code: ListType[fhirtypes.CodingType] = Field(
+    code: typing.List[fhirtypes.CodingType] = Field(
         None,
         alias="code",
         title="Concept that represents the overall questionnaire",
@@ -57,7 +57,7 @@ class Questionnaire(domainresource.DomainResource):
         element_property=True,
     )
 
-    contact: ListType[fhirtypes.ContactDetailType] = Field(
+    contact: typing.List[fhirtypes.ContactDetailType] = Field(
         None,
         alias="contact",
         title="Contact details for the publisher",
@@ -102,7 +102,7 @@ class Questionnaire(domainresource.DomainResource):
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    derivedFrom: ListType[fhirtypes.Canonical] = Field(
+    derivedFrom: typing.List[fhirtypes.Canonical] = Field(
         None,
         alias="derivedFrom",
         title="Instantiates protocol or definition",
@@ -112,8 +112,8 @@ class Questionnaire(domainresource.DomainResource):
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Questionnaire"],
     )
-    derivedFrom__ext: ListType[
-        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    derivedFrom__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_derivedFrom", title="Extension field for ``derivedFrom``.")
 
     description: fhirtypes.Markdown = Field(
@@ -159,7 +159,7 @@ class Questionnaire(domainresource.DomainResource):
         None, alias="_experimental", title="Extension field for ``experimental``."
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="Additional identifier for the questionnaire",
@@ -172,7 +172,7 @@ class Questionnaire(domainresource.DomainResource):
         element_property=True,
     )
 
-    item: ListType[fhirtypes.QuestionnaireItemType] = Field(
+    item: typing.List[fhirtypes.QuestionnaireItemType] = Field(
         None,
         alias="item",
         title="Questions and sections within the Questionnaire",
@@ -184,7 +184,7 @@ class Questionnaire(domainresource.DomainResource):
         element_property=True,
     )
 
-    jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="jurisdiction",
         title="Intended jurisdiction for questionnaire (if applicable)",
@@ -259,7 +259,7 @@ class Questionnaire(domainresource.DomainResource):
     )
 
     status: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="status",
         title="draft | active | retired | unknown",
         description=(
@@ -268,6 +268,7 @@ class Questionnaire(domainresource.DomainResource):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -276,7 +277,7 @@ class Questionnaire(domainresource.DomainResource):
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    subjectType: ListType[fhirtypes.Code] = Field(
+    subjectType: typing.List[fhirtypes.Code] = Field(
         None,
         alias="subjectType",
         title="Resource that can be subject of QuestionnaireResponse",
@@ -287,8 +288,8 @@ class Questionnaire(domainresource.DomainResource):
         # if property is element of this resource.
         element_property=True,
     )
-    subjectType__ext: ListType[
-        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    subjectType__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_subjectType", title="Extension field for ``subjectType``.")
 
     title: fhirtypes.String = Field(
@@ -326,7 +327,7 @@ class Questionnaire(domainresource.DomainResource):
         None, alias="_url", title="Extension field for ``url``."
     )
 
-    useContext: ListType[fhirtypes.UsageContextType] = Field(
+    useContext: typing.List[fhirtypes.UsageContextType] = Field(
         None,
         alias="useContext",
         title="The context that the content is intended to support",
@@ -361,6 +362,65 @@ class Questionnaire(domainresource.DomainResource):
         None, alias="_version", title="Extension field for ``version``."
     )
 
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("status", "status__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
+
 
 class QuestionnaireItem(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` does't part of
@@ -374,7 +434,7 @@ class QuestionnaireItem(backboneelement.BackboneElement):
 
     resource_type = Field("QuestionnaireItem", const=True)
 
-    answerOption: ListType[fhirtypes.QuestionnaireItemAnswerOptionType] = Field(
+    answerOption: typing.List[fhirtypes.QuestionnaireItemAnswerOptionType] = Field(
         None,
         alias="answerOption",
         title="Permitted answer",
@@ -400,7 +460,7 @@ class QuestionnaireItem(backboneelement.BackboneElement):
         None, alias="_answerValueSet", title="Extension field for ``answerValueSet``."
     )
 
-    code: ListType[fhirtypes.CodingType] = Field(
+    code: typing.List[fhirtypes.CodingType] = Field(
         None,
         alias="code",
         title="Corresponding concept for this item in a terminology",
@@ -455,7 +515,7 @@ class QuestionnaireItem(backboneelement.BackboneElement):
         None, alias="_enableBehavior", title="Extension field for ``enableBehavior``."
     )
 
-    enableWhen: ListType[fhirtypes.QuestionnaireItemEnableWhenType] = Field(
+    enableWhen: typing.List[fhirtypes.QuestionnaireItemEnableWhenType] = Field(
         None,
         alias="enableWhen",
         title="Only allow data when",
@@ -468,7 +528,7 @@ class QuestionnaireItem(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    initial: ListType[fhirtypes.QuestionnaireItemInitialType] = Field(
+    initial: typing.List[fhirtypes.QuestionnaireItemInitialType] = Field(
         None,
         alias="initial",
         title="Initial value(s) when item is first rendered",
@@ -480,7 +540,7 @@ class QuestionnaireItem(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    item: ListType[fhirtypes.QuestionnaireItemType] = Field(
+    item: typing.List[fhirtypes.QuestionnaireItemType] = Field(
         None,
         alias="item",
         title="Nested questionnaire items",
@@ -493,7 +553,7 @@ class QuestionnaireItem(backboneelement.BackboneElement):
     )
 
     linkId: fhirtypes.String = Field(
-        ...,
+        None,
         alias="linkId",
         title="Unique id for item in questionnaire",
         description=(
@@ -502,6 +562,7 @@ class QuestionnaireItem(backboneelement.BackboneElement):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     linkId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_linkId", title="Extension field for ``linkId``."
@@ -601,7 +662,7 @@ class QuestionnaireItem(backboneelement.BackboneElement):
     )
 
     type: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="type",
         title="group | display | boolean | decimal | integer | date | dateTime +",
         description=(
@@ -611,6 +672,7 @@ class QuestionnaireItem(backboneelement.BackboneElement):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -627,6 +689,65 @@ class QuestionnaireItem(backboneelement.BackboneElement):
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("linkId", "linkId__ext"), ("type", "type__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
 
 
 class QuestionnaireItemAnswerOption(backboneelement.BackboneElement):
@@ -742,7 +863,9 @@ class QuestionnaireItemAnswerOption(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -974,12 +1097,13 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
     )
 
     operator: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="operator",
         title="exists | = | != | > | < | >= | <=",
         description="Specifies the criteria by which the question is enabled.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["exists", "=", "!=", "\u003e", "\u003c", "\u003e=", "\u003c="],
@@ -989,7 +1113,7 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
     )
 
     question: fhirtypes.String = Field(
-        ...,
+        None,
         alias="question",
         title="Question that determines whether item is enabled",
         description=(
@@ -998,13 +1122,75 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     question__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_question", title="Extension field for ``question``."
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("operator", "operator__ext"), ("question", "question__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
+
+    @root_validator(pre=True)
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -1236,7 +1422,9 @@ class QuestionnaireItemInitial(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].

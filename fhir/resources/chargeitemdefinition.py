@@ -6,10 +6,11 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import List as ListType
-from typing import Union
+import typing
 
-from pydantic import Field
+from pydantic import Field, root_validator
+from pydantic.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.errors import MissingError, NoneIsNotAllowedError
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -30,7 +31,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
 
     resource_type = Field("ChargeItemDefinition", const=True)
 
-    applicability: ListType[fhirtypes.ChargeItemDefinitionApplicabilityType] = Field(
+    applicability: typing.List[fhirtypes.ChargeItemDefinitionApplicabilityType] = Field(
         None,
         alias="applicability",
         title="Whether or not the billing code is applicable",
@@ -67,7 +68,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
         element_property=True,
     )
 
-    contact: ListType[fhirtypes.ContactDetailType] = Field(
+    contact: typing.List[fhirtypes.ContactDetailType] = Field(
         None,
         alias="contact",
         title="Contact details for the publisher",
@@ -113,7 +114,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    derivedFromUri: ListType[fhirtypes.Uri] = Field(
+    derivedFromUri: typing.List[fhirtypes.Uri] = Field(
         None,
         alias="derivedFromUri",
         title="Underlying externally-defined charge item definition",
@@ -124,8 +125,8 @@ class ChargeItemDefinition(domainresource.DomainResource):
         # if property is element of this resource.
         element_property=True,
     )
-    derivedFromUri__ext: ListType[
-        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    derivedFromUri__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(
         None, alias="_derivedFromUri", title="Extension field for ``derivedFromUri``."
     )
@@ -173,7 +174,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
         None, alias="_experimental", title="Extension field for ``experimental``."
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="Additional identifier for the charge item definition",
@@ -186,7 +187,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
         element_property=True,
     )
 
-    instance: ListType[fhirtypes.ReferenceType] = Field(
+    instance: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="instance",
         title="Instances this definition applies to",
@@ -200,7 +201,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
         enum_reference_types=["Medication", "Substance", "Device"],
     )
 
-    jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="jurisdiction",
         title="Intended jurisdiction for charge item definition (if applicable)",
@@ -228,7 +229,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
         None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
     )
 
-    partOf: ListType[fhirtypes.Canonical] = Field(
+    partOf: typing.List[fhirtypes.Canonical] = Field(
         None,
         alias="partOf",
         title=(
@@ -241,11 +242,11 @@ class ChargeItemDefinition(domainresource.DomainResource):
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ChargeItemDefinition"],
     )
-    partOf__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_partOf", title="Extension field for ``partOf``."
-    )
+    partOf__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_partOf", title="Extension field for ``partOf``.")
 
-    propertyGroup: ListType[fhirtypes.ChargeItemDefinitionPropertyGroupType] = Field(
+    propertyGroup: typing.List[fhirtypes.ChargeItemDefinitionPropertyGroupType] = Field(
         None,
         alias="propertyGroup",
         title="Group of properties which are applicable under the same conditions",
@@ -273,7 +274,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
         None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
-    replaces: ListType[fhirtypes.Canonical] = Field(
+    replaces: typing.List[fhirtypes.Canonical] = Field(
         None,
         alias="replaces",
         title=(
@@ -289,17 +290,18 @@ class ChargeItemDefinition(domainresource.DomainResource):
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ChargeItemDefinition"],
     )
-    replaces__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_replaces", title="Extension field for ``replaces``."
-    )
+    replaces__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_replaces", title="Extension field for ``replaces``.")
 
     status: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="status",
         title="draft | active | retired | unknown",
         description="The current state of the ChargeItemDefinition.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -324,7 +326,7 @@ class ChargeItemDefinition(domainresource.DomainResource):
     )
 
     url: fhirtypes.Uri = Field(
-        ...,
+        None,
         alias="url",
         title=(
             "Canonical identifier for this charge item definition, represented as a"
@@ -342,12 +344,13 @@ class ChargeItemDefinition(domainresource.DomainResource):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
     )
 
-    useContext: ListType[fhirtypes.UsageContextType] = Field(
+    useContext: typing.List[fhirtypes.UsageContextType] = Field(
         None,
         alias="useContext",
         title="The context that the content is intended to support",
@@ -386,6 +389,65 @@ class ChargeItemDefinition(domainresource.DomainResource):
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("status", "status__ext"), ("url", "url__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
 
 
 class ChargeItemDefinitionApplicability(backboneelement.BackboneElement):
@@ -461,7 +523,7 @@ class ChargeItemDefinitionPropertyGroup(backboneelement.BackboneElement):
 
     resource_type = Field("ChargeItemDefinitionPropertyGroup", const=True)
 
-    applicability: ListType[fhirtypes.ChargeItemDefinitionApplicabilityType] = Field(
+    applicability: typing.List[fhirtypes.ChargeItemDefinitionApplicabilityType] = Field(
         None,
         alias="applicability",
         title="Conditions under which the priceComponent is applicable",
@@ -473,7 +535,7 @@ class ChargeItemDefinitionPropertyGroup(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    priceComponent: ListType[
+    priceComponent: typing.List[
         fhirtypes.ChargeItemDefinitionPropertyGroupPriceComponentType
     ] = Field(
         None,
@@ -546,12 +608,13 @@ class ChargeItemDefinitionPropertyGroupPriceComponent(backboneelement.BackboneEl
     )
 
     type: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="type",
         title="base | surcharge | deduction | discount | tax | informational",
         description="This code identifies the type of the component.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -566,3 +629,62 @@ class ChargeItemDefinitionPropertyGroupPriceComponent(backboneelement.BackboneEl
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("type", "type__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values

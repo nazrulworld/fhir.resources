@@ -6,8 +6,7 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import Any, Dict
-from typing import List as ListType
+import typing
 
 from pydantic import Field, root_validator
 
@@ -26,7 +25,7 @@ class MedicinalProductContraindication(domainresource.DomainResource):
 
     resource_type = Field("MedicinalProductContraindication", const=True)
 
-    comorbidity: ListType[fhirtypes.CodeableConceptType] = Field(
+    comorbidity: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="comorbidity",
         title="A comorbidity (concurrent condition) or coinfection",
@@ -53,7 +52,7 @@ class MedicinalProductContraindication(domainresource.DomainResource):
         element_property=True,
     )
 
-    otherTherapy: ListType[
+    otherTherapy: typing.List[
         fhirtypes.MedicinalProductContraindicationOtherTherapyType
     ] = Field(
         None,
@@ -67,7 +66,7 @@ class MedicinalProductContraindication(domainresource.DomainResource):
         element_property=True,
     )
 
-    population: ListType[fhirtypes.PopulationType] = Field(
+    population: typing.List[fhirtypes.PopulationType] = Field(
         None,
         alias="population",
         title="The population group to which this applies",
@@ -76,7 +75,7 @@ class MedicinalProductContraindication(domainresource.DomainResource):
         element_property=True,
     )
 
-    subject: ListType[fhirtypes.ReferenceType] = Field(
+    subject: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="subject",
         title="The medication for which this is an indication",
@@ -87,7 +86,7 @@ class MedicinalProductContraindication(domainresource.DomainResource):
         enum_reference_types=["MedicinalProduct", "Medication"],
     )
 
-    therapeuticIndication: ListType[fhirtypes.ReferenceType] = Field(
+    therapeuticIndication: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="therapeuticIndication",
         title=(
@@ -165,7 +164,9 @@ class MedicinalProductContraindicationOtherTherapy(backboneelement.BackboneEleme
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].

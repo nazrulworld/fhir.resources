@@ -6,7 +6,7 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import List as ListType
+import typing
 
 from pydantic import Field
 
@@ -36,7 +36,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         None, alias="_active", title="Extension field for ``active``."
     )
 
-    code: ListType[fhirtypes.CodeableConceptType] = Field(
+    code: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="code",
         title="Definition of the role the participatingOrganization plays",
@@ -48,7 +48,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         element_property=True,
     )
 
-    endpoint: ListType[fhirtypes.ReferenceType] = Field(
+    endpoint: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="endpoint",
         title=(
@@ -61,7 +61,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         enum_reference_types=["Endpoint"],
     )
 
-    healthcareService: ListType[fhirtypes.ReferenceType] = Field(
+    healthcareService: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="healthcareService",
         title="Healthcare services provided through the role",
@@ -72,7 +72,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         enum_reference_types=["HealthcareService"],
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="Business identifiers that are specific to this role",
@@ -81,7 +81,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         element_property=True,
     )
 
-    location: ListType[fhirtypes.ReferenceType] = Field(
+    location: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="location",
         title="The location(s) at which the role occurs",
@@ -92,7 +92,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         enum_reference_types=["Location"],
     )
 
-    network: ListType[fhirtypes.ReferenceType] = Field(
+    network: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="network",
         title=(
@@ -151,7 +151,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         element_property=True,
     )
 
-    specialty: ListType[fhirtypes.CodeableConceptType] = Field(
+    specialty: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="specialty",
         title=(
@@ -163,7 +163,7 @@ class OrganizationAffiliation(domainresource.DomainResource):
         element_property=True,
     )
 
-    telecom: ListType[fhirtypes.ContactPointType] = Field(
+    telecom: typing.List[fhirtypes.ContactPointType] = Field(
         None,
         alias="telecom",
         title=(

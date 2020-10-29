@@ -28,7 +28,6 @@ if TYPE_CHECKING:
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 
 FHIR_DATE_PARTS = re.compile(r"(?P<year>\d{4})(-(?P<month>\d{2}))?(-(?P<day>\d{2}))?$")
-
 FHIR_PRIMITIVES = [
     "boolean",
     "string",
@@ -171,7 +170,7 @@ class PositiveInt(ConstrainedInt, Primitive):
 class Uri(ConstrainedStr, Primitive):
     """A Uniform Resource Identifier Reference (RFC 3986 ).
     Note: URIs are case sensitive.
-    For UUID("urn:uuid:53fefa32-fcbb-4ff8-8a92-55ee120877b7")
+    For UUID (urn:uuid:53fefa32-fcbb-4ff8-8a92-55ee120877b7)
     use all lowercase xs:anyURI A JSON string - a URI
     Regex: \\S* (This regex is very permissive, but URIs must be valid.
     Implementers are welcome to use more specific regex statements

@@ -6,11 +6,11 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import Any, Dict
-from typing import List as ListType
-from typing import Union
+import typing
 
 from pydantic import Field, root_validator
+from pydantic.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.errors import MissingError, NoneIsNotAllowedError
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -26,7 +26,7 @@ class MedicationKnowledge(domainresource.DomainResource):
 
     resource_type = Field("MedicationKnowledge", const=True)
 
-    administrationGuidelines: ListType[
+    administrationGuidelines: typing.List[
         fhirtypes.MedicationKnowledgeAdministrationGuidelinesType
     ] = Field(
         None,
@@ -52,7 +52,7 @@ class MedicationKnowledge(domainresource.DomainResource):
         element_property=True,
     )
 
-    associatedMedication: ListType[fhirtypes.ReferenceType] = Field(
+    associatedMedication: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="associatedMedication",
         title="A medication resource that is associated with this medication",
@@ -83,7 +83,7 @@ class MedicationKnowledge(domainresource.DomainResource):
         element_property=True,
     )
 
-    contraindication: ListType[fhirtypes.ReferenceType] = Field(
+    contraindication: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="contraindication",
         title="Potential clinical issue with or between medication(s)",
@@ -98,7 +98,7 @@ class MedicationKnowledge(domainresource.DomainResource):
         enum_reference_types=["DetectedIssue"],
     )
 
-    cost: ListType[fhirtypes.MedicationKnowledgeCostType] = Field(
+    cost: typing.List[fhirtypes.MedicationKnowledgeCostType] = Field(
         None,
         alias="cost",
         title="The pricing of the medication",
@@ -116,7 +116,7 @@ class MedicationKnowledge(domainresource.DomainResource):
         element_property=True,
     )
 
-    drugCharacteristic: ListType[
+    drugCharacteristic: typing.List[
         fhirtypes.MedicationKnowledgeDrugCharacteristicType
     ] = Field(
         None,
@@ -130,7 +130,7 @@ class MedicationKnowledge(domainresource.DomainResource):
         element_property=True,
     )
 
-    ingredient: ListType[fhirtypes.MedicationKnowledgeIngredientType] = Field(
+    ingredient: typing.List[fhirtypes.MedicationKnowledgeIngredientType] = Field(
         None,
         alias="ingredient",
         title="Active or inactive ingredient",
@@ -139,7 +139,7 @@ class MedicationKnowledge(domainresource.DomainResource):
         element_property=True,
     )
 
-    intendedRoute: ListType[fhirtypes.CodeableConceptType] = Field(
+    intendedRoute: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="intendedRoute",
         title="The intended or approved route of administration",
@@ -148,7 +148,7 @@ class MedicationKnowledge(domainresource.DomainResource):
         element_property=True,
     )
 
-    kinetics: ListType[fhirtypes.MedicationKnowledgeKineticsType] = Field(
+    kinetics: typing.List[fhirtypes.MedicationKnowledgeKineticsType] = Field(
         None,
         alias="kinetics",
         title=(
@@ -175,7 +175,7 @@ class MedicationKnowledge(domainresource.DomainResource):
         enum_reference_types=["Organization"],
     )
 
-    medicineClassification: ListType[
+    medicineClassification: typing.List[
         fhirtypes.MedicationKnowledgeMedicineClassificationType
     ] = Field(
         None,
@@ -189,7 +189,7 @@ class MedicationKnowledge(domainresource.DomainResource):
         element_property=True,
     )
 
-    monitoringProgram: ListType[
+    monitoringProgram: typing.List[
         fhirtypes.MedicationKnowledgeMonitoringProgramType
     ] = Field(
         None,
@@ -200,7 +200,7 @@ class MedicationKnowledge(domainresource.DomainResource):
         element_property=True,
     )
 
-    monograph: ListType[fhirtypes.MedicationKnowledgeMonographType] = Field(
+    monograph: typing.List[fhirtypes.MedicationKnowledgeMonographType] = Field(
         None,
         alias="monograph",
         title="Associated documentation about the medication",
@@ -232,7 +232,7 @@ class MedicationKnowledge(domainresource.DomainResource):
         title="Extension field for ``preparationInstruction``.",
     )
 
-    productType: ListType[fhirtypes.CodeableConceptType] = Field(
+    productType: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="productType",
         title="Category of the medication or product",
@@ -244,7 +244,7 @@ class MedicationKnowledge(domainresource.DomainResource):
         element_property=True,
     )
 
-    regulatory: ListType[fhirtypes.MedicationKnowledgeRegulatoryType] = Field(
+    regulatory: typing.List[fhirtypes.MedicationKnowledgeRegulatoryType] = Field(
         None,
         alias="regulatory",
         title="Regulatory information about a medication",
@@ -253,7 +253,7 @@ class MedicationKnowledge(domainresource.DomainResource):
         element_property=True,
     )
 
-    relatedMedicationKnowledge: ListType[
+    relatedMedicationKnowledge: typing.List[
         fhirtypes.MedicationKnowledgeRelatedMedicationKnowledgeType
     ] = Field(
         None,
@@ -283,7 +283,7 @@ class MedicationKnowledge(domainresource.DomainResource):
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    synonym: ListType[fhirtypes.String] = Field(
+    synonym: typing.List[fhirtypes.String] = Field(
         None,
         alias="synonym",
         title="Additional names for a medication",
@@ -295,9 +295,9 @@ class MedicationKnowledge(domainresource.DomainResource):
         # if property is element of this resource.
         element_property=True,
     )
-    synonym__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_synonym", title="Extension field for ``synonym``."
-    )
+    synonym__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_synonym", title="Extension field for ``synonym``.")
 
 
 class MedicationKnowledgeAdministrationGuidelines(backboneelement.BackboneElement):
@@ -311,7 +311,7 @@ class MedicationKnowledgeAdministrationGuidelines(backboneelement.BackboneElemen
 
     resource_type = Field("MedicationKnowledgeAdministrationGuidelines", const=True)
 
-    dosage: ListType[
+    dosage: typing.List[
         fhirtypes.MedicationKnowledgeAdministrationGuidelinesDosageType
     ] = Field(
         None,
@@ -352,7 +352,7 @@ class MedicationKnowledgeAdministrationGuidelines(backboneelement.BackboneElemen
         enum_reference_types=["ObservationDefinition"],
     )
 
-    patientCharacteristics: ListType[
+    patientCharacteristics: typing.List[
         fhirtypes.MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsType
     ] = Field(
         None,
@@ -370,7 +370,9 @@ class MedicationKnowledgeAdministrationGuidelines(backboneelement.BackboneElemen
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -422,7 +424,7 @@ class MedicationKnowledgeAdministrationGuidelinesDosage(
         "MedicationKnowledgeAdministrationGuidelinesDosage", const=True
     )
 
-    dosage: ListType[fhirtypes.DosageType] = Field(
+    dosage: typing.List[fhirtypes.DosageType] = Field(
         ...,
         alias="dosage",
         title="Dosage for the medication for the specific guidelines",
@@ -497,7 +499,7 @@ class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics(
         one_of_many_required=True,
     )
 
-    value: ListType[fhirtypes.String] = Field(
+    value: typing.List[fhirtypes.String] = Field(
         None,
         alias="value",
         title="The specific characteristic",
@@ -505,12 +507,14 @@ class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics(
         # if property is element of this resource.
         element_property=True,
     )
-    value__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_value", title="Extension field for ``value``."
-    )
+    value__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_value", title="Extension field for ``value``.")
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -677,7 +681,9 @@ class MedicationKnowledgeDrugCharacteristic(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -792,7 +798,9 @@ class MedicationKnowledgeIngredient(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -839,7 +847,7 @@ class MedicationKnowledgeKinetics(backboneelement.BackboneElement):
 
     resource_type = Field("MedicationKnowledgeKinetics", const=True)
 
-    areaUnderCurve: ListType[fhirtypes.QuantityType] = Field(
+    areaUnderCurve: typing.List[fhirtypes.QuantityType] = Field(
         None,
         alias="areaUnderCurve",
         title="The drug concentration measured at certain discrete points in time",
@@ -860,7 +868,7 @@ class MedicationKnowledgeKinetics(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    lethalDose50: ListType[fhirtypes.QuantityType] = Field(
+    lethalDose50: typing.List[fhirtypes.QuantityType] = Field(
         None,
         alias="lethalDose50",
         title="The median lethal dose of a drug",
@@ -881,7 +889,7 @@ class MedicationKnowledgeMedicineClassification(backboneelement.BackboneElement)
 
     resource_type = Field("MedicationKnowledgeMedicineClassification", const=True)
 
-    classification: ListType[fhirtypes.CodeableConceptType] = Field(
+    classification: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="classification",
         title="Specific category assigned to the medication",
@@ -1042,7 +1050,7 @@ class MedicationKnowledgeRegulatory(backboneelement.BackboneElement):
         enum_reference_types=["Organization"],
     )
 
-    schedule: ListType[fhirtypes.MedicationKnowledgeRegulatoryScheduleType] = Field(
+    schedule: typing.List[fhirtypes.MedicationKnowledgeRegulatoryScheduleType] = Field(
         None,
         alias="schedule",
         title="Specifies the schedule of a medication in jurisdiction",
@@ -1051,7 +1059,7 @@ class MedicationKnowledgeRegulatory(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    substitution: ListType[
+    substitution: typing.List[
         fhirtypes.MedicationKnowledgeRegulatorySubstitutionType
     ] = Field(
         None,
@@ -1128,7 +1136,7 @@ class MedicationKnowledgeRegulatorySubstitution(backboneelement.BackboneElement)
     resource_type = Field("MedicationKnowledgeRegulatorySubstitution", const=True)
 
     allowed: bool = Field(
-        ...,
+        None,
         alias="allowed",
         title=(
             "Specifies if regulation allows for changes in the medication when "
@@ -1137,6 +1145,7 @@ class MedicationKnowledgeRegulatorySubstitution(backboneelement.BackboneElement)
         description=None,
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     allowed__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_allowed", title="Extension field for ``allowed``."
@@ -1151,6 +1160,65 @@ class MedicationKnowledgeRegulatorySubstitution(backboneelement.BackboneElement)
         element_property=True,
     )
 
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("allowed", "allowed__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
+
 
 class MedicationKnowledgeRelatedMedicationKnowledge(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` does't part of
@@ -1163,7 +1231,7 @@ class MedicationKnowledgeRelatedMedicationKnowledge(backboneelement.BackboneElem
 
     resource_type = Field("MedicationKnowledgeRelatedMedicationKnowledge", const=True)
 
-    reference: ListType[fhirtypes.ReferenceType] = Field(
+    reference: typing.List[fhirtypes.ReferenceType] = Field(
         ...,
         alias="reference",
         title="Associated documentation about the associated medication knowledge",

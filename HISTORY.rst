@@ -9,6 +9,9 @@ Fixes
 
 - `Issue #39 <https://github.com/nazrulworld/fhir.resources/issues/39>`_ added compatibility with ``pydantic`` version between ``1.6.x`` and ``1.7.x`` [nazrulworld]
 
+Improvements
+
+- Issue #40 `Make fhir primitive element field optional if extension value is provided. <https://github.com/nazrulworld/fhir.resources/issues/40>`_
 
 6.0.0b6 (2020-10-24)
 --------------------

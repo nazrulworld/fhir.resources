@@ -6,9 +6,7 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from typing import Any, Dict
-from typing import List as ListType
-from typing import Union
+import typing
 
 from pydantic import Field, root_validator
 
@@ -47,7 +45,7 @@ class Timing(element.Element):
         element_property=True,
     )
 
-    event: ListType[fhirtypes.DateTime] = Field(
+    event: typing.List[fhirtypes.DateTime] = Field(
         None,
         alias="event",
         title="When the event occurs",
@@ -55,9 +53,9 @@ class Timing(element.Element):
         # if property is element of this resource.
         element_property=True,
     )
-    event__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_event", title="Extension field for ``event``."
-    )
+    event__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_event", title="Extension field for ``event``.")
 
     repeat: fhirtypes.TimingRepeatType = Field(
         None,
@@ -155,7 +153,7 @@ class TimingRepeat(element.Element):
         None, alias="_countMax", title="Extension field for ``countMax``."
     )
 
-    dayOfWeek: ListType[fhirtypes.Code] = Field(
+    dayOfWeek: typing.List[fhirtypes.Code] = Field(
         None,
         alias="dayOfWeek",
         title="mon | tue | wed | thu | fri | sat | sun",
@@ -169,9 +167,9 @@ class TimingRepeat(element.Element):
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["mon", "tue", "wed", "thu", "fri", "sat", "sun"],
     )
-    dayOfWeek__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_dayOfWeek", title="Extension field for ``dayOfWeek``."
-    )
+    dayOfWeek__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_dayOfWeek", title="Extension field for ``dayOfWeek``.")
 
     duration: fhirtypes.Decimal = Field(
         None,
@@ -306,7 +304,7 @@ class TimingRepeat(element.Element):
         None, alias="_periodUnit", title="Extension field for ``periodUnit``."
     )
 
-    timeOfDay: ListType[fhirtypes.Time] = Field(
+    timeOfDay: typing.List[fhirtypes.Time] = Field(
         None,
         alias="timeOfDay",
         title="Time of day for action",
@@ -314,11 +312,11 @@ class TimingRepeat(element.Element):
         # if property is element of this resource.
         element_property=True,
     )
-    timeOfDay__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_timeOfDay", title="Extension field for ``timeOfDay``."
-    )
+    timeOfDay__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_timeOfDay", title="Extension field for ``timeOfDay``.")
 
-    when: ListType[fhirtypes.Code] = Field(
+    when: typing.List[fhirtypes.Code] = Field(
         None,
         alias="when",
         title="Regular life events the event is tied to",
@@ -326,12 +324,14 @@ class TimingRepeat(element.Element):
         # if property is element of this resource.
         element_property=True,
     )
-    when__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_when", title="Extension field for ``when``."
-    )
+    when__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_when", title="Extension field for ``when``.")
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].

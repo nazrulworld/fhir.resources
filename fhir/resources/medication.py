@@ -6,8 +6,7 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import Any, Dict
-from typing import List as ListType
+import typing
 
 from pydantic import Field, root_validator
 
@@ -75,7 +74,7 @@ class Medication(domainresource.DomainResource):
         element_property=True,
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="Business identifier for this medication",
@@ -84,7 +83,7 @@ class Medication(domainresource.DomainResource):
         element_property=True,
     )
 
-    ingredient: ListType[fhirtypes.MedicationIngredientType] = Field(
+    ingredient: typing.List[fhirtypes.MedicationIngredientType] = Field(
         None,
         alias="ingredient",
         title="Active or inactive ingredient",
@@ -232,7 +231,9 @@ class MedicationIngredient(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].

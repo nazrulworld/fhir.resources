@@ -6,11 +6,11 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from typing import Any, Dict
-from typing import List as ListType
-from typing import Union
+import typing
 
 from pydantic import Field, root_validator
+from pydantic.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.errors import MissingError, NoneIsNotAllowedError
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -42,12 +42,13 @@ class OperationDefinition(domainresource.DomainResource):
     )
 
     code: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="code",
         title="Name used to invoke the operation",
         description="The name used to invoke the operation.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -65,7 +66,7 @@ class OperationDefinition(domainresource.DomainResource):
         None, alias="_comment", title="Extension field for ``comment``."
     )
 
-    contact: ListType[fhirtypes.ContactDetailType] = Field(
+    contact: typing.List[fhirtypes.ContactDetailType] = Field(
         None,
         alias="contact",
         title="Contact details for the publisher",
@@ -143,7 +144,7 @@ class OperationDefinition(domainresource.DomainResource):
     )
 
     instance: bool = Field(
-        ...,
+        None,
         alias="instance",
         title="Invoke on an instance?",
         description=(
@@ -152,12 +153,13 @@ class OperationDefinition(domainresource.DomainResource):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     instance__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_instance", title="Extension field for ``instance``."
     )
 
-    jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="jurisdiction",
         title="Intended jurisdiction for operation definition (if applicable)",
@@ -170,12 +172,13 @@ class OperationDefinition(domainresource.DomainResource):
     )
 
     kind: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="kind",
         title="operation | query",
         description="Whether this is an operation or a named query.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["operation", "query"],
@@ -185,7 +188,7 @@ class OperationDefinition(domainresource.DomainResource):
     )
 
     name: fhirtypes.String = Field(
-        ...,
+        None,
         alias="name",
         title="Name for this operation definition (computer friendly)",
         description=(
@@ -195,12 +198,13 @@ class OperationDefinition(domainresource.DomainResource):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    overload: ListType[fhirtypes.OperationDefinitionOverloadType] = Field(
+    overload: typing.List[fhirtypes.OperationDefinitionOverloadType] = Field(
         None,
         alias="overload",
         title="Define overloaded variants for when  generating code",
@@ -213,7 +217,7 @@ class OperationDefinition(domainresource.DomainResource):
         element_property=True,
     )
 
-    parameter: ListType[fhirtypes.OperationDefinitionParameterType] = Field(
+    parameter: typing.List[fhirtypes.OperationDefinitionParameterType] = Field(
         None,
         alias="parameter",
         title="Parameters for the operation/query",
@@ -252,7 +256,7 @@ class OperationDefinition(domainresource.DomainResource):
         None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
-    resource: ListType[fhirtypes.Code] = Field(
+    resource: typing.List[fhirtypes.Code] = Field(
         None,
         alias="resource",
         title="Types this operation applies to",
@@ -260,12 +264,12 @@ class OperationDefinition(domainresource.DomainResource):
         # if property is element of this resource.
         element_property=True,
     )
-    resource__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_resource", title="Extension field for ``resource``."
-    )
+    resource__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_resource", title="Extension field for ``resource``.")
 
     status: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="status",
         title="draft | active | retired | unknown",
         description=(
@@ -274,6 +278,7 @@ class OperationDefinition(domainresource.DomainResource):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["draft", "active", "retired", "unknown"],
@@ -283,7 +288,7 @@ class OperationDefinition(domainresource.DomainResource):
     )
 
     system: bool = Field(
-        ...,
+        None,
         alias="system",
         title="Invoke at the system level?",
         description=(
@@ -293,13 +298,14 @@ class OperationDefinition(domainresource.DomainResource):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_system", title="Extension field for ``system``."
     )
 
     type: bool = Field(
-        ...,
+        None,
         alias="type",
         title="Invole at the type level?",
         description=(
@@ -309,6 +315,7 @@ class OperationDefinition(domainresource.DomainResource):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -334,7 +341,7 @@ class OperationDefinition(domainresource.DomainResource):
         None, alias="_url", title="Extension field for ``url``."
     )
 
-    useContext: ListType[fhirtypes.UsageContextType] = Field(
+    useContext: typing.List[fhirtypes.UsageContextType] = Field(
         None,
         alias="useContext",
         title="Context the content is intended to support",
@@ -367,6 +374,73 @@ class OperationDefinition(domainresource.DomainResource):
         None, alias="_version", title="Extension field for ``version``."
     )
 
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [
+            ("code", "code__ext"),
+            ("instance", "instance__ext"),
+            ("kind", "kind__ext"),
+            ("name", "name__ext"),
+            ("status", "status__ext"),
+            ("system", "system__ext"),
+            ("type", "type__ext"),
+        ]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
+
 
 class OperationDefinitionOverload(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` does't part of
@@ -393,7 +467,7 @@ class OperationDefinitionOverload(backboneelement.BackboneElement):
         None, alias="_comment", title="Extension field for ``comment``."
     )
 
-    parameterName: ListType[fhirtypes.String] = Field(
+    parameterName: typing.List[fhirtypes.String] = Field(
         None,
         alias="parameterName",
         title="Name of parameter to include in overload",
@@ -401,8 +475,8 @@ class OperationDefinitionOverload(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    parameterName__ext: ListType[
-        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    parameterName__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(
         None, alias="_parameterName", title="Extension field for ``parameterName``."
     )
@@ -444,7 +518,7 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
     )
 
     max: fhirtypes.String = Field(
-        ...,
+        None,
         alias="max",
         title="Maximum Cardinality (a number or *)",
         description=(
@@ -453,13 +527,14 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     max__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_max", title="Extension field for ``max``."
     )
 
     min: fhirtypes.Integer = Field(
-        ...,
+        None,
         alias="min",
         title="Minimum Cardinality",
         description=(
@@ -468,24 +543,26 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     min__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_min", title="Extension field for ``min``."
     )
 
     name: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="name",
         title="Name in Parameters.parameter.name or in URL",
         description="The name of used to identify the parameter.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    part: ListType[fhirtypes.OperationDefinitionParameterType] = Field(
+    part: typing.List[fhirtypes.OperationDefinitionParameterType] = Field(
         None,
         alias="part",
         title="Parts of a nested Parameter",
@@ -547,12 +624,13 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
     )
 
     use: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="use",
         title="in | out",
         description="Whether this is an input or an output parameter.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["in", "out"],
@@ -560,6 +638,70 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
     use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_use", title="Extension field for ``use``."
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [
+            ("max", "max__ext"),
+            ("min", "min__ext"),
+            ("name", "name__ext"),
+            ("use", "use__ext"),
+        ]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
 
 
 class OperationDefinitionParameterBinding(backboneelement.BackboneElement):
@@ -575,7 +717,7 @@ class OperationDefinitionParameterBinding(backboneelement.BackboneElement):
     resource_type = Field("OperationDefinitionParameterBinding", const=True)
 
     strength: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="strength",
         title="required | extensible | preferred | example",
         description=(
@@ -585,6 +727,7 @@ class OperationDefinitionParameterBinding(backboneelement.BackboneElement):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["required", "extensible", "preferred", "example"],
@@ -629,7 +772,68 @@ class OperationDefinitionParameterBinding(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("strength", "strength__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
+
+    @root_validator(pre=True)
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].

@@ -6,9 +6,11 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import List as ListType
+import typing
 
-from pydantic import Field
+from pydantic import Field, root_validator
+from pydantic.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.errors import MissingError, NoneIsNotAllowedError
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -29,7 +31,7 @@ class ImagingStudy(domainresource.DomainResource):
 
     resource_type = Field("ImagingStudy", const=True)
 
-    basedOn: ListType[fhirtypes.ReferenceType] = Field(
+    basedOn: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="basedOn",
         title="Request fulfilled",
@@ -78,7 +80,7 @@ class ImagingStudy(domainresource.DomainResource):
         enum_reference_types=["Encounter"],
     )
 
-    endpoint: ListType[fhirtypes.ReferenceType] = Field(
+    endpoint: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="endpoint",
         title="Study access endpoint",
@@ -95,7 +97,7 @@ class ImagingStudy(domainresource.DomainResource):
         enum_reference_types=["Endpoint"],
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="Identifiers for the whole study",
@@ -107,7 +109,7 @@ class ImagingStudy(domainresource.DomainResource):
         element_property=True,
     )
 
-    interpreter: ListType[fhirtypes.ReferenceType] = Field(
+    interpreter: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="interpreter",
         title="Who interpreted images",
@@ -129,7 +131,7 @@ class ImagingStudy(domainresource.DomainResource):
         enum_reference_types=["Location"],
     )
 
-    modality: ListType[fhirtypes.CodingType] = Field(
+    modality: typing.List[fhirtypes.CodingType] = Field(
         None,
         alias="modality",
         title="All series modality if actual acquisition modalities",
@@ -142,7 +144,7 @@ class ImagingStudy(domainresource.DomainResource):
         element_property=True,
     )
 
-    note: ListType[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
         title="User-defined comments",
@@ -192,7 +194,7 @@ class ImagingStudy(domainresource.DomainResource):
         None, alias="_numberOfSeries", title="Extension field for ``numberOfSeries``."
     )
 
-    procedureCode: ListType[fhirtypes.CodeableConceptType] = Field(
+    procedureCode: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="procedureCode",
         title="The performed procedure code",
@@ -212,7 +214,7 @@ class ImagingStudy(domainresource.DomainResource):
         enum_reference_types=["Procedure"],
     )
 
-    reasonCode: ListType[fhirtypes.CodeableConceptType] = Field(
+    reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="reasonCode",
         title="Why the study was requested",
@@ -224,7 +226,7 @@ class ImagingStudy(domainresource.DomainResource):
         element_property=True,
     )
 
-    reasonReference: ListType[fhirtypes.ReferenceType] = Field(
+    reasonReference: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="reasonReference",
         title="Why was study performed",
@@ -252,7 +254,7 @@ class ImagingStudy(domainresource.DomainResource):
         enum_reference_types=["Practitioner", "PractitionerRole"],
     )
 
-    series: ListType[fhirtypes.ImagingStudySeriesType] = Field(
+    series: typing.List[fhirtypes.ImagingStudySeriesType] = Field(
         None,
         alias="series",
         title="Each study has one or more series of instances",
@@ -274,12 +276,13 @@ class ImagingStudy(domainresource.DomainResource):
     )
 
     status: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="status",
         title="registered | available | cancelled | entered-in-error | unknown",
         description="The current state of the ImagingStudy.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -304,6 +307,65 @@ class ImagingStudy(domainresource.DomainResource):
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Device", "Group"],
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("status", "status__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
 
 
 class ImagingStudySeries(backboneelement.BackboneElement):
@@ -344,7 +406,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    endpoint: ListType[fhirtypes.ReferenceType] = Field(
+    endpoint: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="endpoint",
         title="Series access endpoint",
@@ -360,7 +422,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         enum_reference_types=["Endpoint"],
     )
 
-    instance: ListType[fhirtypes.ImagingStudySeriesInstanceType] = Field(
+    instance: typing.List[fhirtypes.ImagingStudySeriesInstanceType] = Field(
         None,
         alias="instance",
         title="A single SOP instance from the series",
@@ -426,7 +488,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         title="Extension field for ``numberOfInstances``.",
     )
 
-    performer: ListType[fhirtypes.ImagingStudySeriesPerformerType] = Field(
+    performer: typing.List[fhirtypes.ImagingStudySeriesPerformerType] = Field(
         None,
         alias="performer",
         title="Who performed the series",
@@ -435,7 +497,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    specimen: ListType[fhirtypes.ReferenceType] = Field(
+    specimen: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="specimen",
         title="Specimen imaged",
@@ -459,16 +521,76 @@ class ImagingStudySeries(backboneelement.BackboneElement):
     )
 
     uid: fhirtypes.Id = Field(
-        ...,
+        None,
         alias="uid",
         title="DICOM Series Instance UID for the series",
         description="The DICOM Series Instance UID for the series.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uid", title="Extension field for ``uid``."
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("uid", "uid__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
 
 
 class ImagingStudySeriesInstance(backboneelement.BackboneElement):
@@ -517,16 +639,76 @@ class ImagingStudySeriesInstance(backboneelement.BackboneElement):
     )
 
     uid: fhirtypes.Id = Field(
-        ...,
+        None,
         alias="uid",
         title="DICOM SOP Instance UID",
         description="The DICOM SOP Instance UID for this image or other DICOM content.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uid", title="Extension field for ``uid``."
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("uid", "uid__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
 
 
 class ImagingStudySeriesPerformer(backboneelement.BackboneElement):

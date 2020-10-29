@@ -6,8 +6,7 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import List as ListType
-from typing import Union
+import typing
 
 from pydantic import Field
 
@@ -37,7 +36,7 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
 
     resource_type = Field("SubstanceSourceMaterial", const=True)
 
-    countryOfOrigin: ListType[fhirtypes.CodeableConceptType] = Field(
+    countryOfOrigin: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="countryOfOrigin",
         title=(
@@ -65,7 +64,7 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         element_property=True,
     )
 
-    fractionDescription: ListType[
+    fractionDescription: typing.List[
         fhirtypes.SubstanceSourceMaterialFractionDescriptionType
     ] = Field(
         None,
@@ -86,7 +85,7 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         element_property=True,
     )
 
-    geographicalLocation: ListType[fhirtypes.String] = Field(
+    geographicalLocation: typing.List[fhirtypes.String] = Field(
         None,
         alias="geographicalLocation",
         title=(
@@ -97,8 +96,8 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         # if property is element of this resource.
         element_property=True,
     )
-    geographicalLocation__ext: ListType[
-        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    geographicalLocation__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(
         None,
         alias="_geographicalLocation",
@@ -146,7 +145,7 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         None, alias="_organismName", title="Extension field for ``organismName``."
     )
 
-    parentSubstanceId: ListType[fhirtypes.IdentifierType] = Field(
+    parentSubstanceId: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="parentSubstanceId",
         title=(
@@ -159,7 +158,7 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         element_property=True,
     )
 
-    parentSubstanceName: ListType[fhirtypes.String] = Field(
+    parentSubstanceName: typing.List[fhirtypes.String] = Field(
         None,
         alias="parentSubstanceName",
         title="The parent substance of the Herbal Drug, or Herbal preparation",
@@ -167,15 +166,15 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         # if property is element of this resource.
         element_property=True,
     )
-    parentSubstanceName__ext: ListType[
-        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    parentSubstanceName__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(
         None,
         alias="_parentSubstanceName",
         title="Extension field for ``parentSubstanceName``.",
     )
 
-    partDescription: ListType[
+    partDescription: typing.List[
         fhirtypes.SubstanceSourceMaterialPartDescriptionType
     ] = Field(
         None,
@@ -281,7 +280,7 @@ class SubstanceSourceMaterialOrganism(backboneelement.BackboneElement):
 
     resource_type = Field("SubstanceSourceMaterialOrganism", const=True)
 
-    author: ListType[fhirtypes.SubstanceSourceMaterialOrganismAuthorType] = Field(
+    author: typing.List[fhirtypes.SubstanceSourceMaterialOrganismAuthorType] = Field(
         None,
         alias="author",
         title="4.9.13.6.1 Author type (Conditional)",

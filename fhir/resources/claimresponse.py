@@ -6,11 +6,11 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import Any, Dict
-from typing import List as ListType
-from typing import Union
+import typing
 
 from pydantic import Field, root_validator
+from pydantic.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.errors import MissingError, NoneIsNotAllowedError
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -27,7 +27,7 @@ class ClaimResponse(domainresource.DomainResource):
 
     resource_type = Field("ClaimResponse", const=True)
 
-    addItem: ListType[fhirtypes.ClaimResponseAddItemType] = Field(
+    addItem: typing.List[fhirtypes.ClaimResponseAddItemType] = Field(
         None,
         alias="addItem",
         title="Insurer added line items",
@@ -39,7 +39,7 @@ class ClaimResponse(domainresource.DomainResource):
         element_property=True,
     )
 
-    adjudication: ListType[fhirtypes.ClaimResponseItemAdjudicationType] = Field(
+    adjudication: typing.List[fhirtypes.ClaimResponseItemAdjudicationType] = Field(
         None,
         alias="adjudication",
         title="Header-level adjudication",
@@ -51,7 +51,7 @@ class ClaimResponse(domainresource.DomainResource):
         element_property=True,
     )
 
-    communicationRequest: ListType[fhirtypes.ReferenceType] = Field(
+    communicationRequest: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="communicationRequest",
         title="Request for additional information",
@@ -63,12 +63,13 @@ class ClaimResponse(domainresource.DomainResource):
     )
 
     created: fhirtypes.DateTime = Field(
-        ...,
+        None,
         alias="created",
         title="Response creation date",
         description="The date this resource was created.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_created", title="Extension field for ``created``."
@@ -86,7 +87,7 @@ class ClaimResponse(domainresource.DomainResource):
         None, alias="_disposition", title="Extension field for ``disposition``."
     )
 
-    error: ListType[fhirtypes.ClaimResponseErrorType] = Field(
+    error: typing.List[fhirtypes.ClaimResponseErrorType] = Field(
         None,
         alias="error",
         title="Processing errors",
@@ -128,7 +129,7 @@ class ClaimResponse(domainresource.DomainResource):
         element_property=True,
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="Business Identifier for a claim response",
@@ -137,7 +138,7 @@ class ClaimResponse(domainresource.DomainResource):
         element_property=True,
     )
 
-    insurance: ListType[fhirtypes.ClaimResponseInsuranceType] = Field(
+    insurance: typing.List[fhirtypes.ClaimResponseInsuranceType] = Field(
         None,
         alias="insurance",
         title="Patient insurance information",
@@ -163,7 +164,7 @@ class ClaimResponse(domainresource.DomainResource):
         enum_reference_types=["Organization"],
     )
 
-    item: ListType[fhirtypes.ClaimResponseItemType] = Field(
+    item: typing.List[fhirtypes.ClaimResponseItemType] = Field(
         None,
         alias="item",
         title="Adjudication for claim line items",
@@ -176,7 +177,7 @@ class ClaimResponse(domainresource.DomainResource):
     )
 
     outcome: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="outcome",
         title="queued | complete | error | partial",
         description=(
@@ -185,6 +186,7 @@ class ClaimResponse(domainresource.DomainResource):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["queued", "complete", "error", "partial"],
@@ -250,7 +252,7 @@ class ClaimResponse(domainresource.DomainResource):
         None, alias="_preAuthRef", title="Extension field for ``preAuthRef``."
     )
 
-    processNote: ListType[fhirtypes.ClaimResponseProcessNoteType] = Field(
+    processNote: typing.List[fhirtypes.ClaimResponseProcessNoteType] = Field(
         None,
         alias="processNote",
         title="Note concerning adjudication",
@@ -288,12 +290,13 @@ class ClaimResponse(domainresource.DomainResource):
     )
 
     status: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="status",
         title="active | cancelled | draft | entered-in-error",
         description="The status of the resource instance.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["active", "cancelled", "draft", "entered-in-error"],
@@ -315,7 +318,7 @@ class ClaimResponse(domainresource.DomainResource):
         element_property=True,
     )
 
-    total: ListType[fhirtypes.ClaimResponseTotalType] = Field(
+    total: typing.List[fhirtypes.ClaimResponseTotalType] = Field(
         None,
         alias="total",
         title="Adjudication totals",
@@ -338,7 +341,7 @@ class ClaimResponse(domainresource.DomainResource):
     )
 
     use: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="use",
         title="claim | preauthorization | predetermination",
         description=(
@@ -350,6 +353,7 @@ class ClaimResponse(domainresource.DomainResource):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["claim", "preauthorization", "predetermination"],
@@ -357,6 +361,70 @@ class ClaimResponse(domainresource.DomainResource):
     use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_use", title="Extension field for ``use``."
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [
+            ("created", "created__ext"),
+            ("outcome", "outcome__ext"),
+            ("status", "status__ext"),
+            ("use", "use__ext"),
+        ]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
 
 
 class ClaimResponseAddItem(backboneelement.BackboneElement):
@@ -371,7 +439,7 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
 
     resource_type = Field("ClaimResponseAddItem", const=True)
 
-    adjudication: ListType[fhirtypes.ClaimResponseItemAdjudicationType] = Field(
+    adjudication: typing.List[fhirtypes.ClaimResponseItemAdjudicationType] = Field(
         ...,
         alias="adjudication",
         title="Added items adjudication",
@@ -389,7 +457,7 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    detail: ListType[fhirtypes.ClaimResponseAddItemDetailType] = Field(
+    detail: typing.List[fhirtypes.ClaimResponseAddItemDetailType] = Field(
         None,
         alias="detail",
         title="Insurer added line details",
@@ -398,7 +466,7 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    detailSequence: ListType[fhirtypes.PositiveInt] = Field(
+    detailSequence: typing.List[fhirtypes.PositiveInt] = Field(
         None,
         alias="detailSequence",
         title="Detail sequence number",
@@ -409,8 +477,8 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    detailSequence__ext: ListType[
-        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    detailSequence__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(
         None, alias="_detailSequence", title="Extension field for ``detailSequence``."
     )
@@ -432,7 +500,7 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
         None, alias="_factor", title="Extension field for ``factor``."
     )
 
-    itemSequence: ListType[fhirtypes.PositiveInt] = Field(
+    itemSequence: typing.List[fhirtypes.PositiveInt] = Field(
         None,
         alias="itemSequence",
         title="Item sequence number",
@@ -440,8 +508,8 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    itemSequence__ext: ListType[
-        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    itemSequence__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(
         None, alias="_itemSequence", title="Extension field for ``itemSequence``."
     )
@@ -484,7 +552,7 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
         enum_reference_types=["Location"],
     )
 
-    modifier: ListType[fhirtypes.CodeableConceptType] = Field(
+    modifier: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="modifier",
         title="Service/Product billing modifiers",
@@ -508,7 +576,7 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    noteNumber: ListType[fhirtypes.PositiveInt] = Field(
+    noteNumber: typing.List[fhirtypes.PositiveInt] = Field(
         None,
         alias="noteNumber",
         title="Applicable note numbers",
@@ -519,8 +587,8 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    noteNumber__ext: ListType[
-        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    noteNumber__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_noteNumber", title="Extension field for ``noteNumber``.")
 
     productOrService: fhirtypes.CodeableConceptType = Field(
@@ -536,7 +604,7 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    programCode: ListType[fhirtypes.CodeableConceptType] = Field(
+    programCode: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="programCode",
         title="Program the product or service is provided under",
@@ -545,7 +613,7 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    provider: ListType[fhirtypes.ReferenceType] = Field(
+    provider: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="provider",
         title="Authorized providers",
@@ -601,7 +669,7 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
         one_of_many_required=False,
     )
 
-    subSite: ListType[fhirtypes.CodeableConceptType] = Field(
+    subSite: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="subSite",
         title="Anatomical sub-location",
@@ -613,7 +681,7 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    subdetailSequence: ListType[fhirtypes.PositiveInt] = Field(
+    subdetailSequence: typing.List[fhirtypes.PositiveInt] = Field(
         None,
         alias="subdetailSequence",
         title="Subdetail sequence number",
@@ -624,8 +692,8 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    subdetailSequence__ext: ListType[
-        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    subdetailSequence__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(
         None,
         alias="_subdetailSequence",
@@ -646,7 +714,9 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -700,7 +770,7 @@ class ClaimResponseAddItemDetail(backboneelement.BackboneElement):
 
     resource_type = Field("ClaimResponseAddItemDetail", const=True)
 
-    adjudication: ListType[fhirtypes.ClaimResponseItemAdjudicationType] = Field(
+    adjudication: typing.List[fhirtypes.ClaimResponseItemAdjudicationType] = Field(
         ...,
         alias="adjudication",
         title="Added items detail adjudication",
@@ -726,7 +796,7 @@ class ClaimResponseAddItemDetail(backboneelement.BackboneElement):
         None, alias="_factor", title="Extension field for ``factor``."
     )
 
-    modifier: ListType[fhirtypes.CodeableConceptType] = Field(
+    modifier: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="modifier",
         title="Service/Product billing modifiers",
@@ -750,7 +820,7 @@ class ClaimResponseAddItemDetail(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    noteNumber: ListType[fhirtypes.PositiveInt] = Field(
+    noteNumber: typing.List[fhirtypes.PositiveInt] = Field(
         None,
         alias="noteNumber",
         title="Applicable note numbers",
@@ -761,8 +831,8 @@ class ClaimResponseAddItemDetail(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    noteNumber__ext: ListType[
-        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    noteNumber__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_noteNumber", title="Extension field for ``noteNumber``.")
 
     productOrService: fhirtypes.CodeableConceptType = Field(
@@ -787,7 +857,7 @@ class ClaimResponseAddItemDetail(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    subDetail: ListType[fhirtypes.ClaimResponseAddItemDetailSubDetailType] = Field(
+    subDetail: typing.List[fhirtypes.ClaimResponseAddItemDetailSubDetailType] = Field(
         None,
         alias="subDetail",
         title="Insurer added line items",
@@ -821,7 +891,7 @@ class ClaimResponseAddItemDetailSubDetail(backboneelement.BackboneElement):
 
     resource_type = Field("ClaimResponseAddItemDetailSubDetail", const=True)
 
-    adjudication: ListType[fhirtypes.ClaimResponseItemAdjudicationType] = Field(
+    adjudication: typing.List[fhirtypes.ClaimResponseItemAdjudicationType] = Field(
         ...,
         alias="adjudication",
         title="Added items detail adjudication",
@@ -847,7 +917,7 @@ class ClaimResponseAddItemDetailSubDetail(backboneelement.BackboneElement):
         None, alias="_factor", title="Extension field for ``factor``."
     )
 
-    modifier: ListType[fhirtypes.CodeableConceptType] = Field(
+    modifier: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="modifier",
         title="Service/Product billing modifiers",
@@ -871,7 +941,7 @@ class ClaimResponseAddItemDetailSubDetail(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    noteNumber: ListType[fhirtypes.PositiveInt] = Field(
+    noteNumber: typing.List[fhirtypes.PositiveInt] = Field(
         None,
         alias="noteNumber",
         title="Applicable note numbers",
@@ -882,8 +952,8 @@ class ClaimResponseAddItemDetailSubDetail(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    noteNumber__ext: ListType[
-        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    noteNumber__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_noteNumber", title="Extension field for ``noteNumber``.")
 
     productOrService: fhirtypes.CodeableConceptType = Field(
@@ -1056,7 +1126,7 @@ class ClaimResponseInsurance(backboneelement.BackboneElement):
     )
 
     focal: bool = Field(
-        ...,
+        None,
         alias="focal",
         title="Coverage to be used for adjudication",
         description=(
@@ -1065,13 +1135,14 @@ class ClaimResponseInsurance(backboneelement.BackboneElement):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     focal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_focal", title="Extension field for ``focal``."
     )
 
     sequence: fhirtypes.PositiveInt = Field(
-        ...,
+        None,
         alias="sequence",
         title="Insurance instance identifier",
         description=(
@@ -1080,10 +1151,70 @@ class ClaimResponseInsurance(backboneelement.BackboneElement):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sequence", title="Extension field for ``sequence``."
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("focal", "focal__ext"), ("sequence", "sequence__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
 
 
 class ClaimResponseItem(backboneelement.BackboneElement):
@@ -1098,7 +1229,7 @@ class ClaimResponseItem(backboneelement.BackboneElement):
 
     resource_type = Field("ClaimResponseItem", const=True)
 
-    adjudication: ListType[fhirtypes.ClaimResponseItemAdjudicationType] = Field(
+    adjudication: typing.List[fhirtypes.ClaimResponseItemAdjudicationType] = Field(
         ...,
         alias="adjudication",
         title="Adjudication details",
@@ -1111,7 +1242,7 @@ class ClaimResponseItem(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    detail: ListType[fhirtypes.ClaimResponseItemDetailType] = Field(
+    detail: typing.List[fhirtypes.ClaimResponseItemDetailType] = Field(
         None,
         alias="detail",
         title="Adjudication for claim details",
@@ -1124,18 +1255,19 @@ class ClaimResponseItem(backboneelement.BackboneElement):
     )
 
     itemSequence: fhirtypes.PositiveInt = Field(
-        ...,
+        None,
         alias="itemSequence",
         title="Claim item instance identifier",
         description="A number to uniquely reference the claim item entries.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     itemSequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_itemSequence", title="Extension field for ``itemSequence``."
     )
 
-    noteNumber: ListType[fhirtypes.PositiveInt] = Field(
+    noteNumber: typing.List[fhirtypes.PositiveInt] = Field(
         None,
         alias="noteNumber",
         title="Applicable note numbers",
@@ -1146,9 +1278,68 @@ class ClaimResponseItem(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    noteNumber__ext: ListType[
-        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    noteNumber__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_noteNumber", title="Extension field for ``noteNumber``.")
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("itemSequence", "itemSequence__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
 
 
 class ClaimResponseItemAdjudication(backboneelement.BackboneElement):
@@ -1229,7 +1420,7 @@ class ClaimResponseItemDetail(backboneelement.BackboneElement):
 
     resource_type = Field("ClaimResponseItemDetail", const=True)
 
-    adjudication: ListType[fhirtypes.ClaimResponseItemAdjudicationType] = Field(
+    adjudication: typing.List[fhirtypes.ClaimResponseItemAdjudicationType] = Field(
         ...,
         alias="adjudication",
         title="Detail level adjudication details",
@@ -1239,18 +1430,19 @@ class ClaimResponseItemDetail(backboneelement.BackboneElement):
     )
 
     detailSequence: fhirtypes.PositiveInt = Field(
-        ...,
+        None,
         alias="detailSequence",
         title="Claim detail instance identifier",
         description="A number to uniquely reference the claim detail entry.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     detailSequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_detailSequence", title="Extension field for ``detailSequence``."
     )
 
-    noteNumber: ListType[fhirtypes.PositiveInt] = Field(
+    noteNumber: typing.List[fhirtypes.PositiveInt] = Field(
         None,
         alias="noteNumber",
         title="Applicable note numbers",
@@ -1261,11 +1453,11 @@ class ClaimResponseItemDetail(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    noteNumber__ext: ListType[
-        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    noteNumber__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_noteNumber", title="Extension field for ``noteNumber``.")
 
-    subDetail: ListType[fhirtypes.ClaimResponseItemDetailSubDetailType] = Field(
+    subDetail: typing.List[fhirtypes.ClaimResponseItemDetailSubDetailType] = Field(
         None,
         alias="subDetail",
         title="Adjudication for claim sub-details",
@@ -1273,6 +1465,65 @@ class ClaimResponseItemDetail(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("detailSequence", "detailSequence__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
 
 
 class ClaimResponseItemDetailSubDetail(backboneelement.BackboneElement):
@@ -1286,7 +1537,7 @@ class ClaimResponseItemDetailSubDetail(backboneelement.BackboneElement):
 
     resource_type = Field("ClaimResponseItemDetailSubDetail", const=True)
 
-    adjudication: ListType[fhirtypes.ClaimResponseItemAdjudicationType] = Field(
+    adjudication: typing.List[fhirtypes.ClaimResponseItemAdjudicationType] = Field(
         None,
         alias="adjudication",
         title="Subdetail level adjudication details",
@@ -1295,7 +1546,7 @@ class ClaimResponseItemDetailSubDetail(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    noteNumber: ListType[fhirtypes.PositiveInt] = Field(
+    noteNumber: typing.List[fhirtypes.PositiveInt] = Field(
         None,
         alias="noteNumber",
         title="Applicable note numbers",
@@ -1306,23 +1557,83 @@ class ClaimResponseItemDetailSubDetail(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
-    noteNumber__ext: ListType[
-        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    noteNumber__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_noteNumber", title="Extension field for ``noteNumber``.")
 
     subDetailSequence: fhirtypes.PositiveInt = Field(
-        ...,
+        None,
         alias="subDetailSequence",
         title="Claim sub-detail instance identifier",
         description="A number to uniquely reference the claim sub-detail entry.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     subDetailSequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
         alias="_subDetailSequence",
         title="Extension field for ``subDetailSequence``.",
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("subDetailSequence", "subDetailSequence__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
 
 
 class ClaimResponsePayment(backboneelement.BackboneElement):
@@ -1437,12 +1748,13 @@ class ClaimResponseProcessNote(backboneelement.BackboneElement):
     )
 
     text: fhirtypes.String = Field(
-        ...,
+        None,
         alias="text",
         title="Note explanatory text",
         description="The explanation or description associated with the processing.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_text", title="Extension field for ``text``."
@@ -1462,6 +1774,65 @@ class ClaimResponseProcessNote(backboneelement.BackboneElement):
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("text", "text__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
 
 
 class ClaimResponseTotal(backboneelement.BackboneElement):

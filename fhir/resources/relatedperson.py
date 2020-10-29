@@ -6,7 +6,7 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import List as ListType
+import typing
 
 from pydantic import Field
 
@@ -39,7 +39,7 @@ class RelatedPerson(domainresource.DomainResource):
         None, alias="_active", title="Extension field for ``active``."
     )
 
-    address: ListType[fhirtypes.AddressType] = Field(
+    address: typing.List[fhirtypes.AddressType] = Field(
         None,
         alias="address",
         title="Address where the related person can be contacted or visited",
@@ -60,7 +60,7 @@ class RelatedPerson(domainresource.DomainResource):
         None, alias="_birthDate", title="Extension field for ``birthDate``."
     )
 
-    communication: ListType[fhirtypes.RelatedPersonCommunicationType] = Field(
+    communication: typing.List[fhirtypes.RelatedPersonCommunicationType] = Field(
         None,
         alias="communication",
         title=(
@@ -90,7 +90,7 @@ class RelatedPerson(domainresource.DomainResource):
         None, alias="_gender", title="Extension field for ``gender``."
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="A human identifier for this person",
@@ -99,7 +99,7 @@ class RelatedPerson(domainresource.DomainResource):
         element_property=True,
     )
 
-    name: ListType[fhirtypes.HumanNameType] = Field(
+    name: typing.List[fhirtypes.HumanNameType] = Field(
         None,
         alias="name",
         title="A name associated with the person",
@@ -131,7 +131,7 @@ class RelatedPerson(domainresource.DomainResource):
         element_property=True,
     )
 
-    photo: ListType[fhirtypes.AttachmentType] = Field(
+    photo: typing.List[fhirtypes.AttachmentType] = Field(
         None,
         alias="photo",
         title="Image of the person",
@@ -140,7 +140,7 @@ class RelatedPerson(domainresource.DomainResource):
         element_property=True,
     )
 
-    relationship: ListType[fhirtypes.CodeableConceptType] = Field(
+    relationship: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="relationship",
         title="The nature of the relationship",
@@ -152,7 +152,7 @@ class RelatedPerson(domainresource.DomainResource):
         element_property=True,
     )
 
-    telecom: ListType[fhirtypes.ContactPointType] = Field(
+    telecom: typing.List[fhirtypes.ContactPointType] = Field(
         None,
         alias="telecom",
         title="A contact detail for the person",

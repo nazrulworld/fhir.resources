@@ -6,7 +6,7 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import List as ListType
+import typing
 
 from pydantic import Field
 
@@ -33,7 +33,7 @@ class MedicinalProductPharmaceutical(domainresource.DomainResource):
         element_property=True,
     )
 
-    characteristics: ListType[
+    characteristics: typing.List[
         fhirtypes.MedicinalProductPharmaceuticalCharacteristicsType
     ] = Field(
         None,
@@ -44,7 +44,7 @@ class MedicinalProductPharmaceutical(domainresource.DomainResource):
         element_property=True,
     )
 
-    device: ListType[fhirtypes.ReferenceType] = Field(
+    device: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="device",
         title="Accompanying device",
@@ -55,7 +55,7 @@ class MedicinalProductPharmaceutical(domainresource.DomainResource):
         enum_reference_types=["DeviceDefinition"],
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="An identifier for the pharmaceutical medicinal product",
@@ -64,7 +64,7 @@ class MedicinalProductPharmaceutical(domainresource.DomainResource):
         element_property=True,
     )
 
-    ingredient: ListType[fhirtypes.ReferenceType] = Field(
+    ingredient: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="ingredient",
         title="Ingredient",
@@ -75,7 +75,7 @@ class MedicinalProductPharmaceutical(domainresource.DomainResource):
         enum_reference_types=["MedicinalProductIngredient"],
     )
 
-    routeOfAdministration: ListType[
+    routeOfAdministration: typing.List[
         fhirtypes.MedicinalProductPharmaceuticalRouteOfAdministrationType
     ] = Field(
         ...,
@@ -216,7 +216,7 @@ class MedicinalProductPharmaceuticalRouteOfAdministration(
         element_property=True,
     )
 
-    targetSpecies: ListType[
+    targetSpecies: typing.List[
         fhirtypes.MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesType
     ] = Field(
         None,
@@ -251,7 +251,7 @@ class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies(
         element_property=True,
     )
 
-    withdrawalPeriod: ListType[
+    withdrawalPeriod: typing.List[
         fhirtypes.MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriodType  # noqa: B950
     ] = Field(
         None,

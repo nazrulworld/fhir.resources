@@ -6,8 +6,7 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from typing import Any, Dict
-from typing import List as ListType
+import typing
 
 from pydantic import Field, root_validator
 
@@ -53,7 +52,7 @@ class EligibilityResponse(domainresource.DomainResource):
         None, alias="_disposition", title="Extension field for ``disposition``."
     )
 
-    error: ListType[fhirtypes.EligibilityResponseErrorType] = Field(
+    error: typing.List[fhirtypes.EligibilityResponseErrorType] = Field(
         None,
         alias="error",
         title="Processing errors",
@@ -71,7 +70,7 @@ class EligibilityResponse(domainresource.DomainResource):
         element_property=True,
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="Business Identifier",
@@ -96,7 +95,7 @@ class EligibilityResponse(domainresource.DomainResource):
         None, alias="_inforce", title="Extension field for ``inforce``."
     )
 
-    insurance: ListType[fhirtypes.EligibilityResponseInsuranceType] = Field(
+    insurance: typing.List[fhirtypes.EligibilityResponseInsuranceType] = Field(
         None,
         alias="insurance",
         title="Details by insurance coverage",
@@ -219,7 +218,7 @@ class EligibilityResponseInsurance(backboneelement.BackboneElement):
 
     resource_type = Field("EligibilityResponseInsurance", const=True)
 
-    benefitBalance: ListType[
+    benefitBalance: typing.List[
         fhirtypes.EligibilityResponseInsuranceBenefitBalanceType
     ] = Field(
         None,
@@ -304,7 +303,7 @@ class EligibilityResponseInsuranceBenefitBalance(backboneelement.BackboneElement
         None, alias="_excluded", title="Extension field for ``excluded``."
     )
 
-    financial: ListType[
+    financial: typing.List[
         fhirtypes.EligibilityResponseInsuranceBenefitBalanceFinancialType
     ] = Field(
         None,
@@ -463,7 +462,9 @@ class EligibilityResponseInsuranceBenefitBalanceFinancial(
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].

@@ -6,8 +6,7 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from typing import Any, Dict
-from typing import List as ListType
+import typing
 
 from pydantic import Field, root_validator
 
@@ -50,7 +49,7 @@ class Medication(domainresource.DomainResource):
         element_property=True,
     )
 
-    image: ListType[fhirtypes.AttachmentType] = Field(
+    image: typing.List[fhirtypes.AttachmentType] = Field(
         None,
         alias="image",
         title="Picture of the medication",
@@ -59,7 +58,7 @@ class Medication(domainresource.DomainResource):
         element_property=True,
     )
 
-    ingredient: ListType[fhirtypes.MedicationIngredientType] = Field(
+    ingredient: typing.List[fhirtypes.MedicationIngredientType] = Field(
         None,
         alias="ingredient",
         title="Active or inactive ingredient",
@@ -209,7 +208,9 @@ class MedicationIngredient(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -256,7 +257,7 @@ class MedicationPackage(backboneelement.BackboneElement):
 
     resource_type = Field("MedicationPackage", const=True)
 
-    batch: ListType[fhirtypes.MedicationPackageBatchType] = Field(
+    batch: typing.List[fhirtypes.MedicationPackageBatchType] = Field(
         None,
         alias="batch",
         title="Identifies a single production run",
@@ -277,7 +278,7 @@ class MedicationPackage(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    content: ListType[fhirtypes.MedicationPackageContentType] = Field(
+    content: typing.List[fhirtypes.MedicationPackageContentType] = Field(
         None,
         alias="content",
         title="What is  in the package",
@@ -371,7 +372,9 @@ class MedicationPackageContent(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].

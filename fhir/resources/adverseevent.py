@@ -6,9 +6,11 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import List as ListType
+import typing
 
-from pydantic import Field
+from pydantic import Field, root_validator
+from pydantic.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.errors import MissingError, NoneIsNotAllowedError
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -29,7 +31,7 @@ class AdverseEvent(domainresource.DomainResource):
     resource_type = Field("AdverseEvent", const=True)
 
     actuality: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="actuality",
         title="actual | potential",
         description=(
@@ -39,6 +41,7 @@ class AdverseEvent(domainresource.DomainResource):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["actual", "potential"],
@@ -47,7 +50,7 @@ class AdverseEvent(domainresource.DomainResource):
         None, alias="_actuality", title="Extension field for ``actuality``."
     )
 
-    category: ListType[fhirtypes.CodeableConceptType] = Field(
+    category: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="category",
         title=(
@@ -62,7 +65,7 @@ class AdverseEvent(domainresource.DomainResource):
         element_property=True,
     )
 
-    contributor: ListType[fhirtypes.ReferenceType] = Field(
+    contributor: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="contributor",
         title="Who  was involved in the adverse event or the potential adverse event",
@@ -203,7 +206,7 @@ class AdverseEvent(domainresource.DomainResource):
         ],
     )
 
-    referenceDocument: ListType[fhirtypes.ReferenceType] = Field(
+    referenceDocument: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="referenceDocument",
         title="AdverseEvent.referenceDocument",
@@ -214,7 +217,7 @@ class AdverseEvent(domainresource.DomainResource):
         enum_reference_types=["DocumentReference"],
     )
 
-    resultingCondition: ListType[fhirtypes.ReferenceType] = Field(
+    resultingCondition: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="resultingCondition",
         title="Effect on the subject due to this event",
@@ -250,7 +253,7 @@ class AdverseEvent(domainresource.DomainResource):
         element_property=True,
     )
 
-    study: ListType[fhirtypes.ReferenceType] = Field(
+    study: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="study",
         title="AdverseEvent.study",
@@ -272,7 +275,7 @@ class AdverseEvent(domainresource.DomainResource):
         enum_reference_types=["Patient", "Group", "Practitioner", "RelatedPerson"],
     )
 
-    subjectMedicalHistory: ListType[fhirtypes.ReferenceType] = Field(
+    subjectMedicalHistory: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="subjectMedicalHistory",
         title="AdverseEvent.subjectMedicalHistory",
@@ -292,7 +295,7 @@ class AdverseEvent(domainresource.DomainResource):
         ],
     )
 
-    suspectEntity: ListType[fhirtypes.AdverseEventSuspectEntityType] = Field(
+    suspectEntity: typing.List[fhirtypes.AdverseEventSuspectEntityType] = Field(
         None,
         alias="suspectEntity",
         title="The suspected agent causing the adverse event",
@@ -303,6 +306,65 @@ class AdverseEvent(domainresource.DomainResource):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("actuality", "actuality__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
 
 
 class AdverseEventSuspectEntity(backboneelement.BackboneElement):
@@ -316,7 +378,7 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
 
     resource_type = Field("AdverseEventSuspectEntity", const=True)
 
-    causality: ListType[fhirtypes.AdverseEventSuspectEntityCausalityType] = Field(
+    causality: typing.List[fhirtypes.AdverseEventSuspectEntityCausalityType] = Field(
         None,
         alias="causality",
         title="Information on the possible cause of the event",

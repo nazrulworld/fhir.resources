@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime, timezone
+
 from pydantic.datetime_parse import parse_date
+
 from .. import fhirtypes  # noqa: F401
 from .. import composition
 
@@ -51,8 +53,12 @@ def impl_Composition_1(inst):
     assert inst.section[0].mode == "snapshot"
     assert inst.section[0].orderedBy.coding[0].code == "event-date"
     assert inst.section[0].orderedBy.coding[0].display == "Sorted by Event Date"
-    assert inst.section[0].orderedBy.coding[0].system == "http://hl7.org/fhir/list-order"
-    assert inst.section[0].text.div == """<div>
+    assert (
+        inst.section[0].orderedBy.coding[0].system == "http://hl7.org/fhir/list-order"
+    )
+    assert (
+        inst.section[0].text.div
+        == """<div>
 				<table>
 					<tr>
 						<td>
@@ -94,27 +100,40 @@ def impl_Composition_1(inst):
 					</tr>
 				</table>
 			</div>"""
+    )
     assert inst.section[0].text.status == "generated"
     assert inst.section[0].title == "History of present illness"
     assert inst.section[1].code.coding[0].code == "10157-6"
-    assert inst.section[1].code.coding[0].display == "History of family member diseases Narrative"
+    assert (
+        inst.section[1].code.coding[0].display
+        == "History of family member diseases Narrative"
+    )
     assert inst.section[1].code.coding[0].system == "http://loinc.org"
     assert inst.section[1].emptyReason.coding[0].code == "withheld"
     assert inst.section[1].emptyReason.coding[0].display == "Information Withheld"
-    assert inst.section[1].emptyReason.coding[0].system == "http://hl7.org/fhir/list-empty-reason"
+    assert (
+        inst.section[1].emptyReason.coding[0].system
+        == "http://hl7.org/fhir/list-empty-reason"
+    )
     assert inst.section[1].mode == "snapshot"
-    assert inst.section[1].text.div == """<div>
+    assert (
+        inst.section[1].text.div
+        == """<div>
 			<p>History of family member diseases - not available</p>
 			</div>"""
+    )
     assert inst.section[1].text.status == "generated"
     assert inst.section[1].title == "History of family member diseases"
     assert inst.status == "final"
     assert inst.subject.display == "Henry Levin the 7th"
     assert inst.subject.reference == "Patient/xcda"
-    assert inst.text.div == """<div>
+    assert (
+        inst.text.div
+        == """<div>
 			<p>Consultation note for Henry Levin the 7th</p>
 			<p>Managed by Good Health Clinic</p>
 		</div>"""
+    )
     assert inst.text.status == "generated"
     assert inst.title == "Consultation Note"
     assert inst.type.coding[0].code == "11488-4"

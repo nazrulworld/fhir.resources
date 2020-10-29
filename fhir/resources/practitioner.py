@@ -6,7 +6,7 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import List as ListType
+import typing
 
 from pydantic import Field
 
@@ -38,7 +38,7 @@ class Practitioner(domainresource.DomainResource):
         None, alias="_active", title="Extension field for ``active``."
     )
 
-    address: ListType[fhirtypes.AddressType] = Field(
+    address: typing.List[fhirtypes.AddressType] = Field(
         None,
         alias="address",
         title=(
@@ -66,7 +66,7 @@ class Practitioner(domainresource.DomainResource):
         None, alias="_birthDate", title="Extension field for ``birthDate``."
     )
 
-    communication: ListType[fhirtypes.CodeableConceptType] = Field(
+    communication: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="communication",
         title="A language the practitioner can use in patient communication",
@@ -93,7 +93,7 @@ class Practitioner(domainresource.DomainResource):
         None, alias="_gender", title="Extension field for ``gender``."
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="An identifier for the person as this agent",
@@ -102,7 +102,7 @@ class Practitioner(domainresource.DomainResource):
         element_property=True,
     )
 
-    name: ListType[fhirtypes.HumanNameType] = Field(
+    name: typing.List[fhirtypes.HumanNameType] = Field(
         None,
         alias="name",
         title="The name(s) associated with the practitioner",
@@ -111,7 +111,7 @@ class Practitioner(domainresource.DomainResource):
         element_property=True,
     )
 
-    photo: ListType[fhirtypes.AttachmentType] = Field(
+    photo: typing.List[fhirtypes.AttachmentType] = Field(
         None,
         alias="photo",
         title="Image of the person",
@@ -120,7 +120,7 @@ class Practitioner(domainresource.DomainResource):
         element_property=True,
     )
 
-    qualification: ListType[fhirtypes.PractitionerQualificationType] = Field(
+    qualification: typing.List[fhirtypes.PractitionerQualificationType] = Field(
         None,
         alias="qualification",
         title=(
@@ -137,7 +137,7 @@ class Practitioner(domainresource.DomainResource):
         element_property=True,
     )
 
-    telecom: ListType[fhirtypes.ContactPointType] = Field(
+    telecom: typing.List[fhirtypes.ContactPointType] = Field(
         None,
         alias="telecom",
         title="A contact detail for the practitioner (that apply to all roles)",
@@ -173,7 +173,7 @@ class PractitionerQualification(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="An identifier for this qualification for the practitioner",

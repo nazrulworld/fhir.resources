@@ -6,10 +6,11 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from typing import List as ListType
-from typing import Union
+import typing
 
-from pydantic import Field
+from pydantic import Field, root_validator
+from pydantic.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.errors import MissingError, NoneIsNotAllowedError
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -57,7 +58,7 @@ class PractitionerRole(domainresource.DomainResource):
         title="Extension field for ``availabilityExceptions``.",
     )
 
-    availableTime: ListType[fhirtypes.PractitionerRoleAvailableTimeType] = Field(
+    availableTime: typing.List[fhirtypes.PractitionerRoleAvailableTimeType] = Field(
         None,
         alias="availableTime",
         title="Times the Service Site is available",
@@ -66,7 +67,7 @@ class PractitionerRole(domainresource.DomainResource):
         element_property=True,
     )
 
-    code: ListType[fhirtypes.CodeableConceptType] = Field(
+    code: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="code",
         title="Roles which this practitioner may perform",
@@ -78,7 +79,7 @@ class PractitionerRole(domainresource.DomainResource):
         element_property=True,
     )
 
-    endpoint: ListType[fhirtypes.ReferenceType] = Field(
+    endpoint: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="endpoint",
         title=(
@@ -92,7 +93,7 @@ class PractitionerRole(domainresource.DomainResource):
         enum_reference_types=["Endpoint"],
     )
 
-    healthcareService: ListType[fhirtypes.ReferenceType] = Field(
+    healthcareService: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="healthcareService",
         title=(
@@ -106,7 +107,7 @@ class PractitionerRole(domainresource.DomainResource):
         enum_reference_types=["HealthcareService"],
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="Business Identifiers that are specific to a role/location",
@@ -115,7 +116,7 @@ class PractitionerRole(domainresource.DomainResource):
         element_property=True,
     )
 
-    location: ListType[fhirtypes.ReferenceType] = Field(
+    location: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="location",
         title="The location(s) at which this practitioner provides care",
@@ -126,7 +127,7 @@ class PractitionerRole(domainresource.DomainResource):
         enum_reference_types=["Location"],
     )
 
-    notAvailable: ListType[fhirtypes.PractitionerRoleNotAvailableType] = Field(
+    notAvailable: typing.List[fhirtypes.PractitionerRoleNotAvailableType] = Field(
         None,
         alias="notAvailable",
         title="Not available during this time due to provided reason",
@@ -178,7 +179,7 @@ class PractitionerRole(domainresource.DomainResource):
         enum_reference_types=["Practitioner"],
     )
 
-    specialty: ListType[fhirtypes.CodeableConceptType] = Field(
+    specialty: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="specialty",
         title="Specific specialty of the practitioner",
@@ -187,7 +188,7 @@ class PractitionerRole(domainresource.DomainResource):
         element_property=True,
     )
 
-    telecom: ListType[fhirtypes.ContactPointType] = Field(
+    telecom: typing.List[fhirtypes.ContactPointType] = Field(
         None,
         alias="telecom",
         title="Contact details that are specific to the role/location/service",
@@ -257,7 +258,7 @@ class PractitionerRoleAvailableTime(backboneelement.BackboneElement):
         title="Extension field for ``availableStartTime``.",
     )
 
-    daysOfWeek: ListType[fhirtypes.Code] = Field(
+    daysOfWeek: typing.List[fhirtypes.Code] = Field(
         None,
         alias="daysOfWeek",
         title="mon | tue | wed | thu | fri | sat | sun",
@@ -271,8 +272,8 @@ class PractitionerRoleAvailableTime(backboneelement.BackboneElement):
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["mon", "tue", "wed", "thu", "fri", "sat", "sun"],
     )
-    daysOfWeek__ext: ListType[
-        Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    daysOfWeek__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_daysOfWeek", title="Extension field for ``daysOfWeek``.")
 
 
@@ -289,7 +290,7 @@ class PractitionerRoleNotAvailable(backboneelement.BackboneElement):
     resource_type = Field("PractitionerRoleNotAvailable", const=True)
 
     description: fhirtypes.String = Field(
-        ...,
+        None,
         alias="description",
         title="Reason presented to the user explaining why time not available",
         description=(
@@ -298,6 +299,7 @@ class PractitionerRoleNotAvailable(backboneelement.BackboneElement):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -314,3 +316,62 @@ class PractitionerRoleNotAvailable(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("description", "description__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values

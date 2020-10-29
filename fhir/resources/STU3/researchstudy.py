@@ -6,9 +6,11 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from typing import List as ListType
+import typing
 
-from pydantic import Field
+from pydantic import Field, root_validator
+from pydantic.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.errors import MissingError, NoneIsNotAllowedError
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -29,7 +31,7 @@ class ResearchStudy(domainresource.DomainResource):
 
     resource_type = Field("ResearchStudy", const=True)
 
-    arm: ListType[fhirtypes.ResearchStudyArmType] = Field(
+    arm: typing.List[fhirtypes.ResearchStudyArmType] = Field(
         None,
         alias="arm",
         title="Defined path through the study for a subject",
@@ -42,7 +44,7 @@ class ResearchStudy(domainresource.DomainResource):
         element_property=True,
     )
 
-    category: ListType[fhirtypes.CodeableConceptType] = Field(
+    category: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="category",
         title="Classifications for the study",
@@ -55,7 +57,7 @@ class ResearchStudy(domainresource.DomainResource):
         element_property=True,
     )
 
-    contact: ListType[fhirtypes.ContactDetailType] = Field(
+    contact: typing.List[fhirtypes.ContactDetailType] = Field(
         None,
         alias="contact",
         title="Contact details for the study",
@@ -79,7 +81,7 @@ class ResearchStudy(domainresource.DomainResource):
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    enrollment: ListType[fhirtypes.ReferenceType] = Field(
+    enrollment: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="enrollment",
         title="Inclusion & exclusion criteria",
@@ -94,7 +96,7 @@ class ResearchStudy(domainresource.DomainResource):
         enum_reference_types=["Group"],
     )
 
-    focus: ListType[fhirtypes.CodeableConceptType] = Field(
+    focus: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="focus",
         title="Drugs, devices, conditions, etc. under study",
@@ -107,7 +109,7 @@ class ResearchStudy(domainresource.DomainResource):
         element_property=True,
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="Business Identifier for study",
@@ -119,7 +121,7 @@ class ResearchStudy(domainresource.DomainResource):
         element_property=True,
     )
 
-    jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="jurisdiction",
         title="Geographic region(s) for study",
@@ -131,7 +133,7 @@ class ResearchStudy(domainresource.DomainResource):
         element_property=True,
     )
 
-    keyword: ListType[fhirtypes.CodeableConceptType] = Field(
+    keyword: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="keyword",
         title="Used to search for the study",
@@ -140,7 +142,7 @@ class ResearchStudy(domainresource.DomainResource):
         element_property=True,
     )
 
-    note: ListType[fhirtypes.AnnotationType] = Field(
+    note: typing.List[fhirtypes.AnnotationType] = Field(
         None,
         alias="note",
         title="Comments made about the event",
@@ -152,7 +154,7 @@ class ResearchStudy(domainresource.DomainResource):
         element_property=True,
     )
 
-    partOf: ListType[fhirtypes.ReferenceType] = Field(
+    partOf: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="partOf",
         title="Part of larger study",
@@ -192,7 +194,7 @@ class ResearchStudy(domainresource.DomainResource):
         enum_reference_types=["Practitioner"],
     )
 
-    protocol: ListType[fhirtypes.ReferenceType] = Field(
+    protocol: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="protocol",
         title="Steps followed in executing study",
@@ -218,7 +220,7 @@ class ResearchStudy(domainresource.DomainResource):
         element_property=True,
     )
 
-    relatedArtifact: ListType[fhirtypes.RelatedArtifactType] = Field(
+    relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] = Field(
         None,
         alias="relatedArtifact",
         title="References and dependencies",
@@ -227,7 +229,7 @@ class ResearchStudy(domainresource.DomainResource):
         element_property=True,
     )
 
-    site: ListType[fhirtypes.ReferenceType] = Field(
+    site: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="site",
         title="Location involved in study execution",
@@ -253,7 +255,7 @@ class ResearchStudy(domainresource.DomainResource):
     )
 
     status: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="status",
         title=(
             "draft | in-progress | suspended | stopped | completed | entered-in-"
@@ -262,6 +264,7 @@ class ResearchStudy(domainresource.DomainResource):
         description="The current state of the study.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=[
@@ -288,6 +291,65 @@ class ResearchStudy(domainresource.DomainResource):
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("status", "status__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
 
 
 class ResearchStudyArm(backboneelement.BackboneElement):
@@ -331,13 +393,73 @@ class ResearchStudyArm(backboneelement.BackboneElement):
     )
 
     name: fhirtypes.String = Field(
-        ...,
+        None,
         alias="name",
         title="Label for study arm",
         description="Unique, human-readable label for this arm of the study.",
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("name", "name__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values

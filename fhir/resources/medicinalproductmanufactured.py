@@ -6,7 +6,7 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import List as ListType
+import typing
 
 from pydantic import Field
 
@@ -23,7 +23,7 @@ class MedicinalProductManufactured(domainresource.DomainResource):
 
     resource_type = Field("MedicinalProductManufactured", const=True)
 
-    ingredient: ListType[fhirtypes.ReferenceType] = Field(
+    ingredient: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="ingredient",
         title="Ingredient",
@@ -46,7 +46,7 @@ class MedicinalProductManufactured(domainresource.DomainResource):
         element_property=True,
     )
 
-    manufacturer: ListType[fhirtypes.ReferenceType] = Field(
+    manufacturer: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="manufacturer",
         title=(
@@ -60,7 +60,7 @@ class MedicinalProductManufactured(domainresource.DomainResource):
         enum_reference_types=["Organization"],
     )
 
-    otherCharacteristics: ListType[fhirtypes.CodeableConceptType] = Field(
+    otherCharacteristics: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="otherCharacteristics",
         title="Other codeable characteristics",

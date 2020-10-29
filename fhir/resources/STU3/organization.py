@@ -6,8 +6,7 @@ Version: 3.0.2
 Revision: 11917
 Last updated: 2019-10-24T11:53:00+11:00
 """
-from typing import List as ListType
-from typing import Union
+import typing
 
 from pydantic import Field
 
@@ -40,7 +39,7 @@ class Organization(domainresource.DomainResource):
         None, alias="_active", title="Extension field for ``active``."
     )
 
-    address: ListType[fhirtypes.AddressType] = Field(
+    address: typing.List[fhirtypes.AddressType] = Field(
         None,
         alias="address",
         title="An address for the organization",
@@ -49,7 +48,7 @@ class Organization(domainresource.DomainResource):
         element_property=True,
     )
 
-    alias: ListType[fhirtypes.String] = Field(
+    alias: typing.List[fhirtypes.String] = Field(
         None,
         alias="alias",
         title=(
@@ -60,11 +59,11 @@ class Organization(domainresource.DomainResource):
         # if property is element of this resource.
         element_property=True,
     )
-    alias__ext: ListType[Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None, alias="_alias", title="Extension field for ``alias``."
-    )
+    alias__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_alias", title="Extension field for ``alias``.")
 
-    contact: ListType[fhirtypes.OrganizationContactType] = Field(
+    contact: typing.List[fhirtypes.OrganizationContactType] = Field(
         None,
         alias="contact",
         title="Contact for the organization for a certain purpose",
@@ -73,7 +72,7 @@ class Organization(domainresource.DomainResource):
         element_property=True,
     )
 
-    endpoint: ListType[fhirtypes.ReferenceType] = Field(
+    endpoint: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="endpoint",
         title=(
@@ -87,7 +86,7 @@ class Organization(domainresource.DomainResource):
         enum_reference_types=["Endpoint"],
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="Identifies this organization  across multiple systems",
@@ -122,7 +121,7 @@ class Organization(domainresource.DomainResource):
         enum_reference_types=["Organization"],
     )
 
-    telecom: ListType[fhirtypes.ContactPointType] = Field(
+    telecom: typing.List[fhirtypes.ContactPointType] = Field(
         None,
         alias="telecom",
         title="A contact detail for the organization",
@@ -131,7 +130,7 @@ class Organization(domainresource.DomainResource):
         element_property=True,
     )
 
-    type: ListType[fhirtypes.CodeableConceptType] = Field(
+    type: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="type",
         title="Kind of organization",
@@ -178,7 +177,7 @@ class OrganizationContact(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    telecom: ListType[fhirtypes.ContactPointType] = Field(
+    telecom: typing.List[fhirtypes.ContactPointType] = Field(
         None,
         alias="telecom",
         title="Contact details (telephone, email, etc.)  for a contact",

@@ -6,7 +6,7 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import List as ListType
+import typing
 
 from pydantic import Field
 
@@ -42,7 +42,7 @@ class MedicinalProductUndesirableEffect(domainresource.DomainResource):
         element_property=True,
     )
 
-    population: ListType[fhirtypes.PopulationType] = Field(
+    population: typing.List[fhirtypes.PopulationType] = Field(
         None,
         alias="population",
         title="The population group to which this applies",
@@ -51,7 +51,7 @@ class MedicinalProductUndesirableEffect(domainresource.DomainResource):
         element_property=True,
     )
 
-    subject: ListType[fhirtypes.ReferenceType] = Field(
+    subject: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="subject",
         title="The medication for which this is an indication",

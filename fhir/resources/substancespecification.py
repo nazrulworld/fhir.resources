@@ -6,10 +6,11 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import Any, Dict
-from typing import List as ListType
+import typing
 
 from pydantic import Field, root_validator
+from pydantic.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.errors import MissingError, NoneIsNotAllowedError
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -25,7 +26,7 @@ class SubstanceSpecification(domainresource.DomainResource):
 
     resource_type = Field("SubstanceSpecification", const=True)
 
-    code: ListType[fhirtypes.SubstanceSpecificationCodeType] = Field(
+    code: typing.List[fhirtypes.SubstanceSpecificationCodeType] = Field(
         None,
         alias="code",
         title="Codes associated with the substance",
@@ -76,7 +77,7 @@ class SubstanceSpecification(domainresource.DomainResource):
         element_property=True,
     )
 
-    moiety: ListType[fhirtypes.SubstanceSpecificationMoietyType] = Field(
+    moiety: typing.List[fhirtypes.SubstanceSpecificationMoietyType] = Field(
         None,
         alias="moiety",
         title="Moiety, for structural modifications",
@@ -85,7 +86,7 @@ class SubstanceSpecification(domainresource.DomainResource):
         element_property=True,
     )
 
-    molecularWeight: ListType[
+    molecularWeight: typing.List[
         fhirtypes.SubstanceSpecificationStructureIsotopeMolecularWeightType
     ] = Field(
         None,
@@ -99,7 +100,7 @@ class SubstanceSpecification(domainresource.DomainResource):
         element_property=True,
     )
 
-    name: ListType[fhirtypes.SubstanceSpecificationNameType] = Field(
+    name: typing.List[fhirtypes.SubstanceSpecificationNameType] = Field(
         None,
         alias="name",
         title="Names applicable to this substance",
@@ -130,7 +131,7 @@ class SubstanceSpecification(domainresource.DomainResource):
         enum_reference_types=["SubstancePolymer"],
     )
 
-    property: ListType[fhirtypes.SubstanceSpecificationPropertyType] = Field(
+    property: typing.List[fhirtypes.SubstanceSpecificationPropertyType] = Field(
         None,
         alias="property",
         title=(
@@ -164,7 +165,7 @@ class SubstanceSpecification(domainresource.DomainResource):
         enum_reference_types=["SubstanceReferenceInformation"],
     )
 
-    relationship: ListType[fhirtypes.SubstanceSpecificationRelationshipType] = Field(
+    relationship: typing.List[fhirtypes.SubstanceSpecificationRelationshipType] = Field(
         None,
         alias="relationship",
         title=(
@@ -176,7 +177,7 @@ class SubstanceSpecification(domainresource.DomainResource):
         element_property=True,
     )
 
-    source: ListType[fhirtypes.ReferenceType] = Field(
+    source: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="source",
         title="Supporting literature",
@@ -257,7 +258,7 @@ class SubstanceSpecificationCode(backboneelement.BackboneElement):
         None, alias="_comment", title="Extension field for ``comment``."
     )
 
-    source: ListType[fhirtypes.ReferenceType] = Field(
+    source: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="source",
         title="Supporting literature",
@@ -393,7 +394,9 @@ class SubstanceSpecificationMoiety(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -439,7 +442,7 @@ class SubstanceSpecificationName(backboneelement.BackboneElement):
 
     resource_type = Field("SubstanceSpecificationName", const=True)
 
-    domain: ListType[fhirtypes.CodeableConceptType] = Field(
+    domain: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="domain",
         title=(
@@ -451,7 +454,7 @@ class SubstanceSpecificationName(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    jurisdiction: ListType[fhirtypes.CodeableConceptType] = Field(
+    jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="jurisdiction",
         title="The jurisdiction where this name applies",
@@ -460,7 +463,7 @@ class SubstanceSpecificationName(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    language: ListType[fhirtypes.CodeableConceptType] = Field(
+    language: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="language",
         title="Language of the name",
@@ -470,18 +473,19 @@ class SubstanceSpecificationName(backboneelement.BackboneElement):
     )
 
     name: fhirtypes.String = Field(
-        ...,
+        None,
         alias="name",
         title="The actual name",
         description=None,
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    official: ListType[fhirtypes.SubstanceSpecificationNameOfficialType] = Field(
+    official: typing.List[fhirtypes.SubstanceSpecificationNameOfficialType] = Field(
         None,
         alias="official",
         title="Details of the official nature of this name",
@@ -502,7 +506,7 @@ class SubstanceSpecificationName(backboneelement.BackboneElement):
         None, alias="_preferred", title="Extension field for ``preferred``."
     )
 
-    source: ListType[fhirtypes.ReferenceType] = Field(
+    source: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="source",
         title="Supporting literature",
@@ -522,7 +526,7 @@ class SubstanceSpecificationName(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    synonym: ListType[fhirtypes.SubstanceSpecificationNameType] = Field(
+    synonym: typing.List[fhirtypes.SubstanceSpecificationNameType] = Field(
         None,
         alias="synonym",
         title="A synonym of this name",
@@ -531,7 +535,7 @@ class SubstanceSpecificationName(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    translation: ListType[fhirtypes.SubstanceSpecificationNameType] = Field(
+    translation: typing.List[fhirtypes.SubstanceSpecificationNameType] = Field(
         None,
         alias="translation",
         title="A translation for this name",
@@ -548,6 +552,65 @@ class SubstanceSpecificationName(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("name", "name__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values
 
 
 class SubstanceSpecificationNameOfficial(backboneelement.BackboneElement):
@@ -695,7 +758,9 @@ class SubstanceSpecificationProperty(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -860,7 +925,7 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    source: ListType[fhirtypes.ReferenceType] = Field(
+    source: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="source",
         title="Supporting literature",
@@ -904,7 +969,9 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -953,7 +1020,7 @@ class SubstanceSpecificationStructure(backboneelement.BackboneElement):
 
     resource_type = Field("SubstanceSpecificationStructure", const=True)
 
-    isotope: ListType[fhirtypes.SubstanceSpecificationStructureIsotopeType] = Field(
+    isotope: typing.List[fhirtypes.SubstanceSpecificationStructureIsotopeType] = Field(
         None,
         alias="isotope",
         title=(
@@ -1017,7 +1084,7 @@ class SubstanceSpecificationStructure(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    representation: ListType[
+    representation: typing.List[
         fhirtypes.SubstanceSpecificationStructureRepresentationType
     ] = Field(
         None,
@@ -1028,7 +1095,7 @@ class SubstanceSpecificationStructure(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    source: ListType[fhirtypes.ReferenceType] = Field(
+    source: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="source",
         title="Supporting literature",

@@ -1,12 +1,16 @@
 # -*- coding: utf-8 -*-
 from datetime import date
+
 from pydantic.datetime_parse import parse_date
+
 from .. import fhirtypes  # noqa: F401
 from .. import enrollmentrequest
 
 
 def test_EnrollmentRequest_1(base_settings):
-    filename = base_settings["unittest_data_dir"] / "enrollmentrequest-example.canonical.json"
+    filename = (
+        base_settings["unittest_data_dir"] / "enrollmentrequest-example.canonical.json"
+    )
     inst = enrollmentrequest.EnrollmentRequest.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -30,5 +34,8 @@ def impl_EnrollmentRequest_1(inst):
     assert inst.organization.reference == "Organization/1"
     assert inst.relationship.code == "spouse"
     assert inst.subject.reference == "Patient/1"
-    assert inst.text.div == "<div>A human-readable rendering of the EnrollmentRequest.</div>"
+    assert (
+        inst.text.div
+        == "<div>A human-readable rendering of the EnrollmentRequest.</div>"
+    )
     assert inst.text.status == "generated"

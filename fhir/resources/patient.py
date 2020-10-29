@@ -6,10 +6,11 @@ Version: 4.0.1
 Build ID: 9346c8cc45
 Last updated: 2019-11-01T09:29:23.356+11:00
 """
-from typing import Any, Dict
-from typing import List as ListType
+import typing
 
 from pydantic import Field, root_validator
+from pydantic.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.errors import MissingError, NoneIsNotAllowedError
 
 from . import backboneelement, domainresource, fhirtypes
 
@@ -45,7 +46,7 @@ class Patient(domainresource.DomainResource):
         None, alias="_active", title="Extension field for ``active``."
     )
 
-    address: ListType[fhirtypes.AddressType] = Field(
+    address: typing.List[fhirtypes.AddressType] = Field(
         None,
         alias="address",
         title="An address for the individual",
@@ -66,7 +67,7 @@ class Patient(domainresource.DomainResource):
         None, alias="_birthDate", title="Extension field for ``birthDate``."
     )
 
-    communication: ListType[fhirtypes.PatientCommunicationType] = Field(
+    communication: typing.List[fhirtypes.PatientCommunicationType] = Field(
         None,
         alias="communication",
         title=(
@@ -78,7 +79,7 @@ class Patient(domainresource.DomainResource):
         element_property=True,
     )
 
-    contact: ListType[fhirtypes.PatientContactType] = Field(
+    contact: typing.List[fhirtypes.PatientContactType] = Field(
         None,
         alias="contact",
         title="A contact party (e.g. guardian, partner, friend) for the patient",
@@ -137,7 +138,7 @@ class Patient(domainresource.DomainResource):
         None, alias="_gender", title="Extension field for ``gender``."
     )
 
-    generalPractitioner: ListType[fhirtypes.ReferenceType] = Field(
+    generalPractitioner: typing.List[fhirtypes.ReferenceType] = Field(
         None,
         alias="generalPractitioner",
         title="Patient's nominated primary care provider",
@@ -148,7 +149,7 @@ class Patient(domainresource.DomainResource):
         enum_reference_types=["Organization", "Practitioner", "PractitionerRole"],
     )
 
-    identifier: ListType[fhirtypes.IdentifierType] = Field(
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
         alias="identifier",
         title="An identifier for this patient",
@@ -157,7 +158,7 @@ class Patient(domainresource.DomainResource):
         element_property=True,
     )
 
-    link: ListType[fhirtypes.PatientLinkType] = Field(
+    link: typing.List[fhirtypes.PatientLinkType] = Field(
         None,
         alias="link",
         title="Link to another patient resource that concerns the same actual person",
@@ -228,7 +229,7 @@ class Patient(domainresource.DomainResource):
         title="Extension field for ``multipleBirthInteger``.",
     )
 
-    name: ListType[fhirtypes.HumanNameType] = Field(
+    name: typing.List[fhirtypes.HumanNameType] = Field(
         None,
         alias="name",
         title="A name associated with the patient",
@@ -237,7 +238,7 @@ class Patient(domainresource.DomainResource):
         element_property=True,
     )
 
-    photo: ListType[fhirtypes.AttachmentType] = Field(
+    photo: typing.List[fhirtypes.AttachmentType] = Field(
         None,
         alias="photo",
         title="Image of the patient",
@@ -246,7 +247,7 @@ class Patient(domainresource.DomainResource):
         element_property=True,
     )
 
-    telecom: ListType[fhirtypes.ContactPointType] = Field(
+    telecom: typing.List[fhirtypes.ContactPointType] = Field(
         None,
         alias="telecom",
         title="A contact detail for the individual",
@@ -259,7 +260,9 @@ class Patient(domainresource.DomainResource):
     )
 
     @root_validator(pre=True)
-    def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:
+    def validate_one_of_many(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -414,7 +417,7 @@ class PatientContact(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    relationship: ListType[fhirtypes.CodeableConceptType] = Field(
+    relationship: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="relationship",
         title="The kind of relationship",
@@ -426,7 +429,7 @@ class PatientContact(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    telecom: ListType[fhirtypes.ContactPointType] = Field(
+    telecom: typing.List[fhirtypes.ContactPointType] = Field(
         None,
         alias="telecom",
         title="A contact detail for the person",
@@ -462,7 +465,7 @@ class PatientLink(backboneelement.BackboneElement):
     )
 
     type: fhirtypes.Code = Field(
-        ...,
+        None,
         alias="type",
         title="replaced-by | replaces | refer | seealso",
         description=(
@@ -471,6 +474,7 @@ class PatientLink(backboneelement.BackboneElement):
         ),
         # if property is element of this resource.
         element_property=True,
+        element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["replaced-by", "replaces", "refer", "seealso"],
@@ -478,3 +482,62 @@ class PatientLink(backboneelement.BackboneElement):
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
     )
+
+    @root_validator(pre=True)
+    def validate_required_primitive_elements(
+        cls, values: typing.Dict[str, typing.Any]
+    ) -> typing.Dict[str, typing.Any]:
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = [("type", "type__ext")]
+        _missing = object()
+
+        def _fallback():
+            return ""
+
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
+
+        return values

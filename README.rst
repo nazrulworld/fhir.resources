@@ -284,6 +284,100 @@ Examples::
 
 *Unfortunately comments filtering is not available for FHIRAbstractModel::dict*
 
+
+Special Case: Missing data
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+`In some cases <https://www.hl7.org/fhir/extensibility.html#Special-Case>`_, implementers might
+find that they do not have appropriate dta for an element with minimum cardinality = 1.
+In this case, the element must be present, but unless the resource or a profile on it has made the
+actual value of the primitive data type mandatory, it is possible to provide an extension that
+explains why the primitive value is not present.
+Example (required ``intent`` element is missing but still valid because of extension)::
+
+    >>> json_str = b"""{
+    ...    "resourceType": "MedicationRequest",
+    ...    "id": "1620518",
+    ...    "meta": {
+    ...        "versionId": "1",
+    ...        "lastUpdated": "2020-10-27T11:04:42.215+00:00",
+    ...        "source": "#z072VeAlQWM94jpc",
+    ...        "tag": [
+    ...            {
+    ...                "system": "http://www.alpha.alp/use-case",
+    ...                "code": "EX20"
+    ...            }
+    ...        ]
+    ...    },
+    ...    "status": "completed",
+    ...    "_intent": {
+    ...        "extension": [
+    ...            {
+    ...                "url": "http://hl7.org/fhir/StructureDefinition/data-absent-reason",
+    ...                "valueCode": "unknown"
+    ...            }
+    ...        ]
+    ...    },
+    ...    "medicationReference": {
+    ...        "reference": "Medication/1620516",
+    ...        "display": "Erythromycin 250 MG Oral Tablet"
+    ...    },
+    ...    "subject": {
+    ...        "reference": "Patient/1620472"
+    ...    },
+    ...    "encounter": {
+    ...        "reference": "Encounter/1620506",
+    ...        "display": "Follow up encounter"
+    ...    },
+    ...    "authoredOn": "2018-06-16",
+    ...    "requester": {
+    ...        "reference": "Practitioner/1620502",
+    ...        "display": "Dr. Harold Hippocrates"
+    ...    },
+    ...    "reasonReference": [
+    ...        {
+    ...            "reference": "Condition/1620514",
+    ...            "display": "Otitis Media"
+    ...        }
+    ...    ],
+    ...    "dosageInstruction": [
+    ...        {
+    ...            "text": "250 mg 4 times per day for 10 days",
+    ...            "timing": {
+    ...                "repeat": {
+    ...                    "boundsDuration": {
+    ...                        "value": 10,
+    ...                        "unit": "day",
+    ...                        "system": "http://unitsofmeasure.org",
+    ...                        "code": "d"
+    ...                    },
+    ...                    "frequency": 4,
+    ...                    "period": 1,
+    ...                    "periodUnit": "d"
+    ...                }
+    ...            },
+    ...            "doseAndRate": [
+    ...                {
+    ...                    "doseQuantity": {
+    ...                        "value": 250,
+    ...                        "unit": "mg",
+    ...                        "system": "http://unitsofmeasure.org",
+    ...                        "code": "mg"
+    ...                    }
+    ...                }
+    ...            ]
+    ...        }
+    ...    ],
+    ...    "priorPrescription": {
+    ...        "reference": "MedicationRequest/1620517",
+    ...        "display": "Amoxicillin prescription"
+    ...    }
+    ... }"""
+    >>> from fhir.resources.medicationrequest import MedicationRequest
+    >>> obj = MedicationRequest.parse_raw(json_str)
+    >>> "intent" not in obj.dict()
+
+
 Custom Validators
 ~~~~~~~~~~~~~~~~~
 

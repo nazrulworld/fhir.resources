@@ -79,4 +79,10 @@ setup(
     version="6.0.0b7.dev0",
     zip_safe=False,
     python_requires=">=3.6",
+    project_urls={
+        "CI: Travis": "https://travis-ci.org/github/nazrulworld/fhir.resources",
+        "Coverage: codecov": "https://codecov.io/gh/nazrulworld/fhir.resources",
+        "GitHub: issues": "https://github.com/nazrulworld/fhir.resources/issues",
+        "GitHub: repo": "https://github.com/nazrulworld/fhir.resources",
+    },
 )

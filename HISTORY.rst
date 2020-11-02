@@ -5,11 +5,13 @@ History
 6.0.0b8 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- ``pydantic`` minimum version has been set to ``1.7.2``.
 
 
 6.0.0b7 (2020-10-31)
 --------------------
+
+*If you face import error ``from pydantic.utils import ROOT_KEY``, please upgrade your pydnatic version to <1.7*
 
 Fixes
 

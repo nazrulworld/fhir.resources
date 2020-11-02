@@ -2,7 +2,7 @@
 History
 =======
 
-6.0.0b8 (unreleased)
+6.0.0b8 (2020-11-02)
 --------------------
 
 - ``pydantic`` minimum version has been set to ``1.7.2``.

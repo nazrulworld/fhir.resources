@@ -9,9 +9,9 @@ from typing import TYPE_CHECKING, Any, Callable, Type
 
 import orjson
 from pydantic import BaseModel, Extra, Field
-from pydantic.class_validators import ROOT_KEY
 from pydantic.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.errors import ConfigError, PydanticValueError
+from pydantic.utils import ROOT_KEY
 
 if TYPE_CHECKING:
     from pydantic.typing import AbstractSetIntStr, MappingIntStrAny, DictStrAny

@@ -8,10 +8,10 @@ from functools import lru_cache
 
 import orjson
 from pydantic import BaseModel, Extra, Field
-from pydantic.class_validators import ROOT_KEY
 from pydantic.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.errors import ConfigError, PydanticValueError
 from pydantic.fields import ModelField
+from pydantic.utils import ROOT_KEY
 
 if typing.TYPE_CHECKING:
     from pydantic.typing import AbstractSetIntStr, MappingIntStrAny, DictStrAny

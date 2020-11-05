@@ -13,6 +13,10 @@ FHIR® Resources (R4, STU3, DSTU2)
 .. image:: https://img.shields.io/travis/nazrulworld/fhir.resources.svg
         :target: https://travis-ci.org/nazrulworld/fhir.resources
 
+.. image:: https://ci.appveyor.com/api/projects/status/0qu5vyue1jwxb4km?svg=true
+        :target: https://ci.appveyor.com/project/nazrulworld/fhir-resources
+        :alt: Windows Build
+
 .. image:: https://codecov.io/gh/nazrulworld/fhir.resources/branch/master/graph/badge.svg
         :target: https://codecov.io/gh/nazrulworld/fhir.resources
 

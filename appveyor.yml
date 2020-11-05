@@ -77,7 +77,6 @@ test_script:
 after_test:
   # If tests are successful, create binary packages for the project.
   - "python setup.py bdist_wheel"
-  - "python setup.py bdist_msi"
   - ps: "ls dist"
 
 artifacts:

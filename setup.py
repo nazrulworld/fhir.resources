@@ -11,28 +11,30 @@ with open("README.rst") as readme_file:
 with open("HISTORY.rst") as history_file:
     history = history_file.read()
 
-requirements = ["pydantic[email]>=1.7.2", "orjson>=3.4.3"]
+requirements = ["pydantic[email]>=1.7.2"]
 
 setup_requirements = ["pytest-runner"]
+
+orjson_requirements = ["orjson>=3.4.3"]
 
 test_requirements = [
     "coverage",
     "pytest>5.4.0;python_version>='3.6'",
     "pytest-cov>=2.10.0;python_version>='3.6'",
+    "flake8==3.8.3",
+    "flake8-isort==3.0.0",
+    "flake8-bugbear==20.1.4",
+    "requests==2.23.0",
+    "isort==4.3.21",
+    "black",
+    "mypy",
 ]
 
 development_requirements = [
     "Jinja2==2.11.1",
     "MarkupSafe==1.1.1",
-    "requests==2.23.0",
     "colorlog==2.10.0",
     "certifi",
-    "flake8==3.8.3",
-    "flake8-isort==3.0.0",
-    "flake8-bugbear==20.1.4",
-    "isort==4.3.21",
-    "black",
-    "mypy",
     "zest-releaser[recommended]",
 ]
 setup(
@@ -72,8 +74,14 @@ setup(
     test_suite="tests",
     tests_require=test_requirements,
     extras_require={
+        "orjson": orjson_requirements,
         "test": (test_requirements + setup_requirements),
-        "all": (test_requirements + setup_requirements + development_requirements),
+        "all": (
+            test_requirements
+            + setup_requirements
+            + development_requirements
+            + orjson_requirements
+        ),
     },
     url="https://github.com/nazrulworld/fhir.resources",
     version="6.0.0b9.dev0",

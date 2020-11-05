@@ -6,12 +6,36 @@ import logging
 import typing
 from functools import lru_cache
 
-import orjson
 from pydantic import BaseModel, Extra, Field
 from pydantic.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.errors import ConfigError, PydanticValueError
 from pydantic.fields import ModelField
 from pydantic.utils import ROOT_KEY
+
+try:
+    import orjson
+
+    def json_dumps(v, *, default, option=0, return_bytes=False):
+        params = {"default": default}
+        if option > 0:
+            params["option"] = option
+        result = orjson.dumps(v, **params)
+        if return_bytes is False:
+            result = result.decode()
+        if typing.TYPE_CHECKING and return_bytes is True:
+            result = typing.cast(str, result)
+        return result
+
+    json_dumps.__qualname__ = "orjson_json_dumps"
+    json_loads = orjson.loads
+
+except ImportError:
+    try:
+        from simplejson import loads as json_loads
+        from simplejson import dumps as json_dumps  # type:ignore
+    except ImportError:
+        from json import loads as json_loads
+        from json import dumps as json_dumps  # type:ignore
 
 if typing.TYPE_CHECKING:
     from pydantic.typing import AbstractSetIntStr, MappingIntStrAny, DictStrAny
@@ -61,20 +85,6 @@ def filter_empty_list_dict(items):
         return None
 
     return items
-
-
-def orjson_dumps(v, *, default, option=0, return_bytes=False):
-    params = {"default": default}
-    if option > 0:
-        params["option"] = option
-    result = orjson.dumps(v, **params)
-    if return_bytes is False:
-        result = result.decode()
-
-    if typing.TYPE_CHECKING and return_bytes is True:
-        result = typing.cast(str, result)
-
-    return result
 
 
 class WrongResourceType(PydanticValueError):
@@ -312,7 +322,10 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
                     f"but got type ``{type(exclude)}``"
                 )
 
-        if self.__config__.json_dumps == orjson_dumps:
+        if (
+            getattr(self.__config__.json_dumps, "__qualname__", "")
+            == "orjson_json_dumps"
+        ):
             option = dumps_kwargs.pop("option", 0)
             if option == 0:
                 if "indent" in dumps_kwargs:
@@ -370,8 +383,8 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         return result
 
     class Config:
-        json_loads = orjson.loads
-        json_dumps = orjson_dumps
+        json_loads = json_loads
+        json_dumps = json_dumps
         allow_population_by_field_name = True
         extra = Extra.forbid
         validate_assignment = True

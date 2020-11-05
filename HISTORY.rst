@@ -5,7 +5,14 @@ History
 6.0.0b9 (unreleased)
 --------------------
 
-- Nothing changed yet.
+Improvements
+
+- Now supports of ``simplejson`` is available automatically (depends on importable) along side with ``orjson`` and default ``json`` library.
+  Order of json serializer available (orjson -> simplejson(as fallback) -> json(as default)).
+
+Breaking
+
+- ``orjson`` is not available by default, have to use extra_require ``orjson`` to available that.
 
 
 6.0.0b8 (2020-11-02)

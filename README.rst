@@ -390,7 +390,7 @@ Some convention you have to follow while creating a root validator.
 
 1. Number of arguments are fixed, as well as names are also. i.e ``(cls, values)``.
 2. Should return ``values``, unless any exception need to be raised.
-3. Validator should be attached only one time for individual Model.
+3. Validator should be attached only one time for individual Model. Update [from now, it's not possible to attach multiple time same name validator on same class]
 
 Example 1: Validator for Patient::
 
@@ -413,6 +413,32 @@ Example 1: Validator for Patient::
     Patient.add_root_validator(validate_gender, pre=False)
 
 
+Example 2: Validator for Patient from Validator Class::
+
+    from typing import Dict
+    from fhir.resources.patient import Patient
+
+    import datetime
+
+    class MyValidator:
+        @classmethod
+        def validate_birthdate(cls, values: Dict):
+            if not values:
+                return values
+            if "birthDate" not in values:
+                raise ValueError("Patient's ``birthDate`` is required.")
+
+            minimum_date = datetime.date(2002, 1, 1)
+            if values["birthDate"] > minimum_date:
+                raise ValueError("Minimum 18 years patient is allowed to use this system.")
+            return values
+    # we want this validator to execute after data evaluating by individual field validators.
+    Patient.add_root_validator(MyValidator.validate_gender, pre=False)
+
+
+**important notes** It is possible add root validator into any base class like ``DomainResource``.
+In this case you have to make sure root validator is attached before any import of derived class, other
+than validator will not trigger for successor class (if imported before) by nature.
 
 ENUM Validator
 ~~~~~~~~~~~~~~

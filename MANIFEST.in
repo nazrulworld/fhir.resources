@@ -15,7 +15,7 @@ exclude tox.ini
 exclude Makefile
 exclude .editorconfig
 exclude .gitmodules
-exclude pyproject.toml .flake8 .isort.cfg
+exclude pyproject.toml .flake8 .isort.cfg appveyor.yml
 
 recursive-include tests *
 recursive-exclude * __pycache__

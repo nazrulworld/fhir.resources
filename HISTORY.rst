@@ -76,7 +76,7 @@ Fixes
 
 Improvements
 
-- `orjson <https://github.com/ijl/orjson>`_ supports have been available as default json ``dumps`` and ``loads`` for Model.
+- orjson_ supports have been available as default json ``dumps`` and ``loads`` for Model.
 
 - ``FHIRAbstractModel::get_json_encoder`` class method now available, which return pydantic compatible json encoder callable, can be used with any json serializer.
 

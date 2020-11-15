@@ -30,7 +30,7 @@ FHIR® Resources (R4, STU3, DSTU2)
 
 
 Powered by pydantic_, all `FHIR Resources <https://www.hl7.org/fhir/resourcelist.html>`_ are available as python class with built-in
-data validation, faster in performance and by default ``orjson`` is included as performance booster! Written in modern python.
+data validation, faster in performance and optionally ``orjson`` support has been included as performance booster! Written in modern python.
 
 * Easy to construct, easy to extended validation, easy to export.
 * By inheriting behaviour from pydantic_, compatible with `ORM <https://en.wikipedia.org/wiki/Object-relational_mapping>`_.
@@ -470,6 +470,13 @@ Reference Validator
 You can get that list by following above (Enum) approaches  ``resource_types = cls.__fields__["managingOrganization"].field_info.extra["enum_reference_types"]``
 
 
+Usages of orjson
+~~~~~~~~~~~~~~~~
+
+orjson_ is one of the fastest Python library for JSON and is more correct than the standard json library (according to their docs).
+Good news is that ``fhir.resource`` has extensive support for orjson_ and it's too easy to enable it automatically. What you need to do, just make orjson_ as your project dependency!
+
+
 Migration (from later than ``6.X.X``)
 -------------------------------------
 
@@ -541,7 +548,8 @@ This package skeleton was created with Cookiecutter_ and the `audreyr/cookiecutt
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
 .. _`fhir-parser`: https://github.com/nazrulworld/fhir-parser
-.. _`pydantic`: https://pydantic-docs.helpmanual.io/r
+.. _`pydantic`: https://pydantic-docs.helpmanual.io/
+.. _`orjson`: <https://pypi.org/project/orjson/>
 
 © Copyright HL7® logo, FHIR® logo and the flaming fire are registered trademarks
 owned by `Health Level Seven International <https://www.hl7.org/legal/trademarks.cfm?ref=https://pypi.org/project/fhir-resources/>`_

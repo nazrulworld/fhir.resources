@@ -298,8 +298,8 @@ class DeviceDefinition(domainresource.DomainResource):
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_version", title="Extension field for ``version``.")
 
-    @root_validator(pre=True)
-    def validate_one_of_many(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_one_of_many_1803(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -420,8 +420,8 @@ class DeviceDefinitionDeviceName(backboneelement.BackboneElement):
         None, alias="_type", title="Extension field for ``type``."
     )
 
-    @root_validator(pre=True)
-    def validate_required_primitive_elements(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_required_primitive_elements_2771(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -604,8 +604,8 @@ class DeviceDefinitionSpecialization(backboneelement.BackboneElement):
         None, alias="_version", title="Extension field for ``version``."
     )
 
-    @root_validator(pre=True)
-    def validate_required_primitive_elements(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_required_primitive_elements_3274(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -723,8 +723,8 @@ class DeviceDefinitionUdiDeviceIdentifier(backboneelement.BackboneElement):
         None, alias="_jurisdiction", title="Extension field for ``jurisdiction``."
     )
 
-    @root_validator(pre=True)
-    def validate_required_primitive_elements(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_required_primitive_elements_3716(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

@@ -454,8 +454,8 @@ class StructureDefinition(domainresource.DomainResource):
         None, alias="_version", title="Extension field for ``version``."
     )
 
-    @root_validator(pre=True)
-    def validate_required_primitive_elements(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_required_primitive_elements_2203(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -567,8 +567,8 @@ class StructureDefinitionContext(backboneelement.BackboneElement):
         None, alias="_type", title="Extension field for ``type``."
     )
 
-    @root_validator(pre=True)
-    def validate_required_primitive_elements(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_required_primitive_elements_2950(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -718,8 +718,8 @@ class StructureDefinitionMapping(backboneelement.BackboneElement):
         None, alias="_uri", title="Extension field for ``uri``."
     )
 
-    @root_validator(pre=True)
-    def validate_required_primitive_elements(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_required_primitive_elements_2912(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

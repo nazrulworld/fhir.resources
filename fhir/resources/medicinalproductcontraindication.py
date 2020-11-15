@@ -163,8 +163,8 @@ class MedicinalProductContraindicationOtherTherapy(backboneelement.BackboneEleme
         element_property=True,
     )
 
-    @root_validator(pre=True)
-    def validate_one_of_many(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_one_of_many_4757(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice

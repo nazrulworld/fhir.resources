@@ -301,8 +301,8 @@ class RequestGroup(domainresource.DomainResource):
         enum_reference_types=["Patient", "Group"],
     )
 
-    @root_validator(pre=True)
-    def validate_required_primitive_elements(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_required_primitive_elements_1464(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -715,8 +715,8 @@ class RequestGroupAction(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    @root_validator(pre=True)
-    def validate_one_of_many(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_one_of_many_2068(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -803,8 +803,8 @@ class RequestGroupActionCondition(backboneelement.BackboneElement):
         None, alias="_kind", title="Extension field for ``kind``."
     )
 
-    @root_validator(pre=True)
-    def validate_required_primitive_elements(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_required_primitive_elements_3003(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -947,8 +947,8 @@ class RequestGroupActionRelatedAction(backboneelement.BackboneElement):
         None, alias="_relationship", title="Extension field for ``relationship``."
     )
 
-    @root_validator(pre=True)
-    def validate_required_primitive_elements(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_required_primitive_elements_3379(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1009,8 +1009,8 @@ class RequestGroupActionRelatedAction(backboneelement.BackboneElement):
 
         return values
 
-    @root_validator(pre=True)
-    def validate_one_of_many(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_one_of_many_3379(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice

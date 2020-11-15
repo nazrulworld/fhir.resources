@@ -388,8 +388,8 @@ class CarePlan(domainresource.DomainResource):
         None, alias="_title", title="Extension field for ``title``."
     )
 
-    @root_validator(pre=True)
-    def validate_required_primitive_elements(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_required_primitive_elements_951(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -900,8 +900,8 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    @root_validator(pre=True)
-    def validate_required_primitive_elements(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_required_primitive_elements_2389(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -959,8 +959,8 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
 
         return values
 
-    @root_validator(pre=True)
-    def validate_one_of_many(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_one_of_many_2389(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice

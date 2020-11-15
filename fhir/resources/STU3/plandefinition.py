@@ -411,8 +411,8 @@ class PlanDefinition(domainresource.DomainResource):
         None, alias="_version", title="Extension field for ``version``."
     )
 
-    @root_validator(pre=True)
-    def validate_required_primitive_elements(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_required_primitive_elements_1618(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -874,8 +874,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    @root_validator(pre=True)
-    def validate_one_of_many(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_one_of_many_2224(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -991,8 +991,8 @@ class PlanDefinitionActionCondition(backboneelement.BackboneElement):
         None, alias="_language", title="Extension field for ``language``."
     )
 
-    @root_validator(pre=True)
-    def validate_required_primitive_elements(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_required_primitive_elements_3159(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1161,8 +1161,8 @@ class PlanDefinitionActionParticipant(backboneelement.BackboneElement):
         None, alias="_type", title="Extension field for ``type``."
     )
 
-    @root_validator(pre=True)
-    def validate_required_primitive_elements(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_required_primitive_elements_3381(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1305,8 +1305,8 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
         None, alias="_relationship", title="Extension field for ``relationship``."
     )
 
-    @root_validator(pre=True)
-    def validate_required_primitive_elements(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_required_primitive_elements_3535(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -1367,8 +1367,8 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
 
         return values
 
-    @root_validator(pre=True)
-    def validate_one_of_many(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_one_of_many_3535(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -1591,8 +1591,8 @@ class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    @root_validator(pre=True)
-    def validate_one_of_many(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_one_of_many_2626(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice

@@ -384,8 +384,8 @@ class MedicationDispense(domainresource.DomainResource):
         None, alias="_whenPrepared", title="Extension field for ``whenPrepared``."
     )
 
-    @root_validator(pre=True)
-    def validate_one_of_many(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_one_of_many_2026(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -542,8 +542,8 @@ class MedicationDispenseSubstitution(backboneelement.BackboneElement):
         None, alias="_wasSubstituted", title="Extension field for ``wasSubstituted``."
     )
 
-    @root_validator(pre=True)
-    def validate_required_primitive_elements(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_required_primitive_elements_3344(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

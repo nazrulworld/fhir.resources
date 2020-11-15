@@ -241,8 +241,8 @@ class MolecularSequence(domainresource.DomainResource):
         element_property=True,
     )
 
-    @root_validator(pre=True)
-    def validate_required_primitive_elements(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_required_primitive_elements_1935(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -534,8 +534,8 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
         None, alias="_type", title="Extension field for ``type``."
     )
 
-    @root_validator(pre=True)
-    def validate_required_primitive_elements(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_required_primitive_elements_2700(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -785,8 +785,8 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
             "Reference identifier of reference sequence submitted to NCBI. It must "
             "match the type in the MolecularSequence.type field. For example, the "
             "prefix, \u201cNG_\u201d identifies reference sequence for genes, "
-            "\u201cNM_\u201d for messenger RNA transcripts, and \u201cNP_\u201d "
-            "for amino acid sequences."
+            "\u201cNM_\u201d for messenger RNA transcripts, and \u201cNP_"
+            "\u201d for amino acid sequences."
         ),
         # if property is element of this resource.
         element_property=True,
@@ -976,8 +976,8 @@ class MolecularSequenceRepository(backboneelement.BackboneElement):
         None, alias="_variantsetId", title="Extension field for ``variantsetId``."
     )
 
-    @root_validator(pre=True)
-    def validate_required_primitive_elements(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_required_primitive_elements_3043(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case

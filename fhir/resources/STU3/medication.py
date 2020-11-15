@@ -207,8 +207,8 @@ class MedicationIngredient(backboneelement.BackboneElement):
         enum_reference_types=["Substance", "Medication"],
     )
 
-    @root_validator(pre=True)
-    def validate_one_of_many(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_one_of_many_2247(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -371,8 +371,8 @@ class MedicationPackageContent(backboneelement.BackboneElement):
         enum_reference_types=["Medication"],
     )
 
-    @root_validator(pre=True)
-    def validate_one_of_many(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_one_of_many_2629(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice

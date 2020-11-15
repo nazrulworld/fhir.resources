@@ -35,6 +35,7 @@ development_requirements = [
     "MarkupSafe==1.1.1",
     "colorlog==2.10.0",
     "certifi",
+    "fhirspec",
     "zest-releaser[recommended]",
 ]
 setup(

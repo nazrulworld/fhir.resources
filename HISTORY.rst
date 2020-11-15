@@ -5,8 +5,14 @@ History
 6.0.0b10 (unreleased)
 ---------------------
 
-- Nothing changed yet.
+Improvements
 
+- ``FHIRAbstractModel::add_root_validator`` is more improved and practical with proper validation, more now possible provide class method as root validator.
+
+
+Bugfixes
+
+- `Issue #41 <https://github.com/nazrulworld/fhir.resources/issues/41>`_ pydantic.errors.ConfigError: duplicate validator function.
 
 6.0.0b9 (2020-11-05)
 --------------------

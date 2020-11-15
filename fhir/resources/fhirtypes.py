@@ -2138,7 +2138,7 @@ class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesType(
 class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriodType(
     AbstractType
 ):
-    __resource_type__ = "MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod"  # noqa: B950
+    __resource_type__ = "MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod"  # noqa:B950
 
 
 class MedicinalProductSpecialDesignationType(AbstractType):

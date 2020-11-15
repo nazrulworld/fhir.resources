@@ -393,8 +393,8 @@ class SubstanceSpecificationMoiety(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    @root_validator(pre=True)
-    def validate_one_of_many(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_one_of_many_3116(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -553,8 +553,8 @@ class SubstanceSpecificationName(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    @root_validator(pre=True)
-    def validate_required_primitive_elements(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_required_primitive_elements_2850(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
@@ -757,8 +757,8 @@ class SubstanceSpecificationProperty(backboneelement.BackboneElement):
         None, alias="_parameters", title="Extension field for ``parameters``."
     )
 
-    @root_validator(pre=True)
-    def validate_one_of_many(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_one_of_many_3354(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -968,8 +968,8 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
         enum_reference_types=["SubstanceSpecification"],
     )
 
-    @root_validator(pre=True)
-    def validate_one_of_many(
+    @root_validator(pre=True, allow_reuse=True)
+    def validate_one_of_many_3742(
         cls, values: typing.Dict[str, typing.Any]
     ) -> typing.Dict[str, typing.Any]:
         """https://www.hl7.org/fhir/formats.html#choice
@@ -1063,7 +1063,7 @@ class SubstanceSpecificationStructure(backboneelement.BackboneElement):
         title="Extension field for ``molecularFormulaByMoiety``.",
     )
 
-    molecularWeight: fhirtypes.SubstanceSpecificationStructureIsotopeMolecularWeightType = Field(  # noqa: B950
+    molecularWeight: fhirtypes.SubstanceSpecificationStructureIsotopeMolecularWeightType = Field(  # noqa:B950
         None,
         alias="molecularWeight",
         title=(
@@ -1145,7 +1145,7 @@ class SubstanceSpecificationStructureIsotope(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    molecularWeight: fhirtypes.SubstanceSpecificationStructureIsotopeMolecularWeightType = Field(  # noqa: B950
+    molecularWeight: fhirtypes.SubstanceSpecificationStructureIsotopeMolecularWeightType = Field(  # noqa:B950
         None,
         alias="molecularWeight",
         title=(

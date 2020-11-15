@@ -8,8 +8,10 @@ from functools import lru_cache
 from typing import TYPE_CHECKING, Any, Callable, Type
 
 from pydantic import BaseModel, Extra, Field
+from pydantic.class_validators import ROOT_VALIDATOR_CONFIG_KEY, root_validator
 from pydantic.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.errors import ConfigError, PydanticValueError
+from pydantic.typing import AnyCallable
 from pydantic.utils import ROOT_KEY
 
 try:
@@ -137,47 +139,70 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
 
     @classmethod
     def add_root_validator(
-        cls,
-        validator: Callable,
+        cls: typing.Type["Model"],
+        validator: typing.Union[AnyCallable, classmethod],
         *,
         pre: bool = False,
         skip_on_failure: bool = False,
+        allow_reuse: bool = True,
         index: int = -1,
     ):
         """ """
         from inspect import signature
-        from inspect import isfunction
+        from inspect import ismethod
 
-        if not isfunction(validator):
+        if isinstance(validator, classmethod) or ismethod(validator):
+            validator = validator.__func__  # type:ignore
+
+        func_name = validator.__name__
+
+        # first level validation
+        if any([func_name in cls_.__dict__ for cls_ in cls.mro()]):
             raise ConfigError(
-                f"'{validator.__qualname__}' must be function not method from class."
+                f"{cls} already has same name '{func_name}' method or attribute!"
             )
-        sig = signature(validator)
-        args = list(sig.parameters.keys())
-        if args[0] != "cls":
+        if func_name in cls.__fields__:
+            raise ConfigError(f"{cls} already has same name '{func_name}' field!")
+
+        # evaluate through root_validator
+        validator = root_validator(
+            pre=pre, allow_reuse=allow_reuse, skip_on_failure=skip_on_failure
+        )(validator)
+
+        validator_config = getattr(validator, ROOT_VALIDATOR_CONFIG_KEY)
+        sig = signature(validator_config.func)
+        arg_list = list(sig.parameters.keys())
+
+        if len(arg_list) != 2:
             raise ConfigError(
-                f"Invalid signature for root validator {validator.__qualname__}: {sig}, "
-                f'"args[0]" not permitted as first argument, '
-                f"should be: (cls, values)."
+                f"Invalid signature for root validator {func_name}: {sig}"
+                ", should be: (cls, values)."
             )
-        if len(args) != 2:
+
+        if arg_list[0] != "cls":
             raise ConfigError(
-                f"Invalid signature for root validator {validator.__qualname__}: {sig}, "
+                f"Invalid signature for root validator {func_name}: {sig}, "
+                f'"{arg_list[0]}" not permitted as first argument, '
                 "should be: (cls, values)."
             )
-        if pre:
-            if validator not in cls.__pre_root_validators__:
-                if index == -1:
-                    cls.__pre_root_validators__.append(validator)
-                else:
-                    cls.__pre_root_validators__.insert(index, validator)
-            return
-        if validator in map(lambda x: x[1], cls.__post_root_validators__):
-            return
-        if index == -1:
-            cls.__post_root_validators__.append((skip_on_failure, validator))
+        # check function signature
+        if validator_config.pre:
+            if index == -1:
+                cls.__pre_root_validators__.append(validator_config.func)
+            else:
+                cls.__pre_root_validators__.insert(index, validator_config.func)
         else:
-            cls.__post_root_validators__.insert(index, (skip_on_failure, validator))
+            if index == -1:
+                cls.__post_root_validators__.append(
+                    (validator_config.skip_on_failure, validator_config.func)
+                )
+            else:
+                cls.__post_root_validators__.insert(
+                    index, (validator_config.skip_on_failure, validator_config.func)
+                )
+        # inject to class
+        setattr(validator, "__manually_injected__", True)  # noqa:B010
+        setattr(cls, func_name, validator)
 
     @classmethod
     @lru_cache(maxsize=1024, typed=True)

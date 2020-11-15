@@ -174,7 +174,6 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         arg_list = list(sig.parameters.keys())
 
         if len(arg_list) != 2:
-            breakpoint()
             raise ConfigError(
                 f"Invalid signature for root validator {func_name}: {sig}"
                 ", should be: (cls, values)."

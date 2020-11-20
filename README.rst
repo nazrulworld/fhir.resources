@@ -23,10 +23,13 @@ FHIR® Resources (R4, STU3, DSTU2)
 .. image:: https://img.shields.io/badge/code%20style-black-000000.svg
     :target: https://github.com/psf/black
 
+.. image:: https://static.pepy.tech/personalized-badge/fhir-resources?period=total&units=international_system&left_color=black&right_color=green&left_text=Downloads
+    :target: https://pepy.tech/project/fhir-resources
+    :alt: Downloads
+
 .. image:: https://fire.ly/wp-content/themes/fhir/images/fhir.svg
         :target: https://www.hl7.org/implement/standards/product_brief.cfm?product_id=449
         :alt: HL7® FHIR®
-
 
 
 Powered by pydantic_, all `FHIR Resources <https://www.hl7.org/fhir/resourcelist.html>`_ are available as python class with built-in

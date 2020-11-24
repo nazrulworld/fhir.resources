@@ -794,7 +794,7 @@ class ClaimResponseAddItemType(AbstractType):
 
 
 class ClaimResponseAddItemAdjudicationType(AbstractType):
-    __resource_type__ = "ClaimResponseAddItemAdjudicationType"
+    __resource_type__ = "ClaimResponseAddItemAdjudication"
 
 
 class ClaimResponseAddItemDetailType(AbstractType):

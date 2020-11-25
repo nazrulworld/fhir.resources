@@ -2,7 +2,7 @@
 History
 =======
 
-6.0.0b11 (unreleased)
+6.0.0b11 (2020-11-25)
 ---------------------
 
 - Fixes: wrong ``ClaimResponseAddItemAdjudicationType`` resource type name into ``DTSU2``.

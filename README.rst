@@ -27,7 +27,7 @@ FHIR® Resources (R4, STU3, DSTU2)
     :target: https://pepy.tech/project/fhir-resources
     :alt: Downloads
 
-.. image:: https://fire.ly/wp-content/themes/fhir/images/fhir.svg
+.. image:: https://www.hl7.org/fhir/assets/images/fhir-logo-www.png
         :target: https://www.hl7.org/implement/standards/product_brief.cfm?product_id=449
         :alt: HL7® FHIR®
 
@@ -559,3 +559,5 @@ owned by `Health Level Seven International <https://www.hl7.org/legal/trademarks
 
 .. role:: strike
     :class: strike
+.. role:: raw-html(raw)
+    :format: html

@@ -263,6 +263,10 @@ MODEL_CLASSES = {
     "Order": (None, ".order"),
     "OrderWhen": (None, ".order"),
     "OrderResponse": (None, ".orderresponse"),
+    "Substance": (None, ".substance"),
+    "SubstanceInstance": (None, ".substance"),
+    "SubstanceIngredient": (None, ".substance"),
+    "SupplyDelivery": (None, ".supplydelivery"),
     "SupplyRequest": (None, ".supplyrequest"),
     "SupplyRequestWhen": (None, ".supplyrequest"),
     "VisionPrescription": (None, ".visionprescription"),
@@ -1668,6 +1672,22 @@ def orderresponse_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("OrderResponse", v)
 
 
+def substance_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Substance", v)
+
+
+def substanceinstance_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("SubstanceInstance", v)
+
+
+def substanceingredient_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("SubstanceIngredient", v)
+
+
+def supplydelivery_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("SupplyDelivery", v)
+
+
 def supplyrequest_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("SupplyRequest", v)
 
@@ -1970,6 +1990,10 @@ __all__ = [
     "namingsystem_validator",
     "namingsystemcontact_validator",
     "namingsystemuniqueid_validator",
+    "substance_validator",
+    "substanceinstance_validator",
+    "substanceingredient_validator",
+    "supplydelivery_validator",
     "supplyrequest_validator",
     "supplyrequestwhen_validator",
     "order_validator",

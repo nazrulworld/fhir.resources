@@ -1609,6 +1609,22 @@ class ListEntryType(AbstractType):
     __resource_type__ = "ListEntry"
 
 
+class SubstanceType(AbstractType):
+    __resource_type__ = "Substance"
+
+
+class SubstanceInstanceType(AbstractType):
+    __resource_type__ = "SubstanceInstance"
+
+
+class SubstanceIngredientType(AbstractType):
+    __resource_type__ = "SubstanceIngredient"
+
+
+class SupplyDeliveryType(AbstractType):
+    __resource_type__ = "SupplyDelivery"
+
+
 class SupplyRequestType(AbstractType):
     __resource_type__ = "SupplyRequest"
 
@@ -1909,6 +1925,10 @@ __all__ = [
     "NamingSystemType",
     "NamingSystemContactType",
     "NamingSystemUniqueIdType",
+    "SubstanceType",
+    "SubstanceInstanceType"
+    "SubstanceIngredientType"
+    "SupplyDeliveryType",
     "SupplyRequestType",
     "SupplyRequestWhenType",
     "VisionPrescriptionType",

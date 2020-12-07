@@ -1609,6 +1609,26 @@ class ListEntryType(AbstractType):
     __resource_type__ = "ListEntry"
 
 
+class ReferralRequestType(AbstractType):
+    __resource_type__ = "ReferralRequest"
+
+
+class RiskAssessmentType(AbstractType):
+    __resource_type__ = "RiskAssessment"
+
+
+class RiskAssessmentPredictionType(AbstractType):
+    __resource_type__ = "RiskAssessmentPrediction"
+
+
+class SearchParameterType(AbstractType):
+    __resource_type__ = "SearchParameter"
+
+
+class SearchParameterContactType(AbstractType):
+    __resource_type__ = "SearchParameterContact"
+
+
 class SubscriptionType(AbstractType):
     __resource_type__ = "Subscription"
 
@@ -1933,6 +1953,11 @@ __all__ = [
     "NamingSystemType",
     "NamingSystemContactType",
     "NamingSystemUniqueIdType",
+    "ReferralRequestType",
+    "RiskAssessmentType",
+    "RiskAssessmentPredictionType",
+    "SearchParameterType",
+    "SearchParameterContactType",
     "SubscriptionType",
     "SubscriptionChannelType",
     "SubstanceType",

@@ -263,6 +263,11 @@ MODEL_CLASSES = {
     "Order": (None, ".order"),
     "OrderWhen": (None, ".order"),
     "OrderResponse": (None, ".orderresponse"),
+    "ReferralRequest": (None, ".referralrequest"),
+    "RiskAssessment": (None, ".riskassessment"),
+    "RiskAssessmentPrediction": (None, ".riskassessment"),
+    "SearchParameter": (None, ".searchparameter"),
+    "SearchParameterContact": (None, ".searchparameter"),
     "Subscription": (None, ".subscription"),
     "SubscriptionChannel": (None, ".subscription"),
     "Substance": (None, ".substance"),
@@ -1674,6 +1679,26 @@ def orderresponse_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("OrderResponse", v)
 
 
+def referralrequest_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ReferralRequest", v)
+
+
+def riskassessment_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("RiskAssessment", v)
+
+
+def riskassessmentprediction_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("RiskAssessmentPrediction", v)
+
+
+def searchparameter_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("SearchParameter", v)
+
+
+def searchparametercontact_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("SearchParameterContact", v)
+
+
 def subscription_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("Subscription", v)
 
@@ -2000,6 +2025,11 @@ __all__ = [
     "namingsystem_validator",
     "namingsystemcontact_validator",
     "namingsystemuniqueid_validator",
+    "referralrequest_validator",
+    "riskassessment_validator",
+    "riskassessmentprediction_validator",
+    "searchparameter_validator",
+    "searchparametercontact_validator",
     "subscription_validator",
     "subscriptionchannel_validator",
     "substance_validator",

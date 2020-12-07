@@ -1609,6 +1609,14 @@ class ListEntryType(AbstractType):
     __resource_type__ = "ListEntry"
 
 
+class SubscriptionType(AbstractType):
+    __resource_type__ = "Subscription"
+
+
+class SubscriptionChannelType(AbstractType):
+    __resource_type__ = "SubscriptionChannel"
+
+
 class SubstanceType(AbstractType):
     __resource_type__ = "Substance"
 
@@ -1925,6 +1933,8 @@ __all__ = [
     "NamingSystemType",
     "NamingSystemContactType",
     "NamingSystemUniqueIdType",
+    "SubscriptionType",
+    "SubscriptionChannelType",
     "SubstanceType",
     "SubstanceInstanceType"
     "SubstanceIngredientType"

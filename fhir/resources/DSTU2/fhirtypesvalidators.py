@@ -263,6 +263,8 @@ MODEL_CLASSES = {
     "Order": (None, ".order"),
     "OrderWhen": (None, ".order"),
     "OrderResponse": (None, ".orderresponse"),
+    "Subscription": (None, ".subscription"),
+    "SubscriptionChannel": (None, ".subscription"),
     "Substance": (None, ".substance"),
     "SubstanceInstance": (None, ".substance"),
     "SubstanceIngredient": (None, ".substance"),
@@ -1672,6 +1674,14 @@ def orderresponse_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("OrderResponse", v)
 
 
+def subscription_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Subscription", v)
+
+
+def subscriptionchannel_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("SubscriptionChannel", v)
+
+
 def substance_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("Substance", v)
 
@@ -1990,6 +2000,8 @@ __all__ = [
     "namingsystem_validator",
     "namingsystemcontact_validator",
     "namingsystemuniqueid_validator",
+    "subscription_validator",
+    "subscriptionchannel_validator",
     "substance_validator",
     "substanceinstance_validator",
     "substanceingredient_validator",

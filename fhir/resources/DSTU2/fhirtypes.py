@@ -1609,6 +1609,34 @@ class ListEntryType(AbstractType):
     __resource_type__ = "ListEntry"
 
 
+class QuestionnaireResponseType(AbstractType):
+    __resource_type__ = "QuestionnaireResponse"
+
+
+class QuestionnaireResponseGroupType(AbstractType):
+    __resource_type__ = "QuestionnaireResponseGroup"
+
+
+class QuestionnaireResponseGroupQuestionType(AbstractType):
+    __resource_type__ = "QuestionnaireResponseGroupQuestion"
+
+
+class QuestionnaireResponseGroupQuestionAnswerType(AbstractType):
+    __resource_type__ = "QuestionnaireResponseGroupQuestionAnswer"
+
+
+class QuestionnaireType(AbstractType):
+    __resource_type__ = "Questionnaire"
+
+
+class QuestionnaireGroupType(AbstractType):
+    __resource_type__ = "QuestionnaireGroup"
+
+
+class QuestionnaireGroupQuestionType(AbstractType):
+    __resource_type__ = "QuestionnaireGroupQuestion"
+
+
 class ReferralRequestType(AbstractType):
     __resource_type__ = "ReferralRequest"
 
@@ -1953,6 +1981,13 @@ __all__ = [
     "NamingSystemType",
     "NamingSystemContactType",
     "NamingSystemUniqueIdType",
+    "QuestionnaireResponseType",
+    "QuestionnaireResponseGroupType",
+    "QuestionnaireResponseGroupQuestionType",
+    "QuestionnaireResponseGroupQuestionAnswerType"
+    "QuestionnaireType",
+    "QuestionnaireGroupType",
+    "QuestionnaireGroupQuestionType",
     "ReferralRequestType",
     "RiskAssessmentType",
     "RiskAssessmentPredictionType",

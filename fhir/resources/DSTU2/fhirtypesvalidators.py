@@ -263,6 +263,13 @@ MODEL_CLASSES = {
     "Order": (None, ".order"),
     "OrderWhen": (None, ".order"),
     "OrderResponse": (None, ".orderresponse"),
+    "QuestionnaireResponse": (None, ".questionnaireresponse"),
+    "QuestionnaireResponseGroup": (None, ".questionnaireresponse"),
+    "QuestionnaireResponseGroupQuestion": (None, ".questionnaireresponse"),
+    "QuestionnaireResponseGroupQuestionAnswer": (None, ".questionnaireresponse"),
+    "Questionnaire": (None, ".questionnaire"),
+    "QuestionnaireGroup": (None, ".questionnaire"),
+    "QuestionnaireGroupQuestion": (None, ".questionnaire"),
     "ReferralRequest": (None, ".referralrequest"),
     "RiskAssessment": (None, ".riskassessment"),
     "RiskAssessmentPrediction": (None, ".riskassessment"),
@@ -1679,6 +1686,34 @@ def orderresponse_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("OrderResponse", v)
 
 
+def questionnaireresponse_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("QuestionnaireResponse", v)
+
+
+def questionnaireresponsegroup_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("QuestionnaireResponseGroup", v)
+
+
+def questionnaireresponsegroupquestion_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("QuestionnaireResponseGroupQuestion", v)
+
+
+def questionnaireresponsegroupquestionanswer_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("QuestionnaireResponseGroupQuestionAnswer", v)
+
+
+def questionnaire_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Questionnaire", v)
+
+
+def questionnairegroup_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("QuestionnaireGroup", v)
+
+
+def questionnairegroupquestion_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("QuestionnaireGroupQuestion", v)
+
+
 def referralrequest_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("ReferralRequest", v)
 
@@ -2025,6 +2060,13 @@ __all__ = [
     "namingsystem_validator",
     "namingsystemcontact_validator",
     "namingsystemuniqueid_validator",
+    "questionnaireresponse_validator",
+    "questionnaireresponsegroup_validator",
+    "questionnaireresponsegroupquestion_validator",
+    "questionnaireresponsegroupquestionanswer_validator",
+    "questionnaire_validator",
+    "questionnairegroup_validator",
+    "questionnairegroupquestion_validator",
     "referralrequest_validator",
     "riskassessment_validator",
     "riskassessmentprediction_validator",

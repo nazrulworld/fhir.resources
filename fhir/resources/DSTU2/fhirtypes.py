@@ -1609,6 +1609,22 @@ class ListEntryType(AbstractType):
     __resource_type__ = "ListEntry"
 
 
+class ProvenanceType(AbstractType):
+    __resource_type__ = "Provenance"
+
+
+class ProvenanceAgentType(AbstractType):
+    __resource_type__ = "ProvenanceAgent"
+
+
+class ProvenanceAgentRelatedAgentType(AbstractType):
+    __resource_type__ = "ProvenanceAgentRelatedAgent"
+
+
+class ProvenanceEntityType(AbstractType):
+    __resource_type__ = "ProvenanceEntity"
+
+
 class QuestionnaireResponseType(AbstractType):
     __resource_type__ = "QuestionnaireResponse"
 
@@ -1981,6 +1997,10 @@ __all__ = [
     "NamingSystemType",
     "NamingSystemContactType",
     "NamingSystemUniqueIdType",
+    "ProvenanceType",
+    "ProvenanceAgentType",
+    "ProvenanceEntityType",
+    "ProvenanceAgentRelatedAgentType",
     "QuestionnaireResponseType",
     "QuestionnaireResponseGroupType",
     "QuestionnaireResponseGroupQuestionType",

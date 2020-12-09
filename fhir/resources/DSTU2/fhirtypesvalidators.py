@@ -263,6 +263,10 @@ MODEL_CLASSES = {
     "Order": (None, ".order"),
     "OrderWhen": (None, ".order"),
     "OrderResponse": (None, ".orderresponse"),
+    "Provenance": (None, ".provenance"),
+    "ProvenanceAgent": (None, ".provenance"),
+    "ProvenanceEntity": (None, ".provenance"),
+    "ProvenanceAgentRelatedAgent": (None, ".provenance"),
     "QuestionnaireResponse": (None, ".questionnaireresponse"),
     "QuestionnaireResponseGroup": (None, ".questionnaireresponse"),
     "QuestionnaireResponseGroupQuestion": (None, ".questionnaireresponse"),
@@ -1686,6 +1690,22 @@ def orderresponse_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("OrderResponse", v)
 
 
+def provenance_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Provenance", v)
+
+
+def provenanceagent_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ProvenanceAgent", v)
+
+
+def provenanceagentrelatedagent_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ProvenanceAgentRelatedAgent", v)
+
+
+def provenanceentity_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ProvenanceEntity", v)
+
+
 def questionnaireresponse_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("QuestionnaireResponse", v)
 
@@ -2060,6 +2080,10 @@ __all__ = [
     "namingsystem_validator",
     "namingsystemcontact_validator",
     "namingsystemuniqueid_validator",
+    "provenance_validator",
+    "provenanceagent_validator",
+    "provenanceagentrelatedagent_validator",
+    "provenanceentity_validator",
     "questionnaireresponse_validator",
     "questionnaireresponsegroup_validator",
     "questionnaireresponsegroupquestion_validator",

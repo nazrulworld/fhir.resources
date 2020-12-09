@@ -156,7 +156,7 @@ class QuestionnaireResponseGroup(BackboneElement):
 
     #@nazrulworld nested group ?
 
-    question: fhirtypes.QuestionnaireResponseGroupQuestionType = Field(
+    question: ListType[fhirtypes.QuestionnaireResponseGroupQuestionType] = Field(
         None,
         alias="question",
         title="Questions in this group",
@@ -190,7 +190,7 @@ class QuestionnaireResponseGroupQuestion(BackboneElement):
         element_property=True,
     )
 
-    answer: fhirtypes.QuestionnaireResponseGroupQuestionAnswerType = Field(
+    answer: ListType[fhirtypes.QuestionnaireResponseGroupQuestionAnswerType] = Field(
         None,
         alias="answer",
         title="The response(s) to the question",

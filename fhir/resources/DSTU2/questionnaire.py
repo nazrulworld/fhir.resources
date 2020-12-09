@@ -155,7 +155,15 @@ class QuestionnaireGroup(BackboneElement):
         element_property=True,
     )
 
-    #@nazrulworld is this right for the type? I haven't seen how a double nested backbone element is coded yet
+    group: ListType[fhirtypes.QuestionnaireGroupType] = Field(
+        None,
+        alias="group",
+        title="Nested questionnaire group",
+        description="A sub-group within a group. The ordering of groups within this group is relevant.",
+        # if property is element of this resource.
+        element_property=True,
+    )
+
     question: ListType[fhirtypes.QuestionnaireGroupQuestionType] = Field(
         None,
         alias="question",
@@ -246,4 +254,11 @@ class QuestionnaireGroupQuestion(BackboneElement):
         element_property=True,
     )
 
-    #@nazrulworld I don't know what to do with nested questionnaire group...
+    group: ListType[fhirtypes.QuestionnaireGroupType] = Field(
+        None,
+        alias="group",
+        title="Nested questionnaire group",
+        description="Nested group, containing nested question for this question. The order of groups within the question is relevant.",
+        # if property is element of this resource.
+        element_property=True,
+    )

@@ -243,4 +243,11 @@ class ProvenanceEntity(BackboneElement):
         element_property=True,
     )
 
-    #@nazrulworld not sure how to code nested reference to 'agent' that's under ProvenanceEntity
+    agent: ListType[fhirtypes.ProvenanceAgentType] = Field(
+        None,
+        alias="agent",
+        title="Entity is attributed to this agent",
+        description="The entity is attributed to an agent to express the agent's responsibility for that entity, possibly along with other agents. This description can be understood as shorthand for saying that the agent was responsible for the activity which generated the entity",
+        # if property is element of this resource.
+        element_property=True,
+    )

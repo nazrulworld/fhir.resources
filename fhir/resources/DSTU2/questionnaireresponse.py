@@ -154,7 +154,14 @@ class QuestionnaireResponseGroup(BackboneElement):
         element_property=True,
     )
 
-    #@nazrulworld nested group ?
+    group: ListType[fhirtypes.QuestionnaireResponseGroupType] = Field(
+        None,
+        alias="group",
+        title="Nested questionnaire response group",
+        description="A sub-group within a group. The ordering of groups within this group is relevant.",
+        # if property is element of this resource.
+        element_property=True,
+    )
 
     question: ListType[fhirtypes.QuestionnaireResponseGroupQuestionType] = Field(
         None,
@@ -351,7 +358,14 @@ class QuestionnaireResponseGroupQuestionAnswer(BackboneElement):
         one_of_many_required=False,
     )
 
-    #@nazrulworld nested group ?
+    group: ListType[fhirtypes.QuestionnaireResponseGroupType] = Field(
+        None,
+        alias="group",
+        title="Nested questionnaire response group",
+        description="Nested group, containing nested question for this question. The order of groups within the question is relevant.",
+        # if property is element of this resource.
+        element_property=True,
+    )
 
     @root_validator(pre=True)
     def validate_one_of_many(cls, values: Dict[str, Any]) -> Dict[str, Any]:

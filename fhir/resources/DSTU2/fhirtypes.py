@@ -1609,6 +1609,38 @@ class ListEntryType(AbstractType):
     __resource_type__ = "ListEntry"
 
 
+class ProcessResponseType(AbstractType):
+    __resource_type__ = "ProcessResponse"
+
+
+class ProcessResponseNotesType(AbstractType):
+    __resource_type__ = "ProcessResponseNotes"
+
+
+class ProcessRequestType(AbstractType):
+    __resource_type__ = "ProcessRequest"
+
+
+class ProcessRequestItemType(AbstractType):
+    __resource_type__ = "ProcessRequestItem"
+
+
+class PaymentReconciliationType(AbstractType):
+    __resource_type__ = "PaymentReconciliation"
+
+
+class PaymentReconciliationDetailType(AbstractType):
+    __resource_type__ = "PaymentReconciliationDetail"
+
+
+class PaymentReconciliationNoteType(AbstractType):
+    __resource_type__ = "PaymentReconciliationNote"
+
+
+class PaymentNoticeType(AbstractType):
+    __resource_type__ = "PaymentNotice"
+
+
 class ProvenanceType(AbstractType):
     __resource_type__ = "Provenance"
 
@@ -1997,6 +2029,14 @@ __all__ = [
     "NamingSystemType",
     "NamingSystemContactType",
     "NamingSystemUniqueIdType",
+    "ProcessResponseType",
+    "ProcessResponseNotesType",
+    "ProcessRequest",
+    "ProcessRequestItem",
+    "PaymentReconciliation",
+    "PaymentReconciliationDetail",
+    "PaymentReconciliationNote",
+    "PaymentNotice",
     "ProvenanceType",
     "ProvenanceAgentType",
     "ProvenanceEntityType",

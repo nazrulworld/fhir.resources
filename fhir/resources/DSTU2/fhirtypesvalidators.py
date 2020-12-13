@@ -263,6 +263,14 @@ MODEL_CLASSES = {
     "Order": (None, ".order"),
     "OrderWhen": (None, ".order"),
     "OrderResponse": (None, ".orderresponse"),
+    "ProcessResponse": (None, ".processresponse"),
+    "ProcessResponseNotes": (None, ".processresponse"),
+    "ProcessRequest": (None, ".processrequest"),
+    "ProcessRequestItem": (None, ".processrequest"),
+    "PaymentReconciliation": (None, ".paymentreconciliation"),
+    "PaymentReconciliationDetail": (None, ".paymentreconciliation"),
+    "PaymentReconciliationNote": (None, ".paymentreconciliation"),
+    "PaymentNotice": (None, ".paymentnotice"),
     "Provenance": (None, ".provenance"),
     "ProvenanceAgent": (None, ".provenance"),
     "ProvenanceEntity": (None, ".provenance"),
@@ -1690,6 +1698,38 @@ def orderresponse_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("OrderResponse", v)
 
 
+def processresponse_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ProcessResponse", v)
+
+
+def processresponsenotes_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ProcessResponseNotes", v)
+
+
+def processrequest_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ProcessRequest", v)
+
+
+def processrequestitem_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ProcessRequestItem", v)
+
+
+def paymentreconciliation_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("PaymentReconciliation", v)
+
+
+def paymentreconciliationdetail_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("PaymentReconciliationDetail", v)
+
+
+def paymentreconciliationnote_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("PaymentReconciliationNote", v)
+
+
+def paymentnotice_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("PaymentNotice", v)
+
+
 def provenance_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("Provenance", v)
 
@@ -2080,6 +2120,14 @@ __all__ = [
     "namingsystem_validator",
     "namingsystemcontact_validator",
     "namingsystemuniqueid_validator",
+    "processresponse_validator",
+    "processresponsenotes_validator",
+    "processrequest_validator",
+    "processrequestitem_validator",
+    "paymentreconciliation_validator",
+    "paymentreconciliationdetail_validator",
+    "paymentreconciliationnote_validator",
+    "paymentnotice",
     "provenance_validator",
     "provenanceagent_validator",
     "provenanceagentrelatedagent_validator",

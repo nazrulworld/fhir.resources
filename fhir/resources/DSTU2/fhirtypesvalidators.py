@@ -263,6 +263,10 @@ MODEL_CLASSES = {
     "Order": (None, ".order"),
     "OrderWhen": (None, ".order"),
     "OrderResponse": (None, ".orderresponse"),
+    "OperationDefinition": (None, ".operationdefinition"),
+    "OperationDefinitionContact": (None, ".operationdefinition"),
+    "OperationDefinitionParameter": (None, ".operationdefinition"),
+    "OperationDefinitionParameterBinding": (None, ".operationdefinition"),
     "Parameter": (None, ".parameters"),
     "ParametersParameter": (None, ".parameters"),
     "ProcessResponse": (None, ".processresponse"),
@@ -1688,6 +1692,22 @@ def namingsystemuniqueid_validator(v: Union[StrBytes, dict, Path, FHIRAbstractMo
     return fhir_model_validator("NamingSystemUniqueId", v)
 
 
+def operationdefinition_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("OperationDefinition", v)
+
+
+def operationdefinitioncontact_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("OperationDefinitionContact", v)
+
+
+def operationdefinitionparameter_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("OperationDefinitionParameter", v)
+
+
+def operationdefinitionparameterbinding_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("OperationDefinitionParameterBinding", v)
+
+
 def order_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("Order", v)
 
@@ -2130,6 +2150,10 @@ __all__ = [
     "namingsystem_validator",
     "namingsystemcontact_validator",
     "namingsystemuniqueid_validator",
+    "operationdefinition_validator",
+    "operationdefinitioncontact_validator",
+    "operationdefinitionparameter_validator",
+    "operationdefinitionparameterbinding_validator",
     "parameters_validator",
     "parametersparameter_validator",
     "processresponse_validator",

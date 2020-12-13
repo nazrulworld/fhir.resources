@@ -1609,6 +1609,22 @@ class ListEntryType(AbstractType):
     __resource_type__ = "ListEntry"
 
 
+class OperationDefinitionType(AbstractType):
+    __resource_type__ = "OperationDefinition"
+
+
+class OperationDefinitionContactType(AbstractType):
+    __resource_type__ = "OperationDefinitionContact"
+
+
+class OperationDefinitionParameterType(AbstractType):
+    __resource_type__ = "OperationDefinitionParameter"
+
+
+class OperationDefinitionParameterBindingType(AbstractType):
+    __resource_type__ = "OperationDefinitionParameterBinding"
+
+
 class ParametersType(AbstractType):
     __resource_type__ = "Parameters"
 
@@ -2037,16 +2053,20 @@ __all__ = [
     "NamingSystemType",
     "NamingSystemContactType",
     "NamingSystemUniqueIdType",
+    "OperationDefinitionType",
+    "OperationDefinitionContactType",
+    "OperationDefinitionParameterType",
+    "OperationDefinitionParameterBindingType",
     "ParametersType",
     "ParametersParameterType",
     "ProcessResponseType",
     "ProcessResponseNotesType",
-    "ProcessRequest",
-    "ProcessRequestItem",
-    "PaymentReconciliation",
-    "PaymentReconciliationDetail",
-    "PaymentReconciliationNote",
-    "PaymentNotice",
+    "ProcessRequestType",
+    "ProcessRequestItemType",
+    "PaymentReconciliationType",
+    "PaymentReconciliationDetailType",
+    "PaymentReconciliationNoteType",
+    "PaymentNoticeType",
     "ProvenanceType",
     "ProvenanceAgentType",
     "ProvenanceEntityType",

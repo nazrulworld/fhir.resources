@@ -263,6 +263,8 @@ MODEL_CLASSES = {
     "Order": (None, ".order"),
     "OrderWhen": (None, ".order"),
     "OrderResponse": (None, ".orderresponse"),
+    "Parameter": (None, ".parameters"),
+    "ParametersParameter": (None, ".parameters"),
     "ProcessResponse": (None, ".processresponse"),
     "ProcessResponseNotes": (None, ".processresponse"),
     "ProcessRequest": (None, ".processrequest"),
@@ -1698,6 +1700,14 @@ def orderresponse_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("OrderResponse", v)
 
 
+def parameters_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("Parameters", v)
+
+
+def parametersparameter_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("ParametersParameter", v)
+
+
 def processresponse_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("ProcessResponse", v)
 
@@ -2120,6 +2130,8 @@ __all__ = [
     "namingsystem_validator",
     "namingsystemcontact_validator",
     "namingsystemuniqueid_validator",
+    "parameters_validator",
+    "parametersparameter_validator",
     "processresponse_validator",
     "processresponsenotes_validator",
     "processrequest_validator",

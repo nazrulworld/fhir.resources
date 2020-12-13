@@ -1609,6 +1609,14 @@ class ListEntryType(AbstractType):
     __resource_type__ = "ListEntry"
 
 
+class ParametersType(AbstractType):
+    __resource_type__ = "Parameters"
+
+
+class ParametersParameterType(AbstractType):
+    __resource_type__ = "ParametersParameter"
+
+
 class ProcessResponseType(AbstractType):
     __resource_type__ = "ProcessResponse"
 
@@ -2029,6 +2037,8 @@ __all__ = [
     "NamingSystemType",
     "NamingSystemContactType",
     "NamingSystemUniqueIdType",
+    "ParametersType",
+    "ParametersParameterType",
     "ProcessResponseType",
     "ProcessResponseNotesType",
     "ProcessRequest",

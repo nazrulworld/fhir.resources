@@ -1609,6 +1609,34 @@ class ListEntryType(AbstractType):
     __resource_type__ = "ListEntry"
 
 
+class NutritionOrderType(AbstractType):
+    __resource_type__ = "NutritionOrder"
+
+
+class NutritionOrderOralDietType(AbstractType):
+    __resource_type__ = "NutritionOrderOralDiet"
+
+
+class NutritionOrderSupplementType(AbstractType):
+    __resource_type__ = "NutritionOrderSupplement"
+
+
+class NutritionOrderEnteralFormulaType(AbstractType):
+    __resource_type__ = "NutritionOrderEnteralFormula"
+
+
+class NutritionOrderOralDietNutrientType(AbstractType):
+    __resource_type__ = "NutritionOrderOralDietNutrient"
+
+
+class NutritionOrderOralDietTextureType(AbstractType):
+    __resource_type__ = "NutritionOrderOralDietTexture"
+
+
+class NutritionOrderEnteralFormulaAdministrationType(AbstractType):
+    __resource_type__ = "NutritionOrderEnteralFormulaAdministration"
+
+
 class OperationDefinitionType(AbstractType):
     __resource_type__ = "OperationDefinition"
 
@@ -2053,6 +2081,13 @@ __all__ = [
     "NamingSystemType",
     "NamingSystemContactType",
     "NamingSystemUniqueIdType",
+    "NutritionOrderType",
+    "NutritionOrderOralDietType",
+    "NutritionOrderSupplementType",
+    "NutritionOrderEnteralFormulaType",
+    "NutritionOrderOralDietNutrientType",
+    "NutritionOrderOralDietTextureType",
+    "NutritionOrderEnteralFormulaAdministrationType",
     "OperationDefinitionType",
     "OperationDefinitionContactType",
     "OperationDefinitionParameterType",

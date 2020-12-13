@@ -260,6 +260,13 @@ MODEL_CLASSES = {
         None,
         ".imagingobjectselection",
     ),
+    "NutritionOrder": (None, ".nutritionorder"),
+    "NutritionOrderOralDiet": (None, ".nutritionorder"),
+    "NutritionOrderSupplement": (None, ".nutritionorder"),
+    "NutritionOrderEnteralFormula": (None, ".nutritionorder"),
+    "NutritionOrderOralDietNutrient": (None, ".nutritionorder"),
+    "NutritionOrderOralDietTexture": (None, ".nutritionorder"),
+    "NutritionOrderEnteralFormulaAdministration": (None, ".nutritionorder"),
     "Order": (None, ".order"),
     "OrderWhen": (None, ".order"),
     "OrderResponse": (None, ".orderresponse"),
@@ -1692,6 +1699,34 @@ def namingsystemuniqueid_validator(v: Union[StrBytes, dict, Path, FHIRAbstractMo
     return fhir_model_validator("NamingSystemUniqueId", v)
 
 
+def nutritionorder_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("NutritionOrder", v)
+
+
+def nutritionorderoraldiet_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("NutritionOrderOralDiet", v)
+
+
+def nutritionordersupplement_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("NutritionOrderSupplement", v)
+
+
+def nutritionorderenteralformula_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("NutritionOrderEnteralFormula", v)
+
+
+def nutritionorderoraldietnutrient_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("NutritionOrderOralDietNutrient", v)
+
+
+def nutritionorderoraldiettexture_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("NutritionOrderOralDietTexture", v)
+
+
+def nutritionorderenteralformulaadministration_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("NutritionOrderEnteralFormulaAdministration", v)
+
+
 def operationdefinition_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
     return fhir_model_validator("OperationDefinition", v)
 
@@ -2150,6 +2185,13 @@ __all__ = [
     "namingsystem_validator",
     "namingsystemcontact_validator",
     "namingsystemuniqueid_validator",
+    "nutritionorder_validator",
+    "nutritionorderoraldiet_validator",
+    "nutritionordersupplement_validator",
+    "nutritionorderenteralformula_validator",
+    "nutritionorderoraldietnutrient_validator",
+    "nutritionorderoraldiettexture_validator",
+    "nutritionorderenteralformulaadministration_validator",
     "operationdefinition_validator",
     "operationdefinitioncontact_validator",
     "operationdefinitionparameter_validator",

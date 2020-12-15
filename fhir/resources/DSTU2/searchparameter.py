@@ -27,6 +27,7 @@ class SearchParameter(domainresource.DomainResource):
         alias="url",
         title="Type `Uri` items (represented as `dict` in JSON)",
         description="Absolute URL used to reference this search parameter",
+        element_property=True,
     )
 
     name: fhirtypes.String = Field(
@@ -53,6 +54,7 @@ class SearchParameter(domainresource.DomainResource):
         alias="experimental",
         title="Type `Boolean`",
         description="If for testing purposes, not real usage",
+        element_property=True,
     )
 
     publisher: fhirtypes.String = Field(
@@ -171,4 +173,5 @@ class SearchParameterContact(BackboneElement):
         alias="telecom",
         title="List of `ContactPoint` items (represented as `dict` in JSON).",
         description="Contact details for individual or publisher.",
+        element_property=True,
     )

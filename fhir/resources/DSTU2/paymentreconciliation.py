@@ -205,16 +205,6 @@ class PaymentReconciliationDetail(BackboneElement):
         element_property=True,
     )
 
-    submitter: fhirtypes.ReferenceType = Field(
-        None,
-        alias="submitter",
-        title="Type 'Reference' referencing 'Organization'  (represented as 'dict' in JSON).",
-        description="Submitter",
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
-        element_property=True,
-    )
-
     payee: fhirtypes.ReferenceType = Field(
         None,
         alias="payee",

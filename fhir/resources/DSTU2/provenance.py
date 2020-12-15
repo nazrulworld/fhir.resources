@@ -56,6 +56,7 @@ class Provenance(domainresource.DomainResource):
         alias="recorded",
         title="Type `Instant` (represented as `dict` in JSON)",
         description="When the activity was recorded / updated",
+        element_property=True,
     )
 
     reason: ListType[fhirtypes.CodeableConceptType] = Field(
@@ -243,7 +244,7 @@ class ProvenanceEntity(BackboneElement):
         element_property=True,
     )
 
-    agent: ListType[fhirtypes.ProvenanceAgentType] = Field(
+    agent: fhirtypes.ProvenanceAgentType = Field(
         None,
         alias="agent",
         title="Entity is attributed to this agent",

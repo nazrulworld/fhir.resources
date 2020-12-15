@@ -42,6 +42,7 @@ class Subscription(domainresource.DomainResource):
             "Contact details for source (e.g. troubleshooting)"
             "Contact details for a human to contact about the subscription. The primary use of this for system administrator troubleshooting."
         ),
+        element_property=True,
     )
 
     reason: fhirtypes.String = Field(
@@ -84,12 +85,13 @@ class Subscription(domainresource.DomainResource):
         alias="end",
         title="Type `Instant` (represented as `dict` in JSON)",
         description="When to automatically delete the subscription",
+        element_property=True,
     )
 
-    tag: ListType[fhirtypes.CodeableConceptType] = Field(
+    tag: ListType[fhirtypes.CodingType] = Field(
         None,
         alias="tag",
-        title="Type `CodeableConcept` (represented as `dict` in JSON).",
+        title="List of Type `Coding` (represented as `dict` in JSON).",
         description="A tag to add to matching resources",
         element_property=True,
     )
@@ -119,6 +121,7 @@ class SubscriptionChannel(BackboneElement):
         alias="endpoint",
         title="Type `Uri` items (represented as `dict` in JSON)",
         description="Where the channel points to",
+        element_property=True,
     )
 
     payload: fhirtypes.String = Field(

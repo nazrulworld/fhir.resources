@@ -114,6 +114,7 @@ class SupplyDelivery(domainresource.DomainResource):
         alias="destination",
         title="Type `Reference` referencing `Location` (represented as `dict` in JSON).",
         description="Where the Supply was sent",
+        element_property=True,
     )
 
     receiver: ListType[fhirtypes.ReferenceType] = Field(

@@ -87,10 +87,10 @@ class ReferralRequest(domainresource.DomainResource):
     requester: fhirtypes.ReferenceType = Field(
         None,
         alias="requester",
-        title="Type 'Reference' referencing 'Practitioner', 'Organization' and 'Device'  (represented as 'dict' in JSON).",
+        title="Type 'Reference' referencing 'Practitioner', 'Organization' and 'Patient'  (represented as 'dict' in JSON).",
         description="Requester of referral / transfer of care",
         # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Practitioner", "Organization", "Device"],
+        enum_reference_types=["Practitioner", "Organization", "Patient"],
         element_property=True,
     )
 

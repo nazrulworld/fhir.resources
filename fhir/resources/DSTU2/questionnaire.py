@@ -5,10 +5,9 @@ Release: DSTU2
 Version: 1.0.2
 Revision: 7202
 """
-from typing import Any, Dict
 from typing import List as ListType
 
-from pydantic import Field, root_validator
+from pydantic import Field
 
 from . import domainresource, fhirtypes
 from .backboneelement import BackboneElement
@@ -31,7 +30,13 @@ class Questionnaire(domainresource.DomainResource):
         None,
         alias="identifier",
         title="External identifiers for this questionnaire",
-        description="This records identifiers associated with this question set that are defined by business processes and/or used to refer to it when a direct URL reference to the resource itself is not appropriate (e.g. in CDA documents, or in written / printed documentation).",
+        description=(
+            "This records identifiers associated with this "
+            "question set that are defined by business processes "
+            "and/or used to refer to it when a direct URL reference "
+            "to the resource itself is not appropriate (e.g. in CDA "
+            "documents, or in written / printed documentation)."
+        ),
         element_property=True,
     )
 
@@ -74,7 +79,10 @@ class Questionnaire(domainresource.DomainResource):
         None,
         alias="telecom",
         title="Contact information of the publisher",
-        description="Contact details to assist a user in finding and communicating with the publisher.",
+        description=(
+            "Contact details to assist a user in "
+            "finding and communicating with the publisher."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -95,6 +103,7 @@ class Questionnaire(domainresource.DomainResource):
         # if property is element of this resource.
         element_property=True,
     )
+
 
 class QuestionnaireGroup(BackboneElement):
     """Grouped questions
@@ -124,7 +133,10 @@ class QuestionnaireGroup(BackboneElement):
         None,
         alias="concept",
         title="Concept that represents this section in a questionnaire",
-        description="Identifies a how this group of questions is known in a particular terminology such as LOINC.",
+        description=(
+            "Identifies a how this group of questions is known "
+            "in a particular terminology such as LOINC."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -141,7 +153,11 @@ class QuestionnaireGroup(BackboneElement):
         None,
         alias="required",
         title="Whether the group must be included in data results",
-        description="If true, indicates that the group must be present and have required questions within it answered. If false, the group may be skipped when answering the questionnaire.",
+        description=(
+            "If true, indicates that the group must be present and "
+            "have required questions within it answered. If false, "
+            "the group may be skipped when answering the questionnaire."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -150,7 +166,10 @@ class QuestionnaireGroup(BackboneElement):
         None,
         alias="repeats",
         title="Whether the group may repeat",
-        description="Whether the group may occur multiple times in the instance, containing multiple sets of answers.",
+        description=(
+            "Whether the group may occur multiple times in the instance, "
+            "containing multiple sets of answers."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -159,7 +178,10 @@ class QuestionnaireGroup(BackboneElement):
         None,
         alias="group",
         title="Nested questionnaire group",
-        description="A sub-group within a group. The ordering of groups within this group is relevant.",
+        description=(
+            "A sub-group within a group. The ordering of "
+            "groups within this group is relevant."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -172,6 +194,7 @@ class QuestionnaireGroup(BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
 
 class QuestionnaireGroupQuestion(BackboneElement):
     """Questions in this group
@@ -193,7 +216,10 @@ class QuestionnaireGroupQuestion(BackboneElement):
         None,
         alias="concept",
         title="Concept that represents this question in a questionnaire",
-        description="Identifies a how this question is known in a particular terminology such as LOINC.",
+        description=(
+            "Identifies a how this question is known in "
+            "a particular terminology such as LOINC."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -221,7 +247,12 @@ class QuestionnaireGroupQuestion(BackboneElement):
         None,
         alias="required",
         title="Whether the question must be answered in data results",
-        description="If true, indicates that the question must be answered and have required groups within it also present. If false, the question and any contained groups may be skipped when answering the questionnaire.",
+        description=(
+            "If true, indicates that the question must be "
+            "answered and have required groups within it also present. "
+            "If false, the question and any contained groups may be "
+            "skipped when answering the questionnaire."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -249,7 +280,10 @@ class QuestionnaireGroupQuestion(BackboneElement):
         None,
         alias="option",
         title="Permitted answer",
-        description="For a 'choice' question, identifies one of the permitted answers for the question.",
+        description=(
+            "For a 'choice' question, identifies "
+            "one of the permitted answers for the question."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -258,7 +292,10 @@ class QuestionnaireGroupQuestion(BackboneElement):
         None,
         alias="group",
         title="Nested questionnaire group",
-        description="Nested group, containing nested question for this question. The order of groups within the question is relevant.",
+        description=(
+            "Nested group, containing nested question for this question."
+            " The order of groups within the question is relevant."
+        ),
         # if property is element of this resource.
         element_property=True,
     )

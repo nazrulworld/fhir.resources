@@ -5,13 +5,13 @@ Release: DSTU2
 Version: 1.0.2
 Revision: 7202
 """
-from typing import Any, Dict
 from typing import List as ListType
 
-from pydantic import Field, root_validator
+from pydantic import Field
 
 from . import domainresource, fhirtypes
 from .backboneelement import BackboneElement
+
 
 class Substance(domainresource.DomainResource):
     """A homogeneous material with a definite composition
@@ -68,9 +68,9 @@ class Substance(domainresource.DomainResource):
         element_property=True,
     )
 
+
 class SubstanceInstance(BackboneElement):
     """If this describes a specific package/container of the substance
-
 
     If this describes a specific package/container of the substance.
     """
@@ -81,7 +81,10 @@ class SubstanceInstance(BackboneElement):
         None,
         alias="identifier",
         title="Identifier of the package/container",
-        description="Identifier associated with the package/container (usually a label affixed directly)",
+        description=(
+            "Identifier associated with the package/container"
+            " (usually a label affixed directly)"
+        ),
         element_property=True,
     )
 
@@ -89,7 +92,10 @@ class SubstanceInstance(BackboneElement):
         None,
         alias="expiry",
         title="When no longer valid to use",
-        description="When the substance is no longer valid to use. For some substances, a single arbitrary date is used for expiry.",
+        description=(
+            "When the substance is no longer valid to use. "
+            "For some substances, a single arbitrary date is used for expiry."
+        ),
         element_property=True,
     )
 
@@ -103,6 +109,7 @@ class SubstanceInstance(BackboneElement):
         description="Amount of substance in the package",
         element_property=True,
     )
+
 
 class SubstanceIngredient(BackboneElement):
     """Composition information about the substance

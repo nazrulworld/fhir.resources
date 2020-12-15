@@ -5,10 +5,9 @@ Release: DSTU2
 Version: 1.0.2
 Revision: 7202
 """
-from typing import Any, Dict
 from typing import List as ListType
 
-from pydantic import Field, root_validator
+from pydantic import Field
 
 from . import domainresource, fhirtypes
 from .backboneelement import BackboneElement
@@ -18,7 +17,8 @@ class PaymentReconciliation(domainresource.DomainResource):
     """PaymentReconciliation resource
 
 
-    This resource provides payment details and claim references supporting a bulk payment.
+    This resource provides payment details and claim references
+    supporting a bulk payment.
     """
 
     resource_type = Field("PaymentReconciliation", const=True)
@@ -88,7 +88,10 @@ class PaymentReconciliation(domainresource.DomainResource):
         None,
         alias="period",
         title="Period covered",
-        description="The period of time for which payments have been gathered into this bulk payment for settlement.",
+        description=(
+            "The period of time for which payments have been "
+            "gathered into this bulk payment for settlement."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -157,6 +160,7 @@ class PaymentReconciliation(domainresource.DomainResource):
         # if property is element of this resource.
         element_property=True,
     )
+
 
 class PaymentReconciliationDetail(BackboneElement):
     """Details
@@ -231,6 +235,7 @@ class PaymentReconciliationDetail(BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
 
 class PaymentReconciliationNote(BackboneElement):
     """Note text

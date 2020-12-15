@@ -30,7 +30,10 @@ class QuestionnaireResponse(domainresource.DomainResource):
         None,
         alias="identifier",
         title="Unique id for this set of answers",
-        description="A business identifier assigned to a particular completed (or partially completed) questionnaire.",
+        description=(
+            "A business identifier assigned to a particular "
+            "completed (or partially completed) questionnaire."
+        ),
         element_property=True,
     )
 
@@ -68,7 +71,10 @@ class QuestionnaireResponse(domainresource.DomainResource):
     author: fhirtypes.ReferenceType = Field(
         None,
         alias="author",
-        title="Type 'Reference' referencing 'Device', 'Practitioner', 'Patient' and 'RelatedPerson'  (represented as 'dict' in JSON).",
+        title=(
+            "Type 'Reference' referencing 'Device', 'Practitioner', "
+            "'Patient' and 'RelatedPerson'  (represented as 'dict' in JSON)."
+        ),
         description="Person who received and recorded the answers",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device", "Practitioner", "Patient", "RelatedPerson"],
@@ -79,17 +85,23 @@ class QuestionnaireResponse(domainresource.DomainResource):
         None,
         alias="authored",
         title="Date this version was authored",
-        description="The date and/or time that this version of the questionnaire response was authored.",
+        description=(
+            "The date and/or time that this version of "
+            "the questionnaire response was authored."
+        ),
         element_property=True,
     )
 
     source: fhirtypes.ReferenceType = Field(
         None,
         alias="source",
-        title="Type 'Reference' referencing 'Patient', 'Practitioner' and 'RelatedPerson'  (represented as 'dict' in JSON).",
+        title=(
+            "Type 'Reference' referencing 'Patient', "
+            "'Practitioner' and 'RelatedPerson'  (represented as 'dict' in JSON)."
+        ),
         description="Person who received and recorded the answers",
         # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[ "Patient", "Practitioner", "RelatedPerson"],
+        enum_reference_types=["Patient", "Practitioner", "RelatedPerson"],
         element_property=True,
     )
 
@@ -112,10 +124,12 @@ class QuestionnaireResponse(domainresource.DomainResource):
         element_property=True,
     )
 
+
 class QuestionnaireResponseGroup(BackboneElement):
     """Grouped questions
 
-    A group of questions to a possibly similarly grouped set of questions in the questionnaire response.
+    A group of questions to a possibly similarly grouped set
+    of questions in the questionnaire response.
     """
 
     resource_type = Field("QuestionnaireResponseGroup", const=True)
@@ -158,7 +172,10 @@ class QuestionnaireResponseGroup(BackboneElement):
         None,
         alias="group",
         title="Nested questionnaire response group",
-        description="A sub-group within a group. The ordering of groups within this group is relevant.",
+        description=(
+            "A sub-group within a group. "
+            "The ordering of groups within this group is relevant."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -172,11 +189,12 @@ class QuestionnaireResponseGroup(BackboneElement):
         element_property=True,
     )
 
+
 class QuestionnaireResponseGroupQuestion(BackboneElement):
     """Questions in this group
 
-
-    Set of questions within this group. The order of questions within the group is relevant.
+    Set of questions within this group.
+    The order of questions within the group is relevant.
     """
 
     resource_type = Field("QuestionnaireResponseGroupQuestion", const=True)
@@ -197,7 +215,9 @@ class QuestionnaireResponseGroupQuestion(BackboneElement):
         element_property=True,
     )
 
-    answer: ListType[fhirtypes.QuestionnaireResponseGroupQuestionAnswerType] = Field(
+    answer: ListType[
+        fhirtypes.QuestionnaireResponseGroupQuestionAnswerType
+    ] = Field(  # noqa: B950
         None,
         alias="answer",
         title="The response(s) to the question",
@@ -205,6 +225,7 @@ class QuestionnaireResponseGroupQuestion(BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
 
 class QuestionnaireResponseGroupQuestionAnswer(BackboneElement):
     """The response(s) to the question
@@ -219,7 +240,10 @@ class QuestionnaireResponseGroupQuestionAnswer(BackboneElement):
         None,
         alias="valueBoolean",
         title="Single-valued answer to the question",
-        description="The answer (or one of the answers) provided by the respondent to the question.",
+        description=(
+            "The answer (or one of the answers) provided "
+            "by the respondent to the question."
+        ),
         # if property is element of this resource.
         element_property=True,
         one_of_many="value",
@@ -230,7 +254,10 @@ class QuestionnaireResponseGroupQuestionAnswer(BackboneElement):
         None,
         alias="valueDecimal",
         title="Single-valued answer to the question",
-        description="The answer (or one of the answers) provided by the respondent to the question.",
+        description=(
+            "The answer (or one of the answers) provided "
+            "by the respondent to the question."
+        ),
         # if property is element of this resource.
         element_property=True,
         one_of_many="value",
@@ -241,7 +268,10 @@ class QuestionnaireResponseGroupQuestionAnswer(BackboneElement):
         None,
         alias="valueInteger",
         title="Single-valued answer to the question",
-        description="The answer (or one of the answers) provided by the respondent to the question.",
+        description=(
+            "The answer (or one of the answers) provided "
+            "by the respondent to the question."
+        ),
         # if property is element of this resource.
         element_property=True,
         one_of_many="value",
@@ -252,7 +282,10 @@ class QuestionnaireResponseGroupQuestionAnswer(BackboneElement):
         None,
         alias="valueDate",
         title="Single-valued answer to the question",
-        description="The answer (or one of the answers) provided by the respondent to the question.",
+        description=(
+            "The answer (or one of the answers) provided "
+            "by the respondent to the question."
+        ),
         # if property is element of this resource.
         element_property=True,
         one_of_many="value",
@@ -263,7 +296,10 @@ class QuestionnaireResponseGroupQuestionAnswer(BackboneElement):
         None,
         alias="valueDateTime",
         title="Single-valued answer to the question",
-        description="The answer (or one of the answers) provided by the respondent to the question.",
+        description=(
+            "The answer (or one of the answers) provided "
+            "by the respondent to the question."
+        ),
         # if property is element of this resource.
         element_property=True,
         one_of_many="value",
@@ -274,7 +310,10 @@ class QuestionnaireResponseGroupQuestionAnswer(BackboneElement):
         ...,
         alias="valueInstant",
         title="Single-valued answer to the question",
-        description="The answer (or one of the answers) provided by the respondent to the question.",
+        description=(
+            "The answer (or one of the answers) provided "
+            "by the respondent to the question."
+        ),
         # if property is element of this resource.
         element_property=True,
         one_of_many="value",
@@ -285,7 +324,10 @@ class QuestionnaireResponseGroupQuestionAnswer(BackboneElement):
         None,
         alias="valueTime",
         title="Single-valued answer to the question",
-        description="The answer (or one of the answers) provided by the respondent to the question.",
+        description=(
+            "The answer (or one of the answers) "
+            "provided by the respondent to the question."
+        ),
         # if property is element of this resource.
         element_property=True,
         one_of_many="value",
@@ -296,7 +338,10 @@ class QuestionnaireResponseGroupQuestionAnswer(BackboneElement):
         None,
         alias="valueString",
         title="Single-valued answer to the question",
-        description="The answer (or one of the answers) provided by the respondent to the question.",
+        description=(
+            "The answer (or one of the answers) provided "
+            "by the respondent to the question."
+        ),
         # if property is element of this resource.
         element_property=True,
         one_of_many="value",
@@ -307,7 +352,10 @@ class QuestionnaireResponseGroupQuestionAnswer(BackboneElement):
         None,
         alias="valueUri",
         title="Single-valued answer to the question",
-        description="The answer (or one of the answers) provided by the respondent to the question.",
+        description=(
+            "The answer (or one of the answers) "
+            "provided by the respondent to the question."
+        ),
         # if property is element of this resource.
         element_property=True,
         one_of_many="value",
@@ -318,7 +366,10 @@ class QuestionnaireResponseGroupQuestionAnswer(BackboneElement):
         None,
         alias="valueAttachment",
         title="Single-valued answer to the question",
-        description="The answer (or one of the answers) provided by the respondent to the question.",
+        description=(
+            "The answer (or one of the answers) provided "
+            "by the respondent to the question."
+        ),
         # if property is element of this resource.
         element_property=True,
         one_of_many="value",
@@ -329,7 +380,10 @@ class QuestionnaireResponseGroupQuestionAnswer(BackboneElement):
         None,
         alias="valueCoding",
         title="Single-valued answer to the question",
-        description="The answer (or one of the answers) provided by the respondent to the question.",
+        description=(
+            "The answer (or one of the answers) provided by "
+            "the respondent to the question."
+        ),
         # if property is element of this resource.
         element_property=True,
         one_of_many="value",
@@ -340,7 +394,10 @@ class QuestionnaireResponseGroupQuestionAnswer(BackboneElement):
         ...,
         alias="valueQuantity",
         title="Single-valued answer to the question",
-        description="The answer (or one of the answers) provided by the respondent to the question.",
+        description=(
+            "The answer (or one of the answers) "
+            "provided by the respondent to the question."
+        ),
         # if property is element of this resource.
         element_property=True,
         one_of_many="value",
@@ -351,7 +408,10 @@ class QuestionnaireResponseGroupQuestionAnswer(BackboneElement):
         None,
         alias="valueReference",
         title="Single-valued answer to the question",
-        description="The answer (or one of the answers) provided by the respondent to the question.",
+        description=(
+            "The answer (or one of the answers) "
+            "provided by the respondent to the question."
+        ),
         # if property is element of this resource.
         element_property=True,
         one_of_many="value",
@@ -362,7 +422,10 @@ class QuestionnaireResponseGroupQuestionAnswer(BackboneElement):
         None,
         alias="group",
         title="Nested questionnaire response group",
-        description="Nested group, containing nested question for this question. The order of groups within the question is relevant.",
+        description=(
+            "Nested group, containing nested question for this question. "
+            "The order of groups within the question is relevant."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -381,9 +444,21 @@ class QuestionnaireResponseGroupQuestionAnswer(BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "value": ["valueBoolean", "valueDecimal", "valueInteger", "valueDate",
-            "valueDateTime", "valueInstant", "valueTime", "valueString",
-            "valueUri", "valueAttachment", "valueCoding", "valueQuantity", "valueReference"],
+            "value": [
+                "valueBoolean",
+                "valueDecimal",
+                "valueInteger",
+                "valueDate",
+                "valueDateTime",
+                "valueInstant",
+                "valueTime",
+                "valueString",
+                "valueUri",
+                "valueAttachment",
+                "valueCoding",
+                "valueQuantity",
+                "valueReference",
+            ],
         }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix

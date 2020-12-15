@@ -5,7 +5,7 @@ History
 6.0.0b12 (unreleased)
 ---------------------
 
-- Nothing changed yet.
+- Issue #21 Remaining resources are added. [iatechicken]
 
 
 6.0.0b11 (2020-11-25)

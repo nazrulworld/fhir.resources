@@ -5,10 +5,9 @@ Release: DSTU2
 Version: 1.0.2
 Revision: 7202
 """
-from typing import Any, Dict
 from typing import List as ListType
 
-from pydantic import Field, root_validator
+from pydantic import Field
 
 from . import domainresource, fhirtypes
 from .backboneelement import BackboneElement
@@ -17,8 +16,8 @@ from .backboneelement import BackboneElement
 class ProcessResponse(domainresource.DomainResource):
     """ProcessResponse resource
 
-
-    This resource provides processing status, errors and notes from the processing of a resource.
+    This resource provides processing status,
+    errors and notes from the processing of a resource.
     """
 
     resource_type = Field("ProcessResponse", const=True)
@@ -122,7 +121,10 @@ class ProcessResponse(domainresource.DomainResource):
     notes: ListType[fhirtypes.ProcessResponseNotesType] = Field(
         None,
         alias="notes",
-        title="Suite of processing note or additional requirements is the processing has been held.",
+        title=(
+            "Suite of processing note or additional requirements"
+            " is the processing has been held."
+        ),
         description=None,
         # if property is element of this resource.
         element_property=True,
@@ -135,6 +137,7 @@ class ProcessResponse(domainresource.DomainResource):
         description="Error code",
         element_property=True,
     )
+
 
 class ProcessResponseNotes(BackboneElement):
     """Notes

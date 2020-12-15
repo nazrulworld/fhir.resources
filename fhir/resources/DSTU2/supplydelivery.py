@@ -5,13 +5,12 @@ Release: DSTU2
 Version: 1.0.2
 Revision: 7202
 """
-from typing import Any, Dict
 from typing import List as ListType
 
-from pydantic import Field, root_validator
+from pydantic import Field
 
 from . import domainresource, fhirtypes
-from .backboneelement import BackboneElement
+
 
 class SupplyDelivery(domainresource.DomainResource):
     """Delivery of Supply
@@ -24,7 +23,10 @@ class SupplyDelivery(domainresource.DomainResource):
         None,
         alias="identifier",
         title="External identifier",
-        description="Identifier assigned by the dispensing facility when the item(s) is dispensed.",
+        description=(
+            "Identifier assigned by the dispensing"
+            " facility when the item(s) is dispensed."
+        ),
         element_property=True,
     )
 

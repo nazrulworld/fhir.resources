@@ -5,13 +5,11 @@ Release: DSTU2
 Version: 1.0.2
 Revision: 7202
 """
-from typing import Any, Dict
 from typing import List as ListType
 
-from pydantic import Field, root_validator
+from pydantic import Field
 
 from . import domainresource, fhirtypes
-from .backboneelement import BackboneElement
 
 
 class PaymentNotice(domainresource.DomainResource):

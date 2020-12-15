@@ -5,20 +5,18 @@ Release: DSTU2
 Version: 1.0.2
 Revision: 7202
 """
-from typing import Any, Dict
 from typing import List as ListType
 
-from pydantic import Field, root_validator
+from pydantic import Field
 
 from . import domainresource, fhirtypes
-from .backboneelement import BackboneElement
 
 
 class ReferralRequest(domainresource.DomainResource):
     """A request for referral or transfer of care
 
-
-    Used to record and send details about a request for referral service or transfer of a patient to the care of another provider or provider organization.
+    Used to record and send details about a request for referral service or
+    transfer of a patient to the care of another provider or provider organization.
     """
 
     resource_type = Field("ReferralRequest", const=True)
@@ -30,7 +28,15 @@ class ReferralRequest(domainresource.DomainResource):
         description="draft | requested | active | cancelled | accepted | rejected | completed",
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["draft", "requested", "active", "cancelled", "accepted", "rejected", "completed"],
+        enum_values=[
+            "draft",
+            "requested",
+            "active",
+            "cancelled",
+            "accepted",
+            "rejected",
+            "completed",
+        ],
         element_property=True,
     )
 
@@ -46,7 +52,10 @@ class ReferralRequest(domainresource.DomainResource):
         None,
         alias="date",
         title="Date of creation/activation",
-        description="Date/DateTime of creation for draft requests and date of activation for active requests.",
+        description=(
+            "Date/DateTime of creation for draft requests "
+            "and date of activation for active requests."
+        ),
         element_property=True,
     )
 
@@ -87,7 +96,10 @@ class ReferralRequest(domainresource.DomainResource):
     requester: fhirtypes.ReferenceType = Field(
         None,
         alias="requester",
-        title="Type 'Reference' referencing 'Practitioner', 'Organization' and 'Patient'  (represented as 'dict' in JSON).",
+        title=(
+            "Type 'Reference' referencing 'Practitioner', 'Organization' and "
+            "'Patient'  (represented as 'dict' in JSON)."
+        ),
         description="Requester of referral / transfer of care",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "Organization", "Patient"],
@@ -97,7 +109,10 @@ class ReferralRequest(domainresource.DomainResource):
     recipient: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="recipient",
-        title="Type 'Reference' referencing 'Practitioner' and 'Organization'  (represented as 'dict' in JSON).",
+        title=(
+            "Type 'Reference' referencing 'Practitioner' and 'Organization'"
+            "  (represented as 'dict' in JSON)."
+        ),
         description="Receiver of referral / transfer of care request",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "Organization"],
@@ -118,7 +133,10 @@ class ReferralRequest(domainresource.DomainResource):
         None,
         alias="dateSent",
         title="Date referral/transfer of care request is sent",
-        description="Date/DateTime the request for referral or transfer of care is sent by the author.",
+        description=(
+            "Date/DateTime the request for referral or transfer "
+            "of care is sent by the author."
+        ),
         element_property=True,
     )
 
@@ -160,7 +178,10 @@ class ReferralRequest(domainresource.DomainResource):
         None,
         alias="fulfillmentTime",
         title="Requested service(s) fulfillment time",
-        description="The period of time within which the services identified in the referral/transfer of care is specified or required to occur.",
+        description=(
+            "The period of time within which the services identified in the "
+            "referral/transfer of care is specified or required to occur."
+        ),
         # if property is element of this resource.
         element_property=True,
     )

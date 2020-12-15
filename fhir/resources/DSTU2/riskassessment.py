@@ -16,8 +16,8 @@ from .backboneelement import BackboneElement
 
 class RiskAssessment(domainresource.DomainResource):
     """Potential outcomes for a subject with likelihood
-
-    An assessment of the likely outcome(s) for a patient or other subject as well as the likelihood of each outcome.
+    An assessment of the likely outcome(s) for a patient or other subject as
+    well as the likelihood of each outcome.
     """
 
     resource_type = Field("RiskAssessment", const=True)
@@ -25,7 +25,10 @@ class RiskAssessment(domainresource.DomainResource):
     subject: fhirtypes.ReferenceType = Field(
         None,
         alias="subject",
-        title="Type 'Reference' referencing 'Patient' and 'Group'  (represented as 'dict' in JSON).",
+        title=(
+            "Type 'Reference' referencing 'Patient' and 'Group'  "
+            "(represented as 'dict' in JSON)."
+        ),
         description="Who/what does assessment apply to?",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
@@ -63,7 +66,10 @@ class RiskAssessment(domainresource.DomainResource):
     performer: fhirtypes.ReferenceType = Field(
         None,
         alias="performer",
-        title="Type 'Reference' referencing 'Practitioner' and 'Device'  (represented as 'dict' in JSON).",
+        title=(
+            "Type 'Reference' referencing 'Practitioner' and "
+            "'Device'  (represented as 'dict' in JSON)."
+        ),
         description="Who did assessment?",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Practitioner", "Device"],
@@ -111,6 +117,7 @@ class RiskAssessment(domainresource.DomainResource):
         description="How to reduce risk",
         element_property=True,
     )
+
 
 class RiskAssessmentPrediction(BackboneElement):
     """Outcome predicted
@@ -165,7 +172,12 @@ class RiskAssessmentPrediction(BackboneElement):
         None,
         alias="relativeRisk",
         title="Relative likelihood",
-        description="Indicates the risk for this particular subject (with their specific characteristics) divided by the risk of the population in general. (Numbers greater than 1 = higher risk than the population, numbers less than 1 = lower risk.).",
+        description=(
+            "Indicates the risk for this particular subject (with their specific "
+            "characteristics) divided by the risk of the population in general. "
+            "(Numbers greater than 1 = higher risk than the population, numbers "
+            "less than 1 = lower risk.)."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -173,8 +185,14 @@ class RiskAssessmentPrediction(BackboneElement):
     whenPeriod: fhirtypes.PeriodType = Field(
         None,
         alias="whenPeriod",
-        title="Indicates the period of time or age range of the subject to which the specified probability applies.",
-        description="Indicates the period of time or age range of the subject to which the specified probability applies.",
+        title=(
+            "Indicates the period of time or age range of the subject to which"
+            " the specified probability applies."
+        ),
+        description=(
+            "Indicates the period of time or age range of the subject to which "
+            "the specified probability applies."
+        ),
         # if property is element of this resource.
         element_property=True,
         one_of_many="when",
@@ -184,8 +202,14 @@ class RiskAssessmentPrediction(BackboneElement):
     whenRange: fhirtypes.RangeType = Field(
         None,
         alias="whenRange",
-        title="Indicates the period of time or age range of the subject to which the specified probability applies.",
-        description="Indicates the period of time or age range of the subject to which the specified probability applies.",
+        title=(
+            "Indicates the period of time or age range of the subject "
+            "to which the specified probability applies."
+        ),
+        description=(
+            "Indicates the period of time or age range of the subject "
+            "to which the specified probability applies."
+        ),
         # if property is element of this resource.
         element_property=True,
         one_of_many="when",
@@ -214,7 +238,11 @@ class RiskAssessmentPrediction(BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "probability": ["probabilityDecimal", "probabilityRange", "probabilityCodeableConcept"],
+            "probability": [
+                "probabilityDecimal",
+                "probabilityRange",
+                "probabilityCodeableConcept",
+            ],
             "when": ["whenPeriod", "whenRange"],
         }
         for prefix, fields in one_of_many_fields.items():

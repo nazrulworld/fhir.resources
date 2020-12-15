@@ -5,10 +5,9 @@ Release: DSTU2
 Version: 1.0.2
 Revision: 7202
 """
-from typing import Any, Dict
 from typing import List as ListType
 
-from pydantic import Field, root_validator
+from pydantic import Field
 
 from . import domainresource, fhirtypes
 from .backboneelement import BackboneElement
@@ -29,7 +28,12 @@ class TestScript(domainresource.DomainResource):
         None,
         alias="url",
         title="Absolute URL used to reference this TestScript",
-        description="An absolute URL that is used to identify this Test Script. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this Test Script is (or will be) published.",
+        description=(
+            "An absolute URL that is used to identify this Test Script. "
+            "This SHALL be a URL, SHOULD be globally unique, "
+            "and SHOULD be an address at which this Test "
+            "Script is (or will be) published."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -56,7 +60,8 @@ class TestScript(domainresource.DomainResource):
         title="Type `Code` (represented as `dict` in JSON).",
         description="draft | active | retired",
         # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
+        # but use in your own responsibilities,
+        # read official FHIR documentation.
         enum_values=["draft", "active", "retired"],
         element_property=True,
     )
@@ -65,7 +70,10 @@ class TestScript(domainresource.DomainResource):
         None,
         alias="identifier",
         title="External identifier",
-        description="Identifier for the TestScript assigned for external purposes outside the context of FHIR.",
+        description=(
+            "Identifier for the TestScript assigned for external "
+            "purposes outside the context of FHIR."
+        ),
         element_property=True,
     )
 
@@ -73,7 +81,11 @@ class TestScript(domainresource.DomainResource):
         None,
         alias="experimental",
         title="If for testing purposes, not real usage",
-        description="This TestScript was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.",
+        description=(
+            "This TestScript was authored for testing purposes "
+            "(or education/evaluation/marketing), and is not intended "
+            "to be used for genuine usage."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -99,7 +111,13 @@ class TestScript(domainresource.DomainResource):
         None,
         alias="date",
         title="Date for this version of the TestScript",
-        description="The date this version of the test script was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the test cases change.",
+        description=(
+            "The date this version of the test script was published. "
+            "The date must change when the business version changes, "
+            "if it does, and it must change if the status code changes. "
+            "In addition, it should change when the substantive content "
+            "of the test cases change."
+        ),
         element_property=True,
     )
 
@@ -138,7 +156,10 @@ class TestScript(domainresource.DomainResource):
     metadata: ListType[fhirtypes.TestScriptMetadataType] = Field(
         None,
         alias="metadata",
-        title="Required capability that is assumed to function correctly on the FHIR server being tested",
+        title=(
+            "Required capability that is assumed to function "
+            "correctly on the FHIR server being tested"
+        ),
         description=None,
         # if property is element of this resource.
         element_property=True,
@@ -148,7 +169,11 @@ class TestScript(domainresource.DomainResource):
         None,
         alias="multiserver",
         title="Whether or not the tests apply to more than one FHIR server",
-        description="If the tests apply to more than one FHIR server (e.g. cross-server interoperability tests) then multiserver=true. Defaults to false if value is unspecified.",
+        description=(
+            "If the tests apply to more than one FHIR server "
+            "(e.g. cross-server interoperability tests) then multiserver=true."
+            " Defaults to false if value is unspecified."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -208,9 +233,9 @@ class TestScript(domainresource.DomainResource):
         element_property=True,
     )
 
+
 class TestScriptContact(BackboneElement):
     """Contact details of the publisher
-
 
     Contacts to assist a user in finding and communicating with the publisher.
     """
@@ -229,14 +254,17 @@ class TestScriptContact(BackboneElement):
         None,
         alias="telecom",
         title="Contact details for individual or publisher",
-        description="Contact details for individual (if a name was provided) or the publisher.",
+        description=(
+            "Contact details for individual "
+            "(if a name was provided) or the publisher."
+        ),
         element_property=True,
     )
+
 
 class TestScriptMetadata(BackboneElement):
     """Required capability that is assumed to function correctly on the FHIR
     server being tested
-
 
     The required capability must exist and are assumed to function correctly
     on the FHIR server being tested.
@@ -256,17 +284,21 @@ class TestScriptMetadata(BackboneElement):
     capability: ListType[fhirtypes.TestScriptMetadataCapabilityType] = Field(
         None,
         alias="capability",
-        title="Capabilities  that are assumed to function correctly on the FHIR server being tested",
+        title=(
+            "Capabilities  that are assumed to function "
+            "correctly on the FHIR server being tested"
+        ),
         description=None,
         # if property is element of this resource.
         element_property=True,
     )
 
+
 class TestScriptFixture(BackboneElement):
     """Fixture in the test script - by reference (uri)
 
-
-    Fixture in the test script - by reference (uri). All fixtures are required for the test script to execute.
+    Fixture in the test script - by reference (uri).
+    All fixtures are required for the test script to execute.
     """
 
     resource_type = Field("TestScriptFixture", const=True)
@@ -275,7 +307,12 @@ class TestScriptFixture(BackboneElement):
         None,
         alias="autocreate",
         title="Whether or not to implicitly create the fixture during setup",
-        description="Whether or not to implicitly create the fixture during setup. If true, the fixture is automatically created on each server being tested during setup, therefore no create operation is required for this fixture in the TestScript.setup section.",
+        description=(
+            "Whether or not to implicitly create the fixture during setup. "
+            "If true, the fixture is automatically created on each server being "
+            "tested during setup, therefore no create operation is required for "
+            "this fixture in the TestScript.setup section."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -284,7 +321,12 @@ class TestScriptFixture(BackboneElement):
         None,
         alias="autodelete",
         title="Whether or not to implicitly delete the fixture during teardown",
-        description="Whether or not to implicitly delete the fixture during teardown If true, the fixture is automatically deleted on each server being tested during teardown, therefore no delete operation is required for this fixture in the TestScript.teardown section.",
+        description=(
+            "Whether or not to implicitly delete the fixture during "
+            "teardown If true, the fixture is automatically deleted on "
+            "each server being tested during teardown, therefore no delete "
+            "operation is required for this fixture in the TestScript.teardown section."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -299,12 +341,12 @@ class TestScriptFixture(BackboneElement):
         element_property=True,
     )
 
+
 class TestScriptVariable(BackboneElement):
     """Placeholder for evaluated elements
 
-
-
-    Variable is set based either on element value in response body or on header field value in the response headers.
+    Variable is set based either on element value in response body or on header
+     field value in the response headers.
     """
 
     resource_type = Field("TestScriptVariable", const=True)
@@ -337,15 +379,17 @@ class TestScriptVariable(BackboneElement):
         None,
         alias="sourceId",
         title="Fixture Id of source expression or headerField within this variable",
-        description="Fixture to evaluate the XPath/JSONPath expression or the headerField against within this variable.",
+        description=(
+            "Fixture to evaluate the XPath/JSONPath expression "
+            "or the headerField against within this variable."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
 
+
 class TestScriptSetup(BackboneElement):
     """A series of required setup operations before tests are executed
-
-
 
     A series of required setup operations before tests are executed.
     """
@@ -355,8 +399,14 @@ class TestScriptSetup(BackboneElement):
     metadata: fhirtypes.TestScriptMetadataType = Field(
         None,
         alias="metadata",
-        title="Capabilities that are assumed to function correctly on the FHIR server being tested",
-        description="Capabilities that must exist and are assumed to function correctly on the FHIR server being tested.",
+        title=(
+            "Capabilities that are assumed to function correctly "
+            "on the FHIR server being tested"
+        ),
+        description=(
+            "Capabilities that must exist and are assumed to function "
+            "correctly on the FHIR server being tested."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -369,6 +419,7 @@ class TestScriptSetup(BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
 
 class TestScriptTest(BackboneElement):
     """A test in this script
@@ -399,8 +450,14 @@ class TestScriptTest(BackboneElement):
     metadata: fhirtypes.TestScriptMetadataType = Field(
         None,
         alias="metadata",
-        title="Capabilities that are assumed to function correctly on the FHIR server being tested",
-        description="Capabilities that must exist and are assumed to function correctly on the FHIR server being tested.",
+        title=(
+            "Capabilities that are assumed to function "
+            "correctly on the FHIR server being tested"
+        ),
+        description=(
+            "Capabilities that must exist and are assumed to "
+            "function correctly on the FHIR server being tested."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -414,11 +471,12 @@ class TestScriptTest(BackboneElement):
         element_property=True,
     )
 
+
 class TestScriptTeardown(BackboneElement):
     """A series of required clean up steps
 
-
-    A series of operations required to clean up after the all the tests are executed (successfully or otherwise).
+    A series of operations required to clean up after the all the tests
+    are executed (successfully or otherwise).
     """
 
     resource_type = Field("TestScriptTeardown", const=True)
@@ -432,9 +490,9 @@ class TestScriptTeardown(BackboneElement):
         element_property=True,
     )
 
+
 class TestScriptMetadataLink(BackboneElement):
     """Links to the FHIR specification
-
 
     A link to the FHIR specification that this test is covering.
     """
@@ -458,11 +516,13 @@ class TestScriptMetadataLink(BackboneElement):
         element_property=True,
     )
 
+
 class TestScriptMetadataCapability(BackboneElement):
-    """Capabilities that are assumed to function correctly on the FHIR server being tested
+    """Capabilities that are assumed to function correctly on
+    the FHIR server being tested
 
-
-    Capabilities that must exist and are assumed to function correctly on the FHIR server being tested.
+    Capabilities that must exist and are assumed to function
+    correctly on the FHIR server being tested.
     """
 
     resource_type = Field("TestScriptMetadataCapability", const=True)
@@ -471,7 +531,10 @@ class TestScriptMetadataCapability(BackboneElement):
         None,
         alias="required",
         title="Are the capabilities required?",
-        description="Whether or not the test execution will require the given capabilities of the server in order for this test script to execute.",
+        description=(
+            "Whether or not the test execution will require the given "
+            "capabilities of the server in order for this test script to execute."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -480,7 +543,10 @@ class TestScriptMetadataCapability(BackboneElement):
         None,
         alias="validated",
         title="Are the capabilities validated?",
-        description="Whether or not the test execution will validate the given capabilities of the server in order for this test script to execute.",
+        description=(
+            "Whether or not the test execution will validate the given "
+            "capabilities of the server in order for this test script to execute."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -506,7 +572,10 @@ class TestScriptMetadataCapability(BackboneElement):
         None,
         alias="link",
         title="Links to the FHIR specification",
-        description="Links to the FHIR specification that describes this interaction and the resources involved in more detail.",
+        description=(
+            "Links to the FHIR specification that describes this "
+            "interaction and the resources involved in more detail."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -520,6 +589,7 @@ class TestScriptMetadataCapability(BackboneElement):
         enum_reference_types=["Conformance"],
         element_property=True,
     )
+
 
 class TestScriptSetupAction(BackboneElement):
     """A setup operation or assert to perform
@@ -539,7 +609,7 @@ class TestScriptSetupAction(BackboneElement):
         element_property=True,
     )
 
-    assert: fhirtypes.TestScriptSetupActionAssertType = Field(
+    assert_fhir: fhirtypes.TestScriptSetupActionAssertType = Field(
         None,
         alias="assert",
         title="The assertion to perform",
@@ -547,6 +617,7 @@ class TestScriptSetupAction(BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
 
 class TestScriptTestAction(BackboneElement):
     """A test operation or assert to perform
@@ -566,7 +637,7 @@ class TestScriptTestAction(BackboneElement):
         element_property=True,
     )
 
-    assert: fhirtypes.TestScriptSetupActionAssertType = Field(
+    assert_fhir: fhirtypes.TestScriptSetupActionAssertType = Field(
         None,
         alias="assert",
         title="The setup assertion to perform",
@@ -574,6 +645,7 @@ class TestScriptTestAction(BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
 
 class TestScriptTeardownAction(BackboneElement):
     """One or more teardown operations to perform
@@ -592,6 +664,7 @@ class TestScriptTeardownAction(BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
 
 class TestScriptSetupActionOperation(BackboneElement):
     """The setup operation to perform
@@ -614,7 +687,10 @@ class TestScriptSetupActionOperation(BackboneElement):
         None,
         alias="resource",
         title="Resource type",
-        description="The type of the resource. See http://hl7-fhir.github.io/resourcelist.html.",
+        description=(
+            "The type of the resource. See "
+            "http://hl7-fhir.github.io/resourcelist.html."
+        ),
         element_property=True,
     )
 
@@ -630,17 +706,24 @@ class TestScriptSetupActionOperation(BackboneElement):
         None,
         alias="description",
         title="Tracking/reporting operation description",
-        description="The description would be used by test engines for tracking and reporting purposes.",
+        description=(
+            "The description would be used by test engines "
+            "for tracking and reporting purposes."
+        ),
         element_property=True,
     )
 
     accept: fhirtypes.Code = Field(
         None,
         alias="accept",
-        title="The content-type or mime-type to use for RESTful operation in the 'Accept' header.",
+        title=(
+            "The content-type or mime-type to use for RESTful "
+            "operation in the 'Accept' header."
+        ),
         description="xml | json",
         # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
+        # but use in your own responsibilities,
+        # read official FHIR documentation.
         enum_values=["xml", "json"],
         element_property=True,
     )
@@ -648,10 +731,14 @@ class TestScriptSetupActionOperation(BackboneElement):
     contentType: fhirtypes.Code = Field(
         None,
         alias="contentType",
-        title="The content-type or mime-type to use for RESTful operation in the 'Content-Type' header.",
+        title=(
+            "The content-type or mime-type to use for RESTful "
+            "operation in the 'Content-Type' header."
+        ),
         description="xml | json",
         # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
+        # but use in your own responsibilities,
+        # read official FHIR documentation.
         enum_values=["xml", "json"],
         element_property=True,
     )
@@ -669,7 +756,12 @@ class TestScriptSetupActionOperation(BackboneElement):
         None,
         alias="encodeRequestUrl",
         title="Whether or not to send the request url in encoded format",
-        description="Whether or not to implicitly send the request url in encoded format. The default is true to match the standard RESTful client behavior. Set to false when communicating with a server that does not support encoded url paths.",
+        description=(
+            "Whether or not to implicitly send the request url in "
+            "encoded format. The default is true to match the standard "
+            "RESTful client behavior. Set to false when communicating "
+            "with a server that does not support encoded url paths."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -678,11 +770,14 @@ class TestScriptSetupActionOperation(BackboneElement):
         None,
         alias="params",
         title="Explicitly defined path parameters",
-        description="Path plus parameters after [type]. Used to set parts of the request URL explicitly.",
+        description=(
+            "Path plus parameters after [type]. "
+            "Used to set parts of the request URL explicitly."
+        ),
         element_property=True,
     )
 
-    requestHeader: fhirtypes.TestScriptSetupActionOperationRequestHeaderType = Field(
+    requestHeader: fhirtypes.TestScriptSetupActionOperationRequestHeaderType = Field(  # noqa: B950
         None,
         alias="requestHeader",
         title="Each operation can have one ore more header elements",
@@ -709,11 +804,17 @@ class TestScriptSetupActionOperation(BackboneElement):
         element_property=True,
     )
 
-    sourceId: fhirtypes.Id = Field(
+    targetId: fhirtypes.Id = Field(
         None,
-        alias="sourceId",
-        title="Id of fixture used for extracting the [id],  [type], and [vid] for GET requests",
-        description="Id of fixture used for extracting the [id], [type], and [vid] for GET requests.",
+        alias="targetId",
+        title=(
+            "Id of fixture used for extracting the [id],  "
+            "[type], and [vid] for GET requests"
+        ),
+        description=(
+            "Id of fixture used for extracting the [id], "
+            "[type], and [vid] for GET requests."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -726,11 +827,12 @@ class TestScriptSetupActionOperation(BackboneElement):
         element_property=True,
     )
 
+
 class TestScriptSetupActionAssert(BackboneElement):
     """The assertion to perform
 
-
-    Evaluates the results of previous operations to determine if the server under test behaves appropriately.
+    Evaluates the results of previous operations to determine
+    if the server under test behaves appropriately.
     """
 
     resource_type = Field("TestScriptSetupActionAssert", const=True)
@@ -747,7 +849,10 @@ class TestScriptSetupActionAssert(BackboneElement):
         None,
         alias="description",
         title="Tracking/reporting assertion description",
-        description="The description would be used by test engines for tracking and reporting purposes.",
+        description=(
+            "The description would be used by test "
+            "engines for tracking and reporting purposes."
+        ),
         element_property=True,
     )
 
@@ -765,23 +870,32 @@ class TestScriptSetupActionAssert(BackboneElement):
     compareToSourceId: fhirtypes.String = Field(
         None,
         alias="compareToSourceId",
-        title="Id of fixture used to compare the "sourceId/path" evaluations to",
-        description="Id of fixture used to compare the "sourceId/path" evaluations to.",
+        title="Id of fixture used to compare the 'sourceId/path' evaluations to",
+        description="Id of fixture used to compare the 'sourceId/path' evaluations to.",
         element_property=True,
     )
 
     compareToSourcePath: fhirtypes.String = Field(
         None,
         alias="compareToSourcePath",
-        title="XPath or JSONPath expression against fixture used to compare the 'sourceId/path' evaluations to",
-        description="XPath or JSONPath expression against fixture used to compare the 'sourceId/path' evaluations to.",
+        title=(
+            "XPath or JSONPath expression against fixture used "
+            "to compare the 'sourceId/path' evaluations to"
+        ),
+        description=(
+            "XPath or JSONPath expression against fixture used "
+            "to compare the 'sourceId/path' evaluations to."
+        ),
         element_property=True,
     )
 
     contentType: fhirtypes.Code = Field(
         None,
         alias="contentType",
-        title="The content-type or mime-type to use for RESTful operation in the 'Content-Type' header.",
+        title=(
+            "The content-type or mime-type to use for RESTful "
+            "operation in the 'Content-Type' header."
+        ),
         description="xml | json",
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
@@ -801,7 +915,10 @@ class TestScriptSetupActionAssert(BackboneElement):
         None,
         alias="minimumId",
         title="Fixture Id of minimum content resource",
-        description="The ID of a fixture. Asserts that the response contains at a minimumId the fixture specified by minimumId.",
+        description=(
+            "The ID of a fixture. Asserts that the response contains "
+            "at a minimumId the fixture specified by minimumId."
+        ),
         element_property=True,
     )
 
@@ -809,7 +926,10 @@ class TestScriptSetupActionAssert(BackboneElement):
         None,
         alias="navigationLinks",
         title="Perform validation on navigation links?",
-        description="Whether or not the test execution performs validation on the bundle navigation links.",
+        description=(
+            "Whether or not the test execution performs "
+            "validation on the bundle navigation links."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -818,10 +938,24 @@ class TestScriptSetupActionAssert(BackboneElement):
         None,
         alias="operator",
         title="The operator type.",
-        description="equals | notEquals | in | notIn | greaterThan | lessThan | empty | notEmpty | contains | notContains",
+        description=(
+            "equals | notEquals | in | notIn | greaterThan | "
+            "lessThan | empty | notEmpty | contains | notContains"
+        ),
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["equals", "notEquals", "in", "notIn", "greaterThan", "lessThan", "empty", "notEmpty", "contains", "notContains"],
+        enum_values=[
+            "equals",
+            "notEquals",
+            "in",
+            "notIn",
+            "greaterThan",
+            "lessThan",
+            "empty",
+            "notEmpty",
+            "contains",
+            "notContains",
+        ],
         element_property=True,
     )
 
@@ -829,7 +963,10 @@ class TestScriptSetupActionAssert(BackboneElement):
         None,
         alias="path",
         title="XPath or JSONPath expression",
-        description="The XPath or JSONPath expression to be evaluated against the fixture representing the response received from server.",
+        description=(
+            "The XPath or JSONPath expression to be evaluated against "
+            "the fixture representing the response received from server."
+        ),
         element_property=True,
     )
 
@@ -837,7 +974,10 @@ class TestScriptSetupActionAssert(BackboneElement):
         None,
         alias="resource",
         title="Resource type",
-        description="The type of the resource. See http://hl7-fhir.github.io/resourcelist.html.",
+        description=(
+            "The type of the resource. See "
+            "http://hl7-fhir.github.io/resourcelist.html."
+        ),
         element_property=True,
     )
 
@@ -845,10 +985,27 @@ class TestScriptSetupActionAssert(BackboneElement):
         None,
         alias="response",
         title="Response type",
-        description="okay | created | noContent | notModified | bad | forbidden | notFound | methodNotAllowed | conflict | gone | preconditionFailed | unprocessable",
+        description=(
+            "okay | created | noContent | notModified | bad | "
+            "forbidden | notFound | methodNotAllowed | conflict | "
+            "gone | preconditionFailed | unprocessable"
+        ),
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["okay", "created", "noContent", "notModified", "bad", "forbidden", "notFound", "methodNotAllowed", "conflict", "gone", "preconditionFailed", "unprocessable"],
+        enum_values=[
+            "okay",
+            "created",
+            "noContent",
+            "notModified",
+            "bad",
+            "forbidden",
+            "notFound",
+            "methodNotAllowed",
+            "conflict",
+            "gone",
+            "preconditionFailed",
+            "unprocessable",
+        ],
         element_property=True,
     )
 
@@ -864,7 +1021,10 @@ class TestScriptSetupActionAssert(BackboneElement):
         None,
         alias="sourceId",
         title="Fixture Id of source expression or headerField",
-        description="Fixture to evaluate the XPath/JSONPath expression or the headerField against.",
+        description=(
+            "Fixture to evaluate the XPath/JSONPath "
+            "expression or the headerField against."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -890,10 +1050,14 @@ class TestScriptSetupActionAssert(BackboneElement):
         None,
         alias="warningOnly",
         title="Will this assert produce a warning only on error?",
-        description="Whether or not the test execution will produce a warning only on error for this assert.",
+        description=(
+            "Whether or not the test execution will produce a warning "
+            "only on error for this assert."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
+
 
 class TestScriptSetupActionOperationRequestHeader(BackboneElement):
     """Each operation can have one ore more header elements

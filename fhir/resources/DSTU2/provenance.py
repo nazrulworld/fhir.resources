@@ -5,10 +5,9 @@ Release: DSTU2
 Version: 1.0.2
 Revision: 7202
 """
-from typing import Any, Dict
 from typing import List as ListType
 
-from pydantic import Field, root_validator
+from pydantic import Field
 
 from . import domainresource, fhirtypes
 from .backboneelement import BackboneElement
@@ -89,7 +88,11 @@ class Provenance(domainresource.DomainResource):
         None,
         alias="policy",
         title="Policy or plan the activity was defined by",
-        description="Policy or plan the activity was defined by. Typically, a single activity may have multiple applicable policy documents, such as patient consent, guarantor funding, etc.",
+        description=(
+            "Policy or plan the activity was defined by. Typically, "
+            "a single activity may have multiple applicable policy documents, "
+            "such as patient consent, guarantor funding, etc."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -120,6 +123,7 @@ class Provenance(domainresource.DomainResource):
         element_property=True,
     )
 
+
 class ProvenanceAgent(BackboneElement):
     """Agents involved in creating resource
 
@@ -144,11 +148,20 @@ class ProvenanceAgent(BackboneElement):
     actor: fhirtypes.ReferenceType = Field(
         None,
         alias="actor",
-        title="Type 'Reference' referencing 'Practitioner', 'RelatedPerson', 'Patient', 'Device', 'Organization'  (represented as 'dict' in JSON).",
+        title=(
+            "Type 'Reference' referencing 'Practitioner', 'RelatedPerson',"
+            " 'Patient', 'Device', 'Organization'  "
+            "(represented as 'dict' in JSON)."
+        ),
         description="Individual, device or organization playing role",
         # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Practitioner", "RelatedPerson", "Patient",
-        "Device","Organization"],
+        enum_reference_types=[
+            "Practitioner",
+            "RelatedPerson",
+            "Patient",
+            "Device",
+            "Organization",
+        ],
         element_property=True,
     )
 
@@ -168,6 +181,7 @@ class ProvenanceAgent(BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
 
 class ProvenanceAgentRelatedAgent(BackboneElement):
     """Track delegation between agents
@@ -193,10 +207,14 @@ class ProvenanceAgentRelatedAgent(BackboneElement):
         None,
         alias="target",
         title="Reference to other agent in this resource by identifier",
-        description="An internal reference to another agent listed in this provenance by its identifier.",
+        description=(
+            "An internal reference to another agent listed in "
+            "this provenance by its identifier."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
+
 
 class ProvenanceEntity(BackboneElement):
     """An entity used in this activity
@@ -222,7 +240,10 @@ class ProvenanceEntity(BackboneElement):
         None,
         alias="type",
         title="The type of resource in this entity",
-        description="The type of the entity. If the entity is a resource, then this is a resource type.",
+        description=(
+            "The type of the entity. If the entity is a resource, "
+            "then this is a resource type."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -231,7 +252,10 @@ class ProvenanceEntity(BackboneElement):
         None,
         alias="reference",
         title="Identity of entity",
-        description="Identity of the Entity used. May be a logical or physical uri and maybe absolute or relative.",
+        description=(
+            "Identity of the Entity used. May be a logical or physical "
+            "uri and maybe absolute or relative."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -248,7 +272,12 @@ class ProvenanceEntity(BackboneElement):
         None,
         alias="agent",
         title="Entity is attributed to this agent",
-        description="The entity is attributed to an agent to express the agent's responsibility for that entity, possibly along with other agents. This description can be understood as shorthand for saying that the agent was responsible for the activity which generated the entity",
+        description=(
+            "The entity is attributed to an agent to express the agent's"
+            " responsibility for that entity, possibly along with other agents."
+            " This description can be understood as shorthand for saying that the"
+            " agent was responsible for the activity which generated the entity"
+        ),
         # if property is element of this resource.
         element_property=True,
     )

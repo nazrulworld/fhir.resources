@@ -5,7 +5,7 @@ Release: DSTU2
 Version: 1.0.2
 Revision: 7202
 """
-from typing import Any, Dict
+import typing
 from typing import List as ListType
 
 from pydantic import Field, root_validator
@@ -29,7 +29,14 @@ class OperationDefinition(domainresource.DomainResource):
         None,
         alias="url",
         title="Logical URL to reference this operation definition",
-        description="An absolute URL that is used to identify this operation definition when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this operation definition is (or will be) published.",
+        description=(
+            "An absolute URL that is used to identify "
+            "this operation definition when it is referenced in a "
+            "specification, model, design or an instance. This SHALL "
+            "be a URL, SHOULD be globally unique, and SHOULD be an "
+            "address at which this operation definition is "
+            "(or will be) published."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -76,7 +83,11 @@ class OperationDefinition(domainresource.DomainResource):
         None,
         alias="experimental",
         title="If for testing purposes, not real usage",
-        description="This profile was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage.",
+        description=(
+            "This profile was authored for testing purposes "
+            "(or education/evaluation/marketing), and is not "
+            "intended to be used for genuine usage."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -102,7 +113,13 @@ class OperationDefinition(domainresource.DomainResource):
         None,
         alias="date",
         title="Date for this version of the operation definition",
-        description="The date this version of the operation definition was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the Operation Definition changes.",
+        description=(
+            "The date this version of the operation definition"
+            " was published. The date must change when the business "
+            "version changes, if it does, and it must change if the "
+            "status code changes. In addition, it should change when "
+            "the substantive content of the Operation Definition changes."
+        ),
         element_property=True,
     )
 
@@ -126,7 +143,11 @@ class OperationDefinition(domainresource.DomainResource):
         None,
         alias="idempotent",
         title="Whether content is unchanged by operation",
-        description="Operations that are idempotent (see HTTP specification definition of idempotent ) may be invoked by performing an HTTP GET operation instead of a POST.",
+        description=(
+            "Operations that are idempotent (see HTTP specification "
+            "definition of idempotent ) may be invoked by performing "
+            "an HTTP GET operation instead of a POST."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -150,7 +171,10 @@ class OperationDefinition(domainresource.DomainResource):
     base: fhirtypes.ReferenceType = Field(
         None,
         alias="base",
-        title="Type 'Reference' referencing 'OperationDefinition'  (represented as 'dict' in JSON).",
+        title=(
+            "Type 'Reference' referencing 'OperationDefinition'  "
+            "(represented as 'dict' in JSON)."
+        ),
         description="Marks this as a profile of the base",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["OperationDefinition"],
@@ -161,7 +185,11 @@ class OperationDefinition(domainresource.DomainResource):
         None,
         alias="system",
         title="Invoke at the system level?",
-        description="Indicates whether this operation or named query can be invoked at the system level (e.g. without needing to choose a resource type for the context).",
+        description=(
+            "Indicates whether this operation or named "
+            "query can be invoked at the system level (e.g. without "
+            "needing to choose a resource type for the context)."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -178,7 +206,10 @@ class OperationDefinition(domainresource.DomainResource):
         None,
         alias="instance",
         title="Invoke on an instance?",
-        description="Indicates whether this operation can be invoked on a particular instance of one of the given types.",
+        description=(
+            "Indicates whether this operation can be "
+            "invoked on a particular instance of one of the given types."
+        ),
         # if property is element of this resource.
         element_property=True,
     )
@@ -191,6 +222,7 @@ class OperationDefinition(domainresource.DomainResource):
         # if property is element of this resource.
         element_property=True,
     )
+
 
 class OperationDefinitionContact(BackboneElement):
     """Contact details of the publisher
@@ -216,6 +248,7 @@ class OperationDefinitionContact(BackboneElement):
         description="Contact details for individual or publisher",
         element_property=True,
     )
+
 
 class OperationDefinitionParameter(BackboneElement):
     """Parameters for the operation/query
@@ -280,7 +313,10 @@ class OperationDefinitionParameter(BackboneElement):
     profile: fhirtypes.ReferenceType = Field(
         None,
         alias="profile",
-        title="Type 'Reference' referencing 'StructureDefinition'  (represented as 'dict' in JSON).",
+        title=(
+            "Type 'Reference' referencing 'StructureDefinition'"
+            "  (represented as 'dict' in JSON)."
+        ),
         description="Profile on the type",
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
@@ -304,6 +340,7 @@ class OperationDefinitionParameter(BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
 
 class OperationDefinitionParameterBinding(BackboneElement):
     """ValueSet details if this is coded
@@ -329,7 +366,11 @@ class OperationDefinitionParameterBinding(BackboneElement):
         None,
         alias="url",
         title="Source of value set",
-        description="Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used.",
+        description=(
+            "Points to the value set or external definition "
+            "(e.g. implicit value set) that identifies the set "
+            "of codes to be used."
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
@@ -341,7 +382,11 @@ class OperationDefinitionParameterBinding(BackboneElement):
         None,
         alias="valueSetReference",
         title="Type 'Reference' referencing 'ValueSet'  (represented as 'dict' in JSON).",
-        description="Points to the value set or external definition (e.g. implicit value set) that identifies the set of codes to be used.",
+        description=(
+            "Points to the value set or external definition "
+            "(e.g. implicit value set) that identifies the set "
+            "of codes to be used."
+        ),
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ValueSet"],
         element_property=True,

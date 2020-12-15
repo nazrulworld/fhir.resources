@@ -5,10 +5,9 @@ Release: DSTU2
 Version: 1.0.2
 Revision: 7202
 """
-from typing import Any, Dict
 from typing import List as ListType
 
-from pydantic import Field, root_validator
+from pydantic import Field
 
 from . import domainresource, fhirtypes
 from .backboneelement import BackboneElement
@@ -17,7 +16,8 @@ from .backboneelement import BackboneElement
 class SearchParameter(domainresource.DomainResource):
     """Search Parameter for a resource.
 
-    A search parameter that defines a named search item that can be used to search/filter on a resource.
+    A search parameter that defines a named search item that can
+    be used to search/filter on a resource.
     """
 
     resource_type = Field("SearchParameter", const=True)
@@ -77,7 +77,13 @@ class SearchParameter(domainresource.DomainResource):
         None,
         alias="date",
         title="Publication Date(/time)",
-        description="The date (and optionally time) when the search parameter definition was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the search parameter changes.",
+        description=(
+            "The date (and optionally time) when the search parameter "
+            "definition was published. The date must change when the business "
+            "version changes, if it does, and it must change if the status code "
+            "changes. In addition, it should change when the substantive content "
+            "of the search parameter changes."
+        ),
         element_property=True,
     )
 
@@ -112,7 +118,16 @@ class SearchParameter(domainresource.DomainResource):
         description="number | date | string | token | reference | composite | quantity | uri",
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["number", "date", "string", "token", "reference", "composite", "quantity", "uri"],
+        enum_values=[
+            "number",
+            "date",
+            "string",
+            "token",
+            "reference",
+            "composite",
+            "quantity",
+            "uri",
+        ],
         element_property=True,
     )
 
@@ -150,6 +165,7 @@ class SearchParameter(domainresource.DomainResource):
         description="Types of resource (if a resource reference)",
         element_property=True,
     )
+
 
 class SearchParameterContact(BackboneElement):
     """Contact details of the publisher

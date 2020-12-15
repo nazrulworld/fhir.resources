@@ -5,7 +5,7 @@ Release: DSTU2
 Version: 1.0.2
 Revision: 7202
 """
-from typing import Any, Dict
+import typing
 from typing import List as ListType
 
 from pydantic import Field, root_validator
@@ -48,7 +48,10 @@ class NutritionOrder(domainresource.DomainResource):
         None,
         alias="identifier",
         title="Identifiers assigned to this order",
-        description="Identifiers assigned to this order by the order sender or by the order receiver.",
+        description=(
+            "Identifiers assigned to this order by "
+            "the order sender or by the order receiver."
+        ),
         element_property=True,
     )
 
@@ -74,18 +77,36 @@ class NutritionOrder(domainresource.DomainResource):
         None,
         alias="status",
         title="Type `Code` (represented as `dict` in JSON).",
-        description="proposed | draft | planned | requested | active | on-hold | completed | cancelled",
+        description=(
+            "proposed | draft | planned "
+            "| requested | active | on-hold | completed | cancelled"
+        ),
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["proposed", "draft", "planned", "requested", "active", "on-hold", "completed", "cancelled"],
+        enum_values=[
+            "proposed",
+            "draft",
+            "planned",
+            "requested",
+            "active",
+            "on-hold",
+            "completed",
+            "cancelled",
+        ],
         element_property=True,
     )
 
     allergyIntolerance: ListType[fhirtypes.ReferenceType] = Field(
         None,
         alias="allergyIntolerance",
-        title="Type 'Reference' referencing 'AllergyIntolerance'  (represented as 'dict' in JSON).",
-        description="List of the patient's food and nutrition-related allergies and intolerances",
+        title=(
+            "Type 'Reference' referencing 'AllergyIntolerance'  "
+            "(represented as 'dict' in JSON)."
+        ),
+        description=(
+            "List of the patient's food and "
+            "nutrition-related allergies and intolerances"
+        ),
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["AllergyIntolerance"],
         element_property=True,
@@ -125,7 +146,7 @@ class NutritionOrder(domainresource.DomainResource):
         element_property=True,
     )
 
-    enteralFormula: fhirtypes.NutritionOrderEnteralFormulaType] = Field(
+    enteralFormula: fhirtypes.NutritionOrderEnteralFormulaType = Field(
         None,
         alias="enteralFormula",
         title="Enteral formula components",
@@ -133,6 +154,7 @@ class NutritionOrder(domainresource.DomainResource):
         # if property is element of this resource.
         element_property=True,
     )
+
 
 class NutritionOrderOralDiet(BackboneElement):
     """Oral diet components
@@ -147,7 +169,10 @@ class NutritionOrderOralDiet(BackboneElement):
         None,
         alias="type",
         title="Type `CodeableConcept` (represented as `dict` in JSON).",
-        description="Type of oral diet or diet restrictions that describe what can be consumed orally",
+        description=(
+            "Type of oral diet or diet restrictions that "
+            "describe what can be consumed orally"
+        ),
         element_property=True,
     )
 
@@ -193,11 +218,12 @@ class NutritionOrderOralDiet(BackboneElement):
         element_property=True,
     )
 
+
 class NutritionOrderSupplement(BackboneElement):
     """Supplement components
 
-
-    Oral nutritional products given in order to add further nutritional value to the patient's diet.
+    Oral nutritional products given in order to add further
+    nutritional value to the patient's diet.
     """
 
     resource_type = Field("NutritionOrderSupplement", const=True)
@@ -245,6 +271,7 @@ class NutritionOrderSupplement(BackboneElement):
         description="Instructions or additional information about the oral supplement",
         element_property=True,
     )
+
 
 class NutritionOrderEnteralFormula(BackboneElement):
     """Enteral formula components
@@ -310,7 +337,9 @@ class NutritionOrderEnteralFormula(BackboneElement):
         element_property=True,
     )
 
-    administration: ListType[fhirtypes.NutritionOrderEnteralFormulaAdministrationType] = Field(
+    administration: ListType[
+        fhirtypes.NutritionOrderEnteralFormulaAdministrationType
+    ] = Field(
         None,
         alias="administration",
         title="Formula feeding instruction as structured data",
@@ -337,6 +366,7 @@ class NutritionOrderEnteralFormula(BackboneElement):
         description="Formula feeding instructions expressed as text",
         element_property=True,
     )
+
 
 class NutritionOrderOralDietNutrient(BackboneElement):
     """Required nutrient modifications
@@ -368,6 +398,7 @@ class NutritionOrderOralDietNutrient(BackboneElement):
         element_property=True,
     )
 
+
 class NutritionOrderOralDietTexture(BackboneElement):
     """Required texture modifications
 
@@ -391,11 +422,15 @@ class NutritionOrderOralDietTexture(BackboneElement):
     foodType: fhirtypes.CodeableConceptType = Field(
         None,
         alias="foodType",
-        title="Concepts that are used to identify an entity that is ingested for nutritional purposes",
+        title=(
+            "Concepts that are used to identify an "
+            "entity that is ingested for nutritional purposes"
+        ),
         description=None,
         # if property is element of this resource.
         element_property=True,
     )
+
 
 class NutritionOrderEnteralFormulaAdministration(BackboneElement):
     """Formula feeding instruction as structured data

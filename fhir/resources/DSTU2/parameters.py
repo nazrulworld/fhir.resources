@@ -5,7 +5,7 @@ Release: DSTU2
 Version: 1.0.2
 Revision: 7202
 """
-from typing import Any, Dict
+import typing
 from typing import List as ListType
 
 from pydantic import Field, root_validator
@@ -33,6 +33,7 @@ class Parameters(domainresource.DomainResource):
         # if property is element of this resource.
         element_property=True,
     )
+
 
 class ParametersParameter(BackboneElement):
     """Operation Parameter
@@ -333,7 +334,10 @@ class ParametersParameter(BackboneElement):
         None,
         alias="part",
         title="Named part of a parameter (e.g. Tuple)",
-        description="A named part of a parameter. In many implementation context, a set of named parts is known as a 'Tuple'.",
+        description=(
+            "A named part of a parameter. In many implementation context, "
+            "a set of named parts is known as a 'Tuple'."
+        ),
         # if property is element of this resource.
         element_property=True,
     )

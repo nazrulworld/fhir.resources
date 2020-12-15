@@ -5,13 +5,13 @@ Release: DSTU2
 Version: 1.0.2
 Revision: 7202
 """
-from typing import Any, Dict
 from typing import List as ListType
 
-from pydantic import Field, root_validator
+from pydantic import Field
 
 from . import domainresource, fhirtypes
 from .backboneelement import BackboneElement
+
 
 class Subscription(domainresource.DomainResource):
     """A server push subscription criteria
@@ -40,7 +40,8 @@ class Subscription(domainresource.DomainResource):
         title="Human contact for problems",
         description=(
             "Contact details for source (e.g. troubleshooting)"
-            "Contact details for a human to contact about the subscription. The primary use of this for system administrator troubleshooting."
+            "Contact details for a human to contact about the subscription."
+            "The primary use of this for system administrator troubleshooting."
         ),
         element_property=True,
     )
@@ -57,7 +58,10 @@ class Subscription(domainresource.DomainResource):
         None,
         alias="status",
         title="requested | active | error | off",
-        description="The status of the subscription, which marks the server state for managing the subscription.",
+        description=(
+            "The status of the subscription, which marks the server"
+            " state for managing the subscription."
+        ),
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
         enum_values=["requested", "active", "error", "off"],
@@ -95,6 +99,7 @@ class Subscription(domainresource.DomainResource):
         description="A tag to add to matching resources",
         element_property=True,
     )
+
 
 class SubscriptionChannel(BackboneElement):
     """The channel on which to report matches to the criteria

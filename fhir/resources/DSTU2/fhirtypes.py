@@ -1789,6 +1789,70 @@ class SupplyRequestWhenType(AbstractType):
     __resource_type__ = "SupplyRequestWhen"
 
 
+class TestScriptType(AbstractType):
+    __resource_type__ = "TestScript"
+
+
+class TestScriptContactType(AbstractType):
+    __resource_type__ = "TestScriptContact"
+
+
+class TestScriptMetadataType(AbstractType):
+    __resource_type__ = "TestScriptMetadata"
+
+
+class TestScriptFixtureType(AbstractType):
+    __resource_type__ = "TestScriptFixture"
+
+
+class TestScriptVariableType(AbstractType):
+    __resource_type__ = "TestScriptVariable"
+
+
+class TestScriptSetupType(AbstractType):
+    __resource_type__ = "TestScriptSetup"
+
+
+class TestScriptTestType(AbstractType):
+    __resource_type__ = "TestScriptTest"
+
+
+class TestScriptTeardownType(AbstractType):
+    __resource_type__ = "TestScriptTeardown"
+
+
+class TestScriptMetadataLinkType(AbstractType):
+    __resource_type__ = "TestScriptMetadataLink"
+
+
+class TestScriptMetadataCapabilityType(AbstractType):
+    __resource_type__ = "TestScriptMetadataCapability"
+
+
+class TestScriptSetupActionType(AbstractType):
+    __resource_type__ = "TestScriptSetupAction"
+
+
+class TestScriptTestActionType(AbstractType):
+    __resource_type__ = "TestScriptTestAction"
+
+
+class TestScriptTeardownActionType(AbstractType):
+    __resource_type__ = "TestScriptTeardownAction"
+
+
+class TestScriptSetupActionOperationType(AbstractType):
+    __resource_type__ = "TestScriptSetupActionOperation"
+
+
+class TestScriptSetupActionAssertType(AbstractType):
+    __resource_type__ = "TestScriptSetupActionAssert"
+
+
+class TestScriptSetupActionOperationRequestHeaderType(AbstractType):
+    __resource_type__ = "TestScriptSetupActionOperationRequestHeader"
+
+
 class VisionPrescriptionType(AbstractType):
     __resource_type__ = "VisionPrescription"
 
@@ -2132,4 +2196,20 @@ __all__ = [
     "SpecimenCollectionType",
     "SpecimenTreatmentType",
     "SpecimenContainerType",
+    "TestScript",
+    "TestScriptContact",
+    "TestScriptMetadata",
+    "TestScriptFixture",
+    "TestScriptVariable",
+    "TestScriptSetup",
+    "TestScriptTest",
+    "TestScriptTeardown",
+    "TestScriptMetadataLink",
+    "TestScriptMetadataCapability",
+    "TestScriptSetupAction",
+    "TestScriptTestAction",
+    "TestScriptTeardownAction",
+    "TestScriptSetupActionOperation",
+    "TestScriptSetupActionAssert",
+    "TestScriptSetupActionOperationRequestHeader"
 ]

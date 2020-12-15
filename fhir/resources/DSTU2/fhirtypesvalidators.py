@@ -314,6 +314,22 @@ MODEL_CLASSES = {
     "SpecimenCollection": (None, ".specimen"),
     "SpecimenTreatment": (None, ".specimen"),
     "SpecimenContainer": (None, ".specimen"),
+    "TestScript": (None, ".testscript"),
+    "TestScriptContact": (None, ".testscript"),
+    "TestScriptMetadata": (None, ".testscript"),
+    "TestScriptFixture": (None, ".testscript"),
+    "TestScriptVariable": (None, ".testscript"),
+    "TestScriptSetup": (None, ".testscript"),
+    "TestScriptTest": (None, ".testscript"),
+    "TestScriptTeardown": (None, ".testscript"),
+    "TestScriptMetadataLink": (None, ".testscript"),
+    "TestScriptMetadataCapability": (None, ".testscript"),
+    "TestScriptSetupAction": (None, ".testscript"),
+    "TestScriptTestAction": (None, ".testscript"),
+    "TestScriptTeardownAction": (None, ".testscript"),
+    "TestScriptSetupActionOperation": (None, ".testscript"),
+    "TestScriptSetupActionAssert": (None, ".testscript"),
+    "TestScriptSetupActionOperationRequestHeader": (None, ".testscript"),
 }
 
 
@@ -1917,6 +1933,70 @@ def specimencontainer_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel
     return fhir_model_validator("SpecimenContainer", v)
 
 
+def testscript_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("TestScript", v)
+
+
+def testscriptcontact_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("TestScriptContact", v)
+
+
+def testscriptmetadata_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("TestScriptMetadata", v)
+
+
+def testscriptfixture_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("TestScriptFixture", v)
+
+
+def testscriptvariable_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("TestScriptVariable", v)
+
+
+def testscriptsetup_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("TestScriptSetup", v)
+
+
+def testscripttest_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("TestScriptTest", v)
+
+
+def testscriptteardown_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("TestScriptTeardown", v)
+
+
+def testscriptmetadatalink_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("TestScriptMetadataLink", v)
+
+
+def testscriptmetadatacapability_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("TestScriptMetadataCapability", v)
+
+
+def testscriptsetupaction_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("TestScriptSetupAction", v)
+
+
+def testscripttestaction_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("TestScriptTestAction", v)
+
+
+def testscriptteardownaction_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("TestScriptTeardownAction", v)
+
+
+def testscriptsetupactionoperation_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("TestScriptSetupActionOperation", v)
+
+
+def testscriptsetupactionassert_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("TestScriptSetupActionAssert", v)
+
+
+def testscriptsetupactionoperationrequestheader_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
+    return fhir_model_validator("TestScriptSetupActionOperationRequestHeader", v)
+
+
 __all__ = [
     "element_validator",
     "resource_validator",
@@ -2239,4 +2319,22 @@ __all__ = [
     "specimencollection_validator",
     "specimentreatment_validator",
     "specimencontainer_validator",
+    "testscript_validator",
+    "testscriptcontact_validator",
+    "testscriptmetadata_validator",
+    "testscriptfixture_validator",
+    "testscriptvariable_validator",
+    "testscriptsetup_validator",
+    "testscripttest_validator",
+    "testscriptteardown_validator",
+    "testscriptmetadatalink_validator",
+    "testscriptmetadatacapability_validator",
+    "testscriptsetupaction_validator",
+    "testscripttestaction_validator",
+    "testscriptteardownaction_validator",
+    "testscriptsetupactionoperation_validator",
+    "testscriptsetupactionassert_validator",
+    "testscriptsetupactionoperationrequestheader_validator"
+    
+
 ]

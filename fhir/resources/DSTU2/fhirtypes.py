@@ -1609,12 +1609,248 @@ class ListEntryType(AbstractType):
     __resource_type__ = "ListEntry"
 
 
+class NutritionOrderType(AbstractType):
+    __resource_type__ = "NutritionOrder"
+
+
+class NutritionOrderOralDietType(AbstractType):
+    __resource_type__ = "NutritionOrderOralDiet"
+
+
+class NutritionOrderSupplementType(AbstractType):
+    __resource_type__ = "NutritionOrderSupplement"
+
+
+class NutritionOrderEnteralFormulaType(AbstractType):
+    __resource_type__ = "NutritionOrderEnteralFormula"
+
+
+class NutritionOrderOralDietNutrientType(AbstractType):
+    __resource_type__ = "NutritionOrderOralDietNutrient"
+
+
+class NutritionOrderOralDietTextureType(AbstractType):
+    __resource_type__ = "NutritionOrderOralDietTexture"
+
+
+class NutritionOrderEnteralFormulaAdministrationType(AbstractType):
+    __resource_type__ = "NutritionOrderEnteralFormulaAdministration"
+
+
+class OperationDefinitionType(AbstractType):
+    __resource_type__ = "OperationDefinition"
+
+
+class OperationDefinitionContactType(AbstractType):
+    __resource_type__ = "OperationDefinitionContact"
+
+
+class OperationDefinitionParameterType(AbstractType):
+    __resource_type__ = "OperationDefinitionParameter"
+
+
+class OperationDefinitionParameterBindingType(AbstractType):
+    __resource_type__ = "OperationDefinitionParameterBinding"
+
+
+class ParametersType(AbstractType):
+    __resource_type__ = "Parameters"
+
+
+class ParametersParameterType(AbstractType):
+    __resource_type__ = "ParametersParameter"
+
+
+class ProcessResponseType(AbstractType):
+    __resource_type__ = "ProcessResponse"
+
+
+class ProcessResponseNotesType(AbstractType):
+    __resource_type__ = "ProcessResponseNotes"
+
+
+class ProcessRequestType(AbstractType):
+    __resource_type__ = "ProcessRequest"
+
+
+class ProcessRequestItemType(AbstractType):
+    __resource_type__ = "ProcessRequestItem"
+
+
+class PaymentReconciliationType(AbstractType):
+    __resource_type__ = "PaymentReconciliation"
+
+
+class PaymentReconciliationDetailType(AbstractType):
+    __resource_type__ = "PaymentReconciliationDetail"
+
+
+class PaymentReconciliationNoteType(AbstractType):
+    __resource_type__ = "PaymentReconciliationNote"
+
+
+class PaymentNoticeType(AbstractType):
+    __resource_type__ = "PaymentNotice"
+
+
+class ProvenanceType(AbstractType):
+    __resource_type__ = "Provenance"
+
+
+class ProvenanceAgentType(AbstractType):
+    __resource_type__ = "ProvenanceAgent"
+
+
+class ProvenanceAgentRelatedAgentType(AbstractType):
+    __resource_type__ = "ProvenanceAgentRelatedAgent"
+
+
+class ProvenanceEntityType(AbstractType):
+    __resource_type__ = "ProvenanceEntity"
+
+
+class QuestionnaireResponseType(AbstractType):
+    __resource_type__ = "QuestionnaireResponse"
+
+
+class QuestionnaireResponseGroupType(AbstractType):
+    __resource_type__ = "QuestionnaireResponseGroup"
+
+
+class QuestionnaireResponseGroupQuestionType(AbstractType):
+    __resource_type__ = "QuestionnaireResponseGroupQuestion"
+
+
+class QuestionnaireResponseGroupQuestionAnswerType(AbstractType):
+    __resource_type__ = "QuestionnaireResponseGroupQuestionAnswer"
+
+
+class QuestionnaireType(AbstractType):
+    __resource_type__ = "Questionnaire"
+
+
+class QuestionnaireGroupType(AbstractType):
+    __resource_type__ = "QuestionnaireGroup"
+
+
+class QuestionnaireGroupQuestionType(AbstractType):
+    __resource_type__ = "QuestionnaireGroupQuestion"
+
+
+class ReferralRequestType(AbstractType):
+    __resource_type__ = "ReferralRequest"
+
+
+class RiskAssessmentType(AbstractType):
+    __resource_type__ = "RiskAssessment"
+
+
+class RiskAssessmentPredictionType(AbstractType):
+    __resource_type__ = "RiskAssessmentPrediction"
+
+
+class SearchParameterType(AbstractType):
+    __resource_type__ = "SearchParameter"
+
+
+class SearchParameterContactType(AbstractType):
+    __resource_type__ = "SearchParameterContact"
+
+
+class SubscriptionType(AbstractType):
+    __resource_type__ = "Subscription"
+
+
+class SubscriptionChannelType(AbstractType):
+    __resource_type__ = "SubscriptionChannel"
+
+
+class SubstanceType(AbstractType):
+    __resource_type__ = "Substance"
+
+
+class SubstanceInstanceType(AbstractType):
+    __resource_type__ = "SubstanceInstance"
+
+
+class SubstanceIngredientType(AbstractType):
+    __resource_type__ = "SubstanceIngredient"
+
+
+class SupplyDeliveryType(AbstractType):
+    __resource_type__ = "SupplyDelivery"
+
+
 class SupplyRequestType(AbstractType):
     __resource_type__ = "SupplyRequest"
 
 
 class SupplyRequestWhenType(AbstractType):
     __resource_type__ = "SupplyRequestWhen"
+
+
+class TestScriptType(AbstractType):
+    __resource_type__ = "TestScript"
+
+
+class TestScriptContactType(AbstractType):
+    __resource_type__ = "TestScriptContact"
+
+
+class TestScriptMetadataType(AbstractType):
+    __resource_type__ = "TestScriptMetadata"
+
+
+class TestScriptFixtureType(AbstractType):
+    __resource_type__ = "TestScriptFixture"
+
+
+class TestScriptVariableType(AbstractType):
+    __resource_type__ = "TestScriptVariable"
+
+
+class TestScriptSetupType(AbstractType):
+    __resource_type__ = "TestScriptSetup"
+
+
+class TestScriptTestType(AbstractType):
+    __resource_type__ = "TestScriptTest"
+
+
+class TestScriptTeardownType(AbstractType):
+    __resource_type__ = "TestScriptTeardown"
+
+
+class TestScriptMetadataLinkType(AbstractType):
+    __resource_type__ = "TestScriptMetadataLink"
+
+
+class TestScriptMetadataCapabilityType(AbstractType):
+    __resource_type__ = "TestScriptMetadataCapability"
+
+
+class TestScriptSetupActionType(AbstractType):
+    __resource_type__ = "TestScriptSetupAction"
+
+
+class TestScriptTestActionType(AbstractType):
+    __resource_type__ = "TestScriptTestAction"
+
+
+class TestScriptTeardownActionType(AbstractType):
+    __resource_type__ = "TestScriptTeardownAction"
+
+
+class TestScriptSetupActionOperationType(AbstractType):
+    __resource_type__ = "TestScriptSetupActionOperation"
+
+
+class TestScriptSetupActionAssertType(AbstractType):
+    __resource_type__ = "TestScriptSetupActionAssert"
+
+
+class TestScriptSetupActionOperationRequestHeaderType(AbstractType):
+    __resource_type__ = "TestScriptSetupActionOperationRequestHeader"
 
 
 class VisionPrescriptionType(AbstractType):
@@ -1909,6 +2145,49 @@ __all__ = [
     "NamingSystemType",
     "NamingSystemContactType",
     "NamingSystemUniqueIdType",
+    "NutritionOrderType",
+    "NutritionOrderOralDietType",
+    "NutritionOrderSupplementType",
+    "NutritionOrderEnteralFormulaType",
+    "NutritionOrderOralDietNutrientType",
+    "NutritionOrderOralDietTextureType",
+    "NutritionOrderEnteralFormulaAdministrationType",
+    "OperationDefinitionType",
+    "OperationDefinitionContactType",
+    "OperationDefinitionParameterType",
+    "OperationDefinitionParameterBindingType",
+    "ParametersType",
+    "ParametersParameterType",
+    "ProcessResponseType",
+    "ProcessResponseNotesType",
+    "ProcessRequestType",
+    "ProcessRequestItemType",
+    "PaymentReconciliationType",
+    "PaymentReconciliationDetailType",
+    "PaymentReconciliationNoteType",
+    "PaymentNoticeType",
+    "ProvenanceType",
+    "ProvenanceAgentType",
+    "ProvenanceEntityType",
+    "ProvenanceAgentRelatedAgentType",
+    "QuestionnaireResponseType",
+    "QuestionnaireResponseGroupType",
+    "QuestionnaireResponseGroupQuestionType",
+    "QuestionnaireResponseGroupQuestionAnswerType"
+    "QuestionnaireType",
+    "QuestionnaireGroupType",
+    "QuestionnaireGroupQuestionType",
+    "ReferralRequestType",
+    "RiskAssessmentType",
+    "RiskAssessmentPredictionType",
+    "SearchParameterType",
+    "SearchParameterContactType",
+    "SubscriptionType",
+    "SubscriptionChannelType",
+    "SubstanceType",
+    "SubstanceInstanceType"
+    "SubstanceIngredientType"
+    "SupplyDeliveryType",
     "SupplyRequestType",
     "SupplyRequestWhenType",
     "VisionPrescriptionType",
@@ -1917,4 +2196,20 @@ __all__ = [
     "SpecimenCollectionType",
     "SpecimenTreatmentType",
     "SpecimenContainerType",
+    "TestScript",
+    "TestScriptContact",
+    "TestScriptMetadata",
+    "TestScriptFixture",
+    "TestScriptVariable",
+    "TestScriptSetup",
+    "TestScriptTest",
+    "TestScriptTeardown",
+    "TestScriptMetadataLink",
+    "TestScriptMetadataCapability",
+    "TestScriptSetupAction",
+    "TestScriptTestAction",
+    "TestScriptTeardownAction",
+    "TestScriptSetupActionOperation",
+    "TestScriptSetupActionAssert",
+    "TestScriptSetupActionOperationRequestHeader"
 ]

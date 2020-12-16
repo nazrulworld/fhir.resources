@@ -51,7 +51,7 @@ FHIR® (Release R4, version 4.0.1) is available as default. Also previous versio
 **Available Previous Versions**:
 
 * ``STU3`` (3.0.2)
-* ``DSTU2`` (1.0.2) [partially see `issue#13 <https://github.com/nazrulworld/fhir.resources/issues/13>`_]
+* ``DSTU2`` (1.0.2) [see `issue#13 <https://github.com/nazrulworld/fhir.resources/issues/13>`_][don't have full tests coverage]
 
 
 Installation
@@ -479,6 +479,12 @@ Usages of orjson
 orjson_ is one of the fastest Python library for JSON and is more correct than the standard json library (according to their docs).
 Good news is that ``fhir.resource`` has extensive support for orjson_ and it's too easy to enable it automatically. What you need to do, just make orjson_ as your project dependency!
 
+
+pydantic_ Field Type Support
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+All available fhir resources (types) can be use as pydantic_'s Field's value types. See issue#46 `Support for FastAPI pydantic response models <https://github.com/nazrulworld/fhir.resources/issues/46>`_.
+``fhirtypes.py`` contains all fhir resources related types.
 
 Migration (from later than ``6.X.X``)
 -------------------------------------

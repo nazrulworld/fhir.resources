@@ -16,7 +16,7 @@ def construct_fhir_element(
         klass = get_fhir_model_class(element_type)
     except KeyError:
         raise LookupError(
-            f"{element_type} doesnt to be valid FHIRModel (element type) name!"
+            f"'{element_type}' is not valid FHIRModel (element type) name!"
         )
     if isinstance(data, (str, bytes)):
         return klass.parse_raw(data, content_type="application/json")

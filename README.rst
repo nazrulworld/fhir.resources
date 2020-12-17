@@ -33,7 +33,7 @@ FHIR® Resources (R4, STU3, DSTU2)
 
 
 Powered by pydantic_, all `FHIR Resources <https://www.hl7.org/fhir/resourcelist.html>`_ are available as python class with built-in
-data validation, faster in performance and optionally ``orjson`` support has been included as performance booster! Written in modern python.
+data validation, faster in performance and optionally ``orjson`` support has been included as a performance booster! Written in modern python.
 
 * Easy to construct, easy to extended validation, easy to export.
 * By inheriting behaviour from pydantic_, compatible with `ORM <https://en.wikipedia.org/wiki/Object-relational_mapping>`_.
@@ -192,7 +192,7 @@ FHIR Comments (JSON)
 ~~~~~~~~~~~~~~~~~~~~
 
 It is possible to add comments inside json like xml, but need to follow some convention, what is suggested by `Grahame Grieve <http://www.healthintersections.com.au/?p=2569>`_;
-That is implemented here.
+is implemented here.
 
 Also it is possible to generate json string output without comments.
 
@@ -296,7 +296,7 @@ Special Case: Missing data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 `In some cases <https://www.hl7.org/fhir/extensibility.html#Special-Case>`_, implementers might
-find that they do not have appropriate dta for an element with minimum cardinality = 1.
+find that they do not have appropriate data for an element with minimum cardinality = 1.
 In this case, the element must be present, but unless the resource or a profile on it has made the
 actual value of the primitive data type mandatory, it is possible to provide an extension that
 explains why the primitive value is not present.
@@ -388,8 +388,8 @@ Example (required ``intent`` element is missing but still valid because of exten
 Custom Validators
 ~~~~~~~~~~~~~~~~~
 
-``fhir.resources`` is providing extensive API to create and attach custom validator into any model. See more `about root validator <https://pydantic-docs.helpmanual.io/usage/validators/#root-validators>`_
-Some convention you have to follow while creating a root validator.
+``fhir.resources`` is providing the extensive API to create and attach custom validator into any model. See more `about root validator <https://pydantic-docs.helpmanual.io/usage/validators/#root-validators>`_
+Some convention you have to follow though, while creating a root validator.
 
 1. Number of arguments are fixed, as well as names are also. i.e ``(cls, values)``.
 2. Should return ``values``, unless any exception need to be raised.
@@ -477,14 +477,14 @@ Usages of orjson
 ~~~~~~~~~~~~~~~~
 
 orjson_ is one of the fastest Python library for JSON and is more correct than the standard json library (according to their docs).
-Good news is that ``fhir.resource`` has extensive support for orjson_ and it's too easy to enable it automatically. What you need to do, just make orjson_ as your project dependency!
+Good news is that ``fhir.resource`` has an extensive support for orjson_ and it's too easy to enable it automatically. What you need to do, just make orjson_ as your project dependency!
 
 
 pydantic_ Field Type Support
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 All available fhir resources (types) can be use as pydantic_'s Field's value types. See issue#46 `Support for FastAPI pydantic response models <https://github.com/nazrulworld/fhir.resources/issues/46>`_.
-``fhirtypes.py`` contains all fhir resources related types.
+The module ``fhirtypes.py`` contains all fhir resources related types and should trigger validator automatically.
 
 Migration (from later than ``6.X.X``)
 -------------------------------------

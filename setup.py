@@ -85,7 +85,7 @@ setup(
         ),
     },
     url="https://github.com/nazrulworld/fhir.resources",
-    version="6.0.0",
+    version="6.0.1.dev0",
     zip_safe=False,
     python_requires=">=3.6",
     project_urls={

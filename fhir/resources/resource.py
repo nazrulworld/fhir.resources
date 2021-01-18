@@ -22,7 +22,7 @@ class Resource(fhirresourcemodel.FHIRResourceModel):
 
     resource_type = Field("Resource", const=True)
 
-    id: fhirtypes.String = Field(
+    id: fhirtypes.Id = Field(
         None,
         alias="id",
         title="Logical id of this artifact",

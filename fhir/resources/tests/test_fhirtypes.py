@@ -1,7 +1,7 @@
 # _*_ coding: utf-8 _*_
 import re
 
-import pytest
+import pytest  # type: ignore
 from pydantic.error_wrappers import ValidationError
 from pydantic.errors import ConfigError
 

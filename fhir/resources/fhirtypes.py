@@ -98,7 +98,7 @@ class String(ConstrainedStr, Primitive):
     Leading and Trailing whitespace is allowed, but SHOULD be removed when using
     the XML format. Note: This means that a string that consists only of whitespace
     could be trimmed to nothing, which would be treated as an invalid element value.
-    Therefore strings SHOULD always contain non-whitespace conten"""
+    Therefore strings SHOULD always contain non-whitespace content"""
 
     regex = re.compile(r"[ \r\n\t\S]+")
     __visit_name__ = "string"
@@ -107,7 +107,7 @@ class String(ConstrainedStr, Primitive):
 class Base64Binary(ConstrainedBytes, Primitive):
     """A stream of bytes, base64 encoded (RFC 4648 )"""
 
-    regex = re.compile(r"(\s*([0-9a-zA-Z+=]){4}\s*)+")
+    regex = re.compile(r"^(\s*([0-9a-zA-Z+=]){4}\s*)+$")
     __visit_name__ = "base64Binary"
 
 
@@ -118,7 +118,7 @@ class Code(ConstrainedStr, Primitive):
     character and no leading or trailing whitespace, and where there is
     no whitespace other than single spaces in the contents"""
 
-    regex = re.compile(r"[^\s]+(\s[^\s]+)*")
+    regex = re.compile(r"^[^\s]+(\s[^\s]+)*$")
     __visit_name__ = "code"
 
 
@@ -128,6 +128,9 @@ class Id(ConstrainedStr, Primitive):
     with a length limit of 64 characters.
     (This might be an integer, an un-prefixed OID, UUID or any other identifier
     pattern that meets these constraints.)
+
+    But it is possible to change the default behaviour by using configure_constraints()
+    method!
     """
 
     regex = re.compile(r"^[A-Za-z0-9\-.]+$")
@@ -173,7 +176,7 @@ class Decimal(ConstrainedDecimal, Primitive):
     """Rational numbers that have a decimal representation.
     See below about the precision of the number"""
 
-    regex = re.compile(r"-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?")
+    regex = re.compile(r"^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$")
     __visit_name__ = "decimal"
 
 
@@ -181,14 +184,14 @@ class Integer(ConstrainedInt, Primitive):
     """A signed integer in the range −2,147,483,648..2,147,483,647 (32-bit;
     for larger values, use decimal)"""
 
-    regex = re.compile(r"[0]|[-+]?[1-9][0-9]*")
+    regex = re.compile(r"^[0]|[-+]?[1-9][0-9]*$")
     __visit_name__ = "integer"
 
 
 class UnsignedInt(ConstrainedInt, Primitive):
     """Any non-negative integer in the range 0..2,147,483,647"""
 
-    regex = re.compile(r"[0]|([1-9][0-9]*)")
+    regex = re.compile(r"^[0]|([1-9][0-9]*)$")
     __visit_name__ = "unsignedInt"
     ge = 0
 
@@ -196,7 +199,7 @@ class UnsignedInt(ConstrainedInt, Primitive):
 class PositiveInt(ConstrainedInt, Primitive):
     """Any positive integer in the range 1..2,147,483,647"""
 
-    regex = re.compile(r"\+?[1-9][0-9]*")
+    regex = re.compile(r"^\+?[1-9][0-9]*$")
     __visit_name__ = "positiveInt"
     gt = 0
 
@@ -220,7 +223,7 @@ class Oid(ConstrainedStr, Primitive):
     """An OID represented as a URI (RFC 3001 ); e.g. urn:oid:1.2.3.4.5"""
 
     __visit_name__ = "oid"
-    regex = re.compile(r"urn:oid:[0-2](\.(0|[1-9][0-9]*))+")
+    regex = re.compile(r"^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$")
 
 
 class Uuid(UUID, Primitive):

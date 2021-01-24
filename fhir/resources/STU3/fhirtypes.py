@@ -9,6 +9,7 @@ from pydantic import AnyUrl
 from pydantic.errors import DateError, DateTimeError, TimeError
 from pydantic.main import load_str_bytes
 from pydantic.networks import validate_email
+from pydantic.errors import ConfigError
 from pydantic.types import (
     ConstrainedBytes,
     ConstrainedDecimal,
@@ -117,7 +118,7 @@ class Code(ConstrainedStr, Primitive):
     character and no leading or trailing whitespace, and where there is
     no whitespace other than single spaces in the contents"""
 
-    regex = re.compile(r"[^\s]+(\s[^\s]+)*")
+    regex = re.compile(r"^[^\s]+(\s[^\s]+)*$")
     __visit_name__ = "code"
 
 
@@ -127,19 +128,55 @@ class Id(ConstrainedStr, Primitive):
     with a length limit of 64 characters.
     (This might be an integer, an un-prefixed OID, UUID or any other identifier
     pattern that meets these constraints.)
+
+    But it is possible to change the default behaviour by using configure_constraints()
+    method!
     """
 
-    regex = re.compile(r"[A-Za-z0-9\-.]{1,64}")
+    regex = re.compile(r"^[A-Za-z0-9\-.]+$")
     min_length = 1
     max_length = 64
     __visit_name__ = "id"
+
+    @classmethod
+    def configure_constraints(
+        cls, min_length: int = None, max_length: int = None, regex: Pattern = None
+    ):
+        """There are a lots of discussion about ``Resource.Id`` length of value.
+            1. https://bit.ly/360HksL
+            2. https://bit.ly/3o1fZgl
+        We see there is some agreement and disagreement, because of that we decide to make
+        it more flexible. Now it is possible configure three types of constraints.
+        """
+        if min_length is not None:
+            if min_length < 1:
+                raise ConfigError("Minimum length must be more than 0.")
+            _max_check = max_length or cls.max_length
+            if min_length > _max_check:
+                raise ConfigError(
+                    "Minimum length value cannot be greater than maximum value."
+                )
+            cls.min_length = min_length
+
+        if max_length is not None:
+            if max_length < 1:
+                raise ConfigError("Maximum length must be more than 0.")
+            _min_check = min_length or cls.min_length
+            if max_length < _min_check:
+                raise ConfigError(
+                    "Maximum length value cannot be less than minimum value."
+                )
+            cls.max_length = max_length
+
+        if regex is not None:
+            cls.regex = regex
 
 
 class Decimal(ConstrainedDecimal, Primitive):
     """Rational numbers that have a decimal representation.
     See below about the precision of the number"""
 
-    regex = re.compile(r"-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?")
+    regex = re.compile(r"^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$")
     __visit_name__ = "decimal"
 
 
@@ -147,14 +184,14 @@ class Integer(ConstrainedInt, Primitive):
     """A signed integer in the range −2,147,483,648..2,147,483,647 (32-bit;
     for larger values, use decimal)"""
 
-    regex = re.compile(r"[0]|[-+]?[1-9][0-9]*")
+    regex = re.compile(r"^[0]|[-+]?[1-9][0-9]*$")
     __visit_name__ = "integer"
 
 
 class UnsignedInt(ConstrainedInt, Primitive):
     """Any non-negative integer in the range 0..2,147,483,647"""
 
-    regex = re.compile(r"[0]|([1-9][0-9]*)")
+    regex = re.compile(r"^[0]|([1-9][0-9]*)$")
     __visit_name__ = "unsignedInt"
     ge = 0
 
@@ -162,7 +199,7 @@ class UnsignedInt(ConstrainedInt, Primitive):
 class PositiveInt(ConstrainedInt, Primitive):
     """Any positive integer in the range 1..2,147,483,647"""
 
-    regex = re.compile(r"\+?[1-9][0-9]*")
+    regex = re.compile(r"^\+?[1-9][0-9]*$")
     __visit_name__ = "positiveInt"
     gt = 0
 
@@ -186,7 +223,7 @@ class Oid(ConstrainedStr, Primitive):
     """An OID represented as a URI (RFC 3001 ); e.g. urn:oid:1.2.3.4.5"""
 
     __visit_name__ = "oid"
-    regex = re.compile(r"urn:oid:[0-2](\.(0|[1-9][0-9]*))+")
+    regex = re.compile(r"^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$")
 
 
 class Uuid(UUID, Primitive):

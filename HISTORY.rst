@@ -5,7 +5,9 @@ History
 6.0.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Breaking/Fixes: `PR#48 <https://github.com/nazrulworld/fhir.resources/pull/48>`_ ``Resource.id`` type has been replaced with ``fhirtypes.Id`` from ``fhirtypes.String`` (only for R4) [ItayGoren]
+
+- Fixes: constraints regex for fhirtypes ``Id``, ``Code``, ``Integer``, ``Decimal``, ``UnsignedInt``, ``PositiveInt`` and so on. [nazrulworld]
 
 
 6.0.0 (2020-12-17)

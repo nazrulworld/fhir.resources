@@ -486,6 +486,21 @@ pydantic_ Field Type Support
 All available fhir resources (types) can be use as pydantic_'s Field's value types. See issue#46 `Support for FastAPI pydantic response models <https://github.com/nazrulworld/fhir.resources/issues/46>`_.
 The module ``fhirtypes.py`` contains all fhir resources related types and should trigger validator automatically.
 
+
+``Resource.id aka fhirtypes.Id`` constraint extensibility
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+There are a lots of discussion about ``Resource.Id`` length of value here i.) https://bit.ly/360HksL ii.) https://bit.ly/3o1fZgl
+Based on that discussion, we recommend keep your ``Resource.Id`` size within 64 letters, but we are also providing freedom
+about the length of Id, in respect with others opinion that 64 chr length is not sufficient. ``fhirtypes.Id.configure_constraints()``
+is offering to customize as your own requirement.
+
+Examples::
+    >>> from fhir.resources.fhirtypes import Id
+    >>> Id.configure_constraints(min_length=16, max_length=128)
+
+Note: when you will change that behaviour, that would impact into your whole project.
+
+
 Migration (from later than ``6.X.X``)
 -------------------------------------
 

@@ -9,6 +9,7 @@ from pydantic import AnyUrl
 from pydantic.errors import DateError, DateTimeError, TimeError
 from pydantic.main import load_str_bytes
 from pydantic.networks import validate_email
+from pydantic.errors import ConfigError
 from pydantic.types import (
     ConstrainedBytes,
     ConstrainedDecimal,
@@ -129,10 +130,43 @@ class Id(ConstrainedStr, Primitive):
     pattern that meets these constraints.)
     """
 
-    regex = re.compile(r"[A-Za-z0-9\-.]{1,64}")
+    regex = re.compile(r"^[A-Za-z0-9\-.]+$")
     min_length = 1
     max_length = 64
     __visit_name__ = "id"
+
+    @classmethod
+    def configure_constraints(
+        cls, min_length: int = None, max_length: int = None, regex: Pattern = None
+    ):
+        """There are a lots of discussion about ``Resource.Id`` length of value.
+            1. https://bit.ly/360HksL
+            2. https://bit.ly/3o1fZgl
+        We see there is some agreement and disagreement, because of that we decide to make
+        it more flexible. Now it is possible configure three types of constraints.
+        """
+        if min_length is not None:
+            if min_length < 1:
+                raise ConfigError("Minimum length must be more than 0.")
+            _max_check = max_length or cls.max_length
+            if min_length > _max_check:
+                raise ConfigError(
+                    "Minimum length value cannot be greater than maximum value."
+                )
+            cls.min_length = min_length
+
+        if max_length is not None:
+            if max_length < 1:
+                raise ConfigError("Maximum length must be more than 0.")
+            _min_check = min_length or cls.min_length
+            if max_length < _min_check:
+                raise ConfigError(
+                    "Maximum length value cannot be less than minimum value."
+                )
+            cls.max_length = max_length
+
+        if regex is not None:
+            cls.regex = regex
 
 
 class Decimal(ConstrainedDecimal, Primitive):

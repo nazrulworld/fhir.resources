@@ -489,8 +489,8 @@ The module ``fhirtypes.py`` contains all fhir resources related types and should
 
 ``Resource.id aka fhirtypes.Id`` constraint extensibility
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-There are a lots of discussion about ``Resource.Id`` length of value here i.) https://bit.ly/360HksL ii.) https://bit.ly/3o1fZgl
-Based on that discussion, we recommend keep your ``Resource.Id`` size within 64 letters, but we are also providing freedom
+There are a lots of discussion here here i.) https://bit.ly/360HksL ii.) https://bit.ly/3o1fZgl about the length of ``Resource.Id``'s value.
+Based on those discussions, we recommend that keep your ``Resource.Id`` size within 64 letters (for the seek of intercompatibility with third party system), but we are also providing freedom
 about the length of Id, in respect with others opinion that 64 chr length is not sufficient. ``fhirtypes.Id.configure_constraints()``
 is offering to customize as your own requirement.
 

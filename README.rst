@@ -157,7 +157,10 @@ Usages
     >>> org.address.append(address)
     >>> org.dict() == json_obj
     True
-
+    
+.. note::
+    Please note that due to the way the validation works, you will run into issues if you are using ``construct()`` to create
+    resources that have more than one mandatory field. See `this comment in issue#56 <https://github.com/nazrulworld/fhir.resources/issues/56#issuecomment-784520234>`_ for details.
 
 **Example: 4**: Using Resource Factory Function::
 

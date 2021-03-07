@@ -1,7 +1,7 @@
 # _*_ coding: utf-8 _*_
 import datetime
+import decimal
 import re
-from decimal import Decimal
 from email.utils import formataddr, parseaddr
 from typing import TYPE_CHECKING, Any, Dict, Optional, Pattern, Union
 from uuid import UUID
@@ -218,7 +218,7 @@ class Decimal(ConstrainedDecimal, Primitive):
     @classmethod
     def to_string(cls, value):
         """ """
-        assert isinstance(value, Decimal)
+        assert isinstance(value, decimal.Decimal)
         return str(float(value))
 
 

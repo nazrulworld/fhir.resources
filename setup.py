@@ -17,6 +17,8 @@ setup_requirements = ["pytest-runner"]
 
 orjson_requirements = ["orjson>=3.4.3"]
 
+yaml_requirements = ["PyYAML>=5.4.1"]
+
 test_requirements = [
     "coverage",
     "pytest>5.4.0;python_version>='3.6'",
@@ -76,16 +78,18 @@ setup(
     tests_require=test_requirements,
     extras_require={
         "orjson": orjson_requirements,
+        "yaml": yaml_requirements,
         "test": (test_requirements + setup_requirements),
         "all": (
             test_requirements
             + setup_requirements
             + development_requirements
             + orjson_requirements
+            + yaml_requirements
         ),
     },
     url="https://github.com/nazrulworld/fhir.resources",
-    version="6.1.1.dev0",
+    version="6.2.0b1.dev0",
     zip_safe=False,
     python_requires=">=3.6",
     project_urls={

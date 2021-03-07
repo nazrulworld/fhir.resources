@@ -2,10 +2,12 @@
 History
 =======
 
-6.1.1 (unreleased)
+6.2.0b1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+New Feature
+
+- `Issue #47<https://github.com/nazrulworld/fhir.resources/issues/47>`_ add YAML support.
 
 
 6.1.0 (2021-02-13)

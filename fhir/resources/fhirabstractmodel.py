@@ -3,6 +3,7 @@
 import abc
 import inspect
 import logging
+import pathlib
 import typing
 from functools import lru_cache
 
@@ -11,8 +12,12 @@ from pydantic.class_validators import ROOT_VALIDATOR_CONFIG_KEY, root_validator
 from pydantic.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.errors import ConfigError, PydanticValueError
 from pydantic.fields import ModelField
+from pydantic.parse import Protocol
+from pydantic.types import StrBytes
 from pydantic.typing import AnyCallable
 from pydantic.utils import ROOT_KEY
+
+from .fhirutils import load_file, load_str_bytes, yaml_dumps
 
 try:
     import orjson
@@ -234,6 +239,49 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         """ """
         return cls.__json_encoder__
 
+    @classmethod
+    def parse_file(
+        cls: typing.Type["Model"],
+        path: typing.Union[str, pathlib.Path],
+        *,
+        content_type: str = None,
+        encoding: str = "utf8",
+        proto: Protocol = None,
+        allow_pickle: bool = False,
+    ) -> "Model":
+        obj = load_file(
+            path,
+            proto=proto,
+            content_type=content_type,
+            encoding=encoding,
+            allow_pickle=allow_pickle,
+            json_loads=cls.__config__.json_loads,
+        )
+        return cls.parse_obj(obj)
+
+    @classmethod
+    def parse_raw(
+        cls: typing.Type["Model"],
+        b: StrBytes,
+        *,
+        content_type: str = None,
+        encoding: str = "utf8",
+        proto: Protocol = None,
+        allow_pickle: bool = False,
+    ) -> "Model":
+        try:
+            obj = load_str_bytes(
+                b,
+                proto=proto,
+                content_type=content_type,
+                encoding=encoding,
+                allow_pickle=allow_pickle,
+                json_loads=cls.__config__.json_loads,
+            )
+        except (ValueError, TypeError, UnicodeDecodeError) as e:  # noqa: B014
+            raise ValidationError([ErrorWrapper(e, loc=ROOT_KEY)], cls)
+        return cls.parse_obj(obj)
+
     def dict(
         self,
         *,
@@ -406,6 +454,52 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
             if isinstance(result, bytes):
                 result = result.decode()
 
+        return result
+
+    def yaml(  # type: ignore
+        self,
+        *,
+        include: typing.Union["AbstractSetIntStr", "MappingIntStrAny"] = None,
+        exclude: typing.Union["AbstractSetIntStr", "MappingIntStrAny"] = None,
+        by_alias: bool = None,
+        exclude_unset: bool = False,
+        exclude_defaults: bool = False,
+        exclude_none: bool = None,
+        exclude_comments: bool = False,
+        return_bytes: bool = False,
+        **dumps_kwargs: typing.Any,
+    ) -> typing.Union[str, bytes]:
+        """Fully overridden method but codes are copied from BaseMode and business logic added
+        in according to support ``fhir_comments``filter and other FHIR specific requirments.
+        """
+        if by_alias is None:
+            by_alias = True
+
+        if exclude_none is None:
+            exclude_none = True
+
+        if exclude_comments:
+            # no support for comments yet.
+            pass
+
+        data = self.dict(
+            include=include,
+            exclude=exclude,
+            by_alias=by_alias,
+            exclude_unset=exclude_unset,
+            exclude_defaults=exclude_defaults,
+            exclude_none=exclude_none,
+        )
+        if self.__custom_root_type__:
+            data = data[ROOT_KEY]
+
+        if exclude_comments:
+            data = filter_empty_list_dict(data)
+
+        if typing.TYPE_CHECKING:
+            result: typing.Union[str, bytes]
+
+        result = yaml_dumps(data, return_bytes=return_bytes, **dumps_kwargs)
         return result
 
     class Config:

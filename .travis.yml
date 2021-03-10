@@ -28,7 +28,7 @@ cache:
     - eggs
 install:
   - pip install -U pip
-  - pip install -e .[test,orjson]
+  - pip install -e .[test]
   - pip install codecov
   - sleep 1
 script:

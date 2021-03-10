@@ -58,7 +58,7 @@ Installation
 ------------
 
 Just a simple ``pip install fhir.resources`` or ``easy_install fhir.resources`` is enough. But if you want development
-version, just clone from https://github.com/nazrulworld/fhir.resources and ``pip install -e .[all]``.
+version, just clone from https://github.com/nazrulworld/fhir.resources and ``pip install -e .[dev]``.
 
 
 Usages
@@ -157,7 +157,7 @@ Usages
     >>> org.address.append(address)
     >>> org.dict() == json_obj
     True
-    
+
 .. note::
     Please note that due to the way the validation works, you will run into issues if you are using ``construct()`` to create
     resources that have more than one mandatory field. See `this comment in issue#56 <https://github.com/nazrulworld/fhir.resources/issues/56#issuecomment-784520234>`_ for details.

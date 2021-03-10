@@ -14,7 +14,7 @@
     }
   ],
   "managingOrganization": {
-    "reference": "Organization/1"
+    "reference": "Organization/1936778"
   },
   "_active": {
     "extension": [
@@ -132,7 +132,7 @@
     },
     {
       "resourceType": "Organization",
-      "id": "org3141",
+      "id": "1936778",
       "text": {
         "status": "generated",
         "div": "\u003cdiv xmlns\u003d\"http://www.w3.org/1999/xhtml\"\u003e\n      \u003cp\u003eGood Health Clinic\u003c/p\u003e\n    \u003c/div\u003e"

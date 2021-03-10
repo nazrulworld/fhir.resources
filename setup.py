@@ -19,6 +19,8 @@ orjson_requirements = ["orjson>=3.4.3"]
 
 yaml_requirements = ["PyYAML>=5.4.1"]
 
+xml_requirements = ["lxml"]
+
 test_requirements = [
     "coverage",
     "pytest>5.4.0;python_version>='3.6'",
@@ -79,14 +81,16 @@ setup(
     extras_require={
         "orjson": orjson_requirements,
         "yaml": yaml_requirements,
-        "test": (test_requirements + setup_requirements),
-        "all": (
+        "xml": xml_requirements,
+        "test": (
             test_requirements
             + setup_requirements
-            + development_requirements
             + orjson_requirements
             + yaml_requirements
+            + xml_requirements
         ),
+        "dev": (test_requirements + development_requirements),
+        "all": (orjson_requirements + yaml_requirements + xml_requirements),
     },
     url="https://github.com/nazrulworld/fhir.resources",
     version="6.2.0b1.dev0",

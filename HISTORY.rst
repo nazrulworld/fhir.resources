@@ -9,6 +9,9 @@ New Feature
 
 - `Issue #47<https://github.com/nazrulworld/fhir.resources/issues/47>`_ add YAML support.
 
+Bugfixes
+
+- Added missing ``element_property`` field attribute for class ``FHIRPrimitiveExtension``.
 
 6.1.0 (2021-02-13)
 ------------------

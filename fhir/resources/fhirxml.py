@@ -2,7 +2,7 @@
 import typing
 from collections import OrderedDict, deque
 from copy import copy
-
+from pathlib import Path
 from lxml import etree
 from lxml.etree import QName
 
@@ -663,6 +663,18 @@ class Node:
             key, val = ns.to_xml()
             nsmap[key] = val
         return nsmap
+
+    def validate(self, xsd_file: Path):
+        """ """
+        assert xsd_file.exists() and xsd_file.is_file()
+
+        schema = etree.XMLSchema(file=str(xsd_file))
+        xmlparser = etree.XMLParser(schema=schema)
+
+        try:
+            etree.fromstring(self.to_string(False), parser=xmlparser)
+        except (etree.XMLSchemaError, etree.XMLSyntaxError) as exc:
+            raise ValueError(str(exc))
 
     def to_string(self, pretty_print=False, xml_declaration=True):
         """ """

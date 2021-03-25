@@ -3,6 +3,7 @@ import typing
 from collections import OrderedDict, deque
 from copy import copy
 from pathlib import Path
+
 from lxml import etree
 from lxml.etree import QName
 
@@ -11,6 +12,7 @@ from .fhirtypes import (
     ExtensionType,
     FHIRPrimitiveExtensionType,
     ResourceType,
+    Xhtml,
 )
 
 if typing.TYPE_CHECKING:
@@ -27,6 +29,7 @@ DictStrNoneKey = typing.Dict[typing.Union[str, None], str]
 DictStrBytesNoneKey = typing.Dict[StrNone, StrBytes]
 TupleStrKeyVal = typing.Tuple[str, StrBytes]
 ROOT_NS = "http://hl7.org/fhir"
+XHTML_NS = "http://www.w3.org/1999/xhtml"
 EMPTY_VALUE = None
 
 
@@ -38,6 +41,15 @@ def xml_represent(type_, val):
         return Boolean.to_string(val)
     else:
         return type_.to_string(val)
+
+
+def is_primitive_type(type_):
+    """ """
+    if getattr(type_, "is_primitive", lambda: False)() is False:
+        if type_ is bool:
+            return True
+        return False
+    return True
 
 
 class SimpleNodeStorage:
@@ -84,12 +96,12 @@ class NodeContainer(SimpleNodeStorage):
 
     def append(self, item):
         """ """
-        assert isinstance(item, Node)
+        assert isinstance(item, (Node, etree._Element))
         SimpleNodeStorage.append(self, item)
 
     def extend(self, items):
         """ """
-        if not all([isinstance(i, Node) for i in items]):
+        if not all([isinstance(i, (Node, etree._Element)) for i in items]):
             raise ValueError("value must be instance of ``Node``")
         SimpleNodeStorage.extend(self, items)
 
@@ -439,51 +451,51 @@ class Node:
         return me
 
     @staticmethod
-    def add_fhir_element(parent, field, value, exclude_none, ext=None, ext_field=None):
-        """Patient.__fields__['id'].name
-        Patient.__fields__['id'].type_
-        Patient.__fields__['id'].alias
-        Patient.__fields__[*__ext]
-        cls.element_properties()
-        Patient.__fields__['id'].field_info.extra.get("element_property")
-        <name>
-          <use value="official"/>
-          <given value="Östlund">
-             <extension url="http://hl7.org/fhir/StructureDefinition/iso21090-EN-qualifier" >
-                <valueCode value="MID"/>
-             </extension>
-          </given>
-        </name>
-        """
+    def inject_comments(
+        node: "Node", comments: typing.Union[str, typing.List[str]]
+    ) -> None:
+        """working comments"""
+        if comments is None:
+            return
+        if comments:
+            if isinstance(comments, str):
+                comments = [comments]
+            for cm in comments:
+                node.children.append(etree.Comment(cm))
+
+    @staticmethod
+    def add_fhir_element(parent, field, value, ext=None, ext_field=None):
+        """"""
         child = Node.create(field.alias)
-        if getattr(field.type_, "is_primitive", lambda: True)():
+        field_type = field.type_
+        if is_primitive_type(field_type):
             if isinstance(value, list):
                 if ext and not isinstance(ext, list):
                     raise NotImplementedError
+                if ext and len(ext) != len(value):
+                    raise NotImplementedError
 
                 for idx, val in enumerate(value):
-                    ext_ = None
-                    if ext:
-                        try:
-                            ext_ = ext[idx]
-                        except IndexError:
-                            pass
+                    ext_ = ext and ext[idx] or None
+                    if ext_ is None and val is None:
+                        continue
                     Node.add_fhir_element(
                         parent,
                         field,
                         value=val,
-                        exclude_none=exclude_none,
                         ext=ext_,
                         ext_field=ext_field,
                     )
             elif value is not None:
                 child.value = xml_represent(field.type_, value)
                 if ext is not None:
+                    Node.inject_comments(
+                        parent, ext.__dict__.get("fhir_comments", None)
+                    )
                     Node.add_fhir_element(
                         child,
                         field=ext_field,
                         value=ext,
-                        exclude_none=exclude_none,
                         ext=None,
                         ext_field=None,
                     )
@@ -493,107 +505,134 @@ class Node:
                 if ext is not None:
                     exts = not isinstance(ext, list) and [ext] or ext
                     for ext_ in exts:
+                        if ext_ is None:
+                            continue
+                        Node.inject_comments(
+                            parent, ext_.__dict__.get("fhir_comments", None)
+                        )
                         Node.add_fhir_element(
                             child,
                             field=ext_field,
                             value=ext_,
-                            exclude_none=exclude_none,
                             ext=None,
                             ext_field=None,
                         )
                 parent.children.append(child)
             return
-        # we see it's instance of 'FHIRAbstractModel'
-        if getattr(field.type_, "__resource_type__", None) is None:
-            raise NotImplementedError
 
+        # Handle Multiple non primitive type values
         if isinstance(value, list):
             for value_ in value:
                 Node.add_fhir_element(
                     parent,
                     field,
                     value_,
-                    exclude_none=exclude_none,
                     ext=ext,
                     ext_field=ext_field,
                 )
-
-        else:
-            parent_child = None
-            if field.type_ is ResourceType:
-                # special case
-                parent_child = child
-                child = Node.create(value.resource_type)
-                parent_child.children.append(child)
-
-            if field.type_ is FHIRPrimitiveExtensionType:
-                # this is an special primitive extension
-                del child
-                # xxx: handle comments (add comment to main element, parent in this case)
-                field = value.__class__.__fields__["extension"]
-                value = value.__dict__.get(field.name, None)
-                if not value:
-                    return
-                Node.add_fhir_element(
-                    parent,
-                    field,
-                    value,
-                    exclude_none=exclude_none,
-                    ext=ext,
-                    ext_field=ext_field,
-                )
-                return
-
-            for field_ in value.__class__.element_properties():
-                val = value.__dict__.get(field_.name)
-                if field.type_ is ExtensionType and field_.alias == "url":
-                    child.add_attribute("url", val)
-                    continue
-                value_ext, value_ext_field = None, None
-                if getattr(field_.type_, "is_primitive", lambda: True)():
-                    ext_key = f"{field.name}__ext"
-                    value_ext = value.__dict__.get(ext_key, None)
-                    if value_ext:
-                        value_ext_field = value.__class__.__fields__[ext_key]
-
-                if value_ext is None and val is None and exclude_none is True:
-                    continue
-
-                Node.add_fhir_element(
-                    child,
-                    field_,
-                    val,
-                    exclude_none=exclude_none,
-                    ext=value_ext,
-                    ext_field=value_ext_field,
-                )
-            if parent_child is None:
-                parent.children.append(child)
+            return
+        # we see it's instance of 'FHIRAbstractModel'
+        if getattr(field_type, "__resource_type__", None) is None:
+            type_str = str(field_type)
+            if (
+                type_str.startswith("typing.Union[")
+                and "fhirtypes.FHIRPrimitiveExtensionType" in type_str
+            ):
+                for cls in field_type.__args__:
+                    if cls.__name__ == "FHIRPrimitiveExtensionType":
+                        field_type = cls
             else:
-                parent.children.append(parent_child)
+                raise NotImplementedError
+
+        parent_child = None
+        if field_type is ResourceType:
+            # special case
+            parent_child = child
+            child = Node.create(value.resource_type)
+            parent_child.children.append(child)
+
+        if field_type is FHIRPrimitiveExtensionType:
+            # this is an special primitive extension
+            del child
+            # xxx: handle comments (add comment to main element, parent in this case)
+            field = value.__class__.__fields__["extension"]
+            value = value.__dict__.get(field.name, None)
+            if not value:
+                return
+            Node.add_fhir_element(
+                parent,
+                field,
+                value,
+                ext=ext,
+                ext_field=ext_field,
+            )
+            return
+        # working comments
+        comments = value.__dict__.get("fhir_comments", None)
+        Node.inject_comments(parent, comments)
+
+        for prop_name in value.__class__.elements_sequence():
+            field_ = value.__class__.__fields__[prop_name]
+            val = value.__dict__.get(field_.name)
+            if field_type is ExtensionType and field_.alias in ("url", "id") and val:
+                child.add_attribute(field_.alias, val)
+                continue
+            if field_.type_ is Xhtml and val:
+                # xxx: fhir-xhtml.xsd validation
+                xhtml_element = etree.fromstring(val)
+                if not (
+                    xhtml_element.nsmap[None] == XHTML_NS
+                    and str(etree.QName(XHTML_NS, field_.alias))
+                ):
+                    raise ValueError
+                else:
+                    child.children.append(xhtml_element)
+                    continue
+
+            value_ext, value_ext_field = None, None
+            if is_primitive_type(field_.type_):
+                ext_key = f"{field_.name}__ext"
+                value_ext = value.__dict__.get(ext_key, None)
+                if value_ext:
+                    value_ext_field = value.__class__.__fields__[ext_key]
+
+            if value_ext is None and val is None:
+                continue
+
+            Node.add_fhir_element(
+                child,
+                field_,
+                val,
+                ext=value_ext,
+                ext_field=value_ext_field,
+            )
+        if parent_child is None:
+            parent.children.append(child)
+        else:
+            parent.children.append(parent_child)
 
     @classmethod
-    def from_fhir_obj(cls, model: "FHIRAbstractModel", exclude_none=True):
-        """"""
+    def from_fhir_obj(cls, model: "FHIRAbstractModel"):
+        """ """
         resource_node = cls(model.resource_type, namespaces=[Namespace(None, ROOT_NS)])
 
-        for field in model.__class__.element_properties():
+        for prop_name in model.__class__.elements_sequence():
+            field = model.__class__.__fields__[prop_name]
             value = model.__dict__.get(field.name, None)
             value_ext, value_ext_field = None, None
-            if getattr(field.type_, "is_primitive", lambda: True)():
+            if is_primitive_type(field.type_):
                 ext_key = f"{field.name}__ext"
                 value_ext = model.__dict__.get(ext_key, None)
                 if value_ext:
                     value_ext_field = model.__class__.__fields__[ext_key]
 
-            if value_ext is None and value is None and exclude_none is True:
+            if value_ext is None and value is None:
                 continue
 
             Node.add_fhir_element(
                 resource_node,
                 field,
                 value,
-                exclude_none=exclude_none,
                 ext=value_ext,
                 ext_field=value_ext_field,
             )

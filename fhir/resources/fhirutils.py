@@ -36,6 +36,27 @@ except ImportError:
         raise_yaml_import_error()
 
 
+try:
+    from .fhirxml import xml_dumps
+except ImportError as exc:
+    def raise_lxml_import_error():
+        raise ImportError(
+            "LXML library not found! Make sure ``fhir.resources`` is "
+            "added into your project dependency with extra ´´xml´´. "
+            "for example ``fhir.resources[xml]``."
+        )
+
+    def xml_dumps(
+        model,
+        *,
+        pretty_print=False,
+        xml_declaration=True,
+        with_comments=True,
+        strip_text=False,
+    ):
+        raise_lxml_import_error()
+
+
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 
 

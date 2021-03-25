@@ -17,7 +17,7 @@ from pydantic.types import StrBytes
 from pydantic.typing import AnyCallable
 from pydantic.utils import ROOT_KEY
 
-from .fhirutils import load_file, load_str_bytes, yaml_dumps
+from .fhirutils import load_file, load_str_bytes, xml_dumps, yaml_dumps
 
 try:
     import orjson
@@ -217,6 +217,13 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         for model_field in cls.__fields__.values():
             if model_field.field_info.extra.get("element_property", False):
                 yield model_field
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``Resource`` according specification,
+        with preserving original sequence order.
+        """
+        return []
 
     @classmethod
     @lru_cache(maxsize=1024, typed=True)
@@ -501,6 +508,29 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
 
         result = yaml_dumps(data, return_bytes=return_bytes, **dumps_kwargs)
         return result
+
+    def xml(  # type: ignore
+        self,
+        *,
+        exclude_comments: bool = False,
+        pretty_print=False,
+        xml_declaration=True,
+        return_bytes: bool = False,
+        **dumps_kwargs: typing.Any,
+    ) -> typing.Union[str, bytes]:
+        """ """
+        params = {
+            "with_comments": not exclude_comments,
+            "xml_declaration": xml_declaration,
+            "pretty_print": pretty_print,
+        }
+        params.update(dumps_kwargs)
+
+        xml_string = xml_dumps(self, **params)
+        if return_bytes is False:
+            xml_string = xml_string.decode()
+
+        return xml_string
 
     class Config:
         json_loads = json_loads

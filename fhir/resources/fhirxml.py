@@ -560,8 +560,9 @@ class Node:
         comments = value.__dict__.get("fhir_comments", None)
         Node.inject_comments(parent, comments)
 
+        alias_maps = value.__class__.get_alias_mapping()
         for prop_name in value.__class__.elements_sequence():
-            field_ = value.__class__.__fields__[prop_name]
+            field_ = value.__class__.__fields__[alias_maps[prop_name]]
             val = value.__dict__.get(field_.name)
             if (
                 field_type.fhir_type_name() == "Extension"
@@ -604,8 +605,9 @@ class Node:
     def from_fhir_obj(cls, model: "FHIRAbstractModel"):
         """ """
         resource_node = cls(model.resource_type, namespaces=[Namespace(None, ROOT_NS)])
+        alias_maps = model.__class__.get_alias_mapping()
         for prop_name in model.__class__.elements_sequence():
-            field = model.__class__.__fields__[prop_name]
+            field = model.__class__.__fields__[alias_maps[prop_name]]
             value = model.__dict__.get(field.name, None)
             value_ext, value_ext_field = None, None
             if is_primitive_type(field.type_):

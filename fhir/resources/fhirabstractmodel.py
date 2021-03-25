@@ -242,6 +242,13 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         return cls.__fields__["resource_type"].default
 
     @classmethod
+    @lru_cache(maxsize=None, typed=True)
+    def get_alias_mapping(cls: typing.Type["Model"]) -> typing.Dict[str, str]:
+        """Mapping of field name and alias"""
+        aliases = cls.elements_sequence()
+        return {f.alias: fname for fname, f in cls.__fields__.items() if f.alias in aliases}
+
+    @classmethod
     def get_json_encoder(cls) -> typing.Callable[[typing.Any], typing.Any]:
         """ """
         return cls.__json_encoder__

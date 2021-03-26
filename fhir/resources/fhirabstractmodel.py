@@ -397,7 +397,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         by_alias: bool = True,
         exclude_none: bool = True,
         exclude_comments: bool = False,
-    ) -> typing.OrderedDict[str, typing.Any]:
+    ) -> OrderedDict:
         return OrderedDict(
             self._fhir_iter(
                 by_alias=by_alias,

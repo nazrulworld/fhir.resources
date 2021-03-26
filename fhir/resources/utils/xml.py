@@ -4,8 +4,8 @@ from collections import OrderedDict, deque
 from copy import copy
 from pathlib import Path
 
-from lxml import etree
-from lxml.etree import QName
+from lxml import etree  # type: ignore
+from lxml.etree import QName  # type: ignore
 
 if typing.TYPE_CHECKING:
     from fhir.resources.fhirabstractmodel import FHIRAbstractModel

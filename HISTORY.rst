@@ -8,6 +8,13 @@ History
 New Feature
 
 - `Issue #47<https://github.com/nazrulworld/fhir.resources/issues/47>`_ add YAML support.
+- `Issue #51<https://github.com/nazrulworld/fhir.resources/issues/51>`_ Help on converting XML to FHIR format.
+- `Issue #63<https://github.com/nazrulworld/fhir.resources/issues/63>`_ Now JSON output key's sequence is matching with original FHIR specification.
+
+Breaking
+
+- ``FHIRAbstractModel.json()`` and ``FHIRAbstractModel.dict()`` parameters signatures are more FHIR specific and additional parameters are removed (pydantic specific).
+
 
 Bugfixes
 

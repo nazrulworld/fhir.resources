@@ -311,7 +311,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         }
         params.update(dumps_kwargs)
 
-        xml_string = xml_dumps(self, **params)
+        xml_string = xml_dumps(self, **params)  # type: ignore
         if return_bytes is False:
             xml_string = xml_string.decode()
 
@@ -397,7 +397,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         by_alias: bool = True,
         exclude_none: bool = True,
         exclude_comments: bool = False,
-    ) -> typing.OrderedDict[str, typing.Any]:
+    ) -> OrderedDict:
         return OrderedDict(
             self._fhir_iter(
                 by_alias=by_alias,

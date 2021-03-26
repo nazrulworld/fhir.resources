@@ -16,7 +16,7 @@ from . import domainresource, fhirtypes
 
 
 class GuidanceResponse(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -261,6 +261,37 @@ class GuidanceResponse(domainresource.DomainResource):
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Group"],
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``GuidanceResponse`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "requestId",
+            "identifier",
+            "module",
+            "status",
+            "subject",
+            "context",
+            "occurrenceDateTime",
+            "performer",
+            "reasonCodeableConcept",
+            "reasonReference",
+            "note",
+            "evaluationMessage",
+            "outputParameters",
+            "result",
+            "dataRequirement",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1819(

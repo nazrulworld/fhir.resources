@@ -14,7 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Medication(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -135,9 +135,34 @@ class Medication(domainresource.DomainResource):
         None, alias="_status", title="Extension field for ``status``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``Medication`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "code",
+            "status",
+            "isBrand",
+            "isOverTheCounter",
+            "manufacturer",
+            "form",
+            "ingredient",
+            "package",
+            "image",
+        ]
+
 
 class MedicationIngredient(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -207,6 +232,22 @@ class MedicationIngredient(backboneelement.BackboneElement):
         enum_reference_types=["Substance", "Medication"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``MedicationIngredient`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "itemCodeableConcept",
+            "itemReference",
+            "itemReference",
+            "isActive",
+            "amount",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_2247(
         cls, values: typing.Dict[str, typing.Any]
@@ -247,7 +288,7 @@ class MedicationIngredient(backboneelement.BackboneElement):
 
 
 class MedicationPackage(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -287,9 +328,16 @@ class MedicationPackage(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``MedicationPackage`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "container", "content", "batch"]
+
 
 class MedicationPackageBatch(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -324,9 +372,16 @@ class MedicationPackageBatch(backboneelement.BackboneElement):
         None, alias="_lotNumber", title="Extension field for ``lotNumber``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``MedicationPackageBatch`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "lotNumber", "expirationDate"]
+
 
 class MedicationPackageContent(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -370,6 +425,20 @@ class MedicationPackageContent(backboneelement.BackboneElement):
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Medication"],
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``MedicationPackageContent`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "itemCodeableConcept",
+            "itemReference",
+            "amount",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_2629(

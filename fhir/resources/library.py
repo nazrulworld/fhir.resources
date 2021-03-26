@@ -16,7 +16,7 @@ from . import domainresource, fhirtypes
 
 
 class Library(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -495,6 +495,54 @@ class Library(domainresource.DomainResource):
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``Library`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "url",
+            "identifier",
+            "version",
+            "name",
+            "title",
+            "subtitle",
+            "status",
+            "experimental",
+            "type",
+            "subjectCodeableConcept",
+            "subjectReference",
+            "date",
+            "publisher",
+            "contact",
+            "description",
+            "useContext",
+            "jurisdiction",
+            "purpose",
+            "usage",
+            "copyright",
+            "approvalDate",
+            "lastReviewDate",
+            "effectivePeriod",
+            "topic",
+            "author",
+            "editor",
+            "reviewer",
+            "endorser",
+            "relatedArtifact",
+            "parameter",
+            "dataRequirement",
+            "content",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_922(

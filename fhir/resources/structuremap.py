@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class StructureMap(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -303,6 +303,40 @@ class StructureMap(domainresource.DomainResource):
         None, alias="_version", title="Extension field for ``version``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``StructureMap`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "url",
+            "identifier",
+            "version",
+            "name",
+            "title",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "description",
+            "useContext",
+            "jurisdiction",
+            "purpose",
+            "copyright",
+            "structure",
+            "import",
+            "group",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1458(
         cls, values: typing.Dict[str, typing.Any]
@@ -368,7 +402,7 @@ class StructureMap(domainresource.DomainResource):
 
 
 class StructureMapGroup(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -459,6 +493,23 @@ class StructureMapGroup(backboneelement.BackboneElement):
         None, alias="_typeMode", title="Extension field for ``typeMode``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``StructureMapGroup`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "name",
+            "extends",
+            "typeMode",
+            "documentation",
+            "input",
+            "rule",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1983(
         cls, values: typing.Dict[str, typing.Any]
@@ -520,7 +571,7 @@ class StructureMapGroup(backboneelement.BackboneElement):
 
 
 class StructureMapGroupInput(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -584,6 +635,21 @@ class StructureMapGroupInput(backboneelement.BackboneElement):
         None, alias="_type", title="Extension field for ``type``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``StructureMapGroupInput`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "name",
+            "type",
+            "mode",
+            "documentation",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2515(
         cls, values: typing.Dict[str, typing.Any]
@@ -645,7 +711,7 @@ class StructureMapGroupInput(backboneelement.BackboneElement):
 
 
 class StructureMapGroupRule(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -715,6 +781,23 @@ class StructureMapGroupRule(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``StructureMapGroupRule`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "name",
+            "source",
+            "target",
+            "rule",
+            "dependent",
+            "documentation",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2380(
         cls, values: typing.Dict[str, typing.Any]
@@ -776,7 +859,7 @@ class StructureMapGroupRule(backboneelement.BackboneElement):
 
 
 class StructureMapGroupRuleDependent(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -810,6 +893,13 @@ class StructureMapGroupRuleDependent(backboneelement.BackboneElement):
     variable__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_variable", title="Extension field for ``variable``.")
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``StructureMapGroupRuleDependent`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "name", "variable"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3314(
@@ -872,7 +962,7 @@ class StructureMapGroupRuleDependent(backboneelement.BackboneElement):
 
 
 class StructureMapGroupRuleSource(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1708,6 +1798,77 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
         None, alias="_variable", title="Extension field for ``variable``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``StructureMapGroupRuleSource`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "context",
+            "min",
+            "max",
+            "type",
+            "defaultValueBase64Binary",
+            "defaultValueBoolean",
+            "defaultValueCanonical",
+            "defaultValueCode",
+            "defaultValueDate",
+            "defaultValueDateTime",
+            "defaultValueDecimal",
+            "defaultValueId",
+            "defaultValueInstant",
+            "defaultValueInteger",
+            "defaultValueMarkdown",
+            "defaultValueOid",
+            "defaultValuePositiveInt",
+            "defaultValueString",
+            "defaultValueTime",
+            "defaultValueUnsignedInt",
+            "defaultValueUri",
+            "defaultValueUrl",
+            "defaultValueUuid",
+            "defaultValueAddress",
+            "defaultValueAge",
+            "defaultValueAnnotation",
+            "defaultValueAttachment",
+            "defaultValueCodeableConcept",
+            "defaultValueCoding",
+            "defaultValueContactPoint",
+            "defaultValueCount",
+            "defaultValueDistance",
+            "defaultValueDuration",
+            "defaultValueHumanName",
+            "defaultValueIdentifier",
+            "defaultValueMoney",
+            "defaultValuePeriod",
+            "defaultValueQuantity",
+            "defaultValueRange",
+            "defaultValueRatio",
+            "defaultValueReference",
+            "defaultValueSampledData",
+            "defaultValueSignature",
+            "defaultValueTiming",
+            "defaultValueContactDetail",
+            "defaultValueContributor",
+            "defaultValueDataRequirement",
+            "defaultValueExpression",
+            "defaultValueParameterDefinition",
+            "defaultValueRelatedArtifact",
+            "defaultValueTriggerDefinition",
+            "defaultValueUsageContext",
+            "defaultValueDosage",
+            "defaultValueMeta",
+            "element",
+            "listMode",
+            "variable",
+            "condition",
+            "check",
+            "logMessage",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3005(
         cls, values: typing.Dict[str, typing.Any]
@@ -1860,7 +2021,7 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
 
 
 class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1971,9 +2132,28 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
         None, alias="_variable", title="Extension field for ``variable``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``StructureMapGroupRuleTarget`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "context",
+            "contextType",
+            "element",
+            "variable",
+            "listMode",
+            "listRuleId",
+            "transform",
+            "parameter",
+        ]
+
 
 class StructureMapGroupRuleTargetParameter(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -2057,6 +2237,22 @@ class StructureMapGroupRuleTargetParameter(backboneelement.BackboneElement):
         None, alias="_valueString", title="Extension field for ``valueString``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``StructureMapGroupRuleTargetParameter`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "valueId",
+            "valueString",
+            "valueBoolean",
+            "valueInteger",
+            "valueDecimal",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_3937(
         cls, values: typing.Dict[str, typing.Any]
@@ -2105,7 +2301,7 @@ class StructureMapGroupRuleTargetParameter(backboneelement.BackboneElement):
 
 
 class StructureMapStructure(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -2170,6 +2366,21 @@ class StructureMapStructure(backboneelement.BackboneElement):
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``StructureMapStructure`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "url",
+            "mode",
+            "alias",
+            "documentation",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2424(

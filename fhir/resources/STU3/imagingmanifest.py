@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ImagingManifest(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -125,9 +125,31 @@ class ImagingManifest(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ImagingManifest`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "patient",
+            "authoringTime",
+            "author",
+            "description",
+            "study",
+        ]
+
 
 class ImagingManifestStudy(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -191,6 +213,21 @@ class ImagingManifestStudy(backboneelement.BackboneElement):
         None, alias="_uid", title="Extension field for ``uid``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ImagingManifestStudy`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "uid",
+            "imagingStudy",
+            "endpoint",
+            "series",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2254(
         cls, values: typing.Dict[str, typing.Any]
@@ -252,7 +289,7 @@ class ImagingManifestStudy(backboneelement.BackboneElement):
 
 
 class ImagingManifestStudySeries(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -300,6 +337,13 @@ class ImagingManifestStudySeries(backboneelement.BackboneElement):
     uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uid", title="Extension field for ``uid``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ImagingManifestStudySeries`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "uid", "endpoint", "instance"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2867(
@@ -362,7 +406,7 @@ class ImagingManifestStudySeries(backboneelement.BackboneElement):
 
 
 class ImagingManifestStudySeriesInstance(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -397,6 +441,13 @@ class ImagingManifestStudySeriesInstance(backboneelement.BackboneElement):
     uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uid", title="Extension field for ``uid``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ImagingManifestStudySeriesInstance`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "sopClass", "uid"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3674(

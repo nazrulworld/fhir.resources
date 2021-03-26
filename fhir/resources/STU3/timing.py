@@ -14,7 +14,7 @@ from . import element, fhirtypes
 
 
 class Timing(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -66,9 +66,16 @@ class Timing(element.Element):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``Timing`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "event", "repeat", "code"]
+
 
 class TimingRepeat(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -327,6 +334,33 @@ class TimingRepeat(element.Element):
     when__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_when", title="Extension field for ``when``.")
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TimingRepeat`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "boundsDuration",
+            "boundsRange",
+            "boundsPeriod",
+            "count",
+            "countMax",
+            "duration",
+            "durationMax",
+            "durationUnit",
+            "frequency",
+            "frequencyMax",
+            "period",
+            "periodMax",
+            "periodUnit",
+            "dayOfWeek",
+            "timeOfDay",
+            "when",
+            "offset",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_1425(

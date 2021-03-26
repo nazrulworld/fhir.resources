@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class VerificationResult(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -199,6 +199,36 @@ class VerificationResult(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``VerificationResult`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "target",
+            "targetLocation",
+            "need",
+            "status",
+            "statusDate",
+            "validationType",
+            "validationProcess",
+            "frequency",
+            "lastPerformed",
+            "nextScheduled",
+            "failureAction",
+            "primarySource",
+            "attestation",
+            "validator",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2092(
         cls, values: typing.Dict[str, typing.Any]
@@ -260,7 +290,7 @@ class VerificationResult(domainresource.DomainResource):
 
 
 class VerificationResultAttestation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -374,9 +404,28 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
         enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``VerificationResultAttestation`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "who",
+            "onBehalfOf",
+            "communicationMethod",
+            "date",
+            "sourceIdentityCertificate",
+            "proxyIdentityCertificate",
+            "proxySignature",
+            "sourceSignature",
+        ]
+
 
 class VerificationResultPrimarySource(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -466,9 +515,27 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
         enum_reference_types=["Organization", "Practitioner", "PractitionerRole"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``VerificationResultPrimarySource`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "who",
+            "type",
+            "communicationMethod",
+            "validationStatus",
+            "validationDate",
+            "canPushUpdates",
+            "pushTypeAvailable",
+        ]
+
 
 class VerificationResultValidator(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -513,3 +580,17 @@ class VerificationResultValidator(backboneelement.BackboneElement):
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``VerificationResultValidator`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "organization",
+            "identityCertificate",
+            "attestationSignature",
+        ]

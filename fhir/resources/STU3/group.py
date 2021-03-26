@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Group(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -155,6 +155,31 @@ class Group(domainresource.DomainResource):
         None, alias="_type", title="Extension field for ``type``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``Group`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "active",
+            "type",
+            "actual",
+            "code",
+            "name",
+            "quantity",
+            "characteristic",
+            "member",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_708(
         cls, values: typing.Dict[str, typing.Any]
@@ -216,7 +241,7 @@ class Group(domainresource.DomainResource):
 
 
 class GroupCharacteristic(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -326,6 +351,24 @@ class GroupCharacteristic(backboneelement.BackboneElement):
         one_of_many_required=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``GroupCharacteristic`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "code",
+            "valueCodeableConcept",
+            "valueBoolean",
+            "valueQuantity",
+            "valueRange",
+            "exclude",
+            "period",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2144(
         cls, values: typing.Dict[str, typing.Any]
@@ -432,7 +475,7 @@ class GroupCharacteristic(backboneelement.BackboneElement):
 
 
 class GroupMember(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -485,3 +528,10 @@ class GroupMember(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``GroupMember`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "entity", "period", "inactive"]

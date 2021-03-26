@@ -16,7 +16,7 @@ from . import domainresource, fhirtypes
 
 
 class Media(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -342,6 +342,45 @@ class Media(domainresource.DomainResource):
     width__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_width", title="Extension field for ``width``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``Media`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "basedOn",
+            "partOf",
+            "status",
+            "type",
+            "modality",
+            "view",
+            "subject",
+            "encounter",
+            "createdDateTime",
+            "createdPeriod",
+            "issued",
+            "operator",
+            "reasonCode",
+            "bodySite",
+            "deviceName",
+            "device",
+            "height",
+            "width",
+            "frames",
+            "duration",
+            "content",
+            "note",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_654(

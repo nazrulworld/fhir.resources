@@ -14,7 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class SubstanceProtein(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -104,9 +104,29 @@ class SubstanceProtein(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``SubstanceProtein`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "sequenceType",
+            "numberOfSubunits",
+            "disulfideLinkage",
+            "subunit",
+        ]
+
 
 class SubstanceProteinSubunit(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -244,3 +264,22 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
     subunit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_subunit", title="Extension field for ``subunit``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``SubstanceProteinSubunit`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "subunit",
+            "sequence",
+            "length",
+            "sequenceAttachment",
+            "nTerminalModificationId",
+            "nTerminalModification",
+            "cTerminalModificationId",
+            "cTerminalModification",
+        ]

@@ -16,7 +16,7 @@ from . import domainresource, fhirtypes
 
 
 class ServiceRequest(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -620,6 +620,60 @@ class ServiceRequest(domainresource.DomainResource):
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ServiceRequest`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "instantiatesCanonical",
+            "instantiatesUri",
+            "basedOn",
+            "replaces",
+            "requisition",
+            "status",
+            "intent",
+            "category",
+            "priority",
+            "doNotPerform",
+            "code",
+            "orderDetail",
+            "quantityQuantity",
+            "quantityRatio",
+            "quantityRange",
+            "subject",
+            "encounter",
+            "occurrenceDateTime",
+            "occurrencePeriod",
+            "occurrenceTiming",
+            "asNeededBoolean",
+            "asNeededCodeableConcept",
+            "authoredOn",
+            "requester",
+            "performerType",
+            "performer",
+            "locationCode",
+            "locationReference",
+            "reasonCode",
+            "reasonReference",
+            "insurance",
+            "supportingInfo",
+            "specimen",
+            "bodySite",
+            "note",
+            "patientInstruction",
+            "relevantHistory",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1665(

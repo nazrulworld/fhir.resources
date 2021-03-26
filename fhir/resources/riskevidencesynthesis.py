@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class RiskEvidenceSynthesis(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -459,6 +459,53 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
         None, alias="_version", title="Extension field for ``version``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``RiskEvidenceSynthesis`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "url",
+            "identifier",
+            "version",
+            "name",
+            "title",
+            "status",
+            "date",
+            "publisher",
+            "contact",
+            "description",
+            "note",
+            "useContext",
+            "jurisdiction",
+            "copyright",
+            "approvalDate",
+            "lastReviewDate",
+            "effectivePeriod",
+            "topic",
+            "author",
+            "editor",
+            "reviewer",
+            "endorser",
+            "relatedArtifact",
+            "synthesisType",
+            "studyType",
+            "population",
+            "exposure",
+            "outcome",
+            "sampleSize",
+            "riskEstimate",
+            "certainty",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2379(
         cls, values: typing.Dict[str, typing.Any]
@@ -520,7 +567,7 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
 
 
 class RiskEvidenceSynthesisCertainty(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -562,11 +609,25 @@ class RiskEvidenceSynthesisCertainty(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``RiskEvidenceSynthesisCertainty`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "rating",
+            "note",
+            "certaintySubcomponent",
+        ]
+
 
 class RiskEvidenceSynthesisCertaintyCertaintySubcomponent(
     backboneelement.BackboneElement
 ):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -608,9 +669,16 @@ class RiskEvidenceSynthesisCertaintyCertaintySubcomponent(
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``RiskEvidenceSynthesisCertaintyCertaintySubcomponent`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "type", "rating", "note"]
+
 
 class RiskEvidenceSynthesisRiskEstimate(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -701,11 +769,29 @@ class RiskEvidenceSynthesisRiskEstimate(backboneelement.BackboneElement):
         None, alias="_value", title="Extension field for ``value``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``RiskEvidenceSynthesisRiskEstimate`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "description",
+            "type",
+            "value",
+            "unitOfMeasure",
+            "denominatorCount",
+            "numeratorCount",
+            "precisionEstimate",
+        ]
+
 
 class RiskEvidenceSynthesisRiskEstimatePrecisionEstimate(
     backboneelement.BackboneElement
 ):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -762,9 +848,16 @@ class RiskEvidenceSynthesisRiskEstimatePrecisionEstimate(
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``RiskEvidenceSynthesisRiskEstimatePrecisionEstimate`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "type", "level", "from", "to"]
+
 
 class RiskEvidenceSynthesisSampleSize(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -811,3 +904,17 @@ class RiskEvidenceSynthesisSampleSize(backboneelement.BackboneElement):
     numberOfStudies__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_numberOfStudies", title="Extension field for ``numberOfStudies``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``RiskEvidenceSynthesisSampleSize`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "description",
+            "numberOfStudies",
+            "numberOfParticipants",
+        ]

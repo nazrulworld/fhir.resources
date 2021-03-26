@@ -14,7 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class InsurancePlan(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -196,9 +196,39 @@ class InsurancePlan(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``InsurancePlan`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "type",
+            "name",
+            "alias",
+            "period",
+            "ownedBy",
+            "administeredBy",
+            "coverageArea",
+            "contact",
+            "endpoint",
+            "network",
+            "coverage",
+            "plan",
+        ]
+
 
 class InsurancePlanContact(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -247,9 +277,24 @@ class InsurancePlanContact(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``InsurancePlanContact`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "purpose",
+            "name",
+            "telecom",
+            "address",
+        ]
+
 
 class InsurancePlanCoverage(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -291,9 +336,16 @@ class InsurancePlanCoverage(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``InsurancePlanCoverage`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "type", "network", "benefit"]
+
 
 class InsurancePlanCoverageBenefit(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -335,9 +387,16 @@ class InsurancePlanCoverageBenefit(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``InsurancePlanCoverageBenefit`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "type", "requirement", "limit"]
+
 
 class InsurancePlanCoverageBenefitLimit(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -368,9 +427,16 @@ class InsurancePlanCoverageBenefitLimit(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``InsurancePlanCoverageBenefitLimit`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "value", "code"]
+
 
 class InsurancePlanPlan(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -445,9 +511,26 @@ class InsurancePlanPlan(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``InsurancePlanPlan`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "type",
+            "coverageArea",
+            "network",
+            "generalCost",
+            "specificCost",
+        ]
+
 
 class InsurancePlanPlanGeneralCost(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -502,9 +585,24 @@ class InsurancePlanPlanGeneralCost(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``InsurancePlanPlanGeneralCost`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "type",
+            "groupSize",
+            "cost",
+            "comment",
+        ]
+
 
 class InsurancePlanPlanSpecificCost(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -535,9 +633,16 @@ class InsurancePlanPlanSpecificCost(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``InsurancePlanPlanSpecificCost`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "category", "benefit"]
+
 
 class InsurancePlanPlanSpecificCostBenefit(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -569,9 +674,16 @@ class InsurancePlanPlanSpecificCostBenefit(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``InsurancePlanPlanSpecificCostBenefit`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "type", "cost"]
+
 
 class InsurancePlanPlanSpecificCostBenefitCost(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -628,3 +740,18 @@ class InsurancePlanPlanSpecificCostBenefitCost(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``InsurancePlanPlanSpecificCostBenefitCost`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "type",
+            "applicability",
+            "qualifiers",
+            "value",
+        ]

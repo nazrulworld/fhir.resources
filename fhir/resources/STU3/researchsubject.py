@@ -16,7 +16,7 @@ from . import domainresource, fhirtypes
 
 
 class ResearchSubject(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -142,6 +142,30 @@ class ResearchSubject(domainresource.DomainResource):
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["ResearchStudy"],
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ResearchSubject`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "period",
+            "study",
+            "individual",
+            "assignedArm",
+            "actualArm",
+            "consent",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1731(

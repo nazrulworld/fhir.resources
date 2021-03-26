@@ -14,7 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Person(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -135,9 +135,35 @@ class Person(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``Person`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "name",
+            "telecom",
+            "gender",
+            "birthDate",
+            "address",
+            "photo",
+            "managingOrganization",
+            "active",
+            "link",
+        ]
+
 
 class PersonLink(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -174,3 +200,10 @@ class PersonLink(backboneelement.BackboneElement):
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "Practitioner", "RelatedPerson", "Person"],
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``PersonLink`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "target", "assurance"]

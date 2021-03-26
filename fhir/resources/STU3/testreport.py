@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class TestReport(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -189,6 +189,34 @@ class TestReport(domainresource.DomainResource):
         None, alias="_tester", title="Extension field for ``tester``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestReport`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "name",
+            "status",
+            "testScript",
+            "result",
+            "score",
+            "tester",
+            "issued",
+            "participant",
+            "setup",
+            "test",
+            "teardown",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1252(
         cls, values: typing.Dict[str, typing.Any]
@@ -250,7 +278,7 @@ class TestReport(domainresource.DomainResource):
 
 
 class TestReportParticipant(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -300,6 +328,13 @@ class TestReportParticipant(backboneelement.BackboneElement):
     uri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uri", title="Extension field for ``uri``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestReportParticipant`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "type", "uri", "display"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2403(
@@ -362,7 +397,7 @@ class TestReportParticipant(backboneelement.BackboneElement):
 
 
 class TestReportSetup(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -381,9 +416,16 @@ class TestReportSetup(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestReportSetup`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "action"]
+
 
 class TestReportSetupAction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -411,9 +453,16 @@ class TestReportSetupAction(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestReportSetupAction`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "operation", "assert"]
+
 
 class TestReportSetupActionAssert(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -462,6 +511,13 @@ class TestReportSetupActionAssert(backboneelement.BackboneElement):
     result__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_result", title="Extension field for ``result``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestReportSetupActionAssert`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "result", "message", "detail"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3013(
@@ -524,7 +580,7 @@ class TestReportSetupActionAssert(backboneelement.BackboneElement):
 
 
 class TestReportSetupActionOperation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -573,6 +629,13 @@ class TestReportSetupActionOperation(backboneelement.BackboneElement):
     result__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_result", title="Extension field for ``result``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestReportSetupActionOperation`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "result", "message", "detail"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3326(
@@ -635,7 +698,7 @@ class TestReportSetupActionOperation(backboneelement.BackboneElement):
 
 
 class TestReportTeardown(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -655,9 +718,16 @@ class TestReportTeardown(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestReportTeardown`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "action"]
+
 
 class TestReportTeardownAction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -676,9 +746,16 @@ class TestReportTeardownAction(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestReportTeardownAction`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "operation"]
+
 
 class TestReportTest(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -726,9 +803,16 @@ class TestReportTest(backboneelement.BackboneElement):
         None, alias="_name", title="Extension field for ``name``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestReportTest`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "name", "description", "action"]
+
 
 class TestReportTestAction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -755,3 +839,10 @@ class TestReportTestAction(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestReportTestAction`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "operation", "assert"]

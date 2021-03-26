@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class MedicationKnowledge(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -299,9 +299,47 @@ class MedicationKnowledge(domainresource.DomainResource):
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_synonym", title="Extension field for ``synonym``.")
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``MedicationKnowledge`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "code",
+            "status",
+            "manufacturer",
+            "doseForm",
+            "amount",
+            "synonym",
+            "relatedMedicationKnowledge",
+            "associatedMedication",
+            "productType",
+            "monograph",
+            "ingredient",
+            "preparationInstruction",
+            "intendedRoute",
+            "cost",
+            "monitoringProgram",
+            "administrationGuidelines",
+            "medicineClassification",
+            "packaging",
+            "drugCharacteristic",
+            "contraindication",
+            "regulatory",
+            "kinetics",
+        ]
+
 
 class MedicationKnowledgeAdministrationGuidelines(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -369,6 +407,21 @@ class MedicationKnowledgeAdministrationGuidelines(backboneelement.BackboneElemen
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``MedicationKnowledgeAdministrationGuidelines`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "dosage",
+            "indicationCodeableConcept",
+            "indicationReference",
+            "patientCharacteristics",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_4652(
         cls, values: typing.Dict[str, typing.Any]
@@ -413,7 +466,7 @@ class MedicationKnowledgeAdministrationGuidelines(backboneelement.BackboneElemen
 class MedicationKnowledgeAdministrationGuidelinesDosage(
     backboneelement.BackboneElement
 ):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -445,11 +498,18 @@ class MedicationKnowledgeAdministrationGuidelinesDosage(
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``MedicationKnowledgeAdministrationGuidelinesDosage`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "type", "dosage"]
+
 
 class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics(
     backboneelement.BackboneElement
 ):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -511,6 +571,20 @@ class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics(
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_value", title="Extension field for ``value``.")
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "characteristicCodeableConcept",
+            "characteristicQuantity",
+            "value",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_6941(
         cls, values: typing.Dict[str, typing.Any]
@@ -556,7 +630,7 @@ class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics(
 
 
 class MedicationKnowledgeCost(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -599,9 +673,16 @@ class MedicationKnowledgeCost(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``MedicationKnowledgeCost`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "type", "source", "cost"]
+
 
 class MedicationKnowledgeDrugCharacteristic(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -680,6 +761,22 @@ class MedicationKnowledgeDrugCharacteristic(backboneelement.BackboneElement):
         None, alias="_valueString", title="Extension field for ``valueString``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``MedicationKnowledgeDrugCharacteristic`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "type",
+            "valueCodeableConcept",
+            "valueString",
+            "valueQuantity",
+            "valueBase64Binary",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_3976(
         cls, values: typing.Dict[str, typing.Any]
@@ -727,7 +824,7 @@ class MedicationKnowledgeDrugCharacteristic(backboneelement.BackboneElement):
 
 
 class MedicationKnowledgeIngredient(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -797,6 +894,21 @@ class MedicationKnowledgeIngredient(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``MedicationKnowledgeIngredient`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "itemCodeableConcept",
+            "itemReference",
+            "isActive",
+            "strength",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_3175(
         cls, values: typing.Dict[str, typing.Any]
@@ -837,7 +949,7 @@ class MedicationKnowledgeIngredient(backboneelement.BackboneElement):
 
 
 class MedicationKnowledgeKinetics(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -877,9 +989,23 @@ class MedicationKnowledgeKinetics(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``MedicationKnowledgeKinetics`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "areaUnderCurve",
+            "lethalDose50",
+            "halfLifePeriod",
+        ]
+
 
 class MedicationKnowledgeMedicineClassification(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -913,9 +1039,16 @@ class MedicationKnowledgeMedicineClassification(backboneelement.BackboneElement)
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``MedicationKnowledgeMedicineClassification`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "type", "classification"]
+
 
 class MedicationKnowledgeMonitoringProgram(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -946,9 +1079,16 @@ class MedicationKnowledgeMonitoringProgram(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``MedicationKnowledgeMonitoringProgram`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "type", "name"]
+
 
 class MedicationKnowledgeMonograph(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -980,9 +1120,16 @@ class MedicationKnowledgeMonograph(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``MedicationKnowledgeMonograph`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "type", "source"]
+
 
 class MedicationKnowledgePackaging(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1016,9 +1163,16 @@ class MedicationKnowledgePackaging(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``MedicationKnowledgePackaging`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "type", "quantity"]
+
 
 class MedicationKnowledgeRegulatory(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1073,9 +1227,24 @@ class MedicationKnowledgeRegulatory(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``MedicationKnowledgeRegulatory`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "regulatoryAuthority",
+            "substitution",
+            "schedule",
+            "maxDispense",
+        ]
+
 
 class MedicationKnowledgeRegulatoryMaxDispense(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1103,9 +1272,16 @@ class MedicationKnowledgeRegulatoryMaxDispense(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``MedicationKnowledgeRegulatoryMaxDispense`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "quantity", "period"]
+
 
 class MedicationKnowledgeRegulatorySchedule(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1123,9 +1299,16 @@ class MedicationKnowledgeRegulatorySchedule(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``MedicationKnowledgeRegulatorySchedule`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "schedule"]
+
 
 class MedicationKnowledgeRegulatorySubstitution(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1159,6 +1342,13 @@ class MedicationKnowledgeRegulatorySubstitution(backboneelement.BackboneElement)
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``MedicationKnowledgeRegulatorySubstitution`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "type", "allowed"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_4515(
@@ -1221,7 +1411,7 @@ class MedicationKnowledgeRegulatorySubstitution(backboneelement.BackboneElement)
 
 
 class MedicationKnowledgeRelatedMedicationKnowledge(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1250,3 +1440,10 @@ class MedicationKnowledgeRelatedMedicationKnowledge(backboneelement.BackboneElem
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``MedicationKnowledgeRelatedMedicationKnowledge`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "type", "reference"]

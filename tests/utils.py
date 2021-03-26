@@ -1,4 +1,4 @@
-from fhir.resources import fhirxml
+from fhir.resources.utils import xml
 from http import client
 import sys
 import subprocess
@@ -16,7 +16,7 @@ def has_internet_connection():
 
 
 def post_xml_resource(
-    conn: client.HTTPConnection, resource_node: fhirxml.Node
+    conn: client.HTTPConnection, resource_node: xml.Node
 ) -> client.HTTPResponse:
     """ """
     try:

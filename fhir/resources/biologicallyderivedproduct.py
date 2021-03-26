@@ -14,7 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class BiologicallyDerivedProduct(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -161,9 +161,36 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``BiologicallyDerivedProduct`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "productCategory",
+            "productCode",
+            "status",
+            "request",
+            "quantity",
+            "parent",
+            "collection",
+            "processing",
+            "manipulation",
+            "storage",
+        ]
+
 
 class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -226,6 +253,21 @@ class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
         enum_reference_types=["Patient", "Organization"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``BiologicallyDerivedProductCollection`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "collector",
+            "source",
+            "collectedDateTime",
+            "collectedPeriod",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_3898(
         cls, values: typing.Dict[str, typing.Any]
@@ -266,7 +308,7 @@ class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
 
 
 class BiologicallyDerivedProductManipulation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -317,6 +359,20 @@ class BiologicallyDerivedProductManipulation(backboneelement.BackboneElement):
         one_of_many_required=False,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``BiologicallyDerivedProductManipulation`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "description",
+            "timeDateTime",
+            "timePeriod",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_4127(
         cls, values: typing.Dict[str, typing.Any]
@@ -357,7 +413,7 @@ class BiologicallyDerivedProductManipulation(backboneelement.BackboneElement):
 
 
 class BiologicallyDerivedProductProcessing(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -428,6 +484,22 @@ class BiologicallyDerivedProductProcessing(backboneelement.BackboneElement):
         one_of_many_required=False,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``BiologicallyDerivedProductProcessing`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "description",
+            "procedure",
+            "additive",
+            "timeDateTime",
+            "timePeriod",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_3908(
         cls, values: typing.Dict[str, typing.Any]
@@ -468,7 +540,7 @@ class BiologicallyDerivedProductProcessing(backboneelement.BackboneElement):
 
 
 class BiologicallyDerivedProductStorage(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -524,3 +596,18 @@ class BiologicallyDerivedProductStorage(backboneelement.BackboneElement):
     temperature__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_temperature", title="Extension field for ``temperature``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``BiologicallyDerivedProductStorage`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "description",
+            "temperature",
+            "scale",
+            "duration",
+        ]

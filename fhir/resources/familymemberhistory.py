@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class FamilyMemberHistory(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -422,6 +422,48 @@ class FamilyMemberHistory(domainresource.DomainResource):
         None, alias="_status", title="Extension field for ``status``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``FamilyMemberHistory`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "instantiatesCanonical",
+            "instantiatesUri",
+            "status",
+            "dataAbsentReason",
+            "patient",
+            "date",
+            "name",
+            "relationship",
+            "sex",
+            "bornPeriod",
+            "bornDate",
+            "bornString",
+            "ageAge",
+            "ageRange",
+            "ageString",
+            "estimatedAge",
+            "deceasedBoolean",
+            "deceasedAge",
+            "deceasedRange",
+            "deceasedDate",
+            "deceasedString",
+            "reasonCode",
+            "reasonReference",
+            "note",
+            "condition",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2155(
         cls, values: typing.Dict[str, typing.Any]
@@ -531,7 +573,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
 
 
 class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -665,6 +707,25 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``FamilyMemberHistoryCondition`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "code",
+            "outcome",
+            "contributedToDeath",
+            "onsetAge",
+            "onsetRange",
+            "onsetPeriod",
+            "onsetString",
+            "note",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_3079(

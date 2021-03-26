@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ExpansionProfile(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -391,6 +391,45 @@ class ExpansionProfile(domainresource.DomainResource):
         None, alias="_version", title="Extension field for ``version``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExpansionProfile`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "url",
+            "identifier",
+            "version",
+            "name",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "description",
+            "useContext",
+            "jurisdiction",
+            "fixedVersion",
+            "excludedSystem",
+            "includeDesignations",
+            "designation",
+            "includeDefinition",
+            "activeOnly",
+            "excludeNested",
+            "excludeNotForUI",
+            "excludePostCoordinated",
+            "displayLanguage",
+            "limitedExpansion",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1840(
         cls, values: typing.Dict[str, typing.Any]
@@ -452,7 +491,7 @@ class ExpansionProfile(domainresource.DomainResource):
 
 
 class ExpansionProfileDesignation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -481,9 +520,16 @@ class ExpansionProfileDesignation(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExpansionProfileDesignation`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "include", "exclude"]
+
 
 class ExpansionProfileDesignationExclude(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -503,9 +549,16 @@ class ExpansionProfileDesignationExclude(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExpansionProfileDesignationExclude`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "designation"]
+
 
 class ExpansionProfileDesignationExcludeDesignation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -536,9 +589,16 @@ class ExpansionProfileDesignationExcludeDesignation(backboneelement.BackboneElem
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExpansionProfileDesignationExcludeDesignation`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "language", "use"]
+
 
 class ExpansionProfileDesignationInclude(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -558,9 +618,16 @@ class ExpansionProfileDesignationInclude(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExpansionProfileDesignationInclude`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "designation"]
+
 
 class ExpansionProfileDesignationIncludeDesignation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -591,9 +658,16 @@ class ExpansionProfileDesignationIncludeDesignation(backboneelement.BackboneElem
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExpansionProfileDesignationIncludeDesignation`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "language", "use"]
+
 
 class ExpansionProfileExcludedSystem(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -631,6 +705,13 @@ class ExpansionProfileExcludedSystem(backboneelement.BackboneElement):
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExpansionProfileExcludedSystem`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "system", "version"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3307(
@@ -693,7 +774,7 @@ class ExpansionProfileExcludedSystem(backboneelement.BackboneElement):
 
 
 class ExpansionProfileFixedVersion(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -750,6 +831,13 @@ class ExpansionProfileFixedVersion(backboneelement.BackboneElement):
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExpansionProfileFixedVersion`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "system", "version", "mode"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3087(

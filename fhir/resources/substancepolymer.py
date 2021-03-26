@@ -14,7 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class SubstancePolymer(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -82,9 +82,31 @@ class SubstancePolymer(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``SubstancePolymer`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "class",
+            "geometry",
+            "copolymerConnectivity",
+            "modification",
+            "monomerSet",
+            "repeat",
+        ]
+
 
 class SubstancePolymerMonomerSet(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -113,9 +135,16 @@ class SubstancePolymerMonomerSet(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``SubstancePolymerMonomerSet`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "ratioType", "startingMaterial"]
+
 
 class SubstancePolymerMonomerSetStartingMaterial(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -163,9 +192,24 @@ class SubstancePolymerMonomerSetStartingMaterial(backboneelement.BackboneElement
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``SubstancePolymerMonomerSetStartingMaterial`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "material",
+            "type",
+            "isDefining",
+            "amount",
+        ]
+
 
 class SubstancePolymerRepeat(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -218,9 +262,24 @@ class SubstancePolymerRepeat(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``SubstancePolymerRepeat`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "numberOfUnits",
+            "averageMolecularFormula",
+            "repeatUnitAmountType",
+            "repeatUnit",
+        ]
+
 
 class SubstancePolymerRepeatRepeatUnit(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -281,11 +340,27 @@ class SubstancePolymerRepeatRepeatUnit(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``SubstancePolymerRepeatRepeatUnit`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "orientationOfPolymerisation",
+            "repeatUnit",
+            "amount",
+            "degreeOfPolymerisation",
+            "structuralRepresentation",
+        ]
+
 
 class SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation(
     backboneelement.BackboneElement
 ):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -314,11 +389,18 @@ class SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation(
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "degree", "amount"]
+
 
 class SubstancePolymerRepeatRepeatUnitStructuralRepresentation(
     backboneelement.BackboneElement
 ):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -358,3 +440,17 @@ class SubstancePolymerRepeatRepeatUnitStructuralRepresentation(
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``SubstancePolymerRepeatRepeatUnitStructuralRepresentation`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "type",
+            "representation",
+            "attachment",
+        ]

@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class NutritionOrder(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -312,6 +312,39 @@ class NutritionOrder(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``NutritionOrder`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "instantiatesCanonical",
+            "instantiatesUri",
+            "instantiates",
+            "status",
+            "intent",
+            "patient",
+            "encounter",
+            "dateTime",
+            "orderer",
+            "allergyIntolerance",
+            "foodPreferenceModifier",
+            "excludeFoodModifier",
+            "oralDiet",
+            "supplement",
+            "enteralFormula",
+            "note",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1672(
         cls, values: typing.Dict[str, typing.Any]
@@ -377,7 +410,7 @@ class NutritionOrder(domainresource.DomainResource):
 
 
 class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -521,9 +554,29 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``NutritionOrderEnteralFormula`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "baseFormulaType",
+            "baseFormulaProductName",
+            "additiveType",
+            "additiveProductName",
+            "caloricDensity",
+            "routeofAdministration",
+            "administration",
+            "maxVolumeToDeliver",
+            "administrationInstruction",
+        ]
+
 
 class NutritionOrderEnteralFormulaAdministration(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -590,6 +643,21 @@ class NutritionOrderEnteralFormulaAdministration(backboneelement.BackboneElement
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``NutritionOrderEnteralFormulaAdministration`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "schedule",
+            "quantity",
+            "rateQuantity",
+            "rateRatio",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_4587(
         cls, values: typing.Dict[str, typing.Any]
@@ -630,7 +698,7 @@ class NutritionOrderEnteralFormulaAdministration(backboneelement.BackboneElement
 
 
 class NutritionOrderOralDiet(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -720,9 +788,26 @@ class NutritionOrderOralDiet(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``NutritionOrderOralDiet`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "type",
+            "schedule",
+            "nutrient",
+            "texture",
+            "fluidConsistencyType",
+            "instruction",
+        ]
+
 
 class NutritionOrderOralDietNutrient(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -751,9 +836,16 @@ class NutritionOrderOralDietNutrient(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``NutritionOrderOralDietNutrient`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "modifier", "amount"]
+
 
 class NutritionOrderOralDietTexture(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -791,9 +883,16 @@ class NutritionOrderOralDietTexture(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``NutritionOrderOralDietTexture`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "modifier", "foodType"]
+
 
 class NutritionOrderSupplement(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -867,3 +966,19 @@ class NutritionOrderSupplement(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``NutritionOrderSupplement`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "type",
+            "productName",
+            "schedule",
+            "quantity",
+            "instruction",
+        ]

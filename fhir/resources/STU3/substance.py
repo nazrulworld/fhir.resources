@@ -14,7 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Substance(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -104,9 +104,32 @@ class Substance(domainresource.DomainResource):
         None, alias="_status", title="Extension field for ``status``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``Substance`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "category",
+            "code",
+            "description",
+            "instance",
+            "ingredient",
+        ]
+
 
 class SubstanceIngredient(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -151,6 +174,20 @@ class SubstanceIngredient(backboneelement.BackboneElement):
         enum_reference_types=["Substance"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``SubstanceIngredient`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "quantity",
+            "substanceCodeableConcept",
+            "substanceReference",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_2168(
         cls, values: typing.Dict[str, typing.Any]
@@ -193,7 +230,7 @@ class SubstanceIngredient(backboneelement.BackboneElement):
 
 
 class SubstanceInstance(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -239,3 +276,17 @@ class SubstanceInstance(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``SubstanceInstance`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "expiry",
+            "quantity",
+        ]

@@ -5,6 +5,8 @@ import inspect
 import logging
 import pathlib
 import typing
+from collections import OrderedDict
+from enum import Enum
 from functools import lru_cache
 
 from pydantic import BaseModel, Extra, Field
@@ -13,11 +15,9 @@ from pydantic.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.errors import ConfigError, PydanticValueError
 from pydantic.fields import ModelField
 from pydantic.parse import Protocol
-from pydantic.types import StrBytes
-from pydantic.typing import AnyCallable
-from pydantic.utils import ROOT_KEY
+from pydantic.utils import ROOT_KEY, sequence_like
 
-from .fhirutils import load_file, load_str_bytes, xml_dumps, yaml_dumps
+from fhir.resources.utils import load_file, load_str_bytes, xml_dumps, yaml_dumps
 
 try:
     import orjson
@@ -46,53 +46,15 @@ except ImportError:
 
 
 if typing.TYPE_CHECKING:
-    from pydantic.typing import AbstractSetIntStr, MappingIntStrAny, DictStrAny
+    from pydantic.typing import TupleGenerator
+    from pydantic.types import StrBytes
+    from pydantic.typing import AnyCallable
     from pydantic.main import Model
 
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 
 logger = logging.getLogger(__name__)
 FHIR_COMMENTS_FIELD_NAME = "fhir_comments"
-
-
-def fallback_type_method():
-    """lambda like function, is used as fallback of ``is_primitive``
-    method for non FHIR Type class"""
-    return True
-
-
-def filter_empty_list_dict(items):
-    """A special helper function, which is removing
-    any item which contains empty list/dict value.
-    It is used by ``FHIRAbstractModel::json``"""
-    if not isinstance(items, (list, dict)):
-        return items
-
-    if len(items) == 0:
-        return None
-
-    if isinstance(items, list):
-        for idx, item in enumerate(items):
-            if item is None:
-                # may be ``exclude_none`` False
-                continue
-            result = filter_empty_list_dict(item)
-            if result is None:
-                del items[idx]
-    else:
-        for key in tuple(items.keys()):
-            item = items[key]
-            if item is None:
-                # may be ``exclude_none`` False
-                continue
-            result = filter_empty_list_dict(item)
-            if result is None:
-                del items[key]
-
-    if len(items) == 0:
-        return None
-
-    return items
 
 
 class WrongResourceType(PydanticValueError):
@@ -145,7 +107,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
     @classmethod
     def add_root_validator(
         cls: typing.Type["Model"],
-        validator: typing.Union[AnyCallable, classmethod],
+        validator: typing.Union["AnyCallable", classmethod],
         *,
         pre: bool = False,
         skip_on_failure: bool = False,
@@ -243,10 +205,14 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
 
     @classmethod
     @lru_cache(maxsize=None, typed=True)
-    def get_alias_mapping(cls: typing.Type["Model"]) -> typing.Dict[str, str]:
-        """Mapping of field name and alias"""
+    def get_alias_mapping(
+        cls: typing.Type["FHIRAbstractModel"],
+    ) -> typing.Dict[str, str]:
+        """Mappings between field's name and alias"""
         aliases = cls.elements_sequence()
-        return {f.alias: fname for fname, f in cls.__fields__.items() if f.alias in aliases}
+        return {
+            f.alias: fname for fname, f in cls.__fields__.items() if f.alias in aliases
+        }
 
     @classmethod
     def get_json_encoder(cls) -> typing.Callable[[typing.Any], typing.Any]:
@@ -276,7 +242,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
     @classmethod
     def parse_raw(
         cls: typing.Type["Model"],
-        b: StrBytes,
+        b: "StrBytes",
         *,
         content_type: str = None,
         encoding: str = "utf8",
@@ -296,92 +262,65 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
             raise ValidationError([ErrorWrapper(e, loc=ROOT_KEY)], cls)
         return cls.parse_obj(obj)
 
-    def dict(
+    def yaml(  # type: ignore
         self,
         *,
-        include: typing.Union["AbstractSetIntStr", "MappingIntStrAny"] = None,
-        exclude: typing.Union["AbstractSetIntStr", "MappingIntStrAny"] = None,
         by_alias: bool = None,
-        skip_defaults: bool = None,
-        exclude_unset: bool = False,
-        exclude_defaults: bool = False,
         exclude_none: bool = None,
-    ) -> "DictStrAny":
-        """ """
-        # xxx: do validation? if object changed
+        exclude_comments: bool = False,
+        return_bytes: bool = False,
+        **dumps_kwargs: typing.Any,
+    ) -> typing.Union[str, bytes]:
+        """Fully overridden method but codes are copied from BaseMode and business logic added
+        in according to support ``fhir_comments``filter and other FHIR specific requirments.
+        """
         if by_alias is None:
             by_alias = True
 
         if exclude_none is None:
             exclude_none = True
 
-        if exclude is None:
-            exclude = {"resource_type"}
-        elif isinstance(exclude, set):
-            exclude.add("resource_type")
-        elif isinstance(exclude, dict):
-            if "resource_type" not in exclude:
-                exclude["resource_type"] = ...
-
-        exclude_comments = False
-
-        if FHIR_COMMENTS_FIELD_NAME in exclude:
-            exclude_comments = True
-
-        if exclude_comments:
-            children_excludes: typing.Dict[
-                str, typing.Union[typing.Set[str], typing.Dict[str, typing.Any]]
-            ] = dict()
-            for field in self.__fields__.values():
-                if getattr(field.type_, "is_primitive", fallback_type_method)():
-                    # no treatment for Primitive Type
-                    continue
-                if field.outer_type_ != field.type_ and str(
-                    field.outer_type_
-                ).startswith("typing.List["):
-
-                    children_excludes[field.name] = {
-                        "__all__": {FHIR_COMMENTS_FIELD_NAME}
-                    }
-                else:
-                    children_excludes[field.name] = {FHIR_COMMENTS_FIELD_NAME}
-
-            if len(children_excludes) > 0:
-                if isinstance(exclude, set):
-                    exclude = {e: ... for e in exclude}
-                if typing.TYPE_CHECKING:
-                    exclude = typing.cast(typing.Dict, exclude)
-                exclude.update(children_excludes)
-
-            if FHIR_COMMENTS_FIELD_NAME not in exclude:
-                if isinstance(exclude, set):
-                    exclude.add(FHIR_COMMENTS_FIELD_NAME)
-                elif isinstance(exclude, dict):
-                    exclude[FHIR_COMMENTS_FIELD_NAME] = ...
-
-        result = BaseModel.dict(
-            self,
-            include=include,
-            exclude=exclude,
+        data = self.dict(
             by_alias=by_alias,
-            skip_defaults=skip_defaults,
-            exclude_unset=exclude_unset,
-            exclude_defaults=exclude_defaults,
             exclude_none=exclude_none,
+            exclude_comments=exclude_comments,
         )
-        if self.__class__.has_resource_base():
-            result["resourceType"] = self.resource_type
+        if self.__custom_root_type__:
+            data = data[ROOT_KEY]
 
+        if typing.TYPE_CHECKING:
+            result: typing.Union[str, bytes]
+
+        result = yaml_dumps(data, return_bytes=return_bytes, **dumps_kwargs)
         return result
+
+    def xml(  # type: ignore
+        self,
+        *,
+        exclude_comments: bool = False,
+        pretty_print=False,
+        xml_declaration=True,
+        return_bytes: bool = False,
+        **dumps_kwargs: typing.Any,
+    ) -> typing.Union[str, bytes]:
+        """ """
+        params = {
+            "with_comments": not exclude_comments,
+            "xml_declaration": xml_declaration,
+            "pretty_print": pretty_print,
+        }
+        params.update(dumps_kwargs)
+
+        xml_string = xml_dumps(self, **params)
+        if return_bytes is False:
+            xml_string = xml_string.decode()
+
+        return xml_string
 
     def json(  # type: ignore
         self,
         *,
-        include: typing.Union["AbstractSetIntStr", "MappingIntStrAny"] = None,
-        exclude: typing.Union["AbstractSetIntStr", "MappingIntStrAny"] = None,
         by_alias: bool = None,
-        exclude_unset: bool = False,
-        exclude_defaults: bool = False,
         exclude_none: bool = None,
         exclude_comments: bool = False,
         encoder: typing.Optional[typing.Callable[[typing.Any], typing.Any]] = None,
@@ -396,19 +335,6 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
 
         if exclude_none is None:
             exclude_none = True
-
-        if exclude_comments:
-            if exclude is None:
-                exclude = {FHIR_COMMENTS_FIELD_NAME}
-            elif isinstance(exclude, set):
-                exclude.add(FHIR_COMMENTS_FIELD_NAME)
-            elif isinstance(exclude, dict):
-                exclude[FHIR_COMMENTS_FIELD_NAME] = ...
-            else:
-                raise NotImplementedError(
-                    "Only Set or Dict type ``exclude`` value is accepted "
-                    f"but got type ``{type(exclude)}``"
-                )
 
         if (
             getattr(self.__config__.json_dumps, "__qualname__", "")
@@ -439,18 +365,12 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
             dumps_kwargs["return_bytes"] = return_bytes
 
         data = self.dict(
-            include=include,
-            exclude=exclude,
             by_alias=by_alias,
-            exclude_unset=exclude_unset,
-            exclude_defaults=exclude_defaults,
             exclude_none=exclude_none,
+            exclude_comments=exclude_comments,
         )
         if self.__custom_root_type__:
             data = data[ROOT_KEY]
-
-        if exclude_comments:
-            data = filter_empty_list_dict(data)
 
         encoder = typing.cast(
             typing.Callable[[typing.Any], typing.Any], encoder or self.__json_encoder__
@@ -470,74 +390,108 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
 
         return result
 
-    def yaml(  # type: ignore
+    @typing.no_type_check
+    def dict(
         self,
         *,
-        include: typing.Union["AbstractSetIntStr", "MappingIntStrAny"] = None,
-        exclude: typing.Union["AbstractSetIntStr", "MappingIntStrAny"] = None,
-        by_alias: bool = None,
-        exclude_unset: bool = False,
-        exclude_defaults: bool = False,
-        exclude_none: bool = None,
+        by_alias: bool = True,
+        exclude_none: bool = True,
         exclude_comments: bool = False,
-        return_bytes: bool = False,
-        **dumps_kwargs: typing.Any,
-    ) -> typing.Union[str, bytes]:
-        """Fully overridden method but codes are copied from BaseMode and business logic added
-        in according to support ``fhir_comments``filter and other FHIR specific requirments.
-        """
-        if by_alias is None:
-            by_alias = True
-
-        if exclude_none is None:
-            exclude_none = True
-
-        if exclude_comments:
-            # no support for comments yet.
-            pass
-
-        data = self.dict(
-            include=include,
-            exclude=exclude,
-            by_alias=by_alias,
-            exclude_unset=exclude_unset,
-            exclude_defaults=exclude_defaults,
-            exclude_none=exclude_none,
+    ) -> typing.OrderedDict[str, typing.Any]:
+        return OrderedDict(
+            self._fhir_iter(
+                by_alias=by_alias,
+                exclude_none=exclude_none,
+                exclude_comments=exclude_comments,
+            )
         )
-        if self.__custom_root_type__:
-            data = data[ROOT_KEY]
 
-        if exclude_comments:
-            data = filter_empty_list_dict(data)
+    # Private methods
+    def _fhir_iter(
+        self, *, by_alias: bool, exclude_none: bool, exclude_comments: bool
+    ) -> "TupleGenerator":
+        if self.__class__.has_resource_base():
+            yield "resourceType", self.resource_type
 
-        if typing.TYPE_CHECKING:
-            result: typing.Union[str, bytes]
+        alias_maps = self.get_alias_mapping()
+        for prop_name in self.elements_sequence():
+            field_key = alias_maps[prop_name]
+            v = self.__dict__.get(field_key, None)
+            if v is None and exclude_none is True:
+                continue
+            field = self.__fields__[field_key]
+            dict_key = by_alias and field.alias or field_key
+            v = self._fhir_get_value(
+                v,
+                by_alias=by_alias,
+                exclude_none=exclude_none,
+                exclude_comments=exclude_comments,
+            )
+            yield dict_key, v
+            # looking for comments or primitive extension for primitive data type
+            if (
+                getattr(field.type_, "is_primitive", lambda: False)()
+                or field.type_ is bool
+            ):
+                ext_key = f"{field_key}__ext"
+                ext_val = self.__dict__.get(ext_key, None)
+                if ext_val is not None:
+                    dict_key_ = by_alias and self.__fields__[ext_key].alias or ext_key
+                    ext_val = self._fhir_get_value(
+                        ext_val,
+                        by_alias=by_alias,
+                        exclude_none=exclude_none,
+                        exclude_comments=exclude_comments,
+                    )
+                    if len(ext_val) > 0:
+                        yield dict_key_, ext_val
+        # looking for comments
+        comments = self.__dict__.get(FHIR_COMMENTS_FIELD_NAME, None)
+        if comments is not None and not exclude_comments:
+            yield FHIR_COMMENTS_FIELD_NAME, comments
 
-        result = yaml_dumps(data, return_bytes=return_bytes, **dumps_kwargs)
-        return result
+    @classmethod
+    @typing.no_type_check
+    def _fhir_get_value(
+        cls, v: typing.Any, by_alias: bool, exclude_none: bool, exclude_comments: bool
+    ) -> typing.Any:
 
-    def xml(  # type: ignore
-        self,
-        *,
-        exclude_comments: bool = False,
-        pretty_print=False,
-        xml_declaration=True,
-        return_bytes: bool = False,
-        **dumps_kwargs: typing.Any,
-    ) -> typing.Union[str, bytes]:
-        """ """
-        params = {
-            "with_comments": not exclude_comments,
-            "xml_declaration": xml_declaration,
-            "pretty_print": pretty_print,
-        }
-        params.update(dumps_kwargs)
+        if isinstance(v, (FHIRAbstractModel, BaseModel)):
+            v_dict = v.dict(
+                by_alias=by_alias,
+                exclude_none=exclude_none,
+                exclude_comments=exclude_comments,
+            )
+            if "__root__" in v_dict:
+                return v_dict["__root__"]
+            return v_dict
 
-        xml_string = xml_dumps(self, **params)
-        if return_bytes is False:
-            xml_string = xml_string.decode()
+        if isinstance(v, dict):
+            return {
+                k_: cls._fhir_get_value(
+                    v_,
+                    by_alias=by_alias,
+                    exclude_none=exclude_none,
+                    exclude_comments=exclude_comments,
+                )
+                for k_, v_ in v.items()
+            }
+        elif sequence_like(v):
+            return v.__class__(
+                cls._fhir_get_value(
+                    v_,
+                    by_alias=by_alias,
+                    exclude_none=exclude_none,
+                    exclude_comments=exclude_comments,
+                )
+                for v_ in v
+            )
 
-        return xml_string
+        elif isinstance(v, Enum) and getattr(cls.Config, "use_enum_values", False):
+            return v.value
+
+        else:
+            return v
 
     class Config:
         json_loads = json_loads

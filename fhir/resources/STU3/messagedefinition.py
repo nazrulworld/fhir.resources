@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class MessageDefinition(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -366,6 +366,45 @@ class MessageDefinition(domainresource.DomainResource):
         None, alias="_version", title="Extension field for ``version``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``MessageDefinition`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "url",
+            "identifier",
+            "version",
+            "name",
+            "title",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "description",
+            "useContext",
+            "jurisdiction",
+            "purpose",
+            "copyright",
+            "base",
+            "parent",
+            "replaces",
+            "event",
+            "category",
+            "focus",
+            "responseRequired",
+            "allowedResponse",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1929(
         cls, values: typing.Dict[str, typing.Any]
@@ -427,7 +466,7 @@ class MessageDefinition(domainresource.DomainResource):
 
 
 class MessageDefinitionAllowedResponse(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -467,9 +506,16 @@ class MessageDefinitionAllowedResponse(backboneelement.BackboneElement):
         None, alias="_situation", title="Extension field for ``situation``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``MessageDefinitionAllowedResponse`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "message", "situation"]
+
 
 class MessageDefinitionFocus(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -539,6 +585,13 @@ class MessageDefinitionFocus(backboneelement.BackboneElement):
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["StructureDefinition"],
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``MessageDefinitionFocus`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "code", "profile", "min", "max"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2446(

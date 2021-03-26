@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class CapabilityStatement(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -449,6 +449,48 @@ class CapabilityStatement(domainresource.DomainResource):
         None, alias="_version", title="Extension field for ``version``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``CapabilityStatement`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "url",
+            "version",
+            "name",
+            "title",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "description",
+            "useContext",
+            "jurisdiction",
+            "purpose",
+            "copyright",
+            "kind",
+            "instantiates",
+            "imports",
+            "software",
+            "implementation",
+            "fhirVersion",
+            "format",
+            "patchFormat",
+            "implementationGuide",
+            "rest",
+            "messaging",
+            "document",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2158(
         cls, values: typing.Dict[str, typing.Any]
@@ -516,7 +558,7 @@ class CapabilityStatement(domainresource.DomainResource):
 
 
 class CapabilityStatementDocument(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -579,6 +621,20 @@ class CapabilityStatementDocument(backboneelement.BackboneElement):
         None, alias="_profile", title="Extension field for ``profile``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``CapabilityStatementDocument`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "mode",
+            "documentation",
+            "profile",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2989(
         cls, values: typing.Dict[str, typing.Any]
@@ -640,7 +696,7 @@ class CapabilityStatementDocument(backboneelement.BackboneElement):
 
 
 class CapabilityStatementImplementation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -696,6 +752,20 @@ class CapabilityStatementImplementation(backboneelement.BackboneElement):
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``CapabilityStatementImplementation`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "description",
+            "url",
+            "custodian",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3630(
@@ -758,7 +828,7 @@ class CapabilityStatementImplementation(backboneelement.BackboneElement):
 
 
 class CapabilityStatementMessaging(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -827,9 +897,24 @@ class CapabilityStatementMessaging(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``CapabilityStatementMessaging`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "endpoint",
+            "reliableCache",
+            "documentation",
+            "supportedMessage",
+        ]
+
 
 class CapabilityStatementMessagingEndpoint(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -867,6 +952,13 @@ class CapabilityStatementMessagingEndpoint(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``CapabilityStatementMessagingEndpoint`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "protocol", "address"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3917(
@@ -929,7 +1021,7 @@ class CapabilityStatementMessagingEndpoint(backboneelement.BackboneElement):
 
 
 class CapabilityStatementMessagingSupportedMessage(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -976,6 +1068,13 @@ class CapabilityStatementMessagingSupportedMessage(backboneelement.BackboneEleme
     mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_mode", title="Extension field for ``mode``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``CapabilityStatementMessagingSupportedMessage`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "mode", "definition"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_4744(
@@ -1038,7 +1137,7 @@ class CapabilityStatementMessagingSupportedMessage(backboneelement.BackboneEleme
 
 
 class CapabilityStatementRest(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1163,6 +1262,25 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``CapabilityStatementRest`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "mode",
+            "documentation",
+            "security",
+            "resource",
+            "interaction",
+            "searchParam",
+            "operation",
+            "compartment",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2572(
         cls, values: typing.Dict[str, typing.Any]
@@ -1224,7 +1342,7 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
 
 
 class CapabilityStatementRestInteraction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1265,6 +1383,13 @@ class CapabilityStatementRestInteraction(backboneelement.BackboneElement):
     documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_documentation", title="Extension field for ``documentation``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``CapabilityStatementRestInteraction`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "code", "documentation"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3718(
@@ -1327,7 +1452,7 @@ class CapabilityStatementRestInteraction(backboneelement.BackboneElement):
 
 
 class CapabilityStatementRestResource(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1617,6 +1742,34 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         None, alias="_versioning", title="Extension field for ``versioning``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``CapabilityStatementRestResource`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "type",
+            "profile",
+            "supportedProfile",
+            "documentation",
+            "interaction",
+            "versioning",
+            "readHistory",
+            "updateCreate",
+            "conditionalCreate",
+            "conditionalRead",
+            "conditionalUpdate",
+            "conditionalDelete",
+            "referencePolicy",
+            "searchInclude",
+            "searchRevInclude",
+            "searchParam",
+            "operation",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3397(
         cls, values: typing.Dict[str, typing.Any]
@@ -1678,7 +1831,7 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
 
 
 class CapabilityStatementRestResourceInteraction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1732,6 +1885,13 @@ class CapabilityStatementRestResourceInteraction(backboneelement.BackboneElement
     documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_documentation", title="Extension field for ``documentation``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``CapabilityStatementRestResourceInteraction`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "code", "documentation"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_4558(
@@ -1794,7 +1954,7 @@ class CapabilityStatementRestResourceInteraction(backboneelement.BackboneElement
 
 
 class CapabilityStatementRestResourceOperation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1864,6 +2024,20 @@ class CapabilityStatementRestResourceOperation(backboneelement.BackboneElement):
         None, alias="_name", title="Extension field for ``name``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``CapabilityStatementRestResourceOperation`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "name",
+            "definition",
+            "documentation",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_4351(
         cls, values: typing.Dict[str, typing.Any]
@@ -1925,7 +2099,7 @@ class CapabilityStatementRestResourceOperation(backboneelement.BackboneElement):
 
 
 class CapabilityStatementRestResourceSearchParam(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -2019,6 +2193,21 @@ class CapabilityStatementRestResourceSearchParam(backboneelement.BackboneElement
         None, alias="_type", title="Extension field for ``type``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``CapabilityStatementRestResourceSearchParam`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "name",
+            "definition",
+            "type",
+            "documentation",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_4500(
         cls, values: typing.Dict[str, typing.Any]
@@ -2080,7 +2269,7 @@ class CapabilityStatementRestResourceSearchParam(backboneelement.BackboneElement
 
 
 class CapabilityStatementRestSecurity(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -2127,9 +2316,23 @@ class CapabilityStatementRestSecurity(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``CapabilityStatementRestSecurity`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "cors",
+            "service",
+            "description",
+        ]
+
 
 class CapabilityStatementSoftware(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -2177,6 +2380,20 @@ class CapabilityStatementSoftware(backboneelement.BackboneElement):
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``CapabilityStatementSoftware`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "name",
+            "version",
+            "releaseDate",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2986(

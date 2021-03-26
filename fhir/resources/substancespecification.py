@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class SubstanceSpecification(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -226,9 +226,44 @@ class SubstanceSpecification(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``SubstanceSpecification`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "type",
+            "status",
+            "domain",
+            "description",
+            "source",
+            "comment",
+            "moiety",
+            "property",
+            "referenceInformation",
+            "structure",
+            "code",
+            "name",
+            "molecularWeight",
+            "relationship",
+            "nucleicAcid",
+            "polymer",
+            "protein",
+            "sourceMaterial",
+        ]
+
 
 class SubstanceSpecificationCode(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -293,9 +328,25 @@ class SubstanceSpecificationCode(backboneelement.BackboneElement):
         None, alias="_statusDate", title="Extension field for ``statusDate``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``SubstanceSpecificationCode`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "code",
+            "status",
+            "statusDate",
+            "comment",
+            "source",
+        ]
+
 
 class SubstanceSpecificationMoiety(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -393,6 +444,25 @@ class SubstanceSpecificationMoiety(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``SubstanceSpecificationMoiety`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "role",
+            "identifier",
+            "name",
+            "stereochemistry",
+            "opticalActivity",
+            "molecularFormula",
+            "amountQuantity",
+            "amountString",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_3116(
         cls, values: typing.Dict[str, typing.Any]
@@ -433,7 +503,7 @@ class SubstanceSpecificationMoiety(backboneelement.BackboneElement):
 
 
 class SubstanceSpecificationName(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -553,6 +623,28 @@ class SubstanceSpecificationName(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``SubstanceSpecificationName`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "name",
+            "type",
+            "status",
+            "preferred",
+            "language",
+            "domain",
+            "jurisdiction",
+            "synonym",
+            "translation",
+            "official",
+            "source",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2850(
         cls, values: typing.Dict[str, typing.Any]
@@ -614,7 +706,7 @@ class SubstanceSpecificationName(backboneelement.BackboneElement):
 
 
 class SubstanceSpecificationNameOfficial(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -653,9 +745,16 @@ class SubstanceSpecificationNameOfficial(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``SubstanceSpecificationNameOfficial`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "authority", "status", "date"]
+
 
 class SubstanceSpecificationProperty(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -757,6 +856,24 @@ class SubstanceSpecificationProperty(backboneelement.BackboneElement):
         None, alias="_parameters", title="Extension field for ``parameters``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``SubstanceSpecificationProperty`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "category",
+            "code",
+            "parameters",
+            "definingSubstanceReference",
+            "definingSubstanceCodeableConcept",
+            "amountQuantity",
+            "amountString",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_3354(
         cls, values: typing.Dict[str, typing.Any]
@@ -803,7 +920,7 @@ class SubstanceSpecificationProperty(backboneelement.BackboneElement):
 
 
 class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -968,6 +1085,28 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
         enum_reference_types=["SubstanceSpecification"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``SubstanceSpecificationRelationship`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "substanceReference",
+            "substanceCodeableConcept",
+            "relationship",
+            "isDefining",
+            "amountQuantity",
+            "amountRange",
+            "amountRatio",
+            "amountString",
+            "amountRatioLowLimit",
+            "amountType",
+            "source",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_3742(
         cls, values: typing.Dict[str, typing.Any]
@@ -1011,7 +1150,7 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
 
 
 class SubstanceSpecificationStructure(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1063,7 +1202,7 @@ class SubstanceSpecificationStructure(backboneelement.BackboneElement):
         title="Extension field for ``molecularFormulaByMoiety``.",
     )
 
-    molecularWeight: fhirtypes.SubstanceSpecificationStructureIsotopeMolecularWeightType = Field(  # noqa:B950
+    molecularWeight: fhirtypes.SubstanceSpecificationStructureIsotopeMolecularWeightType = Field(
         None,
         alias="molecularWeight",
         title=(
@@ -1115,9 +1254,28 @@ class SubstanceSpecificationStructure(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``SubstanceSpecificationStructure`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "stereochemistry",
+            "opticalActivity",
+            "molecularFormula",
+            "molecularFormulaByMoiety",
+            "isotope",
+            "molecularWeight",
+            "source",
+            "representation",
+        ]
+
 
 class SubstanceSpecificationStructureIsotope(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1145,7 +1303,7 @@ class SubstanceSpecificationStructureIsotope(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    molecularWeight: fhirtypes.SubstanceSpecificationStructureIsotopeMolecularWeightType = Field(  # noqa:B950
+    molecularWeight: fhirtypes.SubstanceSpecificationStructureIsotopeMolecularWeightType = Field(
         None,
         alias="molecularWeight",
         title=(
@@ -1175,11 +1333,27 @@ class SubstanceSpecificationStructureIsotope(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``SubstanceSpecificationStructureIsotope`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "name",
+            "substitution",
+            "halfLife",
+            "molecularWeight",
+        ]
+
 
 class SubstanceSpecificationStructureIsotopeMolecularWeight(
     backboneelement.BackboneElement
 ):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1226,9 +1400,16 @@ class SubstanceSpecificationStructureIsotopeMolecularWeight(
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``SubstanceSpecificationStructureIsotopeMolecularWeight`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "method", "type", "amount"]
+
 
 class SubstanceSpecificationStructureRepresentation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1269,3 +1450,17 @@ class SubstanceSpecificationStructureRepresentation(backboneelement.BackboneElem
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``SubstanceSpecificationStructureRepresentation`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "type",
+            "representation",
+            "attachment",
+        ]

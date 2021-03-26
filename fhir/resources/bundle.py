@@ -16,7 +16,7 @@ from . import backboneelement, fhirtypes, resource
 
 
 class Bundle(resource.Resource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -129,6 +129,25 @@ class Bundle(resource.Resource):
         None, alias="_type", title="Extension field for ``type``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``Bundle`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "identifier",
+            "type",
+            "timestamp",
+            "total",
+            "link",
+            "entry",
+            "signature",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_769(
         cls, values: typing.Dict[str, typing.Any]
@@ -190,7 +209,7 @@ class Bundle(resource.Resource):
 
 
 class BundleEntry(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -281,9 +300,26 @@ class BundleEntry(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``BundleEntry`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "link",
+            "fullUrl",
+            "resource",
+            "search",
+            "request",
+            "response",
+        ]
+
 
 class BundleEntryRequest(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -394,6 +430,23 @@ class BundleEntryRequest(backboneelement.BackboneElement):
         None, alias="_url", title="Extension field for ``url``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``BundleEntryRequest`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "method",
+            "url",
+            "ifNoneMatch",
+            "ifModifiedSince",
+            "ifMatch",
+            "ifNoneExist",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2059(
         cls, values: typing.Dict[str, typing.Any]
@@ -455,7 +508,7 @@ class BundleEntryRequest(backboneelement.BackboneElement):
 
 
 class BundleEntryResponse(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -540,6 +593,22 @@ class BundleEntryResponse(backboneelement.BackboneElement):
         None, alias="_status", title="Extension field for ``status``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``BundleEntryResponse`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "status",
+            "location",
+            "etag",
+            "lastModified",
+            "outcome",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2146(
         cls, values: typing.Dict[str, typing.Any]
@@ -601,7 +670,7 @@ class BundleEntryResponse(backboneelement.BackboneElement):
 
 
 class BundleEntrySearch(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -643,9 +712,16 @@ class BundleEntrySearch(backboneelement.BackboneElement):
         None, alias="_score", title="Extension field for ``score``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``BundleEntrySearch`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "mode", "score"]
+
 
 class BundleLink(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -689,6 +765,13 @@ class BundleLink(backboneelement.BackboneElement):
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``BundleLink`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "relation", "url"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1173(

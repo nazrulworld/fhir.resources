@@ -14,7 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class CareTeam(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -174,9 +174,37 @@ class CareTeam(domainresource.DomainResource):
         enum_reference_types=["Patient", "Group"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``CareTeam`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "category",
+            "name",
+            "subject",
+            "context",
+            "period",
+            "participant",
+            "reasonCode",
+            "reasonReference",
+            "managingOrganization",
+            "note",
+        ]
+
 
 class CareTeamParticipant(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -242,3 +270,18 @@ class CareTeamParticipant(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``CareTeamParticipant`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "role",
+            "member",
+            "onBehalfOf",
+            "period",
+        ]

@@ -14,7 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class SupplyRequest(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -267,6 +267,40 @@ class SupplyRequest(domainresource.DomainResource):
         enum_reference_types=["Organization", "HealthcareService"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``SupplyRequest`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "category",
+            "priority",
+            "itemCodeableConcept",
+            "itemReference",
+            "quantity",
+            "parameter",
+            "occurrenceDateTime",
+            "occurrencePeriod",
+            "occurrenceTiming",
+            "authoredOn",
+            "requester",
+            "supplier",
+            "reasonCode",
+            "reasonReference",
+            "deliverFrom",
+            "deliverTo",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_1597(
         cls, values: typing.Dict[str, typing.Any]
@@ -314,7 +348,7 @@ class SupplyRequest(domainresource.DomainResource):
 
 
 class SupplyRequestParameter(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -384,6 +418,22 @@ class SupplyRequestParameter(backboneelement.BackboneElement):
         one_of_many="value",
         one_of_many_required=False,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``SupplyRequestParameter`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "code",
+            "valueCodeableConcept",
+            "valueQuantity",
+            "valueRange",
+            "valueBoolean",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_2524(

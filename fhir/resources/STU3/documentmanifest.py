@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class DocumentManifest(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -202,6 +202,34 @@ class DocumentManifest(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``DocumentManifest`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "masterIdentifier",
+            "identifier",
+            "status",
+            "type",
+            "subject",
+            "created",
+            "author",
+            "recipient",
+            "source",
+            "description",
+            "content",
+            "related",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1838(
         cls, values: typing.Dict[str, typing.Any]
@@ -263,7 +291,7 @@ class DocumentManifest(domainresource.DomainResource):
 
 
 class DocumentManifestContent(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -309,6 +337,13 @@ class DocumentManifestContent(backboneelement.BackboneElement):
         enum_reference_types=["Resource"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``DocumentManifestContent`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "pAttachment", "pReference"]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_2569(
         cls, values: typing.Dict[str, typing.Any]
@@ -349,7 +384,7 @@ class DocumentManifestContent(backboneelement.BackboneElement):
 
 
 class DocumentManifestRelated(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -384,3 +419,10 @@ class DocumentManifestRelated(backboneelement.BackboneElement):
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``DocumentManifestRelated`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "identifier", "ref"]

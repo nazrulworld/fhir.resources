@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class DeviceRequest(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -446,6 +446,49 @@ class DeviceRequest(domainresource.DomainResource):
         enum_reference_types=["Resource"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``DeviceRequest`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "instantiatesCanonical",
+            "instantiatesUri",
+            "basedOn",
+            "priorRequest",
+            "groupIdentifier",
+            "status",
+            "intent",
+            "priority",
+            "codeReference",
+            "codeCodeableConcept",
+            "parameter",
+            "subject",
+            "encounter",
+            "occurrenceDateTime",
+            "occurrencePeriod",
+            "occurrenceTiming",
+            "authoredOn",
+            "requester",
+            "performerType",
+            "performer",
+            "reasonCode",
+            "reasonReference",
+            "insurance",
+            "supportingInfo",
+            "note",
+            "relevantHistory",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1521(
         cls, values: typing.Dict[str, typing.Any]
@@ -552,7 +595,7 @@ class DeviceRequest(domainresource.DomainResource):
 
 
 class DeviceRequestParameter(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -622,6 +665,22 @@ class DeviceRequestParameter(backboneelement.BackboneElement):
         one_of_many="value",
         one_of_many_required=False,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``DeviceRequestParameter`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "code",
+            "valueCodeableConcept",
+            "valueQuantity",
+            "valueRange",
+            "valueBoolean",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_2448(

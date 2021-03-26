@@ -14,7 +14,7 @@ from . import element, fhirtypes
 
 
 class Meta(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -96,3 +96,18 @@ class Meta(element.Element):
     versionId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_versionId", title="Extension field for ``versionId``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``Meta`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "versionId",
+            "lastUpdated",
+            "profile",
+            "security",
+            "tag",
+        ]

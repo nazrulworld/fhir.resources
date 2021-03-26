@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class QuestionnaireResponse(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -203,6 +203,33 @@ class QuestionnaireResponse(domainresource.DomainResource):
         enum_reference_types=["Resource"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``QuestionnaireResponse`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "basedOn",
+            "partOf",
+            "questionnaire",
+            "status",
+            "subject",
+            "encounter",
+            "authored",
+            "author",
+            "source",
+            "item",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2412(
         cls, values: typing.Dict[str, typing.Any]
@@ -264,7 +291,7 @@ class QuestionnaireResponse(domainresource.DomainResource):
 
 
 class QuestionnaireResponseItem(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -339,6 +366,22 @@ class QuestionnaireResponseItem(backboneelement.BackboneElement):
         None, alias="_text", title="Extension field for ``text``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``QuestionnaireResponseItem`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "linkId",
+            "definition",
+            "text",
+            "answer",
+            "item",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2819(
         cls, values: typing.Dict[str, typing.Any]
@@ -400,7 +443,7 @@ class QuestionnaireResponseItem(backboneelement.BackboneElement):
 
 
 class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -624,6 +667,30 @@ class QuestionnaireResponseItemAnswer(backboneelement.BackboneElement):
     valueUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueUri", title="Extension field for ``valueUri``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``QuestionnaireResponseItemAnswer`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "valueBoolean",
+            "valueDecimal",
+            "valueInteger",
+            "valueDate",
+            "valueDateTime",
+            "valueTime",
+            "valueString",
+            "valueUri",
+            "valueAttachment",
+            "valueCoding",
+            "valueQuantity",
+            "valueReference",
+            "item",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_3448(

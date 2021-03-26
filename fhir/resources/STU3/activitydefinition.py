@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ActivityDefinition(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -588,6 +588,61 @@ class ActivityDefinition(domainresource.DomainResource):
         None, alias="_version", title="Extension field for ``version``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ActivityDefinition`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "url",
+            "identifier",
+            "version",
+            "name",
+            "title",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "description",
+            "purpose",
+            "usage",
+            "approvalDate",
+            "lastReviewDate",
+            "effectivePeriod",
+            "useContext",
+            "jurisdiction",
+            "topic",
+            "contributor",
+            "contact",
+            "copyright",
+            "relatedArtifact",
+            "library",
+            "kind",
+            "code",
+            "timingTiming",
+            "timingDateTime",
+            "timingPeriod",
+            "timingRange",
+            "location",
+            "participant",
+            "productReference",
+            "productReference",
+            "productCodeableConcept",
+            "quantity",
+            "dosage",
+            "bodySite",
+            "transform",
+            "dynamicValue",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2053(
         cls, values: typing.Dict[str, typing.Any]
@@ -690,7 +745,7 @@ class ActivityDefinition(domainresource.DomainResource):
 
 
 class ActivityDefinitionDynamicValue(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -759,9 +814,24 @@ class ActivityDefinitionDynamicValue(backboneelement.BackboneElement):
         None, alias="_path", title="Extension field for ``path``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ActivityDefinitionDynamicValue`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "description",
+            "path",
+            "language",
+            "expression",
+        ]
+
 
 class ActivityDefinitionParticipant(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -798,6 +868,13 @@ class ActivityDefinitionParticipant(backboneelement.BackboneElement):
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ActivityDefinitionParticipant`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "type", "role"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3210(

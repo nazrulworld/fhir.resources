@@ -14,7 +14,7 @@ from . import fhirabstractmodel, fhirtypes
 
 
 class Element(fhirabstractmodel.FHIRAbstractModel):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -40,7 +40,7 @@ class Element(fhirabstractmodel.FHIRAbstractModel):
         element_property=True,
     )
 
-    id: fhirtypes.String = Field(
+    id: fhirtypes.Id = Field(
         None,
         alias="id",
         title="Unique id for inter-element referencing",
@@ -54,3 +54,10 @@ class Element(fhirabstractmodel.FHIRAbstractModel):
     id__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_id", title="Extension field for ``id``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``Element`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension"]

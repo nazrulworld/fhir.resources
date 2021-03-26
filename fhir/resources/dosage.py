@@ -14,7 +14,7 @@ from . import backboneelement, element, fhirtypes
 
 
 class Dosage(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -191,6 +191,31 @@ class Dosage(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``Dosage`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "sequence",
+            "text",
+            "additionalInstruction",
+            "patientInstruction",
+            "timing",
+            "asNeededBoolean",
+            "asNeededCodeableConcept",
+            "site",
+            "route",
+            "method",
+            "doseAndRate",
+            "maxDosePerPeriod",
+            "maxDosePerAdministration",
+            "maxDosePerLifetime",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_764(
         cls, values: typing.Dict[str, typing.Any]
@@ -233,7 +258,7 @@ class Dosage(backboneelement.BackboneElement):
 
 
 class DosageDoseAndRate(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -313,6 +338,22 @@ class DosageDoseAndRate(element.Element):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``DosageDoseAndRate`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "type",
+            "doseRange",
+            "doseQuantity",
+            "rateRatio",
+            "rateRange",
+            "rateQuantity",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_1830(

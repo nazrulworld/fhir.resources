@@ -16,7 +16,7 @@ from . import element, fhirtypes
 
 
 class ElementDefinition(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -2870,6 +2870,175 @@ class ElementDefinition(element.Element):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ElementDefinition`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "path",
+            "representation",
+            "sliceName",
+            "label",
+            "code",
+            "slicing",
+            "short",
+            "definition",
+            "comment",
+            "requirements",
+            "alias",
+            "min",
+            "max",
+            "base",
+            "contentReference",
+            "type",
+            "defaultValueBase64Binary",
+            "defaultValueBoolean",
+            "defaultValueCode",
+            "defaultValueDate",
+            "defaultValueDateTime",
+            "defaultValueDecimal",
+            "defaultValueId",
+            "defaultValueInstant",
+            "defaultValueInteger",
+            "defaultValueMarkdown",
+            "defaultValueOid",
+            "defaultValuePositiveInt",
+            "defaultValueString",
+            "defaultValueTime",
+            "defaultValueUnsignedInt",
+            "defaultValueUri",
+            "defaultValueAddress",
+            "defaultValueAge",
+            "defaultValueAnnotation",
+            "defaultValueAttachment",
+            "defaultValueCodeableConcept",
+            "defaultValueCoding",
+            "defaultValueContactPoint",
+            "defaultValueCount",
+            "defaultValueDistance",
+            "defaultValueDuration",
+            "defaultValueHumanName",
+            "defaultValueIdentifier",
+            "defaultValueMoney",
+            "defaultValuePeriod",
+            "defaultValueQuantity",
+            "defaultValueRange",
+            "defaultValueRatio",
+            "defaultValueReference",
+            "defaultValueSampledData",
+            "defaultValueSignature",
+            "defaultValueTiming",
+            "defaultValueMeta",
+            "meaningWhenMissing",
+            "orderMeaning",
+            "fixedBase64Binary",
+            "fixedBoolean",
+            "fixedCode",
+            "fixedDate",
+            "fixedDateTime",
+            "fixedDecimal",
+            "fixedId",
+            "fixedInstant",
+            "fixedInteger",
+            "fixedMarkdown",
+            "fixedOid",
+            "fixedPositiveInt",
+            "fixedString",
+            "fixedTime",
+            "fixedUnsignedInt",
+            "fixedUri",
+            "fixedAddress",
+            "fixedAge",
+            "fixedAnnotation",
+            "fixedAttachment",
+            "fixedCodeableConcept",
+            "fixedCoding",
+            "fixedContactPoint",
+            "fixedCount",
+            "fixedDistance",
+            "fixedDuration",
+            "fixedHumanName",
+            "fixedIdentifier",
+            "fixedMoney",
+            "fixedPeriod",
+            "fixedQuantity",
+            "fixedRange",
+            "fixedRatio",
+            "fixedReference",
+            "fixedSampledData",
+            "fixedSignature",
+            "fixedTiming",
+            "fixedMeta",
+            "patternBase64Binary",
+            "patternBoolean",
+            "patternCode",
+            "patternDate",
+            "patternDateTime",
+            "patternDecimal",
+            "patternId",
+            "patternInstant",
+            "patternInteger",
+            "patternMarkdown",
+            "patternOid",
+            "patternPositiveInt",
+            "patternString",
+            "patternTime",
+            "patternUnsignedInt",
+            "patternUri",
+            "patternAddress",
+            "patternAge",
+            "patternAnnotation",
+            "patternAttachment",
+            "patternCodeableConcept",
+            "patternCoding",
+            "patternContactPoint",
+            "patternCount",
+            "patternDistance",
+            "patternDuration",
+            "patternHumanName",
+            "patternIdentifier",
+            "patternMoney",
+            "patternPeriod",
+            "patternQuantity",
+            "patternRange",
+            "patternRatio",
+            "patternReference",
+            "patternSampledData",
+            "patternSignature",
+            "patternTiming",
+            "patternMeta",
+            "example",
+            "minValueDate",
+            "minValueDateTime",
+            "minValueInstant",
+            "minValueTime",
+            "minValueDecimal",
+            "minValueInteger",
+            "minValuePositiveInt",
+            "minValueUnsignedInt",
+            "minValueQuantity",
+            "maxValueDate",
+            "maxValueDateTime",
+            "maxValueInstant",
+            "maxValueTime",
+            "maxValueDecimal",
+            "maxValueInteger",
+            "maxValuePositiveInt",
+            "maxValueUnsignedInt",
+            "maxValueQuantity",
+            "maxLength",
+            "condition",
+            "constraint",
+            "mustSupport",
+            "isModifier",
+            "isSummary",
+            "binding",
+            "mapping",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1926(
         cls, values: typing.Dict[str, typing.Any]
@@ -3112,7 +3281,7 @@ class ElementDefinition(element.Element):
 
 
 class ElementDefinitionBase(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -3171,6 +3340,13 @@ class ElementDefinitionBase(element.Element):
     path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_path", title="Extension field for ``path``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ElementDefinitionBase`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "path", "min", "max"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2296(
@@ -3237,7 +3413,7 @@ class ElementDefinitionBase(element.Element):
 
 
 class ElementDefinitionBinding(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -3322,6 +3498,20 @@ class ElementDefinitionBinding(element.Element):
     valueSetUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueSetUri", title="Extension field for ``valueSetUri``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ElementDefinitionBinding`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "strength",
+            "description",
+            "valueSetUri",
+            "valueSetReference",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2618(
@@ -3422,7 +3612,7 @@ class ElementDefinitionBinding(element.Element):
 
 
 class ElementDefinitionConstraint(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -3543,6 +3733,23 @@ class ElementDefinitionConstraint(element.Element):
         None, alias="_xpath", title="Extension field for ``xpath``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ElementDefinitionConstraint`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "key",
+            "requirements",
+            "severity",
+            "human",
+            "expression",
+            "xpath",
+            "source",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2993(
         cls, values: typing.Dict[str, typing.Any]
@@ -3609,7 +3816,7 @@ class ElementDefinitionConstraint(element.Element):
 
 
 class ElementDefinitionExample(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -4257,6 +4464,55 @@ class ElementDefinitionExample(element.Element):
         None, alias="_valueUri", title="Extension field for ``valueUri``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ElementDefinitionExample`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "label",
+            "valueBase64Binary",
+            "valueBoolean",
+            "valueCode",
+            "valueDate",
+            "valueDateTime",
+            "valueDecimal",
+            "valueId",
+            "valueInstant",
+            "valueInteger",
+            "valueMarkdown",
+            "valueOid",
+            "valuePositiveInt",
+            "valueString",
+            "valueTime",
+            "valueUnsignedInt",
+            "valueUri",
+            "valueAddress",
+            "valueAge",
+            "valueAnnotation",
+            "valueAttachment",
+            "valueCodeableConcept",
+            "valueCoding",
+            "valueContactPoint",
+            "valueCount",
+            "valueDistance",
+            "valueDuration",
+            "valueHumanName",
+            "valueIdentifier",
+            "valueMoney",
+            "valuePeriod",
+            "valueQuantity",
+            "valueRange",
+            "valueRatio",
+            "valueReference",
+            "valueSampledData",
+            "valueSignature",
+            "valueTiming",
+            "valueMeta",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2633(
         cls, values: typing.Dict[str, typing.Any]
@@ -4397,7 +4653,7 @@ class ElementDefinitionExample(element.Element):
 
 
 class ElementDefinitionMapping(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -4461,6 +4717,13 @@ class ElementDefinitionMapping(element.Element):
         None, alias="_map", title="Extension field for ``map``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ElementDefinitionMapping`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "identity", "language", "map", "comment"]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2635(
         cls, values: typing.Dict[str, typing.Any]
@@ -4522,7 +4785,7 @@ class ElementDefinitionMapping(element.Element):
 
 
 class ElementDefinitionSlicing(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -4607,6 +4870,13 @@ class ElementDefinitionSlicing(element.Element):
         None, alias="_rules", title="Extension field for ``rules``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ElementDefinitionSlicing`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "discriminator", "description", "ordered", "rules"]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2632(
         cls, values: typing.Dict[str, typing.Any]
@@ -4668,7 +4938,7 @@ class ElementDefinitionSlicing(element.Element):
 
 
 class ElementDefinitionSlicingDiscriminator(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -4713,6 +4983,13 @@ class ElementDefinitionSlicingDiscriminator(element.Element):
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ElementDefinitionSlicingDiscriminator`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "type", "path"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_4011(
@@ -4775,7 +5052,7 @@ class ElementDefinitionSlicingDiscriminator(element.Element):
 
 
 class ElementDefinitionType(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -4879,6 +5156,21 @@ class ElementDefinitionType(element.Element):
     versioning__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_versioning", title="Extension field for ``versioning``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ElementDefinitionType`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "code",
+            "profile",
+            "targetProfile",
+            "aggregation",
+            "versioning",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2335(

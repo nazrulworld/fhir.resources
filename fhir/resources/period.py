@@ -12,7 +12,7 @@ from . import element, fhirtypes
 
 
 class Period(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -50,3 +50,10 @@ class Period(element.Element):
     start__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_start", title="Extension field for ``start``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``Period`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "start", "end"]

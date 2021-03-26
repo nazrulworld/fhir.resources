@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class TestScript(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -390,6 +390,48 @@ class TestScript(domainresource.DomainResource):
         None, alias="_version", title="Extension field for ``version``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestScript`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "url",
+            "identifier",
+            "version",
+            "name",
+            "title",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "description",
+            "useContext",
+            "jurisdiction",
+            "purpose",
+            "copyright",
+            "origin",
+            "destination",
+            "metadata",
+            "fixture",
+            "profile",
+            "variable",
+            "rule",
+            "ruleset",
+            "setup",
+            "test",
+            "teardown",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1245(
         cls, values: typing.Dict[str, typing.Any]
@@ -455,7 +497,7 @@ class TestScript(domainresource.DomainResource):
 
 
 class TestScriptDestination(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -494,6 +536,13 @@ class TestScriptDestination(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestScriptDestination`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "index", "profile"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2393(
@@ -556,7 +605,7 @@ class TestScriptDestination(backboneelement.BackboneElement):
 
 
 class TestScriptFixture(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -615,9 +664,23 @@ class TestScriptFixture(backboneelement.BackboneElement):
         enum_reference_types=["Resource"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestScriptFixture`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "autocreate",
+            "autodelete",
+            "resource",
+        ]
+
 
 class TestScriptMetadata(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -653,9 +716,16 @@ class TestScriptMetadata(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestScriptMetadata`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "link", "capability"]
+
 
 class TestScriptMetadataCapability(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -766,9 +836,27 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
         None, alias="_validated", title="Extension field for ``validated``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestScriptMetadataCapability`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "required",
+            "validated",
+            "description",
+            "origin",
+            "destination",
+            "link",
+            "capabilities",
+        ]
+
 
 class TestScriptMetadataLink(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -805,6 +893,13 @@ class TestScriptMetadataLink(backboneelement.BackboneElement):
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestScriptMetadataLink`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "url", "description"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2435(
@@ -867,7 +962,7 @@ class TestScriptMetadataLink(backboneelement.BackboneElement):
 
 
 class TestScriptOrigin(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -902,6 +997,13 @@ class TestScriptOrigin(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestScriptOrigin`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "index", "profile"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1855(
@@ -964,7 +1066,7 @@ class TestScriptOrigin(backboneelement.BackboneElement):
 
 
 class TestScriptRule(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -999,9 +1101,16 @@ class TestScriptRule(backboneelement.BackboneElement):
         enum_reference_types=["Resource"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestScriptRule`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "resource", "param"]
+
 
 class TestScriptRuleParam(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1041,6 +1150,13 @@ class TestScriptRuleParam(backboneelement.BackboneElement):
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestScriptRuleParam`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "name", "value"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2143(
@@ -1103,7 +1219,7 @@ class TestScriptRuleParam(backboneelement.BackboneElement):
 
 
 class TestScriptRuleset(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1137,9 +1253,16 @@ class TestScriptRuleset(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestScriptRuleset`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "resource", "rule"]
+
 
 class TestScriptRulesetRule(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1172,6 +1295,13 @@ class TestScriptRulesetRule(backboneelement.BackboneElement):
     ruleId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_ruleId", title="Extension field for ``ruleId``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestScriptRulesetRule`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "ruleId", "param"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2378(
@@ -1234,7 +1364,7 @@ class TestScriptRulesetRule(backboneelement.BackboneElement):
 
 
 class TestScriptRulesetRuleParam(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1274,6 +1404,13 @@ class TestScriptRulesetRuleParam(backboneelement.BackboneElement):
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestScriptRulesetRuleParam`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "name", "value"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2883(
@@ -1336,7 +1473,7 @@ class TestScriptRulesetRuleParam(backboneelement.BackboneElement):
 
 
 class TestScriptSetup(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1354,9 +1491,16 @@ class TestScriptSetup(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestScriptSetup`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "action"]
+
 
 class TestScriptSetupAction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1387,9 +1531,16 @@ class TestScriptSetupAction(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestScriptSetupAction`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "operation", "assert"]
+
 
 class TestScriptSetupActionAssert(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1781,9 +1932,44 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
         None, alias="_warningOnly", title="Extension field for ``warningOnly``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestScriptSetupActionAssert`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "label",
+            "description",
+            "direction",
+            "compareToSourceId",
+            "compareToSourceExpression",
+            "compareToSourcePath",
+            "contentType",
+            "expression",
+            "headerField",
+            "minimumId",
+            "navigationLinks",
+            "operator",
+            "path",
+            "requestMethod",
+            "requestURL",
+            "resource",
+            "response",
+            "responseCode",
+            "rule",
+            "ruleset",
+            "sourceId",
+            "validateProfileId",
+            "value",
+            "warningOnly",
+        ]
+
 
 class TestScriptSetupActionAssertRule(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1816,6 +2002,13 @@ class TestScriptSetupActionAssertRule(backboneelement.BackboneElement):
     ruleId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_ruleId", title="Extension field for ``ruleId``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestScriptSetupActionAssertRule`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "ruleId", "param"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3399(
@@ -1878,7 +2071,7 @@ class TestScriptSetupActionAssertRule(backboneelement.BackboneElement):
 
 
 class TestScriptSetupActionAssertRuleParam(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1919,6 +2112,13 @@ class TestScriptSetupActionAssertRuleParam(backboneelement.BackboneElement):
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestScriptSetupActionAssertRuleParam`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "name", "value"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3904(
@@ -1981,7 +2181,7 @@ class TestScriptSetupActionAssertRuleParam(backboneelement.BackboneElement):
 
 
 class TestScriptSetupActionAssertRuleset(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -2012,6 +2212,13 @@ class TestScriptSetupActionAssertRuleset(backboneelement.BackboneElement):
     rulesetId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_rulesetId", title="Extension field for ``rulesetId``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestScriptSetupActionAssertRuleset`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "rulesetId", "rule"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3746(
@@ -2074,7 +2281,7 @@ class TestScriptSetupActionAssertRuleset(backboneelement.BackboneElement):
 
 
 class TestScriptSetupActionAssertRulesetRule(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -2109,6 +2316,13 @@ class TestScriptSetupActionAssertRulesetRule(backboneelement.BackboneElement):
     ruleId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_ruleId", title="Extension field for ``ruleId``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestScriptSetupActionAssertRulesetRule`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "ruleId", "param"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_4139(
@@ -2171,7 +2385,7 @@ class TestScriptSetupActionAssertRulesetRule(backboneelement.BackboneElement):
 
 
 class TestScriptSetupActionAssertRulesetRuleParam(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -2212,6 +2426,13 @@ class TestScriptSetupActionAssertRulesetRuleParam(backboneelement.BackboneElemen
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestScriptSetupActionAssertRulesetRuleParam`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "name", "value"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_4644(
@@ -2274,7 +2495,7 @@ class TestScriptSetupActionAssertRulesetRuleParam(backboneelement.BackboneElemen
 
 
 class TestScriptSetupActionOperation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -2509,9 +2730,36 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
         None, alias="_url", title="Extension field for ``url``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestScriptSetupActionOperation`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "type",
+            "resource",
+            "label",
+            "description",
+            "accept",
+            "contentType",
+            "destination",
+            "encodeRequestUrl",
+            "origin",
+            "params",
+            "requestHeader",
+            "requestId",
+            "responseId",
+            "sourceId",
+            "targetId",
+            "url",
+        ]
+
 
 class TestScriptSetupActionOperationRequestHeader(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -2546,6 +2794,13 @@ class TestScriptSetupActionOperationRequestHeader(backboneelement.BackboneElemen
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestScriptSetupActionOperationRequestHeader`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "field", "value"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_4653(
@@ -2608,7 +2863,7 @@ class TestScriptSetupActionOperationRequestHeader(backboneelement.BackboneElemen
 
 
 class TestScriptTeardown(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -2628,9 +2883,16 @@ class TestScriptTeardown(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestScriptTeardown`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "action"]
+
 
 class TestScriptTeardownAction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -2649,9 +2911,16 @@ class TestScriptTeardownAction(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestScriptTeardownAction`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "operation"]
+
 
 class TestScriptTest(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -2699,9 +2968,16 @@ class TestScriptTest(backboneelement.BackboneElement):
         None, alias="_name", title="Extension field for ``name``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestScriptTest`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "name", "description", "action"]
+
 
 class TestScriptTestAction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -2732,9 +3008,16 @@ class TestScriptTestAction(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestScriptTestAction`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "operation", "assert"]
+
 
 class TestScriptVariable(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -2861,6 +3144,25 @@ class TestScriptVariable(backboneelement.BackboneElement):
     sourceId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sourceId", title="Extension field for ``sourceId``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TestScriptVariable`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "name",
+            "defaultValue",
+            "description",
+            "expression",
+            "headerField",
+            "hint",
+            "path",
+            "sourceId",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2036(

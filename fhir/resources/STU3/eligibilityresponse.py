@@ -14,7 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class EligibilityResponse(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -181,9 +181,38 @@ class EligibilityResponse(domainresource.DomainResource):
         None, alias="_status", title="Extension field for ``status``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``EligibilityResponse`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "created",
+            "requestProvider",
+            "requestOrganization",
+            "request",
+            "outcome",
+            "disposition",
+            "insurer",
+            "inforce",
+            "insurance",
+            "form",
+            "error",
+        ]
+
 
 class EligibilityResponseError(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -205,9 +234,16 @@ class EligibilityResponseError(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``EligibilityResponseError`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "code"]
+
 
 class EligibilityResponseInsurance(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -251,9 +287,23 @@ class EligibilityResponseInsurance(backboneelement.BackboneElement):
         enum_reference_types=["Coverage"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``EligibilityResponseInsurance`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "coverage",
+            "contract",
+            "benefitBalance",
+        ]
+
 
 class EligibilityResponseInsuranceBenefitBalance(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -365,11 +415,31 @@ class EligibilityResponseInsuranceBenefitBalance(backboneelement.BackboneElement
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``EligibilityResponseInsuranceBenefitBalance`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "category",
+            "subCategory",
+            "excluded",
+            "name",
+            "description",
+            "network",
+            "unit",
+            "term",
+            "financial",
+        ]
+
 
 class EligibilityResponseInsuranceBenefitBalanceFinancial(
     backboneelement.BackboneElement
 ):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -460,6 +530,23 @@ class EligibilityResponseInsuranceBenefitBalanceFinancial(
     usedUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_usedUnsignedInt", title="Extension field for ``usedUnsignedInt``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``EligibilityResponseInsuranceBenefitBalanceFinancial`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "type",
+            "allowedUnsignedInt",
+            "allowedString",
+            "allowedMoney",
+            "usedUnsignedInt",
+            "usedMoney",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_5383(

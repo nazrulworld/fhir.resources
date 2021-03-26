@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ImagingStudy(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -275,6 +275,41 @@ class ImagingStudy(domainresource.DomainResource):
         None, alias="_uid", title="Extension field for ``uid``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ImagingStudy`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "uid",
+            "accession",
+            "identifier",
+            "availability",
+            "modalityList",
+            "patient",
+            "context",
+            "started",
+            "basedOn",
+            "referrer",
+            "interpreter",
+            "endpoint",
+            "numberOfSeries",
+            "numberOfInstances",
+            "procedureReference",
+            "procedureCode",
+            "reason",
+            "description",
+            "series",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1431(
         cls, values: typing.Dict[str, typing.Any]
@@ -336,7 +371,7 @@ class ImagingStudy(domainresource.DomainResource):
 
 
 class ImagingStudySeries(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -512,6 +547,29 @@ class ImagingStudySeries(backboneelement.BackboneElement):
         None, alias="_uid", title="Extension field for ``uid``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ImagingStudySeries`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "uid",
+            "number",
+            "modality",
+            "description",
+            "numberOfInstances",
+            "availability",
+            "endpoint",
+            "bodySite",
+            "laterality",
+            "started",
+            "performer",
+            "instance",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2044(
         cls, values: typing.Dict[str, typing.Any]
@@ -573,7 +631,7 @@ class ImagingStudySeries(backboneelement.BackboneElement):
 
 
 class ImagingStudySeriesInstance(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -633,6 +691,21 @@ class ImagingStudySeriesInstance(backboneelement.BackboneElement):
     uid__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uid", title="Extension field for ``uid``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ImagingStudySeriesInstance`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "uid",
+            "number",
+            "sopClass",
+            "title",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2851(

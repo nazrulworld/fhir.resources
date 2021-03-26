@@ -39,6 +39,7 @@ except ImportError:
 try:
     from .xml import xml_dumps
 except ImportError as exc:
+
     def raise_lxml_import_error():
         raise ImportError(
             "LXML library not found! Make sure ``fhir.resources`` is "

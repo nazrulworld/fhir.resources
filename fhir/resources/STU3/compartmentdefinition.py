@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class CompartmentDefinition(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -254,6 +254,37 @@ class CompartmentDefinition(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``CompartmentDefinition`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "url",
+            "name",
+            "title",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "description",
+            "purpose",
+            "useContext",
+            "jurisdiction",
+            "code",
+            "search",
+            "resource",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2372(
         cls, values: typing.Dict[str, typing.Any]
@@ -321,7 +352,7 @@ class CompartmentDefinition(domainresource.DomainResource):
 
 
 class CompartmentDefinitionResource(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -371,6 +402,20 @@ class CompartmentDefinitionResource(backboneelement.BackboneElement):
     param__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_param", title="Extension field for ``param``.")
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``CompartmentDefinitionResource`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "code",
+            "param",
+            "documentation",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3203(

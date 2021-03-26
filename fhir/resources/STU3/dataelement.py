@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class DataElement(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -276,6 +276,38 @@ class DataElement(domainresource.DomainResource):
         None, alias="_version", title="Extension field for ``version``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``DataElement`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "url",
+            "identifier",
+            "version",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "name",
+            "title",
+            "contact",
+            "useContext",
+            "jurisdiction",
+            "copyright",
+            "stringency",
+            "mapping",
+            "element",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1276(
         cls, values: typing.Dict[str, typing.Any]
@@ -337,7 +369,7 @@ class DataElement(domainresource.DomainResource):
 
 
 class DataElementMapping(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -405,6 +437,21 @@ class DataElementMapping(backboneelement.BackboneElement):
     uri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uri", title="Extension field for ``uri``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``DataElementMapping`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "identity",
+            "uri",
+            "name",
+            "comment",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1979(

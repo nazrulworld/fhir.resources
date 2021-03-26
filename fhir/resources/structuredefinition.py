@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class StructureDefinition(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -454,6 +454,49 @@ class StructureDefinition(domainresource.DomainResource):
         None, alias="_version", title="Extension field for ``version``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``StructureDefinition`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "url",
+            "identifier",
+            "version",
+            "name",
+            "title",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "description",
+            "useContext",
+            "jurisdiction",
+            "purpose",
+            "copyright",
+            "keyword",
+            "fhirVersion",
+            "mapping",
+            "kind",
+            "abstract",
+            "context",
+            "contextInvariant",
+            "type",
+            "baseDefinition",
+            "derivation",
+            "snapshot",
+            "differential",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2203(
         cls, values: typing.Dict[str, typing.Any]
@@ -522,7 +565,7 @@ class StructureDefinition(domainresource.DomainResource):
 
 
 class StructureDefinitionContext(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -566,6 +609,13 @@ class StructureDefinitionContext(backboneelement.BackboneElement):
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``StructureDefinitionContext`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "type", "expression"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2950(
@@ -628,7 +678,7 @@ class StructureDefinitionContext(backboneelement.BackboneElement):
 
 
 class StructureDefinitionDifferential(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -648,9 +698,16 @@ class StructureDefinitionDifferential(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``StructureDefinitionDifferential`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "element"]
+
 
 class StructureDefinitionMapping(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -718,6 +775,21 @@ class StructureDefinitionMapping(backboneelement.BackboneElement):
         None, alias="_uri", title="Extension field for ``uri``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``StructureDefinitionMapping`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "identity",
+            "uri",
+            "name",
+            "comment",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2912(
         cls, values: typing.Dict[str, typing.Any]
@@ -779,7 +851,7 @@ class StructureDefinitionMapping(backboneelement.BackboneElement):
 
 
 class StructureDefinitionSnapshot(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -798,3 +870,10 @@ class StructureDefinitionSnapshot(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``StructureDefinitionSnapshot`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "element"]

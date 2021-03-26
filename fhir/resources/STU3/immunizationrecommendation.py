@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ImmunizationRecommendation(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -59,9 +59,28 @@ class ImmunizationRecommendation(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ImmunizationRecommendation`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "patient",
+            "recommendation",
+        ]
+
 
 class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -179,6 +198,26 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ImmunizationRecommendationRecommendation`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "date",
+            "vaccineCode",
+            "targetDisease",
+            "doseNumber",
+            "forecastStatus",
+            "dateCriterion",
+            "protocol",
+            "supportingImmunization",
+            "supportingPatientInformation",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_4389(
         cls, values: typing.Dict[str, typing.Any]
@@ -242,7 +281,7 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
 class ImmunizationRecommendationRecommendationDateCriterion(
     backboneelement.BackboneElement
 ):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -279,6 +318,13 @@ class ImmunizationRecommendationRecommendationDateCriterion(
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ImmunizationRecommendationRecommendationDateCriterion`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "code", "value"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_5714(
@@ -341,7 +387,7 @@ class ImmunizationRecommendationRecommendationDateCriterion(
 
 
 class ImmunizationRecommendationRecommendationProtocol(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -411,3 +457,18 @@ class ImmunizationRecommendationRecommendationProtocol(backboneelement.BackboneE
     series__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_series", title="Extension field for ``series``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ImmunizationRecommendationRecommendationProtocol`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "doseSequence",
+            "description",
+            "authority",
+            "series",
+        ]

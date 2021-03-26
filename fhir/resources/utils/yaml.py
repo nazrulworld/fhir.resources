@@ -1,8 +1,7 @@
 # _*_ coding: utf-8 _*_
 from decimal import Decimal
 
-from yaml import dump, load
-from yaml import YAMLError
+from yaml import YAMLError, dump, load
 from yaml.representer import Representer as BaseRepresenter
 from yaml.representer import SafeRepresenter
 

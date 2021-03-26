@@ -12,7 +12,7 @@ from . import quantity
 
 
 class Distance(quantity.Quantity):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -20,3 +20,10 @@ class Distance(quantity.Quantity):
     """
 
     resource_type = Field("Distance", const=True)
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``Distance`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "value", "comparator", "unit", "system", "code"]

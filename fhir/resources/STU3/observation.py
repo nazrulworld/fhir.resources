@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Observation(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -500,6 +500,54 @@ class Observation(domainresource.DomainResource):
         None, alias="_valueTime", title="Extension field for ``valueTime``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``Observation`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "basedOn",
+            "status",
+            "category",
+            "code",
+            "subject",
+            "context",
+            "effectiveDateTime",
+            "effectivePeriod",
+            "issued",
+            "performer",
+            "valueQuantity",
+            "valueCodeableConcept",
+            "valueString",
+            "valueBoolean",
+            "valueRange",
+            "valueRatio",
+            "valueSampledData",
+            "valueAttachment",
+            "valueTime",
+            "valueDateTime",
+            "valuePeriod",
+            "dataAbsentReason",
+            "interpretation",
+            "comment",
+            "bodySite",
+            "method",
+            "specimen",
+            "device",
+            "referenceRange",
+            "related",
+            "component",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1353(
         cls, values: typing.Dict[str, typing.Any]
@@ -614,7 +662,7 @@ class Observation(domainresource.DomainResource):
 
 
 class ObservationComponent(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -837,6 +885,31 @@ class ObservationComponent(backboneelement.BackboneElement):
         None, alias="_valueTime", title="Extension field for ``valueTime``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ObservationComponent`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "code",
+            "valueQuantity",
+            "valueCodeableConcept",
+            "valueString",
+            "valueRange",
+            "valueRatio",
+            "valueSampledData",
+            "valueAttachment",
+            "valueTime",
+            "valueDateTime",
+            "valuePeriod",
+            "dataAbsentReason",
+            "interpretation",
+            "referenceRange",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_2306(
         cls, values: typing.Dict[str, typing.Any]
@@ -890,7 +963,7 @@ class ObservationComponent(backboneelement.BackboneElement):
 
 
 class ObservationReferenceRange(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -983,9 +1056,26 @@ class ObservationReferenceRange(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ObservationReferenceRange`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "low",
+            "high",
+            "type",
+            "appliesTo",
+            "age",
+            "text",
+        ]
+
 
 class ObservationRelated(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1038,3 +1128,10 @@ class ObservationRelated(backboneelement.BackboneElement):
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ObservationRelated`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "type", "target"]

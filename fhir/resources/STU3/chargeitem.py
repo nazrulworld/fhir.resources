@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ChargeItem(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -361,6 +361,47 @@ class ChargeItem(domainresource.DomainResource):
         enum_reference_types=["Resource"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ChargeItem`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "definition",
+            "status",
+            "partOf",
+            "code",
+            "subject",
+            "context",
+            "occurrenceDateTime",
+            "occurrencePeriod",
+            "occurrenceTiming",
+            "participant",
+            "performingOrganization",
+            "requestingOrganization",
+            "quantity",
+            "bodysite",
+            "factorOverride",
+            "priceOverride",
+            "overrideReason",
+            "enterer",
+            "enteredDate",
+            "reason",
+            "service",
+            "account",
+            "note",
+            "supportingInformation",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1161(
         cls, values: typing.Dict[str, typing.Any]
@@ -462,7 +503,7 @@ class ChargeItem(domainresource.DomainResource):
 
 
 class ChargeItemParticipant(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -503,3 +544,10 @@ class ChargeItemParticipant(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ChargeItemParticipant`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "role", "actor"]

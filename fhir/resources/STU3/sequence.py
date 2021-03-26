@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Sequence(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -230,6 +230,37 @@ class Sequence(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``Sequence`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "type",
+            "coordinateSystem",
+            "patient",
+            "specimen",
+            "device",
+            "performer",
+            "quantity",
+            "referenceSeq",
+            "variant",
+            "observedSeq",
+            "quality",
+            "readCoverage",
+            "repository",
+            "pointer",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1009(
         cls, values: typing.Dict[str, typing.Any]
@@ -291,7 +322,7 @@ class Sequence(domainresource.DomainResource):
 
 
 class SequenceQuality(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -511,6 +542,31 @@ class SequenceQuality(backboneelement.BackboneElement):
         None, alias="_type", title="Extension field for ``type``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``SequenceQuality`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "type",
+            "standardSequence",
+            "start",
+            "end",
+            "score",
+            "method",
+            "truthTP",
+            "queryTP",
+            "truthFN",
+            "queryFP",
+            "gtFP",
+            "precision",
+            "recall",
+            "fScore",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1774(
         cls, values: typing.Dict[str, typing.Any]
@@ -572,7 +628,7 @@ class SequenceQuality(backboneelement.BackboneElement):
 
 
 class SequenceReferenceSeq(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -623,9 +679,8 @@ class SequenceReferenceSeq(backboneelement.BackboneElement):
         description=(
             "Reference identifier of reference sequence submitted to NCBI. It must "
             "match the type in the Sequence.type field. For example, the prefix, "
-            "\u201cNG_\u201d identifies reference sequence for genes, "
-            "\u201cNM_\u201d for messenger RNA transcripts, and "
-            "\u201cNP_\u201d for amino acid sequences."
+            "\u201cNG_\u201d identifies reference sequence for genes, \u201cNM_\u201d for messenger RNA"
+            " transcripts, and \u201cNP_\u201d for amino acid sequences."
         ),
         # if property is element of this resource.
         element_property=True,
@@ -707,6 +762,25 @@ class SequenceReferenceSeq(backboneelement.BackboneElement):
         None, alias="_windowStart", title="Extension field for ``windowStart``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``SequenceReferenceSeq`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "chromosome",
+            "genomeBuild",
+            "referenceSeqId",
+            "referenceSeqPointer",
+            "referenceSeqString",
+            "strand",
+            "windowStart",
+            "windowEnd",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2229(
         cls, values: typing.Dict[str, typing.Any]
@@ -771,7 +845,7 @@ class SequenceReferenceSeq(backboneelement.BackboneElement):
 
 
 class SequenceRepository(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -876,6 +950,23 @@ class SequenceRepository(backboneelement.BackboneElement):
         None, alias="_variantsetId", title="Extension field for ``variantsetId``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``SequenceRepository`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "type",
+            "url",
+            "name",
+            "datasetId",
+            "variantsetId",
+            "readsetId",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2117(
         cls, values: typing.Dict[str, typing.Any]
@@ -937,7 +1028,7 @@ class SequenceRepository(backboneelement.BackboneElement):
 
 
 class SequenceVariant(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1051,3 +1142,20 @@ class SequenceVariant(backboneelement.BackboneElement):
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Observation"],
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``SequenceVariant`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "start",
+            "end",
+            "observedAllele",
+            "referenceAllele",
+            "cigar",
+            "variantPointer",
+        ]

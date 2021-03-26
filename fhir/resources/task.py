@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Task(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -449,6 +449,53 @@ class Task(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``Task`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "instantiatesCanonical",
+            "instantiatesUri",
+            "basedOn",
+            "groupIdentifier",
+            "partOf",
+            "status",
+            "statusReason",
+            "businessStatus",
+            "intent",
+            "priority",
+            "code",
+            "description",
+            "focus",
+            "for",
+            "encounter",
+            "executionPeriod",
+            "authoredOn",
+            "lastModified",
+            "requester",
+            "performerType",
+            "owner",
+            "location",
+            "reasonCode",
+            "reasonReference",
+            "insurance",
+            "note",
+            "relevantHistory",
+            "restriction",
+            "input",
+            "output",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_594(
         cls, values: typing.Dict[str, typing.Any]
@@ -510,7 +557,7 @@ class Task(domainresource.DomainResource):
 
 
 class TaskInput(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1195,6 +1242,68 @@ class TaskInput(backboneelement.BackboneElement):
         None, alias="_valueUuid", title="Extension field for ``valueUuid``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TaskInput`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "type",
+            "valueBase64Binary",
+            "valueBoolean",
+            "valueCanonical",
+            "valueCode",
+            "valueDate",
+            "valueDateTime",
+            "valueDecimal",
+            "valueId",
+            "valueInstant",
+            "valueInteger",
+            "valueMarkdown",
+            "valueOid",
+            "valuePositiveInt",
+            "valueString",
+            "valueTime",
+            "valueUnsignedInt",
+            "valueUri",
+            "valueUrl",
+            "valueUuid",
+            "valueAddress",
+            "valueAge",
+            "valueAnnotation",
+            "valueAttachment",
+            "valueCodeableConcept",
+            "valueCoding",
+            "valueContactPoint",
+            "valueCount",
+            "valueDistance",
+            "valueDuration",
+            "valueHumanName",
+            "valueIdentifier",
+            "valueMoney",
+            "valuePeriod",
+            "valueQuantity",
+            "valueRange",
+            "valueRatio",
+            "valueReference",
+            "valueSampledData",
+            "valueSignature",
+            "valueTiming",
+            "valueContactDetail",
+            "valueContributor",
+            "valueDataRequirement",
+            "valueExpression",
+            "valueParameterDefinition",
+            "valueRelatedArtifact",
+            "valueTriggerDefinition",
+            "valueUsageContext",
+            "valueDosage",
+            "valueMeta",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_1131(
         cls, values: typing.Dict[str, typing.Any]
@@ -1288,7 +1397,7 @@ class TaskInput(backboneelement.BackboneElement):
 
 
 class TaskOutput(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1970,6 +2079,68 @@ class TaskOutput(backboneelement.BackboneElement):
         None, alias="_valueUuid", title="Extension field for ``valueUuid``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TaskOutput`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "type",
+            "valueBase64Binary",
+            "valueBoolean",
+            "valueCanonical",
+            "valueCode",
+            "valueDate",
+            "valueDateTime",
+            "valueDecimal",
+            "valueId",
+            "valueInstant",
+            "valueInteger",
+            "valueMarkdown",
+            "valueOid",
+            "valuePositiveInt",
+            "valueString",
+            "valueTime",
+            "valueUnsignedInt",
+            "valueUri",
+            "valueUrl",
+            "valueUuid",
+            "valueAddress",
+            "valueAge",
+            "valueAnnotation",
+            "valueAttachment",
+            "valueCodeableConcept",
+            "valueCoding",
+            "valueContactPoint",
+            "valueCount",
+            "valueDistance",
+            "valueDuration",
+            "valueHumanName",
+            "valueIdentifier",
+            "valueMoney",
+            "valuePeriod",
+            "valueQuantity",
+            "valueRange",
+            "valueRatio",
+            "valueReference",
+            "valueSampledData",
+            "valueSignature",
+            "valueTiming",
+            "valueContactDetail",
+            "valueContributor",
+            "valueDataRequirement",
+            "valueExpression",
+            "valueParameterDefinition",
+            "valueRelatedArtifact",
+            "valueTriggerDefinition",
+            "valueUsageContext",
+            "valueDosage",
+            "valueMeta",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_1260(
         cls, values: typing.Dict[str, typing.Any]
@@ -2063,7 +2234,7 @@ class TaskOutput(backboneelement.BackboneElement):
 
 
 class TaskRestriction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -2116,3 +2287,17 @@ class TaskRestriction(backboneelement.BackboneElement):
     repetitions__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_repetitions", title="Extension field for ``repetitions``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``TaskRestriction`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "repetitions",
+            "period",
+            "recipient",
+        ]

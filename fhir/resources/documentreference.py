@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class DocumentReference(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -249,6 +249,38 @@ class DocumentReference(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``DocumentReference`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "masterIdentifier",
+            "identifier",
+            "status",
+            "docStatus",
+            "type",
+            "category",
+            "subject",
+            "date",
+            "author",
+            "authenticator",
+            "custodian",
+            "relatesTo",
+            "description",
+            "securityLabel",
+            "content",
+            "context",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1911(
         cls, values: typing.Dict[str, typing.Any]
@@ -310,7 +342,7 @@ class DocumentReference(domainresource.DomainResource):
 
 
 class DocumentReferenceContent(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -346,9 +378,16 @@ class DocumentReferenceContent(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``DocumentReferenceContent`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "attachment", "format"]
+
 
 class DocumentReferenceContext(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -450,9 +489,27 @@ class DocumentReferenceContext(backboneelement.BackboneElement):
         enum_reference_types=["Patient"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``DocumentReferenceContext`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "encounter",
+            "event",
+            "period",
+            "facilityType",
+            "practiceSetting",
+            "sourcePatientInfo",
+            "related",
+        ]
+
 
 class DocumentReferenceRelatesTo(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -489,6 +546,13 @@ class DocumentReferenceRelatesTo(backboneelement.BackboneElement):
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["DocumentReference"],
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``DocumentReferenceRelatesTo`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "code", "target"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2836(

@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class MedicationRequest(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -406,6 +406,47 @@ class MedicationRequest(domainresource.DomainResource):
         enum_reference_types=["Resource"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``MedicationRequest`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "definition",
+            "basedOn",
+            "groupIdentifier",
+            "status",
+            "intent",
+            "category",
+            "priority",
+            "medicationCodeableConcept",
+            "medicationReference",
+            "subject",
+            "context",
+            "supportingInformation",
+            "authoredOn",
+            "requester",
+            "recorder",
+            "reasonCode",
+            "reasonReference",
+            "note",
+            "dosageInstruction",
+            "dispenseRequest",
+            "substitution",
+            "priorPrescription",
+            "detectedIssue",
+            "eventHistory",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1959(
         cls, values: typing.Dict[str, typing.Any]
@@ -507,7 +548,7 @@ class MedicationRequest(domainresource.DomainResource):
 
 
 class MedicationRequestDispenseRequest(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -590,9 +631,25 @@ class MedicationRequestDispenseRequest(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``MedicationRequestDispenseRequest`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "validityPeriod",
+            "numberOfRepeatsAllowed",
+            "quantity",
+            "expectedSupplyDuration",
+            "performer",
+        ]
+
 
 class MedicationRequestRequester(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -634,9 +691,16 @@ class MedicationRequestRequester(backboneelement.BackboneElement):
         enum_reference_types=["Organization"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``MedicationRequestRequester`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "agent", "onBehalfOf"]
+
 
 class MedicationRequestSubstitution(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -676,6 +740,13 @@ class MedicationRequestSubstitution(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``MedicationRequestSubstitution`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "allowed", "reason"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3262(

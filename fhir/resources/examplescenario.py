@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ExampleScenario(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -277,6 +277,39 @@ class ExampleScenario(domainresource.DomainResource):
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_workflow", title="Extension field for ``workflow``.")
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExampleScenario`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "url",
+            "identifier",
+            "version",
+            "name",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "useContext",
+            "jurisdiction",
+            "copyright",
+            "purpose",
+            "actor",
+            "instance",
+            "process",
+            "workflow",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1716(
         cls, values: typing.Dict[str, typing.Any]
@@ -338,7 +371,7 @@ class ExampleScenario(domainresource.DomainResource):
 
 
 class ExampleScenarioActor(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -399,6 +432,21 @@ class ExampleScenarioActor(backboneelement.BackboneElement):
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExampleScenarioActor`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "actorId",
+            "type",
+            "name",
+            "description",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2224(
@@ -461,7 +509,7 @@ class ExampleScenarioActor(backboneelement.BackboneElement):
 
 
 class ExampleScenarioInstance(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -543,6 +591,23 @@ class ExampleScenarioInstance(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExampleScenarioInstance`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "resourceId",
+            "resourceType",
+            "name",
+            "description",
+            "version",
+            "containedInstance",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2527(
         cls, values: typing.Dict[str, typing.Any]
@@ -607,7 +672,7 @@ class ExampleScenarioInstance(backboneelement.BackboneElement):
 
 
 class ExampleScenarioInstanceContainedInstance(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -642,6 +707,13 @@ class ExampleScenarioInstanceContainedInstance(backboneelement.BackboneElement):
     versionId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_versionId", title="Extension field for ``versionId``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExampleScenarioInstanceContainedInstance`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "resourceId", "versionId"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_4265(
@@ -704,7 +776,7 @@ class ExampleScenarioInstanceContainedInstance(backboneelement.BackboneElement):
 
 
 class ExampleScenarioInstanceVersion(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -738,6 +810,13 @@ class ExampleScenarioInstanceVersion(backboneelement.BackboneElement):
     versionId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_versionId", title="Extension field for ``versionId``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExampleScenarioInstanceVersion`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "versionId", "description"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3278(
@@ -803,7 +882,7 @@ class ExampleScenarioInstanceVersion(backboneelement.BackboneElement):
 
 
 class ExampleScenarioProcess(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -870,6 +949,22 @@ class ExampleScenarioProcess(backboneelement.BackboneElement):
         None, alias="_title", title="Extension field for ``title``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExampleScenarioProcess`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "title",
+            "description",
+            "preConditions",
+            "postConditions",
+            "step",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2455(
         cls, values: typing.Dict[str, typing.Any]
@@ -931,7 +1026,7 @@ class ExampleScenarioProcess(backboneelement.BackboneElement):
 
 
 class ExampleScenarioProcessStep(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -984,9 +1079,24 @@ class ExampleScenarioProcessStep(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExampleScenarioProcessStep`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "process",
+            "pause",
+            "operation",
+            "alternative",
+        ]
+
 
 class ExampleScenarioProcessStepAlternative(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1036,6 +1146,13 @@ class ExampleScenarioProcessStepAlternative(backboneelement.BackboneElement):
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExampleScenarioProcessStepAlternative`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "title", "description", "step"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_4004(
@@ -1098,7 +1215,7 @@ class ExampleScenarioProcessStepAlternative(backboneelement.BackboneElement):
 
 
 class ExampleScenarioProcessStepOperation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1221,6 +1338,27 @@ class ExampleScenarioProcessStepOperation(backboneelement.BackboneElement):
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExampleScenarioProcessStepOperation`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "number",
+            "type",
+            "name",
+            "initiator",
+            "receiver",
+            "description",
+            "initiatorActive",
+            "receiverActive",
+            "request",
+            "response",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3807(

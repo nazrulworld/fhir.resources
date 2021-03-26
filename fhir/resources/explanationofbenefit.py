@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ExplanationOfBenefit(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -567,6 +567,65 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         None, alias="_use", title="Extension field for ``use``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExplanationOfBenefit`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "type",
+            "subType",
+            "use",
+            "patient",
+            "billablePeriod",
+            "created",
+            "enterer",
+            "insurer",
+            "provider",
+            "priority",
+            "fundsReserveRequested",
+            "fundsReserve",
+            "related",
+            "prescription",
+            "originalPrescription",
+            "payee",
+            "referral",
+            "facility",
+            "claim",
+            "claimResponse",
+            "outcome",
+            "disposition",
+            "preAuthRef",
+            "preAuthRefPeriod",
+            "careTeam",
+            "supportingInfo",
+            "diagnosis",
+            "procedure",
+            "precedence",
+            "insurance",
+            "accident",
+            "item",
+            "addItem",
+            "adjudication",
+            "total",
+            "payment",
+            "formCode",
+            "form",
+            "processNote",
+            "benefitPeriod",
+            "benefitBalance",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2222(
         cls, values: typing.Dict[str, typing.Any]
@@ -633,7 +692,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
 
 
 class ExplanationOfBenefitAccident(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -698,6 +757,21 @@ class ExplanationOfBenefitAccident(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExplanationOfBenefitAccident`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "date",
+            "type",
+            "locationAddress",
+            "locationReference",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_3017(
         cls, values: typing.Dict[str, typing.Any]
@@ -738,7 +812,7 @@ class ExplanationOfBenefitAccident(backboneelement.BackboneElement):
 
 
 class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1025,6 +1099,38 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExplanationOfBenefitAddItem`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "itemSequence",
+            "detailSequence",
+            "subDetailSequence",
+            "provider",
+            "productOrService",
+            "modifier",
+            "programCode",
+            "servicedDate",
+            "servicedPeriod",
+            "locationCodeableConcept",
+            "locationAddress",
+            "locationReference",
+            "quantity",
+            "unitPrice",
+            "factor",
+            "net",
+            "bodySite",
+            "subSite",
+            "noteNumber",
+            "adjudication",
+            "detail",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_2879(
         cls, values: typing.Dict[str, typing.Any]
@@ -1072,7 +1178,7 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
 
 
 class ExplanationOfBenefitAddItemDetail(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1195,9 +1301,29 @@ class ExplanationOfBenefitAddItemDetail(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExplanationOfBenefitAddItemDetail`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "productOrService",
+            "modifier",
+            "quantity",
+            "unitPrice",
+            "factor",
+            "net",
+            "noteNumber",
+            "adjudication",
+            "subDetail",
+        ]
+
 
 class ExplanationOfBenefitAddItemDetailSubDetail(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1309,9 +1435,28 @@ class ExplanationOfBenefitAddItemDetailSubDetail(backboneelement.BackboneElement
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExplanationOfBenefitAddItemDetailSubDetail`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "productOrService",
+            "modifier",
+            "quantity",
+            "unitPrice",
+            "factor",
+            "net",
+            "noteNumber",
+            "adjudication",
+        ]
+
 
 class ExplanationOfBenefitBenefitBalance(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1416,9 +1561,28 @@ class ExplanationOfBenefitBenefitBalance(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExplanationOfBenefitBenefitBalance`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "category",
+            "excluded",
+            "name",
+            "description",
+            "network",
+            "unit",
+            "term",
+            "financial",
+        ]
+
 
 class ExplanationOfBenefitBenefitBalanceFinancial(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1508,6 +1672,23 @@ class ExplanationOfBenefitBenefitBalanceFinancial(backboneelement.BackboneElemen
         None, alias="_usedUnsignedInt", title="Extension field for ``usedUnsignedInt``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExplanationOfBenefitBenefitBalanceFinancial`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "type",
+            "allowedUnsignedInt",
+            "allowedString",
+            "allowedMoney",
+            "usedUnsignedInt",
+            "usedMoney",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_4494(
         cls, values: typing.Dict[str, typing.Any]
@@ -1551,7 +1732,7 @@ class ExplanationOfBenefitBenefitBalanceFinancial(backboneelement.BackboneElemen
 
 
 class ExplanationOfBenefitCareTeam(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1624,6 +1805,22 @@ class ExplanationOfBenefitCareTeam(backboneelement.BackboneElement):
         None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExplanationOfBenefitCareTeam`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "sequence",
+            "provider",
+            "responsible",
+            "role",
+            "qualification",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2985(
         cls, values: typing.Dict[str, typing.Any]
@@ -1685,7 +1882,7 @@ class ExplanationOfBenefitCareTeam(backboneelement.BackboneElement):
 
 
 class ExplanationOfBenefitDiagnosis(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1773,6 +1970,23 @@ class ExplanationOfBenefitDiagnosis(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExplanationOfBenefitDiagnosis`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "sequence",
+            "diagnosisCodeableConcept",
+            "diagnosisReference",
+            "type",
+            "onAdmission",
+            "packageCode",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3150(
@@ -1875,7 +2089,7 @@ class ExplanationOfBenefitDiagnosis(backboneelement.BackboneElement):
 
 
 class ExplanationOfBenefitInsurance(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1933,6 +2147,20 @@ class ExplanationOfBenefitInsurance(backboneelement.BackboneElement):
     preAuthRef__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_preAuthRef", title="Extension field for ``preAuthRef``.")
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExplanationOfBenefitInsurance`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "focal",
+            "coverage",
+            "preAuthRef",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3143(
@@ -1995,7 +2223,7 @@ class ExplanationOfBenefitInsurance(backboneelement.BackboneElement):
 
 
 class ExplanationOfBenefitItem(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -2351,6 +2579,43 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExplanationOfBenefitItem`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "sequence",
+            "careTeamSequence",
+            "diagnosisSequence",
+            "procedureSequence",
+            "informationSequence",
+            "revenue",
+            "category",
+            "productOrService",
+            "modifier",
+            "programCode",
+            "servicedDate",
+            "servicedPeriod",
+            "locationCodeableConcept",
+            "locationAddress",
+            "locationReference",
+            "quantity",
+            "unitPrice",
+            "factor",
+            "net",
+            "udi",
+            "bodySite",
+            "subSite",
+            "encounter",
+            "noteNumber",
+            "adjudication",
+            "detail",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2614(
         cls, values: typing.Dict[str, typing.Any]
@@ -2457,7 +2722,7 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
 
 
 class ExplanationOfBenefitItemAdjudication(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -2521,9 +2786,24 @@ class ExplanationOfBenefitItemAdjudication(backboneelement.BackboneElement):
         None, alias="_value", title="Extension field for ``value``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExplanationOfBenefitItemAdjudication`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "category",
+            "reason",
+            "amount",
+            "value",
+        ]
+
 
 class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -2706,6 +2986,31 @@ class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExplanationOfBenefitItemDetail`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "sequence",
+            "revenue",
+            "category",
+            "productOrService",
+            "modifier",
+            "programCode",
+            "quantity",
+            "unitPrice",
+            "factor",
+            "net",
+            "udi",
+            "noteNumber",
+            "adjudication",
+            "subDetail",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3208(
         cls, values: typing.Dict[str, typing.Any]
@@ -2767,7 +3072,7 @@ class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
 
 
 class ExplanationOfBenefitItemDetailSubDetail(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -2939,6 +3244,30 @@ class ExplanationOfBenefitItemDetailSubDetail(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExplanationOfBenefitItemDetailSubDetail`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "sequence",
+            "revenue",
+            "category",
+            "productOrService",
+            "modifier",
+            "programCode",
+            "quantity",
+            "unitPrice",
+            "factor",
+            "net",
+            "udi",
+            "noteNumber",
+            "adjudication",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_4101(
         cls, values: typing.Dict[str, typing.Any]
@@ -3000,7 +3329,7 @@ class ExplanationOfBenefitItemDetailSubDetail(backboneelement.BackboneElement):
 
 
 class ExplanationOfBenefitPayee(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -3040,9 +3369,16 @@ class ExplanationOfBenefitPayee(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExplanationOfBenefitPayee`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "type", "party"]
+
 
 class ExplanationOfBenefitPayment(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -3118,9 +3454,26 @@ class ExplanationOfBenefitPayment(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExplanationOfBenefitPayment`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "type",
+            "adjustment",
+            "adjustmentReason",
+            "date",
+            "amount",
+            "identifier",
+        ]
+
 
 class ExplanationOfBenefitProcedure(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -3207,6 +3560,23 @@ class ExplanationOfBenefitProcedure(backboneelement.BackboneElement):
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Device"],
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExplanationOfBenefitProcedure`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "sequence",
+            "type",
+            "date",
+            "procedureCodeableConcept",
+            "procedureReference",
+            "udi",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3144(
@@ -3309,7 +3679,7 @@ class ExplanationOfBenefitProcedure(backboneelement.BackboneElement):
 
 
 class ExplanationOfBenefitProcessNote(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -3368,9 +3738,24 @@ class ExplanationOfBenefitProcessNote(backboneelement.BackboneElement):
         None, alias="_type", title="Extension field for ``type``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExplanationOfBenefitProcessNote`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "number",
+            "type",
+            "text",
+            "language",
+        ]
+
 
 class ExplanationOfBenefitRelated(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -3413,9 +3798,23 @@ class ExplanationOfBenefitRelated(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExplanationOfBenefitRelated`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "claim",
+            "relationship",
+            "reference",
+        ]
+
 
 class ExplanationOfBenefitSupportingInfo(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -3591,6 +3990,28 @@ class ExplanationOfBenefitSupportingInfo(backboneelement.BackboneElement):
         None, alias="_valueString", title="Extension field for ``valueString``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExplanationOfBenefitSupportingInfo`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "sequence",
+            "category",
+            "code",
+            "timingDate",
+            "timingPeriod",
+            "valueBoolean",
+            "valueString",
+            "valueQuantity",
+            "valueAttachment",
+            "valueReference",
+            "reason",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3696(
         cls, values: typing.Dict[str, typing.Any]
@@ -3699,7 +4120,7 @@ class ExplanationOfBenefitSupportingInfo(backboneelement.BackboneElement):
 
 
 class ExplanationOfBenefitTotal(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -3733,3 +4154,10 @@ class ExplanationOfBenefitTotal(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ExplanationOfBenefitTotal`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "category", "amount"]

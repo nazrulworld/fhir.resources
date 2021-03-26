@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Account(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -176,6 +176,33 @@ class Account(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``Account`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "type",
+            "name",
+            "subject",
+            "servicePeriod",
+            "coverage",
+            "owner",
+            "description",
+            "guarantor",
+            "partOf",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_898(
         cls, values: typing.Dict[str, typing.Any]
@@ -237,7 +264,7 @@ class Account(domainresource.DomainResource):
 
 
 class AccountCoverage(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -278,9 +305,16 @@ class AccountCoverage(backboneelement.BackboneElement):
         None, alias="_priority", title="Extension field for ``priority``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``AccountCoverage`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "coverage", "priority"]
+
 
 class AccountGuarantor(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -328,3 +362,10 @@ class AccountGuarantor(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``AccountGuarantor`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "party", "onHold", "period"]

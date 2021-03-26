@@ -97,10 +97,14 @@
     }
   ],
   "gender": "male",
+  "_gender": {
+      "fhir_comments": "This is comment for Gender"
+  },
   "birthDate": "1974-12",
   "deceasedBoolean": true,
   "address": [
     {
+        "fhir_comments": "This is comment for Address.No 1",
       "use": "home",
       "line": [
         "534 Erewhon St"
@@ -114,7 +118,8 @@
     "extension": [
       {
         "url": "http://example.org/fhir/StructureDefinition/nullFlavor",
-        "valueCode": "ASKU"
+        "valueCode": "ASKU",
+        "fhir_comments": "This is comment for maritalStatus. Ext 1"
       }
     ]
   },

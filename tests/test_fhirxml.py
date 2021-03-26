@@ -3,7 +3,7 @@ from fhir.resources.observation import Observation
 from http import client
 from .fixtures import STATIC_PATH, FHIR_XSD_DIR
 from .utils import has_internet_connection, post_xml_resource
-from fhir.resources import fhirxml
+from fhir.resources import utils
 import pytest
 import sys
 import pathlib
@@ -20,16 +20,19 @@ def test_xml_node_patient_resource():
     Content-Type: application/fhir+xml; charset=UTF-8
     """
     patient_fhir = Patient.parse_file(STATIC_PATH / "Patient-with-ext.json")
-    patient_node = fhirxml.Node.from_fhir_obj(patient_fhir)
-    # with open("output.xml", "wb") as fp:
-    #     fp.write(patient_node.to_string(True))
-    import xmlschema
+    patient_node = utils.xml.Node.from_fhir_obj(patient_fhir)
+    with open("output.xml", "wb") as fp:
+        fp.write(patient_fhir.xml(return_bytes=True, pretty_print=True))
+
+    with open("output.json", "wb") as fp:
+        fp.write(patient_fhir.json(return_bytes=True, indent=2, exclude_comments=False))
+
     schema = lxml.etree.XMLSchema(file=str(FHIR_XSD_DIR / "patient.xsd"))
     xmlparser = lxml.etree.XMLParser(schema=schema)
     el = lxml.etree.parse("output.xml", parser=xmlparser)
-    return
-    patient_node.validate(FHIR_XSD_DIR / "patient.xsd")
 
+    patient_node.validate(FHIR_XSD_DIR / "patient.xsd")
+    return
     if not has_internet_connection():
         return
     conn = None

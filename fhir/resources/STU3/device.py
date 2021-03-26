@@ -14,7 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Device(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -244,9 +244,42 @@ class Device(domainresource.DomainResource):
         None, alias="_version", title="Extension field for ``version``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``Device`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "udi",
+            "status",
+            "type",
+            "lotNumber",
+            "manufacturer",
+            "manufactureDate",
+            "expirationDate",
+            "model",
+            "version",
+            "patient",
+            "owner",
+            "contact",
+            "location",
+            "url",
+            "note",
+            "safety",
+        ]
+
 
 class DeviceUdi(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -371,3 +404,21 @@ class DeviceUdi(backboneelement.BackboneElement):
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``DeviceUdi`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "deviceIdentifier",
+            "name",
+            "jurisdiction",
+            "carrierHRF",
+            "carrierAIDC",
+            "issuer",
+            "entryType",
+        ]

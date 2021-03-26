@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Consent(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -306,6 +306,45 @@ class Consent(domainresource.DomainResource):
         None, alias="_status", title="Extension field for ``status``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``Consent`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "category",
+            "patient",
+            "period",
+            "dateTime",
+            "consentingParty",
+            "actor",
+            "action",
+            "organization",
+            "sourceAttachment",
+            "sourceIdentifier",
+            "sourceReference",
+            "sourceReference",
+            "sourceReference",
+            "sourceReference",
+            "policy",
+            "policyRule",
+            "securityLabel",
+            "purpose",
+            "dataPeriod",
+            "data",
+            "except",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_913(
         cls, values: typing.Dict[str, typing.Any]
@@ -407,7 +446,7 @@ class Consent(domainresource.DomainResource):
 
 
 class ConsentActor(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -453,9 +492,16 @@ class ConsentActor(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ConsentActor`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "role", "reference"]
+
 
 class ConsentData(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -498,6 +544,13 @@ class ConsentData(backboneelement.BackboneElement):
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ConsentData`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "meaning", "reference"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1272(
@@ -560,7 +613,7 @@ class ConsentData(backboneelement.BackboneElement):
 
 
 class ConsentExcept(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -692,6 +745,27 @@ class ConsentExcept(backboneelement.BackboneElement):
         None, alias="_type", title="Extension field for ``type``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ConsentExcept`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "type",
+            "period",
+            "actor",
+            "action",
+            "securityLabel",
+            "purpose",
+            "class",
+            "code",
+            "dataPeriod",
+            "data",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1530(
         cls, values: typing.Dict[str, typing.Any]
@@ -753,7 +827,7 @@ class ConsentExcept(backboneelement.BackboneElement):
 
 
 class ConsentExceptActor(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -799,9 +873,16 @@ class ConsentExceptActor(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ConsentExceptActor`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "role", "reference"]
+
 
 class ConsentExceptData(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -844,6 +925,13 @@ class ConsentExceptData(backboneelement.BackboneElement):
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ConsentExceptData`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "meaning", "reference"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1889(
@@ -906,7 +994,7 @@ class ConsentExceptData(backboneelement.BackboneElement):
 
 
 class ConsentPolicy(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -949,3 +1037,10 @@ class ConsentPolicy(backboneelement.BackboneElement):
     uri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uri", title="Extension field for ``uri``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ConsentPolicy`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "authority", "uri"]

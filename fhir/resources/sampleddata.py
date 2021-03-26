@@ -16,7 +16,7 @@ from . import element, fhirtypes
 
 
 class SampledData(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -132,6 +132,23 @@ class SampledData(element.Element):
     upperLimit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_upperLimit", title="Extension field for ``upperLimit``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``SampledData`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "origin",
+            "period",
+            "factor",
+            "lowerLimit",
+            "upperLimit",
+            "dimensions",
+            "data",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1268(

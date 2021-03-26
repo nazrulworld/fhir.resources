@@ -14,7 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Coverage(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -244,9 +244,41 @@ class Coverage(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``Coverage`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "type",
+            "policyHolder",
+            "subscriber",
+            "subscriberId",
+            "beneficiary",
+            "relationship",
+            "period",
+            "payor",
+            "grouping",
+            "dependent",
+            "sequence",
+            "order",
+            "network",
+            "contract",
+        ]
+
 
 class CoverageGrouping(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -425,3 +457,26 @@ class CoverageGrouping(backboneelement.BackboneElement):
     subPlanDisplay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_subPlanDisplay", title="Extension field for ``subPlanDisplay``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``CoverageGrouping`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "group",
+            "groupDisplay",
+            "subGroup",
+            "subGroupDisplay",
+            "plan",
+            "planDisplay",
+            "subPlan",
+            "subPlanDisplay",
+            "class",
+            "classDisplay",
+            "subClass",
+            "subClassDisplay",
+        ]

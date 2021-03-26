@@ -12,7 +12,7 @@ from . import element, fhirtypes
 
 
 class Reference(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -96,3 +96,10 @@ class Reference(element.Element):
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``Reference`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "reference", "type", "identifier", "display"]

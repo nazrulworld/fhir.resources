@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class CarePlan(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -388,6 +388,45 @@ class CarePlan(domainresource.DomainResource):
         None, alias="_title", title="Extension field for ``title``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``CarePlan`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "instantiatesCanonical",
+            "instantiatesUri",
+            "basedOn",
+            "replaces",
+            "partOf",
+            "status",
+            "intent",
+            "category",
+            "title",
+            "description",
+            "subject",
+            "encounter",
+            "period",
+            "created",
+            "author",
+            "contributor",
+            "careTeam",
+            "addresses",
+            "supportingInfo",
+            "goal",
+            "activity",
+            "note",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_951(
         cls, values: typing.Dict[str, typing.Any]
@@ -449,7 +488,7 @@ class CarePlan(domainresource.DomainResource):
 
 
 class CarePlanActivity(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -537,9 +576,25 @@ class CarePlanActivity(backboneelement.BackboneElement):
         ],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``CarePlanActivity`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "outcomeCodeableConcept",
+            "outcomeReference",
+            "progress",
+            "reference",
+            "detail",
+        ]
+
 
 class CarePlanActivityDetail(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -899,6 +954,37 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``CarePlanActivityDetail`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "kind",
+            "instantiatesCanonical",
+            "instantiatesUri",
+            "code",
+            "reasonCode",
+            "reasonReference",
+            "goal",
+            "status",
+            "statusReason",
+            "doNotPerform",
+            "scheduledTiming",
+            "scheduledPeriod",
+            "scheduledString",
+            "location",
+            "performer",
+            "productCodeableConcept",
+            "productReference",
+            "dailyAmount",
+            "quantity",
+            "description",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2389(

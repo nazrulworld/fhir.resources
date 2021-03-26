@@ -14,7 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class MedicinalProductAuthorization(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -214,11 +214,43 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``MedicinalProductAuthorization`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "subject",
+            "country",
+            "jurisdiction",
+            "status",
+            "statusDate",
+            "restoreDate",
+            "validityPeriod",
+            "dataExclusivityPeriod",
+            "dateOfFirstAuthorization",
+            "internationalBirthDate",
+            "legalBasis",
+            "jurisdictionalAuthorization",
+            "holder",
+            "regulator",
+            "procedure",
+        ]
+
 
 class MedicinalProductAuthorizationJurisdictionalAuthorization(
     backboneelement.BackboneElement
 ):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -274,9 +306,25 @@ class MedicinalProductAuthorizationJurisdictionalAuthorization(
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``MedicinalProductAuthorizationJurisdictionalAuthorization`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "country",
+            "jurisdiction",
+            "legalStatusOfSupply",
+            "validityPeriod",
+        ]
+
 
 class MedicinalProductAuthorizationProcedure(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -340,6 +388,22 @@ class MedicinalProductAuthorizationProcedure(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``MedicinalProductAuthorizationProcedure`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "type",
+            "datePeriod",
+            "dateDateTime",
+            "application",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_4147(

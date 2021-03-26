@@ -14,7 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class PaymentReconciliation(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -186,9 +186,39 @@ class PaymentReconciliation(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``PaymentReconciliation`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "period",
+            "created",
+            "organization",
+            "request",
+            "outcome",
+            "disposition",
+            "requestProvider",
+            "requestOrganization",
+            "detail",
+            "form",
+            "total",
+            "processNote",
+        ]
+
 
 class PaymentReconciliationDetail(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -275,9 +305,27 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``PaymentReconciliationDetail`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "type",
+            "request",
+            "response",
+            "submitter",
+            "payee",
+            "date",
+            "amount",
+        ]
+
 
 class PaymentReconciliationProcessNote(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -307,3 +355,10 @@ class PaymentReconciliationProcessNote(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``PaymentReconciliationProcessNote`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "type", "text"]

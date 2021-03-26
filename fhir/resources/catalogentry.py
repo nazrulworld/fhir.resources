@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class CatalogEntry(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -189,6 +189,35 @@ class CatalogEntry(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``CatalogEntry`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "type",
+            "orderable",
+            "referencedItem",
+            "additionalIdentifier",
+            "classification",
+            "status",
+            "validityPeriod",
+            "validTo",
+            "lastUpdated",
+            "additionalCharacteristic",
+            "additionalClassification",
+            "relatedEntry",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1417(
         cls, values: typing.Dict[str, typing.Any]
@@ -250,7 +279,7 @@ class CatalogEntry(domainresource.DomainResource):
 
 
 class CatalogEntryRelatedEntry(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -290,6 +319,13 @@ class CatalogEntryRelatedEntry(backboneelement.BackboneElement):
     relationtype__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_relationtype", title="Extension field for ``relationtype``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``CatalogEntryRelatedEntry`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "relationtype", "item"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2652(

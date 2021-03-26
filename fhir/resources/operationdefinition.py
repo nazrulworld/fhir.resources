@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class OperationDefinition(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -432,6 +432,48 @@ class OperationDefinition(domainresource.DomainResource):
         None, alias="_version", title="Extension field for ``version``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``OperationDefinition`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "url",
+            "version",
+            "name",
+            "title",
+            "status",
+            "kind",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "description",
+            "useContext",
+            "jurisdiction",
+            "purpose",
+            "affectsState",
+            "code",
+            "comment",
+            "base",
+            "resource",
+            "system",
+            "type",
+            "instance",
+            "inputProfile",
+            "outputProfile",
+            "parameter",
+            "overload",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2167(
         cls, values: typing.Dict[str, typing.Any]
@@ -501,7 +543,7 @@ class OperationDefinition(domainresource.DomainResource):
 
 
 class OperationDefinitionOverload(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -539,9 +581,16 @@ class OperationDefinitionOverload(backboneelement.BackboneElement):
         None, alias="_parameterName", title="Extension field for ``parameterName``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``OperationDefinitionOverload`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "parameterName", "comment"]
+
 
 class OperationDefinitionParameter(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -728,6 +777,28 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
         None, alias="_use", title="Extension field for ``use``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``OperationDefinitionParameter`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "name",
+            "use",
+            "min",
+            "max",
+            "documentation",
+            "type",
+            "targetProfile",
+            "searchType",
+            "binding",
+            "referencedFrom",
+            "part",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3100(
         cls, values: typing.Dict[str, typing.Any]
@@ -794,7 +865,7 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
 
 
 class OperationDefinitionParameterBinding(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -842,6 +913,13 @@ class OperationDefinitionParameterBinding(backboneelement.BackboneElement):
     valueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueSet", title="Extension field for ``valueSet``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``OperationDefinitionParameterBinding`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "strength", "valueSet"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3788(
@@ -904,7 +982,7 @@ class OperationDefinitionParameterBinding(backboneelement.BackboneElement):
 
 
 class OperationDefinitionParameterReferencedFrom(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -946,6 +1024,13 @@ class OperationDefinitionParameterReferencedFrom(backboneelement.BackboneElement
     sourceId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sourceId", title="Extension field for ``sourceId``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``OperationDefinitionParameterReferencedFrom`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "source", "sourceId"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_4510(

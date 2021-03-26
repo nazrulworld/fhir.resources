@@ -50,3 +50,10 @@ class FHIRPrimitiveExtension(fhirabstractmodel.FHIRAbstractModel):
             raise ValidationError(errors, cls)  # type: ignore
 
         return values
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``FHIRPrimitiveExtension`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension"]

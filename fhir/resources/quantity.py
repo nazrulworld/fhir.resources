@@ -12,7 +12,7 @@ from . import element, fhirtypes
 
 
 class Quantity(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -100,3 +100,10 @@ class Quantity(element.Element):
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``Quantity`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "value", "comparator", "unit", "system", "code"]

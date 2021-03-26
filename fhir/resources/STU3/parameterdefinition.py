@@ -16,7 +16,7 @@ from . import element, fhirtypes
 
 
 class ParameterDefinition(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -131,6 +131,23 @@ class ParameterDefinition(element.Element):
     use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_use", title="Extension field for ``use``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ParameterDefinition`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "name",
+            "use",
+            "min",
+            "max",
+            "documentation",
+            "type",
+            "profile",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2152(

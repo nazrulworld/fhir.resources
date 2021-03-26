@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class CodeSystem(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -436,6 +436,48 @@ class CodeSystem(domainresource.DomainResource):
         None, alias="_versionNeeded", title="Extension field for ``versionNeeded``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``CodeSystem`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "url",
+            "identifier",
+            "version",
+            "name",
+            "title",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "description",
+            "useContext",
+            "jurisdiction",
+            "purpose",
+            "copyright",
+            "caseSensitive",
+            "valueSet",
+            "hierarchyMeaning",
+            "compositional",
+            "versionNeeded",
+            "content",
+            "supplements",
+            "count",
+            "filter",
+            "property",
+            "concept",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1200(
         cls, values: typing.Dict[str, typing.Any]
@@ -497,7 +539,7 @@ class CodeSystem(domainresource.DomainResource):
 
 
 class CodeSystemConcept(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -591,6 +633,23 @@ class CodeSystemConcept(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``CodeSystemConcept`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "code",
+            "display",
+            "definition",
+            "designation",
+            "property",
+            "concept",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1923(
         cls, values: typing.Dict[str, typing.Any]
@@ -652,7 +711,7 @@ class CodeSystemConcept(backboneelement.BackboneElement):
 
 
 class CodeSystemConceptDesignation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -696,6 +755,13 @@ class CodeSystemConceptDesignation(backboneelement.BackboneElement):
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``CodeSystemConceptDesignation`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "language", "use", "value"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3058(
@@ -758,7 +824,7 @@ class CodeSystemConceptDesignation(backboneelement.BackboneElement):
 
 
 class CodeSystemConceptProperty(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -883,6 +949,25 @@ class CodeSystemConceptProperty(backboneelement.BackboneElement):
         None, alias="_valueString", title="Extension field for ``valueString``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``CodeSystemConceptProperty`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "code",
+            "valueCode",
+            "valueCoding",
+            "valueString",
+            "valueInteger",
+            "valueBoolean",
+            "valueDateTime",
+            "valueDecimal",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2797(
         cls, values: typing.Dict[str, typing.Any]
@@ -992,7 +1077,7 @@ class CodeSystemConceptProperty(backboneelement.BackboneElement):
 
 
 class CodeSystemFilter(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1073,6 +1158,21 @@ class CodeSystemFilter(backboneelement.BackboneElement):
         None, alias="_value", title="Extension field for ``value``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``CodeSystemFilter`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "code",
+            "description",
+            "operator",
+            "value",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1819(
         cls, values: typing.Dict[str, typing.Any]
@@ -1138,7 +1238,7 @@ class CodeSystemFilter(backboneelement.BackboneElement):
 
 
 class CodeSystemProperty(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1227,6 +1327,21 @@ class CodeSystemProperty(backboneelement.BackboneElement):
     uri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_uri", title="Extension field for ``uri``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``CodeSystemProperty`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "code",
+            "uri",
+            "description",
+            "type",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2081(

@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class AdverseEvent(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -307,6 +307,42 @@ class AdverseEvent(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``AdverseEvent`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "actuality",
+            "category",
+            "event",
+            "subject",
+            "encounter",
+            "date",
+            "detected",
+            "recordedDate",
+            "resultingCondition",
+            "location",
+            "seriousness",
+            "severity",
+            "outcome",
+            "recorder",
+            "contributor",
+            "suspectEntity",
+            "subjectMedicalHistory",
+            "referenceDocument",
+            "study",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1409(
         cls, values: typing.Dict[str, typing.Any]
@@ -368,7 +404,7 @@ class AdverseEvent(domainresource.DomainResource):
 
 
 class AdverseEventSuspectEntity(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -410,9 +446,16 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
         ],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``AdverseEventSuspectEntity`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "instance", "causality"]
+
 
 class AdverseEventSuspectEntityCausality(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -463,3 +506,18 @@ class AdverseEventSuspectEntityCausality(backboneelement.BackboneElement):
         alias="_productRelatedness",
         title="Extension field for ``productRelatedness``.",
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``AdverseEventSuspectEntityCausality`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "assessment",
+            "productRelatedness",
+            "author",
+            "method",
+        ]

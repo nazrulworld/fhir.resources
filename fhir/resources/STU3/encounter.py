@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Encounter(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -290,6 +290,43 @@ class Encounter(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``Encounter`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "statusHistory",
+            "class",
+            "classHistory",
+            "type",
+            "priority",
+            "subject",
+            "episodeOfCare",
+            "incomingReferral",
+            "participant",
+            "appointment",
+            "period",
+            "length",
+            "reason",
+            "diagnosis",
+            "account",
+            "hospitalization",
+            "location",
+            "serviceProvider",
+            "partOf",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1130(
         cls, values: typing.Dict[str, typing.Any]
@@ -351,7 +388,7 @@ class Encounter(domainresource.DomainResource):
 
 
 class EncounterClassHistory(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -386,9 +423,16 @@ class EncounterClassHistory(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``EncounterClassHistory`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "class", "period"]
+
 
 class EncounterDiagnosis(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -437,9 +481,16 @@ class EncounterDiagnosis(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``EncounterDiagnosis`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "condition", "role", "rank"]
+
 
 class EncounterHospitalization(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -540,9 +591,29 @@ class EncounterHospitalization(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``EncounterHospitalization`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "preAdmissionIdentifier",
+            "origin",
+            "admitSource",
+            "reAdmission",
+            "dietPreference",
+            "specialCourtesy",
+            "specialArrangement",
+            "destination",
+            "dischargeDisposition",
+        ]
+
 
 class EncounterLocation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -591,9 +662,16 @@ class EncounterLocation(backboneelement.BackboneElement):
         None, alias="_status", title="Extension field for ``status``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``EncounterLocation`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "location", "status", "period"]
+
 
 class EncounterParticipant(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -636,9 +714,16 @@ class EncounterParticipant(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``EncounterParticipant`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "type", "period", "individual"]
+
 
 class EncounterStatusHistory(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -686,6 +771,13 @@ class EncounterStatusHistory(backboneelement.BackboneElement):
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``EncounterStatusHistory`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "status", "period"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2535(

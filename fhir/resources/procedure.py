@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Procedure(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -509,6 +509,54 @@ class Procedure(domainresource.DomainResource):
         enum_reference_types=["Device", "Medication", "Substance"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``Procedure`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "instantiatesCanonical",
+            "instantiatesUri",
+            "basedOn",
+            "partOf",
+            "status",
+            "statusReason",
+            "category",
+            "code",
+            "subject",
+            "encounter",
+            "performedDateTime",
+            "performedPeriod",
+            "performedString",
+            "performedAge",
+            "performedRange",
+            "recorder",
+            "asserter",
+            "performer",
+            "location",
+            "reasonCode",
+            "reasonReference",
+            "bodySite",
+            "outcome",
+            "report",
+            "complication",
+            "complicationDetail",
+            "followUp",
+            "note",
+            "focalDevice",
+            "usedReference",
+            "usedCode",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1118(
         cls, values: typing.Dict[str, typing.Any]
@@ -616,7 +664,7 @@ class Procedure(domainresource.DomainResource):
 
 
 class ProcedureFocalDevice(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -648,9 +696,16 @@ class ProcedureFocalDevice(backboneelement.BackboneElement):
         enum_reference_types=["Device"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ProcedureFocalDevice`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "action", "manipulated"]
+
 
 class ProcedurePerformer(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -700,3 +755,17 @@ class ProcedurePerformer(backboneelement.BackboneElement):
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``ProcedurePerformer`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "function",
+            "actor",
+            "onBehalfOf",
+        ]

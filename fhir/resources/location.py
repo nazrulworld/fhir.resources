@@ -254,7 +254,8 @@ class Location(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Location`` according specification,
+        """returning all elements names from
+        ``Location`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -352,7 +353,8 @@ class LocationHoursOfOperation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``LocationHoursOfOperation`` according specification,
+        """returning all elements names from
+        ``LocationHoursOfOperation`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -427,7 +429,8 @@ class LocationPosition(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``LocationPosition`` according specification,
+        """returning all elements names from
+        ``LocationPosition`` according specification,
         with preserving original sequence order.
         """
         return [

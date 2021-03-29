@@ -268,7 +268,8 @@ class Goal(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Goal`` according specification,
+        """returning all elements names from
+        ``Goal`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -604,7 +605,8 @@ class GoalTarget(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``GoalTarget`` according specification,
+        """returning all elements names from
+        ``GoalTarget`` according specification,
         with preserving original sequence order.
         """
         return [

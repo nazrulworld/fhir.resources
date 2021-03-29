@@ -277,7 +277,8 @@ class ImagingStudy(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ImagingStudy`` according specification,
+        """returning all elements names from
+        ``ImagingStudy`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -549,7 +550,8 @@ class ImagingStudySeries(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ImagingStudySeries`` according specification,
+        """returning all elements names from
+        ``ImagingStudySeries`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -694,7 +696,8 @@ class ImagingStudySeriesInstance(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ImagingStudySeriesInstance`` according specification,
+        """returning all elements names from
+        ``ImagingStudySeriesInstance`` according specification,
         with preserving original sequence order.
         """
         return [

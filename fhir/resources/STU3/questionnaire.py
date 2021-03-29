@@ -344,7 +344,8 @@ class Questionnaire(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Questionnaire`` according specification,
+        """returning all elements names from
+        ``Questionnaire`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -879,7 +880,8 @@ class QuestionnaireItem(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``QuestionnaireItem`` according specification,
+        """returning all elements names from
+        ``QuestionnaireItem`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1280,7 +1282,8 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``QuestionnaireItemEnableWhen`` according specification,
+        """returning all elements names from
+        ``QuestionnaireItemEnableWhen`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1501,7 +1504,8 @@ class QuestionnaireItemOption(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``QuestionnaireItemOption`` according specification,
+        """returning all elements names from
+        ``QuestionnaireItemOption`` according specification,
         with preserving original sequence order.
         """
         return [

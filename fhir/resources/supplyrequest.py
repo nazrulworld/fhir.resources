@@ -269,7 +269,8 @@ class SupplyRequest(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SupplyRequest`` according specification,
+        """returning all elements names from
+        ``SupplyRequest`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -421,7 +422,8 @@ class SupplyRequestParameter(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SupplyRequestParameter`` according specification,
+        """returning all elements names from
+        ``SupplyRequestParameter`` according specification,
         with preserving original sequence order.
         """
         return [

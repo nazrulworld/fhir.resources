@@ -109,7 +109,8 @@ class DataRequirement(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``DataRequirement`` according specification,
+        """returning all elements names from
+        ``DataRequirement`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -303,7 +304,8 @@ class DataRequirementCodeFilter(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``DataRequirementCodeFilter`` according specification,
+        """returning all elements names from
+        ``DataRequirementCodeFilter`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -509,7 +511,8 @@ class DataRequirementDateFilter(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``DataRequirementDateFilter`` according specification,
+        """returning all elements names from
+        ``DataRequirementDateFilter`` according specification,
         with preserving original sequence order.
         """
         return [

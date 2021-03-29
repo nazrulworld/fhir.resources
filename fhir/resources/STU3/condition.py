@@ -409,7 +409,8 @@ class Condition(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Condition`` according specification,
+        """returning all elements names from
+        ``Condition`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -539,7 +540,8 @@ class ConditionEvidence(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ConditionEvidence`` according specification,
+        """returning all elements names from
+        ``ConditionEvidence`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "detail"]
@@ -585,7 +587,8 @@ class ConditionStage(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ConditionStage`` according specification,
+        """returning all elements names from
+        ``ConditionStage`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "summary", "assessment"]

@@ -393,7 +393,8 @@ class ExpansionProfile(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExpansionProfile`` according specification,
+        """returning all elements names from
+        ``ExpansionProfile`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -522,7 +523,8 @@ class ExpansionProfileDesignation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExpansionProfileDesignation`` according specification,
+        """returning all elements names from
+        ``ExpansionProfileDesignation`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "include", "exclude"]
@@ -551,7 +553,8 @@ class ExpansionProfileDesignationExclude(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExpansionProfileDesignationExclude`` according specification,
+        """returning all elements names from
+        ``ExpansionProfileDesignationExclude`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "designation"]
@@ -591,7 +594,8 @@ class ExpansionProfileDesignationExcludeDesignation(backboneelement.BackboneElem
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExpansionProfileDesignationExcludeDesignation`` according specification,
+        """returning all elements names from
+        ``ExpansionProfileDesignationExcludeDesignation`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "language", "use"]
@@ -620,7 +624,8 @@ class ExpansionProfileDesignationInclude(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExpansionProfileDesignationInclude`` according specification,
+        """returning all elements names from
+        ``ExpansionProfileDesignationInclude`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "designation"]
@@ -660,7 +665,8 @@ class ExpansionProfileDesignationIncludeDesignation(backboneelement.BackboneElem
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExpansionProfileDesignationIncludeDesignation`` according specification,
+        """returning all elements names from
+        ``ExpansionProfileDesignationIncludeDesignation`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "language", "use"]
@@ -708,7 +714,8 @@ class ExpansionProfileExcludedSystem(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExpansionProfileExcludedSystem`` according specification,
+        """returning all elements names from
+        ``ExpansionProfileExcludedSystem`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "system", "version"]
@@ -834,7 +841,8 @@ class ExpansionProfileFixedVersion(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExpansionProfileFixedVersion`` according specification,
+        """returning all elements names from
+        ``ExpansionProfileFixedVersion`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "system", "version", "mode"]

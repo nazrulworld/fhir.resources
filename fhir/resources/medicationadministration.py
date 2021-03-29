@@ -344,7 +344,8 @@ class MedicationAdministration(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicationAdministration`` according specification,
+        """returning all elements names from
+        ``MedicationAdministration`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -600,7 +601,8 @@ class MedicationAdministrationDosage(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicationAdministrationDosage`` according specification,
+        """returning all elements names from
+        ``MedicationAdministrationDosage`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -698,7 +700,8 @@ class MedicationAdministrationPerformer(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicationAdministrationPerformer`` according specification,
+        """returning all elements names from
+        ``MedicationAdministrationPerformer`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "function", "actor"]

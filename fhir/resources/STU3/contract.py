@@ -355,7 +355,8 @@ class Contract(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Contract`` according specification,
+        """returning all elements names from
+        ``Contract`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -478,7 +479,8 @@ class ContractAgent(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ContractAgent`` according specification,
+        """returning all elements names from
+        ``ContractAgent`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "actor", "role"]
@@ -541,7 +543,8 @@ class ContractFriendly(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ContractFriendly`` according specification,
+        """returning all elements names from
+        ``ContractFriendly`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -636,7 +639,8 @@ class ContractLegal(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ContractLegal`` according specification,
+        """returning all elements names from
+        ``ContractLegal`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -733,7 +737,8 @@ class ContractRule(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ContractRule`` according specification,
+        """returning all elements names from
+        ``ContractRule`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -833,7 +838,8 @@ class ContractSigner(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ContractSigner`` according specification,
+        """returning all elements names from
+        ``ContractSigner`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "party", "signature"]
@@ -997,7 +1003,8 @@ class ContractTerm(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ContractTerm`` according specification,
+        """returning all elements names from
+        ``ContractTerm`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1067,7 +1074,8 @@ class ContractTermAgent(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ContractTermAgent`` according specification,
+        """returning all elements names from
+        ``ContractTermAgent`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "actor", "role"]
@@ -1208,7 +1216,8 @@ class ContractTermValuedItem(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ContractTermValuedItem`` according specification,
+        """returning all elements names from
+        ``ContractTermValuedItem`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1398,7 +1407,8 @@ class ContractValuedItem(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ContractValuedItem`` according specification,
+        """returning all elements names from
+        ``ContractValuedItem`` according specification,
         with preserving original sequence order.
         """
         return [

@@ -163,7 +163,8 @@ class BiologicallyDerivedProduct(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``BiologicallyDerivedProduct`` according specification,
+        """returning all elements names from
+        ``BiologicallyDerivedProduct`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -255,7 +256,8 @@ class BiologicallyDerivedProductCollection(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``BiologicallyDerivedProductCollection`` according specification,
+        """returning all elements names from
+        ``BiologicallyDerivedProductCollection`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -361,7 +363,8 @@ class BiologicallyDerivedProductManipulation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``BiologicallyDerivedProductManipulation`` according specification,
+        """returning all elements names from
+        ``BiologicallyDerivedProductManipulation`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -486,7 +489,8 @@ class BiologicallyDerivedProductProcessing(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``BiologicallyDerivedProductProcessing`` according specification,
+        """returning all elements names from
+        ``BiologicallyDerivedProductProcessing`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -599,7 +603,8 @@ class BiologicallyDerivedProductStorage(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``BiologicallyDerivedProductStorage`` according specification,
+        """returning all elements names from
+        ``BiologicallyDerivedProductStorage`` according specification,
         with preserving original sequence order.
         """
         return [

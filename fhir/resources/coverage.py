@@ -250,7 +250,8 @@ class Coverage(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Coverage`` according specification,
+        """returning all elements names from
+        ``Coverage`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -394,7 +395,8 @@ class CoverageClass(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CoverageClass`` according specification,
+        """returning all elements names from
+        ``CoverageClass`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "value", "name"]
@@ -519,7 +521,8 @@ class CoverageCostToBeneficiary(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CoverageCostToBeneficiary`` according specification,
+        """returning all elements names from
+        ``CoverageCostToBeneficiary`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -603,7 +606,8 @@ class CoverageCostToBeneficiaryException(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CoverageCostToBeneficiaryException`` according specification,
+        """returning all elements names from
+        ``CoverageCostToBeneficiaryException`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "period"]

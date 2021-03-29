@@ -300,7 +300,8 @@ class ClinicalImpression(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ClinicalImpression`` according specification,
+        """returning all elements names from
+        ``ClinicalImpression`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -485,7 +486,8 @@ class ClinicalImpressionFinding(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ClinicalImpressionFinding`` according specification,
+        """returning all elements names from
+        ``ClinicalImpressionFinding`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -548,7 +550,8 @@ class ClinicalImpressionInvestigation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ClinicalImpressionInvestigation`` according specification,
+        """returning all elements names from
+        ``ClinicalImpressionInvestigation`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "item"]

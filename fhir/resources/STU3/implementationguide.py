@@ -305,7 +305,8 @@ class ImplementationGuide(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ImplementationGuide`` according specification,
+        """returning all elements names from
+        ``ImplementationGuide`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -445,7 +446,8 @@ class ImplementationGuideDependency(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ImplementationGuideDependency`` according specification,
+        """returning all elements names from
+        ``ImplementationGuideDependency`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "uri"]
@@ -548,7 +550,8 @@ class ImplementationGuideGlobal(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ImplementationGuideGlobal`` according specification,
+        """returning all elements names from
+        ``ImplementationGuideGlobal`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "profile"]
@@ -666,7 +669,8 @@ class ImplementationGuidePackage(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ImplementationGuidePackage`` according specification,
+        """returning all elements names from
+        ``ImplementationGuidePackage`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -862,7 +866,8 @@ class ImplementationGuidePackageResource(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ImplementationGuidePackageResource`` according specification,
+        """returning all elements names from
+        ``ImplementationGuidePackageResource`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1099,7 +1104,8 @@ class ImplementationGuidePage(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ImplementationGuidePage`` according specification,
+        """returning all elements names from
+        ``ImplementationGuidePage`` according specification,
         with preserving original sequence order.
         """
         return [

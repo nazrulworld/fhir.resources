@@ -187,7 +187,8 @@ class List(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``List`` according specification,
+        """returning all elements names from
+        ``List`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -334,7 +335,8 @@ class ListEntry(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ListEntry`` according specification,
+        """returning all elements names from
+        ``ListEntry`` according specification,
         with preserving original sequence order.
         """
         return [

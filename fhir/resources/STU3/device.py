@@ -246,7 +246,8 @@ class Device(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Device`` according specification,
+        """returning all elements names from
+        ``Device`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -407,7 +408,8 @@ class DeviceUdi(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``DeviceUdi`` according specification,
+        """returning all elements names from
+        ``DeviceUdi`` according specification,
         with preserving original sequence order.
         """
         return [

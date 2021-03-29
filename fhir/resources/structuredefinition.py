@@ -456,7 +456,8 @@ class StructureDefinition(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``StructureDefinition`` according specification,
+        """returning all elements names from
+        ``StructureDefinition`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -612,7 +613,8 @@ class StructureDefinitionContext(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``StructureDefinitionContext`` according specification,
+        """returning all elements names from
+        ``StructureDefinitionContext`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "expression"]
@@ -700,7 +702,8 @@ class StructureDefinitionDifferential(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``StructureDefinitionDifferential`` according specification,
+        """returning all elements names from
+        ``StructureDefinitionDifferential`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "element"]
@@ -777,7 +780,8 @@ class StructureDefinitionMapping(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``StructureDefinitionMapping`` according specification,
+        """returning all elements names from
+        ``StructureDefinitionMapping`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -873,7 +877,8 @@ class StructureDefinitionSnapshot(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``StructureDefinitionSnapshot`` according specification,
+        """returning all elements names from
+        ``StructureDefinitionSnapshot`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "element"]

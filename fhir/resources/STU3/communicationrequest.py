@@ -330,7 +330,8 @@ class CommunicationRequest(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CommunicationRequest`` according specification,
+        """returning all elements names from
+        ``CommunicationRequest`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -526,7 +527,8 @@ class CommunicationRequestPayload(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CommunicationRequestPayload`` according specification,
+        """returning all elements names from
+        ``CommunicationRequestPayload`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -621,7 +623,8 @@ class CommunicationRequestRequester(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CommunicationRequestRequester`` according specification,
+        """returning all elements names from
+        ``CommunicationRequestRequester`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "agent", "onBehalfOf"]

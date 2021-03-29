@@ -216,7 +216,8 @@ class MedicinalProductAuthorization(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicinalProductAuthorization`` according specification,
+        """returning all elements names from
+        ``MedicinalProductAuthorization`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -308,7 +309,8 @@ class MedicinalProductAuthorizationJurisdictionalAuthorization(
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicinalProductAuthorizationJurisdictionalAuthorization`` according specification,
+        """returning all elements names from
+        ``MedicinalProductAuthorizationJurisdictionalAuthorization`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -391,7 +393,8 @@ class MedicinalProductAuthorizationProcedure(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicinalProductAuthorizationProcedure`` according specification,
+        """returning all elements names from
+        ``MedicinalProductAuthorizationProcedure`` according specification,
         with preserving original sequence order.
         """
         return [

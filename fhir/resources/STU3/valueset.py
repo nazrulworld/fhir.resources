@@ -315,7 +315,8 @@ class ValueSet(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ValueSet`` according specification,
+        """returning all elements names from
+        ``ValueSet`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -481,7 +482,8 @@ class ValueSetCompose(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ValueSetCompose`` according specification,
+        """returning all elements names from
+        ``ValueSetCompose`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -571,7 +573,8 @@ class ValueSetComposeInclude(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ValueSetComposeInclude`` according specification,
+        """returning all elements names from
+        ``ValueSetComposeInclude`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -643,7 +646,8 @@ class ValueSetComposeIncludeConcept(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ValueSetComposeIncludeConcept`` according specification,
+        """returning all elements names from
+        ``ValueSetComposeIncludeConcept`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -764,7 +768,8 @@ class ValueSetComposeIncludeConceptDesignation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ValueSetComposeIncludeConceptDesignation`` according specification,
+        """returning all elements names from
+        ``ValueSetComposeIncludeConceptDesignation`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "language", "use", "value"]
@@ -904,7 +909,8 @@ class ValueSetComposeIncludeFilter(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ValueSetComposeIncludeFilter`` according specification,
+        """returning all elements names from
+        ``ValueSetComposeIncludeFilter`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "property", "op", "value"]
@@ -1073,7 +1079,8 @@ class ValueSetExpansion(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ValueSetExpansion`` according specification,
+        """returning all elements names from
+        ``ValueSetExpansion`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1280,7 +1287,8 @@ class ValueSetExpansionContains(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ValueSetExpansionContains`` according specification,
+        """returning all elements names from
+        ``ValueSetExpansionContains`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1416,7 +1424,8 @@ class ValueSetExpansionParameter(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ValueSetExpansionParameter`` according specification,
+        """returning all elements names from
+        ``ValueSetExpansionParameter`` according specification,
         with preserving original sequence order.
         """
         return [

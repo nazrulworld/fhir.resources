@@ -234,7 +234,8 @@ class CoverageEligibilityRequest(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CoverageEligibilityRequest`` according specification,
+        """returning all elements names from
+        ``CoverageEligibilityRequest`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -427,7 +428,8 @@ class CoverageEligibilityRequestInsurance(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CoverageEligibilityRequestInsurance`` according specification,
+        """returning all elements names from
+        ``CoverageEligibilityRequestInsurance`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -574,7 +576,8 @@ class CoverageEligibilityRequestItem(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CoverageEligibilityRequestItem`` according specification,
+        """returning all elements names from
+        ``CoverageEligibilityRequestItem`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -639,7 +642,8 @@ class CoverageEligibilityRequestItemDiagnosis(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CoverageEligibilityRequestItemDiagnosis`` according specification,
+        """returning all elements names from
+        ``CoverageEligibilityRequestItemDiagnosis`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -748,7 +752,8 @@ class CoverageEligibilityRequestSupportingInfo(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CoverageEligibilityRequestSupportingInfo`` according specification,
+        """returning all elements names from
+        ``CoverageEligibilityRequestSupportingInfo`` according specification,
         with preserving original sequence order.
         """
         return [

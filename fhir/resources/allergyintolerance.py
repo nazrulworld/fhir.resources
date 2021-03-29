@@ -333,7 +333,8 @@ class AllergyIntolerance(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``AllergyIntolerance`` according specification,
+        """returning all elements names from
+        ``AllergyIntolerance`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -533,7 +534,8 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``AllergyIntoleranceReaction`` according specification,
+        """returning all elements names from
+        ``AllergyIntoleranceReaction`` according specification,
         with preserving original sequence order.
         """
         return [

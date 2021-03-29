@@ -188,7 +188,8 @@ class DeviceComponent(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``DeviceComponent`` according specification,
+        """returning all elements names from
+        ``DeviceComponent`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -268,7 +269,8 @@ class DeviceComponentProductionSpecification(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``DeviceComponentProductionSpecification`` according specification,
+        """returning all elements names from
+        ``DeviceComponentProductionSpecification`` according specification,
         with preserving original sequence order.
         """
         return [

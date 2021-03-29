@@ -79,7 +79,8 @@ class ProductShelfLife(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ProductShelfLife`` according specification,
+        """returning all elements names from
+        ``ProductShelfLife`` according specification,
         with preserving original sequence order.
         """
         return [

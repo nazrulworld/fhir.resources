@@ -119,7 +119,8 @@ class MedicinalProductIndication(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicinalProductIndication`` according specification,
+        """returning all elements names from
+        ``MedicinalProductIndication`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -207,7 +208,8 @@ class MedicinalProductIndicationOtherTherapy(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicinalProductIndicationOtherTherapy`` according specification,
+        """returning all elements names from
+        ``MedicinalProductIndicationOtherTherapy`` according specification,
         with preserving original sequence order.
         """
         return [

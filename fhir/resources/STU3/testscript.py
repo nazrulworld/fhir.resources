@@ -392,7 +392,8 @@ class TestScript(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestScript`` according specification,
+        """returning all elements names from
+        ``TestScript`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -539,7 +540,8 @@ class TestScriptDestination(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestScriptDestination`` according specification,
+        """returning all elements names from
+        ``TestScriptDestination`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "index", "profile"]
@@ -666,7 +668,8 @@ class TestScriptFixture(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestScriptFixture`` according specification,
+        """returning all elements names from
+        ``TestScriptFixture`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -718,7 +721,8 @@ class TestScriptMetadata(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestScriptMetadata`` according specification,
+        """returning all elements names from
+        ``TestScriptMetadata`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "link", "capability"]
@@ -838,7 +842,8 @@ class TestScriptMetadataCapability(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestScriptMetadataCapability`` according specification,
+        """returning all elements names from
+        ``TestScriptMetadataCapability`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -896,7 +901,8 @@ class TestScriptMetadataLink(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestScriptMetadataLink`` according specification,
+        """returning all elements names from
+        ``TestScriptMetadataLink`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "url", "description"]
@@ -1000,7 +1006,8 @@ class TestScriptOrigin(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestScriptOrigin`` according specification,
+        """returning all elements names from
+        ``TestScriptOrigin`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "index", "profile"]
@@ -1103,7 +1110,8 @@ class TestScriptRule(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestScriptRule`` according specification,
+        """returning all elements names from
+        ``TestScriptRule`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "resource", "param"]
@@ -1153,7 +1161,8 @@ class TestScriptRuleParam(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestScriptRuleParam`` according specification,
+        """returning all elements names from
+        ``TestScriptRuleParam`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "name", "value"]
@@ -1255,7 +1264,8 @@ class TestScriptRuleset(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestScriptRuleset`` according specification,
+        """returning all elements names from
+        ``TestScriptRuleset`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "resource", "rule"]
@@ -1298,7 +1308,8 @@ class TestScriptRulesetRule(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestScriptRulesetRule`` according specification,
+        """returning all elements names from
+        ``TestScriptRulesetRule`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "ruleId", "param"]
@@ -1407,7 +1418,8 @@ class TestScriptRulesetRuleParam(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestScriptRulesetRuleParam`` according specification,
+        """returning all elements names from
+        ``TestScriptRulesetRuleParam`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "name", "value"]
@@ -1493,7 +1505,8 @@ class TestScriptSetup(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestScriptSetup`` according specification,
+        """returning all elements names from
+        ``TestScriptSetup`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "action"]
@@ -1533,7 +1546,8 @@ class TestScriptSetupAction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestScriptSetupAction`` according specification,
+        """returning all elements names from
+        ``TestScriptSetupAction`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "operation", "assert"]
@@ -1934,7 +1948,8 @@ class TestScriptSetupActionAssert(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestScriptSetupActionAssert`` according specification,
+        """returning all elements names from
+        ``TestScriptSetupActionAssert`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -2005,7 +2020,8 @@ class TestScriptSetupActionAssertRule(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestScriptSetupActionAssertRule`` according specification,
+        """returning all elements names from
+        ``TestScriptSetupActionAssertRule`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "ruleId", "param"]
@@ -2115,7 +2131,8 @@ class TestScriptSetupActionAssertRuleParam(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestScriptSetupActionAssertRuleParam`` according specification,
+        """returning all elements names from
+        ``TestScriptSetupActionAssertRuleParam`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "name", "value"]
@@ -2215,7 +2232,8 @@ class TestScriptSetupActionAssertRuleset(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestScriptSetupActionAssertRuleset`` according specification,
+        """returning all elements names from
+        ``TestScriptSetupActionAssertRuleset`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "rulesetId", "rule"]
@@ -2319,7 +2337,8 @@ class TestScriptSetupActionAssertRulesetRule(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestScriptSetupActionAssertRulesetRule`` according specification,
+        """returning all elements names from
+        ``TestScriptSetupActionAssertRulesetRule`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "ruleId", "param"]
@@ -2429,7 +2448,8 @@ class TestScriptSetupActionAssertRulesetRuleParam(backboneelement.BackboneElemen
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestScriptSetupActionAssertRulesetRuleParam`` according specification,
+        """returning all elements names from
+        ``TestScriptSetupActionAssertRulesetRuleParam`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "name", "value"]
@@ -2732,7 +2752,8 @@ class TestScriptSetupActionOperation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestScriptSetupActionOperation`` according specification,
+        """returning all elements names from
+        ``TestScriptSetupActionOperation`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -2797,7 +2818,8 @@ class TestScriptSetupActionOperationRequestHeader(backboneelement.BackboneElemen
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestScriptSetupActionOperationRequestHeader`` according specification,
+        """returning all elements names from
+        ``TestScriptSetupActionOperationRequestHeader`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "field", "value"]
@@ -2885,7 +2907,8 @@ class TestScriptTeardown(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestScriptTeardown`` according specification,
+        """returning all elements names from
+        ``TestScriptTeardown`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "action"]
@@ -2913,7 +2936,8 @@ class TestScriptTeardownAction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestScriptTeardownAction`` according specification,
+        """returning all elements names from
+        ``TestScriptTeardownAction`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "operation"]
@@ -2970,7 +2994,8 @@ class TestScriptTest(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestScriptTest`` according specification,
+        """returning all elements names from
+        ``TestScriptTest`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "name", "description", "action"]
@@ -3010,7 +3035,8 @@ class TestScriptTestAction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestScriptTestAction`` according specification,
+        """returning all elements names from
+        ``TestScriptTestAction`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "operation", "assert"]
@@ -3147,7 +3173,8 @@ class TestScriptVariable(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestScriptVariable`` according specification,
+        """returning all elements names from
+        ``TestScriptVariable`` according specification,
         with preserving original sequence order.
         """
         return [

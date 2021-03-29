@@ -443,7 +443,8 @@ class ProcedureRequest(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ProcedureRequest`` according specification,
+        """returning all elements names from
+        ``ProcedureRequest`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -627,7 +628,8 @@ class ProcedureRequestRequester(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ProcedureRequestRequester`` according specification,
+        """returning all elements names from
+        ``ProcedureRequestRequester`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "agent", "onBehalfOf"]

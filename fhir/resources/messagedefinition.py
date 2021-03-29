@@ -418,7 +418,8 @@ class MessageDefinition(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MessageDefinition`` according specification,
+        """returning all elements names from
+        ``MessageDefinition`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -602,7 +603,8 @@ class MessageDefinitionAllowedResponse(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MessageDefinitionAllowedResponse`` according specification,
+        """returning all elements names from
+        ``MessageDefinitionAllowedResponse`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "message", "situation"]
@@ -745,7 +747,8 @@ class MessageDefinitionFocus(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MessageDefinitionFocus`` according specification,
+        """returning all elements names from
+        ``MessageDefinitionFocus`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "profile", "min", "max"]

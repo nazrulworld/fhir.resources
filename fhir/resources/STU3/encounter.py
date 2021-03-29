@@ -292,7 +292,8 @@ class Encounter(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Encounter`` according specification,
+        """returning all elements names from
+        ``Encounter`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -425,7 +426,8 @@ class EncounterClassHistory(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``EncounterClassHistory`` according specification,
+        """returning all elements names from
+        ``EncounterClassHistory`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "class", "period"]
@@ -483,7 +485,8 @@ class EncounterDiagnosis(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``EncounterDiagnosis`` according specification,
+        """returning all elements names from
+        ``EncounterDiagnosis`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "condition", "role", "rank"]
@@ -593,7 +596,8 @@ class EncounterHospitalization(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``EncounterHospitalization`` according specification,
+        """returning all elements names from
+        ``EncounterHospitalization`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -664,7 +668,8 @@ class EncounterLocation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``EncounterLocation`` according specification,
+        """returning all elements names from
+        ``EncounterLocation`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "location", "status", "period"]
@@ -716,7 +721,8 @@ class EncounterParticipant(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``EncounterParticipant`` according specification,
+        """returning all elements names from
+        ``EncounterParticipant`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "period", "individual"]
@@ -774,7 +780,8 @@ class EncounterStatusHistory(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``EncounterStatusHistory`` according specification,
+        """returning all elements names from
+        ``EncounterStatusHistory`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "status", "period"]

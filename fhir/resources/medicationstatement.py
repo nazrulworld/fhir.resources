@@ -348,7 +348,8 @@ class MedicationStatement(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicationStatement`` according specification,
+        """returning all elements names from
+        ``MedicationStatement`` according specification,
         with preserving original sequence order.
         """
         return [

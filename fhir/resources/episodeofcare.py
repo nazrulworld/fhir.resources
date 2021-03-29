@@ -201,7 +201,8 @@ class EpisodeOfCare(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``EpisodeOfCare`` according specification,
+        """returning all elements names from
+        ``EpisodeOfCare`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -337,7 +338,8 @@ class EpisodeOfCareDiagnosis(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``EpisodeOfCareDiagnosis`` according specification,
+        """returning all elements names from
+        ``EpisodeOfCareDiagnosis`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "condition", "role", "rank"]
@@ -394,7 +396,8 @@ class EpisodeOfCareStatusHistory(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``EpisodeOfCareStatusHistory`` according specification,
+        """returning all elements names from
+        ``EpisodeOfCareStatusHistory`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "status", "period"]

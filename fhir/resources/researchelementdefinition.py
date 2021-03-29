@@ -564,7 +564,8 @@ class ResearchElementDefinition(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ResearchElementDefinition`` according specification,
+        """returning all elements names from
+        ``ResearchElementDefinition`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1047,7 +1048,8 @@ class ResearchElementDefinitionCharacteristic(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ResearchElementDefinitionCharacteristic`` according specification,
+        """returning all elements names from
+        ``ResearchElementDefinitionCharacteristic`` according specification,
         with preserving original sequence order.
         """
         return [

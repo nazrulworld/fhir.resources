@@ -245,7 +245,8 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CoverageEligibilityResponse`` according specification,
+        """returning all elements names from
+        ``CoverageEligibilityResponse`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -403,7 +404,8 @@ class CoverageEligibilityResponseError(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CoverageEligibilityResponseError`` according specification,
+        """returning all elements names from
+        ``CoverageEligibilityResponseError`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code"]
@@ -476,7 +478,8 @@ class CoverageEligibilityResponseInsurance(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CoverageEligibilityResponseInsurance`` according specification,
+        """returning all elements names from
+        ``CoverageEligibilityResponseInsurance`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -684,7 +687,8 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CoverageEligibilityResponseInsuranceItem`` according specification,
+        """returning all elements names from
+        ``CoverageEligibilityResponseInsuranceItem`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -816,7 +820,8 @@ class CoverageEligibilityResponseInsuranceItemBenefit(backboneelement.BackboneEl
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CoverageEligibilityResponseInsuranceItemBenefit`` according specification,
+        """returning all elements names from
+        ``CoverageEligibilityResponseInsuranceItemBenefit`` according specification,
         with preserving original sequence order.
         """
         return [

@@ -141,7 +141,8 @@ class Organization(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Organization`` according specification,
+        """returning all elements names from
+        ``Organization`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -217,7 +218,8 @@ class OrganizationContact(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``OrganizationContact`` according specification,
+        """returning all elements names from
+        ``OrganizationContact`` according specification,
         with preserving original sequence order.
         """
         return [

@@ -363,7 +363,8 @@ class ChargeItem(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ChargeItem`` according specification,
+        """returning all elements names from
+        ``ChargeItem`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -547,7 +548,8 @@ class ChargeItemParticipant(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ChargeItemParticipant`` according specification,
+        """returning all elements names from
+        ``ChargeItemParticipant`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "role", "actor"]

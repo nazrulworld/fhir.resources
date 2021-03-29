@@ -457,7 +457,8 @@ class CapabilityStatement(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CapabilityStatement`` according specification,
+        """returning all elements names from
+        ``CapabilityStatement`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -624,7 +625,8 @@ class CapabilityStatementDocument(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CapabilityStatementDocument`` according specification,
+        """returning all elements names from
+        ``CapabilityStatementDocument`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -742,7 +744,8 @@ class CapabilityStatementImplementation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CapabilityStatementImplementation`` according specification,
+        """returning all elements names from
+        ``CapabilityStatementImplementation`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "description", "url"]
@@ -890,7 +893,8 @@ class CapabilityStatementMessaging(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CapabilityStatementMessaging`` according specification,
+        """returning all elements names from
+        ``CapabilityStatementMessaging`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -947,7 +951,8 @@ class CapabilityStatementMessagingEndpoint(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CapabilityStatementMessagingEndpoint`` according specification,
+        """returning all elements names from
+        ``CapabilityStatementMessagingEndpoint`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "protocol", "address"]
@@ -1121,7 +1126,8 @@ class CapabilityStatementMessagingEvent(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CapabilityStatementMessagingEvent`` according specification,
+        """returning all elements names from
+        ``CapabilityStatementMessagingEvent`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1244,7 +1250,8 @@ class CapabilityStatementMessagingSupportedMessage(backboneelement.BackboneEleme
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CapabilityStatementMessagingSupportedMessage`` according specification,
+        """returning all elements names from
+        ``CapabilityStatementMessagingSupportedMessage`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "mode", "definition"]
@@ -1433,7 +1440,8 @@ class CapabilityStatementRest(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CapabilityStatementRest`` according specification,
+        """returning all elements names from
+        ``CapabilityStatementRest`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1555,7 +1563,8 @@ class CapabilityStatementRestInteraction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CapabilityStatementRestInteraction`` according specification,
+        """returning all elements names from
+        ``CapabilityStatementRestInteraction`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "documentation"]
@@ -1662,7 +1671,8 @@ class CapabilityStatementRestOperation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CapabilityStatementRestOperation`` according specification,
+        """returning all elements names from
+        ``CapabilityStatementRestOperation`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "name", "definition"]
@@ -1974,7 +1984,8 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CapabilityStatementRestResource`` according specification,
+        """returning all elements names from
+        ``CapabilityStatementRestResource`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -2116,7 +2127,8 @@ class CapabilityStatementRestResourceInteraction(backboneelement.BackboneElement
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CapabilityStatementRestResourceInteraction`` according specification,
+        """returning all elements names from
+        ``CapabilityStatementRestResourceInteraction`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "documentation"]
@@ -2270,7 +2282,8 @@ class CapabilityStatementRestResourceSearchParam(backboneelement.BackboneElement
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CapabilityStatementRestResourceSearchParam`` according specification,
+        """returning all elements names from
+        ``CapabilityStatementRestResourceSearchParam`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -2404,7 +2417,8 @@ class CapabilityStatementRestSecurity(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CapabilityStatementRestSecurity`` according specification,
+        """returning all elements names from
+        ``CapabilityStatementRestSecurity`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -2454,7 +2468,8 @@ class CapabilityStatementRestSecurityCertificate(backboneelement.BackboneElement
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CapabilityStatementRestSecurityCertificate`` according specification,
+        """returning all elements names from
+        ``CapabilityStatementRestSecurityCertificate`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "blob"]
@@ -2512,7 +2527,8 @@ class CapabilityStatementSoftware(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CapabilityStatementSoftware`` according specification,
+        """returning all elements names from
+        ``CapabilityStatementSoftware`` according specification,
         with preserving original sequence order.
         """
         return [

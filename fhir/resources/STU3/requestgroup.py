@@ -265,7 +265,8 @@ class RequestGroup(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``RequestGroup`` according specification,
+        """returning all elements names from
+        ``RequestGroup`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -713,7 +714,8 @@ class RequestGroupAction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``RequestGroupAction`` according specification,
+        """returning all elements names from
+        ``RequestGroupAction`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -863,7 +865,8 @@ class RequestGroupActionCondition(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``RequestGroupActionCondition`` according specification,
+        """returning all elements names from
+        ``RequestGroupActionCondition`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1022,7 +1025,8 @@ class RequestGroupActionRelatedAction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``RequestGroupActionRelatedAction`` according specification,
+        """returning all elements names from
+        ``RequestGroupActionRelatedAction`` according specification,
         with preserving original sequence order.
         """
         return [

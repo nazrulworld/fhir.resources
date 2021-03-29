@@ -60,7 +60,8 @@ class Narrative(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Narrative`` according specification,
+        """returning all elements names from
+        ``Narrative`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "status", "div"]

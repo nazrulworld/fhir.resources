@@ -84,7 +84,8 @@ class ImmunizationRecommendation(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ImmunizationRecommendation`` according specification,
+        """returning all elements names from
+        ``ImmunizationRecommendation`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -370,7 +371,8 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ImmunizationRecommendationRecommendation`` according specification,
+        """returning all elements names from
+        ``ImmunizationRecommendationRecommendation`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -478,7 +480,8 @@ class ImmunizationRecommendationRecommendationDateCriterion(
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ImmunizationRecommendationRecommendationDateCriterion`` according specification,
+        """returning all elements names from
+        ``ImmunizationRecommendationRecommendationDateCriterion`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "value"]

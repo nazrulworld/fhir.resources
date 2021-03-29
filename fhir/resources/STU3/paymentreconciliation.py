@@ -188,7 +188,8 @@ class PaymentReconciliation(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``PaymentReconciliation`` according specification,
+        """returning all elements names from
+        ``PaymentReconciliation`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -307,7 +308,8 @@ class PaymentReconciliationDetail(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``PaymentReconciliationDetail`` according specification,
+        """returning all elements names from
+        ``PaymentReconciliationDetail`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -358,7 +360,8 @@ class PaymentReconciliationProcessNote(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``PaymentReconciliationProcessNote`` according specification,
+        """returning all elements names from
+        ``PaymentReconciliationProcessNote`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "text"]

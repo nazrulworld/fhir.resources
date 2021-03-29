@@ -92,7 +92,8 @@ class MedicinalProductIngredient(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicinalProductIngredient`` according specification,
+        """returning all elements names from
+        ``MedicinalProductIngredient`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -166,7 +167,8 @@ class MedicinalProductIngredientSpecifiedSubstance(backboneelement.BackboneEleme
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicinalProductIngredientSpecifiedSubstance`` according specification,
+        """returning all elements names from
+        ``MedicinalProductIngredientSpecifiedSubstance`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -279,7 +281,8 @@ class MedicinalProductIngredientSpecifiedSubstanceStrength(
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicinalProductIngredientSpecifiedSubstanceStrength`` according specification,
+        """returning all elements names from
+        ``MedicinalProductIngredientSpecifiedSubstanceStrength`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -363,8 +366,9 @@ class MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength(
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength`` according specification,
-        with preserving original sequence order.
+        """returning all elements names from
+        ``MedicinalProductIngredientSpecifiedSubstanceStrengthReferenceStrength``
+        according specification, with preserving original sequence order.
         """
         return [
             "id",
@@ -413,7 +417,8 @@ class MedicinalProductIngredientSubstance(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicinalProductIngredientSubstance`` according specification,
+        """returning all elements names from
+        ``MedicinalProductIngredientSubstance`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "strength"]

@@ -143,7 +143,8 @@ class Subscription(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Subscription`` according specification,
+        """returning all elements names from
+        ``Subscription`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -299,7 +300,8 @@ class SubscriptionChannel(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubscriptionChannel`` according specification,
+        """returning all elements names from
+        ``SubscriptionChannel`` according specification,
         with preserving original sequence order.
         """
         return [

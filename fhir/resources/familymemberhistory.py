@@ -424,7 +424,8 @@ class FamilyMemberHistory(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``FamilyMemberHistory`` according specification,
+        """returning all elements names from
+        ``FamilyMemberHistory`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -710,7 +711,8 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``FamilyMemberHistoryCondition`` according specification,
+        """returning all elements names from
+        ``FamilyMemberHistoryCondition`` according specification,
         with preserving original sequence order.
         """
         return [

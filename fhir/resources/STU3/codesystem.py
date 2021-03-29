@@ -408,7 +408,8 @@ class CodeSystem(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CodeSystem`` according specification,
+        """returning all elements names from
+        ``CodeSystem`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -604,7 +605,8 @@ class CodeSystemConcept(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CodeSystemConcept`` according specification,
+        """returning all elements names from
+        ``CodeSystemConcept`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -727,7 +729,8 @@ class CodeSystemConceptDesignation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CodeSystemConceptDesignation`` according specification,
+        """returning all elements names from
+        ``CodeSystemConceptDesignation`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "language", "use", "value"]
@@ -905,7 +908,8 @@ class CodeSystemConceptProperty(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CodeSystemConceptProperty`` according specification,
+        """returning all elements names from
+        ``CodeSystemConceptProperty`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1093,7 +1097,8 @@ class CodeSystemFilter(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CodeSystemFilter`` according specification,
+        """returning all elements names from
+        ``CodeSystemFilter`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1255,7 +1260,8 @@ class CodeSystemProperty(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CodeSystemProperty`` according specification,
+        """returning all elements names from
+        ``CodeSystemProperty`` according specification,
         with preserving original sequence order.
         """
         return [

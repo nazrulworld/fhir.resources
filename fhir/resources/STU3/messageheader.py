@@ -188,7 +188,8 @@ class MessageHeader(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MessageHeader`` according specification,
+        """returning all elements names from
+        ``MessageHeader`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -326,7 +327,8 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MessageHeaderDestination`` according specification,
+        """returning all elements names from
+        ``MessageHeaderDestination`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "name", "target", "endpoint"]
@@ -451,7 +453,8 @@ class MessageHeaderResponse(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MessageHeaderResponse`` according specification,
+        """returning all elements names from
+        ``MessageHeaderResponse`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "identifier", "code", "details"]
@@ -593,7 +596,8 @@ class MessageHeaderSource(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MessageHeaderSource`` according specification,
+        """returning all elements names from
+        ``MessageHeaderSource`` according specification,
         with preserving original sequence order.
         """
         return [

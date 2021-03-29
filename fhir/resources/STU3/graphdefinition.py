@@ -256,7 +256,8 @@ class GraphDefinition(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``GraphDefinition`` according specification,
+        """returning all elements names from
+        ``GraphDefinition`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -434,7 +435,8 @@ class GraphDefinitionLink(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``GraphDefinitionLink`` according specification,
+        """returning all elements names from
+        ``GraphDefinitionLink`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -566,7 +568,8 @@ class GraphDefinitionLinkTarget(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``GraphDefinitionLinkTarget`` according specification,
+        """returning all elements names from
+        ``GraphDefinitionLinkTarget`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -704,7 +707,8 @@ class GraphDefinitionLinkTargetCompartment(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``GraphDefinitionLinkTargetCompartment`` according specification,
+        """returning all elements names from
+        ``GraphDefinitionLinkTargetCompartment`` according specification,
         with preserving original sequence order.
         """
         return [

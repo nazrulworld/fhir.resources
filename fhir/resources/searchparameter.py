@@ -474,7 +474,8 @@ class SearchParameter(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SearchParameter`` according specification,
+        """returning all elements names from
+        ``SearchParameter`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -626,7 +627,8 @@ class SearchParameterComponent(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SearchParameterComponent`` according specification,
+        """returning all elements names from
+        ``SearchParameterComponent`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "definition", "expression"]

@@ -228,7 +228,8 @@ class SubstanceSpecification(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstanceSpecification`` according specification,
+        """returning all elements names from
+        ``SubstanceSpecification`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -330,7 +331,8 @@ class SubstanceSpecificationCode(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstanceSpecificationCode`` according specification,
+        """returning all elements names from
+        ``SubstanceSpecificationCode`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -446,7 +448,8 @@ class SubstanceSpecificationMoiety(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstanceSpecificationMoiety`` according specification,
+        """returning all elements names from
+        ``SubstanceSpecificationMoiety`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -625,7 +628,8 @@ class SubstanceSpecificationName(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstanceSpecificationName`` according specification,
+        """returning all elements names from
+        ``SubstanceSpecificationName`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -747,7 +751,8 @@ class SubstanceSpecificationNameOfficial(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstanceSpecificationNameOfficial`` according specification,
+        """returning all elements names from
+        ``SubstanceSpecificationNameOfficial`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "authority", "status", "date"]
@@ -858,7 +863,8 @@ class SubstanceSpecificationProperty(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstanceSpecificationProperty`` according specification,
+        """returning all elements names from
+        ``SubstanceSpecificationProperty`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1087,7 +1093,8 @@ class SubstanceSpecificationRelationship(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstanceSpecificationRelationship`` according specification,
+        """returning all elements names from
+        ``SubstanceSpecificationRelationship`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1202,7 +1209,7 @@ class SubstanceSpecificationStructure(backboneelement.BackboneElement):
         title="Extension field for ``molecularFormulaByMoiety``.",
     )
 
-    molecularWeight: fhirtypes.SubstanceSpecificationStructureIsotopeMolecularWeightType = Field(
+    molecularWeight: fhirtypes.SubstanceSpecificationStructureIsotopeMolecularWeightType = Field(  # noqa: B950
         None,
         alias="molecularWeight",
         title=(
@@ -1256,7 +1263,8 @@ class SubstanceSpecificationStructure(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstanceSpecificationStructure`` according specification,
+        """returning all elements names from
+        ``SubstanceSpecificationStructure`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1303,7 +1311,7 @@ class SubstanceSpecificationStructureIsotope(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    molecularWeight: fhirtypes.SubstanceSpecificationStructureIsotopeMolecularWeightType = Field(
+    molecularWeight: fhirtypes.SubstanceSpecificationStructureIsotopeMolecularWeightType = Field(  # noqa: B950
         None,
         alias="molecularWeight",
         title=(
@@ -1335,7 +1343,8 @@ class SubstanceSpecificationStructureIsotope(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstanceSpecificationStructureIsotope`` according specification,
+        """returning all elements names from
+        ``SubstanceSpecificationStructureIsotope`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1402,7 +1411,8 @@ class SubstanceSpecificationStructureIsotopeMolecularWeight(
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstanceSpecificationStructureIsotopeMolecularWeight`` according specification,
+        """returning all elements names from
+        ``SubstanceSpecificationStructureIsotopeMolecularWeight`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "method", "type", "amount"]
@@ -1453,7 +1463,8 @@ class SubstanceSpecificationStructureRepresentation(backboneelement.BackboneElem
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstanceSpecificationStructureRepresentation`` according specification,
+        """returning all elements names from
+        ``SubstanceSpecificationStructureRepresentation`` according specification,
         with preserving original sequence order.
         """
         return [

@@ -103,7 +103,8 @@ class MarketingStatus(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MarketingStatus`` according specification,
+        """returning all elements names from
+        ``MarketingStatus`` according specification,
         with preserving original sequence order.
         """
         return [

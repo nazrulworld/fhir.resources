@@ -23,7 +23,8 @@ class Duration(quantity.Quantity):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Duration`` according specification,
+        """returning all elements names from
+        ``Duration`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "value", "comparator", "unit", "system", "code"]

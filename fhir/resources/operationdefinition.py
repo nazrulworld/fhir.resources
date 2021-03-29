@@ -434,7 +434,8 @@ class OperationDefinition(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``OperationDefinition`` according specification,
+        """returning all elements names from
+        ``OperationDefinition`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -583,7 +584,8 @@ class OperationDefinitionOverload(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``OperationDefinitionOverload`` according specification,
+        """returning all elements names from
+        ``OperationDefinitionOverload`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "parameterName", "comment"]
@@ -779,7 +781,8 @@ class OperationDefinitionParameter(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``OperationDefinitionParameter`` according specification,
+        """returning all elements names from
+        ``OperationDefinitionParameter`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -916,7 +919,8 @@ class OperationDefinitionParameterBinding(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``OperationDefinitionParameterBinding`` according specification,
+        """returning all elements names from
+        ``OperationDefinitionParameterBinding`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "strength", "valueSet"]
@@ -1027,7 +1031,8 @@ class OperationDefinitionParameterReferencedFrom(backboneelement.BackboneElement
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``OperationDefinitionParameterReferencedFrom`` according specification,
+        """returning all elements names from
+        ``OperationDefinitionParameterReferencedFrom`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "source", "sourceId"]

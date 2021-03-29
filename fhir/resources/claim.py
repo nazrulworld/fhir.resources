@@ -371,7 +371,8 @@ class Claim(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Claim`` according specification,
+        """returning all elements names from
+        ``Claim`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -545,7 +546,8 @@ class ClaimAccident(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ClaimAccident`` according specification,
+        """returning all elements names from
+        ``ClaimAccident`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -732,7 +734,8 @@ class ClaimCareTeam(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ClaimCareTeam`` according specification,
+        """returning all elements names from
+        ``ClaimCareTeam`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -898,7 +901,8 @@ class ClaimDiagnosis(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ClaimDiagnosis`` according specification,
+        """returning all elements names from
+        ``ClaimDiagnosis`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1134,7 +1138,8 @@ class ClaimInsurance(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ClaimInsurance`` according specification,
+        """returning all elements names from
+        ``ClaimInsurance`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1542,7 +1547,8 @@ class ClaimItem(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ClaimItem`` according specification,
+        """returning all elements names from
+        ``ClaimItem`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1839,7 +1845,8 @@ class ClaimItemDetail(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ClaimItemDetail`` according specification,
+        """returning all elements names from
+        ``ClaimItemDetail`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -2067,7 +2074,8 @@ class ClaimItemDetailSubDetail(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ClaimItemDetailSubDetail`` according specification,
+        """returning all elements names from
+        ``ClaimItemDetailSubDetail`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -2190,7 +2198,8 @@ class ClaimPayee(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ClaimPayee`` according specification,
+        """returning all elements names from
+        ``ClaimPayee`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "party"]
@@ -2287,7 +2296,8 @@ class ClaimProcedure(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ClaimProcedure`` according specification,
+        """returning all elements names from
+        ``ClaimProcedure`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -2448,7 +2458,8 @@ class ClaimRelated(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ClaimRelated`` according specification,
+        """returning all elements names from
+        ``ClaimRelated`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -2640,7 +2651,8 @@ class ClaimSupportingInfo(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ClaimSupportingInfo`` according specification,
+        """returning all elements names from
+        ``ClaimSupportingInfo`` according specification,
         with preserving original sequence order.
         """
         return [

@@ -39,7 +39,8 @@ class Parameters(resource.Resource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Parameters`` according specification,
+        """returning all elements names from
+        ``Parameters`` according specification,
         with preserving original sequence order.
         """
         return ["id", "meta", "implicitRules", "language", "parameter"]
@@ -599,7 +600,8 @@ class ParametersParameter(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ParametersParameter`` according specification,
+        """returning all elements names from
+        ``ParametersParameter`` according specification,
         with preserving original sequence order.
         """
         return [

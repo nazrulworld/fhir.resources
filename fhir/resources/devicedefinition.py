@@ -300,7 +300,8 @@ class DeviceDefinition(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``DeviceDefinition`` according specification,
+        """returning all elements names from
+        ``DeviceDefinition`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -408,7 +409,8 @@ class DeviceDefinitionCapability(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``DeviceDefinitionCapability`` according specification,
+        """returning all elements names from
+        ``DeviceDefinitionCapability`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "description"]
@@ -468,7 +470,8 @@ class DeviceDefinitionDeviceName(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``DeviceDefinitionDeviceName`` according specification,
+        """returning all elements names from
+        ``DeviceDefinitionDeviceName`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "name", "type"]
@@ -580,7 +583,8 @@ class DeviceDefinitionMaterial(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``DeviceDefinitionMaterial`` according specification,
+        """returning all elements names from
+        ``DeviceDefinitionMaterial`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -636,7 +640,8 @@ class DeviceDefinitionProperty(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``DeviceDefinitionProperty`` according specification,
+        """returning all elements names from
+        ``DeviceDefinitionProperty`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -687,7 +692,8 @@ class DeviceDefinitionSpecialization(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``DeviceDefinitionSpecialization`` according specification,
+        """returning all elements names from
+        ``DeviceDefinitionSpecialization`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "systemType", "version"]
@@ -813,7 +819,8 @@ class DeviceDefinitionUdiDeviceIdentifier(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``DeviceDefinitionUdiDeviceIdentifier`` according specification,
+        """returning all elements names from
+        ``DeviceDefinitionUdiDeviceIdentifier`` according specification,
         with preserving original sequence order.
         """
         return [

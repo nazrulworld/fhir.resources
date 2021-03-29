@@ -114,7 +114,8 @@ class Bundle(resource.Resource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Bundle`` according specification,
+        """returning all elements names from
+        ``Bundle`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -278,7 +279,8 @@ class BundleEntry(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``BundleEntry`` according specification,
+        """returning all elements names from
+        ``BundleEntry`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -406,7 +408,8 @@ class BundleEntryRequest(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``BundleEntryRequest`` according specification,
+        """returning all elements names from
+        ``BundleEntryRequest`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -565,7 +568,8 @@ class BundleEntryResponse(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``BundleEntryResponse`` according specification,
+        """returning all elements names from
+        ``BundleEntryResponse`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -683,7 +687,8 @@ class BundleEntrySearch(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``BundleEntrySearch`` according specification,
+        """returning all elements names from
+        ``BundleEntrySearch`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "mode", "score"]
@@ -737,7 +742,8 @@ class BundleLink(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``BundleLink`` according specification,
+        """returning all elements names from
+        ``BundleLink`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "relation", "url"]

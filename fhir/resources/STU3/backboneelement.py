@@ -47,7 +47,8 @@ class BackboneElement(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``BackboneElement`` according specification,
+        """returning all elements names from
+        ``BackboneElement`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension"]

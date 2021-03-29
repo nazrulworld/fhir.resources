@@ -232,7 +232,8 @@ class Invoice(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Invoice`` according specification,
+        """returning all elements names from
+        ``Invoice`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -408,7 +409,8 @@ class InvoiceLineItem(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``InvoiceLineItem`` according specification,
+        """returning all elements names from
+        ``InvoiceLineItem`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -539,7 +541,8 @@ class InvoiceLineItemPriceComponent(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``InvoiceLineItemPriceComponent`` according specification,
+        """returning all elements names from
+        ``InvoiceLineItemPriceComponent`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -659,7 +662,8 @@ class InvoiceParticipant(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``InvoiceParticipant`` according specification,
+        """returning all elements names from
+        ``InvoiceParticipant`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "role", "actor"]

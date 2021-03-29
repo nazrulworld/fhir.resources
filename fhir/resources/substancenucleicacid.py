@@ -102,7 +102,8 @@ class SubstanceNucleicAcid(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstanceNucleicAcid`` according specification,
+        """returning all elements names from
+        ``SubstanceNucleicAcid`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -236,7 +237,8 @@ class SubstanceNucleicAcidSubunit(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstanceNucleicAcidSubunit`` according specification,
+        """returning all elements names from
+        ``SubstanceNucleicAcidSubunit`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -272,7 +274,8 @@ class SubstanceNucleicAcidSubunitLinkage(backboneelement.BackboneElement):
             "captured for nearly all naturally occurring nucleic acid the linkage "
             "is a phosphate group. For many synthetic oligonucleotides "
             "phosphorothioate linkages are often seen. Linkage connectivity is "
-            "assumed to be 3\u2019-5\u2019. If the linkage is either 3\u2019-3\u2019 or 5\u2019-5\u2019 this "
+            "assumed to be 3\u2019-5\u2019. "
+            "If the linkage is either 3\u2019-3\u2019 or 5\u2019-5\u2019 this "
             "should be specified"
         ),
         description=None,
@@ -321,7 +324,8 @@ class SubstanceNucleicAcidSubunitLinkage(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstanceNucleicAcidSubunitLinkage`` according specification,
+        """returning all elements names from
+        ``SubstanceNucleicAcidSubunitLinkage`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -390,7 +394,8 @@ class SubstanceNucleicAcidSubunitSugar(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstanceNucleicAcidSubunitSugar`` according specification,
+        """returning all elements names from
+        ``SubstanceNucleicAcidSubunitSugar`` according specification,
         with preserving original sequence order.
         """
         return [

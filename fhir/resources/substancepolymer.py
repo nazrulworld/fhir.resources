@@ -84,7 +84,8 @@ class SubstancePolymer(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstancePolymer`` according specification,
+        """returning all elements names from
+        ``SubstancePolymer`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -137,7 +138,8 @@ class SubstancePolymerMonomerSet(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstancePolymerMonomerSet`` according specification,
+        """returning all elements names from
+        ``SubstancePolymerMonomerSet`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "ratioType", "startingMaterial"]
@@ -194,7 +196,8 @@ class SubstancePolymerMonomerSetStartingMaterial(backboneelement.BackboneElement
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstancePolymerMonomerSetStartingMaterial`` according specification,
+        """returning all elements names from
+        ``SubstancePolymerMonomerSetStartingMaterial`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -264,7 +267,8 @@ class SubstancePolymerRepeat(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstancePolymerRepeat`` according specification,
+        """returning all elements names from
+        ``SubstancePolymerRepeat`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -342,7 +346,8 @@ class SubstancePolymerRepeatRepeatUnit(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstancePolymerRepeatRepeatUnit`` according specification,
+        """returning all elements names from
+        ``SubstancePolymerRepeatRepeatUnit`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -391,7 +396,8 @@ class SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation(
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation`` according specification,
+        """returning all elements names from
+        ``SubstancePolymerRepeatRepeatUnitDegreeOfPolymerisation`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "degree", "amount"]
@@ -443,7 +449,8 @@ class SubstancePolymerRepeatRepeatUnitStructuralRepresentation(
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstancePolymerRepeatRepeatUnitStructuralRepresentation`` according specification,
+        """returning all elements names from
+        ``SubstancePolymerRepeatRepeatUnitStructuralRepresentation`` according specification,
         with preserving original sequence order.
         """
         return [

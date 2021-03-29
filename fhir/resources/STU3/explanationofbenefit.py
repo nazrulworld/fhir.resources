@@ -474,7 +474,8 @@ class ExplanationOfBenefit(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExplanationOfBenefit`` according specification,
+        """returning all elements names from
+        ``ExplanationOfBenefit`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -588,7 +589,8 @@ class ExplanationOfBenefitAccident(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExplanationOfBenefitAccident`` according specification,
+        """returning all elements names from
+        ``ExplanationOfBenefitAccident`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -763,7 +765,8 @@ class ExplanationOfBenefitAddItem(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExplanationOfBenefitAddItem`` according specification,
+        """returning all elements names from
+        ``ExplanationOfBenefitAddItem`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -876,7 +879,8 @@ class ExplanationOfBenefitAddItemDetail(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExplanationOfBenefitAddItemDetail`` according specification,
+        """returning all elements names from
+        ``ExplanationOfBenefitAddItemDetail`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1007,7 +1011,8 @@ class ExplanationOfBenefitBenefitBalance(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExplanationOfBenefitBenefitBalance`` according specification,
+        """returning all elements names from
+        ``ExplanationOfBenefitBenefitBalance`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1119,7 +1124,8 @@ class ExplanationOfBenefitBenefitBalanceFinancial(backboneelement.BackboneElemen
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExplanationOfBenefitBenefitBalanceFinancial`` according specification,
+        """returning all elements names from
+        ``ExplanationOfBenefitBenefitBalanceFinancial`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1250,7 +1256,8 @@ class ExplanationOfBenefitCareTeam(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExplanationOfBenefitCareTeam`` according specification,
+        """returning all elements names from
+        ``ExplanationOfBenefitCareTeam`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1400,7 +1407,8 @@ class ExplanationOfBenefitDiagnosis(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExplanationOfBenefitDiagnosis`` according specification,
+        """returning all elements names from
+        ``ExplanationOfBenefitDiagnosis`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1677,7 +1685,8 @@ class ExplanationOfBenefitInformation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExplanationOfBenefitInformation`` according specification,
+        """returning all elements names from
+        ``ExplanationOfBenefitInformation`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1838,7 +1847,8 @@ class ExplanationOfBenefitInsurance(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExplanationOfBenefitInsurance`` according specification,
+        """returning all elements names from
+        ``ExplanationOfBenefitInsurance`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "coverage", "preAuthRef"]
@@ -2194,7 +2204,8 @@ class ExplanationOfBenefitItem(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExplanationOfBenefitItem`` according specification,
+        """returning all elements names from
+        ``ExplanationOfBenefitItem`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -2389,7 +2400,8 @@ class ExplanationOfBenefitItemAdjudication(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExplanationOfBenefitItemAdjudication`` according specification,
+        """returning all elements names from
+        ``ExplanationOfBenefitItemAdjudication`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -2600,7 +2612,8 @@ class ExplanationOfBenefitItemDetail(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExplanationOfBenefitItemDetail`` according specification,
+        """returning all elements names from
+        ``ExplanationOfBenefitItemDetail`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -2863,7 +2876,8 @@ class ExplanationOfBenefitItemDetailSubDetail(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExplanationOfBenefitItemDetailSubDetail`` according specification,
+        """returning all elements names from
+        ``ExplanationOfBenefitItemDetailSubDetail`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -2993,7 +3007,8 @@ class ExplanationOfBenefitPayee(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExplanationOfBenefitPayee`` according specification,
+        """returning all elements names from
+        ``ExplanationOfBenefitPayee`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "resourceType", "party"]
@@ -3072,7 +3087,8 @@ class ExplanationOfBenefitPayment(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExplanationOfBenefitPayment`` according specification,
+        """returning all elements names from
+        ``ExplanationOfBenefitPayment`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -3152,7 +3168,8 @@ class ExplanationOfBenefitProcedure(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExplanationOfBenefitProcedure`` according specification,
+        """returning all elements names from
+        ``ExplanationOfBenefitProcedure`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -3328,7 +3345,8 @@ class ExplanationOfBenefitProcessNote(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExplanationOfBenefitProcessNote`` according specification,
+        """returning all elements names from
+        ``ExplanationOfBenefitProcessNote`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -3392,7 +3410,8 @@ class ExplanationOfBenefitRelated(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExplanationOfBenefitRelated`` according specification,
+        """returning all elements names from
+        ``ExplanationOfBenefitRelated`` according specification,
         with preserving original sequence order.
         """
         return [

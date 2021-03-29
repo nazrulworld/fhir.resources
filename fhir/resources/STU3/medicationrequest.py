@@ -408,7 +408,8 @@ class MedicationRequest(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicationRequest`` according specification,
+        """returning all elements names from
+        ``MedicationRequest`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -633,7 +634,8 @@ class MedicationRequestDispenseRequest(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicationRequestDispenseRequest`` according specification,
+        """returning all elements names from
+        ``MedicationRequestDispenseRequest`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -693,7 +695,8 @@ class MedicationRequestRequester(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicationRequestRequester`` according specification,
+        """returning all elements names from
+        ``MedicationRequestRequester`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "agent", "onBehalfOf"]
@@ -743,7 +746,8 @@ class MedicationRequestSubstitution(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicationRequestSubstitution`` according specification,
+        """returning all elements names from
+        ``MedicationRequestSubstitution`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "allowed", "reason"]

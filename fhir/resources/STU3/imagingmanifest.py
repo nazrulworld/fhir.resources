@@ -127,7 +127,8 @@ class ImagingManifest(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ImagingManifest`` according specification,
+        """returning all elements names from
+        ``ImagingManifest`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -215,7 +216,8 @@ class ImagingManifestStudy(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ImagingManifestStudy`` according specification,
+        """returning all elements names from
+        ``ImagingManifestStudy`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -340,7 +342,8 @@ class ImagingManifestStudySeries(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ImagingManifestStudySeries`` according specification,
+        """returning all elements names from
+        ``ImagingManifestStudySeries`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "uid", "endpoint", "instance"]
@@ -444,7 +447,8 @@ class ImagingManifestStudySeriesInstance(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ImagingManifestStudySeriesInstance`` according specification,
+        """returning all elements names from
+        ``ImagingManifestStudySeriesInstance`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "sopClass", "uid"]

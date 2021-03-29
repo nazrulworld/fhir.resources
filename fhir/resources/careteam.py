@@ -188,7 +188,8 @@ class CareTeam(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CareTeam`` according specification,
+        """returning all elements names from
+        ``CareTeam`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -287,7 +288,8 @@ class CareTeamParticipant(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CareTeamParticipant`` according specification,
+        """returning all elements names from
+        ``CareTeamParticipant`` according specification,
         with preserving original sequence order.
         """
         return [

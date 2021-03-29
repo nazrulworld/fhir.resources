@@ -191,7 +191,8 @@ class CatalogEntry(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CatalogEntry`` according specification,
+        """returning all elements names from
+        ``CatalogEntry`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -322,7 +323,8 @@ class CatalogEntryRelatedEntry(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CatalogEntryRelatedEntry`` according specification,
+        """returning all elements names from
+        ``CatalogEntryRelatedEntry`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "relationtype", "item"]

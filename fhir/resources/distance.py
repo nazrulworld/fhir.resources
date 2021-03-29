@@ -23,7 +23,8 @@ class Distance(quantity.Quantity):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Distance`` according specification,
+        """returning all elements names from
+        ``Distance`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "value", "comparator", "unit", "system", "code"]

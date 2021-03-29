@@ -143,7 +143,8 @@ class Practitioner(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Practitioner`` according specification,
+        """returning all elements names from
+        ``Practitioner`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -220,7 +221,8 @@ class PractitionerQualification(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``PractitionerQualification`` according specification,
+        """returning all elements names from
+        ``PractitionerQualification`` according specification,
         with preserving original sequence order.
         """
         return [

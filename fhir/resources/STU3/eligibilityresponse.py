@@ -183,7 +183,8 @@ class EligibilityResponse(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``EligibilityResponse`` according specification,
+        """returning all elements names from
+        ``EligibilityResponse`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -236,7 +237,8 @@ class EligibilityResponseError(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``EligibilityResponseError`` according specification,
+        """returning all elements names from
+        ``EligibilityResponseError`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code"]
@@ -289,7 +291,8 @@ class EligibilityResponseInsurance(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``EligibilityResponseInsurance`` according specification,
+        """returning all elements names from
+        ``EligibilityResponseInsurance`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -417,7 +420,8 @@ class EligibilityResponseInsuranceBenefitBalance(backboneelement.BackboneElement
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``EligibilityResponseInsuranceBenefitBalance`` according specification,
+        """returning all elements names from
+        ``EligibilityResponseInsuranceBenefitBalance`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -533,7 +537,8 @@ class EligibilityResponseInsuranceBenefitBalanceFinancial(
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``EligibilityResponseInsuranceBenefitBalanceFinancial`` according specification,
+        """returning all elements names from
+        ``EligibilityResponseInsuranceBenefitBalanceFinancial`` according specification,
         with preserving original sequence order.
         """
         return [

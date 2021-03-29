@@ -288,7 +288,8 @@ class DiagnosticReport(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``DiagnosticReport`` according specification,
+        """returning all elements names from
+        ``DiagnosticReport`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -460,7 +461,8 @@ class DiagnosticReportImage(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``DiagnosticReportImage`` according specification,
+        """returning all elements names from
+        ``DiagnosticReportImage`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "comment", "link"]
@@ -506,7 +508,8 @@ class DiagnosticReportPerformer(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``DiagnosticReportPerformer`` according specification,
+        """returning all elements names from
+        ``DiagnosticReportPerformer`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "role", "actor"]

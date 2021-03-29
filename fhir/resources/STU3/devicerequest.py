@@ -353,7 +353,8 @@ class DeviceRequest(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``DeviceRequest`` according specification,
+        """returning all elements names from
+        ``DeviceRequest`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -473,7 +474,8 @@ class DeviceRequestRequester(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``DeviceRequestRequester`` according specification,
+        """returning all elements names from
+        ``DeviceRequestRequester`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "agent", "onBehalfOf"]

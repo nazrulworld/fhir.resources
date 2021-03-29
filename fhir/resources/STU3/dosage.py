@@ -235,7 +235,8 @@ class Dosage(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Dosage`` according specification,
+        """returning all elements names from
+        ``Dosage`` according specification,
         with preserving original sequence order.
         """
         return [

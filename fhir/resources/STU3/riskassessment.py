@@ -252,7 +252,8 @@ class RiskAssessment(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``RiskAssessment`` according specification,
+        """returning all elements names from
+        ``RiskAssessment`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -510,7 +511,8 @@ class RiskAssessmentPrediction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``RiskAssessmentPrediction`` according specification,
+        """returning all elements names from
+        ``RiskAssessmentPrediction`` according specification,
         with preserving original sequence order.
         """
         return [

@@ -402,7 +402,8 @@ class TerminologyCapabilities(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TerminologyCapabilities`` according specification,
+        """returning all elements names from
+        ``TerminologyCapabilities`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -530,7 +531,8 @@ class TerminologyCapabilitiesClosure(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TerminologyCapabilitiesClosure`` according specification,
+        """returning all elements names from
+        ``TerminologyCapabilitiesClosure`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "translation"]
@@ -591,7 +593,8 @@ class TerminologyCapabilitiesCodeSystem(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TerminologyCapabilitiesCodeSystem`` according specification,
+        """returning all elements names from
+        ``TerminologyCapabilitiesCodeSystem`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "uri", "version", "subsumption"]
@@ -684,7 +687,8 @@ class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TerminologyCapabilitiesCodeSystemVersion`` according specification,
+        """returning all elements names from
+        ``TerminologyCapabilitiesCodeSystemVersion`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -738,7 +742,8 @@ class TerminologyCapabilitiesCodeSystemVersionFilter(backboneelement.BackboneEle
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TerminologyCapabilitiesCodeSystemVersionFilter`` according specification,
+        """returning all elements names from
+        ``TerminologyCapabilitiesCodeSystemVersionFilter`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "op"]
@@ -875,7 +880,8 @@ class TerminologyCapabilitiesExpansion(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TerminologyCapabilitiesExpansion`` according specification,
+        """returning all elements names from
+        ``TerminologyCapabilitiesExpansion`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -927,7 +933,8 @@ class TerminologyCapabilitiesExpansionParameter(backboneelement.BackboneElement)
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TerminologyCapabilitiesExpansionParameter`` according specification,
+        """returning all elements names from
+        ``TerminologyCapabilitiesExpansionParameter`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "name", "documentation"]
@@ -1035,7 +1042,8 @@ class TerminologyCapabilitiesImplementation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TerminologyCapabilitiesImplementation`` according specification,
+        """returning all elements names from
+        ``TerminologyCapabilitiesImplementation`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "description", "url"]
@@ -1140,7 +1148,8 @@ class TerminologyCapabilitiesSoftware(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TerminologyCapabilitiesSoftware`` according specification,
+        """returning all elements names from
+        ``TerminologyCapabilitiesSoftware`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "name", "version"]
@@ -1231,7 +1240,8 @@ class TerminologyCapabilitiesTranslation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TerminologyCapabilitiesTranslation`` according specification,
+        """returning all elements names from
+        ``TerminologyCapabilitiesTranslation`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "needsMap"]
@@ -1322,7 +1332,8 @@ class TerminologyCapabilitiesValidateCode(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TerminologyCapabilitiesValidateCode`` according specification,
+        """returning all elements names from
+        ``TerminologyCapabilitiesValidateCode`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "translations"]

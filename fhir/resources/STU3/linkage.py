@@ -72,7 +72,8 @@ class Linkage(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Linkage`` according specification,
+        """returning all elements names from
+        ``Linkage`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -133,7 +134,8 @@ class LinkageItem(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``LinkageItem`` according specification,
+        """returning all elements names from
+        ``LinkageItem`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "resource"]

@@ -191,7 +191,8 @@ class TestReport(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestReport`` according specification,
+        """returning all elements names from
+        ``TestReport`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -331,7 +332,8 @@ class TestReportParticipant(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestReportParticipant`` according specification,
+        """returning all elements names from
+        ``TestReportParticipant`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "uri", "display"]
@@ -418,7 +420,8 @@ class TestReportSetup(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestReportSetup`` according specification,
+        """returning all elements names from
+        ``TestReportSetup`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "action"]
@@ -455,7 +458,8 @@ class TestReportSetupAction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestReportSetupAction`` according specification,
+        """returning all elements names from
+        ``TestReportSetupAction`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "operation", "assert"]
@@ -514,7 +518,8 @@ class TestReportSetupActionAssert(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestReportSetupActionAssert`` according specification,
+        """returning all elements names from
+        ``TestReportSetupActionAssert`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "result", "message", "detail"]
@@ -632,7 +637,8 @@ class TestReportSetupActionOperation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestReportSetupActionOperation`` according specification,
+        """returning all elements names from
+        ``TestReportSetupActionOperation`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "result", "message", "detail"]
@@ -720,7 +726,8 @@ class TestReportTeardown(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestReportTeardown`` according specification,
+        """returning all elements names from
+        ``TestReportTeardown`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "action"]
@@ -748,7 +755,8 @@ class TestReportTeardownAction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestReportTeardownAction`` according specification,
+        """returning all elements names from
+        ``TestReportTeardownAction`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "operation"]
@@ -805,7 +813,8 @@ class TestReportTest(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestReportTest`` according specification,
+        """returning all elements names from
+        ``TestReportTest`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "name", "description", "action"]
@@ -842,7 +851,8 @@ class TestReportTestAction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TestReportTestAction`` according specification,
+        """returning all elements names from
+        ``TestReportTestAction`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "operation", "assert"]

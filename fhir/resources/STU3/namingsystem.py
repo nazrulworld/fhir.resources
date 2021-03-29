@@ -240,7 +240,8 @@ class NamingSystem(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``NamingSystem`` according specification,
+        """returning all elements names from
+        ``NamingSystem`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -422,7 +423,8 @@ class NamingSystemUniqueId(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``NamingSystemUniqueId`` according specification,
+        """returning all elements names from
+        ``NamingSystemUniqueId`` according specification,
         with preserving original sequence order.
         """
         return [

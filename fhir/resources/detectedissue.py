@@ -209,7 +209,8 @@ class DetectedIssue(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``DetectedIssue`` according specification,
+        """returning all elements names from
+        ``DetectedIssue`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -371,7 +372,8 @@ class DetectedIssueEvidence(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``DetectedIssueEvidence`` according specification,
+        """returning all elements names from
+        ``DetectedIssueEvidence`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "detail"]
@@ -431,7 +433,8 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``DetectedIssueMitigation`` according specification,
+        """returning all elements names from
+        ``DetectedIssueMitigation`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "action", "date", "author"]

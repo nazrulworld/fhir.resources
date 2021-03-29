@@ -100,7 +100,8 @@ class MedicinalProductPharmaceutical(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicinalProductPharmaceutical`` according specification,
+        """returning all elements names from
+        ``MedicinalProductPharmaceutical`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -152,7 +153,8 @@ class MedicinalProductPharmaceuticalCharacteristics(backboneelement.BackboneElem
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicinalProductPharmaceuticalCharacteristics`` according specification,
+        """returning all elements names from
+        ``MedicinalProductPharmaceuticalCharacteristics`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "status"]
@@ -259,7 +261,8 @@ class MedicinalProductPharmaceuticalRouteOfAdministration(
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicinalProductPharmaceuticalRouteOfAdministration`` according specification,
+        """returning all elements names from
+        ``MedicinalProductPharmaceuticalRouteOfAdministration`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -300,7 +303,7 @@ class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies(
     )
 
     withdrawalPeriod: typing.List[
-        fhirtypes.MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriodType
+        fhirtypes.MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriodType  # noqa: B950
     ] = Field(
         None,
         alias="withdrawalPeriod",
@@ -315,8 +318,9 @@ class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies(
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies`` according specification,
-        with preserving original sequence order.
+        """returning all elements names from
+        ``MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies``
+        according specification, with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "withdrawalPeriod"]
 
@@ -374,7 +378,9 @@ class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawal
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod`` according specification,
+        """returning all elements names from
+        ``MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod``
+        according specification,
         with preserving original sequence order.
         """
         return [

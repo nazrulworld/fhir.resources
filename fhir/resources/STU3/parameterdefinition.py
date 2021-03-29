@@ -134,7 +134,8 @@ class ParameterDefinition(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ParameterDefinition`` according specification,
+        """returning all elements names from
+        ``ParameterDefinition`` according specification,
         with preserving original sequence order.
         """
         return [

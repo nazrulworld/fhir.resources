@@ -80,7 +80,8 @@ class Resource(fhirresourcemodel.FHIRResourceModel):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Resource`` according specification,
+        """returning all elements names from
+        ``Resource`` according specification,
         with preserving original sequence order.
         """
         return ["id", "meta", "implicitRules", "language"]

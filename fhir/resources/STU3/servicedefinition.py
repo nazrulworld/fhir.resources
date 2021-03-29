@@ -396,7 +396,8 @@ class ServiceDefinition(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ServiceDefinition`` according specification,
+        """returning all elements names from
+        ``ServiceDefinition`` according specification,
         with preserving original sequence order.
         """
         return [

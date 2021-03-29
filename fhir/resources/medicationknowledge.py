@@ -301,7 +301,8 @@ class MedicationKnowledge(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicationKnowledge`` according specification,
+        """returning all elements names from
+        ``MedicationKnowledge`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -409,7 +410,8 @@ class MedicationKnowledgeAdministrationGuidelines(backboneelement.BackboneElemen
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicationKnowledgeAdministrationGuidelines`` according specification,
+        """returning all elements names from
+        ``MedicationKnowledgeAdministrationGuidelines`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -500,7 +502,8 @@ class MedicationKnowledgeAdministrationGuidelinesDosage(
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicationKnowledgeAdministrationGuidelinesDosage`` according specification,
+        """returning all elements names from
+        ``MedicationKnowledgeAdministrationGuidelinesDosage`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "dosage"]
@@ -573,7 +576,9 @@ class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics(
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics`` according specification,
+        """returning all elements names from
+        ``MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics``
+        according specification,
         with preserving original sequence order.
         """
         return [
@@ -675,7 +680,8 @@ class MedicationKnowledgeCost(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicationKnowledgeCost`` according specification,
+        """returning all elements names from
+        ``MedicationKnowledgeCost`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "source", "cost"]
@@ -763,7 +769,8 @@ class MedicationKnowledgeDrugCharacteristic(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicationKnowledgeDrugCharacteristic`` according specification,
+        """returning all elements names from
+        ``MedicationKnowledgeDrugCharacteristic`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -896,7 +903,8 @@ class MedicationKnowledgeIngredient(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicationKnowledgeIngredient`` according specification,
+        """returning all elements names from
+        ``MedicationKnowledgeIngredient`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -991,7 +999,8 @@ class MedicationKnowledgeKinetics(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicationKnowledgeKinetics`` according specification,
+        """returning all elements names from
+        ``MedicationKnowledgeKinetics`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1041,7 +1050,8 @@ class MedicationKnowledgeMedicineClassification(backboneelement.BackboneElement)
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicationKnowledgeMedicineClassification`` according specification,
+        """returning all elements names from
+        ``MedicationKnowledgeMedicineClassification`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "classification"]
@@ -1081,7 +1091,8 @@ class MedicationKnowledgeMonitoringProgram(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicationKnowledgeMonitoringProgram`` according specification,
+        """returning all elements names from
+        ``MedicationKnowledgeMonitoringProgram`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "name"]
@@ -1122,7 +1133,8 @@ class MedicationKnowledgeMonograph(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicationKnowledgeMonograph`` according specification,
+        """returning all elements names from
+        ``MedicationKnowledgeMonograph`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "source"]
@@ -1165,7 +1177,8 @@ class MedicationKnowledgePackaging(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicationKnowledgePackaging`` according specification,
+        """returning all elements names from
+        ``MedicationKnowledgePackaging`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "quantity"]
@@ -1229,7 +1242,8 @@ class MedicationKnowledgeRegulatory(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicationKnowledgeRegulatory`` according specification,
+        """returning all elements names from
+        ``MedicationKnowledgeRegulatory`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1274,7 +1288,8 @@ class MedicationKnowledgeRegulatoryMaxDispense(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicationKnowledgeRegulatoryMaxDispense`` according specification,
+        """returning all elements names from
+        ``MedicationKnowledgeRegulatoryMaxDispense`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "quantity", "period"]
@@ -1301,7 +1316,8 @@ class MedicationKnowledgeRegulatorySchedule(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicationKnowledgeRegulatorySchedule`` according specification,
+        """returning all elements names from
+        ``MedicationKnowledgeRegulatorySchedule`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "schedule"]
@@ -1345,7 +1361,8 @@ class MedicationKnowledgeRegulatorySubstitution(backboneelement.BackboneElement)
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicationKnowledgeRegulatorySubstitution`` according specification,
+        """returning all elements names from
+        ``MedicationKnowledgeRegulatorySubstitution`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "allowed"]
@@ -1443,7 +1460,8 @@ class MedicationKnowledgeRelatedMedicationKnowledge(backboneelement.BackboneElem
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicationKnowledgeRelatedMedicationKnowledge`` according specification,
+        """returning all elements names from
+        ``MedicationKnowledgeRelatedMedicationKnowledge`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "reference"]

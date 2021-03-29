@@ -200,7 +200,8 @@ class DeviceMetric(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``DeviceMetric`` according specification,
+        """returning all elements names from
+        ``DeviceMetric`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -344,7 +345,8 @@ class DeviceMetricCalibration(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``DeviceMetricCalibration`` according specification,
+        """returning all elements names from
+        ``DeviceMetricCalibration`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "state", "time"]

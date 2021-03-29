@@ -840,7 +840,8 @@ class ActivityDefinition(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ActivityDefinition`` according specification,
+        """returning all elements names from
+        ``ActivityDefinition`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1065,7 +1066,8 @@ class ActivityDefinitionDynamicValue(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ActivityDefinitionDynamicValue`` according specification,
+        """returning all elements names from
+        ``ActivityDefinitionDynamicValue`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "path", "expression"]
@@ -1171,7 +1173,8 @@ class ActivityDefinitionParticipant(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ActivityDefinitionParticipant`` according specification,
+        """returning all elements names from
+        ``ActivityDefinitionParticipant`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "role"]

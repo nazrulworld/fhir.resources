@@ -178,7 +178,8 @@ class Slot(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Slot`` according specification,
+        """returning all elements names from
+        ``Slot`` according specification,
         with preserving original sequence order.
         """
         return [

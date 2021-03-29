@@ -166,7 +166,8 @@ class RelatedPerson(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``RelatedPerson`` according specification,
+        """returning all elements names from
+        ``RelatedPerson`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -237,7 +238,8 @@ class RelatedPersonCommunication(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``RelatedPersonCommunication`` according specification,
+        """returning all elements names from
+        ``RelatedPersonCommunication`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "language", "preferred"]

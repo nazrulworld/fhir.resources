@@ -256,7 +256,8 @@ class MedicinalProduct(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicinalProduct`` according specification,
+        """returning all elements names from
+        ``MedicinalProduct`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -365,7 +366,8 @@ class MedicinalProductManufacturingBusinessOperation(backboneelement.BackboneEle
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicinalProductManufacturingBusinessOperation`` according specification,
+        """returning all elements names from
+        ``MedicinalProductManufacturingBusinessOperation`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -426,7 +428,8 @@ class MedicinalProductName(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicinalProductName`` according specification,
+        """returning all elements names from
+        ``MedicinalProductName`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -537,7 +540,8 @@ class MedicinalProductNameCountryLanguage(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicinalProductNameCountryLanguage`` according specification,
+        """returning all elements names from
+        ``MedicinalProductNameCountryLanguage`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -584,7 +588,8 @@ class MedicinalProductNameNamePart(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicinalProductNameNamePart`` according specification,
+        """returning all elements names from
+        ``MedicinalProductNameNamePart`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "part", "type"]
@@ -745,7 +750,8 @@ class MedicinalProductSpecialDesignation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicinalProductSpecialDesignation`` according specification,
+        """returning all elements names from
+        ``MedicinalProductSpecialDesignation`` according specification,
         with preserving original sequence order.
         """
         return [

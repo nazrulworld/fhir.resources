@@ -186,7 +186,8 @@ class DeviceUseStatement(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``DeviceUseStatement`` according specification,
+        """returning all elements names from
+        ``DeviceUseStatement`` according specification,
         with preserving original sequence order.
         """
         return [

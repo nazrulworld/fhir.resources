@@ -255,7 +255,8 @@ class CompartmentDefinition(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CompartmentDefinition`` according specification,
+        """returning all elements names from
+        ``CompartmentDefinition`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -403,7 +404,8 @@ class CompartmentDefinitionResource(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CompartmentDefinitionResource`` according specification,
+        """returning all elements names from
+        ``CompartmentDefinitionResource`` according specification,
         with preserving original sequence order.
         """
         return [

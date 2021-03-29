@@ -179,7 +179,8 @@ class Specimen(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Specimen`` according specification,
+        """returning all elements names from
+        ``Specimen`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -342,7 +343,8 @@ class SpecimenCollection(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SpecimenCollection`` according specification,
+        """returning all elements names from
+        ``SpecimenCollection`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -506,7 +508,8 @@ class SpecimenContainer(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SpecimenContainer`` according specification,
+        """returning all elements names from
+        ``SpecimenContainer`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -643,7 +646,8 @@ class SpecimenProcessing(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SpecimenProcessing`` according specification,
+        """returning all elements names from
+        ``SpecimenProcessing`` according specification,
         with preserving original sequence order.
         """
         return [

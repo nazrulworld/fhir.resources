@@ -4004,7 +4004,8 @@ class ElementDefinition(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ElementDefinition`` according specification,
+        """returning all elements names from
+        ``ElementDefinition`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -4552,7 +4553,8 @@ class ElementDefinitionBase(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ElementDefinitionBase`` according specification,
+        """returning all elements names from
+        ``ElementDefinitionBase`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "path", "min", "max"]
@@ -4684,7 +4686,8 @@ class ElementDefinitionBinding(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ElementDefinitionBinding`` according specification,
+        """returning all elements names from
+        ``ElementDefinitionBinding`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "strength", "description", "valueSet"]
@@ -4874,7 +4877,8 @@ class ElementDefinitionConstraint(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ElementDefinitionConstraint`` according specification,
+        """returning all elements names from
+        ``ElementDefinitionConstraint`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -5793,7 +5797,8 @@ class ElementDefinitionExample(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ElementDefinitionExample`` according specification,
+        """returning all elements names from
+        ``ElementDefinitionExample`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -6070,7 +6075,8 @@ class ElementDefinitionMapping(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ElementDefinitionMapping`` according specification,
+        """returning all elements names from
+        ``ElementDefinitionMapping`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "identity", "language", "map", "comment"]
@@ -6223,7 +6229,8 @@ class ElementDefinitionSlicing(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ElementDefinitionSlicing`` according specification,
+        """returning all elements names from
+        ``ElementDefinitionSlicing`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "discriminator", "description", "ordered", "rules"]
@@ -6338,7 +6345,8 @@ class ElementDefinitionSlicingDiscriminator(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ElementDefinitionSlicingDiscriminator`` according specification,
+        """returning all elements names from
+        ``ElementDefinitionSlicingDiscriminator`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "type", "path"]
@@ -6524,7 +6532,8 @@ class ElementDefinitionType(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ElementDefinitionType`` according specification,
+        """returning all elements names from
+        ``ElementDefinitionType`` according specification,
         with preserving original sequence order.
         """
         return [

@@ -98,7 +98,8 @@ class ContactPoint(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ContactPoint`` according specification,
+        """returning all elements names from
+        ``ContactPoint`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "system", "value", "use", "rank", "period"]

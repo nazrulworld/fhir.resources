@@ -332,7 +332,8 @@ class HealthcareService(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``HealthcareService`` according specification,
+        """returning all elements names from
+        ``HealthcareService`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -451,7 +452,8 @@ class HealthcareServiceAvailableTime(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``HealthcareServiceAvailableTime`` according specification,
+        """returning all elements names from
+        ``HealthcareServiceAvailableTime`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -500,7 +502,8 @@ class HealthcareServiceEligibility(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``HealthcareServiceEligibility`` according specification,
+        """returning all elements names from
+        ``HealthcareServiceEligibility`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "comment"]
@@ -548,7 +551,8 @@ class HealthcareServiceNotAvailable(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``HealthcareServiceNotAvailable`` according specification,
+        """returning all elements names from
+        ``HealthcareServiceNotAvailable`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "description", "during"]

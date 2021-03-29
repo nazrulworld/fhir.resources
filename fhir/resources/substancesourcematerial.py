@@ -221,7 +221,8 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstanceSourceMaterial`` according specification,
+        """returning all elements names from
+        ``SubstanceSourceMaterial`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -297,7 +298,8 @@ class SubstanceSourceMaterialFractionDescription(backboneelement.BackboneElement
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstanceSourceMaterialFractionDescription`` according specification,
+        """returning all elements names from
+        ``SubstanceSourceMaterialFractionDescription`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "fraction", "materialType"]
@@ -408,7 +410,8 @@ class SubstanceSourceMaterialOrganism(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstanceSourceMaterialOrganism`` according specification,
+        """returning all elements names from
+        ``SubstanceSourceMaterialOrganism`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -472,7 +475,8 @@ class SubstanceSourceMaterialOrganismAuthor(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstanceSourceMaterialOrganismAuthor`` according specification,
+        """returning all elements names from
+        ``SubstanceSourceMaterialOrganismAuthor`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -577,7 +581,8 @@ class SubstanceSourceMaterialOrganismHybrid(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstanceSourceMaterialOrganismHybrid`` according specification,
+        """returning all elements names from
+        ``SubstanceSourceMaterialOrganismHybrid`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -640,7 +645,8 @@ class SubstanceSourceMaterialOrganismOrganismGeneral(backboneelement.BackboneEle
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstanceSourceMaterialOrganismOrganismGeneral`` according specification,
+        """returning all elements names from
+        ``SubstanceSourceMaterialOrganismOrganismGeneral`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -688,7 +694,8 @@ class SubstanceSourceMaterialPartDescription(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstanceSourceMaterialPartDescription`` according specification,
+        """returning all elements names from
+        ``SubstanceSourceMaterialPartDescription`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "part", "partLocation"]

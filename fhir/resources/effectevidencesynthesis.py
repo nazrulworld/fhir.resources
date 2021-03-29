@@ -491,7 +491,8 @@ class EffectEvidenceSynthesis(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``EffectEvidenceSynthesis`` according specification,
+        """returning all elements names from
+        ``EffectEvidenceSynthesis`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -643,7 +644,8 @@ class EffectEvidenceSynthesisCertainty(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``EffectEvidenceSynthesisCertainty`` according specification,
+        """returning all elements names from
+        ``EffectEvidenceSynthesisCertainty`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -703,7 +705,8 @@ class EffectEvidenceSynthesisCertaintyCertaintySubcomponent(
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``EffectEvidenceSynthesisCertaintyCertaintySubcomponent`` according specification,
+        """returning all elements names from
+        ``EffectEvidenceSynthesisCertaintyCertaintySubcomponent`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "rating", "note"]
@@ -784,7 +787,8 @@ class EffectEvidenceSynthesisEffectEstimate(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``EffectEvidenceSynthesisEffectEstimate`` according specification,
+        """returning all elements names from
+        ``EffectEvidenceSynthesisEffectEstimate`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -862,7 +866,8 @@ class EffectEvidenceSynthesisEffectEstimatePrecisionEstimate(
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``EffectEvidenceSynthesisEffectEstimatePrecisionEstimate`` according specification,
+        """returning all elements names from
+        ``EffectEvidenceSynthesisEffectEstimatePrecisionEstimate`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "level", "from", "to"]
@@ -932,7 +937,8 @@ class EffectEvidenceSynthesisResultsByExposure(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``EffectEvidenceSynthesisResultsByExposure`` according specification,
+        """returning all elements names from
+        ``EffectEvidenceSynthesisResultsByExposure`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -997,7 +1003,8 @@ class EffectEvidenceSynthesisSampleSize(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``EffectEvidenceSynthesisSampleSize`` according specification,
+        """returning all elements names from
+        ``EffectEvidenceSynthesisSampleSize`` according specification,
         with preserving original sequence order.
         """
         return [

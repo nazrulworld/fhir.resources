@@ -297,7 +297,8 @@ class StructureMap(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``StructureMap`` according specification,
+        """returning all elements names from
+        ``StructureMap`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -487,7 +488,8 @@ class StructureMapGroup(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``StructureMapGroup`` according specification,
+        """returning all elements names from
+        ``StructureMapGroup`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -629,7 +631,8 @@ class StructureMapGroupInput(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``StructureMapGroupInput`` according specification,
+        """returning all elements names from
+        ``StructureMapGroupInput`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -775,7 +778,8 @@ class StructureMapGroupRule(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``StructureMapGroupRule`` according specification,
+        """returning all elements names from
+        ``StructureMapGroupRule`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -888,7 +892,8 @@ class StructureMapGroupRuleDependent(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``StructureMapGroupRuleDependent`` according specification,
+        """returning all elements names from
+        ``StructureMapGroupRuleDependent`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "name", "variable"]
@@ -1620,7 +1625,8 @@ class StructureMapGroupRuleSource(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``StructureMapGroupRuleSource`` according specification,
+        """returning all elements names from
+        ``StructureMapGroupRuleSource`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1929,7 +1935,8 @@ class StructureMapGroupRuleTarget(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``StructureMapGroupRuleTarget`` according specification,
+        """returning all elements names from
+        ``StructureMapGroupRuleTarget`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -2034,7 +2041,8 @@ class StructureMapGroupRuleTargetParameter(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``StructureMapGroupRuleTargetParameter`` according specification,
+        """returning all elements names from
+        ``StructureMapGroupRuleTargetParameter`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -2162,7 +2170,8 @@ class StructureMapStructure(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``StructureMapStructure`` according specification,
+        """returning all elements names from
+        ``StructureMapStructure`` according specification,
         with preserving original sequence order.
         """
         return [

@@ -502,7 +502,8 @@ class Observation(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Observation`` according specification,
+        """returning all elements names from
+        ``Observation`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -887,7 +888,8 @@ class ObservationComponent(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ObservationComponent`` according specification,
+        """returning all elements names from
+        ``ObservationComponent`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1058,7 +1060,8 @@ class ObservationReferenceRange(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ObservationReferenceRange`` according specification,
+        """returning all elements names from
+        ``ObservationReferenceRange`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1131,7 +1134,8 @@ class ObservationRelated(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ObservationRelated`` according specification,
+        """returning all elements names from
+        ``ObservationRelated`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "target"]

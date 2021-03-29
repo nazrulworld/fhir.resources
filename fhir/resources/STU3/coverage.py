@@ -246,7 +246,8 @@ class Coverage(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Coverage`` according specification,
+        """returning all elements names from
+        ``Coverage`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -460,7 +461,8 @@ class CoverageGrouping(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CoverageGrouping`` according specification,
+        """returning all elements names from
+        ``CoverageGrouping`` according specification,
         with preserving original sequence order.
         """
         return [

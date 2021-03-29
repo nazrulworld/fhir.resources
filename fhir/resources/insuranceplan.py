@@ -198,7 +198,8 @@ class InsurancePlan(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``InsurancePlan`` according specification,
+        """returning all elements names from
+        ``InsurancePlan`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -279,7 +280,8 @@ class InsurancePlanContact(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``InsurancePlanContact`` according specification,
+        """returning all elements names from
+        ``InsurancePlanContact`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -338,7 +340,8 @@ class InsurancePlanCoverage(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``InsurancePlanCoverage`` according specification,
+        """returning all elements names from
+        ``InsurancePlanCoverage`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "network", "benefit"]
@@ -389,7 +392,8 @@ class InsurancePlanCoverageBenefit(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``InsurancePlanCoverageBenefit`` according specification,
+        """returning all elements names from
+        ``InsurancePlanCoverageBenefit`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "requirement", "limit"]
@@ -429,7 +433,8 @@ class InsurancePlanCoverageBenefitLimit(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``InsurancePlanCoverageBenefitLimit`` according specification,
+        """returning all elements names from
+        ``InsurancePlanCoverageBenefitLimit`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "value", "code"]
@@ -513,7 +518,8 @@ class InsurancePlanPlan(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``InsurancePlanPlan`` according specification,
+        """returning all elements names from
+        ``InsurancePlanPlan`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -587,7 +593,8 @@ class InsurancePlanPlanGeneralCost(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``InsurancePlanPlanGeneralCost`` according specification,
+        """returning all elements names from
+        ``InsurancePlanPlanGeneralCost`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -635,7 +642,8 @@ class InsurancePlanPlanSpecificCost(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``InsurancePlanPlanSpecificCost`` according specification,
+        """returning all elements names from
+        ``InsurancePlanPlanSpecificCost`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "category", "benefit"]
@@ -676,7 +684,8 @@ class InsurancePlanPlanSpecificCostBenefit(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``InsurancePlanPlanSpecificCostBenefit`` according specification,
+        """returning all elements names from
+        ``InsurancePlanPlanSpecificCostBenefit`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "cost"]
@@ -743,7 +752,8 @@ class InsurancePlanPlanSpecificCostBenefitCost(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``InsurancePlanPlanSpecificCostBenefitCost`` according specification,
+        """returning all elements names from
+        ``InsurancePlanPlanSpecificCostBenefitCost`` according specification,
         with preserving original sequence order.
         """
         return [

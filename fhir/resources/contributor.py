@@ -73,7 +73,8 @@ class Contributor(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Contributor`` according specification,
+        """returning all elements names from
+        ``Contributor`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "type", "name", "contact"]

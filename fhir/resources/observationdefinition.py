@@ -229,7 +229,8 @@ class ObservationDefinition(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ObservationDefinition`` according specification,
+        """returning all elements names from
+        ``ObservationDefinition`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -376,7 +377,8 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ObservationDefinitionQualifiedInterval`` according specification,
+        """returning all elements names from
+        ``ObservationDefinitionQualifiedInterval`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -465,7 +467,8 @@ class ObservationDefinitionQuantitativeDetails(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ObservationDefinitionQuantitativeDetails`` according specification,
+        """returning all elements names from
+        ``ObservationDefinitionQuantitativeDetails`` according specification,
         with preserving original sequence order.
         """
         return [

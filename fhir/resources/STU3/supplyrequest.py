@@ -214,7 +214,8 @@ class SupplyRequest(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SupplyRequest`` according specification,
+        """returning all elements names from
+        ``SupplyRequest`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -344,7 +345,8 @@ class SupplyRequestOrderedItem(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SupplyRequestOrderedItem`` according specification,
+        """returning all elements names from
+        ``SupplyRequestOrderedItem`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -439,7 +441,8 @@ class SupplyRequestRequester(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SupplyRequestRequester`` according specification,
+        """returning all elements names from
+        ``SupplyRequestRequester`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "agent", "onBehalfOf"]

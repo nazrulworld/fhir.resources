@@ -42,7 +42,8 @@ class Range(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Range`` according specification,
+        """returning all elements names from
+        ``Range`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "low", "high"]

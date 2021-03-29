@@ -81,7 +81,8 @@ class Population(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Population`` according specification,
+        """returning all elements names from
+        ``Population`` according specification,
         with preserving original sequence order.
         """
         return [

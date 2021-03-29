@@ -102,7 +102,8 @@ class MedicinalProductContraindication(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicinalProductContraindication`` according specification,
+        """returning all elements names from
+        ``MedicinalProductContraindication`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -188,7 +189,8 @@ class MedicinalProductContraindicationOtherTherapy(backboneelement.BackboneEleme
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicinalProductContraindicationOtherTherapy`` according specification,
+        """returning all elements names from
+        ``MedicinalProductContraindicationOtherTherapy`` according specification,
         with preserving original sequence order.
         """
         return [

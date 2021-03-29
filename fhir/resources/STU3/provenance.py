@@ -157,7 +157,8 @@ class Provenance(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Provenance`` according specification,
+        """returning all elements names from
+        ``Provenance`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -346,7 +347,8 @@ class ProvenanceAgent(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ProvenanceAgent`` according specification,
+        """returning all elements names from
+        ``ProvenanceAgent`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -503,7 +505,8 @@ class ProvenanceEntity(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ProvenanceEntity`` according specification,
+        """returning all elements names from
+        ``ProvenanceEntity`` according specification,
         with preserving original sequence order.
         """
         return [

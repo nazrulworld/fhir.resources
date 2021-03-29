@@ -124,7 +124,8 @@ class Medication(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Medication`` according specification,
+        """returning all elements names from
+        ``Medication`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -184,7 +185,8 @@ class MedicationBatch(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicationBatch`` according specification,
+        """returning all elements names from
+        ``MedicationBatch`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "lotNumber", "expirationDate"]
@@ -263,7 +265,8 @@ class MedicationIngredient(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicationIngredient`` according specification,
+        """returning all elements names from
+        ``MedicationIngredient`` according specification,
         with preserving original sequence order.
         """
         return [

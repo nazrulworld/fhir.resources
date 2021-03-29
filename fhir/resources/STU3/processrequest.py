@@ -219,7 +219,8 @@ class ProcessRequest(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ProcessRequest`` according specification,
+        """returning all elements names from
+        ``ProcessRequest`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -276,7 +277,8 @@ class ProcessRequestItem(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ProcessRequestItem`` according specification,
+        """returning all elements names from
+        ``ProcessRequestItem`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "sequenceLinkId"]

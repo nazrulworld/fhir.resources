@@ -232,7 +232,8 @@ class Sequence(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Sequence`` according specification,
+        """returning all elements names from
+        ``Sequence`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -544,7 +545,8 @@ class SequenceQuality(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SequenceQuality`` according specification,
+        """returning all elements names from
+        ``SequenceQuality`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -679,7 +681,8 @@ class SequenceReferenceSeq(backboneelement.BackboneElement):
         description=(
             "Reference identifier of reference sequence submitted to NCBI. It must "
             "match the type in the Sequence.type field. For example, the prefix, "
-            "\u201cNG_\u201d identifies reference sequence for genes, \u201cNM_\u201d for messenger RNA"
+            "\u201cNG_\u201d identifies reference sequence for genes,"
+            "\u201cNM_\u201d for messenger RNA"
             " transcripts, and \u201cNP_\u201d for amino acid sequences."
         ),
         # if property is element of this resource.
@@ -764,7 +767,8 @@ class SequenceReferenceSeq(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SequenceReferenceSeq`` according specification,
+        """returning all elements names from
+        ``SequenceReferenceSeq`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -952,7 +956,8 @@ class SequenceRepository(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SequenceRepository`` according specification,
+        """returning all elements names from
+        ``SequenceRepository`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1145,7 +1150,8 @@ class SequenceVariant(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SequenceVariant`` according specification,
+        """returning all elements names from
+        ``SequenceVariant`` according specification,
         with preserving original sequence order.
         """
         return [

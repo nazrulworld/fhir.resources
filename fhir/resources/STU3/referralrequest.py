@@ -384,7 +384,8 @@ class ReferralRequest(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ReferralRequest`` according specification,
+        """returning all elements names from
+        ``ReferralRequest`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -562,7 +563,8 @@ class ReferralRequestRequester(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ReferralRequestRequester`` according specification,
+        """returning all elements names from
+        ``ReferralRequestRequester`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "agent", "onBehalfOf"]

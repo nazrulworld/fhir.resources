@@ -392,7 +392,8 @@ class ChargeItemDefinition(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ChargeItemDefinition`` according specification,
+        """returning all elements names from
+        ``ChargeItemDefinition`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -550,7 +551,8 @@ class ChargeItemDefinitionApplicability(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ChargeItemDefinitionApplicability`` according specification,
+        """returning all elements names from
+        ``ChargeItemDefinitionApplicability`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -609,7 +611,8 @@ class ChargeItemDefinitionPropertyGroup(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ChargeItemDefinitionPropertyGroup`` according specification,
+        """returning all elements names from
+        ``ChargeItemDefinitionPropertyGroup`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -698,7 +701,8 @@ class ChargeItemDefinitionPropertyGroupPriceComponent(backboneelement.BackboneEl
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ChargeItemDefinitionPropertyGroupPriceComponent`` according specification,
+        """returning all elements names from
+        ``ChargeItemDefinitionPropertyGroupPriceComponent`` according specification,
         with preserving original sequence order.
         """
         return [

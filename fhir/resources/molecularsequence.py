@@ -243,7 +243,8 @@ class MolecularSequence(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MolecularSequence`` according specification,
+        """returning all elements names from
+        ``MolecularSequence`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -568,7 +569,8 @@ class MolecularSequenceQuality(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MolecularSequenceQuality`` according specification,
+        """returning all elements names from
+        ``MolecularSequenceQuality`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -771,7 +773,8 @@ class MolecularSequenceQualityRoc(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MolecularSequenceQualityRoc`` according specification,
+        """returning all elements names from
+        ``MolecularSequenceQualityRoc`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -860,7 +863,8 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
         description=(
             "Reference identifier of reference sequence submitted to NCBI. It must "
             "match the type in the MolecularSequence.type field. For example, the "
-            "prefix, \u201cNG_\u201d identifies reference sequence for genes, \u201cNM_\u201d for "
+            "prefix, \u201cNG_\u201d identifies reference "
+            "sequence for genes, \u201cNM_\u201d for "
             "messenger RNA transcripts, and \u201cNP_\u201d for amino acid sequences."
         ),
         # if property is element of this resource.
@@ -946,7 +950,8 @@ class MolecularSequenceReferenceSeq(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MolecularSequenceReferenceSeq`` according specification,
+        """returning all elements names from
+        ``MolecularSequenceReferenceSeq`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1073,7 +1078,8 @@ class MolecularSequenceRepository(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MolecularSequenceRepository`` according specification,
+        """returning all elements names from
+        ``MolecularSequenceRepository`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1215,7 +1221,8 @@ class MolecularSequenceStructureVariant(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MolecularSequenceStructureVariant`` according specification,
+        """returning all elements names from
+        ``MolecularSequenceStructureVariant`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1274,7 +1281,8 @@ class MolecularSequenceStructureVariantInner(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MolecularSequenceStructureVariantInner`` according specification,
+        """returning all elements names from
+        ``MolecularSequenceStructureVariantInner`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "start", "end"]
@@ -1324,7 +1332,8 @@ class MolecularSequenceStructureVariantOuter(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MolecularSequenceStructureVariantOuter`` according specification,
+        """returning all elements names from
+        ``MolecularSequenceStructureVariantOuter`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "start", "end"]
@@ -1448,7 +1457,8 @@ class MolecularSequenceVariant(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MolecularSequenceVariant`` according specification,
+        """returning all elements names from
+        ``MolecularSequenceVariant`` according specification,
         with preserving original sequence order.
         """
         return [

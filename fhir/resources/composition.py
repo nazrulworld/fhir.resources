@@ -245,7 +245,8 @@ class Composition(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Composition`` according specification,
+        """returning all elements names from
+        ``Composition`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -396,7 +397,8 @@ class CompositionAttester(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CompositionAttester`` according specification,
+        """returning all elements names from
+        ``CompositionAttester`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "mode", "time", "party"]
@@ -518,7 +520,8 @@ class CompositionEvent(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CompositionEvent`` according specification,
+        """returning all elements names from
+        ``CompositionEvent`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "period", "detail"]
@@ -583,7 +586,8 @@ class CompositionRelatesTo(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CompositionRelatesTo`` according specification,
+        """returning all elements names from
+        ``CompositionRelatesTo`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -859,7 +863,8 @@ class CompositionSection(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CompositionSection`` according specification,
+        """returning all elements names from
+        ``CompositionSection`` according specification,
         with preserving original sequence order.
         """
         return [

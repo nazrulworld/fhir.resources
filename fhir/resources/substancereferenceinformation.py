@@ -77,7 +77,8 @@ class SubstanceReferenceInformation(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstanceReferenceInformation`` according specification,
+        """returning all elements names from
+        ``SubstanceReferenceInformation`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -147,7 +148,8 @@ class SubstanceReferenceInformationClassification(backboneelement.BackboneElemen
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstanceReferenceInformationClassification`` according specification,
+        """returning all elements names from
+        ``SubstanceReferenceInformationClassification`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -202,7 +204,8 @@ class SubstanceReferenceInformationGene(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstanceReferenceInformationGene`` according specification,
+        """returning all elements names from
+        ``SubstanceReferenceInformationGene`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -256,7 +259,8 @@ class SubstanceReferenceInformationGeneElement(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstanceReferenceInformationGeneElement`` according specification,
+        """returning all elements names from
+        ``SubstanceReferenceInformationGeneElement`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "element", "source"]
@@ -378,7 +382,8 @@ class SubstanceReferenceInformationTarget(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstanceReferenceInformationTarget`` according specification,
+        """returning all elements names from
+        ``SubstanceReferenceInformationTarget`` according specification,
         with preserving original sequence order.
         """
         return [

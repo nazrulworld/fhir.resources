@@ -413,7 +413,8 @@ class PlanDefinition(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``PlanDefinition`` according specification,
+        """returning all elements names from
+        ``PlanDefinition`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -918,7 +919,8 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``PlanDefinitionAction`` according specification,
+        """returning all elements names from
+        ``PlanDefinitionAction`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1075,7 +1077,8 @@ class PlanDefinitionActionCondition(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``PlanDefinitionActionCondition`` according specification,
+        """returning all elements names from
+        ``PlanDefinitionActionCondition`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1220,7 +1223,8 @@ class PlanDefinitionActionDynamicValue(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``PlanDefinitionActionDynamicValue`` according specification,
+        """returning all elements names from
+        ``PlanDefinitionActionDynamicValue`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1275,7 +1279,8 @@ class PlanDefinitionActionParticipant(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``PlanDefinitionActionParticipant`` according specification,
+        """returning all elements names from
+        ``PlanDefinitionActionParticipant`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "role"]
@@ -1426,7 +1431,8 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``PlanDefinitionActionRelatedAction`` according specification,
+        """returning all elements names from
+        ``PlanDefinitionActionRelatedAction`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1634,7 +1640,8 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``PlanDefinitionGoal`` according specification,
+        """returning all elements names from
+        ``PlanDefinitionGoal`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1745,7 +1752,8 @@ class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``PlanDefinitionGoalTarget`` according specification,
+        """returning all elements names from
+        ``PlanDefinitionGoalTarget`` according specification,
         with preserving original sequence order.
         """
         return [

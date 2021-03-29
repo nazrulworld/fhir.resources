@@ -398,7 +398,8 @@ class Procedure(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Procedure`` according specification,
+        """returning all elements names from
+        ``Procedure`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -572,7 +573,8 @@ class ProcedureFocalDevice(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ProcedureFocalDevice`` according specification,
+        """returning all elements names from
+        ``ProcedureFocalDevice`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "action", "manipulated"]
@@ -628,7 +630,8 @@ class ProcedurePerformer(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ProcedurePerformer`` according specification,
+        """returning all elements names from
+        ``ProcedurePerformer`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "role", "actor", "onBehalfOf"]

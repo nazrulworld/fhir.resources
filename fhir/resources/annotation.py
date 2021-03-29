@@ -88,7 +88,8 @@ class Annotation(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Annotation`` according specification,
+        """returning all elements names from
+        ``Annotation`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "authorReference", "authorString", "time", "text"]

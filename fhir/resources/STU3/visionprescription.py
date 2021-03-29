@@ -143,7 +143,8 @@ class VisionPrescription(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``VisionPrescription`` according specification,
+        """returning all elements names from
+        ``VisionPrescription`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -401,7 +402,8 @@ class VisionPrescriptionDispense(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``VisionPrescriptionDispense`` according specification,
+        """returning all elements names from
+        ``VisionPrescriptionDispense`` according specification,
         with preserving original sequence order.
         """
         return [

@@ -392,7 +392,8 @@ class Task(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Task`` according specification,
+        """returning all elements names from
+        ``Task`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1067,7 +1068,8 @@ class TaskInput(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TaskInput`` according specification,
+        """returning all elements names from
+        ``TaskInput`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1727,7 +1729,8 @@ class TaskOutput(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TaskOutput`` according specification,
+        """returning all elements names from
+        ``TaskOutput`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1899,7 +1902,8 @@ class TaskRequester(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TaskRequester`` according specification,
+        """returning all elements names from
+        ``TaskRequester`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "agent", "onBehalfOf"]
@@ -1961,7 +1965,8 @@ class TaskRestriction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TaskRestriction`` according specification,
+        """returning all elements names from
+        ``TaskRestriction`` according specification,
         with preserving original sequence order.
         """
         return [

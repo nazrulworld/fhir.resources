@@ -235,7 +235,8 @@ class Consent(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Consent`` according specification,
+        """returning all elements names from
+        ``Consent`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -408,7 +409,8 @@ class ConsentPolicy(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ConsentPolicy`` according specification,
+        """returning all elements names from
+        ``ConsentPolicy`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "authority", "uri"]
@@ -555,7 +557,8 @@ class ConsentProvision(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ConsentProvision`` according specification,
+        """returning all elements names from
+        ``ConsentProvision`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -626,7 +629,8 @@ class ConsentProvisionActor(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ConsentProvisionActor`` according specification,
+        """returning all elements names from
+        ``ConsentProvisionActor`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "role", "reference"]
@@ -678,7 +682,8 @@ class ConsentProvisionData(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ConsentProvisionData`` according specification,
+        """returning all elements names from
+        ``ConsentProvisionData`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "meaning", "reference"]
@@ -798,7 +803,8 @@ class ConsentVerification(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ConsentVerification`` according specification,
+        """returning all elements names from
+        ``ConsentVerification`` according specification,
         with preserving original sequence order.
         """
         return [

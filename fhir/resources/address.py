@@ -173,7 +173,8 @@ class Address(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Address`` according specification,
+        """returning all elements names from
+        ``Address`` according specification,
         with preserving original sequence order.
         """
         return [

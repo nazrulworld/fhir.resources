@@ -178,7 +178,8 @@ class Account(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Account`` according specification,
+        """returning all elements names from
+        ``Account`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -307,7 +308,8 @@ class AccountCoverage(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``AccountCoverage`` according specification,
+        """returning all elements names from
+        ``AccountCoverage`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "coverage", "priority"]
@@ -365,7 +367,8 @@ class AccountGuarantor(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``AccountGuarantor`` according specification,
+        """returning all elements names from
+        ``AccountGuarantor`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "party", "onHold", "period"]

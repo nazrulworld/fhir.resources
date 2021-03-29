@@ -249,7 +249,8 @@ class AdverseEvent(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``AdverseEvent`` according specification,
+        """returning all elements names from
+        ``AdverseEvent`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -381,7 +382,8 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``AdverseEventSuspectEntity`` according specification,
+        """returning all elements names from
+        ``AdverseEventSuspectEntity`` according specification,
         with preserving original sequence order.
         """
         return [

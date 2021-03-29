@@ -102,7 +102,8 @@ class Coding(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Coding`` according specification,
+        """returning all elements names from
+        ``Coding`` according specification,
         with preserving original sequence order.
         """
         return [

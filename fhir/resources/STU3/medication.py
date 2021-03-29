@@ -137,7 +137,8 @@ class Medication(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Medication`` according specification,
+        """returning all elements names from
+        ``Medication`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -234,7 +235,8 @@ class MedicationIngredient(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicationIngredient`` according specification,
+        """returning all elements names from
+        ``MedicationIngredient`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -330,7 +332,8 @@ class MedicationPackage(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicationPackage`` according specification,
+        """returning all elements names from
+        ``MedicationPackage`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "container", "content", "batch"]
@@ -374,7 +377,8 @@ class MedicationPackageBatch(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicationPackageBatch`` according specification,
+        """returning all elements names from
+        ``MedicationPackageBatch`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "lotNumber", "expirationDate"]
@@ -428,7 +432,8 @@ class MedicationPackageContent(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicationPackageContent`` according specification,
+        """returning all elements names from
+        ``MedicationPackageContent`` according specification,
         with preserving original sequence order.
         """
         return [

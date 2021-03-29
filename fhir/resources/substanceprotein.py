@@ -106,7 +106,8 @@ class SubstanceProtein(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstanceProtein`` according specification,
+        """returning all elements names from
+        ``SubstanceProtein`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -267,7 +268,8 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SubstanceProteinSubunit`` according specification,
+        """returning all elements names from
+        ``SubstanceProteinSubunit`` according specification,
         with preserving original sequence order.
         """
         return [

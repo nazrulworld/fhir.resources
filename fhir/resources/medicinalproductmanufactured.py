@@ -101,7 +101,8 @@ class MedicinalProductManufactured(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicinalProductManufactured`` according specification,
+        """returning all elements names from
+        ``MedicinalProductManufactured`` according specification,
         with preserving original sequence order.
         """
         return [

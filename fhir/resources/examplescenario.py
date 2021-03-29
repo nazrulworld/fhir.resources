@@ -279,7 +279,8 @@ class ExampleScenario(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExampleScenario`` according specification,
+        """returning all elements names from
+        ``ExampleScenario`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -435,7 +436,8 @@ class ExampleScenarioActor(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExampleScenarioActor`` according specification,
+        """returning all elements names from
+        ``ExampleScenarioActor`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -593,7 +595,8 @@ class ExampleScenarioInstance(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExampleScenarioInstance`` according specification,
+        """returning all elements names from
+        ``ExampleScenarioInstance`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -710,7 +713,8 @@ class ExampleScenarioInstanceContainedInstance(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExampleScenarioInstanceContainedInstance`` according specification,
+        """returning all elements names from
+        ``ExampleScenarioInstanceContainedInstance`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "resourceId", "versionId"]
@@ -813,7 +817,8 @@ class ExampleScenarioInstanceVersion(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExampleScenarioInstanceVersion`` according specification,
+        """returning all elements names from
+        ``ExampleScenarioInstanceVersion`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "versionId", "description"]
@@ -951,7 +956,8 @@ class ExampleScenarioProcess(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExampleScenarioProcess`` according specification,
+        """returning all elements names from
+        ``ExampleScenarioProcess`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1081,7 +1087,8 @@ class ExampleScenarioProcessStep(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExampleScenarioProcessStep`` according specification,
+        """returning all elements names from
+        ``ExampleScenarioProcessStep`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1149,7 +1156,8 @@ class ExampleScenarioProcessStepAlternative(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExampleScenarioProcessStepAlternative`` according specification,
+        """returning all elements names from
+        ``ExampleScenarioProcessStepAlternative`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "title", "description", "step"]
@@ -1341,7 +1349,8 @@ class ExampleScenarioProcessStepOperation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ExampleScenarioProcessStepOperation`` according specification,
+        """returning all elements names from
+        ``ExampleScenarioProcessStepOperation`` according specification,
         with preserving original sequence order.
         """
         return [

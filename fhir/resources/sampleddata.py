@@ -135,7 +135,8 @@ class SampledData(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SampledData`` according specification,
+        """returning all elements names from
+        ``SampledData`` according specification,
         with preserving original sequence order.
         """
         return [

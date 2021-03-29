@@ -133,7 +133,8 @@ class Attachment(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Attachment`` according specification,
+        """returning all elements names from
+        ``Attachment`` according specification,
         with preserving original sequence order.
         """
         return [

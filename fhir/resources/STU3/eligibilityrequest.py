@@ -228,7 +228,8 @@ class EligibilityRequest(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``EligibilityRequest`` according specification,
+        """returning all elements names from
+        ``EligibilityRequest`` according specification,
         with preserving original sequence order.
         """
         return [

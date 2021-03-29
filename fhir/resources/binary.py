@@ -84,7 +84,8 @@ class Binary(resource.Resource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Binary`` according specification,
+        """returning all elements names from
+        ``Binary`` according specification,
         with preserving original sequence order.
         """
         return [

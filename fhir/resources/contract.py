@@ -562,7 +562,8 @@ class Contract(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Contract`` according specification,
+        """returning all elements names from
+        ``Contract`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -775,7 +776,8 @@ class ContractContentDefinition(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ContractContentDefinition`` according specification,
+        """returning all elements names from
+        ``ContractContentDefinition`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -907,7 +909,8 @@ class ContractFriendly(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ContractFriendly`` according specification,
+        """returning all elements names from
+        ``ContractFriendly`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1000,7 +1003,8 @@ class ContractLegal(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ContractLegal`` according specification,
+        """returning all elements names from
+        ``ContractLegal`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1095,7 +1099,8 @@ class ContractRule(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ContractRule`` according specification,
+        """returning all elements names from
+        ``ContractRule`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1196,7 +1201,8 @@ class ContractSigner(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ContractSigner`` according specification,
+        """returning all elements names from
+        ``ContractSigner`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "party", "signature"]
@@ -1366,7 +1372,8 @@ class ContractTerm(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ContractTerm`` according specification,
+        """returning all elements names from
+        ``ContractTerm`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1782,7 +1789,8 @@ class ContractTermAction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ContractTermAction`` according specification,
+        """returning all elements names from
+        ``ContractTermAction`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1895,7 +1903,8 @@ class ContractTermActionSubject(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ContractTermActionSubject`` according specification,
+        """returning all elements names from
+        ``ContractTermActionSubject`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "reference", "role"]
@@ -2080,7 +2089,8 @@ class ContractTermAsset(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ContractTermAsset`` according specification,
+        """returning all elements names from
+        ``ContractTermAsset`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -2156,7 +2166,8 @@ class ContractTermAssetContext(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ContractTermAssetContext`` according specification,
+        """returning all elements names from
+        ``ContractTermAssetContext`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "reference", "code", "text"]
@@ -2387,7 +2398,8 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ContractTermAssetValuedItem`` according specification,
+        """returning all elements names from
+        ``ContractTermAssetValuedItem`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -2582,7 +2594,8 @@ class ContractTermOffer(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ContractTermOffer`` according specification,
+        """returning all elements names from
+        ``ContractTermOffer`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -2844,7 +2857,8 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ContractTermOfferAnswer`` according specification,
+        """returning all elements names from
+        ``ContractTermOfferAnswer`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -2959,7 +2973,8 @@ class ContractTermOfferParty(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ContractTermOfferParty`` according specification,
+        """returning all elements names from
+        ``ContractTermOfferParty`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "reference", "role"]
@@ -3030,7 +3045,8 @@ class ContractTermSecurityLabel(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ContractTermSecurityLabel`` according specification,
+        """returning all elements names from
+        ``ContractTermSecurityLabel`` according specification,
         with preserving original sequence order.
         """
         return [

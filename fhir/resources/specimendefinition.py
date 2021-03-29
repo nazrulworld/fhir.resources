@@ -88,7 +88,8 @@ class SpecimenDefinition(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SpecimenDefinition`` according specification,
+        """returning all elements names from
+        ``SpecimenDefinition`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -219,7 +220,8 @@ class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SpecimenDefinitionTypeTested`` according specification,
+        """returning all elements names from
+        ``SpecimenDefinitionTypeTested`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -414,7 +416,8 @@ class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SpecimenDefinitionTypeTestedContainer`` according specification,
+        """returning all elements names from
+        ``SpecimenDefinitionTypeTestedContainer`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -519,7 +522,8 @@ class SpecimenDefinitionTypeTestedContainerAdditive(backboneelement.BackboneElem
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SpecimenDefinitionTypeTestedContainerAdditive`` according specification,
+        """returning all elements names from
+        ``SpecimenDefinitionTypeTestedContainerAdditive`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -634,7 +638,8 @@ class SpecimenDefinitionTypeTestedHandling(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``SpecimenDefinitionTypeTestedHandling`` according specification,
+        """returning all elements names from
+        ``SpecimenDefinitionTypeTestedHandling`` according specification,
         with preserving original sequence order.
         """
         return [

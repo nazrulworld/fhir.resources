@@ -266,7 +266,8 @@ class Patient(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Patient`` according specification,
+        """returning all elements names from
+        ``Patient`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -384,7 +385,8 @@ class PatientAnimal(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``PatientAnimal`` according specification,
+        """returning all elements names from
+        ``PatientAnimal`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -444,7 +446,8 @@ class PatientCommunication(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``PatientCommunication`` according specification,
+        """returning all elements names from
+        ``PatientCommunication`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "language", "preferred"]
@@ -548,7 +551,8 @@ class PatientContact(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``PatientContact`` according specification,
+        """returning all elements names from
+        ``PatientContact`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -608,7 +612,8 @@ class PatientLink(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``PatientLink`` according specification,
+        """returning all elements names from
+        ``PatientLink`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "other", "type"]

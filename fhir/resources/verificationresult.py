@@ -201,7 +201,8 @@ class VerificationResult(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``VerificationResult`` according specification,
+        """returning all elements names from
+        ``VerificationResult`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -406,7 +407,8 @@ class VerificationResultAttestation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``VerificationResultAttestation`` according specification,
+        """returning all elements names from
+        ``VerificationResultAttestation`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -517,7 +519,8 @@ class VerificationResultPrimarySource(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``VerificationResultPrimarySource`` according specification,
+        """returning all elements names from
+        ``VerificationResultPrimarySource`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -583,7 +586,8 @@ class VerificationResultValidator(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``VerificationResultValidator`` according specification,
+        """returning all elements names from
+        ``VerificationResultValidator`` according specification,
         with preserving original sequence order.
         """
         return [

@@ -38,7 +38,7 @@ except ImportError:
 
 try:
     from .xml import xml_dumps
-except ImportError as exc:
+except ImportError:
 
     def raise_lxml_import_error():
         raise ImportError(
@@ -49,7 +49,7 @@ except ImportError as exc:
 
     @no_type_check
     def xml_dumps(
-        model: "FHIRAbstractModel",
+        model: "FHIRAbstractModel",  # noqa: F821
         *,
         pretty_print=False,
         xml_declaration=True,

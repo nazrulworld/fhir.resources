@@ -41,7 +41,8 @@ class OperationOutcome(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``OperationOutcome`` according specification,
+        """returning all elements names from
+        ``OperationOutcome`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -169,7 +170,8 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``OperationOutcomeIssue`` according specification,
+        """returning all elements names from
+        ``OperationOutcomeIssue`` according specification,
         with preserving original sequence order.
         """
         return [

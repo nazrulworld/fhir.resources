@@ -314,7 +314,8 @@ class NutritionOrder(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``NutritionOrder`` according specification,
+        """returning all elements names from
+        ``NutritionOrder`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -556,7 +557,8 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``NutritionOrderEnteralFormula`` according specification,
+        """returning all elements names from
+        ``NutritionOrderEnteralFormula`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -645,7 +647,8 @@ class NutritionOrderEnteralFormulaAdministration(backboneelement.BackboneElement
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``NutritionOrderEnteralFormulaAdministration`` according specification,
+        """returning all elements names from
+        ``NutritionOrderEnteralFormulaAdministration`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -790,7 +793,8 @@ class NutritionOrderOralDiet(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``NutritionOrderOralDiet`` according specification,
+        """returning all elements names from
+        ``NutritionOrderOralDiet`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -838,7 +842,8 @@ class NutritionOrderOralDietNutrient(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``NutritionOrderOralDietNutrient`` according specification,
+        """returning all elements names from
+        ``NutritionOrderOralDietNutrient`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "modifier", "amount"]
@@ -885,7 +890,8 @@ class NutritionOrderOralDietTexture(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``NutritionOrderOralDietTexture`` according specification,
+        """returning all elements names from
+        ``NutritionOrderOralDietTexture`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "modifier", "foodType"]
@@ -969,7 +975,8 @@ class NutritionOrderSupplement(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``NutritionOrderSupplement`` according specification,
+        """returning all elements names from
+        ``NutritionOrderSupplement`` according specification,
         with preserving original sequence order.
         """
         return [

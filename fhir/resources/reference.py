@@ -99,7 +99,8 @@ class Reference(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Reference`` according specification,
+        """returning all elements names from
+        ``Reference`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "reference", "type", "identifier", "display"]

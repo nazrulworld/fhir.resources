@@ -47,7 +47,8 @@ class Money(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Money`` according specification,
+        """returning all elements names from
+        ``Money`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "value", "currency"]

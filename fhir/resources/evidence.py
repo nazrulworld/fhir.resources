@@ -442,7 +442,8 @@ class Evidence(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Evidence`` according specification,
+        """returning all elements names from
+        ``Evidence`` according specification,
         with preserving original sequence order.
         """
         return [

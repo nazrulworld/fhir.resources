@@ -202,7 +202,8 @@ class PractitionerRole(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``PractitionerRole`` according specification,
+        """returning all elements names from
+        ``PractitionerRole`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -312,7 +313,8 @@ class PractitionerRoleAvailableTime(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``PractitionerRoleAvailableTime`` according specification,
+        """returning all elements names from
+        ``PractitionerRoleAvailableTime`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -368,7 +370,8 @@ class PractitionerRoleNotAvailable(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``PractitionerRoleNotAvailable`` according specification,
+        """returning all elements names from
+        ``PractitionerRoleNotAvailable`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "description", "during"]

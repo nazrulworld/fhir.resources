@@ -111,7 +111,8 @@ class UsageContext(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``UsageContext`` according specification,
+        """returning all elements names from
+        ``UsageContext`` according specification,
         with preserving original sequence order.
         """
         return [

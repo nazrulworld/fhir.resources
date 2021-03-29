@@ -363,7 +363,8 @@ class Appointment(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Appointment`` according specification,
+        """returning all elements names from
+        ``Appointment`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -548,7 +549,8 @@ class AppointmentParticipant(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``AppointmentParticipant`` according specification,
+        """returning all elements names from
+        ``AppointmentParticipant`` according specification,
         with preserving original sequence order.
         """
         return [

@@ -653,7 +653,8 @@ class Measure(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Measure`` according specification,
+        """returning all elements names from
+        ``Measure`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -868,7 +869,8 @@ class MeasureGroup(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MeasureGroup`` according specification,
+        """returning all elements names from
+        ``MeasureGroup`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -932,7 +934,8 @@ class MeasureGroupPopulation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MeasureGroupPopulation`` according specification,
+        """returning all elements names from
+        ``MeasureGroupPopulation`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1012,7 +1015,8 @@ class MeasureGroupStratifier(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MeasureGroupStratifier`` according specification,
+        """returning all elements names from
+        ``MeasureGroupStratifier`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1081,7 +1085,8 @@ class MeasureGroupStratifierComponent(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MeasureGroupStratifierComponent`` according specification,
+        """returning all elements names from
+        ``MeasureGroupStratifierComponent`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1165,7 +1170,8 @@ class MeasureSupplementalData(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MeasureSupplementalData`` according specification,
+        """returning all elements names from
+        ``MeasureSupplementalData`` according specification,
         with preserving original sequence order.
         """
         return [

@@ -180,7 +180,8 @@ class ProdCharacteristic(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ProdCharacteristic`` according specification,
+        """returning all elements names from
+        ``ProdCharacteristic`` according specification,
         with preserving original sequence order.
         """
         return [

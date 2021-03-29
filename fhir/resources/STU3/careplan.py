@@ -319,7 +319,8 @@ class CarePlan(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CarePlan`` according specification,
+        """returning all elements names from
+        ``CarePlan`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -505,7 +506,8 @@ class CarePlanActivity(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CarePlanActivity`` according specification,
+        """returning all elements names from
+        ``CarePlanActivity`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -821,7 +823,8 @@ class CarePlanActivityDetail(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``CarePlanActivityDetail`` according specification,
+        """returning all elements names from
+        ``CarePlanActivityDetail`` according specification,
         with preserving original sequence order.
         """
         return [

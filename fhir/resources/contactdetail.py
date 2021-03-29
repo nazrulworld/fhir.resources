@@ -50,7 +50,8 @@ class ContactDetail(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ContactDetail`` according specification,
+        """returning all elements names from
+        ``ContactDetail`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "name", "telecom"]

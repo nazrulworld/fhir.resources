@@ -68,7 +68,8 @@ class Timing(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Timing`` according specification,
+        """returning all elements names from
+        ``Timing`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "event", "repeat", "code"]
@@ -337,7 +338,8 @@ class TimingRepeat(element.Element):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``TimingRepeat`` according specification,
+        """returning all elements names from
+        ``TimingRepeat`` according specification,
         with preserving original sequence order.
         """
         return [

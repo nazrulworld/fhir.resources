@@ -363,7 +363,8 @@ class ResearchStudy(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ResearchStudy`` according specification,
+        """returning all elements names from
+        ``ResearchStudy`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -516,7 +517,8 @@ class ResearchStudyArm(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ResearchStudyArm`` according specification,
+        """returning all elements names from
+        ``ResearchStudyArm`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "name", "type", "description"]
@@ -616,7 +618,8 @@ class ResearchStudyObjective(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ResearchStudyObjective`` according specification,
+        """returning all elements names from
+        ``ResearchStudyObjective`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "name", "type"]

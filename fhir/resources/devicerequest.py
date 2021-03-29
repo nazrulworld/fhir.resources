@@ -448,7 +448,8 @@ class DeviceRequest(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``DeviceRequest`` according specification,
+        """returning all elements names from
+        ``DeviceRequest`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -668,7 +669,8 @@ class DeviceRequestParameter(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``DeviceRequestParameter`` according specification,
+        """returning all elements names from
+        ``DeviceRequestParameter`` according specification,
         with preserving original sequence order.
         """
         return [

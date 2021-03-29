@@ -341,7 +341,8 @@ class ConceptMap(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ConceptMap`` according specification,
+        """returning all elements names from
+        ``ConceptMap`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -570,7 +571,8 @@ class ConceptMapGroup(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ConceptMapGroup`` according specification,
+        """returning all elements names from
+        ``ConceptMapGroup`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -636,7 +638,8 @@ class ConceptMapGroupElement(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ConceptMapGroupElement`` according specification,
+        """returning all elements names from
+        ``ConceptMapGroupElement`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "display", "target"]
@@ -758,7 +761,8 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ConceptMapGroupElementTarget`` according specification,
+        """returning all elements names from
+        ``ConceptMapGroupElementTarget`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -853,7 +857,8 @@ class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ConceptMapGroupElementTargetDependsOn`` according specification,
+        """returning all elements names from
+        ``ConceptMapGroupElementTargetDependsOn`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1003,7 +1008,8 @@ class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ConceptMapGroupUnmapped`` according specification,
+        """returning all elements names from
+        ``ConceptMapGroupUnmapped`` according specification,
         with preserving original sequence order.
         """
         return [

@@ -145,7 +145,8 @@ class AuditEvent(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``AuditEvent`` according specification,
+        """returning all elements names from
+        ``AuditEvent`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -390,7 +391,8 @@ class AuditEventAgent(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``AuditEventAgent`` according specification,
+        """returning all elements names from
+        ``AuditEventAgent`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -514,7 +516,8 @@ class AuditEventAgentNetwork(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``AuditEventAgentNetwork`` according specification,
+        """returning all elements names from
+        ``AuditEventAgentNetwork`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "address", "type"]
@@ -646,7 +649,8 @@ class AuditEventEntity(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``AuditEventEntity`` according specification,
+        """returning all elements names from
+        ``AuditEventEntity`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -705,7 +709,8 @@ class AuditEventEntityDetail(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``AuditEventEntityDetail`` according specification,
+        """returning all elements names from
+        ``AuditEventEntityDetail`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "value"]
@@ -817,7 +822,8 @@ class AuditEventSource(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``AuditEventSource`` according specification,
+        """returning all elements names from
+        ``AuditEventSource`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "site", "identifier", "type"]

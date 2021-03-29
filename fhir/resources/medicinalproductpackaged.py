@@ -123,7 +123,8 @@ class MedicinalProductPackaged(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicinalProductPackaged`` according specification,
+        """returning all elements names from
+        ``MedicinalProductPackaged`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -180,7 +181,8 @@ class MedicinalProductPackagedBatchIdentifier(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicinalProductPackagedBatchIdentifier`` according specification,
+        """returning all elements names from
+        ``MedicinalProductPackagedBatchIdentifier`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -322,7 +324,8 @@ class MedicinalProductPackagedPackageItem(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MedicinalProductPackagedPackageItem`` according specification,
+        """returning all elements names from
+        ``MedicinalProductPackagedPackageItem`` according specification,
         with preserving original sequence order.
         """
         return [

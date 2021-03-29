@@ -179,7 +179,8 @@ class Group(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Group`` according specification,
+        """returning all elements names from
+        ``Group`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -392,7 +393,8 @@ class GroupCharacteristic(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``GroupCharacteristic`` according specification,
+        """returning all elements names from
+        ``GroupCharacteristic`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -575,7 +577,8 @@ class GroupMember(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``GroupMember`` according specification,
+        """returning all elements names from
+        ``GroupMember`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "entity", "period", "inactive"]

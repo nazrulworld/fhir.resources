@@ -276,7 +276,8 @@ class Immunization(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Immunization`` according specification,
+        """returning all elements names from
+        ``Immunization`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -406,7 +407,8 @@ class ImmunizationExplanation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ImmunizationExplanation`` according specification,
+        """returning all elements names from
+        ``ImmunizationExplanation`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "reason", "reasonNotGiven"]
@@ -448,7 +450,8 @@ class ImmunizationPractitioner(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ImmunizationPractitioner`` according specification,
+        """returning all elements names from
+        ``ImmunizationPractitioner`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "role", "actor"]
@@ -503,7 +506,8 @@ class ImmunizationReaction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ImmunizationReaction`` according specification,
+        """returning all elements names from
+        ``ImmunizationReaction`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "date", "detail", "reported"]
@@ -621,7 +625,8 @@ class ImmunizationVaccinationProtocol(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ImmunizationVaccinationProtocol`` according specification,
+        """returning all elements names from
+        ``ImmunizationVaccinationProtocol`` according specification,
         with preserving original sequence order.
         """
         return [

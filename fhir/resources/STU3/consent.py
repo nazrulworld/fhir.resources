@@ -308,7 +308,8 @@ class Consent(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Consent`` according specification,
+        """returning all elements names from
+        ``Consent`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -494,7 +495,8 @@ class ConsentActor(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ConsentActor`` according specification,
+        """returning all elements names from
+        ``ConsentActor`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "role", "reference"]
@@ -547,7 +549,8 @@ class ConsentData(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ConsentData`` according specification,
+        """returning all elements names from
+        ``ConsentData`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "meaning", "reference"]
@@ -747,7 +750,8 @@ class ConsentExcept(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ConsentExcept`` according specification,
+        """returning all elements names from
+        ``ConsentExcept`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -875,7 +879,8 @@ class ConsentExceptActor(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ConsentExceptActor`` according specification,
+        """returning all elements names from
+        ``ConsentExceptActor`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "role", "reference"]
@@ -928,7 +933,8 @@ class ConsentExceptData(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ConsentExceptData`` according specification,
+        """returning all elements names from
+        ``ConsentExceptData`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "meaning", "reference"]
@@ -1040,7 +1046,8 @@ class ConsentPolicy(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ConsentPolicy`` according specification,
+        """returning all elements names from
+        ``ConsentPolicy`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "authority", "uri"]

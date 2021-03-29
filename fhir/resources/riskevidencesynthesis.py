@@ -461,7 +461,8 @@ class RiskEvidenceSynthesis(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``RiskEvidenceSynthesis`` according specification,
+        """returning all elements names from
+        ``RiskEvidenceSynthesis`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -611,7 +612,8 @@ class RiskEvidenceSynthesisCertainty(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``RiskEvidenceSynthesisCertainty`` according specification,
+        """returning all elements names from
+        ``RiskEvidenceSynthesisCertainty`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -671,7 +673,8 @@ class RiskEvidenceSynthesisCertaintyCertaintySubcomponent(
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``RiskEvidenceSynthesisCertaintyCertaintySubcomponent`` according specification,
+        """returning all elements names from
+        ``RiskEvidenceSynthesisCertaintyCertaintySubcomponent`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "rating", "note"]
@@ -771,7 +774,8 @@ class RiskEvidenceSynthesisRiskEstimate(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``RiskEvidenceSynthesisRiskEstimate`` according specification,
+        """returning all elements names from
+        ``RiskEvidenceSynthesisRiskEstimate`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -850,7 +854,8 @@ class RiskEvidenceSynthesisRiskEstimatePrecisionEstimate(
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``RiskEvidenceSynthesisRiskEstimatePrecisionEstimate`` according specification,
+        """returning all elements names from
+        ``RiskEvidenceSynthesisRiskEstimatePrecisionEstimate`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "level", "from", "to"]
@@ -907,7 +912,8 @@ class RiskEvidenceSynthesisSampleSize(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``RiskEvidenceSynthesisSampleSize`` according specification,
+        """returning all elements names from
+        ``RiskEvidenceSynthesisSampleSize`` according specification,
         with preserving original sequence order.
         """
         return [

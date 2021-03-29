@@ -378,7 +378,8 @@ class Immunization(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Immunization`` according specification,
+        """returning all elements names from
+        ``Immunization`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -586,7 +587,8 @@ class ImmunizationEducation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ImmunizationEducation`` according specification,
+        """returning all elements names from
+        ``ImmunizationEducation`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -636,7 +638,8 @@ class ImmunizationPerformer(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ImmunizationPerformer`` according specification,
+        """returning all elements names from
+        ``ImmunizationPerformer`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "function", "actor"]
@@ -764,7 +767,8 @@ class ImmunizationProtocolApplied(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ImmunizationProtocolApplied`` according specification,
+        """returning all elements names from
+        ``ImmunizationProtocolApplied`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -871,7 +875,8 @@ class ImmunizationReaction(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``ImmunizationReaction`` according specification,
+        """returning all elements names from
+        ``ImmunizationReaction`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "date", "detail", "reported"]

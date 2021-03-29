@@ -162,7 +162,8 @@ class MeasureReport(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MeasureReport`` according specification,
+        """returning all elements names from
+        ``MeasureReport`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -312,7 +313,8 @@ class MeasureReportGroup(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MeasureReportGroup`` according specification,
+        """returning all elements names from
+        ``MeasureReportGroup`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -391,7 +393,8 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MeasureReportGroupPopulation`` according specification,
+        """returning all elements names from
+        ``MeasureReportGroupPopulation`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -444,7 +447,8 @@ class MeasureReportGroupStratifier(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MeasureReportGroupStratifier`` according specification,
+        """returning all elements names from
+        ``MeasureReportGroupStratifier`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "identifier", "stratum"]
@@ -512,7 +516,8 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MeasureReportGroupStratifierStratum`` according specification,
+        """returning all elements names from
+        ``MeasureReportGroupStratifierStratum`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -649,7 +654,8 @@ class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElem
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``MeasureReportGroupStratifierStratumPopulation`` according specification,
+        """returning all elements names from
+        ``MeasureReportGroupStratifierStratumPopulation`` according specification,
         with preserving original sequence order.
         """
         return [

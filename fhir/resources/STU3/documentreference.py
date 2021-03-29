@@ -261,7 +261,8 @@ class DocumentReference(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``DocumentReference`` according specification,
+        """returning all elements names from
+        ``DocumentReference`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -391,7 +392,8 @@ class DocumentReferenceContent(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``DocumentReferenceContent`` according specification,
+        """returning all elements names from
+        ``DocumentReferenceContent`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "attachment", "format"]
@@ -500,7 +502,8 @@ class DocumentReferenceContext(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``DocumentReferenceContext`` according specification,
+        """returning all elements names from
+        ``DocumentReferenceContext`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -556,7 +559,8 @@ class DocumentReferenceContextRelated(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``DocumentReferenceContextRelated`` according specification,
+        """returning all elements names from
+        ``DocumentReferenceContextRelated`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "identifier", "ref"]
@@ -603,7 +607,8 @@ class DocumentReferenceRelatesTo(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``DocumentReferenceRelatesTo`` according specification,
+        """returning all elements names from
+        ``DocumentReferenceRelatesTo`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "target"]

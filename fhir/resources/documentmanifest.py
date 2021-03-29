@@ -206,7 +206,8 @@ class DocumentManifest(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``DocumentManifest`` according specification,
+        """returning all elements names from
+        ``DocumentManifest`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -331,7 +332,8 @@ class DocumentManifestRelated(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``DocumentManifestRelated`` according specification,
+        """returning all elements names from
+        ``DocumentManifestRelated`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "identifier", "ref"]

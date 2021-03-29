@@ -364,7 +364,8 @@ class Questionnaire(domainresource.DomainResource):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``Questionnaire`` according specification,
+        """returning all elements names from
+        ``Questionnaire`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -730,7 +731,8 @@ class QuestionnaireItem(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``QuestionnaireItem`` according specification,
+        """returning all elements names from
+        ``QuestionnaireItem`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -929,7 +931,8 @@ class QuestionnaireItemAnswerOption(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``QuestionnaireItemAnswerOption`` according specification,
+        """returning all elements names from
+        ``QuestionnaireItemAnswerOption`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1213,7 +1216,8 @@ class QuestionnaireItemEnableWhen(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``QuestionnaireItemEnableWhen`` according specification,
+        """returning all elements names from
+        ``QuestionnaireItemEnableWhen`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1529,7 +1533,8 @@ class QuestionnaireItemInitial(backboneelement.BackboneElement):
 
     @classmethod
     def elements_sequence(cls):
-        """returning all elements names from ``QuestionnaireItemInitial`` according specification,
+        """returning all elements names from
+        ``QuestionnaireItemInitial`` according specification,
         with preserving original sequence order.
         """
         return [

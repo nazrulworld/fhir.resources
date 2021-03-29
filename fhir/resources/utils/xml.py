@@ -62,6 +62,9 @@ def get_fhir_type_name(type_):
 class SimpleNodeStorage:
 
     __slots__ = ("__storage__", "node")
+    if typing.TYPE_CHECKING:
+        node: "Node"
+        __storage__: deque
 
     def __init__(self, node):
         """ """
@@ -116,7 +119,7 @@ class NodeContainer(SimpleNodeStorage):
 class AttributeContainer(SimpleNodeStorage):
     """ """
 
-    def __init__(self, node):
+    def __init__(self, node: "Node"):
         """ """
         super(AttributeContainer, self).__init__(node)
 
@@ -183,6 +186,7 @@ class AttributeValue:
     def __str__(self):
         return self.to_xml()
 
+    @typing.no_type_check
     def __eq__(self, other: "AttributeValue"):
         """ """
         return (self.raw == other.raw) and (self.quote == other.quote)
@@ -194,12 +198,12 @@ class Attribute:
     def __init__(
         self,
         name: typing.Union[str, QName],
-        value: typing.Union[StrBytes, AttributeValue],
+        value: typing.Union[StrBytes, AttributeValue, None],
     ):
         """ """
         self.name: typing.Union[str, QName] = name
         if typing.TYPE_CHECKING:
-            self.value: typing.Union[str, AttributeValue]
+            self.value: typing.Union[StrBytes, AttributeValue, None]
         if isinstance(value, (AttributeValue, str)):
             self.value = value
         else:
@@ -213,11 +217,12 @@ class Attribute:
 
     def to_xml(self) -> typing.Tuple[str, StrNone]:
         """ """
-        val = None
+        val: typing.Optional[str] = None
+
         if isinstance(self.value, AttributeValue):
             val = self.value.to_xml()
         elif self.value is not None:
-            val = self.value
+            val = typing.cast(str, self.value)
 
         return self.name, val
 
@@ -225,6 +230,7 @@ class Attribute:
         """ """
         return f"<{self.__class__.__name__} {self.__str__()}>"
 
+    @typing.no_type_check
     def __eq__(self, other: "Attribute"):
         """ """
         return (self.name == other.name) and (self.value == other.value)
@@ -233,12 +239,12 @@ class Attribute:
 class Namespace:
     """ """
 
-    def __init__(self, name: StrNone, location: StrNone):
+    def __init__(self, name: StrNone, location: StrBytes):
         """ """
         self.name: StrNone = name
         if isinstance(location, bytes):
             location = location.decode()
-        self.location: str = location
+        self.location = location
 
     def __str__(self):
         """ """
@@ -255,6 +261,7 @@ class Namespace:
         """ """
         return "<{0} {1}>".format(self.__class__.__name__, self.__str__())
 
+    @typing.no_type_check
     def __eq__(self, other: "Namespace"):
         """ """
         return (self.name == other.name) and (self.location == other.location)
@@ -263,7 +270,7 @@ class Namespace:
 class Node:
     """ """
 
-    _allowed_attrs = set()
+    _allowed_attrs: typing.Set[str] = set()
 
     def __init__(
         self,
@@ -434,7 +441,7 @@ class Node:
                 me.add_attribute(attr, value)
 
         if exists_ns is None:
-            exists_ns: typing.List[Namespace] = []
+            exists_ns = []
 
         if parent is not None:
             exists_ns += parent.namespaces.as_list()

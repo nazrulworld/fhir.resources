@@ -21,7 +21,7 @@ def has_internet_connection():
         return False
 
 
-def post_xml_resource(
+def post_xml_resource(  # type: ignore
     conn: client.HTTPConnection, resource: Union[xml.Node, FHIRAbstractModel]
 ) -> client.HTTPResponse:
     """ """

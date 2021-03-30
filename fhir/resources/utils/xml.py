@@ -314,7 +314,9 @@ class Node:
         self.name = new_name
 
     def add_namespace(
-        self, ns: typing.Union[Namespace, StrNone], location: StrBytes = None,
+        self,
+        ns: typing.Union[Namespace, StrNone],
+        location: StrBytes = None,
     ):
         """ """
         if isinstance(ns, Namespace):
@@ -492,7 +494,11 @@ class Node:
                     if ext_ is None and val is None:
                         continue
                     Node.add_fhir_element(
-                        parent, field, value=val, ext=ext_, ext_field=ext_field,
+                        parent,
+                        field,
+                        value=val,
+                        ext=ext_,
+                        ext_field=ext_field,
                     )
             elif value is not None:
                 child.value = xml_represent(field.type_, value)
@@ -501,7 +507,11 @@ class Node:
                         parent, ext.__dict__.get("fhir_comments", None)
                     )
                     Node.add_fhir_element(
-                        child, field=ext_field, value=ext, ext=None, ext_field=None,
+                        child,
+                        field=ext_field,
+                        value=ext,
+                        ext=None,
+                        ext_field=None,
                     )
                 parent.children.append(child)
             else:
@@ -528,7 +538,11 @@ class Node:
         if isinstance(value, list):
             for value_ in value:
                 Node.add_fhir_element(
-                    parent, field, value_, ext=ext, ext_field=ext_field,
+                    parent,
+                    field,
+                    value_,
+                    ext=ext,
+                    ext_field=ext_field,
                 )
             return
         # we see it's instance of 'FHIRAbstractModel'
@@ -560,7 +574,11 @@ class Node:
             if not value:
                 return
             Node.add_fhir_element(
-                parent, field, value, ext=ext, ext_field=ext_field,
+                parent,
+                field,
+                value,
+                ext=ext,
+                ext_field=ext_field,
             )
             return
         # working comments
@@ -601,7 +619,11 @@ class Node:
                 continue
 
             Node.add_fhir_element(
-                child, field_, val, ext=value_ext, ext_field=value_ext_field,
+                child,
+                field_,
+                val,
+                ext=value_ext,
+                ext_field=value_ext_field,
             )
         if parent_child is None:
             parent.children.append(child)
@@ -627,7 +649,11 @@ class Node:
                 continue
 
             Node.add_fhir_element(
-                resource_node, field, value, ext=value_ext, ext_field=value_ext_field,
+                resource_node,
+                field,
+                value,
+                ext=value_ext,
+                ext_field=value_ext_field,
             )
 
         return resource_node
@@ -714,7 +740,7 @@ class Node:
             raise ValueError("Any of `xsd_file` or `parser` is required")
 
         if xmlparser is None:
-            assert xsd_file.exists() and xsd_file.is_file()
+            assert xsd_file and xsd_file.exists() and xsd_file.is_file()
             schema = etree.XMLSchema(file=str(xsd_file))
             xmlparser = etree.XMLParser(schema=schema)
 

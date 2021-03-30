@@ -18,7 +18,7 @@ class FHIRPrimitiveExtension(fhirabstractmodel.FHIRAbstractModel):
 
     resource_type = Field("FHIRPrimitiveExtension", const=True)
 
-    id: fhirtypes.String = Field(
+    id: fhirtypes.Id = Field(
         None,
         alias="id",
         title="Type `String`",

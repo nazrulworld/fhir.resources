@@ -1,4 +1,5 @@
 # _*_ coding: utf-8 _*_
+from collections import OrderedDict
 from decimal import Decimal
 
 from yaml import YAMLError, dump, load
@@ -26,6 +27,9 @@ class Representer(SafeRepresenter):
 
 
 BaseRepresenter.add_representer(Decimal, Representer.represent_decimal)
+# important! we don't want explicit tag of OrderedDict
+# (tag:yaml.org,2002:python/object/apply:collections.OrderedDict)
+BaseRepresenter.add_representer(OrderedDict, SafeRepresenter.represent_dict)
 
 
 def yaml_loads(stream):

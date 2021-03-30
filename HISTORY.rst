@@ -3,13 +3,13 @@ History
 =======
 
 6.2.0b1 (unreleased)
-------------------
+--------------------
 
 New Feature
 
-- `Issue #47<https://github.com/nazrulworld/fhir.resources/issues/47>`_ add YAML support.
-- `Issue #51<https://github.com/nazrulworld/fhir.resources/issues/51>`_ Help on converting XML to FHIR format.
-- `Issue #63<https://github.com/nazrulworld/fhir.resources/issues/63>`_ Now JSON output key's sequence is matching with original FHIR specification.
+- `Issue #47 <https://github.com/nazrulworld/fhir.resources/issues/47>`_ add YAML support.
+- `Issue #51 <https://github.com/nazrulworld/fhir.resources/issues/51>`_ Help on converting XML to FHIR format.
+- `Issue #63 <https://github.com/nazrulworld/fhir.resources/issues/63>`_ Now JSON output key's sequence is matching with original FHIR specification.
 
 Breaking
 

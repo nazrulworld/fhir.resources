@@ -2,7 +2,6 @@
 FHIR® Resources (R4, STU3, DSTU2)
 =================================
 
-
 .. image:: https://img.shields.io/pypi/v/fhir.resources.svg
         :target: https://pypi.python.org/pypi/fhir.resources
 
@@ -30,6 +29,8 @@ FHIR® Resources (R4, STU3, DSTU2)
 .. image:: https://www.hl7.org/fhir/assets/images/fhir-logo-www.png
         :target: https://www.hl7.org/implement/standards/product_brief.cfm?product_id=449
         :alt: HL7® FHIR®
+
+**Experimental XML and YAML serialization and deserialization supports. See readme section!**
 
 
 Powered by pydantic_, all `FHIR Resources <https://www.hl7.org/fhir/resourcelist.html>`_ are available as python class with built-in
@@ -503,6 +504,35 @@ Examples::
 
 Note: when you will change that behaviour, that would impact into your whole project.
 
+
+XML Supports
+~~~~~~~~~~~~
+
+Along side with JSON string export, it is possible to export as XML string!
+
+Example-1 Export::
+    >>> from fhir.resources.patient import Patient
+    >>> data = {"active": True, "gender": "male", "birthDate": "2000-09-18", "name": [{"text": "Primal Kons"}]}
+    >>> patient_obj = Patient(**data)
+    >>> xml_str = patient_obj.xml(pretty_print=True)
+    >>> print(xml_str)
+    <?xml version='1.0' encoding='utf-8'?>
+    <Patient xmlns="http://hl7.org/fhir">
+      <active value="true"/>
+      <name>
+        <text value="Primal Kons"/>
+      </name>
+      <gender value="male"/>
+      <birthDate value="2000-09-18"/>
+    </Patient>
+
+**import from XML coming soon!**
+
+
+YAML Supports
+~~~~~~~~~~~~~
+Although there is no official support for YAML documented in FHIR specification, but as an experiment, we add this support.
+Now it is possible export/import YAML strings.
 
 Migration (from later than ``6.X.X``)
 -------------------------------------

@@ -556,7 +556,8 @@ class Node:
                     if cls.__name__ == "FHIRPrimitiveExtensionType":
                         field_type = cls
             else:
-                raise NotImplementedError
+                import sys
+                raise NotImplementedError(f"{sys.version_info} {type_str}")
 
         parent_child = None
         if get_fhir_type_name(field_type) == "Resource":

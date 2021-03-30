@@ -40,7 +40,7 @@ class Element(fhirabstractmodel.FHIRAbstractModel):
         element_property=True,
     )
 
-    id: fhirtypes.String = Field(
+    id: fhirtypes.Id = Field(
         None,
         alias="id",
         title="Unique id for inter-element referencing",

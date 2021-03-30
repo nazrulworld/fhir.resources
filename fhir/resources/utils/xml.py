@@ -549,15 +549,14 @@ class Node:
         if getattr(field_type, "__resource_type__", None) is None:
             type_str = str(field_type)
             if (
-                type_str.startswith("typing.Union[")
+                type_str.startswith(("typing.Union[", "typing.Optional["))
                 and "fhirtypes.FHIRPrimitiveExtensionType" in type_str
             ):
                 for cls in field_type.__args__:
                     if cls.__name__ == "FHIRPrimitiveExtensionType":
                         field_type = cls
             else:
-                import sys
-                raise NotImplementedError(f"{sys.version_info} {type_str}")
+                raise NotImplementedError
 
         parent_child = None
         if get_fhir_type_name(field_type) == "Resource":

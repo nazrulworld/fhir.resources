@@ -30,7 +30,7 @@ FHIR® Resources (R4, STU3, DSTU2)
         :target: https://www.hl7.org/implement/standards/product_brief.cfm?product_id=449
         :alt: HL7® FHIR®
 
-**Experimental XML and YAML serialization and deserialization supports. See readme section!**
+**Experimental XML and YAML serialization and deserialization supports. See [Advanced Usages] section!**
 
 
 Powered by pydantic_, all `FHIR Resources <https://www.hl7.org/fhir/resourcelist.html>`_ are available as python class with built-in
@@ -293,8 +293,6 @@ Examples::
     >>> # Test comments filtering
     >>> "fhir_comments" not in obj.json(exclude_comments=True)
 
-*Unfortunately comments filtering is not available for FHIRAbstractModel::dict*
-
 
 Special Case: Missing data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -509,6 +507,8 @@ XML Supports
 ~~~~~~~~~~~~
 
 Along side with JSON string export, it is possible to export as XML string!
+Before using this feature, make sure associated dependent library is installed. Use ``fhir.resources[xml]`` or ``fhir.resources[all]`` as
+your project requirements.
 
 Example-1 Export::
     >>> from fhir.resources.patient import Patient
@@ -526,13 +526,96 @@ Example-1 Export::
       <birthDate value="2000-09-18"/>
     </Patient>
 
-**import from XML coming soon!**
+**XML FAQ**
+
+- Import from XML string or file is not supported yet and is in todo list.
+- Although generated XML is validated against ``FHIR/patient.xsd`` and ``FHIR/observation.xsd`` in tests, but we suggest you check output of your production data.
+- Comment feature is included, but we recommend you check in your complex usages.
 
 
 YAML Supports
 ~~~~~~~~~~~~~
-Although there is no official support for YAML documented in FHIR specification, but as an experiment, we add this support.
+Although there is no official support for YAML documented in FHIR specification, but as an experimental feature, we add this support.
 Now it is possible export/import YAML strings.
+Before using this feature, make sure associated dependent library is installed. Use ``fhir.resources[yaml]`` or ``fhir.resources[all]`` as
+your project requirements.
+
+Example-1 Export::
+    >>> from fhir.resources.patient import Patient
+    >>> data = {"active": True, "gender": "male", "birthDate": "2000-09-18", "name": [{"text": "Primal Kons", "family": "Kons", "given": ["Primal"]}]}
+    >>> patient_obj = Patient(**data)
+    >>> yml_str = patient_obj.yaml(indent=True)
+    >>> print(yml_str)
+    resourceType: Patient
+    active: true
+    name:
+    - text: Primal Kons
+      family: Kons
+      given:
+      - Primal
+    gender: male
+    birthDate: 2000-09-18
+
+
+Example-2 Import from YAML string::
+    >>> from fhir.resources.patient import Patient
+    >>> data = b"""
+    ... resourceType: Patient
+    ... active: true
+    ... name:
+    ... - text: Primal Kons
+    ...   family: Kons
+    ...   given:
+    ...   - Primal
+    ...  gender: male
+    ...  birthDate: 2000-09-18
+    ... """
+    >>> patient_obj = Patient.parse_raw(data, content_type="text/yaml")
+    >>> json_str = patient_obj.json(indent=True)
+    >>> print(json_str)
+    {
+      "resourceType": "Patient",
+      "active": true,
+      "name": [
+        {
+          "text": "Primal Kons",
+          "family": "Kons",
+          "given": [
+            "Primal"
+          ]
+        }
+      ],
+      "gender": "male",
+      "birthDate": "2000-09-18"
+    }
+
+Example-3 Import from YAML file::
+    >>> from fhir.resources.patient import Patient
+    >>> patient_obj = Patient.parse_file("Patient.yml")
+    >>> json_str = patient_obj.json(indent=True)
+    >>> print(json_str)
+    {
+      "resourceType": "Patient",
+      "active": true,
+      "name": [
+        {
+          "text": "Primal Kons",
+          "family": "Kons",
+          "given": [
+            "Primal"
+          ]
+        }
+      ],
+      "gender": "male",
+      "birthDate": "2000-09-18"
+    }
+
+
+**YAML FAQ**
+
+- We are using https://pyyaml.org/ PyYAML library, for serialization/deserialization but if we find more faster library, we could use that. you are welcome to provide us your suggestion.
+- YAML based comments is not supported yet, instead json comments syntax is used! Of course this comment feature is in our todo list.
+
 
 Migration (from later than ``6.X.X``)
 -------------------------------------

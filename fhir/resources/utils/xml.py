@@ -1,4 +1,5 @@
 # _*_ coding: utf-8 _*_
+import importlib
 import typing
 from collections import OrderedDict, deque
 from copy import copy
@@ -22,6 +23,12 @@ TupleStrKeyVal = typing.Tuple[str, StrBytes]
 ROOT_NS = "http://hl7.org/fhir"
 XHTML_NS = "http://www.w3.org/1999/xhtml"
 EMPTY_VALUE = None
+FHIR_ROOT_MODULES = {"R4": None, "STU3": None, "DSTU2": None}
+
+
+def first_cap(string: str):
+    """ """
+    return string[0].upper() + string[1:]
 
 
 def xml_represent(type_, val):
@@ -57,6 +64,22 @@ def get_fhir_type_name(type_):
         ):
             return "FHIRPrimitiveExtension"
         raise
+
+
+def get_fhir_model_class(type_, check=True):
+    """ """
+    if check:
+        if is_primitive_type(type_):
+            raise ValueError
+    global FHIR_ROOT_MODULES
+    if FHIR_ROOT_MODULES[type_.__fhir_release__] is None:
+        mod_name = "fhir.resources"
+        if type_.__fhir_release__ != "R4":
+            mod_name += f".{type_.__fhir_release__}"
+        FHIR_ROOT_MODULES[type_.__fhir_release__] = importlib.import_module(mod_name)
+    return getattr(FHIR_ROOT_MODULES[type_.__fhir_release__], "get_fhir_model_class")(
+        get_fhir_type_name(type_)
+    )
 
 
 class SimpleNodeStorage:
@@ -166,6 +189,25 @@ class NamespaceContainer(SimpleNodeStorage):
         SimpleNodeStorage.extend(self, items)
 
 
+class CommentContainer(SimpleNodeStorage):
+    """ """
+
+    def __init__(self, node: "Node"):
+        """ """
+        super(CommentContainer, self).__init__(node)
+
+    def append(self, item: "Comment"):
+        """ """
+        assert isinstance(item, Comment)
+        SimpleNodeStorage.append(self, item)
+
+    def extend(self, items: typing.List["Comment"]):
+        """ """
+        if not all([isinstance(i, Comment) for i in items]):
+            raise ValueError("value must be instance of fhirxml.Comment")
+        SimpleNodeStorage.extend(self, items)
+
+
 class AttributeValue:
     """ """
 
@@ -267,6 +309,33 @@ class Namespace:
         return (self.name == other.name) and (self.location == other.location)
 
 
+class Comment:
+    """XML/Node comment"""
+
+    __slots__ = ("_text",)
+
+    def __init__(self, comment: StrBytes):
+        """ """
+        if isinstance(comment, str):
+            comment = comment.encode()
+        self._text: bytes = comment
+
+    def to_xml(self) -> etree._Comment:
+        """ """
+        return etree.Comment(self._text)
+
+    def to_string(self) -> str:
+        return self._text.decode()
+
+    @classmethod
+    def from_element(cls, element: etree._Comment) -> "Comment":
+        """ """
+        return cls(element.text)
+
+    def __str__(self):
+        return self.to_string()
+
+
 class Node:
     """ """
 
@@ -280,6 +349,7 @@ class Node:
         text: typing.Union[StrBytes, "Node"] = None,
         attributes: typing.List[Attribute] = None,
         namespaces: typing.List[Namespace] = None,
+        comments: typing.List[Comment] = None,
         parent: "Node" = None,
         children: typing.List["Node"] = None,
     ):
@@ -289,6 +359,7 @@ class Node:
         self._text = None
         self.attributes = AttributeContainer(self)
         self.namespaces = NamespaceContainer(self)
+        self.comments = CommentContainer(self)
         self.parent = None
         self.children = NodeContainer(self)
 
@@ -301,6 +372,8 @@ class Node:
             self.attributes.extend(attributes)
         if namespaces:
             self.namespaces.extend(namespaces)
+        if comments:
+            self.comments.extend(comments)
         if parent:
             assert isinstance(parent, Node)
             self.parent = parent
@@ -421,20 +494,28 @@ class Node:
 
         return self
 
+    @staticmethod
+    def clean_tag(element: etree._Element) -> str:
+        """Clean tag name from namespace"""
+        # we are taking root NS
+        ns = element.nsmap[None]
+        return element.tag.replace("{" + ns + "}", "")
+
     @classmethod
     def from_element(
         cls,
         element: etree._Element,
         parent: "Node" = None,
         exists_ns: typing.List[Namespace] = None,
+        comments: typing.List[Comment] = None,
     ):
         """ """
-        name = element.tag.capitalize()
+        name = Node.clean_tag(element)
         me = cls(name)
         if element.text:
             me.text = element.text
         # Attributes
-        for attr, value in element.attrib:
+        for attr, value in element.attrib.items():
             if attr == "value":
                 me.value = value
             else:
@@ -447,17 +528,36 @@ class Node:
             exists_ns += parent.namespaces.as_list()
 
         # handle namespaces
-        for prefix, location in element.nsmap:
+        for prefix, location in element.nsmap.items():
             ns = Namespace(prefix, location)
             if ns in exists_ns:
                 continue
             me.namespaces.append(ns)
             exists_ns.append(ns)
 
+        # handle comments
+        if comments:
+            me.comments.extend(comments)
+
+        # potential comments for children
+        child_comments: typing.Optional[typing.List[Comment]] = None
         for child in element:
-            child_name = child.tag.capitalize()
+            if isinstance(child, etree._Comment):
+                if child_comments is None:
+                    child_comments = list()
+                child_comments.append(Comment.from_element(child))
+                continue
+
+            if child.nsmap[None] == XHTML_NS:
+                me.children.append(child)
+                continue
+            child_name = Node.clean_tag(child)
             child_class = globals().get(child_name, Node)
-            child_class.from_element(child, parent=me, exists_ns=copy(exists_ns))
+            child_class.from_element(
+                child, parent=me, exists_ns=copy(exists_ns), comments=child_comments
+            )
+            # reset
+            child_comments = None
 
         if parent is not None:
             parent.children.append(me)
@@ -658,7 +758,7 @@ class Node:
 
         return resource_node
 
-    def to_xml(self, parent=None):
+    def to_xml(self, parent: etree._Element = None):
         """ """
         params = {}
         nsmap = self.normalize_namespaces()
@@ -676,9 +776,14 @@ class Node:
             )
 
         if parent is None:
+            # xxx: fix own comments
             me = etree.Element(self.name, **params)
 
         else:
+            # handle comments
+            if len(self.comments) > 0:
+                parent.extend([c.to_xml() for c in self.comments])
+
             me = parent.makeelement(self.name, **params)
 
         if self.text:
@@ -761,10 +866,23 @@ class Node:
         params = {"encoding": "utf-8", "method": "xml", "pretty_print": pretty_print}
         if xml_declaration:
             params["xml_declaration"] = '<?xml version="1.0" encoding="UTF-8"?>'
-        params["with_comments"] = (with_comments,)
+        params["with_comments"] = with_comments
         params["strip_text"] = strip_text
 
         return etree.tostring(el, **params)
+
+    def to_fhir(self, klass: typing.Type["FHIRAbstractModel"]) -> "FHIRAbstractModel":
+        """ """
+        params = {}
+        for idx, child in enumerate(self.children):
+            field = klass.__fields__[child.name]
+            if is_primitive_type(field.type_):
+                params[child.name] = child.value
+            else:
+                klass_ = get_fhir_model_class(field.type_, False)
+                params[child.name] = child.to_fhir(klass_)
+
+        return klass(**params)
 
     def __str__(self):
         """ """
@@ -789,6 +907,13 @@ def xml_dumps(
     )
 
 
-__all__ = [
-    "xml_dumps",
-]
+def xml_loads(
+    cls: typing.Type["FHIRAbstractModel"], b: bytes, xmlparser: etree.XMLParser = None
+) -> "FHIRAbstractModel":
+    """ """
+    root = etree.fromstring(b, parser=xmlparser)
+    node = Node.from_element(root)
+    return node.to_fhir(cls)
+
+
+__all__ = ["xml_dumps", "xml_loads"]

@@ -56,7 +56,7 @@ FHIR_PRIMITIVES = [
 class Primitive:
     """FHIR Primitive Data Type Base Class"""
 
-    __fhir_release__: str = "R4"
+    __fhir_release__: str = "STU3"
     __visit_name__: Optional[str] = None
     regex: Optional[Pattern[str]] = None
 

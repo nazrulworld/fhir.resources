@@ -26,7 +26,11 @@ TupleStrKeyVal = typing.Tuple[str, StrBytes]
 ROOT_NS = "http://hl7.org/fhir"
 XHTML_NS = "http://www.w3.org/1999/xhtml"
 EMPTY_VALUE = None
-FHIR_ROOT_MODULES = {"R4": None, "STU3": None, "DSTU2": None}
+FHIR_ROOT_MODULES: typing.Dict[str, typing.Any] = {
+    "R4": None,
+    "STU3": None,
+    "DSTU2": None,
+}
 
 
 def first_cap(string: str):
@@ -76,7 +80,7 @@ def get_fhir_model_class(type_, check=True):
             raise ValueError
 
     mod = get_fhir_root_module(type_.__fhir_release__)
-    return getattr(mod, "get_fhir_model_class")(get_fhir_type_name(type_))
+    return mod.get_fhir_model_class(get_fhir_type_name(type_))
 
 
 def get_fhir_root_module(fhir_release: str):
@@ -396,9 +400,7 @@ class Node:
         self.name = new_name
 
     def add_namespace(
-        self,
-        ns: typing.Union[Namespace, StrNone],
-        location: StrBytes = None,
+        self, ns: typing.Union[Namespace, StrNone], location: StrBytes = None,
     ):
         """ """
         if isinstance(ns, Namespace):
@@ -603,11 +605,7 @@ class Node:
                     if ext_ is None and val is None:
                         continue
                     Node.add_fhir_element(
-                        parent,
-                        field,
-                        value=val,
-                        ext=ext_,
-                        ext_field=ext_field,
+                        parent, field, value=val, ext=ext_, ext_field=ext_field,
                     )
             elif value is not None:
                 child.value = xml_represent(field.type_, value)
@@ -616,11 +614,7 @@ class Node:
                         parent, ext.__dict__.get("fhir_comments", None)
                     )
                     Node.add_fhir_element(
-                        child,
-                        field=ext_field,
-                        value=ext,
-                        ext=None,
-                        ext_field=None,
+                        child, field=ext_field, value=ext, ext=None, ext_field=None,
                     )
                 parent.children.append(child)
             else:
@@ -647,11 +641,7 @@ class Node:
         if isinstance(value, list):
             for value_ in value:
                 Node.add_fhir_element(
-                    parent,
-                    field,
-                    value_,
-                    ext=ext,
-                    ext_field=ext_field,
+                    parent, field, value_, ext=ext, ext_field=ext_field,
                 )
             return
         # we see it's instance of 'FHIRAbstractModel'
@@ -683,11 +673,7 @@ class Node:
             if not value:
                 return
             Node.add_fhir_element(
-                parent,
-                field,
-                value,
-                ext=ext,
-                ext_field=ext_field,
+                parent, field, value, ext=ext, ext_field=ext_field,
             )
             return
         # working comments
@@ -728,11 +714,7 @@ class Node:
                 continue
 
             Node.add_fhir_element(
-                child,
-                field_,
-                val,
-                ext=value_ext,
-                ext_field=value_ext_field,
+                child, field_, val, ext=value_ext, ext_field=value_ext_field,
             )
         if parent_child is None:
             parent.children.append(child)
@@ -758,11 +740,7 @@ class Node:
                 continue
 
             Node.add_fhir_element(
-                resource_node,
-                field,
-                value,
-                ext=value_ext,
-                ext_field=value_ext_field,
+                resource_node, field, value, ext=value_ext, ext_field=value_ext_field,
             )
 
         return resource_node
@@ -909,17 +887,24 @@ class Node:
             # tiny hack to get FHIR release
             f_release = klass.__fields__["id"].type_.__fhir_release__
             child = self.children[0]
-            klass_ = getattr(get_fhir_root_module(f_release), "get_fhir_model_class")(
-                child.name
-            )
+            klass_ = get_fhir_root_module(f_release).get_fhir_model_class(child.name)
             return child.to_fhir(klass_)
 
         fhir_release = klass.__fields__["id"].type_.__fhir_release__
 
-        params = {"resource_type": klass.get_resource_type()}
+        params: typing.Dict[str, typing.Any] = {
+            "resource_type": klass.get_resource_type()
+        }
         alias_maps = klass.get_alias_mapping()
+
         if len(self.comments) > 0:
             params["fhir_comments"] = [c.to_string() for c in self.comments]
+
+        if klass.get_resource_type() == "Extension":
+            for attribute in self.attributes:
+                name, val = attribute.to_xml()
+                params[name] = val
+
         for child in self.children:
             if isinstance(child, etree._Element):
                 field_name = Node.clean_tag(child)
@@ -952,10 +937,9 @@ class Node:
             ):
                 ext_field_name = f"{field_name}__ext"
 
-                primitive_ext_klass = getattr(
-                    get_fhir_root_module(fhir_release),
-                    "get_fhir_model_class",
-                )("FHIRPrimitiveExtension")
+                primitive_ext_klass = get_fhir_root_module(
+                    fhir_release
+                ).get_fhir_model_class("FHIRPrimitiveExtension")
                 ext_klass = get_fhir_model_class(
                     primitive_ext_klass.__fields__["extension"].type_, False
                 )

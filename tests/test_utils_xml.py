@@ -72,3 +72,20 @@ def test_xml_node_observation_resource():
     finally:
         if conn:
             conn.close()
+
+
+def test_element_to_node():
+    """ """
+    observation_fhir = Observation.parse_file(STATIC_PATH / "Observation.json")
+    observation_node = utils.xml.Node.from_fhir_obj(observation_fhir)
+
+    schema = lxml.etree.XMLSchema(file=str(FHIR_XSD_DIR / "patient.xsd"))
+    xmlparser = lxml.etree.XMLParser(schema=schema)
+    element = lxml.etree.fromstring(
+        (STATIC_PATH / "Patient-with-ext.xml").read_bytes(),
+        parser=xmlparser,
+    )
+    patient_node = utils.xml.Node.from_element(element)
+    obj = patient_node.to_fhir(Patient)
+    with open("output.json", "wb") as fp:
+        fp.write(obj.json(return_bytes=True, indent=2))

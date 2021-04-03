@@ -5,7 +5,9 @@ History
 6.2.0b2 (unreleased)
 --------------------
 
-- Nothing changed yet.
+Bugfixes
+
+- Added correct fhir version name into Primitive Type Base class for ``STU3`` and ``DSTU2``.
 
 
 6.2.0b1 (2021-03-31)

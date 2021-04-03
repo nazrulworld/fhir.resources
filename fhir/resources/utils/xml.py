@@ -7,9 +7,12 @@ from pathlib import Path
 
 from lxml import etree  # type: ignore
 from lxml.etree import QName  # type: ignore
+from pydantic.fields import SHAPE_LIST, SHAPE_SINGLETON
 
 if typing.TYPE_CHECKING:
     from fhir.resources.fhirabstractmodel import FHIRAbstractModel
+    from pydantic.fields import ModelField
+
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 
 StrBytes = typing.Union[str, bytes]
@@ -71,15 +74,21 @@ def get_fhir_model_class(type_, check=True):
     if check:
         if is_primitive_type(type_):
             raise ValueError
+
+    mod = get_fhir_root_module(type_.__fhir_release__)
+    return getattr(mod, "get_fhir_model_class")(get_fhir_type_name(type_))
+
+
+def get_fhir_root_module(fhir_release: str):
+    """ """
     global FHIR_ROOT_MODULES
-    if FHIR_ROOT_MODULES[type_.__fhir_release__] is None:
+    if FHIR_ROOT_MODULES[fhir_release] is None:
         mod_name = "fhir.resources"
-        if type_.__fhir_release__ != "R4":
-            mod_name += f".{type_.__fhir_release__}"
-        FHIR_ROOT_MODULES[type_.__fhir_release__] = importlib.import_module(mod_name)
-    return getattr(FHIR_ROOT_MODULES[type_.__fhir_release__], "get_fhir_model_class")(
-        get_fhir_type_name(type_)
-    )
+        if fhir_release != "R4":
+            mod_name += f".{fhir_release}"
+        FHIR_ROOT_MODULES[fhir_release] = importlib.import_module(mod_name)
+
+    return FHIR_ROOT_MODULES[fhir_release]
 
 
 class SimpleNodeStorage:
@@ -871,16 +880,108 @@ class Node:
 
         return etree.tostring(el, **params)
 
+    @staticmethod
+    def get_fhir_value(
+        obj: typing.Union["Node", etree._Element], field: "ModelField"
+    ) -> typing.Any:
+        """ """
+        if is_primitive_type(field.type_):
+            if field.type_.__name__ == "Xhtml":
+                if isinstance(obj, etree._Element):
+                    value = etree.tostring(obj)
+                else:
+                    # we assume Node
+                    value = obj.to_string(pretty_print=False, xml_declaration=False)
+                return value
+
+            value = obj.value
+
+        else:
+            klass_ = get_fhir_model_class(field.type_, False)
+            # field.shape
+            value = obj.to_fhir(klass_)
+
+        return value
+
     def to_fhir(self, klass: typing.Type["FHIRAbstractModel"]) -> "FHIRAbstractModel":
         """ """
-        params = {}
-        for idx, child in enumerate(self.children):
-            field = klass.__fields__[child.name]
-            if is_primitive_type(field.type_):
-                params[child.name] = child.value
+        if klass.get_resource_type() == "Resource" and len(self.children) > 0:
+            # tiny hack to get FHIR release
+            f_release = klass.__fields__["id"].type_.__fhir_release__
+            child = self.children[0]
+            klass_ = getattr(get_fhir_root_module(f_release), "get_fhir_model_class")(
+                child.name
+            )
+            return child.to_fhir(klass_)
+
+        fhir_release = klass.__fields__["id"].type_.__fhir_release__
+
+        params = {"resource_type": klass.get_resource_type()}
+        alias_maps = klass.get_alias_mapping()
+        if len(self.comments) > 0:
+            params["fhir_comments"] = [c.to_string() for c in self.comments]
+        for child in self.children:
+            if isinstance(child, etree._Element):
+                field_name = Node.clean_tag(child)
             else:
-                klass_ = get_fhir_model_class(field.type_, False)
-                params[child.name] = child.to_fhir(klass_)
+                field_name = child.name
+            # important!
+            field_name = alias_maps[field_name]
+            field = klass.__fields__[field_name]
+            if field.shape == SHAPE_LIST:
+                is_list = True
+            elif field.shape == SHAPE_SINGLETON:
+                is_list = False
+            else:
+                raise NotImplementedError
+
+            value = Node.get_fhir_value(child, field)
+
+            if is_list and value is not None:
+                if field_name not in params:
+                    params[field_name] = list()
+                params[field_name].append(value)
+            else:
+                # xxx: handle None
+                params[field_name] = value
+
+            if (
+                is_primitive_type(field.type_)
+                and isinstance(child, Node)
+                and (len(child.children) > 0 or len(child.comments) > 0)
+            ):
+                ext_field_name = f"{field_name}__ext"
+
+                primitive_ext_klass = getattr(
+                    get_fhir_root_module(fhir_release),
+                    "get_fhir_model_class",
+                )("FHIRPrimitiveExtension")
+                ext_klass = get_fhir_model_class(
+                    primitive_ext_klass.__fields__["extension"].type_, False
+                )
+                primitive_ext_params = {}
+                if len(child.comments) > 0:
+                    primitive_ext_params["fhir_comments"] = [
+                        c.to_string() for c in child.comments
+                    ]
+
+                if len(child.children) > 0:
+                    primitive_ext_params["extension"] = list()
+                    for child_ in child.children:
+                        primitive_ext_params["extension"].append(
+                            child_.to_fhir(ext_klass)
+                        )
+
+                primitive_ext = primitive_ext_klass(**primitive_ext_params)
+                if is_list:
+                    if ext_field_name not in params:
+                        params[ext_field_name] = list()
+                    params[ext_field_name].append(primitive_ext)
+                else:
+                    params[ext_field_name] = primitive_ext
+
+            if is_list and len(params[field_name]) == 0:
+                del params[field_name]
 
         return klass(**params)
 

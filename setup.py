@@ -93,7 +93,7 @@ setup(
         "all": (orjson_requirements + yaml_requirements + xml_requirements),
     },
     url="https://github.com/nazrulworld/fhir.resources",
-    version="6.2.0b2.dev0",
+    version="6.2.0b2",
     zip_safe=False,
     python_requires=">=3.6",
     project_urls={

@@ -82,10 +82,28 @@ def test_element_to_node():
     schema = lxml.etree.XMLSchema(file=str(FHIR_XSD_DIR / "patient.xsd"))
     xmlparser = lxml.etree.XMLParser(schema=schema)
     element = lxml.etree.fromstring(
-        (STATIC_PATH / "Patient-with-ext.xml").read_bytes(),
-        parser=xmlparser,
+        (STATIC_PATH / "Patient-with-ext.xml").read_bytes(), parser=xmlparser,
     )
     patient_node = utils.xml.Node.from_element(element)
-    obj = patient_node.to_fhir(Patient)
-    with open("output.json", "wb") as fp:
-        fp.write(obj.json(return_bytes=True, indent=2))
+    try:
+        patient_node.validate(patient_node.to_xml(), xmlparser=xmlparser)
+    except ValueError:
+        raise AssertionError("Code should not come here!")
+
+
+def test_model_obj_xml_file():
+    """ """
+    patient = Patient.parse_file(STATIC_PATH / "Patient-with-ext.xml")
+    # with parser parameter
+    schema = lxml.etree.XMLSchema(file=str(FHIR_XSD_DIR / "patient.xsd"))
+    xmlparser = lxml.etree.XMLParser(schema=schema)
+    patient2 = Patient.parse_file(
+        STATIC_PATH / "Patient-with-ext.xml", xmlparser=xmlparser
+    )
+    patient3 = Patient.parse_file(STATIC_PATH / "Patient-with-ext.json")
+    assert patient == patient2
+    patient3.text = None
+    patient.text = None
+    patient.contained[1].text = None
+    patient3.contained[1].text = None
+    assert patient3 == patient

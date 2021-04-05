@@ -32,10 +32,11 @@ BaseRepresenter.add_representer(Decimal, Representer.represent_decimal)
 BaseRepresenter.add_representer(OrderedDict, SafeRepresenter.represent_dict)
 
 
-def yaml_loads(stream):
+def yaml_loads(stream, loader=None):
     """ """
+    loader = loader or Loader
     try:
-        return load(stream, Loader=Loader)
+        return load(stream, Loader=loader)
     except YAMLError as exc:
         # ensure Pydantic compatible error handling
         raise ValueError(f"YAMLError: {exc}")

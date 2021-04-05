@@ -1,7 +1,7 @@
 # _*_ coding: utf-8 _*_
 import json
 import pathlib
-from typing import Any, Callable, Union, no_type_check
+from typing import TYPE_CHECKING, Any, Callable, Union, cast, no_type_check
 
 from pydantic.parse import Protocol
 from pydantic.parse import load_file as default_load_file
@@ -32,12 +32,12 @@ except ImportError:
     ):
         raise_yaml_import_error()
 
-    def yaml_loads(stream):
+    def yaml_loads(stream, loader=None):
         raise_yaml_import_error()
 
 
 try:
-    from .xml import xml_dumps
+    from .xml import xml_dumps, xml_loads
 except ImportError:
 
     def raise_lxml_import_error():
@@ -58,6 +58,10 @@ except ImportError:
     ):
         raise_lxml_import_error()
 
+    @no_type_check
+    def xml_loads(cls, b, xmlparser=None):
+        raise_lxml_import_error()
+
 
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 
@@ -70,18 +74,33 @@ def load_str_bytes(
     proto: Protocol = None,
     allow_pickle: bool = False,
     json_loads: Callable[[str], Any] = json.loads,
+    **extra,
 ) -> Any:
-    if content_type and content_type.endswith(("yml", "yaml")):
-        obj = yaml_loads(stream=b)
-    else:
-        obj = default_load_str_bytes(
-            b,
-            proto=proto,
-            content_type=content_type,
-            encoding=encoding,
-            allow_pickle=allow_pickle,
-            json_loads=json_loads,
-        )
+    if content_type:
+        if content_type.endswith(("yml", "yaml")):
+            params = {"stream": b}
+            if "loader" in extra:
+                params["loader"] = extra["loader"]
+            obj = yaml_loads(**params)
+            return obj
+        elif content_type.endswith("xml"):
+            if "cls" not in extra:
+                raise ValueError("'cls:FHIRAbstractModel' is required parameter.")
+            params = {}
+            if "xmlparser" in extra:
+                params["xmlparser"] = extra["xmlparser"]
+            if TYPE_CHECKING:
+                b = cast(bytes, b)
+            obj = xml_loads(extra["cls"], b, **params)
+            return obj
+    obj = default_load_str_bytes(
+        b,
+        proto=proto,
+        content_type=content_type,
+        encoding=encoding,
+        allow_pickle=allow_pickle,
+        json_loads=json_loads,
+    )
     return obj
 
 
@@ -93,6 +112,7 @@ def load_file(
     proto: Protocol = None,
     allow_pickle: bool = False,
     json_loads: Callable[[str], Any] = json.loads,
+    **extra,
 ) -> Any:
     if isinstance(path, str):
         path = pathlib.Path(path)
@@ -100,7 +120,19 @@ def load_file(
     if path.suffix.lower() in (".yml", ".yaml") or (
         content_type and content_type.endswith(("yml", "yaml"))
     ):
-        obj = yaml_loads(stream=path.read_bytes())
+        params = {"stream": path.read_bytes()}
+        if "loader" in extra:
+            params["loader"] = extra["loader"]
+        obj = yaml_loads(**params)
+    elif path.suffix.lower() == ".xml" or (
+        content_type and content_type.endswith("xml")
+    ):
+        if "cls" not in extra:
+            raise ValueError("'cls:FHIRAbstractModel' is required parameter.")
+        params = {}
+        if "xmlparser" in extra:
+            params["xmlparser"] = extra["xmlparser"]
+        obj = xml_loads(extra["cls"], path.read_bytes(), **params)
     else:
         obj = default_load_file(
             path,

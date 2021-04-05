@@ -228,7 +228,9 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         encoding: str = "utf8",
         proto: Protocol = None,
         allow_pickle: bool = False,
+        **extra,
     ) -> "Model":
+        extra.update({"cls": cls})
         obj = load_file(
             path,
             proto=proto,
@@ -236,6 +238,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
             encoding=encoding,
             allow_pickle=allow_pickle,
             json_loads=cls.__config__.json_loads,
+            **extra,
         )
         return cls.parse_obj(obj)
 
@@ -248,7 +251,9 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         encoding: str = "utf8",
         proto: Protocol = None,
         allow_pickle: bool = False,
+        **extra,
     ) -> "Model":
+        extra.update({"cls": cls})
         try:
             obj = load_str_bytes(
                 b,
@@ -257,6 +262,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
                 encoding=encoding,
                 allow_pickle=allow_pickle,
                 json_loads=cls.__config__.json_loads,
+                **extra,
             )
         except (ValueError, TypeError, UnicodeDecodeError) as e:  # noqa: B014
             raise ValidationError([ErrorWrapper(e, loc=ROOT_KEY)], cls)

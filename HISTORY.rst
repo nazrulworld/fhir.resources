@@ -5,6 +5,10 @@ History
 6.2.0b2 (unreleased)
 --------------------
 
+New Feature
+
+- Parsing YAML file or string/bytes contents, now accept extra parameter ``loader`` class.
+
 Bugfixes
 
 - Added correct fhir version name into Primitive Type Base class for ``STU3`` and ``DSTU2``.

@@ -922,9 +922,13 @@ class Node:
             "resource_type": klass.get_resource_type()
         }
         alias_maps = klass.get_alias_mapping()
-
+        primitive_ext_list_values: typing.Dict[str, typing.Any] = {}
         if len(self.comments) > 0:
-            params["fhir_comments"] = [c.to_string() for c in self.comments]
+            comments = [c.to_string() for c in self.comments]
+            if len(comments) == 1:
+                params["fhir_comments"] = comments[0]
+            else:
+                params["fhir_comments"] = comments
 
         if klass.get_resource_type() == "Extension":
             for attribute in self.attributes:
@@ -948,7 +952,7 @@ class Node:
 
             value = Node.get_fhir_value(child, field)
 
-            if is_list and value is not None:
+            if is_list:
                 if field_name not in params:
                     params[field_name] = list()
                 params[field_name].append(value)
@@ -971,9 +975,11 @@ class Node:
                 )
                 primitive_ext_params = {}
                 if len(child.comments) > 0:
-                    primitive_ext_params["fhir_comments"] = [
-                        c.to_string() for c in child.comments
-                    ]
+                    p_ext_comments = [c.to_string() for c in child.comments]
+                    if len(p_ext_comments) == 1:
+                        primitive_ext_params["fhir_comments"] = p_ext_comments[0]
+                    else:
+                        primitive_ext_params["fhir_comments"] = p_ext_comments
 
                 if len(child.children) > 0:
                     primitive_ext_params["extension"] = list()
@@ -984,14 +990,30 @@ class Node:
 
                 primitive_ext = primitive_ext_klass(**primitive_ext_params)
                 if is_list:
-                    if ext_field_name not in params:
-                        params[ext_field_name] = list()
-                    params[ext_field_name].append(primitive_ext)
+                    # special case
+                    if ext_field_name not in primitive_ext_list_values:
+                        primitive_ext_list_values[ext_field_name] = {}
+                    primitive_ext_list_values[ext_field_name][
+                        len(params[field_name]) - 1
+                    ] = primitive_ext
                 else:
                     params[ext_field_name] = primitive_ext
 
-            if is_list and len(params[field_name]) == 0:
+            if is_list and (
+                len(params[field_name]) == 0
+                or all([v is None for v in params[field_name]])
+            ):
                 del params[field_name]
+
+        # treatment for list type primitive ext
+        for p_ext_name in primitive_ext_list_values:
+            exts = []
+            for idx in range(len(params[p_ext_name[:-5]])):
+                try:
+                    exts.append(primitive_ext_list_values[p_ext_name][idx])
+                except KeyError:
+                    exts.append(None)
+            params[p_ext_name] = exts
 
         return klass(**params)
 

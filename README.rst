@@ -510,6 +510,10 @@ Along side with JSON string export, it is possible to export as XML string!
 Before using this feature, make sure associated dependent library is installed. Use ``fhir.resources[xml]`` or ``fhir.resources[all]`` as
 your project requirements.
 
+**XML schema validator!**
+It is possible to provide custom xmlparser, during load from file or string, meaning that you can validate
+data against FHIR xml schema(and/or your custom schema).
+
 Example-1 Export::
     >>> from fhir.resources.patient import Patient
     >>> data = {"active": True, "gender": "male", "birthDate": "2000-09-18", "name": [{"text": "Primal Kons"}]}
@@ -526,11 +530,58 @@ Example-1 Export::
       <birthDate value="2000-09-18"/>
     </Patient>
 
+
+Example-2 Import from string::
+    >>> from fhir.resources.patient import Patient
+    >>> data = {"active": True, "gender": "male", "birthDate": "2000-09-18", "name": [{"text": "Primal Kons"}]}
+    >>> patient_obj = Patient(**data)
+    >>> xml_str = patient_obj.xml(pretty_print=True)
+    >>> print(xml_str)
+    >>> data = b"""<?xml version='1.0' encoding='utf-8'?>
+    ... <Patient xmlns="http://hl7.org/fhir">
+    ...   <active value="true"/>
+    ...   <name>
+    ...     <text value="Primal Kons"/>
+    ...   </name>
+    ...   <gender value="male"/>
+    ...   <birthDate value="2000-09-18"/>
+    ... </Patient>"""
+    >>> patient = Patient.parse_raw(data, content_type="text/xml")
+    >>> print(patient.json(indent=2))
+    {
+      "resourceType": "Patient",
+      "active": true,
+      "name": [
+        {
+          "text": "Primal Kons",
+          "family": "Kons",
+          "given": [
+            "Primal"
+          ]
+        }
+      ],
+      "gender": "male",
+      "birthDate": "2000-09-18"
+    }
+
+   >>> with xml parser
+   >>> import lxml
+   >>> schema = lxml.etree.XMLSchema(file=str(FHIR_XSD_DIR / "patient.xsd"))
+   >>> xmlparser = lxml.etree.XMLParser(schema=schema)
+   >>> patient2 = Patient.parse_raw(data, content_type="text/xml", xmlparser=xmlparser)
+   >>> patient2 == patient
+   True
+
+Example-3 Import from file::
+    >>> patient3 = Patient.parse_file("Patient.xml")
+    >>> patient3 == patient and patient3 == patient2
+    True
+
+
 **XML FAQ**
 
-- Import from XML string or file is not supported yet and is in todo list.
-- Although generated XML is validated against ``FHIR/patient.xsd`` and ``FHIR/observation.xsd`` in tests, but we suggest you check output of your production data.
-- Comment feature is included, but we recommend you check in your complex usages.
+    - Although generated XML is validated against ``FHIR/patient.xsd`` and ``FHIR/observation.xsd`` in tests, but we suggest you check output of your production data.
+    - Comment feature is included, but we recommend you check in your complex usages.
 
 
 YAML Supports

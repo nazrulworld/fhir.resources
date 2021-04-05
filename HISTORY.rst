@@ -8,6 +8,7 @@ History
 New Feature
 
 - Parsing YAML file or string/bytes contents, now accept extra parameter ``loader`` class.
+- Parsing from XML file or string/bytes contents are now supported. With possible to provide xmlparser for schema validation purpose.
 
 Bugfixes
 

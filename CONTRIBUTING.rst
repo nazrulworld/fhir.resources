@@ -138,7 +138,7 @@ directories are `fhir/resources/DSTU2/` and `fhir/resources/STU3/`.
 
 After adding you resource, you need to add it to couple of additional places:
 1. `fhirtypes.py` in the FHIR version your resource belongs to. This includes
-   both the reource and the inner elements you created for it.
+   both the resource and the inner elements you created for it.
 2. Add relevant entries inside the list `MODEL_CLASSES` at
    `fhirtypesvalidators.py`. Probably you will need to add
    `(None, .your_resource_module_name)`.

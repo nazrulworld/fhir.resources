@@ -72,14 +72,14 @@ Usages
     ...     "id": "f001",
     ...     "active": True,
     ...     "name": "Acme Corporation",
-    ...     "address": [{"country": "Swizterland"}]
+    ...     "address": [{"country": "Switzerland"}]
     ... }
     >>> org = Organization(**data)
     >>> org.resource_type == "Organization"
     True
     >>> isinstance(org.address[0], Address)
-    >>> True
-    >>> org.address[0].country == "Swizterland"
+    True
+    >>> org.address[0].country == "Switzerland"
     True
     >>> org.dict()['active'] is True
     True
@@ -92,12 +92,12 @@ Usages
     ...     "id": "f001",
     ...     "active": True,
     ...     "name": "Acme Corporation",
-    ...     "address": [{"country": "Swizterland"}]
+    ...     "address": [{"country": "Switzerland"}]
     ... }'''
     >>> org = Organization.parse_raw(json_str)
     >>> isinstance(org.address[0], Address)
-    >>> True
-    >>> org.address[0].country == "Swizterland"
+    True
+    >>> org.address[0].country == "Switzerland"
     True
     >>> org.dict()['active'] is True
     True
@@ -118,7 +118,7 @@ Usages
     ... }
     >>> pat = Patient.parse_obj(json_obj)
     >>> isinstance(pat.name[0], HumanName)
-    >>> True
+    True
     >>> org.birthDate == date(year=1985, month=6, day=12)
     True
     >>> org.active is True
@@ -144,7 +144,7 @@ Usages
     ...     "id": "f001",
     ...     "active": True,
     ...     "name": "Acme Corporation",
-    ...     "address": [{"country": "Swizterland"}]
+    ...     "address": [{"country": "Switzerland"}]
     ... }
 
     >>> org = Organization.construct()
@@ -153,11 +153,11 @@ Usages
     >>> org.name = "Acme Corporation"
     >>> org.address = list()
     >>> address = Address.construct()
-    >>> address.country = "Swizterland"
+    >>> address.country = "Switzerland"
     >>> org.address.append(address)
     >>> org.dict() == json_obj
     True
-    
+
 .. note::
     Please note that due to the way the validation works, you will run into issues if you are using ``construct()`` to create
     resources that have more than one mandatory field. See `this comment in issue#56 <https://github.com/nazrulworld/fhir.resources/issues/56#issuecomment-784520234>`_ for details.
@@ -169,10 +169,10 @@ Usages
     ...     "id": "mmanu",
     ...     "active": True,
     ...     "name": "Acme Corporation",
-    ...     "address": [{"country": "Swizterland"}]
+    ...     "address": [{"country": "Switzerland"}]
     ... }
     >>> org = construct_fhir_element('Organization', json_dict)
-    >>> org.address[0].country == "Swizterland"
+    >>> org.address[0].country == "Switzerland"
     True
     >>> org.dict()['active'] is True
     True

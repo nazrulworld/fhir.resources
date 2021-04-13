@@ -14,3 +14,4 @@ Contributors
 * Simon Vadée [simonvadee] <simon@arkhn.com>
 * [iatechicken]
 * Itay Goren
+* Melvin Hazeleger [melvio]

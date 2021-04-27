@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-from pydantic.datetime_parse import parse_date, parse_datetime
-
 from .. import fhirtypes  # noqa: F401
 from .. import allergyintolerance
 
@@ -43,7 +41,7 @@ def impl_AllergyIntolerance_1(inst):
     assert inst.identifier[0].system == "http://acme.com/ids/patients/risks"
     assert inst.identifier[0].value == "49476534"
     assert inst.patient.reference == "Patient/example"
-    assert inst.recordedDate == parse_datetime("2014-10-09T14:58:00+11:00")
+    assert inst.recordedDate.isoformat() == "2014-10-09T14:58:00+11:00"
     assert inst.recorder.reference == "Practitioner/example"
     assert inst.status == "refuted"
     assert inst.substance.coding[0].code == "227493005"
@@ -94,7 +92,7 @@ def impl_AllergyIntolerance_2(inst):
     assert (
         inst.reaction[0].manifestation[0].coding[0].system == "http://snomed.info/sct"
     )
-    assert inst.reaction[0].onset == parse_date("2012-06-12")
+    assert str(inst.reaction[0].onset) == "2012-06-12"
     assert inst.reaction[0].severity == "severe"
     assert inst.reaction[0].substance.coding[0].code == "C3214954"
     assert (
@@ -111,9 +109,9 @@ def impl_AllergyIntolerance_2(inst):
     assert (
         inst.reaction[1].manifestation[0].coding[0].system == "http://snomed.info/sct"
     )
-    assert inst.reaction[1].onset == "2004"
+    assert str(inst.reaction[1].onset) == "2004"
     assert inst.reaction[1].severity == "moderate"
-    assert inst.recordedDate == parse_datetime("2014-10-09T14:58:00+11:00")
+    assert inst.recordedDate.isoformat() == "2014-10-09T14:58:00+11:00"
     assert inst.recorder.reference == "Practitioner/example"
     assert inst.status == "confirmed"
     assert inst.substance.coding[0].code == "227493005"
@@ -152,7 +150,7 @@ def impl_AllergyIntolerance_3(inst):
     assert inst.identifier[0].system == "http://acme.com/ids/patients/risks"
     assert inst.identifier[0].value == "49476535"
     assert inst.patient.reference == "Patient/example"
-    assert inst.recordedDate == parse_datetime("2015-08-06T15:37:31-06:00")
+    assert inst.recordedDate.isoformat() == "2015-08-06T15:37:31-06:00"
     assert inst.recorder.reference == "Practitioner/example"
     assert inst.substance.coding[0].code == "227037002"
     assert inst.substance.coding[0].display == "Fish - dietary (substance)"
@@ -198,7 +196,7 @@ def impl_AllergyIntolerance_4(inst):
     assert (
         inst.reaction[0].manifestation[0].coding[0].system == "http://snomed.info/sct"
     )
-    assert inst.recordedDate == parse_date("2010-03-01")
+    assert str(inst.recordedDate) == "2010-03-01"
     assert inst.recorder.reference == "Practitioner/13"
     assert inst.status == "unconfirmed"
     assert inst.substance.coding[0].code == "314422"

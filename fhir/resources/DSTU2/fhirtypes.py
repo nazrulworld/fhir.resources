@@ -5,6 +5,7 @@ from email.utils import formataddr, parseaddr
 from typing import TYPE_CHECKING, Any, Dict, Optional, Pattern, Union
 from uuid import UUID
 
+from fhirdatetime import FhirDateTime
 from pydantic import AnyUrl
 from pydantic.errors import DateError, DateTimeError, TimeError
 from pydantic.main import load_str_bytes
@@ -16,7 +17,7 @@ from pydantic.types import (
     ConstrainedInt,
     ConstrainedStr,
 )
-from pydantic.validators import bool_validator, parse_date, parse_datetime, parse_time
+from pydantic.validators import bool_validator, parse_time
 
 from .fhirabstractmodel import FHIRAbstractModel
 from .fhirtypesvalidators import run_validator_for_fhir_type
@@ -248,7 +249,7 @@ class Xhtml(ConstrainedStr):
     __visit_name__ = "xhtml"
 
 
-class Date(datetime.date):
+class Date(FhirDateTime):
     """A date, or partial date (e.g. just year or year + month)
     as used in human communication. The format is YYYY, YYYY-MM, or YYYY-MM-DD,
     e.g. 2018, 1973-06, or 1905-08-23.
@@ -268,12 +269,12 @@ class Date(datetime.date):
 
     @classmethod
     def validate(
-        cls, value: Union[datetime.date, str, bytes, int, float]
-    ) -> Union[datetime.date, str]:
+        cls, value: Union[FhirDateTime, datetime.date, str, bytes, int, float]
+    ) -> FhirDateTime:
         """ """
         if not isinstance(value, str):
             # default handler
-            return parse_date(value)
+            return FhirDateTime(value)
 
         match = FHIR_DATE_PARTS.match(value)
 
@@ -283,12 +284,10 @@ class Date(datetime.date):
         elif not match.groupdict().get("day"):
             if match.groupdict().get("month") and int(match.groupdict()["month"]) > 12:
                 raise DateError()
-            # we keep original
-            return value
-        return parse_date(value)
+        return FhirDateTime(value)
 
 
-class DateTime(datetime.datetime):
+class DateTime(FhirDateTime):
     """A date, date-time or partial date (e.g. just year or year + month) as used
     in human communication. The format is YYYY, YYYY-MM, YYYY-MM-DD or
     YYYY-MM-DDThh:mm:ss+zz:zz, e.g. 2018, 1973-06, 1905-08-23,
@@ -315,15 +314,15 @@ class DateTime(datetime.datetime):
 
     @classmethod
     def validate(
-        cls, value: Union[datetime.date, datetime.datetime, str, bytes, int, float]
-    ) -> Union[datetime.datetime, datetime.date, str]:
+        cls,
+        value: Union[
+            FhirDateTime, datetime.date, datetime.datetime, str, bytes, int, float
+        ],
+    ) -> FhirDateTime:
         """ """
-        if isinstance(value, datetime.date):
-            return value
-
-        if not isinstance(value, str):
+        if isinstance(value, datetime.date) or not isinstance(value, str):
             # default handler
-            return parse_datetime(value)
+            return FhirDateTime(value)
         match = FHIR_DATE_PARTS.match(value)
         if match:
             if (
@@ -331,19 +330,17 @@ class DateTime(datetime.datetime):
                 and match.groupdict().get("month")
                 and match.groupdict().get("day")
             ):
-                return parse_date(value)
+                return FhirDateTime(value)
             elif match.groupdict().get("year") and match.groupdict().get("month"):
                 if int(match.groupdict()["month"]) > 12:
                     raise DateError()
-            # we don't want to loose actual information, so keep as string
-            return value
         if not cls.regex.match(value):
             raise DateTimeError()
 
-        return parse_datetime(value)
+        return FhirDateTime(value)
 
 
-class Instant(datetime.datetime):
+class Instant(FhirDateTime):
     """An instant in time in the format YYYY-MM-DDThh:mm:ss.sss+zz:zz
     (e.g. 2015-02-07T13:28:17.239+02:00 or 2017-01-01T00:00:00Z).
     The time SHALL specified at least to the second and SHALL include a time zone.
@@ -369,12 +366,12 @@ class Instant(datetime.datetime):
         yield cls.validate
 
     @classmethod
-    def validate(cls, value):
+    def validate(cls, value) -> FhirDateTime:
         """ """
         if isinstance(value, str):
             if not cls.regex.match(value):
                 raise DateTimeError()
-        return parse_datetime(value)
+        return FhirDateTime(value)
 
 
 class Time(datetime.time):

@@ -564,13 +564,13 @@ Example-2 Import from string::
       "birthDate": "2000-09-18"
     }
 
-   >>> with xml parser
-   >>> import lxml
-   >>> schema = lxml.etree.XMLSchema(file=str(FHIR_XSD_DIR / "patient.xsd"))
-   >>> xmlparser = lxml.etree.XMLParser(schema=schema)
-   >>> patient2 = Patient.parse_raw(data, content_type="text/xml", xmlparser=xmlparser)
-   >>> patient2 == patient
-   True
+    >>> with xml parser
+    >>> import lxml
+    >>> schema = lxml.etree.XMLSchema(file=str(FHIR_XSD_DIR / "patient.xsd"))
+    >>> xmlparser = lxml.etree.XMLParser(schema=schema)
+    >>> patient2 = Patient.parse_raw(data, content_type="text/xml", xmlparser=xmlparser)
+    >>> patient2 == patient
+    True
 
 Example-3 Import from file::
     >>> patient3 = Patient.parse_file("Patient.xml")

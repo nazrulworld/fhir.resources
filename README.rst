@@ -2,6 +2,8 @@
 FHIR® Resources (R4, STU3, DSTU2)
 =================================
 
+!!!This branch (master) has been deprecated, will be removed soon. Active developments can be found in the branch 'main' instead.!!!
+------------------------------------------------------------------------------------------------------------------------------------
 
 .. image:: https://img.shields.io/pypi/v/fhir.resources.svg
         :target: https://pypi.python.org/pypi/fhir.resources

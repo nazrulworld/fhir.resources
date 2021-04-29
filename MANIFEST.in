@@ -3,6 +3,7 @@ prune fhir/resources/tests
 prune fhir/resources/STU3/tests
 prune fhir/resources/DSTU2/tests
 prune script
+prune tests
 prune .github
 prune fhir-parser
 include AUTHORS.rst

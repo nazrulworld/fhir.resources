@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ConceptMap(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -339,6 +339,43 @@ class ConceptMap(domainresource.DomainResource):
         None, alias="_version", title="Extension field for ``version``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ConceptMap`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "url",
+            "identifier",
+            "version",
+            "name",
+            "title",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "description",
+            "useContext",
+            "jurisdiction",
+            "purpose",
+            "copyright",
+            "sourceUri",
+            "sourceReference",
+            "targetUri",
+            "targetReference",
+            "group",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1181(
         cls, values: typing.Dict[str, typing.Any]
@@ -441,7 +478,7 @@ class ConceptMap(domainresource.DomainResource):
 
 
 class ConceptMapGroup(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -532,9 +569,27 @@ class ConceptMapGroup(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ConceptMapGroup`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "source",
+            "sourceVersion",
+            "target",
+            "targetVersion",
+            "element",
+            "unmapped",
+        ]
+
 
 class ConceptMapGroupElement(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -581,9 +636,17 @@ class ConceptMapGroupElement(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ConceptMapGroupElement`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "code", "display", "target"]
+
 
 class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -696,9 +759,27 @@ class ConceptMapGroupElementTarget(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ConceptMapGroupElementTarget`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "code",
+            "display",
+            "equivalence",
+            "comment",
+            "dependsOn",
+            "product",
+        ]
+
 
 class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -774,6 +855,22 @@ class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
         None, alias="_system", title="Extension field for ``system``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ConceptMapGroupElementTargetDependsOn`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "property",
+            "system",
+            "code",
+            "display",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3929(
         cls, values: typing.Dict[str, typing.Any]
@@ -835,7 +932,7 @@ class ConceptMapGroupElementTargetDependsOn(backboneelement.BackboneElement):
 
 
 class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -908,6 +1005,22 @@ class ConceptMapGroupUnmapped(backboneelement.BackboneElement):
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ConceptMapGroupUnmapped`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "mode",
+            "code",
+            "display",
+            "url",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2520(

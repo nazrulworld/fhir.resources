@@ -14,7 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ObservationDefinition(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -227,9 +227,39 @@ class ObservationDefinition(domainresource.DomainResource):
         enum_reference_types=["ValueSet"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ObservationDefinition`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "category",
+            "code",
+            "identifier",
+            "permittedDataType",
+            "multipleResultsAllowed",
+            "method",
+            "preferredReportName",
+            "quantitativeDetails",
+            "qualifiedInterval",
+            "validCodedValueSet",
+            "normalCodedValueSet",
+            "abnormalCodedValueSet",
+            "criticalCodedValueSet",
+        ]
+
 
 class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -345,9 +375,29 @@ class ObservationDefinitionQualifiedInterval(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ObservationDefinitionQualifiedInterval`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "category",
+            "range",
+            "context",
+            "appliesTo",
+            "gender",
+            "age",
+            "gestationalAge",
+            "condition",
+        ]
+
 
 class ObservationDefinitionQuantitativeDetails(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -414,3 +464,19 @@ class ObservationDefinitionQuantitativeDetails(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ObservationDefinitionQuantitativeDetails`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "customaryUnit",
+            "unit",
+            "conversionFactor",
+            "decimalPrecision",
+        ]

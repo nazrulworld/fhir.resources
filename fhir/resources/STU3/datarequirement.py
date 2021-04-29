@@ -16,7 +16,7 @@ from . import element, fhirtypes
 
 
 class DataRequirement(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -107,6 +107,22 @@ class DataRequirement(element.Element):
         None, alias="_type", title="Extension field for ``type``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``DataRequirement`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "type",
+            "profile",
+            "mustSupport",
+            "codeFilter",
+            "dateFilter",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1731(
         cls, values: typing.Dict[str, typing.Any]
@@ -168,7 +184,7 @@ class DataRequirement(element.Element):
 
 
 class DataRequirementCodeFilter(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -286,6 +302,23 @@ class DataRequirementCodeFilter(element.Element):
         None, alias="_valueSetString", title="Extension field for ``valueSetString``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``DataRequirementCodeFilter`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "path",
+            "valueSetString",
+            "valueSetReference",
+            "valueCode",
+            "valueCoding",
+            "valueCodeableConcept",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2722(
         cls, values: typing.Dict[str, typing.Any]
@@ -385,7 +418,7 @@ class DataRequirementCodeFilter(element.Element):
 
 
 class DataRequirementDateFilter(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -475,6 +508,21 @@ class DataRequirementDateFilter(element.Element):
         one_of_many="value",
         one_of_many_required=False,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``DataRequirementDateFilter`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "path",
+            "valueDateTime",
+            "valuePeriod",
+            "valueDuration",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2725(

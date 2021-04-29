@@ -2,11 +2,42 @@
 History
 =======
 
-6.1.1 (unreleased)
-------------------
+6.2.0b3 (unreleased)
+--------------------
 
 - Nothing changed yet.
 
+
+6.2.0b2 (2021-04-05)
+--------------------
+
+New Feature
+
+- Parsing YAML file or string/bytes contents, now accept extra parameter ``loader`` class.
+- Parsing from XML file or string/bytes contents are now supported. With possible to provide xmlparser for schema validation purpose.
+
+Bugfixes
+
+- Added correct fhir version name into Primitive Type Base class for ``STU3`` and ``DSTU2``.
+
+
+6.2.0b1 (2021-03-31)
+--------------------
+
+New Feature
+
+- `Issue #47 <https://github.com/nazrulworld/fhir.resources/issues/47>`_ add YAML support.
+- `Issue #51 <https://github.com/nazrulworld/fhir.resources/issues/51>`_ Help on converting XML to FHIR format.
+- `Issue #63 <https://github.com/nazrulworld/fhir.resources/issues/63>`_ Now JSON output key's sequence is matching with original FHIR specification.
+
+Breaking
+
+- ``FHIRAbstractModel.json()`` and ``FHIRAbstractModel.dict()`` parameters signatures are more FHIR specific and additional parameters are removed (pydantic specific).
+
+
+Bugfixes
+
+- Added missing ``element_property`` field attribute for class ``FHIRPrimitiveExtension``.
 
 6.1.0 (2021-02-13)
 ------------------

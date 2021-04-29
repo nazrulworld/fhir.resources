@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Invoice(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -230,6 +230,39 @@ class Invoice(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``Invoice`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "cancelledReason",
+            "type",
+            "subject",
+            "recipient",
+            "date",
+            "participant",
+            "issuer",
+            "account",
+            "lineItem",
+            "totalPriceComponent",
+            "totalNet",
+            "totalGross",
+            "paymentTerms",
+            "note",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_891(
         cls, values: typing.Dict[str, typing.Any]
@@ -291,7 +324,7 @@ class Invoice(domainresource.DomainResource):
 
 
 class InvoiceLineItem(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -374,6 +407,22 @@ class InvoiceLineItem(backboneelement.BackboneElement):
         None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``InvoiceLineItem`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "sequence",
+            "chargeItemReference",
+            "chargeItemCodeableConcept",
+            "priceComponent",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_1690(
         cls, values: typing.Dict[str, typing.Any]
@@ -416,7 +465,7 @@ class InvoiceLineItem(backboneelement.BackboneElement):
 
 
 class InvoiceLineItemPriceComponent(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -490,6 +539,22 @@ class InvoiceLineItemPriceComponent(backboneelement.BackboneElement):
         None, alias="_type", title="Extension field for ``type``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``InvoiceLineItemPriceComponent`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "type",
+            "code",
+            "factor",
+            "amount",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3143(
         cls, values: typing.Dict[str, typing.Any]
@@ -551,7 +616,7 @@ class InvoiceLineItemPriceComponent(backboneelement.BackboneElement):
 
 
 class InvoiceParticipant(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -594,3 +659,11 @@ class InvoiceParticipant(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``InvoiceParticipant`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "role", "actor"]

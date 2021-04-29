@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class OperationOutcome(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -39,9 +39,27 @@ class OperationOutcome(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``OperationOutcome`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "issue",
+        ]
+
 
 class OperationOutcomeIssue(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -149,6 +167,24 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
     severity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_severity", title="Extension field for ``severity``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``OperationOutcomeIssue`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "severity",
+            "code",
+            "details",
+            "diagnostics",
+            "location",
+            "expression",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2378(

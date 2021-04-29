@@ -14,7 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class RelatedPerson(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -164,9 +164,38 @@ class RelatedPerson(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``RelatedPerson`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "active",
+            "patient",
+            "relationship",
+            "name",
+            "telecom",
+            "gender",
+            "birthDate",
+            "address",
+            "photo",
+            "period",
+            "communication",
+        ]
+
 
 class RelatedPersonCommunication(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -206,3 +235,11 @@ class RelatedPersonCommunication(backboneelement.BackboneElement):
     preferred__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_preferred", title="Extension field for ``preferred``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``RelatedPersonCommunication`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "language", "preferred"]

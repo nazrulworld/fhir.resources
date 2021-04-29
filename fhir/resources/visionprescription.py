@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class VisionPrescription(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -135,6 +135,31 @@ class VisionPrescription(domainresource.DomainResource):
         None, alias="_status", title="Extension field for ``status``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``VisionPrescription`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "created",
+            "patient",
+            "encounter",
+            "dateWritten",
+            "prescriber",
+            "lensSpecification",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2110(
         cls, values: typing.Dict[str, typing.Any]
@@ -200,7 +225,7 @@ class VisionPrescription(domainresource.DomainResource):
 
 
 class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -377,6 +402,32 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
         None, alias="_sphere", title="Extension field for ``sphere``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``VisionPrescriptionLensSpecification`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "product",
+            "eye",
+            "sphere",
+            "cylinder",
+            "axis",
+            "prism",
+            "add",
+            "power",
+            "backCurve",
+            "diameter",
+            "duration",
+            "color",
+            "brand",
+            "note",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3857(
         cls, values: typing.Dict[str, typing.Any]
@@ -438,7 +489,7 @@ class VisionPrescriptionLensSpecification(backboneelement.BackboneElement):
 
 
 class VisionPrescriptionLensSpecificationPrism(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -476,6 +527,14 @@ class VisionPrescriptionLensSpecificationPrism(backboneelement.BackboneElement):
     base__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_base", title="Extension field for ``base``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``VisionPrescriptionLensSpecificationPrism`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "amount", "base"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_4379(

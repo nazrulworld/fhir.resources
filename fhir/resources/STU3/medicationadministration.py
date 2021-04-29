@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class MedicationAdministration(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -358,6 +358,45 @@ class MedicationAdministration(domainresource.DomainResource):
         enum_reference_types=["Resource"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``MedicationAdministration`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "definition",
+            "partOf",
+            "status",
+            "category",
+            "medicationCodeableConcept",
+            "medicationReference",
+            "subject",
+            "context",
+            "supportingInformation",
+            "effectiveDateTime",
+            "effectivePeriod",
+            "performer",
+            "notGiven",
+            "reasonNotGiven",
+            "reasonCode",
+            "reasonReference",
+            "prescription",
+            "device",
+            "note",
+            "dosage",
+            "eventHistory",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2686(
         cls, values: typing.Dict[str, typing.Any]
@@ -460,7 +499,7 @@ class MedicationAdministration(domainresource.DomainResource):
 
 
 class MedicationAdministrationDosage(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -577,6 +616,25 @@ class MedicationAdministrationDosage(backboneelement.BackboneElement):
         None, alias="_text", title="Extension field for ``text``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``MedicationAdministrationDosage`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "text",
+            "site",
+            "route",
+            "method",
+            "dose",
+            "rateRatio",
+            "rateQuantity",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_3272(
         cls, values: typing.Dict[str, typing.Any]
@@ -617,7 +675,7 @@ class MedicationAdministrationDosage(backboneelement.BackboneElement):
 
 
 class MedicationAdministrationPerformer(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -649,3 +707,11 @@ class MedicationAdministrationPerformer(backboneelement.BackboneElement):
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``MedicationAdministrationPerformer`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "actor", "onBehalfOf"]

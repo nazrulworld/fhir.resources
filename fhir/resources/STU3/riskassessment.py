@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class RiskAssessment(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -250,6 +250,41 @@ class RiskAssessment(domainresource.DomainResource):
         enum_reference_types=["Patient", "Group"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``RiskAssessment`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "basedOn",
+            "parent",
+            "status",
+            "method",
+            "code",
+            "subject",
+            "context",
+            "occurrenceDateTime",
+            "occurrencePeriod",
+            "condition",
+            "performer",
+            "reasonCodeableConcept",
+            "reasonReference",
+            "basis",
+            "prediction",
+            "mitigation",
+            "comment",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1669(
         cls, values: typing.Dict[str, typing.Any]
@@ -352,7 +387,7 @@ class RiskAssessment(domainresource.DomainResource):
 
 
 class RiskAssessmentPrediction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -473,6 +508,26 @@ class RiskAssessmentPrediction(backboneelement.BackboneElement):
         one_of_many="when",
         one_of_many_required=False,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``RiskAssessmentPrediction`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "outcome",
+            "probabilityDecimal",
+            "probabilityRange",
+            "qualitativeRisk",
+            "relativeRisk",
+            "whenPeriod",
+            "whenRange",
+            "rationale",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_2704(

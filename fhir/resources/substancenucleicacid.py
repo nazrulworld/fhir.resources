@@ -14,7 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class SubstanceNucleicAcid(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -100,9 +100,31 @@ class SubstanceNucleicAcid(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``SubstanceNucleicAcid`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "sequenceType",
+            "numberOfSubunits",
+            "areaOfHybridisation",
+            "oligoNucleotideType",
+            "subunit",
+        ]
+
 
 class SubstanceNucleicAcidSubunit(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -213,9 +235,29 @@ class SubstanceNucleicAcidSubunit(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``SubstanceNucleicAcidSubunit`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "subunit",
+            "sequence",
+            "length",
+            "sequenceAttachment",
+            "fivePrime",
+            "threePrime",
+            "linkage",
+            "sugar",
+        ]
+
 
 class SubstanceNucleicAcidSubunitLinkage(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -232,8 +274,9 @@ class SubstanceNucleicAcidSubunitLinkage(backboneelement.BackboneElement):
             "captured for nearly all naturally occurring nucleic acid the linkage "
             "is a phosphate group. For many synthetic oligonucleotides "
             "phosphorothioate linkages are often seen. Linkage connectivity is "
-            "assumed to be 3\u2019-5\u2019. If the linkage is either 3\u2019-3\u2019 or"
-            "5\u2019-5\u2019 this should be specified"
+            "assumed to be 3\u2019-5\u2019. "
+            "If the linkage is either 3\u2019-3\u2019 or 5\u2019-5\u2019 this "
+            "should be specified"
         ),
         description=None,
         # if property is element of this resource.
@@ -279,9 +322,25 @@ class SubstanceNucleicAcidSubunitLinkage(backboneelement.BackboneElement):
         None, alias="_residueSite", title="Extension field for ``residueSite``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``SubstanceNucleicAcidSubunitLinkage`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "connectivity",
+            "identifier",
+            "name",
+            "residueSite",
+        ]
+
 
 class SubstanceNucleicAcidSubunitSugar(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -332,3 +391,18 @@ class SubstanceNucleicAcidSubunitSugar(backboneelement.BackboneElement):
     residueSite__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_residueSite", title="Extension field for ``residueSite``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``SubstanceNucleicAcidSubunitSugar`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "name",
+            "residueSite",
+        ]

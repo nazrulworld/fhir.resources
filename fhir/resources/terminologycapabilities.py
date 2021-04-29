@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class TerminologyCapabilities(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -400,6 +400,47 @@ class TerminologyCapabilities(domainresource.DomainResource):
         None, alias="_version", title="Extension field for ``version``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``TerminologyCapabilities`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "url",
+            "version",
+            "name",
+            "title",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "description",
+            "useContext",
+            "jurisdiction",
+            "purpose",
+            "copyright",
+            "kind",
+            "software",
+            "implementation",
+            "lockedDate",
+            "codeSystem",
+            "expansion",
+            "codeSearch",
+            "validateCode",
+            "translation",
+            "closure",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2602(
         cls, values: typing.Dict[str, typing.Any]
@@ -465,7 +506,7 @@ class TerminologyCapabilities(domainresource.DomainResource):
 
 
 class TerminologyCapabilitiesClosure(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -488,9 +529,17 @@ class TerminologyCapabilitiesClosure(backboneelement.BackboneElement):
         None, alias="_translation", title="Extension field for ``translation``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``TerminologyCapabilitiesClosure`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "translation"]
+
 
 class TerminologyCapabilitiesCodeSystem(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -542,9 +591,17 @@ class TerminologyCapabilitiesCodeSystem(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``TerminologyCapabilitiesCodeSystem`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "uri", "version", "subsumption"]
+
 
 class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -628,9 +685,27 @@ class TerminologyCapabilitiesCodeSystemVersion(backboneelement.BackboneElement):
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_property", title="Extension field for ``property``.")
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``TerminologyCapabilitiesCodeSystemVersion`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "code",
+            "isDefault",
+            "compositional",
+            "language",
+            "filter",
+            "property",
+        ]
+
 
 class TerminologyCapabilitiesCodeSystemVersionFilter(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -664,6 +739,14 @@ class TerminologyCapabilitiesCodeSystemVersionFilter(backboneelement.BackboneEle
     op__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_op", title="Extension field for ``op``.")
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``TerminologyCapabilitiesCodeSystemVersionFilter`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "code", "op"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_4981(
@@ -726,7 +809,7 @@ class TerminologyCapabilitiesCodeSystemVersionFilter(backboneelement.BackboneEle
 
 
 class TerminologyCapabilitiesExpansion(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -795,9 +878,26 @@ class TerminologyCapabilitiesExpansion(backboneelement.BackboneElement):
         None, alias="_textFilter", title="Extension field for ``textFilter``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``TerminologyCapabilitiesExpansion`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "hierarchical",
+            "paging",
+            "incomplete",
+            "parameter",
+            "textFilter",
+        ]
+
 
 class TerminologyCapabilitiesExpansionParameter(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -830,6 +930,14 @@ class TerminologyCapabilitiesExpansionParameter(backboneelement.BackboneElement)
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``TerminologyCapabilitiesExpansionParameter`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "name", "documentation"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_4479(
@@ -892,7 +1000,7 @@ class TerminologyCapabilitiesExpansionParameter(backboneelement.BackboneElement)
 
 
 class TerminologyCapabilitiesImplementation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -931,6 +1039,14 @@ class TerminologyCapabilitiesImplementation(backboneelement.BackboneElement):
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``TerminologyCapabilitiesImplementation`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "description", "url"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_4075(
@@ -993,7 +1109,7 @@ class TerminologyCapabilitiesImplementation(backboneelement.BackboneElement):
 
 
 class TerminologyCapabilitiesSoftware(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1029,6 +1145,14 @@ class TerminologyCapabilitiesSoftware(backboneelement.BackboneElement):
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``TerminologyCapabilitiesSoftware`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "name", "version"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3431(
@@ -1091,7 +1215,7 @@ class TerminologyCapabilitiesSoftware(backboneelement.BackboneElement):
 
 
 class TerminologyCapabilitiesTranslation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1113,6 +1237,14 @@ class TerminologyCapabilitiesTranslation(backboneelement.BackboneElement):
     needsMap__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_needsMap", title="Extension field for ``needsMap``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``TerminologyCapabilitiesTranslation`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "needsMap"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3764(
@@ -1175,7 +1307,7 @@ class TerminologyCapabilitiesTranslation(backboneelement.BackboneElement):
 
 
 class TerminologyCapabilitiesValidateCode(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1197,6 +1329,14 @@ class TerminologyCapabilitiesValidateCode(backboneelement.BackboneElement):
     translations__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_translations", title="Extension field for ``translations``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``TerminologyCapabilitiesValidateCode`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "translations"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3777(

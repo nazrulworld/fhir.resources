@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class NamingSystem(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -238,6 +238,37 @@ class NamingSystem(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``NamingSystem`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "name",
+            "status",
+            "kind",
+            "date",
+            "publisher",
+            "contact",
+            "responsible",
+            "type",
+            "description",
+            "useContext",
+            "jurisdiction",
+            "usage",
+            "uniqueId",
+            "replacedBy",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1434(
         cls, values: typing.Dict[str, typing.Any]
@@ -304,7 +335,7 @@ class NamingSystem(domainresource.DomainResource):
 
 
 class NamingSystemUniqueId(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -389,6 +420,23 @@ class NamingSystemUniqueId(backboneelement.BackboneElement):
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``NamingSystemUniqueId`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "type",
+            "value",
+            "preferred",
+            "comment",
+            "period",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2229(

@@ -14,7 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class SupplyRequest(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -212,6 +212,38 @@ class SupplyRequest(domainresource.DomainResource):
         enum_reference_types=["Organization"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``SupplyRequest`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "category",
+            "priority",
+            "orderedItem",
+            "occurrenceDateTime",
+            "occurrencePeriod",
+            "occurrenceTiming",
+            "authoredOn",
+            "requester",
+            "supplier",
+            "reasonCodeableConcept",
+            "reasonReference",
+            "deliverFrom",
+            "deliverTo",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_1597(
         cls, values: typing.Dict[str, typing.Any]
@@ -259,7 +291,7 @@ class SupplyRequest(domainresource.DomainResource):
 
 
 class SupplyRequestOrderedItem(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -311,6 +343,23 @@ class SupplyRequestOrderedItem(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``SupplyRequestOrderedItem`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "quantity",
+            "itemCodeableConcept",
+            "itemReference",
+            "itemReference",
+            "itemReference",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_2698(
         cls, values: typing.Dict[str, typing.Any]
@@ -351,7 +400,7 @@ class SupplyRequestOrderedItem(backboneelement.BackboneElement):
 
 
 class SupplyRequestRequester(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -389,3 +438,11 @@ class SupplyRequestRequester(backboneelement.BackboneElement):
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``SupplyRequestRequester`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "agent", "onBehalfOf"]

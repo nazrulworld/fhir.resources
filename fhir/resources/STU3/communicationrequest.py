@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class CommunicationRequest(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -328,6 +328,44 @@ class CommunicationRequest(domainresource.DomainResource):
         enum_reference_types=["Resource"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``CommunicationRequest`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "basedOn",
+            "replaces",
+            "groupIdentifier",
+            "status",
+            "category",
+            "priority",
+            "medium",
+            "subject",
+            "recipient",
+            "topic",
+            "context",
+            "payload",
+            "occurrenceDateTime",
+            "occurrencePeriod",
+            "authoredOn",
+            "sender",
+            "requester",
+            "reasonCode",
+            "reasonReference",
+            "note",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2294(
         cls, values: typing.Dict[str, typing.Any]
@@ -427,7 +465,7 @@ class CommunicationRequest(domainresource.DomainResource):
 
 
 class CommunicationRequestPayload(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -487,6 +525,21 @@ class CommunicationRequestPayload(backboneelement.BackboneElement):
         None, alias="_contentString", title="Extension field for ``contentString``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``CommunicationRequestPayload`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "contentString",
+            "contentAttachment",
+            "contentReference",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_2992(
         cls, values: typing.Dict[str, typing.Any]
@@ -529,7 +582,7 @@ class CommunicationRequestPayload(backboneelement.BackboneElement):
 
 
 class CommunicationRequestRequester(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -567,3 +620,11 @@ class CommunicationRequestRequester(backboneelement.BackboneElement):
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``CommunicationRequestRequester`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "agent", "onBehalfOf"]

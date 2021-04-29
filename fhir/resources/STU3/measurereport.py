@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class MeasureReport(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -160,6 +160,33 @@ class MeasureReport(domainresource.DomainResource):
         None, alias="_type", title="Extension field for ``type``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``MeasureReport`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "type",
+            "measure",
+            "patient",
+            "date",
+            "reportingOrganization",
+            "period",
+            "group",
+            "evaluatedResources",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1551(
         cls, values: typing.Dict[str, typing.Any]
@@ -221,7 +248,7 @@ class MeasureReport(domainresource.DomainResource):
 
 
 class MeasureReportGroup(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -284,9 +311,25 @@ class MeasureReportGroup(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``MeasureReportGroup`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "population",
+            "measureScore",
+            "stratifier",
+        ]
+
 
 class MeasureReportGroupPopulation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -348,9 +391,25 @@ class MeasureReportGroupPopulation(backboneelement.BackboneElement):
         enum_reference_types=["List"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``MeasureReportGroupPopulation`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "code",
+            "count",
+            "patients",
+        ]
+
 
 class MeasureReportGroupStratifier(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -386,9 +445,17 @@ class MeasureReportGroupStratifier(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``MeasureReportGroupStratifier`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "identifier", "stratum"]
+
 
 class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -446,6 +513,21 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``MeasureReportGroupStratifierStratum`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "value",
+            "population",
+            "measureScore",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3874(
@@ -508,7 +590,7 @@ class MeasureReportGroupStratifierStratum(backboneelement.BackboneElement):
 
 
 class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -569,3 +651,19 @@ class MeasureReportGroupStratifierStratumPopulation(backboneelement.BackboneElem
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["List"],
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``MeasureReportGroupStratifierStratumPopulation`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "code",
+            "count",
+            "patients",
+        ]

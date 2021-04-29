@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ClinicalImpression(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -294,6 +294,43 @@ class ClinicalImpression(domainresource.DomainResource):
         None, alias="_summary", title="Extension field for ``summary``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ClinicalImpression`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "code",
+            "description",
+            "subject",
+            "context",
+            "effectiveDateTime",
+            "effectivePeriod",
+            "date",
+            "assessor",
+            "previous",
+            "problem",
+            "investigation",
+            "protocol",
+            "summary",
+            "finding",
+            "prognosisCodeableConcept",
+            "prognosisReference",
+            "action",
+            "note",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2041(
         cls, values: typing.Dict[str, typing.Any]
@@ -393,7 +430,7 @@ class ClinicalImpression(domainresource.DomainResource):
 
 
 class ClinicalImpressionFinding(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -448,6 +485,22 @@ class ClinicalImpressionFinding(backboneelement.BackboneElement):
         enum_reference_types=["Condition", "Observation"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ClinicalImpressionFinding`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "itemCodeableConcept",
+            "itemReference",
+            "itemReference",
+            "basis",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_2737(
         cls, values: typing.Dict[str, typing.Any]
@@ -488,7 +541,7 @@ class ClinicalImpressionFinding(backboneelement.BackboneElement):
 
 
 class ClinicalImpressionInvestigation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -533,3 +586,11 @@ class ClinicalImpressionInvestigation(backboneelement.BackboneElement):
             "ImagingStudy",
         ],
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ClinicalImpressionInvestigation`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "code", "item"]

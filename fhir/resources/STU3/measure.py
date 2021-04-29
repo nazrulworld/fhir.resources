@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Measure(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -568,6 +568,60 @@ class Measure(domainresource.DomainResource):
         None, alias="_version", title="Extension field for ``version``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``Measure`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "url",
+            "identifier",
+            "version",
+            "name",
+            "title",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "description",
+            "purpose",
+            "usage",
+            "approvalDate",
+            "lastReviewDate",
+            "effectivePeriod",
+            "useContext",
+            "jurisdiction",
+            "topic",
+            "contributor",
+            "contact",
+            "copyright",
+            "relatedArtifact",
+            "library",
+            "disclaimer",
+            "scoring",
+            "compositeScoring",
+            "type",
+            "riskAdjustment",
+            "rateAggregation",
+            "rationale",
+            "clinicalRecommendationStatement",
+            "improvementNotation",
+            "definition",
+            "guidance",
+            "set",
+            "group",
+            "supplementalData",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_900(
         cls, values: typing.Dict[str, typing.Any]
@@ -629,7 +683,7 @@ class Measure(domainresource.DomainResource):
 
 
 class MeasureGroup(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -697,9 +751,26 @@ class MeasureGroup(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``MeasureGroup`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "name",
+            "description",
+            "population",
+            "stratifier",
+        ]
+
 
 class MeasureGroupPopulation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -774,6 +845,23 @@ class MeasureGroupPopulation(backboneelement.BackboneElement):
         None, alias="_name", title="Extension field for ``name``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``MeasureGroupPopulation`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "code",
+            "name",
+            "description",
+            "criteria",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2501(
         cls, values: typing.Dict[str, typing.Any]
@@ -835,7 +923,7 @@ class MeasureGroupPopulation(backboneelement.BackboneElement):
 
 
 class MeasureGroupStratifier(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -889,9 +977,24 @@ class MeasureGroupStratifier(backboneelement.BackboneElement):
         None, alias="_path", title="Extension field for ``path``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``MeasureGroupStratifier`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "criteria",
+            "path",
+        ]
+
 
 class MeasureSupplementalData(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -958,3 +1061,19 @@ class MeasureSupplementalData(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``MeasureSupplementalData`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "usage",
+            "criteria",
+            "path",
+        ]

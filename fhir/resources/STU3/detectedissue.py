@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class DetectedIssue(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -179,6 +179,34 @@ class DetectedIssue(domainresource.DomainResource):
         None, alias="_status", title="Extension field for ``status``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``DetectedIssue`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "category",
+            "severity",
+            "patient",
+            "date",
+            "author",
+            "implicated",
+            "detail",
+            "reference",
+            "mitigation",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1492(
         cls, values: typing.Dict[str, typing.Any]
@@ -240,7 +268,7 @@ class DetectedIssue(domainresource.DomainResource):
 
 
 class DetectedIssueMitigation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -290,3 +318,11 @@ class DetectedIssueMitigation(backboneelement.BackboneElement):
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``DetectedIssueMitigation`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "action", "date", "author"]

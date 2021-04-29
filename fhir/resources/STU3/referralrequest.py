@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ReferralRequest(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -382,6 +382,47 @@ class ReferralRequest(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ReferralRequest`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "definition",
+            "basedOn",
+            "replaces",
+            "groupIdentifier",
+            "status",
+            "intent",
+            "type",
+            "priority",
+            "serviceRequested",
+            "subject",
+            "context",
+            "occurrenceDateTime",
+            "occurrencePeriod",
+            "authoredOn",
+            "requester",
+            "specialty",
+            "recipient",
+            "reasonCode",
+            "reasonReference",
+            "description",
+            "supportingInfo",
+            "note",
+            "relevantHistory",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1762(
         cls, values: typing.Dict[str, typing.Any]
@@ -481,7 +522,7 @@ class ReferralRequest(domainresource.DomainResource):
 
 
 class ReferralRequestRequester(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -519,3 +560,11 @@ class ReferralRequestRequester(backboneelement.BackboneElement):
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ReferralRequestRequester`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "agent", "onBehalfOf"]

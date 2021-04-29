@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Contract(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -560,6 +560,58 @@ class Contract(domainresource.DomainResource):
         None, alias="_version", title="Extension field for ``version``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``Contract`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "url",
+            "version",
+            "status",
+            "legalState",
+            "instantiatesCanonical",
+            "instantiatesUri",
+            "contentDerivative",
+            "issued",
+            "applies",
+            "expirationType",
+            "subject",
+            "authority",
+            "domain",
+            "site",
+            "name",
+            "title",
+            "subtitle",
+            "alias",
+            "author",
+            "scope",
+            "topicCodeableConcept",
+            "topicReference",
+            "type",
+            "subType",
+            "contentDefinition",
+            "term",
+            "supportingInfo",
+            "relevantHistory",
+            "signer",
+            "friendly",
+            "legal",
+            "rule",
+            "legallyBindingAttachment",
+            "legallyBindingReference",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_1013(
         cls, values: typing.Dict[str, typing.Any]
@@ -603,7 +655,7 @@ class Contract(domainresource.DomainResource):
 
 
 class ContractContentDefinition(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -722,6 +774,24 @@ class ContractContentDefinition(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ContractContentDefinition`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "type",
+            "subType",
+            "publisher",
+            "publicationDate",
+            "publicationStatus",
+            "copyright",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2771(
         cls, values: typing.Dict[str, typing.Any]
@@ -783,7 +853,7 @@ class ContractContentDefinition(backboneelement.BackboneElement):
 
 
 class ContractFriendly(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -837,6 +907,20 @@ class ContractFriendly(backboneelement.BackboneElement):
         ],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ContractFriendly`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "contentAttachment",
+            "contentReference",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_1847(
         cls, values: typing.Dict[str, typing.Any]
@@ -877,7 +961,7 @@ class ContractFriendly(backboneelement.BackboneElement):
 
 
 class ContractLegal(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -916,6 +1000,20 @@ class ContractLegal(backboneelement.BackboneElement):
             "QuestionnaireResponse",
         ],
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ContractLegal`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "contentAttachment",
+            "contentReference",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_1490(
@@ -957,7 +1055,7 @@ class ContractLegal(backboneelement.BackboneElement):
 
 
 class ContractRule(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -999,6 +1097,20 @@ class ContractRule(backboneelement.BackboneElement):
         enum_reference_types=["DocumentReference"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ContractRule`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "contentAttachment",
+            "contentReference",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_1406(
         cls, values: typing.Dict[str, typing.Any]
@@ -1039,7 +1151,7 @@ class ContractRule(backboneelement.BackboneElement):
 
 
 class ContractSigner(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1087,9 +1199,17 @@ class ContractSigner(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ContractSigner`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "type", "party", "signature"]
+
 
 class ContractTerm(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1250,6 +1370,31 @@ class ContractTerm(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ContractTerm`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "issued",
+            "applies",
+            "topicCodeableConcept",
+            "topicReference",
+            "type",
+            "subType",
+            "text",
+            "securityLabel",
+            "offer",
+            "asset",
+            "action",
+            "group",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_1414(
         cls, values: typing.Dict[str, typing.Any]
@@ -1290,7 +1435,7 @@ class ContractTerm(backboneelement.BackboneElement):
 
 
 class ContractTermAction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1642,6 +1787,41 @@ class ContractTermAction(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ContractTermAction`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "doNotPerform",
+            "type",
+            "subject",
+            "intent",
+            "linkId",
+            "status",
+            "context",
+            "contextLinkId",
+            "occurrenceDateTime",
+            "occurrencePeriod",
+            "occurrenceTiming",
+            "requester",
+            "requesterLinkId",
+            "performerType",
+            "performerRole",
+            "performer",
+            "performerLinkId",
+            "reasonCode",
+            "reasonReference",
+            "reason",
+            "reasonLinkId",
+            "note",
+            "securityLabelNumber",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_2021(
         cls, values: typing.Dict[str, typing.Any]
@@ -1684,7 +1864,7 @@ class ContractTermAction(backboneelement.BackboneElement):
 
 
 class ContractTermActionSubject(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1721,9 +1901,17 @@ class ContractTermActionSubject(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ContractTermActionSubject`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "reference", "role"]
+
 
 class ContractTermAsset(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1899,9 +2087,36 @@ class ContractTermAsset(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ContractTermAsset`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "scope",
+            "type",
+            "typeReference",
+            "subtype",
+            "relationship",
+            "context",
+            "condition",
+            "periodType",
+            "period",
+            "usePeriod",
+            "text",
+            "linkId",
+            "answer",
+            "securityLabelNumber",
+            "valuedItem",
+        ]
+
 
 class ContractTermAssetContext(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1949,9 +2164,17 @@ class ContractTermAssetContext(backboneelement.BackboneElement):
         None, alias="_text", title="Extension field for ``text``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ContractTermAssetContext`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "reference", "code", "text"]
+
 
 class ContractTermAssetValuedItem(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -2173,6 +2396,33 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ContractTermAssetValuedItem`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "entityCodeableConcept",
+            "entityReference",
+            "identifier",
+            "effectiveTime",
+            "quantity",
+            "unitPrice",
+            "factor",
+            "points",
+            "net",
+            "payment",
+            "paymentDate",
+            "responsible",
+            "recipient",
+            "linkId",
+            "securityLabelNumber",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_2934(
         cls, values: typing.Dict[str, typing.Any]
@@ -2213,7 +2463,7 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
 
 
 class ContractTermOffer(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -2342,9 +2592,31 @@ class ContractTermOffer(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ContractTermOffer`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "party",
+            "topic",
+            "type",
+            "decision",
+            "decisionMode",
+            "answer",
+            "text",
+            "linkId",
+            "securityLabelNumber",
+        ]
+
 
 class ContractTermOfferAnswer(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -2583,6 +2855,30 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
         None, alias="_valueUri", title="Extension field for ``valueUri``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ContractTermOfferAnswer`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "valueBoolean",
+            "valueDecimal",
+            "valueInteger",
+            "valueDate",
+            "valueDateTime",
+            "valueTime",
+            "valueString",
+            "valueUri",
+            "valueAttachment",
+            "valueCoding",
+            "valueQuantity",
+            "valueReference",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_2541(
         cls, values: typing.Dict[str, typing.Any]
@@ -2638,7 +2934,7 @@ class ContractTermOfferAnswer(backboneelement.BackboneElement):
 
 
 class ContractTermOfferParty(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -2675,9 +2971,17 @@ class ContractTermOfferParty(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ContractTermOfferParty`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "reference", "role"]
+
 
 class ContractTermSecurityLabel(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -2738,3 +3042,19 @@ class ContractTermSecurityLabel(backboneelement.BackboneElement):
     number__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_number", title="Extension field for ``number``.")
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ContractTermSecurityLabel`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "number",
+            "classification",
+            "category",
+            "control",
+        ]

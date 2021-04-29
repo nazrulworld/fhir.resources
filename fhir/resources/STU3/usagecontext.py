@@ -14,7 +14,7 @@ from . import element, fhirtypes
 
 
 class UsageContext(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -83,6 +83,21 @@ class UsageContext(element.Element):
         one_of_many="value",
         one_of_many_required=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``UsageContext`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "code",
+            "valueCodeableConcept",
+            "valueQuantity",
+            "valueRange",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_1443(

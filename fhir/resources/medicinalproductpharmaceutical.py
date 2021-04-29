@@ -14,7 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class MedicinalProductPharmaceutical(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -98,9 +98,33 @@ class MedicinalProductPharmaceutical(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``MedicinalProductPharmaceutical`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "administrableDoseForm",
+            "unitOfPresentation",
+            "ingredient",
+            "device",
+            "characteristics",
+            "routeOfAdministration",
+        ]
+
 
 class MedicinalProductPharmaceuticalCharacteristics(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -127,11 +151,19 @@ class MedicinalProductPharmaceuticalCharacteristics(backboneelement.BackboneElem
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``MedicinalProductPharmaceuticalCharacteristics`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "code", "status"]
+
 
 class MedicinalProductPharmaceuticalRouteOfAdministration(
     backboneelement.BackboneElement
 ):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -227,11 +259,30 @@ class MedicinalProductPharmaceuticalRouteOfAdministration(
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``MedicinalProductPharmaceuticalRouteOfAdministration`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "code",
+            "firstDose",
+            "maxSingleDose",
+            "maxDosePerDay",
+            "maxDosePerTreatmentPeriod",
+            "maxTreatmentPeriod",
+            "targetSpecies",
+        ]
+
 
 class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies(
     backboneelement.BackboneElement
 ):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -252,7 +303,7 @@ class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies(
     )
 
     withdrawalPeriod: typing.List[
-        fhirtypes.MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriodType  # noqa:B950
+        fhirtypes.MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriodType  # noqa: B950
     ] = Field(
         None,
         alias="withdrawalPeriod",
@@ -265,11 +316,19 @@ class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies(
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies``
+        according specification, with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "code", "withdrawalPeriod"]
+
 
 class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod(
     backboneelement.BackboneElement
 ):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -316,3 +375,19 @@ class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawal
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod``
+        according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "tissue",
+            "value",
+            "supportingInformation",
+        ]

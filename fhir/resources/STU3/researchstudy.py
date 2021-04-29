@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ResearchStudy(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -292,6 +292,43 @@ class ResearchStudy(domainresource.DomainResource):
         None, alias="_title", title="Extension field for ``title``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ResearchStudy`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "title",
+            "protocol",
+            "partOf",
+            "status",
+            "category",
+            "focus",
+            "contact",
+            "relatedArtifact",
+            "keyword",
+            "jurisdiction",
+            "description",
+            "enrollment",
+            "period",
+            "sponsor",
+            "principalInvestigator",
+            "site",
+            "reasonStopped",
+            "note",
+            "arm",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1553(
         cls, values: typing.Dict[str, typing.Any]
@@ -353,7 +390,7 @@ class ResearchStudy(domainresource.DomainResource):
 
 
 class ResearchStudyArm(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -404,6 +441,14 @@ class ResearchStudyArm(backboneelement.BackboneElement):
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ResearchStudyArm`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "name", "code", "description"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1829(

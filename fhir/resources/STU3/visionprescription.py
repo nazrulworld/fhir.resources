@@ -14,7 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class VisionPrescription(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -141,6 +141,32 @@ class VisionPrescription(domainresource.DomainResource):
         None, alias="_status", title="Extension field for ``status``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``VisionPrescription`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "patient",
+            "encounter",
+            "dateWritten",
+            "prescriber",
+            "reasonCodeableConcept",
+            "reasonReference",
+            "dispense",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_2110(
         cls, values: typing.Dict[str, typing.Any]
@@ -181,7 +207,7 @@ class VisionPrescription(domainresource.DomainResource):
 
 
 class VisionPrescriptionDispense(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -373,3 +399,30 @@ class VisionPrescriptionDispense(backboneelement.BackboneElement):
     sphere__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sphere", title="Extension field for ``sphere``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``VisionPrescriptionDispense`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "product",
+            "eye",
+            "sphere",
+            "cylinder",
+            "axis",
+            "prism",
+            "base",
+            "add",
+            "power",
+            "backCurve",
+            "diameter",
+            "duration",
+            "color",
+            "brand",
+            "note",
+        ]

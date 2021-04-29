@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ValueSet(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -313,6 +313,41 @@ class ValueSet(domainresource.DomainResource):
         None, alias="_version", title="Extension field for ``version``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ValueSet`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "url",
+            "identifier",
+            "version",
+            "name",
+            "title",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "description",
+            "useContext",
+            "jurisdiction",
+            "immutable",
+            "purpose",
+            "copyright",
+            "compose",
+            "expansion",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1011(
         cls, values: typing.Dict[str, typing.Any]
@@ -374,7 +409,7 @@ class ValueSet(domainresource.DomainResource):
 
 
 class ValueSetCompose(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -444,9 +479,25 @@ class ValueSetCompose(backboneelement.BackboneElement):
         None, alias="_lockedDate", title="Extension field for ``lockedDate``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ValueSetCompose`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "lockedDate",
+            "inactive",
+            "include",
+            "exclude",
+        ]
+
 
 class ValueSetComposeInclude(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -527,9 +578,26 @@ class ValueSetComposeInclude(backboneelement.BackboneElement):
         None, alias="_version", title="Extension field for ``version``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ValueSetComposeInclude`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "system",
+            "version",
+            "concept",
+            "filter",
+            "valueSet",
+        ]
+
 
 class ValueSetComposeIncludeConcept(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -582,6 +650,21 @@ class ValueSetComposeIncludeConcept(backboneelement.BackboneElement):
     display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_display", title="Extension field for ``display``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ValueSetComposeIncludeConcept`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "code",
+            "display",
+            "designation",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3161(
@@ -644,7 +727,7 @@ class ValueSetComposeIncludeConcept(backboneelement.BackboneElement):
 
 
 class ValueSetComposeIncludeConceptDesignation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -689,6 +772,14 @@ class ValueSetComposeIncludeConceptDesignation(backboneelement.BackboneElement):
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ValueSetComposeIncludeConceptDesignation`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "language", "use", "value"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_4296(
@@ -751,7 +842,7 @@ class ValueSetComposeIncludeConceptDesignation(backboneelement.BackboneElement):
 
 
 class ValueSetComposeIncludeFilter(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -828,6 +919,14 @@ class ValueSetComposeIncludeFilter(backboneelement.BackboneElement):
         None, alias="_value", title="Extension field for ``value``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ValueSetComposeIncludeFilter`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "property", "op", "value"]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3057(
         cls, values: typing.Dict[str, typing.Any]
@@ -893,7 +992,7 @@ class ValueSetComposeIncludeFilter(backboneelement.BackboneElement):
 
 
 class ValueSetExpansion(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -992,6 +1091,24 @@ class ValueSetExpansion(backboneelement.BackboneElement):
         None, alias="_total", title="Extension field for ``total``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ValueSetExpansion`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "timestamp",
+            "total",
+            "offset",
+            "parameter",
+            "contains",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1954(
         cls, values: typing.Dict[str, typing.Any]
@@ -1053,7 +1170,7 @@ class ValueSetExpansion(backboneelement.BackboneElement):
 
 
 class ValueSetExpansionContains(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1183,9 +1300,29 @@ class ValueSetExpansionContains(backboneelement.BackboneElement):
         None, alias="_version", title="Extension field for ``version``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ValueSetExpansionContains`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "system",
+            "abstract",
+            "inactive",
+            "version",
+            "code",
+            "display",
+            "designation",
+            "contains",
+        ]
+
 
 class ValueSetExpansionParameter(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1318,6 +1455,26 @@ class ValueSetExpansionParameter(backboneelement.BackboneElement):
     valueUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueUri", title="Extension field for ``valueUri``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ValueSetExpansionParameter`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "name",
+            "valueString",
+            "valueBoolean",
+            "valueInteger",
+            "valueDecimal",
+            "valueUri",
+            "valueCode",
+            "valueDateTime",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2887(

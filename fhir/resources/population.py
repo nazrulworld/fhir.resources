@@ -14,7 +14,7 @@ from . import backboneelement, fhirtypes
 
 
 class Population(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -78,6 +78,23 @@ class Population(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``Population`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "ageRange",
+            "ageCodeableConcept",
+            "gender",
+            "race",
+            "physiologicalCondition",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_1257(

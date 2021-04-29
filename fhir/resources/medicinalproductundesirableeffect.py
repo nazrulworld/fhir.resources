@@ -14,7 +14,7 @@ from . import domainresource, fhirtypes
 
 
 class MedicinalProductUndesirableEffect(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -70,3 +70,25 @@ class MedicinalProductUndesirableEffect(domainresource.DomainResource):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``MedicinalProductUndesirableEffect`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "subject",
+            "symptomConditionEffect",
+            "classification",
+            "frequencyOfOccurrence",
+            "population",
+        ]

@@ -14,7 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class MedicinalProductPackaged(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -121,9 +121,35 @@ class MedicinalProductPackaged(domainresource.DomainResource):
         enum_reference_types=["MedicinalProduct"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``MedicinalProductPackaged`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "subject",
+            "description",
+            "legalStatusOfSupply",
+            "marketingStatus",
+            "marketingAuthorization",
+            "manufacturer",
+            "batchIdentifier",
+            "packageItem",
+        ]
+
 
 class MedicinalProductPackagedBatchIdentifier(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -153,9 +179,23 @@ class MedicinalProductPackagedBatchIdentifier(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``MedicinalProductPackagedBatchIdentifier`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "outerPackaging",
+            "immediatePackaging",
+        ]
+
 
 class MedicinalProductPackagedPackageItem(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -281,3 +321,27 @@ class MedicinalProductPackagedPackageItem(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``MedicinalProductPackagedPackageItem`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "type",
+            "quantity",
+            "material",
+            "alternateMaterial",
+            "device",
+            "manufacturedItem",
+            "packageItem",
+            "physicalCharacteristics",
+            "otherCharacteristics",
+            "shelfLifeStorage",
+            "manufacturer",
+        ]

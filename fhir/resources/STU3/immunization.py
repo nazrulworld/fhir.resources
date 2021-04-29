@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Immunization(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -274,6 +274,44 @@ class Immunization(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``Immunization`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "notGiven",
+            "vaccineCode",
+            "patient",
+            "encounter",
+            "date",
+            "primarySource",
+            "reportOrigin",
+            "location",
+            "manufacturer",
+            "lotNumber",
+            "expirationDate",
+            "site",
+            "route",
+            "doseQuantity",
+            "practitioner",
+            "note",
+            "explanation",
+            "reaction",
+            "vaccinationProtocol",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1467(
         cls, values: typing.Dict[str, typing.Any]
@@ -339,7 +377,7 @@ class Immunization(domainresource.DomainResource):
 
 
 class ImmunizationExplanation(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -367,9 +405,17 @@ class ImmunizationExplanation(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ImmunizationExplanation`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "reason", "reasonNotGiven"]
+
 
 class ImmunizationPractitioner(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -402,9 +448,17 @@ class ImmunizationPractitioner(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ImmunizationPractitioner`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "role", "actor"]
+
 
 class ImmunizationReaction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -450,9 +504,17 @@ class ImmunizationReaction(backboneelement.BackboneElement):
         None, alias="_reported", title="Extension field for ``reported``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ImmunizationReaction`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "date", "detail", "reported"]
+
 
 class ImmunizationVaccinationProtocol(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -560,3 +622,23 @@ class ImmunizationVaccinationProtocol(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ImmunizationVaccinationProtocol`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "doseSequence",
+            "description",
+            "authority",
+            "series",
+            "seriesDoses",
+            "targetDisease",
+            "doseStatus",
+            "doseStatusReason",
+        ]

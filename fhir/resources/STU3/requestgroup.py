@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class RequestGroup(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -263,6 +263,39 @@ class RequestGroup(domainresource.DomainResource):
         enum_reference_types=["Patient", "Group"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``RequestGroup`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "definition",
+            "basedOn",
+            "replaces",
+            "groupIdentifier",
+            "status",
+            "intent",
+            "priority",
+            "subject",
+            "context",
+            "authoredOn",
+            "author",
+            "reasonCodeableConcept",
+            "reasonReference",
+            "note",
+            "action",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1464(
         cls, values: typing.Dict[str, typing.Any]
@@ -362,7 +395,7 @@ class RequestGroup(domainresource.DomainResource):
 
 
 class RequestGroupAction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -679,6 +712,40 @@ class RequestGroupAction(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``RequestGroupAction`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "label",
+            "title",
+            "description",
+            "textEquivalent",
+            "code",
+            "documentation",
+            "condition",
+            "relatedAction",
+            "timingDateTime",
+            "timingPeriod",
+            "timingDuration",
+            "timingRange",
+            "timingTiming",
+            "participant",
+            "type",
+            "groupingBehavior",
+            "selectionBehavior",
+            "requiredBehavior",
+            "precheckBehavior",
+            "cardinalityBehavior",
+            "resource",
+            "action",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_2068(
         cls, values: typing.Dict[str, typing.Any]
@@ -727,7 +794,7 @@ class RequestGroupAction(backboneelement.BackboneElement):
 
 
 class RequestGroupActionCondition(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -796,6 +863,22 @@ class RequestGroupActionCondition(backboneelement.BackboneElement):
         None, alias="_language", title="Extension field for ``language``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``RequestGroupActionCondition`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "kind",
+            "description",
+            "language",
+            "expression",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3003(
         cls, values: typing.Dict[str, typing.Any]
@@ -857,7 +940,7 @@ class RequestGroupActionCondition(backboneelement.BackboneElement):
 
 
 class RequestGroupActionRelatedAction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -939,6 +1022,22 @@ class RequestGroupActionRelatedAction(backboneelement.BackboneElement):
     relationship__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_relationship", title="Extension field for ``relationship``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``RequestGroupActionRelatedAction`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "actionId",
+            "relationship",
+            "offsetDuration",
+            "offsetRange",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3379(

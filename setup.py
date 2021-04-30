@@ -11,7 +11,7 @@ with open("README.rst") as readme_file:
 with open("HISTORY.rst") as history_file:
     history = history_file.read()
 
-requirements = ["pydantic[email]>=1.7.2"]
+requirements = ["pydantic[email]>=1.7.2", "fhirdatetime>=0.1.0b8"]
 
 setup_requirements = ["pytest-runner"]
 

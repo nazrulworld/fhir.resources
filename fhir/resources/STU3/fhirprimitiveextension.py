@@ -23,6 +23,8 @@ class FHIRPrimitiveExtension(fhirabstractmodel.FHIRAbstractModel):
         alias="id",
         title="Type `String`",
         description="Unique id for inter-element referencing",
+        # if property is element of this resource.
+        element_property=False,
     )
 
     extension: typing.List[fhirtypes.ExtensionType] = Field(
@@ -30,6 +32,8 @@ class FHIRPrimitiveExtension(fhirabstractmodel.FHIRAbstractModel):
         alias="extension",
         title="List of `Extension` items (represented as `dict` in JSON)",
         description="Additional content defined by implementations",
+        # if property is element of this resource.
+        element_property=True,
     )
 
     @root_validator(pre=True)
@@ -46,3 +50,10 @@ class FHIRPrimitiveExtension(fhirabstractmodel.FHIRAbstractModel):
             raise ValidationError(errors, cls)  # type: ignore
 
         return values
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from ``FHIRPrimitiveExtension`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension"]

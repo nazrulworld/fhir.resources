@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ImplementationGuide(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -343,6 +343,43 @@ class ImplementationGuide(domainresource.DomainResource):
         None, alias="_version", title="Extension field for ``version``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ImplementationGuide`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "url",
+            "version",
+            "name",
+            "title",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "description",
+            "useContext",
+            "jurisdiction",
+            "copyright",
+            "packageId",
+            "license",
+            "fhirVersion",
+            "dependsOn",
+            "global",
+            "definition",
+            "manifest",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2146(
         cls, values: typing.Dict[str, typing.Any]
@@ -410,7 +447,7 @@ class ImplementationGuide(domainresource.DomainResource):
 
 
 class ImplementationGuideDefinition(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -479,9 +516,26 @@ class ImplementationGuideDefinition(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ImplementationGuideDefinition`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "grouping",
+            "resource",
+            "page",
+            "parameter",
+            "template",
+        ]
+
 
 class ImplementationGuideDefinitionGrouping(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -519,6 +573,14 @@ class ImplementationGuideDefinitionGrouping(backboneelement.BackboneElement):
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ImplementationGuideDefinitionGrouping`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "name", "description"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_4024(
@@ -581,7 +643,7 @@ class ImplementationGuideDefinitionGrouping(backboneelement.BackboneElement):
 
 
 class ImplementationGuideDefinitionPage(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -661,6 +723,23 @@ class ImplementationGuideDefinitionPage(backboneelement.BackboneElement):
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ImplementationGuideDefinitionPage`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "nameUrl",
+            "nameReference",
+            "title",
+            "generation",
+            "page",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3560(
@@ -761,7 +840,7 @@ class ImplementationGuideDefinitionPage(backboneelement.BackboneElement):
 
 
 class ImplementationGuideDefinitionParameter(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -813,6 +892,14 @@ class ImplementationGuideDefinitionParameter(backboneelement.BackboneElement):
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ImplementationGuideDefinitionParameter`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "code", "value"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_4121(
@@ -875,7 +962,7 @@ class ImplementationGuideDefinitionParameter(backboneelement.BackboneElement):
 
 
 class ImplementationGuideDefinitionResource(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1000,6 +1087,25 @@ class ImplementationGuideDefinitionResource(backboneelement.BackboneElement):
         enum_reference_types=["Resource"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ImplementationGuideDefinitionResource`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "reference",
+            "fhirVersion",
+            "name",
+            "description",
+            "exampleBoolean",
+            "exampleCanonical",
+            "groupingId",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_4019(
         cls, values: typing.Dict[str, typing.Any]
@@ -1040,7 +1146,7 @@ class ImplementationGuideDefinitionResource(backboneelement.BackboneElement):
 
 
 class ImplementationGuideDefinitionTemplate(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1086,6 +1192,14 @@ class ImplementationGuideDefinitionTemplate(backboneelement.BackboneElement):
     source__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_source", title="Extension field for ``source``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ImplementationGuideDefinitionTemplate`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "code", "source", "scope"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_4007(
@@ -1148,7 +1262,7 @@ class ImplementationGuideDefinitionTemplate(backboneelement.BackboneElement):
 
 
 class ImplementationGuideDependsOn(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1204,6 +1318,14 @@ class ImplementationGuideDependsOn(backboneelement.BackboneElement):
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ImplementationGuideDependsOn`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "uri", "packageId", "version"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3051(
@@ -1266,7 +1388,7 @@ class ImplementationGuideDependsOn(backboneelement.BackboneElement):
 
 
 class ImplementationGuideGlobal(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1304,6 +1426,14 @@ class ImplementationGuideGlobal(backboneelement.BackboneElement):
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ImplementationGuideGlobal`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "type", "profile"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2746(
@@ -1366,7 +1496,7 @@ class ImplementationGuideGlobal(backboneelement.BackboneElement):
 
 
 class ImplementationGuideManifest(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1443,9 +1573,26 @@ class ImplementationGuideManifest(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ImplementationGuideManifest`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "rendering",
+            "resource",
+            "page",
+            "image",
+            "other",
+        ]
+
 
 class ImplementationGuideManifestPage(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1491,6 +1638,14 @@ class ImplementationGuideManifestPage(backboneelement.BackboneElement):
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ImplementationGuideManifestPage`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "name", "title", "anchor"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3350(
@@ -1553,7 +1708,7 @@ class ImplementationGuideManifestPage(backboneelement.BackboneElement):
 
 
 class ImplementationGuideManifestResource(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1630,6 +1785,22 @@ class ImplementationGuideManifestResource(backboneelement.BackboneElement):
     relativePath__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_relativePath", title="Extension field for ``relativePath``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ImplementationGuideManifestResource`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "reference",
+            "exampleBoolean",
+            "exampleCanonical",
+            "relativePath",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_3809(

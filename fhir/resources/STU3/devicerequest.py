@@ -14,7 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class DeviceRequest(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -351,6 +351,47 @@ class DeviceRequest(domainresource.DomainResource):
         enum_reference_types=["Resource"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``DeviceRequest`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "definition",
+            "basedOn",
+            "priorRequest",
+            "groupIdentifier",
+            "status",
+            "intent",
+            "priority",
+            "codeReference",
+            "codeCodeableConcept",
+            "subject",
+            "context",
+            "occurrenceDateTime",
+            "occurrencePeriod",
+            "occurrenceTiming",
+            "authoredOn",
+            "requester",
+            "performerType",
+            "performer",
+            "reasonCode",
+            "reasonReference",
+            "supportingInfo",
+            "note",
+            "relevantHistory",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_1521(
         cls, values: typing.Dict[str, typing.Any]
@@ -398,7 +439,7 @@ class DeviceRequest(domainresource.DomainResource):
 
 
 class DeviceRequestRequester(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -430,3 +471,11 @@ class DeviceRequestRequester(backboneelement.BackboneElement):
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Organization"],
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``DeviceRequestRequester`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "agent", "onBehalfOf"]

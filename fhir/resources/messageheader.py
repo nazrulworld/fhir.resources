@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class MessageHeader(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -196,6 +196,35 @@ class MessageHeader(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``MessageHeader`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "eventCoding",
+            "eventUri",
+            "destination",
+            "sender",
+            "enterer",
+            "author",
+            "source",
+            "responsible",
+            "reason",
+            "response",
+            "focus",
+            "definition",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_1485(
         cls, values: typing.Dict[str, typing.Any]
@@ -236,7 +265,7 @@ class MessageHeader(domainresource.DomainResource):
 
 
 class MessageHeaderDestination(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -300,6 +329,22 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
         enum_reference_types=["Device"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``MessageHeaderDestination`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "name",
+            "target",
+            "endpoint",
+            "receiver",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2635(
         cls, values: typing.Dict[str, typing.Any]
@@ -361,7 +406,7 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
 
 
 class MessageHeaderResponse(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -417,6 +462,14 @@ class MessageHeaderResponse(backboneelement.BackboneElement):
     identifier__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_identifier", title="Extension field for ``identifier``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``MessageHeaderResponse`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "identifier", "code", "details"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2319(
@@ -479,7 +532,7 @@ class MessageHeaderResponse(backboneelement.BackboneElement):
 
 
 class MessageHeaderSource(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -552,6 +605,23 @@ class MessageHeaderSource(backboneelement.BackboneElement):
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``MessageHeaderSource`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "name",
+            "software",
+            "version",
+            "contact",
+            "endpoint",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2097(

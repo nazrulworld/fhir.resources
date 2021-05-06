@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class CoverageEligibilityResponse(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -243,6 +243,39 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
         None, alias="_status", title="Extension field for ``status``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``CoverageEligibilityResponse`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "purpose",
+            "patient",
+            "servicedDate",
+            "servicedPeriod",
+            "created",
+            "requestor",
+            "request",
+            "outcome",
+            "disposition",
+            "insurer",
+            "insurance",
+            "preAuthRef",
+            "form",
+            "error",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2970(
         cls, values: typing.Dict[str, typing.Any]
@@ -347,7 +380,7 @@ class CoverageEligibilityResponse(domainresource.DomainResource):
 
 
 class CoverageEligibilityResponseError(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -369,9 +402,17 @@ class CoverageEligibilityResponseError(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``CoverageEligibilityResponseError`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "code"]
+
 
 class CoverageEligibilityResponseInsurance(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -435,9 +476,25 @@ class CoverageEligibilityResponseInsurance(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``CoverageEligibilityResponseInsurance`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "coverage",
+            "inforce",
+            "benefitPeriod",
+            "item",
+        ]
+
 
 class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -628,9 +685,35 @@ class CoverageEligibilityResponseInsuranceItem(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``CoverageEligibilityResponseInsuranceItem`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "category",
+            "productOrService",
+            "modifier",
+            "provider",
+            "excluded",
+            "name",
+            "description",
+            "network",
+            "unit",
+            "term",
+            "benefit",
+            "authorizationRequired",
+            "authorizationSupporting",
+            "authorizationUrl",
+        ]
+
 
 class CoverageEligibilityResponseInsuranceItemBenefit(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -734,6 +817,25 @@ class CoverageEligibilityResponseInsuranceItemBenefit(backboneelement.BackboneEl
     usedUnsignedInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_usedUnsignedInt", title="Extension field for ``usedUnsignedInt``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``CoverageEligibilityResponseInsuranceItemBenefit`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "type",
+            "allowedUnsignedInt",
+            "allowedString",
+            "allowedMoney",
+            "usedUnsignedInt",
+            "usedString",
+            "usedMoney",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_5021(

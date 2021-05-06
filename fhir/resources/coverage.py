@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Coverage(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -248,6 +248,40 @@ class Coverage(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``Coverage`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "type",
+            "policyHolder",
+            "subscriber",
+            "subscriberId",
+            "beneficiary",
+            "dependent",
+            "relationship",
+            "period",
+            "payor",
+            "class",
+            "order",
+            "network",
+            "costToBeneficiary",
+            "subrogation",
+            "contract",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_980(
         cls, values: typing.Dict[str, typing.Any]
@@ -309,7 +343,7 @@ class Coverage(domainresource.DomainResource):
 
 
 class CoverageClass(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -358,6 +392,14 @@ class CoverageClass(backboneelement.BackboneElement):
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``CoverageClass`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "type", "value", "name"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1496(
@@ -420,7 +462,7 @@ class CoverageClass(backboneelement.BackboneElement):
 
 
 class CoverageCostToBeneficiary(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -477,6 +519,22 @@ class CoverageCostToBeneficiary(backboneelement.BackboneElement):
         one_of_many_required=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``CoverageCostToBeneficiary`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "type",
+            "valueQuantity",
+            "valueMoney",
+            "exception",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_2725(
         cls, values: typing.Dict[str, typing.Any]
@@ -517,7 +575,7 @@ class CoverageCostToBeneficiary(backboneelement.BackboneElement):
 
 
 class CoverageCostToBeneficiaryException(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -545,3 +603,11 @@ class CoverageCostToBeneficiaryException(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``CoverageCostToBeneficiaryException`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "type", "period"]

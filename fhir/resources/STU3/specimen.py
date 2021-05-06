@@ -14,7 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Specimen(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -167,9 +167,38 @@ class Specimen(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``Specimen`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "accessionIdentifier",
+            "status",
+            "type",
+            "subject",
+            "receivedTime",
+            "parent",
+            "request",
+            "collection",
+            "processing",
+            "container",
+            "note",
+        ]
+
 
 class SpecimenCollection(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -262,6 +291,24 @@ class SpecimenCollection(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``SpecimenCollection`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "collector",
+            "collectedDateTime",
+            "collectedPeriod",
+            "quantity",
+            "method",
+            "bodySite",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_2049(
         cls, values: typing.Dict[str, typing.Any]
@@ -302,7 +349,7 @@ class SpecimenCollection(backboneelement.BackboneElement):
 
 
 class SpecimenContainer(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -403,6 +450,25 @@ class SpecimenContainer(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``SpecimenContainer`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "description",
+            "type",
+            "capacity",
+            "specimenQuantity",
+            "additiveCodeableConcept",
+            "additiveReference",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_1948(
         cls, values: typing.Dict[str, typing.Any]
@@ -445,7 +511,7 @@ class SpecimenContainer(backboneelement.BackboneElement):
 
 
 class SpecimenProcessing(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -521,6 +587,23 @@ class SpecimenProcessing(backboneelement.BackboneElement):
         one_of_many="time",
         one_of_many_required=False,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``SpecimenProcessing`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "description",
+            "procedure",
+            "additive",
+            "timeDateTime",
+            "timePeriod",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_2059(

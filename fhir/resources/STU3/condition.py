@@ -14,7 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Condition(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -407,6 +407,48 @@ class Condition(domainresource.DomainResource):
         title="Extension field for ``verificationStatus``.",
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``Condition`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "clinicalStatus",
+            "verificationStatus",
+            "category",
+            "severity",
+            "code",
+            "bodySite",
+            "subject",
+            "context",
+            "onsetDateTime",
+            "onsetAge",
+            "onsetPeriod",
+            "onsetRange",
+            "onsetString",
+            "abatementDateTime",
+            "abatementAge",
+            "abatementBoolean",
+            "abatementPeriod",
+            "abatementRange",
+            "abatementString",
+            "assertedDate",
+            "asserter",
+            "stage",
+            "evidence",
+            "note",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_1112(
         cls, values: typing.Dict[str, typing.Any]
@@ -463,7 +505,7 @@ class Condition(domainresource.DomainResource):
 
 
 class ConditionEvidence(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -496,9 +538,17 @@ class ConditionEvidence(backboneelement.BackboneElement):
         enum_reference_types=["Resource"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ConditionEvidence`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "code", "detail"]
+
 
 class ConditionStage(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -534,3 +584,11 @@ class ConditionStage(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ConditionStage`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "summary", "assessment"]

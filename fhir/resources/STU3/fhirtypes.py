@@ -1,15 +1,15 @@
 # _*_ coding: utf-8 _*_
 import datetime
+import decimal
 import re
 from email.utils import formataddr, parseaddr
 from typing import TYPE_CHECKING, Any, Dict, Optional, Pattern, Union
 from uuid import UUID
 
 from pydantic import AnyUrl
-from pydantic.errors import DateError, DateTimeError, TimeError
+from pydantic.errors import ConfigError, DateError, DateTimeError, TimeError
 from pydantic.main import load_str_bytes
 from pydantic.networks import validate_email
-from pydantic.errors import ConfigError
 from pydantic.types import (
     ConstrainedBytes,
     ConstrainedDecimal,
@@ -89,6 +89,12 @@ else:
         def __get_validators__(cls) -> "CallableGenerator":
             yield bool_validator
 
+        @classmethod
+        def to_string(cls, value):
+            """ """
+            assert isinstance(value, bool)
+            return value is True and "true" or "false"
+
 
 class String(ConstrainedStr, Primitive):
     """A sequence of Unicode characters
@@ -98,17 +104,31 @@ class String(ConstrainedStr, Primitive):
     Leading and Trailing whitespace is allowed, but SHOULD be removed when using
     the XML format. Note: This means that a string that consists only of whitespace
     could be trimmed to nothing, which would be treated as an invalid element value.
-    Therefore strings SHOULD always contain non-whitespace conten"""
+    Therefore strings SHOULD always contain non-whitespace content"""
 
     regex = re.compile(r"[ \r\n\t\S]+")
     __visit_name__ = "string"
+
+    @classmethod
+    def to_string(cls, value):
+        """ """
+        if isinstance(value, bytes):
+            value = value.decode()
+        assert isinstance(value, str)
+        return value
 
 
 class Base64Binary(ConstrainedBytes, Primitive):
     """A stream of bytes, base64 encoded (RFC 4648 )"""
 
-    regex = re.compile(r"(\s*([0-9a-zA-Z+=]){4}\s*)+")
+    regex = re.compile(r"^(\s*([0-9a-zA-Z+=]){4}\s*)+$")
     __visit_name__ = "base64Binary"
+
+    @classmethod
+    def to_string(cls, value):
+        """ """
+        assert isinstance(value, bytes)
+        return value.decode()
 
 
 class Code(ConstrainedStr, Primitive):
@@ -120,6 +140,14 @@ class Code(ConstrainedStr, Primitive):
 
     regex = re.compile(r"^[^\s]+(\s[^\s]+)*$")
     __visit_name__ = "code"
+
+    @classmethod
+    def to_string(cls, value):
+        """ """
+        if isinstance(value, bytes):
+            value = value.decode()
+        assert isinstance(value, str)
+        return value
 
 
 class Id(ConstrainedStr, Primitive):
@@ -171,6 +199,14 @@ class Id(ConstrainedStr, Primitive):
         if regex is not None:
             cls.regex = regex
 
+    @classmethod
+    def to_string(cls, value):
+        """ """
+        if isinstance(value, bytes):
+            value = value.decode()
+        assert isinstance(value, str)
+        return value
+
 
 class Decimal(ConstrainedDecimal, Primitive):
     """Rational numbers that have a decimal representation.
@@ -178,6 +214,12 @@ class Decimal(ConstrainedDecimal, Primitive):
 
     regex = re.compile(r"^-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]+)?$")
     __visit_name__ = "decimal"
+
+    @classmethod
+    def to_string(cls, value):
+        """ """
+        assert isinstance(value, decimal.Decimal)
+        return str(float(value))
 
 
 class Integer(ConstrainedInt, Primitive):
@@ -187,6 +229,12 @@ class Integer(ConstrainedInt, Primitive):
     regex = re.compile(r"^[0]|[-+]?[1-9][0-9]*$")
     __visit_name__ = "integer"
 
+    @classmethod
+    def to_string(cls, value):
+        """ """
+        assert isinstance(value, int)
+        return str(value)
+
 
 class UnsignedInt(ConstrainedInt, Primitive):
     """Any non-negative integer in the range 0..2,147,483,647"""
@@ -195,6 +243,12 @@ class UnsignedInt(ConstrainedInt, Primitive):
     __visit_name__ = "unsignedInt"
     ge = 0
 
+    @classmethod
+    def to_string(cls, value):
+        """ """
+        assert isinstance(value, int)
+        return str(value)
+
 
 class PositiveInt(ConstrainedInt, Primitive):
     """Any positive integer in the range 1..2,147,483,647"""
@@ -202,6 +256,12 @@ class PositiveInt(ConstrainedInt, Primitive):
     regex = re.compile(r"^\+?[1-9][0-9]*$")
     __visit_name__ = "positiveInt"
     gt = 0
+
+    @classmethod
+    def to_string(cls, value):
+        """ """
+        assert isinstance(value, int)
+        return str(value)
 
 
 class Uri(ConstrainedStr, Primitive):
@@ -218,12 +278,28 @@ class Uri(ConstrainedStr, Primitive):
     __visit_name__ = "uri"
     regex = re.compile(r"\S*")
 
+    @classmethod
+    def to_string(cls, value):
+        """ """
+        if isinstance(value, bytes):
+            value = value.decode()
+        assert isinstance(value, str)
+        return value
+
 
 class Oid(ConstrainedStr, Primitive):
     """An OID represented as a URI (RFC 3001 ); e.g. urn:oid:1.2.3.4.5"""
 
     __visit_name__ = "oid"
     regex = re.compile(r"^urn:oid:[0-2](\.(0|[1-9][0-9]*))+$")
+
+    @classmethod
+    def to_string(cls, value):
+        """ """
+        if isinstance(value, bytes):
+            value = value.decode()
+        assert isinstance(value, str)
+        return value
 
 
 class Uuid(UUID, Primitive):
@@ -232,6 +308,14 @@ class Uuid(UUID, Primitive):
 
     __visit_name__ = "uuid"
     regex = None
+
+    @classmethod
+    def to_string(cls, value):
+        """ """
+        if isinstance(value, UUID):
+            value = f"urn:uuid:{value}"
+        assert isinstance(value, str)
+        return value
 
 
 class Canonical(Uri):
@@ -244,6 +328,14 @@ class Canonical(Uri):
     #fragment references"""
 
     __visit_name__ = "canonical"
+
+    @classmethod
+    def to_string(cls, value):
+        """ """
+        if isinstance(value, bytes):
+            value = value.decode()
+        assert isinstance(value, str)
+        return value
 
 
 class Url(AnyUrl, Primitive):
@@ -276,6 +368,14 @@ class Url(AnyUrl, Primitive):
 
         return AnyUrl.validate(value, field, config)
 
+    @classmethod
+    def to_string(cls, value):
+        """ """
+        if isinstance(value, bytes):
+            value = value.decode()
+        assert isinstance(value, str)
+        return value
+
 
 class Markdown(ConstrainedStr, Primitive):
     """A FHIR string (see above) that may contain markdown syntax for optional processing
@@ -284,9 +384,25 @@ class Markdown(ConstrainedStr, Primitive):
     __visit_name__ = "markdown"
     regex = re.compile(r"\s*(\S|\s)*")
 
+    @classmethod
+    def to_string(cls, value):
+        """ """
+        if isinstance(value, bytes):
+            value = value.decode()
+        assert isinstance(value, str)
+        return value
+
 
 class Xhtml(ConstrainedStr, Primitive):
     __visit_name__ = "xhtml"
+
+    @classmethod
+    def to_string(cls, value):
+        """ """
+        if isinstance(value, bytes):
+            value = value.decode()
+        assert isinstance(value, str)
+        return value
 
 
 class Date(datetime.date, Primitive):
@@ -327,6 +443,14 @@ class Date(datetime.date, Primitive):
             # we keep original
             return value
         return parse_date(value)
+
+    @classmethod
+    def to_string(cls, value):
+        """ """
+        if isinstance(value, (datetime.date, datetime.time, datetime.datetime)):
+            value = value.isoformat()
+        assert isinstance(value, str)
+        return value
 
 
 class DateTime(datetime.datetime, Primitive):
@@ -383,6 +507,14 @@ class DateTime(datetime.datetime, Primitive):
 
         return parse_datetime(value)
 
+    @classmethod
+    def to_string(cls, value):
+        """ """
+        if isinstance(value, (datetime.date, datetime.time, datetime.datetime)):
+            value = value.isoformat()
+        assert isinstance(value, str)
+        return value
+
 
 class Instant(datetime.datetime, Primitive):
     """An instant in time in the format YYYY-MM-DDThh:mm:ss.sss+zz:zz
@@ -417,6 +549,14 @@ class Instant(datetime.datetime, Primitive):
                 raise DateTimeError()
         return parse_datetime(value)
 
+    @classmethod
+    def to_string(cls, value):
+        """ """
+        if isinstance(value, (datetime.date, datetime.time, datetime.datetime)):
+            value = value.isoformat()
+        assert isinstance(value, str)
+        return value
+
 
 class Time(datetime.time, Primitive):
     """A time during the day, in the format hh:mm:ss.
@@ -442,6 +582,14 @@ class Time(datetime.time, Primitive):
                 raise TimeError()
 
         return parse_time(value)
+
+    @classmethod
+    def to_string(cls, value):
+        """ """
+        if isinstance(value, (datetime.date, datetime.time, datetime.datetime)):
+            value = value.isoformat()
+        assert isinstance(value, str)
+        return value
 
 
 def get_fhir_type_class(model_name):

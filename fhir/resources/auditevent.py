@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class AuditEvent(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -152,6 +152,34 @@ class AuditEvent(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``AuditEvent`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "type",
+            "subtype",
+            "action",
+            "period",
+            "recorded",
+            "outcome",
+            "outcomeDesc",
+            "purposeOfEvent",
+            "agent",
+            "source",
+            "entity",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1198(
         cls, values: typing.Dict[str, typing.Any]
@@ -213,7 +241,7 @@ class AuditEvent(domainresource.DomainResource):
 
 
 class AuditEventAgent(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -375,6 +403,29 @@ class AuditEventAgent(backboneelement.BackboneElement):
         ],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``AuditEventAgent`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "type",
+            "role",
+            "who",
+            "altId",
+            "name",
+            "requestor",
+            "location",
+            "policy",
+            "media",
+            "network",
+            "purposeOfUse",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1693(
         cls, values: typing.Dict[str, typing.Any]
@@ -436,7 +487,7 @@ class AuditEventAgent(backboneelement.BackboneElement):
 
 
 class AuditEventAgentNetwork(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -477,9 +528,17 @@ class AuditEventAgentNetwork(backboneelement.BackboneElement):
         None, alias="_type", title="Extension field for ``type``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``AuditEventAgentNetwork`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "address", "type"]
+
 
 class AuditEventEntity(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -590,9 +649,30 @@ class AuditEventEntity(backboneelement.BackboneElement):
         enum_reference_types=["Resource"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``AuditEventEntity`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "what",
+            "type",
+            "role",
+            "lifecycle",
+            "securityLabel",
+            "name",
+            "description",
+            "query",
+            "detail",
+        ]
+
 
 class AuditEventEntityDetail(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -646,6 +726,21 @@ class AuditEventEntityDetail(backboneelement.BackboneElement):
     valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueString", title="Extension field for ``valueString``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``AuditEventEntityDetail`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "type",
+            "valueString",
+            "valueBase64Binary",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2422(
@@ -746,7 +841,7 @@ class AuditEventEntityDetail(backboneelement.BackboneElement):
 
 
 class AuditEventSource(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -798,3 +893,11 @@ class AuditEventSource(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``AuditEventSource`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "site", "observer", "type"]

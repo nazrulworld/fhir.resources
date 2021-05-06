@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ClaimResponse(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -362,6 +362,50 @@ class ClaimResponse(domainresource.DomainResource):
         None, alias="_use", title="Extension field for ``use``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ClaimResponse`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "type",
+            "subType",
+            "use",
+            "patient",
+            "created",
+            "insurer",
+            "requestor",
+            "request",
+            "outcome",
+            "disposition",
+            "preAuthRef",
+            "preAuthPeriod",
+            "payeeType",
+            "item",
+            "addItem",
+            "adjudication",
+            "total",
+            "payment",
+            "fundsReserve",
+            "formCode",
+            "form",
+            "processNote",
+            "communicationRequest",
+            "insurance",
+            "error",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1501(
         cls, values: typing.Dict[str, typing.Any]
@@ -428,7 +472,7 @@ class ClaimResponse(domainresource.DomainResource):
 
 
 class ClaimResponseAddItem(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -713,6 +757,39 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ClaimResponseAddItem`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "itemSequence",
+            "detailSequence",
+            "subdetailSequence",
+            "provider",
+            "productOrService",
+            "modifier",
+            "programCode",
+            "servicedDate",
+            "servicedPeriod",
+            "locationCodeableConcept",
+            "locationAddress",
+            "locationReference",
+            "quantity",
+            "unitPrice",
+            "factor",
+            "net",
+            "bodySite",
+            "subSite",
+            "noteNumber",
+            "adjudication",
+            "detail",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_2173(
         cls, values: typing.Dict[str, typing.Any]
@@ -760,7 +837,7 @@ class ClaimResponseAddItem(backboneelement.BackboneElement):
 
 
 class ClaimResponseAddItemDetail(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -879,9 +956,30 @@ class ClaimResponseAddItemDetail(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ClaimResponseAddItemDetail`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "productOrService",
+            "modifier",
+            "quantity",
+            "unitPrice",
+            "factor",
+            "net",
+            "noteNumber",
+            "adjudication",
+            "subDetail",
+        ]
+
 
 class ClaimResponseAddItemDetailSubDetail(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -991,9 +1089,29 @@ class ClaimResponseAddItemDetailSubDetail(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ClaimResponseAddItemDetailSubDetail`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "productOrService",
+            "modifier",
+            "quantity",
+            "unitPrice",
+            "factor",
+            "net",
+            "noteNumber",
+            "adjudication",
+        ]
+
 
 class ClaimResponseError(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1065,9 +1183,25 @@ class ClaimResponseError(backboneelement.BackboneElement):
         title="Extension field for ``subDetailSequence``.",
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ClaimResponseError`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "itemSequence",
+            "detailSequence",
+            "subDetailSequence",
+            "code",
+        ]
+
 
 class ClaimResponseInsurance(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1157,6 +1291,23 @@ class ClaimResponseInsurance(backboneelement.BackboneElement):
         None, alias="_sequence", title="Extension field for ``sequence``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ClaimResponseInsurance`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "sequence",
+            "focal",
+            "coverage",
+            "businessArrangement",
+            "claimResponse",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2437(
         cls, values: typing.Dict[str, typing.Any]
@@ -1218,7 +1369,7 @@ class ClaimResponseInsurance(backboneelement.BackboneElement):
 
 
 class ClaimResponseItem(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1282,6 +1433,22 @@ class ClaimResponseItem(backboneelement.BackboneElement):
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_noteNumber", title="Extension field for ``noteNumber``.")
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ClaimResponseItem`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "itemSequence",
+            "noteNumber",
+            "adjudication",
+            "detail",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1908(
         cls, values: typing.Dict[str, typing.Any]
@@ -1343,7 +1510,7 @@ class ClaimResponseItem(backboneelement.BackboneElement):
 
 
 class ClaimResponseItemAdjudication(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1407,9 +1574,25 @@ class ClaimResponseItemAdjudication(backboneelement.BackboneElement):
         None, alias="_value", title="Extension field for ``value``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ClaimResponseItemAdjudication`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "category",
+            "reason",
+            "amount",
+            "value",
+        ]
+
 
 class ClaimResponseItemDetail(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1465,6 +1648,22 @@ class ClaimResponseItemDetail(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ClaimResponseItemDetail`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "detailSequence",
+            "noteNumber",
+            "adjudication",
+            "subDetail",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2502(
@@ -1527,7 +1726,7 @@ class ClaimResponseItemDetail(backboneelement.BackboneElement):
 
 
 class ClaimResponseItemDetailSubDetail(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1575,6 +1774,21 @@ class ClaimResponseItemDetailSubDetail(backboneelement.BackboneElement):
         alias="_subDetailSequence",
         title="Extension field for ``subDetailSequence``.",
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ClaimResponseItemDetailSubDetail`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "subDetailSequence",
+            "noteNumber",
+            "adjudication",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3395(
@@ -1637,7 +1851,7 @@ class ClaimResponseItemDetailSubDetail(backboneelement.BackboneElement):
 
 
 class ClaimResponsePayment(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1713,9 +1927,27 @@ class ClaimResponsePayment(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ClaimResponsePayment`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "type",
+            "adjustment",
+            "adjustmentReason",
+            "date",
+            "amount",
+            "identifier",
+        ]
+
 
 class ClaimResponseProcessNote(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1774,6 +2006,22 @@ class ClaimResponseProcessNote(backboneelement.BackboneElement):
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ClaimResponseProcessNote`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "number",
+            "type",
+            "text",
+            "language",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2642(
@@ -1836,7 +2084,7 @@ class ClaimResponseProcessNote(backboneelement.BackboneElement):
 
 
 class ClaimResponseTotal(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1870,3 +2118,11 @@ class ClaimResponseTotal(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ClaimResponseTotal`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "category", "amount"]

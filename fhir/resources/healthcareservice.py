@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class HealthcareService(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -330,9 +330,50 @@ class HealthcareService(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``HealthcareService`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "active",
+            "providedBy",
+            "category",
+            "type",
+            "specialty",
+            "location",
+            "name",
+            "comment",
+            "extraDetails",
+            "photo",
+            "telecom",
+            "coverageArea",
+            "serviceProvisionCode",
+            "eligibility",
+            "program",
+            "characteristic",
+            "communication",
+            "referralMethod",
+            "appointmentRequired",
+            "availableTime",
+            "notAvailable",
+            "availabilityExceptions",
+            "endpoint",
+        ]
+
 
 class HealthcareServiceAvailableTime(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -409,9 +450,25 @@ class HealthcareServiceAvailableTime(backboneelement.BackboneElement):
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_daysOfWeek", title="Extension field for ``daysOfWeek``.")
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``HealthcareServiceAvailableTime`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "daysOfWeek",
+            "allDay",
+            "availableStartTime",
+            "availableEndTime",
+        ]
+
 
 class HealthcareServiceEligibility(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -443,9 +500,17 @@ class HealthcareServiceEligibility(backboneelement.BackboneElement):
         None, alias="_comment", title="Extension field for ``comment``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``HealthcareServiceEligibility`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "code", "comment"]
+
 
 class HealthcareServiceNotAvailable(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -483,6 +548,14 @@ class HealthcareServiceNotAvailable(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``HealthcareServiceNotAvailable`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "description", "during"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3105(

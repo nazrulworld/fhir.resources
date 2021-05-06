@@ -14,7 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class AllergyIntolerance(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -331,6 +331,43 @@ class AllergyIntolerance(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``AllergyIntolerance`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "clinicalStatus",
+            "verificationStatus",
+            "type",
+            "category",
+            "criticality",
+            "code",
+            "patient",
+            "encounter",
+            "onsetDateTime",
+            "onsetAge",
+            "onsetPeriod",
+            "onsetRange",
+            "onsetString",
+            "recordedDate",
+            "recorder",
+            "asserter",
+            "lastOccurrence",
+            "note",
+            "reaction",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_2026(
         cls, values: typing.Dict[str, typing.Any]
@@ -379,7 +416,7 @@ class AllergyIntolerance(domainresource.DomainResource):
 
 
 class AllergyIntoleranceReaction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -494,3 +531,22 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``AllergyIntoleranceReaction`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "substance",
+            "manifestation",
+            "description",
+            "onset",
+            "severity",
+            "exposureRoute",
+            "note",
+        ]

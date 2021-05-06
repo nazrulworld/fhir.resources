@@ -28,7 +28,7 @@ cache:
     - eggs
 install:
   - pip install -U pip
-  - pip install -e .[test,orjson]
+  - pip install -e .[test]
   - pip install codecov
   - sleep 1
 script:
@@ -36,6 +36,7 @@ script:
   - make lint
   - mypy fhir/resources/
   - black --check --verbose --exclude 'fhir/resources/DSTU2/tests/' fhir/resources/
+  - pytest tests
   - pytest fhir/resources/DSTU2/tests
   - pytest fhir/resources/STU3/tests
   - pytest -s --cov=fhir/resources/tests -s --tb=native -v --cov-report term-missing --cov-append fhir/resources/tests

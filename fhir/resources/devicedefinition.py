@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class DeviceDefinition(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -298,6 +298,46 @@ class DeviceDefinition(domainresource.DomainResource):
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_version", title="Extension field for ``version``.")
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``DeviceDefinition`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "udiDeviceIdentifier",
+            "manufacturerString",
+            "manufacturerReference",
+            "deviceName",
+            "modelNumber",
+            "type",
+            "specialization",
+            "version",
+            "safety",
+            "shelfLifeStorage",
+            "physicalCharacteristics",
+            "languageCode",
+            "capability",
+            "property",
+            "owner",
+            "contact",
+            "url",
+            "onlineInformation",
+            "note",
+            "quantity",
+            "parentDevice",
+            "material",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_1803(
         cls, values: typing.Dict[str, typing.Any]
@@ -340,7 +380,7 @@ class DeviceDefinition(domainresource.DomainResource):
 
 
 class DeviceDefinitionCapability(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -367,9 +407,17 @@ class DeviceDefinitionCapability(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``DeviceDefinitionCapability`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "type", "description"]
+
 
 class DeviceDefinitionDeviceName(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -419,6 +467,14 @@ class DeviceDefinitionDeviceName(backboneelement.BackboneElement):
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``DeviceDefinitionDeviceName`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "name", "type"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2771(
@@ -481,7 +537,7 @@ class DeviceDefinitionDeviceName(backboneelement.BackboneElement):
 
 
 class DeviceDefinitionMaterial(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -525,9 +581,24 @@ class DeviceDefinitionMaterial(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``DeviceDefinitionMaterial`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "substance",
+            "alternate",
+            "allergenicIndicator",
+        ]
+
 
 class DeviceDefinitionProperty(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -567,9 +638,24 @@ class DeviceDefinitionProperty(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``DeviceDefinitionProperty`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "type",
+            "valueQuantity",
+            "valueCode",
+        ]
+
 
 class DeviceDefinitionSpecialization(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -603,6 +689,14 @@ class DeviceDefinitionSpecialization(backboneelement.BackboneElement):
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``DeviceDefinitionSpecialization`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "systemType", "version"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3274(
@@ -665,7 +759,7 @@ class DeviceDefinitionSpecialization(backboneelement.BackboneElement):
 
 
 class DeviceDefinitionUdiDeviceIdentifier(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -722,6 +816,21 @@ class DeviceDefinitionUdiDeviceIdentifier(backboneelement.BackboneElement):
     jurisdiction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_jurisdiction", title="Extension field for ``jurisdiction``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``DeviceDefinitionUdiDeviceIdentifier`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "deviceIdentifier",
+            "issuer",
+            "jurisdiction",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3716(

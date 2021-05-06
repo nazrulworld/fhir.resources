@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class ProcessRequest(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -217,9 +217,41 @@ class ProcessRequest(domainresource.DomainResource):
         enum_reference_types=["Organization"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ProcessRequest`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "action",
+            "target",
+            "created",
+            "provider",
+            "organization",
+            "request",
+            "response",
+            "nullify",
+            "reference",
+            "item",
+            "include",
+            "exclude",
+            "period",
+        ]
+
 
 class ProcessRequestItem(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -242,6 +274,14 @@ class ProcessRequestItem(backboneelement.BackboneElement):
     sequenceLinkId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sequenceLinkId", title="Extension field for ``sequenceLinkId``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ProcessRequestItem`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "sequenceLinkId"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2068(

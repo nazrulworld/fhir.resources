@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Patient(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -264,6 +264,42 @@ class Patient(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``Patient`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "active",
+            "name",
+            "telecom",
+            "gender",
+            "birthDate",
+            "deceasedBoolean",
+            "deceasedDateTime",
+            "address",
+            "maritalStatus",
+            "multipleBirthBoolean",
+            "multipleBirthInteger",
+            "photo",
+            "contact",
+            "animal",
+            "communication",
+            "generalPractitioner",
+            "managingOrganization",
+            "link",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_921(
         cls, values: typing.Dict[str, typing.Any]
@@ -307,7 +343,7 @@ class Patient(domainresource.DomainResource):
 
 
 class PatientAnimal(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -347,9 +383,24 @@ class PatientAnimal(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``PatientAnimal`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "species",
+            "breed",
+            "genderStatus",
+        ]
+
 
 class PatientCommunication(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -393,9 +444,17 @@ class PatientCommunication(backboneelement.BackboneElement):
         None, alias="_preferred", title="Extension field for ``preferred``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``PatientCommunication`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "language", "preferred"]
+
 
 class PatientContact(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -490,9 +549,28 @@ class PatientContact(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``PatientContact`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "relationship",
+            "name",
+            "telecom",
+            "address",
+            "gender",
+            "organization",
+            "period",
+        ]
+
 
 class PatientLink(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -531,6 +609,14 @@ class PatientLink(backboneelement.BackboneElement):
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``PatientLink`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "other", "type"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1310(

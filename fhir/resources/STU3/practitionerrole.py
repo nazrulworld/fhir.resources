@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class PractitionerRole(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -197,9 +197,40 @@ class PractitionerRole(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``PractitionerRole`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "active",
+            "period",
+            "practitioner",
+            "organization",
+            "code",
+            "specialty",
+            "location",
+            "healthcareService",
+            "telecom",
+            "availableTime",
+            "notAvailable",
+            "availabilityExceptions",
+            "endpoint",
+        ]
+
 
 class PractitionerRoleAvailableTime(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -276,9 +307,25 @@ class PractitionerRoleAvailableTime(backboneelement.BackboneElement):
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_daysOfWeek", title="Extension field for ``daysOfWeek``.")
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``PractitionerRoleAvailableTime`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "daysOfWeek",
+            "allDay",
+            "availableStartTime",
+            "availableEndTime",
+        ]
+
 
 class PractitionerRoleNotAvailable(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -316,6 +363,14 @@ class PractitionerRoleNotAvailable(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``PractitionerRoleNotAvailable`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "description", "during"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3053(

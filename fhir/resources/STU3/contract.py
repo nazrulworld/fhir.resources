@@ -14,7 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Contract(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -353,6 +353,49 @@ class Contract(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``Contract`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "issued",
+            "applies",
+            "subject",
+            "topic",
+            "authority",
+            "domain",
+            "type",
+            "subType",
+            "action",
+            "actionReason",
+            "decisionType",
+            "contentDerivative",
+            "securityLabel",
+            "agent",
+            "signer",
+            "valuedItem",
+            "term",
+            "bindingAttachment",
+            "bindingReference",
+            "bindingReference",
+            "bindingReference",
+            "friendly",
+            "legal",
+            "rule",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_1013(
         cls, values: typing.Dict[str, typing.Any]
@@ -393,7 +436,7 @@ class Contract(domainresource.DomainResource):
 
 
 class ContractAgent(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -434,9 +477,17 @@ class ContractAgent(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ContractAgent`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "actor", "role"]
+
 
 class ContractFriendly(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -490,6 +541,22 @@ class ContractFriendly(backboneelement.BackboneElement):
         ],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ContractFriendly`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "contentAttachment",
+            "contentReference",
+            "contentReference",
+            "contentReference",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_1847(
         cls, values: typing.Dict[str, typing.Any]
@@ -530,7 +597,7 @@ class ContractFriendly(backboneelement.BackboneElement):
 
 
 class ContractLegal(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -569,6 +636,22 @@ class ContractLegal(backboneelement.BackboneElement):
             "QuestionnaireResponse",
         ],
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ContractLegal`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "contentAttachment",
+            "contentReference",
+            "contentReference",
+            "contentReference",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_1490(
@@ -610,7 +693,7 @@ class ContractLegal(backboneelement.BackboneElement):
 
 
 class ContractRule(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -652,6 +735,20 @@ class ContractRule(backboneelement.BackboneElement):
         enum_reference_types=["DocumentReference"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ContractRule`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "contentAttachment",
+            "contentReference",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_1406(
         cls, values: typing.Dict[str, typing.Any]
@@ -692,7 +789,7 @@ class ContractRule(backboneelement.BackboneElement):
 
 
 class ContractSigner(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -739,9 +836,17 @@ class ContractSigner(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ContractSigner`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "type", "party", "signature"]
+
 
 class ContractTerm(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -896,9 +1001,34 @@ class ContractTerm(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ContractTerm`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "issued",
+            "applies",
+            "type",
+            "subType",
+            "topic",
+            "action",
+            "actionReason",
+            "securityLabel",
+            "agent",
+            "text",
+            "valuedItem",
+            "group",
+        ]
+
 
 class ContractTermAgent(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -942,9 +1072,17 @@ class ContractTermAgent(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ContractTermAgent`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "actor", "role"]
+
 
 class ContractTermValuedItem(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1076,6 +1214,27 @@ class ContractTermValuedItem(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ContractTermValuedItem`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "entityCodeableConcept",
+            "entityReference",
+            "identifier",
+            "effectiveTime",
+            "quantity",
+            "unitPrice",
+            "factor",
+            "points",
+            "net",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_2422(
         cls, values: typing.Dict[str, typing.Any]
@@ -1116,7 +1275,7 @@ class ContractTermValuedItem(backboneelement.BackboneElement):
 
 
 class ContractValuedItem(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1245,6 +1404,27 @@ class ContractValuedItem(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ContractValuedItem`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "entityCodeableConcept",
+            "entityReference",
+            "identifier",
+            "effectiveTime",
+            "quantity",
+            "unitPrice",
+            "factor",
+            "points",
+            "net",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_2014(

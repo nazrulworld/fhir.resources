@@ -6,10 +6,9 @@ from typing import TYPE_CHECKING, Any, Dict, Optional, Pattern, Union
 from uuid import UUID
 
 from pydantic import AnyUrl
-from pydantic.errors import DateError, DateTimeError, TimeError
+from pydantic.errors import ConfigError, DateError, DateTimeError, TimeError
 from pydantic.main import load_str_bytes
 from pydantic.networks import validate_email
-from pydantic.errors import ConfigError
 from pydantic.types import (
     ConstrainedBytes,
     ConstrainedDecimal,
@@ -57,7 +56,7 @@ FHIR_PRIMITIVES = [
 class Primitive:
     """FHIR Primitive Data Type Base Class"""
 
-    __fhir_release__: str = "R4"
+    __fhir_release__: str = "DSTU2"
     __visit_name__: Optional[str] = None
     regex: Optional[Pattern[str]] = None
 

@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Provenance(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -155,6 +155,33 @@ class Provenance(domainresource.DomainResource):
         enum_reference_types=["Resource"],
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``Provenance`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "target",
+            "period",
+            "recorded",
+            "policy",
+            "location",
+            "reason",
+            "activity",
+            "agent",
+            "entity",
+            "signature",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1222(
         cls, values: typing.Dict[str, typing.Any]
@@ -216,7 +243,7 @@ class Provenance(domainresource.DomainResource):
 
 
 class ProvenanceAgent(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -318,6 +345,32 @@ class ProvenanceAgent(backboneelement.BackboneElement):
         None, alias="_whoUri", title="Extension field for ``whoUri``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ProvenanceAgent`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "role",
+            "whoUri",
+            "whoReference",
+            "whoReference",
+            "whoReference",
+            "whoReference",
+            "whoReference",
+            "onBehalfOfUri",
+            "onBehalfOfReference",
+            "onBehalfOfReference",
+            "onBehalfOfReference",
+            "onBehalfOfReference",
+            "onBehalfOfReference",
+            "relatedAgentType",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_1732(
         cls, values: typing.Dict[str, typing.Any]
@@ -361,7 +414,7 @@ class ProvenanceAgent(backboneelement.BackboneElement):
 
 
 class ProvenanceEntity(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -449,6 +502,23 @@ class ProvenanceEntity(backboneelement.BackboneElement):
     whatUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_whatUri", title="Extension field for ``whatUri``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ProvenanceEntity`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "role",
+            "whatUri",
+            "whatReference",
+            "whatIdentifier",
+            "agent",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1879(

@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class PlanDefinition(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -502,6 +502,55 @@ class PlanDefinition(domainresource.DomainResource):
         None, alias="_version", title="Extension field for ``version``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``PlanDefinition`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "url",
+            "identifier",
+            "version",
+            "name",
+            "title",
+            "subtitle",
+            "type",
+            "status",
+            "experimental",
+            "subjectCodeableConcept",
+            "subjectReference",
+            "date",
+            "publisher",
+            "contact",
+            "description",
+            "useContext",
+            "jurisdiction",
+            "purpose",
+            "usage",
+            "copyright",
+            "approvalDate",
+            "lastReviewDate",
+            "effectivePeriod",
+            "topic",
+            "author",
+            "editor",
+            "reviewer",
+            "endorser",
+            "relatedArtifact",
+            "library",
+            "goal",
+            "action",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1618(
         cls, values: typing.Dict[str, typing.Any]
@@ -601,7 +650,7 @@ class PlanDefinition(domainresource.DomainResource):
 
 
 class PlanDefinitionAction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1095,6 +1144,52 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``PlanDefinitionAction`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "prefix",
+            "title",
+            "description",
+            "textEquivalent",
+            "priority",
+            "code",
+            "reason",
+            "documentation",
+            "goalId",
+            "subjectCodeableConcept",
+            "subjectReference",
+            "trigger",
+            "condition",
+            "input",
+            "output",
+            "relatedAction",
+            "timingDateTime",
+            "timingAge",
+            "timingPeriod",
+            "timingDuration",
+            "timingRange",
+            "timingTiming",
+            "participant",
+            "type",
+            "groupingBehavior",
+            "selectionBehavior",
+            "requiredBehavior",
+            "precheckBehavior",
+            "cardinalityBehavior",
+            "definitionCanonical",
+            "definitionUri",
+            "transform",
+            "dynamicValue",
+            "action",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_2224(
         cls, values: typing.Dict[str, typing.Any]
@@ -1146,7 +1241,7 @@ class PlanDefinitionAction(backboneelement.BackboneElement):
 
 
 class PlanDefinitionActionCondition(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1184,6 +1279,14 @@ class PlanDefinitionActionCondition(backboneelement.BackboneElement):
     kind__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_kind", title="Extension field for ``kind``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``PlanDefinitionActionCondition`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "kind", "expression"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3159(
@@ -1246,7 +1349,7 @@ class PlanDefinitionActionCondition(backboneelement.BackboneElement):
 
 
 class PlanDefinitionActionDynamicValue(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1291,9 +1394,17 @@ class PlanDefinitionActionDynamicValue(backboneelement.BackboneElement):
         None, alias="_path", title="Extension field for ``path``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``PlanDefinitionActionDynamicValue`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "path", "expression"]
+
 
 class PlanDefinitionActionParticipant(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1330,6 +1441,14 @@ class PlanDefinitionActionParticipant(backboneelement.BackboneElement):
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``PlanDefinitionActionParticipant`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "type", "role"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3381(
@@ -1392,7 +1511,7 @@ class PlanDefinitionActionParticipant(backboneelement.BackboneElement):
 
 
 class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1474,6 +1593,22 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
     relationship__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_relationship", title="Extension field for ``relationship``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``PlanDefinitionActionRelatedAction`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "actionId",
+            "relationship",
+            "offsetDuration",
+            "offsetRange",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3535(
@@ -1577,7 +1712,7 @@ class PlanDefinitionActionRelatedAction(backboneelement.BackboneElement):
 
 
 class PlanDefinitionGoal(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1668,9 +1803,28 @@ class PlanDefinitionGoal(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``PlanDefinitionGoal`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "category",
+            "description",
+            "priority",
+            "start",
+            "addresses",
+            "documentation",
+            "target",
+        ]
+
 
 class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -1760,6 +1914,23 @@ class PlanDefinitionGoalTarget(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``PlanDefinitionGoalTarget`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "measure",
+            "detailQuantity",
+            "detailRange",
+            "detailCodeableConcept",
+            "due",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_2626(

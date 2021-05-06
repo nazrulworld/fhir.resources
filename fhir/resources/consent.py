@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class Consent(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -233,6 +233,37 @@ class Consent(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``Consent`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "scope",
+            "category",
+            "patient",
+            "dateTime",
+            "performer",
+            "organization",
+            "sourceAttachment",
+            "sourceReference",
+            "policy",
+            "policyRule",
+            "verification",
+            "provision",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_913(
         cls, values: typing.Dict[str, typing.Any]
@@ -332,7 +363,7 @@ class Consent(domainresource.DomainResource):
 
 
 class ConsentPolicy(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -376,9 +407,17 @@ class ConsentPolicy(backboneelement.BackboneElement):
         None, alias="_uri", title="Extension field for ``uri``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ConsentPolicy`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "authority", "uri"]
+
 
 class ConsentProvision(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -516,9 +555,32 @@ class ConsentProvision(backboneelement.BackboneElement):
         None, alias="_type", title="Extension field for ``type``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ConsentProvision`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "type",
+            "period",
+            "actor",
+            "action",
+            "securityLabel",
+            "purpose",
+            "class",
+            "code",
+            "dataPeriod",
+            "data",
+            "provision",
+        ]
+
 
 class ConsentProvisionActor(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -565,9 +627,17 @@ class ConsentProvisionActor(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ConsentProvisionActor`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "role", "reference"]
+
 
 class ConsentProvisionData(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -609,6 +679,14 @@ class ConsentProvisionData(backboneelement.BackboneElement):
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Resource"],
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ConsentProvisionData`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "meaning", "reference"]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2241(
@@ -671,7 +749,7 @@ class ConsentProvisionData(backboneelement.BackboneElement):
 
 
 class ConsentVerification(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -722,6 +800,21 @@ class ConsentVerification(backboneelement.BackboneElement):
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Patient", "RelatedPerson"],
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``ConsentVerification`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "verified",
+            "verifiedWith",
+            "verificationDate",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2158(

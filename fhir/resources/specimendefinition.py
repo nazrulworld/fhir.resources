@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class SpecimenDefinition(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -86,9 +86,32 @@ class SpecimenDefinition(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``SpecimenDefinition`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "typeCollected",
+            "patientPreparation",
+            "timeAspect",
+            "collection",
+            "typeTested",
+        ]
+
 
 class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -195,6 +218,26 @@ class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``SpecimenDefinitionTypeTested`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "isDerived",
+            "type",
+            "preference",
+            "container",
+            "requirement",
+            "retentionTime",
+            "rejectionCriterion",
+            "handling",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3071(
         cls, values: typing.Dict[str, typing.Any]
@@ -256,7 +299,7 @@ class SpecimenDefinitionTypeTested(backboneelement.BackboneElement):
 
 
 class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -371,6 +414,27 @@ class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``SpecimenDefinitionTypeTestedContainer`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "material",
+            "type",
+            "cap",
+            "description",
+            "capacity",
+            "minimumVolumeQuantity",
+            "minimumVolumeString",
+            "additive",
+            "preparation",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_4016(
         cls, values: typing.Dict[str, typing.Any]
@@ -413,7 +477,7 @@ class SpecimenDefinitionTypeTestedContainer(backboneelement.BackboneElement):
 
 
 class SpecimenDefinitionTypeTestedContainerAdditive(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -455,6 +519,20 @@ class SpecimenDefinitionTypeTestedContainerAdditive(backboneelement.BackboneElem
         # note: Listed Resource Type(s) should be allowed as Reference.
         enum_reference_types=["Substance"],
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``SpecimenDefinitionTypeTestedContainerAdditive`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "additiveCodeableConcept",
+            "additiveReference",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_4813(
@@ -498,7 +576,7 @@ class SpecimenDefinitionTypeTestedContainerAdditive(backboneelement.BackboneElem
 
 
 class SpecimenDefinitionTypeTestedHandling(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -557,3 +635,19 @@ class SpecimenDefinitionTypeTestedHandling(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``SpecimenDefinitionTypeTestedHandling`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "temperatureQualifier",
+            "temperatureRange",
+            "maxDuration",
+            "instruction",
+        ]

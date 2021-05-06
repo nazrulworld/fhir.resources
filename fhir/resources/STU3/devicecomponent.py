@@ -14,7 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class DeviceComponent(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -186,9 +186,36 @@ class DeviceComponent(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``DeviceComponent`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "type",
+            "lastSystemChange",
+            "source",
+            "parent",
+            "operationalStatus",
+            "parameterGroup",
+            "measurementPrinciple",
+            "productionSpecification",
+            "languageCode",
+        ]
+
 
 class DeviceComponentProductionSpecification(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -239,3 +266,18 @@ class DeviceComponentProductionSpecification(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``DeviceComponentProductionSpecification`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "specType",
+            "componentId",
+            "productionSpec",
+        ]

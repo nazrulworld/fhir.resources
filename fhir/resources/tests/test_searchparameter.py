@@ -162,7 +162,9 @@ def impl_searchparameter_4(inst):
         "g/fhir/StructureDefinition/questionnaireresponse-"
         "isSubject')).answer.value.ofType(Reference)"
     )
-
+    assert inst.id == (
+        "questionnaireresponse-extensions-QuestionnaireResponse-item-s..."
+    )
     assert inst.name == "item-subject"
     assert inst.status == "draft"
     assert inst.type == "reference"

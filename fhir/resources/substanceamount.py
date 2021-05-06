@@ -14,7 +14,7 @@ from . import backboneelement, element, fhirtypes
 
 
 class SubstanceAmount(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -121,6 +121,24 @@ class SubstanceAmount(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``SubstanceAmount`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "amountQuantity",
+            "amountRange",
+            "amountString",
+            "amountType",
+            "amountText",
+            "referenceRange",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_1763(
         cls, values: typing.Dict[str, typing.Any]
@@ -163,7 +181,7 @@ class SubstanceAmount(backboneelement.BackboneElement):
 
 
 class SubstanceAmountReferenceRange(element.Element):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -189,3 +207,11 @@ class SubstanceAmountReferenceRange(element.Element):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``SubstanceAmountReferenceRange`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "lowLimit", "highLimit"]

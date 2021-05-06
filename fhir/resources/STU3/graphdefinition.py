@@ -16,7 +16,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class GraphDefinition(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -254,6 +254,38 @@ class GraphDefinition(domainresource.DomainResource):
         None, alias="_version", title="Extension field for ``version``."
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``GraphDefinition`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "url",
+            "version",
+            "name",
+            "status",
+            "experimental",
+            "date",
+            "publisher",
+            "contact",
+            "description",
+            "useContext",
+            "jurisdiction",
+            "purpose",
+            "start",
+            "profile",
+            "link",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1712(
         cls, values: typing.Dict[str, typing.Any]
@@ -319,7 +351,7 @@ class GraphDefinition(domainresource.DomainResource):
 
 
 class GraphDefinitionLink(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -401,6 +433,24 @@ class GraphDefinitionLink(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``GraphDefinitionLink`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "path",
+            "sliceName",
+            "min",
+            "max",
+            "description",
+            "target",
+        ]
+
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2107(
         cls, values: typing.Dict[str, typing.Any]
@@ -462,7 +512,7 @@ class GraphDefinitionLink(backboneelement.BackboneElement):
 
 
 class GraphDefinitionLinkTarget(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -515,6 +565,22 @@ class GraphDefinitionLinkTarget(backboneelement.BackboneElement):
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``GraphDefinitionLinkTarget`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "type",
+            "profile",
+            "compartment",
+            "link",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2731(
@@ -577,7 +643,7 @@ class GraphDefinitionLinkTarget(backboneelement.BackboneElement):
 
 
 class GraphDefinitionLinkTargetCompartment(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -638,6 +704,22 @@ class GraphDefinitionLinkTargetCompartment(backboneelement.BackboneElement):
     rule__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_rule", title="Extension field for ``rule``."
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``GraphDefinitionLinkTargetCompartment`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "code",
+            "rule",
+            "expression",
+            "description",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3893(

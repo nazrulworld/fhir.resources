@@ -14,7 +14,7 @@ from . import backboneelement, domainresource, fhirtypes
 
 
 class SubstanceSourceMaterial(domainresource.DomainResource):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -219,9 +219,39 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``SubstanceSourceMaterial`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "sourceMaterialClass",
+            "sourceMaterialType",
+            "sourceMaterialState",
+            "organismId",
+            "organismName",
+            "parentSubstanceId",
+            "parentSubstanceName",
+            "countryOfOrigin",
+            "geographicalLocation",
+            "developmentStage",
+            "fractionDescription",
+            "organism",
+            "partDescription",
+        ]
+
 
 class SubstanceSourceMaterialFractionDescription(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -266,9 +296,17 @@ class SubstanceSourceMaterialFractionDescription(backboneelement.BackboneElement
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``SubstanceSourceMaterialFractionDescription`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "fraction", "materialType"]
+
 
 class SubstanceSourceMaterialOrganism(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -370,9 +408,29 @@ class SubstanceSourceMaterialOrganism(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``SubstanceSourceMaterialOrganism`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "family",
+            "genus",
+            "species",
+            "intraspecificType",
+            "intraspecificDescription",
+            "author",
+            "hybrid",
+            "organismGeneral",
+        ]
+
 
 class SubstanceSourceMaterialOrganismAuthor(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -415,9 +473,23 @@ class SubstanceSourceMaterialOrganismAuthor(backboneelement.BackboneElement):
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``SubstanceSourceMaterialOrganismAuthor`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "authorType",
+            "authorDescription",
+        ]
+
 
 class SubstanceSourceMaterialOrganismHybrid(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -507,9 +579,26 @@ class SubstanceSourceMaterialOrganismHybrid(backboneelement.BackboneElement):
         title="Extension field for ``paternalOrganismName``.",
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``SubstanceSourceMaterialOrganismHybrid`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "maternalOrganismId",
+            "maternalOrganismName",
+            "paternalOrganismId",
+            "paternalOrganismName",
+            "hybridType",
+        ]
+
 
 class SubstanceSourceMaterialOrganismOrganismGeneral(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -554,9 +643,25 @@ class SubstanceSourceMaterialOrganismOrganismGeneral(backboneelement.BackboneEle
         element_property=True,
     )
 
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``SubstanceSourceMaterialOrganismOrganismGeneral`` according specification,
+        with preserving original sequence order.
+        """
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "kingdom",
+            "phylum",
+            "class",
+            "order",
+        ]
+
 
 class SubstanceSourceMaterialPartDescription(backboneelement.BackboneElement):
-    """Disclaimer: Any field name ends with ``__ext`` does't part of
+    """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
 
@@ -586,3 +691,11 @@ class SubstanceSourceMaterialPartDescription(backboneelement.BackboneElement):
         # if property is element of this resource.
         element_property=True,
     )
+
+    @classmethod
+    def elements_sequence(cls):
+        """returning all elements names from
+        ``SubstanceSourceMaterialPartDescription`` according specification,
+        with preserving original sequence order.
+        """
+        return ["id", "extension", "modifierExtension", "part", "partLocation"]

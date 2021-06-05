@@ -5,7 +5,9 @@ History
 6.2.0b3 (unreleased)
 --------------------
 
-- Nothing changed yet.
+- Issue `#74 When are Falsy values evaluated as None? <https://github.com/nazrulworld/fhir.resources/issues/74>`_
+
+- Fixes some issues for DSTU2 https://github.com/nazrulworld/fhir.resources/pull/71 & https://github.com/nazrulworld/fhir.resources/pull/70 [ItayGoren]
 
 
 6.2.0b2 (2021-04-05)

@@ -433,7 +433,8 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
                 exclude_none=exclude_none,
                 exclude_comments=exclude_comments,
             )
-            yield dict_key, v
+            if v is not None or (exclude_none is False and v is None):
+                yield dict_key, v
             # looking for comments or primitive extension for primitive data type
             if (
                 getattr(field.type_, "is_primitive", lambda: False)()
@@ -449,7 +450,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
                         exclude_none=exclude_none,
                         exclude_comments=exclude_comments,
                     )
-                    if len(ext_val) > 0:
+                    if ext_val is not None and len(ext_val) > 0:
                         yield dict_key_, ext_val
         # looking for comments
         comments = self.__dict__.get(FHIR_COMMENTS_FIELD_NAME, None)
@@ -470,10 +471,10 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
             )
             if "__root__" in v_dict:
                 return v_dict["__root__"]
-            return v_dict
+            value = v_dict
 
-        if isinstance(v, dict):
-            return {
+        elif isinstance(v, dict):
+            value = {
                 k_: cls._fhir_get_value(
                     v_,
                     by_alias=by_alias,
@@ -483,7 +484,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
                 for k_, v_ in v.items()
             }
         elif sequence_like(v):
-            return v.__class__(
+            value = v.__class__(
                 cls._fhir_get_value(
                     v_,
                     by_alias=by_alias,
@@ -494,10 +495,17 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
             )
 
         elif isinstance(v, Enum) and getattr(cls.Config, "use_enum_values", False):
-            return v.value
+            value = v.value
 
         else:
-            return v
+            value = v
+        if (
+            (sequence_like(value) or isinstance(value, dict))
+            and exclude_none is True
+            and len(value) == 0
+        ):
+            return None
+        return value
 
     class Config:
         json_loads = json_loads

@@ -5,6 +5,12 @@ History
 6.2.0b3 (unreleased)
 --------------------
 
+New Feature
+
+- String type class is now configurable, it is possible to allow empty str value.
+
+Bugfixes
+
 - Issue `#74 When are Falsy values evaluated as None? <https://github.com/nazrulworld/fhir.resources/issues/74>`_
 
 - Fixes some issues for DSTU2 https://github.com/nazrulworld/fhir.resources/pull/71 & https://github.com/nazrulworld/fhir.resources/pull/70 [ItayGoren]

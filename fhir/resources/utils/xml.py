@@ -510,9 +510,7 @@ class Node:
     @staticmethod
     def clean_tag(element: etree._Element) -> str:
         """Clean tag name from namespace"""
-        # we are taking root NS
-        ns = element.nsmap[None]
-        return element.tag.replace("{" + ns + "}", "")
+        return QName(element.tag).localname
 
     @classmethod
     def from_element(

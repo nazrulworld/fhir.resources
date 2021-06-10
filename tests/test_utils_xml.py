@@ -82,7 +82,8 @@ def test_element_to_node():
     schema = lxml.etree.XMLSchema(file=str(FHIR_XSD_DIR / "patient.xsd"))
     xmlparser = lxml.etree.XMLParser(schema=schema)
     element = lxml.etree.fromstring(
-        (STATIC_PATH / "Patient-with-ext.xml").read_bytes(), parser=xmlparser,
+        (STATIC_PATH / "Patient-with-ext.xml").read_bytes(),
+        parser=xmlparser,
     )
     patient_node = utils.xml.Node.from_element(element)
     try:

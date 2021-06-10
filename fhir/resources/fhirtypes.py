@@ -107,7 +107,31 @@ class String(ConstrainedStr, Primitive):
     Therefore strings SHOULD always contain non-whitespace content"""
 
     regex = re.compile(r"[ \r\n\t\S]+")
+    allow_empty_str = False
     __visit_name__ = "string"
+
+    @classmethod
+    def configure_empty_str(cls, allow: bool = None):
+        """About empty string
+        1. https://bit.ly/3woGnFG
+        2. https://github.com/nazrulworld/fhir.resources/issues/65#issuecomment-856693256
+        There are a lot of valid discussion about accept empty string as String value but
+        it is cleared for us that according to FHIR Specification, empty string is not valid!
+        However in real use cases, we see empty string is coming other (when the task is related
+        to query data from other system)
+
+        It is in your hand now, if you would like to allow empty string!
+        by default empty string is not accepted.
+        """
+        if isinstance(allow, bool):
+            cls.allow_empty_str = allow
+
+    @classmethod
+    def validate(cls, value: Union[str]) -> Union[str]:
+        if cls.allow_empty_str is True and value in ("", ""):
+            return value
+        # do the default things
+        return ConstrainedStr.validate.__func__(cls, value)  # type: ignore
 
     @classmethod
     def to_string(cls, value):

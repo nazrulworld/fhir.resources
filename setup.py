@@ -3,7 +3,7 @@
 
 """The setup script."""
 
-from setuptools import setup, find_packages
+from setuptools import setup, find_namespace_packages
 
 with open("README.rst") as readme_file:
     readme = readme_file.read()
@@ -73,7 +73,17 @@ setup(
     keywords="fhir, resources, python, hl7, health IT, healthcare",
     name="fhir.resources",
     namespace_packages=["fhir"],
-    packages=find_packages(exclude=["ez_setup"]),
+    packages=find_namespace_packages(
+        include=["fhir*"],
+        exclude=[
+            "ez_setup",
+            "tests",
+            "fhir-parser*",
+            "fhir.resources.tests",
+            "fhir.resources.STU3.tests",
+            "fhir.resources.DSTU2.tests",
+        ],
+    ),
     package_data={"fhir.resources": ["py.typed"]},
     setup_requires=setup_requirements,
     test_suite="tests",

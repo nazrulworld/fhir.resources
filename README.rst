@@ -9,8 +9,8 @@ FHIR® Resources (R4, STU3, DSTU2)
         :target: https://pypi.python.org/pypi/fhir.resources
         :alt: Supported Python Versions
 
-.. image:: https://img.shields.io/travis/nazrulworld/fhir.resources.svg
-        :target: https://travis-ci.org/nazrulworld/fhir.resources
+.. image:: https://img.shields.io/travis/com/nazrulworld/fhir.resources.svg
+        :target: https://travis-ci.com/nazrulworld/fhir.resources
 
 .. image:: https://ci.appveyor.com/api/projects/status/0qu5vyue1jwxb4km?svg=true
         :target: https://ci.appveyor.com/project/nazrulworld/fhir-resources
@@ -666,6 +666,19 @@ Example-3 Import from YAML file::
 
 - We are using https://pyyaml.org/ PyYAML library, for serialization/deserialization but if we find more faster library, we could use that. you are welcome to provide us your suggestion.
 - YAML based comments is not supported yet, instead json comments syntax is used! Of course this comment feature is in our todo list.
+
+
+Allow Empty String
+~~~~~~~~~~~~~~~~~~
+
+Although this is not good practice to allow empty string value against FHIR primitive data type ``String``. But
+we in real life scenario, is it unavoidable sometimes.
+
+Examples::
+    Place this code inside your __init__.py module or any place, just to make sure that this fragment of codes is runtime executed.
+
+    >>> from fhir.resources.fhirtypes import String
+    >>> String.configure_empty_str(allow=True)
 
 
 Migration (from later than ``6.X.X``)

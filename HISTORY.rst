@@ -11,6 +11,7 @@ New Feature
 
 Bugfixes
 
+- Issue #75 Remove "tests" from installed package.
 - Issue `#74 When are Falsy values evaluated as None? <https://github.com/nazrulworld/fhir.resources/issues/74>`_
 
 - Fixes some issues for DSTU2 https://github.com/nazrulworld/fhir.resources/pull/71 & https://github.com/nazrulworld/fhir.resources/pull/70 [ItayGoren]

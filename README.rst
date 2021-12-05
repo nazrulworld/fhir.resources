@@ -10,7 +10,7 @@ FHIR® Resources (R4, STU3, DSTU2)
         :alt: Supported Python Versions
 
 .. image:: https://img.shields.io/travis/com/nazrulworld/fhir.resources.svg
-        :target: https://travis-ci.com/nazrulworld/fhir.resources
+        :target: https://app.travis-ci.com/github/nazrulworld/fhir.resources
 
 .. image:: https://ci.appveyor.com/api/projects/status/0qu5vyue1jwxb4km?svg=true
         :target: https://ci.appveyor.com/project/nazrulworld/fhir-resources

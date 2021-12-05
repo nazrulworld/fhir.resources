@@ -120,9 +120,9 @@ Usages
     >>> pat = Patient.parse_obj(json_obj)
     >>> isinstance(pat.name[0], HumanName)
     True
-    >>> org.birthDate == date(year=1985, month=6, day=12)
+    >>> pat.birthDate == date(year=1985, month=6, day=12)
     True
-    >>> org.active is True
+    >>> pat.active is True
     True
 
 

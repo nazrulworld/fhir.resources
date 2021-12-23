@@ -5,7 +5,9 @@ History
 6.2.0b4 (unreleased)
 --------------------
 
-- Nothing changed yet.
+Bugfixes
+
+- Issue #88 fixes typo mistake. Resource name const  was wrong. [nazrulworld]
 
 
 6.2.0b3 (2021-06-26)

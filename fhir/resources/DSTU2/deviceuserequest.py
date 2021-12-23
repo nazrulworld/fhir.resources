@@ -21,7 +21,7 @@ class DeviceUseRequest(domainresource.DomainResource):
     walker.
     """
 
-    resource_type = Field("DeviceRequest", const=True)
+    resource_type = Field("DeviceUseRequest", const=True)
 
     bodySiteCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,

@@ -24,7 +24,7 @@ class Subscription(domainresource.DomainResource):
     another system is able to take an appropriate action.
     """
 
-    resource_type = Field("Substance", const=True)
+    resource_type = Field("Subscription", const=True)
 
     criteria: fhirtypes.String = Field(
         None,

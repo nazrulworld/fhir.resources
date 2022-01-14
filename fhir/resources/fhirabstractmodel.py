@@ -403,7 +403,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         by_alias: bool = True,
         exclude_none: bool = True,
         exclude_comments: bool = False,
-        **pydantic_extra
+        **pydantic_extra,
     ) -> OrderedDict:
         """important!
         there is no impact on ``pydantic_extra`` we keep it as backward compatibility.

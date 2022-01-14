@@ -5,7 +5,7 @@ History
 6.2.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Issues `#89 <https://github.com/nazrulworld/fhir.resources/issues/89>`_ & `#90 <https://github.com/nazrulworld/fhir.resources/issues/90>`_ possible breaking for ``FHIRAbstractModel.dict`` (if pydnatic specific extra argument has been provided) is neutralized.[nazrulworld]
 
 
 6.2.0 (2022-01-01)

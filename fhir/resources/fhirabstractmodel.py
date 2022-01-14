@@ -403,7 +403,20 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         by_alias: bool = True,
         exclude_none: bool = True,
         exclude_comments: bool = False,
+        **pydantic_extra
     ) -> OrderedDict:
+        """important!
+        there is no impact on ``pydantic_extra`` we keep it as backward compatibility.
+        @see issues https://github.com/nazrulworld/fhir.resources/issues/90
+        & https://github.com/nazrulworld/fhir.resources/issues/89
+        """
+        if len(pydantic_extra) > 0:
+            logger.warning(
+                f"{self.__class__.__name__}.dict method accepts only"
+                "´by_alias´, ´exclude_none´, ´exclude_comments` as parameters"
+                " since version v6.2.0, any extra parameter is simply ignored. "
+                "You should not provide any extra argument."
+            )
         return OrderedDict(
             self._fhir_iter(
                 by_alias=by_alias,

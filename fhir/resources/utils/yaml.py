@@ -1,4 +1,5 @@
 # _*_ coding: utf-8 _*_
+import datetime
 from collections import OrderedDict
 from decimal import Decimal
 
@@ -25,11 +26,17 @@ class Representer(SafeRepresenter):
         data = float(data)
         return self.represent_float(data)
 
+    def represent_datetime(self, data):
+        """Issue #96, we are using T separator for ISO format"""
+        value = data.isoformat(sep="T")
+        return self.represent_scalar("tag:yaml.org,2002:timestamp", value)
+
 
 BaseRepresenter.add_representer(Decimal, Representer.represent_decimal)
 # important! we don't want explicit tag of OrderedDict
 # (tag:yaml.org,2002:python/object/apply:collections.OrderedDict)
 BaseRepresenter.add_representer(OrderedDict, SafeRepresenter.represent_dict)
+BaseRepresenter.add_representer(datetime.datetime, Representer.represent_datetime)
 
 
 def yaml_loads(stream, loader=None):

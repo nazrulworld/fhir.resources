@@ -2,6 +2,7 @@
 from pydantic import ValidationError
 
 from fhir.resources.patient import Patient
+from fhir.resources.period import Period
 
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 
@@ -14,7 +15,7 @@ def test_issue_74():
 
 
 def test_issue_64():
-    """Allow empty string """
+    """Allow empty string"""
     try:
         Patient(
             active=True,
@@ -57,3 +58,20 @@ def test_issue_64():
         # should not raise validation error
         assert 1 == 2, "Code should not come here, we allow empty string"
     String.configure_empty_str(allow=False)
+
+
+def test_issue_96():
+    """YAML datetime serialization"""
+    from datetime import datetime
+
+    pd = Period(
+        end=datetime(2022, 3, 29, 11, 48, 37, 482248),
+        start=datetime(2022, 3, 28, 23, 48, 37, 481725),
+    )
+    assert "2022-03-28T23:48:37.481725" in pd.yaml()
+    try:
+        "2022-03-28T23:48:37.481725" in Period.parse_raw(
+            pd.yaml(), content_type="text/yaml"
+        ).json()
+    except ValidationError:
+        raise AssertionError("Code should not come here")

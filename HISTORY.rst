@@ -2,7 +2,7 @@
 History
 =======
 
-6.2.2 (unreleased)
+6.2.2 (2022-04-02)
 ------------------
 
 - Issue `#96 <https://github.com/nazrulworld/fhir.resources/issues/96>`_, fixes datetime's ISO format representation for YAML. [nazrulworld]

@@ -5,7 +5,7 @@ History
 6.2.2 (unreleased)
 ------------------
 
-- Issue `#96 https://github.com/nazrulworld/fhir.resources/issues/96`_, fixes datetime's ISO format representation for YAML. [nazrulworld]
+- Issue `#96 <https://github.com/nazrulworld/fhir.resources/issues/96>`_, fixes datetime's ISO format representation for YAML. [nazrulworld]
 
 
 6.2.1 (2022-01-14)

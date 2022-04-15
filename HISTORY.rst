@@ -2,10 +2,13 @@
 History
 =======
 
-6.2.3 (unreleased)
+6.3.0 (unreleased)
 ------------------
 
-- Nothing changed yet.
+Bugfixes
+
+- Fix, primitive extension was not included if primitive field value is null. [nazrulworld]
+
 
 
 6.2.2 (2022-04-02)

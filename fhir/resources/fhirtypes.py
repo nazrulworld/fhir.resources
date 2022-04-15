@@ -128,7 +128,7 @@ class String(ConstrainedStr, Primitive):
 
     @classmethod
     def validate(cls, value: Union[str]) -> Union[str]:
-        if cls.allow_empty_str is True and value in ("", ""):
+        if cls.allow_empty_str is True and value in ("", ''):
             return value
         # do the default things
         return ConstrainedStr.validate.__func__(cls, value)  # type: ignore
@@ -138,6 +138,8 @@ class String(ConstrainedStr, Primitive):
         """ """
         if isinstance(value, bytes):
             value = value.decode()
+        elif value is None:
+            value = ""
         assert isinstance(value, str)
         return value
 

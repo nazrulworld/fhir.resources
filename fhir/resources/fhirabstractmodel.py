@@ -17,7 +17,13 @@ from pydantic.fields import ModelField
 from pydantic.parse import Protocol
 from pydantic.utils import ROOT_KEY, sequence_like
 
-from fhir.resources.utils import load_file, load_str_bytes, xml_dumps, yaml_dumps
+from fhir.resources.utils import (
+    is_primitive_type,
+    load_file,
+    load_str_bytes,
+    xml_dumps,
+    yaml_dumps,
+)
 
 try:
     import orjson
@@ -435,24 +441,24 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         alias_maps = self.get_alias_mapping()
         for prop_name in self.elements_sequence():
             field_key = alias_maps[prop_name]
-            v = self.__dict__.get(field_key, None)
-            if v is None and exclude_none is True:
-                continue
+
             field = self.__fields__[field_key]
+            is_primitive = is_primitive_type(field)
+            v = self.__dict__.get(field_key, None)
             dict_key = by_alias and field.alias or field_key
-            v = self._fhir_get_value(
-                v,
-                by_alias=by_alias,
-                exclude_none=exclude_none,
-                exclude_comments=exclude_comments,
-            )
+            if v is not None:
+                v = self._fhir_get_value(
+                    v,
+                    by_alias=by_alias,
+                    exclude_none=exclude_none,
+                    exclude_comments=exclude_comments,
+                )
+
             if v is not None or (exclude_none is False and v is None):
                 yield dict_key, v
+
             # looking for comments or primitive extension for primitive data type
-            if (
-                getattr(field.type_, "is_primitive", lambda: False)()
-                or field.type_ is bool
-            ):
+            if is_primitive:
                 ext_key = f"{field_key}__ext"
                 ext_val = self.__dict__.get(ext_key, None)
                 if ext_val is not None:

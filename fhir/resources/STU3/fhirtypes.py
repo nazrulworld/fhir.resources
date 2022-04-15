@@ -138,6 +138,8 @@ class String(ConstrainedStr, Primitive):
         """ """
         if isinstance(value, bytes):
             value = value.decode()
+        elif value is None:
+            value = ""
         assert isinstance(value, str)
         return value
 

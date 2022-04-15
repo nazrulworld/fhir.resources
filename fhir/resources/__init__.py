@@ -6,7 +6,7 @@ from .fhirabstractmodel import FHIRAbstractModel
 from .fhirtypesvalidators import get_fhir_model_class
 
 __fhir_version__ = "4.0.1"
-__version__ = "6.2.1"
+__version__ = "6.3.0"
 
 
 def construct_fhir_element(

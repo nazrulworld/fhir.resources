@@ -9,6 +9,8 @@ from lxml import etree  # type: ignore
 from lxml.etree import QName  # type: ignore
 from pydantic.fields import SHAPE_LIST, SHAPE_SINGLETON
 
+from .common import get_fhir_type_name, is_primitive_type, normalize_fhir_type_class
+
 if typing.TYPE_CHECKING:
     from fhir.resources.fhirabstractmodel import FHIRAbstractModel
     from pydantic.fields import ModelField
@@ -44,43 +46,21 @@ def xml_represent(type_, val):
         return val
     if type_ is bool:
         return val is True and "true" or "false"
-    else:
-        return type_.to_string(val)
-
-
-def is_primitive_type(type_):
-    """ """
-    if getattr(type_, "is_primitive", lambda: False)() is False:
-        if type_ is bool:
-            return True
-        return False
-    return True
-
-
-def get_fhir_type_name(type_):
-    """ """
     try:
-        return type_.fhir_type_name()
+        return type_.to_string(val)
     except AttributeError:
-        if type_ is bool:
-            return "boolean"
-        type_str = str(type_)
-        if (
-            type_str.startswith("typing.Union[")
-            and "fhirtypes.FHIRPrimitiveExtensionType" in type_str
-        ):
-            return "FHIRPrimitiveExtension"
-        raise
+        klass = normalize_fhir_type_class(type_)
+        return klass.to_string(val)
 
 
-def get_fhir_model_class(type_, check=True):
+def get_fhir_model_class(field, check=True):
     """ """
     if check:
-        if is_primitive_type(type_):
+        if is_primitive_type(field):
             raise ValueError
 
-    mod = get_fhir_root_module(type_.__fhir_release__)
-    return mod.get_fhir_model_class(get_fhir_type_name(type_))
+    mod = get_fhir_root_module(field.type_.__fhir_release__)
+    return mod.get_fhir_model_class(get_fhir_type_name(field.type_))
 
 
 def get_fhir_root_module(fhir_release: str):
@@ -593,7 +573,7 @@ class Node:
         """"""
         child = Node.create(field.alias)
         field_type = field.type_
-        if is_primitive_type(field_type):
+        if is_primitive_type(field):
             if isinstance(value, list):
                 if ext and not isinstance(ext, list):
                     raise NotImplementedError
@@ -720,7 +700,7 @@ class Node:
                     continue
 
             value_ext, value_ext_field = None, None
-            if is_primitive_type(field_.type_):
+            if is_primitive_type(field_):
                 ext_key = f"{field_.name}__ext"
                 value_ext = value.__dict__.get(ext_key, None)
                 if value_ext:
@@ -750,7 +730,7 @@ class Node:
             field = model.__class__.__fields__[alias_maps[prop_name]]
             value = model.__dict__.get(field.name, None)
             value_ext, value_ext_field = None, None
-            if is_primitive_type(field.type_):
+            if is_primitive_type(field):
                 ext_key = f"{field.name}__ext"
                 value_ext = model.__dict__.get(ext_key, None)
                 if value_ext:
@@ -887,8 +867,8 @@ class Node:
         obj: typing.Union["Node", etree._Element], field: "ModelField"
     ) -> typing.Any:
         """ """
-        if is_primitive_type(field.type_):
-            if field.type_.__name__ == "Xhtml":
+        if is_primitive_type(field):
+            if get_fhir_type_name(field.type_) == "xhtml":
                 if isinstance(obj, etree._Element):
                     value = etree.tostring(obj)
                 else:
@@ -899,7 +879,7 @@ class Node:
             value = obj.value
 
         else:
-            klass_ = get_fhir_model_class(field.type_, False)
+            klass_ = get_fhir_model_class(field, False)
             # field.shape
             value = obj.to_fhir(klass_)
 
@@ -959,7 +939,7 @@ class Node:
                 params[field_name] = value
 
             if (
-                is_primitive_type(field.type_)
+                is_primitive_type(field)
                 and isinstance(child, Node)
                 and (len(child.children) > 0 or len(child.comments) > 0)
             ):
@@ -969,7 +949,7 @@ class Node:
                     fhir_release
                 ).get_fhir_model_class("FHIRPrimitiveExtension")
                 ext_klass = get_fhir_model_class(
-                    primitive_ext_klass.__fields__["extension"].type_, False
+                    primitive_ext_klass.__fields__["extension"], False
                 )
                 primitive_ext_params = {}
                 if len(child.comments) > 0:

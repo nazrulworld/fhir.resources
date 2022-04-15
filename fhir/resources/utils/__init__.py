@@ -8,6 +8,8 @@ from pydantic.parse import load_file as default_load_file
 from pydantic.parse import load_str_bytes as default_load_str_bytes
 from pydantic.types import StrBytes
 
+from .common import is_primitive_type
+
 try:
     from .yaml import yaml_dumps, yaml_loads
 except ImportError:

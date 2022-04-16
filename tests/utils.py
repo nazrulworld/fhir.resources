@@ -4,8 +4,8 @@ import sys
 from http import client
 from typing import Union
 
-from fhir.resources.fhirabstractmodel import FHIRAbstractModel
-from fhir.resources.utils import xml
+from fhir.resources.core.fhirabstractmodel import FHIRAbstractModel
+from fhir.resources.core.utils import xml
 
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 

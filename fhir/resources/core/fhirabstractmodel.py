@@ -17,13 +17,7 @@ from pydantic.fields import ModelField
 from pydantic.parse import Protocol
 from pydantic.utils import ROOT_KEY, sequence_like
 
-from fhir.resources.utils import (
-    is_primitive_type,
-    load_file,
-    load_str_bytes,
-    xml_dumps,
-    yaml_dumps,
-)
+from .utils import is_primitive_type, load_file, load_str_bytes, xml_dumps, yaml_dumps
 
 try:
     import orjson
@@ -323,7 +317,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         }
         params.update(dumps_kwargs)
 
-        xml_string = xml_dumps(self, **params)  # type: ignore
+        xml_string = xml_dumps(self, **params)
         if return_bytes is False:
             xml_string = xml_string.decode()
 

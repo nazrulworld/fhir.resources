@@ -2,7 +2,8 @@
 from pathlib import Path
 from typing import Any, Dict, Union
 
-from .fhirabstractmodel import FHIRAbstractModel
+from fhir.resources.core.fhirabstractmodel import FHIRAbstractModel
+
 from .fhirtypesvalidators import get_fhir_model_class
 
 __fhir_version__ = "4.0.1"

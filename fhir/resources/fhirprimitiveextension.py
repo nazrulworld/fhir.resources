@@ -10,7 +10,9 @@ from pydantic import Field, root_validator
 from pydantic.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.errors import MissingError
 
-from . import fhirabstractmodel, fhirtypes
+from fhir.resources.core import fhirabstractmodel
+
+from . import fhirtypes
 
 
 class FHIRPrimitiveExtension(fhirabstractmodel.FHIRAbstractModel):

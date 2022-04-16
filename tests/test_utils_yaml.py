@@ -3,7 +3,7 @@ from http import client
 
 import lxml.etree  # type: ignore
 
-from fhir.resources import utils
+from fhir.resources.core import utils
 from fhir.resources.observation import Observation
 from fhir.resources.patient import Patient
 

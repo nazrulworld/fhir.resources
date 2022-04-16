@@ -18,7 +18,8 @@ from pydantic.types import (
 )
 from pydantic.validators import bool_validator, parse_date, parse_datetime, parse_time
 
-from .fhirabstractmodel import FHIRAbstractModel
+from fhir.resources.core.fhirabstractmodel import FHIRAbstractModel
+
 from .fhirtypesvalidators import run_validator_for_fhir_type
 
 if TYPE_CHECKING:
@@ -128,7 +129,7 @@ class String(ConstrainedStr, Primitive):
 
     @classmethod
     def validate(cls, value: Union[str]) -> Union[str]:
-        if cls.allow_empty_str is True and value in ("", ''):
+        if cls.allow_empty_str is True and value in ("", ""):
             return value
         # do the default things
         return ConstrainedStr.validate.__func__(cls, value)  # type: ignore

@@ -75,3 +75,35 @@ def test_issue_96():
         ).json()
     except ValidationError:
         raise AssertionError("Code should not come here")
+
+
+def test_issue_97():
+    """ """
+    from fhir.resources.organization import Organization
+    data = {
+        "resourceType": "Organization",
+        "address": [
+            {
+                "line": [None],
+                "_line": [
+                    {
+                        "extension": [
+                            {
+                                "url": "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber",
+                                "valueString": "80",
+                            },
+                            {
+                                "url": "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetNameType",
+                                "valueString": "AV",
+                            },
+                            {
+                                "url": "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetNameBase",
+                                "valueString": "FOOBAR",
+                            },
+                        ]
+                    }
+                ],
+            }
+        ],
+    }
+    Organization(**data).dict()

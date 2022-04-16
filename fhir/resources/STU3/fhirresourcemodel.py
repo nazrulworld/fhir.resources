@@ -4,7 +4,8 @@ from typing import Optional, Union
 
 from pydantic import Field
 
-from .fhirabstractmodel import FHIRAbstractModel
+from fhir.resources.core.fhirabstractmodel import FHIRAbstractModel
+
 from .fhirtypes import Id, String
 
 

@@ -10,7 +10,9 @@ import typing
 
 from pydantic import Field
 
-from . import fhirabstractmodel, fhirtypes
+from fhir.resources.core import fhirabstractmodel
+
+from . import fhirtypes
 
 
 class Element(fhirabstractmodel.FHIRAbstractModel):

@@ -10,7 +10,7 @@ from pydantic.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.types import StrBytes
 from pydantic.utils import ROOT_KEY
 
-from .fhirabstractmodel import FHIRAbstractModel
+from fhir.resources.core.fhirabstractmodel import FHIRAbstractModel
 
 if typing.TYPE_CHECKING:
     from pydantic import BaseModel

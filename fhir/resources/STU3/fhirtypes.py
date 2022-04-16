@@ -18,7 +18,8 @@ from pydantic.types import (
 )
 from pydantic.validators import bool_validator, parse_date, parse_datetime, parse_time
 
-from .fhirabstractmodel import FHIRAbstractModel
+from fhir.resources.core.fhirabstractmodel import FHIRAbstractModel
+
 from .fhirtypesvalidators import run_validator_for_fhir_type
 
 if TYPE_CHECKING:

@@ -132,7 +132,7 @@ class String(ConstrainedStr, Primitive):
         if cls.allow_empty_str is True and value in ("", ""):
             return value
         # do the default things
-        return ConstrainedStr.validate.__func__(cls, value)
+        return ConstrainedStr.validate.__func__(cls, value)  # type: ignore
 
     @classmethod
     def to_string(cls, value):

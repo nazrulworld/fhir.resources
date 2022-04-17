@@ -877,7 +877,7 @@ class StructureMapGroupRuleDependent(backboneelement.BackboneElement):
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    variable: typing.List[fhirtypes.String] = Field(
+    variable: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="variable",
         title="Variable to pass to the rule or group",

@@ -228,7 +228,7 @@ class MedicinalProduct(domainresource.DomainResource):
         element_property=True,
     )
 
-    specialMeasures: typing.List[fhirtypes.String] = Field(
+    specialMeasures: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="specialMeasures",
         title=(

@@ -68,7 +68,7 @@ class Address(element.Element):
         None, alias="_district", title="Extension field for ``district``."
     )
 
-    line: typing.List[fhirtypes.String] = Field(
+    line: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="line",
         title="Street name, number, direction & P.O. Box etc.",

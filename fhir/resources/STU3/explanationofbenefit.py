@@ -1833,7 +1833,7 @@ class ExplanationOfBenefitInsurance(backboneelement.BackboneElement):
         enum_reference_types=["Coverage"],
     )
 
-    preAuthRef: typing.List[fhirtypes.String] = Field(
+    preAuthRef: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="preAuthRef",
         title="Pre-Authorization/Determination Reference",

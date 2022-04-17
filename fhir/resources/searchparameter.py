@@ -43,7 +43,7 @@ class SearchParameter(domainresource.DomainResource):
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_base", title="Extension field for ``base``.")
 
-    chain: typing.List[fhirtypes.String] = Field(
+    chain: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="chain",
         title="Chained names supported",

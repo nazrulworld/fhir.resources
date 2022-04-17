@@ -57,7 +57,7 @@ class ProcessRequest(domainresource.DomainResource):
         None, alias="_created", title="Extension field for ``created``."
     )
 
-    exclude: typing.List[fhirtypes.String] = Field(
+    exclude: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="exclude",
         title="Resource type(s) to exclude",
@@ -78,7 +78,7 @@ class ProcessRequest(domainresource.DomainResource):
         element_property=True,
     )
 
-    include: typing.List[fhirtypes.String] = Field(
+    include: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="include",
         title="Resource type(s) to include",

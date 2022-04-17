@@ -274,8 +274,8 @@ class SubstanceNucleicAcidSubunitLinkage(backboneelement.BackboneElement):
             "captured for nearly all naturally occurring nucleic acid the linkage "
             "is a phosphate group. For many synthetic oligonucleotides "
             "phosphorothioate linkages are often seen. Linkage connectivity is "
-            "assumed to be 3\u2019-5\u2019. "
-            "If the linkage is either 3\u2019-3\u2019 or 5\u2019-5\u2019 this "
+            "assumed to be 3\u2019-5\u2019. If the linkage is "
+            "either 3\u2019-3\u2019 or 5\u2019-5\u2019 this "
             "should be specified"
         ),
         description=None,

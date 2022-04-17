@@ -27,7 +27,7 @@ class Contract(domainresource.DomainResource):
 
     resource_type = Field("Contract", const=True)
 
-    alias: typing.List[fhirtypes.String] = Field(
+    alias: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="alias",
         title="Acronym or short name",
@@ -1460,7 +1460,7 @@ class ContractTermAction(backboneelement.BackboneElement):
         enum_reference_types=["Encounter", "EpisodeOfCare"],
     )
 
-    contextLinkId: typing.List[fhirtypes.String] = Field(
+    contextLinkId: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="contextLinkId",
         title="Pointer to specific item",
@@ -1501,7 +1501,7 @@ class ContractTermAction(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    linkId: typing.List[fhirtypes.String] = Field(
+    linkId: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="linkId",
         title="Pointer to specific item",
@@ -1593,7 +1593,7 @@ class ContractTermAction(backboneelement.BackboneElement):
         ],
     )
 
-    performerLinkId: typing.List[fhirtypes.String] = Field(
+    performerLinkId: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="performerLinkId",
         title="Pointer to specific item",
@@ -1635,7 +1635,7 @@ class ContractTermAction(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    reason: typing.List[fhirtypes.String] = Field(
+    reason: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="reason",
         title="Why action is to be performed",
@@ -1662,7 +1662,7 @@ class ContractTermAction(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    reasonLinkId: typing.List[fhirtypes.String] = Field(
+    reasonLinkId: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="reasonLinkId",
         title="Pointer to specific item",
@@ -1723,7 +1723,7 @@ class ContractTermAction(backboneelement.BackboneElement):
         ],
     )
 
-    requesterLinkId: typing.List[fhirtypes.String] = Field(
+    requesterLinkId: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="requesterLinkId",
         title="Pointer to specific item",
@@ -1953,7 +1953,7 @@ class ContractTermAsset(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    linkId: typing.List[fhirtypes.String] = Field(
+    linkId: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="linkId",
         title="Pointer to asset text",
@@ -2250,7 +2250,7 @@ class ContractTermAssetValuedItem(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    linkId: typing.List[fhirtypes.String] = Field(
+    linkId: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="linkId",
         title="Pointer to specific item",
@@ -2512,7 +2512,7 @@ class ContractTermOffer(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    linkId: typing.List[fhirtypes.String] = Field(
+    linkId: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="linkId",
         title="Pointer to text",

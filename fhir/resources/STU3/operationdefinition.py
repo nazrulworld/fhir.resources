@@ -507,7 +507,7 @@ class OperationDefinitionOverload(backboneelement.BackboneElement):
         None, alias="_comment", title="Extension field for ``comment``."
     )
 
-    parameterName: typing.List[fhirtypes.String] = Field(
+    parameterName: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="parameterName",
         title="Name of parameter to include in overload",

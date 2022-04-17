@@ -303,7 +303,7 @@ class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpecies(
     )
 
     withdrawalPeriod: typing.List[
-        fhirtypes.MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriodType  # noqa: B950
+        fhirtypes.MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriodType   # noqa: B950
     ] = Field(
         None,
         alias="withdrawalPeriod",
@@ -380,8 +380,7 @@ class MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawal
     def elements_sequence(cls):
         """returning all elements names from
         ``MedicinalProductPharmaceuticalRouteOfAdministrationTargetSpeciesWithdrawalPeriod``
-        according specification,
-        with preserving original sequence order.
+        according specification, with preserving original sequence order.
         """
         return [
             "id",

@@ -85,7 +85,7 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         element_property=True,
     )
 
-    geographicalLocation: typing.List[fhirtypes.String] = Field(
+    geographicalLocation: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="geographicalLocation",
         title=(
@@ -158,7 +158,7 @@ class SubstanceSourceMaterial(domainresource.DomainResource):
         element_property=True,
     )
 
-    parentSubstanceName: typing.List[fhirtypes.String] = Field(
+    parentSubstanceName: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="parentSubstanceName",
         title="The parent substance of the Herbal Drug, or Herbal preparation",

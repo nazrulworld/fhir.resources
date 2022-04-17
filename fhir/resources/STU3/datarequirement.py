@@ -51,7 +51,7 @@ class DataRequirement(element.Element):
         element_property=True,
     )
 
-    mustSupport: typing.List[fhirtypes.String] = Field(
+    mustSupport: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="mustSupport",
         title=(

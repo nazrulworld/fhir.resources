@@ -386,7 +386,7 @@ class CompartmentDefinitionResource(backboneelement.BackboneElement):
         None, alias="_documentation", title="Extension field for ``documentation``."
     )
 
-    param: typing.List[fhirtypes.String] = Field(
+    param: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="param",
         title="Search Parameter Name, or chained parameters",

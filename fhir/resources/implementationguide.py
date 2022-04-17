@@ -1507,7 +1507,7 @@ class ImplementationGuideManifest(backboneelement.BackboneElement):
 
     resource_type = Field("ImplementationGuideManifest", const=True)
 
-    image: typing.List[fhirtypes.String] = Field(
+    image: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="image",
         title="Image within the IG",
@@ -1519,7 +1519,7 @@ class ImplementationGuideManifest(backboneelement.BackboneElement):
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_image", title="Extension field for ``image``.")
 
-    other: typing.List[fhirtypes.String] = Field(
+    other: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="other",
         title="Additional linkable file in IG",
@@ -1602,7 +1602,7 @@ class ImplementationGuideManifestPage(backboneelement.BackboneElement):
 
     resource_type = Field("ImplementationGuideManifestPage", const=True)
 
-    anchor: typing.List[fhirtypes.String] = Field(
+    anchor: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="anchor",
         title="Anchor available on the page",

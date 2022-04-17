@@ -38,7 +38,7 @@ class InsurancePlan(domainresource.DomainResource):
         enum_reference_types=["Organization"],
     )
 
-    alias: typing.List[fhirtypes.String] = Field(
+    alias: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="alias",
         title="Alternate names",

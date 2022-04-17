@@ -1037,7 +1037,7 @@ class ImplementationGuidePage(backboneelement.BackboneElement):
         None, alias="_kind", title="Extension field for ``kind``."
     )
 
-    package: typing.List[fhirtypes.String] = Field(
+    package: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="package",
         title="Name of package to include",

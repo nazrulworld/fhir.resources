@@ -25,7 +25,7 @@ class ProdCharacteristic(backboneelement.BackboneElement):
 
     resource_type = Field("ProdCharacteristic", const=True)
 
-    color: typing.List[fhirtypes.String] = Field(
+    color: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="color",
         title=(
@@ -95,7 +95,7 @@ class ProdCharacteristic(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    imprint: typing.List[fhirtypes.String] = Field(
+    imprint: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="imprint",
         title="Where applicable, the imprint can be specified as text",

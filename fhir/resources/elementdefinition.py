@@ -27,7 +27,7 @@ class ElementDefinition(backboneelement.BackboneElement):
 
     resource_type = Field("ElementDefinition", const=True)
 
-    alias: typing.List[fhirtypes.String] = Field(
+    alias: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="alias",
         title="Other names",

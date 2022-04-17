@@ -283,7 +283,7 @@ class MedicationKnowledge(domainresource.DomainResource):
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    synonym: typing.List[fhirtypes.String] = Field(
+    synonym: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="synonym",
         title="Additional names for a medication",
@@ -562,7 +562,7 @@ class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics(
         one_of_many_required=True,
     )
 
-    value: typing.List[fhirtypes.String] = Field(
+    value: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="value",
         title="The specific characteristic",
@@ -578,8 +578,7 @@ class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics(
     def elements_sequence(cls):
         """returning all elements names from
         ``MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics``
-        according specification,
-        with preserving original sequence order.
+         according specification, with preserving original sequence order.
         """
         return [
             "id",

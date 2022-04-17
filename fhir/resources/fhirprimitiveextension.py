@@ -20,10 +20,10 @@ class FHIRPrimitiveExtension(fhirabstractmodel.FHIRAbstractModel):
 
     resource_type = Field("FHIRPrimitiveExtension", const=True)
 
-    id: fhirtypes.Id = Field(
+    id: fhirtypes.String = Field(
         None,
         alias="id",
-        title="Type `Id`",
+        title="Type `String`",
         description="Unique id for inter-element referencing",
         # if property is element of this resource.
         element_property=False,

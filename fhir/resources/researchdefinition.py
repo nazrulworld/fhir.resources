@@ -57,7 +57,7 @@ class ResearchDefinition(domainresource.DomainResource):
         element_property=True,
     )
 
-    comment: typing.List[fhirtypes.String] = Field(
+    comment: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="comment",
         title="Used for footnotes or explanatory notes",

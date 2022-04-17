@@ -70,7 +70,7 @@ class DataRequirement(element.Element):
         None, alias="_limit", title="Extension field for ``limit``."
     )
 
-    mustSupport: typing.List[fhirtypes.String] = Field(
+    mustSupport: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="mustSupport",
         title=(

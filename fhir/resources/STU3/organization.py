@@ -48,7 +48,7 @@ class Organization(domainresource.DomainResource):
         element_property=True,
     )
 
-    alias: typing.List[fhirtypes.String] = Field(
+    alias: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="alias",
         title=(

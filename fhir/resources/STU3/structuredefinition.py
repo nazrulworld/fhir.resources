@@ -73,7 +73,7 @@ class StructureDefinition(domainresource.DomainResource):
         element_property=True,
     )
 
-    context: typing.List[fhirtypes.String] = Field(
+    context: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="context",
         title="Where the extension can be used in instances",
@@ -88,7 +88,7 @@ class StructureDefinition(domainresource.DomainResource):
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_context", title="Extension field for ``context``.")
 
-    contextInvariant: typing.List[fhirtypes.String] = Field(
+    contextInvariant: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="contextInvariant",
         title="FHIRPath invariants - when the extension can be used",

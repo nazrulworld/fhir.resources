@@ -67,7 +67,7 @@ class Endpoint(domainresource.DomainResource):
         element_property=True,
     )
 
-    header: typing.List[fhirtypes.String] = Field(
+    header: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="header",
         title="Usage depends on the channel type",

@@ -152,7 +152,7 @@ class VerificationResult(domainresource.DomainResource):
         enum_reference_types=["Resource"],
     )
 
-    targetLocation: typing.List[fhirtypes.String] = Field(
+    targetLocation: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="targetLocation",
         title="The fhirpath location(s) within the resource that was validated",

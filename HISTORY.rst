@@ -9,6 +9,10 @@ Bugfixes
 
 - Fix, primitive extension was not included if primitive field value is null. [nazrulworld]
 
+Improvements
+
+- Issue `#97 <https://github.com/nazrulworld/fhir.resources/issues/97>`_ Now null value accepted as a member of String List.
+
 
 
 6.2.2 (2022-04-02)

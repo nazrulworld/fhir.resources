@@ -121,8 +121,8 @@ class String(ConstrainedStr, Primitive):
         However in real use cases, we see empty string is coming other (when the task is related
         to query data from other system)
 
-        It is in your hand now, if you would like to allow empty string!
-        by default empty string is not accepted.
+        It is in your hand now, if you would like to allow empty string! by default
+        empty string is not accepted.
         """
         if isinstance(allow, bool):
             cls.allow_empty_str = allow
@@ -132,7 +132,7 @@ class String(ConstrainedStr, Primitive):
         if cls.allow_empty_str is True and value in ("", ""):
             return value
         # do the default things
-        return ConstrainedStr.validate.__func__(cls, value)  # type: ignore
+        return ConstrainedStr.validate.__func__(cls, value)
 
     @classmethod
     def to_string(cls, value):

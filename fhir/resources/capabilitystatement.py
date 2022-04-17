@@ -1623,7 +1623,7 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         None, alias="_referencePolicy", title="Extension field for ``referencePolicy``."
     )
 
-    searchInclude: typing.List[fhirtypes.String] = Field(
+    searchInclude: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="searchInclude",
         title="_include values supported by the server",
@@ -1652,7 +1652,7 @@ class CapabilityStatementRestResource(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    searchRevInclude: typing.List[fhirtypes.String] = Field(
+    searchRevInclude: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="searchRevInclude",
         title="_revinclude values supported by the server",

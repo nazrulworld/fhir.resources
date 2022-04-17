@@ -1104,7 +1104,7 @@ class ClaimInsurance(backboneelement.BackboneElement):
         element_property=True,
     )
 
-    preAuthRef: typing.List[fhirtypes.String] = Field(
+    preAuthRef: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="preAuthRef",
         title="Prior authorization reference number",

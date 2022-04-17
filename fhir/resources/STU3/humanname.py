@@ -39,7 +39,7 @@ class HumanName(element.Element):
         None, alias="_family", title="Extension field for ``family``."
     )
 
-    given: typing.List[fhirtypes.String] = Field(
+    given: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="given",
         title="Given names (not always 'first'). Includes middle names",
@@ -63,7 +63,7 @@ class HumanName(element.Element):
         element_property=True,
     )
 
-    prefix: typing.List[fhirtypes.String] = Field(
+    prefix: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="prefix",
         title="Parts that come before the name",
@@ -79,7 +79,7 @@ class HumanName(element.Element):
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_prefix", title="Extension field for ``prefix``.")
 
-    suffix: typing.List[fhirtypes.String] = Field(
+    suffix: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="suffix",
         title="Parts that come after the name",

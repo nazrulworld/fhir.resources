@@ -1313,7 +1313,7 @@ class ClaimInsurance(backboneelement.BackboneElement):
         None, alias="_focal", title="Extension field for ``focal``."
     )
 
-    preAuthRef: typing.List[fhirtypes.String] = Field(
+    preAuthRef: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="preAuthRef",
         title="Pre-Authorization/Determination Reference",

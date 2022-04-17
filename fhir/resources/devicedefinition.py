@@ -286,7 +286,7 @@ class DeviceDefinition(domainresource.DomainResource):
         None, alias="_url", title="Extension field for ``url``."
     )
 
-    version: typing.List[fhirtypes.String] = Field(
+    version: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="version",
         title="Available versions",

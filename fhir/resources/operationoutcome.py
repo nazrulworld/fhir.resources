@@ -112,7 +112,7 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
         None, alias="_diagnostics", title="Extension field for ``diagnostics``."
     )
 
-    expression: typing.List[fhirtypes.String] = Field(
+    expression: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="expression",
         title="FHIRPath of element(s) related to issue",
@@ -129,7 +129,7 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_expression", title="Extension field for ``expression``.")
 
-    location: typing.List[fhirtypes.String] = Field(
+    location: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="location",
         title="Deprecated: Path of element(s) related to issue",

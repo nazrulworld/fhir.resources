@@ -250,7 +250,7 @@ class HealthcareService(domainresource.DomainResource):
         element_property=True,
     )
 
-    programName: typing.List[fhirtypes.String] = Field(
+    programName: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="programName",
         title="Program Names that categorize the service",

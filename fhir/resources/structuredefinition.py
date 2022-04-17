@@ -87,7 +87,7 @@ class StructureDefinition(domainresource.DomainResource):
         element_property=True,
     )
 
-    contextInvariant: typing.List[fhirtypes.String] = Field(
+    contextInvariant: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="contextInvariant",
         title="FHIRPath invariants - when the extension can be used",

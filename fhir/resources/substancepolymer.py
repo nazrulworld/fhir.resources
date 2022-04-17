@@ -50,7 +50,7 @@ class SubstancePolymer(domainresource.DomainResource):
         element_property=True,
     )
 
-    modification: typing.List[fhirtypes.String] = Field(
+    modification: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="modification",
         title="Todo",

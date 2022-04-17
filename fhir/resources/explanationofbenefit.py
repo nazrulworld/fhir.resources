@@ -352,7 +352,7 @@ class ExplanationOfBenefit(domainresource.DomainResource):
         element_property=True,
     )
 
-    preAuthRef: typing.List[fhirtypes.String] = Field(
+    preAuthRef: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="preAuthRef",
         title="Preauthorization reference",
@@ -2141,7 +2141,7 @@ class ExplanationOfBenefitInsurance(backboneelement.BackboneElement):
         None, alias="_focal", title="Extension field for ``focal``."
     )
 
-    preAuthRef: typing.List[fhirtypes.String] = Field(
+    preAuthRef: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="preAuthRef",
         title="Prior authorization reference number",

@@ -241,7 +241,7 @@ class SubscriptionChannel(backboneelement.BackboneElement):
         None, alias="_endpoint", title="Extension field for ``endpoint``."
     )
 
-    header: typing.List[fhirtypes.String] = Field(
+    header: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="header",
         title="Usage depends on the channel type",

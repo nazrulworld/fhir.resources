@@ -30,7 +30,7 @@ class SubstanceProtein(domainresource.DomainResource):
 
     resource_type = Field("SubstanceProtein", const=True)
 
-    disulfideLinkage: typing.List[fhirtypes.String] = Field(
+    disulfideLinkage: typing.List[typing.Optional[fhirtypes.String]] = Field(
         None,
         alias="disulfideLinkage",
         title=(

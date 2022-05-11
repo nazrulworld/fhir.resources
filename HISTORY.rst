@@ -8,11 +8,16 @@ History
 Bugfixes
 
 - Fix, primitive extension was not included if primitive field value is null. [nazrulworld]
+- Issue `#101 ElementDefinition.id typing is incorrect <https://github.com/nazrulworld/fhir.resources/issues/101>`_
 
 Improvements
 
 - Issue `#97 <https://github.com/nazrulworld/fhir.resources/issues/97>`_ Now null value accepted as a member of String List.
 - Primitive DataType `Ùrl`` is now accepting relative path.
+
+Breaking
+
+- ``Element.id`` & ``Resource.id`` don't have any extension. See https://chat.fhir.org/#narrow/stream/179166-implementers/topic/Resource.2Eid.20and.20primitive.20extension.
 
 6.2.2 (2022-04-02)
 ------------------

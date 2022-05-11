@@ -33,9 +33,6 @@ class Resource(fhirresourcemodel.FHIRResourceModel):
         # if property is element of this resource.
         element_property=True,
     )
-    id__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None, alias="_id", title="Extension field for ``id``."
-    )
 
     implicitRules: fhirtypes.Uri = Field(
         None,

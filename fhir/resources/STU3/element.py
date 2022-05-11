@@ -54,9 +54,6 @@ class Element(fhirabstractmodel.FHIRAbstractModel):
         # if property is element of this resource.
         element_property=True,
     )
-    id__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None, alias="_id", title="Extension field for ``id``."
-    )
 
     @classmethod
     def elements_sequence(cls):

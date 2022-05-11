@@ -42,7 +42,7 @@ class Element(fhirabstractmodel.FHIRAbstractModel):
         element_property=True,
     )
 
-    id: fhirtypes.Id = Field(
+    id: fhirtypes.String = Field(
         None,
         alias="id",
         title="Unique id for inter-element referencing",
@@ -52,9 +52,6 @@ class Element(fhirabstractmodel.FHIRAbstractModel):
         ),
         # if property is element of this resource.
         element_property=True,
-    )
-    id__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None, alias="_id", title="Extension field for ``id``."
     )
 
     @classmethod

@@ -149,15 +149,27 @@ def test_issue_100():
     from fhir.resources.fhirtypes import Url
     from fhir.resources.STU3.fhirtypes import Url as STU3Url
 
-    Url.validate("https://www.google.dk/main/page.html?6", Attachment.__fields__["url"], Attachment.__config__)
+    Url.validate(
+        "https://www.google.dk/main/page.html?6",
+        Attachment.__fields__["url"],
+        Attachment.__config__,
+    )
     try:
-        Url.validate("https//www.google.dk/main/page.html?6", Attachment.__fields__["url"], Attachment.__config__)
+        Url.validate(
+            "https//www.google.dk/main/page.html?6",
+            Attachment.__fields__["url"],
+            Attachment.__config__,
+        )
         raise AssertionError("Code should not come here.")
     except UrlSchemeError:
         pass
 
     try:
-        Url.validate("//home.saxo/main/page.html?6", Attachment.__fields__["url"], Attachment.__config__)
+        Url.validate(
+            "//home.saxo/main/page.html?6",
+            Attachment.__fields__["url"],
+            Attachment.__config__,
+        )
         raise AssertionError("Code should not come here.")
     except UrlSchemeError:
         pass
@@ -171,3 +183,83 @@ def test_issue_100():
         Attachment(**data)
     except ValidationError:
         raise AssertionError("Code should not come here.")
+
+
+def test_issue101():
+    """ """
+    from fhir.resources.element import Element
+    from fhir.resources.STU3.element import Element as STU3Element
+    from fhir.resources.resource import Resource
+    from fhir.resources.STU3.resource import Resource as STU3Resource
+
+    data = {
+        "id": "001",
+        "extension": [
+            {
+                "url": "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber",
+                "valueString": "180",
+            }
+        ],
+    }
+    data3 = {
+        "id": "001",
+        "resourceType": "Resource",
+        "_language": {
+            "extension": [
+                {
+                    "url": "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber",
+                    "valueString": "180",
+                }
+            ]
+        },
+    }
+    el = Element(**data)
+    assert data == el.dict()
+
+    res = Resource(**data3)
+    assert data3 == res.dict()
+
+    el = STU3Element(**data)
+    assert data == el.dict()
+
+    data2 = {
+        "id": "001",
+        "_id": {
+            "extension": [
+                {
+                    "url": "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber",
+                    "valueString": "180",
+                }
+            ]
+        },
+    }
+    try:
+        Element(**data2)
+        raise AssertionError("Code should not come here.")
+    except ValidationError:
+        pass
+
+    try:
+        STU3Element(**data2)
+        raise AssertionError("Code should not come here.")
+    except ValidationError:
+        pass
+
+    data4 = {
+        "id": "001",
+        "resourceType": "Resource",
+        "_id": {
+            "extension": [
+                {
+                    "url": "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber",
+                    "valueString": "180",
+                }
+            ]
+        },
+    }
+
+    try:
+        STU3Resource(**data4)
+        raise AssertionError("Code should not come here.")
+    except ValidationError:
+        pass

@@ -8,6 +8,15 @@ __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 
 
 @lru_cache(maxsize=1024, typed=True)
+def is_list_type(field: ModelField) -> bool:
+    """ """
+    if field.outer_type_:
+        origin = get_origin(field.outer_type_)
+        return origin is not None and origin is list
+    return False
+
+
+@lru_cache(maxsize=1024, typed=True)
 def is_primitive_type(field: ModelField) -> bool:
     """ """
     origin = get_origin(field.type_)

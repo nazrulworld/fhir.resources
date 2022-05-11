@@ -1,6 +1,6 @@
 # _*_ coding: utf-8 _*_
 from pydantic import ValidationError
-
+from pydantic.errors import UrlSchemeError
 from fhir.resources.patient import Patient
 from fhir.resources.period import Period
 
@@ -78,8 +78,14 @@ def test_issue_96():
 
 
 def test_issue_97():
-    """ """
+    """Test Report HAPI
+    1.) if primitive field/value is missing, extension ignored
+    2.) List str/str if one string multiple extension it could be list of all
+    3.) if more none values in list string, none member removed corosponding number of extension
+
+    """
     from fhir.resources.organization import Organization
+
     data = {
         "resourceType": "Organization",
         "address": [
@@ -101,9 +107,67 @@ def test_issue_97():
                                 "valueString": "FOOBAR",
                             },
                         ]
-                    }
+                    },
+                    {
+                        "extension": [
+                            {
+                                "url": "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-houseNumber",
+                                "valueString": "180",
+                            },
+                            {
+                                "url": "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetNameType",
+                                "valueString": "AV9",
+                            },
+                            {
+                                "url": "http://hl7.org/fhir/StructureDefinition/iso21090-ADXP-streetNameBase",
+                                "valueString": "FOOBAR90",
+                            },
+                        ]
+                    },
                 ],
             }
         ],
     }
-    Organization(**data).dict()
+    org = Organization(**data)
+
+    assert org.dict()["address"][0]["line"] == [None]
+    assert '"line":[null]' in org.json()
+    assert Organization.parse_raw(org.json(return_bytes=True)).dict() == data
+    assert "line:\n  - null\n" in org.yaml()
+    assert (
+        Organization.parse_raw(
+            org.yaml(return_bytes=True), content_type="text/yaml"
+        ).dict()
+        == data
+    )
+    org.xml()
+
+
+def test_issue_100():
+    """https://github.com/nazrulworld/fhir.resources/issues/100"""
+    from fhir.resources.attachment import Attachment
+    from fhir.resources.fhirtypes import Url
+    from fhir.resources.STU3.fhirtypes import Url as STU3Url
+
+    Url.validate("https://www.google.dk/main/page.html?6", Attachment.__fields__["url"], Attachment.__config__)
+    try:
+        Url.validate("https//www.google.dk/main/page.html?6", Attachment.__fields__["url"], Attachment.__config__)
+        raise AssertionError("Code should not come here.")
+    except UrlSchemeError:
+        pass
+
+    try:
+        Url.validate("//home.saxo/main/page.html?6", Attachment.__fields__["url"], Attachment.__config__)
+        raise AssertionError("Code should not come here.")
+    except UrlSchemeError:
+        pass
+
+    data = {
+        "contentType": "text/plain",
+        "url": "/Binary/1-note",
+        "title": "Uri where the data can be found: [base]/Binary/1-note",
+    }
+    try:
+        Attachment(**data)
+    except ValidationError:
+        raise AssertionError("Code should not come here.")

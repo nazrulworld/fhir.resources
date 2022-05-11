@@ -2,7 +2,7 @@
 History
 =======
 
-6.3.0 (unreleased)
+6.4.0 (unreleased)
 ------------------
 
 Bugfixes
@@ -12,8 +12,7 @@ Bugfixes
 Improvements
 
 - Issue `#97 <https://github.com/nazrulworld/fhir.resources/issues/97>`_ Now null value accepted as a member of String List.
-
-
+- Primitive DataType `Ùrl`` is now accepting relative path.
 
 6.2.2 (2022-04-02)
 ------------------

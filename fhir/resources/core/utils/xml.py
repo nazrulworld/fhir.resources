@@ -1,5 +1,6 @@
 # _*_ coding: utf-8 _*_
 import importlib
+import logging
 import typing
 from collections import OrderedDict, deque
 from copy import copy
@@ -9,7 +10,11 @@ from lxml import etree  # type: ignore
 from lxml.etree import QName  # type: ignore
 from pydantic.fields import SHAPE_LIST, SHAPE_SINGLETON
 
-from .common import get_fhir_type_name, is_primitive_type, normalize_fhir_type_class
+from .common import (
+    get_fhir_type_name,
+    is_primitive_type,
+    normalize_fhir_type_class,
+)
 
 if typing.TYPE_CHECKING:
     from fhir.resources.core.fhirabstractmodel import FHIRAbstractModel
@@ -33,6 +38,7 @@ FHIR_ROOT_MODULES: typing.Dict[str, typing.Any] = {
     "STU3": None,
     "DSTU2": None,
 }
+LOG = logging.getLogger(__name__)
 
 
 def first_cap(string: str):
@@ -576,12 +582,21 @@ class Node:
         if is_primitive_type(field):
             if isinstance(value, list):
                 if ext and not isinstance(ext, list):
-                    raise NotImplementedError
-                if ext and len(ext) != len(value):
-                    raise NotImplementedError
+                    ext = [ext]
+
+                if ext is None:
+                    ext = []
+
+                if len(value) < len(ext):
+                    LOG.warning(
+                        f"Some {(len(ext) - len(value))} extension(s) are ignored."
+                    )
 
                 for idx, val in enumerate(value):
-                    ext_ = ext and ext[idx] or None
+                    try:
+                        ext_ = ext[idx]
+                    except IndexError:
+                        ext_ = None
                     if ext_ is None and val is None:
                         continue
                     Node.add_fhir_element(

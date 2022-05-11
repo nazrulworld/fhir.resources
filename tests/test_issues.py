@@ -146,6 +146,7 @@ def test_issue_97():
 def test_issue_100():
     """https://github.com/nazrulworld/fhir.resources/issues/100"""
     from fhir.resources.attachment import Attachment
+    from fhir.resources.STU3.attachment import Attachment as STU3Attachment
     from fhir.resources.fhirtypes import Url
     from fhir.resources.STU3.fhirtypes import Url as STU3Url
 
@@ -154,8 +155,23 @@ def test_issue_100():
         Attachment.__fields__["url"],
         Attachment.__config__,
     )
+    STU3Url.validate(
+        "https://www.google.dk/main/page.html?6",
+        Attachment.__fields__["url"],
+        Attachment.__config__,
+    )
     try:
         Url.validate(
+            "https//www.google.dk/main/page.html?6",
+            Attachment.__fields__["url"],
+            Attachment.__config__,
+        )
+        raise AssertionError("Code should not come here.")
+    except UrlSchemeError:
+        pass
+
+    try:
+        STU3Url.validate(
             "https//www.google.dk/main/page.html?6",
             Attachment.__fields__["url"],
             Attachment.__config__,
@@ -174,6 +190,16 @@ def test_issue_100():
     except UrlSchemeError:
         pass
 
+    try:
+        STU3Url.validate(
+            "//home.saxo/main/page.html?6",
+            Attachment.__fields__["url"],
+            Attachment.__config__,
+        )
+        raise AssertionError("Code should not come here.")
+    except UrlSchemeError:
+        pass
+
     data = {
         "contentType": "text/plain",
         "url": "/Binary/1-note",
@@ -181,6 +207,11 @@ def test_issue_100():
     }
     try:
         Attachment(**data)
+    except ValidationError:
+        raise AssertionError("Code should not come here.")
+
+    try:
+        STU3Attachment(**data)
     except ValidationError:
         raise AssertionError("Code should not come here.")
 

@@ -78,12 +78,7 @@ def test_issue_96():
 
 
 def test_issue_97():
-    """Test Report HAPI
-    1.) if primitive field/value is missing, extension ignored
-    2.) List str/str if one string multiple extension it could be list of all
-    3.) if more none values in list string, none member removed corosponding number of extension
-
-    """
+    """https://github.com/nazrulworld/fhir.resources/issues/97"""
     from fhir.resources.organization import Organization
 
     data = {

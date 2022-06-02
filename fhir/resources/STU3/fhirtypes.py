@@ -371,7 +371,7 @@ class Url(AnyUrl, Primitive):
     Common URL protocols are http{s}:, ftp:, mailto: and mllp:,
     though many others are defined"""
 
-    path_regex = re.compile(r"^/(?P<resourceType>[^\s?/]+)(/[^\s?/]+)*")
+    path_regex = re.compile(r"^\/?(?P<resourceType>[^\s?\/]+)(\/[^\s?\/]+)*")
     __visit_name__ = "url"
 
     @classmethod

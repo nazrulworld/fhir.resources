@@ -1,4 +1,5 @@
-# Generated from https://github.com/nazrulworld/fhir-parser/blob/c8e819379db32f15c7b806c769ed9ead3426b5ec/FHIRPathExpression.g4 by ANTLR 4.9.3from antlr4 import *
+# # Generated from https://github.com/nazrulworld/fhir-parser/blob/c8e819379db32f15c7b806c769ed9ead3426b5ec/FHIRPathExpression.g4 by ANTLR 4.9.3
+from antlr4 import *
 if __name__ is not None and "." in __name__:
     from .FHIRPathExpressionParser import FHIRPathExpressionParser
 else:

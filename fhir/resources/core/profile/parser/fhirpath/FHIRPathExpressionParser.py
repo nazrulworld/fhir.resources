@@ -1,5 +1,4 @@
-# Generated from https://github.com/nazrulworld/fhir-parser/blob/c8e819379db32f15c7b806c769ed9ead3426b5ec/FHIRPathExpression.g4 by ANTLR 4.11.1
-# encoding: utf-8
+# Generated from https://github.com/nazrulworld/fhir-parser/blob/c8e819379db32f15c7b806c769ed9ead3426b5ec/FHIRPathExpression.g4 by ANTLR 4.9.3# encoding: utf-8
 from antlr4 import *
 from io import StringIO
 import sys
@@ -8,63 +7,67 @@ if sys.version_info[1] > 5:
 else:
 	from typing.io import TextIO
 
+
 def serializedATN():
-    return [
-        4,1,64,150,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
-        6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,
-        1,0,1,0,1,0,1,0,3,0,33,8,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,
-        0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,
-        0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,5,0,73,8,0,10,
-        0,12,0,76,9,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3,1,85,8,1,1,2,1,2,1,2,
-        1,2,1,2,1,2,1,2,1,2,1,2,3,2,96,8,2,1,3,1,3,1,3,3,3,101,8,3,1,4,1,
-        4,1,4,1,4,1,4,3,4,108,8,4,1,5,1,5,1,5,3,5,113,8,5,1,5,1,5,1,6,1,
-        6,1,6,5,6,120,8,6,10,6,12,6,123,9,6,1,7,1,7,3,7,127,8,7,1,8,1,8,
-        1,8,3,8,132,8,8,1,9,1,9,1,10,1,10,1,11,1,11,1,12,1,12,1,12,5,12,
-        143,8,12,10,12,12,12,146,9,12,1,13,1,13,1,13,0,1,0,14,0,2,4,6,8,
-        10,12,14,16,18,20,22,24,26,0,12,1,0,4,5,1,0,6,9,2,0,4,5,10,10,1,
-        0,14,17,1,0,18,21,1,0,22,23,1,0,25,26,1,0,11,12,1,0,32,33,1,0,39,
-        46,1,0,47,54,3,0,11,12,22,23,58,59,169,0,32,1,0,0,0,2,84,1,0,0,0,
-        4,95,1,0,0,0,6,97,1,0,0,0,8,107,1,0,0,0,10,109,1,0,0,0,12,116,1,
-        0,0,0,14,124,1,0,0,0,16,131,1,0,0,0,18,133,1,0,0,0,20,135,1,0,0,
-        0,22,137,1,0,0,0,24,139,1,0,0,0,26,147,1,0,0,0,28,29,6,0,-1,0,29,
-        33,3,2,1,0,30,31,7,0,0,0,31,33,3,0,0,11,32,28,1,0,0,0,32,30,1,0,
-        0,0,33,74,1,0,0,0,34,35,10,10,0,0,35,36,7,1,0,0,36,73,3,0,0,11,37,
-        38,10,9,0,0,38,39,7,2,0,0,39,73,3,0,0,10,40,41,10,7,0,0,41,42,5,
-        13,0,0,42,73,3,0,0,8,43,44,10,6,0,0,44,45,7,3,0,0,45,73,3,0,0,7,
-        46,47,10,5,0,0,47,48,7,4,0,0,48,73,3,0,0,6,49,50,10,4,0,0,50,51,
-        7,5,0,0,51,73,3,0,0,5,52,53,10,3,0,0,53,54,5,24,0,0,54,73,3,0,0,
-        4,55,56,10,2,0,0,56,57,7,6,0,0,57,73,3,0,0,3,58,59,10,1,0,0,59,60,
-        5,27,0,0,60,73,3,0,0,2,61,62,10,13,0,0,62,63,5,1,0,0,63,73,3,8,4,
-        0,64,65,10,12,0,0,65,66,5,2,0,0,66,67,3,0,0,0,67,68,5,3,0,0,68,73,
-        1,0,0,0,69,70,10,8,0,0,70,71,7,7,0,0,71,73,3,22,11,0,72,34,1,0,0,
-        0,72,37,1,0,0,0,72,40,1,0,0,0,72,43,1,0,0,0,72,46,1,0,0,0,72,49,
-        1,0,0,0,72,52,1,0,0,0,72,55,1,0,0,0,72,58,1,0,0,0,72,61,1,0,0,0,
-        72,64,1,0,0,0,72,69,1,0,0,0,73,76,1,0,0,0,74,72,1,0,0,0,74,75,1,
-        0,0,0,75,1,1,0,0,0,76,74,1,0,0,0,77,85,3,8,4,0,78,85,3,4,2,0,79,
-        85,3,6,3,0,80,81,5,28,0,0,81,82,3,0,0,0,82,83,5,29,0,0,83,85,1,0,
-        0,0,84,77,1,0,0,0,84,78,1,0,0,0,84,79,1,0,0,0,84,80,1,0,0,0,85,3,
-        1,0,0,0,86,87,5,30,0,0,87,96,5,31,0,0,88,96,7,8,0,0,89,96,5,60,0,
-        0,90,96,5,61,0,0,91,96,5,55,0,0,92,96,5,56,0,0,93,96,5,57,0,0,94,
-        96,3,14,7,0,95,86,1,0,0,0,95,88,1,0,0,0,95,89,1,0,0,0,95,90,1,0,
-        0,0,95,91,1,0,0,0,95,92,1,0,0,0,95,93,1,0,0,0,95,94,1,0,0,0,96,5,
-        1,0,0,0,97,100,5,34,0,0,98,101,3,26,13,0,99,101,5,60,0,0,100,98,
-        1,0,0,0,100,99,1,0,0,0,101,7,1,0,0,0,102,108,3,26,13,0,103,108,3,
-        10,5,0,104,108,5,35,0,0,105,108,5,36,0,0,106,108,5,37,0,0,107,102,
-        1,0,0,0,107,103,1,0,0,0,107,104,1,0,0,0,107,105,1,0,0,0,107,106,
-        1,0,0,0,108,9,1,0,0,0,109,110,3,26,13,0,110,112,5,28,0,0,111,113,
-        3,12,6,0,112,111,1,0,0,0,112,113,1,0,0,0,113,114,1,0,0,0,114,115,
-        5,29,0,0,115,11,1,0,0,0,116,121,3,0,0,0,117,118,5,38,0,0,118,120,
-        3,0,0,0,119,117,1,0,0,0,120,123,1,0,0,0,121,119,1,0,0,0,121,122,
-        1,0,0,0,122,13,1,0,0,0,123,121,1,0,0,0,124,126,5,61,0,0,125,127,
-        3,16,8,0,126,125,1,0,0,0,126,127,1,0,0,0,127,15,1,0,0,0,128,132,
-        3,18,9,0,129,132,3,20,10,0,130,132,5,60,0,0,131,128,1,0,0,0,131,
-        129,1,0,0,0,131,130,1,0,0,0,132,17,1,0,0,0,133,134,7,9,0,0,134,19,
-        1,0,0,0,135,136,7,10,0,0,136,21,1,0,0,0,137,138,3,24,12,0,138,23,
-        1,0,0,0,139,144,3,26,13,0,140,141,5,1,0,0,141,143,3,26,13,0,142,
-        140,1,0,0,0,143,146,1,0,0,0,144,142,1,0,0,0,144,145,1,0,0,0,145,
-        25,1,0,0,0,146,144,1,0,0,0,147,148,7,11,0,0,148,27,1,0,0,0,12,32,
-        72,74,84,95,100,107,112,121,126,131,144
-    ]
+    with StringIO() as buf:
+        buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3B")
+        buf.write("\u0098\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
+        buf.write("\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\4\r\t\r\4\16")
+        buf.write("\t\16\4\17\t\17\3\2\3\2\3\2\3\2\5\2#\n\2\3\2\3\2\3\2\3")
+        buf.write("\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2")
+        buf.write("\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\3")
+        buf.write("\2\3\2\3\2\3\2\3\2\3\2\3\2\3\2\7\2K\n\2\f\2\16\2N\13\2")
+        buf.write("\3\3\3\3\3\3\3\3\3\3\3\3\3\3\5\3W\n\3\3\4\3\4\3\4\3\4")
+        buf.write("\3\4\3\4\3\4\3\4\3\4\5\4b\n\4\3\5\3\5\3\5\5\5g\n\5\3\6")
+        buf.write("\3\6\3\6\3\6\3\6\5\6n\n\6\3\7\3\7\3\7\5\7s\n\7\3\7\3\7")
+        buf.write("\3\b\3\b\3\b\7\bz\n\b\f\b\16\b}\13\b\3\t\3\t\5\t\u0081")
+        buf.write("\n\t\3\n\3\n\3\n\5\n\u0086\n\n\3\13\3\13\3\f\3\f\3\r\3")
+        buf.write("\r\3\16\3\16\3\16\7\16\u0091\n\16\f\16\16\16\u0094\13")
+        buf.write("\16\3\17\3\17\3\17\2\3\2\20\2\4\6\b\n\f\16\20\22\24\26")
+        buf.write("\30\32\34\2\16\3\2\6\7\3\2\b\13\4\2\6\7\f\f\3\2\20\23")
+        buf.write("\3\2\24\27\3\2\30\31\3\2\33\34\3\2\r\16\3\2\"#\3\2)\60")
+        buf.write("\3\2\618\5\2\r\16\30\31<=\2\u00ab\2\"\3\2\2\2\4V\3\2\2")
+        buf.write("\2\6a\3\2\2\2\bc\3\2\2\2\nm\3\2\2\2\fo\3\2\2\2\16v\3\2")
+        buf.write("\2\2\20~\3\2\2\2\22\u0085\3\2\2\2\24\u0087\3\2\2\2\26")
+        buf.write("\u0089\3\2\2\2\30\u008b\3\2\2\2\32\u008d\3\2\2\2\34\u0095")
+        buf.write("\3\2\2\2\36\37\b\2\1\2\37#\5\4\3\2 !\t\2\2\2!#\5\2\2\r")
+        buf.write("\"\36\3\2\2\2\" \3\2\2\2#L\3\2\2\2$%\f\f\2\2%&\t\3\2\2")
+        buf.write("&K\5\2\2\r\'(\f\13\2\2()\t\4\2\2)K\5\2\2\f*+\f\t\2\2+")
+        buf.write(",\7\17\2\2,K\5\2\2\n-.\f\b\2\2./\t\5\2\2/K\5\2\2\t\60")
+        buf.write("\61\f\7\2\2\61\62\t\6\2\2\62K\5\2\2\b\63\64\f\6\2\2\64")
+        buf.write("\65\t\7\2\2\65K\5\2\2\7\66\67\f\5\2\2\678\7\32\2\28K\5")
+        buf.write("\2\2\69:\f\4\2\2:;\t\b\2\2;K\5\2\2\5<=\f\3\2\2=>\7\35")
+        buf.write("\2\2>K\5\2\2\4?@\f\17\2\2@A\7\3\2\2AK\5\n\6\2BC\f\16\2")
+        buf.write("\2CD\7\4\2\2DE\5\2\2\2EF\7\5\2\2FK\3\2\2\2GH\f\n\2\2H")
+        buf.write("I\t\t\2\2IK\5\30\r\2J$\3\2\2\2J\'\3\2\2\2J*\3\2\2\2J-")
+        buf.write("\3\2\2\2J\60\3\2\2\2J\63\3\2\2\2J\66\3\2\2\2J9\3\2\2\2")
+        buf.write("J<\3\2\2\2J?\3\2\2\2JB\3\2\2\2JG\3\2\2\2KN\3\2\2\2LJ\3")
+        buf.write("\2\2\2LM\3\2\2\2M\3\3\2\2\2NL\3\2\2\2OW\5\n\6\2PW\5\6")
+        buf.write("\4\2QW\5\b\5\2RS\7\36\2\2ST\5\2\2\2TU\7\37\2\2UW\3\2\2")
+        buf.write("\2VO\3\2\2\2VP\3\2\2\2VQ\3\2\2\2VR\3\2\2\2W\5\3\2\2\2")
+        buf.write("XY\7 \2\2Yb\7!\2\2Zb\t\n\2\2[b\7>\2\2\\b\7?\2\2]b\79\2")
+        buf.write("\2^b\7:\2\2_b\7;\2\2`b\5\20\t\2aX\3\2\2\2aZ\3\2\2\2a[")
+        buf.write("\3\2\2\2a\\\3\2\2\2a]\3\2\2\2a^\3\2\2\2a_\3\2\2\2a`\3")
+        buf.write("\2\2\2b\7\3\2\2\2cf\7$\2\2dg\5\34\17\2eg\7>\2\2fd\3\2")
+        buf.write("\2\2fe\3\2\2\2g\t\3\2\2\2hn\5\34\17\2in\5\f\7\2jn\7%\2")
+        buf.write("\2kn\7&\2\2ln\7\'\2\2mh\3\2\2\2mi\3\2\2\2mj\3\2\2\2mk")
+        buf.write("\3\2\2\2ml\3\2\2\2n\13\3\2\2\2op\5\34\17\2pr\7\36\2\2")
+        buf.write("qs\5\16\b\2rq\3\2\2\2rs\3\2\2\2st\3\2\2\2tu\7\37\2\2u")
+        buf.write("\r\3\2\2\2v{\5\2\2\2wx\7(\2\2xz\5\2\2\2yw\3\2\2\2z}\3")
+        buf.write("\2\2\2{y\3\2\2\2{|\3\2\2\2|\17\3\2\2\2}{\3\2\2\2~\u0080")
+        buf.write("\7?\2\2\177\u0081\5\22\n\2\u0080\177\3\2\2\2\u0080\u0081")
+        buf.write("\3\2\2\2\u0081\21\3\2\2\2\u0082\u0086\5\24\13\2\u0083")
+        buf.write("\u0086\5\26\f\2\u0084\u0086\7>\2\2\u0085\u0082\3\2\2\2")
+        buf.write("\u0085\u0083\3\2\2\2\u0085\u0084\3\2\2\2\u0086\23\3\2")
+        buf.write("\2\2\u0087\u0088\t\13\2\2\u0088\25\3\2\2\2\u0089\u008a")
+        buf.write("\t\f\2\2\u008a\27\3\2\2\2\u008b\u008c\5\32\16\2\u008c")
+        buf.write("\31\3\2\2\2\u008d\u0092\5\34\17\2\u008e\u008f\7\3\2\2")
+        buf.write("\u008f\u0091\5\34\17\2\u0090\u008e\3\2\2\2\u0091\u0094")
+        buf.write("\3\2\2\2\u0092\u0090\3\2\2\2\u0092\u0093\3\2\2\2\u0093")
+        buf.write("\33\3\2\2\2\u0094\u0092\3\2\2\2\u0095\u0096\t\r\2\2\u0096")
+        buf.write("\35\3\2\2\2\16\"JLVafmr{\u0080\u0085\u0092")
+        return buf.getvalue()
+
 
 class FHIRPathExpressionParser ( Parser ):
 
@@ -192,7 +195,7 @@ class FHIRPathExpressionParser ( Parser ):
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
-        self.checkVersion("4.11.1")
+        self.checkVersion("4.9.3")
         self._interp = ParserATNSimulator(self, self.atn, self.decisionsToDFA, self.sharedContextCache)
         self._predicates = None
 
@@ -531,7 +534,7 @@ class FHIRPathExpressionParser ( Parser ):
             self.state = 32
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [11, 12, 22, 23, 28, 30, 32, 33, 34, 35, 36, 37, 55, 56, 57, 58, 59, 60, 61]:
+            if token in [FHIRPathExpressionParser.T__10, FHIRPathExpressionParser.T__11, FHIRPathExpressionParser.T__21, FHIRPathExpressionParser.T__22, FHIRPathExpressionParser.T__27, FHIRPathExpressionParser.T__29, FHIRPathExpressionParser.T__31, FHIRPathExpressionParser.T__32, FHIRPathExpressionParser.T__33, FHIRPathExpressionParser.T__34, FHIRPathExpressionParser.T__35, FHIRPathExpressionParser.T__36, FHIRPathExpressionParser.DATE, FHIRPathExpressionParser.DATETIME, FHIRPathExpressionParser.TIME, FHIRPathExpressionParser.IDENTIFIER, FHIRPathExpressionParser.DELIMITEDIDENTIFIER, FHIRPathExpressionParser.STRING, FHIRPathExpressionParser.NUMBER]:
                 localctx = FHIRPathExpressionParser.TermExpressionContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
@@ -539,13 +542,13 @@ class FHIRPathExpressionParser ( Parser ):
                 self.state = 29
                 self.term()
                 pass
-            elif token in [4, 5]:
+            elif token in [FHIRPathExpressionParser.T__3, FHIRPathExpressionParser.T__4]:
                 localctx = FHIRPathExpressionParser.PolarityExpressionContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
                 self.state = 30
                 _la = self._input.LA(1)
-                if not(_la==4 or _la==5):
+                if not(_la==FHIRPathExpressionParser.T__3 or _la==FHIRPathExpressionParser.T__4):
                     self._errHandler.recoverInline(self)
                 else:
                     self._errHandler.reportMatch(self)
@@ -577,7 +580,7 @@ class FHIRPathExpressionParser ( Parser ):
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 10)")
                         self.state = 35
                         _la = self._input.LA(1)
-                        if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 960) != 0):
+                        if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << FHIRPathExpressionParser.T__5) | (1 << FHIRPathExpressionParser.T__6) | (1 << FHIRPathExpressionParser.T__7) | (1 << FHIRPathExpressionParser.T__8))) != 0)):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
@@ -595,7 +598,7 @@ class FHIRPathExpressionParser ( Parser ):
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 9)")
                         self.state = 38
                         _la = self._input.LA(1)
-                        if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 1072) != 0):
+                        if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << FHIRPathExpressionParser.T__3) | (1 << FHIRPathExpressionParser.T__4) | (1 << FHIRPathExpressionParser.T__9))) != 0)):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
@@ -626,7 +629,7 @@ class FHIRPathExpressionParser ( Parser ):
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 6)")
                         self.state = 44
                         _la = self._input.LA(1)
-                        if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 245760) != 0):
+                        if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << FHIRPathExpressionParser.T__13) | (1 << FHIRPathExpressionParser.T__14) | (1 << FHIRPathExpressionParser.T__15) | (1 << FHIRPathExpressionParser.T__16))) != 0)):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
@@ -644,7 +647,7 @@ class FHIRPathExpressionParser ( Parser ):
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 5)")
                         self.state = 47
                         _la = self._input.LA(1)
-                        if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 3932160) != 0):
+                        if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << FHIRPathExpressionParser.T__17) | (1 << FHIRPathExpressionParser.T__18) | (1 << FHIRPathExpressionParser.T__19) | (1 << FHIRPathExpressionParser.T__20))) != 0)):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
@@ -662,7 +665,7 @@ class FHIRPathExpressionParser ( Parser ):
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 4)")
                         self.state = 50
                         _la = self._input.LA(1)
-                        if not(_la==22 or _la==23):
+                        if not(_la==FHIRPathExpressionParser.T__21 or _la==FHIRPathExpressionParser.T__22):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
@@ -693,7 +696,7 @@ class FHIRPathExpressionParser ( Parser ):
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 2)")
                         self.state = 56
                         _la = self._input.LA(1)
-                        if not(_la==25 or _la==26):
+                        if not(_la==FHIRPathExpressionParser.T__24 or _la==FHIRPathExpressionParser.T__25):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
@@ -752,7 +755,7 @@ class FHIRPathExpressionParser ( Parser ):
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 8)")
                         self.state = 70
                         _la = self._input.LA(1)
-                        if not(_la==11 or _la==12):
+                        if not(_la==FHIRPathExpressionParser.T__10 or _la==FHIRPathExpressionParser.T__11):
                             self._errHandler.recoverInline(self)
                         else:
                             self._errHandler.reportMatch(self)
@@ -877,25 +880,25 @@ class FHIRPathExpressionParser ( Parser ):
             self.state = 84
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [11, 12, 22, 23, 35, 36, 37, 58, 59]:
+            if token in [FHIRPathExpressionParser.T__10, FHIRPathExpressionParser.T__11, FHIRPathExpressionParser.T__21, FHIRPathExpressionParser.T__22, FHIRPathExpressionParser.T__34, FHIRPathExpressionParser.T__35, FHIRPathExpressionParser.T__36, FHIRPathExpressionParser.IDENTIFIER, FHIRPathExpressionParser.DELIMITEDIDENTIFIER]:
                 localctx = FHIRPathExpressionParser.InvocationTermContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 77
                 self.invocation()
                 pass
-            elif token in [30, 32, 33, 55, 56, 57, 60, 61]:
+            elif token in [FHIRPathExpressionParser.T__29, FHIRPathExpressionParser.T__31, FHIRPathExpressionParser.T__32, FHIRPathExpressionParser.DATE, FHIRPathExpressionParser.DATETIME, FHIRPathExpressionParser.TIME, FHIRPathExpressionParser.STRING, FHIRPathExpressionParser.NUMBER]:
                 localctx = FHIRPathExpressionParser.LiteralTermContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
                 self.state = 78
                 self.literal()
                 pass
-            elif token in [34]:
+            elif token in [FHIRPathExpressionParser.T__33]:
                 localctx = FHIRPathExpressionParser.ExternalConstantTermContext(self, localctx)
                 self.enterOuterAlt(localctx, 3)
                 self.state = 79
                 self.externalConstant()
                 pass
-            elif token in [28]:
+            elif token in [FHIRPathExpressionParser.T__27]:
                 localctx = FHIRPathExpressionParser.ParenthesizedTermContext(self, localctx)
                 self.enterOuterAlt(localctx, 4)
                 self.state = 80
@@ -1099,7 +1102,7 @@ class FHIRPathExpressionParser ( Parser ):
                 self.enterOuterAlt(localctx, 2)
                 self.state = 88
                 _la = self._input.LA(1)
-                if not(_la==32 or _la==33):
+                if not(_la==FHIRPathExpressionParser.T__31 or _la==FHIRPathExpressionParser.T__32):
                     self._errHandler.recoverInline(self)
                 else:
                     self._errHandler.reportMatch(self)
@@ -1197,11 +1200,11 @@ class FHIRPathExpressionParser ( Parser ):
             self.state = 100
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [11, 12, 22, 23, 58, 59]:
+            if token in [FHIRPathExpressionParser.T__10, FHIRPathExpressionParser.T__11, FHIRPathExpressionParser.T__21, FHIRPathExpressionParser.T__22, FHIRPathExpressionParser.IDENTIFIER, FHIRPathExpressionParser.DELIMITEDIDENTIFIER]:
                 self.state = 98
                 self.identifier()
                 pass
-            elif token in [60]:
+            elif token in [FHIRPathExpressionParser.STRING]:
                 self.state = 99
                 self.match(FHIRPathExpressionParser.STRING)
                 pass
@@ -1417,7 +1420,7 @@ class FHIRPathExpressionParser ( Parser ):
             self.state = 112
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            if ((_la) & ~0x3f) == 0 and ((1 << _la) & 4575657493346129968) != 0:
+            if (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << FHIRPathExpressionParser.T__3) | (1 << FHIRPathExpressionParser.T__4) | (1 << FHIRPathExpressionParser.T__10) | (1 << FHIRPathExpressionParser.T__11) | (1 << FHIRPathExpressionParser.T__21) | (1 << FHIRPathExpressionParser.T__22) | (1 << FHIRPathExpressionParser.T__27) | (1 << FHIRPathExpressionParser.T__29) | (1 << FHIRPathExpressionParser.T__31) | (1 << FHIRPathExpressionParser.T__32) | (1 << FHIRPathExpressionParser.T__33) | (1 << FHIRPathExpressionParser.T__34) | (1 << FHIRPathExpressionParser.T__35) | (1 << FHIRPathExpressionParser.T__36) | (1 << FHIRPathExpressionParser.DATE) | (1 << FHIRPathExpressionParser.DATETIME) | (1 << FHIRPathExpressionParser.TIME) | (1 << FHIRPathExpressionParser.IDENTIFIER) | (1 << FHIRPathExpressionParser.DELIMITEDIDENTIFIER) | (1 << FHIRPathExpressionParser.STRING) | (1 << FHIRPathExpressionParser.NUMBER))) != 0):
                 self.state = 111
                 self.paramList()
 
@@ -1473,7 +1476,7 @@ class FHIRPathExpressionParser ( Parser ):
             self.state = 121
             self._errHandler.sync(self)
             _la = self._input.LA(1)
-            while _la==38:
+            while _la==FHIRPathExpressionParser.T__37:
                 self.state = 117
                 self.match(FHIRPathExpressionParser.T__37)
                 self.state = 118
@@ -1584,17 +1587,17 @@ class FHIRPathExpressionParser ( Parser ):
             self.state = 131
             self._errHandler.sync(self)
             token = self._input.LA(1)
-            if token in [39, 40, 41, 42, 43, 44, 45, 46]:
+            if token in [FHIRPathExpressionParser.T__38, FHIRPathExpressionParser.T__39, FHIRPathExpressionParser.T__40, FHIRPathExpressionParser.T__41, FHIRPathExpressionParser.T__42, FHIRPathExpressionParser.T__43, FHIRPathExpressionParser.T__44, FHIRPathExpressionParser.T__45]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 128
                 self.dateTimePrecision()
                 pass
-            elif token in [47, 48, 49, 50, 51, 52, 53, 54]:
+            elif token in [FHIRPathExpressionParser.T__46, FHIRPathExpressionParser.T__47, FHIRPathExpressionParser.T__48, FHIRPathExpressionParser.T__49, FHIRPathExpressionParser.T__50, FHIRPathExpressionParser.T__51, FHIRPathExpressionParser.T__52, FHIRPathExpressionParser.T__53]:
                 self.enterOuterAlt(localctx, 2)
                 self.state = 129
                 self.pluralDateTimePrecision()
                 pass
-            elif token in [60]:
+            elif token in [FHIRPathExpressionParser.STRING]:
                 self.enterOuterAlt(localctx, 3)
                 self.state = 130
                 self.match(FHIRPathExpressionParser.STRING)
@@ -1642,7 +1645,7 @@ class FHIRPathExpressionParser ( Parser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 133
             _la = self._input.LA(1)
-            if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 140187732541440) != 0):
+            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << FHIRPathExpressionParser.T__38) | (1 << FHIRPathExpressionParser.T__39) | (1 << FHIRPathExpressionParser.T__40) | (1 << FHIRPathExpressionParser.T__41) | (1 << FHIRPathExpressionParser.T__42) | (1 << FHIRPathExpressionParser.T__43) | (1 << FHIRPathExpressionParser.T__44) | (1 << FHIRPathExpressionParser.T__45))) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -1687,7 +1690,7 @@ class FHIRPathExpressionParser ( Parser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 135
             _la = self._input.LA(1)
-            if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 35888059530608640) != 0):
+            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << FHIRPathExpressionParser.T__46) | (1 << FHIRPathExpressionParser.T__47) | (1 << FHIRPathExpressionParser.T__48) | (1 << FHIRPathExpressionParser.T__49) | (1 << FHIRPathExpressionParser.T__50) | (1 << FHIRPathExpressionParser.T__51) | (1 << FHIRPathExpressionParser.T__52) | (1 << FHIRPathExpressionParser.T__53))) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)
@@ -1837,7 +1840,7 @@ class FHIRPathExpressionParser ( Parser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 147
             _la = self._input.LA(1)
-            if not(((_la) & ~0x3f) == 0 and ((1 << _la) & 864691128467724288) != 0):
+            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << FHIRPathExpressionParser.T__10) | (1 << FHIRPathExpressionParser.T__11) | (1 << FHIRPathExpressionParser.T__21) | (1 << FHIRPathExpressionParser.T__22) | (1 << FHIRPathExpressionParser.IDENTIFIER) | (1 << FHIRPathExpressionParser.DELIMITEDIDENTIFIER))) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self._errHandler.reportMatch(self)

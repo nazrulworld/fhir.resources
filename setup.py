@@ -21,6 +21,8 @@ yaml_requirements = ["PyYAML>=5.4.1"]
 
 xml_requirements = ["lxml"]
 
+profile_requirements = ["antlr4-python3-runtime==4.9.3"]
+
 test_requirements = [
     "coverage",
     "pytest>5.4.0;python_version>='3.6'",
@@ -98,8 +100,10 @@ setup(
             + orjson_requirements
             + yaml_requirements
             + xml_requirements
+            + profile_requirements
         ),
-        "dev": (test_requirements + development_requirements),
+        "profile": profile_requirements,
+        "dev": (test_requirements + development_requirements + profile_requirements),
         "all": (orjson_requirements + yaml_requirements + xml_requirements),
     },
     url="https://github.com/nazrulworld/fhir.resources",

@@ -10,5 +10,5 @@ FHIR_EXAMPLE_DIRECTORY = (
     / "script"
     / "static"
     / "examples-json"
-    / "R4"
+    / "R4B"
 )

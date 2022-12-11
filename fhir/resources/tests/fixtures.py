@@ -11,9 +11,7 @@ from os.path import dirname
 import pytest  # type: ignore
 
 EXAMPLE_RESOURCES_URL = (
-    "https://github.com/nazrulworld/hl7-archives/raw/"
-    "0.2.1/FHIR/R4B/"
-    "4.3.0-examples-json.zip"
+    "https://hl7.org/fhir/R4B/examples-json.zip"
 )
 ROOT_PATH = dirname(dirname(dirname(dirname(os.path.abspath(__file__)))))
 CACHE_PATH = os.path.join(ROOT_PATH, ".cache")

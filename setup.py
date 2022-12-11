@@ -31,7 +31,7 @@ test_requirements = [
     "requests==2.23.0",
     "isort==4.3.21",
     "black",
-    "mypy==0.812",
+    "mypy"
 ]
 
 development_requirements = [

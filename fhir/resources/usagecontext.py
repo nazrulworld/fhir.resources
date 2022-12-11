@@ -1,17 +1,19 @@
 # -*- coding: utf-8 -*-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/UsageContext
-Release: R4
-Version: 4.0.1
-Build ID: 9346c8cc45
-Last updated: 2019-11-01T09:29:23.356+11:00
+Release: R4B
+Version: 4.3.0
+Build ID: c475c22
+Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
+from pydantic import Field
+from pydantic import root_validator
 
-from pydantic import Field, root_validator
+from . import fhirtypes
 
-from . import element, fhirtypes
 
+from . import element
 
 class UsageContext(element.Element):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
@@ -24,106 +26,89 @@ class UsageContext(element.Element):
     to the applicable population (e.g., age category, DRG) or the specific
     context of care (e.g., venue, care setting, provider of care).
     """
-
     resource_type = Field("UsageContext", const=True)
-
+	
     code: fhirtypes.CodingType = Field(
-        ...,
-        alias="code",
-        title="Type of context being specified",
-        description=(
-            "A code that identifies the type of context being specified by this "
-            "usage context."
-        ),
+		...,
+		alias="code",
+		title="Type of context being specified",
+		description=(
+    "A code that identifies the type of context being specified by this "
+    "usage context."
+    ),
         # if property is element of this resource.
         element_property=True,
-    )
-
+	)
+	
     valueCodeableConcept: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="valueCodeableConcept",
-        title="Value that defines the context",
-        description=(
-            "A value that defines the context specified in this context of use. The"
-            " interpretation of the value is defined by the code."
-        ),
+		None,
+		alias="valueCodeableConcept",
+		title="Value that defines the context",
+		description=(
+    "A value that defines the context specified in this context of use. The"
+    " interpretation of the value is defined by the code."
+    ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
-    )
-
+		one_of_many="value",
+		one_of_many_required=True,
+	)
+	
     valueQuantity: fhirtypes.QuantityType = Field(
-        None,
-        alias="valueQuantity",
-        title="Value that defines the context",
-        description=(
-            "A value that defines the context specified in this context of use. The"
-            " interpretation of the value is defined by the code."
-        ),
+		None,
+		alias="valueQuantity",
+		title="Value that defines the context",
+		description=(
+    "A value that defines the context specified in this context of use. The"
+    " interpretation of the value is defined by the code."
+    ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
-    )
-
+		one_of_many="value",
+		one_of_many_required=True,
+	)
+	
     valueRange: fhirtypes.RangeType = Field(
-        None,
-        alias="valueRange",
-        title="Value that defines the context",
-        description=(
-            "A value that defines the context specified in this context of use. The"
-            " interpretation of the value is defined by the code."
-        ),
+		None,
+		alias="valueRange",
+		title="Value that defines the context",
+		description=(
+    "A value that defines the context specified in this context of use. The"
+    " interpretation of the value is defined by the code."
+    ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
-    )
-
+		one_of_many="value",
+		one_of_many_required=True,
+	)
+	
     valueReference: fhirtypes.ReferenceType = Field(
-        None,
-        alias="valueReference",
-        title="Value that defines the context",
-        description=(
-            "A value that defines the context specified in this context of use. The"
-            " interpretation of the value is defined by the code."
-        ),
+		None,
+		alias="valueReference",
+		title="Value that defines the context",
+		description=(
+    "A value that defines the context specified in this context of use. The"
+    " interpretation of the value is defined by the code."
+    ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+		one_of_many="value",
+		one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "PlanDefinition",
-            "ResearchStudy",
-            "InsurancePlan",
-            "HealthcareService",
-            "Group",
-            "Location",
-            "Organization",
-        ],
-    )
-
+		enum_reference_types=["PlanDefinition", "ResearchStudy", "InsurancePlan", "HealthcareService", "Group", "Location", "Organization"],
+	)
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
         ``UsageContext`` according specification,
         with preserving original sequence order.
         """
-        return [
-            "id",
-            "extension",
-            "code",
-            "valueCodeableConcept",
-            "valueQuantity",
-            "valueRange",
-            "valueReference",
-        ]
+        return ["id", "extension", "code", "valueCodeableConcept", "valueQuantity", "valueRange", "valueReference"]
+
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_1443(
@@ -142,13 +127,11 @@ class UsageContext(element.Element):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "value": [
-                "valueCodeableConcept",
-                "valueQuantity",
-                "valueRange",
-                "valueReference",
-            ]
-        }
+			"value": [
+			    "valueCodeableConcept",
+			    "valueQuantity",
+			    "valueRange",
+			    "valueReference"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -169,3 +152,4 @@ class UsageContext(element.Element):
                 raise ValueError(f"Expect any of field value from this list {fields}.")
 
         return values
+

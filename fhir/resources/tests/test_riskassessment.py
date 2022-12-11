@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/RiskAssessment
-Release: R4
-Version: 4.0.1
-Build ID: 9346c8cc45
-Last updated: 2019-11-01T09:29:23.356+11:00
+Release: R4B
+Version: 4.3.0
+Build ID: c475c22
+Last updated: 2022-05-28T12:47:40.239+10:00
 """
 from pydantic.validators import bytes_validator  # noqa: F401
-
 from .. import fhirtypes  # noqa: F401
 from .. import riskassessment
 
@@ -17,9 +16,7 @@ def impl_riskassessment_1(inst):
     assert inst.id == "population"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
-    )
+    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     assert inst.status == "final"
     assert inst.subject.reference == "#group1"
     assert inst.text.status == "generated"
@@ -58,12 +55,8 @@ def impl_riskassessment_2(inst):
     assert inst.identifier[0].value == "risk-assessment-cardiac"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
-    )
-    assert inst.occurrenceDateTime == fhirtypes.DateTime.validate(
-        "2014-07-19T16:04:00Z"
-    )
+    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert inst.occurrenceDateTime == fhirtypes.DateTime.validate("2014-07-19T16:04:00Z")
     assert inst.performer.display == "http://cvdrisk.nhlbi.nih.gov/#cholesterol"
     assert inst.prediction[0].outcome.text == "Heart Attack"
     assert float(inst.prediction[0].probabilityDecimal) == float(0.02)
@@ -107,14 +100,10 @@ def impl_riskassessment_3(inst):
     assert inst.id == "genetic"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
-    )
+    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     assert inst.method.coding[0].code == "BRCAPRO"
     assert inst.note[0].text == "High degree of certainty"
-    assert inst.occurrenceDateTime == fhirtypes.DateTime.validate(
-        "2006-01-13T23:01:00Z"
-    )
+    assert inst.occurrenceDateTime == fhirtypes.DateTime.validate("2006-01-13T23:01:00Z")
     assert inst.prediction[0].outcome.text == "Breast Cancer"
     assert float(inst.prediction[0].probabilityDecimal) == float(0.000168)
     assert inst.prediction[0].whenRange.high.code == "a"
@@ -200,7 +189,9 @@ def test_riskassessment_3(base_settings):
     """No. 3 tests collection for RiskAssessment.
     Test File: riskassessment-example.json
     """
-    filename = base_settings["unittest_data_dir"] / "riskassessment-example.json"
+    filename = (
+        base_settings["unittest_data_dir"] / "riskassessment-example.json"
+    )
     inst = riskassessment.RiskAssessment.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -232,9 +223,7 @@ def impl_riskassessment_4(inst):
     assert inst.identifier[0].value == "risk-assessment-breastcancer1"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
-    )
+    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     assert inst.note[0].text == "This risk assessment is for reference only"
     assert inst.occurrenceDateTime == fhirtypes.DateTime.validate("2017-10-10")
     assert inst.parent.reference == "DiagnosticReport/example"
@@ -252,8 +241,8 @@ def impl_riskassessment_4(inst):
     assert inst.status == "final"
     assert inst.subject.reference == "Patient/example"
     assert inst.text.div == (
-        '<div xmlns="http://www.w3.org/1999/xhtml">Risk assessment '
-        "for reference only</div>"
+    "<div xmlns=\"http://www.w3.org/1999/xhtml\">Risk assessment "
+    "for reference only</div>"
     )
     assert inst.text.status == "generated"
 
@@ -262,7 +251,9 @@ def test_riskassessment_4(base_settings):
     """No. 4 tests collection for RiskAssessment.
     Test File: riskassessment-riskexample.json
     """
-    filename = base_settings["unittest_data_dir"] / "riskassessment-riskexample.json"
+    filename = (
+        base_settings["unittest_data_dir"] / "riskassessment-riskexample.json"
+    )
     inst = riskassessment.RiskAssessment.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -289,11 +280,10 @@ def impl_riskassessment_5(inst):
     assert inst.identifier[0].value == "risk-assessment-breastcancer1"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
-    )
+    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     assert inst.note[0].text == (
-        "This risk assessment is based on BRCA1 and BRCA2 genetic " "mutation test"
+    "This risk assessment is based on BRCA1 and BRCA2 genetic "
+    "mutation test"
     )
     assert inst.performer.reference == "Practitioner/example"
     assert inst.prediction[0].outcome.text == "Unknown risk of developing breast cancer"
@@ -330,22 +320,14 @@ def impl_riskassessment_6(inst):
     assert inst.id == "prognosis"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
-    )
+    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     assert inst.occurrenceDateTime == fhirtypes.DateTime.validate("2010-11-22")
-    assert (
-        inst.prediction[0].outcome.coding[0].code
-        == "249943000:363698007=72098002,260868000=6934004"
-    )
+    assert inst.prediction[0].outcome.coding[0].code == "249943000:363698007=72098002,260868000=6934004"
     assert inst.prediction[0].outcome.coding[0].system == "http://snomed.info/sct"
     assert inst.prediction[0].outcome.text == "permanent weakness of the left arm"
     assert inst.prediction[0].qualitativeRisk.coding[0].code == "moderate"
     assert inst.prediction[0].qualitativeRisk.coding[0].display == "moderate likelihood"
-    assert (
-        inst.prediction[0].qualitativeRisk.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/risk-probability"
-    )
+    assert inst.prediction[0].qualitativeRisk.coding[0].system == "http://terminology.hl7.org/CodeSystem/risk-probability"
     assert inst.status == "final"
     assert inst.subject.reference == "Patient/example"
     assert inst.text.status == "additional"
@@ -371,3 +353,4 @@ def test_riskassessment_6(base_settings):
 
     inst2 = riskassessment.RiskAssessment(**data)
     impl_riskassessment_6(inst2)
+

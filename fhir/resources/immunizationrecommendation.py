@@ -1,19 +1,22 @@
 # -*- coding: utf-8 -*-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation
-Release: R4
-Version: 4.0.1
-Build ID: 9346c8cc45
-Last updated: 2019-11-01T09:29:23.356+11:00
+Release: R4B
+Version: 4.3.0
+Build ID: c475c22
+Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
+from pydantic import Field
+from pydantic import root_validator
 
-from pydantic import Field, root_validator
 from pydantic.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.errors import MissingError, NoneIsNotAllowedError
 
-from . import backboneelement, domainresource, fhirtypes
+from . import fhirtypes
 
+
+from . import domainresource
 
 class ImmunizationRecommendation(domainresource.DomainResource):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
@@ -24,85 +27,70 @@ class ImmunizationRecommendation(domainresource.DomainResource):
     A patient's point-in-time set of recommendations (i.e. forecasting)
     according to a published schedule with optional supporting justification.
     """
-
     resource_type = Field("ImmunizationRecommendation", const=True)
-
+	
     authority: fhirtypes.ReferenceType = Field(
-        None,
-        alias="authority",
-        title="Who is responsible for protocol",
-        description="Indicates the authority who published the protocol (e.g. ACIP).",
+		None,
+		alias="authority",
+		title="Who is responsible for protocol",
+		description="Indicates the authority who published the protocol (e.g. ACIP).",
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
-    )
-
+		enum_reference_types=["Organization"],
+	)
+	
     date: fhirtypes.DateTime = Field(
-        None,
-        alias="date",
-        title="Date recommendation(s) created",
-        description="The date the immunization recommendation(s) were created.",
+		None,
+		alias="date",
+		title="Date recommendation(s) created",
+		description="The date the immunization recommendation(s) were created.",
         # if property is element of this resource.
         element_property=True,
         element_required=True,
-    )
+	)
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None, alias="_date", title="Extension field for ``date``."
-    )
-
-    identifier: typing.List[fhirtypes.IdentifierType] = Field(
         None,
-        alias="identifier",
-        title="Business identifier",
-        description="A unique identifier assigned to this particular recommendation record.",
+        alias="_date",
+        title="Extension field for ``date``."
+    )
+	
+    identifier: typing.List[fhirtypes.IdentifierType] = Field(
+		None,
+		alias="identifier",
+		title="Business identifier",
+		description="A unique identifier assigned to this particular recommendation record.",
         # if property is element of this resource.
         element_property=True,
-    )
-
+	)
+	
     patient: fhirtypes.ReferenceType = Field(
-        ...,
-        alias="patient",
-        title="Who this profile is for",
-        description="The patient the recommendation(s) are for.",
+		...,
+		alias="patient",
+		title="Who this profile is for",
+		description="The patient the recommendation(s) are for.",
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Patient"],
-    )
-
-    recommendation: typing.List[
-        fhirtypes.ImmunizationRecommendationRecommendationType
-    ] = Field(
-        ...,
-        alias="recommendation",
-        title="Vaccine administration recommendations",
-        description=None,
+		enum_reference_types=["Patient"],
+	)
+	
+    recommendation: typing.List[fhirtypes.ImmunizationRecommendationRecommendationType] = Field(
+		...,
+		alias="recommendation",
+		title="Vaccine administration recommendations",
+		description=None,
         # if property is element of this resource.
         element_property=True,
-    )
-
+	)
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
         ``ImmunizationRecommendation`` according specification,
         with preserving original sequence order.
         """
-        return [
-            "id",
-            "meta",
-            "implicitRules",
-            "language",
-            "text",
-            "contained",
-            "extension",
-            "modifierExtension",
-            "identifier",
-            "patient",
-            "date",
-            "authority",
-            "recommendation",
-        ]
+        return ["id", "meta", "implicitRules", "language", "text", "contained", "extension", "modifierExtension", "identifier", "patient", "date", "authority", "recommendation"]
+
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2928(
@@ -115,7 +103,8 @@ class ImmunizationRecommendation(domainresource.DomainResource):
         data type mandatory, it is possible to provide an extension that explains why
         the primitive value is not present.
         """
-        required_fields = [("date", "date__ext")]
+        required_fields = [
+			("date", "date__ext")]
         _missing = object()
 
         def _fallback():
@@ -164,6 +153,8 @@ class ImmunizationRecommendation(domainresource.DomainResource):
         return values
 
 
+from . import backboneelement
+
 class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -171,229 +162,212 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
 
     Vaccine administration recommendations.
     """
-
     resource_type = Field("ImmunizationRecommendationRecommendation", const=True)
-
+	
     contraindicatedVaccineCode: typing.List[fhirtypes.CodeableConceptType] = Field(
-        None,
-        alias="contraindicatedVaccineCode",
-        title="Vaccine which is contraindicated to fulfill the recommendation",
-        description="Vaccine(s) which should not be used to fulfill the recommendation.",
+		None,
+		alias="contraindicatedVaccineCode",
+		title="Vaccine which is contraindicated to fulfill the recommendation",
+		description="Vaccine(s) which should not be used to fulfill the recommendation.",
         # if property is element of this resource.
         element_property=True,
-    )
-
-    dateCriterion: typing.List[
-        fhirtypes.ImmunizationRecommendationRecommendationDateCriterionType
-    ] = Field(
-        None,
-        alias="dateCriterion",
-        title="Dates governing proposed immunization",
-        description=(
-            "Vaccine date recommendations.  For example, earliest date to "
-            "administer, latest date to administer, etc."
-        ),
+	)
+	
+    dateCriterion: typing.List[fhirtypes.ImmunizationRecommendationRecommendationDateCriterionType] = Field(
+		None,
+		alias="dateCriterion",
+		title="Dates governing proposed immunization",
+		description=(
+    "Vaccine date recommendations.  For example, earliest date to "
+    "administer, latest date to administer, etc."
+    ),
         # if property is element of this resource.
         element_property=True,
-    )
-
+	)
+	
     description: fhirtypes.String = Field(
-        None,
-        alias="description",
-        title="Protocol details",
-        description=(
-            "Contains the description about the protocol under which the vaccine "
-            "was administered."
-        ),
+		None,
+		alias="description",
+		title="Protocol details",
+		description=(
+    "Contains the description about the protocol under which the vaccine "
+    "was administered."
+    ),
         # if property is element of this resource.
         element_property=True,
-    )
+	)
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None, alias="_description", title="Extension field for ``description``."
-    )
-
-    doseNumberPositiveInt: fhirtypes.PositiveInt = Field(
         None,
-        alias="doseNumberPositiveInt",
-        title="Recommended dose number within series",
-        description=(
-            "Nominal position of the recommended dose in a series (e.g. dose 2 is "
-            "the next recommended dose)."
-        ),
+        alias="_description",
+        title="Extension field for ``description``."
+    )
+	
+    doseNumberPositiveInt: fhirtypes.PositiveInt = Field(
+		None,
+		alias="doseNumberPositiveInt",
+		title="Recommended dose number within series",
+		description=(
+    "Nominal position of the recommended dose in a series (e.g. dose 2 is "
+    "the next recommended dose)."
+    ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e doseNumber[x]
-        one_of_many="doseNumber",
-        one_of_many_required=False,
-    )
+		one_of_many="doseNumber",
+		one_of_many_required=False,
+	)
     doseNumberPositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
         alias="_doseNumberPositiveInt",
-        title="Extension field for ``doseNumberPositiveInt``.",
+        title="Extension field for ``doseNumberPositiveInt``."
     )
-
+	
     doseNumberString: fhirtypes.String = Field(
-        None,
-        alias="doseNumberString",
-        title="Recommended dose number within series",
-        description=(
-            "Nominal position of the recommended dose in a series (e.g. dose 2 is "
-            "the next recommended dose)."
-        ),
+		None,
+		alias="doseNumberString",
+		title="Recommended dose number within series",
+		description=(
+    "Nominal position of the recommended dose in a series (e.g. dose 2 is "
+    "the next recommended dose)."
+    ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e doseNumber[x]
-        one_of_many="doseNumber",
-        one_of_many_required=False,
-    )
+		one_of_many="doseNumber",
+		one_of_many_required=False,
+	)
     doseNumberString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
         alias="_doseNumberString",
-        title="Extension field for ``doseNumberString``.",
+        title="Extension field for ``doseNumberString``."
     )
-
+	
     forecastReason: typing.List[fhirtypes.CodeableConceptType] = Field(
-        None,
-        alias="forecastReason",
-        title="Vaccine administration status reason",
-        description="The reason for the assigned forecast status.",
+		None,
+		alias="forecastReason",
+		title="Vaccine administration status reason",
+		description="The reason for the assigned forecast status.",
         # if property is element of this resource.
         element_property=True,
-    )
-
+	)
+	
     forecastStatus: fhirtypes.CodeableConceptType = Field(
-        ...,
-        alias="forecastStatus",
-        title="Vaccine recommendation status",
-        description=(
-            "Indicates the patient status with respect to the path to immunity for "
-            "the target disease."
-        ),
+		...,
+		alias="forecastStatus",
+		title="Vaccine recommendation status",
+		description=(
+    "Indicates the patient status with respect to the path to immunity for "
+    "the target disease."
+    ),
         # if property is element of this resource.
         element_property=True,
-    )
-
+	)
+	
     series: fhirtypes.String = Field(
-        None,
-        alias="series",
-        title="Name of vaccination series",
-        description=(
-            "One possible path to achieve presumed immunity against a disease - "
-            "within the context of an authority."
-        ),
+		None,
+		alias="series",
+		title="Name of vaccination series",
+		description=(
+    "One possible path to achieve presumed immunity against a disease - "
+    "within the context of an authority."
+    ),
         # if property is element of this resource.
         element_property=True,
-    )
+	)
     series__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None, alias="_series", title="Extension field for ``series``."
-    )
-
-    seriesDosesPositiveInt: fhirtypes.PositiveInt = Field(
         None,
-        alias="seriesDosesPositiveInt",
-        title="Recommended number of doses for immunity",
-        description="The recommended number of doses to achieve immunity.",
+        alias="_series",
+        title="Extension field for ``series``."
+    )
+	
+    seriesDosesPositiveInt: fhirtypes.PositiveInt = Field(
+		None,
+		alias="seriesDosesPositiveInt",
+		title="Recommended number of doses for immunity",
+		description="The recommended number of doses to achieve immunity.",
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e seriesDoses[x]
-        one_of_many="seriesDoses",
-        one_of_many_required=False,
-    )
+		one_of_many="seriesDoses",
+		one_of_many_required=False,
+	)
     seriesDosesPositiveInt__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
         alias="_seriesDosesPositiveInt",
-        title="Extension field for ``seriesDosesPositiveInt``.",
+        title="Extension field for ``seriesDosesPositiveInt``."
     )
-
+	
     seriesDosesString: fhirtypes.String = Field(
-        None,
-        alias="seriesDosesString",
-        title="Recommended number of doses for immunity",
-        description="The recommended number of doses to achieve immunity.",
+		None,
+		alias="seriesDosesString",
+		title="Recommended number of doses for immunity",
+		description="The recommended number of doses to achieve immunity.",
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e seriesDoses[x]
-        one_of_many="seriesDoses",
-        one_of_many_required=False,
-    )
+		one_of_many="seriesDoses",
+		one_of_many_required=False,
+	)
     seriesDosesString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
         alias="_seriesDosesString",
-        title="Extension field for ``seriesDosesString``.",
+        title="Extension field for ``seriesDosesString``."
     )
-
+	
     supportingImmunization: typing.List[fhirtypes.ReferenceType] = Field(
-        None,
-        alias="supportingImmunization",
-        title="Past immunizations supporting recommendation",
-        description=(
-            "Immunization event history and/or evaluation that supports the status "
-            "and recommendation."
-        ),
+		None,
+		alias="supportingImmunization",
+		title="Past immunizations supporting recommendation",
+		description=(
+    "Immunization event history and/or evaluation that supports the status "
+    "and recommendation."
+    ),
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Immunization", "ImmunizationEvaluation"],
-    )
-
+		enum_reference_types=["Immunization", "ImmunizationEvaluation"],
+	)
+	
     supportingPatientInformation: typing.List[fhirtypes.ReferenceType] = Field(
-        None,
-        alias="supportingPatientInformation",
-        title="Patient observations supporting recommendation",
-        description=(
-            "Patient Information that supports the status and recommendation.  This"
-            " includes patient observations, adverse reactions and "
-            "allergy/intolerance information."
-        ),
+		None,
+		alias="supportingPatientInformation",
+		title="Patient observations supporting recommendation",
+		description=(
+    "Patient Information that supports the status and recommendation.  This"
+    " includes patient observations, adverse reactions and "
+    "allergy/intolerance information."
+    ),
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Resource"],
-    )
-
+		enum_reference_types=["Resource"],
+	)
+	
     targetDisease: fhirtypes.CodeableConceptType = Field(
-        None,
-        alias="targetDisease",
-        title="Disease to be immunized against",
-        description="The targeted disease for the recommendation.",
+		None,
+		alias="targetDisease",
+		title="Disease to be immunized against",
+		description="The targeted disease for the recommendation.",
         # if property is element of this resource.
         element_property=True,
-    )
-
+	)
+	
     vaccineCode: typing.List[fhirtypes.CodeableConceptType] = Field(
-        None,
-        alias="vaccineCode",
-        title="Vaccine  or vaccine group recommendation applies to",
-        description="Vaccine(s) or vaccine group that pertain to the recommendation.",
+		None,
+		alias="vaccineCode",
+		title="Vaccine  or vaccine group recommendation applies to",
+		description="Vaccine(s) or vaccine group that pertain to the recommendation.",
         # if property is element of this resource.
         element_property=True,
-    )
-
+	)
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
         ``ImmunizationRecommendationRecommendation`` according specification,
         with preserving original sequence order.
         """
-        return [
-            "id",
-            "extension",
-            "modifierExtension",
-            "vaccineCode",
-            "targetDisease",
-            "contraindicatedVaccineCode",
-            "forecastStatus",
-            "forecastReason",
-            "dateCriterion",
-            "description",
-            "series",
-            "doseNumberPositiveInt",
-            "doseNumberString",
-            "seriesDosesPositiveInt",
-            "seriesDosesString",
-            "supportingImmunization",
-            "supportingPatientInformation",
-        ]
+        return ["id", "extension", "modifierExtension", "vaccineCode", "targetDisease", "contraindicatedVaccineCode", "forecastStatus", "forecastReason", "dateCriterion", "description", "series", "doseNumberPositiveInt", "doseNumberString", "seriesDosesPositiveInt", "seriesDosesString", "supportingImmunization", "supportingPatientInformation"]
+
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_4389(
@@ -412,9 +386,12 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-            "doseNumber": ["doseNumberPositiveInt", "doseNumberString"],
-            "seriesDoses": ["seriesDosesPositiveInt", "seriesDosesString"],
-        }
+			"doseNumber": [
+			    "doseNumberPositiveInt",
+			    "doseNumberString"],
+			"seriesDoses": [
+			    "seriesDosesPositiveInt",
+			    "seriesDosesString"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -437,9 +414,7 @@ class ImmunizationRecommendationRecommendation(backboneelement.BackboneElement):
         return values
 
 
-class ImmunizationRecommendationRecommendationDateCriterion(
-    backboneelement.BackboneElement
-):
+class ImmunizationRecommendationRecommendationDateCriterion(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
@@ -448,36 +423,34 @@ class ImmunizationRecommendationRecommendationDateCriterion(
     Vaccine date recommendations.  For example, earliest date to administer,
     latest date to administer, etc.
     """
-
-    resource_type = Field(
-        "ImmunizationRecommendationRecommendationDateCriterion", const=True
-    )
-
+    resource_type = Field("ImmunizationRecommendationRecommendationDateCriterion", const=True)
+	
     code: fhirtypes.CodeableConceptType = Field(
-        ...,
-        alias="code",
-        title="Type of date",
-        description=(
-            "Date classification of recommendation.  For example, earliest date to "
-            "give, latest date to give, etc."
-        ),
+		...,
+		alias="code",
+		title="Type of date",
+		description=(
+    "Date classification of recommendation.  For example, earliest date to "
+    "give, latest date to give, etc."
+    ),
         # if property is element of this resource.
         element_property=True,
-    )
-
+	)
+	
     value: fhirtypes.DateTime = Field(
-        None,
-        alias="value",
-        title="Recommended date",
-        description="The date whose meaning is specified by dateCriterion.code.",
+		None,
+		alias="value",
+		title="Recommended date",
+		description="The date whose meaning is specified by dateCriterion.code.",
         # if property is element of this resource.
         element_property=True,
         element_required=True,
-    )
+	)
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None, alias="_value", title="Extension field for ``value``."
+        None,
+        alias="_value",
+        title="Extension field for ``value``."
     )
-
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
@@ -485,6 +458,7 @@ class ImmunizationRecommendationRecommendationDateCriterion(
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "code", "value"]
+
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_5714(
@@ -497,7 +471,8 @@ class ImmunizationRecommendationRecommendationDateCriterion(
         data type mandatory, it is possible to provide an extension that explains why
         the primitive value is not present.
         """
-        required_fields = [("value", "value__ext")]
+        required_fields = [
+			("value", "value__ext")]
         _missing = object()
 
         def _fallback():
@@ -544,3 +519,4 @@ class ImmunizationRecommendationRecommendationDateCriterion(
             raise ValidationError(errors, cls)  # type: ignore
 
         return values
+

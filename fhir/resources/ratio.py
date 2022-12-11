@@ -1,15 +1,16 @@
 # -*- coding: utf-8 -*-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Ratio
-Release: R4
-Version: 4.0.1
-Build ID: 9346c8cc45
-Last updated: 2019-11-01T09:29:23.356+11:00
+Release: R4B
+Version: 4.3.0
+Build ID: c475c22
+Last updated: 2022-05-28T12:47:40.239+10:00
 """
 from pydantic import Field
+from . import fhirtypes
 
-from . import element, fhirtypes
 
+from . import element
 
 class Ratio(element.Element):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
@@ -20,27 +21,25 @@ class Ratio(element.Element):
     A relationship of two Quantity values - expressed as a numerator and a
     denominator.
     """
-
     resource_type = Field("Ratio", const=True)
-
+	
     denominator: fhirtypes.QuantityType = Field(
-        None,
-        alias="denominator",
-        title="Denominator value",
-        description="The value of the denominator.",
+		None,
+		alias="denominator",
+		title="Denominator value",
+		description="The value of the denominator.",
         # if property is element of this resource.
         element_property=True,
-    )
-
+	)
+	
     numerator: fhirtypes.QuantityType = Field(
-        None,
-        alias="numerator",
-        title="Numerator value",
-        description="The value of the numerator.",
+		None,
+		alias="numerator",
+		title="Numerator value",
+		description="The value of the numerator.",
         # if property is element of this resource.
         element_property=True,
-    )
-
+	)
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
@@ -48,3 +47,5 @@ class Ratio(element.Element):
         with preserving original sequence order.
         """
         return ["id", "extension", "numerator", "denominator"]
+
+

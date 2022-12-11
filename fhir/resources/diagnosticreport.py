@@ -1,19 +1,22 @@
 # -*- coding: utf-8 -*-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/DiagnosticReport
-Release: R4
-Version: 4.0.1
-Build ID: 9346c8cc45
-Last updated: 2019-11-01T09:29:23.356+11:00
+Release: R4B
+Version: 4.3.0
+Build ID: c475c22
+Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
+from pydantic import Field
+from pydantic import root_validator
 
-from pydantic import Field, root_validator
 from pydantic.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.errors import MissingError, NoneIsNotAllowedError
 
-from . import backboneelement, domainresource, fhirtypes
+from . import fhirtypes
 
+
+from . import domainresource
 
 class DiagnosticReport(domainresource.DomainResource):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
@@ -28,325 +31,286 @@ class DiagnosticReport(domainresource.DomainResource):
     information, and some mix of atomic results, images, textual and coded
     interpretations, and formatted representation of diagnostic reports.
     """
-
     resource_type = Field("DiagnosticReport", const=True)
-
+	
     basedOn: typing.List[fhirtypes.ReferenceType] = Field(
-        None,
-        alias="basedOn",
-        title="What was requested",
-        description="Details concerning a service requested.",
+		None,
+		alias="basedOn",
+		title="What was requested",
+		description="Details concerning a service requested.",
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "CarePlan",
-            "ImmunizationRecommendation",
-            "MedicationRequest",
-            "NutritionOrder",
-            "ServiceRequest",
-        ],
-    )
-
+		enum_reference_types=["CarePlan", "ImmunizationRecommendation", "MedicationRequest", "NutritionOrder", "ServiceRequest"],
+	)
+	
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
-        None,
-        alias="category",
-        title="Service category",
-        description=(
-            "A code that classifies the clinical discipline, department or "
-            "diagnostic service that created the report (e.g. cardiology, "
-            "biochemistry, hematology, MRI). This is used for searching, sorting "
-            "and display purposes."
-        ),
+		None,
+		alias="category",
+		title="Service category",
+		description=(
+    "A code that classifies the clinical discipline, department or "
+    "diagnostic service that created the report (e.g. cardiology, "
+    "biochemistry, hematology, MRI). This is used for searching, sorting "
+    "and display purposes."
+    ),
         # if property is element of this resource.
         element_property=True,
-    )
-
+	)
+	
     code: fhirtypes.CodeableConceptType = Field(
-        ...,
-        alias="code",
-        title="Name/Code for this diagnostic report",
-        description="A code or name that describes this diagnostic report.",
+		...,
+		alias="code",
+		title="Name/Code for this diagnostic report",
+		description="A code or name that describes this diagnostic report.",
         # if property is element of this resource.
         element_property=True,
-    )
-
+	)
+	
     conclusion: fhirtypes.String = Field(
-        None,
-        alias="conclusion",
-        title="Clinical conclusion (interpretation) of test results",
-        description=(
-            "Concise and clinically contextualized summary conclusion "
-            "(interpretation/impression) of the diagnostic report."
-        ),
+		None,
+		alias="conclusion",
+		title="Clinical conclusion (interpretation) of test results",
+		description=(
+    "Concise and clinically contextualized summary conclusion "
+    "(interpretation/impression) of the diagnostic report."
+    ),
         # if property is element of this resource.
         element_property=True,
-    )
+	)
     conclusion__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None, alias="_conclusion", title="Extension field for ``conclusion``."
-    )
-
-    conclusionCode: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
-        alias="conclusionCode",
-        title="Codes for the clinical conclusion of test results",
-        description=(
-            "One or more codes that represent the summary conclusion "
-            "(interpretation/impression) of the diagnostic report."
-        ),
+        alias="_conclusion",
+        title="Extension field for ``conclusion``."
+    )
+	
+    conclusionCode: typing.List[fhirtypes.CodeableConceptType] = Field(
+		None,
+		alias="conclusionCode",
+		title="Codes for the clinical conclusion of test results",
+		description=(
+    "One or more codes that represent the summary conclusion "
+    "(interpretation/impression) of the diagnostic report."
+    ),
         # if property is element of this resource.
         element_property=True,
-    )
-
+	)
+	
     effectiveDateTime: fhirtypes.DateTime = Field(
-        None,
-        alias="effectiveDateTime",
-        title="Clinically relevant time/time-period for report",
-        description=(
-            "The time or time-period the observed values are related to. When the "
-            "subject of the report is a patient, this is usually either the time of"
-            " the procedure or of specimen collection(s), but very often the source"
-            " of the date/time is not known, only the date/time itself."
-        ),
+		None,
+		alias="effectiveDateTime",
+		title="Clinically relevant time/time-period for report",
+		description=(
+    "The time or time-period the observed values are related to. When the "
+    "subject of the report is a patient, this is usually either the time of"
+    " the procedure or of specimen collection(s), but very often the source"
+    " of the date/time is not known, only the date/time itself."
+    ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e effective[x]
-        one_of_many="effective",
-        one_of_many_required=False,
-    )
+		one_of_many="effective",
+		one_of_many_required=False,
+	)
     effectiveDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
         alias="_effectiveDateTime",
-        title="Extension field for ``effectiveDateTime``.",
+        title="Extension field for ``effectiveDateTime``."
     )
-
+	
     effectivePeriod: fhirtypes.PeriodType = Field(
-        None,
-        alias="effectivePeriod",
-        title="Clinically relevant time/time-period for report",
-        description=(
-            "The time or time-period the observed values are related to. When the "
-            "subject of the report is a patient, this is usually either the time of"
-            " the procedure or of specimen collection(s), but very often the source"
-            " of the date/time is not known, only the date/time itself."
-        ),
+		None,
+		alias="effectivePeriod",
+		title="Clinically relevant time/time-period for report",
+		description=(
+    "The time or time-period the observed values are related to. When the "
+    "subject of the report is a patient, this is usually either the time of"
+    " the procedure or of specimen collection(s), but very often the source"
+    " of the date/time is not known, only the date/time itself."
+    ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e effective[x]
-        one_of_many="effective",
-        one_of_many_required=False,
-    )
-
+		one_of_many="effective",
+		one_of_many_required=False,
+	)
+	
     encounter: fhirtypes.ReferenceType = Field(
-        None,
-        alias="encounter",
-        title="Health care event when test ordered",
-        description=(
-            "The healthcare event  (e.g. a patient and healthcare provider "
-            "interaction) which this DiagnosticReport is about."
-        ),
+		None,
+		alias="encounter",
+		title="Health care event when test ordered",
+		description=(
+    "The healthcare event  (e.g. a patient and healthcare provider "
+    "interaction) which this DiagnosticReport is about."
+    ),
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Encounter"],
-    )
-
+		enum_reference_types=["Encounter"],
+	)
+	
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
-        None,
-        alias="identifier",
-        title="Business identifier for report",
-        description="Identifiers assigned to this report by the performer or other systems.",
+		None,
+		alias="identifier",
+		title="Business identifier for report",
+		description="Identifiers assigned to this report by the performer or other systems.",
         # if property is element of this resource.
         element_property=True,
-    )
-
+	)
+	
     imagingStudy: typing.List[fhirtypes.ReferenceType] = Field(
-        None,
-        alias="imagingStudy",
-        title=(
-            "Reference to full details of imaging associated with the diagnostic "
-            "report"
-        ),
-        description=(
-            "One or more links to full details of any imaging performed during the "
-            "diagnostic investigation. Typically, this is imaging performed by "
-            "DICOM enabled modalities, but this is not required. A fully enabled "
-            "PACS viewer can use this information to provide views of the source "
-            "images."
-        ),
+		None,
+		alias="imagingStudy",
+		title=(
+    "Reference to full details of imaging associated with the diagnostic "
+    "report"
+    ),
+		description=(
+    "One or more links to full details of any imaging performed during the "
+    "diagnostic investigation. Typically, this is imaging performed by "
+    "DICOM enabled modalities, but this is not required. A fully enabled "
+    "PACS viewer can use this information to provide views of the source "
+    "images."
+    ),
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ImagingStudy"],
-    )
-
+		enum_reference_types=["ImagingStudy"],
+	)
+	
     issued: fhirtypes.Instant = Field(
-        None,
-        alias="issued",
-        title="DateTime this version was made",
-        description=(
-            "The date and time that this version of the report was made available "
-            "to providers, typically after the report was reviewed and verified."
-        ),
+		None,
+		alias="issued",
+		title="DateTime this version was made",
+		description=(
+    "The date and time that this version of the report was made available "
+    "to providers, typically after the report was reviewed and verified."
+    ),
         # if property is element of this resource.
         element_property=True,
-    )
+	)
     issued__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None, alias="_issued", title="Extension field for ``issued``."
+        None,
+        alias="_issued",
+        title="Extension field for ``issued``."
     )
-
+	
     media: typing.List[fhirtypes.DiagnosticReportMediaType] = Field(
-        None,
-        alias="media",
-        title="Key images associated with this report",
-        description=(
-            "A list of key images associated with this report. The images are "
-            "generally created during the diagnostic process, and may be directly "
-            "of the patient, or of treated specimens (i.e. slides of interest)."
-        ),
+		None,
+		alias="media",
+		title="Key images associated with this report",
+		description=(
+    "A list of key images associated with this report. The images are "
+    "generally created during the diagnostic process, and may be directly "
+    "of the patient, or of treated specimens (i.e. slides of interest)."
+    ),
         # if property is element of this resource.
         element_property=True,
-    )
-
+	)
+	
     performer: typing.List[fhirtypes.ReferenceType] = Field(
-        None,
-        alias="performer",
-        title="Responsible Diagnostic Service",
-        description="The diagnostic service that is responsible for issuing the report.",
+		None,
+		alias="performer",
+		title="Responsible Diagnostic Service",
+		description="The diagnostic service that is responsible for issuing the report.",
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Practitioner",
-            "PractitionerRole",
-            "Organization",
-            "CareTeam",
-        ],
-    )
-
+		enum_reference_types=["Practitioner", "PractitionerRole", "Organization", "CareTeam"],
+	)
+	
     presentedForm: typing.List[fhirtypes.AttachmentType] = Field(
-        None,
-        alias="presentedForm",
-        title="Entire report as issued",
-        description=(
-            "Rich text representation of the entire result as issued by the "
-            "diagnostic service. Multiple formats are allowed but they SHALL be "
-            "semantically equivalent."
-        ),
+		None,
+		alias="presentedForm",
+		title="Entire report as issued",
+		description=(
+    "Rich text representation of the entire result as issued by the "
+    "diagnostic service. Multiple formats are allowed but they SHALL be "
+    "semantically equivalent."
+    ),
         # if property is element of this resource.
         element_property=True,
-    )
-
+	)
+	
     result: typing.List[fhirtypes.ReferenceType] = Field(
-        None,
-        alias="result",
-        title="Observations",
-        description=(
-            "[Observations](observation.html)  that are part of this diagnostic "
-            "report."
-        ),
+		None,
+		alias="result",
+		title="Observations",
+		description=(
+    "[Observations](observation.html)  that are part of this diagnostic "
+    "report."
+    ),
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Observation"],
-    )
-
+		enum_reference_types=["Observation"],
+	)
+	
     resultsInterpreter: typing.List[fhirtypes.ReferenceType] = Field(
-        None,
-        alias="resultsInterpreter",
-        title="Primary result interpreter",
-        description=(
-            "The practitioner or organization that is responsible for the report's "
-            "conclusions and interpretations."
-        ),
+		None,
+		alias="resultsInterpreter",
+		title="Primary result interpreter",
+		description=(
+    "The practitioner or organization that is responsible for the report's "
+    "conclusions and interpretations."
+    ),
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Practitioner",
-            "PractitionerRole",
-            "Organization",
-            "CareTeam",
-        ],
-    )
-
+		enum_reference_types=["Practitioner", "PractitionerRole", "Organization", "CareTeam"],
+	)
+	
     specimen: typing.List[fhirtypes.ReferenceType] = Field(
-        None,
-        alias="specimen",
-        title="Specimens this report is based on",
-        description="Details about the specimens on which this diagnostic report is based.",
+		None,
+		alias="specimen",
+		title="Specimens this report is based on",
+		description="Details about the specimens on which this diagnostic report is based.",
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Specimen"],
-    )
-
+		enum_reference_types=["Specimen"],
+	)
+	
     status: fhirtypes.Code = Field(
-        None,
-        alias="status",
-        title="registered | partial | preliminary | final +",
-        description="The status of the diagnostic report.",
+		None,
+		alias="status",
+		title="registered | partial | preliminary | final +",
+		description="The status of the diagnostic report.",
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["registered", "partial", "preliminary", "final", "+"],
-    )
+		enum_values=["registered", "partial", "preliminary", "final", "+"],
+	)
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None, alias="_status", title="Extension field for ``status``."
-    )
-
-    subject: fhirtypes.ReferenceType = Field(
         None,
-        alias="subject",
-        title="The subject of the report - usually, but not always, the patient",
-        description=(
-            "The subject of the report. Usually, but not always, this is a patient."
-            " However, diagnostic services also perform analyses on specimens "
-            "collected from a variety of other sources."
-        ),
+        alias="_status",
+        title="Extension field for ``status``."
+    )
+	
+    subject: fhirtypes.ReferenceType = Field(
+		None,
+		alias="subject",
+		title="The subject of the report - usually, but not always, the patient",
+		description=(
+    "The subject of the report. Usually, but not always, this is a patient."
+    " However, diagnostic services also perform analyses on specimens "
+    "collected from a variety of other sources."
+    ),
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Patient", "Group", "Device", "Location"],
-    )
-
+		enum_reference_types=["Patient", "Group", "Device", "Location", "Organization", "Procedure", "Practitioner", "Medication", "Substance"],
+	)
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
         ``DiagnosticReport`` according specification,
         with preserving original sequence order.
         """
-        return [
-            "id",
-            "meta",
-            "implicitRules",
-            "language",
-            "text",
-            "contained",
-            "extension",
-            "modifierExtension",
-            "identifier",
-            "basedOn",
-            "status",
-            "category",
-            "code",
-            "subject",
-            "encounter",
-            "effectiveDateTime",
-            "effectivePeriod",
-            "issued",
-            "performer",
-            "resultsInterpreter",
-            "specimen",
-            "result",
-            "imagingStudy",
-            "media",
-            "conclusion",
-            "conclusionCode",
-            "presentedForm",
-        ]
+        return ["id", "meta", "implicitRules", "language", "text", "contained", "extension", "modifierExtension", "identifier", "basedOn", "status", "category", "code", "subject", "encounter", "effectiveDateTime", "effectivePeriod", "issued", "performer", "resultsInterpreter", "specimen", "result", "imagingStudy", "media", "conclusion", "conclusionCode", "presentedForm"]
+
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1849(
@@ -359,7 +323,8 @@ class DiagnosticReport(domainresource.DomainResource):
         data type mandatory, it is possible to provide an extension that explains why
         the primitive value is not present.
         """
-        required_fields = [("status", "status__ext")]
+        required_fields = [
+			("status", "status__ext")]
         _missing = object()
 
         def _fallback():
@@ -423,7 +388,10 @@ class DiagnosticReport(domainresource.DomainResource):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {"effective": ["effectiveDateTime", "effectivePeriod"]}
+        one_of_many_fields = {
+			"effective": [
+			    "effectiveDateTime",
+			    "effectivePeriod"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -446,6 +414,8 @@ class DiagnosticReport(domainresource.DomainResource):
         return values
 
 
+from . import backboneelement
+
 class DiagnosticReportMedia(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -456,36 +426,36 @@ class DiagnosticReportMedia(backboneelement.BackboneElement):
     created during the diagnostic process, and may be directly of the patient,
     or of treated specimens (i.e. slides of interest).
     """
-
     resource_type = Field("DiagnosticReportMedia", const=True)
-
+	
     comment: fhirtypes.String = Field(
-        None,
-        alias="comment",
-        title="Comment about the image (e.g. explanation)",
-        description=(
-            "A comment about the image. Typically, this is used to provide an "
-            "explanation for why the image is included, or to draw the viewer's "
-            "attention to important features."
-        ),
+		None,
+		alias="comment",
+		title="Comment about the image (e.g. explanation)",
+		description=(
+    "A comment about the image. Typically, this is used to provide an "
+    "explanation for why the image is included, or to draw the viewer's "
+    "attention to important features."
+    ),
         # if property is element of this resource.
         element_property=True,
-    )
+	)
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None, alias="_comment", title="Extension field for ``comment``."
+        None,
+        alias="_comment",
+        title="Extension field for ``comment``."
     )
-
+	
     link: fhirtypes.ReferenceType = Field(
-        ...,
-        alias="link",
-        title="Reference to the image source",
-        description=None,
+		...,
+		alias="link",
+		title="Reference to the image source",
+		description=None,
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Media"],
-    )
-
+		enum_reference_types=["Media"],
+	)
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
@@ -493,3 +463,5 @@ class DiagnosticReportMedia(backboneelement.BackboneElement):
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "comment", "link"]
+
+

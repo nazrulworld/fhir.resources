@@ -12,8 +12,8 @@ import pytest  # type: ignore
 
 EXAMPLE_RESOURCES_URL = (
     "https://github.com/nazrulworld/hl7-archives/raw/"
-    "0.2.1/FHIR/R4/"
-    "4.0.1-examples-json.zip"
+    "0.2.1/FHIR/R4B/"
+    "4.3.0-examples-json.zip"
 )
 ROOT_PATH = dirname(dirname(dirname(dirname(os.path.abspath(__file__)))))
 CACHE_PATH = os.path.join(ROOT_PATH, ".cache")
@@ -40,7 +40,8 @@ def download_and_store(url, path):
 
 
 def expand(self, local):
-    """Expand the ZIP file at the given path to the cache directory."""
+    """ Expand the ZIP file at the given path to the cache directory.
+    """
     path = os.path.join(self.cache, local)
     assert os.path.exists(path)
     import zipfile  # import here as we can bypass its use with a manual unzip

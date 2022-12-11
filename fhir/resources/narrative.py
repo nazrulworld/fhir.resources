@@ -1,19 +1,22 @@
 # -*- coding: utf-8 -*-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Narrative
-Release: R4
-Version: 4.0.1
-Build ID: 9346c8cc45
-Last updated: 2019-11-01T09:29:23.356+11:00
+Release: R4B
+Version: 4.3.0
+Build ID: c475c22
+Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
+from pydantic import Field
+from pydantic import root_validator
 
-from pydantic import Field, root_validator
 from pydantic.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.errors import MissingError, NoneIsNotAllowedError
 
-from . import element, fhirtypes
+from . import fhirtypes
 
+
+from . import element
 
 class Narrative(element.Element):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
@@ -25,42 +28,44 @@ class Narrative(element.Element):
     A human-readable summary of the resource conveying the essential clinical
     and business information for the resource.
     """
-
     resource_type = Field("Narrative", const=True)
-
+	
     div: fhirtypes.Xhtml = Field(
-        None,
-        alias="div",
-        title="Limited xhtml content",
-        description="The actual narrative content, a stripped down version of XHTML.",
+		None,
+		alias="div",
+		title="Limited xhtml content",
+		description="The actual narrative content, a stripped down version of XHTML.",
         # if property is element of this resource.
         element_property=True,
         element_required=True,
-    )
+	)
     div__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None, alias="_div", title="Extension field for ``div``."
-    )
-
-    status: fhirtypes.Code = Field(
         None,
-        alias="status",
-        title="generated | extensions | additional | empty",
-        description=(
-            "The status of the narrative - whether it's entirely generated (from "
-            "just the defined data or the extensions too), or whether a human "
-            "authored it and it may contain additional data."
-        ),
+        alias="_div",
+        title="Extension field for ``div``."
+    )
+	
+    status: fhirtypes.Code = Field(
+		None,
+		alias="status",
+		title="generated | extensions | additional | empty",
+		description=(
+    "The status of the narrative - whether it's entirely generated (from "
+    "just the defined data or the extensions too), or whether a human "
+    "authored it and it may contain additional data."
+    ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["generated", "extensions", "additional", "empty"],
-    )
+		enum_values=["generated", "extensions", "additional", "empty"],
+	)
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None, alias="_status", title="Extension field for ``status``."
+        None,
+        alias="_status",
+        title="Extension field for ``status``."
     )
-
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
@@ -68,6 +73,7 @@ class Narrative(element.Element):
         with preserving original sequence order.
         """
         return ["id", "extension", "status", "div"]
+
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1119(
@@ -80,7 +86,9 @@ class Narrative(element.Element):
         data type mandatory, it is possible to provide an extension that explains why
         the primitive value is not present.
         """
-        required_fields = [("div", "div__ext"), ("status", "status__ext")]
+        required_fields = [
+			("div", "div__ext"),
+			("status", "status__ext")]
         _missing = object()
 
         def _fallback():
@@ -127,3 +135,4 @@ class Narrative(element.Element):
             raise ValidationError(errors, cls)  # type: ignore
 
         return values
+

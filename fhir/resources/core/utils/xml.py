@@ -34,6 +34,7 @@ ROOT_NS = "http://hl7.org/fhir"
 XHTML_NS = "http://www.w3.org/1999/xhtml"
 EMPTY_VALUE = None
 FHIR_ROOT_MODULES: typing.Dict[str, typing.Any] = {
+    "R4B": None,
     "R4": None,
     "STU3": None,
     "DSTU2": None,
@@ -74,7 +75,7 @@ def get_fhir_root_module(fhir_release: str):
     global FHIR_ROOT_MODULES
     if FHIR_ROOT_MODULES[fhir_release] is None:
         mod_name = "fhir.resources"
-        if fhir_release != "R4":
+        if fhir_release != "R4B":
             mod_name += f".{fhir_release}"
         FHIR_ROOT_MODULES[fhir_release] = importlib.import_module(mod_name)
 

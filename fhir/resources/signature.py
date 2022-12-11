@@ -1,19 +1,22 @@
 # -*- coding: utf-8 -*-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Signature
-Release: R4
-Version: 4.0.1
-Build ID: 9346c8cc45
-Last updated: 2019-11-01T09:29:23.356+11:00
+Release: R4B
+Version: 4.3.0
+Build ID: c475c22
+Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
+from pydantic import Field
+from pydantic import root_validator
 
-from pydantic import Field, root_validator
 from pydantic.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.errors import MissingError, NoneIsNotAllowedError
 
-from . import element, fhirtypes
+from . import fhirtypes
 
+
+from . import element
 
 class Signature(element.Element):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
@@ -27,142 +30,125 @@ class Signature(element.Element):
     graphical image representing a hand-written signature, or a signature
     ceremony Different signature approaches have different utilities.
     """
-
     resource_type = Field("Signature", const=True)
-
+	
     data: fhirtypes.Base64Binary = Field(
-        None,
-        alias="data",
-        title="The actual signature content (XML DigSig. JWS, picture, etc.)",
-        description=(
-            "The base64 encoding of the Signature content. When signature is not "
-            "recorded electronically this element would be empty."
-        ),
+		None,
+		alias="data",
+		title="The actual signature content (XML DigSig. JWS, picture, etc.)",
+		description=(
+    "The base64 encoding of the Signature content. When signature is not "
+    "recorded electronically this element would be empty."
+    ),
         # if property is element of this resource.
         element_property=True,
-    )
+	)
     data__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None, alias="_data", title="Extension field for ``data``."
-    )
-
-    onBehalfOf: fhirtypes.ReferenceType = Field(
         None,
-        alias="onBehalfOf",
-        title="The party represented",
-        description=(
-            "A reference to an application-usable description of the identity that "
-            "is represented by the signature."
-        ),
+        alias="_data",
+        title="Extension field for ``data``."
+    )
+	
+    onBehalfOf: fhirtypes.ReferenceType = Field(
+		None,
+		alias="onBehalfOf",
+		title="The party represented",
+		description=(
+    "A reference to an application-usable description of the identity that "
+    "is represented by the signature."
+    ),
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Practitioner",
-            "PractitionerRole",
-            "RelatedPerson",
-            "Patient",
-            "Device",
-            "Organization",
-        ],
-    )
-
+		enum_reference_types=["Practitioner", "PractitionerRole", "RelatedPerson", "Patient", "Device", "Organization"],
+	)
+	
     sigFormat: fhirtypes.Code = Field(
-        None,
-        alias="sigFormat",
-        title="The technical format of the signature",
-        description=(
-            "A mime type that indicates the technical format of the signature. "
-            "Important mime types are application/signature+xml for X ML DigSig, "
-            "application/jose for JWS, and image/* for a graphical image of a "
-            "signature, etc."
-        ),
+		None,
+		alias="sigFormat",
+		title="The technical format of the signature",
+		description=(
+    "A mime type that indicates the technical format of the signature. "
+    "Important mime types are application/signature+xml for X ML DigSig, "
+    "application/jose for JWS, and image/* for a graphical image of a "
+    "signature, etc."
+    ),
         # if property is element of this resource.
         element_property=True,
-    )
+	)
     sigFormat__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None, alias="_sigFormat", title="Extension field for ``sigFormat``."
+        None,
+        alias="_sigFormat",
+        title="Extension field for ``sigFormat``."
     )
-
+	
     targetFormat: fhirtypes.Code = Field(
-        None,
-        alias="targetFormat",
-        title="The technical format of the signed resources",
-        description=(
-            "A mime type that indicates the technical format of the target "
-            "resources signed by the signature."
-        ),
+		None,
+		alias="targetFormat",
+		title="The technical format of the signed resources",
+		description=(
+    "A mime type that indicates the technical format of the target "
+    "resources signed by the signature."
+    ),
         # if property is element of this resource.
         element_property=True,
-    )
+	)
     targetFormat__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None, alias="_targetFormat", title="Extension field for ``targetFormat``."
+        None,
+        alias="_targetFormat",
+        title="Extension field for ``targetFormat``."
     )
-
+	
     type: typing.List[fhirtypes.CodingType] = Field(
-        ...,
-        alias="type",
-        title="Indication of the reason the entity signed the object(s)",
-        description=(
-            "An indication of the reason that the entity signed this document. This"
-            " may be explicitly included as part of the signature information and "
-            "can be used when determining accountability for various actions "
-            "concerning the document."
-        ),
+		...,
+		alias="type",
+		title="Indication of the reason the entity signed the object(s)",
+		description=(
+    "An indication of the reason that the entity signed this document. This"
+    " may be explicitly included as part of the signature information and "
+    "can be used when determining accountability for various actions "
+    "concerning the document."
+    ),
         # if property is element of this resource.
         element_property=True,
-    )
-
+	)
+	
     when: fhirtypes.Instant = Field(
-        None,
-        alias="when",
-        title="When the signature was created",
-        description="When the digital signature was signed.",
+		None,
+		alias="when",
+		title="When the signature was created",
+		description="When the digital signature was signed.",
         # if property is element of this resource.
         element_property=True,
         element_required=True,
-    )
+	)
     when__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None, alias="_when", title="Extension field for ``when``."
+        None,
+        alias="_when",
+        title="Extension field for ``when``."
     )
-
+	
     who: fhirtypes.ReferenceType = Field(
-        ...,
-        alias="who",
-        title="Who signed",
-        description=(
-            "A reference to an application-usable description of the identity that "
-            "signed  (e.g. the signature used their private key)."
-        ),
+		...,
+		alias="who",
+		title="Who signed",
+		description=(
+    "A reference to an application-usable description of the identity that "
+    "signed  (e.g. the signature used their private key)."
+    ),
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Practitioner",
-            "PractitionerRole",
-            "RelatedPerson",
-            "Patient",
-            "Device",
-            "Organization",
-        ],
-    )
-
+		enum_reference_types=["Practitioner", "PractitionerRole", "RelatedPerson", "Patient", "Device", "Organization"],
+	)
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
         ``Signature`` according specification,
         with preserving original sequence order.
         """
-        return [
-            "id",
-            "extension",
-            "type",
-            "when",
-            "who",
-            "onBehalfOf",
-            "targetFormat",
-            "sigFormat",
-            "data",
-        ]
+        return ["id", "extension", "type", "when", "who", "onBehalfOf", "targetFormat", "sigFormat", "data"]
+
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1130(
@@ -175,7 +161,8 @@ class Signature(element.Element):
         data type mandatory, it is possible to provide an extension that explains why
         the primitive value is not present.
         """
-        required_fields = [("when", "when__ext")]
+        required_fields = [
+			("when", "when__ext")]
         _missing = object()
 
         def _fallback():
@@ -222,3 +209,4 @@ class Signature(element.Element):
             raise ValidationError(errors, cls)  # type: ignore
 
         return values
+

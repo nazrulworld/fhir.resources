@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/Practitioner
-Release: R4
-Version: 4.0.1
-Build ID: 9346c8cc45
-Last updated: 2019-11-01T09:29:23.356+11:00
+Release: R4B
+Version: 4.3.0
+Build ID: c475c22
+Last updated: 2022-05-28T12:47:40.239+10:00
 """
 from pydantic.validators import bytes_validator  # noqa: F401
-
 from .. import fhirtypes  # noqa: F401
 from .. import practitioner
 
@@ -32,9 +31,7 @@ def impl_practitioner_1(inst):
     assert inst.identifier[1].value == "12345678903"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
-    )
+    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     assert inst.name[0].text == "Juri van Gelder"
     assert inst.name[0].use == "official"
     assert inst.telecom[0].system == "phone"
@@ -47,7 +44,9 @@ def test_practitioner_1(base_settings):
     """No. 1 tests collection for Practitioner.
     Test File: practitioner-example-f203-jvg.json
     """
-    filename = base_settings["unittest_data_dir"] / "practitioner-example-f203-jvg.json"
+    filename = (
+        base_settings["unittest_data_dir"] / "practitioner-example-f203-jvg.json"
+    )
     inst = practitioner.Practitioner.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -80,9 +79,7 @@ def impl_practitioner_2(inst):
     assert inst.identifier[0].value == "12345678901"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
-    )
+    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     assert inst.name[0].family == "Bronsig"
     assert inst.name[0].given[0] == "Arend"
     assert inst.name[0].prefix[0] == "Dr."
@@ -101,7 +98,9 @@ def test_practitioner_2(base_settings):
     """No. 2 tests collection for Practitioner.
     Test File: practitioner-example-f201-ab.json
     """
-    filename = base_settings["unittest_data_dir"] / "practitioner-example-f201-ab.json"
+    filename = (
+        base_settings["unittest_data_dir"] / "practitioner-example-f201-ab.json"
+    )
     inst = practitioner.Practitioner.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -138,9 +137,7 @@ def impl_practitioner_3(inst):
     assert inst.identifier[1].value == "12345678902"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
-    )
+    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     assert inst.name[0].family == "Maas"
     assert inst.name[0].given[0] == "Luigi"
     assert inst.name[0].prefix[0] == "Dr."
@@ -156,7 +153,9 @@ def test_practitioner_3(base_settings):
     """No. 3 tests collection for Practitioner.
     Test File: practitioner-example-f202-lm.json
     """
-    filename = base_settings["unittest_data_dir"] / "practitioner-example-f202-lm.json"
+    filename = (
+        base_settings["unittest_data_dir"] / "practitioner-example-f202-lm.json"
+    )
     inst = practitioner.Practitioner.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -176,9 +175,7 @@ def impl_practitioner_4(inst):
     assert inst.id == "xcda-author"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
-    )
+    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     assert inst.name[0].family == "Hippocrates"
     assert inst.name[0].given[0] == "Harold"
     assert inst.name[0].suffix[0] == "MD"
@@ -227,9 +224,7 @@ def impl_practitioner_5(inst):
     assert inst.identifier[1].value == "243HID3RT938"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
-    )
+    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     assert inst.name[0].family == "Versteegh"
     assert inst.name[0].given[0] == "Marc"
     assert inst.name[0].suffix[0] == "MD"
@@ -250,7 +245,9 @@ def test_practitioner_5(base_settings):
     """No. 5 tests collection for Practitioner.
     Test File: practitioner-example-f003-mv.json
     """
-    filename = base_settings["unittest_data_dir"] / "practitioner-example-f003-mv.json"
+    filename = (
+        base_settings["unittest_data_dir"] / "practitioner-example-f003-mv.json"
+    )
     inst = practitioner.Practitioner.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -283,9 +280,7 @@ def impl_practitioner_6(inst):
     assert inst.identifier[1].value == "174BIP3JH438"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
-    )
+    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     assert inst.name[0].family == "Voigt"
     assert inst.name[0].given[0] == "Pieter"
     assert inst.name[0].suffix[0] == "MD"
@@ -306,7 +301,9 @@ def test_practitioner_6(base_settings):
     """No. 6 tests collection for Practitioner.
     Test File: practitioner-example-f002-pv.json
     """
-    filename = base_settings["unittest_data_dir"] / "practitioner-example-f002-pv.json"
+    filename = (
+        base_settings["unittest_data_dir"] / "practitioner-example-f002-pv.json"
+    )
     inst = practitioner.Practitioner.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -334,23 +331,15 @@ def impl_practitioner_7(inst):
     assert inst.identifier[0].value == "23"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
-    )
+    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     assert inst.name[0].family == "Careful"
     assert inst.name[0].given[0] == "Adam"
     assert inst.name[0].prefix[0] == "Dr"
     assert inst.qualification[0].code.coding[0].code == "BS"
     assert inst.qualification[0].code.coding[0].display == "Bachelor of Science"
-    assert (
-        inst.qualification[0].code.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/v2-0360/2.7"
-    )
+    assert inst.qualification[0].code.coding[0].system == "http://terminology.hl7.org/CodeSystem/v2-0360/2.7"
     assert inst.qualification[0].code.text == "Bachelor of Science"
-    assert (
-        inst.qualification[0].identifier[0].system
-        == "http://example.org/UniversityIdentifier"
-    )
+    assert inst.qualification[0].identifier[0].system == "http://example.org/UniversityIdentifier"
     assert inst.qualification[0].identifier[0].value == "12345"
     assert inst.qualification[0].issuer.display == "Example University"
     assert inst.qualification[0].period.start == fhirtypes.DateTime.validate("1995")
@@ -361,7 +350,9 @@ def test_practitioner_7(base_settings):
     """No. 7 tests collection for Practitioner.
     Test File: practitioner-example.json
     """
-    filename = base_settings["unittest_data_dir"] / "practitioner-example.json"
+    filename = (
+        base_settings["unittest_data_dir"] / "practitioner-example.json"
+    )
     inst = practitioner.Practitioner.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -394,9 +385,7 @@ def impl_practitioner_8(inst):
     assert inst.identifier[1].value == "567IUI51C154"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
-    )
+    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     assert inst.name[0].family == "Heps"
     assert inst.name[0].given[0] == "Simone"
     assert inst.name[0].suffix[0] == "MD"
@@ -417,7 +406,9 @@ def test_practitioner_8(base_settings):
     """No. 8 tests collection for Practitioner.
     Test File: practitioner-example-f007-sh.json
     """
-    filename = base_settings["unittest_data_dir"] / "practitioner-example-f007-sh.json"
+    filename = (
+        base_settings["unittest_data_dir"] / "practitioner-example-f007-sh.json"
+    )
     inst = practitioner.Practitioner.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -448,9 +439,7 @@ def impl_practitioner_9(inst):
     assert inst.identifier[0].value == "12345678904"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
-    )
+    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     assert inst.name[0].text == "Carla Espinosa"
     assert inst.name[0].use == "usual"
     assert inst.telecom[0].system == "phone"
@@ -463,7 +452,9 @@ def test_practitioner_9(base_settings):
     """No. 9 tests collection for Practitioner.
     Test File: practitioner-example-f204-ce.json
     """
-    filename = base_settings["unittest_data_dir"] / "practitioner-example-f204-ce.json"
+    filename = (
+        base_settings["unittest_data_dir"] / "practitioner-example-f204-ce.json"
+    )
     inst = practitioner.Practitioner.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -481,16 +472,12 @@ def test_practitioner_9(base_settings):
 
 def impl_practitioner_10(inst):
     assert inst.id == "xcda1"
-    assert (
-        inst.identifier[0].system == "http://healthcare.example.org/identifiers/staff"
-    )
+    assert inst.identifier[0].system == "http://healthcare.example.org/identifiers/staff"
     assert inst.identifier[0].use == "official"
     assert inst.identifier[0].value == "D234123"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
-    )
+    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     assert inst.name[0].family == "Dopplemeyer"
     assert inst.name[0].given[0] == "Sherry"
     assert inst.telecom[0].system == "email"
@@ -502,7 +489,9 @@ def test_practitioner_10(base_settings):
     """No. 10 tests collection for Practitioner.
     Test File: practitioner-example-xcda1.json
     """
-    filename = base_settings["unittest_data_dir"] / "practitioner-example-xcda1.json"
+    filename = (
+        base_settings["unittest_data_dir"] / "practitioner-example-xcda1.json"
+    )
     inst = practitioner.Practitioner.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -516,3 +505,4 @@ def test_practitioner_10(base_settings):
 
     inst2 = practitioner.Practitioner(**data)
     impl_practitioner_10(inst2)
+

@@ -1,19 +1,22 @@
 # -*- coding: utf-8 -*-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/PractitionerRole
-Release: R4
-Version: 4.0.1
-Build ID: 9346c8cc45
-Last updated: 2019-11-01T09:29:23.356+11:00
+Release: R4B
+Version: 4.3.0
+Build ID: c475c22
+Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
+from pydantic import Field
+from pydantic import root_validator
 
-from pydantic import Field, root_validator
 from pydantic.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.errors import MissingError, NoneIsNotAllowedError
 
-from . import backboneelement, domainresource, fhirtypes
+from . import fhirtypes
 
+
+from . import domainresource
 
 class PractitionerRole(domainresource.DomainResource):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
@@ -24,213 +27,193 @@ class PractitionerRole(domainresource.DomainResource):
     A specific set of Roles/Locations/specialties/services that a practitioner
     may perform at an organization for a period of time.
     """
-
     resource_type = Field("PractitionerRole", const=True)
-
+	
     active: bool = Field(
-        None,
-        alias="active",
-        title="Whether this practitioner role record is in active use",
-        description=None,
+		None,
+		alias="active",
+		title="Whether this practitioner role record is in active use",
+		description=None,
         # if property is element of this resource.
         element_property=True,
-    )
+	)
     active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None, alias="_active", title="Extension field for ``active``."
-    )
-
-    availabilityExceptions: fhirtypes.String = Field(
         None,
-        alias="availabilityExceptions",
-        title="Description of availability exceptions",
-        description=(
-            "A description of site availability exceptions, e.g. public holiday "
-            "availability. Succinctly describing all possible exceptions to normal "
-            "site availability as details in the available Times and not available "
-            "Times."
-        ),
+        alias="_active",
+        title="Extension field for ``active``."
+    )
+	
+    availabilityExceptions: fhirtypes.String = Field(
+		None,
+		alias="availabilityExceptions",
+		title="Description of availability exceptions",
+		description=(
+    "A description of site availability exceptions, e.g. public holiday "
+    "availability. Succinctly describing all possible exceptions to normal "
+    "site availability as details in the available Times and not available "
+    "Times."
+    ),
         # if property is element of this resource.
         element_property=True,
-    )
+	)
     availabilityExceptions__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
         alias="_availabilityExceptions",
-        title="Extension field for ``availabilityExceptions``.",
+        title="Extension field for ``availabilityExceptions``."
     )
-
+	
     availableTime: typing.List[fhirtypes.PractitionerRoleAvailableTimeType] = Field(
-        None,
-        alias="availableTime",
-        title="Times the Service Site is available",
-        description=(
-            "A collection of times the practitioner is available or performing this"
-            " role at the location and/or healthcareservice."
-        ),
+		None,
+		alias="availableTime",
+		title="Times the Service Site is available",
+		description=(
+    "A collection of times the practitioner is available or performing this"
+    " role at the location and/or healthcareservice."
+    ),
         # if property is element of this resource.
         element_property=True,
-    )
-
+	)
+	
     code: typing.List[fhirtypes.CodeableConceptType] = Field(
-        None,
-        alias="code",
-        title="Roles which this practitioner may perform",
-        description=(
-            "Roles which this practitioner is authorized to perform for the "
-            "organization."
-        ),
+		None,
+		alias="code",
+		title="Roles which this practitioner may perform",
+		description=(
+    "Roles which this practitioner is authorized to perform for the "
+    "organization."
+    ),
         # if property is element of this resource.
         element_property=True,
-    )
-
+	)
+	
     endpoint: typing.List[fhirtypes.ReferenceType] = Field(
-        None,
-        alias="endpoint",
-        title=(
-            "Technical endpoints providing access to services operated for the "
-            "practitioner with this role"
-        ),
-        description=None,
+		None,
+		alias="endpoint",
+		title=(
+    "Technical endpoints providing access to services operated for the "
+    "practitioner with this role"
+    ),
+		description=None,
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Endpoint"],
-    )
-
+		enum_reference_types=["Endpoint"],
+	)
+	
     healthcareService: typing.List[fhirtypes.ReferenceType] = Field(
-        None,
-        alias="healthcareService",
-        title=(
-            "The list of healthcare services that this worker provides for this "
-            "role's Organization/Location(s)"
-        ),
-        description=None,
+		None,
+		alias="healthcareService",
+		title=(
+    "The list of healthcare services that this worker provides for this "
+    "role's Organization/Location(s)"
+    ),
+		description=None,
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["HealthcareService"],
-    )
-
+		enum_reference_types=["HealthcareService"],
+	)
+	
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
-        None,
-        alias="identifier",
-        title="Business Identifiers that are specific to a role/location",
-        description=None,
+		None,
+		alias="identifier",
+		title="Business Identifiers that are specific to a role/location",
+		description=None,
         # if property is element of this resource.
         element_property=True,
-    )
-
+	)
+	
     location: typing.List[fhirtypes.ReferenceType] = Field(
-        None,
-        alias="location",
-        title="The location(s) at which this practitioner provides care",
-        description=None,
+		None,
+		alias="location",
+		title="The location(s) at which this practitioner provides care",
+		description=None,
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Location"],
-    )
-
+		enum_reference_types=["Location"],
+	)
+	
     notAvailable: typing.List[fhirtypes.PractitionerRoleNotAvailableType] = Field(
-        None,
-        alias="notAvailable",
-        title="Not available during this time due to provided reason",
-        description=(
-            "The practitioner is not available or performing this role during this "
-            "period of time due to the provided reason."
-        ),
+		None,
+		alias="notAvailable",
+		title="Not available during this time due to provided reason",
+		description=(
+    "The practitioner is not available or performing this role during this "
+    "period of time due to the provided reason."
+    ),
         # if property is element of this resource.
         element_property=True,
-    )
-
+	)
+	
     organization: fhirtypes.ReferenceType = Field(
-        None,
-        alias="organization",
-        title="Organization where the roles are available",
-        description="The organization where the Practitioner performs the roles associated.",
+		None,
+		alias="organization",
+		title="Organization where the roles are available",
+		description="The organization where the Practitioner performs the roles associated.",
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
-    )
-
+		enum_reference_types=["Organization"],
+	)
+	
     period: fhirtypes.PeriodType = Field(
-        None,
-        alias="period",
-        title=(
-            "The period during which the practitioner is authorized to perform in "
-            "these role(s)"
-        ),
-        description=(
-            "The period during which the person is authorized to act as a "
-            "practitioner in these role(s) for the organization."
-        ),
+		None,
+		alias="period",
+		title=(
+    "The period during which the practitioner is authorized to perform in "
+    "these role(s)"
+    ),
+		description=(
+    "The period during which the person is authorized to act as a "
+    "practitioner in these role(s) for the organization."
+    ),
         # if property is element of this resource.
         element_property=True,
-    )
-
+	)
+	
     practitioner: fhirtypes.ReferenceType = Field(
-        None,
-        alias="practitioner",
-        title=(
-            "Practitioner that is able to provide the defined services for the "
-            "organization"
-        ),
-        description=None,
+		None,
+		alias="practitioner",
+		title=(
+    "Practitioner that is able to provide the defined services for the "
+    "organization"
+    ),
+		description=None,
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Practitioner"],
-    )
-
+		enum_reference_types=["Practitioner"],
+	)
+	
     specialty: typing.List[fhirtypes.CodeableConceptType] = Field(
-        None,
-        alias="specialty",
-        title="Specific specialty of the practitioner",
-        description=None,
+		None,
+		alias="specialty",
+		title="Specific specialty of the practitioner",
+		description=None,
         # if property is element of this resource.
         element_property=True,
-    )
-
+	)
+	
     telecom: typing.List[fhirtypes.ContactPointType] = Field(
-        None,
-        alias="telecom",
-        title="Contact details that are specific to the role/location/service",
-        description=None,
+		None,
+		alias="telecom",
+		title="Contact details that are specific to the role/location/service",
+		description=None,
         # if property is element of this resource.
         element_property=True,
-    )
-
+	)
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
         ``PractitionerRole`` according specification,
         with preserving original sequence order.
         """
-        return [
-            "id",
-            "meta",
-            "implicitRules",
-            "language",
-            "text",
-            "contained",
-            "extension",
-            "modifierExtension",
-            "identifier",
-            "active",
-            "period",
-            "practitioner",
-            "organization",
-            "code",
-            "specialty",
-            "location",
-            "healthcareService",
-            "telecom",
-            "availableTime",
-            "notAvailable",
-            "availabilityExceptions",
-            "endpoint",
-        ]
+        return ["id", "meta", "implicitRules", "language", "text", "contained", "extension", "modifierExtension", "identifier", "active", "period", "practitioner", "organization", "code", "specialty", "location", "healthcareService", "telecom", "availableTime", "notAvailable", "availabilityExceptions", "endpoint"]
 
+
+
+from . import backboneelement
 
 class PractitionerRoleAvailableTime(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
@@ -241,91 +224,86 @@ class PractitionerRoleAvailableTime(backboneelement.BackboneElement):
     A collection of times the practitioner is available or performing this role
     at the location and/or healthcareservice.
     """
-
     resource_type = Field("PractitionerRoleAvailableTime", const=True)
-
+	
     allDay: bool = Field(
-        None,
-        alias="allDay",
-        title="Always available? e.g. 24 hour service",
-        description=(
-            "Is this always available? (hence times are irrelevant) e.g. 24 hour "
-            "service."
-        ),
+		None,
+		alias="allDay",
+		title="Always available? e.g. 24 hour service",
+		description=(
+    "Is this always available? (hence times are irrelevant) e.g. 24 hour "
+    "service."
+    ),
         # if property is element of this resource.
         element_property=True,
-    )
+	)
     allDay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None, alias="_allDay", title="Extension field for ``allDay``."
-    )
-
-    availableEndTime: fhirtypes.Time = Field(
         None,
-        alias="availableEndTime",
-        title="Closing time of day (ignored if allDay = true)",
-        description=(
-            "The closing time of day. Note: If the AllDay flag is set, then this "
-            "time is ignored."
-        ),
+        alias="_allDay",
+        title="Extension field for ``allDay``."
+    )
+	
+    availableEndTime: fhirtypes.Time = Field(
+		None,
+		alias="availableEndTime",
+		title="Closing time of day (ignored if allDay = true)",
+		description=(
+    "The closing time of day. Note: If the AllDay flag is set, then this "
+    "time is ignored."
+    ),
         # if property is element of this resource.
         element_property=True,
-    )
+	)
     availableEndTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
         alias="_availableEndTime",
-        title="Extension field for ``availableEndTime``.",
+        title="Extension field for ``availableEndTime``."
     )
-
+	
     availableStartTime: fhirtypes.Time = Field(
-        None,
-        alias="availableStartTime",
-        title="Opening time of day (ignored if allDay = true)",
-        description=(
-            "The opening time of day. Note: If the AllDay flag is set, then this "
-            "time is ignored."
-        ),
+		None,
+		alias="availableStartTime",
+		title="Opening time of day (ignored if allDay = true)",
+		description=(
+    "The opening time of day. Note: If the AllDay flag is set, then this "
+    "time is ignored."
+    ),
         # if property is element of this resource.
         element_property=True,
-    )
+	)
     availableStartTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
         alias="_availableStartTime",
-        title="Extension field for ``availableStartTime``.",
+        title="Extension field for ``availableStartTime``."
     )
-
+	
     daysOfWeek: typing.List[fhirtypes.Code] = Field(
-        None,
-        alias="daysOfWeek",
-        title="mon | tue | wed | thu | fri | sat | sun",
-        description=(
-            "Indicates which days of the week are available between the start and "
-            "end Times."
-        ),
+		None,
+		alias="daysOfWeek",
+		title="mon | tue | wed | thu | fri | sat | sun",
+		description=(
+    "Indicates which days of the week are available between the start and "
+    "end Times."
+    ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["mon", "tue", "wed", "thu", "fri", "sat", "sun"],
+		enum_values=["mon", "tue", "wed", "thu", "fri", "sat", "sun"],
+	)
+    daysOfWeek__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        None,
+        alias="_daysOfWeek",
+        title="Extension field for ``daysOfWeek``."
     )
-    daysOfWeek__ext: typing.List[
-        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
-    ] = Field(None, alias="_daysOfWeek", title="Extension field for ``daysOfWeek``.")
-
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
         ``PractitionerRoleAvailableTime`` according specification,
         with preserving original sequence order.
         """
-        return [
-            "id",
-            "extension",
-            "modifierExtension",
-            "daysOfWeek",
-            "allDay",
-            "availableStartTime",
-            "availableEndTime",
-        ]
+        return ["id", "extension", "modifierExtension", "daysOfWeek", "allDay", "availableStartTime", "availableEndTime"]
+
 
 
 class PractitionerRoleNotAvailable(backboneelement.BackboneElement):
@@ -337,37 +315,37 @@ class PractitionerRoleNotAvailable(backboneelement.BackboneElement):
     The practitioner is not available or performing this role during this
     period of time due to the provided reason.
     """
-
     resource_type = Field("PractitionerRoleNotAvailable", const=True)
-
+	
     description: fhirtypes.String = Field(
-        None,
-        alias="description",
-        title="Reason presented to the user explaining why time not available",
-        description=(
-            "The reason that can be presented to the user as to why this time is "
-            "not available."
-        ),
+		None,
+		alias="description",
+		title="Reason presented to the user explaining why time not available",
+		description=(
+    "The reason that can be presented to the user as to why this time is "
+    "not available."
+    ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
-    )
+	)
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None, alias="_description", title="Extension field for ``description``."
-    )
-
-    during: fhirtypes.PeriodType = Field(
         None,
-        alias="during",
-        title="Service not available from this date",
-        description=(
-            "Service is not available (seasonally or for a public holiday) from "
-            "this date."
-        ),
+        alias="_description",
+        title="Extension field for ``description``."
+    )
+	
+    during: fhirtypes.PeriodType = Field(
+		None,
+		alias="during",
+		title="Service not available from this date",
+		description=(
+    "Service is not available (seasonally or for a public holiday) from "
+    "this date."
+    ),
         # if property is element of this resource.
         element_property=True,
-    )
-
+	)
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
@@ -375,6 +353,7 @@ class PractitionerRoleNotAvailable(backboneelement.BackboneElement):
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "description", "during"]
+
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_3053(
@@ -387,7 +366,8 @@ class PractitionerRoleNotAvailable(backboneelement.BackboneElement):
         data type mandatory, it is possible to provide an extension that explains why
         the primitive value is not present.
         """
-        required_fields = [("description", "description__ext")]
+        required_fields = [
+			("description", "description__ext")]
         _missing = object()
 
         def _fallback():
@@ -434,3 +414,4 @@ class PractitionerRoleNotAvailable(backboneelement.BackboneElement):
             raise ValidationError(errors, cls)  # type: ignore
 
         return values
+

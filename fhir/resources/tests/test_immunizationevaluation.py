@@ -1,25 +1,25 @@
 # -*- coding: utf-8 -*-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/ImmunizationEvaluation
-Release: R4
-Version: 4.0.1
-Build ID: 9346c8cc45
-Last updated: 2019-11-01T09:29:23.356+11:00
+Release: R4B
+Version: 4.3.0
+Build ID: c475c22
+Last updated: 2022-05-28T12:47:40.239+10:00
 """
 from pydantic.validators import bytes_validator  # noqa: F401
-
 from .. import fhirtypes  # noqa: F401
 from .. import immunizationevaluation
 
 
 def impl_immunizationevaluation_1(inst):
     assert inst.authority.reference == "Organization/hl7"
-    assert inst.date == fhirtypes.DateTime.validate("2013-01-10T11:15:33+10:00")
+    assert inst.date == fhirtypes.DateTime.validate("2013-01-10")
     assert inst.doseNumberPositiveInt == 1
     assert inst.doseStatus.coding[0].code == "valid"
     assert inst.doseStatus.coding[0].display == "Valid"
     assert inst.doseStatus.coding[0].system == (
-        "http://terminology.hl7.org/CodeSystem/immunization-" "evaluation-dose-status"
+    "http://terminology.hl7.org/CodeSystem/immunization-"
+    "evaluation-dose-status"
     )
     assert inst.id == "example"
     assert inst.identifier[0].system == "urn:ietf:rfc:3986"
@@ -27,9 +27,7 @@ def impl_immunizationevaluation_1(inst):
     assert inst.immunizationEvent.reference == "Immunization/example"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
-    )
+    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     assert inst.patient.reference == "Patient/example"
     assert inst.series == "Vaccination Series 1"
     assert inst.seriesDosesPositiveInt == 3
@@ -63,21 +61,19 @@ def test_immunizationevaluation_1(base_settings):
 
 def impl_immunizationevaluation_2(inst):
     assert inst.authority.reference == "Organization/hl7"
-    assert inst.date == fhirtypes.DateTime.validate("2013-01-10T11:15:33+10:00")
+    assert inst.date == fhirtypes.DateTime.validate("2013-01-10")
     assert inst.doseNumberPositiveInt == 2
     assert inst.doseStatus.coding[0].code == "notvalid"
     assert inst.doseStatus.coding[0].display == "Not Valid"
     assert inst.doseStatus.coding[0].system == (
-        "http://terminology.hl7.org/CodeSystem/immunization-" "evaluation-dose-status"
+    "http://terminology.hl7.org/CodeSystem/immunization-"
+    "evaluation-dose-status"
     )
     assert inst.doseStatusReason[0].coding[0].code == "outsidesched"
-    assert (
-        inst.doseStatusReason[0].coding[0].display
-        == "Administered outside recommended schedule"
-    )
+    assert inst.doseStatusReason[0].coding[0].display == "Administered outside recommended schedule"
     assert inst.doseStatusReason[0].coding[0].system == (
-        "http://terminology.hl7.org/CodeSystem/immunization-"
-        "evaluation-dose-status-reason"
+    "http://terminology.hl7.org/CodeSystem/immunization-"
+    "evaluation-dose-status-reason"
     )
     assert inst.id == "notValid"
     assert inst.identifier[0].system == "urn:ietf:rfc:3986"
@@ -85,9 +81,7 @@ def impl_immunizationevaluation_2(inst):
     assert inst.immunizationEvent.reference == "Immunization/example"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
-    )
+    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
     assert inst.patient.reference == "Patient/example"
     assert inst.series == "Vaccination Series 1"
     assert inst.seriesDosesPositiveInt == 3
@@ -102,8 +96,7 @@ def test_immunizationevaluation_2(base_settings):
     Test File: immunizationevaluation-example-notvalid.json
     """
     filename = (
-        base_settings["unittest_data_dir"]
-        / "immunizationevaluation-example-notvalid.json"
+        base_settings["unittest_data_dir"] / "immunizationevaluation-example-notvalid.json"
     )
     inst = immunizationevaluation.ImmunizationEvaluation.parse_file(
         filename, content_type="application/json", encoding="utf-8"
@@ -118,3 +111,4 @@ def test_immunizationevaluation_2(base_settings):
 
     inst2 = immunizationevaluation.ImmunizationEvaluation(**data)
     impl_immunizationevaluation_2(inst2)
+

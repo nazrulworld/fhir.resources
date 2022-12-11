@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 """
 Profile: http://hl7.org/fhir/StructureDefinition/TerminologyCapabilities
-Release: R4
-Version: 4.0.1
-Build ID: 9346c8cc45
-Last updated: 2019-11-01T09:29:23.356+11:00
+Release: R4B
+Version: 4.3.0
+Build ID: c475c22
+Last updated: 2022-05-28T12:47:40.239+10:00
 """
 from pydantic.validators import bytes_validator  # noqa: F401
-
 from .. import fhirtypes  # noqa: F401
 from .. import terminologycapabilities
 
@@ -19,9 +18,9 @@ def impl_terminologycapabilities_1(inst):
     assert inst.contact[0].telecom[0].value == "wile@acme.org"
     assert inst.date == fhirtypes.DateTime.validate("2012-01-04")
     assert inst.description == (
-        "This is the FHIR capability statement for the main EHR at "
-        "ACME for the private interface - it does not describe the "
-        "public interface"
+    "This is the FHIR capability statement for the main EHR at "
+    "ACME for the private interface - it does not describe the "
+    "public interface"
     )
     assert inst.experimental is True
     assert inst.id == "example"
@@ -35,7 +34,7 @@ def impl_terminologycapabilities_1(inst):
     assert inst.status == "draft"
     assert inst.text.status == "generated"
     assert inst.title == "ACME EHR capability statement"
-    assert inst.url == "urn:uuid:68D043B5-9ECF-4559-A57A-396E0D452311"
+    assert inst.url == "urn:uuid:68d043b5-9ecf-4559-a57a-396e0d452311"
     assert inst.version == "20130510"
 
 
@@ -59,3 +58,4 @@ def test_terminologycapabilities_1(base_settings):
 
     inst2 = terminologycapabilities.TerminologyCapabilities(**data)
     impl_terminologycapabilities_1(inst2)
+

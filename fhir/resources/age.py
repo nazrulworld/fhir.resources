@@ -10,6 +10,7 @@ from pydantic import Field
 
 from . import quantity
 
+
 class Age(quantity.Quantity):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -17,7 +18,9 @@ class Age(quantity.Quantity):
 
     A duration of time during which an organism (or a process) has existed.
     """
+
     resource_type = Field("Age", const=True)
+
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
@@ -25,5 +28,3 @@ class Age(quantity.Quantity):
         with preserving original sequence order.
         """
         return ["id", "extension", "value", "comparator", "unit", "system", "code"]
-
-

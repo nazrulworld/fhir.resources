@@ -7,6 +7,7 @@ Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
 from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import condition
 
@@ -21,7 +22,10 @@ def impl_condition_1(inst):
     assert inst.category[0].coding[0].display == "diagnosis"
     assert inst.category[0].coding[0].system == "http://snomed.info/sct"
     assert inst.clinicalStatus.coding[0].code == "active"
-    assert inst.clinicalStatus.coding[0].system == "http://terminology.hl7.org/CodeSystem/condition-clinical"
+    assert (
+        inst.clinicalStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-clinical"
+    )
     assert inst.code.coding[0].code == "18099001"
     assert inst.code.coding[0].display == "Retropharyngeal abscess"
     assert inst.code.coding[0].system == "http://snomed.info/sct"
@@ -32,7 +36,9 @@ def impl_condition_1(inst):
     assert inst.id == "f003"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.onsetDateTime == fhirtypes.DateTime.validate("2012-02-27")
     assert inst.recordedDate == fhirtypes.DateTime.validate("2012-02-20")
     assert inst.severity.coding[0].code == "371923003"
@@ -42,7 +48,10 @@ def impl_condition_1(inst):
     assert inst.subject.reference == "Patient/f001"
     assert inst.text.status == "generated"
     assert inst.verificationStatus.coding[0].code == "confirmed"
-    assert inst.verificationStatus.coding[0].system == "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+    assert (
+        inst.verificationStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+    )
 
 
 def test_condition_1(base_settings):
@@ -76,9 +85,15 @@ def impl_condition_2(inst):
     assert inst.category[0].coding[0].display == "Problem"
     assert inst.category[0].coding[0].system == "http://snomed.info/sct"
     assert inst.category[0].coding[1].code == "problem-list-item"
-    assert inst.category[0].coding[1].system == "http://terminology.hl7.org/CodeSystem/condition-category"
+    assert (
+        inst.category[0].coding[1].system
+        == "http://terminology.hl7.org/CodeSystem/condition-category"
+    )
     assert inst.clinicalStatus.coding[0].code == "active"
-    assert inst.clinicalStatus.coding[0].system == "http://terminology.hl7.org/CodeSystem/condition-clinical"
+    assert (
+        inst.clinicalStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-clinical"
+    )
     assert inst.code.coding[0].code == "10001005"
     assert inst.code.coding[0].display == "Bacterial sepsis"
     assert inst.code.coding[0].system == "http://snomed.info/sct"
@@ -89,7 +104,9 @@ def impl_condition_2(inst):
     assert inst.id == "f203"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.onsetDateTime == fhirtypes.DateTime.validate("2013-03-08")
     assert inst.recordedDate == fhirtypes.DateTime.validate("2013-03-11")
     assert inst.severity.coding[0].code == "371924009"
@@ -99,16 +116,17 @@ def impl_condition_2(inst):
     assert inst.subject.reference == "Patient/f201"
     assert inst.text.status == "generated"
     assert inst.verificationStatus.coding[0].code == "confirmed"
-    assert inst.verificationStatus.coding[0].system == "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+    assert (
+        inst.verificationStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+    )
 
 
 def test_condition_2(base_settings):
     """No. 2 tests collection for Condition.
     Test File: condition-example-f203-sepsis.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "condition-example-f203-sepsis.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "condition-example-f203-sepsis.json"
     inst = condition.Condition.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -127,9 +145,15 @@ def test_condition_2(base_settings):
 def impl_condition_3(inst):
     assert inst.category[0].coding[0].code == "encounter-diagnosis"
     assert inst.category[0].coding[0].display == "Encounter Diagnosis"
-    assert inst.category[0].coding[0].system == "http://terminology.hl7.org/CodeSystem/condition-category"
+    assert (
+        inst.category[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-category"
+    )
     assert inst.clinicalStatus.coding[0].code == "active"
-    assert inst.clinicalStatus.coding[0].system == "http://terminology.hl7.org/CodeSystem/condition-clinical"
+    assert (
+        inst.clinicalStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-clinical"
+    )
     assert inst.code.coding[0].code == "422504002"
     assert inst.code.coding[0].display == "Ischemic stroke (disorder)"
     assert inst.code.coding[0].system == "http://snomed.info/sct"
@@ -137,25 +161,28 @@ def impl_condition_3(inst):
     assert inst.id == "stroke"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.onsetDateTime == fhirtypes.DateTime.validate("2010-07-18")
     assert inst.subject.reference == "Patient/example"
     assert inst.text.div == (
-    "<div xmlns=\"http://www.w3.org/1999/xhtml\">Ischemic stroke,"
-    " July 18, 2010</div>"
+        '<div xmlns="http://www.w3.org/1999/xhtml">Ischemic stroke,'
+        " July 18, 2010</div>"
     )
     assert inst.text.status == "generated"
     assert inst.verificationStatus.coding[0].code == "confirmed"
-    assert inst.verificationStatus.coding[0].system == "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+    assert (
+        inst.verificationStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+    )
 
 
 def test_condition_3(base_settings):
     """No. 3 tests collection for Condition.
     Test File: condition-example-stroke.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "condition-example-stroke.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "condition-example-stroke.json"
     inst = condition.Condition.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -174,20 +201,28 @@ def test_condition_3(base_settings):
 def impl_condition_4(inst):
     assert inst.category[0].coding[0].code == "problem-list-item"
     assert inst.category[0].coding[0].display == "Problem List Item"
-    assert inst.category[0].coding[0].system == "http://terminology.hl7.org/CodeSystem/condition-category"
+    assert (
+        inst.category[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-category"
+    )
     assert inst.clinicalStatus.coding[0].code == "active"
-    assert inst.clinicalStatus.coding[0].system == "http://terminology.hl7.org/CodeSystem/condition-clinical"
+    assert (
+        inst.clinicalStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-clinical"
+    )
     assert inst.code.coding[0].code == "312824007"
     assert inst.code.coding[0].display == "Family history of cancer of colon"
     assert inst.code.coding[0].system == "http://snomed.info/sct"
     assert inst.id == "family-history"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.subject.reference == "Patient/example"
     assert inst.text.div == (
-    "<div xmlns=\"http://www.w3.org/1999/xhtml\">Family history "
-    "of cancer of colon</div>"
+        '<div xmlns="http://www.w3.org/1999/xhtml">Family history '
+        "of cancer of colon</div>"
     )
     assert inst.text.status == "generated"
 
@@ -224,7 +259,10 @@ def impl_condition_5(inst):
     assert inst.category[0].coding[0].display == "diagnosis"
     assert inst.category[0].coding[0].system == "http://snomed.info/sct"
     assert inst.clinicalStatus.coding[0].code == "active"
-    assert inst.clinicalStatus.coding[0].system == "http://terminology.hl7.org/CodeSystem/condition-clinical"
+    assert (
+        inst.clinicalStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-clinical"
+    )
     assert inst.code.coding[0].code == "254637007"
     assert inst.code.coding[0].display == "NSCLC - Non-small cell lung cancer"
     assert inst.code.coding[0].system == "http://snomed.info/sct"
@@ -235,7 +273,9 @@ def impl_condition_5(inst):
     assert inst.id == "f002"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.onsetDateTime == fhirtypes.DateTime.validate("2011-05-05")
     assert inst.recordedDate == fhirtypes.DateTime.validate("2012-06-03")
     assert inst.severity.coding[0].code == "24484000"
@@ -251,16 +291,17 @@ def impl_condition_5(inst):
     assert inst.subject.reference == "Patient/f001"
     assert inst.text.status == "generated"
     assert inst.verificationStatus.coding[0].code == "confirmed"
-    assert inst.verificationStatus.coding[0].system == "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+    assert (
+        inst.verificationStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+    )
 
 
 def test_condition_5(base_settings):
     """No. 5 tests collection for Condition.
     Test File: condition-example-f002-lung.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "condition-example-f002-lung.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "condition-example-f002-lung.json"
     inst = condition.Condition.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -279,20 +320,28 @@ def test_condition_5(base_settings):
 def impl_condition_6(inst):
     assert inst.asserter.reference == "Practitioner/f201"
     assert inst.clinicalStatus.coding[0].code == "active"
-    assert inst.clinicalStatus.coding[0].system == "http://terminology.hl7.org/CodeSystem/condition-clinical"
+    assert (
+        inst.clinicalStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-clinical"
+    )
     assert inst.code.coding[0].code == "87628006"
     assert inst.code.coding[0].display == "Bacterial infectious disease"
     assert inst.code.coding[0].system == "http://snomed.info/sct"
     assert inst.id == "f205"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.recordedDate == fhirtypes.DateTime.validate("2013-04-04")
     assert inst.subject.display == "Roel"
     assert inst.subject.reference == "Patient/f201"
     assert inst.text.status == "generated"
     assert inst.verificationStatus.coding[0].code == "differential"
-    assert inst.verificationStatus.coding[0].system == "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+    assert (
+        inst.verificationStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+    )
 
 
 def test_condition_6(base_settings):
@@ -327,18 +376,29 @@ def impl_condition_7(inst):
     assert inst.category[0].coding[0].display == "Problem"
     assert inst.category[0].coding[0].system == "http://snomed.info/sct"
     assert inst.category[0].coding[1].code == "problem-list-item"
-    assert inst.category[0].coding[1].system == "http://terminology.hl7.org/CodeSystem/condition-category"
+    assert (
+        inst.category[0].coding[1].system
+        == "http://terminology.hl7.org/CodeSystem/condition-category"
+    )
     assert inst.clinicalStatus.coding[0].code == "inactive"
-    assert inst.clinicalStatus.coding[0].system == "http://terminology.hl7.org/CodeSystem/condition-clinical"
+    assert (
+        inst.clinicalStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-clinical"
+    )
     assert inst.code.coding[0].code == "36225005"
-    assert inst.code.coding[0].display == "Acute renal insufficiency specified as due to procedure"
+    assert (
+        inst.code.coding[0].display
+        == "Acute renal insufficiency specified as due to procedure"
+    )
     assert inst.code.coding[0].system == "http://snomed.info/sct"
     assert inst.encounter.display == "Roel's encounter on March elevanth"
     assert inst.encounter.reference == "Encounter/f203"
     assert inst.id == "f204"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.note[0].text == "The patient is anuric."
     assert inst.onsetDateTime == fhirtypes.DateTime.validate("2013-03-11")
     assert inst.recordedDate == fhirtypes.DateTime.validate("2013-03-11")
@@ -353,16 +413,17 @@ def impl_condition_7(inst):
     assert inst.subject.reference == "Patient/f201"
     assert inst.text.status == "generated"
     assert inst.verificationStatus.coding[0].code == "differential"
-    assert inst.verificationStatus.coding[0].system == "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+    assert (
+        inst.verificationStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+    )
 
 
 def test_condition_7(base_settings):
     """No. 7 tests collection for Condition.
     Test File: condition-example-f204-renal.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "condition-example-f204-renal.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "condition-example-f204-renal.json"
     inst = condition.Condition.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -381,35 +442,44 @@ def test_condition_7(base_settings):
 def impl_condition_8(inst):
     assert inst.category[0].coding[0].code == "problem-list-item"
     assert inst.category[0].coding[0].display == "Problem List Item"
-    assert inst.category[0].coding[0].system == "http://terminology.hl7.org/CodeSystem/condition-category"
+    assert (
+        inst.category[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-category"
+    )
     assert inst.clinicalStatus.coding[0].code == "active"
-    assert inst.clinicalStatus.coding[0].system == "http://terminology.hl7.org/CodeSystem/condition-clinical"
+    assert (
+        inst.clinicalStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-clinical"
+    )
     assert inst.code.text == "Asthma"
     assert inst.id == "example2"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.onsetString == "approximately November 2012"
     assert inst.severity.coding[0].code == "255604002"
     assert inst.severity.coding[0].display == "Mild"
     assert inst.severity.coding[0].system == "http://snomed.info/sct"
     assert inst.subject.reference == "Patient/example"
     assert inst.text.div == (
-    "<div xmlns=\"http://www.w3.org/1999/xhtml\">Mild Asthma "
-    "(Date: 12-Nov 2012)</div>"
+        '<div xmlns="http://www.w3.org/1999/xhtml">Mild Asthma '
+        "(Date: 12-Nov 2012)</div>"
     )
     assert inst.text.status == "generated"
     assert inst.verificationStatus.coding[0].code == "confirmed"
-    assert inst.verificationStatus.coding[0].system == "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+    assert (
+        inst.verificationStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+    )
 
 
 def test_condition_8(base_settings):
     """No. 8 tests collection for Condition.
     Test File: condition-example2.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "condition-example2.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "condition-example2.json"
     inst = condition.Condition.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -434,21 +504,35 @@ def impl_condition_9(inst):
     assert inst.bodySite[0].coding[0].display == "Entire head and neck"
     assert inst.bodySite[0].coding[0].system == "http://snomed.info/sct"
     assert inst.category[0].coding[0].code == "encounter-diagnosis"
-    assert inst.category[0].coding[0].system == "http://terminology.hl7.org/CodeSystem/condition-category"
+    assert (
+        inst.category[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-category"
+    )
     assert inst.clinicalStatus.coding[0].code == "resolved"
-    assert inst.clinicalStatus.coding[0].system == "http://terminology.hl7.org/CodeSystem/condition-clinical"
+    assert (
+        inst.clinicalStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-clinical"
+    )
     assert inst.code.coding[0].code == "363346000"
     assert inst.code.coding[0].display == "Malignant neoplastic disease"
     assert inst.code.coding[0].system == "http://snomed.info/sct"
-    assert inst.evidence[0].detail[0].display == "Erasmus' diagnostic report of Roel's tumor"
+    assert (
+        inst.evidence[0].detail[0].display
+        == "Erasmus' diagnostic report of Roel's tumor"
+    )
     assert inst.evidence[0].detail[0].reference == "DiagnosticReport/f201"
     assert inst.id == "f202"
     assert inst.meta.security[0].code == "TBOO"
     assert inst.meta.security[0].display == "taboo"
-    assert inst.meta.security[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+    assert (
+        inst.meta.security[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+    )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.onsetAge.code == "a"
     assert inst.onsetAge.system == "http://unitsofmeasure.org"
     assert inst.onsetAge.unit == "years"
@@ -461,7 +545,10 @@ def impl_condition_9(inst):
     assert inst.subject.reference == "Patient/f201"
     assert inst.text.status == "generated"
     assert inst.verificationStatus.coding[0].code == "confirmed"
-    assert inst.verificationStatus.coding[0].system == "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+    assert (
+        inst.verificationStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+    )
 
 
 def test_condition_9(base_settings):
@@ -496,9 +583,15 @@ def impl_condition_10(inst):
     assert inst.category[0].coding[0].display == "Problem"
     assert inst.category[0].coding[0].system == "http://snomed.info/sct"
     assert inst.category[0].coding[1].code == "problem-list-item"
-    assert inst.category[0].coding[1].system == "http://terminology.hl7.org/CodeSystem/condition-category"
+    assert (
+        inst.category[0].coding[1].system
+        == "http://terminology.hl7.org/CodeSystem/condition-category"
+    )
     assert inst.clinicalStatus.coding[0].code == "resolved"
-    assert inst.clinicalStatus.coding[0].system == "http://terminology.hl7.org/CodeSystem/condition-clinical"
+    assert (
+        inst.clinicalStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-clinical"
+    )
     assert inst.code.coding[0].code == "386661006"
     assert inst.code.coding[0].display == "Fever"
     assert inst.code.coding[0].system == "http://snomed.info/sct"
@@ -512,7 +605,9 @@ def impl_condition_10(inst):
     assert inst.identifier[0].value == "12345"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.onsetDateTime == fhirtypes.DateTime.validate("2013-04-02")
     assert inst.recordedDate == fhirtypes.DateTime.validate("2013-04-04")
     assert inst.recorder.reference == "Practitioner/f201"
@@ -523,16 +618,17 @@ def impl_condition_10(inst):
     assert inst.subject.reference == "Patient/f201"
     assert inst.text.status == "generated"
     assert inst.verificationStatus.coding[0].code == "confirmed"
-    assert inst.verificationStatus.coding[0].system == "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+    assert (
+        inst.verificationStatus.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+    )
 
 
 def test_condition_10(base_settings):
     """No. 10 tests collection for Condition.
     Test File: condition-example-f201-fever.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "condition-example-f201-fever.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "condition-example-f201-fever.json"
     inst = condition.Condition.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -546,4 +642,3 @@ def test_condition_10(base_settings):
 
     inst2 = condition.Condition(**data)
     impl_condition_10(inst2)
-

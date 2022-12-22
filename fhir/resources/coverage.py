@@ -7,16 +7,13 @@ Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
-from pydantic import Field
-from pydantic import root_validator
 
+from pydantic import Field, root_validator
 from pydantic.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.errors import MissingError, NoneIsNotAllowedError
 
-from . import fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
-
-from . import domainresource
 
 class Coverage(domainresource.DomainResource):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
@@ -27,248 +24,263 @@ class Coverage(domainresource.DomainResource):
     Financial instrument which may be used to reimburse or pay for health care
     products and services. Includes both insurance and self-payment.
     """
+
     resource_type = Field("Coverage", const=True)
-	
+
     beneficiary: fhirtypes.ReferenceType = Field(
-		...,
-		alias="beneficiary",
-		title="Plan beneficiary",
-		description=(
-    "The party who benefits from the insurance coverage; the patient when "
-    "products and/or services are provided."
-    ),
+        ...,
+        alias="beneficiary",
+        title="Plan beneficiary",
+        description=(
+            "The party who benefits from the insurance coverage; the patient when "
+            "products and/or services are provided."
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["Patient"],
-	)
-	
+        enum_reference_types=["Patient"],
+    )
+
     class_fhir: typing.List[fhirtypes.CoverageClassType] = Field(
-		None,
-		alias="class",
-		title="Additional coverage classifications",
-		description="A suite of underwriter specific classifiers.",
+        None,
+        alias="class",
+        title="Additional coverage classifications",
+        description="A suite of underwriter specific classifiers.",
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     contract: typing.List[fhirtypes.ReferenceType] = Field(
-		None,
-		alias="contract",
-		title="Contract details",
-		description="The policy(s) which constitute this insurance coverage.",
+        None,
+        alias="contract",
+        title="Contract details",
+        description="The policy(s) which constitute this insurance coverage.",
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["Contract"],
-	)
-	
+        enum_reference_types=["Contract"],
+    )
+
     costToBeneficiary: typing.List[fhirtypes.CoverageCostToBeneficiaryType] = Field(
-		None,
-		alias="costToBeneficiary",
-		title="Patient payments for services/products",
-		description=(
-    "A suite of codes indicating the cost category and associated amount "
-    "which have been detailed in the policy and may have been  included on "
-    "the health card."
-    ),
+        None,
+        alias="costToBeneficiary",
+        title="Patient payments for services/products",
+        description=(
+            "A suite of codes indicating the cost category and associated amount "
+            "which have been detailed in the policy and may have been  included on "
+            "the health card."
+        ),
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     dependent: fhirtypes.String = Field(
-		None,
-		alias="dependent",
-		title="Dependent number",
-		description="A unique identifier for a dependent under the coverage.",
+        None,
+        alias="dependent",
+        title="Dependent number",
+        description="A unique identifier for a dependent under the coverage.",
         # if property is element of this resource.
         element_property=True,
-	)
+    )
     dependent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None,
-        alias="_dependent",
-        title="Extension field for ``dependent``."
+        None, alias="_dependent", title="Extension field for ``dependent``."
     )
-	
+
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
-		None,
-		alias="identifier",
-		title="Business Identifier for the coverage",
-		description="A unique identifier assigned to this coverage.",
+        None,
+        alias="identifier",
+        title="Business Identifier for the coverage",
+        description="A unique identifier assigned to this coverage.",
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     network: fhirtypes.String = Field(
-		None,
-		alias="network",
-		title="Insurer network",
-		description=(
-    "The insurer-specific identifier for the insurer-defined network of "
-    "providers to which the beneficiary may seek treatment which will be "
-    "covered at the 'in-network' rate, otherwise 'out of network' terms and"
-    " conditions apply."
-    ),
+        None,
+        alias="network",
+        title="Insurer network",
+        description=(
+            "The insurer-specific identifier for the insurer-defined network of "
+            "providers to which the beneficiary may seek treatment which will be "
+            "covered at the 'in-network' rate, otherwise 'out of network' terms and"
+            " conditions apply."
+        ),
         # if property is element of this resource.
         element_property=True,
-	)
+    )
     network__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None,
-        alias="_network",
-        title="Extension field for ``network``."
+        None, alias="_network", title="Extension field for ``network``."
     )
-	
+
     order: fhirtypes.PositiveInt = Field(
-		None,
-		alias="order",
-		title="Relative order of the coverage",
-		description=(
-    "The order of applicability of this coverage relative to other "
-    "coverages which are currently in force. Note, there may be gaps in the"
-    " numbering and this does not imply primary, secondary etc. as the "
-    "specific positioning of coverages depends upon the episode of care."
-    ),
-        # if property is element of this resource.
-        element_property=True,
-	)
-    order__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
-        alias="_order",
-        title="Extension field for ``order``."
+        alias="order",
+        title="Relative order of the coverage",
+        description=(
+            "The order of applicability of this coverage relative to other "
+            "coverages which are currently in force. Note, there may be gaps in the"
+            " numbering and this does not imply primary, secondary etc. as the "
+            "specific positioning of coverages depends upon the episode of care."
+        ),
+        # if property is element of this resource.
+        element_property=True,
     )
-	
+    order__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_order", title="Extension field for ``order``."
+    )
+
     payor: typing.List[fhirtypes.ReferenceType] = Field(
-		...,
-		alias="payor",
-		title="Issuer of the policy",
-		description=(
-    "The program or plan underwriter or payor including both insurance and "
-    "non-insurance agreements, such as patient-pay agreements."
-    ),
+        ...,
+        alias="payor",
+        title="Issuer of the policy",
+        description=(
+            "The program or plan underwriter or payor including both insurance and "
+            "non-insurance agreements, such as patient-pay agreements."
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["Organization", "Patient", "RelatedPerson"],
-	)
-	
+        enum_reference_types=["Organization", "Patient", "RelatedPerson"],
+    )
+
     period: fhirtypes.PeriodType = Field(
-		None,
-		alias="period",
-		title="Coverage start and end dates",
-		description=(
-    "Time period during which the coverage is in force. A missing start "
-    "date indicates the start date isn't known, a missing end date means "
-    "the coverage is continuing to be in force."
-    ),
+        None,
+        alias="period",
+        title="Coverage start and end dates",
+        description=(
+            "Time period during which the coverage is in force. A missing start "
+            "date indicates the start date isn't known, a missing end date means "
+            "the coverage is continuing to be in force."
+        ),
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     policyHolder: fhirtypes.ReferenceType = Field(
-		None,
-		alias="policyHolder",
-		title="Owner of the policy",
-		description="The party who 'owns' the insurance policy.",
+        None,
+        alias="policyHolder",
+        title="Owner of the policy",
+        description="The party who 'owns' the insurance policy.",
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["Patient", "RelatedPerson", "Organization"],
-	)
-	
+        enum_reference_types=["Patient", "RelatedPerson", "Organization"],
+    )
+
     relationship: fhirtypes.CodeableConceptType = Field(
-		None,
-		alias="relationship",
-		title="Beneficiary relationship to the subscriber",
-		description="The relationship of beneficiary (patient) to the subscriber.",
+        None,
+        alias="relationship",
+        title="Beneficiary relationship to the subscriber",
+        description="The relationship of beneficiary (patient) to the subscriber.",
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     status: fhirtypes.Code = Field(
-		None,
-		alias="status",
-		title="active | cancelled | draft | entered-in-error",
-		description="The status of the resource instance.",
+        None,
+        alias="status",
+        title="active | cancelled | draft | entered-in-error",
+        description="The status of the resource instance.",
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-		enum_values=["active", "cancelled", "draft", "entered-in-error"],
-	)
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None,
-        alias="_status",
-        title="Extension field for ``status``."
+        enum_values=["active", "cancelled", "draft", "entered-in-error"],
     )
-	
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
+    )
+
     subrogation: bool = Field(
-		None,
-		alias="subrogation",
-		title="Reimbursement to insurer",
-		description=(
-    "When 'subrogation=true' this insurance instance has been included not "
-    "for adjudication but to provide insurers with the details to recover "
-    "costs."
-    ),
+        None,
+        alias="subrogation",
+        title="Reimbursement to insurer",
+        description=(
+            "When 'subrogation=true' this insurance instance has been included not "
+            "for adjudication but to provide insurers with the details to recover "
+            "costs."
+        ),
         # if property is element of this resource.
         element_property=True,
-	)
-    subrogation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None,
-        alias="_subrogation",
-        title="Extension field for ``subrogation``."
     )
-	
+    subrogation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_subrogation", title="Extension field for ``subrogation``."
+    )
+
     subscriber: fhirtypes.ReferenceType = Field(
-		None,
-		alias="subscriber",
-		title="Subscriber to the policy",
-		description=(
-    "The party who has signed-up for or 'owns' the contractual relationship"
-    " to the policy or to whom the benefit of the policy for services "
-    "rendered to them or their family is due."
-    ),
+        None,
+        alias="subscriber",
+        title="Subscriber to the policy",
+        description=(
+            "The party who has signed-up for or 'owns' the contractual relationship"
+            " to the policy or to whom the benefit of the policy for services "
+            "rendered to them or their family is due."
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["Patient", "RelatedPerson"],
-	)
-	
-    subscriberId: fhirtypes.String = Field(
-		None,
-		alias="subscriberId",
-		title="ID assigned to the subscriber",
-		description="The insurer assigned ID for the Subscriber.",
-        # if property is element of this resource.
-        element_property=True,
-	)
-    subscriberId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None,
-        alias="_subscriberId",
-        title="Extension field for ``subscriberId``."
+        enum_reference_types=["Patient", "RelatedPerson"],
     )
-	
-    type: fhirtypes.CodeableConceptType = Field(
-		None,
-		alias="type",
-		title="Coverage category such as medical or accident",
-		description=(
-    "The type of coverage: social program, medical plan, accident coverage "
-    "(workers compensation, auto), group health or payment by an individual"
-    " or organization."
-    ),
+
+    subscriberId: fhirtypes.String = Field(
+        None,
+        alias="subscriberId",
+        title="ID assigned to the subscriber",
+        description="The insurer assigned ID for the Subscriber.",
         # if property is element of this resource.
         element_property=True,
-	)
+    )
+    subscriberId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_subscriberId", title="Extension field for ``subscriberId``."
+    )
+
+    type: fhirtypes.CodeableConceptType = Field(
+        None,
+        alias="type",
+        title="Coverage category such as medical or accident",
+        description=(
+            "The type of coverage: social program, medical plan, accident coverage "
+            "(workers compensation, auto), group health or payment by an individual"
+            " or organization."
+        ),
+        # if property is element of this resource.
+        element_property=True,
+    )
+
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
         ``Coverage`` according specification,
         with preserving original sequence order.
         """
-        return ["id", "meta", "implicitRules", "language", "text", "contained", "extension", "modifierExtension", "identifier", "status", "type", "policyHolder", "subscriber", "subscriberId", "beneficiary", "dependent", "relationship", "period", "payor", "class", "order", "network", "costToBeneficiary", "subrogation", "contract"]
-
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "type",
+            "policyHolder",
+            "subscriber",
+            "subscriberId",
+            "beneficiary",
+            "dependent",
+            "relationship",
+            "period",
+            "payor",
+            "class",
+            "order",
+            "network",
+            "costToBeneficiary",
+            "subrogation",
+            "contract",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_980(
@@ -281,8 +293,7 @@ class Coverage(domainresource.DomainResource):
         data type mandatory, it is possible to provide an extension that explains why
         the primitive value is not present.
         """
-        required_fields = [
-			("status", "status__ext")]
+        required_fields = [("status", "status__ext")]
         _missing = object()
 
         def _fallback():
@@ -331,8 +342,6 @@ class Coverage(domainresource.DomainResource):
         return values
 
 
-from . import backboneelement
-
 class CoverageClass(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -341,52 +350,49 @@ class CoverageClass(backboneelement.BackboneElement):
     Additional coverage classifications.
     A suite of underwriter specific classifiers.
     """
+
     resource_type = Field("CoverageClass", const=True)
-	
+
     name: fhirtypes.String = Field(
-		None,
-		alias="name",
-		title="Human readable description of the type and value",
-		description="A short description for the class.",
-        # if property is element of this resource.
-        element_property=True,
-	)
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
-        alias="_name",
-        title="Extension field for ``name``."
-    )
-	
-    type: fhirtypes.CodeableConceptType = Field(
-		...,
-		alias="type",
-		title="Type of class such as 'group' or 'plan'",
-		description=(
-    "The type of classification for which an insurer-specific class label "
-    "or number and optional name is provided, for example may be used to "
-    "identify a class of coverage or employer group, Policy, Plan."
-    ),
+        alias="name",
+        title="Human readable description of the type and value",
+        description="A short description for the class.",
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
+    )
+
+    type: fhirtypes.CodeableConceptType = Field(
+        ...,
+        alias="type",
+        title="Type of class such as 'group' or 'plan'",
+        description=(
+            "The type of classification for which an insurer-specific class label "
+            "or number and optional name is provided, for example may be used to "
+            "identify a class of coverage or employer group, Policy, Plan."
+        ),
+        # if property is element of this resource.
+        element_property=True,
+    )
+
     value: fhirtypes.String = Field(
-		None,
-		alias="value",
-		title="Value associated with the type",
-		description=(
-    "The alphanumeric string value associated with the insurer issued "
-    "label."
-    ),
+        None,
+        alias="value",
+        title="Value associated with the type",
+        description=(
+            "The alphanumeric string value associated with the insurer issued " "label."
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
-	)
-    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None,
-        alias="_value",
-        title="Extension field for ``value``."
     )
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_value", title="Extension field for ``value``."
+    )
+
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
@@ -394,7 +400,6 @@ class CoverageClass(backboneelement.BackboneElement):
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "value", "name"]
-
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1496(
@@ -407,8 +412,7 @@ class CoverageClass(backboneelement.BackboneElement):
         data type mandatory, it is possible to provide an extension that explains why
         the primitive value is not present.
         """
-        required_fields = [
-			("value", "value__ext")]
+        required_fields = [("value", "value__ext")]
         _missing = object()
 
         def _fallback():
@@ -467,60 +471,69 @@ class CoverageCostToBeneficiary(backboneelement.BackboneElement):
     have been detailed in the policy and may have been  included on the health
     card.
     """
+
     resource_type = Field("CoverageCostToBeneficiary", const=True)
-	
+
     exception: typing.List[fhirtypes.CoverageCostToBeneficiaryExceptionType] = Field(
-		None,
-		alias="exception",
-		title="Exceptions for patient payments",
-		description=(
-    "A suite of codes indicating exceptions or reductions to patient costs "
-    "and their effective periods."
-    ),
+        None,
+        alias="exception",
+        title="Exceptions for patient payments",
+        description=(
+            "A suite of codes indicating exceptions or reductions to patient costs "
+            "and their effective periods."
+        ),
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     type: fhirtypes.CodeableConceptType = Field(
-		None,
-		alias="type",
-		title="Cost category",
-		description="The category of patient centric costs associated with treatment.",
+        None,
+        alias="type",
+        title="Cost category",
+        description="The category of patient centric costs associated with treatment.",
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     valueMoney: fhirtypes.MoneyType = Field(
-		None,
-		alias="valueMoney",
-		title="The amount or percentage due from the beneficiary",
-		description="The amount due from the patient for the cost category.",
+        None,
+        alias="valueMoney",
+        title="The amount or percentage due from the beneficiary",
+        description="The amount due from the patient for the cost category.",
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
-		one_of_many="value",
-		one_of_many_required=True,
-	)
-	
+        one_of_many="value",
+        one_of_many_required=True,
+    )
+
     valueQuantity: fhirtypes.QuantityType = Field(
-		None,
-		alias="valueQuantity",
-		title="The amount or percentage due from the beneficiary",
-		description="The amount due from the patient for the cost category.",
+        None,
+        alias="valueQuantity",
+        title="The amount or percentage due from the beneficiary",
+        description="The amount due from the patient for the cost category.",
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
-		one_of_many="value",
-		one_of_many_required=True,
-	)
+        one_of_many="value",
+        one_of_many_required=True,
+    )
+
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
         ``CoverageCostToBeneficiary`` according specification,
         with preserving original sequence order.
         """
-        return ["id", "extension", "modifierExtension", "type", "valueQuantity", "valueMoney", "exception"]
-
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "type",
+            "valueQuantity",
+            "valueMoney",
+            "exception",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_2725(
@@ -538,10 +551,7 @@ class CoverageCostToBeneficiary(backboneelement.BackboneElement):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-			"value": [
-			    "valueMoney",
-			    "valueQuantity"]}
+        one_of_many_fields = {"value": ["valueMoney", "valueQuantity"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -573,25 +583,27 @@ class CoverageCostToBeneficiaryException(backboneelement.BackboneElement):
     A suite of codes indicating exceptions or reductions to patient costs and
     their effective periods.
     """
+
     resource_type = Field("CoverageCostToBeneficiaryException", const=True)
-	
+
     period: fhirtypes.PeriodType = Field(
-		None,
-		alias="period",
-		title="The effective period of the exception",
-		description="The timeframe during when the exception is in force.",
+        None,
+        alias="period",
+        title="The effective period of the exception",
+        description="The timeframe during when the exception is in force.",
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     type: fhirtypes.CodeableConceptType = Field(
-		...,
-		alias="type",
-		title="Exception category",
-		description="The code for the specific exception.",
+        ...,
+        alias="type",
+        title="Exception category",
+        description="The code for the specific exception.",
         # if property is element of this resource.
         element_property=True,
-	)
+    )
+
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
@@ -599,5 +611,3 @@ class CoverageCostToBeneficiaryException(backboneelement.BackboneElement):
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "period"]
-
-

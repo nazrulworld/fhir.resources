@@ -7,16 +7,13 @@ Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
-from pydantic import Field
-from pydantic import root_validator
 
+from pydantic import Field, root_validator
 from pydantic.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.errors import MissingError, NoneIsNotAllowedError
 
-from . import fhirtypes
+from . import element, fhirtypes
 
-
-from . import element
 
 class Contributor(element.Element):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
@@ -27,55 +24,53 @@ class Contributor(element.Element):
     A contributor to the content of a knowledge asset, including authors,
     editors, reviewers, and endorsers.
     """
+
     resource_type = Field("Contributor", const=True)
-	
+
     contact: typing.List[fhirtypes.ContactDetailType] = Field(
-		None,
-		alias="contact",
-		title="Contact details of the contributor",
-		description=(
-    "Contact details to assist a user in finding and communicating with the"
-    " contributor."
-    ),
+        None,
+        alias="contact",
+        title="Contact details of the contributor",
+        description=(
+            "Contact details to assist a user in finding and communicating with the"
+            " contributor."
+        ),
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     name: fhirtypes.String = Field(
-		None,
-		alias="name",
-		title="Who contributed the content",
-		description=(
-    "The name of the individual or organization responsible for the "
-    "contribution."
-    ),
+        None,
+        alias="name",
+        title="Who contributed the content",
+        description=(
+            "The name of the individual or organization responsible for the "
+            "contribution."
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
-	)
-    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None,
-        alias="_name",
-        title="Extension field for ``name``."
     )
-	
+    name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_name", title="Extension field for ``name``."
+    )
+
     type: fhirtypes.Code = Field(
-		None,
-		alias="type",
-		title="author | editor | reviewer | endorser",
-		description="The type of contributor.",
+        None,
+        alias="type",
+        title="author | editor | reviewer | endorser",
+        description="The type of contributor.",
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-		enum_values=["author", "editor", "reviewer", "endorser"],
-	)
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None,
-        alias="_type",
-        title="Extension field for ``type``."
+        enum_values=["author", "editor", "reviewer", "endorser"],
     )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
+    )
+
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
@@ -83,7 +78,6 @@ class Contributor(element.Element):
         with preserving original sequence order.
         """
         return ["id", "extension", "type", "name", "contact"]
-
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1360(
@@ -96,9 +90,7 @@ class Contributor(element.Element):
         data type mandatory, it is possible to provide an extension that explains why
         the primitive value is not present.
         """
-        required_fields = [
-			("name", "name__ext"),
-			("type", "type__ext")]
+        required_fields = [("name", "name__ext"), ("type", "type__ext")]
         _missing = object()
 
         def _fallback():
@@ -145,4 +137,3 @@ class Contributor(element.Element):
             raise ValidationError(errors, cls)  # type: ignore
 
         return values
-

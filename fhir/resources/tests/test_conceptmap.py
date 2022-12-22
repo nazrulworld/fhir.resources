@@ -7,6 +7,7 @@ Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
 from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import conceptmap
 
@@ -18,8 +19,7 @@ def impl_conceptmap_1(inst):
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert inst.date == fhirtypes.DateTime.validate("2022-05-28T12:47:40+10:00")
     assert inst.description == (
-    "Canonical Mapping for \"The lifecycle status of an "
-    "artifact.\""
+        'Canonical Mapping for "The lifecycle status of an ' 'artifact."'
     )
     assert inst.experimental is False
     assert inst.group[0].element[0].code == "draft"
@@ -43,7 +43,7 @@ def impl_conceptmap_1(inst):
     assert inst.status == "draft"
     assert inst.targetCanonical == "http://hl7.org/fhir/ValueSet/resource-status"
     assert inst.text.status == "extensions"
-    assert inst.title == "Canonical Mapping for \"PublicationStatus\""
+    assert inst.title == 'Canonical Mapping for "PublicationStatus"'
     assert inst.url == "http://hl7.org/fhir/ConceptMap/sc-publication-status"
     assert inst.version == "4.3.0"
 
@@ -111,9 +111,7 @@ def test_conceptmap_2(base_settings):
     """No. 2 tests collection for ConceptMap.
     Test File: cm-address-use-v3.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "cm-address-use-v3.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "cm-address-use-v3.json"
     inst = conceptmap.ConceptMap.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -133,8 +131,7 @@ def impl_conceptmap_3(inst):
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.description == (
-    "Canonical Mapping for \"This value set includes Status "
-    "codes.\""
+        'Canonical Mapping for "This value set includes Status ' 'codes."'
     )
     assert inst.experimental is False
     assert inst.group[0].element[0].code == "entered-in-error"
@@ -158,7 +155,7 @@ def impl_conceptmap_3(inst):
     assert inst.status == "draft"
     assert inst.targetCanonical == "http://hl7.org/fhir/ValueSet/resource-status"
     assert inst.text.status == "extensions"
-    assert inst.title == "Canonical Mapping for \"Financial Resource Status Codes\""
+    assert inst.title == 'Canonical Mapping for "Financial Resource Status Codes"'
     assert inst.url == "http://hl7.org/fhir/ConceptMap/sc-fm-status"
     assert inst.version == "4.3.0"
 
@@ -167,9 +164,7 @@ def test_conceptmap_3(base_settings):
     """No. 3 tests collection for ConceptMap.
     Test File: sc-valueset-fm-status.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "sc-valueset-fm-status.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "sc-valueset-fm-status.json"
     inst = conceptmap.ConceptMap.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -192,9 +187,9 @@ def impl_conceptmap_4(inst):
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert inst.date == fhirtypes.DateTime.validate("2021-01-17T07:06:13+11:00")
     assert inst.description == (
-    "Canonical Mapping for \"Indicates whether this flag is "
-    "active and needs to be displayed to a user, or whether it is"
-    " no longer needed or was entered in error.\""
+        'Canonical Mapping for "Indicates whether this flag is '
+        "active and needs to be displayed to a user, or whether it is"
+        ' no longer needed or was entered in error."'
     )
     assert inst.experimental is False
     assert inst.group[0].element[0].code == "entered-in-error"
@@ -215,7 +210,7 @@ def impl_conceptmap_4(inst):
     assert inst.status == "draft"
     assert inst.targetCanonical == "http://hl7.org/fhir/ValueSet/resource-status"
     assert inst.text.status == "extensions"
-    assert inst.title == "Canonical Mapping for \"FlagStatus\""
+    assert inst.title == 'Canonical Mapping for "FlagStatus"'
     assert inst.url == "http://hl7.org/fhir/ConceptMap/sc-flag-status"
     assert inst.version == "4.3.0"
 
@@ -224,9 +219,7 @@ def test_conceptmap_4(base_settings):
     """No. 4 tests collection for ConceptMap.
     Test File: sc-valueset-flag-status.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "sc-valueset-flag-status.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "sc-valueset-flag-status.json"
     inst = conceptmap.ConceptMap.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -249,8 +242,7 @@ def impl_conceptmap_5(inst):
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert inst.date == fhirtypes.DateTime.validate("2021-01-17T07:06:13+11:00")
     assert inst.description == (
-    "Canonical Mapping for \"The availability status of the "
-    "device.\""
+        'Canonical Mapping for "The availability status of the ' 'device."'
     )
     assert inst.experimental is False
     assert inst.group[0].element[0].code == "entered-in-error"
@@ -274,7 +266,7 @@ def impl_conceptmap_5(inst):
     assert inst.status == "draft"
     assert inst.targetCanonical == "http://hl7.org/fhir/ValueSet/resource-status"
     assert inst.text.status == "extensions"
-    assert inst.title == "Canonical Mapping for \"FHIRDeviceStatus\""
+    assert inst.title == 'Canonical Mapping for "FHIRDeviceStatus"'
     assert inst.url == "http://hl7.org/fhir/ConceptMap/sc-device-status"
     assert inst.version == "4.3.0"
 
@@ -283,9 +275,7 @@ def test_conceptmap_5(base_settings):
     """No. 5 tests collection for ConceptMap.
     Test File: sc-valueset-device-status.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "sc-valueset-device-status.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "sc-valueset-device-status.json"
     inst = conceptmap.ConceptMap.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -339,9 +329,7 @@ def test_conceptmap_6(base_settings):
     """No. 6 tests collection for ConceptMap.
     Test File: cm-contact-point-use-v2.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "cm-contact-point-use-v2.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "cm-contact-point-use-v2.json"
     inst = conceptmap.ConceptMap.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -361,8 +349,8 @@ def impl_conceptmap_7(inst):
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.description == (
-    "Canonical Mapping for \"Preferred value set for "
-    "AllergyIntolerance Clinical Status.\""
+        'Canonical Mapping for "Preferred value set for '
+        'AllergyIntolerance Clinical Status."'
     )
     assert inst.experimental is False
     assert inst.group[0].element[0].code == "active"
@@ -375,24 +363,24 @@ def impl_conceptmap_7(inst):
     assert inst.group[0].element[2].target[0].code == "resolved"
     assert inst.group[0].element[2].target[0].equivalence == "equivalent"
     assert inst.group[0].source == (
-    "http://terminology.hl7.org/CodeSystem/allergyintolerance-"
-    "clinical"
+        "http://terminology.hl7.org/CodeSystem/allergyintolerance-" "clinical"
     )
     assert inst.group[0].target == "http://hl7.org/fhir/resource-status"
     assert inst.id == "sc-allergyintolerance-clinical"
     assert inst.name == "AllergyIntoleranceClinicalStatusCodesCanonicalMap"
     assert inst.publisher == "FHIR Project team"
-    assert inst.sourceCanonical == "http://hl7.org/fhir/ValueSet/allergyintolerance-clinical"
+    assert (
+        inst.sourceCanonical
+        == "http://hl7.org/fhir/ValueSet/allergyintolerance-clinical"
+    )
     assert inst.status == "draft"
     assert inst.targetCanonical == "http://hl7.org/fhir/ValueSet/resource-status"
     assert inst.text.status == "extensions"
     assert inst.title == (
-    "Canonical Mapping for \"AllergyIntolerance Clinical Status "
-    "Codes\""
+        'Canonical Mapping for "AllergyIntolerance Clinical Status ' 'Codes"'
     )
     assert inst.url == (
-    "http://hl7.org/fhir/ConceptMap/sc-allergyintolerance-"
-    "clinical"
+        "http://hl7.org/fhir/ConceptMap/sc-allergyintolerance-" "clinical"
     )
     assert inst.version == "4.3.0"
 
@@ -402,7 +390,8 @@ def test_conceptmap_7(base_settings):
     Test File: sc-valueset-allergyintolerance-clinical.json
     """
     filename = (
-        base_settings["unittest_data_dir"] / "sc-valueset-allergyintolerance-clinical.json"
+        base_settings["unittest_data_dir"]
+        / "sc-valueset-allergyintolerance-clinical.json"
     )
     inst = conceptmap.ConceptMap.parse_file(
         filename, content_type="application/json", encoding="utf-8"
@@ -422,7 +411,7 @@ def test_conceptmap_7(base_settings):
 def impl_conceptmap_8(inst):
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
-    assert inst.description == "Canonical Mapping for \"Medication Status Codes\""
+    assert inst.description == 'Canonical Mapping for "Medication Status Codes"'
     assert inst.experimental is False
     assert inst.group[0].element[0].code == "entered-in-error"
     assert inst.group[0].element[0].target[0].code == "error"
@@ -442,7 +431,7 @@ def impl_conceptmap_8(inst):
     assert inst.status == "draft"
     assert inst.targetCanonical == "http://hl7.org/fhir/ValueSet/resource-status"
     assert inst.text.status == "extensions"
-    assert inst.title == "Canonical Mapping for \"Medication Status Codes\""
+    assert inst.title == 'Canonical Mapping for "Medication Status Codes"'
     assert inst.url == "http://hl7.org/fhir/ConceptMap/sc-medication-status"
     assert inst.version == "4.3.0"
 
@@ -451,9 +440,7 @@ def test_conceptmap_8(base_settings):
     """No. 8 tests collection for ConceptMap.
     Test File: sc-valueset-medication-status.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "sc-valueset-medication-status.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "sc-valueset-medication-status.json"
     inst = conceptmap.ConceptMap.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -476,8 +463,7 @@ def impl_conceptmap_9(inst):
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert inst.date == fhirtypes.DateTime.validate("2021-01-17T07:06:13+11:00")
     assert inst.description == (
-    "Canonical Mapping for \"Indicates whether the location is "
-    "still in use.\""
+        'Canonical Mapping for "Indicates whether the location is ' 'still in use."'
     )
     assert inst.experimental is False
     assert inst.group[0].element[0].code == "active"
@@ -498,7 +484,7 @@ def impl_conceptmap_9(inst):
     assert inst.status == "draft"
     assert inst.targetCanonical == "http://hl7.org/fhir/ValueSet/resource-status"
     assert inst.text.status == "extensions"
-    assert inst.title == "Canonical Mapping for \"LocationStatus\""
+    assert inst.title == 'Canonical Mapping for "LocationStatus"'
     assert inst.url == "http://hl7.org/fhir/ConceptMap/sc-location-status"
     assert inst.version == "4.3.0"
 
@@ -507,9 +493,7 @@ def test_conceptmap_9(base_settings):
     """No. 9 tests collection for ConceptMap.
     Test File: sc-valueset-location-status.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "sc-valueset-location-status.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "sc-valueset-location-status.json"
     inst = conceptmap.ConceptMap.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -532,9 +516,9 @@ def impl_conceptmap_10(inst):
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert inst.date == fhirtypes.DateTime.validate("2021-01-17T07:06:13+11:00")
     assert inst.description == (
-    "Canonical Mapping for \"The verification status to support "
-    "or decline the clinical status of the condition or "
-    "diagnosis.\""
+        'Canonical Mapping for "The verification status to support '
+        "or decline the clinical status of the condition or "
+        'diagnosis."'
     )
     assert inst.experimental is False
     assert inst.group[0].element[0].code == "entered-in-error"
@@ -555,7 +539,10 @@ def impl_conceptmap_10(inst):
     assert inst.group[0].element[5].code == "differential"
     assert inst.group[0].element[5].target[0].code == "differential"
     assert inst.group[0].element[5].target[0].equivalence == "equivalent"
-    assert inst.group[0].source == "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+    assert (
+        inst.group[0].source
+        == "http://terminology.hl7.org/CodeSystem/condition-ver-status"
+    )
     assert inst.group[0].target == "http://hl7.org/fhir/resource-status"
     assert inst.id == "sc-condition-ver-status"
     assert inst.name == "ConditionVerificationStatusCanonicalMap"
@@ -564,7 +551,7 @@ def impl_conceptmap_10(inst):
     assert inst.status == "draft"
     assert inst.targetCanonical == "http://hl7.org/fhir/ValueSet/resource-status"
     assert inst.text.status == "extensions"
-    assert inst.title == "Canonical Mapping for \"ConditionVerificationStatus\""
+    assert inst.title == 'Canonical Mapping for "ConditionVerificationStatus"'
     assert inst.url == "http://hl7.org/fhir/ConceptMap/sc-condition-ver-status"
     assert inst.version == "4.3.0"
 
@@ -589,4 +576,3 @@ def test_conceptmap_10(base_settings):
 
     inst2 = conceptmap.ConceptMap(**data)
     impl_conceptmap_10(inst2)
-

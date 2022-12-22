@@ -7,6 +7,7 @@ Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
 from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import supplyrequest
 
@@ -23,7 +24,9 @@ def impl_supplyrequest_1(inst):
     assert inst.itemCodeableConcept.coding[0].display == "Blood collect tubes blue cap"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.occurrenceDateTime == fhirtypes.DateTime.validate("2016-12-31")
     assert inst.priority == "asap"
     assert float(inst.quantity.value) == float(10)
@@ -55,4 +58,3 @@ def test_supplyrequest_1(base_settings):
 
     inst2 = supplyrequest.SupplyRequest(**data)
     impl_supplyrequest_1(inst2)
-

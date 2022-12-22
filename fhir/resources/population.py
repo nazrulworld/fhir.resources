@@ -7,13 +7,11 @@ Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
-from pydantic import Field
-from pydantic import root_validator
 
-from . import fhirtypes
+from pydantic import Field, root_validator
 
+from . import backboneelement, fhirtypes
 
-from . import backboneelement
 
 class Population(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
@@ -24,69 +22,79 @@ class Population(backboneelement.BackboneElement):
     context, for example people contraindicated for a certain medication.
     A populatioof people with some set of grouping criteria.
     """
+
     resource_type = Field("Population", const=True)
-	
+
     ageCodeableConcept: fhirtypes.CodeableConceptType = Field(
-		None,
-		alias="ageCodeableConcept",
-		title="The age of the specific population",
-		description=None,
+        None,
+        alias="ageCodeableConcept",
+        title="The age of the specific population",
+        description=None,
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e age[x]
-		one_of_many="age",
-		one_of_many_required=False,
-	)
-	
+        one_of_many="age",
+        one_of_many_required=False,
+    )
+
     ageRange: fhirtypes.RangeType = Field(
-		None,
-		alias="ageRange",
-		title="The age of the specific population",
-		description=None,
+        None,
+        alias="ageRange",
+        title="The age of the specific population",
+        description=None,
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e age[x]
-		one_of_many="age",
-		one_of_many_required=False,
-	)
-	
+        one_of_many="age",
+        one_of_many_required=False,
+    )
+
     gender: fhirtypes.CodeableConceptType = Field(
-		None,
-		alias="gender",
-		title="The gender of the specific population",
-		description=None,
+        None,
+        alias="gender",
+        title="The gender of the specific population",
+        description=None,
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     physiologicalCondition: fhirtypes.CodeableConceptType = Field(
-		None,
-		alias="physiologicalCondition",
-		title=(
-    "The existing physiological conditions of the specific population to "
-    "which this applies"
-    ),
-		description=None,
+        None,
+        alias="physiologicalCondition",
+        title=(
+            "The existing physiological conditions of the specific population to "
+            "which this applies"
+        ),
+        description=None,
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     race: fhirtypes.CodeableConceptType = Field(
-		None,
-		alias="race",
-		title="Race of the specific population",
-		description=None,
+        None,
+        alias="race",
+        title="Race of the specific population",
+        description=None,
         # if property is element of this resource.
         element_property=True,
-	)
+    )
+
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
         ``Population`` according specification,
         with preserving original sequence order.
         """
-        return ["id", "extension", "modifierExtension", "ageRange", "ageCodeableConcept", "gender", "race", "physiologicalCondition"]
-
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "ageRange",
+            "ageCodeableConcept",
+            "gender",
+            "race",
+            "physiologicalCondition",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_1257(
@@ -104,10 +112,7 @@ class Population(backboneelement.BackboneElement):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-			"age": [
-			    "ageCodeableConcept",
-			    "ageRange"]}
+        one_of_many_fields = {"age": ["ageCodeableConcept", "ageRange"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -128,4 +133,3 @@ class Population(backboneelement.BackboneElement):
                 raise ValueError(f"Expect any of field value from this list {fields}.")
 
         return values
-

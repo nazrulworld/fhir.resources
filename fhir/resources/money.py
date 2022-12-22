@@ -7,10 +7,9 @@ Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
 from pydantic import Field
-from . import fhirtypes
 
+from . import element, fhirtypes
 
-from . import element
 
 class Money(element.Element):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
@@ -19,35 +18,33 @@ class Money(element.Element):
 
     An amount of economic utility in some recognized currency.
     """
+
     resource_type = Field("Money", const=True)
-	
+
     currency: fhirtypes.Code = Field(
-		None,
-		alias="currency",
-		title="ISO 4217 Currency Code",
-		description=None,
+        None,
+        alias="currency",
+        title="ISO 4217 Currency Code",
+        description=None,
         # if property is element of this resource.
         element_property=True,
-	)
+    )
     currency__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None,
-        alias="_currency",
-        title="Extension field for ``currency``."
+        None, alias="_currency", title="Extension field for ``currency``."
     )
-	
+
     value: fhirtypes.Decimal = Field(
-		None,
-		alias="value",
-		title="Numerical value (with implicit precision)",
-		description=None,
+        None,
+        alias="value",
+        title="Numerical value (with implicit precision)",
+        description=None,
         # if property is element of this resource.
         element_property=True,
-	)
-    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None,
-        alias="_value",
-        title="Extension field for ``value``."
     )
+    value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_value", title="Extension field for ``value``."
+    )
+
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
@@ -55,5 +52,3 @@ class Money(element.Element):
         with preserving original sequence order.
         """
         return ["id", "extension", "value", "currency"]
-
-

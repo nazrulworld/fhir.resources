@@ -7,10 +7,9 @@ Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
 from pydantic import Field
-from . import fhirtypes
 
+from . import element, fhirtypes
 
-from . import element
 
 class RatioRange(element.Element):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
@@ -20,34 +19,36 @@ class RatioRange(element.Element):
     Range of ratio values.
     A range of ratios expressed as a low and high numerator and a denominator.
     """
+
     resource_type = Field("RatioRange", const=True)
-	
+
     denominator: fhirtypes.QuantityType = Field(
-		None,
-		alias="denominator",
-		title="Denominator value",
-		description="The value of the denominator.",
+        None,
+        alias="denominator",
+        title="Denominator value",
+        description="The value of the denominator.",
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     highNumerator: fhirtypes.QuantityType = Field(
-		None,
-		alias="highNumerator",
-		title="High Numerator limit",
-		description="The value of the high limit numerator.",
+        None,
+        alias="highNumerator",
+        title="High Numerator limit",
+        description="The value of the high limit numerator.",
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     lowNumerator: fhirtypes.QuantityType = Field(
-		None,
-		alias="lowNumerator",
-		title="Low Numerator limit",
-		description="The value of the low limit numerator.",
+        None,
+        alias="lowNumerator",
+        title="Low Numerator limit",
+        description="The value of the low limit numerator.",
         # if property is element of this resource.
         element_property=True,
-	)
+    )
+
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
@@ -55,5 +56,3 @@ class RatioRange(element.Element):
         with preserving original sequence order.
         """
         return ["id", "extension", "lowNumerator", "highNumerator", "denominator"]
-
-

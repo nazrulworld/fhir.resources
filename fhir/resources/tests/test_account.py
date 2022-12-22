@@ -7,6 +7,7 @@ Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
 from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import account
 
@@ -20,7 +21,9 @@ def impl_account_1(inst):
     assert inst.identifier[0].value == "654321"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.name == "HACC Funded Billing for Peter James Chalmers"
     assert inst.owner.reference == "Organization/hl7"
     assert inst.servicePeriod.end == fhirtypes.DateTime.validate("2016-06-30")
@@ -29,13 +32,15 @@ def impl_account_1(inst):
     assert inst.subject[0].display == "Peter James Chalmers"
     assert inst.subject[0].reference == "Patient/example"
     assert inst.text.div == (
-    "<div xmlns=\"http://www.w3.org/1999/xhtml\">HACC Funded "
-    "Billing for Peter James Chalmers</div>"
+        '<div xmlns="http://www.w3.org/1999/xhtml">HACC Funded '
+        "Billing for Peter James Chalmers</div>"
     )
     assert inst.text.status == "generated"
     assert inst.type.coding[0].code == "PBILLACCT"
     assert inst.type.coding[0].display == "patient billing account"
-    assert inst.type.coding[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+    assert (
+        inst.type.coding[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+    )
     assert inst.type.text == "patient"
 
 
@@ -43,9 +48,7 @@ def test_account_1(base_settings):
     """No. 1 tests collection for Account.
     Test File: account-example.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "account-example.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "account-example.json"
     inst = account.Account.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -76,7 +79,9 @@ def impl_account_2(inst):
     assert inst.identifier[0].value == "654321"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.name == "Inpatient: Peter James Chalmers"
     assert inst.owner.display == "Burgers University Medical Center"
     assert inst.owner.reference == "Organization/f001"
@@ -86,13 +91,15 @@ def impl_account_2(inst):
     assert inst.subject[0].display == "Peter James Chalmers"
     assert inst.subject[0].reference == "Patient/example"
     assert inst.text.div == (
-    "<div xmlns=\"http://www.w3.org/1999/xhtml\">Inpatient "
-    "Admission for Peter James Chalmers Account</div>"
+        '<div xmlns="http://www.w3.org/1999/xhtml">Inpatient '
+        "Admission for Peter James Chalmers Account</div>"
     )
     assert inst.text.status == "generated"
     assert inst.type.coding[0].code == "PBILLACCT"
     assert inst.type.coding[0].display == "patient billing account"
-    assert inst.type.coding[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+    assert (
+        inst.type.coding[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+    )
     assert inst.type.text == "patient"
 
 
@@ -116,4 +123,3 @@ def test_account_2(base_settings):
 
     inst2 = account.Account(**data)
     impl_account_2(inst2)
-

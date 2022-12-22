@@ -7,6 +7,7 @@ Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
 from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import list
 
@@ -19,17 +20,25 @@ def impl_list_1(inst):
     assert inst.date == fhirtypes.DateTime.validate("2013-11-20T23:10:23+11:00")
     assert inst.entry[0].flag.coding[0].code == "01"
     assert inst.entry[0].flag.coding[0].display == "Prescribed"
-    assert inst.entry[0].flag.coding[0].system == "http://nehta.gov.au/codes/medications/changetype"
+    assert (
+        inst.entry[0].flag.coding[0].system
+        == "http://nehta.gov.au/codes/medications/changetype"
+    )
     assert inst.entry[0].item.display == "hydroxocobalamin"
     assert inst.entry[1].deleted is True
     assert inst.entry[1].flag.coding[0].code == "02"
     assert inst.entry[1].flag.coding[0].display == "Cancelled"
-    assert inst.entry[1].flag.coding[0].system == "http://nehta.gov.au/codes/medications/changetype"
+    assert (
+        inst.entry[1].flag.coding[0].system
+        == "http://nehta.gov.au/codes/medications/changetype"
+    )
     assert inst.entry[1].item.display == "Morphine Sulfate"
     assert inst.id == "med-list"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.mode == "changes"
     assert inst.source.reference == "Patient/example"
     assert inst.status == "current"
@@ -40,9 +49,7 @@ def test_list_1(base_settings):
     """No. 1 tests collection for List.
     Test File: list-example-medlist.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "list-example-medlist.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "list-example-medlist.json"
     inst = list.List.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -85,7 +92,9 @@ def impl_list_2(inst):
     assert inst.id == "prognosis"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.mode == "snapshot"
     assert inst.status == "current"
     assert inst.subject.display == "Annie Proband, female, born 1966"
@@ -98,7 +107,8 @@ def test_list_2(base_settings):
     Test File: list-example-familyhistory-genetics-profile-annie.json
     """
     filename = (
-        base_settings["unittest_data_dir"] / "list-example-familyhistory-genetics-profile-annie.json"
+        base_settings["unittest_data_dir"]
+        / "list-example-familyhistory-genetics-profile-annie.json"
     )
     inst = list.List.parse_file(
         filename, content_type="application/json", encoding="utf-8"
@@ -123,7 +133,9 @@ def impl_list_3(inst):
     assert inst.id == "example-simple-empty"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.mode == "snapshot"
     assert inst.status == "current"
     assert inst.text.status == "generated"
@@ -133,9 +145,7 @@ def test_list_3(base_settings):
     """No. 3 tests collection for List.
     Test File: list-example-simple-empty.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "list-example-simple-empty.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "list-example-simple-empty.json"
     inst = list.List.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -159,12 +169,17 @@ def impl_list_4(inst):
     assert inst.date == fhirtypes.DateTime.validate("2012-11-26T07:30:23+11:00")
     assert inst.emptyReason.coding[0].code == "nilknown"
     assert inst.emptyReason.coding[0].display == "Nil Known"
-    assert inst.emptyReason.coding[0].system == "http://terminology.hl7.org/CodeSystem/list-empty-reason"
+    assert (
+        inst.emptyReason.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/list-empty-reason"
+    )
     assert inst.emptyReason.text == "The patient is not on any medications"
     assert inst.id == "example-empty"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.mode == "snapshot"
     assert inst.source.reference == "Patient/example"
     assert inst.status == "current"
@@ -175,9 +190,7 @@ def test_list_4(base_settings):
     """No. 4 tests collection for List.
     Test File: list-example-empty.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "list-example-empty.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "list-example-empty.json"
     inst = list.List.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -218,7 +231,9 @@ def impl_list_5(inst):
     assert inst.id == "genetic"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.mode == "snapshot"
     assert inst.status == "current"
     assert inst.subject.display == "Peter Patient"
@@ -231,7 +246,8 @@ def test_list_5(base_settings):
     Test File: list-example-familyhistory-genetics-profile.json
     """
     filename = (
-        base_settings["unittest_data_dir"] / "list-example-familyhistory-genetics-profile.json"
+        base_settings["unittest_data_dir"]
+        / "list-example-familyhistory-genetics-profile.json"
     )
     inst = list.List.parse_file(
         filename, content_type="application/json", encoding="utf-8"
@@ -259,11 +275,12 @@ def impl_list_6(inst):
     assert inst.id == "f201"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.mode == "snapshot"
     assert inst.note[0].text == (
-    "Both parents, both brothers and both children (twin) are "
-    "still alive."
+        "Both parents, both brothers and both children (twin) are " "still alive."
     )
     assert inst.status == "current"
     assert inst.subject.display == "Roel"
@@ -306,7 +323,9 @@ def impl_list_7(inst):
     assert inst.identifier[0].value == "23974652"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.mode == "changes"
     assert inst.source.reference == "Patient/example"
     assert inst.status == "current"
@@ -318,9 +337,7 @@ def test_list_7(base_settings):
     """No. 7 tests collection for List.
     Test File: list-example.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "list-example.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "list-example.json"
     inst = list.List.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -347,10 +364,15 @@ def impl_list_8(inst):
     assert inst.id == "current-allergies"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.mode == "working"
     assert inst.orderedBy.coding[0].code == "entry-date"
-    assert inst.orderedBy.coding[0].system == "http://terminology.hl7.org/CodeSystem/list-order"
+    assert (
+        inst.orderedBy.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/list-order"
+    )
     assert inst.source.reference == "Patient/example"
     assert inst.status == "current"
     assert inst.text.status == "generated"
@@ -361,9 +383,7 @@ def test_list_8(base_settings):
     """No. 8 tests collection for List.
     Test File: list-example-allergies.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "list-example-allergies.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "list-example-allergies.json"
     inst = list.List.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -382,13 +402,13 @@ def test_list_8(base_settings):
 def impl_list_9(inst):
     assert inst.code.coding[0].code == "80738-8"
     assert inst.code.coding[0].display == (
-    "TPMT gene mutations found [Identifier] in Blood or Tissue by"
-    " Sequencing Nominal"
+        "TPMT gene mutations found [Identifier] in Blood or Tissue by"
+        " Sequencing Nominal"
     )
     assert inst.code.coding[0].system == "http://loinc.org"
     assert inst.code.text == (
-    "TPMT gene mutations found [Identifier] in Blood or Tissue by"
-    " Sequencing Nominal"
+        "TPMT gene mutations found [Identifier] in Blood or Tissue by"
+        " Sequencing Nominal"
     )
     assert inst.contained[0].id == "1"
     assert inst.contained[1].id == "2"
@@ -405,7 +425,9 @@ def impl_list_9(inst):
     assert inst.id == "example-double-cousin-relationship"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.mode == "snapshot"
     assert inst.status == "current"
     assert inst.subject.display == "Pam Taylor"
@@ -418,7 +440,8 @@ def test_list_9(base_settings):
     Test File: list-example-double-cousin-relationship-pedigree.json
     """
     filename = (
-        base_settings["unittest_data_dir"] / "list-example-double-cousin-relationship-pedigree.json"
+        base_settings["unittest_data_dir"]
+        / "list-example-double-cousin-relationship-pedigree.json"
     )
     inst = list.List.parse_file(
         filename, content_type="application/json", encoding="utf-8"
@@ -450,7 +473,9 @@ def impl_list_10(inst):
     assert inst.id == "long"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.mode == "changes"
     assert inst.status == "current"
     assert inst.text.status == "generated"
@@ -460,9 +485,7 @@ def test_list_10(base_settings):
     """No. 10 tests collection for List.
     Test File: list-example-long.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "list-example-long.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "list-example-long.json"
     inst = list.List.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -476,4 +499,3 @@ def test_list_10(base_settings):
 
     inst2 = list.List(**data)
     impl_list_10(inst2)
-

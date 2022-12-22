@@ -7,16 +7,13 @@ Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
-from pydantic import Field
-from pydantic import root_validator
 
+from pydantic import Field, root_validator
 from pydantic.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.errors import MissingError, NoneIsNotAllowedError
 
-from . import fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
-
-from . import domainresource
 
 class OperationOutcome(domainresource.DomainResource):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
@@ -27,30 +24,39 @@ class OperationOutcome(domainresource.DomainResource):
     A collection of error, warning, or information messages that result from a
     system action.
     """
+
     resource_type = Field("OperationOutcome", const=True)
-	
+
     issue: typing.List[fhirtypes.OperationOutcomeIssueType] = Field(
-		...,
-		alias="issue",
-		title="A single issue associated with the action",
-		description=(
-    "An error, warning, or information message that results from a system "
-    "action."
-    ),
+        ...,
+        alias="issue",
+        title="A single issue associated with the action",
+        description=(
+            "An error, warning, or information message that results from a system "
+            "action."
+        ),
         # if property is element of this resource.
         element_property=True,
-	)
+    )
+
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
         ``OperationOutcome`` according specification,
         with preserving original sequence order.
         """
-        return ["id", "meta", "implicitRules", "language", "text", "contained", "extension", "modifierExtension", "issue"]
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "issue",
+        ]
 
-
-
-from . import backboneelement
 
 class OperationOutcomeIssue(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
@@ -61,123 +67,124 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
     An error, warning, or information message that results from a system
     action.
     """
+
     resource_type = Field("OperationOutcomeIssue", const=True)
-	
+
     code: fhirtypes.Code = Field(
-		None,
-		alias="code",
-		title="Error or warning code",
-		description=(
-    "Describes the type of the issue. The system that creates an "
-    "OperationOutcome SHALL choose the most applicable code from the "
-    "IssueType value set, and may additional provide its own code for the "
-    "error in the details element."
-    ),
+        None,
+        alias="code",
+        title="Error or warning code",
+        description=(
+            "Describes the type of the issue. The system that creates an "
+            "OperationOutcome SHALL choose the most applicable code from the "
+            "IssueType value set, and may additional provide its own code for the "
+            "error in the details element."
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
-	)
+    )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None,
-        alias="_code",
-        title="Extension field for ``code``."
+        None, alias="_code", title="Extension field for ``code``."
     )
-	
+
     details: fhirtypes.CodeableConceptType = Field(
-		None,
-		alias="details",
-		title="Additional details about the error",
-		description=(
-    "Additional details about the error. This may be a text description of "
-    "the error or a system code that identifies the error."
-    ),
+        None,
+        alias="details",
+        title="Additional details about the error",
+        description=(
+            "Additional details about the error. This may be a text description of "
+            "the error or a system code that identifies the error."
+        ),
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     diagnostics: fhirtypes.String = Field(
-		None,
-		alias="diagnostics",
-		title="Additional diagnostic information about the issue",
-		description=None,
+        None,
+        alias="diagnostics",
+        title="Additional diagnostic information about the issue",
+        description=None,
         # if property is element of this resource.
         element_property=True,
-	)
+    )
     diagnostics__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None,
-        alias="_diagnostics",
-        title="Extension field for ``diagnostics``."
+        None, alias="_diagnostics", title="Extension field for ``diagnostics``."
     )
-	
+
     expression: typing.List[typing.Optional[fhirtypes.String]] = Field(
-		None,
-		alias="expression",
-		title="FHIRPath of element(s) related to issue",
-		description=(
-    "A [simple subset of FHIRPath](fhirpath.html#simple) limited to element"
-    " names, repetition indicators and the default child accessor that "
-    "identifies one of the elements in the resource that caused this issue "
-    "to be raised."
-    ),
+        None,
+        alias="expression",
+        title="FHIRPath of element(s) related to issue",
+        description=(
+            "A [simple subset of FHIRPath](fhirpath.html#simple) limited to element"
+            " names, repetition indicators and the default child accessor that "
+            "identifies one of the elements in the resource that caused this issue "
+            "to be raised."
+        ),
         # if property is element of this resource.
         element_property=True,
-	)
-    expression__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None,
-        alias="_expression",
-        title="Extension field for ``expression``."
     )
-	
+    expression__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_expression", title="Extension field for ``expression``.")
+
     location: typing.List[typing.Optional[fhirtypes.String]] = Field(
-		None,
-		alias="location",
-		title="Deprecated: Path of element(s) related to issue",
-		description=(
-    "This element is deprecated because it is XML specific. It is replaced "
-    "by issue.expression, which is format independent, and simpler to "
-    "parse.   For resource issues, this will be a simple XPath limited to "
-    "element names, repetition indicators and the default child accessor "
-    "that identifies one of the elements in the resource that caused this "
-    "issue to be raised.  For HTTP errors, will be \"http.\" + the parameter "
-    "name."
-    ),
+        None,
+        alias="location",
+        title="Deprecated: Path of element(s) related to issue",
+        description=(
+            "This element is deprecated because it is XML specific. It is replaced "
+            "by issue.expression, which is format independent, and simpler to "
+            "parse.   For resource issues, this will be a simple XPath limited to "
+            "element names, repetition indicators and the default child accessor "
+            "that identifies one of the elements in the resource that caused this "
+            'issue to be raised.  For HTTP errors, will be "http." + the parameter '
+            "name."
+        ),
         # if property is element of this resource.
         element_property=True,
-	)
-    location__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None,
-        alias="_location",
-        title="Extension field for ``location``."
     )
-	
+    location__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(None, alias="_location", title="Extension field for ``location``.")
+
     severity: fhirtypes.Code = Field(
-		None,
-		alias="severity",
-		title="fatal | error | warning | information",
-		description=(
-    "Indicates whether the issue indicates a variation from successful "
-    "processing."
-    ),
+        None,
+        alias="severity",
+        title="fatal | error | warning | information",
+        description=(
+            "Indicates whether the issue indicates a variation from successful "
+            "processing."
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-		enum_values=["fatal", "error", "warning", "information"],
-	)
-    severity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None,
-        alias="_severity",
-        title="Extension field for ``severity``."
+        enum_values=["fatal", "error", "warning", "information"],
     )
+    severity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_severity", title="Extension field for ``severity``."
+    )
+
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
         ``OperationOutcomeIssue`` according specification,
         with preserving original sequence order.
         """
-        return ["id", "extension", "modifierExtension", "severity", "code", "details", "diagnostics", "location", "expression"]
-
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "severity",
+            "code",
+            "details",
+            "diagnostics",
+            "location",
+            "expression",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2378(
@@ -190,9 +197,7 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
         data type mandatory, it is possible to provide an extension that explains why
         the primitive value is not present.
         """
-        required_fields = [
-			("code", "code__ext"),
-			("severity", "severity__ext")]
+        required_fields = [("code", "code__ext"), ("severity", "severity__ext")]
         _missing = object()
 
         def _fallback():
@@ -239,4 +244,3 @@ class OperationOutcomeIssue(backboneelement.BackboneElement):
             raise ValidationError(errors, cls)  # type: ignore
 
         return values
-

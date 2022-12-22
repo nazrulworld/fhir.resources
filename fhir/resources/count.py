@@ -10,6 +10,7 @@ from pydantic import Field
 
 from . import quantity
 
+
 class Count(quantity.Quantity):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -20,7 +21,9 @@ class Count(quantity.Quantity):
     that measured amounts include amounts that are not precisely quantified,
     including amounts involving arbitrary units and floating currencies.
     """
+
     resource_type = Field("Count", const=True)
+
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
@@ -28,5 +31,3 @@ class Count(quantity.Quantity):
         with preserving original sequence order.
         """
         return ["id", "extension", "value", "comparator", "unit", "system", "code"]
-
-

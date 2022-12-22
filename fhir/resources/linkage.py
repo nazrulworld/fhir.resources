@@ -7,16 +7,13 @@ Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
-from pydantic import Field
-from pydantic import root_validator
 
+from pydantic import Field, root_validator
 from pydantic.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.errors import MissingError, NoneIsNotAllowedError
 
-from . import fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
-
-from . import domainresource
 
 class Linkage(domainresource.DomainResource):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
@@ -27,63 +24,72 @@ class Linkage(domainresource.DomainResource):
     Identifies two or more records (resource instances) that refer to the same
     real-world "occurrence".
     """
+
     resource_type = Field("Linkage", const=True)
-	
+
     active: bool = Field(
-		None,
-		alias="active",
-		title="Whether this linkage assertion is active or not",
-		description=(
-    "Indicates whether the asserted set of linkages are considered to be "
-    "\"in effect\"."
-    ),
+        None,
+        alias="active",
+        title="Whether this linkage assertion is active or not",
+        description=(
+            "Indicates whether the asserted set of linkages are considered to be "
+            '"in effect".'
+        ),
         # if property is element of this resource.
         element_property=True,
-	)
-    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None,
-        alias="_active",
-        title="Extension field for ``active``."
     )
-	
+    active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_active", title="Extension field for ``active``."
+    )
+
     author: fhirtypes.ReferenceType = Field(
-		None,
-		alias="author",
-		title="Who is responsible for linkages",
-		description=(
-    "Identifies the user or organization responsible for asserting the "
-    "linkages as well as the user or organization who establishes the "
-    "context in which the nature of each linkage is evaluated."
-    ),
+        None,
+        alias="author",
+        title="Who is responsible for linkages",
+        description=(
+            "Identifies the user or organization responsible for asserting the "
+            "linkages as well as the user or organization who establishes the "
+            "context in which the nature of each linkage is evaluated."
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
-	)
-	
+        enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
+    )
+
     item: typing.List[fhirtypes.LinkageItemType] = Field(
-		...,
-		alias="item",
-		title="Item to be linked",
-		description=(
-    "Identifies which record considered as the reference to the same real-"
-    "world occurrence as well as how the items should be evaluated within "
-    "the collection of linked items."
-    ),
+        ...,
+        alias="item",
+        title="Item to be linked",
+        description=(
+            "Identifies which record considered as the reference to the same real-"
+            "world occurrence as well as how the items should be evaluated within "
+            "the collection of linked items."
+        ),
         # if property is element of this resource.
         element_property=True,
-	)
+    )
+
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
         ``Linkage`` according specification,
         with preserving original sequence order.
         """
-        return ["id", "meta", "implicitRules", "language", "text", "contained", "extension", "modifierExtension", "active", "author", "item"]
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "active",
+            "author",
+            "item",
+        ]
 
-
-
-from . import backboneelement
 
 class LinkageItem(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
@@ -95,39 +101,39 @@ class LinkageItem(backboneelement.BackboneElement):
     occurrence as well as how the items should be evaluated within the
     collection of linked items.
     """
+
     resource_type = Field("LinkageItem", const=True)
-	
+
     resource: fhirtypes.ReferenceType = Field(
-		...,
-		alias="resource",
-		title="Resource being linked",
-		description="The resource instance being linked as part of the group.",
+        ...,
+        alias="resource",
+        title="Resource being linked",
+        description="The resource instance being linked as part of the group.",
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["Resource"],
-	)
-	
+        enum_reference_types=["Resource"],
+    )
+
     type: fhirtypes.Code = Field(
-		None,
-		alias="type",
-		title="source | alternate | historical",
-		description=(
-    "Distinguishes which item is \"source of truth\" (if any) and which items"
-    " are no longer considered to be current representations."
-    ),
+        None,
+        alias="type",
+        title="source | alternate | historical",
+        description=(
+            'Distinguishes which item is "source of truth" (if any) and which items'
+            " are no longer considered to be current representations."
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-		enum_values=["source", "alternate", "historical"],
-	)
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None,
-        alias="_type",
-        title="Extension field for ``type``."
+        enum_values=["source", "alternate", "historical"],
     )
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
+    )
+
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
@@ -135,7 +141,6 @@ class LinkageItem(backboneelement.BackboneElement):
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "type", "resource"]
-
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1283(
@@ -148,8 +153,7 @@ class LinkageItem(backboneelement.BackboneElement):
         data type mandatory, it is possible to provide an extension that explains why
         the primitive value is not present.
         """
-        required_fields = [
-			("type", "type__ext")]
+        required_fields = [("type", "type__ext")]
         _missing = object()
 
         def _fallback():
@@ -196,4 +200,3 @@ class LinkageItem(backboneelement.BackboneElement):
             raise ValidationError(errors, cls)  # type: ignore
 
         return values
-

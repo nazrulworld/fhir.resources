@@ -7,6 +7,7 @@ Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
 from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import manufactureditemdefinition
 
@@ -14,11 +15,16 @@ from .. import manufactureditemdefinition
 def impl_manufactureditemdefinition_1(inst):
     assert inst.id == "example"
     assert inst.manufacturedDoseForm.coding[0].code == "Film-coatedtablet"
-    assert inst.manufacturedDoseForm.coding[0].system == "http://ema.europa.eu/example/manufactureddoseform"
+    assert (
+        inst.manufacturedDoseForm.coding[0].system
+        == "http://ema.europa.eu/example/manufactureddoseform"
+    )
     assert inst.manufacturer[0].reference == "Organization/example"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.property[0].type.coding[0].code == "shape"
     assert inst.property[0].valueCodeableConcept.text == "Oval"
     assert inst.property[1].type.coding[0].code == "color"
@@ -28,7 +34,10 @@ def impl_manufactureditemdefinition_1(inst):
     assert inst.status == "active"
     assert inst.text.status == "generated"
     assert inst.unitOfPresentation.coding[0].code == "Tablet"
-    assert inst.unitOfPresentation.coding[0].system == "http://ema.europa.eu/example/unitofpresentation"
+    assert (
+        inst.unitOfPresentation.coding[0].system
+        == "http://ema.europa.eu/example/unitofpresentation"
+    )
 
 
 def test_manufactureditemdefinition_1(base_settings):
@@ -51,4 +60,3 @@ def test_manufactureditemdefinition_1(base_settings):
 
     inst2 = manufactureditemdefinition.ManufacturedItemDefinition(**data)
     impl_manufactureditemdefinition_1(inst2)
-

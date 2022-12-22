@@ -370,7 +370,8 @@ class Url(AnyUrl, Primitive):
     Note URLs are accessed directly using the specified protocol.
     Common URL protocols are http{s}:, ftp:, mailto: and mllp:,
     though many others are defined"""
-    path_regex = re.compile(r'^/(?P<resourceType>[^\s?/]+)(/[^\s?/]+)*')
+
+    path_regex = re.compile(r"^/(?P<resourceType>[^\s?/]+)(/[^\s?/]+)*")
     __visit_name__ = "url"
 
     @classmethod
@@ -725,6 +726,7 @@ class ResourceType(AbstractBaseType):
 
     __resource_type__ = "Resource"
 
+
 class AccountType(AbstractType):
     __resource_type__ = "Account"
 
@@ -765,11 +767,17 @@ class AdministrableProductDefinitionRouteOfAdministrationType(AbstractType):
     __resource_type__ = "AdministrableProductDefinitionRouteOfAdministration"
 
 
-class AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesType(AbstractType):
-    __resource_type__ = "AdministrableProductDefinitionRouteOfAdministrationTargetSpecies"
+class AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesType(
+    AbstractType
+):
+    __resource_type__ = (
+        "AdministrableProductDefinitionRouteOfAdministrationTargetSpecies"
+    )
 
 
-class AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriodType(AbstractType):
+class AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriodType(
+    AbstractType
+):
     __resource_type__ = "AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriod"
 
 
@@ -1061,8 +1069,12 @@ class CitationCitedArtifactPublicationFormPeriodicReleaseType(AbstractType):
     __resource_type__ = "CitationCitedArtifactPublicationFormPeriodicRelease"
 
 
-class CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublicationType(AbstractType):
-    __resource_type__ = "CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication"
+class CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublicationType(
+    AbstractType
+):
+    __resource_type__ = (
+        "CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublication"
+    )
 
 
 class CitationCitedArtifactPublicationFormPublishedInType(AbstractType):
@@ -1675,7 +1687,6 @@ class DosageDoseAndRateType(AbstractType):
 
 class DurationType(AbstractType):
     __resource_type__ = "Duration"
-
 
 
 class ElementDefinitionType(AbstractType):
@@ -2366,8 +2377,12 @@ class MedicationKnowledgeAdministrationGuidelinesDosageType(AbstractType):
     __resource_type__ = "MedicationKnowledgeAdministrationGuidelinesDosage"
 
 
-class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsType(AbstractType):
-    __resource_type__ = "MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics"
+class MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsType(
+    AbstractType
+):
+    __resource_type__ = (
+        "MedicationKnowledgeAdministrationGuidelinesPatientCharacteristics"
+    )
 
 
 class MedicationKnowledgeCostType(AbstractType):
@@ -2954,7 +2969,6 @@ class ResearchSubjectType(AbstractType):
     __resource_type__ = "ResearchSubject"
 
 
-
 class RiskAssessmentType(AbstractType):
     __resource_type__ = "RiskAssessment"
 
@@ -3442,6 +3456,7 @@ class VisionPrescriptionLensSpecificationType(AbstractType):
 class VisionPrescriptionLensSpecificationPrismType(AbstractType):
     __resource_type__ = "VisionPrescriptionLensSpecificationPrism"
 
+
 __all__ = [
     "Boolean",
     "String",
@@ -3466,2043 +3481,683 @@ __all__ = [
     "FHIRPrimitiveExtensionType",
     "ElementType",
     "ResourceType",
-	
-	"AccountType",
-	
-	
-	"AccountCoverageType",
-	
-	
-	"AccountGuarantorType",
-	
-	
-	"ActivityDefinitionType",
-	
-	
-	"ActivityDefinitionDynamicValueType",
-	
-	
-	"ActivityDefinitionParticipantType",
-	
-	
-	"AddressType",
-	
-	
-	"AdministrableProductDefinitionType",
-	
-	
-	"AdministrableProductDefinitionPropertyType",
-	
-	
-	"AdministrableProductDefinitionRouteOfAdministrationType",
-	
-	
-	"AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesType",
-	
-	
-	"AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriodType",
-	
-	
-	"AdverseEventType",
-	
-	
-	"AdverseEventSuspectEntityType",
-	
-	
-	"AdverseEventSuspectEntityCausalityType",
-	
-	
-	"AgeType",
-	
-	
-	"AllergyIntoleranceType",
-	
-	
-	"AllergyIntoleranceReactionType",
-	
-	
-	"AnnotationType",
-	
-	
-	"AppointmentType",
-	
-	
-	"AppointmentParticipantType",
-	
-	
-	"AppointmentResponseType",
-	
-	
-	"AttachmentType",
-	
-	
-	"AuditEventType",
-	
-	
-	"AuditEventAgentType",
-	
-	
-	"AuditEventAgentNetworkType",
-	
-	
-	"AuditEventEntityType",
-	
-	
-	"AuditEventEntityDetailType",
-	
-	
-	"AuditEventSourceType",
-	
-	
-	"BackboneElementType",
-	
-	
-	"BasicType",
-	
-	
-	"BinaryType",
-	
-	
-	"BiologicallyDerivedProductType",
-	
-	
-	"BiologicallyDerivedProductCollectionType",
-	
-	
-	"BiologicallyDerivedProductManipulationType",
-	
-	
-	"BiologicallyDerivedProductProcessingType",
-	
-	
-	"BiologicallyDerivedProductStorageType",
-	
-	
-	"BodyStructureType",
-	
-	
-	"BundleType",
-	
-	
-	"BundleEntryType",
-	
-	
-	"BundleEntryRequestType",
-	
-	
-	"BundleEntryResponseType",
-	
-	
-	"BundleEntrySearchType",
-	
-	
-	"BundleLinkType",
-	
-	
-	"CapabilityStatementType",
-	
-	
-	"CapabilityStatementDocumentType",
-	
-	
-	"CapabilityStatementImplementationType",
-	
-	
-	"CapabilityStatementMessagingType",
-	
-	
-	"CapabilityStatementMessagingEndpointType",
-	
-	
-	"CapabilityStatementMessagingSupportedMessageType",
-	
-	
-	"CapabilityStatementRestType",
-	
-	
-	"CapabilityStatementRestInteractionType",
-	
-	
-	"CapabilityStatementRestResourceType",
-	
-	
-	"CapabilityStatementRestResourceInteractionType",
-	
-	
-	"CapabilityStatementRestResourceOperationType",
-	
-	
-	"CapabilityStatementRestResourceSearchParamType",
-	
-	
-	"CapabilityStatementRestSecurityType",
-	
-	
-	"CapabilityStatementSoftwareType",
-	
-	
-	"CarePlanType",
-	
-	
-	"CarePlanActivityType",
-	
-	
-	"CarePlanActivityDetailType",
-	
-	
-	"CareTeamType",
-	
-	
-	"CareTeamParticipantType",
-	
-	
-	"CatalogEntryType",
-	
-	
-	"CatalogEntryRelatedEntryType",
-	
-	
-	"ChargeItemType",
-	
-	
-	"ChargeItemDefinitionType",
-	
-	
-	"ChargeItemDefinitionApplicabilityType",
-	
-	
-	"ChargeItemDefinitionPropertyGroupType",
-	
-	
-	"ChargeItemDefinitionPropertyGroupPriceComponentType",
-	
-	
-	"ChargeItemPerformerType",
-	
-	
-	"CitationType",
-	
-	
-	"CitationCitedArtifactType",
-	
-	
-	"CitationCitedArtifactAbstractType",
-	
-	
-	"CitationCitedArtifactClassificationType",
-	
-	
-	"CitationCitedArtifactClassificationWhoClassifiedType",
-	
-	
-	"CitationCitedArtifactContributorshipType",
-	
-	
-	"CitationCitedArtifactContributorshipEntryType",
-	
-	
-	"CitationCitedArtifactContributorshipEntryAffiliationInfoType",
-	
-	
-	"CitationCitedArtifactContributorshipEntryContributionInstanceType",
-	
-	
-	"CitationCitedArtifactContributorshipSummaryType",
-	
-	
-	"CitationCitedArtifactPartType",
-	
-	
-	"CitationCitedArtifactPublicationFormType",
-	
-	
-	"CitationCitedArtifactPublicationFormPeriodicReleaseType",
-	
-	
-	"CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublicationType",
-	
-	
-	"CitationCitedArtifactPublicationFormPublishedInType",
-	
-	
-	"CitationCitedArtifactRelatesToType",
-	
-	
-	"CitationCitedArtifactStatusDateType",
-	
-	
-	"CitationCitedArtifactTitleType",
-	
-	
-	"CitationCitedArtifactVersionType",
-	
-	
-	"CitationCitedArtifactWebLocationType",
-	
-	
-	"CitationClassificationType",
-	
-	
-	"CitationRelatesToType",
-	
-	
-	"CitationStatusDateType",
-	
-	
-	"CitationSummaryType",
-	
-	
-	"ClaimType",
-	
-	
-	"ClaimAccidentType",
-	
-	
-	"ClaimCareTeamType",
-	
-	
-	"ClaimDiagnosisType",
-	
-	
-	"ClaimInsuranceType",
-	
-	
-	"ClaimItemType",
-	
-	
-	"ClaimItemDetailType",
-	
-	
-	"ClaimItemDetailSubDetailType",
-	
-	
-	"ClaimPayeeType",
-	
-	
-	"ClaimProcedureType",
-	
-	
-	"ClaimRelatedType",
-	
-	
-	"ClaimResponseType",
-	
-	
-	"ClaimResponseAddItemType",
-	
-	
-	"ClaimResponseAddItemDetailType",
-	
-	
-	"ClaimResponseAddItemDetailSubDetailType",
-	
-	
-	"ClaimResponseErrorType",
-	
-	
-	"ClaimResponseInsuranceType",
-	
-	
-	"ClaimResponseItemType",
-	
-	
-	"ClaimResponseItemAdjudicationType",
-	
-	
-	"ClaimResponseItemDetailType",
-	
-	
-	"ClaimResponseItemDetailSubDetailType",
-	
-	
-	"ClaimResponsePaymentType",
-	
-	
-	"ClaimResponseProcessNoteType",
-	
-	
-	"ClaimResponseTotalType",
-	
-	
-	"ClaimSupportingInfoType",
-	
-	
-	"ClinicalImpressionType",
-	
-	
-	"ClinicalImpressionFindingType",
-	
-	
-	"ClinicalImpressionInvestigationType",
-	
-	
-	"ClinicalUseDefinitionType",
-	
-	
-	"ClinicalUseDefinitionContraindicationType",
-	
-	
-	"ClinicalUseDefinitionContraindicationOtherTherapyType",
-	
-	
-	"ClinicalUseDefinitionIndicationType",
-	
-	
-	"ClinicalUseDefinitionInteractionType",
-	
-	
-	"ClinicalUseDefinitionInteractionInteractantType",
-	
-	
-	"ClinicalUseDefinitionUndesirableEffectType",
-	
-	
-	"ClinicalUseDefinitionWarningType",
-	
-	
-	"CodeSystemType",
-	
-	
-	"CodeSystemConceptType",
-	
-	
-	"CodeSystemConceptDesignationType",
-	
-	
-	"CodeSystemConceptPropertyType",
-	
-	
-	"CodeSystemFilterType",
-	
-	
-	"CodeSystemPropertyType",
-	
-	
-	"CodeableConceptType",
-	
-	
-	"CodeableReferenceType",
-	
-	
-	"CodingType",
-	
-	
-	"CommunicationType",
-	
-	
-	"CommunicationPayloadType",
-	
-	
-	"CommunicationRequestType",
-	
-	
-	"CommunicationRequestPayloadType",
-	
-	
-	"CompartmentDefinitionType",
-	
-	
-	"CompartmentDefinitionResourceType",
-	
-	
-	"CompositionType",
-	
-	
-	"CompositionAttesterType",
-	
-	
-	"CompositionEventType",
-	
-	
-	"CompositionRelatesToType",
-	
-	
-	"CompositionSectionType",
-	
-	
-	"ConceptMapType",
-	
-	
-	"ConceptMapGroupType",
-	
-	
-	"ConceptMapGroupElementType",
-	
-	
-	"ConceptMapGroupElementTargetType",
-	
-	
-	"ConceptMapGroupElementTargetDependsOnType",
-	
-	
-	"ConceptMapGroupUnmappedType",
-	
-	
-	"ConditionType",
-	
-	
-	"ConditionEvidenceType",
-	
-	
-	"ConditionStageType",
-	
-	
-	"ConsentType",
-	
-	
-	"ConsentPolicyType",
-	
-	
-	"ConsentProvisionType",
-	
-	
-	"ConsentProvisionActorType",
-	
-	
-	"ConsentProvisionDataType",
-	
-	
-	"ConsentVerificationType",
-	
-	
-	"ContactDetailType",
-	
-	
-	"ContactPointType",
-	
-	
-	"ContractType",
-	
-	
-	"ContractContentDefinitionType",
-	
-	
-	"ContractFriendlyType",
-	
-	
-	"ContractLegalType",
-	
-	
-	"ContractRuleType",
-	
-	
-	"ContractSignerType",
-	
-	
-	"ContractTermType",
-	
-	
-	"ContractTermActionType",
-	
-	
-	"ContractTermActionSubjectType",
-	
-	
-	"ContractTermAssetType",
-	
-	
-	"ContractTermAssetContextType",
-	
-	
-	"ContractTermAssetValuedItemType",
-	
-	
-	"ContractTermOfferType",
-	
-	
-	"ContractTermOfferAnswerType",
-	
-	
-	"ContractTermOfferPartyType",
-	
-	
-	"ContractTermSecurityLabelType",
-	
-	
-	"ContributorType",
-	
-	
-	"CountType",
-	
-	
-	"CoverageType",
-	
-	
-	"CoverageClassType",
-	
-	
-	"CoverageCostToBeneficiaryType",
-	
-	
-	"CoverageCostToBeneficiaryExceptionType",
-	
-	
-	"CoverageEligibilityRequestType",
-	
-	
-	"CoverageEligibilityRequestInsuranceType",
-	
-	
-	"CoverageEligibilityRequestItemType",
-	
-	
-	"CoverageEligibilityRequestItemDiagnosisType",
-	
-	
-	"CoverageEligibilityRequestSupportingInfoType",
-	
-	
-	"CoverageEligibilityResponseType",
-	
-	
-	"CoverageEligibilityResponseErrorType",
-	
-	
-	"CoverageEligibilityResponseInsuranceType",
-	
-	
-	"CoverageEligibilityResponseInsuranceItemType",
-	
-	
-	"CoverageEligibilityResponseInsuranceItemBenefitType",
-	
-	
-	"DataRequirementType",
-	
-	
-	"DataRequirementCodeFilterType",
-	
-	
-	"DataRequirementDateFilterType",
-	
-	
-	"DataRequirementSortType",
-	
-	
-	"DetectedIssueType",
-	
-	
-	"DetectedIssueEvidenceType",
-	
-	
-	"DetectedIssueMitigationType",
-	
-	
-	"DeviceType",
-	
-	
-	"DeviceDefinitionType",
-	
-	
-	"DeviceDefinitionCapabilityType",
-	
-	
-	"DeviceDefinitionDeviceNameType",
-	
-	
-	"DeviceDefinitionMaterialType",
-	
-	
-	"DeviceDefinitionPropertyType",
-	
-	
-	"DeviceDefinitionSpecializationType",
-	
-	
-	"DeviceDefinitionUdiDeviceIdentifierType",
-	
-	
-	"DeviceDeviceNameType",
-	
-	
-	"DeviceMetricType",
-	
-	
-	"DeviceMetricCalibrationType",
-	
-	
-	"DevicePropertyType",
-	
-	
-	"DeviceRequestType",
-	
-	
-	"DeviceRequestParameterType",
-	
-	
-	"DeviceSpecializationType",
-	
-	
-	"DeviceUdiCarrierType",
-	
-	
-	"DeviceUseStatementType",
-	
-	
-	"DeviceVersionType",
-	
-	
-	"DiagnosticReportType",
-	
-	
-	"DiagnosticReportMediaType",
-	
-	
-	"DistanceType",
-	
-	
-	"DocumentManifestType",
-	
-	
-	"DocumentManifestRelatedType",
-	
-	
-	"DocumentReferenceType",
-	
-	
-	"DocumentReferenceContentType",
-	
-	
-	"DocumentReferenceContextType",
-	
-	
-	"DocumentReferenceRelatesToType",
-	
-	
-	"DomainResourceType",
-	
-	
-	"DosageType",
-	
-	
-	"DosageDoseAndRateType",
-	
-	
-	"DurationType",
-	
-	
-	
-	"ElementDefinitionType",
-	
-	
-	"ElementDefinitionBaseType",
-	
-	
-	"ElementDefinitionBindingType",
-	
-	
-	"ElementDefinitionConstraintType",
-	
-	
-	"ElementDefinitionExampleType",
-	
-	
-	"ElementDefinitionMappingType",
-	
-	
-	"ElementDefinitionSlicingType",
-	
-	
-	"ElementDefinitionSlicingDiscriminatorType",
-	
-	
-	"ElementDefinitionTypeType",
-	
-	
-	"EncounterType",
-	
-	
-	"EncounterClassHistoryType",
-	
-	
-	"EncounterDiagnosisType",
-	
-	
-	"EncounterHospitalizationType",
-	
-	
-	"EncounterLocationType",
-	
-	
-	"EncounterParticipantType",
-	
-	
-	"EncounterStatusHistoryType",
-	
-	
-	"EndpointType",
-	
-	
-	"EnrollmentRequestType",
-	
-	
-	"EnrollmentResponseType",
-	
-	
-	"EpisodeOfCareType",
-	
-	
-	"EpisodeOfCareDiagnosisType",
-	
-	
-	"EpisodeOfCareStatusHistoryType",
-	
-	
-	"EventDefinitionType",
-	
-	
-	"EvidenceType",
-	
-	
-	"EvidenceCertaintyType",
-	
-	
-	"EvidenceReportType",
-	
-	
-	"EvidenceReportRelatesToType",
-	
-	
-	"EvidenceReportSectionType",
-	
-	
-	"EvidenceReportSubjectType",
-	
-	
-	"EvidenceReportSubjectCharacteristicType",
-	
-	
-	"EvidenceStatisticType",
-	
-	
-	"EvidenceStatisticAttributeEstimateType",
-	
-	
-	"EvidenceStatisticModelCharacteristicType",
-	
-	
-	"EvidenceStatisticModelCharacteristicVariableType",
-	
-	
-	"EvidenceStatisticSampleSizeType",
-	
-	
-	"EvidenceVariableType",
-	
-	
-	"EvidenceVariableCategoryType",
-	
-	
-	"EvidenceVariableCharacteristicType",
-	
-	
-	"EvidenceVariableCharacteristicTimeFromStartType",
-	
-	
-	"EvidenceVariableDefinitionType",
-	
-	
-	"ExampleScenarioType",
-	
-	
-	"ExampleScenarioActorType",
-	
-	
-	"ExampleScenarioInstanceType",
-	
-	
-	"ExampleScenarioInstanceContainedInstanceType",
-	
-	
-	"ExampleScenarioInstanceVersionType",
-	
-	
-	"ExampleScenarioProcessType",
-	
-	
-	"ExampleScenarioProcessStepType",
-	
-	
-	"ExampleScenarioProcessStepAlternativeType",
-	
-	
-	"ExampleScenarioProcessStepOperationType",
-	
-	
-	"ExplanationOfBenefitType",
-	
-	
-	"ExplanationOfBenefitAccidentType",
-	
-	
-	"ExplanationOfBenefitAddItemType",
-	
-	
-	"ExplanationOfBenefitAddItemDetailType",
-	
-	
-	"ExplanationOfBenefitAddItemDetailSubDetailType",
-	
-	
-	"ExplanationOfBenefitBenefitBalanceType",
-	
-	
-	"ExplanationOfBenefitBenefitBalanceFinancialType",
-	
-	
-	"ExplanationOfBenefitCareTeamType",
-	
-	
-	"ExplanationOfBenefitDiagnosisType",
-	
-	
-	"ExplanationOfBenefitInsuranceType",
-	
-	
-	"ExplanationOfBenefitItemType",
-	
-	
-	"ExplanationOfBenefitItemAdjudicationType",
-	
-	
-	"ExplanationOfBenefitItemDetailType",
-	
-	
-	"ExplanationOfBenefitItemDetailSubDetailType",
-	
-	
-	"ExplanationOfBenefitPayeeType",
-	
-	
-	"ExplanationOfBenefitPaymentType",
-	
-	
-	"ExplanationOfBenefitProcedureType",
-	
-	
-	"ExplanationOfBenefitProcessNoteType",
-	
-	
-	"ExplanationOfBenefitRelatedType",
-	
-	
-	"ExplanationOfBenefitSupportingInfoType",
-	
-	
-	"ExplanationOfBenefitTotalType",
-	
-	
-	"ExpressionType",
-	
-	
-	"ExtensionType",
-	
-	
-	"FamilyMemberHistoryType",
-	
-	
-	"FamilyMemberHistoryConditionType",
-	
-	
-	"FlagType",
-	
-	
-	"GoalType",
-	
-	
-	"GoalTargetType",
-	
-	
-	"GraphDefinitionType",
-	
-	
-	"GraphDefinitionLinkType",
-	
-	
-	"GraphDefinitionLinkTargetType",
-	
-	
-	"GraphDefinitionLinkTargetCompartmentType",
-	
-	
-	"GroupType",
-	
-	
-	"GroupCharacteristicType",
-	
-	
-	"GroupMemberType",
-	
-	
-	"GuidanceResponseType",
-	
-	
-	"HealthcareServiceType",
-	
-	
-	"HealthcareServiceAvailableTimeType",
-	
-	
-	"HealthcareServiceEligibilityType",
-	
-	
-	"HealthcareServiceNotAvailableType",
-	
-	
-	"HumanNameType",
-	
-	
-	"IdentifierType",
-	
-	
-	"ImagingStudyType",
-	
-	
-	"ImagingStudySeriesType",
-	
-	
-	"ImagingStudySeriesInstanceType",
-	
-	
-	"ImagingStudySeriesPerformerType",
-	
-	
-	"ImmunizationType",
-	
-	
-	"ImmunizationEducationType",
-	
-	
-	"ImmunizationEvaluationType",
-	
-	
-	"ImmunizationPerformerType",
-	
-	
-	"ImmunizationProtocolAppliedType",
-	
-	
-	"ImmunizationReactionType",
-	
-	
-	"ImmunizationRecommendationType",
-	
-	
-	"ImmunizationRecommendationRecommendationType",
-	
-	
-	"ImmunizationRecommendationRecommendationDateCriterionType",
-	
-	
-	"ImplementationGuideType",
-	
-	
-	"ImplementationGuideDefinitionType",
-	
-	
-	"ImplementationGuideDefinitionGroupingType",
-	
-	
-	"ImplementationGuideDefinitionPageType",
-	
-	
-	"ImplementationGuideDefinitionParameterType",
-	
-	
-	"ImplementationGuideDefinitionResourceType",
-	
-	
-	"ImplementationGuideDefinitionTemplateType",
-	
-	
-	"ImplementationGuideDependsOnType",
-	
-	
-	"ImplementationGuideGlobalType",
-	
-	
-	"ImplementationGuideManifestType",
-	
-	
-	"ImplementationGuideManifestPageType",
-	
-	
-	"ImplementationGuideManifestResourceType",
-	
-	
-	"IngredientType",
-	
-	
-	"IngredientManufacturerType",
-	
-	
-	"IngredientSubstanceType",
-	
-	
-	"IngredientSubstanceStrengthType",
-	
-	
-	"IngredientSubstanceStrengthReferenceStrengthType",
-	
-	
-	"InsurancePlanType",
-	
-	
-	"InsurancePlanContactType",
-	
-	
-	"InsurancePlanCoverageType",
-	
-	
-	"InsurancePlanCoverageBenefitType",
-	
-	
-	"InsurancePlanCoverageBenefitLimitType",
-	
-	
-	"InsurancePlanPlanType",
-	
-	
-	"InsurancePlanPlanGeneralCostType",
-	
-	
-	"InsurancePlanPlanSpecificCostType",
-	
-	
-	"InsurancePlanPlanSpecificCostBenefitType",
-	
-	
-	"InsurancePlanPlanSpecificCostBenefitCostType",
-	
-	
-	"InvoiceType",
-	
-	
-	"InvoiceLineItemType",
-	
-	
-	"InvoiceLineItemPriceComponentType",
-	
-	
-	"InvoiceParticipantType",
-	
-	
-	"LibraryType",
-	
-	
-	"LinkageType",
-	
-	
-	"LinkageItemType",
-	
-	
-	"ListType",
-	
-	
-	"ListEntryType",
-	
-	
-	"LocationType",
-	
-	
-	"LocationHoursOfOperationType",
-	
-	
-	"LocationPositionType",
-	
-	
-	"ManufacturedItemDefinitionType",
-	
-	
-	"ManufacturedItemDefinitionPropertyType",
-	
-	
-	"MarketingStatusType",
-	
-	
-	"MeasureType",
-	
-	
-	"MeasureGroupType",
-	
-	
-	"MeasureGroupPopulationType",
-	
-	
-	"MeasureGroupStratifierType",
-	
-	
-	"MeasureGroupStratifierComponentType",
-	
-	
-	"MeasureReportType",
-	
-	
-	"MeasureReportGroupType",
-	
-	
-	"MeasureReportGroupPopulationType",
-	
-	
-	"MeasureReportGroupStratifierType",
-	
-	
-	"MeasureReportGroupStratifierStratumType",
-	
-	
-	"MeasureReportGroupStratifierStratumComponentType",
-	
-	
-	"MeasureReportGroupStratifierStratumPopulationType",
-	
-	
-	"MeasureSupplementalDataType",
-	
-	
-	"MediaType",
-	
-	
-	"MedicationType",
-	
-	
-	"MedicationAdministrationType",
-	
-	
-	"MedicationAdministrationDosageType",
-	
-	
-	"MedicationAdministrationPerformerType",
-	
-	
-	"MedicationBatchType",
-	
-	
-	"MedicationDispenseType",
-	
-	
-	"MedicationDispensePerformerType",
-	
-	
-	"MedicationDispenseSubstitutionType",
-	
-	
-	"MedicationIngredientType",
-	
-	
-	"MedicationKnowledgeType",
-	
-	
-	"MedicationKnowledgeAdministrationGuidelinesType",
-	
-	
-	"MedicationKnowledgeAdministrationGuidelinesDosageType",
-	
-	
-	"MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsType",
-	
-	
-	"MedicationKnowledgeCostType",
-	
-	
-	"MedicationKnowledgeDrugCharacteristicType",
-	
-	
-	"MedicationKnowledgeIngredientType",
-	
-	
-	"MedicationKnowledgeKineticsType",
-	
-	
-	"MedicationKnowledgeMedicineClassificationType",
-	
-	
-	"MedicationKnowledgeMonitoringProgramType",
-	
-	
-	"MedicationKnowledgeMonographType",
-	
-	
-	"MedicationKnowledgePackagingType",
-	
-	
-	"MedicationKnowledgeRegulatoryType",
-	
-	
-	"MedicationKnowledgeRegulatoryMaxDispenseType",
-	
-	
-	"MedicationKnowledgeRegulatoryScheduleType",
-	
-	
-	"MedicationKnowledgeRegulatorySubstitutionType",
-	
-	
-	"MedicationKnowledgeRelatedMedicationKnowledgeType",
-	
-	
-	"MedicationRequestType",
-	
-	
-	"MedicationRequestDispenseRequestType",
-	
-	
-	"MedicationRequestDispenseRequestInitialFillType",
-	
-	
-	"MedicationRequestSubstitutionType",
-	
-	
-	"MedicationStatementType",
-	
-	
-	"MedicinalProductDefinitionType",
-	
-	
-	"MedicinalProductDefinitionCharacteristicType",
-	
-	
-	"MedicinalProductDefinitionContactType",
-	
-	
-	"MedicinalProductDefinitionCrossReferenceType",
-	
-	
-	"MedicinalProductDefinitionNameType",
-	
-	
-	"MedicinalProductDefinitionNameCountryLanguageType",
-	
-	
-	"MedicinalProductDefinitionNameNamePartType",
-	
-	
-	"MedicinalProductDefinitionOperationType",
-	
-	
-	"MessageDefinitionType",
-	
-	
-	"MessageDefinitionAllowedResponseType",
-	
-	
-	"MessageDefinitionFocusType",
-	
-	
-	"MessageHeaderType",
-	
-	
-	"MessageHeaderDestinationType",
-	
-	
-	"MessageHeaderResponseType",
-	
-	
-	"MessageHeaderSourceType",
-	
-	
-	"MetaType",
-	
-	
-	"MolecularSequenceType",
-	
-	
-	"MolecularSequenceQualityType",
-	
-	
-	"MolecularSequenceQualityRocType",
-	
-	
-	"MolecularSequenceReferenceSeqType",
-	
-	
-	"MolecularSequenceRepositoryType",
-	
-	
-	"MolecularSequenceStructureVariantType",
-	
-	
-	"MolecularSequenceStructureVariantInnerType",
-	
-	
-	"MolecularSequenceStructureVariantOuterType",
-	
-	
-	"MolecularSequenceVariantType",
-	
-	
-	"MoneyType",
-	
-	
-	"NamingSystemType",
-	
-	
-	"NamingSystemUniqueIdType",
-	
-	
-	"NarrativeType",
-	
-	
-	"NutritionOrderType",
-	
-	
-	"NutritionOrderEnteralFormulaType",
-	
-	
-	"NutritionOrderEnteralFormulaAdministrationType",
-	
-	
-	"NutritionOrderOralDietType",
-	
-	
-	"NutritionOrderOralDietNutrientType",
-	
-	
-	"NutritionOrderOralDietTextureType",
-	
-	
-	"NutritionOrderSupplementType",
-	
-	
-	"NutritionProductType",
-	
-	
-	"NutritionProductIngredientType",
-	
-	
-	"NutritionProductInstanceType",
-	
-	
-	"NutritionProductNutrientType",
-	
-	
-	"NutritionProductProductCharacteristicType",
-	
-	
-	"ObservationType",
-	
-	
-	"ObservationComponentType",
-	
-	
-	"ObservationDefinitionType",
-	
-	
-	"ObservationDefinitionQualifiedIntervalType",
-	
-	
-	"ObservationDefinitionQuantitativeDetailsType",
-	
-	
-	"ObservationReferenceRangeType",
-	
-	
-	"OperationDefinitionType",
-	
-	
-	"OperationDefinitionOverloadType",
-	
-	
-	"OperationDefinitionParameterType",
-	
-	
-	"OperationDefinitionParameterBindingType",
-	
-	
-	"OperationDefinitionParameterReferencedFromType",
-	
-	
-	"OperationOutcomeType",
-	
-	
-	"OperationOutcomeIssueType",
-	
-	
-	"OrganizationType",
-	
-	
-	"OrganizationAffiliationType",
-	
-	
-	"OrganizationContactType",
-	
-	
-	"PackagedProductDefinitionType",
-	
-	
-	"PackagedProductDefinitionLegalStatusOfSupplyType",
-	
-	
-	"PackagedProductDefinitionPackageType",
-	
-	
-	"PackagedProductDefinitionPackageContainedItemType",
-	
-	
-	"PackagedProductDefinitionPackagePropertyType",
-	
-	
-	"PackagedProductDefinitionPackageShelfLifeStorageType",
-	
-	
-	"ParameterDefinitionType",
-	
-	
-	"ParametersType",
-	
-	
-	"ParametersParameterType",
-	
-	
-	"PatientType",
-	
-	
-	"PatientCommunicationType",
-	
-	
-	"PatientContactType",
-	
-	
-	"PatientLinkType",
-	
-	
-	"PaymentNoticeType",
-	
-	
-	"PaymentReconciliationType",
-	
-	
-	"PaymentReconciliationDetailType",
-	
-	
-	"PaymentReconciliationProcessNoteType",
-	
-	
-	"PeriodType",
-	
-	
-	"PersonType",
-	
-	
-	"PersonLinkType",
-	
-	
-	"PlanDefinitionType",
-	
-	
-	"PlanDefinitionActionType",
-	
-	
-	"PlanDefinitionActionConditionType",
-	
-	
-	"PlanDefinitionActionDynamicValueType",
-	
-	
-	"PlanDefinitionActionParticipantType",
-	
-	
-	"PlanDefinitionActionRelatedActionType",
-	
-	
-	"PlanDefinitionGoalType",
-	
-	
-	"PlanDefinitionGoalTargetType",
-	
-	
-	"PopulationType",
-	
-	
-	"PractitionerType",
-	
-	
-	"PractitionerQualificationType",
-	
-	
-	"PractitionerRoleType",
-	
-	
-	"PractitionerRoleAvailableTimeType",
-	
-	
-	"PractitionerRoleNotAvailableType",
-	
-	
-	"ProcedureType",
-	
-	
-	"ProcedureFocalDeviceType",
-	
-	
-	"ProcedurePerformerType",
-	
-	
-	"ProdCharacteristicType",
-	
-	
-	"ProductShelfLifeType",
-	
-	
-	"ProvenanceType",
-	
-	
-	"ProvenanceAgentType",
-	
-	
-	"ProvenanceEntityType",
-	
-	
-	"QuantityType",
-	
-	
-	"QuestionnaireType",
-	
-	
-	"QuestionnaireItemType",
-	
-	
-	"QuestionnaireItemAnswerOptionType",
-	
-	
-	"QuestionnaireItemEnableWhenType",
-	
-	
-	"QuestionnaireItemInitialType",
-	
-	
-	"QuestionnaireResponseType",
-	
-	
-	"QuestionnaireResponseItemType",
-	
-	
-	"QuestionnaireResponseItemAnswerType",
-	
-	
-	"RangeType",
-	
-	
-	"RatioType",
-	
-	
-	"RatioRangeType",
-	
-	
-	"ReferenceType",
-	
-	
-	"RegulatedAuthorizationType",
-	
-	
-	"RegulatedAuthorizationCaseType",
-	
-	
-	"RelatedArtifactType",
-	
-	
-	"RelatedPersonType",
-	
-	
-	"RelatedPersonCommunicationType",
-	
-	
-	"RequestGroupType",
-	
-	
-	"RequestGroupActionType",
-	
-	
-	"RequestGroupActionConditionType",
-	
-	
-	"RequestGroupActionRelatedActionType",
-	
-	
-	"ResearchDefinitionType",
-	
-	
-	"ResearchElementDefinitionType",
-	
-	
-	"ResearchElementDefinitionCharacteristicType",
-	
-	
-	"ResearchStudyType",
-	
-	
-	"ResearchStudyArmType",
-	
-	
-	"ResearchStudyObjectiveType",
-	
-	
-	"ResearchSubjectType",
-	
-	
-	
-	"RiskAssessmentType",
-	
-	
-	"RiskAssessmentPredictionType",
-	
-	
-	"SampledDataType",
-	
-	
-	"ScheduleType",
-	
-	
-	"SearchParameterType",
-	
-	
-	"SearchParameterComponentType",
-	
-	
-	"ServiceRequestType",
-	
-	
-	"SignatureType",
-	
-	
-	"SlotType",
-	
-	
-	"SpecimenType",
-	
-	
-	"SpecimenCollectionType",
-	
-	
-	"SpecimenContainerType",
-	
-	
-	"SpecimenDefinitionType",
-	
-	
-	"SpecimenDefinitionTypeTestedType",
-	
-	
-	"SpecimenDefinitionTypeTestedContainerType",
-	
-	
-	"SpecimenDefinitionTypeTestedContainerAdditiveType",
-	
-	
-	"SpecimenDefinitionTypeTestedHandlingType",
-	
-	
-	"SpecimenProcessingType",
-	
-	
-	"StructureDefinitionType",
-	
-	
-	"StructureDefinitionContextType",
-	
-	
-	"StructureDefinitionDifferentialType",
-	
-	
-	"StructureDefinitionMappingType",
-	
-	
-	"StructureDefinitionSnapshotType",
-	
-	
-	"StructureMapType",
-	
-	
-	"StructureMapGroupType",
-	
-	
-	"StructureMapGroupInputType",
-	
-	
-	"StructureMapGroupRuleType",
-	
-	
-	"StructureMapGroupRuleDependentType",
-	
-	
-	"StructureMapGroupRuleSourceType",
-	
-	
-	"StructureMapGroupRuleTargetType",
-	
-	
-	"StructureMapGroupRuleTargetParameterType",
-	
-	
-	"StructureMapStructureType",
-	
-	
-	"SubscriptionType",
-	
-	
-	"SubscriptionChannelType",
-	
-	
-	"SubscriptionStatusType",
-	
-	
-	"SubscriptionStatusNotificationEventType",
-	
-	
-	"SubscriptionTopicType",
-	
-	
-	"SubscriptionTopicCanFilterByType",
-	
-	
-	"SubscriptionTopicEventTriggerType",
-	
-	
-	"SubscriptionTopicNotificationShapeType",
-	
-	
-	"SubscriptionTopicResourceTriggerType",
-	
-	
-	"SubscriptionTopicResourceTriggerQueryCriteriaType",
-	
-	
-	"SubstanceType",
-	
-	
-	"SubstanceDefinitionType",
-	
-	
-	"SubstanceDefinitionCodeType",
-	
-	
-	"SubstanceDefinitionMoietyType",
-	
-	
-	"SubstanceDefinitionMolecularWeightType",
-	
-	
-	"SubstanceDefinitionNameType",
-	
-	
-	"SubstanceDefinitionNameOfficialType",
-	
-	
-	"SubstanceDefinitionPropertyType",
-	
-	
-	"SubstanceDefinitionRelationshipType",
-	
-	
-	"SubstanceDefinitionSourceMaterialType",
-	
-	
-	"SubstanceDefinitionStructureType",
-	
-	
-	"SubstanceDefinitionStructureRepresentationType",
-	
-	
-	"SubstanceIngredientType",
-	
-	
-	"SubstanceInstanceType",
-	
-	
-	"SupplyDeliveryType",
-	
-	
-	"SupplyDeliverySuppliedItemType",
-	
-	
-	"SupplyRequestType",
-	
-	
-	"SupplyRequestParameterType",
-	
-	
-	"TaskType",
-	
-	
-	"TaskInputType",
-	
-	
-	"TaskOutputType",
-	
-	
-	"TaskRestrictionType",
-	
-	
-	"TerminologyCapabilitiesType",
-	
-	
-	"TerminologyCapabilitiesClosureType",
-	
-	
-	"TerminologyCapabilitiesCodeSystemType",
-	
-	
-	"TerminologyCapabilitiesCodeSystemVersionType",
-	
-	
-	"TerminologyCapabilitiesCodeSystemVersionFilterType",
-	
-	
-	"TerminologyCapabilitiesExpansionType",
-	
-	
-	"TerminologyCapabilitiesExpansionParameterType",
-	
-	
-	"TerminologyCapabilitiesImplementationType",
-	
-	
-	"TerminologyCapabilitiesSoftwareType",
-	
-	
-	"TerminologyCapabilitiesTranslationType",
-	
-	
-	"TerminologyCapabilitiesValidateCodeType",
-	
-	
-	"TestReportType",
-	
-	
-	"TestReportParticipantType",
-	
-	
-	"TestReportSetupType",
-	
-	
-	"TestReportSetupActionType",
-	
-	
-	"TestReportSetupActionAssertType",
-	
-	
-	"TestReportSetupActionOperationType",
-	
-	
-	"TestReportTeardownType",
-	
-	
-	"TestReportTeardownActionType",
-	
-	
-	"TestReportTestType",
-	
-	
-	"TestReportTestActionType",
-	
-	
-	"TestScriptType",
-	
-	
-	"TestScriptDestinationType",
-	
-	
-	"TestScriptFixtureType",
-	
-	
-	"TestScriptMetadataType",
-	
-	
-	"TestScriptMetadataCapabilityType",
-	
-	
-	"TestScriptMetadataLinkType",
-	
-	
-	"TestScriptOriginType",
-	
-	
-	"TestScriptSetupType",
-	
-	
-	"TestScriptSetupActionType",
-	
-	
-	"TestScriptSetupActionAssertType",
-	
-	
-	"TestScriptSetupActionOperationType",
-	
-	
-	"TestScriptSetupActionOperationRequestHeaderType",
-	
-	
-	"TestScriptTeardownType",
-	
-	
-	"TestScriptTeardownActionType",
-	
-	
-	"TestScriptTestType",
-	
-	
-	"TestScriptTestActionType",
-	
-	
-	"TestScriptVariableType",
-	
-	
-	"TimingType",
-	
-	
-	"TimingRepeatType",
-	
-	
-	"TriggerDefinitionType",
-	
-	
-	"UsageContextType",
-	
-	
-	"ValueSetType",
-	
-	
-	"ValueSetComposeType",
-	
-	
-	"ValueSetComposeIncludeType",
-	
-	
-	"ValueSetComposeIncludeConceptType",
-	
-	
-	"ValueSetComposeIncludeConceptDesignationType",
-	
-	
-	"ValueSetComposeIncludeFilterType",
-	
-	
-	"ValueSetExpansionType",
-	
-	
-	"ValueSetExpansionContainsType",
-	
-	
-	"ValueSetExpansionParameterType",
-	
-	
-	"VerificationResultType",
-	
-	
-	"VerificationResultAttestationType",
-	
-	
-	"VerificationResultPrimarySourceType",
-	
-	
-	"VerificationResultValidatorType",
-	
-	
-	"VisionPrescriptionType",
-	
-	
-	"VisionPrescriptionLensSpecificationType",
-	
-	
-	"VisionPrescriptionLensSpecificationPrismType",
-	
+    "AccountType",
+    "AccountCoverageType",
+    "AccountGuarantorType",
+    "ActivityDefinitionType",
+    "ActivityDefinitionDynamicValueType",
+    "ActivityDefinitionParticipantType",
+    "AddressType",
+    "AdministrableProductDefinitionType",
+    "AdministrableProductDefinitionPropertyType",
+    "AdministrableProductDefinitionRouteOfAdministrationType",
+    "AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesType",
+    "AdministrableProductDefinitionRouteOfAdministrationTargetSpeciesWithdrawalPeriodType",
+    "AdverseEventType",
+    "AdverseEventSuspectEntityType",
+    "AdverseEventSuspectEntityCausalityType",
+    "AgeType",
+    "AllergyIntoleranceType",
+    "AllergyIntoleranceReactionType",
+    "AnnotationType",
+    "AppointmentType",
+    "AppointmentParticipantType",
+    "AppointmentResponseType",
+    "AttachmentType",
+    "AuditEventType",
+    "AuditEventAgentType",
+    "AuditEventAgentNetworkType",
+    "AuditEventEntityType",
+    "AuditEventEntityDetailType",
+    "AuditEventSourceType",
+    "BackboneElementType",
+    "BasicType",
+    "BinaryType",
+    "BiologicallyDerivedProductType",
+    "BiologicallyDerivedProductCollectionType",
+    "BiologicallyDerivedProductManipulationType",
+    "BiologicallyDerivedProductProcessingType",
+    "BiologicallyDerivedProductStorageType",
+    "BodyStructureType",
+    "BundleType",
+    "BundleEntryType",
+    "BundleEntryRequestType",
+    "BundleEntryResponseType",
+    "BundleEntrySearchType",
+    "BundleLinkType",
+    "CapabilityStatementType",
+    "CapabilityStatementDocumentType",
+    "CapabilityStatementImplementationType",
+    "CapabilityStatementMessagingType",
+    "CapabilityStatementMessagingEndpointType",
+    "CapabilityStatementMessagingSupportedMessageType",
+    "CapabilityStatementRestType",
+    "CapabilityStatementRestInteractionType",
+    "CapabilityStatementRestResourceType",
+    "CapabilityStatementRestResourceInteractionType",
+    "CapabilityStatementRestResourceOperationType",
+    "CapabilityStatementRestResourceSearchParamType",
+    "CapabilityStatementRestSecurityType",
+    "CapabilityStatementSoftwareType",
+    "CarePlanType",
+    "CarePlanActivityType",
+    "CarePlanActivityDetailType",
+    "CareTeamType",
+    "CareTeamParticipantType",
+    "CatalogEntryType",
+    "CatalogEntryRelatedEntryType",
+    "ChargeItemType",
+    "ChargeItemDefinitionType",
+    "ChargeItemDefinitionApplicabilityType",
+    "ChargeItemDefinitionPropertyGroupType",
+    "ChargeItemDefinitionPropertyGroupPriceComponentType",
+    "ChargeItemPerformerType",
+    "CitationType",
+    "CitationCitedArtifactType",
+    "CitationCitedArtifactAbstractType",
+    "CitationCitedArtifactClassificationType",
+    "CitationCitedArtifactClassificationWhoClassifiedType",
+    "CitationCitedArtifactContributorshipType",
+    "CitationCitedArtifactContributorshipEntryType",
+    "CitationCitedArtifactContributorshipEntryAffiliationInfoType",
+    "CitationCitedArtifactContributorshipEntryContributionInstanceType",
+    "CitationCitedArtifactContributorshipSummaryType",
+    "CitationCitedArtifactPartType",
+    "CitationCitedArtifactPublicationFormType",
+    "CitationCitedArtifactPublicationFormPeriodicReleaseType",
+    "CitationCitedArtifactPublicationFormPeriodicReleaseDateOfPublicationType",
+    "CitationCitedArtifactPublicationFormPublishedInType",
+    "CitationCitedArtifactRelatesToType",
+    "CitationCitedArtifactStatusDateType",
+    "CitationCitedArtifactTitleType",
+    "CitationCitedArtifactVersionType",
+    "CitationCitedArtifactWebLocationType",
+    "CitationClassificationType",
+    "CitationRelatesToType",
+    "CitationStatusDateType",
+    "CitationSummaryType",
+    "ClaimType",
+    "ClaimAccidentType",
+    "ClaimCareTeamType",
+    "ClaimDiagnosisType",
+    "ClaimInsuranceType",
+    "ClaimItemType",
+    "ClaimItemDetailType",
+    "ClaimItemDetailSubDetailType",
+    "ClaimPayeeType",
+    "ClaimProcedureType",
+    "ClaimRelatedType",
+    "ClaimResponseType",
+    "ClaimResponseAddItemType",
+    "ClaimResponseAddItemDetailType",
+    "ClaimResponseAddItemDetailSubDetailType",
+    "ClaimResponseErrorType",
+    "ClaimResponseInsuranceType",
+    "ClaimResponseItemType",
+    "ClaimResponseItemAdjudicationType",
+    "ClaimResponseItemDetailType",
+    "ClaimResponseItemDetailSubDetailType",
+    "ClaimResponsePaymentType",
+    "ClaimResponseProcessNoteType",
+    "ClaimResponseTotalType",
+    "ClaimSupportingInfoType",
+    "ClinicalImpressionType",
+    "ClinicalImpressionFindingType",
+    "ClinicalImpressionInvestigationType",
+    "ClinicalUseDefinitionType",
+    "ClinicalUseDefinitionContraindicationType",
+    "ClinicalUseDefinitionContraindicationOtherTherapyType",
+    "ClinicalUseDefinitionIndicationType",
+    "ClinicalUseDefinitionInteractionType",
+    "ClinicalUseDefinitionInteractionInteractantType",
+    "ClinicalUseDefinitionUndesirableEffectType",
+    "ClinicalUseDefinitionWarningType",
+    "CodeSystemType",
+    "CodeSystemConceptType",
+    "CodeSystemConceptDesignationType",
+    "CodeSystemConceptPropertyType",
+    "CodeSystemFilterType",
+    "CodeSystemPropertyType",
+    "CodeableConceptType",
+    "CodeableReferenceType",
+    "CodingType",
+    "CommunicationType",
+    "CommunicationPayloadType",
+    "CommunicationRequestType",
+    "CommunicationRequestPayloadType",
+    "CompartmentDefinitionType",
+    "CompartmentDefinitionResourceType",
+    "CompositionType",
+    "CompositionAttesterType",
+    "CompositionEventType",
+    "CompositionRelatesToType",
+    "CompositionSectionType",
+    "ConceptMapType",
+    "ConceptMapGroupType",
+    "ConceptMapGroupElementType",
+    "ConceptMapGroupElementTargetType",
+    "ConceptMapGroupElementTargetDependsOnType",
+    "ConceptMapGroupUnmappedType",
+    "ConditionType",
+    "ConditionEvidenceType",
+    "ConditionStageType",
+    "ConsentType",
+    "ConsentPolicyType",
+    "ConsentProvisionType",
+    "ConsentProvisionActorType",
+    "ConsentProvisionDataType",
+    "ConsentVerificationType",
+    "ContactDetailType",
+    "ContactPointType",
+    "ContractType",
+    "ContractContentDefinitionType",
+    "ContractFriendlyType",
+    "ContractLegalType",
+    "ContractRuleType",
+    "ContractSignerType",
+    "ContractTermType",
+    "ContractTermActionType",
+    "ContractTermActionSubjectType",
+    "ContractTermAssetType",
+    "ContractTermAssetContextType",
+    "ContractTermAssetValuedItemType",
+    "ContractTermOfferType",
+    "ContractTermOfferAnswerType",
+    "ContractTermOfferPartyType",
+    "ContractTermSecurityLabelType",
+    "ContributorType",
+    "CountType",
+    "CoverageType",
+    "CoverageClassType",
+    "CoverageCostToBeneficiaryType",
+    "CoverageCostToBeneficiaryExceptionType",
+    "CoverageEligibilityRequestType",
+    "CoverageEligibilityRequestInsuranceType",
+    "CoverageEligibilityRequestItemType",
+    "CoverageEligibilityRequestItemDiagnosisType",
+    "CoverageEligibilityRequestSupportingInfoType",
+    "CoverageEligibilityResponseType",
+    "CoverageEligibilityResponseErrorType",
+    "CoverageEligibilityResponseInsuranceType",
+    "CoverageEligibilityResponseInsuranceItemType",
+    "CoverageEligibilityResponseInsuranceItemBenefitType",
+    "DataRequirementType",
+    "DataRequirementCodeFilterType",
+    "DataRequirementDateFilterType",
+    "DataRequirementSortType",
+    "DetectedIssueType",
+    "DetectedIssueEvidenceType",
+    "DetectedIssueMitigationType",
+    "DeviceType",
+    "DeviceDefinitionType",
+    "DeviceDefinitionCapabilityType",
+    "DeviceDefinitionDeviceNameType",
+    "DeviceDefinitionMaterialType",
+    "DeviceDefinitionPropertyType",
+    "DeviceDefinitionSpecializationType",
+    "DeviceDefinitionUdiDeviceIdentifierType",
+    "DeviceDeviceNameType",
+    "DeviceMetricType",
+    "DeviceMetricCalibrationType",
+    "DevicePropertyType",
+    "DeviceRequestType",
+    "DeviceRequestParameterType",
+    "DeviceSpecializationType",
+    "DeviceUdiCarrierType",
+    "DeviceUseStatementType",
+    "DeviceVersionType",
+    "DiagnosticReportType",
+    "DiagnosticReportMediaType",
+    "DistanceType",
+    "DocumentManifestType",
+    "DocumentManifestRelatedType",
+    "DocumentReferenceType",
+    "DocumentReferenceContentType",
+    "DocumentReferenceContextType",
+    "DocumentReferenceRelatesToType",
+    "DomainResourceType",
+    "DosageType",
+    "DosageDoseAndRateType",
+    "DurationType",
+    "ElementDefinitionType",
+    "ElementDefinitionBaseType",
+    "ElementDefinitionBindingType",
+    "ElementDefinitionConstraintType",
+    "ElementDefinitionExampleType",
+    "ElementDefinitionMappingType",
+    "ElementDefinitionSlicingType",
+    "ElementDefinitionSlicingDiscriminatorType",
+    "ElementDefinitionTypeType",
+    "EncounterType",
+    "EncounterClassHistoryType",
+    "EncounterDiagnosisType",
+    "EncounterHospitalizationType",
+    "EncounterLocationType",
+    "EncounterParticipantType",
+    "EncounterStatusHistoryType",
+    "EndpointType",
+    "EnrollmentRequestType",
+    "EnrollmentResponseType",
+    "EpisodeOfCareType",
+    "EpisodeOfCareDiagnosisType",
+    "EpisodeOfCareStatusHistoryType",
+    "EventDefinitionType",
+    "EvidenceType",
+    "EvidenceCertaintyType",
+    "EvidenceReportType",
+    "EvidenceReportRelatesToType",
+    "EvidenceReportSectionType",
+    "EvidenceReportSubjectType",
+    "EvidenceReportSubjectCharacteristicType",
+    "EvidenceStatisticType",
+    "EvidenceStatisticAttributeEstimateType",
+    "EvidenceStatisticModelCharacteristicType",
+    "EvidenceStatisticModelCharacteristicVariableType",
+    "EvidenceStatisticSampleSizeType",
+    "EvidenceVariableType",
+    "EvidenceVariableCategoryType",
+    "EvidenceVariableCharacteristicType",
+    "EvidenceVariableCharacteristicTimeFromStartType",
+    "EvidenceVariableDefinitionType",
+    "ExampleScenarioType",
+    "ExampleScenarioActorType",
+    "ExampleScenarioInstanceType",
+    "ExampleScenarioInstanceContainedInstanceType",
+    "ExampleScenarioInstanceVersionType",
+    "ExampleScenarioProcessType",
+    "ExampleScenarioProcessStepType",
+    "ExampleScenarioProcessStepAlternativeType",
+    "ExampleScenarioProcessStepOperationType",
+    "ExplanationOfBenefitType",
+    "ExplanationOfBenefitAccidentType",
+    "ExplanationOfBenefitAddItemType",
+    "ExplanationOfBenefitAddItemDetailType",
+    "ExplanationOfBenefitAddItemDetailSubDetailType",
+    "ExplanationOfBenefitBenefitBalanceType",
+    "ExplanationOfBenefitBenefitBalanceFinancialType",
+    "ExplanationOfBenefitCareTeamType",
+    "ExplanationOfBenefitDiagnosisType",
+    "ExplanationOfBenefitInsuranceType",
+    "ExplanationOfBenefitItemType",
+    "ExplanationOfBenefitItemAdjudicationType",
+    "ExplanationOfBenefitItemDetailType",
+    "ExplanationOfBenefitItemDetailSubDetailType",
+    "ExplanationOfBenefitPayeeType",
+    "ExplanationOfBenefitPaymentType",
+    "ExplanationOfBenefitProcedureType",
+    "ExplanationOfBenefitProcessNoteType",
+    "ExplanationOfBenefitRelatedType",
+    "ExplanationOfBenefitSupportingInfoType",
+    "ExplanationOfBenefitTotalType",
+    "ExpressionType",
+    "ExtensionType",
+    "FamilyMemberHistoryType",
+    "FamilyMemberHistoryConditionType",
+    "FlagType",
+    "GoalType",
+    "GoalTargetType",
+    "GraphDefinitionType",
+    "GraphDefinitionLinkType",
+    "GraphDefinitionLinkTargetType",
+    "GraphDefinitionLinkTargetCompartmentType",
+    "GroupType",
+    "GroupCharacteristicType",
+    "GroupMemberType",
+    "GuidanceResponseType",
+    "HealthcareServiceType",
+    "HealthcareServiceAvailableTimeType",
+    "HealthcareServiceEligibilityType",
+    "HealthcareServiceNotAvailableType",
+    "HumanNameType",
+    "IdentifierType",
+    "ImagingStudyType",
+    "ImagingStudySeriesType",
+    "ImagingStudySeriesInstanceType",
+    "ImagingStudySeriesPerformerType",
+    "ImmunizationType",
+    "ImmunizationEducationType",
+    "ImmunizationEvaluationType",
+    "ImmunizationPerformerType",
+    "ImmunizationProtocolAppliedType",
+    "ImmunizationReactionType",
+    "ImmunizationRecommendationType",
+    "ImmunizationRecommendationRecommendationType",
+    "ImmunizationRecommendationRecommendationDateCriterionType",
+    "ImplementationGuideType",
+    "ImplementationGuideDefinitionType",
+    "ImplementationGuideDefinitionGroupingType",
+    "ImplementationGuideDefinitionPageType",
+    "ImplementationGuideDefinitionParameterType",
+    "ImplementationGuideDefinitionResourceType",
+    "ImplementationGuideDefinitionTemplateType",
+    "ImplementationGuideDependsOnType",
+    "ImplementationGuideGlobalType",
+    "ImplementationGuideManifestType",
+    "ImplementationGuideManifestPageType",
+    "ImplementationGuideManifestResourceType",
+    "IngredientType",
+    "IngredientManufacturerType",
+    "IngredientSubstanceType",
+    "IngredientSubstanceStrengthType",
+    "IngredientSubstanceStrengthReferenceStrengthType",
+    "InsurancePlanType",
+    "InsurancePlanContactType",
+    "InsurancePlanCoverageType",
+    "InsurancePlanCoverageBenefitType",
+    "InsurancePlanCoverageBenefitLimitType",
+    "InsurancePlanPlanType",
+    "InsurancePlanPlanGeneralCostType",
+    "InsurancePlanPlanSpecificCostType",
+    "InsurancePlanPlanSpecificCostBenefitType",
+    "InsurancePlanPlanSpecificCostBenefitCostType",
+    "InvoiceType",
+    "InvoiceLineItemType",
+    "InvoiceLineItemPriceComponentType",
+    "InvoiceParticipantType",
+    "LibraryType",
+    "LinkageType",
+    "LinkageItemType",
+    "ListType",
+    "ListEntryType",
+    "LocationType",
+    "LocationHoursOfOperationType",
+    "LocationPositionType",
+    "ManufacturedItemDefinitionType",
+    "ManufacturedItemDefinitionPropertyType",
+    "MarketingStatusType",
+    "MeasureType",
+    "MeasureGroupType",
+    "MeasureGroupPopulationType",
+    "MeasureGroupStratifierType",
+    "MeasureGroupStratifierComponentType",
+    "MeasureReportType",
+    "MeasureReportGroupType",
+    "MeasureReportGroupPopulationType",
+    "MeasureReportGroupStratifierType",
+    "MeasureReportGroupStratifierStratumType",
+    "MeasureReportGroupStratifierStratumComponentType",
+    "MeasureReportGroupStratifierStratumPopulationType",
+    "MeasureSupplementalDataType",
+    "MediaType",
+    "MedicationType",
+    "MedicationAdministrationType",
+    "MedicationAdministrationDosageType",
+    "MedicationAdministrationPerformerType",
+    "MedicationBatchType",
+    "MedicationDispenseType",
+    "MedicationDispensePerformerType",
+    "MedicationDispenseSubstitutionType",
+    "MedicationIngredientType",
+    "MedicationKnowledgeType",
+    "MedicationKnowledgeAdministrationGuidelinesType",
+    "MedicationKnowledgeAdministrationGuidelinesDosageType",
+    "MedicationKnowledgeAdministrationGuidelinesPatientCharacteristicsType",
+    "MedicationKnowledgeCostType",
+    "MedicationKnowledgeDrugCharacteristicType",
+    "MedicationKnowledgeIngredientType",
+    "MedicationKnowledgeKineticsType",
+    "MedicationKnowledgeMedicineClassificationType",
+    "MedicationKnowledgeMonitoringProgramType",
+    "MedicationKnowledgeMonographType",
+    "MedicationKnowledgePackagingType",
+    "MedicationKnowledgeRegulatoryType",
+    "MedicationKnowledgeRegulatoryMaxDispenseType",
+    "MedicationKnowledgeRegulatoryScheduleType",
+    "MedicationKnowledgeRegulatorySubstitutionType",
+    "MedicationKnowledgeRelatedMedicationKnowledgeType",
+    "MedicationRequestType",
+    "MedicationRequestDispenseRequestType",
+    "MedicationRequestDispenseRequestInitialFillType",
+    "MedicationRequestSubstitutionType",
+    "MedicationStatementType",
+    "MedicinalProductDefinitionType",
+    "MedicinalProductDefinitionCharacteristicType",
+    "MedicinalProductDefinitionContactType",
+    "MedicinalProductDefinitionCrossReferenceType",
+    "MedicinalProductDefinitionNameType",
+    "MedicinalProductDefinitionNameCountryLanguageType",
+    "MedicinalProductDefinitionNameNamePartType",
+    "MedicinalProductDefinitionOperationType",
+    "MessageDefinitionType",
+    "MessageDefinitionAllowedResponseType",
+    "MessageDefinitionFocusType",
+    "MessageHeaderType",
+    "MessageHeaderDestinationType",
+    "MessageHeaderResponseType",
+    "MessageHeaderSourceType",
+    "MetaType",
+    "MolecularSequenceType",
+    "MolecularSequenceQualityType",
+    "MolecularSequenceQualityRocType",
+    "MolecularSequenceReferenceSeqType",
+    "MolecularSequenceRepositoryType",
+    "MolecularSequenceStructureVariantType",
+    "MolecularSequenceStructureVariantInnerType",
+    "MolecularSequenceStructureVariantOuterType",
+    "MolecularSequenceVariantType",
+    "MoneyType",
+    "NamingSystemType",
+    "NamingSystemUniqueIdType",
+    "NarrativeType",
+    "NutritionOrderType",
+    "NutritionOrderEnteralFormulaType",
+    "NutritionOrderEnteralFormulaAdministrationType",
+    "NutritionOrderOralDietType",
+    "NutritionOrderOralDietNutrientType",
+    "NutritionOrderOralDietTextureType",
+    "NutritionOrderSupplementType",
+    "NutritionProductType",
+    "NutritionProductIngredientType",
+    "NutritionProductInstanceType",
+    "NutritionProductNutrientType",
+    "NutritionProductProductCharacteristicType",
+    "ObservationType",
+    "ObservationComponentType",
+    "ObservationDefinitionType",
+    "ObservationDefinitionQualifiedIntervalType",
+    "ObservationDefinitionQuantitativeDetailsType",
+    "ObservationReferenceRangeType",
+    "OperationDefinitionType",
+    "OperationDefinitionOverloadType",
+    "OperationDefinitionParameterType",
+    "OperationDefinitionParameterBindingType",
+    "OperationDefinitionParameterReferencedFromType",
+    "OperationOutcomeType",
+    "OperationOutcomeIssueType",
+    "OrganizationType",
+    "OrganizationAffiliationType",
+    "OrganizationContactType",
+    "PackagedProductDefinitionType",
+    "PackagedProductDefinitionLegalStatusOfSupplyType",
+    "PackagedProductDefinitionPackageType",
+    "PackagedProductDefinitionPackageContainedItemType",
+    "PackagedProductDefinitionPackagePropertyType",
+    "PackagedProductDefinitionPackageShelfLifeStorageType",
+    "ParameterDefinitionType",
+    "ParametersType",
+    "ParametersParameterType",
+    "PatientType",
+    "PatientCommunicationType",
+    "PatientContactType",
+    "PatientLinkType",
+    "PaymentNoticeType",
+    "PaymentReconciliationType",
+    "PaymentReconciliationDetailType",
+    "PaymentReconciliationProcessNoteType",
+    "PeriodType",
+    "PersonType",
+    "PersonLinkType",
+    "PlanDefinitionType",
+    "PlanDefinitionActionType",
+    "PlanDefinitionActionConditionType",
+    "PlanDefinitionActionDynamicValueType",
+    "PlanDefinitionActionParticipantType",
+    "PlanDefinitionActionRelatedActionType",
+    "PlanDefinitionGoalType",
+    "PlanDefinitionGoalTargetType",
+    "PopulationType",
+    "PractitionerType",
+    "PractitionerQualificationType",
+    "PractitionerRoleType",
+    "PractitionerRoleAvailableTimeType",
+    "PractitionerRoleNotAvailableType",
+    "ProcedureType",
+    "ProcedureFocalDeviceType",
+    "ProcedurePerformerType",
+    "ProdCharacteristicType",
+    "ProductShelfLifeType",
+    "ProvenanceType",
+    "ProvenanceAgentType",
+    "ProvenanceEntityType",
+    "QuantityType",
+    "QuestionnaireType",
+    "QuestionnaireItemType",
+    "QuestionnaireItemAnswerOptionType",
+    "QuestionnaireItemEnableWhenType",
+    "QuestionnaireItemInitialType",
+    "QuestionnaireResponseType",
+    "QuestionnaireResponseItemType",
+    "QuestionnaireResponseItemAnswerType",
+    "RangeType",
+    "RatioType",
+    "RatioRangeType",
+    "ReferenceType",
+    "RegulatedAuthorizationType",
+    "RegulatedAuthorizationCaseType",
+    "RelatedArtifactType",
+    "RelatedPersonType",
+    "RelatedPersonCommunicationType",
+    "RequestGroupType",
+    "RequestGroupActionType",
+    "RequestGroupActionConditionType",
+    "RequestGroupActionRelatedActionType",
+    "ResearchDefinitionType",
+    "ResearchElementDefinitionType",
+    "ResearchElementDefinitionCharacteristicType",
+    "ResearchStudyType",
+    "ResearchStudyArmType",
+    "ResearchStudyObjectiveType",
+    "ResearchSubjectType",
+    "RiskAssessmentType",
+    "RiskAssessmentPredictionType",
+    "SampledDataType",
+    "ScheduleType",
+    "SearchParameterType",
+    "SearchParameterComponentType",
+    "ServiceRequestType",
+    "SignatureType",
+    "SlotType",
+    "SpecimenType",
+    "SpecimenCollectionType",
+    "SpecimenContainerType",
+    "SpecimenDefinitionType",
+    "SpecimenDefinitionTypeTestedType",
+    "SpecimenDefinitionTypeTestedContainerType",
+    "SpecimenDefinitionTypeTestedContainerAdditiveType",
+    "SpecimenDefinitionTypeTestedHandlingType",
+    "SpecimenProcessingType",
+    "StructureDefinitionType",
+    "StructureDefinitionContextType",
+    "StructureDefinitionDifferentialType",
+    "StructureDefinitionMappingType",
+    "StructureDefinitionSnapshotType",
+    "StructureMapType",
+    "StructureMapGroupType",
+    "StructureMapGroupInputType",
+    "StructureMapGroupRuleType",
+    "StructureMapGroupRuleDependentType",
+    "StructureMapGroupRuleSourceType",
+    "StructureMapGroupRuleTargetType",
+    "StructureMapGroupRuleTargetParameterType",
+    "StructureMapStructureType",
+    "SubscriptionType",
+    "SubscriptionChannelType",
+    "SubscriptionStatusType",
+    "SubscriptionStatusNotificationEventType",
+    "SubscriptionTopicType",
+    "SubscriptionTopicCanFilterByType",
+    "SubscriptionTopicEventTriggerType",
+    "SubscriptionTopicNotificationShapeType",
+    "SubscriptionTopicResourceTriggerType",
+    "SubscriptionTopicResourceTriggerQueryCriteriaType",
+    "SubstanceType",
+    "SubstanceDefinitionType",
+    "SubstanceDefinitionCodeType",
+    "SubstanceDefinitionMoietyType",
+    "SubstanceDefinitionMolecularWeightType",
+    "SubstanceDefinitionNameType",
+    "SubstanceDefinitionNameOfficialType",
+    "SubstanceDefinitionPropertyType",
+    "SubstanceDefinitionRelationshipType",
+    "SubstanceDefinitionSourceMaterialType",
+    "SubstanceDefinitionStructureType",
+    "SubstanceDefinitionStructureRepresentationType",
+    "SubstanceIngredientType",
+    "SubstanceInstanceType",
+    "SupplyDeliveryType",
+    "SupplyDeliverySuppliedItemType",
+    "SupplyRequestType",
+    "SupplyRequestParameterType",
+    "TaskType",
+    "TaskInputType",
+    "TaskOutputType",
+    "TaskRestrictionType",
+    "TerminologyCapabilitiesType",
+    "TerminologyCapabilitiesClosureType",
+    "TerminologyCapabilitiesCodeSystemType",
+    "TerminologyCapabilitiesCodeSystemVersionType",
+    "TerminologyCapabilitiesCodeSystemVersionFilterType",
+    "TerminologyCapabilitiesExpansionType",
+    "TerminologyCapabilitiesExpansionParameterType",
+    "TerminologyCapabilitiesImplementationType",
+    "TerminologyCapabilitiesSoftwareType",
+    "TerminologyCapabilitiesTranslationType",
+    "TerminologyCapabilitiesValidateCodeType",
+    "TestReportType",
+    "TestReportParticipantType",
+    "TestReportSetupType",
+    "TestReportSetupActionType",
+    "TestReportSetupActionAssertType",
+    "TestReportSetupActionOperationType",
+    "TestReportTeardownType",
+    "TestReportTeardownActionType",
+    "TestReportTestType",
+    "TestReportTestActionType",
+    "TestScriptType",
+    "TestScriptDestinationType",
+    "TestScriptFixtureType",
+    "TestScriptMetadataType",
+    "TestScriptMetadataCapabilityType",
+    "TestScriptMetadataLinkType",
+    "TestScriptOriginType",
+    "TestScriptSetupType",
+    "TestScriptSetupActionType",
+    "TestScriptSetupActionAssertType",
+    "TestScriptSetupActionOperationType",
+    "TestScriptSetupActionOperationRequestHeaderType",
+    "TestScriptTeardownType",
+    "TestScriptTeardownActionType",
+    "TestScriptTestType",
+    "TestScriptTestActionType",
+    "TestScriptVariableType",
+    "TimingType",
+    "TimingRepeatType",
+    "TriggerDefinitionType",
+    "UsageContextType",
+    "ValueSetType",
+    "ValueSetComposeType",
+    "ValueSetComposeIncludeType",
+    "ValueSetComposeIncludeConceptType",
+    "ValueSetComposeIncludeConceptDesignationType",
+    "ValueSetComposeIncludeFilterType",
+    "ValueSetExpansionType",
+    "ValueSetExpansionContainsType",
+    "ValueSetExpansionParameterType",
+    "VerificationResultType",
+    "VerificationResultAttestationType",
+    "VerificationResultPrimarySourceType",
+    "VerificationResultValidatorType",
+    "VisionPrescriptionType",
+    "VisionPrescriptionLensSpecificationType",
+    "VisionPrescriptionLensSpecificationPrismType",
 ]

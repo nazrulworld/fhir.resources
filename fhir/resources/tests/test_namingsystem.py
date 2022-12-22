@@ -7,6 +7,7 @@ Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
 from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import namingsystem
 
@@ -14,11 +15,13 @@ from .. import namingsystem
 def impl_namingsystem_1(inst):
     assert inst.contact[0].name == "HL7 Australia FHIR Team"
     assert inst.contact[0].telecom[0].system == "url"
-    assert inst.contact[0].telecom[0].value == "http://hl7-australia.wikispaces.com/FHIR+Australia"
+    assert (
+        inst.contact[0].telecom[0].value
+        == "http://hl7-australia.wikispaces.com/FHIR+Australia"
+    )
     assert inst.date == fhirtypes.DateTime.validate("2015-08-31")
     assert inst.description == (
-    "Australian HI Identifier as established by relevant "
-    "regulations etc."
+        "Australian HI Identifier as established by relevant " "regulations etc."
     )
     assert inst.id == "example-id"
     assert inst.jurisdiction[0].coding[0].code == "AU"
@@ -26,7 +29,9 @@ def impl_namingsystem_1(inst):
     assert inst.kind == "identifier"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.name == "Austalian Healthcare Identifier - Individual"
     assert inst.publisher == "HL7 Australia on behalf of NEHTA"
     assert inst.responsible == "HI Service Operator / NEHTA"
@@ -50,9 +55,7 @@ def test_namingsystem_1(base_settings):
     """No. 1 tests collection for NamingSystem.
     Test File: namingsystem-example-id.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "namingsystem-example-id.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "namingsystem-example-id.json"
     inst = namingsystem.NamingSystem.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -77,7 +80,9 @@ def impl_namingsystem_2(inst):
     assert inst.kind == "codesystem"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.name == "SNOMED CT"
     assert inst.publisher == "HL7 International on behalf of IHTSDO"
     assert inst.responsible == "IHTSDO & affiliates"
@@ -94,9 +99,7 @@ def test_namingsystem_2(base_settings):
     """No. 2 tests collection for NamingSystem.
     Test File: namingsystem-example.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "namingsystem-example.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "namingsystem-example.json"
     inst = namingsystem.NamingSystem.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -110,4 +113,3 @@ def test_namingsystem_2(base_settings):
 
     inst2 = namingsystem.NamingSystem(**data)
     impl_namingsystem_2(inst2)
-

@@ -7,6 +7,7 @@ Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
 from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import observation
 
@@ -15,22 +16,25 @@ def impl_observation_1(inst):
     assert inst.code.coding[0].code == "55233-1"
     assert inst.code.coding[0].system == "http://loinc.org"
     assert inst.device.reference == "Device/example"
-    assert inst.effectiveDateTime == fhirtypes.DateTime.validate("2013-04-03T15:30:10+01:00")
+    assert inst.effectiveDateTime == fhirtypes.DateTime.validate(
+        "2013-04-03T15:30:10+01:00"
+    )
     assert inst.extension[0].url == (
-    "http://hl7.org/fhir/StructureDefinition/observation-"
-    "geneticsGene"
+        "http://hl7.org/fhir/StructureDefinition/observation-" "geneticsGene"
     )
     assert inst.extension[0].valueCodeableConcept.coding[0].code == "3236"
     assert inst.extension[0].valueCodeableConcept.coding[0].display == "EGFR"
-    assert inst.extension[0].valueCodeableConcept.coding[0].system == "http://www.genenames.org"
+    assert (
+        inst.extension[0].valueCodeableConcept.coding[0].system
+        == "http://www.genenames.org"
+    )
     assert inst.extension[1].url == (
-    "http://hl7.org/fhir/StructureDefinition/observation-"
-    "geneticsDNARegionName"
+        "http://hl7.org/fhir/StructureDefinition/observation-" "geneticsDNARegionName"
     )
     assert inst.extension[1].valueString == "Exon 21"
     assert inst.extension[2].url == (
-    "http://hl7.org/fhir/StructureDefinition/observation-"
-    "geneticsGenomicSourceClass"
+        "http://hl7.org/fhir/StructureDefinition/observation-"
+        "geneticsGenomicSourceClass"
     )
     assert inst.extension[2].valueCodeableConcept.coding[0].code == "LA6684-0"
     assert inst.extension[2].valueCodeableConcept.coding[0].display == "somatic"
@@ -38,7 +42,9 @@ def impl_observation_1(inst):
     assert inst.id == "example-genetics-1"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.performer[0].display == "Molecular Diagnostics Laboratory"
     assert inst.performer[0].reference == "Practitioner/example"
     assert inst.status == "final"
@@ -83,9 +89,14 @@ def impl_observation_2(inst):
     assert inst.id == "bmd"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.performer[0].display == "Acme Imaging Diagnostics"
-    assert inst.performer[0].reference == "Organization/1832473e-2fe0-452d-abe9-3cdb9879522f"
+    assert (
+        inst.performer[0].reference
+        == "Organization/1832473e-2fe0-452d-abe9-3cdb9879522f"
+    )
     assert inst.status == "final"
     assert inst.subject.reference == "Patient/pat2"
     assert inst.text.status == "generated"
@@ -99,9 +110,7 @@ def test_observation_2(base_settings):
     """No. 2 tests collection for Observation.
     Test File: observation-example-bmd.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "observation-example-bmd.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "observation-example-bmd.json"
     inst = observation.Observation.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -120,7 +129,10 @@ def test_observation_2(base_settings):
 def impl_observation_3(inst):
     assert inst.category[0].coding[0].code == "vital-signs"
     assert inst.category[0].coding[0].display == "Vital Signs"
-    assert inst.category[0].coding[0].system == "http://terminology.hl7.org/CodeSystem/observation-category"
+    assert (
+        inst.category[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/observation-category"
+    )
     assert inst.category[0].text == "Vital Signs"
     assert inst.code.coding[0].code == "9279-1"
     assert inst.code.coding[0].display == "Respiratory rate"
@@ -131,7 +143,9 @@ def impl_observation_3(inst):
     assert inst.meta.profile[0] == "http://hl7.org/fhir/StructureDefinition/vitalsigns"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.status == "final"
     assert inst.subject.reference == "Patient/example"
     assert inst.text.status == "generated"
@@ -166,7 +180,10 @@ def test_observation_3(base_settings):
 def impl_observation_4(inst):
     assert inst.category[0].coding[0].code == "vital-signs"
     assert inst.category[0].coding[0].display == "Vital Signs"
-    assert inst.category[0].coding[0].system == "http://terminology.hl7.org/CodeSystem/observation-category"
+    assert (
+        inst.category[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/observation-category"
+    )
     assert inst.code.coding[0].code == "29463-7"
     assert inst.code.coding[0].display == "Body Weight"
     assert inst.code.coding[0].system == "http://loinc.org"
@@ -184,7 +201,9 @@ def impl_observation_4(inst):
     assert inst.id == "example"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.status == "final"
     assert inst.subject.reference == "Patient/example"
     assert inst.text.status == "generated"
@@ -198,9 +217,7 @@ def test_observation_4(base_settings):
     """No. 4 tests collection for Observation.
     Test File: observation-example.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "observation-example.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "observation-example.json"
     inst = observation.Observation.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -222,18 +239,24 @@ def impl_observation_5(inst):
     assert inst.derivedFrom[0].reference == "MolecularSequence/example-pgx-1"
     assert inst.derivedFrom[1].reference == "MolecularSequence/example-pgx-2"
     assert inst.device.reference == "Device/example"
-    assert inst.effectiveDateTime == fhirtypes.DateTime.validate("2013-04-03T15:30:10+01:00")
+    assert inst.effectiveDateTime == fhirtypes.DateTime.validate(
+        "2013-04-03T15:30:10+01:00"
+    )
     assert inst.extension[0].url == (
-    "http://hl7.org/fhir/StructureDefinition/observation-"
-    "geneticsGene"
+        "http://hl7.org/fhir/StructureDefinition/observation-" "geneticsGene"
     )
     assert inst.extension[0].valueCodeableConcept.coding[0].code == "2623"
     assert inst.extension[0].valueCodeableConcept.coding[0].display == "CYP2C9"
-    assert inst.extension[0].valueCodeableConcept.coding[0].system == "http://www.genenames.org"
+    assert (
+        inst.extension[0].valueCodeableConcept.coding[0].system
+        == "http://www.genenames.org"
+    )
     assert inst.id == "example-haplotype2"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.status == "unknown"
     assert inst.subject.display == "J*********** C***********"
     assert inst.subject.reference == "Patient/727127"
@@ -268,7 +291,10 @@ def test_observation_5(base_settings):
 def impl_observation_6(inst):
     assert inst.category[0].coding[0].code == "vital-signs"
     assert inst.category[0].coding[0].display == "Vital Signs"
-    assert inst.category[0].coding[0].system == "http://terminology.hl7.org/CodeSystem/observation-category"
+    assert (
+        inst.category[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/observation-category"
+    )
     assert inst.category[0].text == "Vital Signs"
     assert inst.code.coding[0].code == "8478-0"
     assert inst.code.coding[0].display == "Mean blood pressure"
@@ -278,7 +304,9 @@ def impl_observation_6(inst):
     assert inst.id == "mbp"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.status == "final"
     assert inst.subject.reference == "Patient/example"
     assert inst.text.status == "generated"
@@ -292,9 +320,7 @@ def test_observation_6(base_settings):
     """No. 6 tests collection for Observation.
     Test File: observation-example-mbp.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "observation-example-mbp.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "observation-example-mbp.json"
     inst = observation.Observation.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -314,25 +340,36 @@ def impl_observation_7(inst):
     assert inst.code.coding[0].code == "59041-4"
     assert inst.code.coding[0].system == "http://loinc.org"
     assert inst.device.reference == "Device/example"
-    assert inst.effectiveDateTime == fhirtypes.DateTime.validate("2021-03-03T14:50:23-05:00")
+    assert inst.effectiveDateTime == fhirtypes.DateTime.validate(
+        "2021-03-03T14:50:23-05:00"
+    )
     assert inst.extension[0].url == (
-    "http://hl7.org/fhir/StructureDefinition/observation-"
-    "geneticsGene"
+        "http://hl7.org/fhir/StructureDefinition/observation-" "geneticsGene"
     )
     assert inst.extension[0].valueCodeableConcept.coding[0].code == "KX470182.1"
     assert inst.extension[0].valueCodeableConcept.coding[0].display == "BRCA"
-    assert inst.extension[0].valueCodeableConcept.coding[0].system == "https://www.ncbi.nlm.nih.gov/nuccore"
+    assert (
+        inst.extension[0].valueCodeableConcept.coding[0].system
+        == "https://www.ncbi.nlm.nih.gov/nuccore"
+    )
     assert inst.extension[1].url == (
-    "http://hl7.org/fhir/us/core/StructureDefinition/us-core-"
-    "ethnicity"
+        "http://hl7.org/fhir/us/core/StructureDefinition/us-core-" "ethnicity"
     )
     assert inst.extension[1].valueCodeableConcept.coding[0].code == "413581001"
-    assert inst.extension[1].valueCodeableConcept.coding[0].display == "Unknown racial group"
-    assert inst.extension[1].valueCodeableConcept.coding[0].system == "http://browser.ihtsdotools.org/"
+    assert (
+        inst.extension[1].valueCodeableConcept.coding[0].display
+        == "Unknown racial group"
+    )
+    assert (
+        inst.extension[1].valueCodeableConcept.coding[0].system
+        == "http://browser.ihtsdotools.org/"
+    )
     assert inst.id == "example-genetics-brcapat"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.status == "final"
     assert inst.subject.display == "Patient1 with Breast Cancer FamilyHistory"
     assert inst.subject.reference == "Patient/brcapat"
@@ -364,7 +401,10 @@ def test_observation_7(base_settings):
 def impl_observation_8(inst):
     assert inst.category[0].coding[0].code == "vital-signs"
     assert inst.category[0].coding[0].display == "Vital Signs"
-    assert inst.category[0].coding[0].system == "http://terminology.hl7.org/CodeSystem/observation-category"
+    assert (
+        inst.category[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/observation-category"
+    )
     assert inst.category[0].text == "Vital Signs"
     assert inst.code.coding[0].code == "39156-5"
     assert inst.code.coding[0].display == "Body mass index (BMI) [Ratio]"
@@ -375,7 +415,9 @@ def impl_observation_8(inst):
     assert inst.meta.profile[0] == "http://hl7.org/fhir/StructureDefinition/vitalsigns"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.status == "final"
     assert inst.subject.reference == "Patient/example"
     assert inst.text.status == "generated"
@@ -389,9 +431,7 @@ def test_observation_8(base_settings):
     """No. 8 tests collection for Observation.
     Test File: observation-example-bmi.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "observation-example-bmi.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "observation-example-bmi.json"
     inst = observation.Observation.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -410,7 +450,10 @@ def test_observation_8(base_settings):
 def impl_observation_9(inst):
     assert inst.category[0].coding[0].code == "vital-signs"
     assert inst.category[0].coding[0].display == "Vital Signs"
-    assert inst.category[0].coding[0].system == "http://terminology.hl7.org/CodeSystem/observation-category"
+    assert (
+        inst.category[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/observation-category"
+    )
     assert inst.category[0].text == "Vital Signs"
     assert inst.code.coding[0].code == "8302-2"
     assert inst.code.coding[0].display == "Body height"
@@ -421,7 +464,9 @@ def impl_observation_9(inst):
     assert inst.meta.profile[0] == "http://hl7.org/fhir/StructureDefinition/vitalsigns"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.status == "final"
     assert inst.subject.reference == "Patient/example"
     assert inst.text.status == "generated"
@@ -459,7 +504,9 @@ def impl_observation_10(inst):
     assert inst.id == "eye-color"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.status == "final"
     assert inst.subject.reference == "Patient/example"
     assert inst.text.status == "generated"
@@ -470,9 +517,7 @@ def test_observation_10(base_settings):
     """No. 10 tests collection for Observation.
     Test File: observation-example-eye-color.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "observation-example-eye-color.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "observation-example-eye-color.json"
     inst = observation.Observation.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -486,4 +531,3 @@ def test_observation_10(base_settings):
 
     inst2 = observation.Observation(**data)
     impl_observation_10(inst2)
-

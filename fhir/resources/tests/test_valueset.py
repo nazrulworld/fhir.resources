@@ -7,12 +7,16 @@ Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
 from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import valueset
 
 
 def impl_valueset_1(inst):
-    assert inst.compose.include[0].system == "http://terminology.hl7.org/CodeSystem/device-status-reason"
+    assert (
+        inst.compose.include[0].system
+        == "http://terminology.hl7.org/CodeSystem/device-status-reason"
+    )
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.contact[0].telecom[1].system == "email"
@@ -21,26 +25,29 @@ def impl_valueset_1(inst):
     assert inst.description == "The availability status reason of the device."
     assert inst.experimental is False
     assert inst.extension[0].url == (
-    "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-    "wg"
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
     )
     assert inst.extension[0].valueCode == "oo"
     assert inst.extension[1].url == (
-    "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-    "standards-status"
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
+        "standards-status"
     )
     assert inst.extension[1].valueCode == "trial-use"
     assert inst.extension[2].url == (
-    "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-    "fmm"
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
     )
     assert inst.extension[2].valueInteger == 2
     assert inst.id == "device-status-reason"
     assert inst.identifier[0].system == "urn:ietf:rfc:3986"
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.3.1081"
     assert inst.immutable is True
-    assert inst.meta.lastUpdated == fhirtypes.Instant.validate("2022-05-28T13:47:40.239+11:00")
-    assert inst.meta.profile[0] == "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
+        "2022-05-28T13:47:40.239+11:00"
+    )
+    assert (
+        inst.meta.profile[0]
+        == "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    )
     assert inst.name == "FHIRDeviceStatusReason"
     assert inst.publisher == "HL7 (FHIR Project)"
     assert inst.status == "draft"
@@ -54,9 +61,7 @@ def test_valueset_1(base_settings):
     """No. 1 tests collection for ValueSet.
     Test File: valueset-device-status-reason.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "valueset-device-status-reason.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "valueset-device-status-reason.json"
     inst = valueset.ValueSet.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -73,28 +78,35 @@ def test_valueset_1(base_settings):
 
 
 def impl_valueset_2(inst):
-    assert inst.compose.include[0].system == "http://hl7.org/fhir/definition-resource-types"
+    assert (
+        inst.compose.include[0].system
+        == "http://hl7.org/fhir/definition-resource-types"
+    )
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
     assert inst.date == fhirtypes.DateTime.validate("2022-05-28T12:47:40+10:00")
     assert inst.description == (
-    "A list of all the definition resource types defined in this "
-    "version of the FHIR specification."
+        "A list of all the definition resource types defined in this "
+        "version of the FHIR specification."
     )
     assert inst.experimental is False
     assert inst.extension[0].url == (
-    "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-    "wg"
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
     )
     assert inst.extension[0].valueCode == "vocab"
     assert inst.id == "definition-resource-types"
     assert inst.identifier[0].system == "urn:ietf:rfc:3986"
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.3.1056"
     assert inst.immutable is True
-    assert inst.meta.lastUpdated == fhirtypes.Instant.validate("2022-05-28T12:47:40.239+10:00")
-    assert inst.meta.profile[0] == "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
+        "2022-05-28T12:47:40.239+10:00"
+    )
+    assert (
+        inst.meta.profile[0]
+        == "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    )
     assert inst.name == "DefinitionResourceType"
     assert inst.publisher == "HL7 (FHIR Project)"
     assert inst.status == "draft"
@@ -153,25 +165,28 @@ def impl_valueset_3(inst):
     assert inst.description == "SNOMED-CT concepts modifying the anatomic location"
     assert inst.experimental is True
     assert inst.extension[0].url == (
-    "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-    "wg"
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
     )
     assert inst.extension[0].valueCode == "oo"
     assert inst.extension[1].url == (
-    "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-    "standards-status"
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
+        "standards-status"
     )
     assert inst.extension[1].valueCode == "draft"
     assert inst.extension[2].url == (
-    "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-    "fmm"
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
     )
     assert inst.extension[2].valueInteger == 1
     assert inst.id == "bodystructure-relative-location"
     assert inst.identifier[0].system == "urn:ietf:rfc:3986"
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.3.140"
-    assert inst.meta.lastUpdated == fhirtypes.Instant.validate("2022-05-28T12:47:40.239+10:00")
-    assert inst.meta.profile[0] == "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
+        "2022-05-28T12:47:40.239+10:00"
+    )
+    assert (
+        inst.meta.profile[0]
+        == "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    )
     assert inst.name == "BodystructureLocationQualifier"
     assert inst.publisher == "Order and Observation Workgroup"
     assert inst.status == "draft"
@@ -186,7 +201,8 @@ def test_valueset_3(base_settings):
     Test File: valueset-bodystructure-relative-location.json
     """
     filename = (
-        base_settings["unittest_data_dir"] / "valueset-bodystructure-relative-location.json"
+        base_settings["unittest_data_dir"]
+        / "valueset-bodystructure-relative-location.json"
     )
     inst = valueset.ValueSet.parse_file(
         filename, content_type="application/json", encoding="utf-8"
@@ -213,26 +229,29 @@ def impl_valueset_4(inst):
     assert inst.description == "Current state of the encounter."
     assert inst.experimental is False
     assert inst.extension[0].url == (
-    "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-    "wg"
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
     )
     assert inst.extension[0].valueCode == "pa"
     assert inst.extension[1].url == (
-    "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-    "standards-status"
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
+        "standards-status"
     )
     assert inst.extension[1].valueCode == "trial-use"
     assert inst.extension[2].url == (
-    "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-    "fmm"
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
     )
     assert inst.extension[2].valueInteger == 2
     assert inst.id == "encounter-status"
     assert inst.identifier[0].system == "urn:ietf:rfc:3986"
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.3.246"
     assert inst.immutable is True
-    assert inst.meta.lastUpdated == fhirtypes.Instant.validate("2022-05-28T13:47:40.239+11:00")
-    assert inst.meta.profile[0] == "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
+        "2022-05-28T13:47:40.239+11:00"
+    )
+    assert (
+        inst.meta.profile[0]
+        == "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    )
     assert inst.name == "EncounterStatus"
     assert inst.publisher == "HL7 (FHIR Project)"
     assert inst.status == "draft"
@@ -246,9 +265,7 @@ def test_valueset_4(base_settings):
     """No. 4 tests collection for ValueSet.
     Test File: valueset-encounter-status.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "valueset-encounter-status.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "valueset-encounter-status.json"
     inst = valueset.ValueSet.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -265,32 +282,38 @@ def test_valueset_4(base_settings):
 
 
 def impl_valueset_5(inst):
-    assert inst.compose.include[0].system == "http://terminology.hl7.org/CodeSystem/consentscope"
+    assert (
+        inst.compose.include[0].system
+        == "http://terminology.hl7.org/CodeSystem/consentscope"
+    )
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.copyright == "This is an example set."
     assert inst.description == "This value set includes the four Consent scope codes."
     assert inst.experimental is False
     assert inst.extension[0].url == (
-    "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-    "wg"
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
     )
     assert inst.extension[0].valueCode == "cbcc"
     assert inst.extension[1].url == (
-    "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-    "standards-status"
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
+        "standards-status"
     )
     assert inst.extension[1].valueCode == "trial-use"
     assert inst.extension[2].url == (
-    "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-    "fmm"
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
     )
     assert inst.extension[2].valueInteger == 2
     assert inst.id == "consent-scope"
     assert inst.identifier[0].system == "urn:ietf:rfc:3986"
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.3.761"
-    assert inst.meta.lastUpdated == fhirtypes.Instant.validate("2022-05-28T12:47:40.239+10:00")
-    assert inst.meta.profile[0] == "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
+        "2022-05-28T12:47:40.239+10:00"
+    )
+    assert (
+        inst.meta.profile[0]
+        == "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    )
     assert inst.name == "ConsentScopeCodes"
     assert inst.publisher == "CBCC"
     assert inst.status == "draft"
@@ -304,9 +327,7 @@ def test_valueset_5(base_settings):
     """No. 5 tests collection for ValueSet.
     Test File: valueset-consent-scope.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "valueset-consent-scope.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "valueset-consent-scope.json"
     inst = valueset.ValueSet.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -332,26 +353,29 @@ def impl_valueset_6(inst):
     assert inst.description == "The current status of the test report."
     assert inst.experimental is True
     assert inst.extension[0].url == (
-    "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-    "wg"
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
     )
     assert inst.extension[0].valueCode == "fhir"
     assert inst.extension[1].url == (
-    "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-    "standards-status"
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
+        "standards-status"
     )
     assert inst.extension[1].valueCode == "trial-use"
     assert inst.extension[2].url == (
-    "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-    "fmm"
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
     )
     assert inst.extension[2].valueInteger == 0
     assert inst.id == "report-status-codes"
     assert inst.identifier[0].system == "urn:ietf:rfc:3986"
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.3.724"
     assert inst.immutable is True
-    assert inst.meta.lastUpdated == fhirtypes.Instant.validate("2022-05-28T13:47:40.239+11:00")
-    assert inst.meta.profile[0] == "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
+        "2022-05-28T13:47:40.239+11:00"
+    )
+    assert (
+        inst.meta.profile[0]
+        == "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    )
     assert inst.name == "TestReportStatus"
     assert inst.publisher == "HL7 (FHIR Project)"
     assert inst.status == "draft"
@@ -365,9 +389,7 @@ def test_valueset_6(base_settings):
     """No. 6 tests collection for ValueSet.
     Test File: valueset-report-status-codes.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "valueset-report-status-codes.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "valueset-report-status-codes.json"
     inst = valueset.ValueSet.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -393,34 +415,37 @@ def impl_valueset_7(inst):
     assert inst.description == "The presentation types of notes."
     assert inst.experimental is False
     assert inst.extension[0].url == (
-    "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-    "wg"
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
     )
     assert inst.extension[0].valueCode == "fm"
     assert inst.extension[1].url == (
-    "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-    "standards-status"
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
+        "standards-status"
     )
     assert inst.extension[1].valueCode == "trial-use"
     assert inst.extension[2].url == (
-    "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-    "fmm"
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
     )
     assert inst.extension[2].valueInteger == 2
     assert inst.id == "note-type"
     assert inst.identifier[0].system == "urn:ietf:rfc:3986"
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.3.15"
     assert inst.immutable is True
-    assert inst.meta.lastUpdated == fhirtypes.Instant.validate("2022-05-28T12:47:40.239+10:00")
-    assert inst.meta.profile[0] == "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
+        "2022-05-28T12:47:40.239+10:00"
+    )
+    assert (
+        inst.meta.profile[0]
+        == "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    )
     assert inst.name == "NoteType"
     assert inst.publisher == "HL7 (FHIR Project)"
     assert inst.status == "draft"
     assert inst.text.div == (
-    "<div xmlns=\"http://www.w3.org/1999/xhtml\"><ul><li>Include "
-    "all codes defined in <a href=\"codesystem-note-"
-    "type.html\"><code>http://hl7.org/fhir/note-"
-    "type</code></a></li></ul></div>"
+        '<div xmlns="http://www.w3.org/1999/xhtml"><ul><li>Include '
+        'all codes defined in <a href="codesystem-note-'
+        'type.html"><code>http://hl7.org/fhir/note-'
+        "type</code></a></li></ul></div>"
     )
     assert inst.text.status == "generated"
     assert inst.title == "NoteType"
@@ -432,9 +457,7 @@ def test_valueset_7(base_settings):
     """No. 7 tests collection for ValueSet.
     Test File: valueset-note-type.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "valueset-note-type.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "valueset-note-type.json"
     inst = valueset.ValueSet.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -458,25 +481,28 @@ def impl_valueset_8(inst):
     assert inst.description == "This value set includes sequence quality method"
     assert inst.experimental is True
     assert inst.extension[0].url == (
-    "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-    "wg"
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
     )
     assert inst.extension[0].valueCode == "cg"
     assert inst.extension[1].url == (
-    "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-    "standards-status"
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
+        "standards-status"
     )
     assert inst.extension[1].valueCode == "draft"
     assert inst.extension[2].url == (
-    "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-    "fmm"
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
     )
     assert inst.extension[2].valueInteger == 1
     assert inst.id == "sequence-quality-method"
     assert inst.identifier[0].system == "urn:ietf:rfc:3986"
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.3.223"
-    assert inst.meta.lastUpdated == fhirtypes.Instant.validate("2022-05-28T12:47:40.239+10:00")
-    assert inst.meta.profile[0] == "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
+        "2022-05-28T12:47:40.239+10:00"
+    )
+    assert (
+        inst.meta.profile[0]
+        == "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    )
     assert inst.name == "FDA-Method"
     assert inst.publisher == "FHIR Project team"
     assert inst.status == "draft"
@@ -517,31 +543,34 @@ def impl_valueset_9(inst):
     assert inst.description == "How the issue affects the success of the action."
     assert inst.experimental is False
     assert inst.extension[0].url == (
-    "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-    "wg"
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
     )
     assert inst.extension[0].valueCode == "fhir"
     assert inst.extension[1].url == (
-    "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-    "standards-status"
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
+        "standards-status"
     )
     assert inst.extension[1].valueCode == "normative"
     assert inst.extension[2].url == (
-    "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-    "normative-version"
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
+        "normative-version"
     )
     assert inst.extension[2].valueCode == "4.0.0"
     assert inst.extension[3].url == (
-    "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-    "fmm"
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
     )
     assert inst.extension[3].valueInteger == 5
     assert inst.id == "issue-severity"
     assert inst.identifier[0].system == "urn:ietf:rfc:3986"
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.3.408"
     assert inst.immutable is True
-    assert inst.meta.lastUpdated == fhirtypes.Instant.validate("2022-05-28T13:47:40.239+11:00")
-    assert inst.meta.profile[0] == "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
+        "2022-05-28T13:47:40.239+11:00"
+    )
+    assert (
+        inst.meta.profile[0]
+        == "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    )
     assert inst.name == "IssueSeverity"
     assert inst.publisher == "HL7 (FHIR Project)"
     assert inst.status == "active"
@@ -555,9 +584,7 @@ def test_valueset_9(base_settings):
     """No. 9 tests collection for ValueSet.
     Test File: valueset-issue-severity.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "valueset-issue-severity.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "valueset-issue-severity.json"
     inst = valueset.ValueSet.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -581,25 +608,28 @@ def impl_valueset_10(inst):
     assert inst.description == "This value set includes all Reference codes"
     assert inst.experimental is True
     assert inst.extension[0].url == (
-    "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-    "wg"
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "wg"
     )
     assert inst.extension[0].valueCode == "cg"
     assert inst.extension[1].url == (
-    "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-    "standards-status"
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
+        "standards-status"
     )
     assert inst.extension[1].valueCode == "draft"
     assert inst.extension[2].url == (
-    "http://hl7.org/fhir/StructureDefinition/structuredefinition-"
-    "fmm"
+        "http://hl7.org/fhir/StructureDefinition/structuredefinition-" "fmm"
     )
     assert inst.extension[2].valueInteger == 1
     assert inst.id == "sequence-referenceSeq"
     assert inst.identifier[0].system == "urn:ietf:rfc:3986"
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.3.221"
-    assert inst.meta.lastUpdated == fhirtypes.Instant.validate("2022-05-28T12:47:40.239+10:00")
-    assert inst.meta.profile[0] == "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    assert inst.meta.lastUpdated == fhirtypes.Instant.validate(
+        "2022-05-28T12:47:40.239+10:00"
+    )
+    assert (
+        inst.meta.profile[0]
+        == "http://hl7.org/fhir/StructureDefinition/shareablevalueset"
+    )
     assert inst.name == "ENSEMBL"
     assert inst.publisher == "FHIR Project team"
     assert inst.status == "draft"
@@ -628,4 +658,3 @@ def test_valueset_10(base_settings):
 
     inst2 = valueset.ValueSet(**data)
     impl_valueset_10(inst2)
-

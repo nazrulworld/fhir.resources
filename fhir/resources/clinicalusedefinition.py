@@ -7,16 +7,13 @@ Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
-from pydantic import Field
-from pydantic import root_validator
 
+from pydantic import Field, root_validator
 from pydantic.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.errors import MissingError, NoneIsNotAllowedError
 
-from . import fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
-
-from . import domainresource
 
 class ClinicalUseDefinition(domainresource.DomainResource):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
@@ -26,148 +23,181 @@ class ClinicalUseDefinition(domainresource.DomainResource):
     A single issue - either an indication, contraindication, interaction or an
     undesirable effect for a medicinal product, medication, device or procedure.
     """
+
     resource_type = Field("ClinicalUseDefinition", const=True)
-	
+
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
-		None,
-		alias="category",
-		title=(
-    "A categorisation of the issue, primarily for dividing warnings into "
-    "subject heading areas such as \"Pregnancy\", \"Overdose\""
-    ),
-		description=(
-    "A categorisation of the issue, primarily for dividing warnings into "
-    "subject heading areas such as \"Pregnancy and Lactation\", \"Overdose\", "
-    "\"Effects on Ability to Drive and Use Machines\"."
-    ),
+        None,
+        alias="category",
+        title=(
+            "A categorisation of the issue, primarily for dividing warnings into "
+            'subject heading areas such as "Pregnancy", "Overdose"'
+        ),
+        description=(
+            "A categorisation of the issue, primarily for dividing warnings into "
+            'subject heading areas such as "Pregnancy and Lactation", "Overdose", '
+            '"Effects on Ability to Drive and Use Machines".'
+        ),
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     contraindication: fhirtypes.ClinicalUseDefinitionContraindicationType = Field(
-		None,
-		alias="contraindication",
-		title="Specifics for when this is a contraindication",
-		description=None,
+        None,
+        alias="contraindication",
+        title="Specifics for when this is a contraindication",
+        description=None,
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
-		None,
-		alias="identifier",
-		title="Business identifier for this issue",
-		description=None,
+        None,
+        alias="identifier",
+        title="Business identifier for this issue",
+        description=None,
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     indication: fhirtypes.ClinicalUseDefinitionIndicationType = Field(
-		None,
-		alias="indication",
-		title="Specifics for when this is an indication",
-		description=None,
+        None,
+        alias="indication",
+        title="Specifics for when this is an indication",
+        description=None,
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     interaction: fhirtypes.ClinicalUseDefinitionInteractionType = Field(
-		None,
-		alias="interaction",
-		title="Specifics for when this is an interaction",
-		description=None,
+        None,
+        alias="interaction",
+        title="Specifics for when this is an interaction",
+        description=None,
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     population: typing.List[fhirtypes.ReferenceType] = Field(
-		None,
-		alias="population",
-		title="The population group to which this applies",
-		description=None,
+        None,
+        alias="population",
+        title="The population group to which this applies",
+        description=None,
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["Group"],
-	)
-	
+        enum_reference_types=["Group"],
+    )
+
     status: fhirtypes.CodeableConceptType = Field(
-		None,
-		alias="status",
-		title="Whether this is a current issue or one that has been retired etc",
-		description=None,
+        None,
+        alias="status",
+        title="Whether this is a current issue or one that has been retired etc",
+        description=None,
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     subject: typing.List[fhirtypes.ReferenceType] = Field(
-		None,
-		alias="subject",
-		title="The medication or procedure for which this is an indication",
-		description=None,
+        None,
+        alias="subject",
+        title="The medication or procedure for which this is an indication",
+        description=None,
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["MedicinalProductDefinition", "Medication", "ActivityDefinition", "PlanDefinition", "Device", "DeviceDefinition", "Substance"],
-	)
-	
+        enum_reference_types=[
+            "MedicinalProductDefinition",
+            "Medication",
+            "ActivityDefinition",
+            "PlanDefinition",
+            "Device",
+            "DeviceDefinition",
+            "Substance",
+        ],
+    )
+
     type: fhirtypes.Code = Field(
-		None,
-		alias="type",
-		title=(
-    "indication | contraindication | interaction | undesirable-effect | "
-    "warning"
-    ),
-		description=None,
+        None,
+        alias="type",
+        title=(
+            "indication | contraindication | interaction | undesirable-effect | "
+            "warning"
+        ),
+        description=None,
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-		enum_values=["indication", "contraindication", "interaction", "undesirable-effect", "warning"],
-	)
-    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None,
-        alias="_type",
-        title="Extension field for ``type``."
+        enum_values=[
+            "indication",
+            "contraindication",
+            "interaction",
+            "undesirable-effect",
+            "warning",
+        ],
     )
-	
+    type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_type", title="Extension field for ``type``."
+    )
+
     undesirableEffect: fhirtypes.ClinicalUseDefinitionUndesirableEffectType = Field(
-		None,
-		alias="undesirableEffect",
-		title="A possible negative outcome from the use of this treatment",
-		description=(
-    "Describe the possible undesirable effects (negative outcomes) from the"
-    " use of the medicinal product as treatment."
-    ),
+        None,
+        alias="undesirableEffect",
+        title="A possible negative outcome from the use of this treatment",
+        description=(
+            "Describe the possible undesirable effects (negative outcomes) from the"
+            " use of the medicinal product as treatment."
+        ),
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     warning: fhirtypes.ClinicalUseDefinitionWarningType = Field(
-		None,
-		alias="warning",
-		title=(
-    "Critical environmental, health or physical risks or hazards. For "
-    "example 'Do not operate heavy machinery', 'May cause drowsiness'"
-    ),
-		description=(
-    "A critical piece of information about environmental, health or "
-    "physical risks or hazards that serve as caution to the user. For "
-    "example 'Do not operate heavy machinery', 'May cause drowsiness', or "
-    "'Get medical advice/attention if you feel unwell'."
-    ),
+        None,
+        alias="warning",
+        title=(
+            "Critical environmental, health or physical risks or hazards. For "
+            "example 'Do not operate heavy machinery', 'May cause drowsiness'"
+        ),
+        description=(
+            "A critical piece of information about environmental, health or "
+            "physical risks or hazards that serve as caution to the user. For "
+            "example 'Do not operate heavy machinery', 'May cause drowsiness', or "
+            "'Get medical advice/attention if you feel unwell'."
+        ),
         # if property is element of this resource.
         element_property=True,
-	)
+    )
+
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
         ``ClinicalUseDefinition`` according specification,
         with preserving original sequence order.
         """
-        return ["id", "meta", "implicitRules", "language", "text", "contained", "extension", "modifierExtension", "identifier", "type", "category", "subject", "status", "contraindication", "indication", "interaction", "population", "undesirableEffect", "warning"]
-
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "type",
+            "category",
+            "subject",
+            "status",
+            "contraindication",
+            "indication",
+            "interaction",
+            "population",
+            "undesirableEffect",
+            "warning",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2310(
@@ -180,8 +210,7 @@ class ClinicalUseDefinition(domainresource.DomainResource):
         data type mandatory, it is possible to provide an extension that explains why
         the primitive value is not present.
         """
-        required_fields = [
-			("type", "type__ext")]
+        required_fields = [("type", "type__ext")]
         _missing = object()
 
         def _fallback():
@@ -230,8 +259,6 @@ class ClinicalUseDefinition(domainresource.DomainResource):
         return values
 
 
-from . import backboneelement
-
 class ClinicalUseDefinitionContraindication(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -239,83 +266,97 @@ class ClinicalUseDefinitionContraindication(backboneelement.BackboneElement):
 
     Specifics for when this is a contraindication.
     """
+
     resource_type = Field("ClinicalUseDefinitionContraindication", const=True)
-	
+
     comorbidity: typing.List[fhirtypes.CodeableReferenceType] = Field(
-		None,
-		alias="comorbidity",
-		title="A comorbidity (concurrent condition) or coinfection",
-		description=None,
+        None,
+        alias="comorbidity",
+        title="A comorbidity (concurrent condition) or coinfection",
+        description=None,
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["ObservationDefinition"],
-	)
-	
+        enum_reference_types=["ObservationDefinition"],
+    )
+
     diseaseStatus: fhirtypes.CodeableReferenceType = Field(
-		None,
-		alias="diseaseStatus",
-		title="The status of the disease or symptom for the contraindication",
-		description=(
-    "The status of the disease or symptom for the contraindication, for "
-    "example \"chronic\" or \"metastatic\"."
-    ),
+        None,
+        alias="diseaseStatus",
+        title="The status of the disease or symptom for the contraindication",
+        description=(
+            "The status of the disease or symptom for the contraindication, for "
+            'example "chronic" or "metastatic".'
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["ObservationDefinition"],
-	)
-	
+        enum_reference_types=["ObservationDefinition"],
+    )
+
     diseaseSymptomProcedure: fhirtypes.CodeableReferenceType = Field(
-		None,
-		alias="diseaseSymptomProcedure",
-		title=(
-    "The situation that is being documented as contraindicating against "
-    "this item"
-    ),
-		description=None,
+        None,
+        alias="diseaseSymptomProcedure",
+        title=(
+            "The situation that is being documented as contraindicating against "
+            "this item"
+        ),
+        description=None,
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["ObservationDefinition"],
-	)
-	
+        enum_reference_types=["ObservationDefinition"],
+    )
+
     indication: typing.List[fhirtypes.ReferenceType] = Field(
-		None,
-		alias="indication",
-		title="The indication which this is a contraidication for",
-		description=None,
+        None,
+        alias="indication",
+        title="The indication which this is a contraidication for",
+        description=None,
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["ClinicalUseDefinition"],
-	)
-	
-    otherTherapy: typing.List[fhirtypes.ClinicalUseDefinitionContraindicationOtherTherapyType] = Field(
-		None,
-		alias="otherTherapy",
-		title=(
-    "Information about use of the product in relation to other therapies "
-    "described as part of the contraindication"
-    ),
-		description=(
-    "Information about the use of the medicinal product in relation to "
-    "other therapies described as part of the contraindication."
-    ),
+        enum_reference_types=["ClinicalUseDefinition"],
+    )
+
+    otherTherapy: typing.List[
+        fhirtypes.ClinicalUseDefinitionContraindicationOtherTherapyType
+    ] = Field(
+        None,
+        alias="otherTherapy",
+        title=(
+            "Information about use of the product in relation to other therapies "
+            "described as part of the contraindication"
+        ),
+        description=(
+            "Information about the use of the medicinal product in relation to "
+            "other therapies described as part of the contraindication."
+        ),
         # if property is element of this resource.
         element_property=True,
-	)
+    )
+
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
         ``ClinicalUseDefinitionContraindication`` according specification,
         with preserving original sequence order.
         """
-        return ["id", "extension", "modifierExtension", "diseaseSymptomProcedure", "diseaseStatus", "comorbidity", "indication", "otherTherapy"]
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "diseaseSymptomProcedure",
+            "diseaseStatus",
+            "comorbidity",
+            "indication",
+            "otherTherapy",
+        ]
 
 
-
-class ClinicalUseDefinitionContraindicationOtherTherapy(backboneelement.BackboneElement):
+class ClinicalUseDefinitionContraindicationOtherTherapy(
+    backboneelement.BackboneElement
+):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
     for FHIR Primitive Data Types.
@@ -325,40 +366,50 @@ class ClinicalUseDefinitionContraindicationOtherTherapy(backboneelement.Backbone
     Information about the use of the medicinal product in relation to other
     therapies described as part of the contraindication.
     """
-    resource_type = Field("ClinicalUseDefinitionContraindicationOtherTherapy", const=True)
-	
+
+    resource_type = Field(
+        "ClinicalUseDefinitionContraindicationOtherTherapy", const=True
+    )
+
     relationshipType: fhirtypes.CodeableConceptType = Field(
-		...,
-		alias="relationshipType",
-		title=(
-    "The type of relationship between the product "
-    "indication/contraindication and another therapy"
-    ),
-		description=(
-    "The type of relationship between the medicinal product indication or "
-    "contraindication and another therapy."
-    ),
+        ...,
+        alias="relationshipType",
+        title=(
+            "The type of relationship between the product "
+            "indication/contraindication and another therapy"
+        ),
+        description=(
+            "The type of relationship between the medicinal product indication or "
+            "contraindication and another therapy."
+        ),
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     therapy: fhirtypes.CodeableReferenceType = Field(
-		...,
-		alias="therapy",
-		title=(
-    "Reference to a specific medication as part of an indication or "
-    "contraindication"
-    ),
-		description=(
-    "Reference to a specific medication (active substance, medicinal "
-    "product or class of products) as part of an indication or "
-    "contraindication."
-    ),
+        ...,
+        alias="therapy",
+        title=(
+            "Reference to a specific medication as part of an indication or "
+            "contraindication"
+        ),
+        description=(
+            "Reference to a specific medication (active substance, medicinal "
+            "product or class of products) as part of an indication or "
+            "contraindication."
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["MedicinalProductDefinition", "Medication", "Substance", "SubstanceDefinition", "ActivityDefinition"],
-	)
+        enum_reference_types=[
+            "MedicinalProductDefinition",
+            "Medication",
+            "Substance",
+            "SubstanceDefinition",
+            "ActivityDefinition",
+        ],
+    )
+
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
@@ -368,7 +419,6 @@ class ClinicalUseDefinitionContraindicationOtherTherapy(backboneelement.Backbone
         return ["id", "extension", "modifierExtension", "relationshipType", "therapy"]
 
 
-
 class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -376,136 +426,149 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
 
     Specifics for when this is an indication.
     """
+
     resource_type = Field("ClinicalUseDefinitionIndication", const=True)
-	
+
     comorbidity: typing.List[fhirtypes.CodeableReferenceType] = Field(
-		None,
-		alias="comorbidity",
-		title="A comorbidity or coinfection as part of the indication",
-		description=(
-    "A comorbidity (concurrent condition) or coinfection as part of the "
-    "indication."
-    ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["ObservationDefinition"],
-	)
-	
-    diseaseStatus: fhirtypes.CodeableReferenceType = Field(
-		None,
-		alias="diseaseStatus",
-		title="The status of the disease or symptom for the indication",
-		description=(
-    "The status of the disease or symptom for the indication, for example "
-    "\"chronic\" or \"metastatic\"."
-    ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["ObservationDefinition"],
-	)
-	
-    diseaseSymptomProcedure: fhirtypes.CodeableReferenceType = Field(
-		None,
-		alias="diseaseSymptomProcedure",
-		title="The situation that is being documented as an indicaton for this item",
-		description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["ObservationDefinition"],
-	)
-	
-    durationRange: fhirtypes.RangeType = Field(
-		None,
-		alias="durationRange",
-		title="Timing or duration information",
-		description=(
-    "Timing or duration information, that may be associated with use with "
-    "the indicated condition e.g. Adult patients suffering from myocardial "
-    "infarction (from a few days until less than 35 days), ischaemic stroke"
-    " (from 7 days until less than 6 months)."
-    ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e duration[x]
-		one_of_many="duration",
-		one_of_many_required=False,
-	)
-	
-    durationString: fhirtypes.String = Field(
-		None,
-		alias="durationString",
-		title="Timing or duration information",
-		description=(
-    "Timing or duration information, that may be associated with use with "
-    "the indicated condition e.g. Adult patients suffering from myocardial "
-    "infarction (from a few days until less than 35 days), ischaemic stroke"
-    " (from 7 days until less than 6 months)."
-    ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e duration[x]
-		one_of_many="duration",
-		one_of_many_required=False,
-	)
-    durationString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
-        alias="_durationString",
-        title="Extension field for ``durationString``."
+        alias="comorbidity",
+        title="A comorbidity or coinfection as part of the indication",
+        description=(
+            "A comorbidity (concurrent condition) or coinfection as part of the "
+            "indication."
+        ),
+        # if property is element of this resource.
+        element_property=True,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ObservationDefinition"],
     )
-	
+
+    diseaseStatus: fhirtypes.CodeableReferenceType = Field(
+        None,
+        alias="diseaseStatus",
+        title="The status of the disease or symptom for the indication",
+        description=(
+            "The status of the disease or symptom for the indication, for example "
+            '"chronic" or "metastatic".'
+        ),
+        # if property is element of this resource.
+        element_property=True,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ObservationDefinition"],
+    )
+
+    diseaseSymptomProcedure: fhirtypes.CodeableReferenceType = Field(
+        None,
+        alias="diseaseSymptomProcedure",
+        title="The situation that is being documented as an indicaton for this item",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
+        # note: Listed Resource Type(s) should be allowed as Reference.
+        enum_reference_types=["ObservationDefinition"],
+    )
+
+    durationRange: fhirtypes.RangeType = Field(
+        None,
+        alias="durationRange",
+        title="Timing or duration information",
+        description=(
+            "Timing or duration information, that may be associated with use with "
+            "the indicated condition e.g. Adult patients suffering from myocardial "
+            "infarction (from a few days until less than 35 days), ischaemic stroke"
+            " (from 7 days until less than 6 months)."
+        ),
+        # if property is element of this resource.
+        element_property=True,
+        # Choice of Data Types. i.e duration[x]
+        one_of_many="duration",
+        one_of_many_required=False,
+    )
+
+    durationString: fhirtypes.String = Field(
+        None,
+        alias="durationString",
+        title="Timing or duration information",
+        description=(
+            "Timing or duration information, that may be associated with use with "
+            "the indicated condition e.g. Adult patients suffering from myocardial "
+            "infarction (from a few days until less than 35 days), ischaemic stroke"
+            " (from 7 days until less than 6 months)."
+        ),
+        # if property is element of this resource.
+        element_property=True,
+        # Choice of Data Types. i.e duration[x]
+        one_of_many="duration",
+        one_of_many_required=False,
+    )
+    durationString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_durationString", title="Extension field for ``durationString``."
+    )
+
     intendedEffect: fhirtypes.CodeableReferenceType = Field(
-		None,
-		alias="intendedEffect",
-		title="The intended effect, aim or strategy to be achieved",
-		description=None,
+        None,
+        alias="intendedEffect",
+        title="The intended effect, aim or strategy to be achieved",
+        description=None,
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["ObservationDefinition"],
-	)
-	
-    otherTherapy: typing.List[fhirtypes.ClinicalUseDefinitionContraindicationOtherTherapyType] = Field(
-		None,
-		alias="otherTherapy",
-		title=(
-    "The use of the medicinal product in relation to other therapies "
-    "described as part of the indication"
-    ),
-		description=(
-    "Information about the use of the medicinal product in relation to "
-    "other therapies described as part of the indication."
-    ),
+        enum_reference_types=["ObservationDefinition"],
+    )
+
+    otherTherapy: typing.List[
+        fhirtypes.ClinicalUseDefinitionContraindicationOtherTherapyType
+    ] = Field(
+        None,
+        alias="otherTherapy",
+        title=(
+            "The use of the medicinal product in relation to other therapies "
+            "described as part of the indication"
+        ),
+        description=(
+            "Information about the use of the medicinal product in relation to "
+            "other therapies described as part of the indication."
+        ),
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     undesirableEffect: typing.List[fhirtypes.ReferenceType] = Field(
-		None,
-		alias="undesirableEffect",
-		title=(
-    "An unwanted side effect or negative outcome of the subject of this "
-    "resource when being used for this indication"
-    ),
-		description=(
-    "An unwanted side effect or negative outcome that may happen if you use"
-    " the drug (or other subject of this resource) for this indication."
-    ),
+        None,
+        alias="undesirableEffect",
+        title=(
+            "An unwanted side effect or negative outcome of the subject of this "
+            "resource when being used for this indication"
+        ),
+        description=(
+            "An unwanted side effect or negative outcome that may happen if you use"
+            " the drug (or other subject of this resource) for this indication."
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["ClinicalUseDefinition"],
-	)
+        enum_reference_types=["ClinicalUseDefinition"],
+    )
+
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
         ``ClinicalUseDefinitionIndication`` according specification,
         with preserving original sequence order.
         """
-        return ["id", "extension", "modifierExtension", "diseaseSymptomProcedure", "diseaseStatus", "comorbidity", "intendedEffect", "durationRange", "durationString", "undesirableEffect", "otherTherapy"]
-
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "diseaseSymptomProcedure",
+            "diseaseStatus",
+            "comorbidity",
+            "intendedEffect",
+            "durationRange",
+            "durationString",
+            "undesirableEffect",
+            "otherTherapy",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_3336(
@@ -523,10 +586,7 @@ class ClinicalUseDefinitionIndication(backboneelement.BackboneElement):
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-			"duration": [
-			    "durationRange",
-			    "durationString"]}
+        one_of_many_fields = {"duration": ["durationRange", "durationString"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -556,74 +616,86 @@ class ClinicalUseDefinitionInteraction(backboneelement.BackboneElement):
 
     Specifics for when this is an interaction.
     """
+
     resource_type = Field("ClinicalUseDefinitionInteraction", const=True)
-	
+
     effect: fhirtypes.CodeableReferenceType = Field(
-		None,
-		alias="effect",
-		title=(
-    "The effect of the interaction, for example \"reduced gastric absorption"
-    " of primary medication\""
-    ),
-		description=None,
+        None,
+        alias="effect",
+        title=(
+            'The effect of the interaction, for example "reduced gastric absorption'
+            ' of primary medication"'
+        ),
+        description=None,
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["ObservationDefinition"],
-	)
-	
+        enum_reference_types=["ObservationDefinition"],
+    )
+
     incidence: fhirtypes.CodeableConceptType = Field(
-		None,
-		alias="incidence",
-		title="The incidence of the interaction, e.g. theoretical, observed",
-		description=None,
+        None,
+        alias="incidence",
+        title="The incidence of the interaction, e.g. theoretical, observed",
+        description=None,
         # if property is element of this resource.
         element_property=True,
-	)
-	
-    interactant: typing.List[fhirtypes.ClinicalUseDefinitionInteractionInteractantType] = Field(
-		None,
-		alias="interactant",
-		title=(
-    "The specific medication, food, substance or laboratory test that "
-    "interacts"
-    ),
-		description=None,
+    )
+
+    interactant: typing.List[
+        fhirtypes.ClinicalUseDefinitionInteractionInteractantType
+    ] = Field(
+        None,
+        alias="interactant",
+        title=(
+            "The specific medication, food, substance or laboratory test that "
+            "interacts"
+        ),
+        description=None,
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     management: typing.List[fhirtypes.CodeableConceptType] = Field(
-		None,
-		alias="management",
-		title="Actions for managing the interaction",
-		description=None,
+        None,
+        alias="management",
+        title="Actions for managing the interaction",
+        description=None,
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     type: fhirtypes.CodeableConceptType = Field(
-		None,
-		alias="type",
-		title=(
-    "The type of the interaction e.g. drug-drug interaction, drug-lab test "
-    "interaction"
-    ),
-		description=(
-    "The type of the interaction e.g. drug-drug interaction, drug-food "
-    "interaction, drug-lab test interaction."
-    ),
+        None,
+        alias="type",
+        title=(
+            "The type of the interaction e.g. drug-drug interaction, drug-lab test "
+            "interaction"
+        ),
+        description=(
+            "The type of the interaction e.g. drug-drug interaction, drug-food "
+            "interaction, drug-lab test interaction."
+        ),
         # if property is element of this resource.
         element_property=True,
-	)
+    )
+
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
         ``ClinicalUseDefinitionInteraction`` according specification,
         with preserving original sequence order.
         """
-        return ["id", "extension", "modifierExtension", "interactant", "type", "effect", "incidence", "management"]
-
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "interactant",
+            "type",
+            "effect",
+            "incidence",
+            "management",
+        ]
 
 
 class ClinicalUseDefinitionInteractionInteractant(backboneelement.BackboneElement):
@@ -633,41 +705,53 @@ class ClinicalUseDefinitionInteractionInteractant(backboneelement.BackboneElemen
 
     The specific medication, food, substance or laboratory test that interacts.
     """
+
     resource_type = Field("ClinicalUseDefinitionInteractionInteractant", const=True)
-	
+
     itemCodeableConcept: fhirtypes.CodeableConceptType = Field(
-		None,
-		alias="itemCodeableConcept",
-		title="The specific medication, food or laboratory test that interacts",
-		description=None,
+        None,
+        alias="itemCodeableConcept",
+        title="The specific medication, food or laboratory test that interacts",
+        description=None,
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e item[x]
-		one_of_many="item",
-		one_of_many_required=True,
-	)
-	
+        one_of_many="item",
+        one_of_many_required=True,
+    )
+
     itemReference: fhirtypes.ReferenceType = Field(
-		None,
-		alias="itemReference",
-		title="The specific medication, food or laboratory test that interacts",
-		description=None,
+        None,
+        alias="itemReference",
+        title="The specific medication, food or laboratory test that interacts",
+        description=None,
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e item[x]
-		one_of_many="item",
-		one_of_many_required=True,
+        one_of_many="item",
+        one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["MedicinalProductDefinition", "Medication", "Substance", "ObservationDefinition"],
-	)
+        enum_reference_types=[
+            "MedicinalProductDefinition",
+            "Medication",
+            "Substance",
+            "ObservationDefinition",
+        ],
+    )
+
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
         ``ClinicalUseDefinitionInteractionInteractant`` according specification,
         with preserving original sequence order.
         """
-        return ["id", "extension", "modifierExtension", "itemReference", "itemCodeableConcept"]
-
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "itemReference",
+            "itemCodeableConcept",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_4617(
@@ -685,10 +769,7 @@ class ClinicalUseDefinitionInteractionInteractant(backboneelement.BackboneElemen
         choice of types, the authoring system must create a single element with a
         data type chosen from among the list of permitted data types.
         """
-        one_of_many_fields = {
-			"item": [
-			    "itemCodeableConcept",
-			    "itemReference"]}
+        one_of_many_fields = {"item": ["itemCodeableConcept", "itemReference"]}
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -720,44 +801,52 @@ class ClinicalUseDefinitionUndesirableEffect(backboneelement.BackboneElement):
     Describe the possible undesirable effects (negative outcomes) from the use
     of the medicinal product as treatment.
     """
+
     resource_type = Field("ClinicalUseDefinitionUndesirableEffect", const=True)
-	
+
     classification: fhirtypes.CodeableConceptType = Field(
-		None,
-		alias="classification",
-		title="High level classification of the effect",
-		description=None,
+        None,
+        alias="classification",
+        title="High level classification of the effect",
+        description=None,
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     frequencyOfOccurrence: fhirtypes.CodeableConceptType = Field(
-		None,
-		alias="frequencyOfOccurrence",
-		title="How often the effect is seen",
-		description=None,
+        None,
+        alias="frequencyOfOccurrence",
+        title="How often the effect is seen",
+        description=None,
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     symptomConditionEffect: fhirtypes.CodeableReferenceType = Field(
-		None,
-		alias="symptomConditionEffect",
-		title="The situation in which the undesirable effect may manifest",
-		description=None,
+        None,
+        alias="symptomConditionEffect",
+        title="The situation in which the undesirable effect may manifest",
+        description=None,
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["ObservationDefinition"],
-	)
+        enum_reference_types=["ObservationDefinition"],
+    )
+
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
         ``ClinicalUseDefinitionUndesirableEffect`` according specification,
         with preserving original sequence order.
         """
-        return ["id", "extension", "modifierExtension", "symptomConditionEffect", "classification", "frequencyOfOccurrence"]
-
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "symptomConditionEffect",
+            "classification",
+            "frequencyOfOccurrence",
+        ]
 
 
 class ClinicalUseDefinitionWarning(backboneelement.BackboneElement):
@@ -772,30 +861,30 @@ class ClinicalUseDefinitionWarning(backboneelement.BackboneElement):
     operate heavy machinery', 'May cause drowsiness', or 'Get medical
     advice/attention if you feel unwell'.
     """
+
     resource_type = Field("ClinicalUseDefinitionWarning", const=True)
-	
+
     code: fhirtypes.CodeableConceptType = Field(
-		None,
-		alias="code",
-		title="A coded or unformatted textual definition of this warning",
-		description=None,
-        # if property is element of this resource.
-        element_property=True,
-	)
-	
-    description: fhirtypes.Markdown = Field(
-		None,
-		alias="description",
-		title="A textual definition of this warning, with formatting",
-		description=None,
-        # if property is element of this resource.
-        element_property=True,
-	)
-    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
-        alias="_description",
-        title="Extension field for ``description``."
+        alias="code",
+        title="A coded or unformatted textual definition of this warning",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
     )
+
+    description: fhirtypes.Markdown = Field(
+        None,
+        alias="description",
+        title="A textual definition of this warning, with formatting",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
+    )
+    description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_description", title="Extension field for ``description``."
+    )
+
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
@@ -803,5 +892,3 @@ class ClinicalUseDefinitionWarning(backboneelement.BackboneElement):
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "description", "code"]
-
-

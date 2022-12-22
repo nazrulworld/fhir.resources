@@ -10,11 +10,7 @@ from lxml import etree  # type: ignore
 from lxml.etree import QName  # type: ignore
 from pydantic.fields import SHAPE_LIST, SHAPE_SINGLETON
 
-from .common import (
-    get_fhir_type_name,
-    is_primitive_type,
-    normalize_fhir_type_class,
-)
+from .common import get_fhir_type_name, is_primitive_type, normalize_fhir_type_class
 
 if typing.TYPE_CHECKING:
     from fhir.resources.core.fhirabstractmodel import FHIRAbstractModel

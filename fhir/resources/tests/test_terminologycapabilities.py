@@ -7,6 +7,7 @@ Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
 from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import terminologycapabilities
 
@@ -18,9 +19,9 @@ def impl_terminologycapabilities_1(inst):
     assert inst.contact[0].telecom[0].value == "wile@acme.org"
     assert inst.date == fhirtypes.DateTime.validate("2012-01-04")
     assert inst.description == (
-    "This is the FHIR capability statement for the main EHR at "
-    "ACME for the private interface - it does not describe the "
-    "public interface"
+        "This is the FHIR capability statement for the main EHR at "
+        "ACME for the private interface - it does not describe the "
+        "public interface"
     )
     assert inst.experimental is True
     assert inst.id == "example"
@@ -58,4 +59,3 @@ def test_terminologycapabilities_1(base_settings):
 
     inst2 = terminologycapabilities.TerminologyCapabilities(**data)
     impl_terminologycapabilities_1(inst2)
-

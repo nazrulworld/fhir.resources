@@ -7,6 +7,7 @@ Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
 from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import composition
 
@@ -28,7 +29,9 @@ def impl_composition_1(inst):
     assert inst.id == "example-mixed"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.section[0].code.coding[0].code == "newborn"
     assert inst.section[0].code.coding[0].display == "New Born Details"
     assert inst.section[0].code.coding[0].system == "http://acme.org/codes/SectionType"
@@ -45,7 +48,9 @@ def impl_composition_1(inst):
     assert inst.text.status == "generated"
     assert inst.title == "Discharge Summary (Neonatal Service)"
     assert inst.type.coding[0].code == "78418-1"
-    assert inst.type.coding[0].display == "Neonatal perinatal medicine Discharge summary"
+    assert (
+        inst.type.coding[0].display == "Neonatal perinatal medicine Discharge summary"
+    )
     assert inst.type.coding[0].system == "http://loinc.org"
 
 
@@ -53,9 +58,7 @@ def test_composition_1(base_settings):
     """No. 1 tests collection for Composition.
     Test File: composition-example-mixed.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "composition-example-mixed.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "composition-example-mixed.json"
     inst = composition.Composition.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -88,7 +91,10 @@ def impl_composition_2(inst):
     assert inst.encounter.reference == "Encounter/xcda"
     assert inst.event[0].code[0].coding[0].code == "HEALTHREC"
     assert inst.event[0].code[0].coding[0].display == "health record"
-    assert inst.event[0].code[0].coding[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+    assert (
+        inst.event[0].code[0].coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/v3-ActCode"
+    )
     assert inst.event[0].detail[0].reference == "Observation/example"
     assert inst.event[0].period.end == fhirtypes.DateTime.validate("2012-11-12")
     assert inst.event[0].period.start == fhirtypes.DateTime.validate("2010-07-18")
@@ -97,11 +103,16 @@ def impl_composition_2(inst):
     assert inst.identifier.value == "1"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
     assert inst.relatesTo[0].code == "replaces"
     assert inst.relatesTo[0].targetReference.reference == "Composition/old-example"
     assert inst.relatesTo[1].code == "appends"
-    assert inst.relatesTo[1].targetIdentifier.system == "http://example.org/fhir/NamingSystem/document-ids"
+    assert (
+        inst.relatesTo[1].targetIdentifier.system
+        == "http://example.org/fhir/NamingSystem/document-ids"
+    )
     assert inst.relatesTo[1].targetIdentifier.value == "ABC123"
     assert inst.section[0].code.coding[0].code == "11348-0"
     assert inst.section[0].code.coding[0].display == "History of past illness Narrative"
@@ -112,15 +123,24 @@ def impl_composition_2(inst):
     assert inst.section[0].mode == "snapshot"
     assert inst.section[0].orderedBy.coding[0].code == "event-date"
     assert inst.section[0].orderedBy.coding[0].display == "Sorted by Event Date"
-    assert inst.section[0].orderedBy.coding[0].system == "http://terminology.hl7.org/CodeSystem/list-order"
+    assert (
+        inst.section[0].orderedBy.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/list-order"
+    )
     assert inst.section[0].text.status == "generated"
     assert inst.section[0].title == "History of present illness"
     assert inst.section[1].code.coding[0].code == "10157-6"
-    assert inst.section[1].code.coding[0].display == "History of family member diseases Narrative"
+    assert (
+        inst.section[1].code.coding[0].display
+        == "History of family member diseases Narrative"
+    )
     assert inst.section[1].code.coding[0].system == "http://loinc.org"
     assert inst.section[1].emptyReason.coding[0].code == "withheld"
     assert inst.section[1].emptyReason.coding[0].display == "Information Withheld"
-    assert inst.section[1].emptyReason.coding[0].system == "http://terminology.hl7.org/CodeSystem/list-empty-reason"
+    assert (
+        inst.section[1].emptyReason.coding[0].system
+        == "http://terminology.hl7.org/CodeSystem/list-empty-reason"
+    )
     assert inst.section[1].mode == "snapshot"
     assert inst.section[1].text.status == "generated"
     assert inst.section[1].title == "History of family member diseases"
@@ -138,9 +158,7 @@ def test_composition_2(base_settings):
     """No. 2 tests collection for Composition.
     Test File: composition-example.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "composition-example.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "composition-example.json"
     inst = composition.Composition.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -154,4 +172,3 @@ def test_composition_2(base_settings):
 
     inst2 = composition.Composition(**data)
     impl_composition_2(inst2)
-

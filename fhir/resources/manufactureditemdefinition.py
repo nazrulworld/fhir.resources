@@ -7,16 +7,13 @@ Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
-from pydantic import Field
-from pydantic import root_validator
 
+from pydantic import Field, root_validator
 from pydantic.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.errors import MissingError, NoneIsNotAllowedError
 
-from . import fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
-
-from . import domainresource
 
 class ManufacturedItemDefinition(domainresource.DomainResource):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
@@ -26,108 +23,123 @@ class ManufacturedItemDefinition(domainresource.DomainResource):
     The definition and characteristics of a medicinal manufactured item, such
     as a tablet or capsule, as contained in a packaged medicinal product.
     """
+
     resource_type = Field("ManufacturedItemDefinition", const=True)
-	
+
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
-		None,
-		alias="identifier",
-		title="Unique identifier",
-		description=None,
+        None,
+        alias="identifier",
+        title="Unique identifier",
+        description=None,
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     ingredient: typing.List[fhirtypes.CodeableConceptType] = Field(
-		None,
-		alias="ingredient",
-		title=(
-    "The ingredients of this manufactured item. Only needed if these are "
-    "not specified by incoming references from the Ingredient resource"
-    ),
-		description=(
-    "The ingredients of this manufactured item. This is only needed if the "
-    "ingredients are not specified by incoming references from the "
-    "Ingredient resource."
-    ),
+        None,
+        alias="ingredient",
+        title=(
+            "The ingredients of this manufactured item. Only needed if these are "
+            "not specified by incoming references from the Ingredient resource"
+        ),
+        description=(
+            "The ingredients of this manufactured item. This is only needed if the "
+            "ingredients are not specified by incoming references from the "
+            "Ingredient resource."
+        ),
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     manufacturedDoseForm: fhirtypes.CodeableConceptType = Field(
-		...,
-		alias="manufacturedDoseForm",
-		title="Dose form as manufactured (before any necessary transformation)",
-		description=(
-    "Dose form as manufactured and before any transformation into the "
-    "pharmaceutical product."
-    ),
+        ...,
+        alias="manufacturedDoseForm",
+        title="Dose form as manufactured (before any necessary transformation)",
+        description=(
+            "Dose form as manufactured and before any transformation into the "
+            "pharmaceutical product."
+        ),
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     manufacturer: typing.List[fhirtypes.ReferenceType] = Field(
-		None,
-		alias="manufacturer",
-		title=(
-    "Manufacturer of the item (Note that this should be named "
-    "\"manufacturer\" but it currently causes technical issues)"
-    ),
-		description=None,
+        None,
+        alias="manufacturer",
+        title=(
+            "Manufacturer of the item (Note that this should be named "
+            '"manufacturer" but it currently causes technical issues)'
+        ),
+        description=None,
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["Organization"],
-	)
-	
+        enum_reference_types=["Organization"],
+    )
+
     property: typing.List[fhirtypes.ManufacturedItemDefinitionPropertyType] = Field(
-		None,
-		alias="property",
-		title="General characteristics of this item",
-		description=None,
+        None,
+        alias="property",
+        title="General characteristics of this item",
+        description=None,
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     status: fhirtypes.Code = Field(
-		None,
-		alias="status",
-		title="draft | active | retired | unknown",
-		description=(
-    "The status of this item. Enables tracking the life-cycle of the "
-    "content."
-    ),
+        None,
+        alias="status",
+        title="draft | active | retired | unknown",
+        description=(
+            "The status of this item. Enables tracking the life-cycle of the "
+            "content."
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-		enum_values=["draft", "active", "retired", "unknown"],
-	)
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None,
-        alias="_status",
-        title="Extension field for ``status``."
+        enum_values=["draft", "active", "retired", "unknown"],
     )
-	
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
+    )
+
     unitOfPresentation: fhirtypes.CodeableConceptType = Field(
-		None,
-		alias="unitOfPresentation",
-		title="The \u201creal world\u201d units in which the quantity of the item is described",
-		description=(
-    "The \u201creal world\u201d units in which the quantity of the manufactured item "
-    "is described."
-    ),
+        None,
+        alias="unitOfPresentation",
+        title="The \u201creal world\u201d units in which the quantity of the item is described",
+        description=(
+            "The \u201creal world\u201d units in which the quantity of the manufactured item "
+            "is described."
+        ),
         # if property is element of this resource.
         element_property=True,
-	)
+    )
+
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
         ``ManufacturedItemDefinition`` according specification,
         with preserving original sequence order.
         """
-        return ["id", "meta", "implicitRules", "language", "text", "contained", "extension", "modifierExtension", "identifier", "status", "manufacturedDoseForm", "unitOfPresentation", "manufacturer", "ingredient", "property"]
-
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "status",
+            "manufacturedDoseForm",
+            "unitOfPresentation",
+            "manufacturer",
+            "ingredient",
+            "property",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_2866(
@@ -140,8 +152,7 @@ class ManufacturedItemDefinition(domainresource.DomainResource):
         data type mandatory, it is possible to provide an extension that explains why
         the primitive value is not present.
         """
-        required_fields = [
-			("status", "status__ext")]
+        required_fields = [("status", "status__ext")]
         _missing = object()
 
         def _fallback():
@@ -190,8 +201,6 @@ class ManufacturedItemDefinition(domainresource.DomainResource):
         return values
 
 
-from . import backboneelement
-
 class ManufacturedItemDefinitionProperty(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -199,94 +208,101 @@ class ManufacturedItemDefinitionProperty(backboneelement.BackboneElement):
 
     General characteristics of this item.
     """
+
     resource_type = Field("ManufacturedItemDefinitionProperty", const=True)
-	
+
     type: fhirtypes.CodeableConceptType = Field(
-		...,
-		alias="type",
-		title="A code expressing the type of characteristic",
-		description=None,
+        ...,
+        alias="type",
+        title="A code expressing the type of characteristic",
+        description=None,
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     valueAttachment: fhirtypes.AttachmentType = Field(
-		None,
-		alias="valueAttachment",
-		title="A value for the characteristic",
-		description=None,
+        None,
+        alias="valueAttachment",
+        title="A value for the characteristic",
+        description=None,
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
-		one_of_many="value",
-		one_of_many_required=False,
-	)
-	
+        one_of_many="value",
+        one_of_many_required=False,
+    )
+
     valueBoolean: bool = Field(
-		None,
-		alias="valueBoolean",
-		title="A value for the characteristic",
-		description=None,
+        None,
+        alias="valueBoolean",
+        title="A value for the characteristic",
+        description=None,
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
-		one_of_many="value",
-		one_of_many_required=False,
-	)
+        one_of_many="value",
+        one_of_many_required=False,
+    )
     valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None,
-        alias="_valueBoolean",
-        title="Extension field for ``valueBoolean``."
+        None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
     )
-	
+
     valueCodeableConcept: fhirtypes.CodeableConceptType = Field(
-		None,
-		alias="valueCodeableConcept",
-		title="A value for the characteristic",
-		description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-		one_of_many="value",
-		one_of_many_required=False,
-	)
-	
-    valueDate: fhirtypes.Date = Field(
-		None,
-		alias="valueDate",
-		title="A value for the characteristic",
-		description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-		one_of_many="value",
-		one_of_many_required=False,
-	)
-    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
-        alias="_valueDate",
-        title="Extension field for ``valueDate``."
-    )
-	
-    valueQuantity: fhirtypes.QuantityType = Field(
-		None,
-		alias="valueQuantity",
-		title="A value for the characteristic",
-		description=None,
+        alias="valueCodeableConcept",
+        title="A value for the characteristic",
+        description=None,
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
-		one_of_many="value",
-		one_of_many_required=False,
-	)
+        one_of_many="value",
+        one_of_many_required=False,
+    )
+
+    valueDate: fhirtypes.Date = Field(
+        None,
+        alias="valueDate",
+        title="A value for the characteristic",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
+        one_of_many_required=False,
+    )
+    valueDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueDate", title="Extension field for ``valueDate``."
+    )
+
+    valueQuantity: fhirtypes.QuantityType = Field(
+        None,
+        alias="valueQuantity",
+        title="A value for the characteristic",
+        description=None,
+        # if property is element of this resource.
+        element_property=True,
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
+        one_of_many_required=False,
+    )
+
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
         ``ManufacturedItemDefinitionProperty`` according specification,
         with preserving original sequence order.
         """
-        return ["id", "extension", "modifierExtension", "type", "valueCodeableConcept", "valueQuantity", "valueDate", "valueBoolean", "valueAttachment"]
-
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "type",
+            "valueCodeableConcept",
+            "valueQuantity",
+            "valueDate",
+            "valueBoolean",
+            "valueAttachment",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_3746(
@@ -305,12 +321,14 @@ class ManufacturedItemDefinitionProperty(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-			"value": [
-			    "valueAttachment",
-			    "valueBoolean",
-			    "valueCodeableConcept",
-			    "valueDate",
-			    "valueQuantity"]}
+            "value": [
+                "valueAttachment",
+                "valueBoolean",
+                "valueCodeableConcept",
+                "valueDate",
+                "valueQuantity",
+            ]
+        }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -331,4 +349,3 @@ class ManufacturedItemDefinitionProperty(backboneelement.BackboneElement):
                 raise ValueError(f"Expect any of field value from this list {fields}.")
 
         return values
-

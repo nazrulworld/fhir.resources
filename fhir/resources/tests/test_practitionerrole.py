@@ -7,6 +7,7 @@ Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
 from pydantic.validators import bytes_validator  # noqa: F401
+
 from .. import fhirtypes  # noqa: F401
 from .. import practitionerrole
 
@@ -14,20 +15,26 @@ from .. import practitionerrole
 def impl_practitionerrole_1(inst):
     assert inst.active is True
     assert inst.availabilityExceptions == (
-    "Adam is generally unavailable on public holidays and during "
-    "the Christmas/New Year break"
+        "Adam is generally unavailable on public holidays and during "
+        "the Christmas/New Year break"
     )
     assert inst.availableTime[0].availableEndTime == fhirtypes.Time.validate("16:30:00")
-    assert inst.availableTime[0].availableStartTime == fhirtypes.Time.validate("09:00:00")
+    assert inst.availableTime[0].availableStartTime == fhirtypes.Time.validate(
+        "09:00:00"
+    )
     assert inst.availableTime[0].daysOfWeek[0] == "mon"
     assert inst.availableTime[0].daysOfWeek[1] == "tue"
     assert inst.availableTime[0].daysOfWeek[2] == "wed"
     assert inst.availableTime[1].availableEndTime == fhirtypes.Time.validate("12:00:00")
-    assert inst.availableTime[1].availableStartTime == fhirtypes.Time.validate("09:00:00")
+    assert inst.availableTime[1].availableStartTime == fhirtypes.Time.validate(
+        "09:00:00"
+    )
     assert inst.availableTime[1].daysOfWeek[0] == "thu"
     assert inst.availableTime[1].daysOfWeek[1] == "fri"
     assert inst.code[0].coding[0].code == "RP"
-    assert inst.code[0].coding[0].system == "http://terminology.hl7.org/CodeSystem/v2-0286"
+    assert (
+        inst.code[0].coding[0].system == "http://terminology.hl7.org/CodeSystem/v2-0286"
+    )
     assert inst.endpoint[0].reference == "Endpoint/example"
     assert inst.healthcareService[0].reference == "HealthcareService/example"
     assert inst.id == "example"
@@ -37,10 +44,17 @@ def impl_practitionerrole_1(inst):
     assert inst.location[0].reference == "Location/1"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
-    assert inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
-    assert inst.notAvailable[0].description == "Adam will be on extended leave during May 2017"
+    assert (
+        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+    )
+    assert (
+        inst.notAvailable[0].description
+        == "Adam will be on extended leave during May 2017"
+    )
     assert inst.notAvailable[0].during.end == fhirtypes.DateTime.validate("2017-05-20")
-    assert inst.notAvailable[0].during.start == fhirtypes.DateTime.validate("2017-05-01")
+    assert inst.notAvailable[0].during.start == fhirtypes.DateTime.validate(
+        "2017-05-01"
+    )
     assert inst.organization.reference == "Organization/f001"
     assert inst.period.end == fhirtypes.DateTime.validate("2012-03-31")
     assert inst.period.start == fhirtypes.DateTime.validate("2012-01-01")
@@ -62,9 +76,7 @@ def test_practitionerrole_1(base_settings):
     """No. 1 tests collection for PractitionerRole.
     Test File: practitionerrole-example.json
     """
-    filename = (
-        base_settings["unittest_data_dir"] / "practitionerrole-example.json"
-    )
+    filename = base_settings["unittest_data_dir"] / "practitionerrole-example.json"
     inst = practitionerrole.PractitionerRole.parse_file(
         filename, content_type="application/json", encoding="utf-8"
     )
@@ -78,4 +90,3 @@ def test_practitionerrole_1(base_settings):
 
     inst2 = practitionerrole.PractitionerRole(**data)
     impl_practitionerrole_1(inst2)
-

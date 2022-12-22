@@ -7,16 +7,13 @@ Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
 import typing
-from pydantic import Field
-from pydantic import root_validator
 
+from pydantic import Field, root_validator
 from pydantic.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.errors import MissingError, NoneIsNotAllowedError
 
-from . import fhirtypes
+from . import backboneelement, domainresource, fhirtypes
 
-
-from . import domainresource
 
 class DeviceRequest(domainresource.DomainResource):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
@@ -28,402 +25,470 @@ class DeviceRequest(domainresource.DomainResource):
     may be an implantable device, or an external assistive device, such as a
     walker.
     """
+
     resource_type = Field("DeviceRequest", const=True)
-	
+
     authoredOn: fhirtypes.DateTime = Field(
-		None,
-		alias="authoredOn",
-		title="When recorded",
-		description="When the request transitioned to being actionable.",
-        # if property is element of this resource.
-        element_property=True,
-	)
-    authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
-        alias="_authoredOn",
-        title="Extension field for ``authoredOn``."
+        alias="authoredOn",
+        title="When recorded",
+        description="When the request transitioned to being actionable.",
+        # if property is element of this resource.
+        element_property=True,
     )
-	
+    authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_authoredOn", title="Extension field for ``authoredOn``."
+    )
+
     basedOn: typing.List[fhirtypes.ReferenceType] = Field(
-		None,
-		alias="basedOn",
-		title="What request fulfills",
-		description="Plan/proposal/order fulfilled by this request.",
+        None,
+        alias="basedOn",
+        title="What request fulfills",
+        description="Plan/proposal/order fulfilled by this request.",
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["Resource"],
-	)
-	
+        enum_reference_types=["Resource"],
+    )
+
     codeCodeableConcept: fhirtypes.CodeableConceptType = Field(
-		None,
-		alias="codeCodeableConcept",
-		title="Device requested",
-		description="The details of the device to be used.",
+        None,
+        alias="codeCodeableConcept",
+        title="Device requested",
+        description="The details of the device to be used.",
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e code[x]
-		one_of_many="code",
-		one_of_many_required=True,
-	)
-	
+        one_of_many="code",
+        one_of_many_required=True,
+    )
+
     codeReference: fhirtypes.ReferenceType = Field(
-		None,
-		alias="codeReference",
-		title="Device requested",
-		description="The details of the device to be used.",
+        None,
+        alias="codeReference",
+        title="Device requested",
+        description="The details of the device to be used.",
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e code[x]
-		one_of_many="code",
-		one_of_many_required=True,
+        one_of_many="code",
+        one_of_many_required=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["Device"],
-	)
-	
+        enum_reference_types=["Device"],
+    )
+
     encounter: fhirtypes.ReferenceType = Field(
-		None,
-		alias="encounter",
-		title="Encounter motivating request",
-		description=(
-    "An encounter that provides additional context in which this request is"
-    " made."
-    ),
+        None,
+        alias="encounter",
+        title="Encounter motivating request",
+        description=(
+            "An encounter that provides additional context in which this request is"
+            " made."
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["Encounter"],
-	)
-	
+        enum_reference_types=["Encounter"],
+    )
+
     groupIdentifier: fhirtypes.IdentifierType = Field(
-		None,
-		alias="groupIdentifier",
-		title="Identifier of composite request",
-		description="Composite request this is part of.",
+        None,
+        alias="groupIdentifier",
+        title="Identifier of composite request",
+        description="Composite request this is part of.",
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
-		None,
-		alias="identifier",
-		title="External Request identifier",
-		description="Identifiers assigned to this order by the orderer or by the receiver.",
+        None,
+        alias="identifier",
+        title="External Request identifier",
+        description="Identifiers assigned to this order by the orderer or by the receiver.",
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     instantiatesCanonical: typing.List[fhirtypes.Canonical] = Field(
-		None,
-		alias="instantiatesCanonical",
-		title="Instantiates FHIR protocol or definition",
-		description=(
-    "The URL pointing to a FHIR-defined protocol, guideline, orderset or "
-    "other definition that is adhered to in whole or in part by this "
-    "DeviceRequest."
-    ),
+        None,
+        alias="instantiatesCanonical",
+        title="Instantiates FHIR protocol or definition",
+        description=(
+            "The URL pointing to a FHIR-defined protocol, guideline, orderset or "
+            "other definition that is adhered to in whole or in part by this "
+            "DeviceRequest."
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["ActivityDefinition", "PlanDefinition"],
-	)
-    instantiatesCanonical__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
+        enum_reference_types=["ActivityDefinition", "PlanDefinition"],
+    )
+    instantiatesCanonical__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(
         None,
         alias="_instantiatesCanonical",
-        title="Extension field for ``instantiatesCanonical``."
+        title="Extension field for ``instantiatesCanonical``.",
     )
-	
+
     instantiatesUri: typing.List[fhirtypes.Uri] = Field(
-		None,
-		alias="instantiatesUri",
-		title="Instantiates external protocol or definition",
-		description=(
-    "The URL pointing to an externally maintained protocol, guideline, "
-    "orderset or other definition that is adhered to in whole or in part by"
-    " this DeviceRequest."
-    ),
+        None,
+        alias="instantiatesUri",
+        title="Instantiates external protocol or definition",
+        description=(
+            "The URL pointing to an externally maintained protocol, guideline, "
+            "orderset or other definition that is adhered to in whole or in part by"
+            " this DeviceRequest."
+        ),
         # if property is element of this resource.
         element_property=True,
-	)
-    instantiatesUri__ext: typing.List[typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]] = Field(
-        None,
-        alias="_instantiatesUri",
-        title="Extension field for ``instantiatesUri``."
     )
-	
+    instantiatesUri__ext: typing.List[
+        typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
+    ] = Field(
+        None, alias="_instantiatesUri", title="Extension field for ``instantiatesUri``."
+    )
+
     insurance: typing.List[fhirtypes.ReferenceType] = Field(
-		None,
-		alias="insurance",
-		title="Associated insurance coverage",
-		description=(
-    "Insurance plans, coverage extensions, pre-authorizations and/or pre-"
-    "determinations that may be required for delivering the requested "
-    "service."
-    ),
+        None,
+        alias="insurance",
+        title="Associated insurance coverage",
+        description=(
+            "Insurance plans, coverage extensions, pre-authorizations and/or pre-"
+            "determinations that may be required for delivering the requested "
+            "service."
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["Coverage", "ClaimResponse"],
-	)
-	
+        enum_reference_types=["Coverage", "ClaimResponse"],
+    )
+
     intent: fhirtypes.Code = Field(
-		None,
-		alias="intent",
-		title=(
-    "proposal | plan | directive | order | original-order | reflex-order | "
-    "filler-order | instance-order | option"
-    ),
-		description=(
-    "Whether the request is a proposal, plan, an original order or a reflex"
-    " order."
-    ),
+        None,
+        alias="intent",
+        title=(
+            "proposal | plan | directive | order | original-order | reflex-order | "
+            "filler-order | instance-order | option"
+        ),
+        description=(
+            "Whether the request is a proposal, plan, an original order or a reflex"
+            " order."
+        ),
         # if property is element of this resource.
         element_property=True,
         element_required=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-		enum_values=["proposal", "plan", "directive", "order", "original-order", "reflex-order", "filler-order", "instance-order", "option"],
-	)
-    intent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None,
-        alias="_intent",
-        title="Extension field for ``intent``."
+        enum_values=[
+            "proposal",
+            "plan",
+            "directive",
+            "order",
+            "original-order",
+            "reflex-order",
+            "filler-order",
+            "instance-order",
+            "option",
+        ],
     )
-	
+    intent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_intent", title="Extension field for ``intent``."
+    )
+
     note: typing.List[fhirtypes.AnnotationType] = Field(
-		None,
-		alias="note",
-		title="Notes or comments",
-		description=(
-    "Details about this request that were not represented at all or "
-    "sufficiently in one of the attributes provided in a class. These may "
-    "include for example a comment, an instruction, or a note associated "
-    "with the statement."
-    ),
+        None,
+        alias="note",
+        title="Notes or comments",
+        description=(
+            "Details about this request that were not represented at all or "
+            "sufficiently in one of the attributes provided in a class. These may "
+            "include for example a comment, an instruction, or a note associated "
+            "with the statement."
+        ),
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     occurrenceDateTime: fhirtypes.DateTime = Field(
-		None,
-		alias="occurrenceDateTime",
-		title="Desired time or schedule for use",
-		description=(
-    "The timing schedule for the use of the device. The Schedule data type "
-    "allows many different expressions, for example. \"Every 8 hours\"; "
-    "\"Three times a day\"; \"1/2 an hour before breakfast for 10 days from "
-    "23-Dec 2011:\"; \"15 Oct 2013, 17 Oct 2013 and 1 Nov 2013\"."
-    ),
+        None,
+        alias="occurrenceDateTime",
+        title="Desired time or schedule for use",
+        description=(
+            "The timing schedule for the use of the device. The Schedule data type "
+            'allows many different expressions, for example. "Every 8 hours"; '
+            '"Three times a day"; "1/2 an hour before breakfast for 10 days from '
+            '23-Dec 2011:"; "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".'
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e occurrence[x]
-		one_of_many="occurrence",
-		one_of_many_required=False,
-	)
+        one_of_many="occurrence",
+        one_of_many_required=False,
+    )
     occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
         alias="_occurrenceDateTime",
-        title="Extension field for ``occurrenceDateTime``."
+        title="Extension field for ``occurrenceDateTime``.",
     )
-	
+
     occurrencePeriod: fhirtypes.PeriodType = Field(
-		None,
-		alias="occurrencePeriod",
-		title="Desired time or schedule for use",
-		description=(
-    "The timing schedule for the use of the device. The Schedule data type "
-    "allows many different expressions, for example. \"Every 8 hours\"; "
-    "\"Three times a day\"; \"1/2 an hour before breakfast for 10 days from "
-    "23-Dec 2011:\"; \"15 Oct 2013, 17 Oct 2013 and 1 Nov 2013\"."
-    ),
+        None,
+        alias="occurrencePeriod",
+        title="Desired time or schedule for use",
+        description=(
+            "The timing schedule for the use of the device. The Schedule data type "
+            'allows many different expressions, for example. "Every 8 hours"; '
+            '"Three times a day"; "1/2 an hour before breakfast for 10 days from '
+            '23-Dec 2011:"; "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".'
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e occurrence[x]
-		one_of_many="occurrence",
-		one_of_many_required=False,
-	)
-	
+        one_of_many="occurrence",
+        one_of_many_required=False,
+    )
+
     occurrenceTiming: fhirtypes.TimingType = Field(
-		None,
-		alias="occurrenceTiming",
-		title="Desired time or schedule for use",
-		description=(
-    "The timing schedule for the use of the device. The Schedule data type "
-    "allows many different expressions, for example. \"Every 8 hours\"; "
-    "\"Three times a day\"; \"1/2 an hour before breakfast for 10 days from "
-    "23-Dec 2011:\"; \"15 Oct 2013, 17 Oct 2013 and 1 Nov 2013\"."
-    ),
+        None,
+        alias="occurrenceTiming",
+        title="Desired time or schedule for use",
+        description=(
+            "The timing schedule for the use of the device. The Schedule data type "
+            'allows many different expressions, for example. "Every 8 hours"; '
+            '"Three times a day"; "1/2 an hour before breakfast for 10 days from '
+            '23-Dec 2011:"; "15 Oct 2013, 17 Oct 2013 and 1 Nov 2013".'
+        ),
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e occurrence[x]
-		one_of_many="occurrence",
-		one_of_many_required=False,
-	)
-	
+        one_of_many="occurrence",
+        one_of_many_required=False,
+    )
+
     parameter: typing.List[fhirtypes.DeviceRequestParameterType] = Field(
-		None,
-		alias="parameter",
-		title="Device details",
-		description=(
-    "Specific parameters for the ordered item.  For example, the prism "
-    "value for lenses."
-    ),
+        None,
+        alias="parameter",
+        title="Device details",
+        description=(
+            "Specific parameters for the ordered item.  For example, the prism "
+            "value for lenses."
+        ),
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     performer: fhirtypes.ReferenceType = Field(
-		None,
-		alias="performer",
-		title="Requested Filler",
-		description="The desired performer for doing the diagnostic testing.",
+        None,
+        alias="performer",
+        title="Requested Filler",
+        description="The desired performer for doing the diagnostic testing.",
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["Practitioner", "PractitionerRole", "Organization", "CareTeam", "HealthcareService", "Patient", "Device", "RelatedPerson"],
-	)
-	
+        enum_reference_types=[
+            "Practitioner",
+            "PractitionerRole",
+            "Organization",
+            "CareTeam",
+            "HealthcareService",
+            "Patient",
+            "Device",
+            "RelatedPerson",
+        ],
+    )
+
     performerType: fhirtypes.CodeableConceptType = Field(
-		None,
-		alias="performerType",
-		title="Filler role",
-		description="Desired type of performer for doing the diagnostic testing.",
+        None,
+        alias="performerType",
+        title="Filler role",
+        description="Desired type of performer for doing the diagnostic testing.",
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     priorRequest: typing.List[fhirtypes.ReferenceType] = Field(
-		None,
-		alias="priorRequest",
-		title="What request replaces",
-		description=(
-    "The request takes the place of the referenced completed or terminated "
-    "request(s)."
-    ),
+        None,
+        alias="priorRequest",
+        title="What request replaces",
+        description=(
+            "The request takes the place of the referenced completed or terminated "
+            "request(s)."
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["Resource"],
-	)
-	
+        enum_reference_types=["Resource"],
+    )
+
     priority: fhirtypes.Code = Field(
-		None,
-		alias="priority",
-		title="routine | urgent | asap | stat",
-		description=(
-    "Indicates how quickly the {{title}} should be addressed with respect "
-    "to other requests."
-    ),
+        None,
+        alias="priority",
+        title="routine | urgent | asap | stat",
+        description=(
+            "Indicates how quickly the {{title}} should be addressed with respect "
+            "to other requests."
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-		enum_values=["routine", "urgent", "asap", "stat"],
-	)
+        enum_values=["routine", "urgent", "asap", "stat"],
+    )
     priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None,
-        alias="_priority",
-        title="Extension field for ``priority``."
+        None, alias="_priority", title="Extension field for ``priority``."
     )
-	
+
     reasonCode: typing.List[fhirtypes.CodeableConceptType] = Field(
-		None,
-		alias="reasonCode",
-		title="Coded Reason for request",
-		description="Reason or justification for the use of this device.",
+        None,
+        alias="reasonCode",
+        title="Coded Reason for request",
+        description="Reason or justification for the use of this device.",
         # if property is element of this resource.
         element_property=True,
-	)
-	
+    )
+
     reasonReference: typing.List[fhirtypes.ReferenceType] = Field(
-		None,
-		alias="reasonReference",
-		title="Linked Reason for request",
-		description="Reason or justification for the use of this device.",
+        None,
+        alias="reasonReference",
+        title="Linked Reason for request",
+        description="Reason or justification for the use of this device.",
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["Condition", "Observation", "DiagnosticReport", "DocumentReference"],
-	)
-	
+        enum_reference_types=[
+            "Condition",
+            "Observation",
+            "DiagnosticReport",
+            "DocumentReference",
+        ],
+    )
+
     relevantHistory: typing.List[fhirtypes.ReferenceType] = Field(
-		None,
-		alias="relevantHistory",
-		title="Request provenance",
-		description="Key events in the history of the request.",
+        None,
+        alias="relevantHistory",
+        title="Request provenance",
+        description="Key events in the history of the request.",
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["Provenance"],
-	)
-	
+        enum_reference_types=["Provenance"],
+    )
+
     requester: fhirtypes.ReferenceType = Field(
-		None,
-		alias="requester",
-		title="Who/what is requesting diagnostics",
-		description=(
-    "The individual who initiated the request and has responsibility for "
-    "its activation."
-    ),
+        None,
+        alias="requester",
+        title="Who/what is requesting diagnostics",
+        description=(
+            "The individual who initiated the request and has responsibility for "
+            "its activation."
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["Device", "Practitioner", "PractitionerRole", "Organization"],
-	)
-	
+        enum_reference_types=[
+            "Device",
+            "Practitioner",
+            "PractitionerRole",
+            "Organization",
+        ],
+    )
+
     status: fhirtypes.Code = Field(
-		None,
-		alias="status",
-		title=(
-    "draft | active | on-hold | revoked | completed | entered-in-error | "
-    "unknown"
-    ),
-		description="The status of the request.",
+        None,
+        alias="status",
+        title=(
+            "draft | active | on-hold | revoked | completed | entered-in-error | "
+            "unknown"
+        ),
+        description="The status of the request.",
         # if property is element of this resource.
         element_property=True,
         # note: Enum values can be used in validation,
         # but use in your own responsibilities, read official FHIR documentation.
-		enum_values=["draft", "active", "on-hold", "revoked", "completed", "entered-in-error", "unknown"],
-	)
-    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
-        None,
-        alias="_status",
-        title="Extension field for ``status``."
+        enum_values=[
+            "draft",
+            "active",
+            "on-hold",
+            "revoked",
+            "completed",
+            "entered-in-error",
+            "unknown",
+        ],
     )
-	
+    status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_status", title="Extension field for ``status``."
+    )
+
     subject: fhirtypes.ReferenceType = Field(
-		...,
-		alias="subject",
-		title="Focus of request",
-		description="The patient who will use the device.",
+        ...,
+        alias="subject",
+        title="Focus of request",
+        description="The patient who will use the device.",
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["Patient", "Group", "Location", "Device"],
-	)
-	
+        enum_reference_types=["Patient", "Group", "Location", "Device"],
+    )
+
     supportingInfo: typing.List[fhirtypes.ReferenceType] = Field(
-		None,
-		alias="supportingInfo",
-		title="Additional clinical information",
-		description=(
-    "Additional clinical information about the patient that may influence "
-    "the request fulfilment.  For example, this may include where on the "
-    "subject's body the device will be used (i.e. the target site)."
-    ),
+        None,
+        alias="supportingInfo",
+        title="Additional clinical information",
+        description=(
+            "Additional clinical information about the patient that may influence "
+            "the request fulfilment.  For example, this may include where on the "
+            "subject's body the device will be used (i.e. the target site)."
+        ),
         # if property is element of this resource.
         element_property=True,
         # note: Listed Resource Type(s) should be allowed as Reference.
-		enum_reference_types=["Resource"],
-	)
+        enum_reference_types=["Resource"],
+    )
+
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
         ``DeviceRequest`` according specification,
         with preserving original sequence order.
         """
-        return ["id", "meta", "implicitRules", "language", "text", "contained", "extension", "modifierExtension", "identifier", "instantiatesCanonical", "instantiatesUri", "basedOn", "priorRequest", "groupIdentifier", "status", "intent", "priority", "codeReference", "codeCodeableConcept", "parameter", "subject", "encounter", "occurrenceDateTime", "occurrencePeriod", "occurrenceTiming", "authoredOn", "requester", "performerType", "performer", "reasonCode", "reasonReference", "insurance", "supportingInfo", "note", "relevantHistory"]
-
+        return [
+            "id",
+            "meta",
+            "implicitRules",
+            "language",
+            "text",
+            "contained",
+            "extension",
+            "modifierExtension",
+            "identifier",
+            "instantiatesCanonical",
+            "instantiatesUri",
+            "basedOn",
+            "priorRequest",
+            "groupIdentifier",
+            "status",
+            "intent",
+            "priority",
+            "codeReference",
+            "codeCodeableConcept",
+            "parameter",
+            "subject",
+            "encounter",
+            "occurrenceDateTime",
+            "occurrencePeriod",
+            "occurrenceTiming",
+            "authoredOn",
+            "requester",
+            "performerType",
+            "performer",
+            "reasonCode",
+            "reasonReference",
+            "insurance",
+            "supportingInfo",
+            "note",
+            "relevantHistory",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_required_primitive_elements_1521(
@@ -436,8 +501,7 @@ class DeviceRequest(domainresource.DomainResource):
         data type mandatory, it is possible to provide an extension that explains why
         the primitive value is not present.
         """
-        required_fields = [
-			("intent", "intent__ext")]
+        required_fields = [("intent", "intent__ext")]
         _missing = object()
 
         def _fallback():
@@ -502,13 +566,13 @@ class DeviceRequest(domainresource.DomainResource):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-			"code": [
-			    "codeCodeableConcept",
-			    "codeReference"],
-			"occurrence": [
-			    "occurrenceDateTime",
-			    "occurrencePeriod",
-			    "occurrenceTiming"]}
+            "code": ["codeCodeableConcept", "codeReference"],
+            "occurrence": [
+                "occurrenceDateTime",
+                "occurrencePeriod",
+                "occurrenceTiming",
+            ],
+        }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -531,8 +595,6 @@ class DeviceRequest(domainresource.DomainResource):
         return values
 
 
-from . import backboneelement
-
 class DeviceRequestParameter(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -542,77 +604,85 @@ class DeviceRequestParameter(backboneelement.BackboneElement):
     Specific parameters for the ordered item.  For example, the prism value for
     lenses.
     """
+
     resource_type = Field("DeviceRequestParameter", const=True)
-	
+
     code: fhirtypes.CodeableConceptType = Field(
-		None,
-		alias="code",
-		title="Device detail",
-		description="A code or string that identifies the device detail being asserted.",
-        # if property is element of this resource.
-        element_property=True,
-	)
-	
-    valueBoolean: bool = Field(
-		None,
-		alias="valueBoolean",
-		title="Value of detail",
-		description="The value of the device detail.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-		one_of_many="value",
-		one_of_many_required=False,
-	)
-    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
-        alias="_valueBoolean",
-        title="Extension field for ``valueBoolean``."
+        alias="code",
+        title="Device detail",
+        description="A code or string that identifies the device detail being asserted.",
+        # if property is element of this resource.
+        element_property=True,
     )
-	
+
+    valueBoolean: bool = Field(
+        None,
+        alias="valueBoolean",
+        title="Value of detail",
+        description="The value of the device detail.",
+        # if property is element of this resource.
+        element_property=True,
+        # Choice of Data Types. i.e value[x]
+        one_of_many="value",
+        one_of_many_required=False,
+    )
+    valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
+        None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
+    )
+
     valueCodeableConcept: fhirtypes.CodeableConceptType = Field(
-		None,
-		alias="valueCodeableConcept",
-		title="Value of detail",
-		description="The value of the device detail.",
+        None,
+        alias="valueCodeableConcept",
+        title="Value of detail",
+        description="The value of the device detail.",
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
-		one_of_many="value",
-		one_of_many_required=False,
-	)
-	
+        one_of_many="value",
+        one_of_many_required=False,
+    )
+
     valueQuantity: fhirtypes.QuantityType = Field(
-		None,
-		alias="valueQuantity",
-		title="Value of detail",
-		description="The value of the device detail.",
+        None,
+        alias="valueQuantity",
+        title="Value of detail",
+        description="The value of the device detail.",
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
-		one_of_many="value",
-		one_of_many_required=False,
-	)
-	
+        one_of_many="value",
+        one_of_many_required=False,
+    )
+
     valueRange: fhirtypes.RangeType = Field(
-		None,
-		alias="valueRange",
-		title="Value of detail",
-		description="The value of the device detail.",
+        None,
+        alias="valueRange",
+        title="Value of detail",
+        description="The value of the device detail.",
         # if property is element of this resource.
         element_property=True,
         # Choice of Data Types. i.e value[x]
-		one_of_many="value",
-		one_of_many_required=False,
-	)
+        one_of_many="value",
+        one_of_many_required=False,
+    )
+
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
         ``DeviceRequestParameter`` according specification,
         with preserving original sequence order.
         """
-        return ["id", "extension", "modifierExtension", "code", "valueCodeableConcept", "valueQuantity", "valueRange", "valueBoolean"]
-
+        return [
+            "id",
+            "extension",
+            "modifierExtension",
+            "code",
+            "valueCodeableConcept",
+            "valueQuantity",
+            "valueRange",
+            "valueBoolean",
+        ]
 
     @root_validator(pre=True, allow_reuse=True)
     def validate_one_of_many_2448(
@@ -631,11 +701,13 @@ class DeviceRequestParameter(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {
-			"value": [
-			    "valueBoolean",
-			    "valueCodeableConcept",
-			    "valueQuantity",
-			    "valueRange"]}
+            "value": [
+                "valueBoolean",
+                "valueCodeableConcept",
+                "valueQuantity",
+                "valueRange",
+            ]
+        }
         for prefix, fields in one_of_many_fields.items():
             assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
             required = (
@@ -656,4 +728,3 @@ class DeviceRequestParameter(backboneelement.BackboneElement):
                 raise ValueError(f"Expect any of field value from this list {fields}.")
 
         return values
-

@@ -2,8 +2,12 @@
 History
 =======
 
-6.4.1 (unreleased)
+6.5.0 (unreleased)
 ------------------
+
+Breaking
+
+- FHIR R4B release has been replaced from R4. See changes (Release R4B: May 28, 2022) http://hl7.org/fhir/R4B/history.html. More detail at http://hl7.org/fhir/R4B/diff.html
 
 Improvements
 

@@ -12,7 +12,8 @@ _APPLIED: bool = False
 def validate_required_primitive_elements_1724(
     cls, values: typing.Dict[str, typing.Any]
 ) -> typing.Dict[str, typing.Any]:
-    """This patch is made for SearchParameter.validate_required_primitive_elements_1724 for purpose of testing.
+    """This patch is made for
+    SearchParameter.validate_required_primitive_elements_1724 for purpose of testing.
     Some json file doesn't contain value of 'base' which is required."""
     required_fields = [
         # ("base", "base__ext"),
@@ -76,6 +77,7 @@ def apply():
         return
     from fhir.resources.fhirtypes import Id
     from fhir.resources.searchparameter import SearchParameter
+
     # some example json file has ID value more than default 64 character
     Id.configure_constraints(min_length=1, max_length=128, regex=None)
     SearchParameter.__pre_root_validators__ = [

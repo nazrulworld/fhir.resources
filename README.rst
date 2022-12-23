@@ -762,3 +762,7 @@ owned by `Health Level Seven International <https://www.hl7.org/legal/trademarks
     :class: strike
 .. role:: raw-html(raw)
     :format: html
+
+
+https://confluence.hl7.org/display/FHIR/Strategies+for+dealing+with+R4+and+R4B
+https://outburn.co.il/blog/fhir-v-4-3-r4b-all-the-changes/

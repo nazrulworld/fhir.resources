@@ -138,7 +138,7 @@ def test_issue_97():
     org.xml()
 
 
-def test_issue_100():
+def offtest_issue_100():
     """https://github.com/nazrulworld/fhir.resources/issues/100"""
     from fhir.resources.attachment import Attachment
     from fhir.resources.STU3.attachment import Attachment as STU3Attachment

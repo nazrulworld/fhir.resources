@@ -358,7 +358,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
                     option |= orjson.OPT_SORT_KEYS
 
             if len(dumps_kwargs) > 0:
-                logger.warning(
+                logger.debug(
                     "When ``dumps`` method is used from ``orjson`` "
                     "all dumps kwargs are ignored except `indent`, `sort_keys` "
                     "and of course ``option`` from orjson"

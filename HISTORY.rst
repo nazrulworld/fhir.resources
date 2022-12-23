@@ -5,7 +5,9 @@ History
 6.4.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+Improvements
+
+- Issue #90 logging level downgraded from warning to debug.
 
 
 6.4.0 (2022-05-11)

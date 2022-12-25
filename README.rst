@@ -1,6 +1,6 @@
-=================================
-FHIR® Resources (R4, STU3, DSTU2)
-=================================
+==================================
+FHIR® Resources (R4B, STU3, DSTU2)
+==================================
 
 .. image:: https://img.shields.io/pypi/v/fhir.resources.svg
         :target: https://pypi.python.org/pypi/fhir.resources
@@ -46,8 +46,9 @@ data validation, faster in performance and optionally ``orjson`` support has bee
 FHIR® Version Info
 ------------------
 
-FHIR® (Release R4, version 4.0.1) is available as default. Also previous versions are available as Python sub-package
+FHIR® (Release R4B, version 4.3.0) is available as default. Also previous versions are available as Python sub-package
 (each release name string becomes sub-package name, i.e ``STU3`` ).
+From ``fhir.resources`` version 6.5.0; FHIR R4 is overlapped by R4B.
 
 **Available Previous Versions**:
 
@@ -681,6 +682,15 @@ Examples::
     >>> String.configure_empty_str(allow=True)
 
 
+
+FHIR release R4B over R4
+------------------------
+
+FHIR release R4B is coming with not that much changes over the release of R4. So we decided not to create separate sub-package for R4 like STU3, instead there just overlaps on existing R4. This also means that in future, when we will work on R5; there will be sub-package for R4B and no R4.
+We suggest you to try make a plan to be upgraded to R4B. Here you could find related information dealing-strategy-R4-R4B_.
+
+You could find full discussion here https://github.com/nazrulworld/fhir.resources/discussions/116
+
 Migration (from later than ``6.X.X``)
 -------------------------------------
 
@@ -753,7 +763,8 @@ This package skeleton was created with Cookiecutter_ and the `audreyr/cookiecutt
 .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
 .. _`fhir-parser`: https://github.com/nazrulworld/fhir-parser
 .. _`pydantic`: https://pydantic-docs.helpmanual.io/
-.. _`orjson`: <https://pypi.org/project/orjson/>
+.. _`orjson`: https://pypi.org/project/orjson/
+.. _`dealing-strategy-R4-R4B`: https://confluence.hl7.org/display/FHIR/Strategies+for+dealing+with+R4+and+R4B
 
 © Copyright HL7® logo, FHIR® logo and the flaming fire are registered trademarks
 owned by `Health Level Seven International <https://www.hl7.org/legal/trademarks.cfm?ref=https://pypi.org/project/fhir-resources/>`_
@@ -762,7 +773,3 @@ owned by `Health Level Seven International <https://www.hl7.org/legal/trademarks
     :class: strike
 .. role:: raw-html(raw)
     :format: html
-
-
-https://confluence.hl7.org/display/FHIR/Strategies+for+dealing+with+R4+and+R4B
-https://outburn.co.il/blog/fhir-v-4-3-r4b-all-the-changes/

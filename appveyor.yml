@@ -1,3 +1,5 @@
+image:
+    - Visual Studio 2022
 environment:
   matrix:
     - PYTHON: "C:\\Python36-x64"

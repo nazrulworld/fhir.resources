@@ -30,11 +30,18 @@ FHIR® Resources (R4B, STU3, DSTU2)
         :target: https://www.hl7.org/implement/standards/product_brief.cfm?product_id=449
         :alt: HL7® FHIR®
 
-**Experimental XML and YAML serialization and deserialization supports. See [Advanced Usages] section!**
+FHIR_ (Fast Healthcare Interoperability Resources) is a specification for exchanging healthcare information electronically.
+It is designed to facilitate the exchange of data between different healthcare systems and applications, and is commonly used to build APIs (Application Programming Interfaces) for healthcare data.
+It is based on modern web technologies, and is designed to be easy to use and implement.
+It uses a modular approach, with a set of "resources" that represent different types of healthcare data (such as patients, observations, and diagnoses).
+These resources can be combined and extended as needed to support a wide range of healthcare use cases.
 
 
-Powered by pydantic_, all `FHIR Resources <https://www.hl7.org/fhir/resourcelist.html>`_ are available as python class with built-in
-data validation, faster in performance and optionally ``orjson`` support has been included as a performance booster! Written in modern python.
+This "fhir.resources" package is powered by pydantic_ so faster in performance and optionally ``orjson`` support has been included as a performance booster!
+Obviously it is written in modern python and has data validation built-in.
+It provides tools and classes for all of the `FHIR Resources <https://www.hl7.org/fhir/resourcelist.html>`_ defined in the FHIR specification,
+and allows you to create and manipulate FHIR resources in Python. You can then use these resources to build FHIR-based APIs or to work with FHIR data in other ways.
+
 
 * Easy to construct, easy to extended validation, easy to export.
 * By inheriting behaviour from pydantic_, compatible with `ORM <https://en.wikipedia.org/wiki/Object-relational_mapping>`_.
@@ -42,6 +49,7 @@ data validation, faster in performance and optionally ``orjson`` support has bee
 * Previous release of FHIR® Resources are available.
 * Free software: BSD license
 
+**Experimental XML and YAML serialization and deserialization supports. See [Advanced Usages] section!**
 
 FHIR® Version Info
 ------------------
@@ -66,7 +74,7 @@ version, just clone from https://github.com/nazrulworld/fhir.resources and ``pip
 Usages
 ------
 
-**Example: 1**: Construct Resource Model object::
+**Example: 1**: This example creates a new Organization resource with some of its attributes (id, active, name, address)::
 
     >>> from fhir.resources.organization import Organization
     >>> from fhir.resources.address import Address
@@ -86,7 +94,7 @@ Usages
     >>> org.dict()['active'] is True
     True
 
-**Example: 2**: Resource object created from json string::
+**Example: 2**: This example creates a new Organization resource from json string::
 
     >>> from fhir.resources.organization import Organization
     >>> from fhir.resources.address import Address
@@ -105,7 +113,7 @@ Usages
     True
 
 
-**Example: 3**: Resource object created from json object(py dict)::
+**Example: 3**: This example creates a new Patient resource from json object(py dict)::
 
     >>> from fhir.resources.patient import Patient
     >>> from fhir.resources.humanname import HumanName
@@ -127,7 +135,7 @@ Usages
     True
 
 
-**Example: 4**: Construct Resource object from json file::
+**Example: 4**: This example creates a new Patient resource from json file::
 
     >>> from fhir.resources.patient import Patient
     >>> import os
@@ -138,7 +146,7 @@ Usages
     True
 
 
-**Example: 5**: Construct resource object in python way::
+**Example: 5**: This example creates a new Organization resource in python way::
 
     >>> from fhir.resources.organization import Organization
     >>> from fhir.resources.address import Address
@@ -164,7 +172,7 @@ Usages
     Please note that due to the way the validation works, you will run into issues if you are using ``construct()`` to create
     resources that have more than one mandatory field. See `this comment in issue#56 <https://github.com/nazrulworld/fhir.resources/issues/56#issuecomment-784520234>`_ for details.
 
-**Example: 4**: Using Resource Factory Function::
+**Example: 4**: This example creates a new Organization resource using Resource Factory Function::
 
     >>> from fhir.resources import construct_fhir_element
     >>> json_dict = {"resourceType": "Organization",
@@ -765,6 +773,7 @@ This package skeleton was created with Cookiecutter_ and the `audreyr/cookiecutt
 .. _`pydantic`: https://pydantic-docs.helpmanual.io/
 .. _`orjson`: https://pypi.org/project/orjson/
 .. _`dealing-strategy-R4-R4B`: https://confluence.hl7.org/display/FHIR/Strategies+for+dealing+with+R4+and+R4B
+.. _`FHIR`: https://www.hl7.org/implement/standards/product_brief.cfm
 
 © Copyright HL7® logo, FHIR® logo and the flaming fire are registered trademarks
 owned by `Health Level Seven International <https://www.hl7.org/legal/trademarks.cfm?ref=https://pypi.org/project/fhir-resources/>`_

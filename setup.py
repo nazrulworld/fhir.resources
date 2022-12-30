@@ -32,6 +32,8 @@ test_requirements = [
     "isort==4.3.21",
     "black",
     "mypy==0.812",
+    "importlib-metadata==1.7.0",
+    "setuptools==46.4.0"
 ]
 
 development_requirements = [
@@ -57,6 +59,9 @@ setup(
         "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
         "Intended Audience :: Developers",
         "Intended Audience :: Education",
         "Intended Audience :: Healthcare Industry",

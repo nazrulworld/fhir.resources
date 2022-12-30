@@ -25,15 +25,14 @@ test_requirements = [
     "coverage",
     "pytest>5.4.0;python_version>='3.6'",
     "pytest-cov>=2.10.0;python_version>='3.6'",
-    "flake8==3.8.3",
-    "flake8-isort==3.0.0",
+    "flake8==5.0.4",
+    "flake8-isort==4.2.0",
     "flake8-bugbear==20.1.4",
     "requests==2.23.0",
     "isort==4.3.21",
     "black",
     "mypy==0.812",
-    "importlib-metadata==5.2.0",
-    "setuptools==65.6.3"
+    "setuptools==65.6.3;python_version>='3.7'"
 ]
 
 development_requirements = [

@@ -32,8 +32,8 @@ test_requirements = [
     "isort==4.3.21",
     "black",
     "mypy==0.812",
-    "importlib-metadata==1.7.0",
-    "setuptools==46.4.0"
+    "importlib-metadata==5.2.0",
+    "setuptools==65.6.3"
 ]
 
 development_requirements = [

@@ -32,7 +32,7 @@ install:
   - ps: "ls \"C:/\""
 
   - ECHO "Installed SDKs:"
-  - ps: "ls \"C:/Program Files/Microsoft SDKs\""
+  - ps: "ls \"C:/Program Files/Microsoft SDKs/Azure\""
 #  - ps: "ls \"C:/Program Files/Microsoft SDKs/Windows\""
 
   # Prepend newly installed Python to the PATH of this build (this cannot be

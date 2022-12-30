@@ -33,7 +33,7 @@ test_requirements = [
     "black",
     "mypy==0.812",
     "importlib-metadata==1.7.0",
-    "setuptools==46.4.0"
+    "setuptools==65.5.1"
 ]
 
 development_requirements = [

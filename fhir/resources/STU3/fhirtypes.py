@@ -427,7 +427,7 @@ class Markdown(ConstrainedStr, Primitive):
         return value
 
 
-class Xhtml(ConstrainedStr, Primitive):
+class Xhtml(ConstrainedStr, Primitive):  # type: ignore
     __visit_name__ = "xhtml"
 
     @classmethod

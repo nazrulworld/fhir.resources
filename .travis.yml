@@ -18,7 +18,7 @@ jobs:
 
     - name: "Python 3.8 on Linux"
       os: linux
-      dist: xenial
+      dist: focal
       language: python
       python: 3.8
       env: python_version=3.8
@@ -27,8 +27,8 @@ jobs:
       os: linux
       dist: focal
       language: python
-      python: 3.9-dev
-      env: python_version=3.9-dev
+      python: 3.9
+      env: python_version=3.9
 
     - name: "Python 3.10 on Linux"
       os: linux
@@ -37,8 +37,15 @@ jobs:
       python: 3.10-dev
       env: python_version=3.10-dev
 
+    - name: "Python 3.11 on Linux"
+      os: linux
+      dist: focal
+      language: python
+      python: 3.11-dev
+      env: python_version=3.11-dev
+
   allow_failures:
-    - python: 3.9-dev
+    - python: 3.11-dev
     - python: 3.10-dev
 
 cache:

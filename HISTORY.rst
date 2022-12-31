@@ -7,11 +7,12 @@ History
 
 Breaking
 
-- FHIR R4B release has been replaced from R4. See changes (Release R4B: May 28, 2022) http://hl7.org/fhir/R4B/history.html. More detail at http://hl7.org/fhir/R4B/diff.html
+- FHIR R4B release has been overlapped on current R4 as default release. See changes (Release R4B: May 28, 2022) http://hl7.org/fhir/R4B/history.html. More detail at http://hl7.org/fhir/R4B/diff.html
 
 Improvements
 
 - Issue #90 logging level downgraded from warning to debug.
+- Primitive `URL` type is now accepting the relative path without prefix "/".
 
 
 6.4.0 (2022-05-11)

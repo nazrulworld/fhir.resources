@@ -393,14 +393,19 @@ class Url(AnyUrl, Primitive):
         elif value in FHIR_PRIMITIVES:
             # Extensions may contain a valueUrl for a primitive FHIR type
             return value
-        # we are allowing relative path
-        matched = cls.path_regex.match(value)
-        if matched is not None:
-            # @ToDo: required resource type validation?
-            # fx: resource type = matched.groupdict().get("resourceType")
-            return value
-
-        return AnyUrl.validate(value, field, config)
+        try:
+            return AnyUrl.validate(value, field, config)
+        except Exception:
+            # we are allowing relative path
+            if not value.startswith("/"):
+                matched = cls.path_regex.match("/" + value)
+            else:
+                matched = cls.path_regex.match(value)
+            if matched is not None:
+                # @ToDo: required resource type validation?
+                # fx: resource type = matched.groupdict().get("resourceType")
+                return value
+            raise
 
     @classmethod
     def to_string(cls, value):

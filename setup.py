@@ -9,6 +9,7 @@ from setuptools import find_namespace_packages, setup
 
 PY_VERSION_TUPLE = platform.python_version_tuple()
 PY_VERSION_10_OR_LATER = PY_VERSION_TUPLE[0] == "3" and int(PY_VERSION_TUPLE[1]) >= 10
+PY_VERSION_11_OR_LATER = PY_VERSION_10_OR_LATER and int(PY_VERSION_TUPLE[1]) >= 11
 
 with open("README.rst") as readme_file:
     readme = readme_file.read()
@@ -38,11 +39,12 @@ test_requirements = [
     "requests==2.23.0;python_version<'3.10'",
     "isort" + (PY_VERSION_10_OR_LATER and ">=5.11.4" or "==4.3.21"),
     "black",
-    "mypy==0.812",
+    "mypy" + (PY_VERSION_11_OR_LATER and ">=0.991" or "==0.812"),
     "setuptools==65.6.3;python_version>='3.7'",
 ]
 if PY_VERSION_10_OR_LATER:
     test_requirements.append("importlib-metadata>=5.2.0")
+if PY_VERSION_11_OR_LATER:
     test_requirements.append("typed-ast>=1.5.4")
 
 development_requirements = [

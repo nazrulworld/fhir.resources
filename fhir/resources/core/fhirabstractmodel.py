@@ -525,5 +525,5 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         json_dumps = json_dumps
         allow_population_by_field_name = True
         extra = Extra.forbid
-        validate_assignment = True
+        validate_assignment = False
         error_msg_templates = {"value_error.extra": "extra fields not permitted"}

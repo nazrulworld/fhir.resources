@@ -108,7 +108,7 @@ class String(ConstrainedStr, Primitive):
     Therefore strings SHOULD always contain non-whitespace content"""
 
     regex = re.compile(r"[ \r\n\t\S]+")
-    allow_empty_str = False
+    allow_empty_str = True
     __visit_name__ = "string"
 
     @classmethod

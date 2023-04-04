@@ -1,8 +1,8 @@
 # _*_ coding: utf-8 _*_
 from pydantic import ValidationError
 from pydantic.errors import UrlSchemeError
-from fhir.resources.patient import Patient
-from fhir.resources.period import Period
+from fhir.resources.R4B.patient import Patient
+from fhir.resources.R4B.period import Period
 
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 
@@ -35,7 +35,7 @@ def test_issue_64():
     except ValidationError:
         # should raise validation error
         assert 1 == 1
-    from fhir.resources.fhirtypes import String
+    from fhir.resources.R4B.fhirtypes import String
 
     String.configure_empty_str(allow=True)
     try:
@@ -79,7 +79,7 @@ def test_issue_96():
 
 def test_issue_97():
     """https://github.com/nazrulworld/fhir.resources/issues/97"""
-    from fhir.resources.organization import Organization
+    from fhir.resources.R4B.organization import Organization
 
     data = {
         "resourceType": "Organization",
@@ -140,9 +140,9 @@ def test_issue_97():
 
 def offtest_issue_100():
     """https://github.com/nazrulworld/fhir.resources/issues/100"""
-    from fhir.resources.attachment import Attachment
+    from fhir.resources.R4B.attachment import Attachment
     from fhir.resources.STU3.attachment import Attachment as STU3Attachment
-    from fhir.resources.fhirtypes import Url
+    from fhir.resources.R4B.fhirtypes import Url
     from fhir.resources.STU3.fhirtypes import Url as STU3Url
 
     Url.validate(
@@ -213,9 +213,9 @@ def offtest_issue_100():
 
 def test_issue101():
     """ """
-    from fhir.resources.element import Element
+    from fhir.resources.R4B.element import Element
     from fhir.resources.STU3.element import Element as STU3Element
-    from fhir.resources.resource import Resource
+    from fhir.resources.R4B.resource import Resource
     from fhir.resources.STU3.resource import Resource as STU3Resource
 
     data = {

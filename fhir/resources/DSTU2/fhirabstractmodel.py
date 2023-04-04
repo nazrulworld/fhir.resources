@@ -268,7 +268,6 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
                 if field.outer_type_ != field.type_ and str(
                     field.outer_type_
                 ).startswith("typing.List["):
-
                     children_excludes[field.name] = {
                         "__all__": {FHIR_COMMENTS_FIELD_NAME}
                     }

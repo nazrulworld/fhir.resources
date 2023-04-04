@@ -418,7 +418,8 @@ class Url(AnyUrl, Primitive):
 
 class Markdown(ConstrainedStr, Primitive):
     """A FHIR string (see above) that may contain markdown syntax for optional processing
-    by a markdown presentation engine, in the GFM extension of CommonMark format (see below)"""
+    by a markdown presentation engine, in the GFM extension of CommonMark format (see below)
+    """
 
     __visit_name__ = "markdown"
     regex = re.compile(r"\s*(\S|\s)*")
@@ -459,7 +460,6 @@ class Date(datetime.date, Primitive):
 
     @classmethod
     def __get_validators__(cls) -> "CallableGenerator":
-
         yield cls.validate
 
     @classmethod
@@ -514,7 +514,6 @@ class DateTime(datetime.datetime, Primitive):
 
     @classmethod
     def __get_validators__(cls) -> "CallableGenerator":
-
         yield cls.validate
 
     @classmethod
@@ -564,7 +563,8 @@ class Instant(datetime.datetime, Primitive):
     use date or dateTime (which can be as precise as instant,
     but is not required to be). instant is a more constrained dateTime
 
-    Note: This type is for system times, not human times (see date and dateTime below)."""
+    Note: This type is for system times, not human times (see date and dateTime below).
+    """
 
     regex = re.compile(
         r"([0-9]([0-9]([0-9][1-9]|[1-9]0)|[1-9]00)|"
@@ -577,7 +577,6 @@ class Instant(datetime.datetime, Primitive):
 
     @classmethod
     def __get_validators__(cls) -> "CallableGenerator":
-
         yield cls.validate
 
     @classmethod
@@ -610,7 +609,6 @@ class Time(datetime.time, Primitive):
 
     @classmethod
     def __get_validators__(cls) -> "CallableGenerator":
-
         yield cls.validate
 
     @classmethod

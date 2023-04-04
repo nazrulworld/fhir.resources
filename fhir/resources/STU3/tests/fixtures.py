@@ -51,7 +51,6 @@ def expand(self, local):
 
 @pytest.fixture(scope="session")
 def base_settings():
-
     if not os.path.exists(CACHE_PATH):
         os.makedirs(CACHE_PATH)
 

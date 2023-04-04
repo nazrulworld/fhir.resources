@@ -15,7 +15,7 @@ EXAMPLE_RESOURCES_URL = (
     "0.3.2/FHIR/R4B/"
     "4.3.0-examples-json.zip"
 )
-ROOT_PATH = dirname(dirname(dirname(dirname(os.path.abspath(__file__)))))
+ROOT_PATH = dirname(dirname(dirname(dirname(dirname(os.path.abspath(__file__))))))
 CACHE_PATH = os.path.join(ROOT_PATH, ".cache")
 
 

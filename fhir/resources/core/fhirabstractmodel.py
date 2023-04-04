@@ -475,7 +475,6 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
     def _fhir_get_value(
         cls, v: typing.Any, by_alias: bool, exclude_none: bool, exclude_comments: bool
     ) -> typing.Any:
-
         if isinstance(v, (FHIRAbstractModel, BaseModel)):
             v_dict = v.dict(
                 by_alias=by_alias,

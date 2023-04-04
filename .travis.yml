@@ -63,6 +63,6 @@ script:
   - pytest tests
   - pytest fhir/resources/DSTU2/tests
   - pytest fhir/resources/STU3/tests
-  - pytest -s --cov=fhir/resources/tests -s --tb=native -v --cov-report term-missing --cov-append fhir/resources/tests
+  - pytest -s --cov=fhir/resources/R4B/tests -s --tb=native -v --cov-report term-missing --cov-append fhir/resources/R4B/tests
 after_success:
   - codecov

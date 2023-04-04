@@ -4,8 +4,8 @@ from http import client
 import lxml.etree  # type: ignore
 
 from fhir.resources.core import utils
-from fhir.resources.observation import Observation
-from fhir.resources.patient import Patient
+from fhir.resources.R4B.observation import Observation
+from fhir.resources.R4B.patient import Patient
 
 from .fixtures import FHIR_XSD_DIR, IS_TRAVIS, STATIC_PATH
 from .utils import has_internet_connection, post_xml_resource

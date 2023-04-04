@@ -75,8 +75,8 @@ def apply():
     if _APPLIED is True:
         # Already applied, one time only.
         return
-    from fhir.resources.fhirtypes import Id
-    from fhir.resources.searchparameter import SearchParameter
+    from fhir.resources.R4B.fhirtypes import Id
+    from fhir.resources.R4B.searchparameter import SearchParameter
 
     # some example json file has ID value more than default 64 character
     Id.configure_constraints(min_length=1, max_length=128, regex=None)

@@ -464,22 +464,18 @@ def fhir_model_validator(
 
 
 def fhirprimitiveextension_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
-
     return fhir_model_validator("FHIRPrimitiveExtension", v)
 
 
 def element_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
-
     return fhir_model_validator("Element", v)
 
 
 def resource_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
-
     return fhir_model_validator("Resource", v)
 
 
 def domainresource_validator(v: Union[StrBytes, dict, Path, FHIRAbstractModel]):
-
     return fhir_model_validator("DomainResource", v)
 
 

@@ -134,7 +134,6 @@ class Specimen(DomainResource):
 
 
 class SpecimenCollection(BackboneElement):
-
     resource_type = Field("SpecimenCollection", const=True)
 
     collector: fhirtypes.ReferenceType = Field(

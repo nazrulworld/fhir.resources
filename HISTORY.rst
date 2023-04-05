@@ -2,10 +2,17 @@
 History
 =======
 
-6.5.1 (unreleased)
+7.0.0 (unreleased)
 ------------------
 
-- Nothing changed yet.
+New Feature
+
+- `FHIR version R5 <https://www.hl7.org/fhir/R5/resourcelist.html>`_ support has been added under root package.
+
+
+Breaking
+
+- All root resources (FHIR version R4B) are moved under sub-package ``R4B``
 
 
 6.5.0 (2023-01-01)

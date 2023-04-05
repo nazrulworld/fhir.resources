@@ -1,6 +1,6 @@
-==================================
-FHIR® Resources (R4B, STU3, DSTU2)
-==================================
+======================================
+FHIR® Resources (R5, R4B, STU3, DSTU2)
+======================================
 
 .. image:: https://img.shields.io/pypi/v/fhir.resources.svg
         :target: https://pypi.python.org/pypi/fhir.resources
@@ -54,12 +54,13 @@ and allows you to create and manipulate FHIR resources in Python. You can then u
 FHIR® Version Info
 ------------------
 
-FHIR® (Release R4B, version 4.3.0) is available as default. Also previous versions are available as Python sub-package
-(each release name string becomes sub-package name, i.e ``STU3`` ).
-From ``fhir.resources`` version 6.5.0; FHIR R4 is overlapped by R4B.
+FHIR® (Release R5, version 5.0.0) is available as default. Also previous versions are available as Python sub-package
+(each release name string becomes sub-package name, i.e ``R4B`` ).
+From ``fhir.resources`` version 7.0.0; there no FHIR ``R4`` instead of ``R4B`` is available as sub-package.
 
 **Available Previous Versions**:
 
+* ``R4B`` (4.3.0)
 * ``STU3`` (3.0.2)
 * ``DSTU2`` (1.0.2) [see `issue#13 <https://github.com/nazrulworld/fhir.resources/issues/13>`_][don't have full tests coverage]
 

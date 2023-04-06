@@ -7,12 +7,12 @@ History
 
 New Feature
 
-- `FHIR version R5 <https://www.hl7.org/fhir/R5/resourcelist.html>`_ support has been added under root package.
+- Support for `FHIR version R5 <https://www.hl7.org/fhir/R5/resourcelist.html>`_ has been added under root package.
 
 
 Breaking
 
-- All root resources (FHIR version R4B) are moved under sub-package ``R4B``
+- All root resources (FHIR version R4B) are moved under sub-package ``R4B``. Have a look at the migration guide.
 
 
 6.5.0 (2023-01-01)

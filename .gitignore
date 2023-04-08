@@ -106,4 +106,4 @@ ENV/
 # Others
 /pip-wheel-metadata
 /fhir-parser
-.python-version
+.DS_Store

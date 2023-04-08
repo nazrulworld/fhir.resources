@@ -700,17 +700,17 @@ We suggest you to try make a plan to be upgraded to R4B. Here you could find rel
 
 You could find full discussion here https://github.com/nazrulworld/fhir.resources/discussions/116
 
-Migration (from ``6.X.X`` to ``7.0.0``)
+Migration (from ``6.X.X`` to ``7.0.X``)
 ---------------------------------------
 
-First of all, you have to correct all imports path, if you wish to keep continue using FHIR release R4B as those resources
-are moved under sub-package named ``R4B``. So if you wish to use current ``R5`` release,
+First of all, you have to correct all imports path, if you wish to keep continue using FHIR release R4B or R4, as those resources
+are moved under sub-package named ``R4B``. Then if you wish to use current ``R5`` release,
 read carefully the following documents.
 
-    1. See the full changes history -> https://build.fhir.org/history.html
-    2. See complete lists of differences between R5 and R4B -> https://hl7.org/fhir/R5/diff.html
-    3. If you are planning to migrate direct from the release ``R4``,
-       then it is important to look at the differences between R4B and R4 here -> https://hl7.org/fhir/R4B/diff.html
+1. See the full changes history -> https://build.fhir.org/history.html
+2. See complete lists of differences between R5 and R4B -> https://hl7.org/fhir/R5/diff.html
+3. If you are planning to migrate direct from the release ``R4``,
+   then it is important to look at the differences between R4B and R4 here -> https://hl7.org/fhir/R4B/diff.html
 
 
 Migration (from later than ``6.X.X``)

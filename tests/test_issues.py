@@ -1,6 +1,8 @@
 # _*_ coding: utf-8 _*_
+import pytest
 from pydantic import ValidationError
 from pydantic.errors import UrlSchemeError
+
 from fhir.resources.R4B.patient import Patient
 from fhir.resources.R4B.period import Period
 
@@ -289,3 +291,64 @@ def test_issue101():
         raise AssertionError("Code should not come here.")
     except ValidationError:
         pass
+
+
+def test_issue127():
+    """https://github.com/nazrulworld/fhir.resources/issues/129"""
+    from fhir.resources.attachment import Attachment
+    from fhir.resources.R4B.attachment import Attachment as R4BAttachment
+    from fhir.resources.STU3.attachment import Attachment as STU3Attachment
+    from fhir.resources.fhirtypes import Url
+    from fhir.resources.R4B.fhirtypes import Url as R4BUrl
+    from fhir.resources.STU3.fhirtypes import Url as STU3Url
+
+    try:
+        Url.validate(
+            "urn:hl7-org:elm-types:r1",
+            Attachment.__fields__["url"],
+            Attachment.__config__,
+        )
+    except Exception as exc:
+        raise AssertionError("Code should not come here.")
+
+    with pytest.raises(UrlSchemeError) as excinfo:
+        Url.validate(
+            "xxx:hl7-org:elm-types:r1",
+            Attachment.__fields__["url"],
+            Attachment.__config__,
+        )
+    assert "invalid or missing URL scheme" == str(excinfo.value)
+
+    try:
+        R4BUrl.validate(
+            "urn:hl7-org:elm-types:r1",
+            R4BAttachment.__fields__["url"],
+            R4BAttachment.__config__,
+        )
+    except Exception as exc:
+        raise AssertionError("Code should not come here.")
+
+    with pytest.raises(UrlSchemeError) as excinfo:
+        R4BUrl.validate(
+            "xxx:hl7-org:elm-types:r1",
+            R4BAttachment.__fields__["url"],
+            R4BAttachment.__config__,
+        )
+    assert "invalid or missing URL scheme" == str(excinfo.value)
+
+    try:
+        STU3Url.validate(
+            "urn:hl7-org:elm-types:r1",
+            STU3Attachment.__fields__["url"],
+            STU3Attachment.__config__,
+        )
+    except Exception as exc:
+        raise AssertionError("Code should not come here.")
+
+    with pytest.raises(UrlSchemeError) as excinfo:
+        STU3Url.validate(
+            "xxx:hl7-org:elm-types:r1",
+            STU3Attachment.__fields__["url"],
+            STU3Attachment.__config__,
+        )
+    assert "invalid or missing URL scheme" == str(excinfo.value)

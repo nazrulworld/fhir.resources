@@ -9,6 +9,7 @@ Fixes
 
 - Issue #128 `pkg_resources.declare_namespace deprecation <https://github.com/nazrulworld/fhir.resources/issues/128>`_
 
+- Issue #129 `urn not supported in Url <https://github.com/nazrulworld/fhir.resources/issues/129>`_
 
 7.0.0 (2023-04-08)
 ------------------

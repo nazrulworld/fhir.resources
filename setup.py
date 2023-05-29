@@ -89,7 +89,6 @@ setup(
     keywords="fhir, resources, python, hl7, health IT, healthcare",
     name="fhir.resources",
     #    namespace_packages=["fhir"],
-    package_dir={"": ""},
     packages=find_namespace_packages(
         include=["fhir*"],
         exclude=[

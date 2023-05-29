@@ -390,6 +390,9 @@ class Url(AnyUrl, Primitive):
         elif value.startswith("mllp:") or value.startswith("llp:"):
             # xxx: find validation
             return value
+        elif value.startswith("urn:"):
+            # xxx: without validation?
+            return value
         elif value in FHIR_PRIMITIVES:
             # Extensions may contain a valueUrl for a primitive FHIR type
             return value
@@ -402,9 +405,11 @@ class Url(AnyUrl, Primitive):
             else:
                 matched = cls.path_regex.match(value)
             if matched is not None:
-                # @ToDo: required resource type validation?
-                # fx: resource type = matched.groupdict().get("resourceType")
-                return value
+                if re.match(
+                    r"^[A-Za-z]+$", matched.groupdict().get("resourceType", "")
+                ):
+                    # @ToDo: required resource type validation?
+                    return value
             raise
 
     @classmethod

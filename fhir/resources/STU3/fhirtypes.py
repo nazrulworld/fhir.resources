@@ -406,7 +406,7 @@ class Url(AnyUrl, Primitive):
                 matched = cls.path_regex.match(value)
             if matched is not None:
                 if re.match(
-                    r"^[A-Za-z]+$", matched.groupdict().get("resourceType", "")
+                    r"^[A-Za-z0-9\-.]+$", matched.groupdict().get("resourceType", "")
                 ):
                     # @ToDo: required resource type validation?
                     return value

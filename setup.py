@@ -88,7 +88,6 @@ setup(
     include_package_data=True,
     keywords="fhir, resources, python, hl7, health IT, healthcare",
     name="fhir.resources",
-    #    namespace_packages=["fhir"],
     packages=find_namespace_packages(
         include=["fhir*"],
         exclude=[
@@ -119,7 +118,7 @@ setup(
         "all": (orjson_requirements + yaml_requirements + xml_requirements),
     },
     url="https://github.com/nazrulworld/fhir.resources",
-    version="7.0.1.dev0",
+    version="7.0.1",
     zip_safe=False,
     python_requires=">=3.6",
     project_urls={

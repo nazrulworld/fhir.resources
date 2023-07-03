@@ -2,7 +2,7 @@
 History
 =======
 
-7.0.2 (unreleased)
+7.0.2 (2023-07-03)
 ------------------
 
 -  `Issue 124 <https://github.com/nazrulworld/fhir.resources/issues/134>`_ on the wake of 2.x pydantic release, pydantic's max version restriction added.

@@ -75,7 +75,9 @@ version, just clone from https://github.com/nazrulworld/fhir.resources and ``pip
 Usages
 ------
 
-**Example: 1**: This example creates a new Organization resource with some of its attributes (id, active, name, address)::
+**Example: 1**: This example creates a new Organization resource with some of its attributes (id, active, name, address)
+
+.. code-block:: python
 
     >>> from fhir.resources.organization import Organization
     >>> from fhir.resources.address import Address
@@ -95,7 +97,9 @@ Usages
     >>> org.dict()['active'] is True
     True
 
-**Example: 2**: This example creates a new Organization resource from json string::
+**Example: 2**: This example creates a new Organization resource from json string
+
+.. code-block:: python
 
     >>> from fhir.resources.organization import Organization
     >>> from fhir.resources.address import Address
@@ -114,7 +118,9 @@ Usages
     True
 
 
-**Example: 3**: This example creates a new Patient resource from json object(py dict)::
+**Example: 3**: This example creates a new Patient resource from json object(py dict)
+
+.. code-block:: python
 
     >>> from fhir.resources.patient import Patient
     >>> from fhir.resources.humanname import HumanName
@@ -136,7 +142,9 @@ Usages
     True
 
 
-**Example: 4**: This example creates a new Patient resource from json file::
+**Example: 4**: This example creates a new Patient resource from json file
+
+.. code-block:: python
 
     >>> from fhir.resources.patient import Patient
     >>> import os
@@ -147,7 +155,9 @@ Usages
     True
 
 
-**Example: 5**: This example creates a new Organization resource in python way::
+**Example: 5**: This example creates a new Organization resource in python way
+
+.. code-block:: python
 
     >>> from fhir.resources.organization import Organization
     >>> from fhir.resources.address import Address
@@ -173,7 +183,9 @@ Usages
     Please note that due to the way the validation works, you will run into issues if you are using ``construct()`` to create
     resources that have more than one mandatory field. See `this comment in issue#56 <https://github.com/nazrulworld/fhir.resources/issues/56#issuecomment-784520234>`_ for details.
 
-**Example: 4**: This example creates a new Organization resource using Resource Factory Function::
+**Example: 4**: This example creates a new Organization resource using Resource Factory Function
+
+.. code-block:: python
 
     >>> from fhir.resources import construct_fhir_element
     >>> json_dict = {"resourceType": "Organization",
@@ -189,13 +201,15 @@ Usages
     True
 
 
-**Example: 5**: Auto validation while providing wrong datatype::
+**Example: 5**: Auto validation while providing wrong datatype
+
+.. code-block:: python
 
     >>> try:
-    ...     org = Organization({"id": "fmk", "address": ["i am wrong type"]})
-    ...     raise AssertionError("Code should not come here")
-    ... except ValueError:
-    ...     pass
+    >>>     org = Organization({"id": "fmk", "address": ["i am wrong type"]})
+    >>>     raise AssertionError("Code should not come here")
+    >>> except ValueError:
+    >>>     pass
 
 
 
@@ -210,7 +224,9 @@ is implemented here.
 
 Also it is possible to generate json string output without comments.
 
-Examples::
+Examples
+
+.. code-block:: python
 
     >>> observation_str = b"""{
     ...  "resourceType": "Observation",
@@ -312,7 +328,9 @@ find that they do not have appropriate data for an element with minimum cardinal
 In this case, the element must be present, but unless the resource or a profile on it has made the
 actual value of the primitive data type mandatory, it is possible to provide an extension that
 explains why the primitive value is not present.
-Example (required ``intent`` element is missing but still valid because of extension)::
+Example (required ``intent`` element is missing but still valid because of extension)
+
+.. code-block:: python
 
     >>> json_str = b"""{
     ...    "resourceType": "MedicationRequest",
@@ -407,7 +425,9 @@ Some convention you have to follow though, while creating a root validator.
 2. Should return ``values``, unless any exception need to be raised.
 3. Validator should be attached only one time for individual Model. Update [from now, it's not possible to attach multiple time same name validator on same class]
 
-Example 1: Validator for Patient::
+Example 1: Validator for Patient
+
+.. code-block:: python
 
     from typing import Dict
     from fhir.resources.patient import Patient
@@ -428,7 +448,9 @@ Example 1: Validator for Patient::
     Patient.add_root_validator(validate_gender, pre=False)
 
 
-Example 2: Validator for Patient from Validator Class::
+Example 2: Validator for Patient from Validator Class
+
+.. code-block:: python
 
     from typing import Dict
     from fhir.resources.patient import Patient
@@ -462,7 +484,9 @@ ENUM Validator
 enforce enum based validation! see `discussion here <https://github.com/nazrulworld/fhir.resources/issues/23>`_.
 If you want to enforce enum constraint, you have to create a validator for that.
 
-Example: Gender Enum::
+Example: Gender Enum
+
+.. code-block:: python
 
     from typing import Dict
     from fhir.resources.patient import Patient
@@ -506,7 +530,10 @@ Based on those discussions, we recommend that keep your ``Resource.Id`` size wit
 about the length of Id, in respect with others opinion that 64 chr length is not sufficient. ``fhirtypes.Id.configure_constraints()``
 is offering to customize as your own requirement.
 
-Examples::
+Examples
+
+.. code-block:: python
+
     >>> from fhir.resources.fhirtypes import Id
     >>> Id.configure_constraints(min_length=16, max_length=128)
 
@@ -524,7 +551,10 @@ your project requirements.
 It is possible to provide custom xmlparser, during load from file or string, meaning that you can validate
 data against FHIR xml schema(and/or your custom schema).
 
-Example-1 Export::
+Example-1 Export
+
+.. code-block:: python
+
     >>> from fhir.resources.patient import Patient
     >>> data = {"active": True, "gender": "male", "birthDate": "2000-09-18", "name": [{"text": "Primal Kons"}]}
     >>> patient_obj = Patient(**data)
@@ -541,7 +571,10 @@ Example-1 Export::
     </Patient>
 
 
-Example-2 Import from string::
+Example-2 Import from string
+
+.. code-block:: python
+
     >>> from fhir.resources.patient import Patient
     >>> data = {"active": True, "gender": "male", "birthDate": "2000-09-18", "name": [{"text": "Primal Kons"}]}
     >>> patient_obj = Patient(**data)
@@ -582,7 +615,10 @@ Example-2 Import from string::
     >>> patient2 == patient
     True
 
-Example-3 Import from file::
+Example-3 Import from file
+
+.. code-block:: python
+
     >>> patient3 = Patient.parse_file("Patient.xml")
     >>> patient3 == patient and patient3 == patient2
     True
@@ -601,7 +637,10 @@ Now it is possible export/import YAML strings.
 Before using this feature, make sure associated dependent library is installed. Use ``fhir.resources[yaml]`` or ``fhir.resources[all]`` as
 your project requirements.
 
-Example-1 Export::
+Example-1 Export
+
+.. code-block:: python
+
     >>> from fhir.resources.patient import Patient
     >>> data = {"active": True, "gender": "male", "birthDate": "2000-09-18", "name": [{"text": "Primal Kons", "family": "Kons", "given": ["Primal"]}]}
     >>> patient_obj = Patient(**data)
@@ -618,7 +657,10 @@ Example-1 Export::
     birthDate: 2000-09-18
 
 
-Example-2 Import from YAML string::
+Example-2 Import from YAML string
+
+.. code-block:: python
+
     >>> from fhir.resources.patient import Patient
     >>> data = b"""
     ... resourceType: Patient
@@ -650,7 +692,10 @@ Example-2 Import from YAML string::
       "birthDate": "2000-09-18"
     }
 
-Example-3 Import from YAML file::
+Example-3 Import from YAML file
+
+.. code-block:: python
+
     >>> from fhir.resources.patient import Patient
     >>> patient_obj = Patient.parse_file("Patient.yml")
     >>> json_str = patient_obj.json(indent=True)
@@ -684,8 +729,10 @@ Allow Empty String
 Although this is not good practice to allow empty string value against FHIR primitive data type ``String``. But
 we in real life scenario, is it unavoidable sometimes.
 
-Examples::
+Examples
     Place this code inside your __init__.py module or any place, just to make sure that this fragment of codes is runtime executed.
+
+.. code-block:: python
 
     >>> from fhir.resources.fhirtypes import String
     >>> String.configure_empty_str(allow=True)

@@ -366,7 +366,8 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
                 warnings.warn(
                     "When ``dumps`` method is used from ``orjson`` "
                     "all dumps kwargs are ignored except `indent`, `sort_keys` "
-                    "and of course ``option`` from orjson", stacklevel=2
+                    "and of course ``option`` from orjson",
+                    stacklevel=2,
                 )
                 dumps_kwargs = {}
 
@@ -424,7 +425,8 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
                 f"{self.__class__.__name__}.dict method accepts only"
                 "´by_alias´, ´exclude_none´, ´exclude_comments` as parameters"
                 " since version v6.2.0, any extra parameter is simply ignored. "
-                "You should not provide any extra argument.", stacklevel=2
+                "You should not provide any extra argument.",
+                stacklevel=2,
             )
         return OrderedDict(
             self._fhir_iter(

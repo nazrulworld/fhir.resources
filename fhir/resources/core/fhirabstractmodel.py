@@ -363,12 +363,12 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
                 # into the `json()` call. However, this will only show once as
                 # it is likely it is the underlying application framework that
                 # is calling this function.
-                warnings.warn(
-                    "When ``dumps`` method is used from ``orjson`` "
-                    "all dumps kwargs are ignored except `indent`, `sort_keys` "
-                    "and of course ``option`` from orjson",
-                    stacklevel=2,
-                )
+                # warnings.warn(
+                #     "When ``dumps`` method is used from ``orjson`` "
+                #     "all dumps kwargs are ignored except `indent`, `sort_keys` "
+                #     "and of course ``option`` from orjson",
+                #     stacklevel=2,
+                # )
                 dumps_kwargs = {}
 
             if option > 0:
@@ -421,13 +421,14 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
             # into the `dict()` call. However, this will only show once as
             # it is likely it is the underlying application framework that
             # is calling this function.
-            warnings.warn(
-                f"{self.__class__.__name__}.dict method accepts only"
-                "´by_alias´, ´exclude_none´, ´exclude_comments` as parameters"
-                " since version v6.2.0, any extra parameter is simply ignored. "
-                "You should not provide any extra argument.",
-                stacklevel=2,
-            )
+            # warnings.warn(
+            #     f"{self.__class__.__name__}.dict method accepts only"
+            #     "´by_alias´, ´exclude_none´, ´exclude_comments` as parameters"
+            #     " since version v6.2.0, any extra parameter is simply ignored. "
+            #     "You should not provide any extra argument.",
+            #     stacklevel=2,
+            # )
+            pass
         return OrderedDict(
             self._fhir_iter(
                 by_alias=by_alias,

@@ -9,8 +9,8 @@ Last updated: 2022-05-28T12:47:40.239+10:00
 import typing
 
 from pydantic.v1 import Field, root_validator
-from pydantic.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.errors import MissingError, NoneIsNotAllowedError
+from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
 
 from . import element, fhirtypes
 

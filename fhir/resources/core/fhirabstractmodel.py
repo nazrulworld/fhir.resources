@@ -11,8 +11,8 @@ from functools import lru_cache
 
 from pydantic.v1 import BaseModel, Extra, Field
 from pydantic.v1.class_validators import ROOT_VALIDATOR_CONFIG_KEY, root_validator
-from pydantic.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.errors import ConfigError, PydanticValueError
+from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.v1.errors import ConfigError, PydanticValueError
 from pydantic.v1.fields import ModelField
 from pydantic.v1.parse import Protocol
 from pydantic.utils import ROOT_KEY, sequence_like

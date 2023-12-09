@@ -7,7 +7,7 @@ from typing import TYPE_CHECKING, Any, Dict, Optional, Pattern, Union
 from uuid import UUID
 
 from pydantic.v1 import AnyUrl
-from pydantic.errors import ConfigError, DateError, DateTimeError, TimeError
+from pydantic.v1.errors import ConfigError, DateError, DateTimeError, TimeError
 from pydantic.main import load_str_bytes
 from pydantic.networks import validate_email
 from pydantic.types import (

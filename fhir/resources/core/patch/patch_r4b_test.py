@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 import typing
 
-from pydantic.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.errors import MissingError, NoneIsNotAllowedError
+from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
 
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 

@@ -8,13 +8,13 @@ from pathlib import Path
 
 from lxml import etree  # type: ignore
 from lxml.etree import QName  # type: ignore
-from pydantic.fields import SHAPE_LIST, SHAPE_SINGLETON
+from pydantic.v1.fields import SHAPE_LIST, SHAPE_SINGLETON
 
 from .common import get_fhir_type_name, is_primitive_type, normalize_fhir_type_class
 
 if typing.TYPE_CHECKING:
     from fhir.resources.core.fhirabstractmodel import FHIRAbstractModel
-    from pydantic.fields import ModelField
+    from pydantic.v1.fields import ModelField
 
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 

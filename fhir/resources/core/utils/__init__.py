@@ -3,9 +3,9 @@ import json
 import pathlib
 from typing import TYPE_CHECKING, Any, Callable, Union, cast, no_type_check
 
-from pydantic.parse import Protocol
-from pydantic.parse import load_file as default_load_file
-from pydantic.parse import load_str_bytes as default_load_str_bytes
+from pydantic.v1.parse import Protocol
+from pydantic.v1.parse import load_file as default_load_file
+from pydantic.v1.parse import load_str_bytes as default_load_str_bytes
 from pydantic.types import StrBytes
 
 from .common import is_primitive_type  # noqa: F401

@@ -13,8 +13,8 @@ from pydantic.v1 import BaseModel, Extra, Field
 from pydantic.v1.class_validators import ROOT_VALIDATOR_CONFIG_KEY, root_validator
 from pydantic.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.errors import ConfigError, PydanticValueError
-from pydantic.fields import ModelField
-from pydantic.parse import Protocol
+from pydantic.v1.fields import ModelField
+from pydantic.v1.parse import Protocol
 from pydantic.utils import ROOT_KEY, sequence_like
 
 from .utils import is_primitive_type, load_file, load_str_bytes, xml_dumps, yaml_dumps

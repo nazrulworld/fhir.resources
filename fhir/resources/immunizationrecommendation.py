@@ -10,7 +10,7 @@ import typing
 
 from pydantic.v1 import Field, root_validator
 from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.errors import MissingError, NoneIsNotAllowedError
+from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
 
 from . import backboneelement, domainresource, fhirtypes
 

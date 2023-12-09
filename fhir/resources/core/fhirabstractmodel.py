@@ -10,7 +10,7 @@ from enum import Enum
 from functools import lru_cache
 
 from pydantic.v1 import BaseModel, Extra, Field
-from pydantic.class_validators import ROOT_VALIDATOR_CONFIG_KEY, root_validator
+from pydantic.v1.class_validators import ROOT_VALIDATOR_CONFIG_KEY, root_validator
 from pydantic.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.errors import ConfigError, PydanticValueError
 from pydantic.fields import ModelField

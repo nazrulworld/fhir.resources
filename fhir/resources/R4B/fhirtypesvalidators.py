@@ -5,7 +5,7 @@ import typing
 from pathlib import Path
 from typing import Union
 
-from pydantic.class_validators import make_generic_validator
+from pydantic.v1.class_validators import make_generic_validator
 from pydantic.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.types import StrBytes
 from pydantic.utils import ROOT_KEY

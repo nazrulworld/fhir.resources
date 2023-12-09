@@ -15,7 +15,7 @@ from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.v1.errors import ConfigError, PydanticValueError
 from pydantic.v1.fields import ModelField
 from pydantic.v1.parse import Protocol
-from pydantic.utils import ROOT_KEY, sequence_like
+from pydantic.v1.utils import ROOT_KEY, sequence_like
 
 from .utils import is_primitive_type, load_file, load_str_bytes, xml_dumps, yaml_dumps
 

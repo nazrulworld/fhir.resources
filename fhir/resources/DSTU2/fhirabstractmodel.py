@@ -12,7 +12,7 @@ from pydantic.v1.class_validators import ROOT_VALIDATOR_CONFIG_KEY, root_validat
 from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.v1.errors import ConfigError, PydanticValueError
 from pydantic.v1.typing import AnyCallable
-from pydantic.utils import ROOT_KEY
+from pydantic.v1.utils import ROOT_KEY
 
 try:
     import orjson

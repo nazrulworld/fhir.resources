@@ -8,7 +8,7 @@ from typing import Union
 from pydantic.v1.class_validators import make_generic_validator
 from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.v1.types import StrBytes
-from pydantic.utils import ROOT_KEY
+from pydantic.v1.utils import ROOT_KEY
 
 from .fhirabstractmodel import FHIRAbstractModel
 

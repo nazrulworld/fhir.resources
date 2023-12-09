@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from pydantic.datetime_parse import parse_date, parse_datetime
+from pydantic.v1.datetime_parse import parse_date, parse_datetime
 
 from .. import fhirtypes  # noqa: F401
 from .. import documentmanifest

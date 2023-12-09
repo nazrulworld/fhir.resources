@@ -42,7 +42,7 @@ except ImportError:
 
 if TYPE_CHECKING:
     from pydantic.v1.typing import AbstractSetIntStr, MappingIntStrAny, DictStrAny
-    from pydantic.main import Model
+    from pydantic.v1.main import Model
 
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 

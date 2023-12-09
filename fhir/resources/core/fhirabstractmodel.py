@@ -49,7 +49,7 @@ if typing.TYPE_CHECKING:
     from pydantic.v1.typing import TupleGenerator
     from pydantic.v1.types import StrBytes
     from pydantic.v1.typing import AnyCallable
-    from pydantic.main import Model
+    from pydantic.v1.main import Model
 
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 

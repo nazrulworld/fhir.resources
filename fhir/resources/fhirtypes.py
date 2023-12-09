@@ -10,7 +10,7 @@ from pydantic.v1 import AnyUrl
 from pydantic.v1.errors import ConfigError, DateError, DateTimeError, TimeError
 from pydantic.main import load_str_bytes
 from pydantic.networks import validate_email
-from pydantic.types import (
+from pydantic.v1.types import (
     ConstrainedBytes,
     ConstrainedDecimal,
     ConstrainedInt,
@@ -23,7 +23,7 @@ from fhir.resources.core.fhirabstractmodel import FHIRAbstractModel
 from .fhirtypesvalidators import run_validator_for_fhir_type
 
 if TYPE_CHECKING:
-    from pydantic.types import CallableGenerator
+    from pydantic.v1.types import CallableGenerator
     from pydantic.v1.fields import ModelField
     from pydantic.v1 import BaseConfig
 

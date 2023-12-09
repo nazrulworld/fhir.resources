@@ -11,7 +11,7 @@ from pydantic.v1 import BaseModel, Extra, Field
 from pydantic.v1.class_validators import ROOT_VALIDATOR_CONFIG_KEY, root_validator
 from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.v1.errors import ConfigError, PydanticValueError
-from pydantic.typing import AnyCallable
+from pydantic.v1.typing import AnyCallable
 from pydantic.utils import ROOT_KEY
 
 try:
@@ -41,7 +41,7 @@ except ImportError:
 
 
 if TYPE_CHECKING:
-    from pydantic.typing import AbstractSetIntStr, MappingIntStrAny, DictStrAny
+    from pydantic.v1.typing import AbstractSetIntStr, MappingIntStrAny, DictStrAny
     from pydantic.main import Model
 
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"

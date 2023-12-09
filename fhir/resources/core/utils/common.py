@@ -2,7 +2,7 @@
 from functools import lru_cache
 
 from pydantic.v1.fields import ModelField
-from pydantic.typing import get_args, get_origin
+from pydantic.v1.typing import get_args, get_origin
 
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 

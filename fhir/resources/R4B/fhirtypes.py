@@ -6,6 +6,8 @@ from email.utils import formataddr, parseaddr
 from typing import TYPE_CHECKING, Any, Dict, Optional, Pattern, Union
 from uuid import UUID
 
+from fhir.resources.core.fhirabstractmodel import FHIRAbstractModel
+
 from pydantic.v1 import AnyUrl
 from pydantic.v1.errors import ConfigError, DateError, DateTimeError, TimeError
 from pydantic.v1.main import load_str_bytes
@@ -16,9 +18,12 @@ from pydantic.v1.types import (
     ConstrainedInt,
     ConstrainedStr,
 )
-from pydantic.v1.validators import bool_validator, parse_date, parse_datetime, parse_time
-
-from fhir.resources.core.fhirabstractmodel import FHIRAbstractModel
+from pydantic.v1.validators import (
+    bool_validator,
+    parse_date,
+    parse_datetime,
+    parse_time,
+)
 
 from .fhirtypesvalidators import run_validator_for_fhir_type
 

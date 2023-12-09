@@ -16,7 +16,12 @@ from pydantic.v1.types import (
     ConstrainedInt,
     ConstrainedStr,
 )
-from pydantic.v1.validators import bool_validator, parse_date, parse_datetime, parse_time
+from pydantic.v1.validators import (
+    bool_validator,
+    parse_date,
+    parse_datetime,
+    parse_time,
+)
 
 from fhir.resources.core.fhirabstractmodel import FHIRAbstractModel
 

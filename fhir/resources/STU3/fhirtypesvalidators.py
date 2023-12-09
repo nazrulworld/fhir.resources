@@ -1,11 +1,11 @@
 # _*_ coding: utf-8 _*_
-"""Validators for ``pydantic`` Custom DataType"""
+"""Validators for ``pydantic.v1`` Custom DataType"""
 import importlib
 import typing
 from pathlib import Path
 from typing import Union
 
-from pydantic.class_validators import make_generic_validator
+from pydantic.v1.class_validators import make_generic_validator
 from pydantic.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.types import StrBytes
 from pydantic.utils import ROOT_KEY
@@ -13,7 +13,7 @@ from pydantic.utils import ROOT_KEY
 from fhir.resources.core.fhirabstractmodel import FHIRAbstractModel
 
 if typing.TYPE_CHECKING:
-    from pydantic import BaseModel
+    from pydantic.v1 import BaseModel
 
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 

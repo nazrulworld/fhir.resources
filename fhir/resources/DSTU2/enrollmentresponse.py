@@ -8,7 +8,7 @@ Last updated: 2019-11-01T09:29:23.356+11:00
 """
 from typing import List as ListType
 
-from pydantic import Field
+from pydantic.v1 import Field
 
 from . import domainresource, fhirtypes
 

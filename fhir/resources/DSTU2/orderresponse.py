@@ -7,7 +7,7 @@ Revision: None
 """
 from typing import List as ListType
 
-from pydantic import Field
+from pydantic.v1 import Field
 
 from . import fhirtypes
 from .domainresource import DomainResource

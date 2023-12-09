@@ -8,7 +8,7 @@ Revision: 7202
 import typing
 from typing import List as ListType
 
-from pydantic import Field, root_validator
+from pydantic.v1 import Field, root_validator
 
 from . import domainresource, fhirtypes
 from .backboneelement import BackboneElement

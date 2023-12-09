@@ -6,7 +6,7 @@ Version: 1.0.2
 Revision: 7202
 """
 
-from pydantic import Field
+from pydantic.v1 import Field
 
 from . import fhirtypes
 from .element import Element

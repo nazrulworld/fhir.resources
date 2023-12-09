@@ -13,7 +13,7 @@ from pydantic.utils import ROOT_KEY
 from fhir.resources.core.fhirabstractmodel import FHIRAbstractModel
 
 if typing.TYPE_CHECKING:
-    from pydantic import BaseModel
+    from pydantic.v1 import BaseModel
 
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 

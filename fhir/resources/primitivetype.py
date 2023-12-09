@@ -6,7 +6,7 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pydantic import Field
+from pydantic.v1 import Field
 
 from . import datatype
 

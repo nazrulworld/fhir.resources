@@ -3,7 +3,7 @@ import datetime
 from collections import OrderedDict
 from decimal import Decimal
 
-from yaml import YAMLError, dump, load
+from yaml import YAMLError, dump, load, Node
 from yaml.representer import Representer as BaseRepresenter
 from yaml.representer import SafeRepresenter
 
@@ -21,12 +21,12 @@ __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 class Representer(SafeRepresenter):
     """ """
 
-    def represent_decimal(self, data):
+    def represent_decimal(self, data: Decimal) -> Node:
         """ """
         data = float(data)
         return self.represent_float(data)
 
-    def represent_datetime(self, data):
+    def represent_datetime(self, data: datetime) -> Node:
         """Issue #96, we are using T separator for ISO format"""
         value = data.isoformat(sep="T")
         return self.represent_scalar("tag:yaml.org,2002:timestamp", value)

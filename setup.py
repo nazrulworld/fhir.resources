@@ -40,6 +40,9 @@ test_requirements = [
     "isort" + (PY_VERSION_10_OR_LATER and ">=5.11.4" or "==4.3.21"),
     "black",
     "mypy",
+    "types-PyYAML",
+    "types-simplejson",
+    "types-requests",
     "setuptools==65.6.3;python_version>='3.7'",
 ]
 if PY_VERSION_10_OR_LATER:

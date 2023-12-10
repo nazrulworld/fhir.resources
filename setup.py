@@ -39,7 +39,7 @@ test_requirements = [
     "requests==2.23.0;python_version<'3.10'",
     "isort" + (PY_VERSION_10_OR_LATER and ">=5.11.4" or "==4.3.21"),
     "black",
-    "mypy" + (PY_VERSION_11_OR_LATER and ">=0.991" or "==0.812"),
+    "mypy",
     "setuptools==65.6.3;python_version>='3.7'",
 ]
 if PY_VERSION_10_OR_LATER:

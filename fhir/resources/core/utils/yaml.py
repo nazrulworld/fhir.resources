@@ -1,9 +1,10 @@
 # _*_ coding: utf-8 _*_
-import datetime
+
 from collections import OrderedDict
+from datetime import datetime
 from decimal import Decimal
 
-from yaml import YAMLError, dump, load, Node
+from yaml import YAMLError, dump, load, ScalarNode, Node
 from yaml.representer import Representer as BaseRepresenter
 from yaml.representer import SafeRepresenter
 
@@ -23,20 +24,20 @@ class Representer(SafeRepresenter):
 
     def represent_decimal(self, data: Decimal) -> Node:
         """ """
-        data = float(data)
-        return self.represent_float(data)
+        coerced = float(data)
+        return self.represent_float(coerced)
 
-    def represent_datetime(self, data: datetime) -> Node:
+    def represent_datetime(self, data: datetime) -> ScalarNode:
         """Issue #96, we are using T separator for ISO format"""
         value = data.isoformat(sep="T")
         return self.represent_scalar("tag:yaml.org,2002:timestamp", value)
 
 
-BaseRepresenter.add_representer(Decimal, Representer.represent_decimal)
+BaseRepresenter.add_representer(Decimal, Representer.represent_decimal)  # type: ignore[arg-type]
 # important! we don't want explicit tag of OrderedDict
 # (tag:yaml.org,2002:python/object/apply:collections.OrderedDict)
 BaseRepresenter.add_representer(OrderedDict, SafeRepresenter.represent_dict)
-BaseRepresenter.add_representer(datetime.datetime, Representer.represent_datetime)
+BaseRepresenter.add_representer(datetime.datetime, Representer.represent_datetime)  # type: ignore
 
 
 def yaml_loads(stream, loader=None):

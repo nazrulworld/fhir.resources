@@ -224,17 +224,17 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         cls: typing.Type["Model"],
         path: typing.Union[str, pathlib.Path],
         *,
-        content_type: str = None,
+        content_type: typing.Optional[str] = None,
         encoding: str = "utf8",
-        proto: Protocol = None,
+        proto: typing.Optional[Protocol] = None,
         allow_pickle: bool = False,
         **extra,
     ) -> "Model":
         extra.update({"cls": cls})
         obj = load_file(
             path,
-            proto=proto,
-            content_type=content_type,
+            proto=proto,  # type: ignore[arg-type]
+            content_type=content_type,  # type: ignore[arg-type]
             encoding=encoding,
             allow_pickle=allow_pickle,
             json_loads=cls.__config__.json_loads,
@@ -247,9 +247,9 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         cls: typing.Type["Model"],
         b: "StrBytes",
         *,
-        content_type: str = None,
+        content_type: typing.Optional[str] = None,
         encoding: str = "utf8",
-        proto: Protocol = None,
+        proto: typing.Optional[Protocol] = None,
         allow_pickle: bool = False,
         **extra,
     ) -> "Model":
@@ -257,8 +257,8 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         try:
             obj = load_str_bytes(
                 b,
-                proto=proto,
-                content_type=content_type,
+                proto=proto,  # type: ignore[arg-type]
+                content_type=content_type,  # type: ignore[arg-type]
                 encoding=encoding,
                 allow_pickle=allow_pickle,
                 json_loads=cls.__config__.json_loads,
@@ -271,8 +271,8 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
     def yaml(  # type: ignore
         self,
         *,
-        by_alias: bool = None,
-        exclude_none: bool = None,
+        by_alias: typing.Optional[bool] = None,
+        exclude_none: typing.Optional[bool] = None,
         exclude_comments: bool = False,
         return_bytes: bool = False,
         **dumps_kwargs: typing.Any,
@@ -326,8 +326,8 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
     def json(  # type: ignore
         self,
         *,
-        by_alias: bool = None,
-        exclude_none: bool = None,
+        by_alias: typing.Optional[bool] = None,
+        exclude_none: typing.Optional[bool] = None,
         exclude_comments: bool = False,
         encoder: typing.Optional[typing.Callable[[typing.Any], typing.Any]] = None,
         return_bytes: bool = False,

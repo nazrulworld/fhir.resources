@@ -37,7 +37,7 @@ BaseRepresenter.add_representer(Decimal, Representer.represent_decimal)  # type:
 # important! we don't want explicit tag of OrderedDict
 # (tag:yaml.org,2002:python/object/apply:collections.OrderedDict)
 BaseRepresenter.add_representer(OrderedDict, SafeRepresenter.represent_dict)
-BaseRepresenter.add_representer(datetime.datetime, Representer.represent_datetime)  # type: ignore
+BaseRepresenter.add_representer(datetime, Representer.represent_datetime)  # type: ignore[arg-type]
 
 
 def yaml_loads(stream, loader=None):

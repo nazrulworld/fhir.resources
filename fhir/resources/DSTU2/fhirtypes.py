@@ -145,7 +145,10 @@ class Id(ConstrainedStr, Primitive):
 
     @classmethod
     def configure_constraints(
-        cls, min_length: Optional[int] = None, max_length: Optional[int] = None, regex: Optional[Pattern] = None
+        cls,
+        min_length: Optional[int] = None,
+        max_length: Optional[int] = None,
+        regex: Optional[Pattern] = None,
     ):
         """There are a lots of discussion about ``Resource.Id`` length of value.
             1. https://bit.ly/360HksL

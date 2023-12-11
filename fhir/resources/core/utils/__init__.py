@@ -98,7 +98,7 @@ def load_str_bytes(
     obj = default_load_str_bytes(
         b,
         proto=proto,  # type: ignore[arg-type]
-        content_type=content_type,   # type: ignore[arg-type]
+        content_type=content_type,  # type: ignore[arg-type]
         encoding=encoding,
         allow_pickle=allow_pickle,
         json_loads=json_loads,

@@ -396,7 +396,11 @@ class Node:
 
         self.namespaces.append(Namespace(ns, location))
 
-    def add_attribute(self, attr: typing.Union[str, Attribute], value: typing.Optional[StrBytes] = None):
+    def add_attribute(
+        self,
+        attr: typing.Union[str, Attribute],
+        value: typing.Optional[StrBytes] = None,
+    ):
         """ """
         if isinstance(attr, Attribute):
             self.attributes.append(attr)

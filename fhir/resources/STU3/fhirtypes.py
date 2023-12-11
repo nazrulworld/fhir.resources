@@ -117,7 +117,7 @@ class String(ConstrainedStr, Primitive):
     __visit_name__ = "string"
 
     @classmethod
-    def configure_empty_str(cls, allow: bool = None):
+    def configure_empty_str(cls, allow: Optional[bool] = None):
         """About empty string
         1. https://bit.ly/3woGnFG
         2. https://github.com/nazrulworld/fhir.resources/issues/65#issuecomment-856693256
@@ -200,7 +200,7 @@ class Id(ConstrainedStr, Primitive):
 
     @classmethod
     def configure_constraints(
-        cls, min_length: int = None, max_length: int = None, regex: Pattern = None
+        cls, min_length: Optional[int] = None, max_length: Optional[int] = None, regex: Optional[Pattern] = None
     ):
         """There are a lots of discussion about ``Resource.Id`` length of value.
             1. https://bit.ly/360HksL

@@ -25,4 +25,4 @@ exclude = '''
 '''
 
 [tool.pytest.ini_options]
-minversion = "6.0"
+minversion = "7.0"

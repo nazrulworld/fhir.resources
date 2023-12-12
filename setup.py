@@ -121,9 +121,9 @@ setup(
         "all": (orjson_requirements + yaml_requirements + xml_requirements),
     },
     url="https://github.com/nazrulworld/fhir.resources",
-    version="7.0.3.dev0",
+    version="7.1.0.dev0",
     zip_safe=False,
-    python_requires=">=3.6",
+    python_requires=">=3.7",
     project_urls={
         "CI: Travis": "https://travis-ci.org/github/nazrulworld/fhir.resources",
         "Coverage: codecov": "https://codecov.io/gh/nazrulworld/fhir.resources",

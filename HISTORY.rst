@@ -2,10 +2,17 @@
 History
 =======
 
-7.0.3 (unreleased)
+7.1.0 (unreleased)
 ------------------
 
-- Nothing changed yet.
+Breaking
+
+- Drop support for python 3.6.
+- Drop support for pydantic v1.
+
+Improvements
+
+- `Issue 133 <https://github.com/nazrulworld/fhir.resources/issues/133>`_ Pydantic 2.0 migration plan. It's not fully migration though, instead of using of Pydantic V1 API.
 
 
 7.0.2 (2023-07-03)

@@ -17,7 +17,7 @@ with open("README.rst") as readme_file:
 with open("HISTORY.rst") as history_file:
     history = history_file.read()
 
-requirements = ["pydantic[email]>=1.7.2,<2.0.0"]
+requirements = ["pydantic[email]>=2.0.0"]
 
 setup_requirements = ["pytest-runner"]
 
@@ -39,7 +39,10 @@ test_requirements = [
     "requests==2.23.0;python_version<'3.10'",
     "isort" + (PY_VERSION_10_OR_LATER and ">=5.11.4" or "==4.3.21"),
     "black",
-    "mypy" + (PY_VERSION_11_OR_LATER and ">=0.991" or "==0.812"),
+    "mypy",
+    "types-PyYAML",
+    "types-simplejson",
+    "types-requests",
     "setuptools==65.6.3;python_version>='3.7'",
 ]
 if PY_VERSION_10_OR_LATER:

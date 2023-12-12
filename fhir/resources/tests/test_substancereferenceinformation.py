@@ -6,7 +6,7 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pydantic.validators import bytes_validator  # noqa: F401
+from pydantic.v1.validators import bytes_validator  # noqa: F401
 
 from .. import fhirtypes  # noqa: F401
 from .. import substancereferenceinformation

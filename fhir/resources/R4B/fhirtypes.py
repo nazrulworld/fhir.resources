@@ -6,26 +6,31 @@ from email.utils import formataddr, parseaddr
 from typing import TYPE_CHECKING, Any, Dict, Optional, Pattern, Union
 from uuid import UUID
 
-from pydantic import AnyUrl
-from pydantic.errors import ConfigError, DateError, DateTimeError, TimeError
-from pydantic.main import load_str_bytes
-from pydantic.networks import validate_email
-from pydantic.types import (
+from fhir.resources.core.fhirabstractmodel import FHIRAbstractModel
+
+from pydantic.v1 import AnyUrl
+from pydantic.v1.errors import ConfigError, DateError, DateTimeError, TimeError
+from pydantic.v1.main import load_str_bytes
+from pydantic.v1.networks import validate_email
+from pydantic.v1.types import (
     ConstrainedBytes,
     ConstrainedDecimal,
     ConstrainedInt,
     ConstrainedStr,
 )
-from pydantic.validators import bool_validator, parse_date, parse_datetime, parse_time
-
-from fhir.resources.core.fhirabstractmodel import FHIRAbstractModel
+from pydantic.v1.validators import (
+    bool_validator,
+    parse_date,
+    parse_datetime,
+    parse_time,
+)
 
 from .fhirtypesvalidators import run_validator_for_fhir_type
 
 if TYPE_CHECKING:
-    from pydantic.types import CallableGenerator
-    from pydantic.fields import ModelField
-    from pydantic import BaseConfig
+    from pydantic.v1.types import CallableGenerator
+    from pydantic.v1.fields import ModelField
+    from pydantic.v1 import BaseConfig
 
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 
@@ -112,7 +117,7 @@ class String(ConstrainedStr, Primitive):
     __visit_name__ = "string"
 
     @classmethod
-    def configure_empty_str(cls, allow: bool = None):
+    def configure_empty_str(cls, allow: Optional[bool] = None):
         """About empty string
         1. https://bit.ly/3woGnFG
         2. https://github.com/nazrulworld/fhir.resources/issues/65#issuecomment-856693256
@@ -196,7 +201,10 @@ class Id(ConstrainedStr, Primitive):
 
     @classmethod
     def configure_constraints(
-        cls, min_length: int = None, max_length: int = None, regex: Pattern = None
+        cls,
+        min_length: Optional[int] = None,
+        max_length: Optional[int] = None,
+        regex: Optional[Pattern] = None,
     ):
         """There are a lots of discussion about ``Resource.Id`` length of value.
             1. https://bit.ly/360HksL

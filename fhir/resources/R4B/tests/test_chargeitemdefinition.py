@@ -6,7 +6,7 @@ Version: 4.3.0
 Build ID: c475c22
 Last updated: 2022-05-28T12:47:40.239+10:00
 """
-from pydantic.validators import bytes_validator  # noqa: F401
+from pydantic.v1.validators import bytes_validator  # noqa: F401
 
 from .. import fhirtypes  # noqa: F401
 from .. import chargeitemdefinition

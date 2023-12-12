@@ -7,12 +7,12 @@ import typing
 from functools import lru_cache
 from typing import TYPE_CHECKING, Any, Callable, Type
 
-from pydantic import BaseModel, Extra, Field
-from pydantic.class_validators import ROOT_VALIDATOR_CONFIG_KEY, root_validator
-from pydantic.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.errors import ConfigError, PydanticValueError
-from pydantic.typing import AnyCallable
-from pydantic.utils import ROOT_KEY
+from pydantic.v1 import BaseModel, Extra, Field
+from pydantic.v1.class_validators import ROOT_VALIDATOR_CONFIG_KEY, root_validator
+from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.v1.errors import ConfigError, PydanticValueError
+from pydantic.v1.typing import AnyCallable
+from pydantic.v1.utils import ROOT_KEY
 
 try:
     import orjson
@@ -41,8 +41,8 @@ except ImportError:
 
 
 if TYPE_CHECKING:
-    from pydantic.typing import AbstractSetIntStr, MappingIntStrAny, DictStrAny
-    from pydantic.main import Model
+    from pydantic.v1.typing import AbstractSetIntStr, MappingIntStrAny, DictStrAny
+    from pydantic.v1.main import Model
 
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 
@@ -228,13 +228,13 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
     def dict(
         self,
         *,
-        include: typing.Union["AbstractSetIntStr", "MappingIntStrAny"] = None,
-        exclude: typing.Union["AbstractSetIntStr", "MappingIntStrAny"] = None,
-        by_alias: bool = None,
-        skip_defaults: bool = None,
+        include: typing.Union["AbstractSetIntStr", "MappingIntStrAny", None] = None,
+        exclude: typing.Union["AbstractSetIntStr", "MappingIntStrAny", None] = None,
+        by_alias: typing.Optional[bool] = None,
+        skip_defaults: typing.Optional[bool] = None,
         exclude_unset: bool = False,
         exclude_defaults: bool = False,
-        exclude_none: bool = None,
+        exclude_none: typing.Optional[bool] = None,
     ) -> "DictStrAny":
         """ """
         # xxx: do validation? if object changed
@@ -305,12 +305,12 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
     def json(  # type: ignore
         self,
         *,
-        include: typing.Union["AbstractSetIntStr", "MappingIntStrAny"] = None,
-        exclude: typing.Union["AbstractSetIntStr", "MappingIntStrAny"] = None,
-        by_alias: bool = None,
+        include: typing.Union["AbstractSetIntStr", "MappingIntStrAny", None] = None,
+        exclude: typing.Union["AbstractSetIntStr", "MappingIntStrAny", None] = None,
+        by_alias: typing.Optional[bool] = None,
         exclude_unset: bool = False,
         exclude_defaults: bool = False,
-        exclude_none: bool = None,
+        exclude_none: typing.Optional[bool] = None,
         exclude_comments: bool = False,
         encoder: typing.Optional[typing.Callable[[typing.Any], typing.Any]] = None,
         return_bytes: bool = False,

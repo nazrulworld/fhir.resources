@@ -7,7 +7,7 @@ Revision: 7202
 """
 from typing import Any, Dict
 
-from pydantic import Field, root_validator
+from pydantic.v1 import Field, root_validator
 
 from . import fhirtypes
 from .element import Element

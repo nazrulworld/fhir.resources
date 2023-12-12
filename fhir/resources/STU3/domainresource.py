@@ -8,7 +8,7 @@ Last updated: 2019-10-24T11:53:00+11:00
 """
 import typing
 
-from pydantic import Field
+from pydantic.v1 import Field
 
 from . import fhirtypes, resource
 

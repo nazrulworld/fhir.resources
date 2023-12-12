@@ -8,13 +8,13 @@ from pathlib import Path
 
 from lxml import etree  # type: ignore
 from lxml.etree import QName  # type: ignore
-from pydantic.fields import SHAPE_LIST, SHAPE_SINGLETON
+from pydantic.v1.fields import SHAPE_LIST, SHAPE_SINGLETON
 
 from .common import get_fhir_type_name, is_primitive_type, normalize_fhir_type_class
 
 if typing.TYPE_CHECKING:
     from fhir.resources.core.fhirabstractmodel import FHIRAbstractModel
-    from pydantic.fields import ModelField
+    from pydantic.v1.fields import ModelField
 
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 
@@ -341,13 +341,13 @@ class Node:
         self,
         name: typing.Union[str, QName],
         *,
-        value: StrBytes = None,
-        text: typing.Union[StrBytes, "Node"] = None,
-        attributes: typing.List[Attribute] = None,
-        namespaces: typing.List[Namespace] = None,
-        comments: typing.List[Comment] = None,
-        parent: "Node" = None,
-        children: typing.List["Node"] = None,
+        value: typing.Optional[StrBytes] = None,
+        text: typing.Union[StrBytes, "Node", None] = None,
+        attributes: typing.Optional[typing.List[Attribute]] = None,
+        namespaces: typing.Optional[typing.List[Namespace]] = None,
+        comments: typing.Optional[typing.List[Comment]] = None,
+        parent: typing.Optional["Node"] = None,
+        children: typing.Optional[typing.List["Node"]] = None,
     ):
         """ """
         self.name = name
@@ -385,7 +385,7 @@ class Node:
     def add_namespace(
         self,
         ns: typing.Union[Namespace, StrNone],
-        location: StrBytes = None,
+        location: typing.Optional[StrBytes] = None,
     ):
         """ """
         if isinstance(ns, Namespace):
@@ -396,7 +396,11 @@ class Node:
 
         self.namespaces.append(Namespace(ns, location))
 
-    def add_attribute(self, attr: typing.Union[str, Attribute], value: StrBytes = None):
+    def add_attribute(
+        self,
+        attr: typing.Union[str, Attribute],
+        value: typing.Optional[StrBytes] = None,
+    ):
         """ """
         if isinstance(attr, Attribute):
             self.attributes.append(attr)
@@ -449,15 +453,17 @@ class Node:
         cls,
         name,
         *,
-        value: typing.Union[str, bytes] = None,
-        text: typing.Union[typing.Union[str, bytes], "Node"] = None,
+        value: typing.Union[str, bytes, None] = None,
+        text: typing.Union[typing.Union[str, bytes], "Node", None] = None,
         attrs: typing.Union[
             DictStrBytes,
             typing.List[typing.Union[Attribute, typing.Tuple[str, StrBytes]]],
+            None,
         ] = None,
         namespaces: typing.Union[
             DictStrBytesNoneKey,
             typing.List[typing.Union[Namespace, typing.Tuple[StrNone, StrBytes]]],
+            None,
         ] = None,
     ):
         """ """
@@ -499,9 +505,9 @@ class Node:
     def from_element(
         cls,
         element: etree._Element,
-        parent: "Node" = None,
-        exists_ns: typing.List[Namespace] = None,
-        comments: typing.List[Comment] = None,
+        parent: typing.Optional["Node"] = None,
+        exists_ns: typing.Optional[typing.List[Namespace]] = None,
+        comments: typing.Optional[typing.List[Comment]] = None,
     ):
         """ """
         name = Node.clean_tag(element)
@@ -833,8 +839,8 @@ class Node:
     def validate(
         cls,
         element: typing.Union["Node", etree._Element, bytes],
-        xsd_file: Path = None,
-        xmlparser: etree.XMLParser = None,
+        xsd_file: typing.Optional[Path] = None,
+        xmlparser: typing.Optional[etree.XMLParser] = None,
     ):
         """ """
         if isinstance(element, cls):

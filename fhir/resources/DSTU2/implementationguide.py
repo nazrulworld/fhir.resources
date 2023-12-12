@@ -8,7 +8,7 @@ Revision: 7202
 from typing import Any, Dict
 from typing import List as ListType
 
-from pydantic import Field, root_validator
+from pydantic.v1 import Field, root_validator
 
 from . import backboneelement, domainresource, fhirtypes
 

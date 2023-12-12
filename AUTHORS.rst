@@ -15,3 +15,4 @@ Contributors
 * [iatechicken]
 * Itay Goren
 * Melvin Hazeleger [melvio]
+* Bidimpata-Kerim Aramyan-Tshimanga [Tshimanga]

@@ -5,15 +5,15 @@ import typing
 from pathlib import Path
 from typing import Union
 
-from pydantic.class_validators import make_generic_validator
-from pydantic.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.types import StrBytes
-from pydantic.utils import ROOT_KEY
+from pydantic.v1.class_validators import make_generic_validator
+from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.v1.types import StrBytes
+from pydantic.v1.utils import ROOT_KEY
 
 from .fhirabstractmodel import FHIRAbstractModel
 
 if typing.TYPE_CHECKING:
-    from pydantic import BaseModel
+    from pydantic.v1 import BaseModel
 
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 

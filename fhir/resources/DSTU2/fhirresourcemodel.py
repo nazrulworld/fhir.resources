@@ -2,7 +2,7 @@
 """Base class for all FHIR elements. """
 from typing import Optional, Union
 
-from pydantic import Field
+from pydantic.v1 import Field
 
 from .fhirabstractmodel import FHIRAbstractModel
 from .fhirtypes import Id, String

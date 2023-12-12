@@ -1,12 +1,12 @@
 # _*_ coding: utf-8 _*_
 import json
 import pathlib
-from typing import TYPE_CHECKING, Any, Callable, Union, cast, no_type_check
+from typing import TYPE_CHECKING, Any, Callable, Union, cast, no_type_check, Optional
 
-from pydantic.parse import Protocol
-from pydantic.parse import load_file as default_load_file
-from pydantic.parse import load_str_bytes as default_load_str_bytes
-from pydantic.types import StrBytes
+from pydantic.v1.parse import Protocol
+from pydantic.v1.parse import load_file as default_load_file
+from pydantic.v1.parse import load_str_bytes as default_load_str_bytes
+from pydantic.v1.types import StrBytes
 
 from .common import is_primitive_type  # noqa: F401
 
@@ -71,9 +71,9 @@ __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 def load_str_bytes(
     b: StrBytes,
     *,
-    content_type: str = None,
+    content_type: Optional[str] = None,
     encoding: str = "utf8",
-    proto: Protocol = None,
+    proto: Optional[Protocol] = None,
     allow_pickle: bool = False,
     json_loads: Callable[[str], Any] = json.loads,
     **extra,
@@ -97,8 +97,8 @@ def load_str_bytes(
             return obj
     obj = default_load_str_bytes(
         b,
-        proto=proto,
-        content_type=content_type,
+        proto=proto,  # type: ignore[arg-type]
+        content_type=content_type,  # type: ignore[arg-type]
         encoding=encoding,
         allow_pickle=allow_pickle,
         json_loads=json_loads,
@@ -109,9 +109,9 @@ def load_str_bytes(
 def load_file(
     path: Union[str, pathlib.Path],
     *,
-    content_type: str = None,
+    content_type: Optional[str] = None,
     encoding: str = "utf8",
-    proto: Protocol = None,
+    proto: Optional[Protocol] = None,
     allow_pickle: bool = False,
     json_loads: Callable[[str], Any] = json.loads,
     **extra,
@@ -138,8 +138,8 @@ def load_file(
     else:
         obj = default_load_file(
             path,
-            proto=proto,
-            content_type=content_type,
+            proto=proto,  # type: ignore[arg-type]
+            content_type=content_type,  # type: ignore[arg-type]
             encoding=encoding,
             allow_pickle=allow_pickle,
             json_loads=json_loads,

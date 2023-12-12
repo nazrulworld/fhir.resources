@@ -9,13 +9,13 @@ from collections import OrderedDict
 from enum import Enum
 from functools import lru_cache
 
-from pydantic import BaseModel, Extra, Field
-from pydantic.class_validators import ROOT_VALIDATOR_CONFIG_KEY, root_validator
-from pydantic.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.errors import ConfigError, PydanticValueError
-from pydantic.fields import ModelField
-from pydantic.parse import Protocol
-from pydantic.utils import ROOT_KEY, sequence_like
+from pydantic.v1 import BaseModel, Extra, Field
+from pydantic.v1.class_validators import ROOT_VALIDATOR_CONFIG_KEY, root_validator
+from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
+from pydantic.v1.errors import ConfigError, PydanticValueError
+from pydantic.v1.fields import ModelField
+from pydantic.v1.parse import Protocol
+from pydantic.v1.utils import ROOT_KEY, sequence_like
 
 from .utils import is_primitive_type, load_file, load_str_bytes, xml_dumps, yaml_dumps
 
@@ -46,10 +46,10 @@ except ImportError:
 
 
 if typing.TYPE_CHECKING:
-    from pydantic.typing import TupleGenerator
-    from pydantic.types import StrBytes
-    from pydantic.typing import AnyCallable
-    from pydantic.main import Model
+    from pydantic.v1.typing import TupleGenerator
+    from pydantic.v1.types import StrBytes
+    from pydantic.v1.typing import AnyCallable
+    from pydantic.v1.main import Model
 
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 
@@ -224,17 +224,17 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         cls: typing.Type["Model"],
         path: typing.Union[str, pathlib.Path],
         *,
-        content_type: str = None,
+        content_type: typing.Optional[str] = None,
         encoding: str = "utf8",
-        proto: Protocol = None,
+        proto: typing.Optional[Protocol] = None,
         allow_pickle: bool = False,
         **extra,
     ) -> "Model":
         extra.update({"cls": cls})
         obj = load_file(
             path,
-            proto=proto,
-            content_type=content_type,
+            proto=proto,  # type: ignore[arg-type]
+            content_type=content_type,  # type: ignore[arg-type]
             encoding=encoding,
             allow_pickle=allow_pickle,
             json_loads=cls.__config__.json_loads,
@@ -247,9 +247,9 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         cls: typing.Type["Model"],
         b: "StrBytes",
         *,
-        content_type: str = None,
+        content_type: typing.Optional[str] = None,
         encoding: str = "utf8",
-        proto: Protocol = None,
+        proto: typing.Optional[Protocol] = None,
         allow_pickle: bool = False,
         **extra,
     ) -> "Model":
@@ -257,8 +257,8 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         try:
             obj = load_str_bytes(
                 b,
-                proto=proto,
-                content_type=content_type,
+                proto=proto,  # type: ignore[arg-type]
+                content_type=content_type,  # type: ignore[arg-type]
                 encoding=encoding,
                 allow_pickle=allow_pickle,
                 json_loads=cls.__config__.json_loads,
@@ -271,8 +271,8 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
     def yaml(  # type: ignore
         self,
         *,
-        by_alias: bool = None,
-        exclude_none: bool = None,
+        by_alias: typing.Optional[bool] = None,
+        exclude_none: typing.Optional[bool] = None,
         exclude_comments: bool = False,
         return_bytes: bool = False,
         **dumps_kwargs: typing.Any,
@@ -326,8 +326,8 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
     def json(  # type: ignore
         self,
         *,
-        by_alias: bool = None,
-        exclude_none: bool = None,
+        by_alias: typing.Optional[bool] = None,
+        exclude_none: typing.Optional[bool] = None,
         exclude_comments: bool = False,
         encoder: typing.Optional[typing.Callable[[typing.Any], typing.Any]] = None,
         return_bytes: bool = False,

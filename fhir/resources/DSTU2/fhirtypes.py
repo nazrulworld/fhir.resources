@@ -5,25 +5,30 @@ from email.utils import formataddr, parseaddr
 from typing import TYPE_CHECKING, Any, Dict, Optional, Pattern, Union
 from uuid import UUID
 
-from pydantic import AnyUrl
-from pydantic.errors import ConfigError, DateError, DateTimeError, TimeError
-from pydantic.main import load_str_bytes
-from pydantic.networks import validate_email
-from pydantic.types import (
+from pydantic.v1 import AnyUrl
+from pydantic.v1.errors import ConfigError, DateError, DateTimeError, TimeError
+from pydantic.v1.main import load_str_bytes
+from pydantic.v1.networks import validate_email
+from pydantic.v1.types import (
     ConstrainedBytes,
     ConstrainedDecimal,
     ConstrainedInt,
     ConstrainedStr,
 )
-from pydantic.validators import bool_validator, parse_date, parse_datetime, parse_time
+from pydantic.v1.validators import (
+    bool_validator,
+    parse_date,
+    parse_datetime,
+    parse_time,
+)
 
 from .fhirabstractmodel import FHIRAbstractModel
 from .fhirtypesvalidators import run_validator_for_fhir_type
 
 if TYPE_CHECKING:
-    from pydantic.types import CallableGenerator
-    from pydantic.fields import ModelField
-    from pydantic.fields import BaseConfig
+    from pydantic.v1.types import CallableGenerator
+    from pydantic.v1.fields import ModelField
+    from pydantic.v1.fields import BaseConfig
 
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 
@@ -140,7 +145,10 @@ class Id(ConstrainedStr, Primitive):
 
     @classmethod
     def configure_constraints(
-        cls, min_length: int = None, max_length: int = None, regex: Pattern = None
+        cls,
+        min_length: Optional[int] = None,
+        max_length: Optional[int] = None,
+        regex: Optional[Pattern] = None,
     ):
         """There are a lots of discussion about ``Resource.Id`` length of value.
             1. https://bit.ly/360HksL

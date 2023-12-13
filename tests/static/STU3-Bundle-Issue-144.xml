@@ -1,0 +1,90 @@
+<Bundle
+	xmlns="http://hl7.org/fhir">
+	<id value="cd15aa48-2d93-4854-a54e-9db64f849486"/>
+	<meta>
+		<profile value="https://fhir.nhs.uk/STU3/StructureDefinition/ITK-Message-Bundle-1"/>
+	</meta>
+	<identifier>
+		<value value="18489fa2-830d-458c-b8b8-dcaf4482bfb5"/>
+	</identifier>
+	<type value="message"/>
+	<entry>
+		<fullUrl value="urn:uuid:8079c82d-3a33-4998-b0fa-92ecc9665932"/>
+		<resource>
+			<MessageHeader>
+				<id value="8079c82d-3a33-4998-b0fa-92ecc9665932"/>
+				<meta>
+					<profile value="https://fhir.nhs.uk/STU3/StructureDefinition/ITK-MessageHeader-2"/>
+				</meta>
+				<extension url="https://fhir.nhs.uk/STU3/StructureDefinition/Extension-ITK-MessageHandling-2">
+					<extension url="InfAckRequested">
+						<valueBoolean value="false"/>
+					</extension>
+					<extension url="RecipientType">
+						<valueCoding>
+							<system value="https://fhir.nhs.uk/STU3/CodeSystem/ITK-RecipientType-1"/>
+							<code value="FI"/>
+							<display value="For Information"/>
+						</valueCoding>
+					</extension>
+				</extension>
+				<event>
+					<system value="https://fhir.nhs.uk/STU3/CodeSystem/ITK-MessageEvent-2"/>
+					<code value="ITK008M"/>
+					<display value="ITK Response"/>
+				</event>
+				<sender>
+					<reference value="urn:uuid:b31bb32c-93c1-4068-9260-3f091b4487db"/>
+				</sender>
+				<timestamp value="2023-11-01T12:47:50Z"/>
+				<source>
+					<endpoint value="urn:nhs-uk:addressing:ods:ITKTestHarness"/>
+				</source>
+				<response>
+					<identifier value="bab555e7-eda7-4b76-859e-f9af159cfd3c"/>
+					<code value="fatal-error"/>
+					<details>
+						<reference value="urn:uuid:5ab142e6-bb0d-4c13-9e71-531aa207786f"/>
+					</details>
+				</response>
+			</MessageHeader>
+		</resource>
+	</entry>
+	<entry>
+		<fullUrl value="urn:uuid:b31bb32c-93c1-4068-9260-3f091b4487db"/>
+		<resource>
+			<Practitioner>
+				<id value="b31bb32c-93c1-4068-9260-3f091b4487db"/>
+				<meta>
+					<profile value="https://fhir.nhs.uk/STU3/StructureDefinition/CareConnect-ITK-Header-Practitioner-1"/>
+				</meta>
+				<name>
+					<family value="Harness"/>
+					<given value="ITK Test"/>
+				</name>
+			</Practitioner>
+		</resource>
+	</entry>
+	<entry>
+		<fullUrl value="urn:uuid:5ab142e6-bb0d-4c13-9e71-531aa207786f"/>
+		<resource>
+			<OperationOutcome>
+				<id value="5ab142e6-bb0d-4c13-9e71-531aa207786f"/>
+				<meta>
+					<profile value="https://fhir.nhs.uk/STU3/StructureDefinition/ITK-Response-OperationOutcome-1"/>
+				</meta>
+				<issue>
+					<severity value="fatal"/>
+					<code value="processing"/>
+					<details>
+						<coding>
+							<system value="https://fhir.nhs.uk/STU3/CodeSystem/ITK-ResponseCodes-1"/>
+							<code value="10001"/>
+							<display value="Handling Specification Error"/>
+						</coding>
+					</details>
+				</issue>
+			</OperationOutcome>
+		</resource>
+	</entry>
+</Bundle>

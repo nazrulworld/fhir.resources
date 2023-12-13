@@ -6,6 +6,8 @@ from pydantic.v1.errors import UrlSchemeError
 from fhir.resources.R4B.patient import Patient
 from fhir.resources.R4B.period import Period
 
+from .fixtures import STATIC_PATH
+
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 
 
@@ -143,8 +145,8 @@ def test_issue_97():
 def offtest_issue_100():
     """https://github.com/nazrulworld/fhir.resources/issues/100"""
     from fhir.resources.R4B.attachment import Attachment
-    from fhir.resources.STU3.attachment import Attachment as STU3Attachment
     from fhir.resources.R4B.fhirtypes import Url
+    from fhir.resources.STU3.attachment import Attachment as STU3Attachment
     from fhir.resources.STU3.fhirtypes import Url as STU3Url
 
     Url.validate(
@@ -216,8 +218,8 @@ def offtest_issue_100():
 def test_issue101():
     """ """
     from fhir.resources.R4B.element import Element
-    from fhir.resources.STU3.element import Element as STU3Element
     from fhir.resources.R4B.resource import Resource
+    from fhir.resources.STU3.element import Element as STU3Element
     from fhir.resources.STU3.resource import Resource as STU3Resource
 
     data = {
@@ -296,10 +298,10 @@ def test_issue101():
 def test_issue127():
     """https://github.com/nazrulworld/fhir.resources/issues/129"""
     from fhir.resources.attachment import Attachment
-    from fhir.resources.R4B.attachment import Attachment as R4BAttachment
-    from fhir.resources.STU3.attachment import Attachment as STU3Attachment
     from fhir.resources.fhirtypes import Url
+    from fhir.resources.R4B.attachment import Attachment as R4BAttachment
     from fhir.resources.R4B.fhirtypes import Url as R4BUrl
+    from fhir.resources.STU3.attachment import Attachment as STU3Attachment
     from fhir.resources.STU3.fhirtypes import Url as STU3Url
 
     try:
@@ -352,3 +354,17 @@ def test_issue127():
             STU3Attachment.__config__,
         )
     assert "invalid or missing URL scheme" == str(excinfo.value)
+
+
+def test_issue_144():
+    import pathlib
+
+    from fhir.resources.STU3.bundle import Bundle
+
+    try:
+        Bundle.parse_raw(
+            pathlib.Path((STATIC_PATH / "STU3-Bundle-Issue-144.xml")).read_bytes(),
+            content_type="text/xml",
+        )
+    except ModuleNotFoundError:
+        raise AssertionError("Code should not come here.")

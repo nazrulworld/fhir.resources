@@ -13,6 +13,7 @@ Breaking
 Improvements
 
 - `Issue 133 <https://github.com/nazrulworld/fhir.resources/issues/133>`_ Pydantic 2.0 migration plan. It's not fully migration though, instead of using of Pydantic V1 API.
+- `Issue 144 <https://github.com/nazrulworld/fhir.resources/issues/144>`_ Parsing XML byte string MESH acknowledgment response.
 
 
 7.0.2 (2023-07-03)

@@ -9,13 +9,13 @@ from collections import OrderedDict
 from enum import Enum
 from functools import lru_cache
 
+from pydantic import ValidationError
 from pydantic.v1 import BaseModel, Extra, Field
 from pydantic.v1.class_validators import ROOT_VALIDATOR_CONFIG_KEY, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import ConfigError, PydanticValueError
 from pydantic.v1.fields import ModelField
 from pydantic.v1.parse import Protocol
 from pydantic.v1.utils import ROOT_KEY, sequence_like
+from pydantic_core import InitErrorDetails
 
 from .utils import is_primitive_type, load_file, load_str_bytes, xml_dumps, yaml_dumps
 
@@ -57,7 +57,7 @@ logger = logging.getLogger(__name__)
 FHIR_COMMENTS_FIELD_NAME = "fhir_comments"
 
 
-class WrongResourceType(PydanticValueError):
+class WrongResourceType:
     code = "wrong.resource_type"
     msg_template = "Wrong ResourceType: {error}"
 
@@ -71,38 +71,42 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         None, alias="fhir_comments", element_property=False
     )
 
-    def __init__(__pydantic_self__, **data: typing.Any) -> None:
+    def __init__(self: "FHIRAbstractModel", **data: typing.Any) -> None:
         """ """
         resource_type = data.pop("resource_type", None)
-        errors = []
+        errors: typing.List[InitErrorDetails] = []
         if (
             "resourceType" in data
-            and "resourceType" not in __pydantic_self__.__fields__
+            and "resourceType" not in self.__fields__
         ):
             resource_type = data.pop("resourceType", None)
 
         if (
             resource_type is not None
-            and resource_type != __pydantic_self__.__fields__["resource_type"].default
+            and resource_type != self.__fields__["resource_type"].default
         ):
-            expected_resource_type = __pydantic_self__.__fields__[
+            expected_resource_type = self.__fields__[
                 "resource_type"
             ].default
-            error = (
-                f"``{__pydantic_self__.__class__.__module__}."
-                f"{__pydantic_self__.__class__.__name__}`` "
+            error_message = (
+                f"``{self.__class__.__module__}."
+                f"{self.__class__.__name__}`` "
                 f"expects resource type ``{expected_resource_type}``, "
                 f"but got ``{resource_type}``. "
                 "Make sure resource type name is correct and right "
                 "ModelClass has been chosen."
             )
-            errors.append(
-                ErrorWrapper(WrongResourceType(error=error), loc="resource_type")
+            init_error_details = InitErrorDetails(
+                type=WrongResourceType.code,
+                loc=("resource_type",),
+                ctx={"message": error_message},
+                input=resource_type
             )
+            errors.append(init_error_details)
         if errors:
-            raise ValidationError(errors, __pydantic_self__.__class__)
+            raise ValidationError(errors, self.__class__)
 
-        BaseModel.__init__(__pydantic_self__, **data)
+        BaseModel.__init__(self, **data)
 
     @classmethod
     def add_root_validator(
@@ -125,11 +129,11 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
 
         # first level validation
         if any([func_name in cls_.__dict__ for cls_ in cls.mro()]):
-            raise ConfigError(
+            raise ValidationError(
                 f"{cls} already has same name '{func_name}' method or attribute!"
             )
         if func_name in cls.__fields__:
-            raise ConfigError(f"{cls} already has same name '{func_name}' field!")
+            raise ValidationError(f"{cls} already has same name '{func_name}' field!")
 
         # evaluate through root_validator
         validator = root_validator(
@@ -141,13 +145,13 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         arg_list = list(sig.parameters.keys())
 
         if len(arg_list) != 2:
-            raise ConfigError(
+            raise ValidationError(
                 f"Invalid signature for root validator {func_name}: {sig}"
                 ", should be: (cls, values)."
             )
 
         if arg_list[0] != "cls":
-            raise ConfigError(
+            raise ValidationError(
                 f"Invalid signature for root validator {func_name}: {sig}, "
                 f'"{arg_list[0]}" not permitted as first argument, '
                 "should be: (cls, values)."
@@ -265,7 +269,13 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
                 **extra,
             )
         except (ValueError, TypeError, UnicodeDecodeError) as e:  # noqa: B014
-            raise ValidationError([ErrorWrapper(e, loc=ROOT_KEY)], cls)
+            init_error_details = InitErrorDetails(
+                type="failed_parse_raw",
+                loc=("__root__",),
+                input=b,
+                ctx={"message": e}
+            )
+            raise ValidationError([init_error_details], cls)
         return cls.parse_obj(obj)
 
     def yaml(  # type: ignore

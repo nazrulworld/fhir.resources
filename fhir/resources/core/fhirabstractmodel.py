@@ -9,11 +9,9 @@ from collections import OrderedDict
 from enum import Enum
 from functools import lru_cache
 
-from pydantic import ValidationError
-from pydantic.v1 import BaseModel, Extra, Field
+from pydantic import ValidationError, BaseModel, Field, ConfigDict
+from pydantic.fields import FieldInfo
 from pydantic.v1.class_validators import ROOT_VALIDATOR_CONFIG_KEY, root_validator
-from pydantic.v1.fields import ModelField
-from pydantic.v1.parse import Protocol
 from pydantic.v1.utils import ROOT_KEY, sequence_like
 from pydantic_core import InitErrorDetails
 
@@ -49,7 +47,6 @@ if typing.TYPE_CHECKING:
     from pydantic.v1.typing import TupleGenerator
     from pydantic.v1.types import StrBytes
     from pydantic.v1.typing import AnyCallable
-    from pydantic.v1.main import Model
 
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 
@@ -66,6 +63,11 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
     """Abstract base model class for all FHIR elements."""
 
     resource_type: str = ...  # type: ignore
+    model_config = ConfigDict(
+        extra="forbid",
+        populate_by_name=True,
+        validate_assignment=True,
+    )
 
     fhir_comments: typing.Union[str, typing.List[str]] = Field(
         None, alias="fhir_comments", element_property=False
@@ -77,15 +79,15 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         errors: typing.List[InitErrorDetails] = []
         if (
             "resourceType" in data
-            and "resourceType" not in self.__fields__
+            and "resourceType" not in self.model_fields
         ):
             resource_type = data.pop("resourceType", None)
 
         if (
             resource_type is not None
-            and resource_type != self.__fields__["resource_type"].default
+            and resource_type != self.model_fields["resource_type"].default
         ):
-            expected_resource_type = self.__fields__[
+            expected_resource_type = self.model_fields[
                 "resource_type"
             ].default
             error_message = (
@@ -110,7 +112,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
 
     @classmethod
     def add_root_validator(
-        cls: typing.Type["Model"],
+        cls: typing.Type["BaseModel"],
         validator: typing.Union["AnyCallable", classmethod],
         *,
         pre: bool = False,
@@ -132,7 +134,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
             raise ValidationError(
                 f"{cls} already has same name '{func_name}' method or attribute!"
             )
-        if func_name in cls.__fields__:
+        if func_name in cls.model_fields:
             raise ValidationError(f"{cls} already has same name '{func_name}' field!")
 
         # evaluate through root_validator
@@ -177,10 +179,10 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
 
     @classmethod
     def element_properties(
-        cls: typing.Type["Model"],
-    ) -> typing.Generator[ModelField, None, None]:
+        cls: typing.Type["BaseModel"],
+    ) -> typing.Generator[FieldInfo, None, None]:
         """ """
-        for model_field in cls.__fields__.values():
+        for model_field in cls.model_fields:
             if model_field.field_info.extra.get("element_property", False):
                 yield model_field
 
@@ -193,7 +195,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
 
     @classmethod
     @lru_cache(maxsize=1024, typed=True)
-    def has_resource_base(cls: typing.Type["Model"]) -> bool:
+    def has_resource_base(cls: typing.Type["BaseModel"]) -> bool:
         """ """
         # xxx: calculate metrics, other than cache it!
         for cl in inspect.getmro(cls)[:-4]:
@@ -203,9 +205,9 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
 
     @classmethod
     @lru_cache(maxsize=None, typed=True)
-    def get_resource_type(cls: typing.Type["Model"]) -> str:
+    def get_resource_type(cls: typing.Type["BaseModel"]) -> str:
         """ """
-        return cls.__fields__["resource_type"].default
+        return cls.model_fields["resource_type"].default
 
     @classmethod
     @lru_cache(maxsize=None, typed=True)
@@ -215,7 +217,9 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         """Mappings between field's name and alias"""
         aliases = cls.elements_sequence()
         return {
-            f.alias: fname for fname, f in cls.__fields__.items() if f.alias in aliases
+            field_info.alias: field_name
+            for field_name, field_info in cls.model_fields.items()
+            if field_info.alias in aliases
         }
 
     @classmethod
@@ -225,7 +229,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
 
     @classmethod
     def parse_file(
-        cls: typing.Type["Model"],
+        cls: typing.Type["BaseModel"],
         path: typing.Union[str, pathlib.Path],
         *,
         content_type: typing.Optional[str] = None,
@@ -233,7 +237,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         proto: typing.Optional[Protocol] = None,
         allow_pickle: bool = False,
         **extra,
-    ) -> "Model":
+    ) -> BaseModel:
         extra.update({"cls": cls})
         obj = load_file(
             path,
@@ -244,11 +248,11 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
             json_loads=cls.__config__.json_loads,
             **extra,
         )
-        return cls.parse_obj(obj)
+        return cls.model_validate(obj)
 
     @classmethod
     def parse_raw(
-        cls: typing.Type["Model"],
+        cls: typing.Type["BaseModel"],
         b: "StrBytes",
         *,
         content_type: typing.Optional[str] = None,
@@ -256,7 +260,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         proto: typing.Optional[Protocol] = None,
         allow_pickle: bool = False,
         **extra,
-    ) -> "Model":
+    ) -> BaseModel:
         extra.update({"cls": cls})
         try:
             obj = load_str_bytes(
@@ -276,7 +280,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
                 ctx={"message": e}
             )
             raise ValidationError([init_error_details], cls)
-        return cls.parse_obj(obj)
+        return cls.model_validate(obj)
 
     def yaml(  # type: ignore
         self,
@@ -446,7 +450,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         for prop_name in self.elements_sequence():
             field_key = alias_maps[prop_name]
 
-            field = self.__fields__[field_key]
+            field = self.model_fields[field_key]
             is_primitive = is_primitive_type(field)
             v = self.__dict__.get(field_key, None)
             dict_key = by_alias and field.alias or field_key
@@ -528,11 +532,3 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         ):
             return None
         return value
-
-    class Config:
-        json_loads = json_loads
-        json_dumps = json_dumps
-        allow_population_by_field_name = True
-        extra = Extra.forbid
-        validate_assignment = True
-        error_msg_templates = {"value_error.extra": "extra fields not permitted"}

@@ -1,5 +1,8 @@
 # _*_ coding: utf-8 _*_
+from collections import deque
 from functools import lru_cache
+from types import GeneratorType
+from typing import Any
 
 from pydantic.v1.fields import ModelField
 from pydantic.v1.typing import get_args, get_origin
@@ -66,3 +69,7 @@ def normalize_fhir_type_class(type_):
                 return normalize_fhir_type_class(tp_)
     else:
         return type_
+
+
+def sequence_like(v: Any) -> bool:
+    return isinstance(v, (list, tuple, set, frozenset, GeneratorType, deque))

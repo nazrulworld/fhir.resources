@@ -12,10 +12,11 @@ from functools import lru_cache
 from pydantic import ValidationError, BaseModel, Field, ConfigDict
 from pydantic.fields import FieldInfo
 from pydantic.v1.class_validators import ROOT_VALIDATOR_CONFIG_KEY, root_validator
-from pydantic.v1.utils import ROOT_KEY, sequence_like
+from pydantic.v1.utils import ROOT_KEY
 from pydantic_core import InitErrorDetails
 
-from .utils import is_primitive_type, load_file, load_str_bytes, xml_dumps, yaml_dumps
+from .utils import is_primitive_type, load_file, load_str_bytes, xml_dumps, yaml_dumps, Format
+from .utils.common import sequence_like
 
 try:
     import orjson
@@ -45,7 +46,6 @@ except ImportError:
 
 if typing.TYPE_CHECKING:
     from pydantic.v1.typing import TupleGenerator
-    from pydantic.v1.types import StrBytes
     from pydantic.v1.typing import AnyCallable
 
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
@@ -62,6 +62,8 @@ class WrongResourceType:
 class FHIRAbstractModel(BaseModel, abc.ABC):
     """Abstract base model class for all FHIR elements."""
 
+    json_loads = json_loads
+    json_dumps = json_dumps
     resource_type: str = ...  # type: ignore
     model_config = ConfigDict(
         extra="forbid",
@@ -234,7 +236,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         *,
         content_type: typing.Optional[str] = None,
         encoding: str = "utf8",
-        proto: typing.Optional[Protocol] = None,
+        proto: typing.Optional[Format] = None,
         allow_pickle: bool = False,
         **extra,
     ) -> BaseModel:
@@ -245,7 +247,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
             content_type=content_type,  # type: ignore[arg-type]
             encoding=encoding,
             allow_pickle=allow_pickle,
-            json_loads=cls.__config__.json_loads,
+            json_loads=cls.json_loads,
             **extra,
         )
         return cls.model_validate(obj)
@@ -253,11 +255,11 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
     @classmethod
     def parse_raw(
         cls: typing.Type["BaseModel"],
-        b: "StrBytes",
+        b: typing.Union[str, bytes],
         *,
         content_type: typing.Optional[str] = None,
         encoding: str = "utf8",
-        proto: typing.Optional[Protocol] = None,
+        proto: typing.Optional[Format] = None,
         allow_pickle: bool = False,
         **extra,
     ) -> BaseModel:
@@ -269,7 +271,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
                 content_type=content_type,  # type: ignore[arg-type]
                 encoding=encoding,
                 allow_pickle=allow_pickle,
-                json_loads=cls.__config__.json_loads,
+                json_loads=cls.json_loads,
                 **extra,
             )
         except (ValueError, TypeError, UnicodeDecodeError) as e:  # noqa: B014
@@ -357,7 +359,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
             exclude_none = True
 
         if (
-            getattr(self.__config__.json_dumps, "__qualname__", "")
+            getattr(self.json_dumps, "__qualname__", "")
             == "orjson_json_dumps"
         ):
             option = dumps_kwargs.pop("option", 0)
@@ -399,7 +401,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         if typing.TYPE_CHECKING:
             result: typing.Union[str, bytes]
 
-        result = self.__config__.json_dumps(data, default=encoder, **dumps_kwargs)
+        result = self.json_dumps(data, default=encoder, **dumps_kwargs)
 
         if return_bytes is True:
             if isinstance(result, str):

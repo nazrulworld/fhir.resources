@@ -3,12 +3,8 @@ import json
 import pathlib
 from typing import TYPE_CHECKING, Any, Callable, Union, cast, no_type_check, Optional
 
-from pydantic.v1.parse import Protocol
-from pydantic import load_file as default_load_file
-from pydantic.v1.parse import load_str_bytes as default_load_str_bytes
-from pydantic.v1.types import StrBytes
-
 from .common import is_primitive_type  # noqa: F401
+from .deprecated import Format, v1_load_str_bytes, v1_load_file
 
 try:
     from .yaml import yaml_dumps, yaml_loads
@@ -69,11 +65,11 @@ __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 
 
 def load_str_bytes(
-    b: StrBytes,
+    b: Union[str, bytes],
     *,
     content_type: Optional[str] = None,
     encoding: str = "utf8",
-    proto: Optional[Protocol] = None,
+    proto: Optional[Format] = None,
     allow_pickle: bool = False,
     json_loads: Callable[[str], Any] = json.loads,
     **extra,
@@ -95,7 +91,7 @@ def load_str_bytes(
                 b = cast(bytes, b)
             obj = xml_loads(extra["cls"], b, **params)
             return obj
-    obj = default_load_str_bytes(
+    obj = v1_load_str_bytes(
         b,
         proto=proto,  # type: ignore[arg-type]
         content_type=content_type,  # type: ignore[arg-type]
@@ -111,7 +107,7 @@ def load_file(
     *,
     content_type: Optional[str] = None,
     encoding: str = "utf8",
-    proto: Optional[Protocol] = None,
+    proto: Optional[Format] = None,
     allow_pickle: bool = False,
     json_loads: Callable[[str], Any] = json.loads,
     **extra,
@@ -136,7 +132,7 @@ def load_file(
             params["xmlparser"] = extra["xmlparser"]
         obj = xml_loads(extra["cls"], path.read_bytes(), **params)
     else:
-        obj = default_load_file(
+        obj = v1_load_file(
             path,
             proto=proto,  # type: ignore[arg-type]
             content_type=content_type,  # type: ignore[arg-type]

@@ -1,60 +1,45 @@
 # -*- coding: utf-8 -*-
 """Base class for all FHIR elements. """
-import abc
 import inspect
 import logging
 import pathlib
 import typing
 from collections import OrderedDict
-from enum import Enum
 from functools import lru_cache
 
-from pydantic.v1 import BaseModel, Extra, Field
-from pydantic.v1.class_validators import ROOT_VALIDATOR_CONFIG_KEY, root_validator
+from pydantic import (
+    BaseModel,
+    Field,
+    SerializationInfo,
+    model_serializer,
+    ConfigDict,
+    model_validator,
+)
+from pydantic.fields import FieldInfo
+from pydantic.main import IncEx
 from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import ConfigError, PydanticValueError
-from pydantic.v1.fields import ModelField
+from pydantic.v1.errors import PydanticValueError
 from pydantic.v1.parse import Protocol
-from pydantic.v1.utils import ROOT_KEY, sequence_like
+from pydantic_core import ValidationError, InitErrorDetails, PydanticCustomError
+from typing_extensions import Literal
+from typing_extensions import Self
 
 from .utils import is_primitive_type, load_file, load_str_bytes, xml_dumps, yaml_dumps
 
-try:
-    import orjson
-
-    def json_dumps(v, *, default, option=0, return_bytes=False):
-        params = {"default": default}
-        if option > 0:
-            params["option"] = option
-        result = orjson.dumps(v, **params)
-        if return_bytes is False:
-            result = result.decode()
-        if typing.TYPE_CHECKING and return_bytes is True:
-            result = typing.cast(str, result)
-        return result
-
-    json_dumps.__qualname__ = "orjson_json_dumps"
-    json_loads = orjson.loads
-
-except ImportError:
-    try:
-        from simplejson import loads as json_loads
-        from simplejson import dumps as json_dumps  # type:ignore
-    except ImportError:
-        from json import loads as json_loads
-        from json import dumps as json_dumps  # type:ignore
-
-
 if typing.TYPE_CHECKING:
-    from pydantic.v1.typing import TupleGenerator
+    from pydantic.main import Model, TupleGenerator
     from pydantic.v1.types import StrBytes
-    from pydantic.v1.typing import AnyCallable
-    from pydantic.v1.main import Model
 
-__author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
+__author__ = "Md Nazrul Islam"
+__email__ = "email2nazrul@gmail.com"
 
 logger = logging.getLogger(__name__)
+ROOT_KEY = "root"
 FHIR_COMMENTS_FIELD_NAME = "fhir_comments"
+FHIRErrorCodes = Literal[
+    "fhir-validation-missing-resource-type",
+    "fhir-validation-wrong-resource-type",
+]
 
 
 class WrongResourceType(PydanticValueError):
@@ -62,123 +47,65 @@ class WrongResourceType(PydanticValueError):
     msg_template = "Wrong ResourceType: {error}"
 
 
-class FHIRAbstractModel(BaseModel, abc.ABC):
+class FHIRAbstractModel(BaseModel):
     """Abstract base model class for all FHIR elements."""
 
-    resource_type: str = ...  # type: ignore
+    __fhir_serialization_include_comment__: bool = None
+    # __resource_type__: Literal['ResourceType'] = 'ResourceType'
+    __resource_type__ = ...
 
     fhir_comments: typing.Union[str, typing.List[str]] = Field(
-        None, alias="fhir_comments", element_property=False
+        None, alias="fhir_comments", json_schema_extra={"element_property": False}
     )
 
-    def __init__(__pydantic_self__, **data: typing.Any) -> None:
-        """ """
+    def __init__(self, /, **data: typing.Any) -> None:  # type: ignore
+        """
+        from pydantic_core import PydanticCustomError
+        raise PydanticCustomError(
+            'sequence_str',
+            "'{type_name}' instances are not allowed as a Sequence value",
+            {'type_name': value_type.__name__},
+        )
+        https://docs.pydantic.dev/latest/api/pydantic_core/#pydantic_core.InitErrorDetails
+        """
+        if self.__resource_type__ is Ellipsis:
+            raise ValueError("__resource_type__ must be defined in subclasses")
+
         resource_type = data.pop("resource_type", None)
-        errors = []
-        if (
-            "resourceType" in data
-            and "resourceType" not in __pydantic_self__.__fields__
-        ):
+        if "resourceType" in data and "resourceType" not in self.model_fields:
             resource_type = data.pop("resourceType", None)
 
-        if (
-            resource_type is not None
-            and resource_type != __pydantic_self__.__fields__["resource_type"].default
-        ):
-            expected_resource_type = __pydantic_self__.__fields__[
-                "resource_type"
-            ].default
-            error = (
-                f"``{__pydantic_self__.__class__.__module__}."
-                f"{__pydantic_self__.__class__.__name__}`` "
-                f"expects resource type ``{expected_resource_type}``, "
-                f"but got ``{resource_type}``. "
-                "Make sure resource type name is correct and right "
-                "ModelClass has been chosen."
+        if resource_type is not None and resource_type != self.__resource_type__:
+            expected_resource_type = self.__resource_type__
+            error_type: PydanticCustomError = PydanticCustomError(
+                "fhir-validation-wrong-resource-type",
+                message_template="""``{module_name}.{class_name}`` expects resource type ``{expected_resource_type}``,
+                    but got ``{resource_type}``. Make sure resource type name is correct and right
+                    ModelClass has been chosen.""",
+                context={
+                    "module_name": self.__class__.__module__,
+                    "class_name": self.__class__.__name__,
+                    "expected_resource_type": expected_resource_type,
+                    "resource_type": resource_type,
+                },
             )
-            errors.append(
-                ErrorWrapper(WrongResourceType(error=error), loc="resource_type")
-            )
-        if errors:
-            raise ValidationError(errors, __pydantic_self__.__class__)
+            error_: InitErrorDetails = {
+                "type": error_type,
+                "loc": ("resource_type",),
+                "input": resource_type,
+            }
+            raise ValidationError.from_exception_data(self.__class__.__name__, [error_])
 
-        BaseModel.__init__(__pydantic_self__, **data)
-
-    @classmethod
-    def add_root_validator(
-        cls: typing.Type["Model"],
-        validator: typing.Union["AnyCallable", classmethod],
-        *,
-        pre: bool = False,
-        skip_on_failure: bool = False,
-        allow_reuse: bool = True,
-        index: int = -1,
-    ):
-        """ """
-        from inspect import signature
-        from inspect import ismethod
-
-        if isinstance(validator, classmethod) or ismethod(validator):
-            validator = validator.__func__  # type:ignore
-
-        func_name = validator.__name__
-
-        # first level validation
-        if any([func_name in cls_.__dict__ for cls_ in cls.mro()]):
-            raise ConfigError(
-                f"{cls} already has same name '{func_name}' method or attribute!"
-            )
-        if func_name in cls.__fields__:
-            raise ConfigError(f"{cls} already has same name '{func_name}' field!")
-
-        # evaluate through root_validator
-        validator = root_validator(
-            pre=pre, allow_reuse=allow_reuse, skip_on_failure=skip_on_failure
-        )(validator)
-
-        validator_config = getattr(validator, ROOT_VALIDATOR_CONFIG_KEY)
-        sig = signature(validator_config.func)
-        arg_list = list(sig.parameters.keys())
-
-        if len(arg_list) != 2:
-            raise ConfigError(
-                f"Invalid signature for root validator {func_name}: {sig}"
-                ", should be: (cls, values)."
-            )
-
-        if arg_list[0] != "cls":
-            raise ConfigError(
-                f"Invalid signature for root validator {func_name}: {sig}, "
-                f'"{arg_list[0]}" not permitted as first argument, '
-                "should be: (cls, values)."
-            )
-        # check function signature
-        if validator_config.pre:
-            if index == -1:
-                cls.__pre_root_validators__.append(validator_config.func)
-            else:
-                cls.__pre_root_validators__.insert(index, validator_config.func)
-        else:
-            if index == -1:
-                cls.__post_root_validators__.append(
-                    (validator_config.skip_on_failure, validator_config.func)
-                )
-            else:
-                cls.__post_root_validators__.insert(
-                    index, (validator_config.skip_on_failure, validator_config.func)
-                )
-        # inject to class
-        setattr(validator, "__manually_injected__", True)  # noqa:B010
-        setattr(cls, func_name, validator)
+        BaseModel.__init__(self, **data)
 
     @classmethod
     def element_properties(
         cls: typing.Type["Model"],
-    ) -> typing.Generator[ModelField, None, None]:
+    ) -> typing.Generator[FieldInfo, None, None]:
         """ """
-        for model_field in cls.__fields__.values():
-            if model_field.field_info.extra.get("element_property", False):
-                yield model_field
+        for field_info in cls.model_fields.values():
+            if field_info.json_schema_extra.get("element_property", False):
+                yield field_info
 
     @classmethod
     def elements_sequence(cls):
@@ -189,7 +116,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
 
     @classmethod
     @lru_cache(maxsize=1024, typed=True)
-    def has_resource_base(cls: typing.Type["Model"]) -> bool:
+    def has_resource_base(cls: typing.Type["BaseModel"]) -> bool:
         """ """
         # xxx: calculate metrics, other than cache it!
         for cl in inspect.getmro(cls)[:-4]:
@@ -201,7 +128,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
     @lru_cache(maxsize=None, typed=True)
     def get_resource_type(cls: typing.Type["Model"]) -> str:
         """ """
-        return cls.__fields__["resource_type"].default
+        return cls.__resource_type__
 
     @classmethod
     @lru_cache(maxsize=None, typed=True)
@@ -211,13 +138,13 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         """Mappings between field's name and alias"""
         aliases = cls.elements_sequence()
         return {
-            f.alias: fname for fname, f in cls.__fields__.items() if f.alias in aliases
+            fi.alias: fn for fn, fi in cls.model_fields.items() if fi.alias in aliases
         }
 
     @classmethod
     def get_json_encoder(cls) -> typing.Callable[[typing.Any], typing.Any]:
         """ """
-        return cls.__json_encoder__
+        return cls.__pydantic_serializer__.to_json
 
     @classmethod
     def parse_file(
@@ -291,7 +218,8 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
             exclude_none=exclude_none,
             exclude_comments=exclude_comments,
         )
-        if self.__custom_root_type__:
+        # __pydantic_root_model__
+        if self.__pydantic_root_model__:
             data = data[ROOT_KEY]
 
         if typing.TYPE_CHECKING:
@@ -323,16 +251,45 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
 
         return xml_string
 
-    def json(  # type: ignore
+    def model_dump_json(
         self,
         *,
-        by_alias: typing.Optional[bool] = None,
-        exclude_none: typing.Optional[bool] = None,
+        indent: int | None = None,
+        include: IncEx = None,
+        exclude: IncEx = None,
+        context: dict[str, typing.Any] | None = None,
+        by_alias: bool = False,
+        exclude_unset: bool = False,
+        exclude_defaults: bool = False,
+        exclude_none: bool = False,
+        round_trip: bool = False,
+        warnings: bool | Literal["none", "warn", "error"] = True,
+        serialize_as_any: bool = False,
+        # Custom
         exclude_comments: bool = False,
-        encoder: typing.Optional[typing.Callable[[typing.Any], typing.Any]] = None,
-        return_bytes: bool = False,
-        **dumps_kwargs: typing.Any,
-    ) -> typing.Union[str, bytes]:
+    ) -> str:
+        """Usage docs: https://docs.pydantic.dev/2.7/concepts/serialization/#modelmodel_dump_json
+
+        Generates a JSON representation of the model using Pydantic's `to_json` method.
+
+        Args:
+            indent: Indentation to use in the JSON output. If None is passed, the output will be compact.
+            include: Field(s) to include in the JSON output.
+            exclude: Field(s) to exclude from the JSON output.
+            context: Additional context to pass to the serializer.
+            by_alias: Whether to serialize using field aliases.
+            exclude_unset: Whether to exclude fields that have not been explicitly set.
+            exclude_defaults: Whether to exclude fields that are set to their default value.
+            exclude_none: Whether to exclude fields that have a value of `None`.
+            round_trip: If True, dumped values should be valid as input for non-idempotent types such as Json[T].
+            warnings: How to handle serialization errors. False/"none" ignores them, True/"warn" logs errors,
+                "error" raises a [`PydanticSerializationError`][pydantic_core.PydanticSerializationError].
+            serialize_as_any: Whether to serialize fields with duck-typing serialization behavior.
+            exclude_comments: FHIR comment
+
+        Returns:
+            A JSON string representation of the model.
+        """
         """Fully overridden method but codes are copied from BaseMode and business logic added
         in according to support ``fhir_comments``filter and other FHIR specific requirments.
         """
@@ -342,187 +299,269 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         if exclude_none is None:
             exclude_none = True
 
-        if (
-            getattr(self.__config__.json_dumps, "__qualname__", "")
-            == "orjson_json_dumps"
-        ):
-            option = dumps_kwargs.pop("option", 0)
-            if option == 0:
-                if "indent" in dumps_kwargs:
-                    dumps_kwargs.pop("indent")
-                    # only indent 2 is accepted
-                    option |= orjson.OPT_INDENT_2
+        org_config_val = None
+        if exclude_comments is not None:
+            org_config_val = self.__fhir_serialization_include_comment__
+            self.__fhir_serialization_include_comment__ = exclude_comments
 
-                sort_keys = dumps_kwargs.pop("sort_keys", False)
-                if sort_keys:
-                    option |= orjson.OPT_SORT_KEYS
-
-            if len(dumps_kwargs) > 0:
-                logger.debug(
-                    "When ``dumps`` method is used from ``orjson`` "
-                    "all dumps kwargs are ignored except `indent`, `sort_keys` "
-                    "and of course ``option`` from orjson"
-                )
-                dumps_kwargs = {}
-
-            if option > 0:
-                dumps_kwargs["option"] = option
-
-            dumps_kwargs["return_bytes"] = return_bytes
-
-        data = self.dict(
+        result = BaseModel.model_dump_json(
+            self,
+            indent=indent,
+            include=include,
+            exclude=exclude,
+            context=context,
             by_alias=by_alias,
+            exclude_unset=exclude_unset,
+            exclude_defaults=exclude_defaults,
             exclude_none=exclude_none,
-            exclude_comments=exclude_comments,
+            round_trip=round_trip,
+            warnings=warnings,
+            serialize_as_any=serialize_as_any,
         )
-        if self.__custom_root_type__:
-            data = data[ROOT_KEY]
-
-        encoder = typing.cast(
-            typing.Callable[[typing.Any], typing.Any], encoder or self.__json_encoder__
-        )
-
-        if typing.TYPE_CHECKING:
-            result: typing.Union[str, bytes]
-
-        result = self.__config__.json_dumps(data, default=encoder, **dumps_kwargs)
-
-        if return_bytes is True:
-            if isinstance(result, str):
-                result = result.encode("utf-8", errors="strict")
-        else:
-            if isinstance(result, bytes):
-                result = result.decode()
-
+        if exclude_comments is not None:
+            self.__fhir_serialization_include_comment__ = org_config_val
         return result
 
-    @typing.no_type_check
-    def dict(
+    def model_dump(
         self,
         *,
-        by_alias: bool = True,
-        exclude_none: bool = True,
+        mode: Literal["json", "python"] | str = "python",
+        include: IncEx = None,
+        exclude: IncEx = None,
+        context: dict[str, typing.Any] | None = None,
+        by_alias: bool = False,
+        exclude_unset: bool = False,
+        exclude_defaults: bool = False,
+        exclude_none: bool = False,
+        round_trip: bool = False,
+        warnings: bool | Literal["none", "warn", "error"] = True,
+        serialize_as_any: bool = False,
+        # extra
         exclude_comments: bool = False,
-        **pydantic_extra,
-    ) -> OrderedDict:
-        """important!
-        there is no impact on ``pydantic_extra`` we keep it as backward compatibility.
-        @see issues https://github.com/nazrulworld/fhir.resources/issues/90
-        & https://github.com/nazrulworld/fhir.resources/issues/89
-        """
+    ) -> dict[str, typing.Any]:
+        """Usage docs: https://docs.pydantic.dev/2.7/concepts/serialization/#modelmodel_dump
+
+        Generate a dictionary representation of the model, optionally specifying which fields to include or exclude.
+
+        Args:
+            mode: The mode in which `to_python` should run.
+                If mode is 'json', the output will only contain JSON serializable types.
+                If mode is 'python', the output may contain non-JSON-serializable Python objects.
+            include: A set of fields to include in the output.
+            exclude: A set of fields to exclude from the output.
+            context: Additional context to pass to the serializer.
+            by_alias: Whether to use the field's alias in the dictionary key if defined.
+            exclude_unset: Whether to exclude fields that have not been explicitly set.
+            exclude_defaults: Whether to exclude fields that are set to their default value.
+            exclude_none: Whether to exclude fields that have a value of `None`.
+            round_trip: If True, dumped values should be valid as input for non-idempotent types such as Json[T].
+            warnings: How to handle serialization errors. False/"none" ignores them, True/"warn" logs errors,
+                "error" raises a [`PydanticSerializationError`][pydantic_core.PydanticSerializationError].
+            serialize_as_any: Whether to serialize fields with duck-typing serialization behavior.
+
+        Returns:
+            A dictionary representation of the model.
+
         if len(pydantic_extra) > 0:
             logger.warning(
                 f"{self.__class__.__name__}.dict method accepts only"
                 "´by_alias´, ´exclude_none´, ´exclude_comments` as parameters"
                 " since version v6.2.0, any extra parameter is simply ignored. "
                 "You should not provide any extra argument."
-            )
-        return OrderedDict(
-            self._fhir_iter(
-                by_alias=by_alias,
-                exclude_none=exclude_none,
-                exclude_comments=exclude_comments,
-            )
         )
+        """
+        if by_alias is None:
+            by_alias = True
+
+        if exclude_none is None:
+            exclude_none = True
+
+        org_config_val = None
+        if exclude_comments is False:
+            org_config_val = self.__fhir_serialization_include_comment__
+            self.__fhir_serialization_include_comment__ = True
+
+        result = BaseModel.model_dump(
+            self,
+            mode=mode,
+            include=include,
+            exclude=exclude,
+            context=context,
+            by_alias=by_alias,
+            exclude_unset=exclude_unset,
+            exclude_defaults=exclude_defaults,
+            exclude_none=exclude_none,
+            round_trip=round_trip,
+            warnings=warnings,
+            serialize_as_any=serialize_as_any,
+        )
+        if exclude_comments is False:
+            self.__fhir_serialization_include_comment__ = org_config_val
+        return result
+
+    # Serializers
+    @model_serializer(mode="wrap", when_used="always", return_type=OrderedDict)
+    def fhir_model_serializer(
+        self,
+        serialize: typing.Callable[[typing.Any], typing.Any],
+        info: SerializationInfo,
+    ) -> OrderedDict:
+        return OrderedDict(self._fhir_iter(serialize, info))
 
     # Private methods
     def _fhir_iter(
-        self, *, by_alias: bool, exclude_none: bool, exclude_comments: bool
+        self,
+        serialize: typing.Callable[[typing.Any], typing.Any],
+        info: SerializationInfo,
     ) -> "TupleGenerator":
+        return None, None
         if self.__class__.has_resource_base():
-            yield "resourceType", self.resource_type
+            yield "resourceType", self.__resource_type__
 
         alias_maps = self.get_alias_mapping()
         for prop_name in self.elements_sequence():
             field_key = alias_maps[prop_name]
-
-            field = self.__fields__[field_key]
+            field = self.model_fields[field_key]
             is_primitive = is_primitive_type(field)
-            v = self.__dict__.get(field_key, None)
-            dict_key = by_alias and field.alias or field_key
-            if v is not None:
-                v = self._fhir_get_value(
-                    v,
-                    by_alias=by_alias,
-                    exclude_none=exclude_none,
-                    exclude_comments=exclude_comments,
-                )
+            dict_key = info.by_alias and field.alias or field_key
+            value = serialize(self.__dict__.get(field_key, None))
 
-            if v is not None or (exclude_none is False and v is None):
-                yield dict_key, v
+            if value is not None or (info.exclude_none is False and value is None):
+                yield dict_key, value
 
             # looking for comments or primitive extension for primitive data type
             if is_primitive:
                 ext_key = f"{field_key}__ext"
-                ext_val = self.__dict__.get(ext_key, None)
+                ext_val = serialize(self.__dict__.get(ext_key, None))
                 if ext_val is not None:
-                    dict_key_ = by_alias and self.__fields__[ext_key].alias or ext_key
-                    ext_val = self._fhir_get_value(
-                        ext_val,
-                        by_alias=by_alias,
-                        exclude_none=exclude_none,
-                        exclude_comments=exclude_comments,
+                    dict_key_ = (
+                        info.by_alias and self.model_fields[ext_key].alias or ext_key
                     )
                     if ext_val is not None and len(ext_val) > 0:
                         yield dict_key_, ext_val
         # looking for comments
         comments = self.__dict__.get(FHIR_COMMENTS_FIELD_NAME, None)
-        if comments is not None and not exclude_comments:
+
+        if comments is not None and self.__fhir_serialization_include_comment__:
             yield FHIR_COMMENTS_FIELD_NAME, comments
 
-    @classmethod
-    @typing.no_type_check
-    def _fhir_get_value(
-        cls, v: typing.Any, by_alias: bool, exclude_none: bool, exclude_comments: bool
-    ) -> typing.Any:
-        if isinstance(v, (FHIRAbstractModel, BaseModel)):
-            v_dict = v.dict(
-                by_alias=by_alias,
-                exclude_none=exclude_none,
-                exclude_comments=exclude_comments,
+    @model_validator(mode="after")
+    def validate_after_model_construction(self) -> Self:
+        """ """
+        # do after validation for primitive elements
+        self._validate_required_primitive_elements()
+
+        # do after validation for one of many
+        self._validate_one_of_many()
+
+        return self
+
+    def _validate_one_of_many(self):
+        """https://www.hl7.org/fhir/formats.html#choice
+        A few elements have a choice of more than one data type for their content.
+        All such elements have a name that takes the form nnn[x].
+        The "nnn" part of the name is constant, and the "[x]" is replaced with
+        the title-cased name of the type that is actually used.
+        The table view shows each of these names explicitly.
+
+        Elements that have a choice of data type cannot repeat - they must have a
+        maximum cardinality of 1. When constructing an instance of an element with a
+        choice of types, the authoring system must create a single element with a
+        data type chosen from among the list of permitted data types.
+        """
+        one_of_many_fields = self.get_one_of_many_fields()
+        if len(one_of_many_fields) == 0:
+            return
+        for prefix, fields in one_of_many_fields.items():
+            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
+            required = (
+                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
+                is True
             )
-            if "__root__" in v_dict:
-                return v_dict["__root__"]
-            value = v_dict
+            found = False
+            for field in fields:
+                if field in values and values[field] is not None:
+                    if found is True:
+                        raise ValueError(
+                            "Any of one field value is expected from "
+                            f"this list {fields}, but got multiple!"
+                        )
+                    else:
+                        found = True
+            if required is True and found is False:
+                raise ValueError(f"Expect any of field value from this list {fields}.")
 
-        elif isinstance(v, dict):
-            value = {
-                k_: cls._fhir_get_value(
-                    v_,
-                    by_alias=by_alias,
-                    exclude_none=exclude_none,
-                    exclude_comments=exclude_comments,
-                )
-                for k_, v_ in v.items()
-            }
-        elif sequence_like(v):
-            value = v.__class__(
-                cls._fhir_get_value(
-                    v_,
-                    by_alias=by_alias,
-                    exclude_none=exclude_none,
-                    exclude_comments=exclude_comments,
-                )
-                for v_ in v
-            )
+    def _validate_required_primitive_elements(self):
+        """https://www.hl7.org/fhir/extensibility.html#Special-Case
+        In some cases, implementers might find that they do not have appropriate data for
+        an element with minimum cardinality = 1. In this case, the element must be present,
+        but unless the resource or a profile on it has made the actual value of the primitive
+        data type mandatory, it is possible to provide an extension that explains why
+        the primitive value is not present.
+        """
+        required_fields = self.get_required_fields()
+        if len(required_fields) == 0:
+            return
+        _missing = object()
 
-        elif isinstance(v, Enum) and getattr(cls.Config, "use_enum_values", False):
-            value = v.value
+        def _fallback():
+            return ""
 
-        else:
-            value = v
-        if (
-            (sequence_like(value) or isinstance(value, dict))
-            and exclude_none is True
-            and len(value) == 0
-        ):
-            return None
-        return value
+        errors: typing.List["ErrorWrapper"] = []
+        for name, ext in required_fields:
+            field = cls.__fields__[name]
+            ext_field = cls.__fields__[ext]
+            value = values.get(field.alias, _missing)
+            if value not in (_missing, None):
+                continue
+            ext_value = values.get(ext_field.alias, _missing)
+            missing_ext = True
+            if ext_value not in (_missing, None):
+                if isinstance(ext_value, dict):
+                    missing_ext = len(ext_value.get("extension", [])) == 0
+                elif (
+                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
+                    == "FHIRPrimitiveExtension"
+                ):
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+                else:
+                    validate_pass = True
+                    for validator in ext_field.type_.__get_validators__():
+                        try:
+                            ext_value = validator(v=ext_value)
+                        except ValidationError as exc:
+                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
+                            validate_pass = False
+                    if not validate_pass:
+                        continue
+                    if ext_value.extension and len(ext_value.extension) > 0:
+                        missing_ext = False
+            if missing_ext:
+                if value is _missing:
+                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
+                else:
+                    errors.append(
+                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
+                    )
+        if len(errors) > 0:
+            raise ValidationError(errors, cls)  # type: ignore
 
-    class Config:
-        json_loads = json_loads
-        json_dumps = json_dumps
-        allow_population_by_field_name = True
-        extra = Extra.forbid
-        validate_assignment = True
-        error_msg_templates = {"value_error.extra": "extra fields not permitted"}
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
+        """This method should be overridden in each subclass.
+        [("type", "type__ext")]"""
+        return []
+
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
+        """This method should be override in subclasses to specify one set of fields
+
+        return {
+            "allowed": ["allowedMoney", "allowedString", "allowedUnsignedInt"],
+            "used": ["usedMoney", "usedUnsignedInt"],
+        }
+        """
+        return {}
+
+    model_config = ConfigDict(
+        extra="forbid", validate_assignment=True, populate_by_name=True
+    )

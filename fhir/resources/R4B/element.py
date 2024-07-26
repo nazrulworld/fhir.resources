@@ -43,7 +43,7 @@ class Element(fhirabstractmodel.FHIRAbstractModel):
         },
     )
 
-    id: fhirtypes.IdType | None = Field(  # type: ignore
+    id: fhirtypes.StringType | None = Field(  # type: ignore
         None,
         alias="id",
         title="Unique id for inter-element referencing",

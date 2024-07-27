@@ -6,39 +6,51 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
+from pathlib import Path
 
-from .. import fhirtypes  # noqa: F401
 from .. import administrableproductdefinition
+from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
 
 def impl_administrableproductdefinition_1(inst):
     assert inst.administrableDoseForm.coding[0].code == "Film-coatedtablet"
     assert (
         inst.administrableDoseForm.coding[0].system
-        == "http://ema.europa.eu/example/administrabledoseform"
+        == ExternalValidatorModel(
+            valueUri="http://ema.europa.eu/example/administrabledoseform"
+        ).valueUri
     )
     assert inst.id == "example"
     assert (
-        inst.identifier[0].system == "http://ema.europa.eu/example/phpididentifiersets"
+        inst.identifier[0].system
+        == ExternalValidatorModel(
+            valueUri="http://ema.europa.eu/example/phpididentifiersets"
+        ).valueUri
     )
     assert inst.identifier[0].value == "{PhPID}"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.routeOfAdministration[0].code.coding[0].code == "OralUse"
     assert (
         inst.routeOfAdministration[0].code.coding[0].system
-        == "http://ema.europa.eu/example/routeofadministration"
+        == ExternalValidatorModel(
+            valueUri="http://ema.europa.eu/example/routeofadministration"
+        ).valueUri
     )
     assert inst.status == "active"
     assert inst.text.status == "generated"
     assert inst.unitOfPresentation.coding[0].code == "Tablet"
     assert (
         inst.unitOfPresentation.coding[0].system
-        == "http://ema.europa.eu/example/unitofpresentation"
+        == ExternalValidatorModel(
+            valueUri="http://ema.europa.eu/example/unitofpresentation"
+        ).valueUri
     )
 
 
@@ -50,15 +62,15 @@ def test_administrableproductdefinition_1(base_settings):
         base_settings["unittest_data_dir"]
         / "administrableproductdefinition-example.json"
     )
-    inst = administrableproductdefinition.AdministrableProductDefinition.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = administrableproductdefinition.AdministrableProductDefinition.model_validate_json(
+        Path(filename).read_bytes()
     )
-    assert "AdministrableProductDefinition" == inst.resource_type
+    assert "AdministrableProductDefinition" == inst.get_resource_type()
 
     impl_administrableproductdefinition_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "AdministrableProductDefinition" == data["resourceType"]
 
     inst2 = administrableproductdefinition.AdministrableProductDefinition(**data)

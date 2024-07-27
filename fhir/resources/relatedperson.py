@@ -8,9 +8,9 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field
+from pydantic import Field
 
-from . import backboneelement, domainresource, fhirtypes
+from . import domainresource, fhirtypes
 
 
 class RelatedPerson(domainresource.DomainResource):
@@ -25,15 +25,16 @@ class RelatedPerson(domainresource.DomainResource):
     formal responsibility in the care process.
     """
 
-    resource_type = Field("RelatedPerson", const=True)
+    __resource_type__ = "RelatedPerson"
 
     active: bool = Field(
         None,
         alias="active",
         title="Whether this related person's record is in active use",
         description="Whether this related person record is in active use.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_active", title="Extension field for ``active``."
@@ -44,17 +45,19 @@ class RelatedPerson(domainresource.DomainResource):
         alias="address",
         title="Address where the related person can be contacted or visited",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    birthDate: fhirtypes.Date = Field(
+    birthDate: fhirtypes.DateType = Field(
         None,
         alias="birthDate",
         title="The date on which the related person was born",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_birthDate", title="Extension field for ``birthDate``."
@@ -68,11 +71,12 @@ class RelatedPerson(domainresource.DomainResource):
             "about the patient's health"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    gender: fhirtypes.Code = Field(
+    gender: fhirtypes.CodeType = Field(
         None,
         alias="gender",
         title="male | female | other | unknown",
@@ -80,11 +84,12 @@ class RelatedPerson(domainresource.DomainResource):
             "Administrative Gender - the gender that the person is considered to "
             "have for administration and record keeping purposes."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["male", "female", "other", "unknown"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["male", "female", "other", "unknown"],
+        },
     )
     gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_gender", title="Extension field for ``gender``."
@@ -95,8 +100,9 @@ class RelatedPerson(domainresource.DomainResource):
         alias="identifier",
         title="A human identifier for this person",
         description="Identifier for a person within a particular scope.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     name: typing.List[fhirtypes.HumanNameType] = Field(
@@ -104,8 +110,9 @@ class RelatedPerson(domainresource.DomainResource):
         alias="name",
         title="A name associated with the person",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     patient: fhirtypes.ReferenceType = Field(
@@ -113,10 +120,11 @@ class RelatedPerson(domainresource.DomainResource):
         alias="patient",
         title="The patient this person is related to",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Patient"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Patient"],
+        },
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -127,8 +135,9 @@ class RelatedPerson(domainresource.DomainResource):
             "The period of time during which this relationship is or was active. If"
             " there are no dates defined, then the interval is unknown."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     photo: typing.List[fhirtypes.AttachmentType] = Field(
@@ -136,8 +145,9 @@ class RelatedPerson(domainresource.DomainResource):
         alias="photo",
         title="Image of the person",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     relationship: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -148,8 +158,9 @@ class RelatedPerson(domainresource.DomainResource):
             "The nature of the relationship between the related person and the "
             "patient."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     telecom: typing.List[fhirtypes.ContactPointType] = Field(
@@ -160,8 +171,9 @@ class RelatedPerson(domainresource.DomainResource):
             "A contact detail for the person, e.g. a telephone number or an email "
             "address."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -194,6 +206,9 @@ class RelatedPerson(domainresource.DomainResource):
         ]
 
 
+from . import backboneelement
+
+
 class RelatedPersonCommunication(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -203,7 +218,7 @@ class RelatedPersonCommunication(backboneelement.BackboneElement):
     the patient's health.
     """
 
-    resource_type = Field("RelatedPersonCommunication", const=True)
+    __resource_type__ = "RelatedPersonCommunication"
 
     language: fhirtypes.CodeableConceptType = Field(
         ...,
@@ -218,8 +233,9 @@ class RelatedPersonCommunication(backboneelement.BackboneElement):
             ' upper case; e.g. "en" for English, or "en-US" for American English '
             'versus "en-AU" for Australian English.'
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     preferred: bool = Field(
@@ -230,8 +246,9 @@ class RelatedPersonCommunication(backboneelement.BackboneElement):
             "Indicates whether or not the related person prefers this language "
             "(over other languages he or she masters up a certain level)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     preferred__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_preferred", title="Extension field for ``preferred``."

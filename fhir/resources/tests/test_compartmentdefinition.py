@@ -6,10 +6,10 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
+from pathlib import Path
 
-from .. import fhirtypes  # noqa: F401
 from .. import compartmentdefinition
+from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
 
 def impl_compartmentdefinition_1(inst):
@@ -17,7 +17,7 @@ def impl_compartmentdefinition_1(inst):
     assert inst.contact[0].name == "[string]"
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
-    assert inst.date == fhirtypes.DateTime.validate("2017-02-24")
+    assert inst.date == ExternalValidatorModel(valueDateTime="2017-02-24").valueDateTime
     assert inst.description == (
         "The set of resources associated with a particular Device "
         "(example with Communication and CommunicationRequest "
@@ -49,16 +49,23 @@ def impl_compartmentdefinition_1(inst):
     assert inst.status == "draft"
     assert inst.text.status == "generated"
     assert inst.title == "E X A M P L E"
-    assert inst.url == "http://hl7.org/fhir/CompartmentDefinition/example"
+    assert (
+        inst.url
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/CompartmentDefinition/example"
+        ).valueUri
+    )
     assert inst.useContext[0].code.code == "focus"
     assert (
         inst.useContext[0].code.system
-        == "http://terminology.hl7.org/CodeSystem/usage-context-type"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/usage-context-type"
+        ).valueUri
     )
     assert inst.useContext[0].valueCodeableConcept.coding[0].code == "Device"
     assert (
         inst.useContext[0].valueCodeableConcept.coding[0].system
-        == "http://hl7.org/fhir/fhir-types"
+        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/fhir-types").valueUri
     )
 
 
@@ -67,15 +74,15 @@ def test_compartmentdefinition_1(base_settings):
     Test File: compartmentdefinition-example.json
     """
     filename = base_settings["unittest_data_dir"] / "compartmentdefinition-example.json"
-    inst = compartmentdefinition.CompartmentDefinition.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = compartmentdefinition.CompartmentDefinition.model_validate_json(
+        Path(filename).read_bytes()
     )
-    assert "CompartmentDefinition" == inst.resource_type
+    assert "CompartmentDefinition" == inst.get_resource_type()
 
     impl_compartmentdefinition_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CompartmentDefinition" == data["resourceType"]
 
     inst2 = compartmentdefinition.CompartmentDefinition(**data)
@@ -86,7 +93,12 @@ def impl_compartmentdefinition_2(inst):
     assert inst.code == "RelatedPerson"
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
-    assert inst.date == fhirtypes.DateTime.validate("2023-03-26T15:21:02+11:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel(
+            valueDateTime="2023-03-26T15:21:02+11:00"
+        ).valueDateTime
+    )
     assert inst.experimental is True
     assert inst.id == "relatedPerson"
     assert inst.name == "Base FHIR compartment definition for RelatedPerson"
@@ -108,7 +120,12 @@ def impl_compartmentdefinition_2(inst):
     assert inst.search is True
     assert inst.status == "draft"
     assert inst.text.status == "extensions"
-    assert inst.url == "http://hl7.org/fhir/CompartmentDefinition/relatedPerson"
+    assert (
+        inst.url
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/CompartmentDefinition/relatedPerson"
+        ).valueUri
+    )
     assert inst.version == "5.0.0"
 
 
@@ -119,15 +136,15 @@ def test_compartmentdefinition_2(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "compartmentdefinition-relatedperson.json"
     )
-    inst = compartmentdefinition.CompartmentDefinition.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = compartmentdefinition.CompartmentDefinition.model_validate_json(
+        Path(filename).read_bytes()
     )
-    assert "CompartmentDefinition" == inst.resource_type
+    assert "CompartmentDefinition" == inst.get_resource_type()
 
     impl_compartmentdefinition_2(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CompartmentDefinition" == data["resourceType"]
 
     inst2 = compartmentdefinition.CompartmentDefinition(**data)
@@ -138,7 +155,12 @@ def impl_compartmentdefinition_3(inst):
     assert inst.code == "Patient"
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
-    assert inst.date == fhirtypes.DateTime.validate("2023-03-26T15:21:02+11:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel(
+            valueDateTime="2023-03-26T15:21:02+11:00"
+        ).valueDateTime
+    )
     assert inst.experimental is True
     assert inst.id == "patient"
     assert inst.name == "Base FHIR compartment definition for Patient"
@@ -163,7 +185,12 @@ def impl_compartmentdefinition_3(inst):
     assert inst.search is True
     assert inst.status == "draft"
     assert inst.text.status == "extensions"
-    assert inst.url == "http://hl7.org/fhir/CompartmentDefinition/patient"
+    assert (
+        inst.url
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/CompartmentDefinition/patient"
+        ).valueUri
+    )
     assert inst.version == "5.0.0"
 
 
@@ -172,15 +199,15 @@ def test_compartmentdefinition_3(base_settings):
     Test File: compartmentdefinition-patient.json
     """
     filename = base_settings["unittest_data_dir"] / "compartmentdefinition-patient.json"
-    inst = compartmentdefinition.CompartmentDefinition.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = compartmentdefinition.CompartmentDefinition.model_validate_json(
+        Path(filename).read_bytes()
     )
-    assert "CompartmentDefinition" == inst.resource_type
+    assert "CompartmentDefinition" == inst.get_resource_type()
 
     impl_compartmentdefinition_3(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CompartmentDefinition" == data["resourceType"]
 
     inst2 = compartmentdefinition.CompartmentDefinition(**data)
@@ -191,7 +218,12 @@ def impl_compartmentdefinition_4(inst):
     assert inst.code == "Practitioner"
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
-    assert inst.date == fhirtypes.DateTime.validate("2023-03-26T15:21:02+11:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel(
+            valueDateTime="2023-03-26T15:21:02+11:00"
+        ).valueDateTime
+    )
     assert inst.experimental is True
     assert inst.id == "practitioner"
     assert inst.name == "Base FHIR compartment definition for Practitioner"
@@ -215,7 +247,12 @@ def impl_compartmentdefinition_4(inst):
     assert inst.search is True
     assert inst.status == "draft"
     assert inst.text.status == "extensions"
-    assert inst.url == "http://hl7.org/fhir/CompartmentDefinition/practitioner"
+    assert (
+        inst.url
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/CompartmentDefinition/practitioner"
+        ).valueUri
+    )
     assert inst.version == "5.0.0"
 
 
@@ -226,15 +263,15 @@ def test_compartmentdefinition_4(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "compartmentdefinition-practitioner.json"
     )
-    inst = compartmentdefinition.CompartmentDefinition.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = compartmentdefinition.CompartmentDefinition.model_validate_json(
+        Path(filename).read_bytes()
     )
-    assert "CompartmentDefinition" == inst.resource_type
+    assert "CompartmentDefinition" == inst.get_resource_type()
 
     impl_compartmentdefinition_4(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CompartmentDefinition" == data["resourceType"]
 
     inst2 = compartmentdefinition.CompartmentDefinition(**data)
@@ -245,7 +282,12 @@ def impl_compartmentdefinition_5(inst):
     assert inst.code == "Encounter"
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
-    assert inst.date == fhirtypes.DateTime.validate("2023-03-26T15:21:02+11:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel(
+            valueDateTime="2023-03-26T15:21:02+11:00"
+        ).valueDateTime
+    )
     assert inst.experimental is True
     assert inst.id == "encounter"
     assert inst.name == "Base FHIR compartment definition for Encounter"
@@ -263,7 +305,12 @@ def impl_compartmentdefinition_5(inst):
     assert inst.search is True
     assert inst.status == "draft"
     assert inst.text.status == "extensions"
-    assert inst.url == "http://hl7.org/fhir/CompartmentDefinition/encounter"
+    assert (
+        inst.url
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/CompartmentDefinition/encounter"
+        ).valueUri
+    )
     assert inst.version == "5.0.0"
 
 
@@ -274,15 +321,15 @@ def test_compartmentdefinition_5(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "compartmentdefinition-encounter.json"
     )
-    inst = compartmentdefinition.CompartmentDefinition.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = compartmentdefinition.CompartmentDefinition.model_validate_json(
+        Path(filename).read_bytes()
     )
-    assert "CompartmentDefinition" == inst.resource_type
+    assert "CompartmentDefinition" == inst.get_resource_type()
 
     impl_compartmentdefinition_5(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CompartmentDefinition" == data["resourceType"]
 
     inst2 = compartmentdefinition.CompartmentDefinition(**data)
@@ -293,7 +340,12 @@ def impl_compartmentdefinition_6(inst):
     assert inst.code == "Device"
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
-    assert inst.date == fhirtypes.DateTime.validate("2023-03-26T15:21:02+11:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel(
+            valueDateTime="2023-03-26T15:21:02+11:00"
+        ).valueDateTime
+    )
     assert inst.description == (
         "There is an instance of the device compartment for each "
         "Device resource, and the identity of the compartment is the "
@@ -321,7 +373,12 @@ def impl_compartmentdefinition_6(inst):
     assert inst.search is True
     assert inst.status == "draft"
     assert inst.text.status == "extensions"
-    assert inst.url == "http://hl7.org/fhir/CompartmentDefinition/device"
+    assert (
+        inst.url
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/CompartmentDefinition/device"
+        ).valueUri
+    )
     assert inst.version == "5.0.0"
 
 
@@ -330,15 +387,15 @@ def test_compartmentdefinition_6(base_settings):
     Test File: compartmentdefinition-device.json
     """
     filename = base_settings["unittest_data_dir"] / "compartmentdefinition-device.json"
-    inst = compartmentdefinition.CompartmentDefinition.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = compartmentdefinition.CompartmentDefinition.model_validate_json(
+        Path(filename).read_bytes()
     )
-    assert "CompartmentDefinition" == inst.resource_type
+    assert "CompartmentDefinition" == inst.get_resource_type()
 
     impl_compartmentdefinition_6(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CompartmentDefinition" == data["resourceType"]
 
     inst2 = compartmentdefinition.CompartmentDefinition(**data)

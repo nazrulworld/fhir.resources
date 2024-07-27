@@ -8,9 +8,9 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field
+from pydantic import Field
 
-from . import datatype, element, fhirtypes
+from . import datatype, fhirtypes
 
 
 class Availability(datatype.DataType):
@@ -21,15 +21,16 @@ class Availability(datatype.DataType):
     Availability data for an {item}.
     """
 
-    resource_type = Field("Availability", const=True)
+    __resource_type__ = "Availability"
 
     availableTime: typing.List[fhirtypes.AvailabilityAvailableTimeType] = Field(
         None,
         alias="availableTime",
         title="Times the {item} is available",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     notAvailableTime: typing.List[fhirtypes.AvailabilityNotAvailableTimeType] = Field(
@@ -37,8 +38,9 @@ class Availability(datatype.DataType):
         alias="notAvailableTime",
         title="Not available during this time due to provided reason",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -50,6 +52,9 @@ class Availability(datatype.DataType):
         return ["id", "extension", "availableTime", "notAvailableTime"]
 
 
+from . import element
+
+
 class AvailabilityAvailableTime(element.Element):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -58,27 +63,29 @@ class AvailabilityAvailableTime(element.Element):
     Times the {item} is available.
     """
 
-    resource_type = Field("AvailabilityAvailableTime", const=True)
+    __resource_type__ = "AvailabilityAvailableTime"
 
     allDay: bool = Field(
         None,
         alias="allDay",
         title="Always available? i.e. 24 hour service",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     allDay__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_allDay", title="Extension field for ``allDay``."
     )
 
-    availableEndTime: fhirtypes.Time = Field(
+    availableEndTime: fhirtypes.TimeType = Field(
         None,
         alias="availableEndTime",
         title="Closing time of day (ignored if allDay = true)",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     availableEndTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -86,13 +93,14 @@ class AvailabilityAvailableTime(element.Element):
         title="Extension field for ``availableEndTime``.",
     )
 
-    availableStartTime: fhirtypes.Time = Field(
+    availableStartTime: fhirtypes.TimeType = Field(
         None,
         alias="availableStartTime",
         title="Opening time of day (ignored if allDay = true)",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     availableStartTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -100,16 +108,17 @@ class AvailabilityAvailableTime(element.Element):
         title="Extension field for ``availableStartTime``.",
     )
 
-    daysOfWeek: typing.List[typing.Optional[fhirtypes.Code]] = Field(
+    daysOfWeek: typing.List[typing.Optional[fhirtypes.CodeType]] = Field(
         None,
         alias="daysOfWeek",
         title="mon | tue | wed | thu | fri | sat | sun",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["mon", "tue", "wed", "thu", "fri", "sat", "sun"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["mon", "tue", "wed", "thu", "fri", "sat", "sun"],
+        },
     )
     daysOfWeek__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -139,15 +148,16 @@ class AvailabilityNotAvailableTime(element.Element):
     Not available during this time due to provided reason.
     """
 
-    resource_type = Field("AvailabilityNotAvailableTime", const=True)
+    __resource_type__ = "AvailabilityNotAvailableTime"
 
-    description: fhirtypes.String = Field(
+    description: fhirtypes.StringType = Field(
         None,
         alias="description",
         title="Reason presented to the user explaining why time not available",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -158,8 +168,9 @@ class AvailabilityNotAvailableTime(element.Element):
         alias="during",
         title="Service not available during this period",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

@@ -8,7 +8,7 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import domainresource, fhirtypes
 
@@ -25,7 +25,7 @@ class FormularyItem(domainresource.DomainResource):
     item in the formulary and is not inherent to the item itself.
     """
 
-    resource_type = Field("FormularyItem", const=True)
+    __resource_type__ = "FormularyItem"
 
     code: fhirtypes.CodeableConceptType = Field(
         None,
@@ -35,8 +35,9 @@ class FormularyItem(domainresource.DomainResource):
             "A code (or set of codes) that specify the product or service that is "
             "identified by this formulary item."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -44,11 +45,12 @@ class FormularyItem(domainresource.DomainResource):
         alias="identifier",
         title="Business identifier for this formulary item",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(
         None,
         alias="status",
         title="active | entered-in-error | inactive",
@@ -56,11 +58,12 @@ class FormularyItem(domainresource.DomainResource):
             "The validity about the information of the formulary item and not of "
             "the underlying product or service itself."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["active", "entered-in-error", "inactive"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["active", "entered-in-error", "inactive"],
+        },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."

@@ -8,11 +8,9 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
-from . import backboneelement, domainresource, fhirtypes
+from . import domainresource, fhirtypes
 
 
 class InventoryItem(domainresource.DomainResource):
@@ -24,15 +22,16 @@ class InventoryItem(domainresource.DomainResource):
     related workflows.
     """
 
-    resource_type = Field("InventoryItem", const=True)
+    __resource_type__ = "InventoryItem"
 
     association: typing.List[fhirtypes.InventoryItemAssociationType] = Field(
         None,
         alias="association",
         title="Association with other items or products",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     baseUnit: fhirtypes.CodeableConceptType = Field(
@@ -43,8 +42,9 @@ class InventoryItem(domainresource.DomainResource):
             "counted"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -52,8 +52,9 @@ class InventoryItem(domainresource.DomainResource):
         alias="category",
         title="Category or class of the item",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     characteristic: typing.List[fhirtypes.InventoryItemCharacteristicType] = Field(
@@ -61,8 +62,9 @@ class InventoryItem(domainresource.DomainResource):
         alias="characteristic",
         title="Characteristic of the item",
         description="The descriptive or identifying characteristics of the item.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     code: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -70,8 +72,9 @@ class InventoryItem(domainresource.DomainResource):
         alias="code",
         title="Code designating the specific type of item",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     description: fhirtypes.InventoryItemDescriptionType = Field(
@@ -79,8 +82,9 @@ class InventoryItem(domainresource.DomainResource):
         alias="description",
         title="Descriptive characteristics of the item",
         description="The descriptive characteristics of the inventory item.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -88,8 +92,9 @@ class InventoryItem(domainresource.DomainResource):
         alias="identifier",
         title="Business identifier for the inventory item",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     instance: fhirtypes.InventoryItemInstanceType = Field(
@@ -97,8 +102,9 @@ class InventoryItem(domainresource.DomainResource):
         alias="instance",
         title="Instances or occurrences of the product",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     inventoryStatus: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -110,8 +116,9 @@ class InventoryItem(domainresource.DomainResource):
             "to indicate that the items have been taken out of inventory, or are in"
             " use, etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     name: typing.List[fhirtypes.InventoryItemNameType] = Field(
@@ -125,8 +132,9 @@ class InventoryItem(domainresource.DomainResource):
             "The item name(s) - the brand name, or common name, functional name, "
             "generic name."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     netContent: fhirtypes.QuantityType = Field(
@@ -134,8 +142,9 @@ class InventoryItem(domainresource.DomainResource):
         alias="netContent",
         title="Net content or amount present in the item",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     productReference: fhirtypes.ReferenceType = Field(
@@ -143,15 +152,16 @@ class InventoryItem(domainresource.DomainResource):
         alias="productReference",
         title="Link to a product resource used in clinical workflows",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Medication",
-            "Device",
-            "NutritionProduct",
-            "BiologicallyDerivedProduct",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Medication",
+                "Device",
+                "NutritionProduct",
+                "BiologicallyDerivedProduct",
+            ],
+        },
     )
 
     responsibleOrganization: typing.List[
@@ -161,21 +171,23 @@ class InventoryItem(domainresource.DomainResource):
         alias="responsibleOrganization",
         title="Organization(s) responsible for the product",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(
         None,
         alias="status",
         title="active | inactive | entered-in-error | unknown",
         description="Status of the item entry.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["active", "inactive", "entered-in-error", "unknown"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["active", "inactive", "entered-in-error", "unknown"],
+        },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -212,10 +224,7 @@ class InventoryItem(domainresource.DomainResource):
             "productReference",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1555(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -224,52 +233,10 @@ class InventoryItem(domainresource.DomainResource):
         the primitive value is not present.
         """
         required_fields = [("status", "status__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
 
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+from . import backboneelement
 
 
 class InventoryItemAssociation(backboneelement.BackboneElement):
@@ -280,7 +247,7 @@ class InventoryItemAssociation(backboneelement.BackboneElement):
     Association with other items or products.
     """
 
-    resource_type = Field("InventoryItemAssociation", const=True)
+    __resource_type__ = "InventoryItemAssociation"
 
     associationType: fhirtypes.CodeableConceptType = Field(
         ...,
@@ -291,8 +258,9 @@ class InventoryItemAssociation(backboneelement.BackboneElement):
             "associations or relations between items, e.g. 'packaged within' or "
             "'used with' or 'to be mixed with."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     quantity: fhirtypes.RatioType = Field(
@@ -307,8 +275,9 @@ class InventoryItemAssociation(backboneelement.BackboneElement):
             "inverse - that the contained product contains 20 units of the present "
             "product."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     relatedItem: fhirtypes.ReferenceType = Field(
@@ -316,18 +285,19 @@ class InventoryItemAssociation(backboneelement.BackboneElement):
         alias="relatedItem",
         title="The related item or product",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "InventoryItem",
-            "Medication",
-            "MedicationKnowledge",
-            "Device",
-            "DeviceDefinition",
-            "NutritionProduct",
-            "BiologicallyDerivedProduct",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "InventoryItem",
+                "Medication",
+                "MedicationKnowledge",
+                "Device",
+                "DeviceDefinition",
+                "NutritionProduct",
+                "BiologicallyDerivedProduct",
+            ],
+        },
     )
 
     @classmethod
@@ -355,15 +325,16 @@ class InventoryItemCharacteristic(backboneelement.BackboneElement):
     The descriptive or identifying characteristics of the item.
     """
 
-    resource_type = Field("InventoryItemCharacteristic", const=True)
+    __resource_type__ = "InventoryItemCharacteristic"
 
     characteristicType: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="characteristicType",
         title="The characteristic that is being defined",
         description="The type of characteristic that is being defined.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     valueAddress: fhirtypes.AddressType = Field(
@@ -371,11 +342,12 @@ class InventoryItemCharacteristic(backboneelement.BackboneElement):
         alias="valueAddress",
         title="The value of the attribute",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
     valueAnnotation: fhirtypes.AnnotationType = Field(
@@ -383,11 +355,12 @@ class InventoryItemCharacteristic(backboneelement.BackboneElement):
         alias="valueAnnotation",
         title="The value of the attribute",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
     valueBoolean: bool = Field(
@@ -395,11 +368,12 @@ class InventoryItemCharacteristic(backboneelement.BackboneElement):
         alias="valueBoolean",
         title="The value of the attribute",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
     valueBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueBoolean", title="Extension field for ``valueBoolean``."
@@ -410,38 +384,41 @@ class InventoryItemCharacteristic(backboneelement.BackboneElement):
         alias="valueCodeableConcept",
         title="The value of the attribute",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueDateTime: fhirtypes.DateTime = Field(
+    valueDateTime: fhirtypes.DateTimeType = Field(
         None,
         alias="valueDateTime",
         title="The value of the attribute",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
     valueDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueDateTime", title="Extension field for ``valueDateTime``."
     )
 
-    valueDecimal: fhirtypes.Decimal = Field(
+    valueDecimal: fhirtypes.DecimalType = Field(
         None,
         alias="valueDecimal",
         title="The value of the attribute",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
     valueDecimal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueDecimal", title="Extension field for ``valueDecimal``."
@@ -452,23 +429,25 @@ class InventoryItemCharacteristic(backboneelement.BackboneElement):
         alias="valueDuration",
         title="The value of the attribute",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueInteger: fhirtypes.Integer = Field(
+    valueInteger: fhirtypes.IntegerType = Field(
         None,
         alias="valueInteger",
         title="The value of the attribute",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
     valueInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueInteger", title="Extension field for ``valueInteger``."
@@ -479,11 +458,12 @@ class InventoryItemCharacteristic(backboneelement.BackboneElement):
         alias="valueQuantity",
         title="The value of the attribute",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
     valueRange: fhirtypes.RangeType = Field(
@@ -491,11 +471,12 @@ class InventoryItemCharacteristic(backboneelement.BackboneElement):
         alias="valueRange",
         title="The value of the attribute",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
     valueRatio: fhirtypes.RatioType = Field(
@@ -503,38 +484,41 @@ class InventoryItemCharacteristic(backboneelement.BackboneElement):
         alias="valueRatio",
         title="The value of the attribute",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueString: fhirtypes.String = Field(
+    valueString: fhirtypes.StringType = Field(
         None,
         alias="valueString",
         title="The value of the attribute",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
     valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueString", title="Extension field for ``valueString``."
     )
 
-    valueUrl: fhirtypes.Url = Field(
+    valueUrl: fhirtypes.UrlType = Field(
         None,
         alias="valueUrl",
         title="The value of the attribute",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
     valueUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueUrl", title="Extension field for ``valueUrl``."
@@ -566,10 +550,7 @@ class InventoryItemCharacteristic(backboneelement.BackboneElement):
             "valueCodeableConcept",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_2994(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -599,26 +580,7 @@ class InventoryItemCharacteristic(backboneelement.BackboneElement):
                 "valueUrl",
             ]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class InventoryItemDescription(backboneelement.BackboneElement):
@@ -630,21 +592,22 @@ class InventoryItemDescription(backboneelement.BackboneElement):
     The descriptive characteristics of the inventory item.
     """
 
-    resource_type = Field("InventoryItemDescription", const=True)
+    __resource_type__ = "InventoryItemDescription"
 
-    description: fhirtypes.String = Field(
+    description: fhirtypes.StringType = Field(
         None,
         alias="description",
         title="Textual description of the item",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    language: fhirtypes.Code = Field(
+    language: fhirtypes.CodeType = Field(
         None,
         alias="language",
         title="The language that is used in the item description",
@@ -653,8 +616,9 @@ class InventoryItemDescription(backboneelement.BackboneElement):
             "in different languages and those languages may be authoritative and "
             "not translations of a 'main' language."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_language", title="Extension field for ``language``."
@@ -677,15 +641,16 @@ class InventoryItemInstance(backboneelement.BackboneElement):
     Instances or occurrences of the product.
     """
 
-    resource_type = Field("InventoryItemInstance", const=True)
+    __resource_type__ = "InventoryItemInstance"
 
-    expiry: fhirtypes.DateTime = Field(
+    expiry: fhirtypes.DateTimeType = Field(
         None,
         alias="expiry",
         title="The expiry date or date and time for the product",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     expiry__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_expiry", title="Extension field for ``expiry``."
@@ -696,8 +661,9 @@ class InventoryItemInstance(backboneelement.BackboneElement):
         alias="identifier",
         title="The identifier for the physical instance, typically a serial number",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     location: fhirtypes.ReferenceType = Field(
@@ -705,19 +671,21 @@ class InventoryItemInstance(backboneelement.BackboneElement):
         alias="location",
         title="The location that the item is associated with",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Location"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Location"],
+        },
     )
 
-    lotNumber: fhirtypes.String = Field(
+    lotNumber: fhirtypes.StringType = Field(
         None,
         alias="lotNumber",
         title="The lot or batch number of the item",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     lotNumber__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lotNumber", title="Extension field for ``lotNumber``."
@@ -728,10 +696,11 @@ class InventoryItemInstance(backboneelement.BackboneElement):
         alias="subject",
         title="The subject that the item is associated with",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Patient", "Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Patient", "Organization"],
+        },
     )
 
     @classmethod
@@ -763,29 +732,31 @@ class InventoryItemName(backboneelement.BackboneElement):
     name.
     """
 
-    resource_type = Field("InventoryItemName", const=True)
+    __resource_type__ = "InventoryItemName"
 
-    language: fhirtypes.Code = Field(
+    language: fhirtypes.CodeType = Field(
         None,
         alias="language",
         title="The language used to express the item name",
         description="The language that the item name is expressed in.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
     language__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_language", title="Extension field for ``language``."
     )
 
-    name: fhirtypes.String = Field(
+    name: fhirtypes.StringType = Field(
         None,
         alias="name",
         title="The name or designation of the item",
         description="The name or designation that the item is given.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -796,8 +767,9 @@ class InventoryItemName(backboneelement.BackboneElement):
         alias="nameType",
         title="The type of name e.g. 'brand-name', 'functional-name', 'common-name'",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -808,10 +780,7 @@ class InventoryItemName(backboneelement.BackboneElement):
         """
         return ["id", "extension", "modifierExtension", "nameType", "language", "name"]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1932(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -820,52 +789,7 @@ class InventoryItemName(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("language", "language__ext"), ("name", "name__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class InventoryItemResponsibleOrganization(backboneelement.BackboneElement):
@@ -876,7 +800,7 @@ class InventoryItemResponsibleOrganization(backboneelement.BackboneElement):
     Organization(s) responsible for the product.
     """
 
-    resource_type = Field("InventoryItemResponsibleOrganization", const=True)
+    __resource_type__ = "InventoryItemResponsibleOrganization"
 
     organization: fhirtypes.ReferenceType = Field(
         ...,
@@ -886,10 +810,11 @@ class InventoryItemResponsibleOrganization(backboneelement.BackboneElement):
             "An organization that has an association with the item, e.g. "
             "manufacturer, distributor, responsible, etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
     role: fhirtypes.CodeableConceptType = Field(
@@ -897,8 +822,9 @@ class InventoryItemResponsibleOrganization(backboneelement.BackboneElement):
         alias="role",
         title="The role of the organization e.g. manufacturer, distributor, or other",
         description="The role of the organization e.g. manufacturer, distributor, etc.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

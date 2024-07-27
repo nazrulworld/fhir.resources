@@ -8,11 +8,9 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
-from . import backboneelement, domainresource, fhirtypes
+from . import domainresource, fhirtypes
 
 
 class ExampleScenario(domainresource.DomainResource):
@@ -23,7 +21,7 @@ class ExampleScenario(domainresource.DomainResource):
     Example of workflow instance.
     """
 
-    resource_type = Field("ExampleScenario", const=True)
+    __resource_type__ = "ExampleScenario"
 
     actor: typing.List[fhirtypes.ExampleScenarioActorType] = Field(
         None,
@@ -33,8 +31,9 @@ class ExampleScenario(domainresource.DomainResource):
             "A system or person who shares or receives an instance within the "
             "scenario."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     contact: typing.List[fhirtypes.ContactDetailType] = Field(
@@ -45,11 +44,12 @@ class ExampleScenario(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    copyright: fhirtypes.Markdown = Field(
+    copyright: fhirtypes.MarkdownType = Field(
         None,
         alias="copyright",
         title="Use and/or publishing restrictions",
@@ -58,14 +58,15 @@ class ExampleScenario(domainresource.DomainResource):
             "contents. Copyright statements are generally legal restrictions on the"
             " use and publishing of the example scenario."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
-    copyrightLabel: fhirtypes.String = Field(
+    copyrightLabel: fhirtypes.StringType = Field(
         None,
         alias="copyrightLabel",
         title="Copyright holder and year(s)",
@@ -75,14 +76,15 @@ class ExampleScenario(domainresource.DomainResource):
             "optionally whether rights are resctricted. (e.g. 'All rights "
             "reserved', 'Some rights reserved')."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     copyrightLabel__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyrightLabel", title="Extension field for ``copyrightLabel``."
     )
 
-    date: fhirtypes.DateTime = Field(
+    date: fhirtypes.DateTimeType = Field(
         None,
         alias="date",
         title="Date last changed",
@@ -93,14 +95,15 @@ class ExampleScenario(domainresource.DomainResource):
             " should change when the substantive content of the example scenario "
             "changes. (e.g. the 'content logical definition')."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    description: fhirtypes.Markdown = Field(
+    description: fhirtypes.MarkdownType = Field(
         None,
         alias="description",
         title="Natural language description of the ExampleScenario",
@@ -108,8 +111,9 @@ class ExampleScenario(domainresource.DomainResource):
             "A free text natural language description of the ExampleScenario from a"
             " consumer's perspective."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -124,8 +128,9 @@ class ExampleScenario(domainresource.DomainResource):
             " testing purposes (or education/evaluation/marketing) and is not "
             "intended to be used for genuine usage."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -140,8 +145,9 @@ class ExampleScenario(domainresource.DomainResource):
             "when it is represented in other formats, or referenced in a "
             "specification, model, design or an instance."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     instance: typing.List[fhirtypes.ExampleScenarioInstanceType] = Field(
@@ -149,8 +155,9 @@ class ExampleScenario(domainresource.DomainResource):
         alias="instance",
         title="Data used in the scenario",
         description="A single data collection that is shared as part of the scenario.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -161,17 +168,19 @@ class ExampleScenario(domainresource.DomainResource):
             "A legal or geographic region in which the example scenario is intended"
             " to be used."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    name: fhirtypes.String = Field(
+    name: fhirtypes.StringType = Field(
         None,
         alias="name",
         title="To be removed?",
         description="Temporarily retained for tooling purposes.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -185,11 +194,12 @@ class ExampleScenario(domainresource.DomainResource):
             "A group of operations that represents a significant step within a "
             "scenario."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    publisher: fhirtypes.String = Field(
+    publisher: fhirtypes.StringType = Field(
         None,
         alias="publisher",
         title="Name of the publisher/steward (organization or individual)",
@@ -197,14 +207,15 @@ class ExampleScenario(domainresource.DomainResource):
             "The name of the organization or individual responsible for the release"
             " and ongoing maintenance of the example scenario."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
-    purpose: fhirtypes.Markdown = Field(
+    purpose: fhirtypes.MarkdownType = Field(
         None,
         alias="purpose",
         title="The purpose of the example, e.g. to illustrate a scenario",
@@ -213,14 +224,15 @@ class ExampleScenario(domainresource.DomainResource):
             "used to show the business purpose of the scenario itself, but the "
             "purpose of documenting a scenario."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(
         None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -228,30 +240,32 @@ class ExampleScenario(domainresource.DomainResource):
             "The status of this example scenario. Enables tracking the life-cycle "
             "of the content."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["draft", "active", "retired", "unknown"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["draft", "active", "retired", "unknown"],
+        },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    title: fhirtypes.String = Field(
+    title: fhirtypes.StringType = Field(
         None,
         alias="title",
         title="Name for this example scenario (human friendly)",
         description="A short, descriptive, user-friendly title for the ExampleScenario.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
     )
 
-    url: fhirtypes.Uri = Field(
+    url: fhirtypes.UriType = Field(
         None,
         alias="url",
         title=(
@@ -267,8 +281,9 @@ class ExampleScenario(domainresource.DomainResource):
             "target of a canonical reference. It SHALL remain the same when the "
             "example scenario is stored on different servers."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -285,11 +300,12 @@ class ExampleScenario(domainresource.DomainResource):
             "(insurance plans, studies, ...) and may be used to assist with "
             "indexing and searching for appropriate example scenario instances."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    version: fhirtypes.String = Field(
+    version: fhirtypes.StringType = Field(
         None,
         alias="version",
         title="Business version of the example scenario",
@@ -302,8 +318,9 @@ class ExampleScenario(domainresource.DomainResource):
             "available. There is also no expectation that versions can be placed in"
             " a lexicographical sequence."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -317,14 +334,15 @@ class ExampleScenario(domainresource.DomainResource):
             "Indicates the mechanism used to compare versions to determine which is"
             " more current."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e versionAlgorithm[x]
-        one_of_many="versionAlgorithm",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e versionAlgorithm[x]
+            "one_of_many": "versionAlgorithm",
+            "one_of_many_required": False,
+        },
     )
 
-    versionAlgorithmString: fhirtypes.String = Field(
+    versionAlgorithmString: fhirtypes.StringType = Field(
         None,
         alias="versionAlgorithmString",
         title="How to compare versions",
@@ -332,11 +350,12 @@ class ExampleScenario(domainresource.DomainResource):
             "Indicates the mechanism used to compare versions to determine which is"
             " more current."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e versionAlgorithm[x]
-        one_of_many="versionAlgorithm",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e versionAlgorithm[x]
+            "one_of_many": "versionAlgorithm",
+            "one_of_many_required": False,
+        },
     )
     versionAlgorithmString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -382,10 +401,7 @@ class ExampleScenario(domainresource.DomainResource):
             "process",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1716(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -394,57 +410,9 @@ class ExampleScenario(domainresource.DomainResource):
         the primitive value is not present.
         """
         required_fields = [("status", "status__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
-
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_1716(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -460,26 +428,10 @@ class ExampleScenario(domainresource.DomainResource):
         one_of_many_fields = {
             "versionAlgorithm": ["versionAlgorithmCoding", "versionAlgorithmString"]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
+        return one_of_many_fields
 
-        return values
+
+from . import backboneelement
 
 
 class ExampleScenarioActor(backboneelement.BackboneElement):
@@ -491,21 +443,22 @@ class ExampleScenarioActor(backboneelement.BackboneElement):
     A system or person who shares or receives an instance within the scenario.
     """
 
-    resource_type = Field("ExampleScenarioActor", const=True)
+    __resource_type__ = "ExampleScenarioActor"
 
-    description: fhirtypes.Markdown = Field(
+    description: fhirtypes.MarkdownType = Field(
         None,
         alias="description",
         title="Details about actor",
         description="An explanation of who/what the actor is and its role in the scenario.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    key: fhirtypes.String = Field(
+    key: fhirtypes.StringType = Field(
         None,
         alias="key",
         title="ID or acronym of the actor",
@@ -513,40 +466,43 @@ class ExampleScenarioActor(backboneelement.BackboneElement):
             "A unique string within the scenario that is used to reference the "
             "actor."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
     key__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_key", title="Extension field for ``key``."
     )
 
-    title: fhirtypes.String = Field(
+    title: fhirtypes.StringType = Field(
         None,
         alias="title",
         title="Label for actor when rendering",
         description=(
             "The human-readable name for the actor used when rendering the " "scenario."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
     )
 
-    type: fhirtypes.Code = Field(
+    type: fhirtypes.CodeType = Field(
         None,
         alias="type",
         title="person | system",
         description="The category of actor - person or system.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["person", "system"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["person", "system"],
+        },
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -568,10 +524,7 @@ class ExampleScenarioActor(backboneelement.BackboneElement):
             "description",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2224(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -584,52 +537,7 @@ class ExampleScenarioActor(backboneelement.BackboneElement):
             ("title", "title__ext"),
             ("type", "type__ext"),
         ]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class ExampleScenarioInstance(backboneelement.BackboneElement):
@@ -641,7 +549,7 @@ class ExampleScenarioInstance(backboneelement.BackboneElement):
     A single data collection that is shared as part of the scenario.
     """
 
-    resource_type = Field("ExampleScenarioInstance", const=True)
+    __resource_type__ = "ExampleScenarioInstance"
 
     containedInstance: typing.List[
         fhirtypes.ExampleScenarioInstanceContainedInstanceType
@@ -653,8 +561,9 @@ class ExampleScenarioInstance(backboneelement.BackboneElement):
             "References to other instances that can be found within this instance "
             "(e.g. the observations contained in a bundle)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     content: fhirtypes.ReferenceType = Field(
@@ -665,23 +574,25 @@ class ExampleScenarioInstance(backboneelement.BackboneElement):
             "Points to an instance (typically an example) that shows the data that "
             "would corespond to this instance."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    description: fhirtypes.Markdown = Field(
+    description: fhirtypes.MarkdownType = Field(
         None,
         alias="description",
         title="Human-friendly description of the instance",
         description="An explanation of what the instance contains and what it's for.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    key: fhirtypes.String = Field(
+    key: fhirtypes.StringType = Field(
         None,
         alias="key",
         title="ID or acronym of the instance",
@@ -689,26 +600,28 @@ class ExampleScenarioInstance(backboneelement.BackboneElement):
             "A unique string within the scenario that is used to reference the "
             "instance."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
     key__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_key", title="Extension field for ``key``."
     )
 
-    structureProfileCanonical: fhirtypes.Canonical = Field(
+    structureProfileCanonical: fhirtypes.CanonicalType = Field(
         None,
         alias="structureProfileCanonical",
         title="Rules instance adheres to",
         description=(
             "Refers to a profile, template or other ruleset the instance adheres " "to."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e structureProfile[x]
-        one_of_many="structureProfile",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e structureProfile[x]
+            "one_of_many": "structureProfile",
+            "one_of_many_required": False,
+        },
     )
     structureProfileCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -716,18 +629,19 @@ class ExampleScenarioInstance(backboneelement.BackboneElement):
         title="Extension field for ``structureProfileCanonical``.",
     )
 
-    structureProfileUri: fhirtypes.Uri = Field(
+    structureProfileUri: fhirtypes.UriType = Field(
         None,
         alias="structureProfileUri",
         title="Rules instance adheres to",
         description=(
             "Refers to a profile, template or other ruleset the instance adheres " "to."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e structureProfile[x]
-        one_of_many="structureProfile",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e structureProfile[x]
+            "one_of_many": "structureProfile",
+            "one_of_many_required": False,
+        },
     )
     structureProfileUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -743,11 +657,12 @@ class ExampleScenarioInstance(backboneelement.BackboneElement):
             "A code indicating the kind of data structure (FHIR resource or some "
             "other standard) this is an instance of."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    structureVersion: fhirtypes.String = Field(
+    structureVersion: fhirtypes.StringType = Field(
         None,
         alias="structureVersion",
         title="E.g. 4.0.1",
@@ -755,8 +670,9 @@ class ExampleScenarioInstance(backboneelement.BackboneElement):
             "Conveys the version of the data structure instantiated.  I.e. what "
             "release of FHIR, X12, OpenEHR, etc. is instance compliant with."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     structureVersion__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -764,7 +680,7 @@ class ExampleScenarioInstance(backboneelement.BackboneElement):
         title="Extension field for ``structureVersion``.",
     )
 
-    title: fhirtypes.String = Field(
+    title: fhirtypes.StringType = Field(
         None,
         alias="title",
         title="Label for instance",
@@ -772,9 +688,10 @@ class ExampleScenarioInstance(backboneelement.BackboneElement):
             "A short descriptive label the instance to be used in tables or "
             "diagrams."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -785,8 +702,9 @@ class ExampleScenarioInstance(backboneelement.BackboneElement):
         alias="version",
         title="Snapshot of instance that changes",
         description="Represents the instance as it was at a specific time-point.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -811,10 +729,7 @@ class ExampleScenarioInstance(backboneelement.BackboneElement):
             "containedInstance",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2527(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -823,57 +738,9 @@ class ExampleScenarioInstance(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("key", "key__ext"), ("title", "title__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
-
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_2527(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -889,26 +756,7 @@ class ExampleScenarioInstance(backboneelement.BackboneElement):
         one_of_many_fields = {
             "structureProfile": ["structureProfileCanonical", "structureProfileUri"]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class ExampleScenarioInstanceContainedInstance(backboneelement.BackboneElement):
@@ -921,16 +769,17 @@ class ExampleScenarioInstanceContainedInstance(backboneelement.BackboneElement):
     the observations contained in a bundle).
     """
 
-    resource_type = Field("ExampleScenarioInstanceContainedInstance", const=True)
+    __resource_type__ = "ExampleScenarioInstanceContainedInstance"
 
-    instanceReference: fhirtypes.String = Field(
+    instanceReference: fhirtypes.StringType = Field(
         None,
         alias="instanceReference",
         title="Key of contained instance",
         description="A reference to the key of an instance found within this one.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
     instanceReference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -938,7 +787,7 @@ class ExampleScenarioInstanceContainedInstance(backboneelement.BackboneElement):
         title="Extension field for ``instanceReference``.",
     )
 
-    versionReference: fhirtypes.String = Field(
+    versionReference: fhirtypes.StringType = Field(
         None,
         alias="versionReference",
         title="Key of contained instance version",
@@ -946,8 +795,9 @@ class ExampleScenarioInstanceContainedInstance(backboneelement.BackboneElement):
             "A reference to the key of a specific version of an instance in this "
             "instance."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     versionReference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -969,10 +819,7 @@ class ExampleScenarioInstanceContainedInstance(backboneelement.BackboneElement):
             "versionReference",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_4265(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -981,52 +828,7 @@ class ExampleScenarioInstanceContainedInstance(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("instanceReference", "instanceReference__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class ExampleScenarioInstanceVersion(backboneelement.BackboneElement):
@@ -1038,7 +840,7 @@ class ExampleScenarioInstanceVersion(backboneelement.BackboneElement):
     Represents the instance as it was at a specific time-point.
     """
 
-    resource_type = Field("ExampleScenarioInstanceVersion", const=True)
+    __resource_type__ = "ExampleScenarioInstanceVersion"
 
     content: fhirtypes.ReferenceType = Field(
         None,
@@ -1048,11 +850,12 @@ class ExampleScenarioInstanceVersion(backboneelement.BackboneElement):
             "Points to an instance (typically an example) that shows the data that "
             "would flow at this point in the scenario."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    description: fhirtypes.Markdown = Field(
+    description: fhirtypes.MarkdownType = Field(
         None,
         alias="description",
         title="Details about version",
@@ -1060,14 +863,15 @@ class ExampleScenarioInstanceVersion(backboneelement.BackboneElement):
             "An explanation of what this specific version of the instance contains "
             "and represents."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    key: fhirtypes.String = Field(
+    key: fhirtypes.StringType = Field(
         None,
         alias="key",
         title="ID or acronym of the version",
@@ -1075,24 +879,26 @@ class ExampleScenarioInstanceVersion(backboneelement.BackboneElement):
             "A unique string within the instance that is used to reference the "
             "version of the instance."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
     key__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_key", title="Extension field for ``key``."
     )
 
-    title: fhirtypes.String = Field(
+    title: fhirtypes.StringType = Field(
         None,
         alias="title",
         title="Label for instance version",
         description=(
             "A short descriptive label the version to be used in tables or " "diagrams."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -1114,10 +920,7 @@ class ExampleScenarioInstanceVersion(backboneelement.BackboneElement):
             "content",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_3278(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -1126,52 +929,7 @@ class ExampleScenarioInstanceVersion(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("key", "key__ext"), ("title", "title__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class ExampleScenarioProcess(backboneelement.BackboneElement):
@@ -1183,21 +941,22 @@ class ExampleScenarioProcess(backboneelement.BackboneElement):
     A group of operations that represents a significant step within a scenario.
     """
 
-    resource_type = Field("ExampleScenarioProcess", const=True)
+    __resource_type__ = "ExampleScenarioProcess"
 
-    description: fhirtypes.Markdown = Field(
+    description: fhirtypes.MarkdownType = Field(
         None,
         alias="description",
         title="Human-friendly description of the process",
         description="An explanation of what the process represents and what it does.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    postConditions: fhirtypes.Markdown = Field(
+    postConditions: fhirtypes.MarkdownType = Field(
         None,
         alias="postConditions",
         title="Status after successful completion",
@@ -1205,14 +964,15 @@ class ExampleScenarioProcess(backboneelement.BackboneElement):
             "Description of the final state of the actors, environment and data "
             "after the process has been successfully completed."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     postConditions__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_postConditions", title="Extension field for ``postConditions``."
     )
 
-    preConditions: fhirtypes.Markdown = Field(
+    preConditions: fhirtypes.MarkdownType = Field(
         None,
         alias="preConditions",
         title="Status before process starts",
@@ -1220,8 +980,9 @@ class ExampleScenarioProcess(backboneelement.BackboneElement):
             "Description of the initial state of the actors, environment and data "
             "before the process starts."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     preConditions__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_preConditions", title="Extension field for ``preConditions``."
@@ -1232,20 +993,22 @@ class ExampleScenarioProcess(backboneelement.BackboneElement):
         alias="step",
         title="Event within of the process",
         description="A significant action that occurs as part of the process.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    title: fhirtypes.String = Field(
+    title: fhirtypes.StringType = Field(
         None,
         alias="title",
         title="Label for procss",
         description=(
             "A short descriptive label the process to be used in tables or " "diagrams."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -1268,10 +1031,7 @@ class ExampleScenarioProcess(backboneelement.BackboneElement):
             "step",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2455(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -1280,52 +1040,7 @@ class ExampleScenarioProcess(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("title", "title__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class ExampleScenarioProcessStep(backboneelement.BackboneElement):
@@ -1337,7 +1052,7 @@ class ExampleScenarioProcessStep(backboneelement.BackboneElement):
     A significant action that occurs as part of the process.
     """
 
-    resource_type = Field("ExampleScenarioProcessStep", const=True)
+    __resource_type__ = "ExampleScenarioProcessStep"
 
     alternative: typing.List[
         fhirtypes.ExampleScenarioProcessStepAlternativeType
@@ -1350,17 +1065,19 @@ class ExampleScenarioProcessStep(backboneelement.BackboneElement):
             "process, scenario or operation.  E.g. to represent non-happy-"
             "path/exceptional/atypical circumstances."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    number: fhirtypes.String = Field(
+    number: fhirtypes.StringType = Field(
         None,
         alias="number",
         title="Sequential number of the step",
         description="The sequential number of the step, e.g. 1.2.5.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     number__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_number", title="Extension field for ``number``."
@@ -1371,8 +1088,9 @@ class ExampleScenarioProcessStep(backboneelement.BackboneElement):
         alias="operation",
         title="Step is simple action",
         description="The step represents a single operation invoked on receiver by sender.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     pause: bool = Field(
@@ -1384,8 +1102,9 @@ class ExampleScenarioProcessStep(backboneelement.BackboneElement):
             "flow and the subsequent step will occur at some later time (triggered "
             "by some event)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     pause__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_pause", title="Extension field for ``pause``."
@@ -1396,19 +1115,21 @@ class ExampleScenarioProcessStep(backboneelement.BackboneElement):
         alias="process",
         title="Step is nested process",
         description="Indicates that the step is a complex sub-process with its own steps.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    workflow: fhirtypes.Canonical = Field(
+    workflow: fhirtypes.CanonicalType = Field(
         None,
         alias="workflow",
         title="Step is nested workflow",
         description="Indicates that the step is defined by a seaparate scenario instance.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ExampleScenario"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ExampleScenario"],
+        },
     )
     workflow__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_workflow", title="Extension field for ``workflow``."
@@ -1444,9 +1165,9 @@ class ExampleScenarioProcessStepAlternative(backboneelement.BackboneElement):
     path/exceptional/atypical circumstances.
     """
 
-    resource_type = Field("ExampleScenarioProcessStepAlternative", const=True)
+    __resource_type__ = "ExampleScenarioProcessStepAlternative"
 
-    description: fhirtypes.Markdown = Field(
+    description: fhirtypes.MarkdownType = Field(
         None,
         alias="description",
         title="Human-readable description of option",
@@ -1454,8 +1175,9 @@ class ExampleScenarioProcessStepAlternative(backboneelement.BackboneElement):
             "A human-readable description of the alternative explaining when the "
             "alternative should occur rather than the base step."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -1469,11 +1191,12 @@ class ExampleScenarioProcessStepAlternative(backboneelement.BackboneElement):
             "Indicates the operation, sub-process or scenario that happens if the "
             "alternative option is selected."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    title: fhirtypes.String = Field(
+    title: fhirtypes.StringType = Field(
         None,
         alias="title",
         title="Label for alternative",
@@ -1481,9 +1204,10 @@ class ExampleScenarioProcessStepAlternative(backboneelement.BackboneElement):
             "The label to display for the alternative that gives a sense of the "
             "circumstance in which the alternative should be invoked."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -1497,10 +1221,7 @@ class ExampleScenarioProcessStepAlternative(backboneelement.BackboneElement):
         """
         return ["id", "extension", "modifierExtension", "title", "description", "step"]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_4004(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -1509,52 +1230,7 @@ class ExampleScenarioProcessStepAlternative(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("title", "title__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class ExampleScenarioProcessStepOperation(backboneelement.BackboneElement):
@@ -1566,27 +1242,29 @@ class ExampleScenarioProcessStepOperation(backboneelement.BackboneElement):
     The step represents a single operation invoked on receiver by sender.
     """
 
-    resource_type = Field("ExampleScenarioProcessStepOperation", const=True)
+    __resource_type__ = "ExampleScenarioProcessStepOperation"
 
-    description: fhirtypes.Markdown = Field(
+    description: fhirtypes.MarkdownType = Field(
         None,
         alias="description",
         title="Human-friendly description of the operation",
         description="An explanation of what the operation represents and what it does.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    initiator: fhirtypes.String = Field(
+    initiator: fhirtypes.StringType = Field(
         None,
         alias="initiator",
         title="Who starts the operation",
         description="The system that invokes the action/transmits the data.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     initiator__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_initiator", title="Extension field for ``initiator``."
@@ -1597,20 +1275,22 @@ class ExampleScenarioProcessStepOperation(backboneelement.BackboneElement):
         alias="initiatorActive",
         title="Initiator stays active?",
         description="If false, the initiator is deactivated right after the operation.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     initiatorActive__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_initiatorActive", title="Extension field for ``initiatorActive``."
     )
 
-    receiver: fhirtypes.String = Field(
+    receiver: fhirtypes.StringType = Field(
         None,
         alias="receiver",
         title="Who receives the operation",
         description="The system on which the action is invoked/receives the data.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     receiver__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_receiver", title="Extension field for ``receiver``."
@@ -1621,8 +1301,9 @@ class ExampleScenarioProcessStepOperation(backboneelement.BackboneElement):
         alias="receiverActive",
         title="Receiver stays active?",
         description="If false, the receiver is deactivated right after the operation.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     receiverActive__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_receiverActive", title="Extension field for ``receiverActive``."
@@ -1636,8 +1317,9 @@ class ExampleScenarioProcessStepOperation(backboneelement.BackboneElement):
             "A reference to the instance that is transmitted from requester to "
             "receiver as part of the invocation of the operation."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     response: fhirtypes.ExampleScenarioInstanceContainedInstanceType = Field(
@@ -1648,18 +1330,20 @@ class ExampleScenarioProcessStepOperation(backboneelement.BackboneElement):
             "A reference to the instance that is transmitted from receiver to "
             "requester as part of the operation's synchronous response (if any)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    title: fhirtypes.String = Field(
+    title: fhirtypes.StringType = Field(
         None,
         alias="title",
         title="Label for step",
         description="A short descriptive label the step to be used in tables or diagrams.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -1670,8 +1354,9 @@ class ExampleScenarioProcessStepOperation(backboneelement.BackboneElement):
         alias="type",
         title="Kind of action",
         description="The standardized type of action (FHIR or otherwise).",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -1695,10 +1380,7 @@ class ExampleScenarioProcessStepOperation(backboneelement.BackboneElement):
             "response",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_3807(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -1707,49 +1389,4 @@ class ExampleScenarioProcessStepOperation(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("title", "title__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields

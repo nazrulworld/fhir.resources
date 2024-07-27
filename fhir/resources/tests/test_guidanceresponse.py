@@ -6,10 +6,10 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
+from pathlib import Path
 
-from .. import fhirtypes  # noqa: F401
 from .. import guidanceresponse
+from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
 
 def impl_guidanceresponse_1(inst):
@@ -18,26 +18,44 @@ def impl_guidanceresponse_1(inst):
         inst.dataRequirement[0].codeFilter[0].code[0].display
         == "Hemoglobin A1c/Hemoglobin.total in Blood"
     )
-    assert inst.dataRequirement[0].codeFilter[0].code[0].system == "http://loinc.org"
+    assert (
+        inst.dataRequirement[0].codeFilter[0].code[0].system
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+    )
     assert inst.dataRequirement[0].codeFilter[0].path == "code"
     assert inst.dataRequirement[0].mustSupport[0] == "value"
     assert inst.dataRequirement[0].type == "Observation"
     assert inst.encounter.reference == "Encounter/example"
     assert inst.id == "additional-data-example"
-    assert inst.identifier[0].system == "http://example.org"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel(valueUri="http://example.org").valueUri
+    )
     assert inst.identifier[0].value == "guidanceResponse2"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
-    assert inst.moduleUri == "http://someguidelineprovider.org/diabetes-guidelines.html"
-    assert inst.occurrenceDateTime == fhirtypes.DateTime.validate(
-        "2017-03-10T16:02:00Z"
+    assert (
+        inst.moduleUri
+        == ExternalValidatorModel(
+            valueUri="http://someguidelineprovider.org/diabetes-guidelines.html"
+        ).valueUri
+    )
+    assert (
+        inst.occurrenceDateTime
+        == ExternalValidatorModel(valueDateTime="2017-03-10T16:02:00Z").valueDateTime
     )
     assert inst.performer.reference == "Device/software"
     assert inst.reason[0].concept.text == "Diabetes Guideline"
-    assert inst.requestIdentifier.system == "http://example.org"
+    assert (
+        inst.requestIdentifier.system
+        == ExternalValidatorModel(valueUri="http://example.org").valueUri
+    )
     assert inst.requestIdentifier.value == "guidanceRequest2"
     assert inst.status == "data-required"
     assert inst.subject.reference == "Patient/example"
@@ -52,15 +70,15 @@ def test_guidanceresponse_1(base_settings):
         base_settings["unittest_data_dir"]
         / "guidanceresponse-additional-data-example.json"
     )
-    inst = guidanceresponse.GuidanceResponse.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = guidanceresponse.GuidanceResponse.model_validate_json(
+        Path(filename).read_bytes()
     )
-    assert "GuidanceResponse" == inst.resource_type
+    assert "GuidanceResponse" == inst.get_resource_type()
 
     impl_guidanceresponse_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "GuidanceResponse" == data["resourceType"]
 
     inst2 = guidanceresponse.GuidanceResponse(**data)
@@ -71,23 +89,36 @@ def impl_guidanceresponse_2(inst):
     assert inst.contained[0].id == "outputParameters1"
     assert inst.encounter.reference == "Encounter/example"
     assert inst.id == "example"
-    assert inst.identifier[0].system == "http://example.org"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel(valueUri="http://example.org").valueUri
+    )
     assert inst.identifier[0].value == "guidanceResponse1"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
-    assert inst.moduleUri == (
-        "http://someguidelineprovider.org/radiology-appropriateness-" "guidelines.html"
+    assert (
+        inst.moduleUri
+        == ExternalValidatorModel(
+            valueUri="http://someguidelineprovider.org/radiology-appropriateness-guidelines.html"
+        ).valueUri
     )
-    assert inst.occurrenceDateTime == fhirtypes.DateTime.validate(
-        "2017-03-10T16:02:00Z"
+    assert (
+        inst.occurrenceDateTime
+        == ExternalValidatorModel(valueDateTime="2017-03-10T16:02:00Z").valueDateTime
     )
     assert inst.outputParameters.reference == "#outputParameters1"
     assert inst.performer.reference == "Device/software"
     assert inst.reason[0].concept.text == "Guideline Appropriate Ordering Assessment"
-    assert inst.requestIdentifier.system == "http://example.org"
+    assert (
+        inst.requestIdentifier.system
+        == ExternalValidatorModel(valueUri="http://example.org").valueUri
+    )
     assert inst.requestIdentifier.value == "guidanceRequest1"
     assert inst.status == "success"
     assert inst.subject.reference == "Patient/example"
@@ -99,15 +130,15 @@ def test_guidanceresponse_2(base_settings):
     Test File: guidanceresponse-example.json
     """
     filename = base_settings["unittest_data_dir"] / "guidanceresponse-example.json"
-    inst = guidanceresponse.GuidanceResponse.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = guidanceresponse.GuidanceResponse.model_validate_json(
+        Path(filename).read_bytes()
     )
-    assert "GuidanceResponse" == inst.resource_type
+    assert "GuidanceResponse" == inst.get_resource_type()
 
     impl_guidanceresponse_2(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "GuidanceResponse" == data["resourceType"]
 
     inst2 = guidanceresponse.GuidanceResponse(**data)

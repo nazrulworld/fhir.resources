@@ -6,10 +6,10 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
+from pathlib import Path
 
-from .. import fhirtypes  # noqa: F401
 from .. import evidence
+from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
 
 def impl_evidence_1(inst):
@@ -19,12 +19,17 @@ def impl_evidence_1(inst):
         "stroke"
     )
     assert inst.id == "example-stroke-no-alteplase-fatalICH"
-    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+    )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.10.4"
     assert inst.name == "RiskOfFatalICHWithoutAlteplaseForStroke"
     assert (
         inst.relatedArtifact[0].document.url
-        == "https://doi.org/10.1016/S0140-6736(14)60584-5"
+        == ExternalValidatorModel(
+            valueUrl="https://doi.org/10.1016/S0140-6736(14)60584-5"
+        ).valueUrl
     )
     assert inst.relatedArtifact[0].label == "Emberson 2014"
     assert inst.relatedArtifact[0].type == "citation"
@@ -36,42 +41,60 @@ def impl_evidence_1(inst):
     assert inst.statistic[0].statisticType.coding[0].display == "Proportion"
     assert (
         inst.statistic[0].statisticType.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/statistic-type"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/statistic-type"
+        ).valueUri
     )
     assert inst.status == "draft"
     assert inst.studyDesign[0].coding[0].code == "SEVCO:01003"
     assert inst.studyDesign[0].coding[0].display == "randomized assignment"
-    assert inst.studyDesign[0].coding[0].system == "http://hl7.org/fhir/study-design"
+    assert (
+        inst.studyDesign[0].coding[0].system
+        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/study-design").valueUri
+    )
     assert inst.synthesisType.coding[0].code == "IPD-MA"
     assert (
         inst.synthesisType.coding[0].display == "individual patient data meta-analysis"
     )
     assert (
         inst.synthesisType.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/synthesis-type"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/synthesis-type"
+        ).valueUri
     )
     assert inst.text.status == "generated"
     assert inst.title == "Risk of fatal ICH without alteplase for stroke"
-    assert inst.url == (
-        "http://hl7.org/fhir/Evidence/example-stroke-no-alteplase-" "fatalICH"
+    assert (
+        inst.url
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/Evidence/example-stroke-no-alteplase-fatalICH"
+        ).valueUri
     )
     assert (
         inst.variableDefinition[0].intended.display
         == "adults with acute ischemic stroke"
     )
     assert inst.variableDefinition[0].intended.reference == "Group/AcuteIschemicStroke"
-    assert inst.variableDefinition[0].intended.type == "Group"
+    assert (
+        inst.variableDefinition[0].intended.type
+        == ExternalValidatorModel(valueUri="Group").valueUri
+    )
     assert (
         inst.variableDefinition[0].observed.display
         == "adults with acute ischemic stroke"
     )
     assert inst.variableDefinition[0].observed.reference == "Group/AcuteIschemicStroke"
-    assert inst.variableDefinition[0].observed.type == "Group"
+    assert (
+        inst.variableDefinition[0].observed.type
+        == ExternalValidatorModel(valueUri="Group").valueUri
+    )
     assert inst.variableDefinition[0].variableRole.coding[0].code == "population"
     assert inst.variableDefinition[0].variableRole.coding[0].display == "population"
     assert (
         inst.variableDefinition[0].variableRole.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/variable-role"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/variable-role"
+        ).valueUri
     )
     assert (
         inst.variableDefinition[1].intended.display
@@ -81,7 +104,10 @@ def impl_evidence_1(inst):
         inst.variableDefinition[1].intended.reference
         == "Group/AcuteIschemicStrokeTreatedWithoutAlteplase"
     )
-    assert inst.variableDefinition[1].intended.type == "Group"
+    assert (
+        inst.variableDefinition[1].intended.type
+        == ExternalValidatorModel(valueUri="Group").valueUri
+    )
     assert (
         inst.variableDefinition[1].observed.display
         == "Emberson 2014 IPD-MA No Alteplase Cohort"
@@ -90,32 +116,45 @@ def impl_evidence_1(inst):
         inst.variableDefinition[1].observed.reference
         == "Group/Emberson-2014-IPD-MA-No-Alteplase-Cohort"
     )
-    assert inst.variableDefinition[1].observed.type == "Group"
+    assert (
+        inst.variableDefinition[1].observed.type
+        == ExternalValidatorModel(valueUri="Group").valueUri
+    )
     assert inst.variableDefinition[1].variableRole.coding[0].code == "population"
     assert inst.variableDefinition[1].variableRole.coding[0].display == "population"
     assert (
         inst.variableDefinition[1].variableRole.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/variable-role"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/variable-role"
+        ).valueUri
     )
     assert inst.variableDefinition[2].intended.display == "fatal ICH"
     assert (
         inst.variableDefinition[2].intended.reference
         == "EvidenceVariable/example-fatal-ICH-in-7-days"
     )
-    assert inst.variableDefinition[2].intended.type == "EvidenceVariable"
+    assert (
+        inst.variableDefinition[2].intended.type
+        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+    )
     assert inst.variableDefinition[2].observed.display == "fatal ICH"
     assert (
         inst.variableDefinition[2].observed.reference
         == "EvidenceVariable/example-fatal-ICH-in-7-days"
     )
-    assert inst.variableDefinition[2].observed.type == "EvidenceVariable"
+    assert (
+        inst.variableDefinition[2].observed.type
+        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+    )
     assert inst.variableDefinition[2].variableRole.coding[0].code == "measuredVariable"
     assert (
         inst.variableDefinition[2].variableRole.coding[0].display == "measured variable"
     )
     assert (
         inst.variableDefinition[2].variableRole.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/variable-role"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/variable-role"
+        ).valueUri
     )
 
 
@@ -127,15 +166,13 @@ def test_evidence_1(base_settings):
         base_settings["unittest_data_dir"]
         / "evidence-example-stroke-no-alteplase-fatalICH.json"
     )
-    inst = evidence.Evidence.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Evidence" == inst.resource_type
+    inst = evidence.Evidence.model_validate_json(Path(filename).read_bytes())
+    assert "Evidence" == inst.get_resource_type()
 
     impl_evidence_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Evidence" == data["resourceType"]
 
     inst2 = evidence.Evidence(**data)
@@ -151,7 +188,9 @@ def impl_evidence_2(inst):
     assert inst.certainty[0].rating.coding[0].display == "Very low quality"
     assert (
         inst.certainty[0].rating.coding[0].system
-        == "http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-rating"
+        ).valueUri
     )
     assert inst.certainty[0].subcomponent[0].rating.coding[0].code == "no-concern"
     assert (
@@ -160,7 +199,9 @@ def impl_evidence_2(inst):
     )
     assert (
         inst.certainty[0].subcomponent[0].rating.coding[0].system
-        == "http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-rating"
+        ).valueUri
     )
     assert inst.certainty[0].subcomponent[0].type.coding[0].code == "PublicationBias"
     assert (
@@ -168,7 +209,9 @@ def impl_evidence_2(inst):
     )
     assert (
         inst.certainty[0].subcomponent[0].type.coding[0].system
-        == "http://hl7.org/fhir/certainty-type"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-type"
+        ).valueUri
     )
     assert inst.certainty[0].subcomponent[1].note[0].text == (
         "IST-3 had inconsistent results and contributed large " "proportion of data"
@@ -179,13 +222,17 @@ def impl_evidence_2(inst):
     )
     assert (
         inst.certainty[0].subcomponent[1].rating.coding[0].system
-        == "http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-rating"
+        ).valueUri
     )
     assert inst.certainty[0].subcomponent[1].type.coding[0].code == "Inconsistency"
     assert inst.certainty[0].subcomponent[1].type.coding[0].display == "Inconsistency"
     assert (
         inst.certainty[0].subcomponent[1].type.coding[0].system
-        == "http://hl7.org/fhir/certainty-type"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-type"
+        ).valueUri
     )
     assert inst.certainty[0].subcomponent[2].rating.coding[0].code == "serious-concern"
     assert (
@@ -193,13 +240,17 @@ def impl_evidence_2(inst):
     )
     assert (
         inst.certainty[0].subcomponent[2].rating.coding[0].system
-        == "http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-rating"
+        ).valueUri
     )
     assert inst.certainty[0].subcomponent[2].type.coding[0].code == "Imprecision"
     assert inst.certainty[0].subcomponent[2].type.coding[0].display == "Imprecision"
     assert (
         inst.certainty[0].subcomponent[2].type.coding[0].system
-        == "http://hl7.org/fhir/certainty-type"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-type"
+        ).valueUri
     )
     assert inst.certainty[0].subcomponent[3].note[0].text == (
         "resuts derived for 3 - 4.5 hours assume data from 0 - 6 "
@@ -211,13 +262,17 @@ def impl_evidence_2(inst):
     )
     assert (
         inst.certainty[0].subcomponent[3].rating.coding[0].system
-        == "http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-rating"
+        ).valueUri
     )
     assert inst.certainty[0].subcomponent[3].type.coding[0].code == "Indirectness"
     assert inst.certainty[0].subcomponent[3].type.coding[0].display == "Indirectness"
     assert (
         inst.certainty[0].subcomponent[3].type.coding[0].system
-        == "http://hl7.org/fhir/certainty-type"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-type"
+        ).valueUri
     )
     assert inst.certainty[0].subcomponent[4].note[0].text == (
         "results largely influenced by IST-3 trial which was "
@@ -229,18 +284,25 @@ def impl_evidence_2(inst):
     )
     assert (
         inst.certainty[0].subcomponent[4].rating.coding[0].system
-        == "http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-rating"
+        ).valueUri
     )
     assert inst.certainty[0].subcomponent[4].type.coding[0].code == "RiskOfBias"
     assert inst.certainty[0].subcomponent[4].type.coding[0].display == "Risk of bias"
     assert (
         inst.certainty[0].subcomponent[4].type.coding[0].system
-        == "http://hl7.org/fhir/certainty-type"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-type"
+        ).valueUri
     )
     assert inst.certainty[0].type.coding[0].code == "Overall"
     assert inst.certainty[0].type.coding[0].display == "Overall quality"
     assert (
-        inst.certainty[0].type.coding[0].system == "http://hl7.org/fhir/certainty-type"
+        inst.certainty[0].type.coding[0].system
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-type"
+        ).valueUri
     )
     assert inst.description == (
         "mRS 0-2 at 90 days Odds Ratio 1.2 for Alteplase vs. No "
@@ -248,7 +310,10 @@ def impl_evidence_2(inst):
         " prior"
     )
     assert inst.id == "example-stroke-3-4half-alteplase-vs-no-alteplase-mRS0-2"
-    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+    )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.10.3"
     assert inst.name == (
         "EffectOfAlteplaseVsNoAlteplaseOnMRS02At90DaysInStroke345Hour" "sPrior"
@@ -256,7 +321,9 @@ def impl_evidence_2(inst):
     assert inst.relatedArtifact[0].display == "Figure 2 Lees 2016"
     assert (
         inst.relatedArtifact[0].document.url
-        == "https://doi.org/10.1161/STROKEAHA.116.013644"
+        == ExternalValidatorModel(
+            valueUrl="https://doi.org/10.1161/STROKEAHA.116.013644"
+        ).valueUrl
     )
     assert inst.relatedArtifact[0].label == "Lees 2016"
     assert inst.relatedArtifact[0].type == "citation"
@@ -269,8 +336,11 @@ def impl_evidence_2(inst):
         inst.statistic[0].attributeEstimate[0].type.coding[0].display
         == "Confidence interval"
     )
-    assert inst.statistic[0].attributeEstimate[0].type.coding[0].system == (
-        "http://terminology.hl7.org/CodeSystem/attribute-estimate-" "type"
+    assert (
+        inst.statistic[0].attributeEstimate[0].type.coding[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/attribute-estimate-type"
+        ).valueUri
     )
     assert float(inst.statistic[0].quantity.value) == float(1.2)
     assert inst.statistic[0].sampleSize.numberOfStudies == 9
@@ -278,28 +348,37 @@ def impl_evidence_2(inst):
     assert inst.statistic[0].statisticType.coding[0].display == "Odds Ratio"
     assert (
         inst.statistic[0].statisticType.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/statistic-type"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/statistic-type"
+        ).valueUri
     )
     assert inst.status == "draft"
     assert inst.studyDesign[0].coding[0].code == "SEVCO:01003"
     assert inst.studyDesign[0].coding[0].display == "randomized assignment"
-    assert inst.studyDesign[0].coding[0].system == "http://hl7.org/fhir/study-design"
+    assert (
+        inst.studyDesign[0].coding[0].system
+        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/study-design").valueUri
+    )
     assert inst.synthesisType.coding[0].code == "IPD-MA"
     assert (
         inst.synthesisType.coding[0].display == "individual patient data meta-analysis"
     )
     assert (
         inst.synthesisType.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/synthesis-type"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/synthesis-type"
+        ).valueUri
     )
     assert inst.text.status == "generated"
     assert inst.title == (
         "Effect of Alteplase vs No alteplase on mRS 0-2 at 90 days in"
         " Stroke 3-4.5 hours prior"
     )
-    assert inst.url == (
-        "http://hl7.org/fhir/Evidence/example-stroke-3-4half-"
-        "alteplase-vs-no-alteplase-mRS0-2"
+    assert (
+        inst.url
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/Evidence/example-stroke-3-4half-alteplase-vs-no-alteplase-mRS0-2"
+        ).valueUri
     )
     assert inst.variableDefinition[0].directnessMatch.coding[0].code == "moderate"
     assert (
@@ -308,14 +387,19 @@ def impl_evidence_2(inst):
     )
     assert (
         inst.variableDefinition[0].directnessMatch.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/directness"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/directness"
+        ).valueUri
     )
     assert inst.variableDefinition[0].intended.display == "stroke at 3-4.5 hours"
     assert (
         inst.variableDefinition[0].intended.reference
         == "Group/AcuteIschemicStroke3-4halfHours"
     )
-    assert inst.variableDefinition[0].intended.type == "Group"
+    assert (
+        inst.variableDefinition[0].intended.type
+        == ExternalValidatorModel(valueUri="Group").valueUri
+    )
     assert (
         inst.variableDefinition[0].observed.display
         == "Stroke Thrombolysis Trialists’ 2014-2016 IPD-MA Cohort"
@@ -323,12 +407,17 @@ def impl_evidence_2(inst):
     assert inst.variableDefinition[0].observed.reference == (
         "EvidenceVariable/Stroke-Thrombolysis-" "Trialists-2014-2016-IPD-MA-Cohort"
     )
-    assert inst.variableDefinition[0].observed.type == "EvidenceVariable"
+    assert (
+        inst.variableDefinition[0].observed.type
+        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+    )
     assert inst.variableDefinition[0].variableRole.coding[0].code == "population"
     assert inst.variableDefinition[0].variableRole.coding[0].display == "population"
     assert (
         inst.variableDefinition[0].variableRole.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/variable-role"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/variable-role"
+        ).valueUri
     )
     assert (
         inst.variableDefinition[1].intended.display
@@ -338,51 +427,73 @@ def impl_evidence_2(inst):
         inst.variableDefinition[1].intended.reference
         == "EvidenceVariable/example-alive-independent-90day"
     )
-    assert inst.variableDefinition[1].intended.type == "EvidenceVariable"
+    assert (
+        inst.variableDefinition[1].intended.type
+        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+    )
     assert inst.variableDefinition[1].observed.display == "mRS 0-2 at 90 days"
     assert (
         inst.variableDefinition[1].observed.reference
         == "EvidenceVariable/example-mRS0-2-at-90days"
     )
-    assert inst.variableDefinition[1].observed.type == "EvidenceVariable"
+    assert (
+        inst.variableDefinition[1].observed.type
+        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+    )
     assert inst.variableDefinition[1].variableRole.coding[0].code == "measuredVariable"
     assert (
         inst.variableDefinition[1].variableRole.coding[0].display == "measured variable"
     )
     assert (
         inst.variableDefinition[1].variableRole.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/variable-role"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/variable-role"
+        ).valueUri
     )
     assert inst.variableDefinition[2].intended.display == "Alteplase for Stroke"
     assert (
         inst.variableDefinition[2].intended.reference
         == "EvidenceVariable/example-alteplase-for-stroke"
     )
-    assert inst.variableDefinition[2].intended.type == "EvidenceVariable"
+    assert (
+        inst.variableDefinition[2].intended.type
+        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+    )
     assert inst.variableDefinition[2].observed.display == "Alteplase for Stroke"
     assert (
         inst.variableDefinition[2].observed.reference
         == "EvidenceVariable/example-alteplase-for-stroke"
     )
-    assert inst.variableDefinition[2].observed.type == "EvidenceVariable"
+    assert (
+        inst.variableDefinition[2].observed.type
+        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+    )
     assert inst.variableDefinition[2].variableRole.coding[0].code == "exposure"
     assert inst.variableDefinition[2].variableRole.coding[0].display == "exposure"
     assert (
         inst.variableDefinition[2].variableRole.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/variable-role"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/variable-role"
+        ).valueUri
     )
     assert inst.variableDefinition[3].intended.display == "no alteplase"
     assert (
         inst.variableDefinition[3].intended.reference
         == "EvidenceVariable/example-no-alteplase"
     )
-    assert inst.variableDefinition[3].intended.type == "EvidenceVariable"
+    assert (
+        inst.variableDefinition[3].intended.type
+        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+    )
     assert inst.variableDefinition[3].observed.display == "no alteplase"
     assert (
         inst.variableDefinition[3].observed.reference
         == "EvidenceVariable/example-no-alteplase"
     )
-    assert inst.variableDefinition[3].observed.type == "EvidenceVariable"
+    assert (
+        inst.variableDefinition[3].observed.type
+        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+    )
     assert inst.variableDefinition[3].variableRole.coding[0].code == "referenceExposure"
     assert (
         inst.variableDefinition[3].variableRole.coding[0].display
@@ -390,7 +501,9 @@ def impl_evidence_2(inst):
     )
     assert (
         inst.variableDefinition[3].variableRole.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/variable-role"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/variable-role"
+        ).valueUri
     )
 
 
@@ -402,15 +515,13 @@ def test_evidence_2(base_settings):
         base_settings["unittest_data_dir"]
         / "evidence-example-stroke-3-4half-alteplase-vs-no-alteplase-mRS0-2.json"
     )
-    inst = evidence.Evidence.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Evidence" == inst.resource_type
+    inst = evidence.Evidence.model_validate_json(Path(filename).read_bytes())
+    assert "Evidence" == inst.get_resource_type()
 
     impl_evidence_2(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Evidence" == data["resourceType"]
 
     inst2 = evidence.Evidence(**data)
@@ -423,7 +534,9 @@ def impl_evidence_3(inst):
     assert inst.certainty[0].rating.coding[0].display == "Moderate"
     assert (
         inst.certainty[0].rating.coding[0].system
-        == "http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-rating"
+        ).valueUri
     )
     assert inst.certainty[0].subcomponent[0].rating.coding[0].code == "no-concern"
     assert (
@@ -432,7 +545,9 @@ def impl_evidence_3(inst):
     )
     assert (
         inst.certainty[0].subcomponent[0].rating.coding[0].system
-        == "http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-rating"
+        ).valueUri
     )
     assert inst.certainty[0].subcomponent[0].type.coding[0].code == "PublicationBias"
     assert (
@@ -440,7 +555,9 @@ def impl_evidence_3(inst):
     )
     assert (
         inst.certainty[0].subcomponent[0].type.coding[0].system
-        == "http://hl7.org/fhir/certainty-type"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-type"
+        ).valueUri
     )
     assert inst.certainty[0].subcomponent[1].rating.coding[0].code == "no-concern"
     assert (
@@ -449,13 +566,17 @@ def impl_evidence_3(inst):
     )
     assert (
         inst.certainty[0].subcomponent[1].rating.coding[0].system
-        == "http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-rating"
+        ).valueUri
     )
     assert inst.certainty[0].subcomponent[1].type.coding[0].code == "Inconsistency"
     assert inst.certainty[0].subcomponent[1].type.coding[0].display == "Inconsistency"
     assert (
         inst.certainty[0].subcomponent[1].type.coding[0].system
-        == "http://hl7.org/fhir/certainty-type"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-type"
+        ).valueUri
     )
     assert inst.certainty[0].subcomponent[2].rating.coding[0].code == "no-concern"
     assert (
@@ -464,13 +585,17 @@ def impl_evidence_3(inst):
     )
     assert (
         inst.certainty[0].subcomponent[2].rating.coding[0].system
-        == "http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-rating"
+        ).valueUri
     )
     assert inst.certainty[0].subcomponent[2].type.coding[0].code == "Imprecision"
     assert inst.certainty[0].subcomponent[2].type.coding[0].display == "Imprecision"
     assert (
         inst.certainty[0].subcomponent[2].type.coding[0].system
-        == "http://hl7.org/fhir/certainty-type"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-type"
+        ).valueUri
     )
     assert inst.certainty[0].subcomponent[3].rating.coding[0].code == "no-concern"
     assert (
@@ -479,13 +604,17 @@ def impl_evidence_3(inst):
     )
     assert (
         inst.certainty[0].subcomponent[3].rating.coding[0].system
-        == "http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-rating"
+        ).valueUri
     )
     assert inst.certainty[0].subcomponent[3].type.coding[0].code == "Indirectness"
     assert inst.certainty[0].subcomponent[3].type.coding[0].display == "Indirectness"
     assert (
         inst.certainty[0].subcomponent[3].type.coding[0].system
-        == "http://hl7.org/fhir/certainty-type"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-type"
+        ).valueUri
     )
     assert inst.certainty[0].subcomponent[4].note[0].text == (
         "results largely influenced by IST-3 trial which was "
@@ -498,18 +627,25 @@ def impl_evidence_3(inst):
     )
     assert (
         inst.certainty[0].subcomponent[4].rating.coding[0].system
-        == "http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-rating"
+        ).valueUri
     )
     assert inst.certainty[0].subcomponent[4].type.coding[0].code == "RiskOfBias"
     assert inst.certainty[0].subcomponent[4].type.coding[0].display == "Risk of bias"
     assert (
         inst.certainty[0].subcomponent[4].type.coding[0].system
-        == "http://hl7.org/fhir/certainty-type"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-type"
+        ).valueUri
     )
     assert inst.certainty[0].type.coding[0].code == "Overall"
     assert inst.certainty[0].type.coding[0].display == "Overall quality"
     assert (
-        inst.certainty[0].type.coding[0].system == "http://hl7.org/fhir/certainty-type"
+        inst.certainty[0].type.coding[0].system
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-type"
+        ).valueUri
     )
     assert inst.description == (
         "mRS 3-6 at 90 days Odds Ratio 0.65 for Alteplase vs. No "
@@ -517,7 +653,10 @@ def impl_evidence_3(inst):
         "prior"
     )
     assert inst.id == "example-stroke-0-3-alteplase-vs-no-alteplase-mRS3-6"
-    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+    )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.10.5"
     assert inst.name == (
         "EffectOfAlteplaseVsNoAlteplaseOnMRS36At90DaysInStroke03Hours" "Prior"
@@ -530,7 +669,9 @@ def impl_evidence_3(inst):
     assert inst.relatedArtifact[0].display == "Analysis 1.16 from Wardlaw 2014"
     assert (
         inst.relatedArtifact[0].document.url
-        == "https://doi.org/10.1002/14651858.CD000213.pub3"
+        == ExternalValidatorModel(
+            valueUrl="https://doi.org/10.1002/14651858.CD000213.pub3"
+        ).valueUrl
     )
     assert inst.relatedArtifact[0].label == "Wardlaw 2014"
     assert inst.relatedArtifact[0].type == "citation"
@@ -543,8 +684,11 @@ def impl_evidence_3(inst):
         inst.statistic[0].attributeEstimate[0].type.coding[0].display
         == "Confidence interval"
     )
-    assert inst.statistic[0].attributeEstimate[0].type.coding[0].system == (
-        "http://terminology.hl7.org/CodeSystem/attribute-estimate-" "type"
+    assert (
+        inst.statistic[0].attributeEstimate[0].type.coding[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/attribute-estimate-type"
+        ).valueUri
     )
     assert inst.statistic[0].attributeEstimate[1].description == "P-value = 0.000023"
     assert float(inst.statistic[0].attributeEstimate[1].quantity.value) == float(
@@ -552,8 +696,11 @@ def impl_evidence_3(inst):
     )
     assert inst.statistic[0].attributeEstimate[1].type.coding[0].code == "C44185"
     assert inst.statistic[0].attributeEstimate[1].type.coding[0].display == "P-value"
-    assert inst.statistic[0].attributeEstimate[1].type.coding[0].system == (
-        "http://terminology.hl7.org/CodeSystem/attribute-estimate-" "type"
+    assert (
+        inst.statistic[0].attributeEstimate[1].type.coding[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/attribute-estimate-type"
+        ).valueUri
     )
     assert (
         inst.statistic[0].attributeEstimate[2].description
@@ -562,14 +709,17 @@ def impl_evidence_3(inst):
     assert inst.statistic[0].attributeEstimate[2].quantity.code == "%"
     assert (
         inst.statistic[0].attributeEstimate[2].quantity.system
-        == "http://unitsofmeasure.org"
+        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
     )
     assert inst.statistic[0].attributeEstimate[2].quantity.unit == "%"
     assert float(inst.statistic[0].attributeEstimate[2].quantity.value) == float(0)
     assert inst.statistic[0].attributeEstimate[2].type.coding[0].code == "0000420"
     assert inst.statistic[0].attributeEstimate[2].type.coding[0].display == "I-squared"
-    assert inst.statistic[0].attributeEstimate[2].type.coding[0].system == (
-        "http://terminology.hl7.org/CodeSystem/attribute-estimate-" "type"
+    assert (
+        inst.statistic[0].attributeEstimate[2].type.coding[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/attribute-estimate-type"
+        ).valueUri
     )
     assert inst.statistic[0].numberOfEvents == 1137
     assert float(inst.statistic[0].quantity.value) == float(0.65)
@@ -579,33 +729,45 @@ def impl_evidence_3(inst):
     assert inst.statistic[0].statisticType.coding[0].display == "Odds Ratio"
     assert (
         inst.statistic[0].statisticType.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/statistic-type"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/statistic-type"
+        ).valueUri
     )
     assert inst.status == "draft"
     assert inst.studyDesign[0].coding[0].code == "SEVCO:01003"
     assert inst.studyDesign[0].coding[0].display == "randomized assignment"
-    assert inst.studyDesign[0].coding[0].system == "http://hl7.org/fhir/study-design"
+    assert (
+        inst.studyDesign[0].coding[0].system
+        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/study-design").valueUri
+    )
     assert inst.synthesisType.coding[0].code == "std-MA"
     assert inst.synthesisType.coding[0].display == "summary data meta-analysis"
     assert (
         inst.synthesisType.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/synthesis-type"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/synthesis-type"
+        ).valueUri
     )
     assert inst.text.status == "generated"
     assert inst.title == (
         "Effect of Alteplase vs No alteplase on mRS 3-6 at 90 days in"
         " Stroke 0-3 hours prior"
     )
-    assert inst.url == (
-        "http://hl7.org/fhir/Evidence/example-stroke-0-3-alteplase-"
-        "vs-no-alteplase-mRS3-6"
+    assert (
+        inst.url
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/Evidence/example-stroke-0-3-alteplase-vs-no-alteplase-mRS3-6"
+        ).valueUri
     )
     assert inst.variableDefinition[0].intended.display == "stroke at 0-3 hours"
     assert (
         inst.variableDefinition[0].intended.reference
         == "Group/AcuteIschemicStroke0-3Hours"
     )
-    assert inst.variableDefinition[0].intended.type == "Group"
+    assert (
+        inst.variableDefinition[0].intended.type
+        == ExternalValidatorModel(valueUri="Group").valueUri
+    )
     assert (
         inst.variableDefinition[0].observed.display
         == "Wardlaw 2014 Analysis 1.16.3 Evidence set"
@@ -614,12 +776,17 @@ def impl_evidence_3(inst):
         inst.variableDefinition[0].observed.reference
         == "EvidenceVariable/Wardlaw2014Analysis1.16.3EvidenceSet"
     )
-    assert inst.variableDefinition[0].observed.type == "EvidenceVariable"
+    assert (
+        inst.variableDefinition[0].observed.type
+        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+    )
     assert inst.variableDefinition[0].variableRole.coding[0].code == "population"
     assert inst.variableDefinition[0].variableRole.coding[0].display == "population"
     assert (
         inst.variableDefinition[0].variableRole.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/variable-role"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/variable-role"
+        ).valueUri
     )
     assert (
         inst.variableDefinition[1].intended.display
@@ -629,51 +796,73 @@ def impl_evidence_3(inst):
         inst.variableDefinition[1].intended.reference
         == "EvidenceVariable/example-dead-or-dependent-90day"
     )
-    assert inst.variableDefinition[1].intended.type == "EvidenceVariable"
+    assert (
+        inst.variableDefinition[1].intended.type
+        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+    )
     assert inst.variableDefinition[1].observed.display == "mRS 3-6 at 90 days"
     assert (
         inst.variableDefinition[1].observed.reference
         == "EvidenceVariable/example-mRS3-6-at-90days"
     )
-    assert inst.variableDefinition[1].observed.type == "EvidenceVariable"
+    assert (
+        inst.variableDefinition[1].observed.type
+        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+    )
     assert inst.variableDefinition[1].variableRole.coding[0].code == "measuredVariable"
     assert (
         inst.variableDefinition[1].variableRole.coding[0].display == "measured variable"
     )
     assert (
         inst.variableDefinition[1].variableRole.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/variable-role"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/variable-role"
+        ).valueUri
     )
     assert inst.variableDefinition[2].intended.display == "Alteplase for Stroke"
     assert (
         inst.variableDefinition[2].intended.reference
         == "EvidenceVariable/example-alteplase-for-stroke"
     )
-    assert inst.variableDefinition[2].intended.type == "EvidenceVariable"
+    assert (
+        inst.variableDefinition[2].intended.type
+        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+    )
     assert inst.variableDefinition[2].observed.display == "Alteplase for Stroke"
     assert (
         inst.variableDefinition[2].observed.reference
         == "EvidenceVariable/example-alteplase-for-stroke"
     )
-    assert inst.variableDefinition[2].observed.type == "EvidenceVariable"
+    assert (
+        inst.variableDefinition[2].observed.type
+        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+    )
     assert inst.variableDefinition[2].variableRole.coding[0].code == "exposure"
     assert inst.variableDefinition[2].variableRole.coding[0].display == "exposure"
     assert (
         inst.variableDefinition[2].variableRole.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/variable-role"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/variable-role"
+        ).valueUri
     )
     assert inst.variableDefinition[3].intended.display == "no alteplase"
     assert (
         inst.variableDefinition[3].intended.reference
         == "EvidenceVariable/example-no-alteplase"
     )
-    assert inst.variableDefinition[3].intended.type == "EvidenceVariable"
+    assert (
+        inst.variableDefinition[3].intended.type
+        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+    )
     assert inst.variableDefinition[3].observed.display == "no alteplase"
     assert (
         inst.variableDefinition[3].observed.reference
         == "EvidenceVariable/example-no-alteplase"
     )
-    assert inst.variableDefinition[3].observed.type == "EvidenceVariable"
+    assert (
+        inst.variableDefinition[3].observed.type
+        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+    )
     assert inst.variableDefinition[3].variableRole.coding[0].code == "referenceExposure"
     assert (
         inst.variableDefinition[3].variableRole.coding[0].display
@@ -681,7 +870,9 @@ def impl_evidence_3(inst):
     )
     assert (
         inst.variableDefinition[3].variableRole.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/variable-role"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/variable-role"
+        ).valueUri
     )
 
 
@@ -693,15 +884,13 @@ def test_evidence_3(base_settings):
         base_settings["unittest_data_dir"]
         / "evidence-example-stroke-0-3-alteplase-vs-no-alteplase-mRS3-6.json"
     )
-    inst = evidence.Evidence.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Evidence" == inst.resource_type
+    inst = evidence.Evidence.model_validate_json(Path(filename).read_bytes())
+    assert "Evidence" == inst.get_resource_type()
 
     impl_evidence_3(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Evidence" == data["resourceType"]
 
     inst2 = evidence.Evidence(**data)
@@ -714,12 +903,17 @@ def impl_evidence_4(inst):
         "days with alteplase in patients with acute ischemic stroke"
     )
     assert inst.id == "example-stroke-alteplase-fatalICH"
-    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+    )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.10.1"
     assert inst.name == "RiskOfFatalICHWithAlteplaseForStroke"
     assert (
         inst.relatedArtifact[0].document.url
-        == "https://doi.org/10.1016/S0140-6736(14)60584-5"
+        == ExternalValidatorModel(
+            valueUrl="https://doi.org/10.1016/S0140-6736(14)60584-5"
+        ).valueUrl
     )
     assert inst.relatedArtifact[0].label == "Emberson 2014"
     assert inst.relatedArtifact[0].type == "citation"
@@ -731,42 +925,60 @@ def impl_evidence_4(inst):
     assert inst.statistic[0].statisticType.coding[0].display == "Proportion"
     assert (
         inst.statistic[0].statisticType.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/statistic-type"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/statistic-type"
+        ).valueUri
     )
     assert inst.status == "draft"
     assert inst.studyDesign[0].coding[0].code == "SEVCO:01003"
     assert inst.studyDesign[0].coding[0].display == "randomized assignment"
-    assert inst.studyDesign[0].coding[0].system == "http://hl7.org/fhir/study-design"
+    assert (
+        inst.studyDesign[0].coding[0].system
+        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/study-design").valueUri
+    )
     assert inst.synthesisType.coding[0].code == "IPD-MA"
     assert (
         inst.synthesisType.coding[0].display == "individual patient data meta-analysis"
     )
     assert (
         inst.synthesisType.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/synthesis-type"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/synthesis-type"
+        ).valueUri
     )
     assert inst.text.status == "generated"
     assert inst.title == "Risk of fatal ICH with alteplase for stroke"
-    assert inst.url == (
-        "http://hl7.org/fhir/Evidence/example-stroke-alteplase-" "fatalICH"
+    assert (
+        inst.url
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/Evidence/example-stroke-alteplase-fatalICH"
+        ).valueUri
     )
     assert (
         inst.variableDefinition[0].intended.display
         == "adults with acute ischemic stroke"
     )
     assert inst.variableDefinition[0].intended.reference == "Group/AcuteIschemicStroke"
-    assert inst.variableDefinition[0].intended.type == "Group"
+    assert (
+        inst.variableDefinition[0].intended.type
+        == ExternalValidatorModel(valueUri="Group").valueUri
+    )
     assert (
         inst.variableDefinition[0].observed.display
         == "adults with acute ischemic stroke"
     )
     assert inst.variableDefinition[0].observed.reference == "Group/AcuteIschemicStroke"
-    assert inst.variableDefinition[0].observed.type == "Group"
+    assert (
+        inst.variableDefinition[0].observed.type
+        == ExternalValidatorModel(valueUri="Group").valueUri
+    )
     assert inst.variableDefinition[0].variableRole.coding[0].code == "population"
     assert inst.variableDefinition[0].variableRole.coding[0].display == "population"
     assert (
         inst.variableDefinition[0].variableRole.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/variable-role"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/variable-role"
+        ).valueUri
     )
     assert (
         inst.variableDefinition[1].intended.display
@@ -776,7 +988,10 @@ def impl_evidence_4(inst):
         inst.variableDefinition[1].intended.reference
         == "Group/AcuteIschemicStrokeTreatedWithAlteplase"
     )
-    assert inst.variableDefinition[1].intended.type == "Group"
+    assert (
+        inst.variableDefinition[1].intended.type
+        == ExternalValidatorModel(valueUri="Group").valueUri
+    )
     assert (
         inst.variableDefinition[1].observed.display
         == "Emberson 2014 IPD-MA Alteplase Cohort"
@@ -785,32 +1000,45 @@ def impl_evidence_4(inst):
         inst.variableDefinition[1].observed.reference
         == "Group/Emberson-2014-IPD-MA-Alteplase-Cohort"
     )
-    assert inst.variableDefinition[1].observed.type == "Group"
+    assert (
+        inst.variableDefinition[1].observed.type
+        == ExternalValidatorModel(valueUri="Group").valueUri
+    )
     assert inst.variableDefinition[1].variableRole.coding[0].code == "population"
     assert inst.variableDefinition[1].variableRole.coding[0].display == "population"
     assert (
         inst.variableDefinition[1].variableRole.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/variable-role"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/variable-role"
+        ).valueUri
     )
     assert inst.variableDefinition[2].intended.display == "fatal ICH"
     assert (
         inst.variableDefinition[2].intended.reference
         == "EvidenceVariable/example-fatal-ICH-in-7-days"
     )
-    assert inst.variableDefinition[2].intended.type == "EvidenceVariable"
+    assert (
+        inst.variableDefinition[2].intended.type
+        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+    )
     assert inst.variableDefinition[2].observed.display == "fatal ICH"
     assert (
         inst.variableDefinition[2].observed.reference
         == "EvidenceVariable/example-fatal-ICH-in-7-days"
     )
-    assert inst.variableDefinition[2].observed.type == "EvidenceVariable"
+    assert (
+        inst.variableDefinition[2].observed.type
+        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+    )
     assert inst.variableDefinition[2].variableRole.coding[0].code == "measuredVariable"
     assert (
         inst.variableDefinition[2].variableRole.coding[0].display == "measured variable"
     )
     assert (
         inst.variableDefinition[2].variableRole.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/variable-role"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/variable-role"
+        ).valueUri
     )
 
 
@@ -822,15 +1050,13 @@ def test_evidence_4(base_settings):
         base_settings["unittest_data_dir"]
         / "evidence-example-stroke-alteplase-fatalICH.json"
     )
-    inst = evidence.Evidence.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Evidence" == inst.resource_type
+    inst = evidence.Evidence.model_validate_json(Path(filename).read_bytes())
+    assert "Evidence" == inst.get_resource_type()
 
     impl_evidence_4(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Evidence" == data["resourceType"]
 
     inst2 = evidence.Evidence(**data)
@@ -842,7 +1068,9 @@ def impl_evidence_5(inst):
     assert inst.certainty[0].rating.coding[0].display == "High quality"
     assert (
         inst.certainty[0].rating.coding[0].system
-        == "http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-rating"
+        ).valueUri
     )
     assert inst.certainty[0].subcomponent[0].rating.coding[0].code == "no-concern"
     assert (
@@ -851,13 +1079,17 @@ def impl_evidence_5(inst):
     )
     assert (
         inst.certainty[0].subcomponent[0].rating.coding[0].system
-        == "http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-rating"
+        ).valueUri
     )
     assert inst.certainty[0].subcomponent[0].type.coding[0].code == "RiskOfBias"
     assert inst.certainty[0].subcomponent[0].type.coding[0].display == "Risk of bias"
     assert (
         inst.certainty[0].subcomponent[0].type.coding[0].system
-        == "http://hl7.org/fhir/certainty-type"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-type"
+        ).valueUri
     )
     assert inst.certainty[0].subcomponent[1].description == (
         "Estimated risk from validation calibration plot consistent "
@@ -871,13 +1103,17 @@ def impl_evidence_5(inst):
     )
     assert (
         inst.certainty[0].subcomponent[1].rating.coding[0].system
-        == "http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-rating"
+        ).valueUri
     )
     assert inst.certainty[0].subcomponent[1].type.coding[0].code == "Inconsistency"
     assert inst.certainty[0].subcomponent[1].type.coding[0].display == "Inconsistency"
     assert (
         inst.certainty[0].subcomponent[1].type.coding[0].system
-        == "http://hl7.org/fhir/certainty-type"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-type"
+        ).valueUri
     )
     assert inst.certainty[0].subcomponent[2].rating.coding[0].code == "no-concern"
     assert (
@@ -886,13 +1122,17 @@ def impl_evidence_5(inst):
     )
     assert (
         inst.certainty[0].subcomponent[2].rating.coding[0].system
-        == "http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-rating"
+        ).valueUri
     )
     assert inst.certainty[0].subcomponent[2].type.coding[0].code == "Indirectness"
     assert inst.certainty[0].subcomponent[2].type.coding[0].display == "Indirectness"
     assert (
         inst.certainty[0].subcomponent[2].type.coding[0].system
-        == "http://hl7.org/fhir/certainty-type"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-type"
+        ).valueUri
     )
     assert inst.certainty[0].subcomponent[3].description == "Narrow confidence interval"
     assert inst.certainty[0].subcomponent[3].rating.coding[0].code == "no-concern"
@@ -902,13 +1142,17 @@ def impl_evidence_5(inst):
     )
     assert (
         inst.certainty[0].subcomponent[3].rating.coding[0].system
-        == "http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-rating"
+        ).valueUri
     )
     assert inst.certainty[0].subcomponent[3].type.coding[0].code == "Imprecision"
     assert inst.certainty[0].subcomponent[3].type.coding[0].display == "Imprecision"
     assert (
         inst.certainty[0].subcomponent[3].type.coding[0].system
-        == "http://hl7.org/fhir/certainty-type"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-type"
+        ).valueUri
     )
     assert inst.certainty[0].subcomponent[4].rating.coding[0].code == "no-concern"
     assert (
@@ -917,7 +1161,9 @@ def impl_evidence_5(inst):
     )
     assert (
         inst.certainty[0].subcomponent[4].rating.coding[0].system
-        == "http://hl7.org/fhir/certainty-rating"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-rating"
+        ).valueUri
     )
     assert inst.certainty[0].subcomponent[4].type.coding[0].code == "PublicationBias"
     assert (
@@ -925,16 +1171,24 @@ def impl_evidence_5(inst):
     )
     assert (
         inst.certainty[0].subcomponent[4].type.coding[0].system
-        == "http://hl7.org/fhir/certainty-type"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-type"
+        ).valueUri
     )
     assert inst.certainty[0].type.coding[0].code == "Overall"
     assert inst.certainty[0].type.coding[0].display == "Overall quality"
     assert (
-        inst.certainty[0].type.coding[0].system == "http://hl7.org/fhir/certainty-type"
+        inst.certainty[0].type.coding[0].system
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/certainty-type"
+        ).valueUri
     )
     assert inst.description == "5.3% risk of mRS 3-6 at 90 days"
     assert inst.id == "example-ASTRAL-12-alteplase-mRS3-6"
-    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+    )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.10.2"
     assert inst.name == "RiskOfMRS36At90DaysAfterAlteplaseForStrokeIfASTRALScore12"
     assert inst.relatedArtifact[0].display == (
@@ -943,7 +1197,9 @@ def impl_evidence_5(inst):
     )
     assert (
         inst.relatedArtifact[0].document.url
-        == "https://doi.org/10.1161/STROKEAHA.116.012802"
+        == ExternalValidatorModel(
+            valueUrl="https://doi.org/10.1161/STROKEAHA.116.012802"
+        ).valueUrl
     )
     assert inst.relatedArtifact[0].label == "Cooray 2016 Validation Study"
     assert inst.relatedArtifact[0].type == "citation"
@@ -954,37 +1210,53 @@ def impl_evidence_5(inst):
     assert inst.statistic[0].statisticType.coding[0].display == "Proportion"
     assert (
         inst.statistic[0].statisticType.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/statistic-type"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/statistic-type"
+        ).valueUri
     )
     assert inst.statistic[0].statisticType.text == "derived proportion"
     assert inst.status == "draft"
     assert inst.studyDesign[0].coding[0].code == "SEVCO:01016"
     assert inst.studyDesign[0].coding[0].display == "Uncontrolled cohort design"
-    assert inst.studyDesign[0].coding[0].system == "http://hl7.org/fhir/study-design"
+    assert (
+        inst.studyDesign[0].coding[0].system
+        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/study-design").valueUri
+    )
     assert inst.text.status == "generated"
     assert inst.title == (
         "Risk of mRS3-6 at 90 days after Alteplase for Stroke if " "ASTRAL score 12"
     )
-    assert inst.url == (
-        "http://hl7.org/fhir/Evidence/example-ASTRAL-12-alteplase-" "mRS3-6"
+    assert (
+        inst.url
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/Evidence/example-ASTRAL-12-alteplase-mRS3-6"
+        ).valueUri
     )
     assert inst.variableDefinition[0].intended.display == (
         "patients 0-4.5 hours after acute ischemic stroke onset with "
         "ASTRAL score = 12"
     )
     assert inst.variableDefinition[0].intended.reference == "Group/ASTRAL-12"
-    assert inst.variableDefinition[0].intended.type == "Group"
+    assert (
+        inst.variableDefinition[0].intended.type
+        == ExternalValidatorModel(valueUri="Group").valueUri
+    )
     assert inst.variableDefinition[0].observed.display == "ASTRAL validation cohort"
     assert (
         inst.variableDefinition[0].observed.reference
         == "Group/ASTRAL-Cooray-validation-cohort"
     )
-    assert inst.variableDefinition[0].observed.type == "Group"
+    assert (
+        inst.variableDefinition[0].observed.type
+        == ExternalValidatorModel(valueUri="Group").valueUri
+    )
     assert inst.variableDefinition[0].variableRole.coding[0].code == "population"
     assert inst.variableDefinition[0].variableRole.coding[0].display == "population"
     assert (
         inst.variableDefinition[0].variableRole.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/variable-role"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/variable-role"
+        ).valueUri
     )
     assert (
         inst.variableDefinition[1].description
@@ -997,7 +1269,9 @@ def impl_evidence_5(inst):
     )
     assert (
         inst.variableDefinition[1].directnessMatch.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/directness"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/directness"
+        ).valueUri
     )
     assert (
         inst.variableDefinition[1].intended.display
@@ -1007,44 +1281,62 @@ def impl_evidence_5(inst):
         inst.variableDefinition[1].intended.reference
         == "EvidenceVariable/example-dead-or-dependent-90day"
     )
-    assert inst.variableDefinition[1].intended.type == "EvidenceVariable"
+    assert (
+        inst.variableDefinition[1].intended.type
+        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+    )
     assert inst.variableDefinition[1].observed.display == "mRS 3-6 at 90 days"
     assert (
         inst.variableDefinition[1].observed.reference
         == "EvidenceVariable/example-mRS3-6-at-90days"
     )
-    assert inst.variableDefinition[1].observed.type == "EvidenceVariable"
+    assert (
+        inst.variableDefinition[1].observed.type
+        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+    )
     assert inst.variableDefinition[1].variableRole.coding[0].code == "measuredVariable"
     assert (
         inst.variableDefinition[1].variableRole.coding[0].display == "measured variable"
     )
     assert (
         inst.variableDefinition[1].variableRole.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/variable-role"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/variable-role"
+        ).valueUri
     )
     assert inst.variableDefinition[2].directnessMatch.coding[0].code == "exact"
     assert inst.variableDefinition[2].directnessMatch.coding[0].display == "Exact match"
     assert (
         inst.variableDefinition[2].directnessMatch.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/directness"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/directness"
+        ).valueUri
     )
     assert inst.variableDefinition[2].intended.display == "Alteplase for Stroke"
     assert (
         inst.variableDefinition[2].intended.reference
         == "EvidenceVariable/example-alteplase-for-stroke"
     )
-    assert inst.variableDefinition[2].intended.type == "EvidenceVariable"
+    assert (
+        inst.variableDefinition[2].intended.type
+        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+    )
     assert inst.variableDefinition[2].observed.display == "Alteplase for Stroke"
     assert (
         inst.variableDefinition[2].observed.reference
         == "EvidenceVariable/example-alteplase-for-stroke"
     )
-    assert inst.variableDefinition[2].observed.type == "EvidenceVariable"
+    assert (
+        inst.variableDefinition[2].observed.type
+        == ExternalValidatorModel(valueUri="EvidenceVariable").valueUri
+    )
     assert inst.variableDefinition[2].variableRole.coding[0].code == "exposure"
     assert inst.variableDefinition[2].variableRole.coding[0].display == "exposure"
     assert (
         inst.variableDefinition[2].variableRole.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/variable-role"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/variable-role"
+        ).valueUri
     )
 
 
@@ -1056,15 +1348,13 @@ def test_evidence_5(base_settings):
         base_settings["unittest_data_dir"]
         / "evidence-example-ASTRAL-12-alteplase-mRS3-6.json"
     )
-    inst = evidence.Evidence.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Evidence" == inst.resource_type
+    inst = evidence.Evidence.model_validate_json(Path(filename).read_bytes())
+    assert "Evidence" == inst.get_resource_type()
 
     impl_evidence_5(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Evidence" == data["resourceType"]
 
     inst2 = evidence.Evidence(**data)

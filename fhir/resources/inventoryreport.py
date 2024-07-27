@@ -8,11 +8,9 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
-from . import backboneelement, domainresource, fhirtypes
+from . import domainresource, fhirtypes
 
 
 class InventoryReport(domainresource.DomainResource):
@@ -23,9 +21,9 @@ class InventoryReport(domainresource.DomainResource):
     A report of inventory or stock items.
     """
 
-    resource_type = Field("InventoryReport", const=True)
+    __resource_type__ = "InventoryReport"
 
-    countType: fhirtypes.Code = Field(
+    countType: fhirtypes.CodeType = Field(
         None,
         alias="countType",
         title="snapshot | difference",
@@ -33,12 +31,13 @@ class InventoryReport(domainresource.DomainResource):
             "Whether the report is about the current inventory count (snapshot) or "
             "a differential change in inventory (change)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["snapshot", "difference"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["snapshot", "difference"],
+        },
     )
     countType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_countType", title="Extension field for ``countType``."
@@ -49,8 +48,9 @@ class InventoryReport(domainresource.DomainResource):
         alias="identifier",
         title="Business identifier for the report",
         description="Business identifier for the InventoryReport.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     inventoryListing: typing.List[
@@ -60,8 +60,9 @@ class InventoryReport(domainresource.DomainResource):
         alias="inventoryListing",
         title="An inventory listing section (grouped by any of the attributes)",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -69,8 +70,9 @@ class InventoryReport(domainresource.DomainResource):
         alias="note",
         title="A note associated with the InventoryReport",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     operationType: fhirtypes.CodeableConceptType = Field(
@@ -78,8 +80,9 @@ class InventoryReport(domainresource.DomainResource):
         alias="operationType",
         title="addition | subtraction",
         description="What type of operation is being performed - addition or subtraction.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     operationTypeReason: fhirtypes.CodeableConceptType = Field(
@@ -90,18 +93,20 @@ class InventoryReport(domainresource.DomainResource):
             " etc"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    reportedDateTime: fhirtypes.DateTime = Field(
+    reportedDateTime: fhirtypes.DateTimeType = Field(
         None,
         alias="reportedDateTime",
         title="When the report has been submitted",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
     reportedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -114,10 +119,16 @@ class InventoryReport(domainresource.DomainResource):
         alias="reporter",
         title="Who submits the report",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Practitioner", "Patient", "RelatedPerson", "Device"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Practitioner",
+                "Patient",
+                "RelatedPerson",
+                "Device",
+            ],
+        },
     )
 
     reportingPeriod: fhirtypes.PeriodType = Field(
@@ -125,11 +136,12 @@ class InventoryReport(domainresource.DomainResource):
         alias="reportingPeriod",
         title="The period the report refers to",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(
         None,
         alias="status",
         title="draft | requested | active | entered-in-error",
@@ -137,12 +149,13 @@ class InventoryReport(domainresource.DomainResource):
             "The status of the inventory check or notification - whether this is "
             "draft (e.g. the report is still pending some updates) or active."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["draft", "requested", "active", "entered-in-error"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["draft", "requested", "active", "entered-in-error"],
+        },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -175,10 +188,7 @@ class InventoryReport(domainresource.DomainResource):
             "note",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1799(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -191,52 +201,10 @@ class InventoryReport(domainresource.DomainResource):
             ("reportedDateTime", "reportedDateTime__ext"),
             ("status", "status__ext"),
         ]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
 
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+from . import backboneelement
 
 
 class InventoryReportInventoryListing(backboneelement.BackboneElement):
@@ -247,15 +215,16 @@ class InventoryReportInventoryListing(backboneelement.BackboneElement):
     An inventory listing section (grouped by any of the attributes).
     """
 
-    resource_type = Field("InventoryReportInventoryListing", const=True)
+    __resource_type__ = "InventoryReportInventoryListing"
 
-    countingDateTime: fhirtypes.DateTime = Field(
+    countingDateTime: fhirtypes.DateTimeType = Field(
         None,
         alias="countingDateTime",
         title="The date and time when the items were counted",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     countingDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -268,8 +237,9 @@ class InventoryReportInventoryListing(backboneelement.BackboneElement):
         alias="item",
         title="The item or items in this listing",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     itemStatus: fhirtypes.CodeableConceptType = Field(
@@ -277,8 +247,9 @@ class InventoryReportInventoryListing(backboneelement.BackboneElement):
         alias="itemStatus",
         title="The status of the items that are being reported",
         description="The status of the items.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     location: fhirtypes.ReferenceType = Field(
@@ -286,10 +257,11 @@ class InventoryReportInventoryListing(backboneelement.BackboneElement):
         alias="location",
         title="Location of the inventory items",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Location"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Location"],
+        },
     )
 
     @classmethod
@@ -317,7 +289,7 @@ class InventoryReportInventoryListingItem(backboneelement.BackboneElement):
     The item or items in this listing.
     """
 
-    resource_type = Field("InventoryReportInventoryListingItem", const=True)
+    __resource_type__ = "InventoryReportInventoryListingItem"
 
     category: fhirtypes.CodeableConceptType = Field(
         None,
@@ -328,8 +300,9 @@ class InventoryReportInventoryListingItem(backboneelement.BackboneElement):
             "This is meant not for defining the product, but for inventory "
             "categories e.g. 'pending recount' or 'damaged'."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     item: fhirtypes.CodeableReferenceType = Field(
@@ -337,18 +310,19 @@ class InventoryReportInventoryListingItem(backboneelement.BackboneElement):
         alias="item",
         title="The code or reference to the item type",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Medication",
-            "Device",
-            "Medication",
-            "NutritionProduct",
-            "InventoryItem",
-            "BiologicallyDerivedProduct",
-            "InventoryItem",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Medication",
+                "Device",
+                "Medication",
+                "NutritionProduct",
+                "InventoryItem",
+                "BiologicallyDerivedProduct",
+                "InventoryItem",
+            ],
+        },
     )
 
     quantity: fhirtypes.QuantityType = Field(
@@ -356,8 +330,9 @@ class InventoryReportInventoryListingItem(backboneelement.BackboneElement):
         alias="quantity",
         title="The quantity of the item or items being reported",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

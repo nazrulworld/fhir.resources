@@ -8,11 +8,9 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
-from . import backboneelement, domainresource, fhirtypes
+from . import domainresource, fhirtypes
 
 
 class DocumentReference(domainresource.DomainResource):
@@ -32,15 +30,16 @@ class DocumentReference(domainresource.DomainResource):
     provided by direct reference.
     """
 
-    resource_type = Field("DocumentReference", const=True)
+    __resource_type__ = "DocumentReference"
 
     attester: typing.List[fhirtypes.DocumentReferenceAttesterType] = Field(
         None,
         alias="attester",
         title="Attests to accuracy of the document",
         description="A participant who has authenticated the accuracy of the document.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     author: typing.List[fhirtypes.ReferenceType] = Field(
@@ -51,18 +50,19 @@ class DocumentReference(domainresource.DomainResource):
             "Identifies who is responsible for adding the information to the "
             "document."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Practitioner",
-            "PractitionerRole",
-            "Organization",
-            "Device",
-            "Patient",
-            "RelatedPerson",
-            "CareTeam",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Practitioner",
+                "PractitionerRole",
+                "Organization",
+                "Device",
+                "Patient",
+                "RelatedPerson",
+                "CareTeam",
+            ],
+        },
     )
 
     basedOn: typing.List[fhirtypes.ReferenceType] = Field(
@@ -73,27 +73,28 @@ class DocumentReference(domainresource.DomainResource):
             "A procedure that is fulfilled in whole or in part by the creation of "
             "this media."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Appointment",
-            "AppointmentResponse",
-            "CarePlan",
-            "Claim",
-            "CommunicationRequest",
-            "Contract",
-            "CoverageEligibilityRequest",
-            "DeviceRequest",
-            "EnrollmentRequest",
-            "ImmunizationRecommendation",
-            "MedicationRequest",
-            "NutritionOrder",
-            "RequestOrchestration",
-            "ServiceRequest",
-            "SupplyRequest",
-            "VisionPrescription",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Appointment",
+                "AppointmentResponse",
+                "CarePlan",
+                "Claim",
+                "CommunicationRequest",
+                "Contract",
+                "CoverageEligibilityRequest",
+                "DeviceRequest",
+                "EnrollmentRequest",
+                "ImmunizationRecommendation",
+                "MedicationRequest",
+                "NutritionOrder",
+                "RequestOrchestration",
+                "ServiceRequest",
+                "SupplyRequest",
+                "VisionPrescription",
+            ],
+        },
     )
 
     bodySite: typing.List[fhirtypes.CodeableReferenceType] = Field(
@@ -101,10 +102,11 @@ class DocumentReference(domainresource.DomainResource):
         alias="bodySite",
         title="Body part included",
         description="The anatomic structures included in the document.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["BodyStructure"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["BodyStructure"],
+        },
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -116,8 +118,9 @@ class DocumentReference(domainresource.DomainResource):
             "indexing and searching. This may be implied by or derived from the "
             "code specified in the DocumentReference.type."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     content: typing.List[fhirtypes.DocumentReferenceContentType] = Field(
@@ -129,8 +132,9 @@ class DocumentReference(domainresource.DomainResource):
             "element repetitions, these must all represent the same document in "
             "different format, or attachment metadata."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     context: typing.List[fhirtypes.ReferenceType] = Field(
@@ -141,10 +145,11 @@ class DocumentReference(domainresource.DomainResource):
             "Describes the clinical encounter or type of care that the document "
             "content is associated with."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Appointment", "Encounter", "EpisodeOfCare"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Appointment", "Encounter", "EpisodeOfCare"],
+        },
     )
 
     custodian: fhirtypes.ReferenceType = Field(
@@ -155,37 +160,40 @@ class DocumentReference(domainresource.DomainResource):
             "Identifies the organization or group who is responsible for ongoing "
             "maintenance of and access to the document."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
-    date: fhirtypes.Instant = Field(
+    date: fhirtypes.InstantType = Field(
         None,
         alias="date",
         title="When this document reference was created",
         description="When the document reference was created.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    description: fhirtypes.Markdown = Field(
+    description: fhirtypes.MarkdownType = Field(
         None,
         alias="description",
         title="Human-readable description",
         description="Human-readable description of the source document.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    docStatus: fhirtypes.Code = Field(
+    docStatus: fhirtypes.CodeType = Field(
         None,
         alias="docStatus",
         title=(
@@ -193,23 +201,24 @@ class DocumentReference(domainresource.DomainResource):
             "appended | cancelled | entered-in-error | deprecated | unknown"
         ),
         description="The status of the underlying document.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "registered",
-            "partial",
-            "preliminary",
-            "final",
-            "amended",
-            "corrected",
-            "appended",
-            "cancelled",
-            "entered-in-error",
-            "deprecated",
-            "unknown",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "registered",
+                "partial",
+                "preliminary",
+                "final",
+                "amended",
+                "corrected",
+                "appended",
+                "cancelled",
+                "entered-in-error",
+                "deprecated",
+                "unknown",
+            ],
+        },
     )
     docStatus__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_docStatus", title="Extension field for ``docStatus``."
@@ -226,8 +235,9 @@ class DocumentReference(domainresource.DomainResource):
             'Report" in which the procedure being documented is necessarily a '
             '"History and Physical" act.'
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     facilityType: fhirtypes.CodeableConceptType = Field(
@@ -235,8 +245,9 @@ class DocumentReference(domainresource.DomainResource):
         alias="facilityType",
         title="Kind of facility where patient was seen",
         description="The kind of facility where the patient was seen.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -247,8 +258,9 @@ class DocumentReference(domainresource.DomainResource):
             "Other business identifiers associated with the document, including "
             "version independent identifiers."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     modality: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -259,8 +271,9 @@ class DocumentReference(domainresource.DomainResource):
             "Imaging modality used. This may include both acquisition and non-"
             "acquisition modalities."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -271,8 +284,9 @@ class DocumentReference(domainresource.DomainResource):
             "The time period over which the service that is described by the "
             "document was provided."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     practiceSetting: fhirtypes.CodeableConceptType = Field(
@@ -286,8 +300,9 @@ class DocumentReference(domainresource.DomainResource):
             "This property may convey specifics about the practice setting where "
             "the content was created, often reflecting the clinical specialty."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     relatesTo: typing.List[fhirtypes.DocumentReferenceRelatesToType] = Field(
@@ -298,8 +313,9 @@ class DocumentReference(domainresource.DomainResource):
             "Relationships that this document has with other document references "
             "that already exist."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     securityLabel: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -319,21 +335,23 @@ class DocumentReference(domainresource.DomainResource):
             "may contain highly sensitive information, while the metadata may "
             "simply indicate that some episode happened."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(
         None,
         alias="status",
         title="current | superseded | entered-in-error",
         description="The status of this document reference.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["current", "superseded", "entered-in-error"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["current", "superseded", "entered-in-error"],
+        },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -349,10 +367,11 @@ class DocumentReference(domainresource.DomainResource):
             "even a group of subjects (such as a document about a herd of farm "
             "animals, or a set of patients that share a common exposure)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Resource"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Resource"],
+        },
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -364,11 +383,12 @@ class DocumentReference(domainresource.DomainResource):
             "and Physical, Discharge Summary, Progress Note). This usually equates "
             "to the purpose of making the document referenced."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    version: fhirtypes.String = Field(
+    version: fhirtypes.StringType = Field(
         None,
         alias="version",
         title=(
@@ -376,8 +396,9 @@ class DocumentReference(domainresource.DomainResource):
             "DocumentReference"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -423,10 +444,7 @@ class DocumentReference(domainresource.DomainResource):
             "content",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1911(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -435,52 +453,10 @@ class DocumentReference(domainresource.DomainResource):
         the primitive value is not present.
         """
         required_fields = [("status", "status__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
 
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+from . import backboneelement
 
 
 class DocumentReferenceAttester(backboneelement.BackboneElement):
@@ -492,15 +468,16 @@ class DocumentReferenceAttester(backboneelement.BackboneElement):
     A participant who has authenticated the accuracy of the document.
     """
 
-    resource_type = Field("DocumentReferenceAttester", const=True)
+    __resource_type__ = "DocumentReferenceAttester"
 
     mode: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="mode",
         title="personal | professional | legal | official",
         description="The type of attestation the authenticator offers.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     party: fhirtypes.ReferenceType = Field(
@@ -508,25 +485,27 @@ class DocumentReferenceAttester(backboneelement.BackboneElement):
         alias="party",
         title="Who attested the document",
         description="Who attested the document in the specified way.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Patient",
-            "RelatedPerson",
-            "Practitioner",
-            "PractitionerRole",
-            "Organization",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Patient",
+                "RelatedPerson",
+                "Practitioner",
+                "PractitionerRole",
+                "Organization",
+            ],
+        },
     )
 
-    time: fhirtypes.DateTime = Field(
+    time: fhirtypes.DateTimeType = Field(
         None,
         alias="time",
         title="When the document was attested",
         description="When the document was attested by the party.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     time__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_time", title="Extension field for ``time``."
@@ -552,7 +531,7 @@ class DocumentReferenceContent(backboneelement.BackboneElement):
     format, or attachment metadata.
     """
 
-    resource_type = Field("DocumentReferenceContent", const=True)
+    __resource_type__ = "DocumentReferenceContent"
 
     attachment: fhirtypes.AttachmentType = Field(
         ...,
@@ -562,8 +541,9 @@ class DocumentReferenceContent(backboneelement.BackboneElement):
             "The document or URL of the document along with critical metadata to "
             "prove content has integrity."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     profile: typing.List[fhirtypes.DocumentReferenceContentProfileType] = Field(
@@ -575,8 +555,9 @@ class DocumentReferenceContent(backboneelement.BackboneElement):
             "template that the document conforms to beyond the base format "
             "indicated in the mimeType."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -599,18 +580,19 @@ class DocumentReferenceContentProfile(backboneelement.BackboneElement):
     the mimeType.
     """
 
-    resource_type = Field("DocumentReferenceContentProfile", const=True)
+    __resource_type__ = "DocumentReferenceContentProfile"
 
-    valueCanonical: fhirtypes.Canonical = Field(
+    valueCanonical: fhirtypes.CanonicalType = Field(
         None,
         alias="valueCanonical",
         title="Code|uri|canonical",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
     valueCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueCanonical", title="Extension field for ``valueCanonical``."
@@ -621,23 +603,25 @@ class DocumentReferenceContentProfile(backboneelement.BackboneElement):
         alias="valueCoding",
         title="Code|uri|canonical",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
-    valueUri: fhirtypes.Uri = Field(
+    valueUri: fhirtypes.UriType = Field(
         None,
         alias="valueUri",
         title="Code|uri|canonical",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
     valueUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueUri", title="Extension field for ``valueUri``."
@@ -658,10 +642,7 @@ class DocumentReferenceContentProfile(backboneelement.BackboneElement):
             "valueCanonical",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_3363(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -675,26 +656,7 @@ class DocumentReferenceContentProfile(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"value": ["valueCanonical", "valueCoding", "valueUri"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class DocumentReferenceRelatesTo(backboneelement.BackboneElement):
@@ -707,15 +669,16 @@ class DocumentReferenceRelatesTo(backboneelement.BackboneElement):
     already exist.
     """
 
-    resource_type = Field("DocumentReferenceRelatesTo", const=True)
+    __resource_type__ = "DocumentReferenceRelatesTo"
 
     code: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="code",
         title="The relationship type with another document",
         description="The type of relationship that this document has with anther document.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     target: fhirtypes.ReferenceType = Field(
@@ -723,10 +686,11 @@ class DocumentReferenceRelatesTo(backboneelement.BackboneElement):
         alias="target",
         title="Target of the relationship",
         description="The target document of this relationship.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["DocumentReference"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["DocumentReference"],
+        },
     )
 
     @classmethod

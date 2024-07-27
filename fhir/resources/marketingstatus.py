@@ -6,7 +6,7 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import backbonetype, fhirtypes
 
@@ -21,7 +21,7 @@ class MarketingStatus(backbonetype.BackboneType):
     available.
     """
 
-    resource_type = Field("MarketingStatus", const=True)
+    __resource_type__ = "MarketingStatus"
 
     country: fhirtypes.CodeableConceptType = Field(
         None,
@@ -32,8 +32,9 @@ class MarketingStatus(backbonetype.BackboneType):
             "alpha-2 code elements"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     dateRange: fhirtypes.PeriodType = Field(
@@ -49,8 +50,9 @@ class MarketingStatus(backbonetype.BackboneType):
             "chain"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     jurisdiction: fhirtypes.CodeableConceptType = Field(
@@ -64,11 +66,12 @@ class MarketingStatus(backbonetype.BackboneType):
             "identifier shall be specified"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    restoreDate: fhirtypes.DateTime = Field(
+    restoreDate: fhirtypes.DateTimeType = Field(
         None,
         alias="restoreDate",
         title=(
@@ -81,8 +84,9 @@ class MarketingStatus(backbonetype.BackboneType):
             "chain"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     restoreDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_restoreDate", title="Extension field for ``restoreDate``."
@@ -97,8 +101,9 @@ class MarketingStatus(backbonetype.BackboneType):
             "examples"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

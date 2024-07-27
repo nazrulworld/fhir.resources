@@ -8,7 +8,7 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
+from pydantic import Field
 
 from . import backbonetype, fhirtypes
 
@@ -22,7 +22,7 @@ class ProductShelfLife(backbonetype.BackboneType):
     container can be described using this class.
     """
 
-    resource_type = Field("ProductShelfLife", const=True)
+    __resource_type__ = "ProductShelfLife"
 
     periodDuration: fhirtypes.DurationType = Field(
         None,
@@ -35,14 +35,15 @@ class ProductShelfLife(backbonetype.BackboneType):
             "used"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e period[x]
-        one_of_many="period",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e period[x]
+            "one_of_many": "period",
+            "one_of_many_required": False,
+        },
     )
 
-    periodString: fhirtypes.String = Field(
+    periodString: fhirtypes.StringType = Field(
         None,
         alias="periodString",
         title=(
@@ -53,11 +54,12 @@ class ProductShelfLife(backbonetype.BackboneType):
             "used"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e period[x]
-        one_of_many="period",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e period[x]
+            "one_of_many": "period",
+            "one_of_many_required": False,
+        },
     )
     periodString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_periodString", title="Extension field for ``periodString``."
@@ -72,8 +74,9 @@ class ProductShelfLife(backbonetype.BackboneType):
             "controlled term identifier shall be specified"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -88,8 +91,9 @@ class ProductShelfLife(backbonetype.BackboneType):
             "the controlled term identifier shall be specified"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -108,10 +112,7 @@ class ProductShelfLife(backbonetype.BackboneType):
             "specialPrecautionsForStorage",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_1800(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -125,23 +126,4 @@ class ProductShelfLife(backbonetype.BackboneType):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"period": ["periodDuration", "periodString"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields

@@ -8,11 +8,9 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
-from . import backboneelement, domainresource, fhirtypes
+from . import domainresource, fhirtypes
 
 
 class MedicationKnowledge(domainresource.DomainResource):
@@ -24,7 +22,7 @@ class MedicationKnowledge(domainresource.DomainResource):
     Information about a medication that is used to support knowledge.
     """
 
-    resource_type = Field("MedicationKnowledge", const=True)
+    __resource_type__ = "MedicationKnowledge"
 
     associatedMedication: typing.List[fhirtypes.ReferenceType] = Field(
         None,
@@ -37,10 +35,11 @@ class MedicationKnowledge(domainresource.DomainResource):
             "Links to associated medications that could be prescribed, dispensed or"
             " administered."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Medication"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Medication"],
+        },
     )
 
     author: fhirtypes.ReferenceType = Field(
@@ -51,10 +50,11 @@ class MedicationKnowledge(domainresource.DomainResource):
             "The creator or owner of the knowledge or information about the "
             "medication."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
     clinicalUseIssue: typing.List[fhirtypes.ReferenceType] = Field(
@@ -66,10 +66,11 @@ class MedicationKnowledge(domainresource.DomainResource):
             "drug-drug interaction, drug-disease contraindication, drug-allergy "
             "interaction, etc.)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ClinicalUseDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ClinicalUseDefinition"],
+        },
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -83,8 +84,9 @@ class MedicationKnowledge(domainresource.DomainResource):
             " a national or local formulary code, optionally with translations to "
             "other code systems."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     cost: typing.List[fhirtypes.MedicationKnowledgeCostType] = Field(
@@ -92,8 +94,9 @@ class MedicationKnowledge(domainresource.DomainResource):
         alias="cost",
         title="The pricing of the medication",
         description="The price of the medication.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     definitional: fhirtypes.MedicationKnowledgeDefinitionalType = Field(
@@ -105,8 +108,9 @@ class MedicationKnowledge(domainresource.DomainResource):
             "information provides common definitional elements that are needed to "
             "understand the specific medication that is being described."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -114,8 +118,9 @@ class MedicationKnowledge(domainresource.DomainResource):
         alias="identifier",
         title="Business identifier for this medication",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     indicationGuideline: typing.List[
@@ -131,8 +136,9 @@ class MedicationKnowledge(domainresource.DomainResource):
             "Guidelines or protocols that are applicable for the administration of "
             "the medication based on indication."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     intendedJurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -145,8 +151,9 @@ class MedicationKnowledge(domainresource.DomainResource):
         description=(
             "Lists the jurisdictions that this medication knowledge was written " "for."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     medicineClassification: typing.List[
@@ -159,8 +166,9 @@ class MedicationKnowledge(domainresource.DomainResource):
             "system"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     monitoringProgram: typing.List[
@@ -170,8 +178,9 @@ class MedicationKnowledge(domainresource.DomainResource):
         alias="monitoringProgram",
         title="Program under which a medication is reviewed",
         description="The program under which the medication is reviewed.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     monograph: typing.List[fhirtypes.MedicationKnowledgeMonographType] = Field(
@@ -179,11 +188,12 @@ class MedicationKnowledge(domainresource.DomainResource):
         alias="monograph",
         title="Associated documentation about the medication",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    name: typing.List[typing.Optional[fhirtypes.String]] = Field(
+    name: typing.List[typing.Optional[fhirtypes.StringType]] = Field(
         None,
         alias="name",
         title="A name associated with the medication being described",
@@ -192,8 +202,9 @@ class MedicationKnowledge(domainresource.DomainResource):
             " medication in different countries.  For example, acetaminophen and "
             "paracetamol or salbutamol and albuterol."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     name__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -204,17 +215,19 @@ class MedicationKnowledge(domainresource.DomainResource):
         alias="packaging",
         title="Details about packaged medications",
         description="Information that only applies to packages (not products).",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    preparationInstruction: fhirtypes.Markdown = Field(
+    preparationInstruction: fhirtypes.MarkdownType = Field(
         None,
         alias="preparationInstruction",
         title="The instructions for preparing the medication",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     preparationInstruction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -230,8 +243,9 @@ class MedicationKnowledge(domainresource.DomainResource):
             "Category of the medication or product (e.g. branded product, "
             "therapeutic moeity, generic product, innovator product, etc.)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     regulatory: typing.List[fhirtypes.MedicationKnowledgeRegulatoryType] = Field(
@@ -239,8 +253,9 @@ class MedicationKnowledge(domainresource.DomainResource):
         alias="regulatory",
         title="Regulatory information about a medication",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     relatedMedicationKnowledge: typing.List[
@@ -255,11 +270,12 @@ class MedicationKnowledge(domainresource.DomainResource):
             "Rosuvastatin) or if this is a generic medication (e.g. Rosuvastatin), "
             "this would link to a branded product (e.g. Crestor."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(
         None,
         alias="status",
         title="active | entered-in-error | inactive",
@@ -269,11 +285,12 @@ class MedicationKnowledge(domainresource.DomainResource):
             "inventory system. The status refers to the validity about the "
             "information of the medication and not to its medicinal properties."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["active", "entered-in-error", "inactive"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["active", "entered-in-error", "inactive"],
+        },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -290,8 +307,9 @@ class MedicationKnowledge(domainresource.DomainResource):
             "refrigeration temperatures and length of stability at a given "
             "temperature."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -332,6 +350,9 @@ class MedicationKnowledge(domainresource.DomainResource):
         ]
 
 
+from . import backboneelement
+
+
 class MedicationKnowledgeCost(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -341,7 +362,7 @@ class MedicationKnowledgeCost(backboneelement.BackboneElement):
     The price of the medication.
     """
 
-    resource_type = Field("MedicationKnowledgeCost", const=True)
+    __resource_type__ = "MedicationKnowledgeCost"
 
     costCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
@@ -351,11 +372,12 @@ class MedicationKnowledgeCost(backboneelement.BackboneElement):
             "The price or representation of the cost (for example, Band A, Band B "
             "or $, $$) of the medication."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e cost[x]
-        one_of_many="cost",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e cost[x]
+            "one_of_many": "cost",
+            "one_of_many_required": True,
+        },
     )
 
     costMoney: fhirtypes.MoneyType = Field(
@@ -366,11 +388,12 @@ class MedicationKnowledgeCost(backboneelement.BackboneElement):
             "The price or representation of the cost (for example, Band A, Band B "
             "or $, $$) of the medication."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e cost[x]
-        one_of_many="cost",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e cost[x]
+            "one_of_many": "cost",
+            "one_of_many_required": True,
+        },
     )
 
     effectiveDate: typing.List[fhirtypes.PeriodType] = Field(
@@ -381,17 +404,19 @@ class MedicationKnowledgeCost(backboneelement.BackboneElement):
             "The date range for which the cost information of the medication is "
             "effective."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    source: fhirtypes.String = Field(
+    source: fhirtypes.StringType = Field(
         None,
         alias="source",
         title="The source or owner for the price information",
         description="The source or owner that assigns the price to the medication.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     source__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_source", title="Extension field for ``source``."
@@ -405,8 +430,9 @@ class MedicationKnowledgeCost(backboneelement.BackboneElement):
             "The category of the cost information.  For example, manufacturers' "
             "cost, patient cost, claim reimbursement cost, actual acquisition cost."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -426,10 +452,7 @@ class MedicationKnowledgeCost(backboneelement.BackboneElement):
             "costCodeableConcept",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_2551(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -443,26 +466,7 @@ class MedicationKnowledgeCost(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"cost": ["costCodeableConcept", "costMoney"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class MedicationKnowledgeDefinitional(backboneelement.BackboneElement):
@@ -476,7 +480,7 @@ class MedicationKnowledgeDefinitional(backboneelement.BackboneElement):
     understand the specific medication that is being described.
     """
 
-    resource_type = Field("MedicationKnowledgeDefinitional", const=True)
+    __resource_type__ = "MedicationKnowledgeDefinitional"
 
     definition: typing.List[fhirtypes.ReferenceType] = Field(
         None,
@@ -486,10 +490,11 @@ class MedicationKnowledgeDefinitional(backboneelement.BackboneElement):
             "medication"
         ),
         description="Associated definitions for this medication.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["MedicinalProductDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["MedicinalProductDefinition"],
+        },
     )
 
     doseForm: fhirtypes.CodeableConceptType = Field(
@@ -497,8 +502,9 @@ class MedicationKnowledgeDefinitional(backboneelement.BackboneElement):
         alias="doseForm",
         title="powder | tablets | capsule +",
         description="Describes the form of the item.  Powder; tablets; capsule.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     drugCharacteristic: typing.List[
@@ -511,8 +517,9 @@ class MedicationKnowledgeDefinitional(backboneelement.BackboneElement):
             "Specifies descriptive properties of the medicine, such as color, "
             "shape, imprints, etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     ingredient: typing.List[
@@ -522,8 +529,9 @@ class MedicationKnowledgeDefinitional(backboneelement.BackboneElement):
         alias="ingredient",
         title="Active or inactive ingredient",
         description="Identifies a particular constituent of interest in the product.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     intendedRoute: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -531,8 +539,9 @@ class MedicationKnowledgeDefinitional(backboneelement.BackboneElement):
         alias="intendedRoute",
         title="The intended or approved route of administration",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -565,9 +574,7 @@ class MedicationKnowledgeDefinitionalDrugCharacteristic(
     imprints, etc.
     """
 
-    resource_type = Field(
-        "MedicationKnowledgeDefinitionalDrugCharacteristic", const=True
-    )
+    __resource_type__ = "MedicationKnowledgeDefinitionalDrugCharacteristic"
 
     type: fhirtypes.CodeableConceptType = Field(
         None,
@@ -577,8 +584,9 @@ class MedicationKnowledgeDefinitionalDrugCharacteristic(
             "A code specifying which characteristic of the medicine is being "
             "described (for example, colour, shape, imprint)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     valueAttachment: fhirtypes.AttachmentType = Field(
@@ -586,23 +594,25 @@ class MedicationKnowledgeDefinitionalDrugCharacteristic(
         alias="valueAttachment",
         title="Description of the characteristic",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": False,
+        },
     )
 
-    valueBase64Binary: fhirtypes.Base64Binary = Field(
+    valueBase64Binary: fhirtypes.Base64BinaryType = Field(
         None,
         alias="valueBase64Binary",
         title="Description of the characteristic",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": False,
+        },
     )
     valueBase64Binary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -615,11 +625,12 @@ class MedicationKnowledgeDefinitionalDrugCharacteristic(
         alias="valueCodeableConcept",
         title="Description of the characteristic",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": False,
+        },
     )
 
     valueQuantity: fhirtypes.QuantityType = Field(
@@ -627,23 +638,25 @@ class MedicationKnowledgeDefinitionalDrugCharacteristic(
         alias="valueQuantity",
         title="Description of the characteristic",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": False,
+        },
     )
 
-    valueString: fhirtypes.String = Field(
+    valueString: fhirtypes.StringType = Field(
         None,
         alias="valueString",
         title="Description of the characteristic",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": False,
+        },
     )
     valueString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_valueString", title="Extension field for ``valueString``."
@@ -667,10 +680,7 @@ class MedicationKnowledgeDefinitionalDrugCharacteristic(
             "valueAttachment",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_5214(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -692,26 +702,7 @@ class MedicationKnowledgeDefinitionalDrugCharacteristic(
                 "valueString",
             ]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class MedicationKnowledgeDefinitionalIngredient(backboneelement.BackboneElement):
@@ -723,7 +714,7 @@ class MedicationKnowledgeDefinitionalIngredient(backboneelement.BackboneElement)
     Identifies a particular constituent of interest in the product.
     """
 
-    resource_type = Field("MedicationKnowledgeDefinitionalIngredient", const=True)
+    __resource_type__ = "MedicationKnowledgeDefinitionalIngredient"
 
     item: fhirtypes.CodeableReferenceType = Field(
         ...,
@@ -733,10 +724,11 @@ class MedicationKnowledgeDefinitionalIngredient(backboneelement.BackboneElement)
             "A reference to the resource that provides information about the "
             "ingredient."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Substance"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Substance"],
+        },
     )
 
     strengthCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -750,11 +742,12 @@ class MedicationKnowledgeDefinitionalIngredient(backboneelement.BackboneElement)
             " can also be expressed a quantity when the denominator is assumed to "
             "be 1 tablet."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e strength[x]
-        one_of_many="strength",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e strength[x]
+            "one_of_many": "strength",
+            "one_of_many_required": False,
+        },
     )
 
     strengthQuantity: fhirtypes.QuantityType = Field(
@@ -768,11 +761,12 @@ class MedicationKnowledgeDefinitionalIngredient(backboneelement.BackboneElement)
             " can also be expressed a quantity when the denominator is assumed to "
             "be 1 tablet."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e strength[x]
-        one_of_many="strength",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e strength[x]
+            "one_of_many": "strength",
+            "one_of_many_required": False,
+        },
     )
 
     strengthRatio: fhirtypes.RatioType = Field(
@@ -786,11 +780,12 @@ class MedicationKnowledgeDefinitionalIngredient(backboneelement.BackboneElement)
             " can also be expressed a quantity when the denominator is assumed to "
             "be 1 tablet."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e strength[x]
-        one_of_many="strength",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e strength[x]
+            "one_of_many": "strength",
+            "one_of_many_required": False,
+        },
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -801,8 +796,9 @@ class MedicationKnowledgeDefinitionalIngredient(backboneelement.BackboneElement)
             "Indication of whether this ingredient affects the therapeutic action "
             "of the drug."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -822,10 +818,7 @@ class MedicationKnowledgeDefinitionalIngredient(backboneelement.BackboneElement)
             "strengthQuantity",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_4413(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -841,26 +834,7 @@ class MedicationKnowledgeDefinitionalIngredient(backboneelement.BackboneElement)
         one_of_many_fields = {
             "strength": ["strengthCodeableConcept", "strengthQuantity", "strengthRatio"]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class MedicationKnowledgeIndicationGuideline(backboneelement.BackboneElement):
@@ -874,7 +848,7 @@ class MedicationKnowledgeIndicationGuideline(backboneelement.BackboneElement):
     medication based on indication.
     """
 
-    resource_type = Field("MedicationKnowledgeIndicationGuideline", const=True)
+    __resource_type__ = "MedicationKnowledgeIndicationGuideline"
 
     dosingGuideline: typing.List[
         fhirtypes.MedicationKnowledgeIndicationGuidelineDosingGuidelineType
@@ -883,8 +857,9 @@ class MedicationKnowledgeIndicationGuideline(backboneelement.BackboneElement):
         alias="dosingGuideline",
         title="Guidelines for dosage of the medication",
         description="The guidelines for the dosage of the medication for the indication.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     indication: typing.List[fhirtypes.CodeableReferenceType] = Field(
@@ -898,10 +873,11 @@ class MedicationKnowledgeIndicationGuideline(backboneelement.BackboneElement):
             "Indication or reason for use of the medication that applies to the "
             "specific administration guideline."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ClinicalUseDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ClinicalUseDefinition"],
+        },
     )
 
     @classmethod
@@ -924,9 +900,7 @@ class MedicationKnowledgeIndicationGuidelineDosingGuideline(
     The guidelines for the dosage of the medication for the indication.
     """
 
-    resource_type = Field(
-        "MedicationKnowledgeIndicationGuidelineDosingGuideline", const=True
-    )
+    __resource_type__ = "MedicationKnowledgeIndicationGuidelineDosingGuideline"
 
     administrationTreatment: fhirtypes.CodeableConceptType = Field(
         None,
@@ -936,8 +910,9 @@ class MedicationKnowledgeIndicationGuidelineDosingGuideline(
             "The type of the treatment that the guideline applies to, for example, "
             "long term therapy, first line treatment, etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     dosage: typing.List[
@@ -947,8 +922,9 @@ class MedicationKnowledgeIndicationGuidelineDosingGuideline(
         alias="dosage",
         title="Dosage for the medication for the specific guidelines",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     patientCharacteristic: typing.List[
@@ -964,8 +940,9 @@ class MedicationKnowledgeIndicationGuidelineDosingGuideline(
             "Characteristics of the patient that are relevant to the administration"
             " guidelines (for example, height, weight, gender, etc.)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     treatmentIntent: fhirtypes.CodeableConceptType = Field(
@@ -976,8 +953,9 @@ class MedicationKnowledgeIndicationGuidelineDosingGuideline(
             "The overall intention of the treatment, for example, prophylactic, "
             "supporative, curative, etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -1007,17 +985,16 @@ class MedicationKnowledgeIndicationGuidelineDosingGuidelineDosage(
     Dosage for the medication for the specific guidelines.
     """
 
-    resource_type = Field(
-        "MedicationKnowledgeIndicationGuidelineDosingGuidelineDosage", const=True
-    )
+    __resource_type__ = "MedicationKnowledgeIndicationGuidelineDosingGuidelineDosage"
 
     dosage: typing.List[fhirtypes.DosageType] = Field(
         ...,
         alias="dosage",
         title="Dosage for the medication for the specific guidelines",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -1028,8 +1005,9 @@ class MedicationKnowledgeIndicationGuidelineDosingGuidelineDosage(
             "The type or category of dosage for a given medication (for example, "
             "prophylaxis, maintenance, therapeutic, etc.)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -1054,9 +1032,8 @@ class MedicationKnowledgeIndicationGuidelineDosingGuidelinePatientCharacteristic
     guidelines (for example, height, weight, gender, etc.).
     """
 
-    resource_type = Field(
-        "MedicationKnowledgeIndicationGuidelineDosingGuidelinePatientCharacteristic",
-        const=True,
+    __resource_type__ = (
+        "MedicationKnowledgeIndicationGuidelineDosingGuidelinePatientCharacteristic"
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -1070,8 +1047,9 @@ class MedicationKnowledgeIndicationGuidelineDosingGuidelinePatientCharacteristic
             "The categorization of the specific characteristic that is relevant to "
             "the administration guideline (e.g. height, weight, gender)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     valueCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -1079,11 +1057,12 @@ class MedicationKnowledgeIndicationGuidelineDosingGuidelinePatientCharacteristic
         alias="valueCodeableConcept",
         title="The specific characteristic",
         description="The specific characteristic (e.g. height, weight, gender, etc.).",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": False,
+        },
     )
 
     valueQuantity: fhirtypes.QuantityType = Field(
@@ -1091,11 +1070,12 @@ class MedicationKnowledgeIndicationGuidelineDosingGuidelinePatientCharacteristic
         alias="valueQuantity",
         title="The specific characteristic",
         description="The specific characteristic (e.g. height, weight, gender, etc.).",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": False,
+        },
     )
 
     valueRange: fhirtypes.RangeType = Field(
@@ -1103,18 +1083,18 @@ class MedicationKnowledgeIndicationGuidelineDosingGuidelinePatientCharacteristic
         alias="valueRange",
         title="The specific characteristic",
         description="The specific characteristic (e.g. height, weight, gender, etc.).",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": False,
+        },
     )
 
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
-        ``MedicationKnowledgeIndicationGuidelineDosingGuidelinePatientCharacteristic``
-        according specification,
+        ``MedicationKnowledgeIndicationGuidelineDosingGuidelinePatientCharacteristic`` according specification,
         with preserving original sequence order.
         """
         return [
@@ -1127,10 +1107,7 @@ class MedicationKnowledgeIndicationGuidelineDosingGuidelinePatientCharacteristic
             "valueRange",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_7773(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -1146,26 +1123,7 @@ class MedicationKnowledgeIndicationGuidelineDosingGuidelinePatientCharacteristic
         one_of_many_fields = {
             "value": ["valueCodeableConcept", "valueQuantity", "valueRange"]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class MedicationKnowledgeMedicineClassification(backboneelement.BackboneElement):
@@ -1177,7 +1135,7 @@ class MedicationKnowledgeMedicineClassification(backboneelement.BackboneElement)
     system.
     """
 
-    resource_type = Field("MedicationKnowledgeMedicineClassification", const=True)
+    __resource_type__ = "MedicationKnowledgeMedicineClassification"
 
     classification: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
@@ -1187,11 +1145,12 @@ class MedicationKnowledgeMedicineClassification(backboneelement.BackboneElement)
             "Specific category assigned to the medication (e.g. anti-infective, "
             "anti-hypertensive, antibiotic, etc.)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    sourceString: fhirtypes.String = Field(
+    sourceString: fhirtypes.StringType = Field(
         None,
         alias="sourceString",
         title="The source of the classification",
@@ -1199,17 +1158,18 @@ class MedicationKnowledgeMedicineClassification(backboneelement.BackboneElement)
             "Either a textual source of the classification or a reference to an "
             "online source."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e source[x]
-        one_of_many="source",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e source[x]
+            "one_of_many": "source",
+            "one_of_many_required": False,
+        },
     )
     sourceString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sourceString", title="Extension field for ``sourceString``."
     )
 
-    sourceUri: fhirtypes.Uri = Field(
+    sourceUri: fhirtypes.UriType = Field(
         None,
         alias="sourceUri",
         title="The source of the classification",
@@ -1217,11 +1177,12 @@ class MedicationKnowledgeMedicineClassification(backboneelement.BackboneElement)
             "Either a textual source of the classification or a reference to an "
             "online source."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e source[x]
-        one_of_many="source",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e source[x]
+            "one_of_many": "source",
+            "one_of_many_required": False,
+        },
     )
     sourceUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sourceUri", title="Extension field for ``sourceUri``."
@@ -1235,8 +1196,9 @@ class MedicationKnowledgeMedicineClassification(backboneelement.BackboneElement)
             "classification, therapeutic sub-classification)"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -1255,10 +1217,7 @@ class MedicationKnowledgeMedicineClassification(backboneelement.BackboneElement)
             "classification",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_4386(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -1272,26 +1231,7 @@ class MedicationKnowledgeMedicineClassification(backboneelement.BackboneElement)
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"source": ["sourceString", "sourceUri"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class MedicationKnowledgeMonitoringProgram(backboneelement.BackboneElement):
@@ -1303,15 +1243,16 @@ class MedicationKnowledgeMonitoringProgram(backboneelement.BackboneElement):
     The program under which the medication is reviewed.
     """
 
-    resource_type = Field("MedicationKnowledgeMonitoringProgram", const=True)
+    __resource_type__ = "MedicationKnowledgeMonitoringProgram"
 
-    name: fhirtypes.String = Field(
+    name: fhirtypes.StringType = Field(
         None,
         alias="name",
         title="Name of the reviewing program",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -1322,8 +1263,9 @@ class MedicationKnowledgeMonitoringProgram(backboneelement.BackboneElement):
         alias="type",
         title="Type of program under which the medication is monitored",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -1343,17 +1285,18 @@ class MedicationKnowledgeMonograph(backboneelement.BackboneElement):
     Associated documentation about the medication.
     """
 
-    resource_type = Field("MedicationKnowledgeMonograph", const=True)
+    __resource_type__ = "MedicationKnowledgeMonograph"
 
     source: fhirtypes.ReferenceType = Field(
         None,
         alias="source",
         title="Associated documentation about the medication",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["DocumentReference"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["DocumentReference"],
+        },
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -1364,8 +1307,9 @@ class MedicationKnowledgeMonograph(backboneelement.BackboneElement):
             "The category of documentation about the medication. (e.g. professional"
             " monograph, patient education monograph)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -1386,15 +1330,16 @@ class MedicationKnowledgePackaging(backboneelement.BackboneElement):
     Information that only applies to packages (not products).
     """
 
-    resource_type = Field("MedicationKnowledgePackaging", const=True)
+    __resource_type__ = "MedicationKnowledgePackaging"
 
     cost: typing.List[fhirtypes.MedicationKnowledgeCostType] = Field(
         None,
         alias="cost",
         title="Cost of the packaged medication",
         description="The cost of the packaged medication.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     packagedProduct: fhirtypes.ReferenceType = Field(
@@ -1405,10 +1350,11 @@ class MedicationKnowledgePackaging(backboneelement.BackboneElement):
             "A reference to a PackagedProductDefinition that provides the details "
             "of the product that is in the packaging and is being priced."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["PackagedProductDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["PackagedProductDefinition"],
+        },
     )
 
     @classmethod
@@ -1428,7 +1374,7 @@ class MedicationKnowledgeRegulatory(backboneelement.BackboneElement):
     Regulatory information about a medication.
     """
 
-    resource_type = Field("MedicationKnowledgeRegulatory", const=True)
+    __resource_type__ = "MedicationKnowledgeRegulatory"
 
     maxDispense: fhirtypes.MedicationKnowledgeRegulatoryMaxDispenseType = Field(
         None,
@@ -1438,8 +1384,9 @@ class MedicationKnowledgeRegulatory(backboneelement.BackboneElement):
             " a period"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     regulatoryAuthority: fhirtypes.ReferenceType = Field(
@@ -1447,10 +1394,11 @@ class MedicationKnowledgeRegulatory(backboneelement.BackboneElement):
         alias="regulatoryAuthority",
         title="Specifies the authority of the regulation",
         description="The authority that is specifying the regulations.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
     schedule: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -1458,8 +1406,9 @@ class MedicationKnowledgeRegulatory(backboneelement.BackboneElement):
         alias="schedule",
         title="Specifies the schedule of a medication in jurisdiction",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     substitution: typing.List[
@@ -1472,8 +1421,9 @@ class MedicationKnowledgeRegulatory(backboneelement.BackboneElement):
             "regulatory perspective"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -1502,15 +1452,16 @@ class MedicationKnowledgeRegulatoryMaxDispense(backboneelement.BackboneElement):
     period.
     """
 
-    resource_type = Field("MedicationKnowledgeRegulatoryMaxDispense", const=True)
+    __resource_type__ = "MedicationKnowledgeRegulatoryMaxDispense"
 
     period: fhirtypes.DurationType = Field(
         None,
         alias="period",
         title="The period that applies to the maximum number of units",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     quantity: fhirtypes.QuantityType = Field(
@@ -1518,8 +1469,9 @@ class MedicationKnowledgeRegulatoryMaxDispense(backboneelement.BackboneElement):
         alias="quantity",
         title="The maximum number of units of the medication that can be dispensed",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -1540,7 +1492,7 @@ class MedicationKnowledgeRegulatorySubstitution(backboneelement.BackboneElement)
     regulatory perspective.
     """
 
-    resource_type = Field("MedicationKnowledgeRegulatorySubstitution", const=True)
+    __resource_type__ = "MedicationKnowledgeRegulatorySubstitution"
 
     allowed: bool = Field(
         None,
@@ -1550,9 +1502,10 @@ class MedicationKnowledgeRegulatorySubstitution(backboneelement.BackboneElement)
             "dispensing"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
     allowed__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_allowed", title="Extension field for ``allowed``."
@@ -1563,8 +1516,9 @@ class MedicationKnowledgeRegulatorySubstitution(backboneelement.BackboneElement)
         alias="type",
         title="Specifies the type of substitution allowed",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -1575,10 +1529,7 @@ class MedicationKnowledgeRegulatorySubstitution(backboneelement.BackboneElement)
         """
         return ["id", "extension", "modifierExtension", "type", "allowed"]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_4515(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -1587,52 +1538,7 @@ class MedicationKnowledgeRegulatorySubstitution(backboneelement.BackboneElement)
         the primitive value is not present.
         """
         required_fields = [("allowed", "allowed__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class MedicationKnowledgeRelatedMedicationKnowledge(backboneelement.BackboneElement):
@@ -1647,17 +1553,18 @@ class MedicationKnowledgeRelatedMedicationKnowledge(backboneelement.BackboneElem
     would link to a branded product (e.g. Crestor.
     """
 
-    resource_type = Field("MedicationKnowledgeRelatedMedicationKnowledge", const=True)
+    __resource_type__ = "MedicationKnowledgeRelatedMedicationKnowledge"
 
     reference: typing.List[fhirtypes.ReferenceType] = Field(
         ...,
         alias="reference",
         title="Associated documentation about the associated medication knowledge",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["MedicationKnowledge"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["MedicationKnowledge"],
+        },
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -1665,8 +1572,9 @@ class MedicationKnowledgeRelatedMedicationKnowledge(backboneelement.BackboneElem
         alias="type",
         title="Category of medicationKnowledge",
         description="The category of the associated medication knowledge reference.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -1688,7 +1596,7 @@ class MedicationKnowledgeStorageGuideline(backboneelement.BackboneElement):
     refrigeration temperatures and length of stability at a given temperature.
     """
 
-    resource_type = Field("MedicationKnowledgeStorageGuideline", const=True)
+    __resource_type__ = "MedicationKnowledgeStorageGuideline"
 
     environmentalSetting: typing.List[
         fhirtypes.MedicationKnowledgeStorageGuidelineEnvironmentalSettingType
@@ -1701,8 +1609,9 @@ class MedicationKnowledgeStorageGuideline(backboneelement.BackboneElement):
             "of the medication and other substances.  Environment settings may "
             "involve temperature, humidity, or exposure to light."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -1710,17 +1619,19 @@ class MedicationKnowledgeStorageGuideline(backboneelement.BackboneElement):
         alias="note",
         title="Additional storage notes",
         description="Additional notes about the storage.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    reference: fhirtypes.Uri = Field(
+    reference: fhirtypes.UriType = Field(
         None,
         alias="reference",
         title="Reference to additional information",
         description="Reference to additional information about the storage guidelines.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     reference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_reference", title="Extension field for ``reference``."
@@ -1734,8 +1645,9 @@ class MedicationKnowledgeStorageGuideline(backboneelement.BackboneElement):
             "Duration that the medication remains stable if the "
             "environmentalSetting is respected."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -1768,9 +1680,7 @@ class MedicationKnowledgeStorageGuidelineEnvironmentalSetting(
     temperature, humidity, or exposure to light.
     """
 
-    resource_type = Field(
-        "MedicationKnowledgeStorageGuidelineEnvironmentalSetting", const=True
-    )
+    __resource_type__ = "MedicationKnowledgeStorageGuidelineEnvironmentalSetting"
 
     type: fhirtypes.CodeableConceptType = Field(
         ...,
@@ -1780,53 +1690,48 @@ class MedicationKnowledgeStorageGuidelineEnvironmentalSetting(
             "Identifies the category or type of setting (e.g., type of location, "
             "temperature, humidity)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     valueCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="valueCodeableConcept",
         title="Value of the setting",
-        description=(
-            "Value associated to the setting. E.g., "
-            "40\u00b0 \u2013 50\u00b0F for temperature."
-        ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        description="Value associated to the setting. E.g., 40\u00b0 \u2013 50\u00b0F for temperature.",
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
     valueQuantity: fhirtypes.QuantityType = Field(
         None,
         alias="valueQuantity",
         title="Value of the setting",
-        description=(
-            "Value associated to the setting. "
-            "E.g., 40\u00b0 \u2013 50\u00b0F for temperature."
-        ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        description="Value associated to the setting. E.g., 40\u00b0 \u2013 50\u00b0F for temperature.",
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
     valueRange: fhirtypes.RangeType = Field(
         None,
         alias="valueRange",
         title="Value of the setting",
-        description=(
-            "Value associated to the setting. "
-            "E.g., 40\u00b0 \u2013 50\u00b0F for temperature."
-        ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e value[x]
-        one_of_many="value",
-        one_of_many_required=True,
+        description="Value associated to the setting. E.g., 40\u00b0 \u2013 50\u00b0F for temperature.",
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e value[x]
+            "one_of_many": "value",
+            "one_of_many_required": True,
+        },
     )
 
     @classmethod
@@ -1845,10 +1750,7 @@ class MedicationKnowledgeStorageGuidelineEnvironmentalSetting(
             "valueCodeableConcept",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_5884(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -1864,23 +1766,4 @@ class MedicationKnowledgeStorageGuidelineEnvironmentalSetting(
         one_of_many_fields = {
             "value": ["valueCodeableConcept", "valueQuantity", "valueRange"]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields

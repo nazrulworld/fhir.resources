@@ -7,14 +7,14 @@ from functools import lru_cache
 from uuid import UUID
 
 from annotated_types import SLOTS, BaseMetadata, GroupedMetadata, MaxLen, MinLen
-from pydantic import GetCoreSchemaHandler, AnyUrl, Base64Bytes
+from pydantic import AnyUrl, Base64Bytes, GetCoreSchemaHandler
 from pydantic._internal._fields import pydantic_general_metadata
 from pydantic._internal._validators import import_string
+from pydantic.types import UUID4
 from pydantic_core import PydanticCustomError
 from pydantic_core import Url as PydanticUrl
 from pydantic_core import ValidationError, core_schema
 from pydantic_core.core_schema import ValidationInfo
-from pydantic.types import UUID4
 
 from .fhirabstractmodel import FHIRAbstractModel
 

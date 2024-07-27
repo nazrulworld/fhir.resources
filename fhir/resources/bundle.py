@@ -8,11 +8,9 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
-from . import backboneelement, fhirtypes, resource
+from . import fhirtypes, resource
 
 
 class Bundle(resource.Resource):
@@ -24,7 +22,7 @@ class Bundle(resource.Resource):
     A container for a collection of resources.
     """
 
-    resource_type = Field("Bundle", const=True)
+    __resource_type__ = "Bundle"
 
     entry: typing.List[fhirtypes.BundleEntryType] = Field(
         None,
@@ -34,8 +32,9 @@ class Bundle(resource.Resource):
             "An entry in a bundle resource - will either contain a resource or "
             "information about a resource (transactions and history only)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     identifier: fhirtypes.IdentifierType = Field(
@@ -46,8 +45,9 @@ class Bundle(resource.Resource):
             "A persistent identifier for the bundle that won't change as a bundle "
             "is copied from server to server."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     issues: fhirtypes.ResourceType = Field(
@@ -58,8 +58,9 @@ class Bundle(resource.Resource):
             "Captures issues and warnings that relate to the construction of the "
             "Bundle and the content within it."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     link: typing.List[fhirtypes.BundleLinkType] = Field(
@@ -67,8 +68,9 @@ class Bundle(resource.Resource):
         alias="link",
         title="Links related to this Bundle",
         description="A series of links that provide context to this bundle.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     signature: fhirtypes.SignatureType = Field(
@@ -76,11 +78,12 @@ class Bundle(resource.Resource):
         alias="signature",
         title="Digital Signature",
         description="Digital Signature - base64 encoded. XML-DSig or a JWS.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    timestamp: fhirtypes.Instant = Field(
+    timestamp: fhirtypes.InstantType = Field(
         None,
         alias="timestamp",
         title="When the bundle was assembled",
@@ -88,14 +91,15 @@ class Bundle(resource.Resource):
             "The date/time that the bundle was assembled - i.e. when the resources "
             "were placed in the bundle."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     timestamp__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_timestamp", title="Extension field for ``timestamp``."
     )
 
-    total: fhirtypes.UnsignedInt = Field(
+    total: fhirtypes.UnsignedIntType = Field(
         None,
         alias="total",
         title="If search, the total number of matches",
@@ -105,14 +109,15 @@ class Bundle(resource.Resource):
             "does not include search.mode = 'include' or 'outcome' entries and it "
             "does not provide a count of the number of entries in the Bundle."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     total__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_total", title="Extension field for ``total``."
     )
 
-    type: fhirtypes.Code = Field(
+    type: fhirtypes.CodeType = Field(
         None,
         alias="type",
         title=(
@@ -121,23 +126,24 @@ class Bundle(resource.Resource):
             "notification"
         ),
         description="Indicates the purpose of this bundle - how it is intended to be used.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "document",
-            "message",
-            "transaction",
-            "transaction-response",
-            "batch",
-            "batch-response",
-            "history",
-            "searchset",
-            "collection",
-            "subscription-notification",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "document",
+                "message",
+                "transaction",
+                "transaction-response",
+                "batch",
+                "batch-response",
+                "history",
+                "searchset",
+                "collection",
+                "subscription-notification",
+            ],
+        },
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -164,10 +170,7 @@ class Bundle(resource.Resource):
             "issues",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_769(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -176,52 +179,10 @@ class Bundle(resource.Resource):
         the primitive value is not present.
         """
         required_fields = [("type", "type__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
 
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+from . import backboneelement
 
 
 class BundleEntry(backboneelement.BackboneElement):
@@ -234,9 +195,9 @@ class BundleEntry(backboneelement.BackboneElement):
     information about a resource (transactions and history only).
     """
 
-    resource_type = Field("BundleEntry", const=True)
+    __resource_type__ = "BundleEntry"
 
-    fullUrl: fhirtypes.Uri = Field(
+    fullUrl: fhirtypes.UriType = Field(
         None,
         alias="fullUrl",
         title=(
@@ -257,8 +218,9 @@ class BundleEntry(backboneelement.BackboneElement):
             "not a single identified resource * invoking or returning the results "
             "of a search or history operation."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     fullUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_fullUrl", title="Extension field for ``fullUrl``."
@@ -269,8 +231,9 @@ class BundleEntry(backboneelement.BackboneElement):
         alias="link",
         title="Links related to this entry",
         description="A series of links that provide context to this entry.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     request: fhirtypes.BundleEntryRequestType = Field(
@@ -282,8 +245,9 @@ class BundleEntry(backboneelement.BackboneElement):
             "part of a transaction or batch.  For history, it shows how the entry "
             "was processed to create the version contained in the entry."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     resource: fhirtypes.ResourceType = Field(
@@ -296,8 +260,9 @@ class BundleEntry(backboneelement.BackboneElement):
             "resource if and only if it is referenced by something else within the "
             "Bundle that provides context/meaning."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     response: fhirtypes.BundleEntryResponseType = Field(
@@ -309,8 +274,9 @@ class BundleEntry(backboneelement.BackboneElement):
             "in the batch or transaction being responded to or what the results of "
             "an operation where when returning history."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     search: fhirtypes.BundleEntrySearchType = Field(
@@ -321,8 +287,9 @@ class BundleEntry(backboneelement.BackboneElement):
             "Information about the search process that lead to the creation of this"
             " entry."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -355,9 +322,9 @@ class BundleEntryRequest(backboneelement.BackboneElement):
     to create the version contained in the entry.
     """
 
-    resource_type = Field("BundleEntryRequest", const=True)
+    __resource_type__ = "BundleEntryRequest"
 
-    ifMatch: fhirtypes.String = Field(
+    ifMatch: fhirtypes.StringType = Field(
         None,
         alias="ifMatch",
         title="For managing update contention",
@@ -366,14 +333,15 @@ class BundleEntryRequest(backboneelement.BackboneElement):
             'information, see the API section ["Managing Resource '
             'Contention"](http.html#concurrency).'
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     ifMatch__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_ifMatch", title="Extension field for ``ifMatch``."
     )
 
-    ifModifiedSince: fhirtypes.Instant = Field(
+    ifModifiedSince: fhirtypes.InstantType = Field(
         None,
         alias="ifModifiedSince",
         title="For managing cache currency",
@@ -381,14 +349,15 @@ class BundleEntryRequest(backboneelement.BackboneElement):
             "Only perform the operation if the last updated date matches. See the "
             'API documentation for ["Conditional Read"](http.html#cread).'
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     ifModifiedSince__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_ifModifiedSince", title="Extension field for ``ifModifiedSince``."
     )
 
-    ifNoneExist: fhirtypes.String = Field(
+    ifNoneExist: fhirtypes.StringType = Field(
         None,
         alias="ifNoneExist",
         title="For conditional creates",
@@ -398,14 +367,15 @@ class BundleEntryRequest(backboneelement.BackboneElement):
             ' ["Conditional Create"](http.html#ccreate). This is just the query '
             'portion of the URL - what follows the "?" (not including the "?").'
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     ifNoneExist__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_ifNoneExist", title="Extension field for ``ifNoneExist``."
     )
 
-    ifNoneMatch: fhirtypes.String = Field(
+    ifNoneMatch: fhirtypes.StringType = Field(
         None,
         alias="ifNoneMatch",
         title="For managing cache validation",
@@ -413,14 +383,15 @@ class BundleEntryRequest(backboneelement.BackboneElement):
             "If the ETag values match, return a 304 Not Modified status. See the "
             'API documentation for ["Conditional Read"](http.html#cread).'
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     ifNoneMatch__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_ifNoneMatch", title="Extension field for ``ifNoneMatch``."
     )
 
-    method: fhirtypes.Code = Field(
+    method: fhirtypes.CodeType = Field(
         None,
         alias="method",
         title="GET | HEAD | POST | PUT | DELETE | PATCH",
@@ -429,18 +400,19 @@ class BundleEntryRequest(backboneelement.BackboneElement):
             "this entry. In a history bundle, this indicates the HTTP action that "
             "occurred."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["GET", "HEAD", "POST", "PUT", "DELETE", "PATCH"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["GET", "HEAD", "POST", "PUT", "DELETE", "PATCH"],
+        },
     )
     method__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_method", title="Extension field for ``method``."
     )
 
-    url: fhirtypes.Uri = Field(
+    url: fhirtypes.UriType = Field(
         None,
         alias="url",
         title="URL for HTTP equivalent of this entry",
@@ -448,9 +420,10 @@ class BundleEntryRequest(backboneelement.BackboneElement):
             "The URL for this entry, relative to the root (the address to which the"
             " request is posted)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -474,10 +447,7 @@ class BundleEntryRequest(backboneelement.BackboneElement):
             "ifNoneExist",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2059(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -486,52 +456,7 @@ class BundleEntryRequest(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("method", "method__ext"), ("url", "url__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class BundleEntryResponse(backboneelement.BackboneElement):
@@ -545,9 +470,9 @@ class BundleEntryResponse(backboneelement.BackboneElement):
     operation where when returning history.
     """
 
-    resource_type = Field("BundleEntryResponse", const=True)
+    __resource_type__ = "BundleEntryResponse"
 
-    etag: fhirtypes.String = Field(
+    etag: fhirtypes.StringType = Field(
         None,
         alias="etag",
         title="The Etag for the resource (if relevant)",
@@ -557,26 +482,28 @@ class BundleEntryResponse(backboneelement.BackboneElement):
             "Versioning](http.html#versioning) and [Managing Resource "
             "Contention](http.html#concurrency))."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     etag__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_etag", title="Extension field for ``etag``."
     )
 
-    lastModified: fhirtypes.Instant = Field(
+    lastModified: fhirtypes.InstantType = Field(
         None,
         alias="lastModified",
         title="Server's date time modified",
         description="The date/time that the resource was modified on the server.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     lastModified__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastModified", title="Extension field for ``lastModified``."
     )
 
-    location: fhirtypes.Uri = Field(
+    location: fhirtypes.UriType = Field(
         None,
         alias="location",
         title="The location (if the operation returns a location)",
@@ -584,8 +511,9 @@ class BundleEntryResponse(backboneelement.BackboneElement):
             "The location header created by processing this operation, populated if"
             " the operation returns a location."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     location__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_location", title="Extension field for ``location``."
@@ -599,11 +527,12 @@ class BundleEntryResponse(backboneelement.BackboneElement):
             "An OperationOutcome containing hints and warnings produced as part of "
             "processing this entry in a batch or transaction."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    status: fhirtypes.String = Field(
+    status: fhirtypes.StringType = Field(
         None,
         alias="status",
         title="Status response code (text optional)",
@@ -612,9 +541,10 @@ class BundleEntryResponse(backboneelement.BackboneElement):
             "start with a 3 digit HTTP code (e.g. 404) and may contain the standard"
             " HTTP description associated with the status code."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -637,10 +567,7 @@ class BundleEntryResponse(backboneelement.BackboneElement):
             "outcome",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2146(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -649,52 +576,7 @@ class BundleEntryResponse(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("status", "status__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class BundleEntrySearch(backboneelement.BackboneElement):
@@ -707,9 +589,9 @@ class BundleEntrySearch(backboneelement.BackboneElement):
     entry.
     """
 
-    resource_type = Field("BundleEntrySearch", const=True)
+    __resource_type__ = "BundleEntrySearch"
 
-    mode: fhirtypes.Code = Field(
+    mode: fhirtypes.CodeType = Field(
         None,
         alias="mode",
         title="match | include - why this is in the result set",
@@ -718,23 +600,25 @@ class BundleEntrySearch(backboneelement.BackboneElement):
             " or because of an _include requirement, or to convey information or "
             "warning information about the search process."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["match", "include"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["match", "include"],
+        },
     )
     mode__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_mode", title="Extension field for ``mode``."
     )
 
-    score: fhirtypes.Decimal = Field(
+    score: fhirtypes.DecimalType = Field(
         None,
         alias="score",
         title="Search ranking (between 0 and 1)",
         description="When searching, the server's search ranking score for the entry.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     score__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_score", title="Extension field for ``score``."
@@ -758,9 +642,9 @@ class BundleLink(backboneelement.BackboneElement):
     A series of links that provide context to this bundle.
     """
 
-    resource_type = Field("BundleLink", const=True)
+    __resource_type__ = "BundleLink"
 
-    relation: fhirtypes.Code = Field(
+    relation: fhirtypes.CodeType = Field(
         None,
         alias="relation",
         title=(
@@ -774,22 +658,24 @@ class BundleLink(backboneelement.BackboneElement):
             "relations-1](http://www.iana.org/assignments/link-relations/link-"
             "relations.xhtml#link-relations-1)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
     relation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_relation", title="Extension field for ``relation``."
     )
 
-    url: fhirtypes.Uri = Field(
+    url: fhirtypes.UriType = Field(
         None,
         alias="url",
         title="Reference details for the link",
         description="The reference details for the link.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -803,10 +689,7 @@ class BundleLink(backboneelement.BackboneElement):
         """
         return ["id", "extension", "modifierExtension", "relation", "url"]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1173(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -815,49 +698,4 @@ class BundleLink(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("relation", "relation__ext"), ("url", "url__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields

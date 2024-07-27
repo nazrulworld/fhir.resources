@@ -8,9 +8,7 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import datatype, fhirtypes
 
@@ -27,9 +25,9 @@ class ParameterDefinition(datatype.DataType):
     GuidanceResponse.
     """
 
-    resource_type = Field("ParameterDefinition", const=True)
+    __resource_type__ = "ParameterDefinition"
 
-    documentation: fhirtypes.String = Field(
+    documentation: fhirtypes.StringType = Field(
         None,
         alias="documentation",
         title="A brief description of the parameter",
@@ -37,14 +35,15 @@ class ParameterDefinition(datatype.DataType):
             "A brief discussion of what the parameter is for and how it is used by "
             "the module."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     documentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_documentation", title="Extension field for ``documentation``."
     )
 
-    max: fhirtypes.String = Field(
+    max: fhirtypes.StringType = Field(
         None,
         alias="max",
         title="Maximum cardinality (a number of *)",
@@ -52,14 +51,15 @@ class ParameterDefinition(datatype.DataType):
             "The maximum number of times this element is permitted to appear in the"
             " request or response."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     max__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_max", title="Extension field for ``max``."
     )
 
-    min: fhirtypes.Integer = Field(
+    min: fhirtypes.IntegerType = Field(
         None,
         alias="min",
         title="Minimum cardinality",
@@ -67,14 +67,15 @@ class ParameterDefinition(datatype.DataType):
             "The minimum number of times this parameter SHALL appear in the request"
             " or response."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     min__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_min", title="Extension field for ``min``."
     )
 
-    name: fhirtypes.Code = Field(
+    name: fhirtypes.CodeType = Field(
         None,
         alias="name",
         title="Name used to access the parameter value",
@@ -82,14 +83,15 @@ class ParameterDefinition(datatype.DataType):
             "The name of the parameter used to allow access to the value of the "
             "parameter in evaluation contexts."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    profile: fhirtypes.Canonical = Field(
+    profile: fhirtypes.CanonicalType = Field(
         None,
         alias="profile",
         title="What profile the value is expected to be",
@@ -97,39 +99,42 @@ class ParameterDefinition(datatype.DataType):
             "If specified, this indicates a profile that the input data must "
             "conform to, or that the output data will conform to."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["StructureDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["StructureDefinition"],
+        },
     )
     profile__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_profile", title="Extension field for ``profile``."
     )
 
-    type: fhirtypes.Code = Field(
+    type: fhirtypes.CodeType = Field(
         None,
         alias="type",
         title="What type of value",
         description="The type of the parameter.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
     )
 
-    use: fhirtypes.Code = Field(
+    use: fhirtypes.CodeType = Field(
         None,
         alias="use",
         title="in | out",
         description="Whether the parameter is input or output for the module.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["in", "out"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["in", "out"],
+        },
     )
     use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_use", title="Extension field for ``use``."
@@ -153,10 +158,7 @@ class ParameterDefinition(datatype.DataType):
             "profile",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2152(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -165,49 +167,4 @@ class ParameterDefinition(datatype.DataType):
         the primitive value is not present.
         """
         required_fields = [("type", "type__ext"), ("use", "use__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields

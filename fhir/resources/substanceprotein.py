@@ -8,9 +8,9 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field
+from pydantic import Field
 
-from . import backboneelement, domainresource, fhirtypes
+from . import domainresource, fhirtypes
 
 
 class SubstanceProtein(domainresource.DomainResource):
@@ -28,9 +28,9 @@ class SubstanceProtein(domainresource.DomainResource):
     recombinant vaccines, and immunomodulators.
     """
 
-    resource_type = Field("SubstanceProtein", const=True)
+    __resource_type__ = "SubstanceProtein"
 
-    disulfideLinkage: typing.List[typing.Optional[fhirtypes.String]] = Field(
+    disulfideLinkage: typing.List[typing.Optional[fhirtypes.StringType]] = Field(
         None,
         alias="disulfideLinkage",
         title=(
@@ -43,8 +43,9 @@ class SubstanceProtein(domainresource.DomainResource):
             "Cysteine at the respective positions"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     disulfideLinkage__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -54,7 +55,7 @@ class SubstanceProtein(domainresource.DomainResource):
         title="Extension field for ``disulfideLinkage``.",
     )
 
-    numberOfSubunits: fhirtypes.Integer = Field(
+    numberOfSubunits: fhirtypes.IntegerType = Field(
         None,
         alias="numberOfSubunits",
         title=(
@@ -64,8 +65,9 @@ class SubstanceProtein(domainresource.DomainResource):
             "variable"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     numberOfSubunits__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -82,8 +84,9 @@ class SubstanceProtein(domainresource.DomainResource):
             " a nucleic acid sequence"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     subunit: typing.List[fhirtypes.SubstanceProteinSubunitType] = Field(
@@ -100,8 +103,9 @@ class SubstanceProtein(domainresource.DomainResource):
             "subunits that have identical sequences will be repeated multiple times"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -126,6 +130,9 @@ class SubstanceProtein(domainresource.DomainResource):
         ]
 
 
+from . import backboneelement
+
+
 class SubstanceProteinSubunit(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -141,15 +148,16 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
     be repeated multiple times.
     """
 
-    resource_type = Field("SubstanceProteinSubunit", const=True)
+    __resource_type__ = "SubstanceProteinSubunit"
 
-    cTerminalModification: fhirtypes.String = Field(
+    cTerminalModification: fhirtypes.StringType = Field(
         None,
         alias="cTerminalModification",
         title="The modification at the C-terminal shall be specified",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     cTerminalModification__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -165,23 +173,25 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
             " 11238 Substance ID"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    length: fhirtypes.Integer = Field(
+    length: fhirtypes.IntegerType = Field(
         None,
         alias="length",
         title="Length of linear sequences of amino acids contained in the subunit",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     length__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_length", title="Extension field for ``length``."
     )
 
-    nTerminalModification: fhirtypes.String = Field(
+    nTerminalModification: fhirtypes.StringType = Field(
         None,
         alias="nTerminalModification",
         title=(
@@ -189,8 +199,9 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
             "SubstanceProtein shall be specified"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     nTerminalModification__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -206,11 +217,12 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
             " 11238 Substance ID"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    sequence: fhirtypes.String = Field(
+    sequence: fhirtypes.StringType = Field(
         None,
         alias="sequence",
         title=(
@@ -224,8 +236,9 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
             "distinguished by their position in the sequence"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     sequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sequence", title="Extension field for ``sequence``."
@@ -245,11 +258,12 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
             "distinguished by their position in the sequence"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    subunit: fhirtypes.Integer = Field(
+    subunit: fhirtypes.IntegerType = Field(
         None,
         alias="subunit",
         title=(
@@ -259,8 +273,9 @@ class SubstanceProteinSubunit(backboneelement.BackboneElement):
             "will be repeated and have sequential subscripts"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     subunit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_subunit", title="Extension field for ``subunit``."

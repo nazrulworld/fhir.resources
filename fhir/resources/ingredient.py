@@ -8,11 +8,9 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
-from . import backboneelement, domainresource, fhirtypes
+from . import domainresource, fhirtypes
 
 
 class Ingredient(domainresource.DomainResource):
@@ -23,7 +21,7 @@ class Ingredient(domainresource.DomainResource):
     An ingredient of a manufactured item or pharmaceutical product.
     """
 
-    resource_type = Field("Ingredient", const=True)
+    __resource_type__ = "Ingredient"
 
     allergenicIndicator: bool = Field(
         None,
@@ -35,8 +33,9 @@ class Ingredient(domainresource.DomainResource):
             "SubstanceDefinition is used to decribe that (rather than just a code),"
             " the allergen information should go there, not here."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     allergenicIndicator__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -44,7 +43,7 @@ class Ingredient(domainresource.DomainResource):
         title="Extension field for ``allergenicIndicator``.",
     )
 
-    comment: fhirtypes.Markdown = Field(
+    comment: fhirtypes.MarkdownType = Field(
         None,
         alias="comment",
         title=(
@@ -52,8 +51,9 @@ class Ingredient(domainresource.DomainResource):
             "e.g. removed during process, adjusted for loss on drying"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     comment__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_comment", title="Extension field for ``comment``."
@@ -64,14 +64,15 @@ class Ingredient(domainresource.DomainResource):
         alias="for",
         title="The product which this ingredient is a constituent part of",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "MedicinalProductDefinition",
-            "AdministrableProductDefinition",
-            "ManufacturedItemDefinition",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "MedicinalProductDefinition",
+                "AdministrableProductDefinition",
+                "ManufacturedItemDefinition",
+            ],
+        },
     )
 
     function: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -86,8 +87,9 @@ class Ingredient(domainresource.DomainResource):
             "in the drug product. This extends the Ingredient.role to add more "
             "detail. Example: antioxidant, alkalizing agent."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     group: fhirtypes.CodeableConceptType = Field(
@@ -99,8 +101,9 @@ class Ingredient(domainresource.DomainResource):
             " or ink"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     identifier: fhirtypes.IdentifierType = Field(
@@ -112,8 +115,9 @@ class Ingredient(domainresource.DomainResource):
             "processes and/or used to refer to it when a direct URL reference to "
             "the resource itself is not appropriate."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     manufacturer: typing.List[fhirtypes.IngredientManufacturerType] = Field(
@@ -128,8 +132,9 @@ class Ingredient(domainresource.DomainResource):
             "ingredient for this product         Users must be clear on the "
             "application of context relevant to their use case."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     role: fhirtypes.CodeableConceptType = Field(
@@ -140,11 +145,12 @@ class Ingredient(domainresource.DomainResource):
             "A classification of the ingredient identifying its purpose within the "
             "product, e.g. active, inactive."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(
         None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -152,12 +158,13 @@ class Ingredient(domainresource.DomainResource):
             "The status of this ingredient. Enables tracking the life-cycle of the "
             "content."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["draft", "active", "retired", "unknown"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["draft", "active", "retired", "unknown"],
+        },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -168,8 +175,9 @@ class Ingredient(domainresource.DomainResource):
         alias="substance",
         title="The substance that comprises this ingredient",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -199,10 +207,7 @@ class Ingredient(domainresource.DomainResource):
             "substance",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1222(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -211,52 +216,10 @@ class Ingredient(domainresource.DomainResource):
         the primitive value is not present.
         """
         required_fields = [("status", "status__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
 
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+from . import backboneelement
 
 
 class IngredientManufacturer(backboneelement.BackboneElement):
@@ -273,20 +236,21 @@ class IngredientManufacturer(backboneelement.BackboneElement):
     to their use case.
     """
 
-    resource_type = Field("IngredientManufacturer", const=True)
+    __resource_type__ = "IngredientManufacturer"
 
     manufacturer: fhirtypes.ReferenceType = Field(
         ...,
         alias="manufacturer",
         title="An organization that manufactures this ingredient",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
-    role: fhirtypes.Code = Field(
+    role: fhirtypes.CodeType = Field(
         None,
         alias="role",
         title="allowed | possible | actual",
@@ -296,11 +260,12 @@ class IngredientManufacturer(backboneelement.BackboneElement):
             "exclusive authorized one for this ingredient. Note that this is not "
             "the manufacturing process role."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["allowed", "possible", "actual"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["allowed", "possible", "actual"],
+        },
     )
     role__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_role", title="Extension field for ``role``."
@@ -323,17 +288,18 @@ class IngredientSubstance(backboneelement.BackboneElement):
     The substance that comprises this ingredient.
     """
 
-    resource_type = Field("IngredientSubstance", const=True)
+    __resource_type__ = "IngredientSubstance"
 
     code: fhirtypes.CodeableReferenceType = Field(
         ...,
         alias="code",
         title="A code or full resource that represents the ingredient substance",
         description="A code or full resource that represents the ingredient's substance.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["SubstanceDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["SubstanceDefinition"],
+        },
     )
 
     strength: typing.List[fhirtypes.IngredientSubstanceStrengthType] = Field(
@@ -350,8 +316,9 @@ class IngredientSubstance(backboneelement.BackboneElement):
             "but are different representations - mathematically equivalent - of a "
             "single strength."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -376,7 +343,7 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
     representations - mathematically equivalent - of a single strength.
     """
 
-    resource_type = Field("IngredientSubstanceStrength", const=True)
+    __resource_type__ = "IngredientSubstanceStrength"
 
     basis: fhirtypes.CodeableConceptType = Field(
         None,
@@ -387,8 +354,9 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
             "ingredient is a salt)"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     concentrationCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -396,11 +364,12 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
         alias="concentrationCodeableConcept",
         title="The strength per unitary volume (or mass)",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e concentration[x]
-        one_of_many="concentration",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e concentration[x]
+            "one_of_many": "concentration",
+            "one_of_many_required": False,
+        },
     )
 
     concentrationQuantity: fhirtypes.QuantityType = Field(
@@ -408,11 +377,12 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
         alias="concentrationQuantity",
         title="The strength per unitary volume (or mass)",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e concentration[x]
-        one_of_many="concentration",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e concentration[x]
+            "one_of_many": "concentration",
+            "one_of_many_required": False,
+        },
     )
 
     concentrationRatio: fhirtypes.RatioType = Field(
@@ -420,11 +390,12 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
         alias="concentrationRatio",
         title="The strength per unitary volume (or mass)",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e concentration[x]
-        one_of_many="concentration",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e concentration[x]
+            "one_of_many": "concentration",
+            "one_of_many_required": False,
+        },
     )
 
     concentrationRatioRange: fhirtypes.RatioRangeType = Field(
@@ -432,11 +403,12 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
         alias="concentrationRatioRange",
         title="The strength per unitary volume (or mass)",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e concentration[x]
-        one_of_many="concentration",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e concentration[x]
+            "one_of_many": "concentration",
+            "one_of_many_required": False,
+        },
     )
 
     country: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -444,11 +416,12 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
         alias="country",
         title="Where the strength range applies",
         description="The country or countries for which the strength range applies.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    measurementPoint: fhirtypes.String = Field(
+    measurementPoint: fhirtypes.StringType = Field(
         None,
         alias="measurementPoint",
         title="When strength is measured at a particular point or distance",
@@ -458,8 +431,9 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
             "example, the strength of the ingredient in some inhalers is measured "
             "at a particular position relative to the point of aerosolization."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     measurementPoint__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -479,11 +453,12 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
             "the tablet). It is not generally normalized as a unitary unit, which "
             "would be 'per mg')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e presentation[x]
-        one_of_many="presentation",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e presentation[x]
+            "one_of_many": "presentation",
+            "one_of_many_required": False,
+        },
     )
 
     presentationQuantity: fhirtypes.QuantityType = Field(
@@ -498,11 +473,12 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
             "the tablet). It is not generally normalized as a unitary unit, which "
             "would be 'per mg')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e presentation[x]
-        one_of_many="presentation",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e presentation[x]
+            "one_of_many": "presentation",
+            "one_of_many_required": False,
+        },
     )
 
     presentationRatio: fhirtypes.RatioType = Field(
@@ -517,11 +493,12 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
             "the tablet). It is not generally normalized as a unitary unit, which "
             "would be 'per mg')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e presentation[x]
-        one_of_many="presentation",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e presentation[x]
+            "one_of_many": "presentation",
+            "one_of_many_required": False,
+        },
     )
 
     presentationRatioRange: fhirtypes.RatioRangeType = Field(
@@ -536,11 +513,12 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
             "the tablet). It is not generally normalized as a unitary unit, which "
             "would be 'per mg')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e presentation[x]
-        one_of_many="presentation",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e presentation[x]
+            "one_of_many": "presentation",
+            "one_of_many_required": False,
+        },
     )
 
     referenceStrength: typing.List[
@@ -558,11 +536,12 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
             "when the active substance and active moiety are different, therefore "
             "both a strength and a reference strength are needed."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    textConcentration: fhirtypes.String = Field(
+    textConcentration: fhirtypes.StringType = Field(
         None,
         alias="textConcentration",
         title=(
@@ -574,8 +553,9 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
             "strength or a part of it - with the rest being in "
             "Strength.concentration as a ratio."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     textConcentration__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -583,7 +563,7 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
         title="Extension field for ``textConcentration``.",
     )
 
-    textPresentation: fhirtypes.String = Field(
+    textPresentation: fhirtypes.StringType = Field(
         None,
         alias="textPresentation",
         title=(
@@ -595,8 +575,9 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
             "strength or a part of it - with the rest being in "
             "Strength.presentation as a ratio."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     textPresentation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -630,10 +611,7 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
             "referenceStrength",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_2993(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -660,26 +638,7 @@ class IngredientSubstanceStrength(backboneelement.BackboneElement):
                 "presentationRatioRange",
             ],
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class IngredientSubstanceStrengthReferenceStrength(backboneelement.BackboneElement):
@@ -697,24 +656,26 @@ class IngredientSubstanceStrengthReferenceStrength(backboneelement.BackboneEleme
     reference strength are needed.
     """
 
-    resource_type = Field("IngredientSubstanceStrengthReferenceStrength", const=True)
+    __resource_type__ = "IngredientSubstanceStrengthReferenceStrength"
 
     country: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="country",
         title="Where the strength range applies",
         description="The country or countries for which the strength range applies.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    measurementPoint: fhirtypes.String = Field(
+    measurementPoint: fhirtypes.StringType = Field(
         None,
         alias="measurementPoint",
         title="When strength is measured at a particular point or distance",
         description="For when strength is measured at a particular point or distance.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     measurementPoint__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -727,11 +688,12 @@ class IngredientSubstanceStrengthReferenceStrength(backboneelement.BackboneEleme
         alias="strengthQuantity",
         title="Strength expressed in terms of a reference substance",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e strength[x]
-        one_of_many="strength",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e strength[x]
+            "one_of_many": "strength",
+            "one_of_many_required": True,
+        },
     )
 
     strengthRatio: fhirtypes.RatioType = Field(
@@ -739,11 +701,12 @@ class IngredientSubstanceStrengthReferenceStrength(backboneelement.BackboneEleme
         alias="strengthRatio",
         title="Strength expressed in terms of a reference substance",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e strength[x]
-        one_of_many="strength",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e strength[x]
+            "one_of_many": "strength",
+            "one_of_many_required": True,
+        },
     )
 
     strengthRatioRange: fhirtypes.RatioRangeType = Field(
@@ -751,11 +714,12 @@ class IngredientSubstanceStrengthReferenceStrength(backboneelement.BackboneEleme
         alias="strengthRatioRange",
         title="Strength expressed in terms of a reference substance",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e strength[x]
-        one_of_many="strength",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e strength[x]
+            "one_of_many": "strength",
+            "one_of_many_required": True,
+        },
     )
 
     substance: fhirtypes.CodeableReferenceType = Field(
@@ -763,10 +727,11 @@ class IngredientSubstanceStrengthReferenceStrength(backboneelement.BackboneEleme
         alias="substance",
         title="Relevant reference substance",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["SubstanceDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["SubstanceDefinition"],
+        },
     )
 
     @classmethod
@@ -787,10 +752,7 @@ class IngredientSubstanceStrengthReferenceStrength(backboneelement.BackboneEleme
             "country",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_4751(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -806,23 +768,4 @@ class IngredientSubstanceStrengthReferenceStrength(backboneelement.BackboneEleme
         one_of_many_fields = {
             "strength": ["strengthQuantity", "strengthRatio", "strengthRatioRange"]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields

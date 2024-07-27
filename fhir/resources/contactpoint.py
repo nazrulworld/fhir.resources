@@ -6,7 +6,7 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import datatype, fhirtypes
 
@@ -21,18 +21,19 @@ class ContactPoint(datatype.DataType):
     organization, including telephone, email, etc.
     """
 
-    resource_type = Field("ContactPoint", const=True)
+    __resource_type__ = "ContactPoint"
 
     period: fhirtypes.PeriodType = Field(
         None,
         alias="period",
         title="Time period when the contact point was/is in use",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    rank: fhirtypes.PositiveInt = Field(
+    rank: fhirtypes.PositiveIntType = Field(
         None,
         alias="rank",
         title="Specify preferred order of use (1 = highest)",
@@ -41,14 +42,15 @@ class ContactPoint(datatype.DataType):
             "ContactPoints with lower rank values are more preferred than those "
             "with higher rank values."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     rank__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_rank", title="Extension field for ``rank``."
     )
 
-    system: fhirtypes.Code = Field(
+    system: fhirtypes.CodeType = Field(
         None,
         alias="system",
         title="phone | fax | email | pager | url | sms | other",
@@ -56,32 +58,34 @@ class ContactPoint(datatype.DataType):
             "Telecommunications form for contact point - what communications system"
             " is required to make use of the contact."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["phone", "fax", "email", "pager", "url", "sms", "other"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["phone", "fax", "email", "pager", "url", "sms", "other"],
+        },
     )
     system__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_system", title="Extension field for ``system``."
     )
 
-    use: fhirtypes.Code = Field(
+    use: fhirtypes.CodeType = Field(
         None,
         alias="use",
         title="home | work | temp | old | mobile - purpose of this contact point",
         description="Identifies the purpose for the contact point.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["home", "work", "temp", "old", "mobile"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["home", "work", "temp", "old", "mobile"],
+        },
     )
     use__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_use", title="Extension field for ``use``."
     )
 
-    value: fhirtypes.String = Field(
+    value: fhirtypes.StringType = Field(
         None,
         alias="value",
         title="The actual contact point details",
@@ -89,8 +93,9 @@ class ContactPoint(datatype.DataType):
             "The actual contact point details, in a form that is meaningful to the "
             "designated communication system (i.e. phone number or email address)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."

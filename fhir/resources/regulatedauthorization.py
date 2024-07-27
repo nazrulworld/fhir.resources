@@ -8,9 +8,9 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
+from pydantic import Field
 
-from . import backboneelement, domainresource, fhirtypes
+from . import domainresource, fhirtypes
 
 
 class RegulatedAuthorization(domainresource.DomainResource):
@@ -27,7 +27,7 @@ class RegulatedAuthorization(domainresource.DomainResource):
     Medicinal Product.
     """
 
-    resource_type = Field("RegulatedAuthorization", const=True)
+    __resource_type__ = "RegulatedAuthorization"
 
     attachedDocument: typing.List[fhirtypes.ReferenceType] = Field(
         None,
@@ -37,10 +37,11 @@ class RegulatedAuthorization(domainresource.DomainResource):
             "authorization"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["DocumentReference"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["DocumentReference"],
+        },
     )
 
     basis: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -54,8 +55,9 @@ class RegulatedAuthorization(domainresource.DomainResource):
             "The legal or regulatory framework against which this authorization is "
             "granted, or other reasons for it."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     case: fhirtypes.RegulatedAuthorizationCaseType = Field(
@@ -76,17 +78,19 @@ class RegulatedAuthorization(domainresource.DomainResource):
             "review and the workgroup is seeking implementer feedback on its use "
             "(see link at bottom of page)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    description: fhirtypes.Markdown = Field(
+    description: fhirtypes.MarkdownType = Field(
         None,
         alias="description",
         title="General textual supporting information",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -103,10 +107,11 @@ class RegulatedAuthorization(domainresource.DomainResource):
             "The organization that has been granted this authorization, by some "
             "authoritative body (the 'regulator')."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -117,8 +122,9 @@ class RegulatedAuthorization(domainresource.DomainResource):
             "authorizing body"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     indication: typing.List[fhirtypes.CodeableReferenceType] = Field(
@@ -126,10 +132,11 @@ class RegulatedAuthorization(domainresource.DomainResource):
         alias="indication",
         title="Condition for which the use of the regulated product applies",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ClinicalUseDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ClinicalUseDefinition"],
+        },
     )
 
     intendedUse: fhirtypes.CodeableConceptType = Field(
@@ -139,8 +146,9 @@ class RegulatedAuthorization(domainresource.DomainResource):
         description=(
             "The intended use of the product, e.g. prevention, treatment, " "diagnosis."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     region: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -151,8 +159,9 @@ class RegulatedAuthorization(domainresource.DomainResource):
             "The territory (e.g., country, jurisdiction etc.) in which the "
             "authorization has been granted."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     regulator: fhirtypes.ReferenceType = Field(
@@ -166,10 +175,11 @@ class RegulatedAuthorization(domainresource.DomainResource):
             "authorization. For example, European Medicines Agency (EMA), Food and "
             "Drug Administration (FDA), Health Canada (HC), etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
     status: fhirtypes.CodeableConceptType = Field(
@@ -183,17 +193,19 @@ class RegulatedAuthorization(domainresource.DomainResource):
             "The status that is authorised e.g. approved. Intermediate states and "
             "actions can be tracked with cases and applications."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    statusDate: fhirtypes.DateTime = Field(
+    statusDate: fhirtypes.DateTimeType = Field(
         None,
         alias="statusDate",
         title="The date at which the current status was assigned",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     statusDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_statusDate", title="Extension field for ``statusDate``."
@@ -207,26 +219,27 @@ class RegulatedAuthorization(domainresource.DomainResource):
             "authorized"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "MedicinalProductDefinition",
-            "BiologicallyDerivedProduct",
-            "NutritionProduct",
-            "PackagedProductDefinition",
-            "ManufacturedItemDefinition",
-            "Ingredient",
-            "SubstanceDefinition",
-            "DeviceDefinition",
-            "ResearchStudy",
-            "ActivityDefinition",
-            "PlanDefinition",
-            "ObservationDefinition",
-            "Practitioner",
-            "Organization",
-            "Location",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "MedicinalProductDefinition",
+                "BiologicallyDerivedProduct",
+                "NutritionProduct",
+                "PackagedProductDefinition",
+                "ManufacturedItemDefinition",
+                "Ingredient",
+                "SubstanceDefinition",
+                "DeviceDefinition",
+                "ResearchStudy",
+                "ActivityDefinition",
+                "PlanDefinition",
+                "ObservationDefinition",
+                "Practitioner",
+                "Organization",
+                "Location",
+            ],
+        },
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -237,8 +250,9 @@ class RegulatedAuthorization(domainresource.DomainResource):
             "approval, orphan drug designation"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     validityPeriod: fhirtypes.PeriodType = Field(
@@ -254,8 +268,9 @@ class RegulatedAuthorization(domainresource.DomainResource):
             "licencing is in effect. As an example, a Marketing Authorization "
             "includes the date of authorization and/or an expiration date."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -291,6 +306,9 @@ class RegulatedAuthorization(domainresource.DomainResource):
         ]
 
 
+from . import backboneelement
+
+
 class RegulatedAuthorizationCase(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -309,7 +327,7 @@ class RegulatedAuthorizationCase(backboneelement.BackboneElement):
     bottom of page).
     """
 
-    resource_type = Field("RegulatedAuthorizationCase", const=True)
+    __resource_type__ = "RegulatedAuthorizationCase"
 
     application: typing.List[fhirtypes.RegulatedAuthorizationCaseType] = Field(
         None,
@@ -325,20 +343,22 @@ class RegulatedAuthorizationCase(backboneelement.BackboneElement):
             "the authorization. The applications can be considered as steps within "
             "the longer running case or procedure for this authorization process."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    dateDateTime: fhirtypes.DateTime = Field(
+    dateDateTime: fhirtypes.DateTimeType = Field(
         None,
         alias="dateDateTime",
         title="Relevant date for this case",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e date[x]
-        one_of_many="date",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e date[x]
+            "one_of_many": "date",
+            "one_of_many_required": False,
+        },
     )
     dateDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_dateDateTime", title="Extension field for ``dateDateTime``."
@@ -349,11 +369,12 @@ class RegulatedAuthorizationCase(backboneelement.BackboneElement):
         alias="datePeriod",
         title="Relevant date for this case",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e date[x]
-        one_of_many="date",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e date[x]
+            "one_of_many": "date",
+            "one_of_many_required": False,
+        },
     )
 
     identifier: fhirtypes.IdentifierType = Field(
@@ -361,8 +382,9 @@ class RegulatedAuthorizationCase(backboneelement.BackboneElement):
         alias="identifier",
         title="Identifier by which this case can be referenced",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     status: fhirtypes.CodeableConceptType = Field(
@@ -370,8 +392,9 @@ class RegulatedAuthorizationCase(backboneelement.BackboneElement):
         alias="status",
         title="The status associated with the case",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -379,8 +402,9 @@ class RegulatedAuthorizationCase(backboneelement.BackboneElement):
         alias="type",
         title="The defining type of case",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -401,10 +425,7 @@ class RegulatedAuthorizationCase(backboneelement.BackboneElement):
             "application",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_2881(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -418,23 +439,4 @@ class RegulatedAuthorizationCase(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"date": ["dateDateTime", "datePeriod"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields

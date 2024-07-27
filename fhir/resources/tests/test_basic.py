@@ -6,43 +6,77 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
+from pathlib import Path
 
-from .. import fhirtypes  # noqa: F401
 from .. import basic
+from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
 
 def impl_basic_1(inst):
     assert inst.code.coding[0].code == "UMLCLASSMODEL"
     assert (
         inst.code.coding[0].system
-        == "http://example.org/do-not-use/fhir-codes#resourceTypes"
+        == ExternalValidatorModel(
+            valueUri="http://example.org/do-not-use/fhir-codes#resourceTypes"
+        ).valueUri
     )
-    assert inst.extension[0].extension[0].url == "name"
+    assert (
+        inst.extension[0].extension[0].url
+        == ExternalValidatorModel(valueUri="name").valueUri
+    )
     assert inst.extension[0].extension[0].valueString == "Class1"
-    assert inst.extension[0].extension[1].extension[0].url == "name"
+    assert (
+        inst.extension[0].extension[1].extension[0].url
+        == ExternalValidatorModel(valueUri="name").valueUri
+    )
     assert inst.extension[0].extension[1].extension[0].valueString == "attribute1"
-    assert inst.extension[0].extension[1].extension[1].url == "minOccurs"
+    assert (
+        inst.extension[0].extension[1].extension[1].url
+        == ExternalValidatorModel(valueUri="minOccurs").valueUri
+    )
     assert inst.extension[0].extension[1].extension[1].valueInteger == 1
-    assert inst.extension[0].extension[1].extension[2].url == "maxOccurs"
+    assert (
+        inst.extension[0].extension[1].extension[2].url
+        == ExternalValidatorModel(valueUri="maxOccurs").valueUri
+    )
     assert inst.extension[0].extension[1].extension[2].valueCode == "*"
-    assert inst.extension[0].extension[1].url == "attribute"
-    assert inst.extension[0].extension[2].extension[0].url == "name"
+    assert (
+        inst.extension[0].extension[1].url
+        == ExternalValidatorModel(valueUri="attribute").valueUri
+    )
+    assert (
+        inst.extension[0].extension[2].extension[0].url
+        == ExternalValidatorModel(valueUri="name").valueUri
+    )
     assert inst.extension[0].extension[2].extension[0].valueString == "attribute2"
-    assert inst.extension[0].extension[2].extension[1].url == "minOccurs"
+    assert (
+        inst.extension[0].extension[2].extension[1].url
+        == ExternalValidatorModel(valueUri="minOccurs").valueUri
+    )
     assert inst.extension[0].extension[2].extension[1].valueInteger == 0
-    assert inst.extension[0].extension[2].extension[2].url == "maxOccurs"
+    assert (
+        inst.extension[0].extension[2].extension[2].url
+        == ExternalValidatorModel(valueUri="maxOccurs").valueUri
+    )
     assert inst.extension[0].extension[2].extension[2].valueInteger == 1
-    assert inst.extension[0].extension[2].url == "attribute"
+    assert (
+        inst.extension[0].extension[2].url
+        == ExternalValidatorModel(valueUri="attribute").valueUri
+    )
     assert (
         inst.extension[0].url
-        == "http://example.org/do-not-use/fhir-extensions/UMLclass"
+        == ExternalValidatorModel(
+            valueUri="http://example.org/do-not-use/fhir-extensions/UMLclass"
+        ).valueUri
     )
     assert inst.id == "classModel"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.text.status == "generated"
 
@@ -52,15 +86,13 @@ def test_basic_1(base_settings):
     Test File: basic-example2.json
     """
     filename = base_settings["unittest_data_dir"] / "basic-example2.json"
-    inst = basic.Basic.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Basic" == inst.resource_type
+    inst = basic.Basic.model_validate_json(Path(filename).read_bytes())
+    assert "Basic" == inst.get_resource_type()
 
     impl_basic_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Basic" == data["resourceType"]
 
     inst2 = basic.Basic(**data)
@@ -73,7 +105,10 @@ def impl_basic_2(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.text.status == "additional"
 
@@ -83,15 +118,13 @@ def test_basic_2(base_settings):
     Test File: basic-example-narrative.json
     """
     filename = base_settings["unittest_data_dir"] / "basic-example-narrative.json"
-    inst = basic.Basic.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Basic" == inst.resource_type
+    inst = basic.Basic.model_validate_json(Path(filename).read_bytes())
+    assert "Basic" == inst.get_resource_type()
 
     impl_basic_2(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Basic" == data["resourceType"]
 
     inst2 = basic.Basic(**data)
@@ -103,37 +136,59 @@ def impl_basic_3(inst):
     assert inst.code.coding[0].code == "referral"
     assert (
         inst.code.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/basic-resource-type"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/basic-resource-type"
+        ).valueUri
     )
-    assert inst.created == fhirtypes.DateTime.validate("2013-05-14")
-    assert inst.extension[0].url == (
-        "http://example.org/do-not-use/fhir-"
-        "extensions/referral#requestingPractitioner"
+    assert (
+        inst.created == ExternalValidatorModel(valueDateTime="2013-05-14").valueDateTime
+    )
+    assert (
+        inst.extension[0].url
+        == ExternalValidatorModel(
+            valueUri="http://example.org/do-not-use/fhir-extensions/referral#requestingPractitioner"
+        ).valueUri
     )
     assert inst.extension[0].valueReference.display == "Dokter Bronsig"
     assert inst.extension[0].valueReference.reference == "Practitioner/f201"
     assert (
         inst.extension[1].url
-        == "http://example.org/do-not-use/fhir-extensions/referral#notes"
+        == ExternalValidatorModel(
+            valueUri="http://example.org/do-not-use/fhir-extensions/referral#notes"
+        ).valueUri
     )
     assert inst.extension[1].valueString == (
         "The patient had fever peaks over the last couple of days. He"
         " is worried about these peaks."
     )
-    assert inst.extension[2].url == (
-        "http://example.org/do-not-use/fhir-" "extensions/referral#fulfillingEncounter"
+    assert (
+        inst.extension[2].url
+        == ExternalValidatorModel(
+            valueUri="http://example.org/do-not-use/fhir-extensions/referral#fulfillingEncounter"
+        ).valueUri
     )
     assert inst.extension[2].valueReference.reference == "Encounter/f201"
     assert inst.id == "referral"
-    assert inst.identifier[0].system == "http://goodhealth.org/basic/identifiers"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel(
+            valueUri="http://goodhealth.org/basic/identifiers"
+        ).valueUri
+    )
     assert inst.identifier[0].value == "19283746"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
-    assert inst.modifierExtension[0].url == (
-        "http://example.org/do-not-use/fhir-" "extensions/referral#referredForService"
+    assert (
+        inst.modifierExtension[0].url
+        == ExternalValidatorModel(
+            valueUri="http://example.org/do-not-use/fhir-extensions/referral#referredForService"
+        ).valueUri
     )
     assert inst.modifierExtension[0].valueCodeableConcept.coding[0].code == "11429006"
     assert (
@@ -142,19 +197,27 @@ def impl_basic_3(inst):
     )
     assert (
         inst.modifierExtension[0].valueCodeableConcept.coding[0].system
-        == "http://snomed.info/sct"
+        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
     )
-    assert inst.modifierExtension[1].url == (
-        "http://example.org/do-not-use/fhir-" "extensions/referral#targetDate"
+    assert (
+        inst.modifierExtension[1].url
+        == ExternalValidatorModel(
+            valueUri="http://example.org/do-not-use/fhir-extensions/referral#targetDate"
+        ).valueUri
     )
-    assert inst.modifierExtension[1].valuePeriod.end == fhirtypes.DateTime.validate(
-        "2013-04-15"
+    assert (
+        inst.modifierExtension[1].valuePeriod.end
+        == ExternalValidatorModel(valueDateTime="2013-04-15").valueDateTime
     )
-    assert inst.modifierExtension[1].valuePeriod.start == fhirtypes.DateTime.validate(
-        "2013-04-01"
+    assert (
+        inst.modifierExtension[1].valuePeriod.start
+        == ExternalValidatorModel(valueDateTime="2013-04-01").valueDateTime
     )
-    assert inst.modifierExtension[2].url == (
-        "http://example.org/do-not-use/fhir-" "extensions/referral#status"
+    assert (
+        inst.modifierExtension[2].url
+        == ExternalValidatorModel(
+            valueUri="http://example.org/do-not-use/fhir-extensions/referral#status"
+        ).valueUri
     )
     assert inst.modifierExtension[2].valueCode == "complete"
     assert inst.subject.display == "Roel"
@@ -167,15 +230,13 @@ def test_basic_3(base_settings):
     Test File: basic-example.json
     """
     filename = base_settings["unittest_data_dir"] / "basic-example.json"
-    inst = basic.Basic.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Basic" == inst.resource_type
+    inst = basic.Basic.model_validate_json(Path(filename).read_bytes())
+    assert "Basic" == inst.get_resource_type()
 
     impl_basic_3(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Basic" == data["resourceType"]
 
     inst2 = basic.Basic(**data)

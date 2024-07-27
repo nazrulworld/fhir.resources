@@ -6,10 +6,10 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
+from pathlib import Path
 
-from .. import fhirtypes  # noqa: F401
 from .. import namingsystem
+from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
 
 def impl_namingsystem_1(inst):
@@ -19,15 +19,21 @@ def impl_namingsystem_1(inst):
         inst.contact[0].telecom[0].value
         == "http://hl7-australia.wikispaces.com/FHIR+Australia"
     )
-    assert inst.date == fhirtypes.DateTime.validate("2015-08-31")
+    assert inst.date == ExternalValidatorModel(valueDateTime="2015-08-31").valueDateTime
     assert inst.description == (
         "Australian HI Identifier as established by relevant " "regulations etc."
     )
     assert inst.id == "example-id"
-    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+    )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.22.3"
     assert inst.jurisdiction[0].coding[0].code == "AU"
-    assert inst.jurisdiction[0].coding[0].system == "urn:iso:std:iso:3166"
+    assert (
+        inst.jurisdiction[0].coding[0].system
+        == ExternalValidatorModel(valueUri="urn:iso:std:iso:3166").valueUri
+    )
     assert inst.kind == "identifier"
     assert inst.name == "AustalianHealthcareIdentifierIndividual"
     assert inst.publisher == "HL7 Australia on behalf of NEHTA"
@@ -37,16 +43,29 @@ def impl_namingsystem_1(inst):
     assert inst.title == "Austalian Healthcare Identifier - Individual"
     assert inst.type.coding[0].code == "NI"
     assert inst.type.coding[0].display == "National unique individual identifier"
-    assert inst.type.coding[0].system == "http://terminology.hl7.org/CodeSystem/v2-0203"
+    assert (
+        inst.type.coding[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v2-0203"
+        ).valueUri
+    )
     assert inst.type.text == "IHI"
     assert inst.uniqueId[0].comment == "This value is used in Australian CDA documents"
     assert inst.uniqueId[0].type == "oid"
     assert inst.uniqueId[0].value == "1.2.36.1.2001.1003.0"
-    assert inst.uniqueId[1].period.start == fhirtypes.DateTime.validate("2015-08-21")
+    assert (
+        inst.uniqueId[1].period.start
+        == ExternalValidatorModel(valueDateTime="2015-08-21").valueDateTime
+    )
     assert inst.uniqueId[1].preferred is True
     assert inst.uniqueId[1].type == "uri"
     assert inst.uniqueId[1].value == "http://ns.electronichealth.net.au/id/hi/ihi/1.0"
-    assert inst.url == "http://hl7.org/fhir/NamingSystem/example-id"
+    assert (
+        inst.url
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/NamingSystem/example-id"
+        ).valueUri
+    )
     assert inst.usage == "Used in Australia for identifying patients"
 
 
@@ -55,15 +74,13 @@ def test_namingsystem_1(base_settings):
     Test File: namingsystem-example-id.json
     """
     filename = base_settings["unittest_data_dir"] / "namingsystem-example-id.json"
-    inst = namingsystem.NamingSystem.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "NamingSystem" == inst.resource_type
+    inst = namingsystem.NamingSystem.model_validate_json(Path(filename).read_bytes())
+    assert "NamingSystem" == inst.get_resource_type()
 
     impl_namingsystem_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "NamingSystem" == data["resourceType"]
 
     inst2 = namingsystem.NamingSystem(**data)
@@ -71,14 +88,14 @@ def test_namingsystem_1(base_settings):
 
 
 def impl_namingsystem_2(inst):
-    assert inst.approvalDate == fhirtypes.Date.validate("2021-07-21")
+    assert inst.approvalDate == ExternalValidatorModel(valueDate="2021-07-21").valueDate
     assert inst.author[0].name == "ACME NamingSystem Development"
     assert inst.author[0].telecom[0].system == "url"
     assert inst.author[0].telecom[0].value == "http://acme.org/development"
     assert inst.contact[0].name == "FHIR project team"
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
-    assert inst.date == fhirtypes.DateTime.validate("2021-07-21")
+    assert inst.date == ExternalValidatorModel(valueDateTime="2021-07-21").valueDateTime
     assert inst.description == (
         "This is an example naming system that illustrates usage of "
         "the metadata resource elements introduced in R5"
@@ -86,17 +103,28 @@ def impl_namingsystem_2(inst):
     assert inst.editor[0].name == "ACME NamingSystem Management"
     assert inst.editor[0].telecom[0].system == "url"
     assert inst.editor[0].telecom[0].value == "http://acme.org/management"
-    assert inst.effectivePeriod.end == fhirtypes.DateTime.validate("2022-07-31")
-    assert inst.effectivePeriod.start == fhirtypes.DateTime.validate("2021-08-01")
+    assert (
+        inst.effectivePeriod.end
+        == ExternalValidatorModel(valueDateTime="2022-07-31").valueDateTime
+    )
+    assert (
+        inst.effectivePeriod.start
+        == ExternalValidatorModel(valueDateTime="2021-08-01").valueDateTime
+    )
     assert inst.endorser[0].name == "National Foundation for NamingSystem Quality"
     assert inst.endorser[0].telecom[0].system == "url"
     assert inst.endorser[0].telecom[0].value == "http://example.org/nfnq"
     assert inst.experimental is True
     assert inst.id == "example-metadata"
-    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+    )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.22.5"
     assert inst.kind == "identifier"
-    assert inst.lastReviewDate == fhirtypes.Date.validate("2022-07-21")
+    assert (
+        inst.lastReviewDate == ExternalValidatorModel(valueDate="2022-07-21").valueDate
+    )
     assert inst.meta.profile[0] == (
         "http://hl7.org/fhir/StructureDefinition/shareablenamingsyste" "m"
     )
@@ -116,14 +144,21 @@ def impl_namingsystem_2(inst):
     assert inst.topic[0].coding[0].display == "Treatment"
     assert (
         inst.topic[0].coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/definition-topic"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/definition-topic"
+        ).valueUri
     )
     assert inst.uniqueId[0].type == "oid"
     assert inst.uniqueId[0].value == "1.2.3.4.5.6.7"
     assert inst.uniqueId[1].preferred is True
     assert inst.uniqueId[1].type == "uri"
     assert inst.uniqueId[1].value == "http://example.com/identifiers"
-    assert inst.url == "http://hl7.org/fhir/NamingSystem/example-metadata"
+    assert (
+        inst.url
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/NamingSystem/example-metadata"
+        ).valueUri
+    )
     assert inst.version == "20210721"
 
 
@@ -132,15 +167,13 @@ def test_namingsystem_2(base_settings):
     Test File: namingsystem-example-metadata.json
     """
     filename = base_settings["unittest_data_dir"] / "namingsystem-example-metadata.json"
-    inst = namingsystem.NamingSystem.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "NamingSystem" == inst.resource_type
+    inst = namingsystem.NamingSystem.model_validate_json(Path(filename).read_bytes())
+    assert "NamingSystem" == inst.get_resource_type()
 
     impl_namingsystem_2(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "NamingSystem" == data["resourceType"]
 
     inst2 = namingsystem.NamingSystem(**data)
@@ -148,14 +181,14 @@ def test_namingsystem_2(base_settings):
 
 
 def impl_namingsystem_3(inst):
-    assert inst.approvalDate == fhirtypes.Date.validate("2021-07-21")
+    assert inst.approvalDate == ExternalValidatorModel(valueDate="2021-07-21").valueDate
     assert inst.author[0].name == "ACME NamingSystem Development"
     assert inst.author[0].telecom[0].system == "url"
     assert inst.author[0].telecom[0].value == "http://acme.org/development"
     assert inst.contact[0].name == "FHIR project team"
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
-    assert inst.date == fhirtypes.DateTime.validate("2022-07-21")
+    assert inst.date == ExternalValidatorModel(valueDateTime="2022-07-21").valueDateTime
     assert inst.description == (
         "This is an example naming system that illustrates usage of "
         "the metadata resource elements introduced in R5"
@@ -163,17 +196,28 @@ def impl_namingsystem_3(inst):
     assert inst.editor[0].name == "ACME NamingSystem Management"
     assert inst.editor[0].telecom[0].system == "url"
     assert inst.editor[0].telecom[0].value == "http://acme.org/management"
-    assert inst.effectivePeriod.end == fhirtypes.DateTime.validate("2023-07-31")
-    assert inst.effectivePeriod.start == fhirtypes.DateTime.validate("2022-08-01")
+    assert (
+        inst.effectivePeriod.end
+        == ExternalValidatorModel(valueDateTime="2023-07-31").valueDateTime
+    )
+    assert (
+        inst.effectivePeriod.start
+        == ExternalValidatorModel(valueDateTime="2022-08-01").valueDateTime
+    )
     assert inst.endorser[0].name == "National Foundation for NamingSystem Quality"
     assert inst.endorser[0].telecom[0].system == "url"
     assert inst.endorser[0].telecom[0].value == "http://example.org/nfnq"
     assert inst.experimental is True
     assert inst.id == "example-metadata-2"
-    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+    )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.22.4"
     assert inst.kind == "identifier"
-    assert inst.lastReviewDate == fhirtypes.Date.validate("2022-07-21")
+    assert (
+        inst.lastReviewDate == ExternalValidatorModel(valueDate="2022-07-21").valueDate
+    )
     assert inst.meta.profile[0] == (
         "http://hl7.org/fhir/StructureDefinition/shareablenamingsyste" "m"
     )
@@ -198,14 +242,21 @@ def impl_namingsystem_3(inst):
     assert inst.topic[0].coding[0].display == "Treatment"
     assert (
         inst.topic[0].coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/definition-topic"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/definition-topic"
+        ).valueUri
     )
     assert inst.uniqueId[0].type == "oid"
     assert inst.uniqueId[0].value == "1.2.3.4.5.6.7"
     assert inst.uniqueId[1].preferred is True
     assert inst.uniqueId[1].type == "uri"
     assert inst.uniqueId[1].value == "http://example.com/identifiers"
-    assert inst.url == "http://hl7.org/fhir/NamingSystem/example-metadata-2"
+    assert (
+        inst.url
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/NamingSystem/example-metadata-2"
+        ).valueUri
+    )
     assert inst.version == "20220721"
 
 
@@ -216,15 +267,13 @@ def test_namingsystem_3(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "namingsystem-example-metadata-2.json"
     )
-    inst = namingsystem.NamingSystem.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "NamingSystem" == inst.resource_type
+    inst = namingsystem.NamingSystem.model_validate_json(Path(filename).read_bytes())
+    assert "NamingSystem" == inst.get_resource_type()
 
     impl_namingsystem_3(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "NamingSystem" == data["resourceType"]
 
     inst2 = namingsystem.NamingSystem(**data)
@@ -235,9 +284,12 @@ def impl_namingsystem_4(inst):
     assert inst.contact[0].name == "FHIR project team"
     assert inst.contact[0].telecom[0].system == "url"
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
-    assert inst.date == fhirtypes.DateTime.validate("2014-12-13")
+    assert inst.date == ExternalValidatorModel(valueDateTime="2014-12-13").valueDateTime
     assert inst.id == "example"
-    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+    )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.22.1"
     assert inst.kind == "codesystem"
     assert inst.name == "SNOMEDCT"
@@ -251,7 +303,12 @@ def impl_namingsystem_4(inst):
     assert inst.uniqueId[1].preferred is True
     assert inst.uniqueId[1].type == "uri"
     assert inst.uniqueId[1].value == "http://snomed.info/sct"
-    assert inst.url == "http://hl7.org/fhir/NamingSystem/example"
+    assert (
+        inst.url
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/NamingSystem/example"
+        ).valueUri
+    )
 
 
 def test_namingsystem_4(base_settings):
@@ -259,15 +316,13 @@ def test_namingsystem_4(base_settings):
     Test File: namingsystem-example.json
     """
     filename = base_settings["unittest_data_dir"] / "namingsystem-example.json"
-    inst = namingsystem.NamingSystem.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "NamingSystem" == inst.resource_type
+    inst = namingsystem.NamingSystem.model_validate_json(Path(filename).read_bytes())
+    assert "NamingSystem" == inst.get_resource_type()
 
     impl_namingsystem_4(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "NamingSystem" == data["resourceType"]
 
     inst2 = namingsystem.NamingSystem(**data)

@@ -6,10 +6,10 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
+from pathlib import Path
 
-from .. import fhirtypes  # noqa: F401
 from .. import communicationrequest
+from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
 
 def impl_communicationrequest_1(inst):
@@ -19,7 +19,10 @@ def impl_communicationrequest_1(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.status == "active"
     assert inst.subject.reference == "Patient/example"
@@ -35,15 +38,15 @@ def test_communicationrequest_1(base_settings):
     Test File: communicationrequest-example.json
     """
     filename = base_settings["unittest_data_dir"] / "communicationrequest-example.json"
-    inst = communicationrequest.CommunicationRequest.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = communicationrequest.CommunicationRequest.model_validate_json(
+        Path(filename).read_bytes()
     )
-    assert "CommunicationRequest" == inst.resource_type
+    assert "CommunicationRequest" == inst.get_resource_type()
 
     impl_communicationrequest_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CommunicationRequest" == data["resourceType"]
 
     inst2 = communicationrequest.CommunicationRequest(**data)
@@ -51,17 +54,30 @@ def test_communicationrequest_1(base_settings):
 
 
 def impl_communicationrequest_2(inst):
-    assert inst.authoredOn == fhirtypes.DateTime.validate("2016-06-10T11:01:10-08:00")
+    assert (
+        inst.authoredOn
+        == ExternalValidatorModel(
+            valueDateTime="2016-06-10T11:01:10-08:00"
+        ).valueDateTime
+    )
     assert inst.basedOn[0].display == "EligibilityRequest"
     assert inst.category[0].coding[0].code == "SolicitedAttachmentRequest"
-    assert inst.category[0].coding[0].system == "http://acme.org/messagetypes"
+    assert (
+        inst.category[0].coding[0].system
+        == ExternalValidatorModel(valueUri="http://acme.org/messagetypes").valueUri
+    )
     assert inst.contained[0].id == "provider"
     assert inst.contained[1].id == "payor"
     assert inst.contained[2].id == "requester"
     assert inst.encounter.reference == "Encounter/example"
     assert inst.groupIdentifier.value == "12345"
     assert inst.id == "fm-solicit"
-    assert inst.identifier[0].system == "http://www.jurisdiction.com/insurer/123456"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel(
+            valueUri="http://www.jurisdiction.com/insurer/123456"
+        ).valueUri
+    )
     assert inst.identifier[0].value == "ABC123"
     assert inst.informationProvider[0].reference == "#payor"
     assert inst.intent == "proposal"
@@ -69,16 +85,24 @@ def impl_communicationrequest_2(inst):
     assert inst.medium[0].coding[0].display == "written"
     assert (
         inst.medium[0].coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ParticipationMode"
+        ).valueUri
     )
     assert inst.medium[0].text == "written"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
-    assert inst.occurrenceDateTime == fhirtypes.DateTime.validate(
-        "2016-06-10T11:01:10-08:00"
+    assert (
+        inst.occurrenceDateTime
+        == ExternalValidatorModel(
+            valueDateTime="2016-06-10T11:01:10-08:00"
+        ).valueDateTime
     )
     assert inst.payload[0].contentCodeableConcept.text == (
         "Please provide the accident report and any associated "
@@ -103,15 +127,15 @@ def test_communicationrequest_2(base_settings):
         base_settings["unittest_data_dir"]
         / "communicationrequest-example-fm-solicit-attachment.json"
     )
-    inst = communicationrequest.CommunicationRequest.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = communicationrequest.CommunicationRequest.model_validate_json(
+        Path(filename).read_bytes()
     )
-    assert "CommunicationRequest" == inst.resource_type
+    assert "CommunicationRequest" == inst.get_resource_type()
 
     impl_communicationrequest_2(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CommunicationRequest" == data["resourceType"]
 
     inst2 = communicationrequest.CommunicationRequest(**data)

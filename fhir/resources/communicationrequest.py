@@ -8,11 +8,9 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
-from . import backboneelement, domainresource, fhirtypes
+from . import domainresource, fhirtypes
 
 
 class CommunicationRequest(domainresource.DomainResource):
@@ -26,7 +24,7 @@ class CommunicationRequest(domainresource.DomainResource):
     health agency be notified about a reportable condition.
     """
 
-    resource_type = Field("CommunicationRequest", const=True)
+    __resource_type__ = "CommunicationRequest"
 
     about: typing.List[fhirtypes.ReferenceType] = Field(
         None,
@@ -36,13 +34,14 @@ class CommunicationRequest(domainresource.DomainResource):
             "Other resources that pertain to this communication request and to "
             "which this communication request should be associated."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Resource"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Resource"],
+        },
     )
 
-    authoredOn: fhirtypes.DateTime = Field(
+    authoredOn: fhirtypes.DateTimeType = Field(
         None,
         alias="authoredOn",
         title="When request transitioned to being actionable",
@@ -50,8 +49,9 @@ class CommunicationRequest(domainresource.DomainResource):
             "For draft requests, indicates the date of initial creation.  For "
             "requests with other statuses, indicates the date of activation."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_authoredOn", title="Extension field for ``authoredOn``."
@@ -65,10 +65,11 @@ class CommunicationRequest(domainresource.DomainResource):
             "A plan or proposal that is fulfilled in whole or in part by this "
             "request."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Resource"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Resource"],
+        },
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -79,8 +80,9 @@ class CommunicationRequest(domainresource.DomainResource):
             "The type of message to be sent such as alert, notification, reminder, "
             "instruction, etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     doNotPerform: bool = Field(
@@ -91,8 +93,9 @@ class CommunicationRequest(domainresource.DomainResource):
             "If true indicates that the CommunicationRequest is asking for the "
             "specified action to *not* occur."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     doNotPerform__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_doNotPerform", title="Extension field for ``doNotPerform``."
@@ -106,10 +109,11 @@ class CommunicationRequest(domainresource.DomainResource):
             "The Encounter during which this CommunicationRequest was created or to"
             " which the creation of this record is tightly associated."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Encounter"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Encounter"],
+        },
     )
 
     groupIdentifier: fhirtypes.IdentifierType = Field(
@@ -125,8 +129,9 @@ class CommunicationRequest(domainresource.DomainResource):
             "shared by a set of lab tests ordered together, or a prescription "
             "number shared by all meds ordered at one time."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -138,8 +143,9 @@ class CommunicationRequest(domainresource.DomainResource):
             "performer or other systems which remain constant as the resource is "
             "updated and propagates from server to server."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     informationProvider: typing.List[fhirtypes.ReferenceType] = Field(
@@ -150,22 +156,23 @@ class CommunicationRequest(domainresource.DomainResource):
             "The entity (e.g. person, organization, clinical information system, or"
             " device) which is to be the source of the communication."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Device",
-            "Organization",
-            "Patient",
-            "Practitioner",
-            "PractitionerRole",
-            "RelatedPerson",
-            "HealthcareService",
-            "Endpoint",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Device",
+                "Organization",
+                "Patient",
+                "Practitioner",
+                "PractitionerRole",
+                "RelatedPerson",
+                "HealthcareService",
+                "Endpoint",
+            ],
+        },
     )
 
-    intent: fhirtypes.Code = Field(
+    intent: fhirtypes.CodeType = Field(
         None,
         alias="intent",
         title=(
@@ -177,22 +184,23 @@ class CommunicationRequest(domainresource.DomainResource):
             "CommunicationRequest and where the request fits into the workflow "
             "chain."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "proposal",
-            "plan",
-            "directive",
-            "order",
-            "original-order",
-            "reflex-order",
-            "filler-order",
-            "instance-order",
-            "option",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "proposal",
+                "plan",
+                "directive",
+                "order",
+                "original-order",
+                "reflex-order",
+                "filler-order",
+                "instance-order",
+                "option",
+            ],
+        },
     )
     intent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_intent", title="Extension field for ``intent``."
@@ -203,8 +211,9 @@ class CommunicationRequest(domainresource.DomainResource):
         alias="medium",
         title="A channel of communication",
         description="A channel that was used for this communication (e.g. email, fax).",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -215,20 +224,22 @@ class CommunicationRequest(domainresource.DomainResource):
             "Comments made about the request by the requester, sender, recipient, "
             "subject or other participants."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    occurrenceDateTime: fhirtypes.DateTime = Field(
+    occurrenceDateTime: fhirtypes.DateTimeType = Field(
         None,
         alias="occurrenceDateTime",
         title="When scheduled",
         description="The time when this communication is to occur.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e occurrence[x]
-        one_of_many="occurrence",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e occurrence[x]
+            "one_of_many": "occurrence",
+            "one_of_many_required": False,
+        },
     )
     occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -241,11 +252,12 @@ class CommunicationRequest(domainresource.DomainResource):
         alias="occurrencePeriod",
         title="When scheduled",
         description="The time when this communication is to occur.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e occurrence[x]
-        one_of_many="occurrence",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e occurrence[x]
+            "one_of_many": "occurrence",
+            "one_of_many_required": False,
+        },
     )
 
     payload: typing.List[fhirtypes.CommunicationRequestPayloadType] = Field(
@@ -256,11 +268,12 @@ class CommunicationRequest(domainresource.DomainResource):
             "Text, attachment(s), or resource(s) to be communicated to the "
             "recipient."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    priority: fhirtypes.Code = Field(
+    priority: fhirtypes.CodeType = Field(
         None,
         alias="priority",
         title="routine | urgent | asap | stat",
@@ -268,11 +281,12 @@ class CommunicationRequest(domainresource.DomainResource):
             "Characterizes how quickly the proposed act must be initiated. Includes"
             " concepts such as stat, urgent, routine."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["routine", "urgent", "asap", "stat"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["routine", "urgent", "asap", "stat"],
+        },
     )
     priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_priority", title="Extension field for ``priority``."
@@ -283,10 +297,11 @@ class CommunicationRequest(domainresource.DomainResource):
         alias="reason",
         title="Why is communication needed?",
         description="Describes why the request is being made in coded or textual form.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Resource"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Resource"],
+        },
     )
 
     recipient: typing.List[fhirtypes.ReferenceType] = Field(
@@ -298,21 +313,22 @@ class CommunicationRequest(domainresource.DomainResource):
             "device, group, or care team) which is the intended target of the "
             "communication."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Device",
-            "Organization",
-            "Patient",
-            "Practitioner",
-            "PractitionerRole",
-            "RelatedPerson",
-            "Group",
-            "CareTeam",
-            "HealthcareService",
-            "Endpoint",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Device",
+                "Organization",
+                "Patient",
+                "Practitioner",
+                "PractitionerRole",
+                "RelatedPerson",
+                "Group",
+                "CareTeam",
+                "HealthcareService",
+                "Endpoint",
+            ],
+        },
     )
 
     replaces: typing.List[fhirtypes.ReferenceType] = Field(
@@ -323,10 +339,11 @@ class CommunicationRequest(domainresource.DomainResource):
             "Completed or terminated request(s) whose function is taken by this new"
             " request."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["CommunicationRequest"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["CommunicationRequest"],
+        },
     )
 
     requester: fhirtypes.ReferenceType = Field(
@@ -337,20 +354,21 @@ class CommunicationRequest(domainresource.DomainResource):
             "The device, individual, or organization who asks for the information "
             "to be shared."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Practitioner",
-            "PractitionerRole",
-            "Organization",
-            "Patient",
-            "RelatedPerson",
-            "Device",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Practitioner",
+                "PractitionerRole",
+                "Organization",
+                "Patient",
+                "RelatedPerson",
+                "Device",
+            ],
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(
         None,
         alias="status",
         title=(
@@ -358,20 +376,21 @@ class CommunicationRequest(domainresource.DomainResource):
             "unknown"
         ),
         description="The status of the proposal or order.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "draft",
-            "active",
-            "on-hold",
-            "revoked",
-            "completed",
-            "entered-in-error",
-            "unknown",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "draft",
+                "active",
+                "on-hold",
+                "revoked",
+                "completed",
+                "entered-in-error",
+                "unknown",
+            ],
+        },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -382,8 +401,9 @@ class CommunicationRequest(domainresource.DomainResource):
         alias="statusReason",
         title="Reason for current status",
         description="Captures the reason for the current state of the CommunicationRequest.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -391,10 +411,11 @@ class CommunicationRequest(domainresource.DomainResource):
         alias="subject",
         title="Focus of message",
         description="The patient or group that is the focus of this communication request.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Patient", "Group"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Patient", "Group"],
+        },
     )
 
     @classmethod
@@ -437,10 +458,7 @@ class CommunicationRequest(domainresource.DomainResource):
             "note",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2294(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -449,57 +467,9 @@ class CommunicationRequest(domainresource.DomainResource):
         the primitive value is not present.
         """
         required_fields = [("intent", "intent__ext"), ("status", "status__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
-
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_2294(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -513,26 +483,10 @@ class CommunicationRequest(domainresource.DomainResource):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"occurrence": ["occurrenceDateTime", "occurrencePeriod"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
+        return one_of_many_fields
 
-        return values
+
+from . import backboneelement
 
 
 class CommunicationRequestPayload(backboneelement.BackboneElement):
@@ -544,7 +498,7 @@ class CommunicationRequestPayload(backboneelement.BackboneElement):
     Text, attachment(s), or resource(s) to be communicated to the recipient.
     """
 
-    resource_type = Field("CommunicationRequestPayload", const=True)
+    __resource_type__ = "CommunicationRequestPayload"
 
     contentAttachment: fhirtypes.AttachmentType = Field(
         None,
@@ -554,11 +508,12 @@ class CommunicationRequestPayload(backboneelement.BackboneElement):
             "The communicated content (or for multi-part communications, one "
             "portion of the communication)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e content[x]
-        one_of_many="content",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e content[x]
+            "one_of_many": "content",
+            "one_of_many_required": True,
+        },
     )
 
     contentCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -569,11 +524,12 @@ class CommunicationRequestPayload(backboneelement.BackboneElement):
             "The communicated content (or for multi-part communications, one "
             "portion of the communication)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e content[x]
-        one_of_many="content",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e content[x]
+            "one_of_many": "content",
+            "one_of_many_required": True,
+        },
     )
 
     contentReference: fhirtypes.ReferenceType = Field(
@@ -584,13 +540,14 @@ class CommunicationRequestPayload(backboneelement.BackboneElement):
             "The communicated content (or for multi-part communications, one "
             "portion of the communication)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e content[x]
-        one_of_many="content",
-        one_of_many_required=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Resource"],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e content[x]
+            "one_of_many": "content",
+            "one_of_many_required": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Resource"],
+        },
     )
 
     @classmethod
@@ -608,10 +565,7 @@ class CommunicationRequestPayload(backboneelement.BackboneElement):
             "contentCodeableConcept",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_2992(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -631,23 +585,4 @@ class CommunicationRequestPayload(backboneelement.BackboneElement):
                 "contentReference",
             ]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields

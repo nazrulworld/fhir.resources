@@ -8,9 +8,7 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import domainresource, fhirtypes
 
@@ -26,7 +24,7 @@ class GuidanceResponse(domainresource.DomainResource):
     description of any proposed actions to be taken.
     """
 
-    resource_type = Field("GuidanceResponse", const=True)
+    __resource_type__ = "GuidanceResponse"
 
     dataRequirement: typing.List[fhirtypes.DataRequirementType] = Field(
         None,
@@ -39,8 +37,9 @@ class GuidanceResponse(domainresource.DomainResource):
             "order to proceed with the evaluation. A subsequent request to the "
             "service should include this data."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     encounter: fhirtypes.ReferenceType = Field(
@@ -51,10 +50,11 @@ class GuidanceResponse(domainresource.DomainResource):
             "The encounter during which this response was created or to which the "
             "creation of this record is tightly associated."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Encounter"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Encounter"],
+        },
     )
 
     evaluationMessage: fhirtypes.ReferenceType = Field(
@@ -67,10 +67,11 @@ class GuidanceResponse(domainresource.DomainResource):
             "informational or warning messages. These messages will be provided by "
             "this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["OperationOutcome"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["OperationOutcome"],
+        },
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -81,11 +82,12 @@ class GuidanceResponse(domainresource.DomainResource):
             "Allows a service to provide  unique, business identifiers for the "
             "response."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    moduleCanonical: fhirtypes.Canonical = Field(
+    moduleCanonical: fhirtypes.CanonicalType = Field(
         None,
         alias="moduleCanonical",
         title="What guidance was requested",
@@ -93,11 +95,12 @@ class GuidanceResponse(domainresource.DomainResource):
             "An identifier, CodeableConcept or canonical reference to the guidance "
             "that was requested."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e module[x]
-        one_of_many="module",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e module[x]
+            "one_of_many": "module",
+            "one_of_many_required": True,
+        },
     )
     moduleCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_moduleCanonical", title="Extension field for ``moduleCanonical``."
@@ -111,14 +114,15 @@ class GuidanceResponse(domainresource.DomainResource):
             "An identifier, CodeableConcept or canonical reference to the guidance "
             "that was requested."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e module[x]
-        one_of_many="module",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e module[x]
+            "one_of_many": "module",
+            "one_of_many_required": True,
+        },
     )
 
-    moduleUri: fhirtypes.Uri = Field(
+    moduleUri: fhirtypes.UriType = Field(
         None,
         alias="moduleUri",
         title="What guidance was requested",
@@ -126,11 +130,12 @@ class GuidanceResponse(domainresource.DomainResource):
             "An identifier, CodeableConcept or canonical reference to the guidance "
             "that was requested."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e module[x]
-        one_of_many="module",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e module[x]
+            "one_of_many": "module",
+            "one_of_many_required": True,
+        },
     )
     moduleUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_moduleUri", title="Extension field for ``moduleUri``."
@@ -144,17 +149,19 @@ class GuidanceResponse(domainresource.DomainResource):
             "Provides a mechanism to communicate additional information about the "
             "response."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    occurrenceDateTime: fhirtypes.DateTime = Field(
+    occurrenceDateTime: fhirtypes.DateTimeType = Field(
         None,
         alias="occurrenceDateTime",
         title="When the guidance response was processed",
         description="Indicates when the guidance response was processed.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -174,10 +181,11 @@ class GuidanceResponse(domainresource.DomainResource):
             "returned as the result of the evaluation, and these would be returned "
             "in this element."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Parameters"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Parameters"],
+        },
     )
 
     performer: fhirtypes.ReferenceType = Field(
@@ -185,10 +193,11 @@ class GuidanceResponse(domainresource.DomainResource):
         alias="performer",
         title="Device returning the guidance",
         description="Provides a reference to the device that performed the guidance.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Device"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Device"],
+        },
     )
 
     reason: typing.List[fhirtypes.CodeableReferenceType] = Field(
@@ -203,8 +212,9 @@ class GuidanceResponse(domainresource.DomainResource):
             "based scenarios, it may provide an indication of the cause for the "
             "response."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     requestIdentifier: fhirtypes.IdentifierType = Field(
@@ -217,8 +227,9 @@ class GuidanceResponse(domainresource.DomainResource):
             "here to enable the requester to more easily identify the response in a"
             " multi-request scenario."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     result: typing.List[fhirtypes.ReferenceType] = Field(
@@ -226,31 +237,32 @@ class GuidanceResponse(domainresource.DomainResource):
         alias="result",
         title="Proposed actions, if any",
         description="The actions, if any, produced by the evaluation of the artifact.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Appointment",
-            "AppointmentResponse",
-            "CarePlan",
-            "Claim",
-            "CommunicationRequest",
-            "Contract",
-            "CoverageEligibilityRequest",
-            "DeviceRequest",
-            "EnrollmentRequest",
-            "ImmunizationRecommendation",
-            "MedicationRequest",
-            "NutritionOrder",
-            "RequestOrchestration",
-            "ServiceRequest",
-            "SupplyRequest",
-            "Task",
-            "VisionPrescription",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Appointment",
+                "AppointmentResponse",
+                "CarePlan",
+                "Claim",
+                "CommunicationRequest",
+                "Contract",
+                "CoverageEligibilityRequest",
+                "DeviceRequest",
+                "EnrollmentRequest",
+                "ImmunizationRecommendation",
+                "MedicationRequest",
+                "NutritionOrder",
+                "RequestOrchestration",
+                "ServiceRequest",
+                "SupplyRequest",
+                "Task",
+                "VisionPrescription",
+            ],
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(
         None,
         alias="status",
         title=(
@@ -268,19 +280,20 @@ class GuidanceResponse(domainresource.DomainResource):
             "available, the status will be data-requested, and the response will "
             "contain a description of the additional requested information."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "success",
-            "data-requested",
-            "data-required",
-            "in-progress",
-            "failure",
-            "entered-in-error",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "success",
+                "data-requested",
+                "data-required",
+                "in-progress",
+                "failure",
+                "entered-in-error",
+            ],
+        },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -291,10 +304,11 @@ class GuidanceResponse(domainresource.DomainResource):
         alias="subject",
         title="Patient the request was performed for",
         description="The patient for which the request was processed.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Patient", "Group"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Patient", "Group"],
+        },
     )
 
     @classmethod
@@ -330,10 +344,7 @@ class GuidanceResponse(domainresource.DomainResource):
             "dataRequirement",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1819(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -342,57 +353,9 @@ class GuidanceResponse(domainresource.DomainResource):
         the primitive value is not present.
         """
         required_fields = [("status", "status__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
-
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_1819(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -408,23 +371,4 @@ class GuidanceResponse(domainresource.DomainResource):
         one_of_many_fields = {
             "module": ["moduleCanonical", "moduleCodeableConcept", "moduleUri"]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields

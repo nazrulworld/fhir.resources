@@ -8,9 +8,9 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
+from pydantic import Field
 
-from . import backboneelement, domainresource, fhirtypes
+from . import domainresource, fhirtypes
 
 
 class AllergyIntolerance(domainresource.DomainResource):
@@ -23,18 +23,19 @@ class AllergyIntolerance(domainresource.DomainResource):
     an individual and associated with exposure to a substance.
     """
 
-    resource_type = Field("AllergyIntolerance", const=True)
+    __resource_type__ = "AllergyIntolerance"
 
-    category: typing.List[typing.Optional[fhirtypes.Code]] = Field(
+    category: typing.List[typing.Optional[fhirtypes.CodeType]] = Field(
         None,
         alias="category",
         title="food | medication | environment | biologic",
         description="Category of the identified substance.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["food", "medication", "environment", "biologic"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["food", "medication", "environment", "biologic"],
+        },
     )
     category__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -45,8 +46,9 @@ class AllergyIntolerance(domainresource.DomainResource):
         alias="clinicalStatus",
         title="active | inactive | resolved",
         description="The clinical status of the allergy or intolerance.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -72,11 +74,12 @@ class AllergyIntolerance(domainresource.DomainResource):
             "of AllergyIntolerance.code, then the receiving system should ignore "
             "AllergyIntolerance.reaction.substance."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    criticality: fhirtypes.Code = Field(
+    criticality: fhirtypes.CodeType = Field(
         None,
         alias="criticality",
         title="low | high | unable-to-assess",
@@ -84,11 +87,12 @@ class AllergyIntolerance(domainresource.DomainResource):
             "Estimate of the potential clinical harm, or seriousness, of the "
             "reaction to the identified substance."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["low", "high", "unable-to-assess"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["low", "high", "unable-to-assess"],
+        },
     )
     criticality__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_criticality", title="Extension field for ``criticality``."
@@ -99,10 +103,11 @@ class AllergyIntolerance(domainresource.DomainResource):
         alias="encounter",
         title="Encounter when the allergy or intolerance was asserted",
         description="The encounter when the allergy or intolerance was asserted.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Encounter"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Encounter"],
+        },
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -114,11 +119,12 @@ class AllergyIntolerance(domainresource.DomainResource):
             "performer or other systems which remain constant as the resource is "
             "updated and propagates from server to server."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    lastOccurrence: fhirtypes.DateTime = Field(
+    lastOccurrence: fhirtypes.DateTimeType = Field(
         None,
         alias="lastOccurrence",
         title="Date(/time) of last known occurrence of a reaction",
@@ -126,8 +132,9 @@ class AllergyIntolerance(domainresource.DomainResource):
             "Represents the date and/or time of the last known occurrence of a "
             "reaction event."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     lastOccurrence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastOccurrence", title="Extension field for ``lastOccurrence``."
@@ -141,8 +148,9 @@ class AllergyIntolerance(domainresource.DomainResource):
             "Additional narrative about the propensity for the Adverse Reaction, "
             "not captured in other fields."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     onsetAge: fhirtypes.AgeType = Field(
@@ -153,14 +161,15 @@ class AllergyIntolerance(domainresource.DomainResource):
             "Estimated or actual date,  date-time, or age when allergy or "
             "intolerance was identified."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e onset[x]
-        one_of_many="onset",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e onset[x]
+            "one_of_many": "onset",
+            "one_of_many_required": False,
+        },
     )
 
-    onsetDateTime: fhirtypes.DateTime = Field(
+    onsetDateTime: fhirtypes.DateTimeType = Field(
         None,
         alias="onsetDateTime",
         title="When allergy or intolerance was identified",
@@ -168,11 +177,12 @@ class AllergyIntolerance(domainresource.DomainResource):
             "Estimated or actual date,  date-time, or age when allergy or "
             "intolerance was identified."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e onset[x]
-        one_of_many="onset",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e onset[x]
+            "one_of_many": "onset",
+            "one_of_many_required": False,
+        },
     )
     onsetDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_onsetDateTime", title="Extension field for ``onsetDateTime``."
@@ -186,11 +196,12 @@ class AllergyIntolerance(domainresource.DomainResource):
             "Estimated or actual date,  date-time, or age when allergy or "
             "intolerance was identified."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e onset[x]
-        one_of_many="onset",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e onset[x]
+            "one_of_many": "onset",
+            "one_of_many_required": False,
+        },
     )
 
     onsetRange: fhirtypes.RangeType = Field(
@@ -201,14 +212,15 @@ class AllergyIntolerance(domainresource.DomainResource):
             "Estimated or actual date,  date-time, or age when allergy or "
             "intolerance was identified."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e onset[x]
-        one_of_many="onset",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e onset[x]
+            "one_of_many": "onset",
+            "one_of_many_required": False,
+        },
     )
 
-    onsetString: fhirtypes.String = Field(
+    onsetString: fhirtypes.StringType = Field(
         None,
         alias="onsetString",
         title="When allergy or intolerance was identified",
@@ -216,11 +228,12 @@ class AllergyIntolerance(domainresource.DomainResource):
             "Estimated or actual date,  date-time, or age when allergy or "
             "intolerance was identified."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e onset[x]
-        one_of_many="onset",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e onset[x]
+            "one_of_many": "onset",
+            "one_of_many_required": False,
+        },
     )
     onsetString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_onsetString", title="Extension field for ``onsetString``."
@@ -237,8 +250,9 @@ class AllergyIntolerance(domainresource.DomainResource):
             "Indicates who or what participated in the activities related to the "
             "allergy or intolerance and how they were involved."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     patient: fhirtypes.ReferenceType = Field(
@@ -246,10 +260,11 @@ class AllergyIntolerance(domainresource.DomainResource):
         alias="patient",
         title="Who the allergy or intolerance is for",
         description="The patient who has the allergy or intolerance.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Patient"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Patient"],
+        },
     )
 
     reaction: typing.List[fhirtypes.AllergyIntoleranceReactionType] = Field(
@@ -260,11 +275,12 @@ class AllergyIntolerance(domainresource.DomainResource):
             "Details about each adverse reaction event linked to exposure to the "
             "identified substance."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    recordedDate: fhirtypes.DateTime = Field(
+    recordedDate: fhirtypes.DateTimeType = Field(
         None,
         alias="recordedDate",
         title="Date allergy or intolerance was first recorded",
@@ -273,8 +289,9 @@ class AllergyIntolerance(domainresource.DomainResource):
             "record was created in the system, which is often a system-generated "
             "date."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     recordedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_recordedDate", title="Extension field for ``recordedDate``."
@@ -288,8 +305,9 @@ class AllergyIntolerance(domainresource.DomainResource):
             "Identification of the underlying physiological mechanism for the "
             "reaction risk."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     verificationStatus: fhirtypes.CodeableConceptType = Field(
@@ -303,8 +321,9 @@ class AllergyIntolerance(domainresource.DomainResource):
             "allergy or intolerance, itself, not to any specific AllergyIntolerance"
             " attribute."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -343,10 +362,7 @@ class AllergyIntolerance(domainresource.DomainResource):
             "reaction",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_2026(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -368,26 +384,10 @@ class AllergyIntolerance(domainresource.DomainResource):
                 "onsetString",
             ]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
+        return one_of_many_fields
 
-        return values
+
+from . import backboneelement
 
 
 class AllergyIntoleranceParticipant(backboneelement.BackboneElement):
@@ -401,7 +401,7 @@ class AllergyIntoleranceParticipant(backboneelement.BackboneElement):
     or intolerance and how they were involved.
     """
 
-    resource_type = Field("AllergyIntoleranceParticipant", const=True)
+    __resource_type__ = "AllergyIntoleranceParticipant"
 
     actor: fhirtypes.ReferenceType = Field(
         ...,
@@ -414,18 +414,19 @@ class AllergyIntoleranceParticipant(backboneelement.BackboneElement):
             "Indicates who or what participated in the activities related to the "
             "allergy or intolerance."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Practitioner",
-            "PractitionerRole",
-            "Patient",
-            "RelatedPerson",
-            "Device",
-            "Organization",
-            "CareTeam",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Practitioner",
+                "PractitionerRole",
+                "Patient",
+                "RelatedPerson",
+                "Device",
+                "Organization",
+                "CareTeam",
+            ],
+        },
     )
 
     function: fhirtypes.CodeableConceptType = Field(
@@ -436,8 +437,9 @@ class AllergyIntoleranceParticipant(backboneelement.BackboneElement):
             "Distinguishes the type of involvement of the actor in the activities "
             "related to the allergy or intolerance."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -459,9 +461,9 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
     identified substance.
     """
 
-    resource_type = Field("AllergyIntoleranceReaction", const=True)
+    __resource_type__ = "AllergyIntoleranceReaction"
 
-    description: fhirtypes.String = Field(
+    description: fhirtypes.StringType = Field(
         None,
         alias="description",
         title="Description of the event as a whole",
@@ -469,8 +471,9 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
             "Text description about the reaction as a whole, including details of "
             "the manifestation if required."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -484,8 +487,9 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
             "Identification of the route by which the subject was exposed to the "
             "substance."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     manifestation: typing.List[fhirtypes.CodeableReferenceType] = Field(
@@ -496,10 +500,11 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
             "Clinical symptoms and/or signs that are observed or associated with "
             "the adverse reaction event."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Observation"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Observation"],
+        },
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -510,23 +515,25 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
             "Additional text about the adverse reaction event not captured in other"
             " fields."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    onset: fhirtypes.DateTime = Field(
+    onset: fhirtypes.DateTimeType = Field(
         None,
         alias="onset",
         title="Date(/time) when manifestations showed",
         description="Record of the date and/or time of the onset of the Reaction.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     onset__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_onset", title="Extension field for ``onset``."
     )
 
-    severity: fhirtypes.Code = Field(
+    severity: fhirtypes.CodeType = Field(
         None,
         alias="severity",
         title="mild | moderate | severe (of event as a whole)",
@@ -534,11 +541,12 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
             "Clinical assessment of the severity of the reaction event as a whole, "
             "potentially considering multiple different manifestations."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["mild", "moderate", "severe"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["mild", "moderate", "severe"],
+        },
     )
     severity__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_severity", title="Extension field for ``severity``."
@@ -564,8 +572,9 @@ class AllergyIntoleranceReaction(backboneelement.BackboneElement):
             "semantic scope of AllergyIntolerance.code, then the receiving system "
             "should ignore AllergyIntolerance.reaction.substance."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

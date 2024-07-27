@@ -17,7 +17,7 @@ with open("README.rst") as readme_file:
 with open("HISTORY.rst") as history_file:
     history = history_file.read()
 
-requirements = ["pydantic[email]>=2.0.1,<3.0"]
+requirements = ["fhir-core"]
 
 setup_requirements = ["pytest-runner"]
 
@@ -113,12 +113,11 @@ setup(
         "test": (
             test_requirements
             + setup_requirements
-            + orjson_requirements
             + yaml_requirements
             + xml_requirements
         ),
         "dev": (test_requirements + development_requirements),
-        "all": (orjson_requirements + yaml_requirements + xml_requirements),
+        "all": (yaml_requirements + xml_requirements),
     },
     url="https://github.com/nazrulworld/fhir.resources",
     version="7.1.1.dev0",

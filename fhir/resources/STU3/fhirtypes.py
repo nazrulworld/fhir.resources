@@ -6,8 +6,6 @@ from email.utils import formataddr, parseaddr
 from typing import TYPE_CHECKING, Any, Dict, Optional, Pattern, Union
 from uuid import UUID
 
-from fhir.resources.core.fhirabstractmodel import FHIRAbstractModel
-
 from pydantic.v1 import AnyUrl
 from pydantic.v1.errors import ConfigError, DateError, DateTimeError, TimeError
 from pydantic.v1.main import load_str_bytes
@@ -25,12 +23,14 @@ from pydantic.v1.validators import (
     parse_time,
 )
 
+from fhir.resources.core.fhirabstractmodel import FHIRAbstractModel
+
 from .fhirtypesvalidators import run_validator_for_fhir_type
 
 if TYPE_CHECKING:
-    from pydantic.v1.types import CallableGenerator
-    from pydantic.v1.fields import ModelField
     from pydantic.v1 import BaseConfig
+    from pydantic.v1.fields import ModelField
+    from pydantic.v1.types import CallableGenerator
 
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 

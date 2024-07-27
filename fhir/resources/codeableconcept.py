@@ -8,7 +8,7 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import datatype, fhirtypes
 
@@ -23,18 +23,19 @@ class CodeableConcept(datatype.DataType):
     ontology or may be provided by text.
     """
 
-    resource_type = Field("CodeableConcept", const=True)
+    __resource_type__ = "CodeableConcept"
 
     coding: typing.List[fhirtypes.CodingType] = Field(
         None,
         alias="coding",
         title="Code defined by a terminology system",
         description="A reference to a code defined by a terminology system.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    text: fhirtypes.String = Field(
+    text: fhirtypes.StringType = Field(
         None,
         alias="text",
         title="Plain text representation of the concept",
@@ -43,8 +44,9 @@ class CodeableConcept(datatype.DataType):
             "seen/selected/uttered by the user who entered the data and/or which "
             "represents the intended meaning of the user."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     text__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_text", title="Extension field for ``text``."

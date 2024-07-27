@@ -8,7 +8,7 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import fhirtypes, resource
 
@@ -22,7 +22,7 @@ class DomainResource(resource.Resource):
     A resource that includes narrative, extensions, and contained resources.
     """
 
-    resource_type = Field("DomainResource", const=True)
+    __resource_type__ = "DomainResource"
 
     contained: typing.List[fhirtypes.ResourceType] = Field(
         None,
@@ -35,8 +35,9 @@ class DomainResource(resource.Resource):
             "allowed to be a Parameters resource if and only if it is referenced by"
             " a resource that provides context/meaning."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     extension: typing.List[fhirtypes.ExtensionType] = Field(
@@ -51,8 +52,9 @@ class DomainResource(resource.Resource):
             "an extension, there is a set of requirements that SHALL be met as part"
             " of the definition of the extension."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     modifierExtension: typing.List[fhirtypes.ExtensionType] = Field(
@@ -74,8 +76,9 @@ class DomainResource(resource.Resource):
             " DomainResource (including cannot change the meaning of "
             "modifierExtension itself)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     text: fhirtypes.NarrativeType = Field(
@@ -90,8 +93,9 @@ class DomainResource(resource.Resource):
             "just read the narrative. Resource definitions may define what content "
             "should be represented in the narrative to ensure clinical safety."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

@@ -6,7 +6,7 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import datatype, fhirtypes
 
@@ -20,15 +20,16 @@ class Range(datatype.DataType):
     A set of ordered Quantities defined by a low and high limit.
     """
 
-    resource_type = Field("Range", const=True)
+    __resource_type__ = "Range"
 
     high: fhirtypes.QuantityType = Field(
         None,
         alias="high",
         title="High limit",
         description="The high limit. The boundary is inclusive.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     low: fhirtypes.QuantityType = Field(
@@ -36,8 +37,9 @@ class Range(datatype.DataType):
         alias="low",
         title="Low limit",
         description="The low limit. The boundary is inclusive.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

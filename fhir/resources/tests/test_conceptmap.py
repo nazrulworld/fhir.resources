@@ -6,10 +6,10 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
+from pathlib import Path
 
-from .. import fhirtypes  # noqa: F401
 from .. import conceptmap
+from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
 
 def impl_conceptmap_1(inst):
@@ -17,7 +17,12 @@ def impl_conceptmap_1(inst):
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
-    assert inst.date == fhirtypes.DateTime.validate("2023-03-26T15:21:02+11:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel(
+            valueDateTime="2023-03-26T15:21:02+11:00"
+        ).valueDateTime
+    )
     assert inst.description == (
         'Canonical Mapping for "The lifecycle status of an ' 'artifact."'
     )
@@ -41,7 +46,9 @@ def impl_conceptmap_1(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == "http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel(
+            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        ).valueUri
     )
     assert inst.name == "PublicationStatusCanonicalMap"
     assert inst.publisher == "HL7 (FHIR Project)"
@@ -52,7 +59,12 @@ def impl_conceptmap_1(inst):
     assert inst.targetScopeCanonical == "http://hl7.org/fhir/ValueSet/resource-status"
     assert inst.text.status == "extensions"
     assert inst.title == 'Canonical Mapping for "PublicationStatus"'
-    assert inst.url == "http://hl7.org/fhir/ConceptMap/sc-publication-status"
+    assert (
+        inst.url
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/ConceptMap/sc-publication-status"
+        ).valueUri
+    )
     assert inst.version == "5.0.0"
 
 
@@ -63,15 +75,13 @@ def test_conceptmap_1(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "sc-valueset-publication-status.json"
     )
-    inst = conceptmap.ConceptMap.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "ConceptMap" == inst.resource_type
+    inst = conceptmap.ConceptMap.model_validate_json(Path(filename).read_bytes())
+    assert "ConceptMap" == inst.get_resource_type()
 
     impl_conceptmap_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "ConceptMap" == data["resourceType"]
 
     inst2 = conceptmap.ConceptMap(**data)
@@ -83,7 +93,12 @@ def impl_conceptmap_2(inst):
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
-    assert inst.date == fhirtypes.DateTime.validate("2023-03-26T15:21:02+11:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel(
+            valueDateTime="2023-03-26T15:21:02+11:00"
+        ).valueDateTime
+    )
     assert inst.experimental is False
     assert inst.group[0].element[0].code == "home"
     assert inst.group[0].element[0].target[0].code == "H"
@@ -114,7 +129,9 @@ def impl_conceptmap_2(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == "http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel(
+            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        ).valueUri
     )
     assert inst.name == "v3.AddressUse"
     assert inst.publisher == "HL7 (FHIR Project)"
@@ -125,7 +142,12 @@ def impl_conceptmap_2(inst):
     )
     assert inst.text.status == "extensions"
     assert inst.title == "v3 map for AddressUse"
-    assert inst.url == "http://hl7.org/fhir/ConceptMap/cm-address-use-v3"
+    assert (
+        inst.url
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/ConceptMap/cm-address-use-v3"
+        ).valueUri
+    )
     assert inst.version == "5.0.0"
 
 
@@ -134,15 +156,13 @@ def test_conceptmap_2(base_settings):
     Test File: cm-address-use-v3.json
     """
     filename = base_settings["unittest_data_dir"] / "cm-address-use-v3.json"
-    inst = conceptmap.ConceptMap.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "ConceptMap" == inst.resource_type
+    inst = conceptmap.ConceptMap.model_validate_json(Path(filename).read_bytes())
+    assert "ConceptMap" == inst.get_resource_type()
 
     impl_conceptmap_2(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "ConceptMap" == data["resourceType"]
 
     inst2 = conceptmap.ConceptMap(**data)
@@ -175,7 +195,9 @@ def impl_conceptmap_3(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == "http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel(
+            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        ).valueUri
     )
     assert inst.name == "FinancialResourceStatusCodesCanonicalMap"
     assert inst.publisher == "Financial Management"
@@ -184,7 +206,12 @@ def impl_conceptmap_3(inst):
     assert inst.targetScopeCanonical == "http://hl7.org/fhir/ValueSet/resource-status"
     assert inst.text.status == "extensions"
     assert inst.title == 'Canonical Mapping for "Financial Resource Status Codes"'
-    assert inst.url == "http://hl7.org/fhir/ConceptMap/sc-fm-status"
+    assert (
+        inst.url
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/ConceptMap/sc-fm-status"
+        ).valueUri
+    )
     assert inst.version == "5.0.0"
 
 
@@ -193,15 +220,13 @@ def test_conceptmap_3(base_settings):
     Test File: sc-valueset-fm-status.json
     """
     filename = base_settings["unittest_data_dir"] / "sc-valueset-fm-status.json"
-    inst = conceptmap.ConceptMap.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "ConceptMap" == inst.resource_type
+    inst = conceptmap.ConceptMap.model_validate_json(Path(filename).read_bytes())
+    assert "ConceptMap" == inst.get_resource_type()
 
     impl_conceptmap_3(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "ConceptMap" == data["resourceType"]
 
     inst2 = conceptmap.ConceptMap(**data)
@@ -229,7 +254,9 @@ def impl_conceptmap_4(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == "http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel(
+            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        ).valueUri
     )
     assert inst.name == "FormularyItemStatusCodesCanonicalMap"
     assert inst.publisher == "FHIR Project team"
@@ -240,7 +267,12 @@ def impl_conceptmap_4(inst):
     assert inst.targetScopeCanonical == "http://hl7.org/fhir/ValueSet/resource-status"
     assert inst.text.status == "extensions"
     assert inst.title == 'Canonical Mapping for "FormularyItem Status Codes"'
-    assert inst.url == "http://hl7.org/fhir/ConceptMap/sc-formularyitem-status"
+    assert (
+        inst.url
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/ConceptMap/sc-formularyitem-status"
+        ).valueUri
+    )
     assert inst.version == "5.0.0"
 
 
@@ -251,15 +283,13 @@ def test_conceptmap_4(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "sc-valueset-formularyitem-status.json"
     )
-    inst = conceptmap.ConceptMap.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "ConceptMap" == inst.resource_type
+    inst = conceptmap.ConceptMap.model_validate_json(Path(filename).read_bytes())
+    assert "ConceptMap" == inst.get_resource_type()
 
     impl_conceptmap_4(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "ConceptMap" == data["resourceType"]
 
     inst2 = conceptmap.ConceptMap(**data)
@@ -267,7 +297,12 @@ def test_conceptmap_4(base_settings):
 
 
 def impl_conceptmap_5(inst):
-    assert inst.date == fhirtypes.DateTime.validate("2020-12-24T21:13:15+00:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel(
+            valueDateTime="2020-12-24T21:13:15+00:00"
+        ).valueDateTime
+    )
     assert inst.description == "v3 map for CompositionStatus"
     assert inst.experimental is False
     assert inst.group[0].element[0].code == "preliminary"
@@ -291,13 +326,18 @@ def impl_conceptmap_5(inst):
     assert inst.group[0].source == "http://hl7.org/fhir/composition-status"
     assert inst.group[0].target == "http://terminology.hl7.org/CodeSystem/v3-ActStatus"
     assert inst.id == "cm-composition-status-v3"
-    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+    )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.14.9"
     assert inst.jurisdiction[0].coding[0].code == "001"
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == "http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel(
+            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        ).valueUri
     )
     assert (
         inst.meta.profile[0]
@@ -308,7 +348,12 @@ def impl_conceptmap_5(inst):
     assert inst.status == "draft"
     assert inst.text.status == "extensions"
     assert inst.title == "v3 map for CompositionStatus"
-    assert inst.url == "http://hl7.org/fhir/ConceptMap/cm-composition-status-v3"
+    assert (
+        inst.url
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/ConceptMap/cm-composition-status-v3"
+        ).valueUri
+    )
     assert inst.version == "5.0.0"
 
 
@@ -317,15 +362,13 @@ def test_conceptmap_5(base_settings):
     Test File: cm-composition-status-v3.json
     """
     filename = base_settings["unittest_data_dir"] / "cm-composition-status-v3.json"
-    inst = conceptmap.ConceptMap.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "ConceptMap" == inst.resource_type
+    inst = conceptmap.ConceptMap.model_validate_json(Path(filename).read_bytes())
+    assert "ConceptMap" == inst.get_resource_type()
 
     impl_conceptmap_5(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "ConceptMap" == data["resourceType"]
 
     inst2 = conceptmap.ConceptMap(**data)
@@ -337,7 +380,12 @@ def impl_conceptmap_6(inst):
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
-    assert inst.date == fhirtypes.DateTime.validate("2020-12-28T16:55:11+11:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel(
+            valueDateTime="2020-12-28T16:55:11+11:00"
+        ).valueDateTime
+    )
     assert inst.description == (
         'Canonical Mapping for "Indicates whether this flag is '
         "active and needs to be displayed to a user, or whether it is"
@@ -360,7 +408,9 @@ def impl_conceptmap_6(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == "http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel(
+            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        ).valueUri
     )
     assert inst.name == "FlagStatusCanonicalMap"
     assert inst.publisher == "HL7 (FHIR Project)"
@@ -369,7 +419,12 @@ def impl_conceptmap_6(inst):
     assert inst.targetScopeCanonical == "http://hl7.org/fhir/ValueSet/resource-status"
     assert inst.text.status == "extensions"
     assert inst.title == 'Canonical Mapping for "Flag Status"'
-    assert inst.url == "http://hl7.org/fhir/ConceptMap/sc-flag-status"
+    assert (
+        inst.url
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/ConceptMap/sc-flag-status"
+        ).valueUri
+    )
     assert inst.version == "5.0.0"
 
 
@@ -378,15 +433,13 @@ def test_conceptmap_6(base_settings):
     Test File: sc-valueset-flag-status.json
     """
     filename = base_settings["unittest_data_dir"] / "sc-valueset-flag-status.json"
-    inst = conceptmap.ConceptMap.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "ConceptMap" == inst.resource_type
+    inst = conceptmap.ConceptMap.model_validate_json(Path(filename).read_bytes())
+    assert "ConceptMap" == inst.get_resource_type()
 
     impl_conceptmap_6(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "ConceptMap" == data["resourceType"]
 
     inst2 = conceptmap.ConceptMap(**data)
@@ -398,7 +451,12 @@ def impl_conceptmap_7(inst):
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
-    assert inst.date == fhirtypes.DateTime.validate("2020-12-28T16:55:11+11:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel(
+            valueDateTime="2020-12-28T16:55:11+11:00"
+        ).valueDateTime
+    )
     assert (
         inst.description == 'Canonical Mapping for "The status of the Device record."'
     )
@@ -419,7 +477,9 @@ def impl_conceptmap_7(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == "http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel(
+            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        ).valueUri
     )
     assert inst.name == "FHIRDeviceStatusCanonicalMap"
     assert inst.publisher == "HL7 (FHIR Project)"
@@ -428,7 +488,12 @@ def impl_conceptmap_7(inst):
     assert inst.targetScopeCanonical == "http://hl7.org/fhir/ValueSet/resource-status"
     assert inst.text.status == "extensions"
     assert inst.title == 'Canonical Mapping for "FHIR Device Status"'
-    assert inst.url == "http://hl7.org/fhir/ConceptMap/sc-device-status"
+    assert (
+        inst.url
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/ConceptMap/sc-device-status"
+        ).valueUri
+    )
     assert inst.version == "5.0.0"
 
 
@@ -437,15 +502,13 @@ def test_conceptmap_7(base_settings):
     Test File: sc-valueset-device-status.json
     """
     filename = base_settings["unittest_data_dir"] / "sc-valueset-device-status.json"
-    inst = conceptmap.ConceptMap.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "ConceptMap" == inst.resource_type
+    inst = conceptmap.ConceptMap.model_validate_json(Path(filename).read_bytes())
+    assert "ConceptMap" == inst.get_resource_type()
 
     impl_conceptmap_7(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "ConceptMap" == data["resourceType"]
 
     inst2 = conceptmap.ConceptMap(**data)
@@ -457,7 +520,12 @@ def impl_conceptmap_8(inst):
     assert inst.contact[0].telecom[0].value == "http://hl7.org/fhir"
     assert inst.contact[0].telecom[1].system == "email"
     assert inst.contact[0].telecom[1].value == "fhir@lists.hl7.org"
-    assert inst.date == fhirtypes.DateTime.validate("2023-03-26T15:21:02+11:00")
+    assert (
+        inst.date
+        == ExternalValidatorModel(
+            valueDateTime="2023-03-26T15:21:02+11:00"
+        ).valueDateTime
+    )
     assert inst.experimental is False
     assert inst.group[0].element[0].code == "home"
     assert inst.group[0].element[0].target[0].code == "PRN"
@@ -500,7 +568,9 @@ def impl_conceptmap_8(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == "http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel(
+            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        ).valueUri
     )
     assert inst.name == "v2.ContactPointUse"
     assert inst.publisher == "HL7 (FHIR Project)"
@@ -509,7 +579,12 @@ def impl_conceptmap_8(inst):
     assert inst.targetScopeCanonical == "http://terminology.hl7.org/ValueSet/v2-0201"
     assert inst.text.status == "extensions"
     assert inst.title == "v2 map for ContactPointUse"
-    assert inst.url == "http://hl7.org/fhir/ConceptMap/cm-contact-point-use-v2"
+    assert (
+        inst.url
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/ConceptMap/cm-contact-point-use-v2"
+        ).valueUri
+    )
     assert inst.version == "5.0.0"
 
 
@@ -518,15 +593,13 @@ def test_conceptmap_8(base_settings):
     Test File: cm-contact-point-use-v2.json
     """
     filename = base_settings["unittest_data_dir"] / "cm-contact-point-use-v2.json"
-    inst = conceptmap.ConceptMap.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "ConceptMap" == inst.resource_type
+    inst = conceptmap.ConceptMap.model_validate_json(Path(filename).read_bytes())
+    assert "ConceptMap" == inst.get_resource_type()
 
     impl_conceptmap_8(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "ConceptMap" == data["resourceType"]
 
     inst2 = conceptmap.ConceptMap(**data)
@@ -559,7 +632,9 @@ def impl_conceptmap_9(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == "http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel(
+            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        ).valueUri
     )
     assert inst.name == "AllergyIntoleranceClinicalStatusCodesCanonicalMap"
     assert inst.publisher == "FHIR Project team"
@@ -573,8 +648,11 @@ def impl_conceptmap_9(inst):
     assert inst.title == (
         'Canonical Mapping for "AllergyIntolerance Clinical Status ' 'Codes"'
     )
-    assert inst.url == (
-        "http://hl7.org/fhir/ConceptMap/sc-allergyintolerance-" "clinical"
+    assert (
+        inst.url
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/ConceptMap/sc-allergyintolerance-clinical"
+        ).valueUri
     )
     assert inst.version == "5.0.0"
 
@@ -587,15 +665,13 @@ def test_conceptmap_9(base_settings):
         base_settings["unittest_data_dir"]
         / "sc-valueset-allergyintolerance-clinical.json"
     )
-    inst = conceptmap.ConceptMap.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "ConceptMap" == inst.resource_type
+    inst = conceptmap.ConceptMap.model_validate_json(Path(filename).read_bytes())
+    assert "ConceptMap" == inst.get_resource_type()
 
     impl_conceptmap_9(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "ConceptMap" == data["resourceType"]
 
     inst2 = conceptmap.ConceptMap(**data)
@@ -623,7 +699,9 @@ def impl_conceptmap_10(inst):
     assert inst.jurisdiction[0].coding[0].display == "World"
     assert (
         inst.jurisdiction[0].coding[0].system
-        == "http://unstats.un.org/unsd/methods/m49/m49.htm"
+        == ExternalValidatorModel(
+            valueUri="http://unstats.un.org/unsd/methods/m49/m49.htm"
+        ).valueUri
     )
     assert inst.name == "MedicationStatusCodesCanonicalMap"
     assert inst.publisher == "FHIR Project team"
@@ -632,7 +710,12 @@ def impl_conceptmap_10(inst):
     assert inst.targetScopeCanonical == "http://hl7.org/fhir/ValueSet/resource-status"
     assert inst.text.status == "extensions"
     assert inst.title == 'Canonical Mapping for "Medication Status Codes"'
-    assert inst.url == "http://hl7.org/fhir/ConceptMap/sc-medication-status"
+    assert (
+        inst.url
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/ConceptMap/sc-medication-status"
+        ).valueUri
+    )
     assert inst.version == "5.0.0"
 
 
@@ -641,15 +724,13 @@ def test_conceptmap_10(base_settings):
     Test File: sc-valueset-medication-status.json
     """
     filename = base_settings["unittest_data_dir"] / "sc-valueset-medication-status.json"
-    inst = conceptmap.ConceptMap.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "ConceptMap" == inst.resource_type
+    inst = conceptmap.ConceptMap.model_validate_json(Path(filename).read_bytes())
+    assert "ConceptMap" == inst.get_resource_type()
 
     impl_conceptmap_10(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "ConceptMap" == data["resourceType"]
 
     inst2 = conceptmap.ConceptMap(**data)

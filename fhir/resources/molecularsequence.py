@@ -8,9 +8,9 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
+from pydantic import Field
 
-from . import backboneelement, domainresource, fhirtypes
+from . import domainresource, fhirtypes
 
 
 class MolecularSequence(domainresource.DomainResource):
@@ -21,17 +21,18 @@ class MolecularSequence(domainresource.DomainResource):
     Representation of a molecular sequence.
     """
 
-    resource_type = Field("MolecularSequence", const=True)
+    __resource_type__ = "MolecularSequence"
 
     device: fhirtypes.ReferenceType = Field(
         None,
         alias="device",
         title="The method for sequencing",
         description="The method for sequencing, for example, chip information.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Device"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Device"],
+        },
     )
 
     focus: typing.List[fhirtypes.ReferenceType] = Field(
@@ -48,10 +49,11 @@ class MolecularSequence(domainresource.DomainResource):
             "testing, the subject would be the child (proband) and the focus would "
             "be the parent."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Resource"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Resource"],
+        },
     )
 
     formatted: typing.List[fhirtypes.AttachmentType] = Field(
@@ -65,8 +67,9 @@ class MolecularSequence(domainresource.DomainResource):
             "Sequence that was observed as file content. Can be an actual file "
             "contents, or referenced by a URL to an external system."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -74,17 +77,19 @@ class MolecularSequence(domainresource.DomainResource):
         alias="identifier",
         title="Unique ID for this particular sequence",
         description="A unique identifier for this particular sequence instance.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    literal: fhirtypes.String = Field(
+    literal: fhirtypes.StringType = Field(
         None,
         alias="literal",
         title="Sequence that was observed",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     literal__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_literal", title="Extension field for ``literal``."
@@ -95,10 +100,11 @@ class MolecularSequence(domainresource.DomainResource):
         alias="performer",
         title="Who should be responsible for test result",
         description="The organization or lab that should be responsible for this result.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
     relative: typing.List[fhirtypes.MolecularSequenceRelativeType] = Field(
@@ -106,8 +112,9 @@ class MolecularSequence(domainresource.DomainResource):
         alias="relative",
         title="A sequence defined relative to another sequence",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     specimen: fhirtypes.ReferenceType = Field(
@@ -115,10 +122,11 @@ class MolecularSequence(domainresource.DomainResource):
         alias="specimen",
         title="Specimen used for sequencing",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Specimen"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Specimen"],
+        },
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -126,28 +134,30 @@ class MolecularSequence(domainresource.DomainResource):
         alias="subject",
         title="Subject this sequence is associated too",
         description="Indicates the subject this sequence is associated too.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Patient",
-            "Group",
-            "Substance",
-            "BiologicallyDerivedProduct",
-            "NutritionProduct",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Patient",
+                "Group",
+                "Substance",
+                "BiologicallyDerivedProduct",
+                "NutritionProduct",
+            ],
+        },
     )
 
-    type: fhirtypes.Code = Field(
+    type: fhirtypes.CodeType = Field(
         None,
         alias="type",
         title="aa | dna | rna",
         description="Amino Acid Sequence/ DNA Sequence / RNA Sequence.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["aa", "dna", "rna"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["aa", "dna", "rna"],
+        },
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -181,6 +191,9 @@ class MolecularSequence(domainresource.DomainResource):
         ]
 
 
+from . import backboneelement
+
+
 class MolecularSequenceRelative(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -189,7 +202,7 @@ class MolecularSequenceRelative(backboneelement.BackboneElement):
     A sequence defined relative to another sequence.
     """
 
-    resource_type = Field("MolecularSequenceRelative", const=True)
+    __resource_type__ = "MolecularSequenceRelative"
 
     coordinateSystem: fhirtypes.CodeableConceptType = Field(
         ...,
@@ -201,8 +214,9 @@ class MolecularSequenceRelative(backboneelement.BackboneElement):
             "different systems. For detail definitions, see "
             "https://loinc.org/92822-6/ for more detail."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     edit: typing.List[fhirtypes.MolecularSequenceRelativeEditType] = Field(
@@ -210,11 +224,12 @@ class MolecularSequenceRelative(backboneelement.BackboneElement):
         alias="edit",
         title="Changes in sequence from the starting sequence",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    ordinalPosition: fhirtypes.Integer = Field(
+    ordinalPosition: fhirtypes.IntegerType = Field(
         None,
         alias="ordinalPosition",
         title=(
@@ -222,8 +237,9 @@ class MolecularSequenceRelative(backboneelement.BackboneElement):
             "putting multiple 'relative' elements together"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     ordinalPosition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_ordinalPosition", title="Extension field for ``ordinalPosition``."
@@ -237,8 +253,9 @@ class MolecularSequenceRelative(backboneelement.BackboneElement):
             "'relative' elements are used together"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     startingSequence: fhirtypes.MolecularSequenceRelativeStartingSequenceType = Field(
@@ -249,8 +266,9 @@ class MolecularSequenceRelative(backboneelement.BackboneElement):
             "A sequence that is used as a starting sequence to describe variants "
             "that are present in a sequence analyzed."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -279,9 +297,9 @@ class MolecularSequenceRelativeEdit(backboneelement.BackboneElement):
     Changes in sequence from the starting sequence.
     """
 
-    resource_type = Field("MolecularSequenceRelativeEdit", const=True)
+    __resource_type__ = "MolecularSequenceRelativeEdit"
 
-    end: fhirtypes.Integer = Field(
+    end: fhirtypes.IntegerType = Field(
         None,
         alias="end",
         title="End position of the edit on the starting sequence",
@@ -291,14 +309,15 @@ class MolecularSequenceRelativeEdit(backboneelement.BackboneElement):
             "position. If the coordinate system is 1-base, then end is inclusive "
             "and includes the last position."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     end__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_end", title="Extension field for ``end``."
     )
 
-    replacedSequence: fhirtypes.String = Field(
+    replacedSequence: fhirtypes.StringType = Field(
         None,
         alias="replacedSequence",
         title="Allele in the starting sequence",
@@ -309,8 +328,9 @@ class MolecularSequenceRelativeEdit(backboneelement.BackboneElement):
             "should be the sequence on the positive (+) strand. This will lay in "
             "the range between variant.start and variant.end."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     replacedSequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -318,7 +338,7 @@ class MolecularSequenceRelativeEdit(backboneelement.BackboneElement):
         title="Extension field for ``replacedSequence``.",
     )
 
-    replacementSequence: fhirtypes.String = Field(
+    replacementSequence: fhirtypes.StringType = Field(
         None,
         alias="replacementSequence",
         title="Allele that was observed",
@@ -329,8 +349,9 @@ class MolecularSequenceRelativeEdit(backboneelement.BackboneElement):
             "should be the sequence on the positive (+) strand. This will lay in "
             "the range between variant.start and variant.end."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     replacementSequence__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -338,7 +359,7 @@ class MolecularSequenceRelativeEdit(backboneelement.BackboneElement):
         title="Extension field for ``replacementSequence``.",
     )
 
-    start: fhirtypes.Integer = Field(
+    start: fhirtypes.IntegerType = Field(
         None,
         alias="start",
         title="Start position of the edit on the starting sequence",
@@ -347,8 +368,9 @@ class MolecularSequenceRelativeEdit(backboneelement.BackboneElement):
             " system is either 0-based or 1-based, then start position is "
             "inclusive."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     start__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_start", title="Extension field for ``start``."
@@ -381,7 +403,7 @@ class MolecularSequenceRelativeStartingSequence(backboneelement.BackboneElement)
     are present in a sequence analyzed.
     """
 
-    resource_type = Field("MolecularSequenceRelativeStartingSequence", const=True)
+    __resource_type__ = "MolecularSequenceRelativeStartingSequence"
 
     chromosome: fhirtypes.CodeableConceptType = Field(
         None,
@@ -393,8 +415,9 @@ class MolecularSequenceRelativeStartingSequence(backboneelement.BackboneElement)
             "or more origins of replication ([SO:0000340](http://www.sequenceontolo"
             "gy.org/browser/current_svn/term/SO:0000340))."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     genomeAssembly: fhirtypes.CodeableConceptType = Field(
@@ -402,11 +425,12 @@ class MolecularSequenceRelativeStartingSequence(backboneelement.BackboneElement)
         alias="genomeAssembly",
         title="The genome assembly used for starting sequence, e.g. GRCh38",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    orientation: fhirtypes.Code = Field(
+    orientation: fhirtypes.CodeType = Field(
         None,
         alias="orientation",
         title="sense | antisense",
@@ -416,11 +440,12 @@ class MolecularSequenceRelativeStartingSequence(backboneelement.BackboneElement)
             ' strand, and the opposite complementary strand is the "antisense" '
             "strand."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["sense", "antisense"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["sense", "antisense"],
+        },
     )
     orientation__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_orientation", title="Extension field for ``orientation``."
@@ -431,11 +456,12 @@ class MolecularSequenceRelativeStartingSequence(backboneelement.BackboneElement)
         alias="sequenceCodeableConcept",
         title="The reference sequence that represents the starting sequence",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e sequence[x]
-        one_of_many="sequence",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e sequence[x]
+            "one_of_many": "sequence",
+            "one_of_many_required": False,
+        },
     )
 
     sequenceReference: fhirtypes.ReferenceType = Field(
@@ -443,31 +469,33 @@ class MolecularSequenceRelativeStartingSequence(backboneelement.BackboneElement)
         alias="sequenceReference",
         title="The reference sequence that represents the starting sequence",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e sequence[x]
-        one_of_many="sequence",
-        one_of_many_required=False,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["MolecularSequence"],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e sequence[x]
+            "one_of_many": "sequence",
+            "one_of_many_required": False,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["MolecularSequence"],
+        },
     )
 
-    sequenceString: fhirtypes.String = Field(
+    sequenceString: fhirtypes.StringType = Field(
         None,
         alias="sequenceString",
         title="The reference sequence that represents the starting sequence",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e sequence[x]
-        one_of_many="sequence",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e sequence[x]
+            "one_of_many": "sequence",
+            "one_of_many_required": False,
+        },
     )
     sequenceString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_sequenceString", title="Extension field for ``sequenceString``."
     )
 
-    strand: fhirtypes.Code = Field(
+    strand: fhirtypes.CodeType = Field(
         None,
         alias="strand",
         title="watson | crick",
@@ -476,17 +504,18 @@ class MolecularSequenceRelativeStartingSequence(backboneelement.BackboneElement)
             "whose 5'-end is on the short arm of the chromosome, and the Crick "
             "strand as the one whose 5'-end is on the long arm."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["watson", "crick"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["watson", "crick"],
+        },
     )
     strand__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_strand", title="Extension field for ``strand``."
     )
 
-    windowEnd: fhirtypes.Integer = Field(
+    windowEnd: fhirtypes.IntegerType = Field(
         None,
         alias="windowEnd",
         title="End position of the window on the starting sequence",
@@ -494,14 +523,15 @@ class MolecularSequenceRelativeStartingSequence(backboneelement.BackboneElement)
             "End position of the window on the starting sequence. This value should"
             " honor the rules of the  coordinateSystem."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     windowEnd__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_windowEnd", title="Extension field for ``windowEnd``."
     )
 
-    windowStart: fhirtypes.Integer = Field(
+    windowStart: fhirtypes.IntegerType = Field(
         None,
         alias="windowStart",
         title="Start position of the window on the starting sequence",
@@ -509,8 +539,9 @@ class MolecularSequenceRelativeStartingSequence(backboneelement.BackboneElement)
             "Start position of the window on the starting sequence. This value "
             "should honor the rules of the coordinateSystem."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     windowStart__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_windowStart", title="Extension field for ``windowStart``."
@@ -537,10 +568,7 @@ class MolecularSequenceRelativeStartingSequence(backboneelement.BackboneElement)
             "strand",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_4432(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -560,23 +588,4 @@ class MolecularSequenceRelativeStartingSequence(backboneelement.BackboneElement)
                 "sequenceString",
             ]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields

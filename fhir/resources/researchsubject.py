@@ -8,11 +8,9 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
-from . import backboneelement, domainresource, fhirtypes
+from . import domainresource, fhirtypes
 
 
 class ResearchSubject(domainresource.DomainResource):
@@ -26,9 +24,9 @@ class ResearchSubject(domainresource.DomainResource):
     investigative activities in a research study.
     """
 
-    resource_type = Field("ResearchSubject", const=True)
+    __resource_type__ = "ResearchSubject"
 
-    actualComparisonGroup: fhirtypes.Id = Field(
+    actualComparisonGroup: fhirtypes.IdType = Field(
         None,
         alias="actualComparisonGroup",
         title="What path was followed",
@@ -36,8 +34,9 @@ class ResearchSubject(domainresource.DomainResource):
             "The name of the arm in the study the subject actually followed as part"
             " of this study."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     actualComparisonGroup__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -45,7 +44,7 @@ class ResearchSubject(domainresource.DomainResource):
         title="Extension field for ``actualComparisonGroup``.",
     )
 
-    assignedComparisonGroup: fhirtypes.Id = Field(
+    assignedComparisonGroup: fhirtypes.IdType = Field(
         None,
         alias="assignedComparisonGroup",
         title="What path should be followed",
@@ -53,8 +52,9 @@ class ResearchSubject(domainresource.DomainResource):
             "The name of the arm in the study the subject is expected to follow as "
             "part of this study."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     assignedComparisonGroup__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -70,10 +70,11 @@ class ResearchSubject(domainresource.DomainResource):
             "A record of the patient's informed agreement to participate in the "
             "study."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Consent"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Consent"],
+        },
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -81,8 +82,9 @@ class ResearchSubject(domainresource.DomainResource):
         alias="identifier",
         title="Business Identifier for research subject in a study",
         description="Identifiers assigned to this research subject for a study.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -92,8 +94,9 @@ class ResearchSubject(domainresource.DomainResource):
         description=(
             "The dates the subject began and ended their participation in the " "study."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     progress: typing.List[fhirtypes.ResearchSubjectProgressType] = Field(
@@ -104,21 +107,23 @@ class ResearchSubject(domainresource.DomainResource):
             "The current state (status) of the subject and resons for status change"
             " where appropriate."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(
         None,
         alias="status",
         title="draft | active | retired | unknown",
         description="The publication state of the resource (not of the subject).",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["draft", "active", "retired", "unknown"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["draft", "active", "retired", "unknown"],
+        },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -129,10 +134,11 @@ class ResearchSubject(domainresource.DomainResource):
         alias="study",
         title="Study subject is part of",
         description="Reference to the study the subject is participating in.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ResearchStudy"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ResearchStudy"],
+        },
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -142,18 +148,19 @@ class ResearchSubject(domainresource.DomainResource):
         description=(
             "The record of the person, animal or other entity involved in the " "study."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Patient",
-            "Group",
-            "Specimen",
-            "Device",
-            "Medication",
-            "Substance",
-            "BiologicallyDerivedProduct",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Patient",
+                "Group",
+                "Specimen",
+                "Device",
+                "Medication",
+                "Substance",
+                "BiologicallyDerivedProduct",
+            ],
+        },
     )
 
     @classmethod
@@ -182,10 +189,7 @@ class ResearchSubject(domainresource.DomainResource):
             "consent",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1731(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -194,52 +198,10 @@ class ResearchSubject(domainresource.DomainResource):
         the primitive value is not present.
         """
         required_fields = [("status", "status__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
 
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+from . import backboneelement
 
 
 class ResearchSubjectProgress(backboneelement.BackboneElement):
@@ -252,15 +214,16 @@ class ResearchSubjectProgress(backboneelement.BackboneElement):
     where appropriate.
     """
 
-    resource_type = Field("ResearchSubjectProgress", const=True)
+    __resource_type__ = "ResearchSubjectProgress"
 
-    endDate: fhirtypes.DateTime = Field(
+    endDate: fhirtypes.DateTimeType = Field(
         None,
         alias="endDate",
         title="State change date",
         description="The date when the state ended.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     endDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_endDate", title="Extension field for ``endDate``."
@@ -271,8 +234,9 @@ class ResearchSubjectProgress(backboneelement.BackboneElement):
         alias="milestone",
         title="SignedUp | Screened | Randomized",
         description="The milestones the subject has passed through.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     reason: fhirtypes.CodeableConceptType = Field(
@@ -283,17 +247,19 @@ class ResearchSubjectProgress(backboneelement.BackboneElement):
             "The reason for the state change.  If coded it should follow the formal"
             " subject state model."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    startDate: fhirtypes.DateTime = Field(
+    startDate: fhirtypes.DateTimeType = Field(
         None,
         alias="startDate",
         title="State change date",
         description="The date when the new status started.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     startDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_startDate", title="Extension field for ``startDate``."
@@ -308,8 +274,9 @@ class ResearchSubjectProgress(backboneelement.BackboneElement):
             "pending-on-study | potential-candidate | screening | withdrawn"
         ),
         description="The current state of the subject.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     type: fhirtypes.CodeableConceptType = Field(
@@ -320,8 +287,9 @@ class ResearchSubjectProgress(backboneelement.BackboneElement):
             "Identifies the aspect of the subject's journey that the state refers "
             "to."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

@@ -6,10 +6,10 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
+from pathlib import Path
 
-from .. import fhirtypes  # noqa: F401
 from .. import careplan
+from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
 
 def impl_careplan_1(inst):
@@ -24,7 +24,9 @@ def impl_careplan_1(inst):
     assert inst.id == "f002"
     assert (
         inst.identifier[0].system
-        == "http://www.bmc.nl/zorgportal/identifiers/careplans"
+        == ExternalValidatorModel(
+            valueUri="http://www.bmc.nl/zorgportal/identifiers/careplans"
+        ).valueUri
     )
     assert inst.identifier[0].use == "official"
     assert inst.identifier[0].value == "CP2934"
@@ -32,10 +34,19 @@ def impl_careplan_1(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
-    assert inst.period.end == fhirtypes.DateTime.validate("2013-07-07")
-    assert inst.period.start == fhirtypes.DateTime.validate("2011-07-06")
+    assert (
+        inst.period.end
+        == ExternalValidatorModel(valueDateTime="2013-07-07").valueDateTime
+    )
+    assert (
+        inst.period.start
+        == ExternalValidatorModel(valueDateTime="2011-07-06").valueDateTime
+    )
     assert inst.status == "completed"
     assert inst.subject.display == "P. van de Heuvel"
     assert inst.subject.reference == "Patient/f001"
@@ -47,15 +58,13 @@ def test_careplan_1(base_settings):
     Test File: careplan-example-f002-lung.json
     """
     filename = base_settings["unittest_data_dir"] / "careplan-example-f002-lung.json"
-    inst = careplan.CarePlan.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "CarePlan" == inst.resource_type
+    inst = careplan.CarePlan.model_validate_json(Path(filename).read_bytes())
+    assert "CarePlan" == inst.get_resource_type()
 
     impl_careplan_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CarePlan" == data["resourceType"]
 
     inst2 = careplan.CarePlan(**data)
@@ -82,7 +91,10 @@ def impl_careplan_2(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.status == "active"
     assert inst.subject.display == "Roel"
@@ -97,15 +109,13 @@ def test_careplan_2(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "careplan-example-f202-malignancy.json"
     )
-    inst = careplan.CarePlan.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "CarePlan" == inst.resource_type
+    inst = careplan.CarePlan.model_validate_json(Path(filename).read_bytes())
+    assert "CarePlan" == inst.get_resource_type()
 
     impl_careplan_2(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CarePlan" == data["resourceType"]
 
     inst2 = careplan.CarePlan(**data)
@@ -118,7 +128,10 @@ def impl_careplan_3(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.status == "active"
     assert inst.subject.display == "Peter James Chalmers"
@@ -133,15 +146,13 @@ def test_careplan_3(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "careplan-example-obesity-narrative.json"
     )
-    inst = careplan.CarePlan.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "CarePlan" == inst.resource_type
+    inst = careplan.CarePlan.model_validate_json(Path(filename).read_bytes())
+    assert "CarePlan" == inst.get_resource_type()
 
     impl_careplan_3(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CarePlan" == data["resourceType"]
 
     inst2 = careplan.CarePlan(**data)
@@ -156,7 +167,7 @@ def impl_careplan_4(inst):
     )
     assert (
         inst.activity[0].performedActivity[0].concept.coding[0].system
-        == "http://snomed.info/sct"
+        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
     )
     assert (
         inst.activity[0].plannedActivityReference.reference
@@ -168,7 +179,9 @@ def impl_careplan_4(inst):
     assert inst.careTeam[0].reference == "CareTeam/example"
     assert inst.category[0].text == "Weight management plan"
     assert inst.contained[0].id == "p1"
-    assert inst.created == fhirtypes.DateTime.validate("2016-01-01")
+    assert (
+        inst.created == ExternalValidatorModel(valueDateTime="2016-01-01").valueDateTime
+    )
     assert inst.custodian.display == "Dr Adam Careful"
     assert inst.custodian.reference == "Practitioner/example"
     assert inst.description == "Manage obesity and weight loss"
@@ -176,15 +189,26 @@ def impl_careplan_4(inst):
     assert inst.goal[0].reference == "Goal/example"
     assert inst.id == "example"
     assert inst.identifier[0].value == "12345"
-    assert inst.instantiatesUri[0] == "http://example.org/protocol-for-obesity"
+    assert (
+        inst.instantiatesUri[0]
+        == ExternalValidatorModel(
+            valueUri="http://example.org/protocol-for-obesity"
+        ).valueUri
+    )
     assert inst.intent == "plan"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.partOf[0].display == "Overall wellness plan"
-    assert inst.period.end == fhirtypes.DateTime.validate("2017-06-01")
+    assert (
+        inst.period.end
+        == ExternalValidatorModel(valueDateTime="2017-06-01").valueDateTime
+    )
     assert inst.replaces[0].display == "Plan from urgent care clinic"
     assert inst.status == "active"
     assert inst.subject.display == "Peter James Chalmers"
@@ -197,15 +221,13 @@ def test_careplan_4(base_settings):
     Test File: careplan-example.json
     """
     filename = base_settings["unittest_data_dir"] / "careplan-example.json"
-    inst = careplan.CarePlan.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "CarePlan" == inst.resource_type
+    inst = careplan.CarePlan.model_validate_json(Path(filename).read_bytes())
+    assert "CarePlan" == inst.get_resource_type()
 
     impl_careplan_4(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CarePlan" == data["resourceType"]
 
     inst2 = careplan.CarePlan(**data)
@@ -230,10 +252,19 @@ def impl_careplan_5(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
-    assert inst.period.end == fhirtypes.DateTime.validate("2013-03-13")
-    assert inst.period.start == fhirtypes.DateTime.validate("2013-03-11")
+    assert (
+        inst.period.end
+        == ExternalValidatorModel(valueDateTime="2013-03-13").valueDateTime
+    )
+    assert (
+        inst.period.start
+        == ExternalValidatorModel(valueDateTime="2013-03-11").valueDateTime
+    )
     assert inst.status == "draft"
     assert inst.subject.display == "Roel"
     assert inst.subject.reference == "Patient/f201"
@@ -245,15 +276,13 @@ def test_careplan_5(base_settings):
     Test File: careplan-example-f201-renal.json
     """
     filename = base_settings["unittest_data_dir"] / "careplan-example-f201-renal.json"
-    inst = careplan.CarePlan.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "CarePlan" == inst.resource_type
+    inst = careplan.CarePlan.model_validate_json(Path(filename).read_bytes())
+    assert "CarePlan" == inst.get_resource_type()
 
     impl_careplan_5(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CarePlan" == data["resourceType"]
 
     inst2 = careplan.CarePlan(**data)
@@ -280,9 +309,17 @@ def impl_careplan_6(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
-    assert inst.period.start == fhirtypes.DateTime.validate("2013-01-01T10:30:00+00:00")
+    assert (
+        inst.period.start
+        == ExternalValidatorModel(
+            valueDateTime="2013-01-01T10:30:00+00:00"
+        ).valueDateTime
+    )
     assert inst.status == "active"
     assert inst.subject.display == "Peter James Chalmers"
     assert inst.subject.reference == "Patient/100"
@@ -294,15 +331,13 @@ def test_careplan_6(base_settings):
     Test File: careplan-example-GPVisit.json
     """
     filename = base_settings["unittest_data_dir"] / "careplan-example-GPVisit.json"
-    inst = careplan.CarePlan.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "CarePlan" == inst.resource_type
+    inst = careplan.CarePlan.model_validate_json(Path(filename).read_bytes())
+    assert "CarePlan" == inst.get_resource_type()
 
     impl_careplan_6(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CarePlan" == data["resourceType"]
 
     inst2 = careplan.CarePlan(**data)
@@ -317,8 +352,9 @@ def impl_careplan_7(inst):
     assert (
         inst.activity[0].progress[0].text == "Eve eats one meal a day with her parents"
     )
-    assert inst.activity[0].progress[0].time == fhirtypes.DateTime.validate(
-        "2012-09-10"
+    assert (
+        inst.activity[0].progress[0].time
+        == ExternalValidatorModel(valueDateTime="2012-09-10").valueDateTime
     )
     assert (
         inst.activity[1].plannedActivityReference.reference
@@ -335,26 +371,30 @@ def impl_careplan_7(inst):
     assert (
         inst.activity[3].progress[0].text == "Eve would like to try for 5 days a week."
     )
-    assert inst.activity[3].progress[0].time == fhirtypes.DateTime.validate(
-        "2012-08-27"
+    assert (
+        inst.activity[3].progress[0].time
+        == ExternalValidatorModel(valueDateTime="2012-08-27").valueDateTime
     )
     assert inst.activity[3].progress[1].text == "Eve is still walking the dogs."
-    assert inst.activity[3].progress[1].time == fhirtypes.DateTime.validate(
-        "2012-09-10"
+    assert (
+        inst.activity[3].progress[1].time
+        == ExternalValidatorModel(valueDateTime="2012-09-10").valueDateTime
     )
     assert (
         inst.activity[4].plannedActivityReference.reference
         == "ServiceRequest/activity-5"
     )
     assert inst.activity[4].progress[0].text == "Eve walked 4 times the last week."
-    assert inst.activity[4].progress[0].time == fhirtypes.DateTime.validate(
-        "2012-08-13"
+    assert (
+        inst.activity[4].progress[0].time
+        == ExternalValidatorModel(valueDateTime="2012-08-13").valueDateTime
     )
     assert inst.activity[4].progress[1].text == (
         "Eve did not walk to her parents the last week, but has plans" " to start again"
     )
-    assert inst.activity[4].progress[1].time == fhirtypes.DateTime.validate(
-        "2012-09-10"
+    assert (
+        inst.activity[4].progress[1].time
+        == ExternalValidatorModel(valueDateTime="2012-09-10").valueDateTime
     )
     assert (
         inst.activity[5].plannedActivityReference.reference
@@ -369,16 +409,18 @@ def impl_careplan_7(inst):
         " and Eve plans to treat the remainder with light treatments."
         "  She plans to start this week."
     )
-    assert inst.activity[6].progress[0].time == fhirtypes.DateTime.validate(
-        "2012-08-13"
+    assert (
+        inst.activity[6].progress[0].time
+        == ExternalValidatorModel(valueDateTime="2012-08-13").valueDateTime
     )
     assert inst.activity[6].progress[1].text == (
         "Since her skin is improved Eve has not been using the light "
         "treatment as often, maybe once a week.  She would like to "
         "increase to 3 times a week again"
     )
-    assert inst.activity[6].progress[1].time == fhirtypes.DateTime.validate(
-        "2012-08-27"
+    assert (
+        inst.activity[6].progress[1].time
+        == ExternalValidatorModel(valueDateTime="2012-08-27").valueDateTime
     )
     assert (
         inst.activity[7].plannedActivityReference.reference
@@ -388,23 +430,26 @@ def impl_careplan_7(inst):
         "Eve created a chart as a reminer to take the medications "
         "that do not fit in her pill box"
     )
-    assert inst.activity[7].progress[0].time == fhirtypes.DateTime.validate(
-        "2012-07-23"
+    assert (
+        inst.activity[7].progress[0].time
+        == ExternalValidatorModel(valueDateTime="2012-07-23").valueDateTime
     )
     assert (
         inst.activity[8].plannedActivityReference.reference
         == "ServiceRequest/activity-9"
     )
     assert inst.activity[8].progress[0].text == "Will be able to esume exercise."
-    assert inst.activity[8].progress[0].time == fhirtypes.DateTime.validate(
-        "2012-07-30"
+    assert (
+        inst.activity[8].progress[0].time
+        == ExternalValidatorModel(valueDateTime="2012-07-30").valueDateTime
     )
     assert (
         inst.activity[8].progress[1].text
         == "Eve prefers to focus on walking at this time"
     )
-    assert inst.activity[8].progress[1].time == fhirtypes.DateTime.validate(
-        "2012-08-13"
+    assert (
+        inst.activity[8].progress[1].time
+        == ExternalValidatorModel(valueDateTime="2012-08-13").valueDateTime
     )
     assert (
         inst.activity[9].plannedActivityReference.reference
@@ -434,7 +479,10 @@ def impl_careplan_7(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.note[0].text == (
         "Patient family is not ready to commit to goal setting at "
@@ -451,15 +499,13 @@ def test_careplan_7(base_settings):
     Test File: careplan-example-integrated.json
     """
     filename = base_settings["unittest_data_dir"] / "careplan-example-integrated.json"
-    inst = careplan.CarePlan.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "CarePlan" == inst.resource_type
+    inst = careplan.CarePlan.model_validate_json(Path(filename).read_bytes())
+    assert "CarePlan" == inst.get_resource_type()
 
     impl_careplan_7(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CarePlan" == data["resourceType"]
 
     inst2 = careplan.CarePlan(**data)
@@ -478,7 +524,9 @@ def impl_careplan_8(inst):
     assert inst.id == "f003"
     assert (
         inst.identifier[0].system
-        == "http://www.bmc.nl/zorgportal/identifiers/careplans"
+        == ExternalValidatorModel(
+            valueUri="http://www.bmc.nl/zorgportal/identifiers/careplans"
+        ).valueUri
     )
     assert inst.identifier[0].use == "official"
     assert inst.identifier[0].value == "CP3953"
@@ -486,10 +534,23 @@ def impl_careplan_8(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
-    assert inst.period.end == fhirtypes.DateTime.validate("2013-03-08T09:30:10+01:00")
-    assert inst.period.start == fhirtypes.DateTime.validate("2013-03-08T09:00:10+01:00")
+    assert (
+        inst.period.end
+        == ExternalValidatorModel(
+            valueDateTime="2013-03-08T09:30:10+01:00"
+        ).valueDateTime
+    )
+    assert (
+        inst.period.start
+        == ExternalValidatorModel(
+            valueDateTime="2013-03-08T09:00:10+01:00"
+        ).valueDateTime
+    )
     assert inst.status == "completed"
     assert inst.subject.display == "P. van de Heuvel"
     assert inst.subject.reference == "Patient/f001"
@@ -501,15 +562,13 @@ def test_careplan_8(base_settings):
     Test File: careplan-example-f003-pharynx.json
     """
     filename = base_settings["unittest_data_dir"] / "careplan-example-f003-pharynx.json"
-    inst = careplan.CarePlan.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "CarePlan" == inst.resource_type
+    inst = careplan.CarePlan.model_validate_json(Path(filename).read_bytes())
+    assert "CarePlan" == inst.get_resource_type()
 
     impl_careplan_8(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CarePlan" == data["resourceType"]
 
     inst2 = careplan.CarePlan(**data)
@@ -528,7 +587,9 @@ def impl_careplan_9(inst):
     assert inst.id == "f001"
     assert (
         inst.identifier[0].system
-        == "http://www.bmc.nl/zorgportal/identifiers/careplans"
+        == ExternalValidatorModel(
+            valueUri="http://www.bmc.nl/zorgportal/identifiers/careplans"
+        ).valueUri
     )
     assert inst.identifier[0].use == "official"
     assert inst.identifier[0].value == "CP2903"
@@ -536,10 +597,19 @@ def impl_careplan_9(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
-    assert inst.period.end == fhirtypes.DateTime.validate("2011-06-27")
-    assert inst.period.start == fhirtypes.DateTime.validate("2011-06-26")
+    assert (
+        inst.period.end
+        == ExternalValidatorModel(valueDateTime="2011-06-27").valueDateTime
+    )
+    assert (
+        inst.period.start
+        == ExternalValidatorModel(valueDateTime="2011-06-26").valueDateTime
+    )
     assert inst.status == "completed"
     assert inst.subject.display == "P. van de Heuvel"
     assert inst.subject.reference == "Patient/f001"
@@ -551,15 +621,13 @@ def test_careplan_9(base_settings):
     Test File: careplan-example-f001-heart.json
     """
     filename = base_settings["unittest_data_dir"] / "careplan-example-f001-heart.json"
-    inst = careplan.CarePlan.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "CarePlan" == inst.resource_type
+    inst = careplan.CarePlan.model_validate_json(Path(filename).read_bytes())
+    assert "CarePlan" == inst.get_resource_type()
 
     impl_careplan_9(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CarePlan" == data["resourceType"]
 
     inst2 = careplan.CarePlan(**data)
@@ -571,12 +639,17 @@ def impl_careplan_10(inst):
         inst.activity[0].plannedActivityReference.display
         == "Prenatal vitamin MedicationRequest"
     )
-    assert inst.activity[1].extension[0].url == (
-        "http://example.org/fhir/StructureDefinition/careplan#andetai" "ls"
+    assert (
+        inst.activity[1].extension[0].url
+        == ExternalValidatorModel(
+            valueUri="http://example.org/fhir/StructureDefinition/careplan#andetails"
+        ).valueUri
     )
     assert (
         inst.activity[1].extension[0].valueUri
-        == "http://orionhealth.com/fhir/careplan/1andetails"
+        == ExternalValidatorModel(
+            valueUri="http://orionhealth.com/fhir/careplan/1andetails"
+        ).valueUri
     )
     assert inst.activity[1].plannedActivityReference.reference == "#activity-1"
     assert inst.activity[2].plannedActivityReference.reference == "#activity-2"
@@ -594,19 +667,33 @@ def impl_careplan_10(inst):
     assert inst.contained[7].id == "activity-3"
     assert (
         inst.extension[0].url
-        == "http://example.org/fhir/StructureDefinition/careplan#lmp"
+        == ExternalValidatorModel(
+            valueUri="http://example.org/fhir/StructureDefinition/careplan#lmp"
+        ).valueUri
     )
-    assert inst.extension[0].valueDateTime == fhirtypes.DateTime.validate("2013-01-01")
+    assert (
+        inst.extension[0].valueDateTime
+        == ExternalValidatorModel(valueDateTime="2013-01-01").valueDateTime
+    )
     assert inst.goal[0].reference == "#goal"
     assert inst.id == "preg"
     assert inst.intent == "plan"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
-    assert inst.period.end == fhirtypes.DateTime.validate("2013-10-01")
-    assert inst.period.start == fhirtypes.DateTime.validate("2013-01-01")
+    assert (
+        inst.period.end
+        == ExternalValidatorModel(valueDateTime="2013-10-01").valueDateTime
+    )
+    assert (
+        inst.period.start
+        == ExternalValidatorModel(valueDateTime="2013-01-01").valueDateTime
+    )
     assert inst.status == "active"
     assert inst.subject.display == "Eve Everywoman"
     assert inst.subject.reference == "Patient/1"
@@ -618,15 +705,13 @@ def test_careplan_10(base_settings):
     Test File: careplan-example-pregnancy.json
     """
     filename = base_settings["unittest_data_dir"] / "careplan-example-pregnancy.json"
-    inst = careplan.CarePlan.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "CarePlan" == inst.resource_type
+    inst = careplan.CarePlan.model_validate_json(Path(filename).read_bytes())
+    assert "CarePlan" == inst.get_resource_type()
 
     impl_careplan_10(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "CarePlan" == data["resourceType"]
 
     inst2 = careplan.CarePlan(**data)

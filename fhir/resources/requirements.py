@@ -8,11 +8,9 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
-from . import backboneelement, domainresource, fhirtypes
+from . import domainresource, fhirtypes
 
 
 class Requirements(domainresource.DomainResource):
@@ -25,17 +23,18 @@ class Requirements(domainresource.DomainResource):
     that are necessary to achieve organizational or regulatory goals.
     """
 
-    resource_type = Field("Requirements", const=True)
+    __resource_type__ = "Requirements"
 
-    actor: typing.List[typing.Optional[fhirtypes.Canonical]] = Field(
+    actor: typing.List[typing.Optional[fhirtypes.CanonicalType]] = Field(
         None,
         alias="actor",
         title="Actor for these requirements",
         description="An actor these requirements are in regard to.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ActorDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ActorDefinition"],
+        },
     )
     actor__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -49,11 +48,12 @@ class Requirements(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    copyright: fhirtypes.Markdown = Field(
+    copyright: fhirtypes.MarkdownType = Field(
         None,
         alias="copyright",
         title="Use and/or publishing restrictions",
@@ -62,14 +62,15 @@ class Requirements(domainresource.DomainResource):
             "contents. Copyright statements are generally legal restrictions on the"
             " use and publishing of the Requirements."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
-    copyrightLabel: fhirtypes.String = Field(
+    copyrightLabel: fhirtypes.StringType = Field(
         None,
         alias="copyrightLabel",
         title="Copyright holder and year(s)",
@@ -79,14 +80,15 @@ class Requirements(domainresource.DomainResource):
             "optionally whether rights are resctricted. (e.g. 'All rights "
             "reserved', 'Some rights reserved')."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     copyrightLabel__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyrightLabel", title="Extension field for ``copyrightLabel``."
     )
 
-    date: fhirtypes.DateTime = Field(
+    date: fhirtypes.DateTimeType = Field(
         None,
         alias="date",
         title="Date last changed",
@@ -96,14 +98,15 @@ class Requirements(domainresource.DomainResource):
             "change if the status code changes. In addition, it should change when "
             "the substantive content of the Requirements changes."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    derivedFrom: typing.List[typing.Optional[fhirtypes.Canonical]] = Field(
+    derivedFrom: typing.List[typing.Optional[fhirtypes.CanonicalType]] = Field(
         None,
         alias="derivedFrom",
         title="Other set of Requirements this builds on",
@@ -111,22 +114,24 @@ class Requirements(domainresource.DomainResource):
             "Another set of Requirements that this set of Requirements builds on "
             "and updates."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Requirements"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Requirements"],
+        },
     )
     derivedFrom__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_derivedFrom", title="Extension field for ``derivedFrom``.")
 
-    description: fhirtypes.Markdown = Field(
+    description: fhirtypes.MarkdownType = Field(
         None,
         alias="description",
         title="Natural language description of the requirements",
         description="A free text natural language description of the requirements.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -141,8 +146,9 @@ class Requirements(domainresource.DomainResource):
             "testing purposes (or education/evaluation/marketing) and is not "
             "intended to be used for genuine usage."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -157,8 +163,9 @@ class Requirements(domainresource.DomainResource):
             " is represented in other formats, or referenced in a specification, "
             "model, design or an instance."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -169,11 +176,12 @@ class Requirements(domainresource.DomainResource):
             "A legal or geographic region in which the Requirements is intended to "
             "be used."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    name: fhirtypes.String = Field(
+    name: fhirtypes.StringType = Field(
         None,
         alias="name",
         title="Name for this Requirements (computer friendly)",
@@ -182,14 +190,15 @@ class Requirements(domainresource.DomainResource):
             " be usable as an identifier for the module by machine processing "
             "applications such as code generation."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    publisher: fhirtypes.String = Field(
+    publisher: fhirtypes.StringType = Field(
         None,
         alias="publisher",
         title="Name of the publisher/steward (organization or individual)",
@@ -197,14 +206,15 @@ class Requirements(domainresource.DomainResource):
             "The name of the organization or individual responsible for the release"
             " and ongoing maintenance of the Requirements."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
-    purpose: fhirtypes.Markdown = Field(
+    purpose: fhirtypes.MarkdownType = Field(
         None,
         alias="purpose",
         title="Why this Requirements is defined",
@@ -212,14 +222,15 @@ class Requirements(domainresource.DomainResource):
             "Explanation of why this Requirements is needed and why it has been "
             "designed as it has."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_purpose", title="Extension field for ``purpose``."
     )
 
-    reference: typing.List[typing.Optional[fhirtypes.Url]] = Field(
+    reference: typing.List[typing.Optional[fhirtypes.UrlType]] = Field(
         None,
         alias="reference",
         title=(
@@ -231,8 +242,9 @@ class Requirements(domainresource.DomainResource):
             " This could be a Profile, etc., or external regulation, or business "
             "requirements expressed elsewhere."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     reference__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -243,11 +255,12 @@ class Requirements(domainresource.DomainResource):
         alias="statement",
         title="Actual statement as markdown",
         description="The actual statement of requirement, in markdown format.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(
         None,
         alias="status",
         title="draft | active | retired | unknown",
@@ -255,30 +268,32 @@ class Requirements(domainresource.DomainResource):
             "The status of this Requirements. Enables tracking the life-cycle of "
             "the content."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["draft", "active", "retired", "unknown"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["draft", "active", "retired", "unknown"],
+        },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
     )
 
-    title: fhirtypes.String = Field(
+    title: fhirtypes.StringType = Field(
         None,
         alias="title",
         title="Name for this Requirements (human friendly)",
         description="A short, descriptive, user-friendly title for the Requirements.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
     )
 
-    url: fhirtypes.Uri = Field(
+    url: fhirtypes.UriType = Field(
         None,
         alias="url",
         title=(
@@ -294,8 +309,9 @@ class Requirements(domainresource.DomainResource):
             " a canonical reference. It SHALL remain the same when the Requirements"
             " is stored on different servers."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -312,11 +328,12 @@ class Requirements(domainresource.DomainResource):
             "(insurance plans, studies, ...) and may be used to assist with "
             "indexing and searching for appropriate Requirements instances."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    version: fhirtypes.String = Field(
+    version: fhirtypes.StringType = Field(
         None,
         alias="version",
         title="Business version of the Requirements",
@@ -329,8 +346,9 @@ class Requirements(domainresource.DomainResource):
             "available. There is also no expectation that versions can be placed in"
             " a lexicographical sequence."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -344,14 +362,15 @@ class Requirements(domainresource.DomainResource):
             "Indicates the mechanism used to compare versions to determine which is"
             " more current."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e versionAlgorithm[x]
-        one_of_many="versionAlgorithm",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e versionAlgorithm[x]
+            "one_of_many": "versionAlgorithm",
+            "one_of_many_required": False,
+        },
     )
 
-    versionAlgorithmString: fhirtypes.String = Field(
+    versionAlgorithmString: fhirtypes.StringType = Field(
         None,
         alias="versionAlgorithmString",
         title="How to compare versions",
@@ -359,11 +378,12 @@ class Requirements(domainresource.DomainResource):
             "Indicates the mechanism used to compare versions to determine which is"
             " more current."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e versionAlgorithm[x]
-        one_of_many="versionAlgorithm",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e versionAlgorithm[x]
+            "one_of_many": "versionAlgorithm",
+            "one_of_many_required": False,
+        },
     )
     versionAlgorithmString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -410,10 +430,7 @@ class Requirements(domainresource.DomainResource):
             "statement",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1481(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -422,57 +439,9 @@ class Requirements(domainresource.DomainResource):
         the primitive value is not present.
         """
         required_fields = [("status", "status__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
-
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_1481(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -488,26 +457,10 @@ class Requirements(domainresource.DomainResource):
         one_of_many_fields = {
             "versionAlgorithm": ["versionAlgorithmCoding", "versionAlgorithmString"]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
+        return one_of_many_fields
 
-        return values
+
+from . import backboneelement
 
 
 class RequirementsStatement(backboneelement.BackboneElement):
@@ -519,7 +472,7 @@ class RequirementsStatement(backboneelement.BackboneElement):
     The actual statement of requirement, in markdown format.
     """
 
-    resource_type = Field("RequirementsStatement", const=True)
+    __resource_type__ = "RequirementsStatement"
 
     conditionality: bool = Field(
         None,
@@ -531,29 +484,31 @@ class RequirementsStatement(backboneelement.BackboneElement):
             " This conditionality flag is introduced for purposes of filtering and "
             "colour highlighting etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     conditionality__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_conditionality", title="Extension field for ``conditionality``."
     )
 
-    conformance: typing.List[typing.Optional[fhirtypes.Code]] = Field(
+    conformance: typing.List[typing.Optional[fhirtypes.CodeType]] = Field(
         None,
         alias="conformance",
         title="SHALL | SHOULD | MAY | SHOULD-NOT",
         description="A short human usable label for this statement.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["SHALL", "SHOULD", "MAY", "SHOULD-NOT"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["SHALL", "SHOULD", "MAY", "SHOULD-NOT"],
+        },
     )
     conformance__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_conformance", title="Extension field for ``conformance``.")
 
-    derivedFrom: fhirtypes.String = Field(
+    derivedFrom: fhirtypes.StringType = Field(
         None,
         alias="derivedFrom",
         title="Another statement this clarifies/restricts ([url#]key)",
@@ -561,51 +516,55 @@ class RequirementsStatement(backboneelement.BackboneElement):
             "Another statement on one of the requirements that this requirement "
             "clarifies or restricts."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     derivedFrom__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_derivedFrom", title="Extension field for ``derivedFrom``."
     )
 
-    key: fhirtypes.Id = Field(
+    key: fhirtypes.IdType = Field(
         None,
         alias="key",
         title="Key that identifies this statement",
         description="Key that identifies this statement (unique within this resource).",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
     key__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_key", title="Extension field for ``key``."
     )
 
-    label: fhirtypes.String = Field(
+    label: fhirtypes.StringType = Field(
         None,
         alias="label",
         title="Short Human label for this statement",
         description="A short human usable label for this statement.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     label__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_label", title="Extension field for ``label``."
     )
 
-    parent: fhirtypes.String = Field(
+    parent: fhirtypes.StringType = Field(
         None,
         alias="parent",
         title="A larger requirement that this requirement helps to refine and enable",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     parent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_parent", title="Extension field for ``parent``."
     )
 
-    reference: typing.List[typing.Optional[fhirtypes.Url]] = Field(
+    reference: typing.List[typing.Optional[fhirtypes.UrlType]] = Field(
         None,
         alias="reference",
         title="External artifact (rule/document etc. that) created this requirement",
@@ -614,27 +573,29 @@ class RequirementsStatement(backboneelement.BackboneElement):
             "could be a Profile, etc., or external regulation, or business "
             "requirements expressed elsewhere."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     reference__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
     ] = Field(None, alias="_reference", title="Extension field for ``reference``.")
 
-    requirement: fhirtypes.Markdown = Field(
+    requirement: fhirtypes.MarkdownType = Field(
         None,
         alias="requirement",
         title="The actual requirement",
         description="The actual requirement for human consumption.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
     requirement__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_requirement", title="Extension field for ``requirement``."
     )
 
-    satisfiedBy: typing.List[typing.Optional[fhirtypes.Url]] = Field(
+    satisfiedBy: typing.List[typing.Optional[fhirtypes.UrlType]] = Field(
         None,
         alias="satisfiedBy",
         title="Design artifact that satisfies this requirement",
@@ -644,8 +605,9 @@ class RequirementsStatement(backboneelement.BackboneElement):
             "CapabilityStatement, OperationDefinition, SearchParameter, "
             "CodeSystem(/code), ValueSet, Libary etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     satisfiedBy__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -659,20 +621,21 @@ class RequirementsStatement(backboneelement.BackboneElement):
             "Who asked for this statement to be a requirement. By default, it's "
             "assumed that the publisher knows who it is if it matters."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "CareTeam",
-            "Device",
-            "Group",
-            "HealthcareService",
-            "Organization",
-            "Patient",
-            "Practitioner",
-            "PractitionerRole",
-            "RelatedPerson",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "CareTeam",
+                "Device",
+                "Group",
+                "HealthcareService",
+                "Organization",
+                "Patient",
+                "Practitioner",
+                "PractitionerRole",
+                "RelatedPerson",
+            ],
+        },
     )
 
     @classmethod
@@ -697,10 +660,7 @@ class RequirementsStatement(backboneelement.BackboneElement):
             "source",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2431(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -709,49 +669,4 @@ class RequirementsStatement(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("key", "key__ext"), ("requirement", "requirement__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields

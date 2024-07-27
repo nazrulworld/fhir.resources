@@ -13,8 +13,9 @@ from pydantic.v1.fields import SHAPE_LIST, SHAPE_SINGLETON
 from .common import get_fhir_type_name, is_primitive_type, normalize_fhir_type_class
 
 if typing.TYPE_CHECKING:
-    from fhir.resources.core.fhirabstractmodel import FHIRAbstractModel
     from pydantic.v1.fields import ModelField
+
+    from fhir.resources.core.fhirabstractmodel import FHIRAbstractModel
 
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 

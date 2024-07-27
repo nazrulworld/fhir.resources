@@ -8,11 +8,9 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
-from . import backboneelement, domainresource, fhirtypes
+from . import domainresource, fhirtypes
 
 
 class Patient(domainresource.DomainResource):
@@ -25,7 +23,7 @@ class Patient(domainresource.DomainResource):
     animal receiving care or other health-related services.
     """
 
-    resource_type = Field("Patient", const=True)
+    __resource_type__ = "Patient"
 
     active: bool = Field(
         None,
@@ -39,8 +37,9 @@ class Patient(domainresource.DomainResource):
             "patients  Deceased patients may also be marked as inactive for the "
             "same reasons, but may be active for some time after death."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_active", title="Extension field for ``active``."
@@ -51,17 +50,19 @@ class Patient(domainresource.DomainResource):
         alias="address",
         title="An address for the individual",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    birthDate: fhirtypes.Date = Field(
+    birthDate: fhirtypes.DateType = Field(
         None,
         alias="birthDate",
         title="The date of birth for the individual",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     birthDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_birthDate", title="Extension field for ``birthDate``."
@@ -75,8 +76,9 @@ class Patient(domainresource.DomainResource):
             " or her health"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     contact: typing.List[fhirtypes.PatientContactType] = Field(
@@ -84,8 +86,9 @@ class Patient(domainresource.DomainResource):
         alias="contact",
         title="A contact party (e.g. guardian, partner, friend) for the patient",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     deceasedBoolean: bool = Field(
@@ -93,26 +96,28 @@ class Patient(domainresource.DomainResource):
         alias="deceasedBoolean",
         title="Indicates if the individual is deceased or not",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e deceased[x]
-        one_of_many="deceased",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e deceased[x]
+            "one_of_many": "deceased",
+            "one_of_many_required": False,
+        },
     )
     deceasedBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_deceasedBoolean", title="Extension field for ``deceasedBoolean``."
     )
 
-    deceasedDateTime: fhirtypes.DateTime = Field(
+    deceasedDateTime: fhirtypes.DateTimeType = Field(
         None,
         alias="deceasedDateTime",
         title="Indicates if the individual is deceased or not",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e deceased[x]
-        one_of_many="deceased",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e deceased[x]
+            "one_of_many": "deceased",
+            "one_of_many_required": False,
+        },
     )
     deceasedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -120,7 +125,7 @@ class Patient(domainresource.DomainResource):
         title="Extension field for ``deceasedDateTime``.",
     )
 
-    gender: fhirtypes.Code = Field(
+    gender: fhirtypes.CodeType = Field(
         None,
         alias="gender",
         title="male | female | other | unknown",
@@ -128,11 +133,12 @@ class Patient(domainresource.DomainResource):
             "Administrative Gender - the gender that the patient is considered to "
             "have for administration and record keeping purposes."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["male", "female", "other", "unknown"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["male", "female", "other", "unknown"],
+        },
     )
     gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_gender", title="Extension field for ``gender``."
@@ -143,10 +149,15 @@ class Patient(domainresource.DomainResource):
         alias="generalPractitioner",
         title="Patient's nominated primary care provider",
         description="Patient's nominated care provider.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization", "Practitioner", "PractitionerRole"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Organization",
+                "Practitioner",
+                "PractitionerRole",
+            ],
+        },
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -154,8 +165,9 @@ class Patient(domainresource.DomainResource):
         alias="identifier",
         title="An identifier for this patient",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     link: typing.List[fhirtypes.PatientLinkType] = Field(
@@ -166,8 +178,9 @@ class Patient(domainresource.DomainResource):
             "actual individual"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     managingOrganization: fhirtypes.ReferenceType = Field(
@@ -175,10 +188,11 @@ class Patient(domainresource.DomainResource):
         alias="managingOrganization",
         title="Organization that is the custodian of the patient record",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
     maritalStatus: fhirtypes.CodeableConceptType = Field(
@@ -186,8 +200,9 @@ class Patient(domainresource.DomainResource):
         alias="maritalStatus",
         title="Marital (civil) status of a patient",
         description="This field contains a patient's most recent marital (civil) status.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     multipleBirthBoolean: bool = Field(
@@ -198,11 +213,12 @@ class Patient(domainresource.DomainResource):
             "Indicates whether the patient is part of a multiple (boolean) or "
             "indicates the actual birth order (integer)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e multipleBirth[x]
-        one_of_many="multipleBirth",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e multipleBirth[x]
+            "one_of_many": "multipleBirth",
+            "one_of_many_required": False,
+        },
     )
     multipleBirthBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -210,7 +226,7 @@ class Patient(domainresource.DomainResource):
         title="Extension field for ``multipleBirthBoolean``.",
     )
 
-    multipleBirthInteger: fhirtypes.Integer = Field(
+    multipleBirthInteger: fhirtypes.IntegerType = Field(
         None,
         alias="multipleBirthInteger",
         title="Whether patient is part of a multiple birth",
@@ -218,11 +234,12 @@ class Patient(domainresource.DomainResource):
             "Indicates whether the patient is part of a multiple (boolean) or "
             "indicates the actual birth order (integer)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e multipleBirth[x]
-        one_of_many="multipleBirth",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e multipleBirth[x]
+            "one_of_many": "multipleBirth",
+            "one_of_many_required": False,
+        },
     )
     multipleBirthInteger__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -235,8 +252,9 @@ class Patient(domainresource.DomainResource):
         alias="name",
         title="A name associated with the patient",
         description="A name associated with the individual.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     photo: typing.List[fhirtypes.AttachmentType] = Field(
@@ -244,8 +262,9 @@ class Patient(domainresource.DomainResource):
         alias="photo",
         title="Image of the patient",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     telecom: typing.List[fhirtypes.ContactPointType] = Field(
@@ -256,8 +275,9 @@ class Patient(domainresource.DomainResource):
             "A contact detail (e.g. a telephone number or an email address) by "
             "which the individual may be contacted."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -295,10 +315,7 @@ class Patient(domainresource.DomainResource):
             "link",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_921(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -315,26 +332,10 @@ class Patient(domainresource.DomainResource):
             "deceased": ["deceasedBoolean", "deceasedDateTime"],
             "multipleBirth": ["multipleBirthBoolean", "multipleBirthInteger"],
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
+        return one_of_many_fields
 
-        return values
+
+from . import backboneelement
 
 
 class PatientCommunication(backboneelement.BackboneElement):
@@ -346,7 +347,7 @@ class PatientCommunication(backboneelement.BackboneElement):
     her health.
     """
 
-    resource_type = Field("PatientCommunication", const=True)
+    __resource_type__ = "PatientCommunication"
 
     language: fhirtypes.CodeableConceptType = Field(
         ...,
@@ -361,8 +362,9 @@ class PatientCommunication(backboneelement.BackboneElement):
             ' upper case; e.g. "en" for English, or "en-US" for American English '
             'versus "en-AU" for Australian English.'
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     preferred: bool = Field(
@@ -373,8 +375,9 @@ class PatientCommunication(backboneelement.BackboneElement):
             "Indicates whether or not the patient prefers this language (over other"
             " languages he masters up a certain level)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     preferred__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_preferred", title="Extension field for ``preferred``."
@@ -397,18 +400,19 @@ class PatientContact(backboneelement.BackboneElement):
     A contact party (e.g. guardian, partner, friend) for the patient.
     """
 
-    resource_type = Field("PatientContact", const=True)
+    __resource_type__ = "PatientContact"
 
     address: fhirtypes.AddressType = Field(
         None,
         alias="address",
         title="Address for the contact person",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    gender: fhirtypes.Code = Field(
+    gender: fhirtypes.CodeType = Field(
         None,
         alias="gender",
         title="male | female | other | unknown",
@@ -416,11 +420,12 @@ class PatientContact(backboneelement.BackboneElement):
             "Administrative Gender - the gender that the contact person is "
             "considered to have for administration and record keeping purposes."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["male", "female", "other", "unknown"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["male", "female", "other", "unknown"],
+        },
     )
     gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_gender", title="Extension field for ``gender``."
@@ -431,8 +436,9 @@ class PatientContact(backboneelement.BackboneElement):
         alias="name",
         title="A name associated with the contact person",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     organization: fhirtypes.ReferenceType = Field(
@@ -443,10 +449,11 @@ class PatientContact(backboneelement.BackboneElement):
             "Organization on behalf of which the contact is acting or for which the"
             " contact is working."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -457,8 +464,9 @@ class PatientContact(backboneelement.BackboneElement):
             "to be contacted relating to this patient"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     relationship: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -469,8 +477,9 @@ class PatientContact(backboneelement.BackboneElement):
             "The nature of the relationship between the patient and the contact "
             "person."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     telecom: typing.List[fhirtypes.ContactPointType] = Field(
@@ -481,8 +490,9 @@ class PatientContact(backboneelement.BackboneElement):
             "A contact detail for the person, e.g. a telephone number or an email "
             "address."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -514,7 +524,7 @@ class PatientLink(backboneelement.BackboneElement):
     individual.
     """
 
-    resource_type = Field("PatientLink", const=True)
+    __resource_type__ = "PatientLink"
 
     other: fhirtypes.ReferenceType = Field(
         ...,
@@ -524,13 +534,14 @@ class PatientLink(backboneelement.BackboneElement):
             "Link to a Patient or RelatedPerson resource that concerns the same "
             "actual individual."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Patient", "RelatedPerson"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Patient", "RelatedPerson"],
+        },
     )
 
-    type: fhirtypes.Code = Field(
+    type: fhirtypes.CodeType = Field(
         None,
         alias="type",
         title="replaced-by | replaces | refer | seealso",
@@ -538,12 +549,13 @@ class PatientLink(backboneelement.BackboneElement):
             "The type of link between this patient resource and another patient "
             "resource."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["replaced-by", "replaces", "refer", "seealso"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["replaced-by", "replaces", "refer", "seealso"],
+        },
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -557,10 +569,7 @@ class PatientLink(backboneelement.BackboneElement):
         """
         return ["id", "extension", "modifierExtension", "other", "type"]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1310(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -569,49 +578,4 @@ class PatientLink(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("type", "type__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields

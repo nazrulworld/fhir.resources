@@ -6,10 +6,10 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
+from pathlib import Path
 
-from .. import fhirtypes  # noqa: F401
 from .. import examplescenario
+from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
 
 def impl_examplescenario_1(inst):
@@ -43,45 +43,66 @@ def impl_examplescenario_1(inst):
     )
     assert inst.instance[0].key == "iherx001"
     assert inst.instance[0].structureType.code == "MedicationRequest"
-    assert inst.instance[0].structureType.system == "http://hl7.org/fhir/fhir-types"
+    assert (
+        inst.instance[0].structureType.system
+        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/fhir-types").valueUri
+    )
     assert inst.instance[0].title == "Initial Prescription"
     assert (
         inst.instance[1].description == "The administration request for day 1, morning"
     )
     assert inst.instance[1].key == "iherx001.001"
     assert inst.instance[1].structureType.code == "MedicationRequest"
-    assert inst.instance[1].structureType.system == "http://hl7.org/fhir/fhir-types"
+    assert (
+        inst.instance[1].structureType.system
+        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/fhir-types").valueUri
+    )
     assert inst.instance[1].title == "Request for day 1, morning"
     assert inst.instance[2].description == "The administration request for day 1, lunch"
     assert inst.instance[2].key == "iherx001.002"
     assert inst.instance[2].structureType.code == "MedicationRequest"
-    assert inst.instance[2].structureType.system == "http://hl7.org/fhir/fhir-types"
+    assert (
+        inst.instance[2].structureType.system
+        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/fhir-types").valueUri
+    )
     assert inst.instance[2].title == "Request for day 1, lunch"
     assert (
         inst.instance[3].description == "The administration request for day 1, evening"
     )
     assert inst.instance[3].key == "iherx001.003"
     assert inst.instance[3].structureType.code == "MedicationRequest"
-    assert inst.instance[3].structureType.system == "http://hl7.org/fhir/fhir-types"
+    assert (
+        inst.instance[3].structureType.system
+        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/fhir-types").valueUri
+    )
     assert inst.instance[3].title == "Request for day 1, evening"
     assert (
         inst.instance[4].description == "The administration request for day 2, morning"
     )
     assert inst.instance[4].key == "iherx001.004"
     assert inst.instance[4].structureType.code == "MedicationRequest"
-    assert inst.instance[4].structureType.system == "http://hl7.org/fhir/fhir-types"
+    assert (
+        inst.instance[4].structureType.system
+        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/fhir-types").valueUri
+    )
     assert inst.instance[4].title == "Request for day 2, morning"
     assert inst.instance[5].description == "The administration request for day 2, lunch"
     assert inst.instance[5].key == "iherx001.005"
     assert inst.instance[5].structureType.code == "MedicationRequest"
-    assert inst.instance[5].structureType.system == "http://hl7.org/fhir/fhir-types"
+    assert (
+        inst.instance[5].structureType.system
+        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/fhir-types").valueUri
+    )
     assert inst.instance[5].title == "Request for day 2, lunch"
     assert (
         inst.instance[6].description == "The administration request for day 2, evening"
     )
     assert inst.instance[6].key == "iherx001.006"
     assert inst.instance[6].structureType.code == "MedicationRequest"
-    assert inst.instance[6].structureType.system == "http://hl7.org/fhir/fhir-types"
+    assert (
+        inst.instance[6].structureType.system
+        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/fhir-types").valueUri
+    )
     assert inst.instance[6].title == "Request for day 2, evening"
     assert (
         inst.instance[7].description
@@ -89,7 +110,10 @@ def impl_examplescenario_1(inst):
     )
     assert inst.instance[7].key == "iheadm001a"
     assert inst.instance[7].structureType.code == "MedicationAdministration"
-    assert inst.instance[7].structureType.system == "http://hl7.org/fhir/fhir-types"
+    assert (
+        inst.instance[7].structureType.system
+        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/fhir-types").valueUri
+    )
     assert inst.instance[7].title == "Morning meds - taken"
     assert (
         inst.instance[8].description
@@ -97,7 +121,10 @@ def impl_examplescenario_1(inst):
     )
     assert inst.instance[8].key == "iheadm001b"
     assert inst.instance[8].structureType.code == "MedicationAdministration"
-    assert inst.instance[8].structureType.system == "http://hl7.org/fhir/fhir-types"
+    assert (
+        inst.instance[8].structureType.system
+        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/fhir-types").valueUri
+    )
     assert inst.instance[8].title == "Morning meds - not taken"
     assert inst.instance[9].containedInstance[0].instanceReference == "iherx001.001"
     assert inst.instance[9].containedInstance[1].instanceReference == "iherx001.002"
@@ -108,12 +135,18 @@ def impl_examplescenario_1(inst):
     assert inst.instance[9].description == "All the medication Requests for Day 1"
     assert inst.instance[9].key == "iherx001bundle"
     assert inst.instance[9].structureType.code == "MedicationRequest"
-    assert inst.instance[9].structureType.system == "http://hl7.org/fhir/fhir-types"
+    assert (
+        inst.instance[9].structureType.system
+        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/fhir-types").valueUri
+    )
     assert inst.instance[9].title == "Bundle of Medication Requests"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.process[0].postConditions == (
         "Medication administration Reports are submitted, EHR is " "updated."
@@ -224,15 +257,15 @@ def test_examplescenario_1(base_settings):
     Test File: examplescenario-example.json
     """
     filename = base_settings["unittest_data_dir"] / "examplescenario-example.json"
-    inst = examplescenario.ExampleScenario.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = examplescenario.ExampleScenario.model_validate_json(
+        Path(filename).read_bytes()
     )
-    assert "ExampleScenario" == inst.resource_type
+    assert "ExampleScenario" == inst.get_resource_type()
 
     impl_examplescenario_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "ExampleScenario" == data["resourceType"]
 
     inst2 = examplescenario.ExampleScenario(**data)
@@ -269,7 +302,10 @@ def impl_examplescenario_2(inst):
     assert inst.instance[0].description == "Bla"
     assert inst.instance[0].key == "req1"
     assert inst.instance[0].structureType.code == "ServiceRequest"
-    assert inst.instance[0].structureType.system == "http://hl7.org/fhir/fhir-types"
+    assert (
+        inst.instance[0].structureType.system
+        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/fhir-types").valueUri
+    )
     assert inst.instance[0].title == "Request for a lab procedure"
     assert inst.instance[0].version[0].description == "Initial order"
     assert inst.instance[0].version[0].key == "req1-v1"
@@ -283,7 +319,10 @@ def impl_examplescenario_2(inst):
     assert inst.instance[1].description == "The task that handles the status updates..."
     assert inst.instance[1].key == "task1"
     assert inst.instance[1].structureType.code == "Task"
-    assert inst.instance[1].structureType.system == "http://hl7.org/fhir/fhir-types"
+    assert (
+        inst.instance[1].structureType.system
+        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/fhir-types").valueUri
+    )
     assert inst.instance[1].title == "Task"
     assert inst.instance[1].version[0].description == "Initially created"
     assert inst.instance[1].version[0].key == "task1-v1"
@@ -300,7 +339,10 @@ def impl_examplescenario_2(inst):
     assert inst.instance[2].description == "Lab's internal request for the procedure"
     assert inst.instance[2].key == "req.lab1"
     assert inst.instance[2].structureType.code == "ServiceRequest"
-    assert inst.instance[2].structureType.system == "http://hl7.org/fhir/fhir-types"
+    assert (
+        inst.instance[2].structureType.system
+        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/fhir-types").valueUri
+    )
     assert inst.instance[2].title == "Internal lab request"
     assert inst.instance[2].version[0].description == "Order in progress"
     assert inst.instance[2].version[0].key == "req.lab1-v1"
@@ -314,7 +356,10 @@ def impl_examplescenario_2(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.name == "LabOrderTrackingWithTask"
     assert inst.process[0].description == (
@@ -626,15 +671,15 @@ def test_examplescenario_2(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "examplescenario-example-laborder.json"
     )
-    inst = examplescenario.ExampleScenario.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = examplescenario.ExampleScenario.model_validate_json(
+        Path(filename).read_bytes()
     )
-    assert "ExampleScenario" == inst.resource_type
+    assert "ExampleScenario" == inst.get_resource_type()
 
     impl_examplescenario_2(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "ExampleScenario" == data["resourceType"]
 
     inst2 = examplescenario.ExampleScenario(**data)

@@ -8,9 +8,7 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
 from . import datatype, fhirtypes
 
@@ -25,23 +23,24 @@ class SampledData(datatype.DataType):
     There may be more than one dimension in the data.
     """
 
-    resource_type = Field("SampledData", const=True)
+    __resource_type__ = "SampledData"
 
-    codeMap: fhirtypes.Canonical = Field(
+    codeMap: fhirtypes.CanonicalType = Field(
         None,
         alias="codeMap",
         title="Defines the codes used in the data",
         description="Reference to ConceptMap that defines the codes used in the data.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ConceptMap"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ConceptMap"],
+        },
     )
     codeMap__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_codeMap", title="Extension field for ``codeMap``."
     )
 
-    data: fhirtypes.String = Field(
+    data: fhirtypes.StringType = Field(
         None,
         alias="data",
         title='Decimal values with spaces, or "E" | "U" | "L", or another code',
@@ -51,14 +50,15 @@ class SampledData(datatype.DataType):
             '(below detection limit) and "U" (above detection limit) are also '
             "defined for used in place of decimal values."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     data__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_data", title="Extension field for ``data``."
     )
 
-    dimensions: fhirtypes.PositiveInt = Field(
+    dimensions: fhirtypes.PositiveIntType = Field(
         None,
         alias="dimensions",
         title="Number of sample points at each time point",
@@ -67,15 +67,16 @@ class SampledData(datatype.DataType):
             "greater than one, then the dimensions will be interlaced - all the "
             "sample points for a point in time will be recorded at once."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
     dimensions__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_dimensions", title="Extension field for ``dimensions``."
     )
 
-    factor: fhirtypes.Decimal = Field(
+    factor: fhirtypes.DecimalType = Field(
         None,
         alias="factor",
         title="Multiply data by this before adding to origin",
@@ -83,14 +84,15 @@ class SampledData(datatype.DataType):
             "A correction factor that is applied to the sampled data points before "
             "they are added to the origin."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     factor__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_factor", title="Extension field for ``factor``."
     )
 
-    interval: fhirtypes.Decimal = Field(
+    interval: fhirtypes.DecimalType = Field(
         None,
         alias="interval",
         title="Number of intervalUnits between samples",
@@ -98,27 +100,29 @@ class SampledData(datatype.DataType):
             "Amount of intervalUnits between samples, e.g. milliseconds for time-"
             "based sampling."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     interval__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_interval", title="Extension field for ``interval``."
     )
 
-    intervalUnit: fhirtypes.Code = Field(
+    intervalUnit: fhirtypes.CodeType = Field(
         None,
         alias="intervalUnit",
         title="The measurement unit of the interval between samples",
         description="The measurement unit in which the sample interval is expressed.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
     intervalUnit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_intervalUnit", title="Extension field for ``intervalUnit``."
     )
 
-    lowerLimit: fhirtypes.Decimal = Field(
+    lowerLimit: fhirtypes.DecimalType = Field(
         None,
         alias="lowerLimit",
         title="Lower limit of detection",
@@ -127,14 +131,15 @@ class SampledData(datatype.DataType):
             ' any of the data points have the value "L" (lower than detection '
             "limit)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     lowerLimit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lowerLimit", title="Extension field for ``lowerLimit``."
     )
 
-    offsets: fhirtypes.String = Field(
+    offsets: fhirtypes.StringType = Field(
         None,
         alias="offsets",
         title="Offsets, typically in time, at which data values were taken",
@@ -145,8 +150,9 @@ class SampledData(datatype.DataType):
             "measurements begin SHALL be conveyed outside the scope of this "
             "datatype, e.g. Observation.effectiveDateTime for a timing offset."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     offsets__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_offsets", title="Extension field for ``offsets``."
@@ -160,11 +166,12 @@ class SampledData(datatype.DataType):
             "The base quantity that a measured value of zero represents. In "
             "addition, this provides the units of the entire measurement series."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    upperLimit: fhirtypes.Decimal = Field(
+    upperLimit: fhirtypes.DecimalType = Field(
         None,
         alias="upperLimit",
         title="Upper limit of detection",
@@ -173,8 +180,9 @@ class SampledData(datatype.DataType):
             ' any of the data points have the value "U" (higher than detection '
             "limit)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     upperLimit__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_upperLimit", title="Extension field for ``upperLimit``."
@@ -201,10 +209,7 @@ class SampledData(datatype.DataType):
             "data",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1268(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -216,49 +221,4 @@ class SampledData(datatype.DataType):
             ("dimensions", "dimensions__ext"),
             ("intervalUnit", "intervalUnit__ext"),
         ]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields

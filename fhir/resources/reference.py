@@ -6,7 +6,7 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import datatype, fhirtypes
 
@@ -19,9 +19,9 @@ class Reference(datatype.DataType):
     A reference from one resource to another.
     """
 
-    resource_type = Field("Reference", const=True)
+    __resource_type__ = "Reference"
 
-    display: fhirtypes.String = Field(
+    display: fhirtypes.StringType = Field(
         None,
         alias="display",
         title="Text alternative for the resource",
@@ -29,8 +29,9 @@ class Reference(datatype.DataType):
             "Plain text narrative that identifies the resource in addition to the "
             "resource reference."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     display__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_display", title="Extension field for ``display``."
@@ -51,11 +52,12 @@ class Reference(datatype.DataType):
             " expected to be exposed as a FHIR instance, and that instance would "
             "need to be of a FHIR resource type allowed by the reference."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    reference: fhirtypes.String = Field(
+    reference: fhirtypes.StringType = Field(
         None,
         alias="reference",
         title="Literal reference, Relative, internal or absolute URL",
@@ -68,14 +70,15 @@ class Reference(datatype.DataType):
             "then it should be assumed to be version specific. Internal fragment "
             "references (start with '#') refer to contained resources."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     reference__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_reference", title="Extension field for ``reference``."
     )
 
-    type: fhirtypes.Uri = Field(
+    type: fhirtypes.UriType = Field(
         None,
         alias="type",
         title=(
@@ -93,8 +96,9 @@ class Reference(datatype.DataType):
             " only allowed for logical models (and can only be used in references "
             "in logical models, not resources)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."

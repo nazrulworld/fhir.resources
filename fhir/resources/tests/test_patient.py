@@ -6,10 +6,10 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
+from pathlib import Path
 
-from .. import fhirtypes  # noqa: F401
 from .. import patient
+from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
 
 def impl_patient_1(inst):
@@ -19,14 +19,19 @@ def impl_patient_1(inst):
     assert inst.address[0].line[0] == "100 Main St"
     assert inst.address[0].postalCode == "44130"
     assert inst.address[0].state == "Il"
-    assert inst.birthDate == fhirtypes.Date.validate("1956-05-27")
+    assert inst.birthDate == ExternalValidatorModel(valueDate="1956-05-27").valueDate
     assert inst.gender == "male"
     assert inst.id == "xds"
-    assert inst.identifier[0].system == "urn:oid:1.2.3.4.5"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel(valueUri="urn:oid:1.2.3.4.5").valueUri
+    )
     assert inst.identifier[0].type.coding[0].code == "MR"
     assert (
         inst.identifier[0].type.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/v2-0203"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v2-0203"
+        ).valueUri
     )
     assert inst.identifier[0].use == "usual"
     assert inst.identifier[0].value == "89765a87b"
@@ -34,7 +39,10 @@ def impl_patient_1(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.name[0].family == "Doe"
     assert inst.name[0].given[0] == "John"
@@ -46,15 +54,13 @@ def test_patient_1(base_settings):
     Test File: patient-example-xds.json
     """
     filename = base_settings["unittest_data_dir"] / "patient-example-xds.json"
-    inst = patient.Patient.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Patient" == inst.resource_type
+    inst = patient.Patient.model_validate_json(Path(filename).read_bytes())
+    assert "Patient" == inst.get_resource_type()
 
     impl_patient_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Patient" == data["resourceType"]
 
     inst2 = patient.Patient(**data)
@@ -68,10 +74,13 @@ def impl_patient_2(inst):
     assert inst.address[0].line[0] == "Van Egmondkade 23"
     assert inst.address[0].postalCode == "1024 RJ"
     assert inst.address[0].use == "home"
-    assert inst.birthDate == fhirtypes.Date.validate("1944-11-17")
+    assert inst.birthDate == ExternalValidatorModel(valueDate="1944-11-17").valueDate
     assert inst.communication[0].language.coding[0].code == "nl"
     assert inst.communication[0].language.coding[0].display == "Dutch"
-    assert inst.communication[0].language.coding[0].system == "urn:ietf:bcp:47"
+    assert (
+        inst.communication[0].language.coding[0].system
+        == ExternalValidatorModel(valueUri="urn:ietf:bcp:47").valueUri
+    )
     assert inst.communication[0].language.text == "Nederlands"
     assert inst.communication[0].preferred is True
     assert inst.contact[0].name.family == "Abels"
@@ -80,7 +89,9 @@ def impl_patient_2(inst):
     assert inst.contact[0].relationship[0].coding[0].code == "C"
     assert (
         inst.contact[0].relationship[0].coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/v2-0131"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v2-0131"
+        ).valueUri
     )
     assert inst.contact[0].telecom[0].system == "phone"
     assert inst.contact[0].telecom[0].use == "mobile"
@@ -88,10 +99,16 @@ def impl_patient_2(inst):
     assert inst.deceasedBoolean is False
     assert inst.gender == "male"
     assert inst.id == "f001"
-    assert inst.identifier[0].system == "urn:oid:2.16.840.1.113883.2.4.6.3"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel(valueUri="urn:oid:2.16.840.1.113883.2.4.6.3").valueUri
+    )
     assert inst.identifier[0].use == "usual"
     assert inst.identifier[0].value == "738472983"
-    assert inst.identifier[1].system == "urn:oid:2.16.840.1.113883.2.4.6.3"
+    assert (
+        inst.identifier[1].system
+        == ExternalValidatorModel(valueUri="urn:oid:2.16.840.1.113883.2.4.6.3").valueUri
+    )
     assert inst.identifier[1].use == "usual"
     assert inst.managingOrganization.display == "Burgers University Medical Centre"
     assert inst.managingOrganization.reference == "Organization/f001"
@@ -99,13 +116,18 @@ def impl_patient_2(inst):
     assert inst.maritalStatus.coding[0].display == "Married"
     assert (
         inst.maritalStatus.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-MaritalStatus"
+        ).valueUri
     )
     assert inst.maritalStatus.text == "Getrouwd"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.multipleBirthBoolean is True
     assert inst.name[0].family == "van de Heuvel"
@@ -126,15 +148,13 @@ def test_patient_2(base_settings):
     Test File: patient-example-f001-pieter.json
     """
     filename = base_settings["unittest_data_dir"] / "patient-example-f001-pieter.json"
-    inst = patient.Patient.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Patient" == inst.resource_type
+    inst = patient.Patient.model_validate_json(Path(filename).read_bytes())
+    assert "Patient" == inst.get_resource_type()
 
     impl_patient_2(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Patient" == data["resourceType"]
 
     inst2 = patient.Patient(**data)
@@ -143,15 +163,20 @@ def test_patient_2(base_settings):
 
 def impl_patient_3(inst):
     assert inst.active is True
-    assert inst.birthDate == fhirtypes.Date.validate("1982-08-02")
+    assert inst.birthDate == ExternalValidatorModel(valueDate="1982-08-02").valueDate
     assert inst.deceasedBoolean is True
     assert inst.gender == "female"
     assert inst.id == "pat4"
-    assert inst.identifier[0].system == "urn:oid:0.1.2.3.4.5.6.7"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel(valueUri="urn:oid:0.1.2.3.4.5.6.7").valueUri
+    )
     assert inst.identifier[0].type.coding[0].code == "MR"
     assert (
         inst.identifier[0].type.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/v2-0203"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v2-0203"
+        ).valueUri
     )
     assert inst.identifier[0].use == "usual"
     assert inst.identifier[0].value == "123458"
@@ -160,7 +185,10 @@ def impl_patient_3(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.name[0].family == "Notsowell"
     assert inst.name[0].given[0] == "Sandy"
@@ -173,15 +201,13 @@ def test_patient_3(base_settings):
     Test File: patient-example-d.json
     """
     filename = base_settings["unittest_data_dir"] / "patient-example-d.json"
-    inst = patient.Patient.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Patient" == inst.resource_type
+    inst = patient.Patient.model_validate_json(Path(filename).read_bytes())
+    assert "Patient" == inst.get_resource_type()
 
     impl_patient_3(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Patient" == data["resourceType"]
 
     inst2 = patient.Patient(**data)
@@ -189,51 +215,70 @@ def test_patient_3(base_settings):
 
 
 def impl_patient_4(inst):
-    assert inst.birthDate == fhirtypes.Date.validate("2017-05-15")
+    assert inst.birthDate == ExternalValidatorModel(valueDate="2017-05-15").valueDate
     assert inst.contact[0].name.family == "Organa"
     assert inst.contact[0].name.given[0] == "Leia"
     assert inst.contact[0].name.use == "maiden"
     assert inst.contact[0].relationship[0].coding[0].code == "72705000"
     assert inst.contact[0].relationship[0].coding[0].display == "Mother"
-    assert inst.contact[0].relationship[0].coding[0].system == "http://snomed.info/sct"
+    assert (
+        inst.contact[0].relationship[0].coding[0].system
+        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+    )
     assert inst.contact[0].relationship[0].coding[1].code == "N"
     assert (
         inst.contact[0].relationship[0].coding[1].system
-        == "http://terminology.hl7.org/CodeSystem/v2-0131"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v2-0131"
+        ).valueUri
     )
     assert inst.contact[0].relationship[0].coding[2].code == "MTH"
     assert (
         inst.contact[0].relationship[0].coding[2].system
-        == "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+        ).valueUri
     )
     assert inst.contact[0].telecom[0].system == "phone"
     assert inst.contact[0].telecom[0].use == "mobile"
     assert inst.contact[0].telecom[0].value == "+31201234567"
-    assert inst.extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/patient-" "mothersMaidenName"
+    assert (
+        inst.extension[0].url
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName"
+        ).valueUri
     )
     assert inst.extension[0].valueString == "Organa"
     assert inst.gender == "female"
     assert inst.id == "infant-twin-1"
     assert (
         inst.identifier[0].system
-        == "http://coruscanthealth.org/main-hospital/patient-identifier"
+        == ExternalValidatorModel(
+            valueUri="http://coruscanthealth.org/main-hospital/patient-identifier"
+        ).valueUri
     )
     assert inst.identifier[0].type.coding[0].code == "MR"
     assert (
         inst.identifier[0].type.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/v2-0203"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v2-0203"
+        ).valueUri
     )
     assert inst.identifier[0].value == "MRN7465737865"
     assert (
         inst.identifier[1].system
-        == "http://new-republic.gov/galactic-citizen-identifier"
+        == ExternalValidatorModel(
+            valueUri="http://new-republic.gov/galactic-citizen-identifier"
+        ).valueUri
     )
     assert inst.identifier[1].value == "7465737865"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.multipleBirthInteger == 1
     assert inst.name[0].family == "Solo"
@@ -247,15 +292,13 @@ def test_patient_4(base_settings):
     Test File: patient-example-infant-twin-1.json
     """
     filename = base_settings["unittest_data_dir"] / "patient-example-infant-twin-1.json"
-    inst = patient.Patient.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Patient" == inst.resource_type
+    inst = patient.Patient.model_validate_json(Path(filename).read_bytes())
+    assert "Patient" == inst.get_resource_type()
 
     impl_patient_4(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Patient" == data["resourceType"]
 
     inst2 = patient.Patient(**data)
@@ -263,7 +306,7 @@ def test_patient_4(base_settings):
 
 
 def impl_patient_5(inst):
-    assert inst.birthDate == fhirtypes.Date.validate("1995-10-12")
+    assert inst.birthDate == ExternalValidatorModel(valueDate="1995-10-12").valueDate
     assert inst.gender == "female"
     assert inst.generalPractitioner[0].display == "Luigi Maas"
     assert inst.generalPractitioner[0].reference == "Practitioner/f202"
@@ -272,12 +315,17 @@ def impl_patient_5(inst):
     assert inst.maritalStatus.coding[0].display == "Married"
     assert (
         inst.maritalStatus.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/v3-MaritalStatus"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-MaritalStatus"
+        ).valueUri
     )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.name[0].family == "Solo"
     assert inst.name[0].given[0] == "Leia"
@@ -293,15 +341,13 @@ def test_patient_5(base_settings):
     Test File: patient-example-infant-mom.json
     """
     filename = base_settings["unittest_data_dir"] / "patient-example-infant-mom.json"
-    inst = patient.Patient.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Patient" == inst.resource_type
+    inst = patient.Patient.model_validate_json(Path(filename).read_bytes())
+    assert "Patient" == inst.get_resource_type()
 
     impl_patient_5(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Patient" == data["resourceType"]
 
     inst2 = patient.Patient(**data)
@@ -309,9 +355,12 @@ def test_patient_5(base_settings):
 
 
 def impl_patient_6(inst):
-    assert inst.birthDate == fhirtypes.Date.validate("2017-09-05")
-    assert inst.extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/patient-" "mothersMaidenName"
+    assert inst.birthDate == ExternalValidatorModel(valueDate="2017-09-05").valueDate
+    assert (
+        inst.extension[0].url
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName"
+        ).valueUri
     )
     assert inst.extension[0].valueString == "Everywoman"
     assert inst.gender == "male"
@@ -319,7 +368,10 @@ def impl_patient_6(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.multipleBirthInteger == 2
     assert inst.text.status == "generated"
@@ -330,15 +382,13 @@ def test_patient_6(base_settings):
     Test File: patient-example-newborn.json
     """
     filename = base_settings["unittest_data_dir"] / "patient-example-newborn.json"
-    inst = patient.Patient.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Patient" == inst.resource_type
+    inst = patient.Patient.model_validate_json(Path(filename).read_bytes())
+    assert "Patient" == inst.get_resource_type()
 
     impl_patient_6(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Patient" == data["resourceType"]
 
     inst2 = patient.Patient(**data)
@@ -351,40 +401,57 @@ def impl_patient_7(inst):
     assert inst.contact[0].name.use == "maiden"
     assert inst.contact[0].relationship[0].coding[0].code == "72705000"
     assert inst.contact[0].relationship[0].coding[0].display == "Mother"
-    assert inst.contact[0].relationship[0].coding[0].system == "http://snomed.info/sct"
+    assert (
+        inst.contact[0].relationship[0].coding[0].system
+        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+    )
     assert inst.contact[0].relationship[0].coding[1].code == "N"
     assert (
         inst.contact[0].relationship[0].coding[1].system
-        == "http://terminology.hl7.org/CodeSystem/v2-0131"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v2-0131"
+        ).valueUri
     )
     assert inst.contact[0].relationship[0].coding[2].code == "MTH"
     assert (
         inst.contact[0].relationship[0].coding[2].system
-        == "http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-RoleCode"
+        ).valueUri
     )
     assert inst.contact[0].telecom[0].system == "phone"
     assert inst.contact[0].telecom[0].use == "mobile"
     assert inst.contact[0].telecom[0].value == "+31201234567"
-    assert inst.extension[0].url == (
-        "http://hl7.org/fhir/StructureDefinition/patient-" "mothersMaidenName"
+    assert (
+        inst.extension[0].url
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/StructureDefinition/patient-mothersMaidenName"
+        ).valueUri
     )
     assert inst.extension[0].valueString == "Organa"
     assert inst.gender == "male"
     assert inst.id == "infant-fetal"
     assert (
         inst.identifier[0].system
-        == "http://coruscanthealth.org/main-hospital/patient-identifier"
+        == ExternalValidatorModel(
+            valueUri="http://coruscanthealth.org/main-hospital/patient-identifier"
+        ).valueUri
     )
     assert inst.identifier[0].type.coding[0].code == "MR"
     assert (
         inst.identifier[0].type.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/v2-0203"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v2-0203"
+        ).valueUri
     )
     assert inst.identifier[0].value == "MRN657865757378"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.text.status == "generated"
 
@@ -394,15 +461,13 @@ def test_patient_7(base_settings):
     Test File: patient-example-infant-fetal.json
     """
     filename = base_settings["unittest_data_dir"] / "patient-example-infant-fetal.json"
-    inst = patient.Patient.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Patient" == inst.resource_type
+    inst = patient.Patient.model_validate_json(Path(filename).read_bytes())
+    assert "Patient" == inst.get_resource_type()
 
     impl_patient_7(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Patient" == data["resourceType"]
 
     inst2 = patient.Patient(**data)
@@ -411,26 +476,37 @@ def test_patient_7(base_settings):
 
 def impl_patient_8(inst):
     assert inst.active is True
-    assert inst.birthDate == fhirtypes.Date.validate("2021-01-01")
+    assert inst.birthDate == ExternalValidatorModel(valueDate="2021-01-01").valueDate
     assert inst.gender == "unknown"
     assert inst.id == "denovoChild"
     assert inst.identifier[0].assigner.display == "Child Hospital"
-    assert inst.identifier[0].period.start == fhirtypes.DateTime.validate("2021-01-01")
     assert (
-        inst.identifier[0].system == "http://www.somesystemabc.net/identifiers/persons"
+        inst.identifier[0].period.start
+        == ExternalValidatorModel(valueDateTime="2021-01-01").valueDateTime
+    )
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel(
+            valueUri="http://www.somesystemabc.net/identifiers/persons"
+        ).valueUri
     )
     assert inst.identifier[0].type.coding[0].code == "MR"
     assert inst.identifier[0].type.coding[0].display == "Medical record number"
     assert (
         inst.identifier[0].type.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/v2-0203"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v2-0203"
+        ).valueUri
     )
     assert inst.identifier[0].use == "temp"
     assert inst.identifier[0].value == "11111"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.name[0].family == "Doe"
     assert inst.name[0].given[0] == "Child"
@@ -449,15 +525,13 @@ def test_patient_8(base_settings):
     Test File: Patient-denovoChild.json
     """
     filename = base_settings["unittest_data_dir"] / "Patient-denovoChild.json"
-    inst = patient.Patient.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Patient" == inst.resource_type
+    inst = patient.Patient.model_validate_json(Path(filename).read_bytes())
+    assert "Patient" == inst.get_resource_type()
 
     impl_patient_8(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Patient" == data["resourceType"]
 
     inst2 = patient.Patient(**data)
@@ -468,22 +542,33 @@ def impl_patient_9(inst):
     assert inst.active is True
     assert inst.address[0].line[0] == "2222 Home Street"
     assert inst.address[0].use == "home"
-    assert inst.birthDate == fhirtypes.Date.validate("1973-05-31")
+    assert inst.birthDate == ExternalValidatorModel(valueDate="1973-05-31").valueDate
     assert inst.gender == "female"
     assert inst.id == "genetics-example1"
-    assert inst.identifier[0].system == "http://hl7.org/fhir/sid/us-ssn"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel(valueUri="http://hl7.org/fhir/sid/us-ssn").valueUri
+    )
     assert inst.identifier[0].type.coding[0].code == "SS"
     assert (
         inst.identifier[0].type.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/v2-0203"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v2-0203"
+        ).valueUri
     )
     assert inst.identifier[0].value == "444222222"
     assert inst.managingOrganization.reference == "Organization/hl7"
-    assert inst.meta.lastUpdated == fhirtypes.Instant.validate("2012-05-29T23:45:32Z")
+    assert (
+        inst.meta.lastUpdated
+        == ExternalValidatorModel(valueInstant="2012-05-29T23:45:32Z").valueInstant
+    )
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.name[0].family == "Everywoman"
     assert inst.name[0].given[0] == "Eve"
@@ -499,15 +584,13 @@ def test_patient_9(base_settings):
     Test File: patient-genetics-example1.json
     """
     filename = base_settings["unittest_data_dir"] / "patient-genetics-example1.json"
-    inst = patient.Patient.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Patient" == inst.resource_type
+    inst = patient.Patient.model_validate_json(Path(filename).read_bytes())
+    assert "Patient" == inst.get_resource_type()
 
     impl_patient_9(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Patient" == data["resourceType"]
 
     inst2 = patient.Patient(**data)
@@ -518,11 +601,16 @@ def impl_patient_10(inst):
     assert inst.active is True
     assert inst.gender == "other"
     assert inst.id == "pat2"
-    assert inst.identifier[0].system == "urn:oid:0.1.2.3.4.5.6.7"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel(valueUri="urn:oid:0.1.2.3.4.5.6.7").valueUri
+    )
     assert inst.identifier[0].type.coding[0].code == "MR"
     assert (
         inst.identifier[0].type.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/v2-0203"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v2-0203"
+        ).valueUri
     )
     assert inst.identifier[0].use == "usual"
     assert inst.identifier[0].value == "123456"
@@ -533,7 +621,10 @@ def impl_patient_10(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.name[0].family == "Donald"
     assert inst.name[0].given[0] == "Duck"
@@ -548,15 +639,13 @@ def test_patient_10(base_settings):
     Test File: patient-example-b.json
     """
     filename = base_settings["unittest_data_dir"] / "patient-example-b.json"
-    inst = patient.Patient.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Patient" == inst.resource_type
+    inst = patient.Patient.model_validate_json(Path(filename).read_bytes())
+    assert "Patient" == inst.get_resource_type()
 
     impl_patient_10(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Patient" == data["resourceType"]
 
     inst2 = patient.Patient(**data)

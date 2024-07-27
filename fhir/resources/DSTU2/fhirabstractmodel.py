@@ -33,16 +33,16 @@ try:
 
 except ImportError:
     try:
-        from simplejson import loads as json_loads
         from simplejson import dumps as json_dumps  # type:ignore
+        from simplejson import loads as json_loads
     except ImportError:
-        from json import loads as json_loads
         from json import dumps as json_dumps  # type:ignore
+        from json import loads as json_loads
 
 
 if TYPE_CHECKING:
-    from pydantic.v1.typing import AbstractSetIntStr, MappingIntStrAny, DictStrAny
     from pydantic.v1.main import Model
+    from pydantic.v1.typing import AbstractSetIntStr, DictStrAny, MappingIntStrAny
 
 __author__ = "Md Nazrul Islam<email2nazrul@gmail.com>"
 
@@ -148,8 +148,7 @@ class FHIRAbstractModel(BaseModel, abc.ABC):
         index: int = -1,
     ):
         """ """
-        from inspect import signature
-        from inspect import ismethod
+        from inspect import ismethod, signature
 
         if isinstance(validator, classmethod) or ismethod(validator):
             validator = validator.__func__  # type:ignore

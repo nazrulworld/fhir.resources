@@ -8,11 +8,9 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
-from . import backboneelement, domainresource, fhirtypes
+from . import domainresource, fhirtypes
 
 
 class ObservationDefinition(domainresource.DomainResource):
@@ -25,9 +23,9 @@ class ObservationDefinition(domainresource.DomainResource):
     measurement produced or consumed by an orderable health care service.
     """
 
-    resource_type = Field("ObservationDefinition", const=True)
+    __resource_type__ = "ObservationDefinition"
 
-    approvalDate: fhirtypes.Date = Field(
+    approvalDate: fhirtypes.DateType = Field(
         None,
         alias="approvalDate",
         title="When ObservationDefinition was approved by publisher",
@@ -36,8 +34,9 @@ class ObservationDefinition(domainresource.DomainResource):
             "Approval happens once when the content is officially approved for "
             "usage."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_approvalDate", title="Extension field for ``approvalDate``."
@@ -48,8 +47,9 @@ class ObservationDefinition(domainresource.DomainResource):
         alias="bodySite",
         title="Body part to be observed",
         description="The site on the subject's body where the  observation is to be made.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -57,8 +57,9 @@ class ObservationDefinition(domainresource.DomainResource):
         alias="category",
         title="General type of observation",
         description="A code that classifies the general type of observation.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -69,8 +70,9 @@ class ObservationDefinition(domainresource.DomainResource):
             "Describes what will be observed. Sometimes this is called the "
             'observation "name".'
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     component: typing.List[fhirtypes.ObservationDefinitionComponentType] = Field(
@@ -81,8 +83,9 @@ class ObservationDefinition(domainresource.DomainResource):
             "Some observations have multiple component observations, expressed as "
             "separate code value pairs."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     contact: typing.List[fhirtypes.ContactDetailType] = Field(
@@ -93,11 +96,12 @@ class ObservationDefinition(domainresource.DomainResource):
             "Contact details to assist a user in finding and communicating with the"
             " publisher."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    copyright: fhirtypes.Markdown = Field(
+    copyright: fhirtypes.MarkdownType = Field(
         None,
         alias="copyright",
         title="Use and/or publishing restrictions",
@@ -106,14 +110,15 @@ class ObservationDefinition(domainresource.DomainResource):
             "contents. Copyright statements are generally legal restrictions on the"
             " use and publishing of the ObservationDefinition."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
-    copyrightLabel: fhirtypes.String = Field(
+    copyrightLabel: fhirtypes.StringType = Field(
         None,
         alias="copyrightLabel",
         title="Copyright holder and year(s)",
@@ -123,14 +128,15 @@ class ObservationDefinition(domainresource.DomainResource):
             "optionally whether rights are resctricted. (e.g. 'All rights "
             "reserved', 'Some rights reserved')."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     copyrightLabel__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyrightLabel", title="Extension field for ``copyrightLabel``."
     )
 
-    date: fhirtypes.DateTime = Field(
+    date: fhirtypes.DateTimeType = Field(
         None,
         alias="date",
         title="Date last changed",
@@ -141,14 +147,15 @@ class ObservationDefinition(domainresource.DomainResource):
             "it should change when the substantive content of the "
             "ObservationDefinition changes."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    derivedFromCanonical: typing.List[typing.Optional[fhirtypes.Canonical]] = Field(
+    derivedFromCanonical: typing.List[typing.Optional[fhirtypes.CanonicalType]] = Field(
         None,
         alias="derivedFromCanonical",
         title="Based on FHIR definition of another observation",
@@ -157,10 +164,11 @@ class ObservationDefinition(domainresource.DomainResource):
             "ObservationDefinition that is adhered to in whole or in part by this "
             "definition."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ObservationDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ObservationDefinition"],
+        },
     )
     derivedFromCanonical__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -170,7 +178,7 @@ class ObservationDefinition(domainresource.DomainResource):
         title="Extension field for ``derivedFromCanonical``.",
     )
 
-    derivedFromUri: typing.List[typing.Optional[fhirtypes.Uri]] = Field(
+    derivedFromUri: typing.List[typing.Optional[fhirtypes.UriType]] = Field(
         None,
         alias="derivedFromUri",
         title="Based on external definition",
@@ -179,8 +187,9 @@ class ObservationDefinition(domainresource.DomainResource):
             "guideline or other definition that is adhered to in whole or in part "
             "by this definition."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     derivedFromUri__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -188,7 +197,7 @@ class ObservationDefinition(domainresource.DomainResource):
         None, alias="_derivedFromUri", title="Extension field for ``derivedFromUri``."
     )
 
-    description: fhirtypes.Markdown = Field(
+    description: fhirtypes.MarkdownType = Field(
         None,
         alias="description",
         title="Natural language description of the ObservationDefinition",
@@ -196,8 +205,9 @@ class ObservationDefinition(domainresource.DomainResource):
             "A free text natural language description of the ObservationDefinition "
             "from the consumer's perspective."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -211,10 +221,11 @@ class ObservationDefinition(domainresource.DomainResource):
             "The measurement model of device or actual device used to produce "
             "observations of this type."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["DeviceDefinition", "Device"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["DeviceDefinition", "Device"],
+        },
     )
 
     effectivePeriod: fhirtypes.PeriodType = Field(
@@ -225,8 +236,9 @@ class ObservationDefinition(domainresource.DomainResource):
             "The period during which the ObservationDefinition content was or is "
             "planned to be effective."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     experimental: bool = Field(
@@ -238,8 +250,9 @@ class ObservationDefinition(domainresource.DomainResource):
             "testing purposes (or education/evaluation/marketing), and is not "
             "intended to be used for genuine usage."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     experimental__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_experimental", title="Extension field for ``experimental``."
@@ -257,10 +270,11 @@ class ObservationDefinition(domainresource.DomainResource):
             "battery, a panel of tests, a set of vital sign measurements) that "
             "includes the target as a member of the group."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ObservationDefinition", "Questionnaire"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ObservationDefinition", "Questionnaire"],
+        },
     )
 
     identifier: fhirtypes.IdentifierType = Field(
@@ -272,8 +286,9 @@ class ObservationDefinition(domainresource.DomainResource):
             "performer and/or other systems. These identifiers remain constant as "
             "the resource is updated and propagates from server to server."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     jurisdiction: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -284,11 +299,12 @@ class ObservationDefinition(domainresource.DomainResource):
             "A jurisdiction in which the ObservationDefinition is intended to be "
             "used."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    lastReviewDate: fhirtypes.Date = Field(
+    lastReviewDate: fhirtypes.DateType = Field(
         None,
         alias="lastReviewDate",
         title="Date on which the asset content was last reviewed by the publisher",
@@ -297,8 +313,9 @@ class ObservationDefinition(domainresource.DomainResource):
             "periodically after that, but doesn't change the original approval "
             "date."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
@@ -309,8 +326,9 @@ class ObservationDefinition(domainresource.DomainResource):
         alias="method",
         title="Method used to produce the observation",
         description="The method or technique used to perform the observation.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     multipleResultsAllowed: bool = Field(
@@ -321,8 +339,9 @@ class ObservationDefinition(domainresource.DomainResource):
             "Multiple results allowed for observations conforming to this "
             "ObservationDefinition."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     multipleResultsAllowed__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -330,7 +349,7 @@ class ObservationDefinition(domainresource.DomainResource):
         title="Extension field for ``multipleResultsAllowed``.",
     )
 
-    name: fhirtypes.String = Field(
+    name: fhirtypes.StringType = Field(
         None,
         alias="name",
         title="Name for this ObservationDefinition (computer friendly)",
@@ -339,8 +358,9 @@ class ObservationDefinition(domainresource.DomainResource):
             "name should be usable as an identifier for the module by machine "
             "processing applications such as code generation."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -354,11 +374,12 @@ class ObservationDefinition(domainresource.DomainResource):
             "The type of individual/organization/device that is expected to act "
             "upon instances of this definition."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    permittedDataType: typing.List[typing.Optional[fhirtypes.Code]] = Field(
+    permittedDataType: typing.List[typing.Optional[fhirtypes.CodeType]] = Field(
         None,
         alias="permittedDataType",
         title=(
@@ -369,23 +390,24 @@ class ObservationDefinition(domainresource.DomainResource):
             "The data types allowed for the value element of the instance "
             "observations conforming to this ObservationDefinition."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "Quantity",
-            "CodeableConcept",
-            "string",
-            "boolean",
-            "integer",
-            "Range",
-            "Ratio",
-            "SampledData",
-            "time",
-            "dateTime",
-            "Period",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "Quantity",
+                "CodeableConcept",
+                "string",
+                "boolean",
+                "integer",
+                "Range",
+                "Ratio",
+                "SampledData",
+                "time",
+                "dateTime",
+                "Period",
+            ],
+        },
     )
     permittedDataType__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -403,11 +425,12 @@ class ObservationDefinition(domainresource.DomainResource):
             "Units allowed for the valueQuantity element in the instance "
             "observations conforming to this ObservationDefinition."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    preferredReportName: fhirtypes.String = Field(
+    preferredReportName: fhirtypes.StringType = Field(
         None,
         alias="preferredReportName",
         title="The preferred name to be used when reporting the observation results",
@@ -415,8 +438,9 @@ class ObservationDefinition(domainresource.DomainResource):
             "The preferred name to be used when reporting the results of "
             "observations conforming to this ObservationDefinition."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     preferredReportName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -424,7 +448,7 @@ class ObservationDefinition(domainresource.DomainResource):
         title="Extension field for ``preferredReportName``.",
     )
 
-    publisher: fhirtypes.String = Field(
+    publisher: fhirtypes.StringType = Field(
         None,
         alias="publisher",
         title=(
@@ -435,14 +459,15 @@ class ObservationDefinition(domainresource.DomainResource):
             'Helps establish the "authority/credibility" of the '
             "ObservationDefinition. May also allow for contact."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     publisher__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_publisher", title="Extension field for ``publisher``."
     )
 
-    purpose: fhirtypes.Markdown = Field(
+    purpose: fhirtypes.MarkdownType = Field(
         None,
         alias="purpose",
         title="Why this ObservationDefinition is defined",
@@ -450,8 +475,9 @@ class ObservationDefinition(domainresource.DomainResource):
             "Explains why this ObservationDefinition is needed and why it has been "
             "designed as it has."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     purpose__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_purpose", title="Extension field for ``purpose``."
@@ -469,8 +495,9 @@ class ObservationDefinition(domainresource.DomainResource):
             "observations and a collection of value sets for qualitative "
             "observations."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     specimen: typing.List[fhirtypes.ReferenceType] = Field(
@@ -478,23 +505,25 @@ class ObservationDefinition(domainresource.DomainResource):
         alias="specimen",
         title="Kind of specimen used by this type of observation",
         description="The kind of specimen that this type of observation is produced on.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["SpecimenDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["SpecimenDefinition"],
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(
         None,
         alias="status",
         title="draft | active | retired | unknown",
         description="The current state of the ObservationDefinition.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["draft", "active", "retired", "unknown"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["draft", "active", "retired", "unknown"],
+        },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -508,11 +537,12 @@ class ObservationDefinition(domainresource.DomainResource):
             "A code that describes the intended kind of subject of Observation "
             "instances conforming to this ObservationDefinition."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    title: fhirtypes.String = Field(
+    title: fhirtypes.StringType = Field(
         None,
         alias="title",
         title="Name for this ObservationDefinition (human friendly)",
@@ -520,14 +550,15 @@ class ObservationDefinition(domainresource.DomainResource):
             "A short, descriptive, user-friendly title for the "
             "ObservationDefinition."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
     )
 
-    url: fhirtypes.Uri = Field(
+    url: fhirtypes.UriType = Field(
         None,
         alias="url",
         title=(
@@ -543,8 +574,9 @@ class ObservationDefinition(domainresource.DomainResource):
             "ObservationDefinition. For more information see Technical and Business"
             " Versions."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     url__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_url", title="Extension field for ``url``."
@@ -562,11 +594,12 @@ class ObservationDefinition(domainresource.DomainResource):
             "indexing and searching for appropriate ObservationDefinition "
             "instances."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    version: fhirtypes.String = Field(
+    version: fhirtypes.StringType = Field(
         None,
         alias="version",
         title="Business version of the ObservationDefinition",
@@ -579,8 +612,9 @@ class ObservationDefinition(domainresource.DomainResource):
             "managed version is not available. There is also no expectation that "
             "versions are orderable."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -594,14 +628,15 @@ class ObservationDefinition(domainresource.DomainResource):
             "Indicates the mechanism used to compare versions to determine which is"
             " more current."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e versionAlgorithm[x]
-        one_of_many="versionAlgorithm",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e versionAlgorithm[x]
+            "one_of_many": "versionAlgorithm",
+            "one_of_many_required": False,
+        },
     )
 
-    versionAlgorithmString: fhirtypes.String = Field(
+    versionAlgorithmString: fhirtypes.StringType = Field(
         None,
         alias="versionAlgorithmString",
         title="How to compare versions",
@@ -609,11 +644,12 @@ class ObservationDefinition(domainresource.DomainResource):
             "Indicates the mechanism used to compare versions to determine which is"
             " more current."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e versionAlgorithm[x]
-        one_of_many="versionAlgorithm",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e versionAlgorithm[x]
+            "one_of_many": "versionAlgorithm",
+            "one_of_many_required": False,
+        },
     )
     versionAlgorithmString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -676,10 +712,7 @@ class ObservationDefinition(domainresource.DomainResource):
             "component",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2386(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -688,57 +721,9 @@ class ObservationDefinition(domainresource.DomainResource):
         the primitive value is not present.
         """
         required_fields = [("status", "status__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
-
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_2386(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -754,26 +739,10 @@ class ObservationDefinition(domainresource.DomainResource):
         one_of_many_fields = {
             "versionAlgorithm": ["versionAlgorithmCoding", "versionAlgorithmString"]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
+        return one_of_many_fields
 
-        return values
+
+from . import backboneelement
 
 
 class ObservationDefinitionComponent(backboneelement.BackboneElement):
@@ -786,18 +755,19 @@ class ObservationDefinitionComponent(backboneelement.BackboneElement):
     separate code value pairs.
     """
 
-    resource_type = Field("ObservationDefinitionComponent", const=True)
+    __resource_type__ = "ObservationDefinitionComponent"
 
     code: fhirtypes.CodeableConceptType = Field(
         ...,
         alias="code",
         title="Type of observation",
         description="Describes what will be observed.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    permittedDataType: typing.List[typing.Optional[fhirtypes.Code]] = Field(
+    permittedDataType: typing.List[typing.Optional[fhirtypes.CodeType]] = Field(
         None,
         alias="permittedDataType",
         title=(
@@ -808,23 +778,24 @@ class ObservationDefinitionComponent(backboneelement.BackboneElement):
             "The data types allowed for the value element of the instance of this "
             "component observations."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "Quantity",
-            "CodeableConcept",
-            "string",
-            "boolean",
-            "integer",
-            "Range",
-            "Ratio",
-            "SampledData",
-            "time",
-            "dateTime",
-            "Period",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "Quantity",
+                "CodeableConcept",
+                "string",
+                "boolean",
+                "integer",
+                "Range",
+                "Ratio",
+                "SampledData",
+                "time",
+                "dateTime",
+                "Period",
+            ],
+        },
     )
     permittedDataType__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -842,8 +813,9 @@ class ObservationDefinitionComponent(backboneelement.BackboneElement):
             "Units allowed for the valueQuantity element in the instance "
             "observations conforming to this ObservationDefinition."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     qualifiedValue: typing.List[
@@ -858,8 +830,9 @@ class ObservationDefinitionComponent(backboneelement.BackboneElement):
             "observations and a collection of value sets for qualitative "
             "observations."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -890,9 +863,9 @@ class ObservationDefinitionQualifiedValue(backboneelement.BackboneElement):
     collection of value sets for qualitative observations.
     """
 
-    resource_type = Field("ObservationDefinitionQualifiedValue", const=True)
+    __resource_type__ = "ObservationDefinitionQualifiedValue"
 
-    abnormalCodedValueSet: fhirtypes.Canonical = Field(
+    abnormalCodedValueSet: fhirtypes.CanonicalType = Field(
         None,
         alias="abnormalCodedValueSet",
         title=(
@@ -903,10 +876,11 @@ class ObservationDefinitionQualifiedValue(backboneelement.BackboneElement):
             "The set of abnormal coded results for qualitative observations  that "
             "match the criteria of this set of qualified values."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ValueSet"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ValueSet"],
+        },
     )
     abnormalCodedValueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -919,8 +893,9 @@ class ObservationDefinitionQualifiedValue(backboneelement.BackboneElement):
         alias="age",
         title="Applicable age range for the set of qualified values",
         description="The age range this  set of qualified values applies to.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     appliesTo: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -928,11 +903,12 @@ class ObservationDefinitionQualifiedValue(backboneelement.BackboneElement):
         alias="appliesTo",
         title="Targetted population for the set of qualified values",
         description="The target population this  set of qualified values applies to.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    condition: fhirtypes.String = Field(
+    condition: fhirtypes.StringType = Field(
         None,
         alias="condition",
         title="Condition associated with the set of qualified values",
@@ -940,8 +916,9 @@ class ObservationDefinitionQualifiedValue(backboneelement.BackboneElement):
             "Text based condition for which the the set of qualified values is "
             "valid."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     condition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_condition", title="Extension field for ``condition``."
@@ -952,11 +929,12 @@ class ObservationDefinitionQualifiedValue(backboneelement.BackboneElement):
         alias="context",
         title="Context qualifier for the set of qualified values",
         description="A concept defining the context for this set of qualified values.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    criticalCodedValueSet: fhirtypes.Canonical = Field(
+    criticalCodedValueSet: fhirtypes.CanonicalType = Field(
         None,
         alias="criticalCodedValueSet",
         title=(
@@ -967,10 +945,11 @@ class ObservationDefinitionQualifiedValue(backboneelement.BackboneElement):
             "The set of critical coded results for qualitative observations  that "
             "match the criteria of this set of qualified values."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ValueSet"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ValueSet"],
+        },
     )
     criticalCodedValueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -978,16 +957,17 @@ class ObservationDefinitionQualifiedValue(backboneelement.BackboneElement):
         title="Extension field for ``criticalCodedValueSet``.",
     )
 
-    gender: fhirtypes.Code = Field(
+    gender: fhirtypes.CodeType = Field(
         None,
         alias="gender",
         title="male | female | other | unknown",
         description="The gender this  set of qualified values applies to.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["male", "female", "other", "unknown"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["male", "female", "other", "unknown"],
+        },
     )
     gender__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_gender", title="Extension field for ``gender``."
@@ -998,11 +978,12 @@ class ObservationDefinitionQualifiedValue(backboneelement.BackboneElement):
         alias="gestationalAge",
         title="Applicable gestational age range for the set of qualified values",
         description="The gestational age this  set of qualified values applies to.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    normalCodedValueSet: fhirtypes.Canonical = Field(
+    normalCodedValueSet: fhirtypes.CanonicalType = Field(
         None,
         alias="normalCodedValueSet",
         title=(
@@ -1013,10 +994,11 @@ class ObservationDefinitionQualifiedValue(backboneelement.BackboneElement):
             "The set of normal coded results for qualitative observations  that "
             "match the criteria of this set of qualified values."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ValueSet"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ValueSet"],
+        },
     )
     normalCodedValueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -1032,11 +1014,12 @@ class ObservationDefinitionQualifiedValue(backboneelement.BackboneElement):
             "The range of values defined for continuous or ordinal observations "
             "that match the criteria of this set of qualified values."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    rangeCategory: fhirtypes.Code = Field(
+    rangeCategory: fhirtypes.CodeType = Field(
         None,
         alias="rangeCategory",
         title="reference | critical | absolute",
@@ -1044,17 +1027,18 @@ class ObservationDefinitionQualifiedValue(backboneelement.BackboneElement):
             "The category of range of values for continuous or ordinal observations"
             " that match the criteria of this set of qualified values."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["reference", "critical", "absolute"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["reference", "critical", "absolute"],
+        },
     )
     rangeCategory__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_rangeCategory", title="Extension field for ``rangeCategory``."
     )
 
-    validCodedValueSet: fhirtypes.Canonical = Field(
+    validCodedValueSet: fhirtypes.CanonicalType = Field(
         None,
         alias="validCodedValueSet",
         title=(
@@ -1064,10 +1048,11 @@ class ObservationDefinitionQualifiedValue(backboneelement.BackboneElement):
             "The set of valid coded results for qualitative observations  that "
             "match the criteria of this set of qualified values."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ValueSet"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ValueSet"],
+        },
     )
     validCodedValueSet__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,

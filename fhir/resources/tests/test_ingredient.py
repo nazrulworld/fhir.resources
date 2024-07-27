@@ -6,10 +6,10 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
+from pathlib import Path
 
-from .. import fhirtypes  # noqa: F401
 from .. import ingredient
+from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
 
 def impl_ingredient_1(inst):
@@ -18,15 +18,25 @@ def impl_ingredient_1(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.role.coding[0].code == "ActiveBase"
-    assert inst.role.coding[0].system == "http://ema.europa.eu/example/ingredientRole"
+    assert (
+        inst.role.coding[0].system
+        == ExternalValidatorModel(
+            valueUri="http://ema.europa.eu/example/ingredientRole"
+        ).valueUri
+    )
     assert inst.status == "active"
     assert inst.substance.code.concept.coding[0].code == "Wizzohaler"
     assert (
         inst.substance.code.concept.coding[0].system
-        == "http://ema.europa.eu/example/substance"
+        == ExternalValidatorModel(
+            valueUri="http://ema.europa.eu/example/substance"
+        ).valueUri
     )
     assert inst.substance.strength[0].measurementPoint == "2cm"
     assert (
@@ -35,7 +45,7 @@ def impl_ingredient_1(inst):
     )
     assert (
         inst.substance.strength[0].presentationRatio.denominator.system
-        == "http://unitsofmeasure.org"
+        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
     )
     assert (
         inst.substance.strength[0].presentationRatio.denominator.unit
@@ -47,7 +57,7 @@ def impl_ingredient_1(inst):
     assert inst.substance.strength[0].presentationRatio.numerator.code == "ug"
     assert (
         inst.substance.strength[0].presentationRatio.numerator.system
-        == "http://unitsofmeasure.org"
+        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
     )
     assert inst.substance.strength[0].presentationRatio.numerator.unit == "mcg"
     assert float(inst.substance.strength[0].presentationRatio.numerator.value) == float(
@@ -60,7 +70,7 @@ def impl_ingredient_1(inst):
     )
     assert (
         inst.substance.strength[1].presentationRatio.denominator.system
-        == "http://unitsofmeasure.org"
+        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
     )
     assert (
         inst.substance.strength[1].presentationRatio.denominator.unit
@@ -72,7 +82,7 @@ def impl_ingredient_1(inst):
     assert inst.substance.strength[1].presentationRatio.numerator.code == "ug"
     assert (
         inst.substance.strength[1].presentationRatio.numerator.system
-        == "http://unitsofmeasure.org"
+        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
     )
     assert inst.substance.strength[1].presentationRatio.numerator.unit == "mcg"
     assert float(inst.substance.strength[1].presentationRatio.numerator.value) == float(
@@ -88,15 +98,13 @@ def test_ingredient_1(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "ingredient-example-strength-repeat.json"
     )
-    inst = ingredient.Ingredient.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Ingredient" == inst.resource_type
+    inst = ingredient.Ingredient.model_validate_json(Path(filename).read_bytes())
+    assert "Ingredient" == inst.get_resource_type()
 
     impl_ingredient_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Ingredient" == data["resourceType"]
 
     inst2 = ingredient.Ingredient(**data)
@@ -109,20 +117,30 @@ def impl_ingredient_2(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.role.coding[0].code == "ActiveBase"
-    assert inst.role.coding[0].system == "http://ema.europa.eu/example/ingredientRole"
+    assert (
+        inst.role.coding[0].system
+        == ExternalValidatorModel(
+            valueUri="http://ema.europa.eu/example/ingredientRole"
+        ).valueUri
+    )
     assert inst.status == "active"
     assert inst.substance.code.concept.coding[0].code == "EQUIXABAN"
     assert (
         inst.substance.code.concept.coding[0].system
-        == "http://ema.europa.eu/example/substance"
+        == ExternalValidatorModel(
+            valueUri="http://ema.europa.eu/example/substance"
+        ).valueUri
     )
     assert inst.substance.strength[0].concentrationRatio.denominator.code == "mg"
     assert (
         inst.substance.strength[0].concentrationRatio.denominator.system
-        == "http://unitsofmeasure.org"
+        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
     )
     assert inst.substance.strength[0].concentrationRatio.denominator.unit == "mg"
     assert float(
@@ -131,7 +149,7 @@ def impl_ingredient_2(inst):
     assert inst.substance.strength[0].concentrationRatio.numerator.code == "mg"
     assert (
         inst.substance.strength[0].concentrationRatio.numerator.system
-        == "http://unitsofmeasure.org"
+        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
     )
     assert inst.substance.strength[0].concentrationRatio.numerator.unit == "mg"
     assert float(
@@ -140,7 +158,7 @@ def impl_ingredient_2(inst):
     assert inst.substance.strength[0].presentationRatio.denominator.code == "{tablet}"
     assert (
         inst.substance.strength[0].presentationRatio.denominator.system
-        == "http://unitsofmeasure.org"
+        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
     )
     assert inst.substance.strength[0].presentationRatio.denominator.unit == "tablet"
     assert float(
@@ -149,7 +167,7 @@ def impl_ingredient_2(inst):
     assert inst.substance.strength[0].presentationRatio.numerator.code == "mg"
     assert (
         inst.substance.strength[0].presentationRatio.numerator.system
-        == "http://unitsofmeasure.org"
+        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
     )
     assert inst.substance.strength[0].presentationRatio.numerator.unit == "mg"
     assert float(inst.substance.strength[0].presentationRatio.numerator.value) == float(
@@ -161,7 +179,7 @@ def impl_ingredient_2(inst):
     )
     assert (
         inst.substance.strength[0].referenceStrength[0].strengthRatio.denominator.system
-        == "http://unitsofmeasure.org"
+        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
     )
     assert (
         inst.substance.strength[0].referenceStrength[0].strengthRatio.denominator.unit
@@ -176,7 +194,7 @@ def impl_ingredient_2(inst):
     )
     assert (
         inst.substance.strength[0].referenceStrength[0].strengthRatio.numerator.system
-        == "http://unitsofmeasure.org"
+        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
     )
     assert (
         inst.substance.strength[0].referenceStrength[0].strengthRatio.numerator.unit
@@ -194,7 +212,9 @@ def impl_ingredient_2(inst):
         .referenceStrength[0]
         .substance.concept.coding[0]
         .system
-        == "http://ema.europa.eu/example/substance"
+        == ExternalValidatorModel(
+            valueUri="http://ema.europa.eu/example/substance"
+        ).valueUri
     )
     assert inst.text.status == "generated"
 
@@ -204,15 +224,13 @@ def test_ingredient_2(base_settings):
     Test File: ingredient-example.json
     """
     filename = base_settings["unittest_data_dir"] / "ingredient-example.json"
-    inst = ingredient.Ingredient.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Ingredient" == inst.resource_type
+    inst = ingredient.Ingredient.model_validate_json(Path(filename).read_bytes())
+    assert "Ingredient" == inst.get_resource_type()
 
     impl_ingredient_2(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Ingredient" == data["resourceType"]
 
     inst2 = ingredient.Ingredient(**data)

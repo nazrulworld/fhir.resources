@@ -8,11 +8,9 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
-from . import backboneelement, domainresource, fhirtypes
+from . import domainresource, fhirtypes
 
 
 class Substance(domainresource.DomainResource):
@@ -23,7 +21,7 @@ class Substance(domainresource.DomainResource):
     A homogeneous material with a definite composition.
     """
 
-    resource_type = Field("Substance", const=True)
+    __resource_type__ = "Substance"
 
     category: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
@@ -33,8 +31,9 @@ class Substance(domainresource.DomainResource):
             "A code that classifies the general type of substance.  This is used  "
             "for searching, sorting and display purposes."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     code: fhirtypes.CodeableReferenceType = Field(
@@ -42,13 +41,14 @@ class Substance(domainresource.DomainResource):
         alias="code",
         title="What substance this is",
         description="A code (or set of codes) that identify this substance.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["SubstanceDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["SubstanceDefinition"],
+        },
     )
 
-    description: fhirtypes.Markdown = Field(
+    description: fhirtypes.MarkdownType = Field(
         None,
         alias="description",
         title="Textual description of the substance, comments",
@@ -56,14 +56,15 @@ class Substance(domainresource.DomainResource):
             "A description of the substance - its appearance, handling "
             "requirements, and other usage notes."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
     )
 
-    expiry: fhirtypes.DateTime = Field(
+    expiry: fhirtypes.DateTimeType = Field(
         None,
         alias="expiry",
         title="When no longer valid to use",
@@ -71,8 +72,9 @@ class Substance(domainresource.DomainResource):
             "When the substance is no longer valid to use. For some substances, a "
             "single arbitrary date is used for expiry."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     expiry__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_expiry", title="Extension field for ``expiry``."
@@ -87,8 +89,9 @@ class Substance(domainresource.DomainResource):
             "associated with the package/container (usually a label affixed "
             "directly)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     ingredient: typing.List[fhirtypes.SubstanceIngredientType] = Field(
@@ -96,8 +99,9 @@ class Substance(domainresource.DomainResource):
         alias="ingredient",
         title="Composition information about the substance",
         description="A substance can be composed of other substances.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     instance: bool = Field(
@@ -108,9 +112,10 @@ class Substance(domainresource.DomainResource):
             "A boolean to indicate if this an instance of a substance or a kind of "
             "one (a definition)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
     instance__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_instance", title="Extension field for ``instance``."
@@ -121,20 +126,22 @@ class Substance(domainresource.DomainResource):
         alias="quantity",
         title="Amount of substance in the package",
         description="The amount of the substance.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(
         None,
         alias="status",
         title="active | inactive | entered-in-error",
         description="A code to indicate if the substance is actively used.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["active", "inactive", "entered-in-error"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["active", "inactive", "entered-in-error"],
+        },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -166,10 +173,7 @@ class Substance(domainresource.DomainResource):
             "ingredient",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1120(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -178,52 +182,10 @@ class Substance(domainresource.DomainResource):
         the primitive value is not present.
         """
         required_fields = [("instance", "instance__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
 
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+from . import backboneelement
 
 
 class SubstanceIngredient(backboneelement.BackboneElement):
@@ -235,15 +197,16 @@ class SubstanceIngredient(backboneelement.BackboneElement):
     A substance can be composed of other substances.
     """
 
-    resource_type = Field("SubstanceIngredient", const=True)
+    __resource_type__ = "SubstanceIngredient"
 
     quantity: fhirtypes.RatioType = Field(
         None,
         alias="quantity",
         title="Optional amount (concentration)",
         description="The amount of the ingredient in the substance - a concentration ratio.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     substanceCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -251,11 +214,12 @@ class SubstanceIngredient(backboneelement.BackboneElement):
         alias="substanceCodeableConcept",
         title="A component of the substance",
         description="Another substance that is a component of this substance.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e substance[x]
-        one_of_many="substance",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e substance[x]
+            "one_of_many": "substance",
+            "one_of_many_required": True,
+        },
     )
 
     substanceReference: fhirtypes.ReferenceType = Field(
@@ -263,13 +227,14 @@ class SubstanceIngredient(backboneelement.BackboneElement):
         alias="substanceReference",
         title="A component of the substance",
         description="Another substance that is a component of this substance.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e substance[x]
-        one_of_many="substance",
-        one_of_many_required=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Substance"],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e substance[x]
+            "one_of_many": "substance",
+            "one_of_many_required": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Substance"],
+        },
     )
 
     @classmethod
@@ -287,10 +252,7 @@ class SubstanceIngredient(backboneelement.BackboneElement):
             "substanceReference",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_2168(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -306,23 +268,4 @@ class SubstanceIngredient(backboneelement.BackboneElement):
         one_of_many_fields = {
             "substance": ["substanceCodeableConcept", "substanceReference"]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields

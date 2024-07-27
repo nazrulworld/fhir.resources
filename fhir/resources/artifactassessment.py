@@ -8,9 +8,9 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
+from pydantic import Field
 
-from . import backboneelement, domainresource, fhirtypes
+from . import domainresource, fhirtypes
 
 
 class ArtifactAssessment(domainresource.DomainResource):
@@ -25,9 +25,9 @@ class ArtifactAssessment(domainresource.DomainResource):
     added content.
     """
 
-    resource_type = Field("ArtifactAssessment", const=True)
+    __resource_type__ = "ArtifactAssessment"
 
-    approvalDate: fhirtypes.Date = Field(
+    approvalDate: fhirtypes.DateType = Field(
         None,
         alias="approvalDate",
         title="When the artifact assessment was approved by publisher",
@@ -36,14 +36,15 @@ class ArtifactAssessment(domainresource.DomainResource):
             "Approval happens once when the content is officially approved for "
             "usage."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_approvalDate", title="Extension field for ``approvalDate``."
     )
 
-    artifactCanonical: fhirtypes.Canonical = Field(
+    artifactCanonical: fhirtypes.CanonicalType = Field(
         None,
         alias="artifactCanonical",
         title="The artifact assessed, commented upon or rated",
@@ -51,11 +52,12 @@ class ArtifactAssessment(domainresource.DomainResource):
             "A reference to a resource, canonical resource, or non-FHIR resource "
             "which the comment or assessment is about."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e artifact[x]
-        one_of_many="artifact",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e artifact[x]
+            "one_of_many": "artifact",
+            "one_of_many_required": True,
+        },
     )
     artifactCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -71,16 +73,17 @@ class ArtifactAssessment(domainresource.DomainResource):
             "A reference to a resource, canonical resource, or non-FHIR resource "
             "which the comment or assessment is about."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e artifact[x]
-        one_of_many="artifact",
-        one_of_many_required=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Resource"],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e artifact[x]
+            "one_of_many": "artifact",
+            "one_of_many_required": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Resource"],
+        },
     )
 
-    artifactUri: fhirtypes.Uri = Field(
+    artifactUri: fhirtypes.UriType = Field(
         None,
         alias="artifactUri",
         title="The artifact assessed, commented upon or rated",
@@ -88,17 +91,18 @@ class ArtifactAssessment(domainresource.DomainResource):
             "A reference to a resource, canonical resource, or non-FHIR resource "
             "which the comment or assessment is about."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e artifact[x]
-        one_of_many="artifact",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e artifact[x]
+            "one_of_many": "artifact",
+            "one_of_many_required": True,
+        },
     )
     artifactUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_artifactUri", title="Extension field for ``artifactUri``."
     )
 
-    citeAsMarkdown: fhirtypes.Markdown = Field(
+    citeAsMarkdown: fhirtypes.MarkdownType = Field(
         None,
         alias="citeAsMarkdown",
         title="How to cite the comment or rating",
@@ -106,11 +110,12 @@ class ArtifactAssessment(domainresource.DomainResource):
             "Display of or reference to the bibliographic citation of the comment, "
             "classifier, or rating."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e citeAs[x]
-        one_of_many="citeAs",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e citeAs[x]
+            "one_of_many": "citeAs",
+            "one_of_many_required": False,
+        },
     )
     citeAsMarkdown__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_citeAsMarkdown", title="Extension field for ``citeAsMarkdown``."
@@ -124,13 +129,14 @@ class ArtifactAssessment(domainresource.DomainResource):
             "Display of or reference to the bibliographic citation of the comment, "
             "classifier, or rating."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e citeAs[x]
-        one_of_many="citeAs",
-        one_of_many_required=False,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Citation"],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e citeAs[x]
+            "one_of_many": "citeAs",
+            "one_of_many_required": False,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Citation"],
+        },
     )
 
     content: typing.List[fhirtypes.ArtifactAssessmentContentType] = Field(
@@ -138,11 +144,12 @@ class ArtifactAssessment(domainresource.DomainResource):
         alias="content",
         title="Comment, classifier, or rating content",
         description="A component comment, classifier, or rating of the artifact.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    copyright: fhirtypes.Markdown = Field(
+    copyright: fhirtypes.MarkdownType = Field(
         None,
         alias="copyright",
         title="Use and/or publishing restrictions",
@@ -151,14 +158,15 @@ class ArtifactAssessment(domainresource.DomainResource):
             "contents. Copyright statements are generally legal restrictions on the"
             " use and publishing of the artifact assessment."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     copyright__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_copyright", title="Extension field for ``copyright``."
     )
 
-    date: fhirtypes.DateTime = Field(
+    date: fhirtypes.DateTimeType = Field(
         None,
         alias="date",
         title="Date last changed",
@@ -169,14 +177,15 @@ class ArtifactAssessment(domainresource.DomainResource):
             "should change when the substantive content of the artifact assessment "
             "changes."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
     )
 
-    disposition: fhirtypes.Code = Field(
+    disposition: fhirtypes.CodeType = Field(
         None,
         alias="disposition",
         title=(
@@ -187,17 +196,18 @@ class ArtifactAssessment(domainresource.DomainResource):
             "Indicates the disposition of the responsible party to the comment or "
             "change request."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "unresolved",
-            "not-persuasive",
-            "persuasive",
-            "persuasive-with-modification",
-            "not-persuasive-with-modification",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "unresolved",
+                "not-persuasive",
+                "persuasive",
+                "persuasive-with-modification",
+                "not-persuasive-with-modification",
+            ],
+        },
     )
     disposition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_disposition", title="Extension field for ``disposition``."
@@ -212,11 +222,12 @@ class ArtifactAssessment(domainresource.DomainResource):
             "when it is represented in other formats, or referenced in a "
             "specification, model, design or an instance."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    lastReviewDate: fhirtypes.Date = Field(
+    lastReviewDate: fhirtypes.DateType = Field(
         None,
         alias="lastReviewDate",
         title="When the artifact assessment was last reviewed by the publisher",
@@ -225,26 +236,28 @@ class ArtifactAssessment(domainresource.DomainResource):
             "happens periodically after approval but does not change the original "
             "approval date."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
     )
 
-    title: fhirtypes.String = Field(
+    title: fhirtypes.StringType = Field(
         None,
         alias="title",
         title="A short title for the assessment for use in displaying and selecting",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
     )
 
-    workflowStatus: fhirtypes.Code = Field(
+    workflowStatus: fhirtypes.CodeType = Field(
         None,
         alias="workflowStatus",
         title=(
@@ -253,22 +266,23 @@ class ArtifactAssessment(domainresource.DomainResource):
             "| entered-in-error"
         ),
         description="Indicates the workflow status of the comment or change request.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "submitted",
-            "triaged",
-            "waiting-for-input",
-            "resolved-no-change",
-            "resolved-change-required",
-            "deferred",
-            "duplicate",
-            "applied",
-            "published",
-            "entered-in-error",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "submitted",
+                "triaged",
+                "waiting-for-input",
+                "resolved-no-change",
+                "resolved-change-required",
+                "deferred",
+                "duplicate",
+                "applied",
+                "published",
+                "entered-in-error",
+            ],
+        },
     )
     workflowStatus__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_workflowStatus", title="Extension field for ``workflowStatus``."
@@ -305,10 +319,7 @@ class ArtifactAssessment(domainresource.DomainResource):
             "disposition",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_2057(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -325,26 +336,10 @@ class ArtifactAssessment(domainresource.DomainResource):
             "artifact": ["artifactCanonical", "artifactReference", "artifactUri"],
             "citeAs": ["citeAsMarkdown", "citeAsReference"],
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
+        return one_of_many_fields
 
-        return values
+
+from . import backboneelement
 
 
 class ArtifactAssessmentContent(backboneelement.BackboneElement):
@@ -356,23 +351,24 @@ class ArtifactAssessmentContent(backboneelement.BackboneElement):
     A component comment, classifier, or rating of the artifact.
     """
 
-    resource_type = Field("ArtifactAssessmentContent", const=True)
+    __resource_type__ = "ArtifactAssessmentContent"
 
     author: fhirtypes.ReferenceType = Field(
         None,
         alias="author",
         title="Who authored the content",
         description="Indicates who or what authored the content.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Patient",
-            "Practitioner",
-            "PractitionerRole",
-            "Organization",
-            "Device",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Patient",
+                "Practitioner",
+                "PractitionerRole",
+                "Organization",
+                "Device",
+            ],
+        },
     )
 
     classifier: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -380,8 +376,9 @@ class ArtifactAssessmentContent(backboneelement.BackboneElement):
         alias="classifier",
         title="Rating, classifier, or assessment",
         description="Represents a rating, classifier, or assessment of the artifact.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     component: typing.List[fhirtypes.ArtifactAssessmentContentType] = Field(
@@ -389,8 +386,9 @@ class ArtifactAssessmentContent(backboneelement.BackboneElement):
         alias="component",
         title="Contained content",
         description="If the informationType is container, the components of the content.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     freeToShare: bool = Field(
@@ -398,36 +396,38 @@ class ArtifactAssessmentContent(backboneelement.BackboneElement):
         alias="freeToShare",
         title="Acceptable to publicly share the resource content",
         description="Acceptable to publicly share the comment, classifier or rating.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     freeToShare__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_freeToShare", title="Extension field for ``freeToShare``."
     )
 
-    informationType: fhirtypes.Code = Field(
+    informationType: fhirtypes.CodeType = Field(
         None,
         alias="informationType",
         title="comment | classifier | rating | container | response | change-request",
         description="The type of information this component of the content represents.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "comment",
-            "classifier",
-            "rating",
-            "container",
-            "response",
-            "change-request",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "comment",
+                "classifier",
+                "rating",
+                "container",
+                "response",
+                "change-request",
+            ],
+        },
     )
     informationType__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_informationType", title="Extension field for ``informationType``."
     )
 
-    path: typing.List[typing.Optional[fhirtypes.Uri]] = Field(
+    path: typing.List[typing.Optional[fhirtypes.UriType]] = Field(
         None,
         alias="path",
         title="What the comment is directed to",
@@ -435,8 +435,9 @@ class ArtifactAssessmentContent(backboneelement.BackboneElement):
             "A URI that points to what the comment is about, such as a line of text"
             " in the CQL, or a specific element in a resource."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     path__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -447,8 +448,9 @@ class ArtifactAssessmentContent(backboneelement.BackboneElement):
         alias="quantity",
         title="Quantitative rating",
         description="A quantitative rating of the artifact.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     relatedArtifact: typing.List[fhirtypes.RelatedArtifactType] = Field(
@@ -459,17 +461,19 @@ class ArtifactAssessmentContent(backboneelement.BackboneElement):
             "Additional related artifacts that provide supporting documentation, "
             "additional evidence, or further information related to the content."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    summary: fhirtypes.Markdown = Field(
+    summary: fhirtypes.MarkdownType = Field(
         None,
         alias="summary",
         title="Brief summary of the content",
         description="A brief summary of the content of this component.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     summary__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_summary", title="Extension field for ``summary``."
@@ -480,8 +484,9 @@ class ArtifactAssessmentContent(backboneelement.BackboneElement):
         alias="type",
         title="What type of content",
         description="Indicates what type of content this component represents.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

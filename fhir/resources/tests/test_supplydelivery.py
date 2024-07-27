@@ -6,10 +6,10 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
+from pathlib import Path
 
-from .. import fhirtypes  # noqa: F401
 from .. import supplydelivery
+from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
 
 def impl_supplydelivery_1(inst):
@@ -18,24 +18,39 @@ def impl_supplydelivery_1(inst):
     assert inst.contained[2].id == "Item3"
     assert inst.destination.display == "St Johns Hospital, Anytown, AnyState"
     assert inst.id == "ISBT128"
-    assert inst.identifier[0].system == "https://www.isbt128.org/uri/ProductConsignment"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel(
+            valueUri="https://www.isbt128.org/uri/ProductConsignment"
+        ).valueUri
+    )
     assert inst.identifier[0].value == "A999922123450101"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.suppliedItem[0].itemReference.reference == "#Item1"
     assert inst.suppliedItem[1].itemReference.reference == "#Item2"
     assert inst.suppliedItem[2].itemReference.reference == "#Item3"
     assert inst.supplier.display == "Community Blood Center"
-    assert inst.supplier.identifier.system == "https://www.isbt128.org/uri/ProcessorFIN"
+    assert (
+        inst.supplier.identifier.system
+        == ExternalValidatorModel(
+            valueUri="https://www.isbt128.org/uri/ProcessorFIN"
+        ).valueUri
+    )
     assert inst.supplier.identifier.value == "A9999"
     assert inst.text.status == "generated"
     assert inst.type.coding[0].code == "biologicallyderivedproduct"
     assert (
         inst.type.coding[0].system
-        == "http://hl7.org/fhir/supplydelivery-supplyitemtype"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/supplydelivery-supplyitemtype"
+        ).valueUri
     )
     assert inst.type.text == "Blood Dispatch"
 
@@ -47,15 +62,15 @@ def test_supplydelivery_1(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "supplydelivery-example-ISBT128.json"
     )
-    inst = supplydelivery.SupplyDelivery.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = supplydelivery.SupplyDelivery.model_validate_json(
+        Path(filename).read_bytes()
     )
-    assert "SupplyDelivery" == inst.resource_type
+    assert "SupplyDelivery" == inst.get_resource_type()
 
     impl_supplydelivery_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "SupplyDelivery" == data["resourceType"]
 
     inst2 = supplydelivery.SupplyDelivery(**data)
@@ -67,12 +82,20 @@ def impl_supplydelivery_2(inst):
     assert inst.contained[1].id == "Item2"
     assert inst.contained[2].id == "Item3"
     assert inst.id == "mphodelivery"
-    assert inst.identifier[0].system == "https://www.isbt128.org/uri/ProductConsignment"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel(
+            valueUri="https://www.isbt128.org/uri/ProductConsignment"
+        ).valueUri
+    )
     assert inst.identifier[0].value == "A999922123450101"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.suppliedItem[0].itemReference.reference == "#Item1"
     assert float(inst.suppliedItem[0].quantity.value) == float(3)
@@ -82,7 +105,9 @@ def impl_supplydelivery_2(inst):
     assert inst.type.coding[0].code == "biologicallyderivedproduct"
     assert (
         inst.type.coding[0].system
-        == "http://hl7.org/fhir/supplydelivery-supplyitemtype"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/supplydelivery-supplyitemtype"
+        ).valueUri
     )
     assert inst.type.text == "Blood Dispatch"
 
@@ -94,15 +119,15 @@ def test_supplydelivery_2(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "supplydelivery-example-mphodelivery.json"
     )
-    inst = supplydelivery.SupplyDelivery.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = supplydelivery.SupplyDelivery.model_validate_json(
+        Path(filename).read_bytes()
     )
-    assert "SupplyDelivery" == inst.resource_type
+    assert "SupplyDelivery" == inst.get_resource_type()
 
     impl_supplydelivery_2(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "SupplyDelivery" == data["resourceType"]
 
     inst2 = supplydelivery.SupplyDelivery(**data)
@@ -117,9 +142,15 @@ def impl_supplydelivery_3(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
-    assert inst.occurrenceDateTime == fhirtypes.DateTime.validate("2016-12-31")
+    assert (
+        inst.occurrenceDateTime
+        == ExternalValidatorModel(valueDateTime="2016-12-31").valueDateTime
+    )
     assert inst.partOf[0].display == "Central Supply Restock"
     assert inst.status == "completed"
     assert inst.suppliedItem[0].itemCodeableConcept.coding[0].code == "BlueTubes"
@@ -133,7 +164,9 @@ def impl_supplydelivery_3(inst):
     assert inst.type.coding[0].code == "device"
     assert (
         inst.type.coding[0].system
-        == "http://hl7.org/fhir/supplydelivery-supplyitemtype"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/supplydelivery-supplyitemtype"
+        ).valueUri
     )
     assert inst.type.text == "Blood collect tubes blue cap"
 
@@ -143,15 +176,15 @@ def test_supplydelivery_3(base_settings):
     Test File: supplydelivery-example.json
     """
     filename = base_settings["unittest_data_dir"] / "supplydelivery-example.json"
-    inst = supplydelivery.SupplyDelivery.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = supplydelivery.SupplyDelivery.model_validate_json(
+        Path(filename).read_bytes()
     )
-    assert "SupplyDelivery" == inst.resource_type
+    assert "SupplyDelivery" == inst.get_resource_type()
 
     impl_supplydelivery_3(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "SupplyDelivery" == data["resourceType"]
 
     inst2 = supplydelivery.SupplyDelivery(**data)
@@ -166,7 +199,10 @@ def impl_supplydelivery_4(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.patient.display == "Mr. Belpit"
     assert inst.receiver[0].display == "Nurse Smith"
@@ -185,15 +221,15 @@ def test_supplydelivery_4(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "supplydelivery-example-pumpdelivery.json"
     )
-    inst = supplydelivery.SupplyDelivery.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = supplydelivery.SupplyDelivery.model_validate_json(
+        Path(filename).read_bytes()
     )
-    assert "SupplyDelivery" == inst.resource_type
+    assert "SupplyDelivery" == inst.get_resource_type()
 
     impl_supplydelivery_4(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "SupplyDelivery" == data["resourceType"]
 
     inst2 = supplydelivery.SupplyDelivery(**data)

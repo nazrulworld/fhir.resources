@@ -8,11 +8,9 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
-from . import backboneelement, domainresource, fhirtypes
+from . import domainresource, fhirtypes
 
 
 class DeviceMetric(domainresource.DomainResource):
@@ -24,7 +22,7 @@ class DeviceMetric(domainresource.DomainResource):
     Describes a measurement, calculation or setting capability of a device.
     """
 
-    resource_type = Field("DeviceMetric", const=True)
+    __resource_type__ = "DeviceMetric"
 
     calibration: typing.List[fhirtypes.DeviceMetricCalibrationType] = Field(
         None,
@@ -34,11 +32,12 @@ class DeviceMetric(domainresource.DomainResource):
             "required to be performed"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    category: fhirtypes.Code = Field(
+    category: fhirtypes.CodeType = Field(
         None,
         alias="category",
         title="measurement | setting | calculation | unspecified",
@@ -47,18 +46,19 @@ class DeviceMetric(domainresource.DomainResource):
             "DeviceMetric can be for example a setting, measurement, or "
             "calculation."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["measurement", "setting", "calculation", "unspecified"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["measurement", "setting", "calculation", "unspecified"],
+        },
     )
     category__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_category", title="Extension field for ``category``."
     )
 
-    color: fhirtypes.Code = Field(
+    color: fhirtypes.CodeType = Field(
         None,
         alias="color",
         title="Color name (from CSS4) or #RRGGBB code",
@@ -70,8 +70,9 @@ class DeviceMetric(domainresource.DomainResource):
             "characteristic colors, such as HR in blue, BP in green, and PR and "
             "SpO2 in magenta."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     color__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_color", title="Extension field for ``color``."
@@ -85,10 +86,11 @@ class DeviceMetric(domainresource.DomainResource):
             "Describes the link to the Device.  This is also known as a channel "
             "device."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Device"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Device"],
+        },
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -100,8 +102,9 @@ class DeviceMetric(domainresource.DomainResource):
             "software, manufacturers, other organizations or owners. For example, "
             "handle ID."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     measurementFrequency: fhirtypes.QuantityType = Field(
@@ -118,11 +121,12 @@ class DeviceMetric(domainresource.DomainResource):
             "measurement frequency, if the device does not update the published "
             "observed value with the same frequency as it was measured."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    operationalStatus: fhirtypes.Code = Field(
+    operationalStatus: fhirtypes.CodeType = Field(
         None,
         alias="operationalStatus",
         title="on | off | standby | entered-in-error",
@@ -130,11 +134,12 @@ class DeviceMetric(domainresource.DomainResource):
             "Indicates current operational state of the device. For example: On, "
             "Off, Standby, etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["on", "off", "standby", "entered-in-error"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["on", "off", "standby", "entered-in-error"],
+        },
     )
     operationalStatus__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -150,8 +155,9 @@ class DeviceMetric(domainresource.DomainResource):
             "Describes the type of the metric. For example: Heart Rate, PEEP "
             "Setting, etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     unit: fhirtypes.CodeableConceptType = Field(
@@ -162,8 +168,9 @@ class DeviceMetric(domainresource.DomainResource):
             "Describes the unit that an observed value determined for this metric "
             "will have. For example: Percent, Seconds, etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -192,10 +199,7 @@ class DeviceMetric(domainresource.DomainResource):
             "calibration",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1371(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -204,52 +208,10 @@ class DeviceMetric(domainresource.DomainResource):
         the primitive value is not present.
         """
         required_fields = [("category", "category__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
 
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+from . import backboneelement
 
 
 class DeviceMetricCalibration(backboneelement.BackboneElement):
@@ -261,50 +223,53 @@ class DeviceMetricCalibration(backboneelement.BackboneElement):
     be performed.
     """
 
-    resource_type = Field("DeviceMetricCalibration", const=True)
+    __resource_type__ = "DeviceMetricCalibration"
 
-    state: fhirtypes.Code = Field(
+    state: fhirtypes.CodeType = Field(
         None,
         alias="state",
         title="not-calibrated | calibration-required | calibrated | unspecified",
         description="Describes the state of the calibration.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "not-calibrated",
-            "calibration-required",
-            "calibrated",
-            "unspecified",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "not-calibrated",
+                "calibration-required",
+                "calibrated",
+                "unspecified",
+            ],
+        },
     )
     state__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_state", title="Extension field for ``state``."
     )
 
-    time: fhirtypes.Instant = Field(
+    time: fhirtypes.InstantType = Field(
         None,
         alias="time",
         title="Describes the time last calibration has been performed",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     time__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_time", title="Extension field for ``time``."
     )
 
-    type: fhirtypes.Code = Field(
+    type: fhirtypes.CodeType = Field(
         None,
         alias="type",
         title="unspecified | offset | gain | two-point",
         description="Describes the type of the calibration method.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["unspecified", "offset", "gain", "two-point"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["unspecified", "offset", "gain", "two-point"],
+        },
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."

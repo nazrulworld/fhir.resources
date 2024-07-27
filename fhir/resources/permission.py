@@ -8,11 +8,9 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
-from . import backboneelement, domainresource, fhirtypes
+from . import domainresource, fhirtypes
 
 
 class Permission(domainresource.DomainResource):
@@ -24,28 +22,29 @@ class Permission(domainresource.DomainResource):
     Permission resource holds access rules for a given data and context.
     """
 
-    resource_type = Field("Permission", const=True)
+    __resource_type__ = "Permission"
 
     asserter: fhirtypes.ReferenceType = Field(
         None,
         alias="asserter",
         title="The person or entity that asserts the permission",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Practitioner",
-            "PractitionerRole",
-            "Organization",
-            "CareTeam",
-            "Patient",
-            "RelatedPerson",
-            "HealthcareService",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Practitioner",
+                "PractitionerRole",
+                "Organization",
+                "CareTeam",
+                "Patient",
+                "RelatedPerson",
+                "HealthcareService",
+            ],
+        },
     )
 
-    combining: fhirtypes.Code = Field(
+    combining: fhirtypes.CodeType = Field(
         None,
         alias="combining",
         title=(
@@ -56,31 +55,33 @@ class Permission(domainresource.DomainResource):
             "Defines a procedure for arriving at an access decision given the set "
             "of rules."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "deny-overrides",
-            "permit-overrides",
-            "ordered-deny-overrides",
-            "ordered-permit-overrides",
-            "deny-unless-permit",
-            "permit-unless-deny",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "deny-overrides",
+                "permit-overrides",
+                "ordered-deny-overrides",
+                "ordered-permit-overrides",
+                "deny-unless-permit",
+                "permit-unless-deny",
+            ],
+        },
     )
     combining__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_combining", title="Extension field for ``combining``."
     )
 
-    date: typing.List[typing.Optional[fhirtypes.DateTime]] = Field(
+    date: typing.List[typing.Optional[fhirtypes.DateTimeType]] = Field(
         None,
         alias="date",
         title="The date that permission was asserted",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     date__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -91,8 +92,9 @@ class Permission(domainresource.DomainResource):
         alias="justification",
         title="The asserted justification for using the data",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     rule: typing.List[fhirtypes.PermissionRuleType] = Field(
@@ -100,21 +102,23 @@ class Permission(domainresource.DomainResource):
         alias="rule",
         title="Constraints to the Permission",
         description="A set of rules.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(
         None,
         alias="status",
         title="active | entered-in-error | draft | rejected",
         description="Status.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["active", "entered-in-error", "draft", "rejected"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["active", "entered-in-error", "draft", "rejected"],
+        },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -125,8 +129,9 @@ class Permission(domainresource.DomainResource):
         alias="validity",
         title="The period in which the permission is active",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -153,10 +158,7 @@ class Permission(domainresource.DomainResource):
             "rule",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1255(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -165,52 +167,10 @@ class Permission(domainresource.DomainResource):
         the primitive value is not present.
         """
         required_fields = [("combining", "combining__ext"), ("status", "status__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
 
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+from . import backboneelement
 
 
 class PermissionJustification(backboneelement.BackboneElement):
@@ -221,7 +181,7 @@ class PermissionJustification(backboneelement.BackboneElement):
     The asserted justification for using the data.
     """
 
-    resource_type = Field("PermissionJustification", const=True)
+    __resource_type__ = "PermissionJustification"
 
     basis: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
@@ -231,8 +191,9 @@ class PermissionJustification(backboneelement.BackboneElement):
             "This would be a codeableconcept, or a coding, which can be constrained"
             " to , for example, the 6 grounds for processing in GDPR."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     evidence: typing.List[fhirtypes.ReferenceType] = Field(
@@ -240,10 +201,11 @@ class PermissionJustification(backboneelement.BackboneElement):
         alias="evidence",
         title="Justifing rational",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Resource"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Resource"],
+        },
     )
 
     @classmethod
@@ -264,7 +226,7 @@ class PermissionRule(backboneelement.BackboneElement):
     A set of rules.
     """
 
-    resource_type = Field("PermissionRule", const=True)
+    __resource_type__ = "PermissionRule"
 
     activity: typing.List[fhirtypes.PermissionRuleActivityType] = Field(
         None,
@@ -274,8 +236,9 @@ class PermissionRule(backboneelement.BackboneElement):
             " on the data"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     data: typing.List[fhirtypes.PermissionRuleDataType] = Field(
@@ -289,8 +252,9 @@ class PermissionRule(backboneelement.BackboneElement):
             "A description or definition of which activities are allowed to be done"
             " on the data."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     limit: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -298,20 +262,22 @@ class PermissionRule(backboneelement.BackboneElement):
         alias="limit",
         title="What limits apply to the use of the data",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    type: fhirtypes.Code = Field(
+    type: fhirtypes.CodeType = Field(
         None,
         alias="type",
         title="deny | permit",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["deny", "permit"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["deny", "permit"],
+        },
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
@@ -343,15 +309,16 @@ class PermissionRuleActivity(backboneelement.BackboneElement):
     the data.
     """
 
-    resource_type = Field("PermissionRuleActivity", const=True)
+    __resource_type__ = "PermissionRuleActivity"
 
     action: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
         alias="action",
         title="Actions controlled by this rule",
         description="Actions controlled by this Rule.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     actor: typing.List[fhirtypes.ReferenceType] = Field(
@@ -359,19 +326,20 @@ class PermissionRuleActivity(backboneelement.BackboneElement):
         alias="actor",
         title="Authorized actor(s)",
         description="The actor(s) authorized for the defined activity.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Device",
-            "Group",
-            "CareTeam",
-            "Organization",
-            "Patient",
-            "Practitioner",
-            "RelatedPerson",
-            "PractitionerRole",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Device",
+                "Group",
+                "CareTeam",
+                "Organization",
+                "Patient",
+                "Practitioner",
+                "RelatedPerson",
+                "PractitionerRole",
+            ],
+        },
     )
 
     purpose: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -379,8 +347,9 @@ class PermissionRuleActivity(backboneelement.BackboneElement):
         alias="purpose",
         title="The purpose for which the permission is given",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -403,15 +372,16 @@ class PermissionRuleData(backboneelement.BackboneElement):
     the data.
     """
 
-    resource_type = Field("PermissionRuleData", const=True)
+    __resource_type__ = "PermissionRuleData"
 
     expression: fhirtypes.ExpressionType = Field(
         None,
         alias="expression",
         title="Expression identifying the data",
         description="Used when other data selection elements are insufficient.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     period: typing.List[fhirtypes.PeriodType] = Field(
@@ -422,8 +392,9 @@ class PermissionRuleData(backboneelement.BackboneElement):
             "Clinical or Operational Relevant period of time that bounds the data "
             "controlled by this rule."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     resource: typing.List[fhirtypes.PermissionRuleDataResourceType] = Field(
@@ -431,8 +402,9 @@ class PermissionRuleData(backboneelement.BackboneElement):
         alias="resource",
         title="Explicit FHIR Resource references",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     security: typing.List[fhirtypes.CodingType] = Field(
@@ -443,8 +415,9 @@ class PermissionRuleData(backboneelement.BackboneElement):
             "The data in scope are those with the given codes present in that data "
             ".meta.security element."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -472,9 +445,9 @@ class PermissionRuleDataResource(backboneelement.BackboneElement):
     Explicit FHIR Resource references.
     """
 
-    resource_type = Field("PermissionRuleDataResource", const=True)
+    __resource_type__ = "PermissionRuleDataResource"
 
-    meaning: fhirtypes.Code = Field(
+    meaning: fhirtypes.CodeType = Field(
         None,
         alias="meaning",
         title="instance | related | dependents | authoredby",
@@ -482,12 +455,13 @@ class PermissionRuleDataResource(backboneelement.BackboneElement):
             "How the resource reference is interpreted when testing consent "
             "restrictions."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["instance", "related", "dependents", "authoredby"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["instance", "related", "dependents", "authoredby"],
+        },
     )
     meaning__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_meaning", title="Extension field for ``meaning``."
@@ -501,10 +475,11 @@ class PermissionRuleDataResource(backboneelement.BackboneElement):
             "A reference to a specific resource that defines which resources are "
             "covered by this consent."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Resource"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Resource"],
+        },
     )
 
     @classmethod
@@ -515,10 +490,7 @@ class PermissionRuleDataResource(backboneelement.BackboneElement):
         """
         return ["id", "extension", "modifierExtension", "meaning", "reference"]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2872(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -527,49 +499,4 @@ class PermissionRuleDataResource(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("meaning", "meaning__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields

@@ -8,11 +8,9 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
-from . import backboneelement, domainresource, fhirtypes
+from . import domainresource, fhirtypes
 
 
 class FamilyMemberHistory(domainresource.DomainResource):
@@ -25,7 +23,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
     in the context of care for the patient.
     """
 
-    resource_type = Field("FamilyMemberHistory", const=True)
+    __resource_type__ = "FamilyMemberHistory"
 
     ageAge: fhirtypes.AgeType = Field(
         None,
@@ -35,11 +33,12 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "The age of the relative at the time the family member history is "
             "recorded."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e age[x]
-        one_of_many="age",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e age[x]
+            "one_of_many": "age",
+            "one_of_many_required": False,
+        },
     )
 
     ageRange: fhirtypes.RangeType = Field(
@@ -50,14 +49,15 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "The age of the relative at the time the family member history is "
             "recorded."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e age[x]
-        one_of_many="age",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e age[x]
+            "one_of_many": "age",
+            "one_of_many_required": False,
+        },
     )
 
-    ageString: fhirtypes.String = Field(
+    ageString: fhirtypes.StringType = Field(
         None,
         alias="ageString",
         title="(approximate) age",
@@ -65,26 +65,28 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "The age of the relative at the time the family member history is "
             "recorded."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e age[x]
-        one_of_many="age",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e age[x]
+            "one_of_many": "age",
+            "one_of_many_required": False,
+        },
     )
     ageString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_ageString", title="Extension field for ``ageString``."
     )
 
-    bornDate: fhirtypes.Date = Field(
+    bornDate: fhirtypes.DateType = Field(
         None,
         alias="bornDate",
         title="(approximate) date of birth",
         description="The actual or approximate date of birth of the relative.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e born[x]
-        one_of_many="born",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e born[x]
+            "one_of_many": "born",
+            "one_of_many_required": False,
+        },
     )
     bornDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_bornDate", title="Extension field for ``bornDate``."
@@ -95,23 +97,25 @@ class FamilyMemberHistory(domainresource.DomainResource):
         alias="bornPeriod",
         title="(approximate) date of birth",
         description="The actual or approximate date of birth of the relative.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e born[x]
-        one_of_many="born",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e born[x]
+            "one_of_many": "born",
+            "one_of_many_required": False,
+        },
     )
 
-    bornString: fhirtypes.String = Field(
+    bornString: fhirtypes.StringType = Field(
         None,
         alias="bornString",
         title="(approximate) date of birth",
         description="The actual or approximate date of birth of the relative.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e born[x]
-        one_of_many="born",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e born[x]
+            "one_of_many": "born",
+            "one_of_many_required": False,
+        },
     )
     bornString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_bornString", title="Extension field for ``bornString``."
@@ -127,8 +131,9 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "one condition per resource, though there is nothing stopping multiple "
             "resources - one per condition."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     dataAbsentReason: fhirtypes.CodeableConceptType = Field(
@@ -136,11 +141,12 @@ class FamilyMemberHistory(domainresource.DomainResource):
         alias="dataAbsentReason",
         title="subject-unknown | withheld | unable-to-obtain | deferred",
         description="Describes why the family member's history is not available.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    date: fhirtypes.DateTime = Field(
+    date: fhirtypes.DateTimeType = Field(
         None,
         alias="date",
         title="When history was recorded or last updated",
@@ -148,8 +154,9 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "The date (and possibly time) when the family member history was "
             "recorded or last updated."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     date__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_date", title="Extension field for ``date``."
@@ -163,11 +170,12 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "Deceased flag or the actual or approximate age of the relative at the "
             "time of death for the family member history record."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e deceased[x]
-        one_of_many="deceased",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e deceased[x]
+            "one_of_many": "deceased",
+            "one_of_many_required": False,
+        },
     )
 
     deceasedBoolean: bool = Field(
@@ -178,17 +186,18 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "Deceased flag or the actual or approximate age of the relative at the "
             "time of death for the family member history record."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e deceased[x]
-        one_of_many="deceased",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e deceased[x]
+            "one_of_many": "deceased",
+            "one_of_many_required": False,
+        },
     )
     deceasedBoolean__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_deceasedBoolean", title="Extension field for ``deceasedBoolean``."
     )
 
-    deceasedDate: fhirtypes.Date = Field(
+    deceasedDate: fhirtypes.DateType = Field(
         None,
         alias="deceasedDate",
         title="Dead? How old/when?",
@@ -196,11 +205,12 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "Deceased flag or the actual or approximate age of the relative at the "
             "time of death for the family member history record."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e deceased[x]
-        one_of_many="deceased",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e deceased[x]
+            "one_of_many": "deceased",
+            "one_of_many_required": False,
+        },
     )
     deceasedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_deceasedDate", title="Extension field for ``deceasedDate``."
@@ -214,14 +224,15 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "Deceased flag or the actual or approximate age of the relative at the "
             "time of death for the family member history record."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e deceased[x]
-        one_of_many="deceased",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e deceased[x]
+            "one_of_many": "deceased",
+            "one_of_many_required": False,
+        },
     )
 
-    deceasedString: fhirtypes.String = Field(
+    deceasedString: fhirtypes.StringType = Field(
         None,
         alias="deceasedString",
         title="Dead? How old/when?",
@@ -229,11 +240,12 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "Deceased flag or the actual or approximate age of the relative at the "
             "time of death for the family member history record."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e deceased[x]
-        one_of_many="deceased",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e deceased[x]
+            "one_of_many": "deceased",
+            "one_of_many_required": False,
+        },
     )
     deceasedString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_deceasedString", title="Extension field for ``deceasedString``."
@@ -244,8 +256,9 @@ class FamilyMemberHistory(domainresource.DomainResource):
         alias="estimatedAge",
         title="Age is estimated?",
         description="If true, indicates that the age value specified is an estimated value.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     estimatedAge__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_estimatedAge", title="Extension field for ``estimatedAge``."
@@ -260,11 +273,14 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "performer or other systems which remain constant as the resource is "
             "updated and propagates from server to server."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    instantiatesCanonical: typing.List[typing.Optional[fhirtypes.Canonical]] = Field(
+    instantiatesCanonical: typing.List[
+        typing.Optional[fhirtypes.CanonicalType]
+    ] = Field(
         None,
         alias="instantiatesCanonical",
         title="Instantiates FHIR protocol or definition",
@@ -273,16 +289,17 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "other definition that is adhered to in whole or in part by this "
             "FamilyMemberHistory."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "PlanDefinition",
-            "Questionnaire",
-            "ActivityDefinition",
-            "Measure",
-            "OperationDefinition",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "PlanDefinition",
+                "Questionnaire",
+                "ActivityDefinition",
+                "Measure",
+                "OperationDefinition",
+            ],
+        },
     )
     instantiatesCanonical__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -292,7 +309,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         title="Extension field for ``instantiatesCanonical``.",
     )
 
-    instantiatesUri: typing.List[typing.Optional[fhirtypes.Uri]] = Field(
+    instantiatesUri: typing.List[typing.Optional[fhirtypes.UriType]] = Field(
         None,
         alias="instantiatesUri",
         title="Instantiates external protocol or definition",
@@ -301,8 +318,9 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "orderset or other definition that is adhered to in whole or in part by"
             " this FamilyMemberHistory."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     instantiatesUri__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -310,7 +328,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
         None, alias="_instantiatesUri", title="Extension field for ``instantiatesUri``."
     )
 
-    name: fhirtypes.String = Field(
+    name: fhirtypes.StringType = Field(
         None,
         alias="name",
         title="The family member described",
@@ -318,8 +336,9 @@ class FamilyMemberHistory(domainresource.DomainResource):
             'This will either be a name or a description; e.g. "Aunt Susan", "my '
             'cousin with the red hair".'
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -334,8 +353,9 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "the related person. Ideally, the note would be in the condition "
             "property, but this is not always possible."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     participant: typing.List[fhirtypes.FamilyMemberHistoryParticipantType] = Field(
@@ -349,8 +369,9 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "Indicates who or what participated in the activities related to the "
             "family member history and how they were involved."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     patient: fhirtypes.ReferenceType = Field(
@@ -358,10 +379,11 @@ class FamilyMemberHistory(domainresource.DomainResource):
         alias="patient",
         title="Patient history is about",
         description="The person who this history concerns.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Patient"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Patient"],
+        },
     )
 
     procedure: typing.List[fhirtypes.FamilyMemberHistoryProcedureType] = Field(
@@ -374,8 +396,9 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "one procedure per resource, though there is nothing stopping multiple "
             "resources - one per procedure."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     reason: typing.List[fhirtypes.CodeableReferenceType] = Field(
@@ -387,17 +410,18 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "form, or Indicates a Condition, Observation, AllergyIntolerance, or "
             "QuestionnaireResponse that justifies this family member history event."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Condition",
-            "Observation",
-            "AllergyIntolerance",
-            "QuestionnaireResponse",
-            "DiagnosticReport",
-            "DocumentReference",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Condition",
+                "Observation",
+                "AllergyIntolerance",
+                "QuestionnaireResponse",
+                "DiagnosticReport",
+                "DocumentReference",
+            ],
+        },
     )
 
     relationship: fhirtypes.CodeableConceptType = Field(
@@ -408,8 +432,9 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "The type of relationship this person has to the patient (father, "
             "mother, brother etc.)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     sex: fhirtypes.CodeableConceptType = Field(
@@ -417,11 +442,12 @@ class FamilyMemberHistory(domainresource.DomainResource):
         alias="sex",
         title="male | female | other | unknown",
         description="The birth sex of the family member.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(
         None,
         alias="status",
         title="partial | completed | entered-in-error | health-unknown",
@@ -429,12 +455,18 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "A code specifying the status of the record of the family history of a "
             "specific family member."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["partial", "completed", "entered-in-error", "health-unknown"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "partial",
+                "completed",
+                "entered-in-error",
+                "health-unknown",
+            ],
+        },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -484,10 +516,7 @@ class FamilyMemberHistory(domainresource.DomainResource):
             "procedure",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2155(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -496,57 +525,9 @@ class FamilyMemberHistory(domainresource.DomainResource):
         the primitive value is not present.
         """
         required_fields = [("status", "status__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
-
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_2155(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -570,26 +551,10 @@ class FamilyMemberHistory(domainresource.DomainResource):
                 "deceasedString",
             ],
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
+        return one_of_many_fields
 
-        return values
+
+from . import backboneelement
 
 
 class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
@@ -604,7 +569,7 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
     - one per condition.
     """
 
-    resource_type = Field("FamilyMemberHistoryCondition", const=True)
+    __resource_type__ = "FamilyMemberHistoryCondition"
 
     code: fhirtypes.CodeableConceptType = Field(
         ...,
@@ -616,8 +581,9 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
             "much is known about the condition and the capabilities of the creating"
             " system."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     contributedToDeath: bool = Field(
@@ -628,8 +594,9 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
             "This condition contributed to the cause of death of the related "
             "person. If contributedToDeath is not populated, then it is unknown."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     contributedToDeath__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -645,8 +612,9 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
             "An area where general notes can be placed about this specific "
             "condition."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     onsetAge: fhirtypes.AgeType = Field(
@@ -658,11 +626,12 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
             "string can be recorded.  For conditions with multiple occurrences, "
             "this describes the first known occurrence."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e onset[x]
-        one_of_many="onset",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e onset[x]
+            "one_of_many": "onset",
+            "one_of_many_required": False,
+        },
     )
 
     onsetPeriod: fhirtypes.PeriodType = Field(
@@ -674,11 +643,12 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
             "string can be recorded.  For conditions with multiple occurrences, "
             "this describes the first known occurrence."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e onset[x]
-        one_of_many="onset",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e onset[x]
+            "one_of_many": "onset",
+            "one_of_many_required": False,
+        },
     )
 
     onsetRange: fhirtypes.RangeType = Field(
@@ -690,14 +660,15 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
             "string can be recorded.  For conditions with multiple occurrences, "
             "this describes the first known occurrence."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e onset[x]
-        one_of_many="onset",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e onset[x]
+            "one_of_many": "onset",
+            "one_of_many_required": False,
+        },
     )
 
-    onsetString: fhirtypes.String = Field(
+    onsetString: fhirtypes.StringType = Field(
         None,
         alias="onsetString",
         title="When condition first manifested",
@@ -706,11 +677,12 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
             "string can be recorded.  For conditions with multiple occurrences, "
             "this describes the first known occurrence."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e onset[x]
-        one_of_many="onset",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e onset[x]
+            "one_of_many": "onset",
+            "one_of_many_required": False,
+        },
     )
     onsetString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_onsetString", title="Extension field for ``onsetString``."
@@ -724,8 +696,9 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
             "Indicates what happened following the condition.  If the condition "
             "resulted in death, deceased date is captured on the relation."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -748,10 +721,7 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
             "note",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_3079(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -767,26 +737,7 @@ class FamilyMemberHistoryCondition(backboneelement.BackboneElement):
         one_of_many_fields = {
             "onset": ["onsetAge", "onsetPeriod", "onsetRange", "onsetString"]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class FamilyMemberHistoryParticipant(backboneelement.BackboneElement):
@@ -800,7 +751,7 @@ class FamilyMemberHistoryParticipant(backboneelement.BackboneElement):
     member history and how they were involved.
     """
 
-    resource_type = Field("FamilyMemberHistoryParticipant", const=True)
+    __resource_type__ = "FamilyMemberHistoryParticipant"
 
     actor: fhirtypes.ReferenceType = Field(
         ...,
@@ -813,18 +764,19 @@ class FamilyMemberHistoryParticipant(backboneelement.BackboneElement):
             "Indicates who or what participated in the activities related to the "
             "family member history."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Practitioner",
-            "PractitionerRole",
-            "Patient",
-            "RelatedPerson",
-            "Device",
-            "Organization",
-            "CareTeam",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Practitioner",
+                "PractitionerRole",
+                "Patient",
+                "RelatedPerson",
+                "Device",
+                "Organization",
+                "CareTeam",
+            ],
+        },
     )
 
     function: fhirtypes.CodeableConceptType = Field(
@@ -835,8 +787,9 @@ class FamilyMemberHistoryParticipant(backboneelement.BackboneElement):
             "Distinguishes the type of involvement of the actor in the activities "
             "related to the family member history."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -860,7 +813,7 @@ class FamilyMemberHistoryProcedure(backboneelement.BackboneElement):
     - one per procedure.
     """
 
-    resource_type = Field("FamilyMemberHistoryProcedure", const=True)
+    __resource_type__ = "FamilyMemberHistoryProcedure"
 
     code: fhirtypes.CodeableConceptType = Field(
         ...,
@@ -871,8 +824,9 @@ class FamilyMemberHistoryProcedure(backboneelement.BackboneElement):
             "specific string depending on how much is known about the procedure and"
             " the capabilities of the creating system."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     contributedToDeath: bool = Field(
@@ -883,8 +837,9 @@ class FamilyMemberHistoryProcedure(backboneelement.BackboneElement):
             "This procedure contributed to the cause of death of the related "
             "person. If contributedToDeath is not populated, then it is unknown."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     contributedToDeath__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -900,8 +855,9 @@ class FamilyMemberHistoryProcedure(backboneelement.BackboneElement):
             "An area where general notes can be placed about this specific "
             "procedure."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     outcome: fhirtypes.CodeableConceptType = Field(
@@ -912,8 +868,9 @@ class FamilyMemberHistoryProcedure(backboneelement.BackboneElement):
             "Indicates what happened following the procedure. If the procedure "
             "resulted in death, deceased date is captured on the relation."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     performedAge: fhirtypes.AgeType = Field(
@@ -926,14 +883,15 @@ class FamilyMemberHistoryProcedure(backboneelement.BackboneElement):
             "span more than one date, and also allows for the length of the "
             "procedure to be captured."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e performed[x]
-        one_of_many="performed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e performed[x]
+            "one_of_many": "performed",
+            "one_of_many_required": False,
+        },
     )
 
-    performedDateTime: fhirtypes.DateTime = Field(
+    performedDateTime: fhirtypes.DateTimeType = Field(
         None,
         alias="performedDateTime",
         title="When the procedure was performed",
@@ -943,11 +901,12 @@ class FamilyMemberHistoryProcedure(backboneelement.BackboneElement):
             "span more than one date, and also allows for the length of the "
             "procedure to be captured."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e performed[x]
-        one_of_many="performed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e performed[x]
+            "one_of_many": "performed",
+            "one_of_many_required": False,
+        },
     )
     performedDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -965,11 +924,12 @@ class FamilyMemberHistoryProcedure(backboneelement.BackboneElement):
             "span more than one date, and also allows for the length of the "
             "procedure to be captured."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e performed[x]
-        one_of_many="performed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e performed[x]
+            "one_of_many": "performed",
+            "one_of_many_required": False,
+        },
     )
 
     performedRange: fhirtypes.RangeType = Field(
@@ -982,14 +942,15 @@ class FamilyMemberHistoryProcedure(backboneelement.BackboneElement):
             "span more than one date, and also allows for the length of the "
             "procedure to be captured."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e performed[x]
-        one_of_many="performed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e performed[x]
+            "one_of_many": "performed",
+            "one_of_many_required": False,
+        },
     )
 
-    performedString: fhirtypes.String = Field(
+    performedString: fhirtypes.StringType = Field(
         None,
         alias="performedString",
         title="When the procedure was performed",
@@ -999,11 +960,12 @@ class FamilyMemberHistoryProcedure(backboneelement.BackboneElement):
             "span more than one date, and also allows for the length of the "
             "procedure to be captured."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e performed[x]
-        one_of_many="performed",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e performed[x]
+            "one_of_many": "performed",
+            "one_of_many_required": False,
+        },
     )
     performedString__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_performedString", title="Extension field for ``performedString``."
@@ -1030,10 +992,7 @@ class FamilyMemberHistoryProcedure(backboneelement.BackboneElement):
             "note",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_3072(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -1055,23 +1014,4 @@ class FamilyMemberHistoryProcedure(backboneelement.BackboneElement):
                 "performedString",
             ]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields

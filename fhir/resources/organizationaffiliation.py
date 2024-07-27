@@ -8,7 +8,7 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import domainresource, fhirtypes
 
@@ -22,15 +22,16 @@ class OrganizationAffiliation(domainresource.DomainResource):
     organizations, that is not a part-of relationship/sub-division relationship.
     """
 
-    resource_type = Field("OrganizationAffiliation", const=True)
+    __resource_type__ = "OrganizationAffiliation"
 
     active: bool = Field(
         None,
         alias="active",
         title="Whether this organization affiliation record is in active use",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_active", title="Extension field for ``active``."
@@ -44,8 +45,9 @@ class OrganizationAffiliation(domainresource.DomainResource):
             "Definition of the role the participatingOrganization plays in the "
             "association."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     contact: typing.List[fhirtypes.ExtendedContactDetailType] = Field(
@@ -59,8 +61,9 @@ class OrganizationAffiliation(domainresource.DomainResource):
             "The contact details of communication devices available at the "
             "participatingOrganization relevant to this Affiliation."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     endpoint: typing.List[fhirtypes.ReferenceType] = Field(
@@ -70,10 +73,11 @@ class OrganizationAffiliation(domainresource.DomainResource):
             "Technical endpoints providing access to services operated for this " "role"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Endpoint"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Endpoint"],
+        },
     )
 
     healthcareService: typing.List[fhirtypes.ReferenceType] = Field(
@@ -81,10 +85,11 @@ class OrganizationAffiliation(domainresource.DomainResource):
         alias="healthcareService",
         title="Healthcare services provided through the role",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["HealthcareService"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["HealthcareService"],
+        },
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -92,8 +97,9 @@ class OrganizationAffiliation(domainresource.DomainResource):
         alias="identifier",
         title="Business identifiers that are specific to this role",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     location: typing.List[fhirtypes.ReferenceType] = Field(
@@ -101,10 +107,11 @@ class OrganizationAffiliation(domainresource.DomainResource):
         alias="location",
         title="The location(s) at which the role occurs",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Location"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Location"],
+        },
     )
 
     network: typing.List[fhirtypes.ReferenceType] = Field(
@@ -115,10 +122,11 @@ class OrganizationAffiliation(domainresource.DomainResource):
             " services (if defined) at the indicated locations (if defined)"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
     organization: fhirtypes.ReferenceType = Field(
@@ -129,10 +137,11 @@ class OrganizationAffiliation(domainresource.DomainResource):
             "Organization where the role is available (primary organization/has "
             "members)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
     participatingOrganization: fhirtypes.ReferenceType = Field(
@@ -147,10 +156,11 @@ class OrganizationAffiliation(domainresource.DomainResource):
             "by the code to the Primary Organization (e.g. providing services or is"
             " a member of)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -161,8 +171,9 @@ class OrganizationAffiliation(domainresource.DomainResource):
             "with the primary organization"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     specialty: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -173,8 +184,9 @@ class OrganizationAffiliation(domainresource.DomainResource):
             "the role"
         ),
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

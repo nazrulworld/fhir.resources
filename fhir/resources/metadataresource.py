@@ -8,7 +8,7 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import domainresource, fhirtypes
 
@@ -23,9 +23,9 @@ class MetadataResource(domainresource.DomainResource):
     resources.
     """
 
-    resource_type = Field("MetadataResource", const=True)
+    __resource_type__ = "MetadataResource"
 
-    approvalDate: fhirtypes.Date = Field(
+    approvalDate: fhirtypes.DateType = Field(
         None,
         alias="approvalDate",
         title="When the {{title}} was approved by publisher",
@@ -34,8 +34,9 @@ class MetadataResource(domainresource.DomainResource):
             "Approval happens once when the content is officially approved for "
             "usage."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     approvalDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_approvalDate", title="Extension field for ``approvalDate``."
@@ -49,8 +50,9 @@ class MetadataResource(domainresource.DomainResource):
             "An individiual or organization primarily involved in the creation and "
             "maintenance of the {{title}}."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     editor: typing.List[fhirtypes.ContactDetailType] = Field(
@@ -61,8 +63,9 @@ class MetadataResource(domainresource.DomainResource):
             "An individual or organization primarily responsible for internal "
             "coherence of the {{title}}."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     effectivePeriod: fhirtypes.PeriodType = Field(
@@ -73,8 +76,9 @@ class MetadataResource(domainresource.DomainResource):
             "The period during which the {{title}} content was or is planned to be "
             "in active use."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     endorser: typing.List[fhirtypes.ContactDetailType] = Field(
@@ -86,11 +90,12 @@ class MetadataResource(domainresource.DomainResource):
             "responsible for officially endorsing the {{title}} for use in some "
             "setting."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    lastReviewDate: fhirtypes.Date = Field(
+    lastReviewDate: fhirtypes.DateType = Field(
         None,
         alias="lastReviewDate",
         title="When the {{title}} was last reviewed by the publisher",
@@ -99,8 +104,9 @@ class MetadataResource(domainresource.DomainResource):
             "happens periodically after approval but does not change the original "
             "approval date."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     lastReviewDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_lastReviewDate", title="Extension field for ``lastReviewDate``."
@@ -115,8 +121,9 @@ class MetadataResource(domainresource.DomainResource):
             "dependencies, bibliographic references, and predecessor and successor "
             "artifacts."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     reviewer: typing.List[fhirtypes.ContactDetailType] = Field(
@@ -127,8 +134,9 @@ class MetadataResource(domainresource.DomainResource):
             "An individual or organization asserted by the publisher to be "
             "primarily responsible for review of some aspect of the {{title}}."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     topic: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -140,8 +148,9 @@ class MetadataResource(domainresource.DomainResource):
             "provide a high-level categorization as well as keywords for the "
             "{{title}} that can be useful for filtering and searching."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

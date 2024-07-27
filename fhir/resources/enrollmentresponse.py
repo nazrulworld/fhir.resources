@@ -8,7 +8,7 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import domainresource, fhirtypes
 
@@ -23,9 +23,9 @@ class EnrollmentResponse(domainresource.DomainResource):
     an EnrollmentRequest resource.
     """
 
-    resource_type = Field("EnrollmentResponse", const=True)
+    __resource_type__ = "EnrollmentResponse"
 
-    created: fhirtypes.DateTime = Field(
+    created: fhirtypes.DateTimeType = Field(
         None,
         alias="created",
         title="Creation date",
@@ -33,20 +33,22 @@ class EnrollmentResponse(domainresource.DomainResource):
             "The date when the enclosed suite of services were performed or "
             "completed."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     created__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_created", title="Extension field for ``created``."
     )
 
-    disposition: fhirtypes.String = Field(
+    disposition: fhirtypes.StringType = Field(
         None,
         alias="disposition",
         title="Disposition Message",
         description="A description of the status of the adjudication.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     disposition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_disposition", title="Extension field for ``disposition``."
@@ -57,8 +59,9 @@ class EnrollmentResponse(domainresource.DomainResource):
         alias="identifier",
         title="Business Identifier",
         description="The Response business identifier.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     organization: fhirtypes.ReferenceType = Field(
@@ -66,22 +69,24 @@ class EnrollmentResponse(domainresource.DomainResource):
         alias="organization",
         title="Insurer",
         description="The Insurer who produced this adjudicated response.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
-    outcome: fhirtypes.Code = Field(
+    outcome: fhirtypes.CodeType = Field(
         None,
         alias="outcome",
         title="queued | complete | error | partial",
         description="Processing status: error, complete.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["queued", "complete", "error", "partial"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["queued", "complete", "error", "partial"],
+        },
     )
     outcome__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_outcome", title="Extension field for ``outcome``."
@@ -92,10 +97,11 @@ class EnrollmentResponse(domainresource.DomainResource):
         alias="request",
         title="Claim reference",
         description="Original request resource reference.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["EnrollmentRequest"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["EnrollmentRequest"],
+        },
     )
 
     requestProvider: fhirtypes.ReferenceType = Field(
@@ -106,22 +112,28 @@ class EnrollmentResponse(domainresource.DomainResource):
             "The practitioner who is responsible for the services rendered to the "
             "patient."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Practitioner",
+                "PractitionerRole",
+                "Organization",
+            ],
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(
         None,
         alias="status",
         title="active | cancelled | draft | entered-in-error",
         description="The status of the resource instance.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["active", "cancelled", "draft", "entered-in-error"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["active", "cancelled", "draft", "entered-in-error"],
+        },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."

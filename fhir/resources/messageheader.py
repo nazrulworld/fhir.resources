@@ -8,11 +8,9 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
-from . import backboneelement, domainresource, fhirtypes
+from . import domainresource, fhirtypes
 
 
 class MessageHeader(domainresource.DomainResource):
@@ -28,7 +26,7 @@ class MessageHeader(domainresource.DomainResource):
     in the bundle.
     """
 
-    resource_type = Field("MessageHeader", const=True)
+    __resource_type__ = "MessageHeader"
 
     author: fhirtypes.ReferenceType = Field(
         None,
@@ -40,26 +38,28 @@ class MessageHeader(domainresource.DomainResource):
             "candidate, pick the most proximal to the MessageHeader. Can provide "
             "other authors in extensions."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Practitioner",
-            "PractitionerRole",
-            "Device",
-            "Organization",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Practitioner",
+                "PractitionerRole",
+                "Device",
+                "Organization",
+            ],
+        },
     )
 
-    definition: fhirtypes.Canonical = Field(
+    definition: fhirtypes.CanonicalType = Field(
         None,
         alias="definition",
         title="Link to the definition for this message",
         description="Permanent link to the MessageDefinition for this message.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["MessageDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["MessageDefinition"],
+        },
     )
     definition__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_definition", title="Extension field for ``definition``."
@@ -70,11 +70,12 @@ class MessageHeader(domainresource.DomainResource):
         alias="destination",
         title="Message destination application(s)",
         description="The destination application which the message is intended for.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    eventCanonical: fhirtypes.Canonical = Field(
+    eventCanonical: fhirtypes.CanonicalType = Field(
         None,
         alias="eventCanonical",
         title="Event code or link to EventDefinition",
@@ -84,13 +85,14 @@ class MessageHeader(domainresource.DomainResource):
             " are defined by the implementation.  Alternatively a canonical uri to "
             "the EventDefinition."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e event[x]
-        one_of_many="event",
-        one_of_many_required=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["EventDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e event[x]
+            "one_of_many": "event",
+            "one_of_many_required": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["EventDefinition"],
+        },
     )
     eventCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_eventCanonical", title="Extension field for ``eventCanonical``."
@@ -106,11 +108,12 @@ class MessageHeader(domainresource.DomainResource):
             " are defined by the implementation.  Alternatively a canonical uri to "
             "the EventDefinition."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e event[x]
-        one_of_many="event",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e event[x]
+            "one_of_many": "event",
+            "one_of_many_required": True,
+        },
     )
 
     focus: typing.List[fhirtypes.ReferenceType] = Field(
@@ -121,10 +124,11 @@ class MessageHeader(domainresource.DomainResource):
             "The actual data of the message - a reference to the root/focus class "
             "of the event. This is allowed to be a Parameters resource."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Resource"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Resource"],
+        },
     )
 
     reason: fhirtypes.CodeableConceptType = Field(
@@ -135,8 +139,9 @@ class MessageHeader(domainresource.DomainResource):
             "Coded indication of the cause for the event - indicates  a reason for "
             "the occurrence of the event that is a focus of this message."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     response: fhirtypes.MessageHeaderResponseType = Field(
@@ -147,8 +152,9 @@ class MessageHeader(domainresource.DomainResource):
             "Information about the message that this message is a response to.  "
             "Only present if this message is a response."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     responsible: fhirtypes.ReferenceType = Field(
@@ -160,10 +166,15 @@ class MessageHeader(domainresource.DomainResource):
             " contents of the message. The implication is that the message event "
             "happened under the policies of the responsible party."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Practitioner",
+                "PractitionerRole",
+                "Organization",
+            ],
+        },
     )
 
     sender: fhirtypes.ReferenceType = Field(
@@ -173,15 +184,16 @@ class MessageHeader(domainresource.DomainResource):
         description=(
             "Identifies the sending system to allow the use of a trust " "relationship."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Practitioner",
-            "PractitionerRole",
-            "Device",
-            "Organization",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Practitioner",
+                "PractitionerRole",
+                "Device",
+                "Organization",
+            ],
+        },
     )
 
     source: fhirtypes.MessageHeaderSourceType = Field(
@@ -189,8 +201,9 @@ class MessageHeader(domainresource.DomainResource):
         alias="source",
         title="Message source application",
         description="The source application from which this message originated.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -221,10 +234,7 @@ class MessageHeader(domainresource.DomainResource):
             "definition",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_1485(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -238,26 +248,10 @@ class MessageHeader(domainresource.DomainResource):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"event": ["eventCanonical", "eventCoding"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
+        return one_of_many_fields
 
-        return values
+
+from . import backboneelement
 
 
 class MessageHeaderDestination(backboneelement.BackboneElement):
@@ -269,44 +263,47 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
     The destination application which the message is intended for.
     """
 
-    resource_type = Field("MessageHeaderDestination", const=True)
+    __resource_type__ = "MessageHeaderDestination"
 
     endpointReference: fhirtypes.ReferenceType = Field(
         None,
         alias="endpointReference",
         title="Actual destination address or Endpoint resource",
         description="Indicates where the message should be routed.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e endpoint[x]
-        one_of_many="endpoint",
-        one_of_many_required=False,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Endpoint"],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e endpoint[x]
+            "one_of_many": "endpoint",
+            "one_of_many_required": False,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Endpoint"],
+        },
     )
 
-    endpointUrl: fhirtypes.Url = Field(
+    endpointUrl: fhirtypes.UrlType = Field(
         None,
         alias="endpointUrl",
         title="Actual destination address or Endpoint resource",
         description="Indicates where the message should be routed.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e endpoint[x]
-        one_of_many="endpoint",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e endpoint[x]
+            "one_of_many": "endpoint",
+            "one_of_many_required": False,
+        },
     )
     endpointUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_endpointUrl", title="Extension field for ``endpointUrl``."
     )
 
-    name: fhirtypes.String = Field(
+    name: fhirtypes.StringType = Field(
         None,
         alias="name",
         title="Name of system",
         description="Human-readable name for the target system.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
@@ -321,10 +318,15 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
             "person or department when routing to a specific application isn't "
             "sufficient."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Practitioner", "PractitionerRole", "Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Practitioner",
+                "PractitionerRole",
+                "Organization",
+            ],
+        },
     )
 
     target: fhirtypes.ReferenceType = Field(
@@ -335,10 +337,11 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
             "Identifies the target end system in situations where the initial "
             "message transmission is to an intermediary system."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Device"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Device"],
+        },
     )
 
     @classmethod
@@ -358,10 +361,7 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
             "receiver",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_2635(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -375,26 +375,7 @@ class MessageHeaderDestination(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"endpoint": ["endpointReference", "endpointUrl"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class MessageHeaderResponse(backboneelement.BackboneElement):
@@ -407,9 +388,9 @@ class MessageHeaderResponse(backboneelement.BackboneElement):
     present if this message is a response.
     """
 
-    resource_type = Field("MessageHeaderResponse", const=True)
+    __resource_type__ = "MessageHeaderResponse"
 
-    code: fhirtypes.Code = Field(
+    code: fhirtypes.CodeType = Field(
         None,
         alias="code",
         title="ok | transient-error | fatal-error",
@@ -417,12 +398,13 @@ class MessageHeaderResponse(backboneelement.BackboneElement):
             "Code that identifies the type of response to the message - whether it "
             "was successful or not, and whether it should be resent or not."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["ok", "transient-error", "fatal-error"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["ok", "transient-error", "fatal-error"],
+        },
     )
     code__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_code", title="Extension field for ``code``."
@@ -433,10 +415,11 @@ class MessageHeaderResponse(backboneelement.BackboneElement):
         alias="details",
         title="Specific list of hints/warnings/errors",
         description="Full details of any issues found in the message.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["OperationOutcome"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["OperationOutcome"],
+        },
     )
 
     identifier: fhirtypes.IdentifierType = Field(
@@ -447,8 +430,9 @@ class MessageHeaderResponse(backboneelement.BackboneElement):
             "The Bundle.identifier of the message to which this message is a "
             "response."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -459,10 +443,7 @@ class MessageHeaderResponse(backboneelement.BackboneElement):
         """
         return ["id", "extension", "modifierExtension", "identifier", "code", "details"]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2319(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -471,52 +452,7 @@ class MessageHeaderResponse(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("code", "code__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class MessageHeaderSource(backboneelement.BackboneElement):
@@ -528,7 +464,7 @@ class MessageHeaderSource(backboneelement.BackboneElement):
     The source application from which this message originated.
     """
 
-    resource_type = Field("MessageHeaderSource", const=True)
+    __resource_type__ = "MessageHeaderSource"
 
     contact: fhirtypes.ContactPointType = Field(
         None,
@@ -538,8 +474,9 @@ class MessageHeaderSource(backboneelement.BackboneElement):
             "An e-mail, phone, website or other contact point to use to resolve "
             "issues with message communications."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     endpointReference: fhirtypes.ReferenceType = Field(
@@ -547,55 +484,59 @@ class MessageHeaderSource(backboneelement.BackboneElement):
         alias="endpointReference",
         title="Actual source address or Endpoint resource",
         description="Identifies the routing target to send acknowledgements to.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e endpoint[x]
-        one_of_many="endpoint",
-        one_of_many_required=False,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Endpoint"],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e endpoint[x]
+            "one_of_many": "endpoint",
+            "one_of_many_required": False,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Endpoint"],
+        },
     )
 
-    endpointUrl: fhirtypes.Url = Field(
+    endpointUrl: fhirtypes.UrlType = Field(
         None,
         alias="endpointUrl",
         title="Actual source address or Endpoint resource",
         description="Identifies the routing target to send acknowledgements to.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e endpoint[x]
-        one_of_many="endpoint",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e endpoint[x]
+            "one_of_many": "endpoint",
+            "one_of_many_required": False,
+        },
     )
     endpointUrl__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_endpointUrl", title="Extension field for ``endpointUrl``."
     )
 
-    name: fhirtypes.String = Field(
+    name: fhirtypes.StringType = Field(
         None,
         alias="name",
         title="Name of system",
         description="Human-readable name for the source system.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     name__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_name", title="Extension field for ``name``."
     )
 
-    software: fhirtypes.String = Field(
+    software: fhirtypes.StringType = Field(
         None,
         alias="software",
         title="Name of software running the system",
         description="May include configuration or other information useful in debugging.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     software__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_software", title="Extension field for ``software``."
     )
 
-    version: fhirtypes.String = Field(
+    version: fhirtypes.StringType = Field(
         None,
         alias="version",
         title="Version of software running",
@@ -603,8 +544,9 @@ class MessageHeaderSource(backboneelement.BackboneElement):
             "Can convey versions of multiple systems in situations where a message "
             "passes through multiple hands."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     version__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_version", title="Extension field for ``version``."
@@ -628,10 +570,7 @@ class MessageHeaderSource(backboneelement.BackboneElement):
             "contact",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_2097(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -645,23 +584,4 @@ class MessageHeaderSource(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"endpoint": ["endpointReference", "endpointUrl"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields

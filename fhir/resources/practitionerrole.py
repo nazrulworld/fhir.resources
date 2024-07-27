@@ -8,7 +8,7 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import domainresource, fhirtypes
 
@@ -23,7 +23,7 @@ class PractitionerRole(domainresource.DomainResource):
     may perform at an organization for a period of time.
     """
 
-    resource_type = Field("PractitionerRole", const=True)
+    __resource_type__ = "PractitionerRole"
 
     active: bool = Field(
         None,
@@ -34,8 +34,9 @@ class PractitionerRole(domainresource.DomainResource):
             "may use this property to mark non-active practitioners, such as those "
             "that are not currently employed."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_active", title="Extension field for ``active``."
@@ -52,8 +53,9 @@ class PractitionerRole(domainresource.DomainResource):
             "A collection of times the practitioner is available or performing this"
             " role at the location and/or healthcareservice."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     characteristic: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -61,8 +63,9 @@ class PractitionerRole(domainresource.DomainResource):
         alias="characteristic",
         title="Collection of characteristics (attributes)",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     code: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -73,8 +76,9 @@ class PractitionerRole(domainresource.DomainResource):
             "Roles which this practitioner is authorized to perform for the "
             "organization."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     communication: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -90,8 +94,9 @@ class PractitionerRole(domainresource.DomainResource):
             "practitioner.communication), however these are the languages that "
             "could be advertised in a directory for a patient to search."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     contact: typing.List[fhirtypes.ExtendedContactDetailType] = Field(
@@ -103,8 +108,9 @@ class PractitionerRole(domainresource.DomainResource):
             " specific PractitionerRole. This can include addresses, phone numbers,"
             " fax numbers, mobile numbers, email addresses and web sites."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     endpoint: typing.List[fhirtypes.ReferenceType] = Field(
@@ -116,10 +122,11 @@ class PractitionerRole(domainresource.DomainResource):
             "practitioner with this role. Commonly used for locating scheduling "
             "services, or identifying where to send referrals electronically."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Endpoint"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Endpoint"],
+        },
     )
 
     healthcareService: typing.List[fhirtypes.ReferenceType] = Field(
@@ -130,10 +137,11 @@ class PractitionerRole(domainresource.DomainResource):
             "The list of healthcare services that this worker provides for this "
             "role's Organization/Location(s)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["HealthcareService"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["HealthcareService"],
+        },
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -141,8 +149,9 @@ class PractitionerRole(domainresource.DomainResource):
         alias="identifier",
         title="Identifiers for a role/location",
         description="Business Identifiers that are specific to a role/location.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     location: typing.List[fhirtypes.ReferenceType] = Field(
@@ -150,10 +159,11 @@ class PractitionerRole(domainresource.DomainResource):
         alias="location",
         title="Location(s) where the practitioner provides care",
         description="The location(s) at which this practitioner provides care.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Location"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Location"],
+        },
     )
 
     organization: fhirtypes.ReferenceType = Field(
@@ -161,10 +171,11 @@ class PractitionerRole(domainresource.DomainResource):
         alias="organization",
         title="Organization where the roles are available",
         description="The organization where the Practitioner performs the roles associated.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Organization"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Organization"],
+        },
     )
 
     period: fhirtypes.PeriodType = Field(
@@ -178,8 +189,9 @@ class PractitionerRole(domainresource.DomainResource):
             "The period during which the person is authorized to act as a "
             "practitioner in these role(s) for the organization."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     practitioner: fhirtypes.ReferenceType = Field(
@@ -190,10 +202,11 @@ class PractitionerRole(domainresource.DomainResource):
             "Practitioner that is able to provide the defined services for the "
             "organization."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Practitioner"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Practitioner"],
+        },
     )
 
     specialty: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -204,8 +217,9 @@ class PractitionerRole(domainresource.DomainResource):
             "The specialty of a practitioner that describes the functional role "
             "they are practicing at a given organization or location."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

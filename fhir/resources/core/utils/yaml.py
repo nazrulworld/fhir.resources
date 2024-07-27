@@ -4,14 +4,15 @@ from collections import OrderedDict
 from datetime import datetime
 from decimal import Decimal
 
-from yaml import YAMLError, dump, load, ScalarNode, Node
+from yaml import Node, ScalarNode, YAMLError, dump, load
 from yaml.representer import Representer as BaseRepresenter
 from yaml.representer import SafeRepresenter
 
 try:
-    from yaml import CLoader as Loader, CDumper as Dumper
+    from yaml import CDumper as Dumper
+    from yaml import CLoader as Loader
 except ImportError:
-    from yaml import Loader, Dumper  # type: ignore
+    from yaml import Dumper, Loader  # type: ignore
 
 
 __all__ = ["yaml_loads", "yaml_dumps"]

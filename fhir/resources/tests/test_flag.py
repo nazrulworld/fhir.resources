@@ -6,10 +6,10 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
+from pathlib import Path
 
-from .. import fhirtypes  # noqa: F401
 from .. import flag
+from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
 
 def impl_flag_1(inst):
@@ -19,12 +19,17 @@ def impl_flag_1(inst):
     assert inst.category[0].coding[0].display == "Safety"
     assert (
         inst.category[0].coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/flag-category"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/flag-category"
+        ).valueUri
     )
     assert inst.category[0].text == "Safety"
     assert inst.code.coding[0].code == "bigdog"
     assert inst.code.coding[0].display == "Big dog"
-    assert inst.code.coding[0].system == "http://example.org/local"
+    assert (
+        inst.code.coding[0].system
+        == ExternalValidatorModel(valueUri="http://example.org/local").valueUri
+    )
     assert inst.code.text == (
         "Patient has a big dog at his home. Always always wear a suit"
         " of armor or take other active counter-measures"
@@ -34,10 +39,19 @@ def impl_flag_1(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
-    assert inst.period.end == fhirtypes.DateTime.validate("2016-12-01")
-    assert inst.period.start == fhirtypes.DateTime.validate("2015-01-17")
+    assert (
+        inst.period.end
+        == ExternalValidatorModel(valueDateTime="2016-12-01").valueDateTime
+    )
+    assert (
+        inst.period.start
+        == ExternalValidatorModel(valueDateTime="2015-01-17").valueDateTime
+    )
     assert inst.status == "inactive"
     assert inst.subject.display == "Peter Patient"
     assert inst.subject.reference == "Patient/example"
@@ -53,15 +67,13 @@ def test_flag_1(base_settings):
     Test File: flag-example.json
     """
     filename = base_settings["unittest_data_dir"] / "flag-example.json"
-    inst = flag.Flag.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Flag" == inst.resource_type
+    inst = flag.Flag.model_validate_json(Path(filename).read_bytes())
+    assert "Flag" == inst.get_resource_type()
 
     impl_flag_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Flag" == data["resourceType"]
 
     inst2 = flag.Flag(**data)
@@ -71,16 +83,25 @@ def test_flag_1(base_settings):
 def impl_flag_2(inst):
     assert inst.category[0].coding[0].code == "infection"
     assert inst.category[0].coding[0].display == "Infection Control Level"
-    assert inst.category[0].coding[0].system == "http://example.org/local"
+    assert (
+        inst.category[0].coding[0].system
+        == ExternalValidatorModel(valueUri="http://example.org/local").valueUri
+    )
     assert inst.code.coding[0].code == "l3"
     assert inst.code.coding[0].display == "Follow Level 3 Protocol"
-    assert inst.code.coding[0].system == "http://example.org/local/if1"
+    assert (
+        inst.code.coding[0].system
+        == ExternalValidatorModel(valueUri="http://example.org/local/if1").valueUri
+    )
     assert inst.encounter.reference == "Encounter/example"
     assert inst.id == "example-encounter"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.status == "active"
     assert inst.subject.display == "Peter Patient"
@@ -97,15 +118,13 @@ def test_flag_2(base_settings):
     Test File: flag-example-encounter.json
     """
     filename = base_settings["unittest_data_dir"] / "flag-example-encounter.json"
-    inst = flag.Flag.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Flag" == inst.resource_type
+    inst = flag.Flag.model_validate_json(Path(filename).read_bytes())
+    assert "Flag" == inst.get_resource_type()
 
     impl_flag_2(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Flag" == data["resourceType"]
 
     inst2 = flag.Flag(**data)

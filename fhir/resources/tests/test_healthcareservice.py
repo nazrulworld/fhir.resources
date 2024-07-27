@@ -6,10 +6,10 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
+from pathlib import Path
 
-from .. import fhirtypes  # noqa: F401
 from .. import healthcareservice
+from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
 
 def impl_healthcareservice_1(inst):
@@ -17,46 +17,56 @@ def impl_healthcareservice_1(inst):
     assert inst.appointmentRequired is False
     assert inst.availability[0].availableTime[0].allDay is True
     assert inst.availability[0].availableTime[0].daysOfWeek[0] == "wed"
-    assert inst.availability[0].availableTime[
-        1
-    ].availableEndTime == fhirtypes.Time.validate("05:30:00")
-    assert inst.availability[0].availableTime[
-        1
-    ].availableStartTime == fhirtypes.Time.validate("08:30:00")
+    assert (
+        inst.availability[0].availableTime[1].availableEndTime
+        == ExternalValidatorModel(valueTime="05:30:00").valueTime
+    )
+    assert (
+        inst.availability[0].availableTime[1].availableStartTime
+        == ExternalValidatorModel(valueTime="08:30:00").valueTime
+    )
     assert inst.availability[0].availableTime[1].daysOfWeek[0] == "mon"
     assert inst.availability[0].availableTime[1].daysOfWeek[1] == "tue"
     assert inst.availability[0].availableTime[1].daysOfWeek[2] == "thu"
     assert inst.availability[0].availableTime[1].daysOfWeek[3] == "fri"
-    assert inst.availability[0].availableTime[
-        2
-    ].availableEndTime == fhirtypes.Time.validate("04:30:00")
-    assert inst.availability[0].availableTime[
-        2
-    ].availableStartTime == fhirtypes.Time.validate("09:30:00")
+    assert (
+        inst.availability[0].availableTime[2].availableEndTime
+        == ExternalValidatorModel(valueTime="04:30:00").valueTime
+    )
+    assert (
+        inst.availability[0].availableTime[2].availableStartTime
+        == ExternalValidatorModel(valueTime="09:30:00").valueTime
+    )
     assert inst.availability[0].availableTime[2].daysOfWeek[0] == "sat"
     assert inst.availability[0].availableTime[2].daysOfWeek[1] == "fri"
     assert inst.availability[0].notAvailableTime[0].description == (
         "Christmas/Boxing Day, Reduced capacity is available during "
         "the Christmas period"
     )
-    assert inst.availability[0].notAvailableTime[
-        0
-    ].during.end == fhirtypes.DateTime.validate("2015-12-26")
-    assert inst.availability[0].notAvailableTime[
-        0
-    ].during.start == fhirtypes.DateTime.validate("2015-12-25")
+    assert (
+        inst.availability[0].notAvailableTime[0].during.end
+        == ExternalValidatorModel(valueDateTime="2015-12-26").valueDateTime
+    )
+    assert (
+        inst.availability[0].notAvailableTime[0].during.start
+        == ExternalValidatorModel(valueDateTime="2015-12-25").valueDateTime
+    )
     assert inst.availability[0].notAvailableTime[1].description == "New Years Day"
-    assert inst.availability[0].notAvailableTime[
-        1
-    ].during.end == fhirtypes.DateTime.validate("2016-01-01")
-    assert inst.availability[0].notAvailableTime[
-        1
-    ].during.start == fhirtypes.DateTime.validate("2016-01-01")
+    assert (
+        inst.availability[0].notAvailableTime[1].during.end
+        == ExternalValidatorModel(valueDateTime="2016-01-01").valueDateTime
+    )
+    assert (
+        inst.availability[0].notAvailableTime[1].during.start
+        == ExternalValidatorModel(valueDateTime="2016-01-01").valueDateTime
+    )
     assert inst.category[0].coding[0].code == "8"
     assert inst.category[0].coding[0].display == "Counselling"
     assert (
         inst.category[0].coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/service-category"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/service-category"
+        ).valueUri
     )
     assert inst.category[0].text == "Counselling"
     assert inst.characteristic[0].coding[0].display == "Wheelchair access"
@@ -80,13 +90,19 @@ def impl_healthcareservice_1(inst):
     )
     assert inst.endpoint[0].reference == "Endpoint/example"
     assert inst.id == "example"
-    assert inst.identifier[0].system == "http://example.org/shared-ids"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel(valueUri="http://example.org/shared-ids").valueUri
+    )
     assert inst.identifier[0].value == "HS-12"
     assert inst.location[0].reference == "Location/1"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.name == "Consulting psychologists and/or psychology services"
     assert inst.program[0].text == "PTSD outreach"
@@ -102,19 +118,31 @@ def impl_healthcareservice_1(inst):
     assert inst.referralMethod[3].coding[0].display == "Secure Email"
     assert inst.serviceProvisionCode[0].coding[0].code == "cost"
     assert inst.serviceProvisionCode[0].coding[0].display == "Fees apply"
-    assert inst.serviceProvisionCode[0].coding[0].system == (
-        "http://terminology.hl7.org/CodeSystem/service-provision-" "conditions"
+    assert (
+        inst.serviceProvisionCode[0].coding[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/service-provision-conditions"
+        ).valueUri
     )
     assert inst.specialty[0].coding[0].code == "47505003"
     assert inst.specialty[0].coding[0].display == "Posttraumatic stress disorder"
-    assert inst.specialty[0].coding[0].system == "http://snomed.info/sct"
+    assert (
+        inst.specialty[0].coding[0].system
+        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+    )
     assert inst.text.status == "generated"
     assert inst.type[0].coding[0].code == "394913002"
     assert inst.type[0].coding[0].display == "Psychotherapy"
-    assert inst.type[0].coding[0].system == "http://snomed.info/sct"
+    assert (
+        inst.type[0].coding[0].system
+        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+    )
     assert inst.type[1].coding[0].code == "394587001"
     assert inst.type[1].coding[0].display == "Psychiatry"
-    assert inst.type[1].coding[0].system == "http://snomed.info/sct"
+    assert (
+        inst.type[1].coding[0].system
+        == ExternalValidatorModel(valueUri="http://snomed.info/sct").valueUri
+    )
 
 
 def test_healthcareservice_1(base_settings):
@@ -122,15 +150,15 @@ def test_healthcareservice_1(base_settings):
     Test File: healthcareservice-example.json
     """
     filename = base_settings["unittest_data_dir"] / "healthcareservice-example.json"
-    inst = healthcareservice.HealthcareService.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = healthcareservice.HealthcareService.model_validate_json(
+        Path(filename).read_bytes()
     )
-    assert "HealthcareService" == inst.resource_type
+    assert "HealthcareService" == inst.get_resource_type()
 
     impl_healthcareservice_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "HealthcareService" == data["resourceType"]
 
     inst2 = healthcareservice.HealthcareService(**data)

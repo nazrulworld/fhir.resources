@@ -9,10 +9,10 @@ from functools import lru_cache
 
 from pydantic import (
     BaseModel,
+    ConfigDict,
     Field,
     SerializationInfo,
     model_serializer,
-    ConfigDict,
     model_validator,
 )
 from pydantic.fields import FieldInfo
@@ -20,9 +20,8 @@ from pydantic.main import IncEx
 from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
 from pydantic.v1.errors import PydanticValueError
 from pydantic.v1.parse import Protocol
-from pydantic_core import ValidationError, InitErrorDetails, PydanticCustomError
-from typing_extensions import Literal
-from typing_extensions import Self
+from pydantic_core import InitErrorDetails, PydanticCustomError, ValidationError
+from typing_extensions import Literal, Self
 
 from .utils import is_primitive_type, load_file, load_str_bytes, xml_dumps, yaml_dumps
 

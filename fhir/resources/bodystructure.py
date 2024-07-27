@@ -8,9 +8,9 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field
+from pydantic import Field
 
-from . import backboneelement, domainresource, fhirtypes
+from . import domainresource, fhirtypes
 
 
 class BodyStructure(domainresource.DomainResource):
@@ -24,27 +24,29 @@ class BodyStructure(domainresource.DomainResource):
     use case.
     """
 
-    resource_type = Field("BodyStructure", const=True)
+    __resource_type__ = "BodyStructure"
 
     active: bool = Field(
         None,
         alias="active",
         title="Whether this record is in active use",
         description="Whether this body site is in active use.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     active__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_active", title="Extension field for ``active``."
     )
 
-    description: fhirtypes.Markdown = Field(
+    description: fhirtypes.MarkdownType = Field(
         None,
         alias="description",
         title="Text description",
         description="A summary, characterization or explanation of the body structure.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -60,8 +62,9 @@ class BodyStructure(domainresource.DomainResource):
             "The anatomical location(s) or region(s) not occupied or represented by"
             " the specimen, lesion, or body structure."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -69,8 +72,9 @@ class BodyStructure(domainresource.DomainResource):
         alias="identifier",
         title="Bodystructure identifier",
         description="Identifier for this instance of the anatomical structure.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     image: typing.List[fhirtypes.AttachmentType] = Field(
@@ -78,8 +82,9 @@ class BodyStructure(domainresource.DomainResource):
         alias="image",
         title="Attached images",
         description="Image or images used to identify a location.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     includedStructure: typing.List[
@@ -92,8 +97,9 @@ class BodyStructure(domainresource.DomainResource):
             "The anatomical location(s) or region(s) of the specimen, lesion, or "
             "body structure."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     morphology: fhirtypes.CodeableConceptType = Field(
@@ -105,8 +111,9 @@ class BodyStructure(domainresource.DomainResource):
             "`BodyStructure.location`.  This can define both normal and abnormal "
             "morphologies."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     patient: fhirtypes.ReferenceType = Field(
@@ -114,10 +121,11 @@ class BodyStructure(domainresource.DomainResource):
         alias="patient",
         title="Who this is about",
         description="The person to which the body site belongs.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Patient"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Patient"],
+        },
     )
 
     @classmethod
@@ -146,6 +154,9 @@ class BodyStructure(domainresource.DomainResource):
         ]
 
 
+from . import backboneelement
+
+
 class BodyStructureIncludedStructure(backboneelement.BackboneElement):
     """Disclaimer: Any field name ends with ``__ext`` doesn't part of
     Resource StructureDefinition, instead used to enable Extensibility feature
@@ -156,7 +167,7 @@ class BodyStructureIncludedStructure(backboneelement.BackboneElement):
     structure.
     """
 
-    resource_type = Field("BodyStructureIncludedStructure", const=True)
+    __resource_type__ = "BodyStructureIncludedStructure"
 
     bodyLandmarkOrientation: typing.List[
         fhirtypes.BodyStructureIncludedStructureBodyLandmarkOrientationType
@@ -168,8 +179,9 @@ class BodyStructureIncludedStructure(backboneelement.BackboneElement):
             "Body locations in relation to a specific body landmark (tatoo, scar, "
             "other body structure)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     laterality: fhirtypes.CodeableConceptType = Field(
@@ -177,8 +189,9 @@ class BodyStructureIncludedStructure(backboneelement.BackboneElement):
         alias="laterality",
         title="Code that represents the included structure laterality",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     qualifier: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -186,8 +199,9 @@ class BodyStructureIncludedStructure(backboneelement.BackboneElement):
         alias="qualifier",
         title="Code that represents the included structure qualifier",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     spatialReference: typing.List[fhirtypes.ReferenceType] = Field(
@@ -195,10 +209,11 @@ class BodyStructureIncludedStructure(backboneelement.BackboneElement):
         alias="spatialReference",
         title="Cartesian reference for structure",
         description="XY or XYZ-coordinate orientation for structure.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ImagingSelection"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ImagingSelection"],
+        },
     )
 
     structure: fhirtypes.CodeableConceptType = Field(
@@ -206,8 +221,9 @@ class BodyStructureIncludedStructure(backboneelement.BackboneElement):
         alias="structure",
         title="Code that represents the included structure",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -240,9 +256,7 @@ class BodyStructureIncludedStructureBodyLandmarkOrientation(
     body structure).
     """
 
-    resource_type = Field(
-        "BodyStructureIncludedStructureBodyLandmarkOrientation", const=True
-    )
+    __resource_type__ = "BodyStructureIncludedStructureBodyLandmarkOrientation"
 
     clockFacePosition: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
@@ -252,8 +266,9 @@ class BodyStructureIncludedStructureBodyLandmarkOrientation(
             "An description of the direction away from a landmark something is "
             "located based on a radial clock dial."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     distanceFromLandmark: typing.List[
@@ -266,8 +281,9 @@ class BodyStructureIncludedStructureBodyLandmarkOrientation(
             "The distance in centimeters a certain observation is made from a body "
             "landmark."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     landmarkDescription: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -278,8 +294,9 @@ class BodyStructureIncludedStructureBodyLandmarkOrientation(
             "A description of a landmark on the body used as a reference to locate "
             "something else."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     surfaceOrientation: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -287,8 +304,9 @@ class BodyStructureIncludedStructureBodyLandmarkOrientation(
         alias="surfaceOrientation",
         title="Relative landmark surface orientation",
         description="The surface area a body location is in relation to a landmark.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -320,9 +338,8 @@ class BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmark(
     landmark.
     """
 
-    resource_type = Field(
-        "BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmark",
-        const=True,
+    __resource_type__ = (
+        "BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmark"
     )
 
     device: typing.List[fhirtypes.CodeableReferenceType] = Field(
@@ -330,10 +347,11 @@ class BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmark(
         alias="device",
         title="Measurement device",
         description="An instrument, tool, analyzer, etc. used in the measurement.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Device"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Device"],
+        },
     )
 
     value: typing.List[fhirtypes.QuantityType] = Field(
@@ -341,16 +359,15 @@ class BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmark(
         alias="value",
         title="Measured distance from body landmark",
         description="The measured distance (e.g., in cm) from a body landmark.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
     def elements_sequence(cls):
         """returning all elements names from
-        ``BodyStructureIncludedStructureBodyLandmark
-        OrientationDistanceFromLandmark``
-        according specification,
+        ``BodyStructureIncludedStructureBodyLandmarkOrientationDistanceFromLandmark`` according specification,
         with preserving original sequence order.
         """
         return ["id", "extension", "modifierExtension", "device", "value"]

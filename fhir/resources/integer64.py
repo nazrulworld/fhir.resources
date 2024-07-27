@@ -6,7 +6,7 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import fhirtypes, primitivetype
 
@@ -20,15 +20,16 @@ class Integer64(primitivetype.PrimitiveType):
     A very large whole number
     """
 
-    resource_type = Field("integer64", const=True)
+    __resource_type__ = "integer64"
 
-    value: fhirtypes.Integer64 = Field(
+    value: fhirtypes.Integer64Type = Field(
         None,
         alias="value",
         title="Primitive value for integer64",
         description="Primitive value for integer64",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     value__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_value", title="Extension field for ``value``."

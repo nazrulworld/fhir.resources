@@ -6,10 +6,10 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
+from pathlib import Path
 
-from .. import fhirtypes  # noqa: F401
 from .. import operationoutcome
+from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
 
 def impl_operationoutcome_1(inst):
@@ -25,7 +25,10 @@ def impl_operationoutcome_1(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.text.status == "generated"
 
@@ -38,15 +41,15 @@ def test_operationoutcome_1(base_settings):
         base_settings["unittest_data_dir"]
         / "operationoutcome-example-validationfail.json"
     )
-    inst = operationoutcome.OperationOutcome.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = operationoutcome.OperationOutcome.model_validate_json(
+        Path(filename).read_bytes()
     )
-    assert "OperationOutcome" == inst.resource_type
+    assert "OperationOutcome" == inst.get_resource_type()
 
     impl_operationoutcome_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "OperationOutcome" == data["resourceType"]
 
     inst2 = operationoutcome.OperationOutcome(**data)
@@ -60,7 +63,9 @@ def impl_operationoutcome_2(inst):
     assert inst.issue[0].details.coding[0].display == "Break the glass"
     assert (
         inst.issue[0].details.coding[0].system
-        == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.issue[0].details.text == (
         "Additional information may be available using the Break-The-" "Glass Protocol"
@@ -69,7 +74,10 @@ def impl_operationoutcome_2(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.text.status == "generated"
 
@@ -82,15 +90,15 @@ def test_operationoutcome_2(base_settings):
         base_settings["unittest_data_dir"]
         / "operationoutcome-example-break-the-glass.json"
     )
-    inst = operationoutcome.OperationOutcome.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = operationoutcome.OperationOutcome.model_validate_json(
+        Path(filename).read_bytes()
     )
-    assert "OperationOutcome" == inst.resource_type
+    assert "OperationOutcome" == inst.get_resource_type()
 
     impl_operationoutcome_2(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "OperationOutcome" == data["resourceType"]
 
     inst2 = operationoutcome.OperationOutcome(**data)
@@ -109,7 +117,10 @@ def impl_operationoutcome_3(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.text.status == "generated"
 
@@ -121,15 +132,15 @@ def test_operationoutcome_3(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "operationoutcome-example-searchfail.json"
     )
-    inst = operationoutcome.OperationOutcome.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = operationoutcome.OperationOutcome.model_validate_json(
+        Path(filename).read_bytes()
     )
-    assert "OperationOutcome" == inst.resource_type
+    assert "OperationOutcome" == inst.get_resource_type()
 
     impl_operationoutcome_3(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "OperationOutcome" == data["resourceType"]
 
     inst2 = operationoutcome.OperationOutcome(**data)
@@ -144,7 +155,10 @@ def impl_operationoutcome_4(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.text.status == "generated"
 
@@ -156,15 +170,15 @@ def test_operationoutcome_4(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "operationoutcome-example-exception.json"
     )
-    inst = operationoutcome.OperationOutcome.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = operationoutcome.OperationOutcome.model_validate_json(
+        Path(filename).read_bytes()
     )
-    assert "OperationOutcome" == inst.resource_type
+    assert "OperationOutcome" == inst.get_resource_type()
 
     impl_operationoutcome_4(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "OperationOutcome" == data["resourceType"]
 
     inst2 = operationoutcome.OperationOutcome(**data)
@@ -188,7 +202,10 @@ def impl_operationoutcome_5(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.text.status == "generated"
 
@@ -198,15 +215,15 @@ def test_operationoutcome_5(base_settings):
     Test File: operationoutcome-example.json
     """
     filename = base_settings["unittest_data_dir"] / "operationoutcome-example.json"
-    inst = operationoutcome.OperationOutcome.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = operationoutcome.OperationOutcome.model_validate_json(
+        Path(filename).read_bytes()
     )
-    assert "OperationOutcome" == inst.resource_type
+    assert "OperationOutcome" == inst.get_resource_type()
 
     impl_operationoutcome_5(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "OperationOutcome" == data["resourceType"]
 
     inst2 = operationoutcome.OperationOutcome(**data)
@@ -221,7 +238,10 @@ def impl_operationoutcome_6(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.text.status == "generated"
 
@@ -233,15 +253,15 @@ def test_operationoutcome_6(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "operationoutcome-example-allok.json"
     )
-    inst = operationoutcome.OperationOutcome.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = operationoutcome.OperationOutcome.model_validate_json(
+        Path(filename).read_bytes()
     )
-    assert "OperationOutcome" == inst.resource_type
+    assert "OperationOutcome" == inst.get_resource_type()
 
     impl_operationoutcome_6(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "OperationOutcome" == data["resourceType"]
 
     inst2 = operationoutcome.OperationOutcome(**data)

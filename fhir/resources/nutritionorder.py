@@ -8,11 +8,9 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
-from . import backboneelement, domainresource, fhirtypes
+from . import domainresource, fhirtypes
 
 
 class NutritionOrder(domainresource.DomainResource):
@@ -25,7 +23,7 @@ class NutritionOrder(domainresource.DomainResource):
     supplement to a patient/resident.
     """
 
-    resource_type = Field("NutritionOrder", const=True)
+    __resource_type__ = "NutritionOrder"
 
     allergyIntolerance: typing.List[fhirtypes.ReferenceType] = Field(
         None,
@@ -38,10 +36,11 @@ class NutritionOrder(domainresource.DomainResource):
             "A link to a record of allergies or intolerances  which should be "
             "included in the nutrition order."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["AllergyIntolerance"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["AllergyIntolerance"],
+        },
     )
 
     basedOn: typing.List[fhirtypes.ReferenceType] = Field(
@@ -52,20 +51,22 @@ class NutritionOrder(domainresource.DomainResource):
             "A plan or request that is fulfilled in whole or in part by this "
             "nutrition order."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["CarePlan", "NutritionOrder", "ServiceRequest"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["CarePlan", "NutritionOrder", "ServiceRequest"],
+        },
     )
 
-    dateTime: fhirtypes.DateTime = Field(
+    dateTime: fhirtypes.DateTimeType = Field(
         None,
         alias="dateTime",
         title="Date and time the nutrition order was requested",
         description="The date and time that this nutrition order was requested.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
     dateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_dateTime", title="Extension field for ``dateTime``."
@@ -79,10 +80,11 @@ class NutritionOrder(domainresource.DomainResource):
             "An encounter that provides additional information about the healthcare"
             " context in which this request is made."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Encounter"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Encounter"],
+        },
     )
 
     enteralFormula: fhirtypes.NutritionOrderEnteralFormulaType = Field(
@@ -93,8 +95,9 @@ class NutritionOrder(domainresource.DomainResource):
             "Feeding provided through the gastrointestinal tract via a tube, "
             "catheter, or stoma that delivers nutrition distal to the oral cavity."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     excludeFoodModifier: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -116,8 +119,9 @@ class NutritionOrder(domainresource.DomainResource):
             " of the oral diet, nutritional supplements and enteral formula "
             "feedings."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     foodPreferenceModifier: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -132,8 +136,9 @@ class NutritionOrder(domainresource.DomainResource):
             "of the oral diet, nutritional supplements and enteral formula "
             "feedings."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     groupIdentifier: fhirtypes.IdentifierType = Field(
@@ -145,8 +150,9 @@ class NutritionOrder(domainresource.DomainResource):
             "authorized more or less simultaneously by a single author, "
             "representing the composite or group identifier."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -157,11 +163,12 @@ class NutritionOrder(domainresource.DomainResource):
             "Identifiers assigned to this order by the order sender or by the order"
             " receiver."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    instantiates: typing.List[typing.Optional[fhirtypes.Uri]] = Field(
+    instantiates: typing.List[typing.Optional[fhirtypes.UriType]] = Field(
         None,
         alias="instantiates",
         title="Instantiates protocol or definition",
@@ -170,8 +177,9 @@ class NutritionOrder(domainresource.DomainResource):
             "definition that is adhered to in whole or in part by this "
             "NutritionOrder."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     instantiates__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -179,7 +187,9 @@ class NutritionOrder(domainresource.DomainResource):
         None, alias="_instantiates", title="Extension field for ``instantiates``."
     )
 
-    instantiatesCanonical: typing.List[typing.Optional[fhirtypes.Canonical]] = Field(
+    instantiatesCanonical: typing.List[
+        typing.Optional[fhirtypes.CanonicalType]
+    ] = Field(
         None,
         alias="instantiatesCanonical",
         title="Instantiates FHIR protocol or definition",
@@ -188,10 +198,11 @@ class NutritionOrder(domainresource.DomainResource):
             "other definition that is adhered to in whole or in part by this "
             "NutritionOrder."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ActivityDefinition", "PlanDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ActivityDefinition", "PlanDefinition"],
+        },
     )
     instantiatesCanonical__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -201,7 +212,7 @@ class NutritionOrder(domainresource.DomainResource):
         title="Extension field for ``instantiatesCanonical``.",
     )
 
-    instantiatesUri: typing.List[typing.Optional[fhirtypes.Uri]] = Field(
+    instantiatesUri: typing.List[typing.Optional[fhirtypes.UriType]] = Field(
         None,
         alias="instantiatesUri",
         title="Instantiates external protocol or definition",
@@ -210,8 +221,9 @@ class NutritionOrder(domainresource.DomainResource):
             "orderset or other definition that is adhered to in whole or in part by"
             " this NutritionOrder."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     instantiatesUri__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -219,7 +231,7 @@ class NutritionOrder(domainresource.DomainResource):
         None, alias="_instantiatesUri", title="Extension field for ``instantiatesUri``."
     )
 
-    intent: fhirtypes.Code = Field(
+    intent: fhirtypes.CodeType = Field(
         None,
         alias="intent",
         title=(
@@ -230,22 +242,23 @@ class NutritionOrder(domainresource.DomainResource):
             "Indicates the level of authority/intentionality associated with the "
             "NutrionOrder and where the request fits into the workflow chain."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "proposal",
-            "plan",
-            "directive",
-            "order",
-            "original-order",
-            "reflex-order",
-            "filler-order",
-            "instance-order",
-            "option",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "proposal",
+                "plan",
+                "directive",
+                "order",
+                "original-order",
+                "reflex-order",
+                "filler-order",
+                "instance-order",
+                "option",
+            ],
+        },
     )
     intent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_intent", title="Extension field for ``intent``."
@@ -259,8 +272,9 @@ class NutritionOrder(domainresource.DomainResource):
             "Comments made about the {{title}} by the requester, performer, subject"
             " or other participants."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     oralDiet: fhirtypes.NutritionOrderOralDietType = Field(
@@ -268,8 +282,9 @@ class NutritionOrder(domainresource.DomainResource):
         alias="oralDiet",
         title="Oral diet components",
         description="Diet given orally in contrast to enteral (tube) feeding.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     orderer: fhirtypes.ReferenceType = Field(
@@ -280,10 +295,11 @@ class NutritionOrder(domainresource.DomainResource):
             "The practitioner that holds legal responsibility for ordering the "
             "diet, nutritional supplement, or formula feedings."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Practitioner", "PractitionerRole"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Practitioner", "PractitionerRole"],
+        },
     )
 
     outsideFoodAllowed: bool = Field(
@@ -295,8 +311,9 @@ class NutritionOrder(domainresource.DomainResource):
             "brought in by the patient and/or family.  If set to true, indicates "
             "that the receiving system does not need to supply the food item."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     outsideFoodAllowed__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -309,20 +326,21 @@ class NutritionOrder(domainresource.DomainResource):
         alias="performer",
         title="Who is desired to perform the administration of what is being ordered",
         description="The specified desired performer of the nutrition order.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "CareTeam",
-            "Practitioner",
-            "PractitionerRole",
-            "RelatedPerson",
-            "Patient",
-            "Organization",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "CareTeam",
+                "Practitioner",
+                "PractitionerRole",
+                "RelatedPerson",
+                "Patient",
+                "Organization",
+            ],
+        },
     )
 
-    priority: fhirtypes.Code = Field(
+    priority: fhirtypes.CodeType = Field(
         None,
         alias="priority",
         title="routine | urgent | asap | stat",
@@ -330,17 +348,18 @@ class NutritionOrder(domainresource.DomainResource):
             "Indicates how quickly the Nutrition Order should be addressed with "
             "respect to other        requests."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["routine", "urgent", "asap", "stat"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["routine", "urgent", "asap", "stat"],
+        },
     )
     priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_priority", title="Extension field for ``priority``."
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(
         None,
         alias="status",
         title=(
@@ -348,20 +367,21 @@ class NutritionOrder(domainresource.DomainResource):
             "unknown"
         ),
         description="The workflow status of the nutrition order/request.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "draft",
-            "active",
-            "on-hold",
-            "revoked",
-            "completed",
-            "entered-in-error",
-            "unknown",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "draft",
+                "active",
+                "on-hold",
+                "revoked",
+                "completed",
+                "entered-in-error",
+                "unknown",
+            ],
+        },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -375,10 +395,11 @@ class NutritionOrder(domainresource.DomainResource):
             "The person or set of individuals who needs the nutrition order for an "
             "oral diet, nutritional supplement and/or enteral or formula feeding."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Patient", "Group"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Patient", "Group"],
+        },
     )
 
     supplement: typing.List[fhirtypes.NutritionOrderSupplementType] = Field(
@@ -389,8 +410,9 @@ class NutritionOrder(domainresource.DomainResource):
             "Oral nutritional products given in order to add further nutritional "
             "value to the patient's diet."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     supportingInformation: typing.List[fhirtypes.ReferenceType] = Field(
@@ -401,10 +423,11 @@ class NutritionOrder(domainresource.DomainResource):
             "Information to support fulfilling (i.e. dispensing or administering) "
             "of the nutrition,        for example, patient height and weight)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Resource"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Resource"],
+        },
     )
 
     @classmethod
@@ -447,10 +470,7 @@ class NutritionOrder(domainresource.DomainResource):
             "note",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1672(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -463,52 +483,10 @@ class NutritionOrder(domainresource.DomainResource):
             ("intent", "intent__ext"),
             ("status", "status__ext"),
         ]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
 
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+from . import backboneelement
 
 
 class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
@@ -521,7 +499,7 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
     or stoma that delivers nutrition distal to the oral cavity.
     """
 
-    resource_type = Field("NutritionOrderEnteralFormula", const=True)
+    __resource_type__ = "NutritionOrderEnteralFormula"
 
     additive: typing.List[fhirtypes.NutritionOrderEnteralFormulaAdditiveType] = Field(
         None,
@@ -531,8 +509,9 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
             "Indicates modular components to be provided in addition or mixed with "
             "the base formula."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     administration: typing.List[
@@ -548,11 +527,12 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
             " this would be an instruction to increase the rate of continuous "
             "feeding every 2 hours."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    administrationInstruction: fhirtypes.Markdown = Field(
+    administrationInstruction: fhirtypes.MarkdownType = Field(
         None,
         alias="administrationInstruction",
         title="Formula feeding instructions expressed as text",
@@ -560,8 +540,9 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
             "Free text formula administration, feeding instructions or additional "
             "instructions or information."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     administrationInstruction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -569,7 +550,7 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
         title="Extension field for ``administrationInstruction``.",
     )
 
-    baseFormulaProductName: fhirtypes.String = Field(
+    baseFormulaProductName: fhirtypes.StringType = Field(
         None,
         alias="baseFormulaProductName",
         title="Product or brand name of the enteral or infant formula",
@@ -577,8 +558,9 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
             "The product or brand name of the enteral or infant formula product "
             'such as "ACME Adult Standard Formula".'
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     baseFormulaProductName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -594,10 +576,11 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
             "The type of enteral or infant formula such as an adult standard "
             "formula with fiber or a soy-based infant formula."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["NutritionProduct"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["NutritionProduct"],
+        },
     )
 
     caloricDensity: fhirtypes.QuantityType = Field(
@@ -611,8 +594,9 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
             " or an adult may require an enteral formula that provides 1.5 "
             "calorie/mL."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     deliveryDevice: typing.List[fhirtypes.CodeableReferenceType] = Field(
@@ -623,10 +607,11 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
             "The intended type of device that is to be used for the administration "
             "of the enteral formula."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["DeviceDefinition"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["DeviceDefinition"],
+        },
     )
 
     maxVolumeToDeliver: fhirtypes.QuantityType = Field(
@@ -637,8 +622,9 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
             "The maximum total quantity of formula that may be administered to a "
             "subject over the period of time, e.g. 1440 mL over 24 hours."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     routeOfAdministration: fhirtypes.CodeableConceptType = Field(
@@ -650,8 +636,9 @@ class NutritionOrderEnteralFormula(backboneelement.BackboneElement):
             "gastrointestinal  tract for purposes of providing the formula feeding,"
             " e.g. nasogastric tube."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -686,9 +673,9 @@ class NutritionOrderEnteralFormulaAdditive(backboneelement.BackboneElement):
     base formula.
     """
 
-    resource_type = Field("NutritionOrderEnteralFormulaAdditive", const=True)
+    __resource_type__ = "NutritionOrderEnteralFormulaAdditive"
 
-    productName: fhirtypes.String = Field(
+    productName: fhirtypes.StringType = Field(
         None,
         alias="productName",
         title="Product or brand name of the modular additive",
@@ -696,8 +683,9 @@ class NutritionOrderEnteralFormulaAdditive(backboneelement.BackboneElement):
             "The product or brand name of the type of modular component to be added"
             " to the formula."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     productName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_productName", title="Extension field for ``productName``."
@@ -711,8 +699,9 @@ class NutritionOrderEnteralFormulaAdditive(backboneelement.BackboneElement):
             "The amount of additive to be given in addition or to be mixed in with "
             "the base formula."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     type: fhirtypes.CodeableReferenceType = Field(
@@ -724,10 +713,11 @@ class NutritionOrderEnteralFormulaAdditive(backboneelement.BackboneElement):
             " fat or fiber to be provided in addition to or mixed with the base "
             "formula."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["NutritionProduct"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["NutritionProduct"],
+        },
     )
 
     @classmethod
@@ -758,7 +748,7 @@ class NutritionOrderEnteralFormulaAdministration(backboneelement.BackboneElement
     instruction to increase the rate of continuous feeding every 2 hours.
     """
 
-    resource_type = Field("NutritionOrderEnteralFormulaAdministration", const=True)
+    __resource_type__ = "NutritionOrderEnteralFormulaAdministration"
 
     quantity: fhirtypes.QuantityType = Field(
         None,
@@ -768,8 +758,9 @@ class NutritionOrderEnteralFormulaAdministration(backboneelement.BackboneElement
             "The volume of formula to provide to the patient per the specified "
             "administration schedule."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     rateQuantity: fhirtypes.QuantityType = Field(
@@ -780,11 +771,12 @@ class NutritionOrderEnteralFormulaAdministration(backboneelement.BackboneElement
             "The rate of administration of formula via a feeding pump, e.g. 60 mL "
             "per hour, according to the specified schedule."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e rate[x]
-        one_of_many="rate",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e rate[x]
+            "one_of_many": "rate",
+            "one_of_many_required": False,
+        },
     )
 
     rateRatio: fhirtypes.RatioType = Field(
@@ -795,11 +787,12 @@ class NutritionOrderEnteralFormulaAdministration(backboneelement.BackboneElement
             "The rate of administration of formula via a feeding pump, e.g. 60 mL "
             "per hour, according to the specified schedule."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e rate[x]
-        one_of_many="rate",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e rate[x]
+            "one_of_many": "rate",
+            "one_of_many_required": False,
+        },
     )
 
     schedule: fhirtypes.NutritionOrderEnteralFormulaAdministrationScheduleType = Field(
@@ -807,8 +800,9 @@ class NutritionOrderEnteralFormulaAdministration(backboneelement.BackboneElement
         alias="schedule",
         title="Scheduling information for enteral formula products",
         description="Schedule information for an enteral formula.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -827,10 +821,7 @@ class NutritionOrderEnteralFormulaAdministration(backboneelement.BackboneElement
             "rateRatio",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_4587(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -844,26 +835,7 @@ class NutritionOrderEnteralFormulaAdministration(backboneelement.BackboneElement
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"rate": ["rateQuantity", "rateRatio"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class NutritionOrderEnteralFormulaAdministrationSchedule(
@@ -877,9 +849,7 @@ class NutritionOrderEnteralFormulaAdministrationSchedule(
     Schedule information for an enteral formula.
     """
 
-    resource_type = Field(
-        "NutritionOrderEnteralFormulaAdministrationSchedule", const=True
-    )
+    __resource_type__ = "NutritionOrderEnteralFormulaAdministrationSchedule"
 
     asNeeded: bool = Field(
         None,
@@ -889,8 +859,9 @@ class NutritionOrderEnteralFormulaAdministrationSchedule(
             "Indicates whether the enteral formula is only taken when needed within"
             " a specific dosing schedule."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     asNeeded__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_asNeeded", title="Extension field for ``asNeeded``."
@@ -904,8 +875,9 @@ class NutritionOrderEnteralFormulaAdministrationSchedule(
             "Indicates whether the enteral formula is only taken based on a "
             "precondition for taking the enteral formula."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     timing: typing.List[fhirtypes.TimingType] = Field(
@@ -917,8 +889,9 @@ class NutritionOrderEnteralFormulaAdministrationSchedule(
             "given.  The enteral formula should be given for the combination of all"
             " schedules if more than one schedule is present."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -946,7 +919,7 @@ class NutritionOrderOralDiet(backboneelement.BackboneElement):
     Diet given orally in contrast to enteral (tube) feeding.
     """
 
-    resource_type = Field("NutritionOrderOralDiet", const=True)
+    __resource_type__ = "NutritionOrderOralDiet"
 
     fluidConsistencyType: typing.List[fhirtypes.CodeableConceptType] = Field(
         None,
@@ -956,11 +929,12 @@ class NutritionOrderOralDiet(backboneelement.BackboneElement):
             "The required consistency (e.g. honey-thick, nectar-thick, thin, "
             "thickened.) of liquids or fluids served to the patient."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    instruction: fhirtypes.String = Field(
+    instruction: fhirtypes.StringType = Field(
         None,
         alias="instruction",
         title="Instructions or additional information about the oral diet",
@@ -968,8 +942,9 @@ class NutritionOrderOralDiet(backboneelement.BackboneElement):
             "Free text or additional instructions or information pertaining to the "
             "oral diet."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     instruction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_instruction", title="Extension field for ``instruction``."
@@ -984,8 +959,9 @@ class NutritionOrderOralDiet(backboneelement.BackboneElement):
             "(for example carbohydrate, fiber or sodium) required for the oral "
             "diet."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     schedule: fhirtypes.NutritionOrderOralDietScheduleType = Field(
@@ -993,8 +969,9 @@ class NutritionOrderOralDiet(backboneelement.BackboneElement):
         alias="schedule",
         title="Scheduling information for oral diets",
         description="Schedule information for an oral diet.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     texture: typing.List[fhirtypes.NutritionOrderOralDietTextureType] = Field(
@@ -1005,8 +982,9 @@ class NutritionOrderOralDiet(backboneelement.BackboneElement):
             "Class that describes any texture modifications required for the "
             "patient to safely consume various types of solid foods."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     type: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -1020,8 +998,9 @@ class NutritionOrderOralDiet(backboneelement.BackboneElement):
             "The kind of diet or dietary restriction such as fiber restricted diet "
             "or diabetic diet."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -1053,15 +1032,16 @@ class NutritionOrderOralDietNutrient(backboneelement.BackboneElement):
     example carbohydrate, fiber or sodium) required for the oral diet.
     """
 
-    resource_type = Field("NutritionOrderOralDietNutrient", const=True)
+    __resource_type__ = "NutritionOrderOralDietNutrient"
 
     amount: fhirtypes.QuantityType = Field(
         None,
         alias="amount",
         title="Quantity of the specified nutrient",
         description="The quantity of the specified nutrient to include in diet.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     modifier: fhirtypes.CodeableConceptType = Field(
@@ -1069,8 +1049,9 @@ class NutritionOrderOralDietNutrient(backboneelement.BackboneElement):
         alias="modifier",
         title="Type of nutrient that is being modified",
         description="The nutrient that is being modified such as carbohydrate or sodium.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -1091,7 +1072,7 @@ class NutritionOrderOralDietSchedule(backboneelement.BackboneElement):
     Schedule information for an oral diet.
     """
 
-    resource_type = Field("NutritionOrderOralDietSchedule", const=True)
+    __resource_type__ = "NutritionOrderOralDietSchedule"
 
     asNeeded: bool = Field(
         None,
@@ -1101,8 +1082,9 @@ class NutritionOrderOralDietSchedule(backboneelement.BackboneElement):
             "Indicates whether the product is only taken when needed within a "
             "specific dosing schedule."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     asNeeded__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_asNeeded", title="Extension field for ``asNeeded``."
@@ -1116,8 +1098,9 @@ class NutritionOrderOralDietSchedule(backboneelement.BackboneElement):
             "Indicates whether the product is only taken based on a precondition "
             "for taking the product."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     timing: typing.List[fhirtypes.TimingType] = Field(
@@ -1129,8 +1112,9 @@ class NutritionOrderOralDietSchedule(backboneelement.BackboneElement):
             "diet should be given for the combination of all schedules if more than"
             " one schedule is present."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -1159,7 +1143,7 @@ class NutritionOrderOralDietTexture(backboneelement.BackboneElement):
     safely consume various types of solid foods.
     """
 
-    resource_type = Field("NutritionOrderOralDietTexture", const=True)
+    __resource_type__ = "NutritionOrderOralDietTexture"
 
     foodType: fhirtypes.CodeableConceptType = Field(
         None,
@@ -1172,8 +1156,9 @@ class NutritionOrderOralDietTexture(backboneelement.BackboneElement):
             "The food type(s) (e.g. meats, all foods)  that the texture "
             "modification applies to.  This could be all foods types."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     modifier: fhirtypes.CodeableConceptType = Field(
@@ -1184,8 +1169,9 @@ class NutritionOrderOralDietTexture(backboneelement.BackboneElement):
             "Any texture modifications (for solid foods) that should be made, e.g. "
             "easy to chew, chopped, ground, and pureed."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -1207,9 +1193,9 @@ class NutritionOrderSupplement(backboneelement.BackboneElement):
     to the patient's diet.
     """
 
-    resource_type = Field("NutritionOrderSupplement", const=True)
+    __resource_type__ = "NutritionOrderSupplement"
 
-    instruction: fhirtypes.String = Field(
+    instruction: fhirtypes.StringType = Field(
         None,
         alias="instruction",
         title="Instructions or additional information about the oral supplement",
@@ -1217,14 +1203,15 @@ class NutritionOrderSupplement(backboneelement.BackboneElement):
             "Free text or additional instructions or information pertaining to the "
             "oral supplement."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     instruction__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_instruction", title="Extension field for ``instruction``."
     )
 
-    productName: fhirtypes.String = Field(
+    productName: fhirtypes.StringType = Field(
         None,
         alias="productName",
         title="Product or brand name of the nutritional supplement",
@@ -1232,8 +1219,9 @@ class NutritionOrderSupplement(backboneelement.BackboneElement):
             'The product or brand name of the nutritional supplement such as "Acme '
             'Protein Shake".'
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     productName__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_productName", title="Extension field for ``productName``."
@@ -1244,8 +1232,9 @@ class NutritionOrderSupplement(backboneelement.BackboneElement):
         alias="quantity",
         title="Amount of the nutritional supplement",
         description="The amount of the nutritional supplement to be given.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     schedule: fhirtypes.NutritionOrderSupplementScheduleType = Field(
@@ -1253,8 +1242,9 @@ class NutritionOrderSupplement(backboneelement.BackboneElement):
         alias="schedule",
         title="Scheduling information for supplements",
         description="Schedule information for a supplement.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     type: fhirtypes.CodeableReferenceType = Field(
@@ -1265,10 +1255,11 @@ class NutritionOrderSupplement(backboneelement.BackboneElement):
             "The kind of nutritional supplement product required such as a high "
             "protein or pediatric clear liquid supplement."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["NutritionProduct"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["NutritionProduct"],
+        },
     )
 
     @classmethod
@@ -1298,7 +1289,7 @@ class NutritionOrderSupplementSchedule(backboneelement.BackboneElement):
     Schedule information for a supplement.
     """
 
-    resource_type = Field("NutritionOrderSupplementSchedule", const=True)
+    __resource_type__ = "NutritionOrderSupplementSchedule"
 
     asNeeded: bool = Field(
         None,
@@ -1308,8 +1299,9 @@ class NutritionOrderSupplementSchedule(backboneelement.BackboneElement):
             "Indicates whether the supplement is only taken when needed within a "
             "specific dosing schedule."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     asNeeded__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_asNeeded", title="Extension field for ``asNeeded``."
@@ -1323,8 +1315,9 @@ class NutritionOrderSupplementSchedule(backboneelement.BackboneElement):
             "Indicates whether the supplement is only taken based on a precondition"
             " for taking the supplement."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     timing: typing.List[fhirtypes.TimingType] = Field(
@@ -1336,8 +1329,9 @@ class NutritionOrderSupplementSchedule(backboneelement.BackboneElement):
             "  The supplement should be given for the combination of all schedules "
             "if more than one schedule is present."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

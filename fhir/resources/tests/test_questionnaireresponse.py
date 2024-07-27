@@ -6,15 +6,20 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
+from pathlib import Path
 
-from .. import fhirtypes  # noqa: F401
 from .. import questionnaireresponse
+from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
 
 def impl_questionnaireresponse_1(inst):
     assert inst.author.reference == "#questauth"
-    assert inst.authored == fhirtypes.DateTime.validate("2013-02-19T14:15:00-05:00")
+    assert (
+        inst.authored
+        == ExternalValidatorModel(
+            valueDateTime="2013-02-19T14:15:00-05:00"
+        ).valueDateTime
+    )
     assert inst.basedOn[0].reference == "#order"
     assert inst.contained[0].id == "patsub"
     assert inst.contained[1].id == "order"
@@ -23,7 +28,9 @@ def impl_questionnaireresponse_1(inst):
     assert inst.id == "3141"
     assert (
         inst.identifier[0].system
-        == "http://example.org/fhir/NamingSystem/questionnaire-ids"
+        == ExternalValidatorModel(
+            valueUri="http://example.org/fhir/NamingSystem/questionnaire-ids"
+        ).valueUri
     )
     assert inst.identifier[0].value == "Q12349876"
     assert (
@@ -31,7 +38,9 @@ def impl_questionnaireresponse_1(inst):
     )
     assert (
         inst.item[0].item[0].answer[0].item[0].item[0].answer[0].valueCoding.system
-        == "http://cancer.questionnaire.org/system/code/yesno"
+        == ExternalValidatorModel(
+            valueUri="http://cancer.questionnaire.org/system/code/yesno"
+        ).valueUri
     )
     assert inst.item[0].item[0].answer[0].item[0].item[0].linkId == "1.1.1.1"
     assert (
@@ -39,7 +48,9 @@ def impl_questionnaireresponse_1(inst):
     )
     assert (
         inst.item[0].item[0].answer[0].item[0].item[1].answer[0].valueCoding.system
-        == "http://cancer.questionnaire.org/system/code/yesno"
+        == ExternalValidatorModel(
+            valueUri="http://cancer.questionnaire.org/system/code/yesno"
+        ).valueUri
     )
     assert inst.item[0].item[0].answer[0].item[0].item[1].linkId == "1.1.1.2"
     assert (
@@ -47,7 +58,9 @@ def impl_questionnaireresponse_1(inst):
     )
     assert (
         inst.item[0].item[0].answer[0].item[0].item[2].answer[0].valueCoding.system
-        == "http://cancer.questionnaire.org/system/code/yesno"
+        == ExternalValidatorModel(
+            valueUri="http://cancer.questionnaire.org/system/code/yesno"
+        ).valueUri
     )
     assert inst.item[0].item[0].answer[0].item[0].item[2].linkId == "1.1.1.3"
     assert inst.item[0].item[0].answer[0].item[0].linkId == "1.1.1"
@@ -55,14 +68,19 @@ def impl_questionnaireresponse_1(inst):
     assert inst.item[0].item[0].answer[0].valueCoding.display == "Yes"
     assert (
         inst.item[0].item[0].answer[0].valueCoding.system
-        == "http://cancer.questionnaire.org/system/code/yesno"
+        == ExternalValidatorModel(
+            valueUri="http://cancer.questionnaire.org/system/code/yesno"
+        ).valueUri
     )
     assert inst.item[0].item[0].linkId == "1.1"
     assert inst.item[0].linkId == "1"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.partOf[0].reference == "Procedure/f201"
     assert inst.questionnaire == "urn:uuid:95eaedf7-8a24-478a-8300-39acc44c746b"
@@ -76,15 +94,15 @@ def test_questionnaireresponse_1(base_settings):
     Test File: questionnaireresponse-example.json
     """
     filename = base_settings["unittest_data_dir"] / "questionnaireresponse-example.json"
-    inst = questionnaireresponse.QuestionnaireResponse.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = questionnaireresponse.QuestionnaireResponse.model_validate_json(
+        Path(filename).read_bytes()
     )
-    assert "QuestionnaireResponse" == inst.resource_type
+    assert "QuestionnaireResponse" == inst.get_resource_type()
 
     impl_questionnaireresponse_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "QuestionnaireResponse" == data["resourceType"]
 
     inst2 = questionnaireresponse.QuestionnaireResponse(**data)
@@ -92,72 +110,98 @@ def test_questionnaireresponse_1(base_settings):
 
 
 def impl_questionnaireresponse_2(inst):
-    assert inst.authored == fhirtypes.DateTime.validate("2008-01-17")
+    assert (
+        inst.authored
+        == ExternalValidatorModel(valueDateTime="2008-01-17").valueDateTime
+    )
     assert inst.id == "ussg-fht-answers"
-    assert inst.item[0].item[0].answer[0].valueDate == fhirtypes.Date.validate(
-        "2008-01-17"
+    assert (
+        inst.item[0].item[0].answer[0].valueDate
+        == ExternalValidatorModel(valueDate="2008-01-17").valueDate
     )
     assert inst.item[0].item[0].linkId == "0.1"
     assert inst.item[0].item[0].text == "Date Done"
     assert inst.item[0].linkId == "0"
-    assert inst.item[1].definition == "http://loinc.org/fhir/DataElement/54126-8"
+    assert (
+        inst.item[1].definition
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54126-8"
+        ).valueUri
+    )
     assert inst.item[1].item[0].item[0].answer[0].valueString == "Annie Proband"
     assert (
         inst.item[1].item[0].item[0].definition
-        == "http://loinc.org/fhir/DataElement/54125-0"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54125-0"
+        ).valueUri
     )
     assert inst.item[1].item[0].item[0].linkId == "1.1.1"
     assert inst.item[1].item[0].item[0].text == "Name"
     assert inst.item[1].item[0].item[1].answer[0].valueCoding.code == "LA3-6"
     assert inst.item[1].item[0].item[1].answer[0].valueCoding.display == "Female"
     assert (
-        inst.item[1].item[0].item[1].answer[0].valueCoding.system == "http://loinc.org"
+        inst.item[1].item[0].item[1].answer[0].valueCoding.system
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[1].item[0].item[1].definition
-        == "http://loinc.org/fhir/DataElement/54131-8"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54131-8"
+        ).valueUri
     )
     assert inst.item[1].item[0].item[1].linkId == "1.1.2"
     assert inst.item[1].item[0].item[1].text == "Gender"
-    assert inst.item[1].item[0].item[2].answer[0].valueDate == fhirtypes.Date.validate(
-        "1966-04-04"
+    assert (
+        inst.item[1].item[0].item[2].answer[0].valueDate
+        == ExternalValidatorModel(valueDate="1966-04-04").valueDate
     )
     assert (
         inst.item[1].item[0].item[2].definition
-        == "http://loinc.org/fhir/DataElement/21112-8"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/21112-8"
+        ).valueUri
     )
     assert inst.item[1].item[0].item[2].linkId == "1.1.3"
     assert inst.item[1].item[0].item[2].text == "Date of Birth"
     assert inst.item[1].item[0].item[3].answer[0].valueCoding.code == "LA32-8"
     assert inst.item[1].item[0].item[3].answer[0].valueCoding.display == "No"
     assert (
-        inst.item[1].item[0].item[3].answer[0].valueCoding.system == "http://loinc.org"
+        inst.item[1].item[0].item[3].answer[0].valueCoding.system
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[1].item[0].item[3].definition
-        == "http://loinc.org/fhir/DataElement/54132-6"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54132-6"
+        ).valueUri
     )
     assert inst.item[1].item[0].item[3].linkId == "1.1.4"
     assert inst.item[1].item[0].item[3].text == "Were you born a twin?"
     assert inst.item[1].item[0].item[4].answer[0].valueCoding.code == "LA32-8"
     assert inst.item[1].item[0].item[4].answer[0].valueCoding.display == "No"
     assert (
-        inst.item[1].item[0].item[4].answer[0].valueCoding.system == "http://loinc.org"
+        inst.item[1].item[0].item[4].answer[0].valueCoding.system
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[1].item[0].item[4].definition
-        == "http://loinc.org/fhir/DataElement/54128-4"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54128-4"
+        ).valueUri
     )
     assert inst.item[1].item[0].item[4].linkId == "1.1.5"
     assert inst.item[1].item[0].item[4].text == "Were you adopted?"
     assert inst.item[1].item[0].item[5].answer[0].valueCoding.code == "LA32-8"
     assert inst.item[1].item[0].item[5].answer[0].valueCoding.display == "No"
     assert (
-        inst.item[1].item[0].item[5].answer[0].valueCoding.system == "http://loinc.org"
+        inst.item[1].item[0].item[5].answer[0].valueCoding.system
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[1].item[0].item[5].definition
-        == "http://loinc.org/fhir/DataElement/54135-9"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54135-9"
+        ).valueUri
     )
     assert inst.item[1].item[0].item[5].linkId == "1.1.6"
     assert inst.item[1].item[0].item[5].text == (
@@ -194,7 +238,7 @@ def impl_questionnaireresponse_2(inst):
         .item[0]
         .answer[0]
         .valueCoding.system
-        == "http://unitsofmeasure.org"
+        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
     )
     assert inst.item[1].item[0].item[6].answer[0].item[0].item[0].linkId == "1.1.7.1.1"
     assert inst.item[1].item[0].item[6].answer[0].item[0].item[0].text == "Units"
@@ -202,7 +246,9 @@ def impl_questionnaireresponse_2(inst):
     assert float(inst.item[1].item[0].item[6].answer[0].valueDecimal) == float(63)
     assert (
         inst.item[1].item[0].item[6].definition
-        == "http://loinc.org/fhir/DataElement/8302-2"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/8302-2"
+        ).valueUri
     )
     assert inst.item[1].item[0].item[6].linkId == "1.1.7"
     assert inst.item[1].item[0].item[6].text == "Height"
@@ -237,7 +283,7 @@ def impl_questionnaireresponse_2(inst):
         .item[0]
         .answer[0]
         .valueCoding.system
-        == "http://unitsofmeasure.org"
+        == ExternalValidatorModel(valueUri="http://unitsofmeasure.org").valueUri
     )
     assert inst.item[1].item[0].item[7].answer[0].item[0].item[0].linkId == "1.1.8.1.1"
     assert inst.item[1].item[0].item[7].answer[0].item[0].item[0].text == "Units"
@@ -245,58 +291,78 @@ def impl_questionnaireresponse_2(inst):
     assert float(inst.item[1].item[0].item[7].answer[0].valueDecimal) == float(127)
     assert (
         inst.item[1].item[0].item[7].definition
-        == "http://loinc.org/fhir/DataElement/29463-7"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/29463-7"
+        ).valueUri
     )
     assert inst.item[1].item[0].item[7].linkId == "1.1.8"
     assert inst.item[1].item[0].item[7].text == "Weight"
     assert float(inst.item[1].item[0].item[8].answer[0].valueDecimal) == float(22.5)
     assert (
         inst.item[1].item[0].item[8].definition
-        == "http://loinc.org/fhir/DataElement/39156-5"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/39156-5"
+        ).valueUri
     )
     assert inst.item[1].item[0].item[8].linkId == "1.1.9"
     assert inst.item[1].item[0].item[8].text == "Body mass index (BMI) [Ratio]"
     assert inst.item[1].item[0].item[9].answer[0].valueCoding.code == "LA4457-3"
     assert inst.item[1].item[0].item[9].answer[0].valueCoding.display == "White"
     assert (
-        inst.item[1].item[0].item[9].answer[0].valueCoding.system == "http://loinc.org"
+        inst.item[1].item[0].item[9].answer[0].valueCoding.system
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[1].item[0].item[9].definition
-        == "http://loinc.org/fhir/DataElement/54134-2"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54134-2"
+        ).valueUri
     )
     assert inst.item[1].item[0].item[9].linkId == "1.1.10"
     assert inst.item[1].item[0].item[9].text == "Race"
     assert inst.item[1].item[0].linkId == "1.1"
     assert inst.item[1].linkId == "1"
     assert inst.item[1].text == "Your health information"
-    assert inst.item[2].definition == "http://loinc.org/fhir/DataElement/54114-4"
+    assert (
+        inst.item[2].definition
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54114-4"
+        ).valueUri
+    )
     assert inst.item[2].item[0].item[0].answer[0].valueCoding.code == "LA10405-1"
     assert inst.item[2].item[0].item[0].answer[0].valueCoding.display == "Daughter"
     assert (
-        inst.item[2].item[0].item[0].answer[0].valueCoding.system == "http://loinc.org"
+        inst.item[2].item[0].item[0].answer[0].valueCoding.system
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[0].item[0].definition
-        == "http://loinc.org/fhir/DataElement/54136-7"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54136-7"
+        ).valueUri
     )
     assert inst.item[2].item[0].item[0].linkId == "2.1.1.1"
     assert inst.item[2].item[0].item[0].text == "Relationship to you"
     assert inst.item[2].item[0].item[1].answer[0].valueString == "Susan"
     assert (
         inst.item[2].item[0].item[1].definition
-        == "http://loinc.org/fhir/DataElement/54138-3"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54138-3"
+        ).valueUri
     )
     assert inst.item[2].item[0].item[1].linkId == "2.1.1.2"
     assert inst.item[2].item[0].item[1].text == "Name"
     assert inst.item[2].item[0].item[2].answer[0].valueCoding.code == "LA3-6"
     assert inst.item[2].item[0].item[2].answer[0].valueCoding.display == "Female"
     assert (
-        inst.item[2].item[0].item[2].answer[0].valueCoding.system == "http://loinc.org"
+        inst.item[2].item[0].item[2].answer[0].valueCoding.system
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[0].item[2].definition
-        == "http://loinc.org/fhir/DataElement/54123-5"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54123-5"
+        ).valueUri
     )
     assert inst.item[2].item[0].item[2].linkId == "2.1.1.3"
     assert inst.item[2].item[0].item[2].text == "Gender"
@@ -305,7 +371,9 @@ def impl_questionnaireresponse_2(inst):
     ) == float(17)
     assert (
         inst.item[2].item[0].item[3].answer[0].item[0].item[0].definition
-        == "http://loinc.org/fhir/DataElement/54141-7"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54141-7"
+        ).valueUri
     )
     assert (
         inst.item[2].item[0].item[3].answer[0].item[0].item[0].linkId == "2.1.1.4.2.2"
@@ -315,33 +383,42 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[0].item[3].answer[0].valueCoding.code == "LA33-6"
     assert inst.item[2].item[0].item[3].answer[0].valueCoding.display == "Yes"
     assert (
-        inst.item[2].item[0].item[3].answer[0].valueCoding.system == "http://loinc.org"
+        inst.item[2].item[0].item[3].answer[0].valueCoding.system
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[0].item[3].definition
-        == "http://loinc.org/fhir/DataElement/54139-1"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54139-1"
+        ).valueUri
     )
     assert inst.item[2].item[0].item[3].linkId == "2.1.1.4"
     assert inst.item[2].item[0].item[3].text == "Living?"
     assert inst.item[2].item[0].item[4].answer[0].valueCoding.code == "LA32-8"
     assert inst.item[2].item[0].item[4].answer[0].valueCoding.display == "No"
     assert (
-        inst.item[2].item[0].item[4].answer[0].valueCoding.system == "http://loinc.org"
+        inst.item[2].item[0].item[4].answer[0].valueCoding.system
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[0].item[4].definition
-        == "http://loinc.org/fhir/DataElement/54121-9"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54121-9"
+        ).valueUri
     )
     assert inst.item[2].item[0].item[4].linkId == "2.1.1.5"
     assert inst.item[2].item[0].item[4].text == "Was this person born a twin?"
     assert inst.item[2].item[0].item[5].answer[0].valueCoding.code == "LA32-8"
     assert inst.item[2].item[0].item[5].answer[0].valueCoding.display == "No"
     assert (
-        inst.item[2].item[0].item[5].answer[0].valueCoding.system == "http://loinc.org"
+        inst.item[2].item[0].item[5].answer[0].valueCoding.system
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[0].item[5].definition
-        == "http://loinc.org/fhir/DataElement/54122-7"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54122-7"
+        ).valueUri
     )
     assert inst.item[2].item[0].item[5].linkId == "2.1.1.6"
     assert inst.item[2].item[0].item[5].text == "Was this person adopted?"
@@ -354,18 +431,22 @@ def impl_questionnaireresponse_2(inst):
     )
     assert (
         inst.item[2].item[1].item[0].item[0].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[1].item[0].item[0].definition
-        == "http://loinc.org/fhir/DataElement/54136-7"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54136-7"
+        ).valueUri
     )
     assert inst.item[2].item[1].item[0].item[0].linkId == "2.1.1.1"
     assert inst.item[2].item[1].item[0].item[0].text == "Relationship to you"
     assert inst.item[2].item[1].item[0].item[1].answer[0].valueString == "Brian"
     assert (
         inst.item[2].item[1].item[0].item[1].definition
-        == "http://loinc.org/fhir/DataElement/54138-3"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54138-3"
+        ).valueUri
     )
     assert inst.item[2].item[1].item[0].item[1].linkId == "2.1.1.2"
     assert inst.item[2].item[1].item[0].item[1].text == "Name"
@@ -373,11 +454,13 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[1].item[0].item[2].answer[0].valueCoding.display == "Male"
     assert (
         inst.item[2].item[1].item[0].item[2].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[1].item[0].item[2].definition
-        == "http://loinc.org/fhir/DataElement/54123-5"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54123-5"
+        ).valueUri
     )
     assert inst.item[2].item[1].item[0].item[2].linkId == "2.1.1.3"
     assert inst.item[2].item[1].item[0].item[2].text == "Gender"
@@ -394,7 +477,9 @@ def impl_questionnaireresponse_2(inst):
     ) == float(32)
     assert (
         inst.item[2].item[1].item[0].item[3].answer[0].item[0].item[0].definition
-        == "http://loinc.org/fhir/DataElement/54141-7"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54141-7"
+        ).valueUri
     )
     assert (
         inst.item[2].item[1].item[0].item[3].answer[0].item[0].item[0].linkId
@@ -406,11 +491,13 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[1].item[0].item[3].answer[0].valueCoding.display == "Yes"
     assert (
         inst.item[2].item[1].item[0].item[3].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[1].item[0].item[3].definition
-        == "http://loinc.org/fhir/DataElement/54139-1"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54139-1"
+        ).valueUri
     )
     assert inst.item[2].item[1].item[0].item[3].linkId == "2.1.1.4"
     assert inst.item[2].item[1].item[0].item[3].text == "Living?"
@@ -418,11 +505,13 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[1].item[0].item[4].answer[0].valueCoding.display == "No"
     assert (
         inst.item[2].item[1].item[0].item[4].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[1].item[0].item[4].definition
-        == "http://loinc.org/fhir/DataElement/54121-9"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54121-9"
+        ).valueUri
     )
     assert inst.item[2].item[1].item[0].item[4].linkId == "2.1.1.5"
     assert inst.item[2].item[1].item[0].item[4].text == "Was this person born a twin?"
@@ -430,11 +519,13 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[1].item[0].item[5].answer[0].valueCoding.display == "No"
     assert (
         inst.item[2].item[1].item[0].item[5].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[1].item[0].item[5].definition
-        == "http://loinc.org/fhir/DataElement/54122-7"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54122-7"
+        ).valueUri
     )
     assert inst.item[2].item[1].item[0].item[5].linkId == "2.1.1.6"
     assert inst.item[2].item[1].item[0].item[5].text == "Was this person adopted?"
@@ -448,7 +539,7 @@ def impl_questionnaireresponse_2(inst):
     )
     assert (
         inst.item[2].item[1].item[1].item[0].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert inst.item[2].item[1].item[1].item[0].linkId == "2.1.2.1"
     assert inst.item[2].item[1].item[1].item[0].text == "Disease or Condition"
@@ -458,7 +549,7 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[1].item[1].item[1].answer[0].valueCoding.display == "30-39"
     assert (
         inst.item[2].item[1].item[1].item[1].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert inst.item[2].item[1].item[1].item[1].linkId == "2.1.2.2"
     assert inst.item[2].item[1].item[1].item[1].text == "Age at Diagnosis"
@@ -475,18 +566,22 @@ def impl_questionnaireresponse_2(inst):
     )
     assert (
         inst.item[2].item[2].item[0].item[0].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[2].item[0].item[0].definition
-        == "http://loinc.org/fhir/DataElement/54136-7"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54136-7"
+        ).valueUri
     )
     assert inst.item[2].item[2].item[0].item[0].linkId == "2.1.1.1"
     assert inst.item[2].item[2].item[0].item[0].text == "Relationship to you"
     assert inst.item[2].item[2].item[0].item[1].answer[0].valueString == "Janet"
     assert (
         inst.item[2].item[2].item[0].item[1].definition
-        == "http://loinc.org/fhir/DataElement/54138-3"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54138-3"
+        ).valueUri
     )
     assert inst.item[2].item[2].item[0].item[1].linkId == "2.1.1.2"
     assert inst.item[2].item[2].item[0].item[1].text == "Name"
@@ -496,11 +591,13 @@ def impl_questionnaireresponse_2(inst):
     )
     assert (
         inst.item[2].item[2].item[0].item[2].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[2].item[0].item[2].definition
-        == "http://loinc.org/fhir/DataElement/54123-5"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54123-5"
+        ).valueUri
     )
     assert inst.item[2].item[2].item[0].item[2].linkId == "2.1.1.3"
     assert inst.item[2].item[2].item[0].item[2].text == "Gender"
@@ -517,7 +614,9 @@ def impl_questionnaireresponse_2(inst):
     ) == float(36)
     assert (
         inst.item[2].item[2].item[0].item[3].answer[0].item[0].item[0].definition
-        == "http://loinc.org/fhir/DataElement/54141-7"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54141-7"
+        ).valueUri
     )
     assert (
         inst.item[2].item[2].item[0].item[3].answer[0].item[0].item[0].linkId
@@ -529,11 +628,13 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[2].item[0].item[3].answer[0].valueCoding.display == "Yes"
     assert (
         inst.item[2].item[2].item[0].item[3].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[2].item[0].item[3].definition
-        == "http://loinc.org/fhir/DataElement/54139-1"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54139-1"
+        ).valueUri
     )
     assert inst.item[2].item[2].item[0].item[3].linkId == "2.1.1.4"
     assert inst.item[2].item[2].item[0].item[3].text == "Living?"
@@ -541,11 +642,13 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[2].item[0].item[4].answer[0].valueCoding.display == "No"
     assert (
         inst.item[2].item[2].item[0].item[4].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[2].item[0].item[4].definition
-        == "http://loinc.org/fhir/DataElement/54121-9"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54121-9"
+        ).valueUri
     )
     assert inst.item[2].item[2].item[0].item[4].linkId == "2.1.1.5"
     assert inst.item[2].item[2].item[0].item[4].text == "Was this person born a twin?"
@@ -553,11 +656,13 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[2].item[0].item[5].answer[0].valueCoding.display == "No"
     assert (
         inst.item[2].item[2].item[0].item[5].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[2].item[0].item[5].definition
-        == "http://loinc.org/fhir/DataElement/54122-7"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54122-7"
+        ).valueUri
     )
     assert inst.item[2].item[2].item[0].item[5].linkId == "2.1.1.6"
     assert inst.item[2].item[2].item[0].item[5].text == "Was this person adopted?"
@@ -571,7 +676,7 @@ def impl_questionnaireresponse_2(inst):
     )
     assert (
         inst.item[2].item[2].item[1].item[0].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert inst.item[2].item[2].item[1].item[0].linkId == "2.1.2.1"
     assert inst.item[2].item[2].item[1].item[0].text == "Disease or Condition"
@@ -581,7 +686,7 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[2].item[1].item[1].answer[0].valueCoding.display == "30-39"
     assert (
         inst.item[2].item[2].item[1].item[1].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert inst.item[2].item[2].item[1].item[1].linkId == "2.1.2.2"
     assert inst.item[2].item[2].item[1].item[1].text == "Age at Diagnosis"
@@ -598,18 +703,22 @@ def impl_questionnaireresponse_2(inst):
     )
     assert (
         inst.item[2].item[3].item[0].item[0].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[3].item[0].item[0].definition
-        == "http://loinc.org/fhir/DataElement/54136-7"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54136-7"
+        ).valueUri
     )
     assert inst.item[2].item[3].item[0].item[0].linkId == "2.1.1.1"
     assert inst.item[2].item[3].item[0].item[0].text == "Relationship to you"
     assert inst.item[2].item[3].item[0].item[1].answer[0].valueString == "Ian"
     assert (
         inst.item[2].item[3].item[0].item[1].definition
-        == "http://loinc.org/fhir/DataElement/54138-3"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54138-3"
+        ).valueUri
     )
     assert inst.item[2].item[3].item[0].item[1].linkId == "2.1.1.2"
     assert inst.item[2].item[3].item[0].item[1].text == "Name"
@@ -617,11 +726,13 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[3].item[0].item[2].answer[0].valueCoding.display == "Male"
     assert (
         inst.item[2].item[3].item[0].item[2].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[3].item[0].item[2].definition
-        == "http://loinc.org/fhir/DataElement/54123-5"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54123-5"
+        ).valueUri
     )
     assert inst.item[2].item[3].item[0].item[2].linkId == "2.1.1.3"
     assert inst.item[2].item[3].item[0].item[2].text == "Gender"
@@ -638,7 +749,9 @@ def impl_questionnaireresponse_2(inst):
     ) == float(16)
     assert (
         inst.item[2].item[3].item[0].item[3].answer[0].item[0].item[0].definition
-        == "http://loinc.org/fhir/DataElement/54141-7"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54141-7"
+        ).valueUri
     )
     assert (
         inst.item[2].item[3].item[0].item[3].answer[0].item[0].item[0].linkId
@@ -650,11 +763,13 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[3].item[0].item[3].answer[0].valueCoding.display == "Yes"
     assert (
         inst.item[2].item[3].item[0].item[3].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[3].item[0].item[3].definition
-        == "http://loinc.org/fhir/DataElement/54139-1"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54139-1"
+        ).valueUri
     )
     assert inst.item[2].item[3].item[0].item[3].linkId == "2.1.1.4"
     assert inst.item[2].item[3].item[0].item[3].text == "Living?"
@@ -662,11 +777,13 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[3].item[0].item[4].answer[0].valueCoding.display == "No"
     assert (
         inst.item[2].item[3].item[0].item[4].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[3].item[0].item[4].definition
-        == "http://loinc.org/fhir/DataElement/54121-9"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54121-9"
+        ).valueUri
     )
     assert inst.item[2].item[3].item[0].item[4].linkId == "2.1.1.5"
     assert inst.item[2].item[3].item[0].item[4].text == "Was this person born a twin?"
@@ -674,11 +791,13 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[3].item[0].item[5].answer[0].valueCoding.display == "No"
     assert (
         inst.item[2].item[3].item[0].item[5].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[3].item[0].item[5].definition
-        == "http://loinc.org/fhir/DataElement/54122-7"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54122-7"
+        ).valueUri
     )
     assert inst.item[2].item[3].item[0].item[5].linkId == "2.1.1.6"
     assert inst.item[2].item[3].item[0].item[5].text == "Was this person adopted?"
@@ -690,18 +809,22 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[4].item[0].item[0].answer[0].valueCoding.display == "Niece"
     assert (
         inst.item[2].item[4].item[0].item[0].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[4].item[0].item[0].definition
-        == "http://loinc.org/fhir/DataElement/54136-7"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54136-7"
+        ).valueUri
     )
     assert inst.item[2].item[4].item[0].item[0].linkId == "2.1.1.1"
     assert inst.item[2].item[4].item[0].item[0].text == "Relationship to you"
     assert inst.item[2].item[4].item[0].item[1].answer[0].valueString == "Helen"
     assert (
         inst.item[2].item[4].item[0].item[1].definition
-        == "http://loinc.org/fhir/DataElement/54138-3"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54138-3"
+        ).valueUri
     )
     assert inst.item[2].item[4].item[0].item[1].linkId == "2.1.1.2"
     assert inst.item[2].item[4].item[0].item[1].text == "Name"
@@ -711,11 +834,13 @@ def impl_questionnaireresponse_2(inst):
     )
     assert (
         inst.item[2].item[4].item[0].item[2].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[4].item[0].item[2].definition
-        == "http://loinc.org/fhir/DataElement/54123-5"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54123-5"
+        ).valueUri
     )
     assert inst.item[2].item[4].item[0].item[2].linkId == "2.1.1.3"
     assert inst.item[2].item[4].item[0].item[2].text == "Gender"
@@ -732,7 +857,9 @@ def impl_questionnaireresponse_2(inst):
     ) == float(15)
     assert (
         inst.item[2].item[4].item[0].item[3].answer[0].item[0].item[0].definition
-        == "http://loinc.org/fhir/DataElement/54141-7"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54141-7"
+        ).valueUri
     )
     assert (
         inst.item[2].item[4].item[0].item[3].answer[0].item[0].item[0].linkId
@@ -744,11 +871,13 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[4].item[0].item[3].answer[0].valueCoding.display == "Yes"
     assert (
         inst.item[2].item[4].item[0].item[3].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[4].item[0].item[3].definition
-        == "http://loinc.org/fhir/DataElement/54139-1"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54139-1"
+        ).valueUri
     )
     assert inst.item[2].item[4].item[0].item[3].linkId == "2.1.1.4"
     assert inst.item[2].item[4].item[0].item[3].text == "Living?"
@@ -756,11 +885,13 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[4].item[0].item[4].answer[0].valueCoding.display == "No"
     assert (
         inst.item[2].item[4].item[0].item[4].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[4].item[0].item[4].definition
-        == "http://loinc.org/fhir/DataElement/54121-9"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54121-9"
+        ).valueUri
     )
     assert inst.item[2].item[4].item[0].item[4].linkId == "2.1.1.5"
     assert inst.item[2].item[4].item[0].item[4].text == "Was this person born a twin?"
@@ -768,11 +899,13 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[4].item[0].item[5].answer[0].valueCoding.display == "No"
     assert (
         inst.item[2].item[4].item[0].item[5].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[4].item[0].item[5].definition
-        == "http://loinc.org/fhir/DataElement/54122-7"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54122-7"
+        ).valueUri
     )
     assert inst.item[2].item[4].item[0].item[5].linkId == "2.1.1.6"
     assert inst.item[2].item[4].item[0].item[5].text == "Was this person adopted?"
@@ -786,18 +919,22 @@ def impl_questionnaireresponse_2(inst):
     )
     assert (
         inst.item[2].item[5].item[0].item[0].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[5].item[0].item[0].definition
-        == "http://loinc.org/fhir/DataElement/54136-7"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54136-7"
+        ).valueUri
     )
     assert inst.item[2].item[5].item[0].item[0].linkId == "2.1.1.1"
     assert inst.item[2].item[5].item[0].item[0].text == "Relationship to you"
     assert inst.item[2].item[5].item[0].item[1].answer[0].valueString == "Donald"
     assert (
         inst.item[2].item[5].item[0].item[1].definition
-        == "http://loinc.org/fhir/DataElement/54138-3"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54138-3"
+        ).valueUri
     )
     assert inst.item[2].item[5].item[0].item[1].linkId == "2.1.1.2"
     assert inst.item[2].item[5].item[0].item[1].text == "Name"
@@ -805,11 +942,13 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[5].item[0].item[2].answer[0].valueCoding.display == "Male"
     assert (
         inst.item[2].item[5].item[0].item[2].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[5].item[0].item[2].definition
-        == "http://loinc.org/fhir/DataElement/54123-5"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54123-5"
+        ).valueUri
     )
     assert inst.item[2].item[5].item[0].item[2].linkId == "2.1.1.3"
     assert inst.item[2].item[5].item[0].item[2].text == "Gender"
@@ -826,7 +965,9 @@ def impl_questionnaireresponse_2(inst):
     ) == float(52)
     assert (
         inst.item[2].item[5].item[0].item[3].answer[0].item[0].item[0].definition
-        == "http://loinc.org/fhir/DataElement/54141-7"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54141-7"
+        ).valueUri
     )
     assert (
         inst.item[2].item[5].item[0].item[3].answer[0].item[0].item[0].linkId
@@ -838,11 +979,13 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[5].item[0].item[3].answer[0].valueCoding.display == "Yes"
     assert (
         inst.item[2].item[5].item[0].item[3].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[5].item[0].item[3].definition
-        == "http://loinc.org/fhir/DataElement/54139-1"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54139-1"
+        ).valueUri
     )
     assert inst.item[2].item[5].item[0].item[3].linkId == "2.1.1.4"
     assert inst.item[2].item[5].item[0].item[3].text == "Living?"
@@ -850,11 +993,13 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[5].item[0].item[4].answer[0].valueCoding.display == "No"
     assert (
         inst.item[2].item[5].item[0].item[4].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[5].item[0].item[4].definition
-        == "http://loinc.org/fhir/DataElement/54121-9"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54121-9"
+        ).valueUri
     )
     assert inst.item[2].item[5].item[0].item[4].linkId == "2.1.1.5"
     assert inst.item[2].item[5].item[0].item[4].text == "Was this person born a twin?"
@@ -862,11 +1007,13 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[5].item[0].item[5].answer[0].valueCoding.display == "No"
     assert (
         inst.item[2].item[5].item[0].item[5].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[5].item[0].item[5].definition
-        == "http://loinc.org/fhir/DataElement/54122-7"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54122-7"
+        ).valueUri
     )
     assert inst.item[2].item[5].item[0].item[5].linkId == "2.1.1.6"
     assert inst.item[2].item[5].item[0].item[5].text == "Was this person adopted?"
@@ -881,18 +1028,22 @@ def impl_questionnaireresponse_2(inst):
     )
     assert (
         inst.item[2].item[6].item[0].item[0].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[6].item[0].item[0].definition
-        == "http://loinc.org/fhir/DataElement/54136-7"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54136-7"
+        ).valueUri
     )
     assert inst.item[2].item[6].item[0].item[0].linkId == "2.1.1.1"
     assert inst.item[2].item[6].item[0].item[0].text == "Relationship to you"
     assert inst.item[2].item[6].item[0].item[1].answer[0].valueString == "Eric"
     assert (
         inst.item[2].item[6].item[0].item[1].definition
-        == "http://loinc.org/fhir/DataElement/54138-3"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54138-3"
+        ).valueUri
     )
     assert inst.item[2].item[6].item[0].item[1].linkId == "2.1.1.2"
     assert inst.item[2].item[6].item[0].item[1].text == "Name"
@@ -900,11 +1051,13 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[6].item[0].item[2].answer[0].valueCoding.display == "Male"
     assert (
         inst.item[2].item[6].item[0].item[2].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[6].item[0].item[2].definition
-        == "http://loinc.org/fhir/DataElement/54123-5"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54123-5"
+        ).valueUri
     )
     assert inst.item[2].item[6].item[0].item[2].linkId == "2.1.1.3"
     assert inst.item[2].item[6].item[0].item[2].text == "Gender"
@@ -921,7 +1074,9 @@ def impl_questionnaireresponse_2(inst):
     ) == float(56)
     assert (
         inst.item[2].item[6].item[0].item[3].answer[0].item[0].item[0].definition
-        == "http://loinc.org/fhir/DataElement/54141-7"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54141-7"
+        ).valueUri
     )
     assert (
         inst.item[2].item[6].item[0].item[3].answer[0].item[0].item[0].linkId
@@ -933,11 +1088,13 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[6].item[0].item[3].answer[0].valueCoding.display == "Yes"
     assert (
         inst.item[2].item[6].item[0].item[3].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[6].item[0].item[3].definition
-        == "http://loinc.org/fhir/DataElement/54139-1"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54139-1"
+        ).valueUri
     )
     assert inst.item[2].item[6].item[0].item[3].linkId == "2.1.1.4"
     assert inst.item[2].item[6].item[0].item[3].text == "Living?"
@@ -945,11 +1102,13 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[6].item[0].item[4].answer[0].valueCoding.display == "No"
     assert (
         inst.item[2].item[6].item[0].item[4].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[6].item[0].item[4].definition
-        == "http://loinc.org/fhir/DataElement/54121-9"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54121-9"
+        ).valueUri
     )
     assert inst.item[2].item[6].item[0].item[4].linkId == "2.1.1.5"
     assert inst.item[2].item[6].item[0].item[4].text == "Was this person born a twin?"
@@ -957,11 +1116,13 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[6].item[0].item[5].answer[0].valueCoding.display == "No"
     assert (
         inst.item[2].item[6].item[0].item[5].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[6].item[0].item[5].definition
-        == "http://loinc.org/fhir/DataElement/54122-7"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54122-7"
+        ).valueUri
     )
     assert inst.item[2].item[6].item[0].item[5].linkId == "2.1.1.6"
     assert inst.item[2].item[6].item[0].item[5].text == "Was this person adopted?"
@@ -976,18 +1137,22 @@ def impl_questionnaireresponse_2(inst):
     )
     assert (
         inst.item[2].item[7].item[0].item[0].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[7].item[0].item[0].definition
-        == "http://loinc.org/fhir/DataElement/54136-7"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54136-7"
+        ).valueUri
     )
     assert inst.item[2].item[7].item[0].item[0].linkId == "2.1.1.1"
     assert inst.item[2].item[7].item[0].item[0].text == "Relationship to you"
     assert inst.item[2].item[7].item[0].item[1].answer[0].valueString == "Fiona"
     assert (
         inst.item[2].item[7].item[0].item[1].definition
-        == "http://loinc.org/fhir/DataElement/54138-3"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54138-3"
+        ).valueUri
     )
     assert inst.item[2].item[7].item[0].item[1].linkId == "2.1.1.2"
     assert inst.item[2].item[7].item[0].item[1].text == "Name"
@@ -997,11 +1162,13 @@ def impl_questionnaireresponse_2(inst):
     )
     assert (
         inst.item[2].item[7].item[0].item[2].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[7].item[0].item[2].definition
-        == "http://loinc.org/fhir/DataElement/54123-5"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54123-5"
+        ).valueUri
     )
     assert inst.item[2].item[7].item[0].item[2].linkId == "2.1.1.3"
     assert inst.item[2].item[7].item[0].item[2].text == "Gender"
@@ -1018,7 +1185,9 @@ def impl_questionnaireresponse_2(inst):
     ) == float(57)
     assert (
         inst.item[2].item[7].item[0].item[3].answer[0].item[0].item[0].definition
-        == "http://loinc.org/fhir/DataElement/54141-7"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54141-7"
+        ).valueUri
     )
     assert (
         inst.item[2].item[7].item[0].item[3].answer[0].item[0].item[0].linkId
@@ -1030,11 +1199,13 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[7].item[0].item[3].answer[0].valueCoding.display == "Yes"
     assert (
         inst.item[2].item[7].item[0].item[3].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[7].item[0].item[3].definition
-        == "http://loinc.org/fhir/DataElement/54139-1"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54139-1"
+        ).valueUri
     )
     assert inst.item[2].item[7].item[0].item[3].linkId == "2.1.1.4"
     assert inst.item[2].item[7].item[0].item[3].text == "Living?"
@@ -1042,11 +1213,13 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[7].item[0].item[4].answer[0].valueCoding.display == "No"
     assert (
         inst.item[2].item[7].item[0].item[4].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[7].item[0].item[4].definition
-        == "http://loinc.org/fhir/DataElement/54121-9"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54121-9"
+        ).valueUri
     )
     assert inst.item[2].item[7].item[0].item[4].linkId == "2.1.1.5"
     assert inst.item[2].item[7].item[0].item[4].text == "Was this person born a twin?"
@@ -1054,11 +1227,13 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[7].item[0].item[5].answer[0].valueCoding.display == "No"
     assert (
         inst.item[2].item[7].item[0].item[5].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[7].item[0].item[5].definition
-        == "http://loinc.org/fhir/DataElement/54122-7"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54122-7"
+        ).valueUri
     )
     assert inst.item[2].item[7].item[0].item[5].linkId == "2.1.1.6"
     assert inst.item[2].item[7].item[0].item[5].text == "Was this person adopted?"
@@ -1072,7 +1247,7 @@ def impl_questionnaireresponse_2(inst):
     )
     assert (
         inst.item[2].item[7].item[1].item[0].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert inst.item[2].item[7].item[1].item[0].linkId == "2.1.2.1"
     assert inst.item[2].item[7].item[1].item[0].text == "Disease or Condition"
@@ -1090,18 +1265,22 @@ def impl_questionnaireresponse_2(inst):
     )
     assert (
         inst.item[2].item[8].item[0].item[0].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[8].item[0].item[0].definition
-        == "http://loinc.org/fhir/DataElement/54136-7"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54136-7"
+        ).valueUri
     )
     assert inst.item[2].item[8].item[0].item[0].linkId == "2.1.1.1"
     assert inst.item[2].item[8].item[0].item[0].text == "Relationship to you"
     assert inst.item[2].item[8].item[0].item[1].answer[0].valueString == "Bob"
     assert (
         inst.item[2].item[8].item[0].item[1].definition
-        == "http://loinc.org/fhir/DataElement/54138-3"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54138-3"
+        ).valueUri
     )
     assert inst.item[2].item[8].item[0].item[1].linkId == "2.1.1.2"
     assert inst.item[2].item[8].item[0].item[1].text == "Name"
@@ -1109,11 +1288,13 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[8].item[0].item[2].answer[0].valueCoding.display == "Male"
     assert (
         inst.item[2].item[8].item[0].item[2].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[8].item[0].item[2].definition
-        == "http://loinc.org/fhir/DataElement/54123-5"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54123-5"
+        ).valueUri
     )
     assert inst.item[2].item[8].item[0].item[2].linkId == "2.1.1.3"
     assert inst.item[2].item[8].item[0].item[2].text == "Gender"
@@ -1151,11 +1332,13 @@ def impl_questionnaireresponse_2(inst):
         .item[0]
         .answer[0]
         .valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[8].item[0].item[3].answer[0].item[0].item[0].definition
-        == "http://loinc.org/fhir/DataElement/54112-8"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54112-8"
+        ).valueUri
     )
     assert (
         inst.item[2].item[8].item[0].item[3].answer[0].item[0].item[0].linkId
@@ -1199,11 +1382,13 @@ def impl_questionnaireresponse_2(inst):
         .item[1]
         .answer[0]
         .valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[8].item[0].item[3].answer[0].item[0].item[1].definition
-        == "http://loinc.org/fhir/DataElement/54113-6"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54113-6"
+        ).valueUri
     )
     assert (
         inst.item[2].item[8].item[0].item[3].answer[0].item[0].item[1].linkId
@@ -1218,11 +1403,13 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[8].item[0].item[3].answer[0].valueCoding.display == "No"
     assert (
         inst.item[2].item[8].item[0].item[3].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[8].item[0].item[3].definition
-        == "http://loinc.org/fhir/DataElement/54139-1"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54139-1"
+        ).valueUri
     )
     assert inst.item[2].item[8].item[0].item[3].linkId == "2.1.1.4"
     assert inst.item[2].item[8].item[0].item[3].text == "Living?"
@@ -1230,11 +1417,13 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[8].item[0].item[4].answer[0].valueCoding.display == "No"
     assert (
         inst.item[2].item[8].item[0].item[4].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[8].item[0].item[4].definition
-        == "http://loinc.org/fhir/DataElement/54121-9"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54121-9"
+        ).valueUri
     )
     assert inst.item[2].item[8].item[0].item[4].linkId == "2.1.1.5"
     assert inst.item[2].item[8].item[0].item[4].text == "Was this person born a twin?"
@@ -1242,11 +1431,13 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[8].item[0].item[5].answer[0].valueCoding.display == "No"
     assert (
         inst.item[2].item[8].item[0].item[5].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[8].item[0].item[5].definition
-        == "http://loinc.org/fhir/DataElement/54122-7"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54122-7"
+        ).valueUri
     )
     assert inst.item[2].item[8].item[0].item[5].linkId == "2.1.1.6"
     assert inst.item[2].item[8].item[0].item[5].text == "Was this person adopted?"
@@ -1260,7 +1451,7 @@ def impl_questionnaireresponse_2(inst):
     )
     assert (
         inst.item[2].item[8].item[1].item[0].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert inst.item[2].item[8].item[1].item[0].linkId == "2.1.2.1"
     assert inst.item[2].item[8].item[1].item[0].text == "Disease or Condition"
@@ -1272,7 +1463,7 @@ def impl_questionnaireresponse_2(inst):
     )
     assert (
         inst.item[2].item[8].item[1].item[1].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert inst.item[2].item[8].item[1].item[1].linkId == "2.1.2.2"
     assert inst.item[2].item[8].item[1].item[1].text == "Age at Diagnosis"
@@ -1290,18 +1481,22 @@ def impl_questionnaireresponse_2(inst):
     )
     assert (
         inst.item[2].item[9].item[0].item[0].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[9].item[0].item[0].definition
-        == "http://loinc.org/fhir/DataElement/54136-7"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54136-7"
+        ).valueUri
     )
     assert inst.item[2].item[9].item[0].item[0].linkId == "2.1.1.1"
     assert inst.item[2].item[9].item[0].item[0].text == "Relationship to you"
     assert inst.item[2].item[9].item[0].item[1].answer[0].valueString == "Claire"
     assert (
         inst.item[2].item[9].item[0].item[1].definition
-        == "http://loinc.org/fhir/DataElement/54138-3"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54138-3"
+        ).valueUri
     )
     assert inst.item[2].item[9].item[0].item[1].linkId == "2.1.1.2"
     assert inst.item[2].item[9].item[0].item[1].text == "Name"
@@ -1311,11 +1506,13 @@ def impl_questionnaireresponse_2(inst):
     )
     assert (
         inst.item[2].item[9].item[0].item[2].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[9].item[0].item[2].definition
-        == "http://loinc.org/fhir/DataElement/54123-5"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54123-5"
+        ).valueUri
     )
     assert inst.item[2].item[9].item[0].item[2].linkId == "2.1.1.3"
     assert inst.item[2].item[9].item[0].item[2].text == "Gender"
@@ -1393,11 +1590,13 @@ def impl_questionnaireresponse_2(inst):
         .item[0]
         .answer[0]
         .valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[9].item[0].item[3].answer[0].item[0].item[0].definition
-        == "http://loinc.org/fhir/DataElement/54112-8"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54112-8"
+        ).valueUri
     )
     assert (
         inst.item[2].item[9].item[0].item[3].answer[0].item[0].item[0].linkId
@@ -1441,11 +1640,13 @@ def impl_questionnaireresponse_2(inst):
         .item[1]
         .answer[0]
         .valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[9].item[0].item[3].answer[0].item[0].item[1].definition
-        == "http://loinc.org/fhir/DataElement/54113-6"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54113-6"
+        ).valueUri
     )
     assert (
         inst.item[2].item[9].item[0].item[3].answer[0].item[0].item[1].linkId
@@ -1460,11 +1661,13 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[9].item[0].item[3].answer[0].valueCoding.display == "No"
     assert (
         inst.item[2].item[9].item[0].item[3].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[9].item[0].item[3].definition
-        == "http://loinc.org/fhir/DataElement/54139-1"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54139-1"
+        ).valueUri
     )
     assert inst.item[2].item[9].item[0].item[3].linkId == "2.1.1.4"
     assert inst.item[2].item[9].item[0].item[3].text == "Living?"
@@ -1472,11 +1675,13 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[9].item[0].item[4].answer[0].valueCoding.display == "No"
     assert (
         inst.item[2].item[9].item[0].item[4].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[9].item[0].item[4].definition
-        == "http://loinc.org/fhir/DataElement/54121-9"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54121-9"
+        ).valueUri
     )
     assert inst.item[2].item[9].item[0].item[4].linkId == "2.1.1.5"
     assert inst.item[2].item[9].item[0].item[4].text == "Was this person born a twin?"
@@ -1484,11 +1689,13 @@ def impl_questionnaireresponse_2(inst):
     assert inst.item[2].item[9].item[0].item[5].answer[0].valueCoding.display == "No"
     assert (
         inst.item[2].item[9].item[0].item[5].answer[0].valueCoding.system
-        == "http://loinc.org"
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
     )
     assert (
         inst.item[2].item[9].item[0].item[5].definition
-        == "http://loinc.org/fhir/DataElement/54122-7"
+        == ExternalValidatorModel(
+            valueUri="http://loinc.org/fhir/DataElement/54122-7"
+        ).valueUri
     )
     assert inst.item[2].item[9].item[0].item[5].linkId == "2.1.1.6"
     assert inst.item[2].item[9].item[0].item[5].text == "Was this person adopted?"
@@ -1499,12 +1706,15 @@ def impl_questionnaireresponse_2(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.questionnaire == "http://hl7.org/fhir/Questionnaire/ussg-fht"
     assert inst.status == "in-progress"
     assert inst.subject.reference == "http://hl7.org/fhir/Patient/proband"
-    assert inst.subject.type == "Patient"
+    assert inst.subject.type == ExternalValidatorModel(valueUri="Patient").valueUri
     assert inst.text.status == "generated"
 
 
@@ -1516,15 +1726,15 @@ def test_questionnaireresponse_2(base_settings):
         base_settings["unittest_data_dir"]
         / "questionnaireresponse-example-ussg-fht-answers.json"
     )
-    inst = questionnaireresponse.QuestionnaireResponse.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = questionnaireresponse.QuestionnaireResponse.model_validate_json(
+        Path(filename).read_bytes()
     )
-    assert "QuestionnaireResponse" == inst.resource_type
+    assert "QuestionnaireResponse" == inst.get_resource_type()
 
     impl_questionnaireresponse_2(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "QuestionnaireResponse" == data["resourceType"]
 
     inst2 = questionnaireresponse.QuestionnaireResponse(**data)
@@ -1533,7 +1743,12 @@ def test_questionnaireresponse_2(base_settings):
 
 def impl_questionnaireresponse_3(inst):
     assert inst.author.reference == "Practitioner/f201"
-    assert inst.authored == fhirtypes.DateTime.validate("2013-06-18T00:00:00+01:00")
+    assert (
+        inst.authored
+        == ExternalValidatorModel(
+            valueDateTime="2013-06-18T00:00:00+01:00"
+        ).valueDateTime
+    )
     assert inst.id == "f201"
     assert inst.item[0].answer[0].valueBoolean is True
     assert inst.item[0].linkId == "1"
@@ -1541,8 +1756,9 @@ def impl_questionnaireresponse_3(inst):
     assert inst.item[1].item[0].answer[0].valueString == "Male"
     assert inst.item[1].item[0].linkId == "2.1"
     assert inst.item[1].item[0].text == "What is your gender?"
-    assert inst.item[1].item[1].answer[0].valueDate == fhirtypes.Date.validate(
-        "1960-03-13"
+    assert (
+        inst.item[1].item[1].answer[0].valueDate
+        == ExternalValidatorModel(valueDate="1960-03-13").valueDate
     )
     assert inst.item[1].item[1].linkId == "2.2"
     assert inst.item[1].item[1].text == "What is your date of birth?"
@@ -1565,7 +1781,10 @@ def impl_questionnaireresponse_3(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.source.reference == "Practitioner/f201"
     assert inst.status == "completed"
@@ -1582,15 +1801,15 @@ def test_questionnaireresponse_3(base_settings):
         base_settings["unittest_data_dir"]
         / "questionnaireresponse-example-f201-lifelines.json"
     )
-    inst = questionnaireresponse.QuestionnaireResponse.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = questionnaireresponse.QuestionnaireResponse.model_validate_json(
+        Path(filename).read_bytes()
     )
-    assert "QuestionnaireResponse" == inst.resource_type
+    assert "QuestionnaireResponse" == inst.get_resource_type()
 
     impl_questionnaireresponse_3(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "QuestionnaireResponse" == data["resourceType"]
 
     inst2 = questionnaireresponse.QuestionnaireResponse(**data)
@@ -1599,8 +1818,13 @@ def test_questionnaireresponse_3(base_settings):
 
 def impl_questionnaireresponse_4(inst):
     assert inst.author.reference == "http://hl7.org/fhir/Practitioner/example"
-    assert inst.author.type == "Practitioner"
-    assert inst.authored == fhirtypes.DateTime.validate("2013-02-19T14:15:00+10:00")
+    assert inst.author.type == ExternalValidatorModel(valueUri="Practitioner").valueUri
+    assert (
+        inst.authored
+        == ExternalValidatorModel(
+            valueDateTime="2013-02-19T14:15:00+10:00"
+        ).valueDateTime
+    )
     assert inst.id == "bb"
     assert inst.item[0].item[0].item[0].answer[0].valueString == "Cathy Jones"
     assert inst.item[0].item[0].item[0].linkId == "nameOfChild"
@@ -1615,16 +1839,18 @@ def impl_questionnaireresponse_4(inst):
     assert float(inst.item[0].item[1].item[1].answer[0].valueDecimal) == float(44.3)
     assert inst.item[0].item[1].item[1].linkId == "birthLength"
     assert inst.item[0].item[1].item[1].text == "Birth length (cm)"
-    assert inst.item[0].item[1].item[2].answer[0].item[0].item[0].answer[
-        0
-    ].valueDateTime == fhirtypes.DateTime.validate("1972-11-30")
+    assert (
+        inst.item[0].item[1].item[2].answer[0].item[0].item[0].answer[0].valueDateTime
+        == ExternalValidatorModel(valueDateTime="1972-11-30").valueDateTime
+    )
     assert (
         inst.item[0].item[1].item[2].answer[0].item[0].item[0].linkId == "vitaminKDose1"
     )
     assert inst.item[0].item[1].item[2].answer[0].item[0].item[0].text == "1st dose"
-    assert inst.item[0].item[1].item[2].answer[0].item[0].item[1].answer[
-        0
-    ].valueDateTime == fhirtypes.DateTime.validate("1972-12-11")
+    assert (
+        inst.item[0].item[1].item[2].answer[0].item[0].item[1].answer[0].valueDateTime
+        == ExternalValidatorModel(valueDateTime="1972-12-11").valueDateTime
+    )
     assert (
         inst.item[0].item[1].item[2].answer[0].item[0].item[1].linkId == "vitaminKDose2"
     )
@@ -1633,9 +1859,10 @@ def impl_questionnaireresponse_4(inst):
     assert inst.item[0].item[1].item[2].answer[0].valueCoding.code == "INJECTION"
     assert inst.item[0].item[1].item[2].linkId == "vitaminKgiven"
     assert inst.item[0].item[1].item[2].text == "Vitamin K given"
-    assert inst.item[0].item[1].item[3].answer[0].item[0].answer[
-        0
-    ].valueDate == fhirtypes.Date.validate("1972-12-04")
+    assert (
+        inst.item[0].item[1].item[3].answer[0].item[0].answer[0].valueDate
+        == ExternalValidatorModel(valueDate="1972-12-04").valueDate
+    )
     assert inst.item[0].item[1].item[3].answer[0].item[0].linkId == "hepBgivenDate"
     assert inst.item[0].item[1].item[3].answer[0].item[0].text == "Date given"
     assert inst.item[0].item[1].item[3].answer[0].valueBoolean is True
@@ -1654,12 +1881,15 @@ def impl_questionnaireresponse_4(inst):
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.questionnaire == "http://hl7.org/fhir/Questionnaire/bb"
     assert inst.status == "completed"
     assert inst.subject.reference == "http://hl7.org/fhir/Patient/1"
-    assert inst.subject.type == "Patient"
+    assert inst.subject.type == ExternalValidatorModel(valueUri="Patient").valueUri
     assert inst.text.status == "generated"
 
 
@@ -1671,15 +1901,15 @@ def test_questionnaireresponse_4(base_settings):
         base_settings["unittest_data_dir"]
         / "questionnaireresponse-example-bluebook.json"
     )
-    inst = questionnaireresponse.QuestionnaireResponse.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = questionnaireresponse.QuestionnaireResponse.model_validate_json(
+        Path(filename).read_bytes()
     )
-    assert "QuestionnaireResponse" == inst.resource_type
+    assert "QuestionnaireResponse" == inst.get_resource_type()
 
     impl_questionnaireresponse_4(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "QuestionnaireResponse" == data["resourceType"]
 
     inst2 = questionnaireresponse.QuestionnaireResponse(**data)
@@ -1687,45 +1917,66 @@ def test_questionnaireresponse_4(base_settings):
 
 
 def impl_questionnaireresponse_5(inst):
-    assert inst.authored == fhirtypes.DateTime.validate("2014-12-11T04:44:16Z")
+    assert (
+        inst.authored
+        == ExternalValidatorModel(valueDateTime="2014-12-11T04:44:16Z").valueDateTime
+    )
     assert inst.id == "gcs"
     assert inst.item[0].answer[0].valueCoding.code == "LA6560-2"
     assert inst.item[0].answer[0].valueCoding.display == "Confused"
     assert (
         inst.item[0].answer[0].valueCoding.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/itemWeight"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/StructureDefinition/itemWeight"
+        ).valueUri
     )
     assert float(inst.item[0].answer[0].valueCoding.extension[0].valueDecimal) == float(
         4
     )
-    assert inst.item[0].answer[0].valueCoding.system == "http://loinc.org"
+    assert (
+        inst.item[0].answer[0].valueCoding.system
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+    )
     assert inst.item[0].linkId == "1.1"
     assert inst.item[1].answer[0].valueCoding.code == "LA6566-9"
     assert inst.item[1].answer[0].valueCoding.display == "Localizing pain"
     assert (
         inst.item[1].answer[0].valueCoding.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/itemWeight"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/StructureDefinition/itemWeight"
+        ).valueUri
     )
     assert float(inst.item[1].answer[0].valueCoding.extension[0].valueDecimal) == float(
         5
     )
-    assert inst.item[1].answer[0].valueCoding.system == "http://loinc.org"
+    assert (
+        inst.item[1].answer[0].valueCoding.system
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+    )
     assert inst.item[1].linkId == "1.2"
     assert inst.item[2].answer[0].valueCoding.code == "LA6556-0"
     assert inst.item[2].answer[0].valueCoding.display == "Eyes open spontaneously"
     assert (
         inst.item[2].answer[0].valueCoding.extension[0].url
-        == "http://hl7.org/fhir/StructureDefinition/itemWeight"
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/StructureDefinition/itemWeight"
+        ).valueUri
     )
     assert float(inst.item[2].answer[0].valueCoding.extension[0].valueDecimal) == float(
         4
     )
-    assert inst.item[2].answer[0].valueCoding.system == "http://loinc.org"
+    assert (
+        inst.item[2].answer[0].valueCoding.system
+        == ExternalValidatorModel(valueUri="http://loinc.org").valueUri
+    )
     assert inst.item[2].linkId == "1.3"
     assert inst.meta.tag[0].code == "HTEST"
     assert inst.meta.tag[0].display == "test health data"
     assert (
-        inst.meta.tag[0].system == "http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        inst.meta.tag[0].system
+        == ExternalValidatorModel(
+            valueUri="http://terminology.hl7.org/CodeSystem/v3-ActReason"
+        ).valueUri
     )
     assert inst.questionnaire == "http://hl7.org/fhir/Questionnaire/gcs"
     assert inst.source.reference == "Practitioner/f007"
@@ -1742,15 +1993,15 @@ def test_questionnaireresponse_5(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "questionnaireresponse-example-gcs.json"
     )
-    inst = questionnaireresponse.QuestionnaireResponse.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
+    inst = questionnaireresponse.QuestionnaireResponse.model_validate_json(
+        Path(filename).read_bytes()
     )
-    assert "QuestionnaireResponse" == inst.resource_type
+    assert "QuestionnaireResponse" == inst.get_resource_type()
 
     impl_questionnaireresponse_5(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "QuestionnaireResponse" == data["resourceType"]
 
     inst2 = questionnaireresponse.QuestionnaireResponse(**data)

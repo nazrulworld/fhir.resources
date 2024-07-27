@@ -8,11 +8,9 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
-from . import backboneelement, domainresource, fhirtypes
+from . import domainresource, fhirtypes
 
 
 class AdverseEvent(domainresource.DomainResource):
@@ -37,9 +35,9 @@ class AdverseEvent(domainresource.DomainResource):
     specific extensions, value sets and constraints.
     """
 
-    resource_type = Field("AdverseEvent", const=True)
+    __resource_type__ = "AdverseEvent"
 
-    actuality: fhirtypes.Code = Field(
+    actuality: fhirtypes.CodeType = Field(
         None,
         alias="actuality",
         title="actual | potential",
@@ -48,12 +46,13 @@ class AdverseEvent(domainresource.DomainResource):
             " is independent of whether anyone was affected or harmed or how "
             "severely."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["actual", "potential"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["actual", "potential"],
+        },
     )
     actuality__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_actuality", title="Extension field for ``actuality``."
@@ -68,8 +67,9 @@ class AdverseEvent(domainresource.DomainResource):
             "site"
         ),
         description="The overall type of event, intended for search and filtering purposes.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -80,8 +80,9 @@ class AdverseEvent(domainresource.DomainResource):
             "Specific event that occurred or that was averted, such as patient "
             "fall, wrong organ removed, or wrong blood transfused."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     contributingFactor: typing.List[
@@ -97,11 +98,12 @@ class AdverseEvent(domainresource.DomainResource):
             "The contributing factors suspected to have increased the probability "
             "or severity of the adverse event."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    detected: fhirtypes.DateTime = Field(
+    detected: fhirtypes.DateTimeType = Field(
         None,
         alias="detected",
         title="When the event was detected",
@@ -109,8 +111,9 @@ class AdverseEvent(domainresource.DomainResource):
             "Estimated or actual date the AdverseEvent began, in the opinion of the"
             " reporter."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     detected__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_detected", title="Extension field for ``detected``."
@@ -121,10 +124,11 @@ class AdverseEvent(domainresource.DomainResource):
         alias="encounter",
         title="The Encounter associated with the start of the AdverseEvent",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Encounter"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Encounter"],
+        },
     )
 
     expectedInResearchStudy: bool = Field(
@@ -136,8 +140,9 @@ class AdverseEvent(domainresource.DomainResource):
             "Whether the reported event matches any of the outcomes for the patient"
             " that are considered by the study as known or likely."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     expectedInResearchStudy__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -154,8 +159,9 @@ class AdverseEvent(domainresource.DomainResource):
             "or other systems which remain constant as the resource is updated and "
             "propagates from server to server."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     location: fhirtypes.ReferenceType = Field(
@@ -163,10 +169,11 @@ class AdverseEvent(domainresource.DomainResource):
         alias="location",
         title="Location where adverse event occurred",
         description="The information about where the adverse event occurred.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Location"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Location"],
+        },
     )
 
     mitigatingAction: typing.List[fhirtypes.AdverseEventMitigatingActionType] = Field(
@@ -180,8 +187,9 @@ class AdverseEvent(domainresource.DomainResource):
             "The ameliorating action taken after the adverse event occured in order"
             " to reduce the extent of harm."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     note: typing.List[fhirtypes.AnnotationType] = Field(
@@ -192,20 +200,22 @@ class AdverseEvent(domainresource.DomainResource):
             "Comments made about the adverse event by the performer, subject or "
             "other participants."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    occurrenceDateTime: fhirtypes.DateTime = Field(
+    occurrenceDateTime: fhirtypes.DateTimeType = Field(
         None,
         alias="occurrenceDateTime",
         title="When the event occurred",
         description="The date (and perhaps time) when the adverse event occurred.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e occurrence[x]
-        one_of_many="occurrence",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e occurrence[x]
+            "one_of_many": "occurrence",
+            "one_of_many_required": False,
+        },
     )
     occurrenceDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -218,11 +228,12 @@ class AdverseEvent(domainresource.DomainResource):
         alias="occurrencePeriod",
         title="When the event occurred",
         description="The date (and perhaps time) when the adverse event occurred.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e occurrence[x]
-        one_of_many="occurrence",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e occurrence[x]
+            "one_of_many": "occurrence",
+            "one_of_many_required": False,
+        },
     )
 
     occurrenceTiming: fhirtypes.TimingType = Field(
@@ -230,11 +241,12 @@ class AdverseEvent(domainresource.DomainResource):
         alias="occurrenceTiming",
         title="When the event occurred",
         description="The date (and perhaps time) when the adverse event occurred.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e occurrence[x]
-        one_of_many="occurrence",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e occurrence[x]
+            "one_of_many": "occurrence",
+            "one_of_many_required": False,
+        },
     )
 
     outcome: typing.List[fhirtypes.CodeableConceptType] = Field(
@@ -245,8 +257,9 @@ class AdverseEvent(domainresource.DomainResource):
             "Describes the type of outcome from the adverse event, such as "
             "resolved, recovering, ongoing, resolved-with-sequelae, or fatal."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     participant: typing.List[fhirtypes.AdverseEventParticipantType] = Field(
@@ -260,8 +273,9 @@ class AdverseEvent(domainresource.DomainResource):
             "Indicates who or what participated in the adverse event and how they "
             "were involved."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     preventiveAction: typing.List[fhirtypes.AdverseEventPreventiveActionType] = Field(
@@ -269,19 +283,21 @@ class AdverseEvent(domainresource.DomainResource):
         alias="preventiveAction",
         title="Preventive actions that contributed to avoiding the adverse event",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    recordedDate: fhirtypes.DateTime = Field(
+    recordedDate: fhirtypes.DateTimeType = Field(
         None,
         alias="recordedDate",
         title="When the event was recorded",
         description=(
             "The date on which the existence of the AdverseEvent was first " "recorded."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     recordedDate__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_recordedDate", title="Extension field for ``recordedDate``."
@@ -295,16 +311,17 @@ class AdverseEvent(domainresource.DomainResource):
             "Information on who recorded the adverse event.  May be the patient or "
             "a practitioner."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Patient",
-            "Practitioner",
-            "PractitionerRole",
-            "RelatedPerson",
-            "ResearchSubject",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Patient",
+                "Practitioner",
+                "PractitionerRole",
+                "RelatedPerson",
+                "ResearchSubject",
+            ],
+        },
     )
 
     resultingEffect: typing.List[fhirtypes.ReferenceType] = Field(
@@ -317,10 +334,11 @@ class AdverseEvent(domainresource.DomainResource):
             "example, a drug or a chemical) or a broken leg as a result of the "
             "fall."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Condition", "Observation"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Condition", "Observation"],
+        },
     )
 
     seriousness: fhirtypes.CodeableConceptType = Field(
@@ -331,21 +349,23 @@ class AdverseEvent(domainresource.DomainResource):
             "Assessment whether this event, or averted event, was of clinical "
             "importance."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(
         None,
         alias="status",
         title="in-progress | completed | entered-in-error | unknown",
         description="The current state of the adverse event or potential adverse event.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["in-progress", "completed", "entered-in-error", "unknown"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["in-progress", "completed", "entered-in-error", "unknown"],
+        },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -356,10 +376,11 @@ class AdverseEvent(domainresource.DomainResource):
         alias="study",
         title="Research study that the subject is enrolled in",
         description="The research study that the subject is enrolled in.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["ResearchStudy"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["ResearchStudy"],
+        },
     )
 
     subject: fhirtypes.ReferenceType = Field(
@@ -367,16 +388,17 @@ class AdverseEvent(domainresource.DomainResource):
         alias="subject",
         title="Subject impacted by event",
         description="This subject or group impacted by the event.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Patient",
-            "Group",
-            "Practitioner",
-            "RelatedPerson",
-            "ResearchSubject",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Patient",
+                "Group",
+                "Practitioner",
+                "RelatedPerson",
+                "ResearchSubject",
+            ],
+        },
     )
 
     supportingInfo: typing.List[fhirtypes.AdverseEventSupportingInfoType] = Field(
@@ -384,8 +406,9 @@ class AdverseEvent(domainresource.DomainResource):
         alias="supportingInfo",
         title="Supporting information relevant to the event",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     suspectEntity: typing.List[fhirtypes.AdverseEventSuspectEntityType] = Field(
@@ -396,8 +419,9 @@ class AdverseEvent(domainresource.DomainResource):
             "Describes the entity that is suspected to have caused the adverse "
             "event."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -443,10 +467,7 @@ class AdverseEvent(domainresource.DomainResource):
             "note",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_1409(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -455,57 +476,9 @@ class AdverseEvent(domainresource.DomainResource):
         the primitive value is not present.
         """
         required_fields = [("actuality", "actuality__ext"), ("status", "status__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
-
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_1409(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -521,26 +494,10 @@ class AdverseEvent(domainresource.DomainResource):
         one_of_many_fields = {
             "occurrence": ["occurrenceDateTime", "occurrencePeriod", "occurrenceTiming"]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
+        return one_of_many_fields
 
-        return values
+
+from . import backboneelement
 
 
 class AdverseEventContributingFactor(backboneelement.BackboneElement):
@@ -554,7 +511,7 @@ class AdverseEventContributingFactor(backboneelement.BackboneElement):
     severity of the adverse event.
     """
 
-    resource_type = Field("AdverseEventContributingFactor", const=True)
+    __resource_type__ = "AdverseEventContributingFactor"
 
     itemCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
@@ -567,11 +524,12 @@ class AdverseEventContributingFactor(backboneelement.BackboneElement):
             "The item that is suspected to have increased the probability or "
             "severity of the adverse event."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e item[x]
-        one_of_many="item",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e item[x]
+            "one_of_many": "item",
+            "one_of_many_required": True,
+        },
     )
 
     itemReference: fhirtypes.ReferenceType = Field(
@@ -585,25 +543,26 @@ class AdverseEventContributingFactor(backboneelement.BackboneElement):
             "The item that is suspected to have increased the probability or "
             "severity of the adverse event."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e item[x]
-        one_of_many="item",
-        one_of_many_required=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Condition",
-            "Observation",
-            "AllergyIntolerance",
-            "FamilyMemberHistory",
-            "Immunization",
-            "Procedure",
-            "Device",
-            "DeviceUsage",
-            "DocumentReference",
-            "MedicationAdministration",
-            "MedicationStatement",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e item[x]
+            "one_of_many": "item",
+            "one_of_many_required": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Condition",
+                "Observation",
+                "AllergyIntolerance",
+                "FamilyMemberHistory",
+                "Immunization",
+                "Procedure",
+                "Device",
+                "DeviceUsage",
+                "DocumentReference",
+                "MedicationAdministration",
+                "MedicationStatement",
+            ],
+        },
     )
 
     @classmethod
@@ -620,10 +579,7 @@ class AdverseEventContributingFactor(backboneelement.BackboneElement):
             "itemCodeableConcept",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_3286(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -637,26 +593,7 @@ class AdverseEventContributingFactor(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"item": ["itemCodeableConcept", "itemReference"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class AdverseEventMitigatingAction(backboneelement.BackboneElement):
@@ -670,7 +607,7 @@ class AdverseEventMitigatingAction(backboneelement.BackboneElement):
     reduce the extent of harm.
     """
 
-    resource_type = Field("AdverseEventMitigatingAction", const=True)
+    __resource_type__ = "AdverseEventMitigatingAction"
 
     itemCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
@@ -683,11 +620,12 @@ class AdverseEventMitigatingAction(backboneelement.BackboneElement):
             "The ameliorating action taken after the adverse event occured in order"
             " to reduce the extent of harm."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e item[x]
-        one_of_many="item",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e item[x]
+            "one_of_many": "item",
+            "one_of_many_required": True,
+        },
     )
 
     itemReference: fhirtypes.ReferenceType = Field(
@@ -701,18 +639,19 @@ class AdverseEventMitigatingAction(backboneelement.BackboneElement):
             "The ameliorating action taken after the adverse event occured in order"
             " to reduce the extent of harm."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e item[x]
-        one_of_many="item",
-        one_of_many_required=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Procedure",
-            "DocumentReference",
-            "MedicationAdministration",
-            "MedicationRequest",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e item[x]
+            "one_of_many": "item",
+            "one_of_many_required": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Procedure",
+                "DocumentReference",
+                "MedicationAdministration",
+                "MedicationRequest",
+            ],
+        },
     )
 
     @classmethod
@@ -729,10 +668,7 @@ class AdverseEventMitigatingAction(backboneelement.BackboneElement):
             "itemCodeableConcept",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_3046(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -746,26 +682,7 @@ class AdverseEventMitigatingAction(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"item": ["itemCodeableConcept", "itemReference"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class AdverseEventParticipant(backboneelement.BackboneElement):
@@ -779,26 +696,27 @@ class AdverseEventParticipant(backboneelement.BackboneElement):
     involved.
     """
 
-    resource_type = Field("AdverseEventParticipant", const=True)
+    __resource_type__ = "AdverseEventParticipant"
 
     actor: fhirtypes.ReferenceType = Field(
         ...,
         alias="actor",
         title="Who was involved in the adverse event or the potential adverse event",
         description="Indicates who or what participated in the event.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Practitioner",
-            "PractitionerRole",
-            "Organization",
-            "CareTeam",
-            "Patient",
-            "Device",
-            "RelatedPerson",
-            "ResearchSubject",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Practitioner",
+                "PractitionerRole",
+                "Organization",
+                "CareTeam",
+                "Patient",
+                "Device",
+                "RelatedPerson",
+                "ResearchSubject",
+            ],
+        },
     )
 
     function: fhirtypes.CodeableConceptType = Field(
@@ -809,8 +727,9 @@ class AdverseEventParticipant(backboneelement.BackboneElement):
             "Distinguishes the type of involvement of the actor in the adverse "
             "event, such as contributor or informant."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -830,18 +749,19 @@ class AdverseEventPreventiveAction(backboneelement.BackboneElement):
     Preventive actions that contributed to avoiding the adverse event.
     """
 
-    resource_type = Field("AdverseEventPreventiveAction", const=True)
+    __resource_type__ = "AdverseEventPreventiveAction"
 
     itemCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
         alias="itemCodeableConcept",
         title="Action that contributed to avoiding the adverse event",
         description="The action that contributed to avoiding the adverse event.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e item[x]
-        one_of_many="item",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e item[x]
+            "one_of_many": "item",
+            "one_of_many_required": True,
+        },
     )
 
     itemReference: fhirtypes.ReferenceType = Field(
@@ -849,19 +769,20 @@ class AdverseEventPreventiveAction(backboneelement.BackboneElement):
         alias="itemReference",
         title="Action that contributed to avoiding the adverse event",
         description="The action that contributed to avoiding the adverse event.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e item[x]
-        one_of_many="item",
-        one_of_many_required=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Immunization",
-            "Procedure",
-            "DocumentReference",
-            "MedicationAdministration",
-            "MedicationRequest",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e item[x]
+            "one_of_many": "item",
+            "one_of_many_required": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Immunization",
+                "Procedure",
+                "DocumentReference",
+                "MedicationAdministration",
+                "MedicationRequest",
+            ],
+        },
     )
 
     @classmethod
@@ -878,10 +799,7 @@ class AdverseEventPreventiveAction(backboneelement.BackboneElement):
             "itemCodeableConcept",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_3073(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -895,26 +813,7 @@ class AdverseEventPreventiveAction(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"item": ["itemCodeableConcept", "itemReference"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class AdverseEventSupportingInfo(backboneelement.BackboneElement):
@@ -925,7 +824,7 @@ class AdverseEventSupportingInfo(backboneelement.BackboneElement):
     Supporting information relevant to the event.
     """
 
-    resource_type = Field("AdverseEventSupportingInfo", const=True)
+    __resource_type__ = "AdverseEventSupportingInfo"
 
     itemCodeableConcept: fhirtypes.CodeableConceptType = Field(
         None,
@@ -943,11 +842,12 @@ class AdverseEventSupportingInfo(backboneelement.BackboneElement):
             "Supporting information is not a contributing factor, preventive "
             "action, or mitigating action."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e item[x]
-        one_of_many="item",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e item[x]
+            "one_of_many": "item",
+            "one_of_many_required": True,
+        },
     )
 
     itemReference: fhirtypes.ReferenceType = Field(
@@ -966,24 +866,25 @@ class AdverseEventSupportingInfo(backboneelement.BackboneElement):
             "Supporting information is not a contributing factor, preventive "
             "action, or mitigating action."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e item[x]
-        one_of_many="item",
-        one_of_many_required=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Condition",
-            "Observation",
-            "AllergyIntolerance",
-            "FamilyMemberHistory",
-            "Immunization",
-            "Procedure",
-            "DocumentReference",
-            "MedicationAdministration",
-            "MedicationStatement",
-            "QuestionnaireResponse",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e item[x]
+            "one_of_many": "item",
+            "one_of_many_required": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Condition",
+                "Observation",
+                "AllergyIntolerance",
+                "FamilyMemberHistory",
+                "Immunization",
+                "Procedure",
+                "DocumentReference",
+                "MedicationAdministration",
+                "MedicationStatement",
+                "QuestionnaireResponse",
+            ],
+        },
     )
 
     @classmethod
@@ -1000,10 +901,7 @@ class AdverseEventSupportingInfo(backboneelement.BackboneElement):
             "itemCodeableConcept",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_2883(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -1017,26 +915,7 @@ class AdverseEventSupportingInfo(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"item": ["itemCodeableConcept", "itemReference"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class AdverseEventSuspectEntity(backboneelement.BackboneElement):
@@ -1048,15 +927,16 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
     Describes the entity that is suspected to have caused the adverse event.
     """
 
-    resource_type = Field("AdverseEventSuspectEntity", const=True)
+    __resource_type__ = "AdverseEventSuspectEntity"
 
     causality: fhirtypes.AdverseEventSuspectEntityCausalityType = Field(
         None,
         alias="causality",
         title="Information on the possible cause of the event",
         description=None,
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     instanceCodeableConcept: fhirtypes.CodeableConceptType = Field(
@@ -1068,11 +948,12 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
             "be a substance, medication, medication administration, medication "
             "statement or a device."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e instance[x]
-        one_of_many="instance",
-        one_of_many_required=True,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e instance[x]
+            "one_of_many": "instance",
+            "one_of_many_required": True,
+        },
     )
 
     instanceReference: fhirtypes.ReferenceType = Field(
@@ -1084,23 +965,24 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
             "be a substance, medication, medication administration, medication "
             "statement or a device."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e instance[x]
-        one_of_many="instance",
-        one_of_many_required=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Immunization",
-            "Procedure",
-            "Substance",
-            "Medication",
-            "MedicationAdministration",
-            "MedicationStatement",
-            "Device",
-            "BiologicallyDerivedProduct",
-            "ResearchStudy",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e instance[x]
+            "one_of_many": "instance",
+            "one_of_many_required": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Immunization",
+                "Procedure",
+                "Substance",
+                "Medication",
+                "MedicationAdministration",
+                "MedicationStatement",
+                "Device",
+                "BiologicallyDerivedProduct",
+                "ResearchStudy",
+            ],
+        },
     )
 
     @classmethod
@@ -1118,10 +1000,7 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
             "causality",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_2794(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -1137,26 +1016,7 @@ class AdverseEventSuspectEntity(backboneelement.BackboneElement):
         one_of_many_fields = {
             "instance": ["instanceCodeableConcept", "instanceReference"]
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class AdverseEventSuspectEntityCausality(backboneelement.BackboneElement):
@@ -1167,7 +1027,7 @@ class AdverseEventSuspectEntityCausality(backboneelement.BackboneElement):
     Information on the possible cause of the event.
     """
 
-    resource_type = Field("AdverseEventSuspectEntityCausality", const=True)
+    __resource_type__ = "AdverseEventSuspectEntityCausality"
 
     assessmentMethod: fhirtypes.CodeableConceptType = Field(
         None,
@@ -1180,8 +1040,9 @@ class AdverseEventSuspectEntityCausality(backboneelement.BackboneElement):
             "The method of evaluating the relatedness of the suspected entity to "
             "the event."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     author: fhirtypes.ReferenceType = Field(
@@ -1189,16 +1050,17 @@ class AdverseEventSuspectEntityCausality(backboneelement.BackboneElement):
         alias="author",
         title="Author of the information on the possible cause of the event",
         description="The author of the information on the possible cause of the event.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Practitioner",
-            "PractitionerRole",
-            "Patient",
-            "RelatedPerson",
-            "ResearchSubject",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Practitioner",
+                "PractitionerRole",
+                "Patient",
+                "RelatedPerson",
+                "ResearchSubject",
+            ],
+        },
     )
 
     entityRelatedness: fhirtypes.CodeableConceptType = Field(
@@ -1212,8 +1074,9 @@ class AdverseEventSuspectEntityCausality(backboneelement.BackboneElement):
             "The result of the assessment regarding the relatedness of the "
             "suspected entity to the event."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

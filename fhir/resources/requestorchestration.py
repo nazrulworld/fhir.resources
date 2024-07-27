@@ -8,11 +8,9 @@ Last updated: 2023-03-26T15:21:02.749+11:00
 """
 import typing
 
-from pydantic.v1 import Field, root_validator
-from pydantic.v1.error_wrappers import ErrorWrapper, ValidationError
-from pydantic.v1.errors import MissingError, NoneIsNotAllowedError
+from pydantic import Field
 
-from . import backboneelement, domainresource, fhirtypes
+from . import domainresource, fhirtypes
 
 
 class RequestOrchestration(domainresource.DomainResource):
@@ -25,15 +23,16 @@ class RequestOrchestration(domainresource.DomainResource):
     that have inter-dependencies such as "give this medication after that one".
     """
 
-    resource_type = Field("RequestOrchestration", const=True)
+    __resource_type__ = "RequestOrchestration"
 
     action: typing.List[fhirtypes.RequestOrchestrationActionType] = Field(
         None,
         alias="action",
         title="Proposed actions, if any",
         description="The actions, if any, produced by the evaluation of the artifact.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     author: fhirtypes.ReferenceType = Field(
@@ -41,19 +40,21 @@ class RequestOrchestration(domainresource.DomainResource):
         alias="author",
         title="Device or practitioner that authored the request orchestration",
         description="Provides a reference to the author of the request orchestration.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Device", "Practitioner", "PractitionerRole"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Device", "Practitioner", "PractitionerRole"],
+        },
     )
 
-    authoredOn: fhirtypes.DateTime = Field(
+    authoredOn: fhirtypes.DateTimeType = Field(
         None,
         alias="authoredOn",
         title="When the request orchestration was authored",
         description="Indicates when the request orchestration was created.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     authoredOn__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_authoredOn", title="Extension field for ``authoredOn``."
@@ -67,10 +68,11 @@ class RequestOrchestration(domainresource.DomainResource):
             "A plan, proposal or order that is fulfilled in whole or in part by "
             "this request."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Resource"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Resource"],
+        },
     )
 
     code: fhirtypes.CodeableConceptType = Field(
@@ -78,8 +80,9 @@ class RequestOrchestration(domainresource.DomainResource):
         alias="code",
         title="What's being requested/ordered",
         description="A code that identifies what the overall request orchestration is.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     encounter: fhirtypes.ReferenceType = Field(
@@ -87,10 +90,11 @@ class RequestOrchestration(domainresource.DomainResource):
         alias="encounter",
         title="Created as part of",
         description="Describes the context of the request orchestration, if any.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Encounter"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Encounter"],
+        },
     )
 
     goal: typing.List[fhirtypes.ReferenceType] = Field(
@@ -101,10 +105,11 @@ class RequestOrchestration(domainresource.DomainResource):
             "Goals that are intended to be achieved by following the requests in "
             "this RequestOrchestration."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Goal"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Goal"],
+        },
     )
 
     groupIdentifier: fhirtypes.IdentifierType = Field(
@@ -120,8 +125,9 @@ class RequestOrchestration(domainresource.DomainResource):
             "shared by a set of lab tests ordered together, or a prescription "
             "number shared by all meds ordered at one time."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     identifier: typing.List[fhirtypes.IdentifierType] = Field(
@@ -132,11 +138,14 @@ class RequestOrchestration(domainresource.DomainResource):
             "Allows a service to provide a unique, business identifier for the "
             "request."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    instantiatesCanonical: typing.List[typing.Optional[fhirtypes.Canonical]] = Field(
+    instantiatesCanonical: typing.List[
+        typing.Optional[fhirtypes.CanonicalType]
+    ] = Field(
         None,
         alias="instantiatesCanonical",
         title="Instantiates FHIR protocol or definition",
@@ -145,8 +154,9 @@ class RequestOrchestration(domainresource.DomainResource):
             "orderset or other definition that is adhered to in whole or in part by"
             " this request."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     instantiatesCanonical__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -156,7 +166,7 @@ class RequestOrchestration(domainresource.DomainResource):
         title="Extension field for ``instantiatesCanonical``.",
     )
 
-    instantiatesUri: typing.List[typing.Optional[fhirtypes.Uri]] = Field(
+    instantiatesUri: typing.List[typing.Optional[fhirtypes.UriType]] = Field(
         None,
         alias="instantiatesUri",
         title="Instantiates external protocol or definition",
@@ -165,8 +175,9 @@ class RequestOrchestration(domainresource.DomainResource):
             "or other definition that is adhered to in whole or in part by this "
             "request."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     instantiatesUri__ext: typing.List[
         typing.Union[fhirtypes.FHIRPrimitiveExtensionType, None]
@@ -174,7 +185,7 @@ class RequestOrchestration(domainresource.DomainResource):
         None, alias="_instantiatesUri", title="Extension field for ``instantiatesUri``."
     )
 
-    intent: fhirtypes.Code = Field(
+    intent: fhirtypes.CodeType = Field(
         None,
         alias="intent",
         title=(
@@ -185,22 +196,23 @@ class RequestOrchestration(domainresource.DomainResource):
             "Indicates the level of authority/intentionality associated with the "
             "request and where the request fits into the workflow chain."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "proposal",
-            "plan",
-            "directive",
-            "order",
-            "original-order",
-            "reflex-order",
-            "filler-order",
-            "instance-order",
-            "option",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "proposal",
+                "plan",
+                "directive",
+                "order",
+                "original-order",
+                "reflex-order",
+                "filler-order",
+                "instance-order",
+                "option",
+            ],
+        },
     )
     intent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_intent", title="Extension field for ``intent``."
@@ -214,11 +226,12 @@ class RequestOrchestration(domainresource.DomainResource):
             "Provides a mechanism to communicate additional information about the "
             "response."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    priority: fhirtypes.Code = Field(
+    priority: fhirtypes.CodeType = Field(
         None,
         alias="priority",
         title="routine | urgent | asap | stat",
@@ -226,11 +239,12 @@ class RequestOrchestration(domainresource.DomainResource):
             "Indicates how quickly the request should be addressed with respect to "
             "other requests."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["routine", "urgent", "asap", "stat"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["routine", "urgent", "asap", "stat"],
+        },
     )
     priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_priority", title="Extension field for ``priority``."
@@ -244,15 +258,16 @@ class RequestOrchestration(domainresource.DomainResource):
             "Describes the reason for the request orchestration in coded or textual"
             " form."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "Condition",
-            "Observation",
-            "DiagnosticReport",
-            "DocumentReference",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "Condition",
+                "Observation",
+                "DiagnosticReport",
+                "DocumentReference",
+            ],
+        },
     )
 
     replaces: typing.List[fhirtypes.ReferenceType] = Field(
@@ -263,13 +278,14 @@ class RequestOrchestration(domainresource.DomainResource):
             "Completed or terminated request(s) whose function is taken by this new"
             " request."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Resource"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Resource"],
+        },
     )
 
-    status: fhirtypes.Code = Field(
+    status: fhirtypes.CodeType = Field(
         None,
         alias="status",
         title=(
@@ -280,20 +296,21 @@ class RequestOrchestration(domainresource.DomainResource):
             "The current state of the request. For request orchestrations, the "
             "status reflects the status of all the requests in the orchestration."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "draft",
-            "active",
-            "on-hold",
-            "revoked",
-            "completed",
-            "entered-in-error",
-            "unknown",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "draft",
+                "active",
+                "on-hold",
+                "revoked",
+                "completed",
+                "entered-in-error",
+                "unknown",
+            ],
+        },
     )
     status__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_status", title="Extension field for ``status``."
@@ -304,21 +321,22 @@ class RequestOrchestration(domainresource.DomainResource):
         alias="subject",
         title="Who the request orchestration is about",
         description="The subject for which the request orchestration was created.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "CareTeam",
-            "Device",
-            "Group",
-            "HealthcareService",
-            "Location",
-            "Organization",
-            "Patient",
-            "Practitioner",
-            "PractitionerRole",
-            "RelatedPerson",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "CareTeam",
+                "Device",
+                "Group",
+                "HealthcareService",
+                "Location",
+                "Organization",
+                "Patient",
+                "Practitioner",
+                "PractitionerRole",
+                "RelatedPerson",
+            ],
+        },
     )
 
     @classmethod
@@ -356,10 +374,7 @@ class RequestOrchestration(domainresource.DomainResource):
             "action",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_2318(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -368,52 +383,10 @@ class RequestOrchestration(domainresource.DomainResource):
         the primitive value is not present.
         """
         required_fields = [("intent", "intent__ext"), ("status", "status__ext")]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
 
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+from . import backboneelement
 
 
 class RequestOrchestrationAction(backboneelement.BackboneElement):
@@ -425,27 +398,29 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
     The actions, if any, produced by the evaluation of the artifact.
     """
 
-    resource_type = Field("RequestOrchestrationAction", const=True)
+    __resource_type__ = "RequestOrchestrationAction"
 
     action: typing.List[fhirtypes.RequestOrchestrationActionType] = Field(
         None,
         alias="action",
         title="Sub action",
         description="Sub actions.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    cardinalityBehavior: fhirtypes.Code = Field(
+    cardinalityBehavior: fhirtypes.CodeType = Field(
         None,
         alias="cardinalityBehavior",
         title="single | multiple",
         description="Defines whether the action can be selected multiple times.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["single", "multiple"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["single", "multiple"],
+        },
     )
     cardinalityBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -462,8 +437,9 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
             "example, a section may have a LOINC code for a section of a "
             "documentation template."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     condition: typing.List[fhirtypes.RequestOrchestrationActionConditionType] = Field(
@@ -474,11 +450,12 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
             "An expression that describes applicability criteria, or start/stop "
             "conditions for the action."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    definitionCanonical: fhirtypes.Canonical = Field(
+    definitionCanonical: fhirtypes.CanonicalType = Field(
         None,
         alias="definitionCanonical",
         title="Description of the activity to be performed",
@@ -490,19 +467,20 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
             "ObservationDefinition that specifies what observation should be "
             "captured."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e definition[x]
-        one_of_many="definition",
-        one_of_many_required=False,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "ActivityDefinition",
-            "ObservationDefinition",
-            "PlanDefinition",
-            "Questionnaire",
-            "SpecimenDefinition",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e definition[x]
+            "one_of_many": "definition",
+            "one_of_many_required": False,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "ActivityDefinition",
+                "ObservationDefinition",
+                "PlanDefinition",
+                "Questionnaire",
+                "SpecimenDefinition",
+            ],
+        },
     )
     definitionCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -510,7 +488,7 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
         title="Extension field for ``definitionCanonical``.",
     )
 
-    definitionUri: fhirtypes.Uri = Field(
+    definitionUri: fhirtypes.UriType = Field(
         None,
         alias="definitionUri",
         title="Description of the activity to be performed",
@@ -522,17 +500,18 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
             "ObservationDefinition that specifies what observation should be "
             "captured."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e definition[x]
-        one_of_many="definition",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e definition[x]
+            "one_of_many": "definition",
+            "one_of_many_required": False,
+        },
     )
     definitionUri__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_definitionUri", title="Extension field for ``definitionUri``."
     )
 
-    description: fhirtypes.Markdown = Field(
+    description: fhirtypes.MarkdownType = Field(
         None,
         alias="description",
         title="Short description of the action",
@@ -540,8 +519,9 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
             "A short description of the action used to provide a summary to display"
             " to the user."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     description__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_description", title="Extension field for ``description``."
@@ -556,8 +536,9 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
             "that can be provided to the CDS recipient. Information resources can "
             "include inline text commentary and links to web resources."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     dynamicValue: typing.List[
@@ -573,8 +554,9 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
             "specify an expression that calculated the weight, and the path on the "
             "resource that would contain the result."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     goal: typing.List[fhirtypes.ReferenceType] = Field(
@@ -585,22 +567,24 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
             "Goals that are intended to be achieved by following the requests in "
             "this action."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Goal"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Goal"],
+        },
     )
 
-    groupingBehavior: fhirtypes.Code = Field(
+    groupingBehavior: fhirtypes.CodeType = Field(
         None,
         alias="groupingBehavior",
         title="visual-group | logical-group | sentence-group",
         description="Defines the grouping behavior for the action and its children.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["visual-group", "logical-group", "sentence-group"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["visual-group", "logical-group", "sentence-group"],
+        },
     )
     groupingBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -613,11 +597,12 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
         alias="input",
         title="Input data requirements",
         description="Defines input data requirements for the action.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    linkId: fhirtypes.String = Field(
+    linkId: fhirtypes.StringType = Field(
         None,
         alias="linkId",
         title="Pointer to specific item from the PlanDefinition",
@@ -625,8 +610,9 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
             "The linkId of the action from the PlanDefinition that corresponds to "
             "this action in the RequestOrchestration resource."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     linkId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_linkId", title="Extension field for ``linkId``."
@@ -640,10 +626,11 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
             "Identifies the facility where the action will occur; e.g. home, "
             "hospital, specific clinic, etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Location"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Location"],
+        },
     )
 
     output: typing.List[fhirtypes.RequestOrchestrationActionOutputType] = Field(
@@ -651,8 +638,9 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
         alias="output",
         title="Output data definition",
         description="Defines the outputs of the action, if any.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     participant: typing.List[
@@ -662,20 +650,22 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
         alias="participant",
         title="Who should perform the action",
         description="The participant that should perform or be responsible for this action.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    precheckBehavior: fhirtypes.Code = Field(
+    precheckBehavior: fhirtypes.CodeType = Field(
         None,
         alias="precheckBehavior",
         title="yes | no",
         description="Defines whether the action should usually be preselected.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["yes", "no"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["yes", "no"],
+        },
     )
     precheckBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -683,7 +673,7 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
         title="Extension field for ``precheckBehavior``.",
     )
 
-    prefix: fhirtypes.String = Field(
+    prefix: fhirtypes.StringType = Field(
         None,
         alias="prefix",
         title="User-visible prefix for the action (e.g. 1. or A.)",
@@ -691,14 +681,15 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
             "A user-visible prefix for the action. For example a section or item "
             "numbering such as 1. or A."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     prefix__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_prefix", title="Extension field for ``prefix``."
     )
 
-    priority: fhirtypes.Code = Field(
+    priority: fhirtypes.CodeType = Field(
         None,
         alias="priority",
         title="routine | urgent | asap | stat",
@@ -706,11 +697,12 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
             "Indicates how quickly the action should be addressed with respect to "
             "other actions."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["routine", "urgent", "asap", "stat"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["routine", "urgent", "asap", "stat"],
+        },
     )
     priority__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_priority", title="Extension field for ``priority``."
@@ -726,20 +718,22 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
             'A relationship to another action such as "before" or "30-60 minutes '
             'after start of".'
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    requiredBehavior: fhirtypes.Code = Field(
+    requiredBehavior: fhirtypes.CodeType = Field(
         None,
         alias="requiredBehavior",
         title="must | could | must-unless-documented",
         description="Defines expectations around whether an action is required.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["must", "could", "must-unless-documented"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["must", "could", "must-unless-documented"],
+        },
     )
     requiredBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -755,29 +749,31 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
             "The resource that is the target of the action (e.g. "
             "CommunicationRequest)."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["Resource"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["Resource"],
+        },
     )
 
-    selectionBehavior: fhirtypes.Code = Field(
+    selectionBehavior: fhirtypes.CodeType = Field(
         None,
         alias="selectionBehavior",
         title="any | all | all-or-none | exactly-one | at-most-one | one-or-more",
         description="Defines the selection behavior for the action and its children.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "any",
-            "all",
-            "all-or-none",
-            "exactly-one",
-            "at-most-one",
-            "one-or-more",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "any",
+                "all",
+                "all-or-none",
+                "exactly-one",
+                "at-most-one",
+                "one-or-more",
+            ],
+        },
     )
     selectionBehavior__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None,
@@ -785,7 +781,7 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
         title="Extension field for ``selectionBehavior``.",
     )
 
-    textEquivalent: fhirtypes.Markdown = Field(
+    textEquivalent: fhirtypes.MarkdownType = Field(
         None,
         alias="textEquivalent",
         title=(
@@ -798,8 +794,9 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
             "consumed by a system that might not be capable of interpreting it "
             "dynamically."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     textEquivalent__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_textEquivalent", title="Extension field for ``textEquivalent``."
@@ -810,23 +807,25 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
         alias="timingAge",
         title="When the action should take place",
         description="An optional value describing when the action should be performed.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e timing[x]
-        one_of_many="timing",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e timing[x]
+            "one_of_many": "timing",
+            "one_of_many_required": False,
+        },
     )
 
-    timingDateTime: fhirtypes.DateTime = Field(
+    timingDateTime: fhirtypes.DateTimeType = Field(
         None,
         alias="timingDateTime",
         title="When the action should take place",
         description="An optional value describing when the action should be performed.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e timing[x]
-        one_of_many="timing",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e timing[x]
+            "one_of_many": "timing",
+            "one_of_many_required": False,
+        },
     )
     timingDateTime__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_timingDateTime", title="Extension field for ``timingDateTime``."
@@ -837,11 +836,12 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
         alias="timingDuration",
         title="When the action should take place",
         description="An optional value describing when the action should be performed.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e timing[x]
-        one_of_many="timing",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e timing[x]
+            "one_of_many": "timing",
+            "one_of_many_required": False,
+        },
     )
 
     timingPeriod: fhirtypes.PeriodType = Field(
@@ -849,11 +849,12 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
         alias="timingPeriod",
         title="When the action should take place",
         description="An optional value describing when the action should be performed.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e timing[x]
-        one_of_many="timing",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e timing[x]
+            "one_of_many": "timing",
+            "one_of_many_required": False,
+        },
     )
 
     timingRange: fhirtypes.RangeType = Field(
@@ -861,11 +862,12 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
         alias="timingRange",
         title="When the action should take place",
         description="An optional value describing when the action should be performed.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e timing[x]
-        one_of_many="timing",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e timing[x]
+            "one_of_many": "timing",
+            "one_of_many_required": False,
+        },
     )
 
     timingTiming: fhirtypes.TimingType = Field(
@@ -873,26 +875,28 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
         alias="timingTiming",
         title="When the action should take place",
         description="An optional value describing when the action should be performed.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e timing[x]
-        one_of_many="timing",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e timing[x]
+            "one_of_many": "timing",
+            "one_of_many_required": False,
+        },
     )
 
-    title: fhirtypes.String = Field(
+    title: fhirtypes.StringType = Field(
         None,
         alias="title",
         title="User-visible title",
         description="The title of the action displayed to a user.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
     )
 
-    transform: fhirtypes.Canonical = Field(
+    transform: fhirtypes.CanonicalType = Field(
         None,
         alias="transform",
         title="Transform to apply the template",
@@ -901,10 +905,11 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
             "can be executed to produce the intent resource using the "
             "ActivityDefinition instance as the input."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["StructureMap"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["StructureMap"],
+        },
     )
     transform__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_transform", title="Extension field for ``transform``."
@@ -915,8 +920,9 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
         alias="type",
         title="create | update | remove | fire-event",
         description="The type of action to perform (create, update, remove).",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod
@@ -964,10 +970,7 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
             "action",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_2924(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -991,26 +994,7 @@ class RequestOrchestrationAction(backboneelement.BackboneElement):
                 "timingTiming",
             ],
         }
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class RequestOrchestrationActionCondition(backboneelement.BackboneElement):
@@ -1023,7 +1007,7 @@ class RequestOrchestrationActionCondition(backboneelement.BackboneElement):
     conditions for the action.
     """
 
-    resource_type = Field("RequestOrchestrationActionCondition", const=True)
+    __resource_type__ = "RequestOrchestrationActionCondition"
 
     expression: fhirtypes.ExpressionType = Field(
         None,
@@ -1033,21 +1017,23 @@ class RequestOrchestrationActionCondition(backboneelement.BackboneElement):
             "An expression that returns true or false, indicating whether or not "
             "the condition is satisfied."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    kind: fhirtypes.Code = Field(
+    kind: fhirtypes.CodeType = Field(
         None,
         alias="kind",
         title="applicability | start | stop",
         description="The kind of condition.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=["applicability", "start", "stop"],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": ["applicability", "start", "stop"],
+        },
     )
     kind__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_kind", title="Extension field for ``kind``."
@@ -1061,10 +1047,7 @@ class RequestOrchestrationActionCondition(backboneelement.BackboneElement):
         """
         return ["id", "extension", "modifierExtension", "kind", "expression"]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_3859(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -1073,52 +1056,7 @@ class RequestOrchestrationActionCondition(backboneelement.BackboneElement):
         the primitive value is not present.
         """
         required_fields = [("kind", "kind__ext")]
-        _missing = object()
-
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
+        return required_fields
 
 
 class RequestOrchestrationActionDynamicValue(backboneelement.BackboneElement):
@@ -1134,18 +1072,19 @@ class RequestOrchestrationActionDynamicValue(backboneelement.BackboneElement):
     the result.
     """
 
-    resource_type = Field("RequestOrchestrationActionDynamicValue", const=True)
+    __resource_type__ = "RequestOrchestrationActionDynamicValue"
 
     expression: fhirtypes.ExpressionType = Field(
         None,
         alias="expression",
         title="An expression that provides the dynamic value for the customization",
         description="An expression specifying the value of the customized element.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    path: fhirtypes.String = Field(
+    path: fhirtypes.StringType = Field(
         None,
         alias="path",
         title="The path to the element to be set dynamically",
@@ -1160,8 +1099,9 @@ class RequestOrchestrationActionDynamicValue(backboneelement.BackboneElement):
             "cardinality sub-elements (see the [Simple FHIRPath "
             "Profile](fhirpath.html#simple) for full details)."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     path__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_path", title="Extension field for ``path``."
@@ -1185,9 +1125,9 @@ class RequestOrchestrationActionInput(backboneelement.BackboneElement):
     Defines input data requirements for the action.
     """
 
-    resource_type = Field("RequestOrchestrationActionInput", const=True)
+    __resource_type__ = "RequestOrchestrationActionInput"
 
-    relatedData: fhirtypes.Id = Field(
+    relatedData: fhirtypes.IdType = Field(
         None,
         alias="relatedData",
         title="What data is provided",
@@ -1195,8 +1135,9 @@ class RequestOrchestrationActionInput(backboneelement.BackboneElement):
             "Points to an existing input or output element that provides data to "
             "this input."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     relatedData__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_relatedData", title="Extension field for ``relatedData``."
@@ -1207,11 +1148,12 @@ class RequestOrchestrationActionInput(backboneelement.BackboneElement):
         alias="requirement",
         title="What data is provided",
         description="Defines the data that is to be provided as input to the action.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    title: fhirtypes.String = Field(
+    title: fhirtypes.StringType = Field(
         None,
         alias="title",
         title="User-visible title",
@@ -1221,8 +1163,9 @@ class RequestOrchestrationActionInput(backboneelement.BackboneElement):
             "label when rendering the data requirement that conveys its purpose to "
             "human readers."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -1253,9 +1196,9 @@ class RequestOrchestrationActionOutput(backboneelement.BackboneElement):
     Defines the outputs of the action, if any.
     """
 
-    resource_type = Field("RequestOrchestrationActionOutput", const=True)
+    __resource_type__ = "RequestOrchestrationActionOutput"
 
-    relatedData: fhirtypes.String = Field(
+    relatedData: fhirtypes.StringType = Field(
         None,
         alias="relatedData",
         title="What data is provided",
@@ -1263,8 +1206,9 @@ class RequestOrchestrationActionOutput(backboneelement.BackboneElement):
             "Points to an existing input or output element that is results as "
             "output from the action."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     relatedData__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_relatedData", title="Extension field for ``relatedData``."
@@ -1275,11 +1219,12 @@ class RequestOrchestrationActionOutput(backboneelement.BackboneElement):
         alias="requirement",
         title="What data is provided",
         description="Defines the data that results as output from the action.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    title: fhirtypes.String = Field(
+    title: fhirtypes.StringType = Field(
         None,
         alias="title",
         title="User-visible title",
@@ -1289,8 +1234,9 @@ class RequestOrchestrationActionOutput(backboneelement.BackboneElement):
             "label when rendering the data requirement that conveys its purpose to "
             "human readers."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
     title__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_title", title="Extension field for ``title``."
@@ -1321,20 +1267,21 @@ class RequestOrchestrationActionParticipant(backboneelement.BackboneElement):
     The participant that should perform or be responsible for this action.
     """
 
-    resource_type = Field("RequestOrchestrationActionParticipant", const=True)
+    __resource_type__ = "RequestOrchestrationActionParticipant"
 
-    actorCanonical: fhirtypes.Canonical = Field(
+    actorCanonical: fhirtypes.CanonicalType = Field(
         None,
         alias="actorCanonical",
         title="Who/what is participating?",
         description="A reference to the actual participant.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e actor[x]
-        one_of_many="actor",
-        one_of_many_required=False,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["CapabilityStatement"],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e actor[x]
+            "one_of_many": "actor",
+            "one_of_many_required": False,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["CapabilityStatement"],
+        },
     )
     actorCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_actorCanonical", title="Extension field for ``actorCanonical``."
@@ -1345,26 +1292,27 @@ class RequestOrchestrationActionParticipant(backboneelement.BackboneElement):
         alias="actorReference",
         title="Who/what is participating?",
         description="A reference to the actual participant.",
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e actor[x]
-        one_of_many="actor",
-        one_of_many_required=False,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "CareTeam",
-            "Device",
-            "DeviceDefinition",
-            "Endpoint",
-            "Group",
-            "HealthcareService",
-            "Location",
-            "Organization",
-            "Patient",
-            "Practitioner",
-            "PractitionerRole",
-            "RelatedPerson",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e actor[x]
+            "one_of_many": "actor",
+            "one_of_many_required": False,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "CareTeam",
+                "Device",
+                "DeviceDefinition",
+                "Endpoint",
+                "Group",
+                "HealthcareService",
+                "Location",
+                "Organization",
+                "Patient",
+                "Practitioner",
+                "PractitionerRole",
+                "RelatedPerson",
+            ],
+        },
     )
 
     function: fhirtypes.CodeableConceptType = Field(
@@ -1375,8 +1323,9 @@ class RequestOrchestrationActionParticipant(backboneelement.BackboneElement):
             "Indicates how the actor will be involved in the action - author, "
             "reviewer, witness, etc."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     role: fhirtypes.CodeableConceptType = Field(
@@ -1387,11 +1336,12 @@ class RequestOrchestrationActionParticipant(backboneelement.BackboneElement):
             "The role the participant should play in performing the described "
             "action."
         ),
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
-    type: fhirtypes.Code = Field(
+    type: fhirtypes.CodeType = Field(
         None,
         alias="type",
         title=(
@@ -1400,36 +1350,38 @@ class RequestOrchestrationActionParticipant(backboneelement.BackboneElement):
             "relatedperson"
         ),
         description="The type of participant in the action.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "careteam",
-            "device",
-            "group",
-            "healthcareservice",
-            "location",
-            "organization",
-            "patient",
-            "practitioner",
-            "practitionerrole",
-            "relatedperson",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "careteam",
+                "device",
+                "group",
+                "healthcareservice",
+                "location",
+                "organization",
+                "patient",
+                "practitioner",
+                "practitionerrole",
+                "relatedperson",
+            ],
+        },
     )
     type__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_type", title="Extension field for ``type``."
     )
 
-    typeCanonical: fhirtypes.Canonical = Field(
+    typeCanonical: fhirtypes.CanonicalType = Field(
         None,
         alias="typeCanonical",
         title="Who or what can participate",
         description="The type of participant in the action.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=["CapabilityStatement"],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": ["CapabilityStatement"],
+        },
     )
     typeCanonical__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_typeCanonical", title="Extension field for ``typeCanonical``."
@@ -1440,23 +1392,24 @@ class RequestOrchestrationActionParticipant(backboneelement.BackboneElement):
         alias="typeReference",
         title="Who or what can participate",
         description="The type of participant in the action.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Listed Resource Type(s) should be allowed as Reference.
-        enum_reference_types=[
-            "CareTeam",
-            "Device",
-            "DeviceDefinition",
-            "Endpoint",
-            "Group",
-            "HealthcareService",
-            "Location",
-            "Organization",
-            "Patient",
-            "Practitioner",
-            "PractitionerRole",
-            "RelatedPerson",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Listed Resource Type(s) should be allowed as Reference.
+            "enum_reference_types": [
+                "CareTeam",
+                "Device",
+                "DeviceDefinition",
+                "Endpoint",
+                "Group",
+                "HealthcareService",
+                "Location",
+                "Organization",
+                "Patient",
+                "Practitioner",
+                "PractitionerRole",
+                "RelatedPerson",
+            ],
+        },
     )
 
     @classmethod
@@ -1478,10 +1431,7 @@ class RequestOrchestrationActionParticipant(backboneelement.BackboneElement):
             "actorReference",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_4081(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -1495,26 +1445,7 @@ class RequestOrchestrationActionParticipant(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"actor": ["actorCanonical", "actorReference"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields
 
 
 class RequestOrchestrationActionRelatedAction(backboneelement.BackboneElement):
@@ -1527,9 +1458,9 @@ class RequestOrchestrationActionRelatedAction(backboneelement.BackboneElement):
     start of".
     """
 
-    resource_type = Field("RequestOrchestrationActionRelatedAction", const=True)
+    __resource_type__ = "RequestOrchestrationActionRelatedAction"
 
-    endRelationship: fhirtypes.Code = Field(
+    endRelationship: fhirtypes.CodeType = Field(
         None,
         alias="endRelationship",
         title=(
@@ -1537,21 +1468,22 @@ class RequestOrchestrationActionRelatedAction(backboneelement.BackboneElement):
             "start | concurrent-with-end | after | after-start | after-end"
         ),
         description="The relationship of the end of this action to the related action.",
-        # if property is element of this resource.
-        element_property=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "before",
-            "before-start",
-            "before-end",
-            "concurrent",
-            "concurrent-with-start",
-            "concurrent-with-end",
-            "after",
-            "after-start",
-            "after-end",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "before",
+                "before-start",
+                "before-end",
+                "concurrent",
+                "concurrent-with-start",
+                "concurrent-with-end",
+                "after",
+                "after-start",
+                "after-end",
+            ],
+        },
     )
     endRelationship__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_endRelationship", title="Extension field for ``endRelationship``."
@@ -1565,11 +1497,12 @@ class RequestOrchestrationActionRelatedAction(backboneelement.BackboneElement):
             "A duration or range of durations to apply to the relationship. For "
             "example, 30-60 minutes before."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e offset[x]
-        one_of_many="offset",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e offset[x]
+            "one_of_many": "offset",
+            "one_of_many_required": False,
+        },
     )
 
     offsetRange: fhirtypes.RangeType = Field(
@@ -1580,14 +1513,15 @@ class RequestOrchestrationActionRelatedAction(backboneelement.BackboneElement):
             "A duration or range of durations to apply to the relationship. For "
             "example, 30-60 minutes before."
         ),
-        # if property is element of this resource.
-        element_property=True,
-        # Choice of Data Types. i.e offset[x]
-        one_of_many="offset",
-        one_of_many_required=False,
+        json_schema_extra={
+            "element_property": True,
+            # Choice of Data Types. i.e offset[x]
+            "one_of_many": "offset",
+            "one_of_many_required": False,
+        },
     )
 
-    relationship: fhirtypes.Code = Field(
+    relationship: fhirtypes.CodeType = Field(
         None,
         alias="relationship",
         title=(
@@ -1595,35 +1529,37 @@ class RequestOrchestrationActionRelatedAction(backboneelement.BackboneElement):
             "start | concurrent-with-end | after | after-start | after-end"
         ),
         description="The relationship of this action to the related action.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
-        # note: Enum values can be used in validation,
-        # but use in your own responsibilities, read official FHIR documentation.
-        enum_values=[
-            "before",
-            "before-start",
-            "before-end",
-            "concurrent",
-            "concurrent-with-start",
-            "concurrent-with-end",
-            "after",
-            "after-start",
-            "after-end",
-        ],
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+            # note: Enum values can be used in validation,
+            # but use in your own responsibilities, read official FHIR documentation.
+            "enum_values": [
+                "before",
+                "before-start",
+                "before-end",
+                "concurrent",
+                "concurrent-with-start",
+                "concurrent-with-end",
+                "after",
+                "after-start",
+                "after-end",
+            ],
+        },
     )
     relationship__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_relationship", title="Extension field for ``relationship``."
     )
 
-    targetId: fhirtypes.Id = Field(
+    targetId: fhirtypes.IdType = Field(
         None,
         alias="targetId",
         title="What action this is related to",
         description="The element id of the target related action.",
-        # if property is element of this resource.
-        element_property=True,
-        element_required=True,
+        json_schema_extra={
+            "element_property": True,
+            "element_required": True,
+        },
     )
     targetId__ext: fhirtypes.FHIRPrimitiveExtensionType = Field(
         None, alias="_targetId", title="Extension field for ``targetId``."
@@ -1646,10 +1582,7 @@ class RequestOrchestrationActionRelatedAction(backboneelement.BackboneElement):
             "offsetRange",
         ]
 
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_required_primitive_elements_4235(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_required_fields(self) -> typing.List[typing.Tuple[str, str]]:
         """https://www.hl7.org/fhir/extensibility.html#Special-Case
         In some cases, implementers might find that they do not have appropriate data for
         an element with minimum cardinality = 1. In this case, the element must be present,
@@ -1661,57 +1594,9 @@ class RequestOrchestrationActionRelatedAction(backboneelement.BackboneElement):
             ("relationship", "relationship__ext"),
             ("targetId", "targetId__ext"),
         ]
-        _missing = object()
+        return required_fields
 
-        def _fallback():
-            return ""
-
-        errors: typing.List["ErrorWrapper"] = []
-        for name, ext in required_fields:
-            field = cls.__fields__[name]
-            ext_field = cls.__fields__[ext]
-            value = values.get(field.alias, _missing)
-            if value not in (_missing, None):
-                continue
-            ext_value = values.get(ext_field.alias, _missing)
-            missing_ext = True
-            if ext_value not in (_missing, None):
-                if isinstance(ext_value, dict):
-                    missing_ext = len(ext_value.get("extension", [])) == 0
-                elif (
-                    getattr(ext_value.__class__, "get_resource_type", _fallback)()
-                    == "FHIRPrimitiveExtension"
-                ):
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-                else:
-                    validate_pass = True
-                    for validator in ext_field.type_.__get_validators__():
-                        try:
-                            ext_value = validator(v=ext_value)
-                        except ValidationError as exc:
-                            errors.append(ErrorWrapper(exc, loc=ext_field.alias))
-                            validate_pass = False
-                    if not validate_pass:
-                        continue
-                    if ext_value.extension and len(ext_value.extension) > 0:
-                        missing_ext = False
-            if missing_ext:
-                if value is _missing:
-                    errors.append(ErrorWrapper(MissingError(), loc=field.alias))
-                else:
-                    errors.append(
-                        ErrorWrapper(NoneIsNotAllowedError(), loc=field.alias)
-                    )
-        if len(errors) > 0:
-            raise ValidationError(errors, cls)  # type: ignore
-
-        return values
-
-    @root_validator(pre=True, allow_reuse=True)
-    def validate_one_of_many_4235(
-        cls, values: typing.Dict[str, typing.Any]
-    ) -> typing.Dict[str, typing.Any]:
+    def get_one_of_many_fields(self) -> typing.Dict[str, typing.List[str]]:
         """https://www.hl7.org/fhir/formats.html#choice
         A few elements have a choice of more than one data type for their content.
         All such elements have a name that takes the form nnn[x].
@@ -1725,23 +1610,4 @@ class RequestOrchestrationActionRelatedAction(backboneelement.BackboneElement):
         data type chosen from among the list of permitted data types.
         """
         one_of_many_fields = {"offset": ["offsetDuration", "offsetRange"]}
-        for prefix, fields in one_of_many_fields.items():
-            assert cls.__fields__[fields[0]].field_info.extra["one_of_many"] == prefix
-            required = (
-                cls.__fields__[fields[0]].field_info.extra["one_of_many_required"]
-                is True
-            )
-            found = False
-            for field in fields:
-                if field in values and values[field] is not None:
-                    if found is True:
-                        raise ValueError(
-                            "Any of one field value is expected from "
-                            f"this list {fields}, but got multiple!"
-                        )
-                    else:
-                        found = True
-            if required is True and found is False:
-                raise ValueError(f"Expect any of field value from this list {fields}.")
-
-        return values
+        return one_of_many_fields

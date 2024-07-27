@@ -6,7 +6,7 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import datatype, fhirtypes
 
@@ -21,15 +21,16 @@ class Ratio(datatype.DataType):
     denominator.
     """
 
-    resource_type = Field("Ratio", const=True)
+    __resource_type__ = "Ratio"
 
     denominator: fhirtypes.QuantityType = Field(
         None,
         alias="denominator",
         title="Denominator value",
         description="The value of the denominator.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     numerator: fhirtypes.QuantityType = Field(
@@ -37,8 +38,9 @@ class Ratio(datatype.DataType):
         alias="numerator",
         title="Numerator value",
         description="The value of the numerator.",
-        # if property is element of this resource.
-        element_property=True,
+        json_schema_extra={
+            "element_property": True,
+        },
     )
 
     @classmethod

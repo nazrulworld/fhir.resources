@@ -1,7 +1,7 @@
 # _*_ coding: utf-8 _*_
 import json
 import pathlib
-from typing import TYPE_CHECKING, Any, Callable, Union, cast, no_type_check, Optional
+from typing import TYPE_CHECKING, Any, Callable, Optional, Union, cast, no_type_check
 
 from pydantic.v1.parse import Protocol
 from pydantic.v1.parse import load_file as default_load_file

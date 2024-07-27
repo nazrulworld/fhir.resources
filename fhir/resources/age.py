@@ -6,7 +6,7 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pydantic.v1 import Field
+from pydantic import Field
 
 from . import quantity
 
@@ -19,7 +19,7 @@ class Age(quantity.Quantity):
     A duration of time during which an organism (or a process) has existed.
     """
 
-    resource_type = Field("Age", const=True)
+    __resource_type__ = "Age"
 
     @classmethod
     def elements_sequence(cls):

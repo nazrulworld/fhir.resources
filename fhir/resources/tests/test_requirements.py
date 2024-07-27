@@ -6,19 +6,27 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pydantic.v1.validators import bytes_validator  # noqa: F401
+from pathlib import Path
 
-from .. import fhirtypes  # noqa: F401
 from .. import requirements
+from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
 
 def impl_requirements_1(inst):
     assert inst.actor[0] == "http://hl7.org/fhir/ActorDefinition/server"
-    assert inst.date == fhirtypes.DateTime.validate("2021-11-02T14:31:30.239Z")
+    assert (
+        inst.date
+        == ExternalValidatorModel(
+            valueDateTime="2021-11-02T14:31:30.239Z"
+        ).valueDateTime
+    )
     assert inst.derivedFrom[0] == "http://hl7.org/fhir/Requirements/example2"
     assert inst.description == "Example Requirements Set 2"
     assert inst.id == "example2"
-    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+    )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.18.2"
     assert inst.name == "ExampleRequirements2"
     assert inst.statement[0].conformance[0] == "SHOULD"
@@ -36,7 +44,12 @@ def impl_requirements_1(inst):
     assert inst.status == "active"
     assert inst.text.status == "generated"
     assert inst.title == "Example Requirements Set 2"
-    assert inst.url == "http://hl7.org/fhir/Requirements/example2"
+    assert (
+        inst.url
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/Requirements/example2"
+        ).valueUri
+    )
 
 
 def test_requirements_1(base_settings):
@@ -44,15 +57,13 @@ def test_requirements_1(base_settings):
     Test File: Requirements-example2.json
     """
     filename = base_settings["unittest_data_dir"] / "Requirements-example2.json"
-    inst = requirements.Requirements.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Requirements" == inst.resource_type
+    inst = requirements.Requirements.model_validate_json(Path(filename).read_bytes())
+    assert "Requirements" == inst.get_resource_type()
 
     impl_requirements_1(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Requirements" == data["resourceType"]
 
     inst2 = requirements.Requirements(**data)
@@ -61,10 +72,18 @@ def test_requirements_1(base_settings):
 
 def impl_requirements_2(inst):
     assert inst.actor[0] == "http://hl7.org/fhir/ActorDefinition/server"
-    assert inst.date == fhirtypes.DateTime.validate("2021-11-02T14:31:30.239Z")
+    assert (
+        inst.date
+        == ExternalValidatorModel(
+            valueDateTime="2021-11-02T14:31:30.239Z"
+        ).valueDateTime
+    )
     assert inst.description == "Example Requirements Set 1"
     assert inst.id == "example1"
-    assert inst.identifier[0].system == "urn:ietf:rfc:3986"
+    assert (
+        inst.identifier[0].system
+        == ExternalValidatorModel(valueUri="urn:ietf:rfc:3986").valueUri
+    )
     assert inst.identifier[0].value == "urn:oid:2.16.840.1.113883.4.642.18.1"
     assert inst.name == "ExampleRequirements1"
     assert inst.statement[0].conformance[0] == "SHALL"
@@ -74,7 +93,9 @@ def impl_requirements_2(inst):
     )
     assert (
         inst.statement[0].satisfiedBy[0]
-        == "http://hl7.org/fhir/terminology-service.html#expand"
+        == ExternalValidatorModel(
+            valueUrl="http://hl7.org/fhir/terminology-service.html#expand"
+        ).valueUrl
     )
     assert inst.statement[0].source[0].display == "Grahame Grieve"
     assert inst.statement[1].conformance[0] == "SHALL"
@@ -90,7 +111,12 @@ def impl_requirements_2(inst):
     assert inst.status == "active"
     assert inst.text.status == "generated"
     assert inst.title == "Example Requirements Set 1"
-    assert inst.url == "http://hl7.org/fhir/Requirements/example1"
+    assert (
+        inst.url
+        == ExternalValidatorModel(
+            valueUri="http://hl7.org/fhir/Requirements/example1"
+        ).valueUri
+    )
 
 
 def test_requirements_2(base_settings):
@@ -98,15 +124,13 @@ def test_requirements_2(base_settings):
     Test File: Requirements-example1.json
     """
     filename = base_settings["unittest_data_dir"] / "Requirements-example1.json"
-    inst = requirements.Requirements.parse_file(
-        filename, content_type="application/json", encoding="utf-8"
-    )
-    assert "Requirements" == inst.resource_type
+    inst = requirements.Requirements.model_validate_json(Path(filename).read_bytes())
+    assert "Requirements" == inst.get_resource_type()
 
     impl_requirements_2(inst)
 
     # testing reverse by generating data from itself and create again.
-    data = inst.dict()
+    data = inst.model_dump()
     assert "Requirements" == data["resourceType"]
 
     inst2 = requirements.Requirements(**data)

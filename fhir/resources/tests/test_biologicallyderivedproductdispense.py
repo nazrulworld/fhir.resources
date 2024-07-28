@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import biologicallyderivedproductdispense
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -41,7 +39,7 @@ def test_biologicallyderivedproductdispense_1(base_settings):
         / "biologicallyderivedproductdispense-example.json"
     )
     inst = biologicallyderivedproductdispense.BiologicallyDerivedProductDispense.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "BiologicallyDerivedProductDispense" == inst.get_resource_type()
 

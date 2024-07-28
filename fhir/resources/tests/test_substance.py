@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import substance
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -68,7 +66,7 @@ def test_substance_1(base_settings):
         base_settings["unittest_data_dir"]
         / "substance-example-silver-nitrate-product.json"
     )
-    inst = substance.Substance.model_validate_json(Path(filename).read_bytes())
+    inst = substance.Substance.model_validate_json(filename.read_bytes())
     assert "Substance" == inst.get_resource_type()
 
     impl_substance_1(inst)
@@ -152,7 +150,7 @@ def test_substance_2(base_settings):
         base_settings["unittest_data_dir"]
         / "substance-example-amoxicillin-clavulanate.json"
     )
-    inst = substance.Substance.model_validate_json(Path(filename).read_bytes())
+    inst = substance.Substance.model_validate_json(filename.read_bytes())
     assert "Substance" == inst.get_resource_type()
 
     impl_substance_2(inst)
@@ -207,7 +205,7 @@ def test_substance_3(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "substance-example-f203-potassium.json"
     )
-    inst = substance.Substance.model_validate_json(Path(filename).read_bytes())
+    inst = substance.Substance.model_validate_json(filename.read_bytes())
     assert "Substance" == inst.get_resource_type()
 
     impl_substance_3(inst)
@@ -245,7 +243,7 @@ def test_substance_4(base_settings):
     Test File: substance-example-f201-dust.json
     """
     filename = base_settings["unittest_data_dir"] / "substance-example-f201-dust.json"
-    inst = substance.Substance.model_validate_json(Path(filename).read_bytes())
+    inst = substance.Substance.model_validate_json(filename.read_bytes())
     assert "Substance" == inst.get_resource_type()
 
     impl_substance_4(inst)
@@ -294,7 +292,7 @@ def test_substance_5(base_settings):
     Test File: substance-example.json
     """
     filename = base_settings["unittest_data_dir"] / "substance-example.json"
-    inst = substance.Substance.model_validate_json(Path(filename).read_bytes())
+    inst = substance.Substance.model_validate_json(filename.read_bytes())
     assert "Substance" == inst.get_resource_type()
 
     impl_substance_5(inst)
@@ -335,7 +333,7 @@ def test_substance_6(base_settings):
         base_settings["unittest_data_dir"]
         / "substance-example-f202-staphylococcus.json"
     )
-    inst = substance.Substance.model_validate_json(Path(filename).read_bytes())
+    inst = substance.Substance.model_validate_json(filename.read_bytes())
     assert "Substance" == inst.get_resource_type()
 
     impl_substance_6(inst)

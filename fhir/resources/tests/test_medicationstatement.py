@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import medicationstatement
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -55,7 +53,7 @@ def test_medicationstatement_1(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "medicationstatementexample5.json"
     inst = medicationstatement.MedicationStatement.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicationStatement" == inst.get_resource_type()
 
@@ -108,7 +106,7 @@ def test_medicationstatement_2(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "medicationstatementexample9.json"
     inst = medicationstatement.MedicationStatement.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicationStatement" == inst.get_resource_type()
 
@@ -158,7 +156,7 @@ def test_medicationstatement_3(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "medicationstatementexample8.json"
     inst = medicationstatement.MedicationStatement.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicationStatement" == inst.get_resource_type()
 
@@ -249,7 +247,7 @@ def test_medicationstatement_4(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "medicationstatementexample4.json"
     inst = medicationstatement.MedicationStatement.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicationStatement" == inst.get_resource_type()
 
@@ -334,7 +332,7 @@ def test_medicationstatement_5(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "medicationstatementexample3.json"
     inst = medicationstatement.MedicationStatement.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicationStatement" == inst.get_resource_type()
 
@@ -405,7 +403,7 @@ def test_medicationstatement_6(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "medicationstatementexample2.json"
     inst = medicationstatement.MedicationStatement.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicationStatement" == inst.get_resource_type()
 
@@ -523,7 +521,7 @@ def test_medicationstatement_7(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "medicationstatementexample1.json"
     inst = medicationstatement.MedicationStatement.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicationStatement" == inst.get_resource_type()
 
@@ -567,7 +565,7 @@ def test_medicationstatement_8(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "medicationstatementexample7.json"
     inst = medicationstatement.MedicationStatement.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicationStatement" == inst.get_resource_type()
 
@@ -651,7 +649,7 @@ def test_medicationstatement_9(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "medicationstatementexample6.json"
     inst = medicationstatement.MedicationStatement.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicationStatement" == inst.get_resource_type()
 

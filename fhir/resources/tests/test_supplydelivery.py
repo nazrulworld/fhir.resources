@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import supplydelivery
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -62,9 +60,7 @@ def test_supplydelivery_1(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "supplydelivery-example-ISBT128.json"
     )
-    inst = supplydelivery.SupplyDelivery.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = supplydelivery.SupplyDelivery.model_validate_json(filename.read_bytes())
     assert "SupplyDelivery" == inst.get_resource_type()
 
     impl_supplydelivery_1(inst)
@@ -119,9 +115,7 @@ def test_supplydelivery_2(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "supplydelivery-example-mphodelivery.json"
     )
-    inst = supplydelivery.SupplyDelivery.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = supplydelivery.SupplyDelivery.model_validate_json(filename.read_bytes())
     assert "SupplyDelivery" == inst.get_resource_type()
 
     impl_supplydelivery_2(inst)
@@ -176,9 +170,7 @@ def test_supplydelivery_3(base_settings):
     Test File: supplydelivery-example.json
     """
     filename = base_settings["unittest_data_dir"] / "supplydelivery-example.json"
-    inst = supplydelivery.SupplyDelivery.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = supplydelivery.SupplyDelivery.model_validate_json(filename.read_bytes())
     assert "SupplyDelivery" == inst.get_resource_type()
 
     impl_supplydelivery_3(inst)
@@ -221,9 +213,7 @@ def test_supplydelivery_4(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "supplydelivery-example-pumpdelivery.json"
     )
-    inst = supplydelivery.SupplyDelivery.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = supplydelivery.SupplyDelivery.model_validate_json(filename.read_bytes())
     assert "SupplyDelivery" == inst.get_resource_type()
 
     impl_supplydelivery_4(inst)

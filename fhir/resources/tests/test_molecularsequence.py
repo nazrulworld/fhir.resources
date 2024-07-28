@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import molecularsequence
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -65,7 +63,7 @@ def test_molecularsequence_1(base_settings):
         / "sequence-genetics-example-breastcancer.json"
     )
     inst = molecularsequence.MolecularSequence.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MolecularSequence" == inst.get_resource_type()
 
@@ -131,7 +129,7 @@ def test_molecularsequence_2(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "sequence-complex-variant.json"
     inst = molecularsequence.MolecularSequence.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MolecularSequence" == inst.get_resource_type()
 
@@ -192,7 +190,7 @@ def test_molecularsequence_3(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "sequence-example-TPMT-one.json"
     inst = molecularsequence.MolecularSequence.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MolecularSequence" == inst.get_resource_type()
 
@@ -254,7 +252,7 @@ def test_molecularsequence_4(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "sequence-example-pgx-2.json"
     inst = molecularsequence.MolecularSequence.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MolecularSequence" == inst.get_resource_type()
 
@@ -297,7 +295,7 @@ def test_molecularsequence_5(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "molecularsequence-example.json"
     inst = molecularsequence.MolecularSequence.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MolecularSequence" == inst.get_resource_type()
 
@@ -356,7 +354,7 @@ def test_molecularsequence_6(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "coord-1base-example.json"
     inst = molecularsequence.MolecularSequence.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MolecularSequence" == inst.get_resource_type()
 
@@ -417,7 +415,7 @@ def test_molecularsequence_7(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "sequence-example-TPMT-two.json"
     inst = molecularsequence.MolecularSequence.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MolecularSequence" == inst.get_resource_type()
 
@@ -479,7 +477,7 @@ def test_molecularsequence_8(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "sequence-example-pgx-1.json"
     inst = molecularsequence.MolecularSequence.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MolecularSequence" == inst.get_resource_type()
 
@@ -538,7 +536,7 @@ def test_molecularsequence_9(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "coord-0base-example.json"
     inst = molecularsequence.MolecularSequence.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MolecularSequence" == inst.get_resource_type()
 
@@ -620,7 +618,7 @@ def test_molecularsequence_10(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "sequence-example-ordinal.json"
     inst = molecularsequence.MolecularSequence.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MolecularSequence" == inst.get_resource_type()
 

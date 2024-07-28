@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import list
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -65,7 +63,7 @@ def test_list_1(base_settings):
     Test File: list-example-medlist.json
     """
     filename = base_settings["unittest_data_dir"] / "list-example-medlist.json"
-    inst = list.List.model_validate_json(Path(filename).read_bytes())
+    inst = list.List.model_validate_json(filename.read_bytes())
     assert "List" == inst.get_resource_type()
 
     impl_list_1(inst)
@@ -134,7 +132,7 @@ def test_list_2(base_settings):
     Test File: list-example-xds.json
     """
     filename = base_settings["unittest_data_dir"] / "list-example-xds.json"
-    inst = list.List.model_validate_json(Path(filename).read_bytes())
+    inst = list.List.model_validate_json(filename.read_bytes())
     assert "List" == inst.get_resource_type()
 
     impl_list_2(inst)
@@ -198,7 +196,7 @@ def test_list_3(base_settings):
         base_settings["unittest_data_dir"]
         / "list-example-familyhistory-genetics-profile-annie.json"
     )
-    inst = list.List.model_validate_json(Path(filename).read_bytes())
+    inst = list.List.model_validate_json(filename.read_bytes())
     assert "List" == inst.get_resource_type()
 
     impl_list_3(inst)
@@ -243,7 +241,7 @@ def test_list_4(base_settings):
     Test File: list-example-simple-empty.json
     """
     filename = base_settings["unittest_data_dir"] / "list-example-simple-empty.json"
-    inst = list.List.model_validate_json(Path(filename).read_bytes())
+    inst = list.List.model_validate_json(filename.read_bytes())
     assert "List" == inst.get_resource_type()
 
     impl_list_4(inst)
@@ -299,7 +297,7 @@ def test_list_5(base_settings):
     Test File: list-example-empty.json
     """
     filename = base_settings["unittest_data_dir"] / "list-example-empty.json"
-    inst = list.List.model_validate_json(Path(filename).read_bytes())
+    inst = list.List.model_validate_json(filename.read_bytes())
     assert "List" == inst.get_resource_type()
 
     impl_list_5(inst)
@@ -361,7 +359,7 @@ def test_list_6(base_settings):
         base_settings["unittest_data_dir"]
         / "list-example-familyhistory-genetics-profile.json"
     )
-    inst = list.List.model_validate_json(Path(filename).read_bytes())
+    inst = list.List.model_validate_json(filename.read_bytes())
     assert "List" == inst.get_resource_type()
 
     impl_list_6(inst)
@@ -411,7 +409,7 @@ def test_list_7(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "list-example-familyhistory-f201-roel.json"
     )
-    inst = list.List.model_validate_json(Path(filename).read_bytes())
+    inst = list.List.model_validate_json(filename.read_bytes())
     assert "List" == inst.get_resource_type()
 
     impl_list_7(inst)
@@ -465,7 +463,7 @@ def test_list_8(base_settings):
     Test File: list-example.json
     """
     filename = base_settings["unittest_data_dir"] / "list-example.json"
-    inst = list.List.model_validate_json(Path(filename).read_bytes())
+    inst = list.List.model_validate_json(filename.read_bytes())
     assert "List" == inst.get_resource_type()
 
     impl_list_8(inst)
@@ -530,7 +528,7 @@ def test_list_9(base_settings):
     Test File: list-example-allergies.json
     """
     filename = base_settings["unittest_data_dir"] / "list-example-allergies.json"
-    inst = list.List.model_validate_json(Path(filename).read_bytes())
+    inst = list.List.model_validate_json(filename.read_bytes())
     assert "List" == inst.get_resource_type()
 
     impl_list_9(inst)
@@ -593,7 +591,7 @@ def test_list_10(base_settings):
         base_settings["unittest_data_dir"]
         / "list-example-double-cousin-relationship-pedigree.json"
     )
-    inst = list.List.model_validate_json(Path(filename).read_bytes())
+    inst = list.List.model_validate_json(filename.read_bytes())
     assert "List" == inst.get_resource_type()
 
     impl_list_10(inst)

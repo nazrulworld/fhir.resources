@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import library
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -108,7 +106,7 @@ def test_library_1(base_settings):
     Test File: library-omtk-modelinfo.json
     """
     filename = base_settings["unittest_data_dir"] / "library-omtk-modelinfo.json"
-    inst = library.Library.model_validate_json(Path(filename).read_bytes())
+    inst = library.Library.model_validate_json(filename.read_bytes())
     assert "Library" == inst.get_resource_type()
 
     impl_library_1(inst)
@@ -176,7 +174,7 @@ def test_library_2(base_settings):
     Test File: library-hiv-indicators.json
     """
     filename = base_settings["unittest_data_dir"] / "library-hiv-indicators.json"
-    inst = library.Library.model_validate_json(Path(filename).read_bytes())
+    inst = library.Library.model_validate_json(filename.read_bytes())
     assert "Library" == inst.get_resource_type()
 
     impl_library_2(inst)
@@ -226,7 +224,7 @@ def test_library_3(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "library-quick-model-definition.json"
     )
-    inst = library.Library.model_validate_json(Path(filename).read_bytes())
+    inst = library.Library.model_validate_json(filename.read_bytes())
     assert "Library" == inst.get_resource_type()
 
     impl_library_3(inst)
@@ -369,7 +367,7 @@ def test_library_4(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "library-opioidcds-recommendation-11.json"
     )
-    inst = library.Library.model_validate_json(Path(filename).read_bytes())
+    inst = library.Library.model_validate_json(filename.read_bytes())
     assert "Library" == inst.get_resource_type()
 
     impl_library_4(inst)
@@ -512,7 +510,7 @@ def test_library_5(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "library-opioidcds-recommendation-07.json"
     )
-    inst = library.Library.model_validate_json(Path(filename).read_bytes())
+    inst = library.Library.model_validate_json(filename.read_bytes())
     assert "Library" == inst.get_resource_type()
 
     impl_library_5(inst)
@@ -560,7 +558,7 @@ def test_library_6(base_settings):
     Test File: library-fhir-model-definition.json
     """
     filename = base_settings["unittest_data_dir"] / "library-fhir-model-definition.json"
-    inst = library.Library.model_validate_json(Path(filename).read_bytes())
+    inst = library.Library.model_validate_json(filename.read_bytes())
     assert "Library" == inst.get_resource_type()
 
     impl_library_6(inst)
@@ -618,7 +616,7 @@ def test_library_7(base_settings):
     Test File: library-predecessor-example.json
     """
     filename = base_settings["unittest_data_dir"] / "library-predecessor-example.json"
-    inst = library.Library.model_validate_json(Path(filename).read_bytes())
+    inst = library.Library.model_validate_json(filename.read_bytes())
     assert "Library" == inst.get_resource_type()
 
     impl_library_7(inst)
@@ -766,7 +764,7 @@ def test_library_8(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "library-opioidcds-recommendation-10.json"
     )
-    inst = library.Library.model_validate_json(Path(filename).read_bytes())
+    inst = library.Library.model_validate_json(filename.read_bytes())
     assert "Library" == inst.get_resource_type()
 
     impl_library_8(inst)
@@ -878,7 +876,7 @@ def test_library_9(base_settings):
     Test File: library-cms146-example.json
     """
     filename = base_settings["unittest_data_dir"] / "library-cms146-example.json"
-    inst = library.Library.model_validate_json(Path(filename).read_bytes())
+    inst = library.Library.model_validate_json(filename.read_bytes())
     assert "Library" == inst.get_resource_type()
 
     impl_library_9(inst)
@@ -1028,7 +1026,7 @@ def test_library_10(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "library-opioidcds-recommendation-05.json"
     )
-    inst = library.Library.model_validate_json(Path(filename).read_bytes())
+    inst = library.Library.model_validate_json(filename.read_bytes())
     assert "Library" == inst.get_resource_type()
 
     impl_library_10(inst)

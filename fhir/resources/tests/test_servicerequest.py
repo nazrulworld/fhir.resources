@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import servicerequest
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -60,9 +58,7 @@ def test_servicerequest_1(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "ServiceRequest-genomicServiceRequest.json"
     )
-    inst = servicerequest.ServiceRequest.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = servicerequest.ServiceRequest.model_validate_json(filename.read_bytes())
     assert "ServiceRequest" == inst.get_resource_type()
 
     impl_servicerequest_1(inst)
@@ -138,9 +134,7 @@ def test_servicerequest_2(base_settings):
     Test File: servicerequest-example2.json
     """
     filename = base_settings["unittest_data_dir"] / "servicerequest-example2.json"
-    inst = servicerequest.ServiceRequest.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = servicerequest.ServiceRequest.model_validate_json(filename.read_bytes())
     assert "ServiceRequest" == inst.get_resource_type()
 
     impl_servicerequest_2(inst)
@@ -201,9 +195,7 @@ def test_servicerequest_3(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "ServiceRequest-genomicSRMother.json"
     )
-    inst = servicerequest.ServiceRequest.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = servicerequest.ServiceRequest.model_validate_json(filename.read_bytes())
     assert "ServiceRequest" == inst.get_resource_type()
 
     impl_servicerequest_3(inst)
@@ -257,9 +249,7 @@ def test_servicerequest_4(base_settings):
     Test File: servicerequest-example3.json
     """
     filename = base_settings["unittest_data_dir"] / "servicerequest-example3.json"
-    inst = servicerequest.ServiceRequest.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = servicerequest.ServiceRequest.model_validate_json(filename.read_bytes())
     assert "ServiceRequest" == inst.get_resource_type()
 
     impl_servicerequest_4(inst)
@@ -334,9 +324,7 @@ def test_servicerequest_5(base_settings):
     Test File: servicerequest-example-lipid.json
     """
     filename = base_settings["unittest_data_dir"] / "servicerequest-example-lipid.json"
-    inst = servicerequest.ServiceRequest.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = servicerequest.ServiceRequest.model_validate_json(filename.read_bytes())
     assert "ServiceRequest" == inst.get_resource_type()
 
     impl_servicerequest_5(inst)
@@ -396,9 +384,7 @@ def test_servicerequest_6(base_settings):
         base_settings["unittest_data_dir"]
         / "servicerequest-example-colonoscopy-bx.json"
     )
-    inst = servicerequest.ServiceRequest.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = servicerequest.ServiceRequest.model_validate_json(filename.read_bytes())
     assert "ServiceRequest" == inst.get_resource_type()
 
     impl_servicerequest_6(inst)
@@ -447,9 +433,7 @@ def test_servicerequest_7(base_settings):
     Test File: servicerequest-example4.json
     """
     filename = base_settings["unittest_data_dir"] / "servicerequest-example4.json"
-    inst = servicerequest.ServiceRequest.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = servicerequest.ServiceRequest.model_validate_json(filename.read_bytes())
     assert "ServiceRequest" == inst.get_resource_type()
 
     impl_servicerequest_7(inst)
@@ -511,9 +495,7 @@ def test_servicerequest_8(base_settings):
     Test File: servicerequest-example-edu.json
     """
     filename = base_settings["unittest_data_dir"] / "servicerequest-example-edu.json"
-    inst = servicerequest.ServiceRequest.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = servicerequest.ServiceRequest.model_validate_json(filename.read_bytes())
     assert "ServiceRequest" == inst.get_resource_type()
 
     impl_servicerequest_8(inst)
@@ -567,9 +549,7 @@ def test_servicerequest_9(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "servicerequest-example-ventilation.json"
     )
-    inst = servicerequest.ServiceRequest.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = servicerequest.ServiceRequest.model_validate_json(filename.read_bytes())
     assert "ServiceRequest" == inst.get_resource_type()
 
     impl_servicerequest_9(inst)
@@ -625,9 +605,7 @@ def test_servicerequest_10(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "servicerequest-example-ambulation.json"
     )
-    inst = servicerequest.ServiceRequest.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = servicerequest.ServiceRequest.model_validate_json(filename.read_bytes())
     assert "ServiceRequest" == inst.get_resource_type()
 
     impl_servicerequest_10(inst)

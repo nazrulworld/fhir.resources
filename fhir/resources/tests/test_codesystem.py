@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import codesystem
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -122,7 +120,7 @@ def test_codesystem_1(base_settings):
     Test File: codesystem-map-model-mode.json
     """
     filename = base_settings["unittest_data_dir"] / "codesystem-map-model-mode.json"
-    inst = codesystem.CodeSystem.model_validate_json(Path(filename).read_bytes())
+    inst = codesystem.CodeSystem.model_validate_json(filename.read_bytes())
     assert "CodeSystem" == inst.get_resource_type()
 
     impl_codesystem_1(inst)
@@ -220,7 +218,7 @@ def test_codesystem_2(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "codesystem-research-study-focus-type.json"
     )
-    inst = codesystem.CodeSystem.model_validate_json(Path(filename).read_bytes())
+    inst = codesystem.CodeSystem.model_validate_json(filename.read_bytes())
     assert "CodeSystem" == inst.get_resource_type()
 
     impl_codesystem_2(inst)
@@ -343,7 +341,7 @@ def test_codesystem_3(base_settings):
         base_settings["unittest_data_dir"]
         / "codesystem-codesystem-hierarchy-meaning.json"
     )
-    inst = codesystem.CodeSystem.model_validate_json(Path(filename).read_bytes())
+    inst = codesystem.CodeSystem.model_validate_json(filename.read_bytes())
     assert "CodeSystem" == inst.get_resource_type()
 
     impl_codesystem_3(inst)
@@ -519,7 +517,7 @@ def test_codesystem_4(base_settings):
     Test File: codesystem-map-transform.json
     """
     filename = base_settings["unittest_data_dir"] / "codesystem-map-transform.json"
-    inst = codesystem.CodeSystem.model_validate_json(Path(filename).read_bytes())
+    inst = codesystem.CodeSystem.model_validate_json(filename.read_bytes())
     assert "CodeSystem" == inst.get_resource_type()
 
     impl_codesystem_4(inst)
@@ -687,7 +685,7 @@ def test_codesystem_5(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "codesystem-therapy-relationship-type.json"
     )
-    inst = codesystem.CodeSystem.model_validate_json(Path(filename).read_bytes())
+    inst = codesystem.CodeSystem.model_validate_json(filename.read_bytes())
     assert "CodeSystem" == inst.get_resource_type()
 
     impl_codesystem_5(inst)
@@ -804,7 +802,7 @@ def test_codesystem_6(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "codesystem-imagingstudy-status.json"
     )
-    inst = codesystem.CodeSystem.model_validate_json(Path(filename).read_bytes())
+    inst = codesystem.CodeSystem.model_validate_json(filename.read_bytes())
     assert "CodeSystem" == inst.get_resource_type()
 
     impl_codesystem_6(inst)
@@ -879,7 +877,7 @@ def test_codesystem_7(base_settings):
     Test File: codesystem-catalogType.json
     """
     filename = base_settings["unittest_data_dir"] / "codesystem-catalogType.json"
-    inst = codesystem.CodeSystem.model_validate_json(Path(filename).read_bytes())
+    inst = codesystem.CodeSystem.model_validate_json(filename.read_bytes())
     assert "CodeSystem" == inst.get_resource_type()
 
     impl_codesystem_7(inst)
@@ -970,7 +968,7 @@ def test_codesystem_8(base_settings):
     Test File: codesystem-message-events.json
     """
     filename = base_settings["unittest_data_dir"] / "codesystem-message-events.json"
-    inst = codesystem.CodeSystem.model_validate_json(Path(filename).read_bytes())
+    inst = codesystem.CodeSystem.model_validate_json(filename.read_bytes())
     assert "CodeSystem" == inst.get_resource_type()
 
     impl_codesystem_8(inst)
@@ -1087,7 +1085,7 @@ def test_codesystem_9(base_settings):
     Test File: codesystem-ingredient-role.json
     """
     filename = base_settings["unittest_data_dir"] / "codesystem-ingredient-role.json"
-    inst = codesystem.CodeSystem.model_validate_json(Path(filename).read_bytes())
+    inst = codesystem.CodeSystem.model_validate_json(filename.read_bytes())
     assert "CodeSystem" == inst.get_resource_type()
 
     impl_codesystem_9(inst)
@@ -1200,7 +1198,7 @@ def test_codesystem_10(base_settings):
     Test File: codesystem-color-names.json
     """
     filename = base_settings["unittest_data_dir"] / "codesystem-color-names.json"
-    inst = codesystem.CodeSystem.model_validate_json(Path(filename).read_bytes())
+    inst = codesystem.CodeSystem.model_validate_json(filename.read_bytes())
     assert "CodeSystem" == inst.get_resource_type()
 
     impl_codesystem_10(inst)

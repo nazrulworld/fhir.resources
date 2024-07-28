@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import structuremap
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -115,7 +113,7 @@ def test_structuremap_1(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "structuremap-supplyrequest-transform.json"
     )
-    inst = structuremap.StructureMap.model_validate_json(Path(filename).read_bytes())
+    inst = structuremap.StructureMap.model_validate_json(filename.read_bytes())
     assert "StructureMap" == inst.get_resource_type()
 
     impl_structuremap_1(inst)
@@ -181,7 +179,7 @@ def test_structuremap_2(base_settings):
     Test File: structuremap-example.json
     """
     filename = base_settings["unittest_data_dir"] / "structuremap-example.json"
-    inst = structuremap.StructureMap.model_validate_json(Path(filename).read_bytes())
+    inst = structuremap.StructureMap.model_validate_json(filename.read_bytes())
     assert "StructureMap" == inst.get_resource_type()
 
     impl_structuremap_2(inst)

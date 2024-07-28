@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import transport
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -42,7 +40,7 @@ def test_transport_1(base_settings):
     Test File: transport-example.json
     """
     filename = base_settings["unittest_data_dir"] / "transport-example.json"
-    inst = transport.Transport.model_validate_json(Path(filename).read_bytes())
+    inst = transport.Transport.model_validate_json(filename.read_bytes())
     assert "Transport" == inst.get_resource_type()
 
     impl_transport_1(inst)

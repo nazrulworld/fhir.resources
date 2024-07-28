@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import detectedissue
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -34,7 +32,7 @@ def test_detectedissue_1(base_settings):
     Test File: detectedissue-example-allergy.json
     """
     filename = base_settings["unittest_data_dir"] / "detectedissue-example-allergy.json"
-    inst = detectedissue.DetectedIssue.model_validate_json(Path(filename).read_bytes())
+    inst = detectedissue.DetectedIssue.model_validate_json(filename.read_bytes())
     assert "DetectedIssue" == inst.get_resource_type()
 
     impl_detectedissue_1(inst)
@@ -103,7 +101,7 @@ def test_detectedissue_2(base_settings):
     Test File: detectedissue-example-dup.json
     """
     filename = base_settings["unittest_data_dir"] / "detectedissue-example-dup.json"
-    inst = detectedissue.DetectedIssue.model_validate_json(Path(filename).read_bytes())
+    inst = detectedissue.DetectedIssue.model_validate_json(filename.read_bytes())
     assert "DetectedIssue" == inst.get_resource_type()
 
     impl_detectedissue_2(inst)
@@ -183,7 +181,7 @@ def test_detectedissue_3(base_settings):
     Test File: detectedissue-example.json
     """
     filename = base_settings["unittest_data_dir"] / "detectedissue-example.json"
-    inst = detectedissue.DetectedIssue.model_validate_json(Path(filename).read_bytes())
+    inst = detectedissue.DetectedIssue.model_validate_json(filename.read_bytes())
     assert "DetectedIssue" == inst.get_resource_type()
 
     impl_detectedissue_3(inst)
@@ -218,7 +216,7 @@ def test_detectedissue_4(base_settings):
     Test File: detectedissue-example-lab.json
     """
     filename = base_settings["unittest_data_dir"] / "detectedissue-example-lab.json"
-    inst = detectedissue.DetectedIssue.model_validate_json(Path(filename).read_bytes())
+    inst = detectedissue.DetectedIssue.model_validate_json(filename.read_bytes())
     assert "DetectedIssue" == inst.get_resource_type()
 
     impl_detectedissue_4(inst)

@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import activitydefinition
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -69,7 +67,7 @@ def test_activitydefinition_1(base_settings):
         / "activitydefinition-administer-zika-virus-exposure-assessment.json"
     )
     inst = activitydefinition.ActivityDefinition.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "ActivityDefinition" == inst.get_resource_type()
 
@@ -139,7 +137,7 @@ def test_activitydefinition_2(base_settings):
         / "activitydefinition-provide-mosquito-prevention-advice.json"
     )
     inst = activitydefinition.ActivityDefinition.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "ActivityDefinition" == inst.get_resource_type()
 
@@ -361,7 +359,7 @@ def test_activitydefinition_3(base_settings):
         / "activitydefinition-predecessor-example.json"
     )
     inst = activitydefinition.ActivityDefinition.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "ActivityDefinition" == inst.get_resource_type()
 
@@ -423,7 +421,7 @@ def test_activitydefinition_4(base_settings):
         / "activitydefinition-order-serum-zika-dengue-virus-igm.json"
     )
     inst = activitydefinition.ActivityDefinition.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "ActivityDefinition" == inst.get_resource_type()
 
@@ -673,7 +671,7 @@ def test_activitydefinition_5(base_settings):
         / "activitydefinition-medicationorder-example.json"
     )
     inst = activitydefinition.ActivityDefinition.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "ActivityDefinition" == inst.get_resource_type()
 
@@ -782,7 +780,7 @@ def test_activitydefinition_6(base_settings):
         / "activitydefinition-example-alteplase-dosing.json"
     )
     inst = activitydefinition.ActivityDefinition.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "ActivityDefinition" == inst.get_resource_type()
 
@@ -1002,7 +1000,7 @@ def test_activitydefinition_7(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "activitydefinition-example.json"
     inst = activitydefinition.ActivityDefinition.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "ActivityDefinition" == inst.get_resource_type()
 
@@ -1051,7 +1049,7 @@ def test_activitydefinition_8(base_settings):
         / "activitydefinition-order-serum-dengue-virus-igm.json"
     )
     inst = activitydefinition.ActivityDefinition.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "ActivityDefinition" == inst.get_resource_type()
 
@@ -1146,7 +1144,7 @@ def test_activitydefinition_9(base_settings):
         / "activitydefinition-servicerequest-example.json"
     )
     inst = activitydefinition.ActivityDefinition.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "ActivityDefinition" == inst.get_resource_type()
 
@@ -1194,7 +1192,7 @@ def test_activitydefinition_10(base_settings):
         / "activitydefinition-supplyrequest-example.json"
     )
     inst = activitydefinition.ActivityDefinition.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "ActivityDefinition" == inst.get_resource_type()
 

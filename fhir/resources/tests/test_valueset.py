@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import valueset
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -106,7 +104,7 @@ def test_valueset_1(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "valueset-definition-resource-types.json"
     )
-    inst = valueset.ValueSet.model_validate_json(Path(filename).read_bytes())
+    inst = valueset.ValueSet.model_validate_json(filename.read_bytes())
     assert "ValueSet" == inst.get_resource_type()
 
     impl_valueset_1(inst)
@@ -197,7 +195,7 @@ def test_valueset_2(base_settings):
     Test File: valueset-location-form.json
     """
     filename = base_settings["unittest_data_dir"] / "valueset-location-form.json"
-    inst = valueset.ValueSet.model_validate_json(Path(filename).read_bytes())
+    inst = valueset.ValueSet.model_validate_json(filename.read_bytes())
     assert "ValueSet" == inst.get_resource_type()
 
     impl_valueset_2(inst)
@@ -300,7 +298,7 @@ def test_valueset_3(base_settings):
     Test File: valueset-genomicstudy-status.json
     """
     filename = base_settings["unittest_data_dir"] / "valueset-genomicstudy-status.json"
-    inst = valueset.ValueSet.model_validate_json(Path(filename).read_bytes())
+    inst = valueset.ValueSet.model_validate_json(filename.read_bytes())
     assert "ValueSet" == inst.get_resource_type()
 
     impl_valueset_3(inst)
@@ -409,7 +407,7 @@ def test_valueset_4(base_settings):
         base_settings["unittest_data_dir"]
         / "valueset-bodystructure-relative-location.json"
     )
-    inst = valueset.ValueSet.model_validate_json(Path(filename).read_bytes())
+    inst = valueset.ValueSet.model_validate_json(filename.read_bytes())
     assert "ValueSet" == inst.get_resource_type()
 
     impl_valueset_4(inst)
@@ -518,7 +516,7 @@ def test_valueset_5(base_settings):
     Test File: valueset-encounter-status.json
     """
     filename = base_settings["unittest_data_dir"] / "valueset-encounter-status.json"
-    inst = valueset.ValueSet.model_validate_json(Path(filename).read_bytes())
+    inst = valueset.ValueSet.model_validate_json(filename.read_bytes())
     assert "ValueSet" == inst.get_resource_type()
 
     impl_valueset_5(inst)
@@ -627,7 +625,7 @@ def test_valueset_6(base_settings):
     Test File: valueset-report-status-codes.json
     """
     filename = base_settings["unittest_data_dir"] / "valueset-report-status-codes.json"
-    inst = valueset.ValueSet.model_validate_json(Path(filename).read_bytes())
+    inst = valueset.ValueSet.model_validate_json(filename.read_bytes())
     assert "ValueSet" == inst.get_resource_type()
 
     impl_valueset_6(inst)
@@ -728,7 +726,7 @@ def test_valueset_7(base_settings):
     Test File: valueset-note-type.json
     """
     filename = base_settings["unittest_data_dir"] / "valueset-note-type.json"
-    inst = valueset.ValueSet.model_validate_json(Path(filename).read_bytes())
+    inst = valueset.ValueSet.model_validate_json(filename.read_bytes())
     assert "ValueSet" == inst.get_resource_type()
 
     impl_valueset_7(inst)
@@ -850,7 +848,7 @@ def test_valueset_8(base_settings):
     Test File: valueset-issue-severity.json
     """
     filename = base_settings["unittest_data_dir"] / "valueset-issue-severity.json"
-    inst = valueset.ValueSet.model_validate_json(Path(filename).read_bytes())
+    inst = valueset.ValueSet.model_validate_json(filename.read_bytes())
     assert "ValueSet" == inst.get_resource_type()
 
     impl_valueset_8(inst)
@@ -954,7 +952,7 @@ def test_valueset_9(base_settings):
         base_settings["unittest_data_dir"]
         / "valueset-substance-source-material-genus.json"
     )
-    inst = valueset.ValueSet.model_validate_json(Path(filename).read_bytes())
+    inst = valueset.ValueSet.model_validate_json(filename.read_bytes())
     assert "ValueSet" == inst.get_resource_type()
 
     impl_valueset_9(inst)
@@ -1056,7 +1054,7 @@ def test_valueset_10(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "valueset-cited-artifact-part-type.json"
     )
-    inst = valueset.ValueSet.model_validate_json(Path(filename).read_bytes())
+    inst = valueset.ValueSet.model_validate_json(filename.read_bytes())
     assert "ValueSet" == inst.get_resource_type()
 
     impl_valueset_10(inst)

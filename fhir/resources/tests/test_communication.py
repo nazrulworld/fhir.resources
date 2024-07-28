@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import communication
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -53,7 +51,10 @@ def impl_communication_1(inst):
             valueDateTime="2010-02-01T11:50:23-05:00"
         ).valueDateTime
     )
-    assert inst.payload[0].contentAttachment.data == bytes_validator("SGVsbG8=")
+    assert (
+        inst.payload[0].contentAttachment.data
+        == ExternalValidatorModel(valueBase64Binary="SGVsbG8=").valueBase64Binary
+    )
     assert inst.payload[0].contentAttachment.title == "accident notes 20100201.pdf"
     assert inst.payload[1].contentAttachment.contentType == "application/pdf"
     assert (
@@ -62,7 +63,12 @@ def impl_communication_1(inst):
             valueDateTime="2010-02-01T10:57:34+01:00"
         ).valueDateTime
     )
-    assert inst.payload[1].contentAttachment.hash == bytes_validator("SGVsbG8gdGhlcmU=")
+    assert (
+        inst.payload[1].contentAttachment.hash
+        == ExternalValidatorModel(
+            valueBase64Binary="SGVsbG8gdGhlcmU="
+        ).valueBase64Binary
+    )
     # Don't know how to create unit test
     # for "payload[1].contentAttachment.size",
     # which is a Integer64
@@ -106,7 +112,7 @@ def test_communication_1(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "communication-example-fm-attachment.json"
     )
-    inst = communication.Communication.model_validate_json(Path(filename).read_bytes())
+    inst = communication.Communication.model_validate_json(filename.read_bytes())
     assert "Communication" == inst.get_resource_type()
 
     impl_communication_1(inst)
@@ -152,7 +158,10 @@ def impl_communication_2(inst):
             valueDateTime="2010-02-01T11:50:23-05:00"
         ).valueDateTime
     )
-    assert inst.payload[0].contentAttachment.data == bytes_validator("SGVsbG8=")
+    assert (
+        inst.payload[0].contentAttachment.data
+        == ExternalValidatorModel(valueBase64Binary="SGVsbG8=").valueBase64Binary
+    )
     assert inst.payload[0].contentAttachment.title == "accident notes 20100201.pdf"
     assert inst.payload[1].contentAttachment.contentType == "application/pdf"
     assert (
@@ -161,7 +170,12 @@ def impl_communication_2(inst):
             valueDateTime="2010-02-01T10:57:34+01:00"
         ).valueDateTime
     )
-    assert inst.payload[1].contentAttachment.hash == bytes_validator("SGVsbG8gdGhlcmU=")
+    assert (
+        inst.payload[1].contentAttachment.hash
+        == ExternalValidatorModel(
+            valueBase64Binary="SGVsbG8gdGhlcmU="
+        ).valueBase64Binary
+    )
     # Don't know how to create unit test
     # for "payload[1].contentAttachment.size",
     # which is a Integer64
@@ -196,7 +210,7 @@ def test_communication_2(base_settings):
         base_settings["unittest_data_dir"]
         / "communication-example-fm-solicited-attachment.json"
     )
-    inst = communication.Communication.model_validate_json(Path(filename).read_bytes())
+    inst = communication.Communication.model_validate_json(filename.read_bytes())
     assert "Communication" == inst.get_resource_type()
 
     impl_communication_2(inst)
@@ -279,7 +293,7 @@ def test_communication_3(base_settings):
     Test File: communication-example.json
     """
     filename = base_settings["unittest_data_dir"] / "communication-example.json"
-    inst = communication.Communication.model_validate_json(Path(filename).read_bytes())
+    inst = communication.Communication.model_validate_json(filename.read_bytes())
     assert "Communication" == inst.get_resource_type()
 
     impl_communication_3(inst)

@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import group
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -48,7 +46,7 @@ def test_group_1(base_settings):
     Test File: group-example.json
     """
     filename = base_settings["unittest_data_dir"] / "group-example.json"
-    inst = group.Group.model_validate_json(Path(filename).read_bytes())
+    inst = group.Group.model_validate_json(filename.read_bytes())
     assert "Group" == inst.get_resource_type()
 
     impl_group_1(inst)
@@ -102,7 +100,7 @@ def test_group_2(base_settings):
     Test File: group-example-member.json
     """
     filename = base_settings["unittest_data_dir"] / "group-example-member.json"
-    inst = group.Group.model_validate_json(Path(filename).read_bytes())
+    inst = group.Group.model_validate_json(filename.read_bytes())
     assert "Group" == inst.get_resource_type()
 
     impl_group_2(inst)
@@ -143,7 +141,7 @@ def test_group_3(base_settings):
     Test File: group-example-patientlist.json
     """
     filename = base_settings["unittest_data_dir"] / "group-example-patientlist.json"
-    inst = group.Group.model_validate_json(Path(filename).read_bytes())
+    inst = group.Group.model_validate_json(filename.read_bytes())
     assert "Group" == inst.get_resource_type()
 
     impl_group_3(inst)
@@ -208,7 +206,7 @@ def test_group_4(base_settings):
     Test File: group-example-herd1.json
     """
     filename = base_settings["unittest_data_dir"] / "group-example-herd1.json"
-    inst = group.Group.model_validate_json(Path(filename).read_bytes())
+    inst = group.Group.model_validate_json(filename.read_bytes())
     assert "Group" == inst.get_resource_type()
 
     impl_group_4(inst)
@@ -291,7 +289,7 @@ def test_group_5(base_settings):
     Test File: Group-denovoFamily.json
     """
     filename = base_settings["unittest_data_dir"] / "Group-denovoFamily.json"
-    inst = group.Group.model_validate_json(Path(filename).read_bytes())
+    inst = group.Group.model_validate_json(filename.read_bytes())
     assert "Group" == inst.get_resource_type()
 
     impl_group_5(inst)

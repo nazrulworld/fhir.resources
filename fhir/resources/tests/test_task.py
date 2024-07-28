@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import task
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -111,7 +109,7 @@ def test_task_1(base_settings):
     Test File: task-example6.json
     """
     filename = base_settings["unittest_data_dir"] / "task-example6.json"
-    inst = task.Task.model_validate_json(Path(filename).read_bytes())
+    inst = task.Task.model_validate_json(filename.read_bytes())
     assert "Task" == inst.get_resource_type()
 
     impl_task_1(inst)
@@ -202,7 +200,7 @@ def test_task_2(base_settings):
     Test File: task-example-fm-poll.json
     """
     filename = base_settings["unittest_data_dir"] / "task-example-fm-poll.json"
-    inst = task.Task.model_validate_json(Path(filename).read_bytes())
+    inst = task.Task.model_validate_json(filename.read_bytes())
     assert "Task" == inst.get_resource_type()
 
     impl_task_2(inst)
@@ -317,7 +315,7 @@ def test_task_3(base_settings):
     Test File: task-example1.json
     """
     filename = base_settings["unittest_data_dir"] / "task-example1.json"
-    inst = task.Task.model_validate_json(Path(filename).read_bytes())
+    inst = task.Task.model_validate_json(filename.read_bytes())
     assert "Task" == inst.get_resource_type()
 
     impl_task_3(inst)
@@ -428,7 +426,7 @@ def test_task_4(base_settings):
     Test File: task-example-fm-reprocess.json
     """
     filename = base_settings["unittest_data_dir"] / "task-example-fm-reprocess.json"
-    inst = task.Task.model_validate_json(Path(filename).read_bytes())
+    inst = task.Task.model_validate_json(filename.read_bytes())
     assert "Task" == inst.get_resource_type()
 
     impl_task_4(inst)
@@ -478,7 +476,7 @@ def test_task_5(base_settings):
     Test File: task-example3.json
     """
     filename = base_settings["unittest_data_dir"] / "task-example3.json"
-    inst = task.Task.model_validate_json(Path(filename).read_bytes())
+    inst = task.Task.model_validate_json(filename.read_bytes())
     assert "Task" == inst.get_resource_type()
 
     impl_task_5(inst)
@@ -567,7 +565,7 @@ def test_task_6(base_settings):
     Test File: task-example-fm-status-resp.json
     """
     filename = base_settings["unittest_data_dir"] / "task-example-fm-status-resp.json"
-    inst = task.Task.model_validate_json(Path(filename).read_bytes())
+    inst = task.Task.model_validate_json(filename.read_bytes())
     assert "Task" == inst.get_resource_type()
 
     impl_task_6(inst)
@@ -605,7 +603,7 @@ def test_task_7(base_settings):
     Test File: task-cpg-example-1.json
     """
     filename = base_settings["unittest_data_dir"] / "task-cpg-example-1.json"
-    inst = task.Task.model_validate_json(Path(filename).read_bytes())
+    inst = task.Task.model_validate_json(filename.read_bytes())
     assert "Task" == inst.get_resource_type()
 
     impl_task_7(inst)
@@ -709,7 +707,7 @@ def test_task_8(base_settings):
     Test File: task-example2.json
     """
     filename = base_settings["unittest_data_dir"] / "task-example2.json"
-    inst = task.Task.model_validate_json(Path(filename).read_bytes())
+    inst = task.Task.model_validate_json(filename.read_bytes())
     assert "Task" == inst.get_resource_type()
 
     impl_task_8(inst)
@@ -796,7 +794,7 @@ def test_task_9(base_settings):
     Test File: task-example-fm-release.json
     """
     filename = base_settings["unittest_data_dir"] / "task-example-fm-release.json"
-    inst = task.Task.model_validate_json(Path(filename).read_bytes())
+    inst = task.Task.model_validate_json(filename.read_bytes())
     assert "Task" == inst.get_resource_type()
 
     impl_task_9(inst)
@@ -869,7 +867,7 @@ def test_task_10(base_settings):
     Test File: task-example-fm-cancel.json
     """
     filename = base_settings["unittest_data_dir"] / "task-example-fm-cancel.json"
-    inst = task.Task.model_validate_json(Path(filename).read_bytes())
+    inst = task.Task.model_validate_json(filename.read_bytes())
     assert "Task" == inst.get_resource_type()
 
     impl_task_10(inst)

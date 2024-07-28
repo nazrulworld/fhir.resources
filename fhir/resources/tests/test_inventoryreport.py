@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import inventoryreport
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -36,9 +34,7 @@ def test_inventoryreport_1(base_settings):
     Test File: inventoryreport-example.json
     """
     filename = base_settings["unittest_data_dir"] / "inventoryreport-example.json"
-    inst = inventoryreport.InventoryReport.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = inventoryreport.InventoryReport.model_validate_json(filename.read_bytes())
     assert "InventoryReport" == inst.get_resource_type()
 
     impl_inventoryreport_1(inst)

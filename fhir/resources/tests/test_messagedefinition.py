@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import messagedefinition
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -58,7 +56,7 @@ def test_messagedefinition_1(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "messagedefinition-example.json"
     inst = messagedefinition.MessageDefinition.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MessageDefinition" == inst.get_resource_type()
 
@@ -158,7 +156,7 @@ def test_messagedefinition_2(base_settings):
         / "messagedefinition-patient-link-notification.json"
     )
     inst = messagedefinition.MessageDefinition.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MessageDefinition" == inst.get_resource_type()
 
@@ -248,7 +246,7 @@ def test_messagedefinition_3(base_settings):
         / "messagedefinition-patient-link-response.json"
     )
     inst = messagedefinition.MessageDefinition.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MessageDefinition" == inst.get_resource_type()
 

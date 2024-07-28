@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import subscriptiontopic
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -102,7 +100,7 @@ def test_subscriptiontopic_1(base_settings):
         base_settings["unittest_data_dir"] / "subscriptiontopic-example-admission.json"
     )
     inst = subscriptiontopic.SubscriptionTopic.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "SubscriptionTopic" == inst.get_resource_type()
 
@@ -214,7 +212,7 @@ def test_subscriptiontopic_2(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "subscriptiontopic-example.json"
     inst = subscriptiontopic.SubscriptionTopic.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "SubscriptionTopic" == inst.get_resource_type()
 

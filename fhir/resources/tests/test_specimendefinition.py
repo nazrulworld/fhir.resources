@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import specimendefinition
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -245,7 +243,7 @@ def test_specimendefinition_1(base_settings):
         / "specimendefinition-example-serum-plasma.json"
     )
     inst = specimendefinition.SpecimenDefinition.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "SpecimenDefinition" == inst.get_resource_type()
 
@@ -347,7 +345,7 @@ def test_specimendefinition_2(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "specimendefinition-example.json"
     inst = specimendefinition.SpecimenDefinition.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "SpecimenDefinition" == inst.get_resource_type()
 

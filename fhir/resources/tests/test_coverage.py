@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import coverage
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -120,7 +118,7 @@ def test_coverage_1(base_settings):
     Test File: coverage-example-2.json
     """
     filename = base_settings["unittest_data_dir"] / "coverage-example-2.json"
-    inst = coverage.Coverage.model_validate_json(Path(filename).read_bytes())
+    inst = coverage.Coverage.model_validate_json(filename.read_bytes())
     assert "Coverage" == inst.get_resource_type()
 
     impl_coverage_1(inst)
@@ -180,7 +178,7 @@ def test_coverage_2(base_settings):
     Test File: coverage-example-selfpay.json
     """
     filename = base_settings["unittest_data_dir"] / "coverage-example-selfpay.json"
-    inst = coverage.Coverage.model_validate_json(Path(filename).read_bytes())
+    inst = coverage.Coverage.model_validate_json(filename.read_bytes())
     assert "Coverage" == inst.get_resource_type()
 
     impl_coverage_2(inst)
@@ -244,7 +242,7 @@ def test_coverage_3(base_settings):
     Test File: coverage-example-ehic.json
     """
     filename = base_settings["unittest_data_dir"] / "coverage-example-ehic.json"
-    inst = coverage.Coverage.model_validate_json(Path(filename).read_bytes())
+    inst = coverage.Coverage.model_validate_json(filename.read_bytes())
     assert "Coverage" == inst.get_resource_type()
 
     impl_coverage_3(inst)
@@ -401,7 +399,7 @@ def test_coverage_4(base_settings):
     Test File: coverage-example.json
     """
     filename = base_settings["unittest_data_dir"] / "coverage-example.json"
-    inst = coverage.Coverage.model_validate_json(Path(filename).read_bytes())
+    inst = coverage.Coverage.model_validate_json(filename.read_bytes())
     assert "Coverage" == inst.get_resource_type()
 
     impl_coverage_4(inst)

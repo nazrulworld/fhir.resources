@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import encounterhistory
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -53,9 +51,7 @@ def test_encounterhistory_1(base_settings):
     Test File: encounterhistory-example.json
     """
     filename = base_settings["unittest_data_dir"] / "encounterhistory-example.json"
-    inst = encounterhistory.EncounterHistory.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = encounterhistory.EncounterHistory.model_validate_json(filename.read_bytes())
     assert "EncounterHistory" == inst.get_resource_type()
 
     impl_encounterhistory_1(inst)

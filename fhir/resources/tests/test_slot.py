@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import slot
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -54,7 +52,7 @@ def test_slot_1(base_settings):
     Test File: slot-example-busy.json
     """
     filename = base_settings["unittest_data_dir"] / "slot-example-busy.json"
-    inst = slot.Slot.model_validate_json(Path(filename).read_bytes())
+    inst = slot.Slot.model_validate_json(filename.read_bytes())
     assert "Slot" == inst.get_resource_type()
 
     impl_slot_1(inst)
@@ -116,7 +114,7 @@ def test_slot_2(base_settings):
     Test File: slot-example.json
     """
     filename = base_settings["unittest_data_dir"] / "slot-example.json"
-    inst = slot.Slot.model_validate_json(Path(filename).read_bytes())
+    inst = slot.Slot.model_validate_json(filename.read_bytes())
     assert "Slot" == inst.get_resource_type()
 
     impl_slot_2(inst)
@@ -166,7 +164,7 @@ def test_slot_3(base_settings):
     Test File: slot-example-hcs.json
     """
     filename = base_settings["unittest_data_dir"] / "slot-example-hcs.json"
-    inst = slot.Slot.model_validate_json(Path(filename).read_bytes())
+    inst = slot.Slot.model_validate_json(filename.read_bytes())
     assert "Slot" == inst.get_resource_type()
 
     impl_slot_3(inst)
@@ -210,7 +208,7 @@ def test_slot_4(base_settings):
     Test File: slot-example-unavailable.json
     """
     filename = base_settings["unittest_data_dir"] / "slot-example-unavailable.json"
-    inst = slot.Slot.model_validate_json(Path(filename).read_bytes())
+    inst = slot.Slot.model_validate_json(filename.read_bytes())
     assert "Slot" == inst.get_resource_type()
 
     impl_slot_4(inst)
@@ -254,7 +252,7 @@ def test_slot_5(base_settings):
     Test File: slot-example-tentative.json
     """
     filename = base_settings["unittest_data_dir"] / "slot-example-tentative.json"
-    inst = slot.Slot.model_validate_json(Path(filename).read_bytes())
+    inst = slot.Slot.model_validate_json(filename.read_bytes())
     assert "Slot" == inst.get_resource_type()
 
     impl_slot_5(inst)

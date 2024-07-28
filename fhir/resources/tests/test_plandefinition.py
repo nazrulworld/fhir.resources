@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import plandefinition
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -300,9 +298,7 @@ def test_plandefinition_1(base_settings):
         base_settings["unittest_data_dir"]
         / "plandefinition-example-kdn5-simplified.json"
     )
-    inst = plandefinition.PlanDefinition.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = plandefinition.PlanDefinition.model_validate_json(filename.read_bytes())
     assert "PlanDefinition" == inst.get_resource_type()
 
     impl_plandefinition_1(inst)
@@ -364,9 +360,7 @@ def test_plandefinition_2(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "plandefinition-options-example.json"
     )
-    inst = plandefinition.PlanDefinition.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = plandefinition.PlanDefinition.model_validate_json(filename.read_bytes())
     assert "PlanDefinition" == inst.get_resource_type()
 
     impl_plandefinition_2(inst)
@@ -444,9 +438,7 @@ def test_plandefinition_3(base_settings):
         base_settings["unittest_data_dir"]
         / "plandefinition-exclusive-breastfeeding-intervention-02.json"
     )
-    inst = plandefinition.PlanDefinition.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = plandefinition.PlanDefinition.model_validate_json(filename.read_bytes())
     assert "PlanDefinition" == inst.get_resource_type()
 
     impl_plandefinition_3(inst)
@@ -542,9 +534,7 @@ def test_plandefinition_4(base_settings):
         base_settings["unittest_data_dir"]
         / "plandefinition-exclusive-breastfeeding-intervention-03.json"
     )
-    inst = plandefinition.PlanDefinition.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = plandefinition.PlanDefinition.model_validate_json(filename.read_bytes())
     assert "PlanDefinition" == inst.get_resource_type()
 
     impl_plandefinition_4(inst)
@@ -1067,9 +1057,7 @@ def test_plandefinition_5(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "plandefinition-example-cardiology-os.json"
     )
-    inst = plandefinition.PlanDefinition.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = plandefinition.PlanDefinition.model_validate_json(filename.read_bytes())
     assert "PlanDefinition" == inst.get_resource_type()
 
     impl_plandefinition_5(inst)
@@ -1191,9 +1179,7 @@ def test_plandefinition_6(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "plandefinition-protocol-example.json"
     )
-    inst = plandefinition.PlanDefinition.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = plandefinition.PlanDefinition.model_validate_json(filename.read_bytes())
     assert "PlanDefinition" == inst.get_resource_type()
 
     impl_plandefinition_6(inst)
@@ -1743,9 +1729,7 @@ def test_plandefinition_7(base_settings):
     Test File: plandefinition-example.json
     """
     filename = base_settings["unittest_data_dir"] / "plandefinition-example.json"
-    inst = plandefinition.PlanDefinition.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = plandefinition.PlanDefinition.model_validate_json(filename.read_bytes())
     assert "PlanDefinition" == inst.get_resource_type()
 
     impl_plandefinition_7(inst)
@@ -1962,9 +1946,7 @@ def test_plandefinition_8(base_settings):
     Test File: plandefinition-opioidcds-08.json
     """
     filename = base_settings["unittest_data_dir"] / "plandefinition-opioidcds-08.json"
-    inst = plandefinition.PlanDefinition.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = plandefinition.PlanDefinition.model_validate_json(filename.read_bytes())
     assert "PlanDefinition" == inst.get_resource_type()
 
     impl_plandefinition_8(inst)
@@ -2046,9 +2028,7 @@ def test_plandefinition_9(base_settings):
         base_settings["unittest_data_dir"]
         / "plandefinition-exclusive-breastfeeding-intervention-04.json"
     )
-    inst = plandefinition.PlanDefinition.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = plandefinition.PlanDefinition.model_validate_json(filename.read_bytes())
     assert "PlanDefinition" == inst.get_resource_type()
 
     impl_plandefinition_9(inst)
@@ -2274,9 +2254,7 @@ def test_plandefinition_10(base_settings):
     Test File: plandefinition-opioidcds-04.json
     """
     filename = base_settings["unittest_data_dir"] / "plandefinition-opioidcds-04.json"
-    inst = plandefinition.PlanDefinition.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = plandefinition.PlanDefinition.model_validate_json(filename.read_bytes())
     assert "PlanDefinition" == inst.get_resource_type()
 
     impl_plandefinition_10(inst)

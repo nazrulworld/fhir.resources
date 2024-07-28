@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import claim
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -186,7 +184,7 @@ def test_claim_1(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "claim-example-institutional-rich.json"
     )
-    inst = claim.Claim.model_validate_json(Path(filename).read_bytes())
+    inst = claim.Claim.model_validate_json(filename.read_bytes())
     assert "Claim" == inst.get_resource_type()
 
     impl_claim_1(inst)
@@ -267,7 +265,7 @@ def test_claim_2(base_settings):
     Test File: claim-example-professional.json
     """
     filename = base_settings["unittest_data_dir"] / "claim-example-professional.json"
-    inst = claim.Claim.model_validate_json(Path(filename).read_bytes())
+    inst = claim.Claim.model_validate_json(filename.read_bytes())
     assert "Claim" == inst.get_resource_type()
 
     impl_claim_2(inst)
@@ -347,7 +345,7 @@ def test_claim_3(base_settings):
     Test File: claim-example.json
     """
     filename = base_settings["unittest_data_dir"] / "claim-example.json"
-    inst = claim.Claim.model_validate_json(Path(filename).read_bytes())
+    inst = claim.Claim.model_validate_json(filename.read_bytes())
     assert "Claim" == inst.get_resource_type()
 
     impl_claim_3(inst)
@@ -428,7 +426,7 @@ def test_claim_4(base_settings):
     Test File: claim-example-vision.json
     """
     filename = base_settings["unittest_data_dir"] / "claim-example-vision.json"
-    inst = claim.Claim.model_validate_json(Path(filename).read_bytes())
+    inst = claim.Claim.model_validate_json(filename.read_bytes())
     assert "Claim" == inst.get_resource_type()
 
     impl_claim_4(inst)
@@ -792,7 +790,7 @@ def test_claim_5(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "claim-example-vision-glasses-3tier.json"
     )
-    inst = claim.Claim.model_validate_json(Path(filename).read_bytes())
+    inst = claim.Claim.model_validate_json(filename.read_bytes())
     assert "Claim" == inst.get_resource_type()
 
     impl_claim_5(inst)
@@ -909,7 +907,7 @@ def test_claim_6(base_settings):
     Test File: claim-example-institutional.json
     """
     filename = base_settings["unittest_data_dir"] / "claim-example-institutional.json"
-    inst = claim.Claim.model_validate_json(Path(filename).read_bytes())
+    inst = claim.Claim.model_validate_json(filename.read_bytes())
     assert "Claim" == inst.get_resource_type()
 
     impl_claim_6(inst)
@@ -989,7 +987,7 @@ def test_claim_7(base_settings):
     Test File: claim-example-oral-contained.json
     """
     filename = base_settings["unittest_data_dir"] / "claim-example-oral-contained.json"
-    inst = claim.Claim.model_validate_json(Path(filename).read_bytes())
+    inst = claim.Claim.model_validate_json(filename.read_bytes())
     assert "Claim" == inst.get_resource_type()
 
     impl_claim_7(inst)
@@ -1153,7 +1151,7 @@ def test_claim_8(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "claim-example-pharmacy-medication.json"
     )
-    inst = claim.Claim.model_validate_json(Path(filename).read_bytes())
+    inst = claim.Claim.model_validate_json(filename.read_bytes())
     assert "Claim" == inst.get_resource_type()
 
     impl_claim_8(inst)
@@ -1377,7 +1375,7 @@ def test_claim_9(base_settings):
     Test File: claim-example-oral-orthoplan.json
     """
     filename = base_settings["unittest_data_dir"] / "claim-example-oral-orthoplan.json"
-    inst = claim.Claim.model_validate_json(Path(filename).read_bytes())
+    inst = claim.Claim.model_validate_json(filename.read_bytes())
     assert "Claim" == inst.get_resource_type()
 
     impl_claim_9(inst)
@@ -1584,7 +1582,7 @@ def test_claim_10(base_settings):
     Test File: claim-example-cms1500-medical.json
     """
     filename = base_settings["unittest_data_dir"] / "claim-example-cms1500-medical.json"
-    inst = claim.Claim.model_validate_json(Path(filename).read_bytes())
+    inst = claim.Claim.model_validate_json(filename.read_bytes())
     assert "Claim" == inst.get_resource_type()
 
     impl_claim_10(inst)

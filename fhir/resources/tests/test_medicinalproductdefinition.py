@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import medicinalproductdefinition
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -35,7 +33,7 @@ def test_medicinalproductdefinition_1(base_settings):
         / "medicinalproductdefinition-with-contained-package-and-ingredient.json"
     )
     inst = medicinalproductdefinition.MedicinalProductDefinition.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicinalProductDefinition" == inst.get_resource_type()
 
@@ -106,7 +104,7 @@ def test_medicinalproductdefinition_2(base_settings):
         / "medicinalproductdefinition-example-equilidem-basics.json"
     )
     inst = medicinalproductdefinition.MedicinalProductDefinition.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicinalProductDefinition" == inst.get_resource_type()
 
@@ -177,7 +175,7 @@ def test_medicinalproductdefinition_3(base_settings):
         / "medicinalproductdefinition-example-equilidem-using-ingredient-and-auth.json"
     )
     inst = medicinalproductdefinition.MedicinalProductDefinition.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicinalProductDefinition" == inst.get_resource_type()
 
@@ -233,7 +231,7 @@ def test_medicinalproductdefinition_4(base_settings):
         / "medicinalproductdefinition-example-co-packaged-liquid-and-syringe.json"
     )
     inst = medicinalproductdefinition.MedicinalProductDefinition.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicinalProductDefinition" == inst.get_resource_type()
 
@@ -292,7 +290,7 @@ def test_medicinalproductdefinition_5(base_settings):
         / "medicinalproductdefinition-example-co-packaged-liquid-and-syringe-complete.json"
     )
     inst = medicinalproductdefinition.MedicinalProductDefinition.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicinalProductDefinition" == inst.get_resource_type()
 
@@ -349,7 +347,7 @@ def test_medicinalproductdefinition_6(base_settings):
         / "medicinalproductdefinition-example-combo-product.json"
     )
     inst = medicinalproductdefinition.MedicinalProductDefinition.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicinalProductDefinition" == inst.get_resource_type()
 
@@ -393,7 +391,7 @@ def test_medicinalproductdefinition_7(base_settings):
         / "medicinalproductdefinition-acetaminophen-500mg-tablets-box-of-20.json"
     )
     inst = medicinalproductdefinition.MedicinalProductDefinition.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicinalProductDefinition" == inst.get_resource_type()
 
@@ -479,7 +477,7 @@ def test_medicinalproductdefinition_8(base_settings):
         base_settings["unittest_data_dir"] / "medicinalproductdefinition-example.json"
     )
     inst = medicinalproductdefinition.MedicinalProductDefinition.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicinalProductDefinition" == inst.get_resource_type()
 

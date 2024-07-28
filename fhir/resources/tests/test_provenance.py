@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import provenance
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -54,7 +52,10 @@ def impl_provenance_1(inst):
         inst.recorded
         == ExternalValidatorModel(valueInstant="2015-08-27T08:39:24+10:00").valueInstant
     )
-    assert inst.signature[0].data == bytes_validator("Li4u")
+    assert (
+        inst.signature[0].data
+        == ExternalValidatorModel(valueBase64Binary="Li4u").valueBase64Binary
+    )
     assert inst.signature[0].sigFormat == "application/signature+xml"
     assert inst.signature[0].targetFormat == "application/fhir+xml"
     assert inst.signature[0].type[0].code == "1.2.840.10065.1.12.1.5"
@@ -77,7 +78,7 @@ def test_provenance_1(base_settings):
     Test File: provenance-example-sig.json
     """
     filename = base_settings["unittest_data_dir"] / "provenance-example-sig.json"
-    inst = provenance.Provenance.model_validate_json(Path(filename).read_bytes())
+    inst = provenance.Provenance.model_validate_json(filename.read_bytes())
     assert "Provenance" == inst.get_resource_type()
 
     impl_provenance_1(inst)
@@ -180,7 +181,7 @@ def test_provenance_2(base_settings):
     Test File: provenance-example-advanced.json
     """
     filename = base_settings["unittest_data_dir"] / "provenance-example-advanced.json"
-    inst = provenance.Provenance.model_validate_json(Path(filename).read_bytes())
+    inst = provenance.Provenance.model_validate_json(filename.read_bytes())
     assert "Provenance" == inst.get_resource_type()
 
     impl_provenance_2(inst)
@@ -234,7 +235,7 @@ def test_provenance_3(base_settings):
     Test File: provenance-example1.json
     """
     filename = base_settings["unittest_data_dir"] / "provenance-example1.json"
-    inst = provenance.Provenance.model_validate_json(Path(filename).read_bytes())
+    inst = provenance.Provenance.model_validate_json(filename.read_bytes())
     assert "Provenance" == inst.get_resource_type()
 
     impl_provenance_3(inst)
@@ -278,7 +279,12 @@ def impl_provenance_4(inst):
         inst.recorded
         == ExternalValidatorModel(valueInstant="2016-05-26T00:41:10-04:00").valueInstant
     )
-    assert inst.signature[0].data == bytes_validator("dGhpcyBibG9iIGlzIHNuaXBwZWQ=")
+    assert (
+        inst.signature[0].data
+        == ExternalValidatorModel(
+            valueBase64Binary="dGhpcyBibG9iIGlzIHNuaXBwZWQ="
+        ).valueBase64Binary
+    )
     assert inst.signature[0].sigFormat == "application/signature+xml"
     assert inst.signature[0].targetFormat == "application/fhir+xml"
     assert inst.signature[0].type[0].code == "1.2.840.10065.1.12.1.1"
@@ -301,7 +307,7 @@ def test_provenance_4(base_settings):
     Test File: provenance-consent-signature.json
     """
     filename = base_settings["unittest_data_dir"] / "provenance-consent-signature.json"
-    inst = provenance.Provenance.model_validate_json(Path(filename).read_bytes())
+    inst = provenance.Provenance.model_validate_json(filename.read_bytes())
     assert "Provenance" == inst.get_resource_type()
 
     impl_provenance_4(inst)
@@ -374,7 +380,7 @@ def test_provenance_5(base_settings):
     Test File: provenance-example-cwl.json
     """
     filename = base_settings["unittest_data_dir"] / "provenance-example-cwl.json"
-    inst = provenance.Provenance.model_validate_json(Path(filename).read_bytes())
+    inst = provenance.Provenance.model_validate_json(filename.read_bytes())
     assert "Provenance" == inst.get_resource_type()
 
     impl_provenance_5(inst)
@@ -436,7 +442,7 @@ def test_provenance_6(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "provenance-example-create-consent.json"
     )
-    inst = provenance.Provenance.model_validate_json(Path(filename).read_bytes())
+    inst = provenance.Provenance.model_validate_json(filename.read_bytes())
     assert "Provenance" == inst.get_resource_type()
 
     impl_provenance_6(inst)
@@ -500,7 +506,7 @@ def test_provenance_7(base_settings):
     Test File: provenance-example-delete.json
     """
     filename = base_settings["unittest_data_dir"] / "provenance-example-delete.json"
-    inst = provenance.Provenance.model_validate_json(Path(filename).read_bytes())
+    inst = provenance.Provenance.model_validate_json(filename.read_bytes())
     assert "Provenance" == inst.get_resource_type()
 
     impl_provenance_7(inst)
@@ -554,7 +560,7 @@ def test_provenance_8(base_settings):
     Test File: provenance-example2.json
     """
     filename = base_settings["unittest_data_dir"] / "provenance-example2.json"
-    inst = provenance.Provenance.model_validate_json(Path(filename).read_bytes())
+    inst = provenance.Provenance.model_validate_json(filename.read_bytes())
     assert "Provenance" == inst.get_resource_type()
 
     impl_provenance_8(inst)
@@ -624,7 +630,7 @@ def test_provenance_9(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "provenance-example-biocompute-object.json"
     )
-    inst = provenance.Provenance.model_validate_json(Path(filename).read_bytes())
+    inst = provenance.Provenance.model_validate_json(filename.read_bytes())
     assert "Provenance" == inst.get_resource_type()
 
     impl_provenance_9(inst)
@@ -703,7 +709,7 @@ def test_provenance_10(base_settings):
         base_settings["unittest_data_dir"]
         / "provenance-example-diagnosticreport-sig.json"
     )
-    inst = provenance.Provenance.model_validate_json(Path(filename).read_bytes())
+    inst = provenance.Provenance.model_validate_json(filename.read_bytes())
     assert "Provenance" == inst.get_resource_type()
 
     impl_provenance_10(inst)

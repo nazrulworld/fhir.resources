@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import endpoint
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -51,7 +49,7 @@ def test_endpoint_1(base_settings):
     Test File: endpoint-example-direct.json
     """
     filename = base_settings["unittest_data_dir"] / "endpoint-example-direct.json"
-    inst = endpoint.Endpoint.model_validate_json(Path(filename).read_bytes())
+    inst = endpoint.Endpoint.model_validate_json(filename.read_bytes())
     assert "Endpoint" == inst.get_resource_type()
 
     impl_endpoint_1(inst)
@@ -97,7 +95,7 @@ def test_endpoint_2(base_settings):
     Test File: endpoint-example-wadors.json
     """
     filename = base_settings["unittest_data_dir"] / "endpoint-example-wadors.json"
-    inst = endpoint.Endpoint.model_validate_json(Path(filename).read_bytes())
+    inst = endpoint.Endpoint.model_validate_json(filename.read_bytes())
     assert "Endpoint" == inst.get_resource_type()
 
     impl_endpoint_2(inst)
@@ -182,7 +180,7 @@ def test_endpoint_3(base_settings):
     Test File: endpoint-example.json
     """
     filename = base_settings["unittest_data_dir"] / "endpoint-example.json"
-    inst = endpoint.Endpoint.model_validate_json(Path(filename).read_bytes())
+    inst = endpoint.Endpoint.model_validate_json(filename.read_bytes())
     assert "Endpoint" == inst.get_resource_type()
 
     impl_endpoint_3(inst)

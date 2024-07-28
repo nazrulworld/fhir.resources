@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import conceptmap
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -75,7 +73,7 @@ def test_conceptmap_1(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "sc-valueset-publication-status.json"
     )
-    inst = conceptmap.ConceptMap.model_validate_json(Path(filename).read_bytes())
+    inst = conceptmap.ConceptMap.model_validate_json(filename.read_bytes())
     assert "ConceptMap" == inst.get_resource_type()
 
     impl_conceptmap_1(inst)
@@ -156,7 +154,7 @@ def test_conceptmap_2(base_settings):
     Test File: cm-address-use-v3.json
     """
     filename = base_settings["unittest_data_dir"] / "cm-address-use-v3.json"
-    inst = conceptmap.ConceptMap.model_validate_json(Path(filename).read_bytes())
+    inst = conceptmap.ConceptMap.model_validate_json(filename.read_bytes())
     assert "ConceptMap" == inst.get_resource_type()
 
     impl_conceptmap_2(inst)
@@ -220,7 +218,7 @@ def test_conceptmap_3(base_settings):
     Test File: sc-valueset-fm-status.json
     """
     filename = base_settings["unittest_data_dir"] / "sc-valueset-fm-status.json"
-    inst = conceptmap.ConceptMap.model_validate_json(Path(filename).read_bytes())
+    inst = conceptmap.ConceptMap.model_validate_json(filename.read_bytes())
     assert "ConceptMap" == inst.get_resource_type()
 
     impl_conceptmap_3(inst)
@@ -283,7 +281,7 @@ def test_conceptmap_4(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "sc-valueset-formularyitem-status.json"
     )
-    inst = conceptmap.ConceptMap.model_validate_json(Path(filename).read_bytes())
+    inst = conceptmap.ConceptMap.model_validate_json(filename.read_bytes())
     assert "ConceptMap" == inst.get_resource_type()
 
     impl_conceptmap_4(inst)
@@ -362,7 +360,7 @@ def test_conceptmap_5(base_settings):
     Test File: cm-composition-status-v3.json
     """
     filename = base_settings["unittest_data_dir"] / "cm-composition-status-v3.json"
-    inst = conceptmap.ConceptMap.model_validate_json(Path(filename).read_bytes())
+    inst = conceptmap.ConceptMap.model_validate_json(filename.read_bytes())
     assert "ConceptMap" == inst.get_resource_type()
 
     impl_conceptmap_5(inst)
@@ -433,7 +431,7 @@ def test_conceptmap_6(base_settings):
     Test File: sc-valueset-flag-status.json
     """
     filename = base_settings["unittest_data_dir"] / "sc-valueset-flag-status.json"
-    inst = conceptmap.ConceptMap.model_validate_json(Path(filename).read_bytes())
+    inst = conceptmap.ConceptMap.model_validate_json(filename.read_bytes())
     assert "ConceptMap" == inst.get_resource_type()
 
     impl_conceptmap_6(inst)
@@ -502,7 +500,7 @@ def test_conceptmap_7(base_settings):
     Test File: sc-valueset-device-status.json
     """
     filename = base_settings["unittest_data_dir"] / "sc-valueset-device-status.json"
-    inst = conceptmap.ConceptMap.model_validate_json(Path(filename).read_bytes())
+    inst = conceptmap.ConceptMap.model_validate_json(filename.read_bytes())
     assert "ConceptMap" == inst.get_resource_type()
 
     impl_conceptmap_7(inst)
@@ -593,7 +591,7 @@ def test_conceptmap_8(base_settings):
     Test File: cm-contact-point-use-v2.json
     """
     filename = base_settings["unittest_data_dir"] / "cm-contact-point-use-v2.json"
-    inst = conceptmap.ConceptMap.model_validate_json(Path(filename).read_bytes())
+    inst = conceptmap.ConceptMap.model_validate_json(filename.read_bytes())
     assert "ConceptMap" == inst.get_resource_type()
 
     impl_conceptmap_8(inst)
@@ -665,7 +663,7 @@ def test_conceptmap_9(base_settings):
         base_settings["unittest_data_dir"]
         / "sc-valueset-allergyintolerance-clinical.json"
     )
-    inst = conceptmap.ConceptMap.model_validate_json(Path(filename).read_bytes())
+    inst = conceptmap.ConceptMap.model_validate_json(filename.read_bytes())
     assert "ConceptMap" == inst.get_resource_type()
 
     impl_conceptmap_9(inst)
@@ -724,7 +722,7 @@ def test_conceptmap_10(base_settings):
     Test File: sc-valueset-medication-status.json
     """
     filename = base_settings["unittest_data_dir"] / "sc-valueset-medication-status.json"
-    inst = conceptmap.ConceptMap.model_validate_json(Path(filename).read_bytes())
+    inst = conceptmap.ConceptMap.model_validate_json(filename.read_bytes())
     assert "ConceptMap" == inst.get_resource_type()
 
     impl_conceptmap_10(inst)

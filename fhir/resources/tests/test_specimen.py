@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import specimen
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -65,7 +63,7 @@ def test_specimen_1(base_settings):
     Test File: Specimen-denovo-2.json
     """
     filename = base_settings["unittest_data_dir"] / "Specimen-denovo-2.json"
-    inst = specimen.Specimen.model_validate_json(Path(filename).read_bytes())
+    inst = specimen.Specimen.model_validate_json(filename.read_bytes())
     assert "Specimen" == inst.get_resource_type()
 
     impl_specimen_1(inst)
@@ -131,7 +129,7 @@ def test_specimen_2(base_settings):
     Test File: Specimen-denovo-3.json
     """
     filename = base_settings["unittest_data_dir"] / "Specimen-denovo-3.json"
-    inst = specimen.Specimen.model_validate_json(Path(filename).read_bytes())
+    inst = specimen.Specimen.model_validate_json(filename.read_bytes())
     assert "Specimen" == inst.get_resource_type()
 
     impl_specimen_2(inst)
@@ -198,7 +196,7 @@ def test_specimen_3(base_settings):
     Test File: specimen-example-isolate.json
     """
     filename = base_settings["unittest_data_dir"] / "specimen-example-isolate.json"
-    inst = specimen.Specimen.model_validate_json(Path(filename).read_bytes())
+    inst = specimen.Specimen.model_validate_json(filename.read_bytes())
     assert "Specimen" == inst.get_resource_type()
 
     impl_specimen_3(inst)
@@ -264,7 +262,7 @@ def test_specimen_4(base_settings):
     Test File: Specimen-specimenMother.json
     """
     filename = base_settings["unittest_data_dir"] / "Specimen-specimenMother.json"
-    inst = specimen.Specimen.model_validate_json(Path(filename).read_bytes())
+    inst = specimen.Specimen.model_validate_json(filename.read_bytes())
     assert "Specimen" == inst.get_resource_type()
 
     impl_specimen_4(inst)
@@ -330,7 +328,7 @@ def test_specimen_5(base_settings):
     Test File: Specimen-specimenProband.json
     """
     filename = base_settings["unittest_data_dir"] / "Specimen-specimenProband.json"
-    inst = specimen.Specimen.model_validate_json(Path(filename).read_bytes())
+    inst = specimen.Specimen.model_validate_json(filename.read_bytes())
     assert "Specimen" == inst.get_resource_type()
 
     impl_specimen_5(inst)
@@ -396,7 +394,7 @@ def test_specimen_6(base_settings):
     Test File: Specimen-specimenFather.json
     """
     filename = base_settings["unittest_data_dir"] / "Specimen-specimenFather.json"
-    inst = specimen.Specimen.model_validate_json(Path(filename).read_bytes())
+    inst = specimen.Specimen.model_validate_json(filename.read_bytes())
     assert "Specimen" == inst.get_resource_type()
 
     impl_specimen_6(inst)
@@ -464,7 +462,7 @@ def test_specimen_7(base_settings):
     Test File: Specimen-genomicSpecimen.json
     """
     filename = base_settings["unittest_data_dir"] / "Specimen-genomicSpecimen.json"
-    inst = specimen.Specimen.model_validate_json(Path(filename).read_bytes())
+    inst = specimen.Specimen.model_validate_json(filename.read_bytes())
     assert "Specimen" == inst.get_resource_type()
 
     impl_specimen_7(inst)
@@ -519,7 +517,7 @@ def test_specimen_8(base_settings):
     Test File: specimen-example-pooled-serum.json
     """
     filename = base_settings["unittest_data_dir"] / "specimen-example-pooled-serum.json"
-    inst = specimen.Specimen.model_validate_json(Path(filename).read_bytes())
+    inst = specimen.Specimen.model_validate_json(filename.read_bytes())
     assert "Specimen" == inst.get_resource_type()
 
     impl_specimen_8(inst)
@@ -595,7 +593,7 @@ def test_specimen_9(base_settings):
     Test File: specimen-example-urine.json
     """
     filename = base_settings["unittest_data_dir"] / "specimen-example-urine.json"
-    inst = specimen.Specimen.model_validate_json(Path(filename).read_bytes())
+    inst = specimen.Specimen.model_validate_json(filename.read_bytes())
     assert "Specimen" == inst.get_resource_type()
 
     impl_specimen_9(inst)
@@ -661,7 +659,7 @@ def test_specimen_10(base_settings):
     Test File: Specimen-denovo-1.json
     """
     filename = base_settings["unittest_data_dir"] / "Specimen-denovo-1.json"
-    inst = specimen.Specimen.model_validate_json(Path(filename).read_bytes())
+    inst = specimen.Specimen.model_validate_json(filename.read_bytes())
     assert "Specimen" == inst.get_resource_type()
 
     impl_specimen_10(inst)

@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import auditevent
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -64,11 +62,14 @@ def impl_auditevent_1(inst):
             valueUri="http://hl7.org/fhir/restful-interaction"
         ).valueUri
     )
-    assert inst.entity[0].query == bytes_validator(
-        (
-            "aHR0cDovL2ZoaXItZGV2LmhlYWx0aGludGVyc2VjdGlvbnMuY29tLmF1L29w"
-            "ZW4vRW5jb3VudGVyP3BhcnRpY2lwYW50PTEz"
-        )
+    assert (
+        inst.entity[0].query
+        == ExternalValidatorModel(
+            valueBase64Binary=(
+                "aHR0cDovL2ZoaXItZGV2LmhlYWx0aGludGVyc2VjdGlvbnMuY29tLmF1L29w"
+                "ZW4vRW5jb3VudGVyP3BhcnRpY2lwYW50PTEz"
+            )
+        ).valueBase64Binary
     )
     assert inst.entity[0].role.coding[0].code == "24"
     assert inst.entity[0].role.coding[0].display == "Query"
@@ -116,7 +117,7 @@ def test_auditevent_1(base_settings):
     Test File: audit-event-example-search.json
     """
     filename = base_settings["unittest_data_dir"] / "audit-event-example-search.json"
-    inst = auditevent.AuditEvent.model_validate_json(Path(filename).read_bytes())
+    inst = auditevent.AuditEvent.model_validate_json(filename.read_bytes())
     assert "AuditEvent" == inst.get_resource_type()
 
     impl_auditevent_1(inst)
@@ -223,7 +224,7 @@ def test_auditevent_2(base_settings):
     Test File: audit-event-example-logout.json
     """
     filename = base_settings["unittest_data_dir"] / "audit-event-example-logout.json"
-    inst = auditevent.AuditEvent.model_validate_json(Path(filename).read_bytes())
+    inst = auditevent.AuditEvent.model_validate_json(filename.read_bytes())
     assert "AuditEvent" == inst.get_resource_type()
 
     impl_auditevent_2(inst)
@@ -336,7 +337,7 @@ def test_auditevent_3(base_settings):
     Test File: audit-event-example-vread.json
     """
     filename = base_settings["unittest_data_dir"] / "audit-event-example-vread.json"
-    inst = auditevent.AuditEvent.model_validate_json(Path(filename).read_bytes())
+    inst = auditevent.AuditEvent.model_validate_json(filename.read_bytes())
     assert "AuditEvent" == inst.get_resource_type()
 
     impl_auditevent_3(inst)
@@ -474,7 +475,7 @@ def test_auditevent_4(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "auditevent-example-advanced-create.json"
     )
-    inst = auditevent.AuditEvent.model_validate_json(Path(filename).read_bytes())
+    inst = auditevent.AuditEvent.model_validate_json(filename.read_bytes())
     assert "AuditEvent" == inst.get_resource_type()
 
     impl_auditevent_4(inst)
@@ -603,7 +604,7 @@ def test_auditevent_5(base_settings):
     Test File: audit-event-example-media.json
     """
     filename = base_settings["unittest_data_dir"] / "audit-event-example-media.json"
-    inst = auditevent.AuditEvent.model_validate_json(Path(filename).read_bytes())
+    inst = auditevent.AuditEvent.model_validate_json(filename.read_bytes())
     assert "AuditEvent" == inst.get_resource_type()
 
     impl_auditevent_5(inst)
@@ -734,7 +735,7 @@ def test_auditevent_6(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "audit-event-example-create-traceID.json"
     )
-    inst = auditevent.AuditEvent.model_validate_json(Path(filename).read_bytes())
+    inst = auditevent.AuditEvent.model_validate_json(filename.read_bytes())
     assert "AuditEvent" == inst.get_resource_type()
 
     impl_auditevent_6(inst)
@@ -840,7 +841,7 @@ def test_auditevent_7(base_settings):
     Test File: audit-event-example-login.json
     """
     filename = base_settings["unittest_data_dir"] / "audit-event-example-login.json"
-    inst = auditevent.AuditEvent.model_validate_json(Path(filename).read_bytes())
+    inst = auditevent.AuditEvent.model_validate_json(filename.read_bytes())
     assert "AuditEvent" == inst.get_resource_type()
 
     impl_auditevent_7(inst)
@@ -916,8 +917,11 @@ def impl_auditevent_8(inst):
         == "e3cdfc81a0d24bd^^^&2.16.840.1.113883.4.2&ISO"
     )
     assert inst.entity[1].detail[0].type.coding[0].code == "MSH-10"
-    assert inst.entity[1].detail[0].valueBase64Binary == bytes_validator(
-        "MS4yLjg0MC4xMTQzNTAuMS4xMy4wLjEuNy4xLjE="
+    assert (
+        inst.entity[1].detail[0].valueBase64Binary
+        == ExternalValidatorModel(
+            valueBase64Binary="MS4yLjg0MC4xMTQzNTAuMS4xMy4wLjEuNy4xLjE="
+        ).valueBase64Binary
     )
     assert inst.entity[1].role.coding[0].code == "24"
     assert inst.entity[1].role.coding[0].display == "Query"
@@ -957,7 +961,7 @@ def test_auditevent_8(base_settings):
     Test File: audit-event-example-pixQuery.json
     """
     filename = base_settings["unittest_data_dir"] / "audit-event-example-pixQuery.json"
-    inst = auditevent.AuditEvent.model_validate_json(Path(filename).read_bytes())
+    inst = auditevent.AuditEvent.model_validate_json(filename.read_bytes())
     assert "AuditEvent" == inst.get_resource_type()
 
     impl_auditevent_8(inst)
@@ -1066,7 +1070,7 @@ def test_auditevent_9(base_settings):
     Test File: auditevent-example.json
     """
     filename = base_settings["unittest_data_dir"] / "auditevent-example.json"
-    inst = auditevent.AuditEvent.model_validate_json(Path(filename).read_bytes())
+    inst = auditevent.AuditEvent.model_validate_json(filename.read_bytes())
     assert "AuditEvent" == inst.get_resource_type()
 
     impl_auditevent_9(inst)
@@ -1163,7 +1167,7 @@ def test_auditevent_10(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "auditevent-example-consent-authz.json"
     )
-    inst = auditevent.AuditEvent.model_validate_json(Path(filename).read_bytes())
+    inst = auditevent.AuditEvent.model_validate_json(filename.read_bytes())
     assert "AuditEvent" == inst.get_resource_type()
 
     impl_auditevent_10(inst)

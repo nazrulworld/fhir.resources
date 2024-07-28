@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import genomicstudy
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -249,7 +247,7 @@ def test_genomicstudy_1(base_settings):
     Test File: genomicstudy-example.json
     """
     filename = base_settings["unittest_data_dir"] / "genomicstudy-example.json"
-    inst = genomicstudy.GenomicStudy.model_validate_json(Path(filename).read_bytes())
+    inst = genomicstudy.GenomicStudy.model_validate_json(filename.read_bytes())
     assert "GenomicStudy" == inst.get_resource_type()
 
     impl_genomicstudy_1(inst)
@@ -487,7 +485,7 @@ def test_genomicstudy_2(base_settings):
     Test File: genomicstudy-example-trio2.json
     """
     filename = base_settings["unittest_data_dir"] / "genomicstudy-example-trio2.json"
-    inst = genomicstudy.GenomicStudy.model_validate_json(Path(filename).read_bytes())
+    inst = genomicstudy.GenomicStudy.model_validate_json(filename.read_bytes())
     assert "GenomicStudy" == inst.get_resource_type()
 
     impl_genomicstudy_2(inst)
@@ -705,7 +703,7 @@ def test_genomicstudy_3(base_settings):
     Test File: genomicstudy-example-lungMass.json
     """
     filename = base_settings["unittest_data_dir"] / "genomicstudy-example-lungMass.json"
-    inst = genomicstudy.GenomicStudy.model_validate_json(Path(filename).read_bytes())
+    inst = genomicstudy.GenomicStudy.model_validate_json(filename.read_bytes())
     assert "GenomicStudy" == inst.get_resource_type()
 
     impl_genomicstudy_3(inst)

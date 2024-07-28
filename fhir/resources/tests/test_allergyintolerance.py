@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import allergyintolerance
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -54,7 +52,7 @@ def test_allergyintolerance_1(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "allergyintolerance-nkla.json"
     inst = allergyintolerance.AllergyIntolerance.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "AllergyIntolerance" == inst.get_resource_type()
 
@@ -212,7 +210,7 @@ def test_allergyintolerance_2(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "allergyintolerance-example.json"
     inst = allergyintolerance.AllergyIntolerance.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "AllergyIntolerance" == inst.get_resource_type()
 
@@ -268,7 +266,7 @@ def test_allergyintolerance_3(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "allergyintolerance-nka.json"
     inst = allergyintolerance.AllergyIntolerance.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "AllergyIntolerance" == inst.get_resource_type()
 
@@ -347,7 +345,7 @@ def test_allergyintolerance_4(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "allergyintolerance-medication.json"
     inst = allergyintolerance.AllergyIntolerance.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "AllergyIntolerance" == inst.get_resource_type()
 
@@ -429,7 +427,7 @@ def test_allergyintolerance_5(base_settings):
         base_settings["unittest_data_dir"] / "allergyintolerance-fishallergy.json"
     )
     inst = allergyintolerance.AllergyIntolerance.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "AllergyIntolerance" == inst.get_resource_type()
 
@@ -485,7 +483,7 @@ def test_allergyintolerance_6(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "allergyintolerance-nkda.json"
     inst = allergyintolerance.AllergyIntolerance.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "AllergyIntolerance" == inst.get_resource_type()
 

@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import organization
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -85,7 +83,7 @@ def test_organization_1(base_settings):
     Test File: organization-example.json
     """
     filename = base_settings["unittest_data_dir"] / "organization-example.json"
-    inst = organization.Organization.model_validate_json(Path(filename).read_bytes())
+    inst = organization.Organization.model_validate_json(filename.read_bytes())
     assert "Organization" == inst.get_resource_type()
 
     impl_organization_1(inst)
@@ -119,7 +117,7 @@ def test_organization_2(base_settings):
     Test File: organization-example-mmanu.json
     """
     filename = base_settings["unittest_data_dir"] / "organization-example-mmanu.json"
-    inst = organization.Organization.model_validate_json(Path(filename).read_bytes())
+    inst = organization.Organization.model_validate_json(filename.read_bytes())
     assert "Organization" == inst.get_resource_type()
 
     impl_organization_2(inst)
@@ -162,7 +160,7 @@ def test_organization_3(base_settings):
     Test File: organization-example-gastro.json
     """
     filename = base_settings["unittest_data_dir"] / "organization-example-gastro.json"
-    inst = organization.Organization.model_validate_json(Path(filename).read_bytes())
+    inst = organization.Organization.model_validate_json(filename.read_bytes())
     assert "Organization" == inst.get_resource_type()
 
     impl_organization_3(inst)
@@ -202,7 +200,7 @@ def test_organization_4(base_settings):
     Test File: organization-example-mihealth.json
     """
     filename = base_settings["unittest_data_dir"] / "organization-example-mihealth.json"
-    inst = organization.Organization.model_validate_json(Path(filename).read_bytes())
+    inst = organization.Organization.model_validate_json(filename.read_bytes())
     assert "Organization" == inst.get_resource_type()
 
     impl_organization_4(inst)
@@ -245,7 +243,7 @@ def test_organization_5(base_settings):
     Test File: organization-example-lab.json
     """
     filename = base_settings["unittest_data_dir"] / "organization-example-lab.json"
-    inst = organization.Organization.model_validate_json(Path(filename).read_bytes())
+    inst = organization.Organization.model_validate_json(filename.read_bytes())
     assert "Organization" == inst.get_resource_type()
 
     impl_organization_5(inst)
@@ -305,7 +303,7 @@ def test_organization_6(base_settings):
         base_settings["unittest_data_dir"]
         / "organization-example-f002-burgers-card.json"
     )
-    inst = organization.Organization.model_validate_json(Path(filename).read_bytes())
+    inst = organization.Organization.model_validate_json(filename.read_bytes())
     assert "Organization" == inst.get_resource_type()
 
     impl_organization_6(inst)
@@ -389,7 +387,7 @@ def test_organization_7(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "organization-example-f201-aumc.json"
     )
-    inst = organization.Organization.model_validate_json(Path(filename).read_bytes())
+    inst = organization.Organization.model_validate_json(filename.read_bytes())
     assert "Organization" == inst.get_resource_type()
 
     impl_organization_7(inst)
@@ -429,7 +427,7 @@ def test_organization_8(base_settings):
         base_settings["unittest_data_dir"]
         / "organization-example-good-health-care.json"
     )
-    inst = organization.Organization.model_validate_json(Path(filename).read_bytes())
+    inst = organization.Organization.model_validate_json(filename.read_bytes())
     assert "Organization" == inst.get_resource_type()
 
     impl_organization_8(inst)
@@ -522,7 +520,7 @@ def test_organization_9(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "organization-example-f001-burgers.json"
     )
-    inst = organization.Organization.model_validate_json(Path(filename).read_bytes())
+    inst = organization.Organization.model_validate_json(filename.read_bytes())
     assert "Organization" == inst.get_resource_type()
 
     impl_organization_9(inst)
@@ -562,7 +560,7 @@ def test_organization_10(base_settings):
     Test File: organization-example-insurer.json
     """
     filename = base_settings["unittest_data_dir"] / "organization-example-insurer.json"
-    inst = organization.Organization.model_validate_json(Path(filename).read_bytes())
+    inst = organization.Organization.model_validate_json(filename.read_bytes())
     assert "Organization" == inst.get_resource_type()
 
     impl_organization_10(inst)

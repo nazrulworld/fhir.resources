@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import observation
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -57,7 +55,7 @@ def test_observation_1(base_settings):
     Test File: observation-example-bmd.json
     """
     filename = base_settings["unittest_data_dir"] / "observation-example-bmd.json"
-    inst = observation.Observation.model_validate_json(Path(filename).read_bytes())
+    inst = observation.Observation.model_validate_json(filename.read_bytes())
     assert "Observation" == inst.get_resource_type()
 
     impl_observation_1(inst)
@@ -120,7 +118,7 @@ def test_observation_2(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "observation-example-respiratory-rate.json"
     )
-    inst = observation.Observation.model_validate_json(Path(filename).read_bytes())
+    inst = observation.Observation.model_validate_json(filename.read_bytes())
     assert "Observation" == inst.get_resource_type()
 
     impl_observation_2(inst)
@@ -199,7 +197,7 @@ def test_observation_3(base_settings):
     Test File: observation-example.json
     """
     filename = base_settings["unittest_data_dir"] / "observation-example.json"
-    inst = observation.Observation.model_validate_json(Path(filename).read_bytes())
+    inst = observation.Observation.model_validate_json(filename.read_bytes())
     assert "Observation" == inst.get_resource_type()
 
     impl_observation_3(inst)
@@ -259,7 +257,7 @@ def test_observation_4(base_settings):
     Test File: observation-example-mbp.json
     """
     filename = base_settings["unittest_data_dir"] / "observation-example-mbp.json"
-    inst = observation.Observation.model_validate_json(Path(filename).read_bytes())
+    inst = observation.Observation.model_validate_json(filename.read_bytes())
     assert "Observation" == inst.get_resource_type()
 
     impl_observation_4(inst)
@@ -320,7 +318,7 @@ def test_observation_5(base_settings):
     Test File: observation-example-bmi.json
     """
     filename = base_settings["unittest_data_dir"] / "observation-example-bmi.json"
-    inst = observation.Observation.model_validate_json(Path(filename).read_bytes())
+    inst = observation.Observation.model_validate_json(filename.read_bytes())
     assert "Observation" == inst.get_resource_type()
 
     impl_observation_5(inst)
@@ -383,7 +381,7 @@ def test_observation_6(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "observation-example-body-height.json"
     )
-    inst = observation.Observation.model_validate_json(Path(filename).read_bytes())
+    inst = observation.Observation.model_validate_json(filename.read_bytes())
     assert "Observation" == inst.get_resource_type()
 
     impl_observation_6(inst)
@@ -422,7 +420,7 @@ def test_observation_7(base_settings):
     Test File: observation-example-eye-color.json
     """
     filename = base_settings["unittest_data_dir"] / "observation-example-eye-color.json"
-    inst = observation.Observation.model_validate_json(Path(filename).read_bytes())
+    inst = observation.Observation.model_validate_json(filename.read_bytes())
     assert "Observation" == inst.get_resource_type()
 
     impl_observation_7(inst)
@@ -485,7 +483,7 @@ def test_observation_8(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "observation-example-body-temperature.json"
     )
-    inst = observation.Observation.model_validate_json(Path(filename).read_bytes())
+    inst = observation.Observation.model_validate_json(filename.read_bytes())
     assert "Observation" == inst.get_resource_type()
 
     impl_observation_8(inst)
@@ -543,7 +541,7 @@ def test_observation_9(base_settings):
     Test File: observation-example-trachcare.json
     """
     filename = base_settings["unittest_data_dir"] / "observation-example-trachcare.json"
-    inst = observation.Observation.model_validate_json(Path(filename).read_bytes())
+    inst = observation.Observation.model_validate_json(filename.read_bytes())
     assert "Observation" == inst.get_resource_type()
 
     impl_observation_9(inst)
@@ -634,7 +632,7 @@ def test_observation_10(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "observation-example-f002-excess.json"
     )
-    inst = observation.Observation.model_validate_json(Path(filename).read_bytes())
+    inst = observation.Observation.model_validate_json(filename.read_bytes())
     assert "Observation" == inst.get_resource_type()
 
     impl_observation_10(inst)

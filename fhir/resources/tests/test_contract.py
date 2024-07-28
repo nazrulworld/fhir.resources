@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import contract
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -76,7 +74,7 @@ def test_contract_1(base_settings):
     Test File: pcd-example-notOrg.json
     """
     filename = base_settings["unittest_data_dir"] / "pcd-example-notOrg.json"
-    inst = contract.Contract.model_validate_json(Path(filename).read_bytes())
+    inst = contract.Contract.model_validate_json(filename.read_bytes())
     assert "Contract" == inst.get_resource_type()
 
     impl_contract_1(inst)
@@ -180,7 +178,7 @@ def test_contract_2(base_settings):
     Test File: contract-example-ins-policy.json
     """
     filename = base_settings["unittest_data_dir"] / "contract-example-ins-policy.json"
-    inst = contract.Contract.model_validate_json(Path(filename).read_bytes())
+    inst = contract.Contract.model_validate_json(filename.read_bytes())
     assert "Contract" == inst.get_resource_type()
 
     impl_contract_2(inst)
@@ -363,7 +361,7 @@ def test_contract_3(base_settings):
     Test File: contract-example-42cfr-part2.json
     """
     filename = base_settings["unittest_data_dir"] / "contract-example-42cfr-part2.json"
-    inst = contract.Contract.model_validate_json(Path(filename).read_bytes())
+    inst = contract.Contract.model_validate_json(filename.read_bytes())
     assert "Contract" == inst.get_resource_type()
 
     impl_contract_3(inst)
@@ -453,7 +451,7 @@ def test_contract_4(base_settings):
     Test File: pcd-example-notLabs.json
     """
     filename = base_settings["unittest_data_dir"] / "pcd-example-notLabs.json"
-    inst = contract.Contract.model_validate_json(Path(filename).read_bytes())
+    inst = contract.Contract.model_validate_json(filename.read_bytes())
     assert "Contract" == inst.get_resource_type()
 
     impl_contract_4(inst)
@@ -549,7 +547,7 @@ def test_contract_5(base_settings):
     Test File: pcd-example-notThem.json
     """
     filename = base_settings["unittest_data_dir"] / "pcd-example-notThem.json"
-    inst = contract.Contract.model_validate_json(Path(filename).read_bytes())
+    inst = contract.Contract.model_validate_json(filename.read_bytes())
     assert "Contract" == inst.get_resource_type()
 
     impl_contract_5(inst)
@@ -626,7 +624,7 @@ def test_contract_6(base_settings):
     Test File: pcd-example-notAuthor.json
     """
     filename = base_settings["unittest_data_dir"] / "pcd-example-notAuthor.json"
-    inst = contract.Contract.model_validate_json(Path(filename).read_bytes())
+    inst = contract.Contract.model_validate_json(filename.read_bytes())
     assert "Contract" == inst.get_resource_type()
 
     impl_contract_6(inst)
@@ -716,7 +714,7 @@ def test_contract_7(base_settings):
     Test File: contract-example.json
     """
     filename = base_settings["unittest_data_dir"] / "contract-example.json"
-    inst = contract.Contract.model_validate_json(Path(filename).read_bytes())
+    inst = contract.Contract.model_validate_json(filename.read_bytes())
     assert "Contract" == inst.get_resource_type()
 
     impl_contract_7(inst)
@@ -807,7 +805,7 @@ def test_contract_8(base_settings):
     Test File: pcd-example-notThis.json
     """
     filename = base_settings["unittest_data_dir"] / "pcd-example-notThis.json"
-    inst = contract.Contract.model_validate_json(Path(filename).read_bytes())
+    inst = contract.Contract.model_validate_json(filename.read_bytes())
     assert "Contract" == inst.get_resource_type()
 
     impl_contract_8(inst)

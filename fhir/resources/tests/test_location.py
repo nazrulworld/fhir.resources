@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import location
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -82,7 +80,7 @@ def test_location_1(base_settings):
     Test File: location-example.json
     """
     filename = base_settings["unittest_data_dir"] / "location-example.json"
-    inst = location.Location.model_validate_json(Path(filename).read_bytes())
+    inst = location.Location.model_validate_json(filename.read_bytes())
     assert "Location" == inst.get_resource_type()
 
     impl_location_1(inst)
@@ -155,7 +153,7 @@ def test_location_2(base_settings):
     Test File: location-example-room.json
     """
     filename = base_settings["unittest_data_dir"] / "location-example-room.json"
-    inst = location.Location.model_validate_json(Path(filename).read_bytes())
+    inst = location.Location.model_validate_json(filename.read_bytes())
     assert "Location" == inst.get_resource_type()
 
     impl_location_2(inst)
@@ -213,7 +211,7 @@ def test_location_3(base_settings):
     Test File: location-example-ambulance.json
     """
     filename = base_settings["unittest_data_dir"] / "location-example-ambulance.json"
-    inst = location.Location.model_validate_json(Path(filename).read_bytes())
+    inst = location.Location.model_validate_json(filename.read_bytes())
     assert "Location" == inst.get_resource_type()
 
     impl_location_3(inst)
@@ -273,7 +271,7 @@ def test_location_4(base_settings):
     Test File: location-wash-dc-metro.json
     """
     filename = base_settings["unittest_data_dir"] / "location-wash-dc-metro.json"
-    inst = location.Location.model_validate_json(Path(filename).read_bytes())
+    inst = location.Location.model_validate_json(filename.read_bytes())
     assert "Location" == inst.get_resource_type()
 
     impl_location_4(inst)
@@ -330,7 +328,7 @@ def test_location_5(base_settings):
     Test File: location-example-ukpharmacy.json
     """
     filename = base_settings["unittest_data_dir"] / "location-example-ukpharmacy.json"
-    inst = location.Location.model_validate_json(Path(filename).read_bytes())
+    inst = location.Location.model_validate_json(filename.read_bytes())
     assert "Location" == inst.get_resource_type()
 
     impl_location_5(inst)
@@ -387,7 +385,7 @@ def test_location_6(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "location-example-patients-home.json"
     )
-    inst = location.Location.model_validate_json(Path(filename).read_bytes())
+    inst = location.Location.model_validate_json(filename.read_bytes())
     assert "Location" == inst.get_resource_type()
 
     impl_location_6(inst)
@@ -451,7 +449,7 @@ def test_location_7(base_settings):
     Test File: location-example-hl7hq.json
     """
     filename = base_settings["unittest_data_dir"] / "location-example-hl7hq.json"
-    inst = location.Location.model_validate_json(Path(filename).read_bytes())
+    inst = location.Location.model_validate_json(filename.read_bytes())
     assert "Location" == inst.get_resource_type()
 
     impl_location_7(inst)

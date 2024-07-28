@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import schedule
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -77,7 +75,7 @@ def test_schedule_1(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "schedule-provider-location1-example.json"
     )
-    inst = schedule.Schedule.model_validate_json(Path(filename).read_bytes())
+    inst = schedule.Schedule.model_validate_json(filename.read_bytes())
     assert "Schedule" == inst.get_resource_type()
 
     impl_schedule_1(inst)
@@ -152,7 +150,7 @@ def test_schedule_2(base_settings):
     Test File: schedule-example.json
     """
     filename = base_settings["unittest_data_dir"] / "schedule-example.json"
-    inst = schedule.Schedule.model_validate_json(Path(filename).read_bytes())
+    inst = schedule.Schedule.model_validate_json(filename.read_bytes())
     assert "Schedule" == inst.get_resource_type()
 
     impl_schedule_2(inst)
@@ -214,7 +212,7 @@ def test_schedule_3(base_settings):
     Test File: schedule-example-hcs.json
     """
     filename = base_settings["unittest_data_dir"] / "schedule-example-hcs.json"
-    inst = schedule.Schedule.model_validate_json(Path(filename).read_bytes())
+    inst = schedule.Schedule.model_validate_json(filename.read_bytes())
     assert "Schedule" == inst.get_resource_type()
 
     impl_schedule_3(inst)
@@ -292,7 +290,7 @@ def test_schedule_4(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "schedule-provider-location2-example.json"
     )
-    inst = schedule.Schedule.model_validate_json(Path(filename).read_bytes())
+    inst = schedule.Schedule.model_validate_json(filename.read_bytes())
     assert "Schedule" == inst.get_resource_type()
 
     impl_schedule_4(inst)

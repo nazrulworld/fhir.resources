@@ -12,6 +12,7 @@ from os.path import dirname
 
 import pytest  # type: ignore
 from fhir_core.types import (
+    Base64BinaryType,
     DateTimeType,
     DateType,
     InstantType,
@@ -119,3 +120,4 @@ class ExternalValidatorModel(BaseModel):
     valueInstant: InstantType = Field(None, title="Instant")
     valueUri: UriType = Field(None, title="Uri")
     valueUrl: UrlType = Field(None, title="Url")
+    valueBase64Binary: Base64BinaryType = Field(None, title="Base64Binary")

@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import organizationaffiliation
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -71,7 +69,7 @@ def test_organizationaffiliation_1(base_settings):
         base_settings["unittest_data_dir"] / "organizationaffiliation-example.json"
     )
     inst = organizationaffiliation.OrganizationAffiliation.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "OrganizationAffiliation" == inst.get_resource_type()
 
@@ -129,7 +127,7 @@ def test_organizationaffiliation_2(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "orgrole-example-hie.json"
     inst = organizationaffiliation.OrganizationAffiliation.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "OrganizationAffiliation" == inst.get_resource_type()
 
@@ -209,7 +207,7 @@ def test_organizationaffiliation_3(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "orgrole-example-services.json"
     inst = organizationaffiliation.OrganizationAffiliation.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "OrganizationAffiliation" == inst.get_resource_type()
 

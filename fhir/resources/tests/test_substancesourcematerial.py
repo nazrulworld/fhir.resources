@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import substancesourcematerial
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -33,7 +31,7 @@ def test_substancesourcematerial_1(base_settings):
         base_settings["unittest_data_dir"] / "substancesourcematerial-example.json"
     )
     inst = substancesourcematerial.SubstanceSourceMaterial.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "SubstanceSourceMaterial" == inst.get_resource_type()
 

@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import binary
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -31,7 +29,7 @@ def test_binary_1(base_settings):
     Test File: binary-example.json
     """
     filename = base_settings["unittest_data_dir"] / "binary-example.json"
-    inst = binary.Binary.model_validate_json(Path(filename).read_bytes())
+    inst = binary.Binary.model_validate_json(filename.read_bytes())
     assert "Binary" == inst.get_resource_type()
 
     impl_binary_1(inst)
@@ -62,7 +60,7 @@ def test_binary_2(base_settings):
     Test File: binary-f006.json
     """
     filename = base_settings["unittest_data_dir"] / "binary-f006.json"
-    inst = binary.Binary.model_validate_json(Path(filename).read_bytes())
+    inst = binary.Binary.model_validate_json(filename.read_bytes())
     assert "Binary" == inst.get_resource_type()
 
     impl_binary_2(inst)

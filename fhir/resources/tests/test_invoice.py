@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import invoice
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -66,7 +64,7 @@ def test_invoice_1(base_settings):
     Test File: invoice-example.json
     """
     filename = base_settings["unittest_data_dir"] / "invoice-example.json"
-    inst = invoice.Invoice.model_validate_json(Path(filename).read_bytes())
+    inst = invoice.Invoice.model_validate_json(filename.read_bytes())
     assert "Invoice" == inst.get_resource_type()
 
     impl_invoice_1(inst)

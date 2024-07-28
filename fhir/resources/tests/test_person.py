@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import person
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -76,7 +74,7 @@ def test_person_1(base_settings):
     Test File: person-patient-portal.json
     """
     filename = base_settings["unittest_data_dir"] / "person-patient-portal.json"
-    inst = person.Person.model_validate_json(Path(filename).read_bytes())
+    inst = person.Person.model_validate_json(filename.read_bytes())
     assert "Person" == inst.get_resource_type()
 
     impl_person_1(inst)
@@ -118,7 +116,7 @@ def test_person_2(base_settings):
     Test File: person-example-f002-ariadne.json
     """
     filename = base_settings["unittest_data_dir"] / "person-example-f002-ariadne.json"
-    inst = person.Person.model_validate_json(Path(filename).read_bytes())
+    inst = person.Person.model_validate_json(filename.read_bytes())
     assert "Person" == inst.get_resource_type()
 
     impl_person_2(inst)
@@ -193,7 +191,7 @@ def test_person_3(base_settings):
     Test File: person-provider-directory.json
     """
     filename = base_settings["unittest_data_dir"] / "person-provider-directory.json"
-    inst = person.Person.model_validate_json(Path(filename).read_bytes())
+    inst = person.Person.model_validate_json(filename.read_bytes())
     assert "Person" == inst.get_resource_type()
 
     impl_person_3(inst)
@@ -267,7 +265,7 @@ def test_person_4(base_settings):
     Test File: person-example.json
     """
     filename = base_settings["unittest_data_dir"] / "person-example.json"
-    inst = person.Person.model_validate_json(Path(filename).read_bytes())
+    inst = person.Person.model_validate_json(filename.read_bytes())
     assert "Person" == inst.get_resource_type()
 
     impl_person_4(inst)
@@ -323,7 +321,7 @@ def test_person_5(base_settings):
     Test File: person-example-per4.json
     """
     filename = base_settings["unittest_data_dir"] / "person-example-per4.json"
-    inst = person.Person.model_validate_json(Path(filename).read_bytes())
+    inst = person.Person.model_validate_json(filename.read_bytes())
     assert "Person" == inst.get_resource_type()
 
     impl_person_5(inst)
@@ -391,7 +389,7 @@ def test_person_6(base_settings):
     Test File: person-grahame.json
     """
     filename = base_settings["unittest_data_dir"] / "person-grahame.json"
-    inst = person.Person.model_validate_json(Path(filename).read_bytes())
+    inst = person.Person.model_validate_json(filename.read_bytes())
     assert "Person" == inst.get_resource_type()
 
     impl_person_6(inst)

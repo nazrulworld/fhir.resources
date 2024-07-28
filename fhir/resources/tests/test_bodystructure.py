@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import bodystructure
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -49,7 +47,7 @@ def test_bodystructure_1(base_settings):
     Test File: bodystructure-example-fetus.json
     """
     filename = base_settings["unittest_data_dir"] / "bodystructure-example-fetus.json"
-    inst = bodystructure.BodyStructure.model_validate_json(Path(filename).read_bytes())
+    inst = bodystructure.BodyStructure.model_validate_json(filename.read_bytes())
     assert "BodyStructure" == inst.get_resource_type()
 
     impl_bodystructure_1(inst)
@@ -113,7 +111,7 @@ def test_bodystructure_2(base_settings):
     Test File: bodystructure-example-tumor.json
     """
     filename = base_settings["unittest_data_dir"] / "bodystructure-example-tumor.json"
-    inst = bodystructure.BodyStructure.model_validate_json(Path(filename).read_bytes())
+    inst = bodystructure.BodyStructure.model_validate_json(filename.read_bytes())
     assert "BodyStructure" == inst.get_resource_type()
 
     impl_bodystructure_2(inst)
@@ -178,7 +176,7 @@ def test_bodystructure_3(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "bodystructure-example-skin-patch.json"
     )
-    inst = bodystructure.BodyStructure.model_validate_json(Path(filename).read_bytes())
+    inst = bodystructure.BodyStructure.model_validate_json(filename.read_bytes())
     assert "BodyStructure" == inst.get_resource_type()
 
     impl_bodystructure_3(inst)

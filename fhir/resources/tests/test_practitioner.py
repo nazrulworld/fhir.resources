@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import practitioner
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -57,7 +55,7 @@ def test_practitioner_1(base_settings):
     Test File: practitioner-example-f203-jvg.json
     """
     filename = base_settings["unittest_data_dir"] / "practitioner-example-f203-jvg.json"
-    inst = practitioner.Practitioner.model_validate_json(Path(filename).read_bytes())
+    inst = practitioner.Practitioner.model_validate_json(filename.read_bytes())
     assert "Practitioner" == inst.get_resource_type()
 
     impl_practitioner_1(inst)
@@ -118,7 +116,7 @@ def test_practitioner_2(base_settings):
     Test File: practitioner-example-f201-ab.json
     """
     filename = base_settings["unittest_data_dir"] / "practitioner-example-f201-ab.json"
-    inst = practitioner.Practitioner.model_validate_json(Path(filename).read_bytes())
+    inst = practitioner.Practitioner.model_validate_json(filename.read_bytes())
     assert "Practitioner" == inst.get_resource_type()
 
     impl_practitioner_2(inst)
@@ -174,7 +172,7 @@ def test_practitioner_3(base_settings):
     Test File: Practitioner-practitioner01.json
     """
     filename = base_settings["unittest_data_dir"] / "Practitioner-practitioner01.json"
-    inst = practitioner.Practitioner.model_validate_json(Path(filename).read_bytes())
+    inst = practitioner.Practitioner.model_validate_json(filename.read_bytes())
     assert "Practitioner" == inst.get_resource_type()
 
     impl_practitioner_3(inst)
@@ -236,7 +234,7 @@ def test_practitioner_4(base_settings):
     Test File: practitioner-example-f202-lm.json
     """
     filename = base_settings["unittest_data_dir"] / "practitioner-example-f202-lm.json"
-    inst = practitioner.Practitioner.model_validate_json(Path(filename).read_bytes())
+    inst = practitioner.Practitioner.model_validate_json(filename.read_bytes())
     assert "Practitioner" == inst.get_resource_type()
 
     impl_practitioner_4(inst)
@@ -272,7 +270,7 @@ def test_practitioner_5(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "practitioner-example-xcda-author.json"
     )
-    inst = practitioner.Practitioner.model_validate_json(Path(filename).read_bytes())
+    inst = practitioner.Practitioner.model_validate_json(filename.read_bytes())
     assert "Practitioner" == inst.get_resource_type()
 
     impl_practitioner_5(inst)
@@ -341,7 +339,7 @@ def test_practitioner_6(base_settings):
     Test File: practitioner-example-f003-mv.json
     """
     filename = base_settings["unittest_data_dir"] / "practitioner-example-f003-mv.json"
-    inst = practitioner.Practitioner.model_validate_json(Path(filename).read_bytes())
+    inst = practitioner.Practitioner.model_validate_json(filename.read_bytes())
     assert "Practitioner" == inst.get_resource_type()
 
     impl_practitioner_6(inst)
@@ -404,7 +402,7 @@ def test_practitioner_7(base_settings):
     Test File: practitioner-example-f002-pv.json
     """
     filename = base_settings["unittest_data_dir"] / "practitioner-example-f002-pv.json"
-    inst = practitioner.Practitioner.model_validate_json(Path(filename).read_bytes())
+    inst = practitioner.Practitioner.model_validate_json(filename.read_bytes())
     assert "Practitioner" == inst.get_resource_type()
 
     impl_practitioner_7(inst)
@@ -470,7 +468,7 @@ def test_practitioner_8(base_settings):
     Test File: practitioner-example.json
     """
     filename = base_settings["unittest_data_dir"] / "practitioner-example.json"
-    inst = practitioner.Practitioner.model_validate_json(Path(filename).read_bytes())
+    inst = practitioner.Practitioner.model_validate_json(filename.read_bytes())
     assert "Practitioner" == inst.get_resource_type()
 
     impl_practitioner_8(inst)
@@ -533,7 +531,7 @@ def test_practitioner_9(base_settings):
     Test File: practitioner-example-f007-sh.json
     """
     filename = base_settings["unittest_data_dir"] / "practitioner-example-f007-sh.json"
-    inst = practitioner.Practitioner.model_validate_json(Path(filename).read_bytes())
+    inst = practitioner.Practitioner.model_validate_json(filename.read_bytes())
     assert "Practitioner" == inst.get_resource_type()
 
     impl_practitioner_9(inst)
@@ -589,7 +587,7 @@ def test_practitioner_10(base_settings):
     Test File: Practitioner-practitioner02.json
     """
     filename = base_settings["unittest_data_dir"] / "Practitioner-practitioner02.json"
-    inst = practitioner.Practitioner.model_validate_json(Path(filename).read_bytes())
+    inst = practitioner.Practitioner.model_validate_json(filename.read_bytes())
     assert "Practitioner" == inst.get_resource_type()
 
     impl_practitioner_10(inst)

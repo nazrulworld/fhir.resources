@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import riskassessment
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -35,9 +33,7 @@ def test_riskassessment_1(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "riskassessment-example-population.json"
     )
-    inst = riskassessment.RiskAssessment.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = riskassessment.RiskAssessment.model_validate_json(filename.read_bytes())
     assert "RiskAssessment" == inst.get_resource_type()
 
     impl_riskassessment_1(inst)
@@ -103,9 +99,7 @@ def test_riskassessment_2(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "riskassessment-example-cardiac.json"
     )
-    inst = riskassessment.RiskAssessment.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = riskassessment.RiskAssessment.model_validate_json(filename.read_bytes())
     assert "RiskAssessment" == inst.get_resource_type()
 
     impl_riskassessment_2(inst)
@@ -266,9 +260,7 @@ def test_riskassessment_3(base_settings):
     Test File: riskassessment-example.json
     """
     filename = base_settings["unittest_data_dir"] / "riskassessment-example.json"
-    inst = riskassessment.RiskAssessment.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = riskassessment.RiskAssessment.model_validate_json(filename.read_bytes())
     assert "RiskAssessment" == inst.get_resource_type()
 
     impl_riskassessment_3(inst)
@@ -346,9 +338,7 @@ def test_riskassessment_4(base_settings):
     Test File: riskassessment-riskexample.json
     """
     filename = base_settings["unittest_data_dir"] / "riskassessment-riskexample.json"
-    inst = riskassessment.RiskAssessment.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = riskassessment.RiskAssessment.model_validate_json(filename.read_bytes())
     assert "RiskAssessment" == inst.get_resource_type()
 
     impl_riskassessment_4(inst)
@@ -401,9 +391,7 @@ def test_riskassessment_5(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "riskassessment-example-breastcancer.json"
     )
-    inst = riskassessment.RiskAssessment.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = riskassessment.RiskAssessment.model_validate_json(filename.read_bytes())
     assert "RiskAssessment" == inst.get_resource_type()
 
     impl_riskassessment_5(inst)
@@ -461,9 +449,7 @@ def test_riskassessment_6(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "riskassessment-example-prognosis.json"
     )
-    inst = riskassessment.RiskAssessment.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = riskassessment.RiskAssessment.model_validate_json(filename.read_bytes())
     assert "RiskAssessment" == inst.get_resource_type()
 
     impl_riskassessment_6(inst)

@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import basic
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -86,7 +84,7 @@ def test_basic_1(base_settings):
     Test File: basic-example2.json
     """
     filename = base_settings["unittest_data_dir"] / "basic-example2.json"
-    inst = basic.Basic.model_validate_json(Path(filename).read_bytes())
+    inst = basic.Basic.model_validate_json(filename.read_bytes())
     assert "Basic" == inst.get_resource_type()
 
     impl_basic_1(inst)
@@ -118,7 +116,7 @@ def test_basic_2(base_settings):
     Test File: basic-example-narrative.json
     """
     filename = base_settings["unittest_data_dir"] / "basic-example-narrative.json"
-    inst = basic.Basic.model_validate_json(Path(filename).read_bytes())
+    inst = basic.Basic.model_validate_json(filename.read_bytes())
     assert "Basic" == inst.get_resource_type()
 
     impl_basic_2(inst)
@@ -230,7 +228,7 @@ def test_basic_3(base_settings):
     Test File: basic-example.json
     """
     filename = base_settings["unittest_data_dir"] / "basic-example.json"
-    inst = basic.Basic.model_validate_json(Path(filename).read_bytes())
+    inst = basic.Basic.model_validate_json(filename.read_bytes())
     assert "Basic" == inst.get_resource_type()
 
     impl_basic_3(inst)

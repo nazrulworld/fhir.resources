@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import medicationdispense
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -103,7 +101,7 @@ def test_medicationdispense_1(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "medicationdispense0317.json"
     inst = medicationdispense.MedicationDispense.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicationDispense" == inst.get_resource_type()
 
@@ -213,7 +211,7 @@ def test_medicationdispense_2(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "medicationdispense0301.json"
     inst = medicationdispense.MedicationDispense.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicationDispense" == inst.get_resource_type()
 
@@ -339,7 +337,7 @@ def test_medicationdispense_3(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "medicationdispense0321.json"
     inst = medicationdispense.MedicationDispense.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicationDispense" == inst.get_resource_type()
 
@@ -460,7 +458,7 @@ def test_medicationdispense_4(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "medicationdispense0320.json"
     inst = medicationdispense.MedicationDispense.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicationDispense" == inst.get_resource_type()
 
@@ -567,7 +565,7 @@ def test_medicationdispense_5(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "medicationdispense0316.json"
     inst = medicationdispense.MedicationDispense.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicationDispense" == inst.get_resource_type()
 
@@ -669,7 +667,7 @@ def test_medicationdispense_6(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "medicationdispense0327.json"
     inst = medicationdispense.MedicationDispense.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicationDispense" == inst.get_resource_type()
 
@@ -739,7 +737,7 @@ def test_medicationdispense_7(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "medicationdispenseexample8.json"
     inst = medicationdispense.MedicationDispense.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicationDispense" == inst.get_resource_type()
 
@@ -834,7 +832,7 @@ def test_medicationdispense_8(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "medicationdispense0331.json"
     inst = medicationdispense.MedicationDispense.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicationDispense" == inst.get_resource_type()
 
@@ -970,7 +968,7 @@ def test_medicationdispense_9(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "medicationdispense0311.json"
     inst = medicationdispense.MedicationDispense.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicationDispense" == inst.get_resource_type()
 
@@ -1071,7 +1069,7 @@ def test_medicationdispense_10(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "medicationdispense0307.json"
     inst = medicationdispense.MedicationDispense.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicationDispense" == inst.get_resource_type()
 

@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import deviceassociation
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -44,7 +42,7 @@ def test_deviceassociation_1(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "deviceassociation-example.json"
     inst = deviceassociation.DeviceAssociation.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "DeviceAssociation" == inst.get_resource_type()
 

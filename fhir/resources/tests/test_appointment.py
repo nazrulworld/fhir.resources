@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import appointment
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -113,7 +111,7 @@ def test_appointment_1(base_settings):
     Test File: appointment-example.json
     """
     filename = base_settings["unittest_data_dir"] / "appointment-example.json"
-    inst = appointment.Appointment.model_validate_json(Path(filename).read_bytes())
+    inst = appointment.Appointment.model_validate_json(filename.read_bytes())
     assert "Appointment" == inst.get_resource_type()
 
     impl_appointment_1(inst)
@@ -224,7 +222,7 @@ def test_appointment_2(base_settings):
     Test File: appointment-example-request.json
     """
     filename = base_settings["unittest_data_dir"] / "appointment-example-request.json"
-    inst = appointment.Appointment.model_validate_json(Path(filename).read_bytes())
+    inst = appointment.Appointment.model_validate_json(filename.read_bytes())
     assert "Appointment" == inst.get_resource_type()
 
     impl_appointment_2(inst)
@@ -311,7 +309,7 @@ def test_appointment_3(base_settings):
     Test File: appointment-example2doctors.json
     """
     filename = base_settings["unittest_data_dir"] / "appointment-example2doctors.json"
-    inst = appointment.Appointment.model_validate_json(Path(filename).read_bytes())
+    inst = appointment.Appointment.model_validate_json(filename.read_bytes())
     assert "Appointment" == inst.get_resource_type()
 
     impl_appointment_3(inst)

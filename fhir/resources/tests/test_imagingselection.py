@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import imagingselection
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -78,9 +76,7 @@ def test_imagingselection_1(base_settings):
         base_settings["unittest_data_dir"]
         / "imagingselection-example-dicom-sr-selection.json"
     )
-    inst = imagingselection.ImagingSelection.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = imagingselection.ImagingSelection.model_validate_json(filename.read_bytes())
     assert "ImagingSelection" == inst.get_resource_type()
 
     impl_imagingselection_1(inst)
@@ -160,9 +156,7 @@ def test_imagingselection_2(base_settings):
         base_settings["unittest_data_dir"]
         / "imagingselection-example-multiframe-image-selection.json"
     )
-    inst = imagingselection.ImagingSelection.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = imagingselection.ImagingSelection.model_validate_json(filename.read_bytes())
     assert "ImagingSelection" == inst.get_resource_type()
 
     impl_imagingselection_2(inst)
@@ -239,9 +233,7 @@ def test_imagingselection_3(base_settings):
         base_settings["unittest_data_dir"]
         / "imagingselection-example-segmentation-image-selection.json"
     )
-    inst = imagingselection.ImagingSelection.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = imagingselection.ImagingSelection.model_validate_json(filename.read_bytes())
     assert "ImagingSelection" == inst.get_resource_type()
 
     impl_imagingselection_3(inst)
@@ -327,9 +319,7 @@ def test_imagingselection_4(base_settings):
         base_settings["unittest_data_dir"]
         / "imagingselection-example-basic-image-selection.json"
     )
-    inst = imagingselection.ImagingSelection.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = imagingselection.ImagingSelection.model_validate_json(filename.read_bytes())
     assert "ImagingSelection" == inst.get_resource_type()
 
     impl_imagingselection_4(inst)
@@ -406,9 +396,7 @@ def test_imagingselection_5(base_settings):
         base_settings["unittest_data_dir"]
         / "imagingselection-example-presentation-state-selection.json"
     )
-    inst = imagingselection.ImagingSelection.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = imagingselection.ImagingSelection.model_validate_json(filename.read_bytes())
     assert "ImagingSelection" == inst.get_resource_type()
 
     impl_imagingselection_5(inst)
@@ -495,9 +483,7 @@ def test_imagingselection_6(base_settings):
         base_settings["unittest_data_dir"]
         / "imagingselection-example-3d-image-region-selection.json"
     )
-    inst = imagingselection.ImagingSelection.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = imagingselection.ImagingSelection.model_validate_json(filename.read_bytes())
     assert "ImagingSelection" == inst.get_resource_type()
 
     impl_imagingselection_6(inst)
@@ -583,9 +569,7 @@ def test_imagingselection_7(base_settings):
         base_settings["unittest_data_dir"]
         / "imagingselection-example-2d-image-region-selection.json"
     )
-    inst = imagingselection.ImagingSelection.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = imagingselection.ImagingSelection.model_validate_json(filename.read_bytes())
     assert "ImagingSelection" == inst.get_resource_type()
 
     impl_imagingselection_7(inst)

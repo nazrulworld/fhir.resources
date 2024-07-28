@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import medicationadministration
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -73,7 +71,7 @@ def test_medicationadministration_1(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "medicationadministration0301.json"
     inst = medicationadministration.MedicationAdministration.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicationAdministration" == inst.get_resource_type()
 
@@ -140,7 +138,7 @@ def test_medicationadministration_2(base_settings):
         base_settings["unittest_data_dir"] / "medicationadministrationexample3.json"
     )
     inst = medicationadministration.MedicationAdministration.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicationAdministration" == inst.get_resource_type()
 
@@ -236,7 +234,7 @@ def test_medicationadministration_3(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "medicationadministration0307.json"
     inst = medicationadministration.MedicationAdministration.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicationAdministration" == inst.get_resource_type()
 
@@ -314,7 +312,7 @@ def test_medicationadministration_4(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "medicationadministration0311.json"
     inst = medicationadministration.MedicationAdministration.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicationAdministration" == inst.get_resource_type()
 
@@ -386,7 +384,7 @@ def test_medicationadministration_5(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "medicationadministration0310.json"
     inst = medicationadministration.MedicationAdministration.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicationAdministration" == inst.get_resource_type()
 
@@ -474,7 +472,7 @@ def test_medicationadministration_6(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "medicationadministration0306.json"
     inst = medicationadministration.MedicationAdministration.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicationAdministration" == inst.get_resource_type()
 
@@ -577,7 +575,7 @@ def test_medicationadministration_7(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "medicationadministration0309.json"
     inst = medicationadministration.MedicationAdministration.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicationAdministration" == inst.get_resource_type()
 
@@ -662,7 +660,7 @@ def test_medicationadministration_8(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "medicationadministration0313.json"
     inst = medicationadministration.MedicationAdministration.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicationAdministration" == inst.get_resource_type()
 
@@ -743,7 +741,7 @@ def test_medicationadministration_9(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "medicationadministration0305.json"
     inst = medicationadministration.MedicationAdministration.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicationAdministration" == inst.get_resource_type()
 
@@ -827,7 +825,7 @@ def test_medicationadministration_10(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "medicationadministration0304.json"
     inst = medicationadministration.MedicationAdministration.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "MedicationAdministration" == inst.get_resource_type()
 

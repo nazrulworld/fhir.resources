@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import careplan
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -58,7 +56,7 @@ def test_careplan_1(base_settings):
     Test File: careplan-example-f002-lung.json
     """
     filename = base_settings["unittest_data_dir"] / "careplan-example-f002-lung.json"
-    inst = careplan.CarePlan.model_validate_json(Path(filename).read_bytes())
+    inst = careplan.CarePlan.model_validate_json(filename.read_bytes())
     assert "CarePlan" == inst.get_resource_type()
 
     impl_careplan_1(inst)
@@ -109,7 +107,7 @@ def test_careplan_2(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "careplan-example-f202-malignancy.json"
     )
-    inst = careplan.CarePlan.model_validate_json(Path(filename).read_bytes())
+    inst = careplan.CarePlan.model_validate_json(filename.read_bytes())
     assert "CarePlan" == inst.get_resource_type()
 
     impl_careplan_2(inst)
@@ -146,7 +144,7 @@ def test_careplan_3(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "careplan-example-obesity-narrative.json"
     )
-    inst = careplan.CarePlan.model_validate_json(Path(filename).read_bytes())
+    inst = careplan.CarePlan.model_validate_json(filename.read_bytes())
     assert "CarePlan" == inst.get_resource_type()
 
     impl_careplan_3(inst)
@@ -221,7 +219,7 @@ def test_careplan_4(base_settings):
     Test File: careplan-example.json
     """
     filename = base_settings["unittest_data_dir"] / "careplan-example.json"
-    inst = careplan.CarePlan.model_validate_json(Path(filename).read_bytes())
+    inst = careplan.CarePlan.model_validate_json(filename.read_bytes())
     assert "CarePlan" == inst.get_resource_type()
 
     impl_careplan_4(inst)
@@ -276,7 +274,7 @@ def test_careplan_5(base_settings):
     Test File: careplan-example-f201-renal.json
     """
     filename = base_settings["unittest_data_dir"] / "careplan-example-f201-renal.json"
-    inst = careplan.CarePlan.model_validate_json(Path(filename).read_bytes())
+    inst = careplan.CarePlan.model_validate_json(filename.read_bytes())
     assert "CarePlan" == inst.get_resource_type()
 
     impl_careplan_5(inst)
@@ -331,7 +329,7 @@ def test_careplan_6(base_settings):
     Test File: careplan-example-GPVisit.json
     """
     filename = base_settings["unittest_data_dir"] / "careplan-example-GPVisit.json"
-    inst = careplan.CarePlan.model_validate_json(Path(filename).read_bytes())
+    inst = careplan.CarePlan.model_validate_json(filename.read_bytes())
     assert "CarePlan" == inst.get_resource_type()
 
     impl_careplan_6(inst)
@@ -499,7 +497,7 @@ def test_careplan_7(base_settings):
     Test File: careplan-example-integrated.json
     """
     filename = base_settings["unittest_data_dir"] / "careplan-example-integrated.json"
-    inst = careplan.CarePlan.model_validate_json(Path(filename).read_bytes())
+    inst = careplan.CarePlan.model_validate_json(filename.read_bytes())
     assert "CarePlan" == inst.get_resource_type()
 
     impl_careplan_7(inst)
@@ -562,7 +560,7 @@ def test_careplan_8(base_settings):
     Test File: careplan-example-f003-pharynx.json
     """
     filename = base_settings["unittest_data_dir"] / "careplan-example-f003-pharynx.json"
-    inst = careplan.CarePlan.model_validate_json(Path(filename).read_bytes())
+    inst = careplan.CarePlan.model_validate_json(filename.read_bytes())
     assert "CarePlan" == inst.get_resource_type()
 
     impl_careplan_8(inst)
@@ -621,7 +619,7 @@ def test_careplan_9(base_settings):
     Test File: careplan-example-f001-heart.json
     """
     filename = base_settings["unittest_data_dir"] / "careplan-example-f001-heart.json"
-    inst = careplan.CarePlan.model_validate_json(Path(filename).read_bytes())
+    inst = careplan.CarePlan.model_validate_json(filename.read_bytes())
     assert "CarePlan" == inst.get_resource_type()
 
     impl_careplan_9(inst)
@@ -705,7 +703,7 @@ def test_careplan_10(base_settings):
     Test File: careplan-example-pregnancy.json
     """
     filename = base_settings["unittest_data_dir"] / "careplan-example-pregnancy.json"
-    inst = careplan.CarePlan.model_validate_json(Path(filename).read_bytes())
+    inst = careplan.CarePlan.model_validate_json(filename.read_bytes())
     assert "CarePlan" == inst.get_resource_type()
 
     impl_careplan_10(inst)

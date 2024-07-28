@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import claimresponse
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -152,7 +150,7 @@ def test_claimresponse_1(base_settings):
         base_settings["unittest_data_dir"]
         / "claimresponse-example-unsolicited-preauth.json"
     )
-    inst = claimresponse.ClaimResponse.model_validate_json(Path(filename).read_bytes())
+    inst = claimresponse.ClaimResponse.model_validate_json(filename.read_bytes())
     assert "ClaimResponse" == inst.get_resource_type()
 
     impl_claimresponse_1(inst)
@@ -394,7 +392,7 @@ def test_claimresponse_2(base_settings):
     Test File: claimresponse-example-additem.json
     """
     filename = base_settings["unittest_data_dir"] / "claimresponse-example-additem.json"
-    inst = claimresponse.ClaimResponse.model_validate_json(Path(filename).read_bytes())
+    inst = claimresponse.ClaimResponse.model_validate_json(filename.read_bytes())
     assert "ClaimResponse" == inst.get_resource_type()
 
     impl_claimresponse_2(inst)
@@ -520,7 +518,7 @@ def test_claimresponse_3(base_settings):
     Test File: claimresponse-example.json
     """
     filename = base_settings["unittest_data_dir"] / "claimresponse-example.json"
-    inst = claimresponse.ClaimResponse.model_validate_json(Path(filename).read_bytes())
+    inst = claimresponse.ClaimResponse.model_validate_json(filename.read_bytes())
     assert "ClaimResponse" == inst.get_resource_type()
 
     impl_claimresponse_3(inst)
@@ -763,7 +761,7 @@ def test_claimresponse_4(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "claimresponse-example-vision-3tier.json"
     )
-    inst = claimresponse.ClaimResponse.model_validate_json(Path(filename).read_bytes())
+    inst = claimresponse.ClaimResponse.model_validate_json(filename.read_bytes())
     assert "ClaimResponse" == inst.get_resource_type()
 
     impl_claimresponse_4(inst)
@@ -859,7 +857,7 @@ def test_claimresponse_5(base_settings):
     Test File: claimresponse-example-2.json
     """
     filename = base_settings["unittest_data_dir"] / "claimresponse-example-2.json"
-    inst = claimresponse.ClaimResponse.model_validate_json(Path(filename).read_bytes())
+    inst = claimresponse.ClaimResponse.model_validate_json(filename.read_bytes())
     assert "ClaimResponse" == inst.get_resource_type()
 
     impl_claimresponse_5(inst)

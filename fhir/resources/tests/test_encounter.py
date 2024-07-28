@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import encounter
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -94,7 +92,7 @@ def test_encounter_1(base_settings):
     Test File: encounter-example-home.json
     """
     filename = base_settings["unittest_data_dir"] / "encounter-example-home.json"
-    inst = encounter.Encounter.model_validate_json(Path(filename).read_bytes())
+    inst = encounter.Encounter.model_validate_json(filename.read_bytes())
     assert "Encounter" == inst.get_resource_type()
 
     impl_encounter_1(inst)
@@ -158,7 +156,7 @@ def test_encounter_2(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "encounter-example-f201-20130404.json"
     )
-    inst = encounter.Encounter.model_validate_json(Path(filename).read_bytes())
+    inst = encounter.Encounter.model_validate_json(filename.read_bytes())
     assert "Encounter" == inst.get_resource_type()
 
     impl_encounter_2(inst)
@@ -262,7 +260,7 @@ def test_encounter_3(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "encounter-example-f003-abscess.json"
     )
-    inst = encounter.Encounter.model_validate_json(Path(filename).read_bytes())
+    inst = encounter.Encounter.model_validate_json(filename.read_bytes())
     assert "Encounter" == inst.get_resource_type()
 
     impl_encounter_3(inst)
@@ -315,7 +313,7 @@ def test_encounter_4(base_settings):
     Test File: encounter-example.json
     """
     filename = base_settings["unittest_data_dir"] / "encounter-example.json"
-    inst = encounter.Encounter.model_validate_json(Path(filename).read_bytes())
+    inst = encounter.Encounter.model_validate_json(filename.read_bytes())
     assert "Encounter" == inst.get_resource_type()
 
     impl_encounter_4(inst)
@@ -356,7 +354,7 @@ def test_encounter_5(base_settings):
     Test File: Encounter-genomicEncounter.json
     """
     filename = base_settings["unittest_data_dir"] / "Encounter-genomicEncounter.json"
-    inst = encounter.Encounter.model_validate_json(Path(filename).read_bytes())
+    inst = encounter.Encounter.model_validate_json(filename.read_bytes())
     assert "Encounter" == inst.get_resource_type()
 
     impl_encounter_5(inst)
@@ -425,7 +423,7 @@ def test_encounter_6(base_settings):
     Test File: encounter-example-colonoscopy.json
     """
     filename = base_settings["unittest_data_dir"] / "encounter-example-colonoscopy.json"
-    inst = encounter.Encounter.model_validate_json(Path(filename).read_bytes())
+    inst = encounter.Encounter.model_validate_json(filename.read_bytes())
     assert "Encounter" == inst.get_resource_type()
 
     impl_encounter_6(inst)
@@ -526,7 +524,7 @@ def test_encounter_7(base_settings):
     Test File: encounter-example-f002-lung.json
     """
     filename = base_settings["unittest_data_dir"] / "encounter-example-f002-lung.json"
-    inst = encounter.Encounter.model_validate_json(Path(filename).read_bytes())
+    inst = encounter.Encounter.model_validate_json(filename.read_bytes())
     assert "Encounter" == inst.get_resource_type()
 
     impl_encounter_7(inst)
@@ -661,7 +659,7 @@ def test_encounter_8(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "encounter-example-f203-20130311.json"
     )
-    inst = encounter.Encounter.model_validate_json(Path(filename).read_bytes())
+    inst = encounter.Encounter.model_validate_json(filename.read_bytes())
     assert "Encounter" == inst.get_resource_type()
 
     impl_encounter_8(inst)
@@ -719,7 +717,7 @@ def test_encounter_9(base_settings):
     Test File: encounter-example-xcda.json
     """
     filename = base_settings["unittest_data_dir"] / "encounter-example-xcda.json"
-    inst = encounter.Encounter.model_validate_json(Path(filename).read_bytes())
+    inst = encounter.Encounter.model_validate_json(filename.read_bytes())
     assert "Encounter" == inst.get_resource_type()
 
     impl_encounter_9(inst)
@@ -810,7 +808,7 @@ def test_encounter_10(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "encounter-example-f202-20130128.json"
     )
-    inst = encounter.Encounter.model_validate_json(Path(filename).read_bytes())
+    inst = encounter.Encounter.model_validate_json(filename.read_bytes())
     assert "Encounter" == inst.get_resource_type()
 
     impl_encounter_10(inst)

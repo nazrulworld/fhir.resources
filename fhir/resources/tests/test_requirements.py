@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import requirements
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -57,7 +55,7 @@ def test_requirements_1(base_settings):
     Test File: Requirements-example2.json
     """
     filename = base_settings["unittest_data_dir"] / "Requirements-example2.json"
-    inst = requirements.Requirements.model_validate_json(Path(filename).read_bytes())
+    inst = requirements.Requirements.model_validate_json(filename.read_bytes())
     assert "Requirements" == inst.get_resource_type()
 
     impl_requirements_1(inst)
@@ -124,7 +122,7 @@ def test_requirements_2(base_settings):
     Test File: Requirements-example1.json
     """
     filename = base_settings["unittest_data_dir"] / "Requirements-example1.json"
-    inst = requirements.Requirements.model_validate_json(Path(filename).read_bytes())
+    inst = requirements.Requirements.model_validate_json(filename.read_bytes())
     assert "Requirements" == inst.get_resource_type()
 
     impl_requirements_2(inst)

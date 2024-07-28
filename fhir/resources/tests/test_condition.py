@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import condition
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -97,7 +95,7 @@ def test_condition_1(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "condition-example-f003-abscess.json"
     )
-    inst = condition.Condition.model_validate_json(Path(filename).read_bytes())
+    inst = condition.Condition.model_validate_json(filename.read_bytes())
     assert "Condition" == inst.get_resource_type()
 
     impl_condition_1(inst)
@@ -196,7 +194,7 @@ def test_condition_2(base_settings):
     Test File: condition-example-f203-sepsis.json
     """
     filename = base_settings["unittest_data_dir"] / "condition-example-f203-sepsis.json"
-    inst = condition.Condition.model_validate_json(Path(filename).read_bytes())
+    inst = condition.Condition.model_validate_json(filename.read_bytes())
     assert "Condition" == inst.get_resource_type()
 
     impl_condition_2(inst)
@@ -265,7 +263,7 @@ def test_condition_3(base_settings):
     Test File: condition-example-stroke.json
     """
     filename = base_settings["unittest_data_dir"] / "condition-example-stroke.json"
-    inst = condition.Condition.model_validate_json(Path(filename).read_bytes())
+    inst = condition.Condition.model_validate_json(filename.read_bytes())
     assert "Condition" == inst.get_resource_type()
 
     impl_condition_3(inst)
@@ -324,7 +322,7 @@ def test_condition_4(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "condition-example-family-history.json"
     )
-    inst = condition.Condition.model_validate_json(Path(filename).read_bytes())
+    inst = condition.Condition.model_validate_json(filename.read_bytes())
     assert "Condition" == inst.get_resource_type()
 
     impl_condition_4(inst)
@@ -432,7 +430,7 @@ def test_condition_5(base_settings):
     Test File: condition-example-f002-lung.json
     """
     filename = base_settings["unittest_data_dir"] / "condition-example-f002-lung.json"
-    inst = condition.Condition.model_validate_json(Path(filename).read_bytes())
+    inst = condition.Condition.model_validate_json(filename.read_bytes())
     assert "Condition" == inst.get_resource_type()
 
     impl_condition_5(inst)
@@ -500,7 +498,7 @@ def test_condition_6(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "condition-example-f205-infection.json"
     )
-    inst = condition.Condition.model_validate_json(Path(filename).read_bytes())
+    inst = condition.Condition.model_validate_json(filename.read_bytes())
     assert "Condition" == inst.get_resource_type()
 
     impl_condition_6(inst)
@@ -612,7 +610,7 @@ def test_condition_7(base_settings):
     Test File: condition-example-f204-renal.json
     """
     filename = base_settings["unittest_data_dir"] / "condition-example-f204-renal.json"
-    inst = condition.Condition.model_validate_json(Path(filename).read_bytes())
+    inst = condition.Condition.model_validate_json(filename.read_bytes())
     assert "Condition" == inst.get_resource_type()
 
     impl_condition_7(inst)
@@ -678,7 +676,7 @@ def test_condition_8(base_settings):
     Test File: condition-example2.json
     """
     filename = base_settings["unittest_data_dir"] / "condition-example2.json"
-    inst = condition.Condition.model_validate_json(Path(filename).read_bytes())
+    inst = condition.Condition.model_validate_json(filename.read_bytes())
     assert "Condition" == inst.get_resource_type()
 
     impl_condition_8(inst)
@@ -783,7 +781,7 @@ def test_condition_9(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "condition-example-f202-malignancy.json"
     )
-    inst = condition.Condition.model_validate_json(Path(filename).read_bytes())
+    inst = condition.Condition.model_validate_json(filename.read_bytes())
     assert "Condition" == inst.get_resource_type()
 
     impl_condition_9(inst)
@@ -898,7 +896,7 @@ def test_condition_10(base_settings):
     Test File: condition-example-f201-fever.json
     """
     filename = base_settings["unittest_data_dir"] / "condition-example-f201-fever.json"
-    inst = condition.Condition.model_validate_json(Path(filename).read_bytes())
+    inst = condition.Condition.model_validate_json(filename.read_bytes())
     assert "Condition" == inst.get_resource_type()
 
     impl_condition_10(inst)

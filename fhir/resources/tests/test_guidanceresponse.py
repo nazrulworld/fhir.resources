@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import guidanceresponse
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -70,9 +68,7 @@ def test_guidanceresponse_1(base_settings):
         base_settings["unittest_data_dir"]
         / "guidanceresponse-additional-data-example.json"
     )
-    inst = guidanceresponse.GuidanceResponse.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = guidanceresponse.GuidanceResponse.model_validate_json(filename.read_bytes())
     assert "GuidanceResponse" == inst.get_resource_type()
 
     impl_guidanceresponse_1(inst)
@@ -130,9 +126,7 @@ def test_guidanceresponse_2(base_settings):
     Test File: guidanceresponse-example.json
     """
     filename = base_settings["unittest_data_dir"] / "guidanceresponse-example.json"
-    inst = guidanceresponse.GuidanceResponse.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = guidanceresponse.GuidanceResponse.model_validate_json(filename.read_bytes())
     assert "GuidanceResponse" == inst.get_resource_type()
 
     impl_guidanceresponse_2(inst)

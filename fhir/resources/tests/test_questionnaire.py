@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import questionnaire
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -372,7 +370,7 @@ def test_questionnaire_1(base_settings):
     Test File: person-questionnaire.json
     """
     filename = base_settings["unittest_data_dir"] / "person-questionnaire.json"
-    inst = questionnaire.Questionnaire.model_validate_json(Path(filename).read_bytes())
+    inst = questionnaire.Questionnaire.model_validate_json(filename.read_bytes())
     assert "Questionnaire" == inst.get_resource_type()
 
     impl_questionnaire_1(inst)
@@ -830,7 +828,7 @@ def test_questionnaire_2(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "requestorchestration-questionnaire.json"
     )
-    inst = questionnaire.Questionnaire.model_validate_json(Path(filename).read_bytes())
+    inst = questionnaire.Questionnaire.model_validate_json(filename.read_bytes())
     assert "Questionnaire" == inst.get_resource_type()
 
     impl_questionnaire_2(inst)
@@ -1213,7 +1211,7 @@ def test_questionnaire_3(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "operationoutcome-questionnaire.json"
     )
-    inst = questionnaire.Questionnaire.model_validate_json(Path(filename).read_bytes())
+    inst = questionnaire.Questionnaire.model_validate_json(filename.read_bytes())
     assert "Questionnaire" == inst.get_resource_type()
 
     impl_questionnaire_3(inst)
@@ -1640,7 +1638,7 @@ def test_questionnaire_4(base_settings):
     Test File: eventdefinition-questionnaire.json
     """
     filename = base_settings["unittest_data_dir"] / "eventdefinition-questionnaire.json"
-    inst = questionnaire.Questionnaire.model_validate_json(Path(filename).read_bytes())
+    inst = questionnaire.Questionnaire.model_validate_json(filename.read_bytes())
     assert "Questionnaire" == inst.get_resource_type()
 
     impl_questionnaire_4(inst)
@@ -2079,7 +2077,7 @@ def test_questionnaire_5(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "activitydefinition-questionnaire.json"
     )
-    inst = questionnaire.Questionnaire.model_validate_json(Path(filename).read_bytes())
+    inst = questionnaire.Questionnaire.model_validate_json(filename.read_bytes())
     assert "Questionnaire" == inst.get_resource_type()
 
     impl_questionnaire_5(inst)
@@ -2551,7 +2549,7 @@ def test_questionnaire_6(base_settings):
         base_settings["unittest_data_dir"]
         / "cdshooksguidanceresponse-questionnaire.json"
     )
-    inst = questionnaire.Questionnaire.model_validate_json(Path(filename).read_bytes())
+    inst = questionnaire.Questionnaire.model_validate_json(filename.read_bytes())
     assert "Questionnaire" == inst.get_resource_type()
 
     impl_questionnaire_6(inst)
@@ -2934,7 +2932,7 @@ def test_questionnaire_7(base_settings):
     Test File: searchparameter-questionnaire.json
     """
     filename = base_settings["unittest_data_dir"] / "searchparameter-questionnaire.json"
-    inst = questionnaire.Questionnaire.model_validate_json(Path(filename).read_bytes())
+    inst = questionnaire.Questionnaire.model_validate_json(filename.read_bytes())
     assert "Questionnaire" == inst.get_resource_type()
 
     impl_questionnaire_7(inst)
@@ -3394,7 +3392,7 @@ def test_questionnaire_8(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "explanationofbenefit-questionnaire.json"
     )
-    inst = questionnaire.Questionnaire.model_validate_json(Path(filename).read_bytes())
+    inst = questionnaire.Questionnaire.model_validate_json(filename.read_bytes())
     assert "Questionnaire" == inst.get_resource_type()
 
     impl_questionnaire_8(inst)
@@ -3850,7 +3848,7 @@ def test_questionnaire_9(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "immunizationevaluation-questionnaire.json"
     )
-    inst = questionnaire.Questionnaire.model_validate_json(Path(filename).read_bytes())
+    inst = questionnaire.Questionnaire.model_validate_json(filename.read_bytes())
     assert "Questionnaire" == inst.get_resource_type()
 
     impl_questionnaire_9(inst)
@@ -4661,7 +4659,7 @@ def test_questionnaire_10(base_settings):
     Test File: document-bundle-questionnaire.json
     """
     filename = base_settings["unittest_data_dir"] / "document-bundle-questionnaire.json"
-    inst = questionnaire.Questionnaire.model_validate_json(Path(filename).read_bytes())
+    inst = questionnaire.Questionnaire.model_validate_json(filename.read_bytes())
     assert "Questionnaire" == inst.get_resource_type()
 
     impl_questionnaire_10(inst)

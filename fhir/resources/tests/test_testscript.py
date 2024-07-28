@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import testscript
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -247,7 +245,7 @@ def test_testscript_1(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "testscript-example-multisystem.json"
     )
-    inst = testscript.TestScript.model_validate_json(Path(filename).read_bytes())
+    inst = testscript.TestScript.model_validate_json(filename.read_bytes())
     assert "TestScript" == inst.get_resource_type()
 
     impl_testscript_1(inst)
@@ -497,7 +495,7 @@ def test_testscript_2(base_settings):
     Test File: testscript-example-history.json
     """
     filename = base_settings["unittest_data_dir"] / "testscript-example-history.json"
-    inst = testscript.TestScript.model_validate_json(Path(filename).read_bytes())
+    inst = testscript.TestScript.model_validate_json(filename.read_bytes())
     assert "TestScript" == inst.get_resource_type()
 
     impl_testscript_2(inst)
@@ -703,7 +701,7 @@ def test_testscript_3(base_settings):
     Test File: testscript-example-update.json
     """
     filename = base_settings["unittest_data_dir"] / "testscript-example-update.json"
-    inst = testscript.TestScript.model_validate_json(Path(filename).read_bytes())
+    inst = testscript.TestScript.model_validate_json(filename.read_bytes())
     assert "TestScript" == inst.get_resource_type()
 
     impl_testscript_3(inst)
@@ -1009,7 +1007,7 @@ def test_testscript_4(base_settings):
     Test File: testscript-example-search.json
     """
     filename = base_settings["unittest_data_dir"] / "testscript-example-search.json"
-    inst = testscript.TestScript.model_validate_json(Path(filename).read_bytes())
+    inst = testscript.TestScript.model_validate_json(filename.read_bytes())
     assert "TestScript" == inst.get_resource_type()
 
     impl_testscript_4(inst)
@@ -1383,7 +1381,7 @@ def test_testscript_5(base_settings):
     Test File: testscript-example.json
     """
     filename = base_settings["unittest_data_dir"] / "testscript-example.json"
-    inst = testscript.TestScript.model_validate_json(Path(filename).read_bytes())
+    inst = testscript.TestScript.model_validate_json(filename.read_bytes())
     assert "TestScript" == inst.get_resource_type()
 
     impl_testscript_5(inst)
@@ -1634,7 +1632,7 @@ def test_testscript_6(base_settings):
     Test File: testscript-example-readtest.json
     """
     filename = base_settings["unittest_data_dir"] / "testscript-example-readtest.json"
-    inst = testscript.TestScript.model_validate_json(Path(filename).read_bytes())
+    inst = testscript.TestScript.model_validate_json(filename.read_bytes())
     assert "TestScript" == inst.get_resource_type()
 
     impl_testscript_6(inst)

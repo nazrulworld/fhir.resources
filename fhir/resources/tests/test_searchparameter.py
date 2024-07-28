@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import searchparameter
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -50,9 +48,7 @@ def test_searchparameter_1(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "searchparameter-example-extension.json"
     )
-    inst = searchparameter.SearchParameter.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = searchparameter.SearchParameter.model_validate_json(filename.read_bytes())
     assert "SearchParameter" == inst.get_resource_type()
 
     impl_searchparameter_1(inst)
@@ -103,9 +99,7 @@ def test_searchparameter_2(base_settings):
     Test File: searchparameter-filter.json
     """
     filename = base_settings["unittest_data_dir"] / "searchparameter-filter.json"
-    inst = searchparameter.SearchParameter.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = searchparameter.SearchParameter.model_validate_json(filename.read_bytes())
     assert "SearchParameter" == inst.get_resource_type()
 
     impl_searchparameter_2(inst)
@@ -151,9 +145,7 @@ def test_searchparameter_3(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "searchparameter-example-constraint.json"
     )
-    inst = searchparameter.SearchParameter.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = searchparameter.SearchParameter.model_validate_json(filename.read_bytes())
     assert "SearchParameter" == inst.get_resource_type()
 
     impl_searchparameter_3(inst)
@@ -204,9 +196,7 @@ def test_searchparameter_4(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "searchparameter-example-reference.json"
     )
-    inst = searchparameter.SearchParameter.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = searchparameter.SearchParameter.model_validate_json(filename.read_bytes())
     assert "SearchParameter" == inst.get_resource_type()
 
     impl_searchparameter_4(inst)
@@ -280,9 +270,7 @@ def test_searchparameter_5(base_settings):
     Test File: searchparameter-example.json
     """
     filename = base_settings["unittest_data_dir"] / "searchparameter-example.json"
-    inst = searchparameter.SearchParameter.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = searchparameter.SearchParameter.model_validate_json(filename.read_bytes())
     assert "SearchParameter" == inst.get_resource_type()
 
     impl_searchparameter_5(inst)

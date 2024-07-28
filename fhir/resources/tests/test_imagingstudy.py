@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import imagingstudy
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -162,7 +160,7 @@ def test_imagingstudy_1(base_settings):
     Test File: imagingstudy-example-xr.json
     """
     filename = base_settings["unittest_data_dir"] / "imagingstudy-example-xr.json"
-    inst = imagingstudy.ImagingStudy.model_validate_json(Path(filename).read_bytes())
+    inst = imagingstudy.ImagingStudy.model_validate_json(filename.read_bytes())
     assert "ImagingStudy" == inst.get_resource_type()
 
     impl_imagingstudy_1(inst)
@@ -246,7 +244,7 @@ def test_imagingstudy_2(base_settings):
     Test File: imagingstudy-example.json
     """
     filename = base_settings["unittest_data_dir"] / "imagingstudy-example.json"
-    inst = imagingstudy.ImagingStudy.model_validate_json(Path(filename).read_bytes())
+    inst = imagingstudy.ImagingStudy.model_validate_json(filename.read_bytes())
     assert "ImagingStudy" == inst.get_resource_type()
 
     impl_imagingstudy_2(inst)

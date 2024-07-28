@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import healthcareservice
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -151,7 +149,7 @@ def test_healthcareservice_1(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "healthcareservice-example.json"
     inst = healthcareservice.HealthcareService.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "HealthcareService" == inst.get_resource_type()
 

@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import nutritionorder
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -99,9 +97,7 @@ def test_nutritionorder_1(base_settings):
         base_settings["unittest_data_dir"]
         / "nutritionorder-example-diabeticsupplement.json"
     )
-    inst = nutritionorder.NutritionOrder.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = nutritionorder.NutritionOrder.model_validate_json(filename.read_bytes())
     assert "NutritionOrder" == inst.get_resource_type()
 
     impl_nutritionorder_1(inst)
@@ -239,9 +235,7 @@ def test_nutritionorder_2(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "nutritionorder-example-enteralbolus.json"
     )
-    inst = nutritionorder.NutritionOrder.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = nutritionorder.NutritionOrder.model_validate_json(filename.read_bytes())
     assert "NutritionOrder" == inst.get_resource_type()
 
     impl_nutritionorder_2(inst)
@@ -360,9 +354,7 @@ def test_nutritionorder_3(base_settings):
         base_settings["unittest_data_dir"]
         / "nutritionorder-example-fiberrestricteddiet.json"
     )
-    inst = nutritionorder.NutritionOrder.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = nutritionorder.NutritionOrder.model_validate_json(filename.read_bytes())
     assert "NutritionOrder" == inst.get_resource_type()
 
     impl_nutritionorder_3(inst)
@@ -449,9 +441,7 @@ def test_nutritionorder_4(base_settings):
         base_settings["unittest_data_dir"]
         / "nutritionorder-example-texture-modified.json"
     )
-    inst = nutritionorder.NutritionOrder.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = nutritionorder.NutritionOrder.model_validate_json(filename.read_bytes())
     assert "NutritionOrder" == inst.get_resource_type()
 
     impl_nutritionorder_4(inst)
@@ -564,9 +554,7 @@ def test_nutritionorder_5(base_settings):
         base_settings["unittest_data_dir"]
         / "nutritionorder-example-pureeddiet-simple.json"
     )
-    inst = nutritionorder.NutritionOrder.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = nutritionorder.NutritionOrder.model_validate_json(filename.read_bytes())
     assert "NutritionOrder" == inst.get_resource_type()
 
     impl_nutritionorder_5(inst)
@@ -693,9 +681,7 @@ def test_nutritionorder_6(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "nutritionorder-example-infantenteral.json"
     )
-    inst = nutritionorder.NutritionOrder.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = nutritionorder.NutritionOrder.model_validate_json(filename.read_bytes())
     assert "NutritionOrder" == inst.get_resource_type()
 
     impl_nutritionorder_6(inst)
@@ -828,9 +814,7 @@ def test_nutritionorder_7(base_settings):
         base_settings["unittest_data_dir"]
         / "nutritionorder-example-enteralcontinuous.json"
     )
-    inst = nutritionorder.NutritionOrder.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = nutritionorder.NutritionOrder.model_validate_json(filename.read_bytes())
     assert "NutritionOrder" == inst.get_resource_type()
 
     impl_nutritionorder_7(inst)
@@ -958,9 +942,7 @@ def test_nutritionorder_8(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "nutritionorder-example-cardiacdiet.json"
     )
-    inst = nutritionorder.NutritionOrder.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = nutritionorder.NutritionOrder.model_validate_json(filename.read_bytes())
     assert "NutritionOrder" == inst.get_resource_type()
 
     impl_nutritionorder_8(inst)
@@ -1067,9 +1049,7 @@ def test_nutritionorder_9(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "nutritionorder-example-pureeddiet.json"
     )
-    inst = nutritionorder.NutritionOrder.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = nutritionorder.NutritionOrder.model_validate_json(filename.read_bytes())
     assert "NutritionOrder" == inst.get_resource_type()
 
     impl_nutritionorder_9(inst)
@@ -1172,9 +1152,7 @@ def test_nutritionorder_10(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "nutritionorder-example-diabeticdiet.json"
     )
-    inst = nutritionorder.NutritionOrder.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = nutritionorder.NutritionOrder.model_validate_json(filename.read_bytes())
     assert "NutritionOrder" == inst.get_resource_type()
 
     impl_nutritionorder_10(inst)

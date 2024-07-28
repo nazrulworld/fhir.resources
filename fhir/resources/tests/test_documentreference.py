@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import documentreference
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -70,7 +68,7 @@ def test_documentreference_1(base_settings):
         base_settings["unittest_data_dir"] / "DocumentReference-genomicFile4.json"
     )
     inst = documentreference.DocumentReference.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "DocumentReference" == inst.get_resource_type()
 
@@ -175,7 +173,7 @@ def test_documentreference_2(base_settings):
         base_settings["unittest_data_dir"] / "documentreference-example-dicom.json"
     )
     inst = documentreference.DocumentReference.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "DocumentReference" == inst.get_resource_type()
 
@@ -245,7 +243,7 @@ def test_documentreference_3(base_settings):
         base_settings["unittest_data_dir"] / "DocumentReference-CNVAnalysis_called.json"
     )
     inst = documentreference.DocumentReference.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "DocumentReference" == inst.get_resource_type()
 
@@ -317,7 +315,7 @@ def test_documentreference_4(base_settings):
         base_settings["unittest_data_dir"] / "DocumentReference-genomicFileFather.json"
     )
     inst = documentreference.DocumentReference.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "DocumentReference" == inst.get_resource_type()
 
@@ -355,8 +353,11 @@ def impl_documentreference_5(inst):
             valueDateTime="2020-12-31T23:50:50-05:00"
         ).valueDateTime
     )
-    assert inst.content[0].attachment.hash == bytes_validator(
-        "OGEzOGYyNjMzMDA2ZmQ1MzUxNDljNDRhM2E3M2YzMTI0MzdiMzQ3OA=="
+    assert (
+        inst.content[0].attachment.hash
+        == ExternalValidatorModel(
+            valueBase64Binary="OGEzOGYyNjMzMDA2ZmQ1MzUxNDljNDRhM2E3M2YzMTI0MzdiMzQ3OA=="
+        ).valueBase64Binary
     )
     assert inst.content[0].attachment.language == "en"
     # Don't know how to create unit test
@@ -494,7 +495,7 @@ def test_documentreference_5(base_settings):
         / "documentreference-example-comprehensive.json"
     )
     inst = documentreference.DocumentReference.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "DocumentReference" == inst.get_resource_type()
 
@@ -564,7 +565,7 @@ def test_documentreference_6(base_settings):
         base_settings["unittest_data_dir"] / "DocumentReference-genomicVCFfile.json"
     )
     inst = documentreference.DocumentReference.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "DocumentReference" == inst.get_resource_type()
 
@@ -635,7 +636,7 @@ def test_documentreference_7(base_settings):
         / "DocumentReference-WES_FullSequencedRegion_GRCh38.json"
     )
     inst = documentreference.DocumentReference.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "DocumentReference" == inst.get_resource_type()
 
@@ -706,7 +707,7 @@ def test_documentreference_8(base_settings):
         / "DocumentReference-SimpleVariantAnalysis_called.json"
     )
     inst = documentreference.DocumentReference.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "DocumentReference" == inst.get_resource_type()
 
@@ -777,7 +778,7 @@ def test_documentreference_9(base_settings):
         / "DocumentReference-genomicVCFfile_simple.json"
     )
     inst = documentreference.DocumentReference.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "DocumentReference" == inst.get_resource_type()
 
@@ -849,7 +850,7 @@ def test_documentreference_10(base_settings):
         base_settings["unittest_data_dir"] / "DocumentReference-genomicFile2.json"
     )
     inst = documentreference.DocumentReference.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "DocumentReference" == inst.get_resource_type()
 

@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import device
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -36,7 +34,7 @@ def test_device_1(base_settings):
     Test File: device-example-software.json
     """
     filename = base_settings["unittest_data_dir"] / "device-example-software.json"
-    inst = device.Device.model_validate_json(Path(filename).read_bytes())
+    inst = device.Device.model_validate_json(filename.read_bytes())
     assert "Device" == inst.get_resource_type()
 
     impl_device_1(inst)
@@ -106,7 +104,7 @@ def test_device_2(base_settings):
     Test File: device-example-udi3.json
     """
     filename = base_settings["unittest_data_dir"] / "device-example-udi3.json"
-    inst = device.Device.model_validate_json(Path(filename).read_bytes())
+    inst = device.Device.model_validate_json(filename.read_bytes())
     assert "Device" == inst.get_resource_type()
 
     impl_device_2(inst)
@@ -316,7 +314,7 @@ def test_device_3(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "device-example-NoninBlePulseOx.json"
     )
-    inst = device.Device.model_validate_json(Path(filename).read_bytes())
+    inst = device.Device.model_validate_json(filename.read_bytes())
     assert "Device" == inst.get_resource_type()
 
     impl_device_3(inst)
@@ -377,7 +375,7 @@ def test_device_4(base_settings):
     Test File: device-example-udi2.json
     """
     filename = base_settings["unittest_data_dir"] / "device-example-udi2.json"
-    inst = device.Device.model_validate_json(Path(filename).read_bytes())
+    inst = device.Device.model_validate_json(filename.read_bytes())
     assert "Device" == inst.get_resource_type()
 
     impl_device_4(inst)
@@ -587,7 +585,7 @@ def test_device_5(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "device-example-PhilipsThermometer.json"
     )
-    inst = device.Device.model_validate_json(Path(filename).read_bytes())
+    inst = device.Device.model_validate_json(filename.read_bytes())
     assert "Device" == inst.get_resource_type()
 
     impl_device_5(inst)
@@ -667,7 +665,7 @@ def test_device_6(base_settings):
         base_settings["unittest_data_dir"]
         / "device-example-specimen-container-lavender-vacutainer.json"
     )
-    inst = device.Device.model_validate_json(Path(filename).read_bytes())
+    inst = device.Device.model_validate_json(filename.read_bytes())
     assert "Device" == inst.get_resource_type()
 
     impl_device_6(inst)
@@ -804,7 +802,7 @@ def test_device_7(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "device-example-KinsaThermometer.json"
     )
-    inst = device.Device.model_validate_json(Path(filename).read_bytes())
+    inst = device.Device.model_validate_json(filename.read_bytes())
     assert "Device" == inst.get_resource_type()
 
     impl_device_7(inst)
@@ -845,7 +843,7 @@ def test_device_8(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "device-example-f001-feedingtube.json"
     )
-    inst = device.Device.model_validate_json(Path(filename).read_bytes())
+    inst = device.Device.model_validate_json(filename.read_bytes())
     assert "Device" == inst.get_resource_type()
 
     impl_device_8(inst)
@@ -893,7 +891,7 @@ def test_device_9(base_settings):
     Test File: Device-NGS-device.json
     """
     filename = base_settings["unittest_data_dir"] / "Device-NGS-device.json"
-    inst = device.Device.model_validate_json(Path(filename).read_bytes())
+    inst = device.Device.model_validate_json(filename.read_bytes())
     assert "Device" == inst.get_resource_type()
 
     impl_device_9(inst)
@@ -942,7 +940,7 @@ def test_device_10(base_settings):
     Test File: Device-Triodenovo-SW.json
     """
     filename = base_settings["unittest_data_dir"] / "Device-Triodenovo-SW.json"
-    inst = device.Device.model_validate_json(Path(filename).read_bytes())
+    inst = device.Device.model_validate_json(filename.read_bytes())
     assert "Device" == inst.get_resource_type()
 
     impl_device_10(inst)

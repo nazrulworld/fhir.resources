@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import terminologycapabilities
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -51,7 +49,7 @@ def test_terminologycapabilities_1(base_settings):
         / "terminologycapabilities-terminology-server.json"
     )
     inst = terminologycapabilities.TerminologyCapabilities.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "TerminologyCapabilities" == inst.get_resource_type()
 
@@ -113,7 +111,7 @@ def test_terminologycapabilities_2(base_settings):
         base_settings["unittest_data_dir"] / "terminologycapabilities-example.json"
     )
     inst = terminologycapabilities.TerminologyCapabilities.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "TerminologyCapabilities" == inst.get_resource_type()
 

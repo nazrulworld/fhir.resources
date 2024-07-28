@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import namingsystem
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -74,7 +72,7 @@ def test_namingsystem_1(base_settings):
     Test File: namingsystem-example-id.json
     """
     filename = base_settings["unittest_data_dir"] / "namingsystem-example-id.json"
-    inst = namingsystem.NamingSystem.model_validate_json(Path(filename).read_bytes())
+    inst = namingsystem.NamingSystem.model_validate_json(filename.read_bytes())
     assert "NamingSystem" == inst.get_resource_type()
 
     impl_namingsystem_1(inst)
@@ -167,7 +165,7 @@ def test_namingsystem_2(base_settings):
     Test File: namingsystem-example-metadata.json
     """
     filename = base_settings["unittest_data_dir"] / "namingsystem-example-metadata.json"
-    inst = namingsystem.NamingSystem.model_validate_json(Path(filename).read_bytes())
+    inst = namingsystem.NamingSystem.model_validate_json(filename.read_bytes())
     assert "NamingSystem" == inst.get_resource_type()
 
     impl_namingsystem_2(inst)
@@ -267,7 +265,7 @@ def test_namingsystem_3(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "namingsystem-example-metadata-2.json"
     )
-    inst = namingsystem.NamingSystem.model_validate_json(Path(filename).read_bytes())
+    inst = namingsystem.NamingSystem.model_validate_json(filename.read_bytes())
     assert "NamingSystem" == inst.get_resource_type()
 
     impl_namingsystem_3(inst)
@@ -316,7 +314,7 @@ def test_namingsystem_4(base_settings):
     Test File: namingsystem-example.json
     """
     filename = base_settings["unittest_data_dir"] / "namingsystem-example.json"
-    inst = namingsystem.NamingSystem.model_validate_json(Path(filename).read_bytes())
+    inst = namingsystem.NamingSystem.model_validate_json(filename.read_bytes())
     assert "NamingSystem" == inst.get_resource_type()
 
     impl_namingsystem_4(inst)

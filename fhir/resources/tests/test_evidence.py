@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import evidence
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -166,7 +164,7 @@ def test_evidence_1(base_settings):
         base_settings["unittest_data_dir"]
         / "evidence-example-stroke-no-alteplase-fatalICH.json"
     )
-    inst = evidence.Evidence.model_validate_json(Path(filename).read_bytes())
+    inst = evidence.Evidence.model_validate_json(filename.read_bytes())
     assert "Evidence" == inst.get_resource_type()
 
     impl_evidence_1(inst)
@@ -515,7 +513,7 @@ def test_evidence_2(base_settings):
         base_settings["unittest_data_dir"]
         / "evidence-example-stroke-3-4half-alteplase-vs-no-alteplase-mRS0-2.json"
     )
-    inst = evidence.Evidence.model_validate_json(Path(filename).read_bytes())
+    inst = evidence.Evidence.model_validate_json(filename.read_bytes())
     assert "Evidence" == inst.get_resource_type()
 
     impl_evidence_2(inst)
@@ -884,7 +882,7 @@ def test_evidence_3(base_settings):
         base_settings["unittest_data_dir"]
         / "evidence-example-stroke-0-3-alteplase-vs-no-alteplase-mRS3-6.json"
     )
-    inst = evidence.Evidence.model_validate_json(Path(filename).read_bytes())
+    inst = evidence.Evidence.model_validate_json(filename.read_bytes())
     assert "Evidence" == inst.get_resource_type()
 
     impl_evidence_3(inst)
@@ -1050,7 +1048,7 @@ def test_evidence_4(base_settings):
         base_settings["unittest_data_dir"]
         / "evidence-example-stroke-alteplase-fatalICH.json"
     )
-    inst = evidence.Evidence.model_validate_json(Path(filename).read_bytes())
+    inst = evidence.Evidence.model_validate_json(filename.read_bytes())
     assert "Evidence" == inst.get_resource_type()
 
     impl_evidence_4(inst)
@@ -1348,7 +1346,7 @@ def test_evidence_5(base_settings):
         base_settings["unittest_data_dir"]
         / "evidence-example-ASTRAL-12-alteplase-mRS3-6.json"
     )
-    inst = evidence.Evidence.model_validate_json(Path(filename).read_bytes())
+    inst = evidence.Evidence.model_validate_json(filename.read_bytes())
     assert "Evidence" == inst.get_resource_type()
 
     impl_evidence_5(inst)

@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import measure
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -111,7 +109,7 @@ def test_measure_1(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "measure-exclusive-breastfeeding.json"
     )
-    inst = measure.Measure.model_validate_json(Path(filename).read_bytes())
+    inst = measure.Measure.model_validate_json(filename.read_bytes())
     assert "Measure" == inst.get_resource_type()
 
     impl_measure_1(inst)
@@ -157,7 +155,7 @@ def test_measure_2(base_settings):
     Test File: measure-component-b-example.json
     """
     filename = base_settings["unittest_data_dir"] / "measure-component-b-example.json"
-    inst = measure.Measure.model_validate_json(Path(filename).read_bytes())
+    inst = measure.Measure.model_validate_json(filename.read_bytes())
     assert "Measure" == inst.get_resource_type()
 
     impl_measure_2(inst)
@@ -267,7 +265,7 @@ def test_measure_3(base_settings):
     Test File: measure-predecessor-example.json
     """
     filename = base_settings["unittest_data_dir"] / "measure-predecessor-example.json"
-    inst = measure.Measure.model_validate_json(Path(filename).read_bytes())
+    inst = measure.Measure.model_validate_json(filename.read_bytes())
     assert "Measure" == inst.get_resource_type()
 
     impl_measure_3(inst)
@@ -532,7 +530,7 @@ def test_measure_4(base_settings):
     Test File: measure-hiv-indicators.json
     """
     filename = base_settings["unittest_data_dir"] / "measure-hiv-indicators.json"
-    inst = measure.Measure.model_validate_json(Path(filename).read_bytes())
+    inst = measure.Measure.model_validate_json(filename.read_bytes())
     assert "Measure" == inst.get_resource_type()
 
     impl_measure_4(inst)
@@ -738,7 +736,7 @@ def test_measure_5(base_settings):
     Test File: measure-cms146-example.json
     """
     filename = base_settings["unittest_data_dir"] / "measure-cms146-example.json"
-    inst = measure.Measure.model_validate_json(Path(filename).read_bytes())
+    inst = measure.Measure.model_validate_json(filename.read_bytes())
     assert "Measure" == inst.get_resource_type()
 
     impl_measure_5(inst)
@@ -784,7 +782,7 @@ def test_measure_6(base_settings):
     Test File: measure-component-a-example.json
     """
     filename = base_settings["unittest_data_dir"] / "measure-component-a-example.json"
-    inst = measure.Measure.model_validate_json(Path(filename).read_bytes())
+    inst = measure.Measure.model_validate_json(filename.read_bytes())
     assert "Measure" == inst.get_resource_type()
 
     impl_measure_6(inst)
@@ -831,7 +829,7 @@ def test_measure_7(base_settings):
     Test File: measure-composite-example.json
     """
     filename = base_settings["unittest_data_dir"] / "measure-composite-example.json"
-    inst = measure.Measure.model_validate_json(Path(filename).read_bytes())
+    inst = measure.Measure.model_validate_json(filename.read_bytes())
     assert "Measure" == inst.get_resource_type()
 
     impl_measure_7(inst)

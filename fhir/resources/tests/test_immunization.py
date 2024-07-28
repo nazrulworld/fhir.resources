@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import immunization
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -123,7 +121,7 @@ def test_immunization_1(base_settings):
     Test File: immunization-example.json
     """
     filename = base_settings["unittest_data_dir"] / "immunization-example.json"
-    inst = immunization.Immunization.model_validate_json(Path(filename).read_bytes())
+    inst = immunization.Immunization.model_validate_json(filename.read_bytes())
     assert "Immunization" == inst.get_resource_type()
 
     impl_immunization_1(inst)
@@ -181,7 +179,7 @@ def test_immunization_2(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "immunization-example-historical.json"
     )
-    inst = immunization.Immunization.model_validate_json(Path(filename).read_bytes())
+    inst = immunization.Immunization.model_validate_json(filename.read_bytes())
     assert "Immunization" == inst.get_resource_type()
 
     impl_immunization_2(inst)
@@ -284,7 +282,7 @@ def test_immunization_3(base_settings):
     Test File: immunization-example-reaction.json
     """
     filename = base_settings["unittest_data_dir"] / "immunization-example-reaction.json"
-    inst = immunization.Immunization.model_validate_json(Path(filename).read_bytes())
+    inst = immunization.Immunization.model_validate_json(filename.read_bytes())
     assert "Immunization" == inst.get_resource_type()
 
     impl_immunization_3(inst)
@@ -409,7 +407,7 @@ def test_immunization_4(base_settings):
     Test File: immunization-example-protocol.json
     """
     filename = base_settings["unittest_data_dir"] / "immunization-example-protocol.json"
-    inst = immunization.Immunization.model_validate_json(Path(filename).read_bytes())
+    inst = immunization.Immunization.model_validate_json(filename.read_bytes())
     assert "Immunization" == inst.get_resource_type()
 
     impl_immunization_4(inst)
@@ -461,7 +459,7 @@ def test_immunization_5(base_settings):
     Test File: immunization-example-refused.json
     """
     filename = base_settings["unittest_data_dir"] / "immunization-example-refused.json"
-    inst = immunization.Immunization.model_validate_json(Path(filename).read_bytes())
+    inst = immunization.Immunization.model_validate_json(filename.read_bytes())
     assert "Immunization" == inst.get_resource_type()
 
     impl_immunization_5(inst)
@@ -581,7 +579,7 @@ def test_immunization_6(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "immunization-example-subpotent.json"
     )
-    inst = immunization.Immunization.model_validate_json(Path(filename).read_bytes())
+    inst = immunization.Immunization.model_validate_json(filename.read_bytes())
     assert "Immunization" == inst.get_resource_type()
 
     impl_immunization_6(inst)

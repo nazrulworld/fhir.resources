@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import consent
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -53,7 +51,7 @@ def test_consent_1(base_settings):
     Test File: consent-example-notThis.json
     """
     filename = base_settings["unittest_data_dir"] / "consent-example-notThis.json"
-    inst = consent.Consent.model_validate_json(Path(filename).read_bytes())
+    inst = consent.Consent.model_validate_json(filename.read_bytes())
     assert "Consent" == inst.get_resource_type()
 
     impl_consent_1(inst)
@@ -128,7 +126,7 @@ def test_consent_2(base_settings):
     Test File: consent-example-smartonfhir.json
     """
     filename = base_settings["unittest_data_dir"] / "consent-example-smartonfhir.json"
-    inst = consent.Consent.model_validate_json(Path(filename).read_bytes())
+    inst = consent.Consent.model_validate_json(filename.read_bytes())
     assert "Consent" == inst.get_resource_type()
 
     impl_consent_2(inst)
@@ -231,7 +229,7 @@ def test_consent_3(base_settings):
     Test File: consent-example-CDA.json
     """
     filename = base_settings["unittest_data_dir"] / "consent-example-CDA.json"
-    inst = consent.Consent.model_validate_json(Path(filename).read_bytes())
+    inst = consent.Consent.model_validate_json(filename.read_bytes())
     assert "Consent" == inst.get_resource_type()
 
     impl_consent_3(inst)
@@ -289,7 +287,7 @@ def test_consent_4(base_settings):
     Test File: consent-example-notAuthor.json
     """
     filename = base_settings["unittest_data_dir"] / "consent-example-notAuthor.json"
-    inst = consent.Consent.model_validate_json(Path(filename).read_bytes())
+    inst = consent.Consent.model_validate_json(filename.read_bytes())
     assert "Consent" == inst.get_resource_type()
 
     impl_consent_4(inst)
@@ -347,7 +345,7 @@ def test_consent_5(base_settings):
     Test File: consent-example-notTime.json
     """
     filename = base_settings["unittest_data_dir"] / "consent-example-notTime.json"
-    inst = consent.Consent.model_validate_json(Path(filename).read_bytes())
+    inst = consent.Consent.model_validate_json(filename.read_bytes())
     assert "Consent" == inst.get_resource_type()
 
     impl_consent_5(inst)
@@ -427,7 +425,7 @@ def test_consent_6(base_settings):
     Test File: consent-example-notThem.json
     """
     filename = base_settings["unittest_data_dir"] / "consent-example-notThem.json"
-    inst = consent.Consent.model_validate_json(Path(filename).read_bytes())
+    inst = consent.Consent.model_validate_json(filename.read_bytes())
     assert "Consent" == inst.get_resource_type()
 
     impl_consent_6(inst)
@@ -506,7 +504,7 @@ def test_consent_7(base_settings):
     Test File: consent-example-grantor.json
     """
     filename = base_settings["unittest_data_dir"] / "consent-example-grantor.json"
-    inst = consent.Consent.model_validate_json(Path(filename).read_bytes())
+    inst = consent.Consent.model_validate_json(filename.read_bytes())
     assert "Consent" == inst.get_resource_type()
 
     impl_consent_7(inst)
@@ -578,7 +576,7 @@ def test_consent_8(base_settings):
     Test File: consent-example-notOrg.json
     """
     filename = base_settings["unittest_data_dir"] / "consent-example-notOrg.json"
-    inst = consent.Consent.model_validate_json(Path(filename).read_bytes())
+    inst = consent.Consent.model_validate_json(filename.read_bytes())
     assert "Consent" == inst.get_resource_type()
 
     impl_consent_8(inst)
@@ -899,7 +897,7 @@ def test_consent_9(base_settings):
     Test File: consent-example-pkb.json
     """
     filename = base_settings["unittest_data_dir"] / "consent-example-pkb.json"
-    inst = consent.Consent.model_validate_json(Path(filename).read_bytes())
+    inst = consent.Consent.model_validate_json(filename.read_bytes())
     assert "Consent" == inst.get_resource_type()
 
     impl_consent_9(inst)
@@ -957,7 +955,7 @@ def test_consent_10(base_settings):
     Test File: consent-example.json
     """
     filename = base_settings["unittest_data_dir"] / "consent-example.json"
-    inst = consent.Consent.model_validate_json(Path(filename).read_bytes())
+    inst = consent.Consent.model_validate_json(filename.read_bytes())
     assert "Consent" == inst.get_resource_type()
 
     impl_consent_10(inst)

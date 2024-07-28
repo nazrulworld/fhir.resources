@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import examplescenario
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -257,9 +255,7 @@ def test_examplescenario_1(base_settings):
     Test File: examplescenario-example.json
     """
     filename = base_settings["unittest_data_dir"] / "examplescenario-example.json"
-    inst = examplescenario.ExampleScenario.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = examplescenario.ExampleScenario.model_validate_json(filename.read_bytes())
     assert "ExampleScenario" == inst.get_resource_type()
 
     impl_examplescenario_1(inst)
@@ -671,9 +667,7 @@ def test_examplescenario_2(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "examplescenario-example-laborder.json"
     )
-    inst = examplescenario.ExampleScenario.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = examplescenario.ExampleScenario.model_validate_json(filename.read_bytes())
     assert "ExampleScenario" == inst.get_resource_type()
 
     impl_examplescenario_2(inst)

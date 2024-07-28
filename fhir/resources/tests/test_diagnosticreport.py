@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import diagnosticreport
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -71,9 +69,7 @@ def test_diagnosticreport_1(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "diagnosticreport-example-ultrasound.json"
     )
-    inst = diagnosticreport.DiagnosticReport.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = diagnosticreport.DiagnosticReport.model_validate_json(filename.read_bytes())
     assert "DiagnosticReport" == inst.get_resource_type()
 
     impl_diagnosticreport_1(inst)
@@ -156,9 +152,7 @@ def test_diagnosticreport_2(base_settings):
         base_settings["unittest_data_dir"]
         / "diagnosticreport-example-gingival-biopsy.json"
     )
-    inst = diagnosticreport.DiagnosticReport.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = diagnosticreport.DiagnosticReport.model_validate_json(filename.read_bytes())
     assert "DiagnosticReport" == inst.get_resource_type()
 
     impl_diagnosticreport_2(inst)
@@ -239,9 +233,7 @@ def test_diagnosticreport_3(base_settings):
         base_settings["unittest_data_dir"]
         / "diagnosticreport-example-f201-brainct.json"
     )
-    inst = diagnosticreport.DiagnosticReport.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = diagnosticreport.DiagnosticReport.model_validate_json(filename.read_bytes())
     assert "DiagnosticReport" == inst.get_resource_type()
 
     impl_diagnosticreport_3(inst)
@@ -292,9 +284,7 @@ def test_diagnosticreport_4(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "diagnosticreport-example-papsmear.json"
     )
-    inst = diagnosticreport.DiagnosticReport.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = diagnosticreport.DiagnosticReport.model_validate_json(filename.read_bytes())
     assert "DiagnosticReport" == inst.get_resource_type()
 
     impl_diagnosticreport_4(inst)
@@ -373,9 +363,7 @@ def test_diagnosticreport_5(base_settings):
         base_settings["unittest_data_dir"]
         / "diagnosticreport-example-gingival-mass.json"
     )
-    inst = diagnosticreport.DiagnosticReport.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = diagnosticreport.DiagnosticReport.model_validate_json(filename.read_bytes())
     assert "DiagnosticReport" == inst.get_resource_type()
 
     impl_diagnosticreport_5(inst)
@@ -436,9 +424,7 @@ def test_diagnosticreport_6(base_settings):
     Test File: diagnosticreport-example-dxa.json
     """
     filename = base_settings["unittest_data_dir"] / "diagnosticreport-example-dxa.json"
-    inst = diagnosticreport.DiagnosticReport.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = diagnosticreport.DiagnosticReport.model_validate_json(filename.read_bytes())
     assert "DiagnosticReport" == inst.get_resource_type()
 
     impl_diagnosticreport_6(inst)

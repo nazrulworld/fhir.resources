@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import devicerequest
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -70,7 +68,7 @@ def test_devicerequest_1(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "devicerequest-example-insulinpump.json"
     )
-    inst = devicerequest.DeviceRequest.model_validate_json(Path(filename).read_bytes())
+    inst = devicerequest.DeviceRequest.model_validate_json(filename.read_bytes())
     assert "DeviceRequest" == inst.get_resource_type()
 
     impl_devicerequest_1(inst)
@@ -179,7 +177,7 @@ def test_devicerequest_2(base_settings):
     Test File: devicerequest-left-lens.json
     """
     filename = base_settings["unittest_data_dir"] / "devicerequest-left-lens.json"
-    inst = devicerequest.DeviceRequest.model_validate_json(Path(filename).read_bytes())
+    inst = devicerequest.DeviceRequest.model_validate_json(filename.read_bytes())
     assert "DeviceRequest" == inst.get_resource_type()
 
     impl_devicerequest_2(inst)
@@ -285,7 +283,7 @@ def test_devicerequest_3(base_settings):
     Test File: devicerequest-right-lens.json
     """
     filename = base_settings["unittest_data_dir"] / "devicerequest-right-lens.json"
-    inst = devicerequest.DeviceRequest.model_validate_json(Path(filename).read_bytes())
+    inst = devicerequest.DeviceRequest.model_validate_json(filename.read_bytes())
     assert "DeviceRequest" == inst.get_resource_type()
 
     impl_devicerequest_3(inst)
@@ -320,7 +318,7 @@ def test_devicerequest_4(base_settings):
     Test File: devicerequest-example.json
     """
     filename = base_settings["unittest_data_dir"] / "devicerequest-example.json"
-    inst = devicerequest.DeviceRequest.model_validate_json(Path(filename).read_bytes())
+    inst = devicerequest.DeviceRequest.model_validate_json(filename.read_bytes())
     assert "DeviceRequest" == inst.get_resource_type()
 
     impl_devicerequest_4(inst)

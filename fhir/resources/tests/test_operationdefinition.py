@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import operationdefinition
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -173,7 +171,7 @@ def test_operationdefinition_1(base_settings):
         base_settings["unittest_data_dir"] / "operation-namingsystem-translate-id.json"
     )
     inst = operationdefinition.OperationDefinition.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "OperationDefinition" == inst.get_resource_type()
 
@@ -301,7 +299,7 @@ def test_operationdefinition_2(base_settings):
         base_settings["unittest_data_dir"] / "operation-documentreference-docref.json"
     )
     inst = operationdefinition.OperationDefinition.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "OperationDefinition" == inst.get_resource_type()
 
@@ -410,7 +408,7 @@ def test_operationdefinition_3(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "operation-subscription-status.json"
     inst = operationdefinition.OperationDefinition.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "OperationDefinition" == inst.get_resource_type()
 
@@ -519,7 +517,7 @@ def test_operationdefinition_4(base_settings):
         base_settings["unittest_data_dir"] / "operation-measure-data-requirements.json"
     )
     inst = operationdefinition.OperationDefinition.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "OperationDefinition" == inst.get_resource_type()
 
@@ -681,7 +679,7 @@ def test_operationdefinition_5(base_settings):
         base_settings["unittest_data_dir"] / "operation-conceptmap-translate.json"
     )
     inst = operationdefinition.OperationDefinition.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "OperationDefinition" == inst.get_resource_type()
 
@@ -780,7 +778,7 @@ def test_operationdefinition_6(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "operation-resource-add.json"
     inst = operationdefinition.OperationDefinition.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "OperationDefinition" == inst.get_resource_type()
 
@@ -944,7 +942,7 @@ def test_operationdefinition_7(base_settings):
         base_settings["unittest_data_dir"] / "operation-specimendefinition-apply.json"
     )
     inst = operationdefinition.OperationDefinition.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "OperationDefinition" == inst.get_resource_type()
 
@@ -1092,7 +1090,7 @@ def test_operationdefinition_8(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "operation-valueset-expand.json"
     inst = operationdefinition.OperationDefinition.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "OperationDefinition" == inst.get_resource_type()
 
@@ -1183,7 +1181,7 @@ def test_operationdefinition_9(base_settings):
     """
     filename = base_settings["unittest_data_dir"] / "operation-resource-meta-add.json"
     inst = operationdefinition.OperationDefinition.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "OperationDefinition" == inst.get_resource_type()
 
@@ -1292,7 +1290,7 @@ def test_operationdefinition_10(base_settings):
         base_settings["unittest_data_dir"] / "operation-encounter-everything.json"
     )
     inst = operationdefinition.OperationDefinition.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "OperationDefinition" == inst.get_resource_type()
 

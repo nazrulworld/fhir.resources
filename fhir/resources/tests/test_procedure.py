@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import procedure
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -75,7 +73,7 @@ def test_procedure_1(base_settings):
     Test File: procedure-example-f201-tpf.json
     """
     filename = base_settings["unittest_data_dir"] / "procedure-example-f201-tpf.json"
-    inst = procedure.Procedure.model_validate_json(Path(filename).read_bytes())
+    inst = procedure.Procedure.model_validate_json(filename.read_bytes())
     assert "Procedure" == inst.get_resource_type()
 
     impl_procedure_1(inst)
@@ -146,7 +144,7 @@ def test_procedure_2(base_settings):
     Test File: procedure-example-ambulation.json
     """
     filename = base_settings["unittest_data_dir"] / "procedure-example-ambulation.json"
-    inst = procedure.Procedure.model_validate_json(Path(filename).read_bytes())
+    inst = procedure.Procedure.model_validate_json(filename.read_bytes())
     assert "Procedure" == inst.get_resource_type()
 
     impl_procedure_2(inst)
@@ -206,7 +204,7 @@ def test_procedure_3(base_settings):
     Test File: procedure-example-implant.json
     """
     filename = base_settings["unittest_data_dir"] / "procedure-example-implant.json"
-    inst = procedure.Procedure.model_validate_json(Path(filename).read_bytes())
+    inst = procedure.Procedure.model_validate_json(filename.read_bytes())
     assert "Procedure" == inst.get_resource_type()
 
     impl_procedure_3(inst)
@@ -262,7 +260,7 @@ def test_procedure_4(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "procedure-example-colon-biopsy.json"
     )
-    inst = procedure.Procedure.model_validate_json(Path(filename).read_bytes())
+    inst = procedure.Procedure.model_validate_json(filename.read_bytes())
     assert "Procedure" == inst.get_resource_type()
 
     impl_procedure_4(inst)
@@ -339,7 +337,7 @@ def test_procedure_5(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "procedure-example-f004-tracheotomy.json"
     )
-    inst = procedure.Procedure.model_validate_json(Path(filename).read_bytes())
+    inst = procedure.Procedure.model_validate_json(filename.read_bytes())
     assert "Procedure" == inst.get_resource_type()
 
     impl_procedure_5(inst)
@@ -403,7 +401,7 @@ def test_procedure_6(base_settings):
     Test File: procedure-example-education.json
     """
     filename = base_settings["unittest_data_dir"] / "procedure-example-education.json"
-    inst = procedure.Procedure.model_validate_json(Path(filename).read_bytes())
+    inst = procedure.Procedure.model_validate_json(filename.read_bytes())
     assert "Procedure" == inst.get_resource_type()
 
     impl_procedure_6(inst)
@@ -457,7 +455,7 @@ def test_procedure_7(base_settings):
     Test File: procedure-example-colonoscopy.json
     """
     filename = base_settings["unittest_data_dir"] / "procedure-example-colonoscopy.json"
-    inst = procedure.Procedure.model_validate_json(Path(filename).read_bytes())
+    inst = procedure.Procedure.model_validate_json(filename.read_bytes())
     assert "Procedure" == inst.get_resource_type()
 
     impl_procedure_7(inst)
@@ -535,7 +533,7 @@ def test_procedure_8(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "procedure-example-physical-therapy.json"
     )
-    inst = procedure.Procedure.model_validate_json(Path(filename).read_bytes())
+    inst = procedure.Procedure.model_validate_json(filename.read_bytes())
     assert "Procedure" == inst.get_resource_type()
 
     impl_procedure_8(inst)
@@ -612,7 +610,7 @@ def test_procedure_9(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "procedure-example-f003-abscess.json"
     )
-    inst = procedure.Procedure.model_validate_json(Path(filename).read_bytes())
+    inst = procedure.Procedure.model_validate_json(filename.read_bytes())
     assert "Procedure" == inst.get_resource_type()
 
     impl_procedure_9(inst)
@@ -675,7 +673,7 @@ def test_procedure_10(base_settings):
     Test File: procedure-example.json
     """
     filename = base_settings["unittest_data_dir"] / "procedure-example.json"
-    inst = procedure.Procedure.model_validate_json(Path(filename).read_bytes())
+    inst = procedure.Procedure.model_validate_json(filename.read_bytes())
     assert "Procedure" == inst.get_resource_type()
 
     impl_procedure_10(inst)

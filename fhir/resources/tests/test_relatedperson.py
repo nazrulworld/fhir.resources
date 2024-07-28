@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import relatedperson
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -67,7 +65,7 @@ def test_relatedperson_1(base_settings):
     Test File: RelatedPerson-denovoMother.json
     """
     filename = base_settings["unittest_data_dir"] / "RelatedPerson-denovoMother.json"
-    inst = relatedperson.RelatedPerson.model_validate_json(Path(filename).read_bytes())
+    inst = relatedperson.RelatedPerson.model_validate_json(filename.read_bytes())
     assert "RelatedPerson" == inst.get_resource_type()
 
     impl_relatedperson_1(inst)
@@ -125,7 +123,7 @@ def test_relatedperson_2(base_settings):
     Test File: relatedperson-example-peter.json
     """
     filename = base_settings["unittest_data_dir"] / "relatedperson-example-peter.json"
-    inst = relatedperson.RelatedPerson.model_validate_json(Path(filename).read_bytes())
+    inst = relatedperson.RelatedPerson.model_validate_json(filename.read_bytes())
     assert "RelatedPerson" == inst.get_resource_type()
 
     impl_relatedperson_2(inst)
@@ -182,7 +180,7 @@ def test_relatedperson_3(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "relatedperson-example-f001-sarah.json"
     )
-    inst = relatedperson.RelatedPerson.model_validate_json(Path(filename).read_bytes())
+    inst = relatedperson.RelatedPerson.model_validate_json(filename.read_bytes())
     assert "RelatedPerson" == inst.get_resource_type()
 
     impl_relatedperson_3(inst)
@@ -248,7 +246,7 @@ def test_relatedperson_4(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "relatedperson-example-newborn-mom.json"
     )
-    inst = relatedperson.RelatedPerson.model_validate_json(Path(filename).read_bytes())
+    inst = relatedperson.RelatedPerson.model_validate_json(filename.read_bytes())
     assert "RelatedPerson" == inst.get_resource_type()
 
     impl_relatedperson_4(inst)
@@ -313,7 +311,7 @@ def test_relatedperson_5(base_settings):
     Test File: relatedperson-example.json
     """
     filename = base_settings["unittest_data_dir"] / "relatedperson-example.json"
-    inst = relatedperson.RelatedPerson.model_validate_json(Path(filename).read_bytes())
+    inst = relatedperson.RelatedPerson.model_validate_json(filename.read_bytes())
     assert "RelatedPerson" == inst.get_resource_type()
 
     impl_relatedperson_5(inst)
@@ -365,7 +363,7 @@ def test_relatedperson_6(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "relatedperson-example-f002-ariadne.json"
     )
-    inst = relatedperson.RelatedPerson.model_validate_json(Path(filename).read_bytes())
+    inst = relatedperson.RelatedPerson.model_validate_json(filename.read_bytes())
     assert "RelatedPerson" == inst.get_resource_type()
 
     impl_relatedperson_6(inst)
@@ -433,7 +431,7 @@ def test_relatedperson_7(base_settings):
     Test File: RelatedPerson-denovoFather.json
     """
     filename = base_settings["unittest_data_dir"] / "RelatedPerson-denovoFather.json"
-    inst = relatedperson.RelatedPerson.model_validate_json(Path(filename).read_bytes())
+    inst = relatedperson.RelatedPerson.model_validate_json(filename.read_bytes())
     assert "RelatedPerson" == inst.get_resource_type()
 
     impl_relatedperson_7(inst)

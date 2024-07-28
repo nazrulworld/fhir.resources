@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import patient
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -54,7 +52,7 @@ def test_patient_1(base_settings):
     Test File: patient-example-xds.json
     """
     filename = base_settings["unittest_data_dir"] / "patient-example-xds.json"
-    inst = patient.Patient.model_validate_json(Path(filename).read_bytes())
+    inst = patient.Patient.model_validate_json(filename.read_bytes())
     assert "Patient" == inst.get_resource_type()
 
     impl_patient_1(inst)
@@ -148,7 +146,7 @@ def test_patient_2(base_settings):
     Test File: patient-example-f001-pieter.json
     """
     filename = base_settings["unittest_data_dir"] / "patient-example-f001-pieter.json"
-    inst = patient.Patient.model_validate_json(Path(filename).read_bytes())
+    inst = patient.Patient.model_validate_json(filename.read_bytes())
     assert "Patient" == inst.get_resource_type()
 
     impl_patient_2(inst)
@@ -201,7 +199,7 @@ def test_patient_3(base_settings):
     Test File: patient-example-d.json
     """
     filename = base_settings["unittest_data_dir"] / "patient-example-d.json"
-    inst = patient.Patient.model_validate_json(Path(filename).read_bytes())
+    inst = patient.Patient.model_validate_json(filename.read_bytes())
     assert "Patient" == inst.get_resource_type()
 
     impl_patient_3(inst)
@@ -292,7 +290,7 @@ def test_patient_4(base_settings):
     Test File: patient-example-infant-twin-1.json
     """
     filename = base_settings["unittest_data_dir"] / "patient-example-infant-twin-1.json"
-    inst = patient.Patient.model_validate_json(Path(filename).read_bytes())
+    inst = patient.Patient.model_validate_json(filename.read_bytes())
     assert "Patient" == inst.get_resource_type()
 
     impl_patient_4(inst)
@@ -341,7 +339,7 @@ def test_patient_5(base_settings):
     Test File: patient-example-infant-mom.json
     """
     filename = base_settings["unittest_data_dir"] / "patient-example-infant-mom.json"
-    inst = patient.Patient.model_validate_json(Path(filename).read_bytes())
+    inst = patient.Patient.model_validate_json(filename.read_bytes())
     assert "Patient" == inst.get_resource_type()
 
     impl_patient_5(inst)
@@ -382,7 +380,7 @@ def test_patient_6(base_settings):
     Test File: patient-example-newborn.json
     """
     filename = base_settings["unittest_data_dir"] / "patient-example-newborn.json"
-    inst = patient.Patient.model_validate_json(Path(filename).read_bytes())
+    inst = patient.Patient.model_validate_json(filename.read_bytes())
     assert "Patient" == inst.get_resource_type()
 
     impl_patient_6(inst)
@@ -461,7 +459,7 @@ def test_patient_7(base_settings):
     Test File: patient-example-infant-fetal.json
     """
     filename = base_settings["unittest_data_dir"] / "patient-example-infant-fetal.json"
-    inst = patient.Patient.model_validate_json(Path(filename).read_bytes())
+    inst = patient.Patient.model_validate_json(filename.read_bytes())
     assert "Patient" == inst.get_resource_type()
 
     impl_patient_7(inst)
@@ -525,7 +523,7 @@ def test_patient_8(base_settings):
     Test File: Patient-denovoChild.json
     """
     filename = base_settings["unittest_data_dir"] / "Patient-denovoChild.json"
-    inst = patient.Patient.model_validate_json(Path(filename).read_bytes())
+    inst = patient.Patient.model_validate_json(filename.read_bytes())
     assert "Patient" == inst.get_resource_type()
 
     impl_patient_8(inst)
@@ -584,7 +582,7 @@ def test_patient_9(base_settings):
     Test File: patient-genetics-example1.json
     """
     filename = base_settings["unittest_data_dir"] / "patient-genetics-example1.json"
-    inst = patient.Patient.model_validate_json(Path(filename).read_bytes())
+    inst = patient.Patient.model_validate_json(filename.read_bytes())
     assert "Patient" == inst.get_resource_type()
 
     impl_patient_9(inst)
@@ -639,7 +637,7 @@ def test_patient_10(base_settings):
     Test File: patient-example-b.json
     """
     filename = base_settings["unittest_data_dir"] / "patient-example-b.json"
-    inst = patient.Patient.model_validate_json(Path(filename).read_bytes())
+    inst = patient.Patient.model_validate_json(filename.read_bytes())
     assert "Patient" == inst.get_resource_type()
 
     impl_patient_10(inst)

@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import bundle
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -61,7 +59,7 @@ def test_bundle_1(base_settings):
     Test File: notification-full-resource.json
     """
     filename = base_settings["unittest_data_dir"] / "notification-full-resource.json"
-    inst = bundle.Bundle.model_validate_json(Path(filename).read_bytes())
+    inst = bundle.Bundle.model_validate_json(filename.read_bytes())
     assert "Bundle" == inst.get_resource_type()
 
     impl_bundle_1(inst)
@@ -112,7 +110,7 @@ def test_bundle_2(base_settings):
     Test File: bundle-search-warning.json
     """
     filename = base_settings["unittest_data_dir"] / "bundle-search-warning.json"
-    inst = bundle.Bundle.model_validate_json(Path(filename).read_bytes())
+    inst = bundle.Bundle.model_validate_json(filename.read_bytes())
     assert "Bundle" == inst.get_resource_type()
 
     impl_bundle_2(inst)
@@ -160,7 +158,7 @@ def test_bundle_3(base_settings):
         base_settings["unittest_data_dir"]
         / "diagnosticreport-example-f202-bloodculture.json"
     )
-    inst = bundle.Bundle.model_validate_json(Path(filename).read_bytes())
+    inst = bundle.Bundle.model_validate_json(filename.read_bytes())
     assert "Bundle" == inst.get_resource_type()
 
     impl_bundle_3(inst)
@@ -204,7 +202,7 @@ def test_bundle_4(base_settings):
     Test File: notification-heartbeat.json
     """
     filename = base_settings["unittest_data_dir"] / "notification-heartbeat.json"
-    inst = bundle.Bundle.model_validate_json(Path(filename).read_bytes())
+    inst = bundle.Bundle.model_validate_json(filename.read_bytes())
     assert "Bundle" == inst.get_resource_type()
 
     impl_bundle_4(inst)
@@ -274,7 +272,7 @@ def test_bundle_5(base_settings):
     Test File: message-response-link.json
     """
     filename = base_settings["unittest_data_dir"] / "message-response-link.json"
-    inst = bundle.Bundle.model_validate_json(Path(filename).read_bytes())
+    inst = bundle.Bundle.model_validate_json(filename.read_bytes())
     assert "Bundle" == inst.get_resource_type()
 
     impl_bundle_5(inst)
@@ -390,7 +388,7 @@ def test_bundle_6(base_settings):
     Test File: xds-example.json
     """
     filename = base_settings["unittest_data_dir"] / "xds-example.json"
-    inst = bundle.Bundle.model_validate_json(Path(filename).read_bytes())
+    inst = bundle.Bundle.model_validate_json(filename.read_bytes())
     assert "Bundle" == inst.get_resource_type()
 
     impl_bundle_6(inst)
@@ -497,7 +495,7 @@ def test_bundle_7(base_settings):
     Test File: search-parameters.json
     """
     filename = base_settings["unittest_data_dir"] / "search-parameters.json"
-    inst = bundle.Bundle.model_validate_json(Path(filename).read_bytes())
+    inst = bundle.Bundle.model_validate_json(filename.read_bytes())
     assert "Bundle" == inst.get_resource_type()
 
     impl_bundle_7(inst)
@@ -560,7 +558,7 @@ def test_bundle_8(base_settings):
     Test File: message-request-link.json
     """
     filename = base_settings["unittest_data_dir"] / "message-request-link.json"
-    inst = bundle.Bundle.model_validate_json(Path(filename).read_bytes())
+    inst = bundle.Bundle.model_validate_json(filename.read_bytes())
     assert "Bundle" == inst.get_resource_type()
 
     impl_bundle_8(inst)
@@ -661,7 +659,7 @@ def test_bundle_9(base_settings):
     Test File: namingsystem-terminologies.json
     """
     filename = base_settings["unittest_data_dir"] / "namingsystem-terminologies.json"
-    inst = bundle.Bundle.model_validate_json(Path(filename).read_bytes())
+    inst = bundle.Bundle.model_validate_json(filename.read_bytes())
     assert "Bundle" == inst.get_resource_type()
 
     impl_bundle_9(inst)
@@ -705,7 +703,7 @@ def test_bundle_10(base_settings):
     Test File: notification-handshake.json
     """
     filename = base_settings["unittest_data_dir"] / "notification-handshake.json"
-    inst = bundle.Bundle.model_validate_json(Path(filename).read_bytes())
+    inst = bundle.Bundle.model_validate_json(filename.read_bytes())
     assert "Bundle" == inst.get_resource_type()
 
     impl_bundle_10(inst)

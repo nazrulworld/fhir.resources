@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import evidencevariable
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -49,9 +47,7 @@ def test_evidencevariable_1(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "evidencevariable-example-placebo.json"
     )
-    inst = evidencevariable.EvidenceVariable.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = evidencevariable.EvidenceVariable.model_validate_json(filename.read_bytes())
     assert "EvidenceVariable" == inst.get_resource_type()
 
     impl_evidencevariable_1(inst)
@@ -121,9 +117,7 @@ def test_evidencevariable_2(base_settings):
         base_settings["unittest_data_dir"]
         / "evidencevariable-example-mRS0-2-at-90days.json"
     )
-    inst = evidencevariable.EvidenceVariable.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = evidencevariable.EvidenceVariable.model_validate_json(filename.read_bytes())
     assert "EvidenceVariable" == inst.get_resource_type()
 
     impl_evidencevariable_2(inst)
@@ -169,9 +163,7 @@ def test_evidencevariable_3(base_settings):
         base_settings["unittest_data_dir"]
         / "evidencevariable-example-alteplase-for-stroke.json"
     )
-    inst = evidencevariable.EvidenceVariable.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = evidencevariable.EvidenceVariable.model_validate_json(filename.read_bytes())
     assert "EvidenceVariable" == inst.get_resource_type()
 
     impl_evidencevariable_3(inst)
@@ -223,9 +215,7 @@ def test_evidencevariable_4(base_settings):
         base_settings["unittest_data_dir"]
         / "evidencevariable-example-no-alteplase.json"
     )
-    inst = evidencevariable.EvidenceVariable.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = evidencevariable.EvidenceVariable.model_validate_json(filename.read_bytes())
     assert "EvidenceVariable" == inst.get_resource_type()
 
     impl_evidencevariable_4(inst)
@@ -400,9 +390,7 @@ def test_evidencevariable_5(base_settings):
         base_settings["unittest_data_dir"]
         / "evidencevariable-example-dead-or-dependent-90day.json"
     )
-    inst = evidencevariable.EvidenceVariable.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = evidencevariable.EvidenceVariable.model_validate_json(filename.read_bytes())
     assert "EvidenceVariable" == inst.get_resource_type()
 
     impl_evidencevariable_5(inst)
@@ -536,9 +524,7 @@ def test_evidencevariable_6(base_settings):
         base_settings["unittest_data_dir"]
         / "evidencevariable-example-eligibility-criteria-adults-with-obesity.json"
     )
-    inst = evidencevariable.EvidenceVariable.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = evidencevariable.EvidenceVariable.model_validate_json(filename.read_bytes())
     assert "EvidenceVariable" == inst.get_resource_type()
 
     impl_evidencevariable_6(inst)
@@ -733,9 +719,7 @@ def test_evidencevariable_7(base_settings):
         base_settings["unittest_data_dir"]
         / "evidencevariable-example-Stroke-Thrombolysis-Trialists-2014-2016-IPD-MA-Cohort.json"
     )
-    inst = evidencevariable.EvidenceVariable.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = evidencevariable.EvidenceVariable.model_validate_json(filename.read_bytes())
     assert "EvidenceVariable" == inst.get_resource_type()
 
     impl_evidencevariable_7(inst)
@@ -842,9 +826,7 @@ def test_evidencevariable_8(base_settings):
         base_settings["unittest_data_dir"]
         / "evidencevariable-example-fatal-ICH-in-7-days.json"
     )
-    inst = evidencevariable.EvidenceVariable.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = evidencevariable.EvidenceVariable.model_validate_json(filename.read_bytes())
     assert "EvidenceVariable" == inst.get_resource_type()
 
     impl_evidencevariable_8(inst)
@@ -2178,9 +2160,7 @@ def test_evidencevariable_9(base_settings):
         base_settings["unittest_data_dir"]
         / "evidencevariable-example-eligibility-criteria-ada-rec-bariatric.json"
     )
-    inst = evidencevariable.EvidenceVariable.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = evidencevariable.EvidenceVariable.model_validate_json(filename.read_bytes())
     assert "EvidenceVariable" == inst.get_resource_type()
 
     impl_evidencevariable_9(inst)
@@ -2288,9 +2268,7 @@ def test_evidencevariable_10(base_settings):
         base_settings["unittest_data_dir"]
         / "evidencevariable-example-alive-independent-90day.json"
     )
-    inst = evidencevariable.EvidenceVariable.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = evidencevariable.EvidenceVariable.model_validate_json(filename.read_bytes())
     assert "EvidenceVariable" == inst.get_resource_type()
 
     impl_evidencevariable_10(inst)

@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import artifactassessment
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -496,7 +494,7 @@ def test_artifactassessment_1(base_settings):
         / "artifactassessment-risk-of-bias-example.json"
     )
     inst = artifactassessment.ArtifactAssessment.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "ArtifactAssessment" == inst.get_resource_type()
 
@@ -700,7 +698,7 @@ def test_artifactassessment_2(base_settings):
         / "artifactassessment-example-certainty-rating.json"
     )
     inst = artifactassessment.ArtifactAssessment.model_validate_json(
-        Path(filename).read_bytes()
+        filename.read_bytes()
     )
     assert "ArtifactAssessment" == inst.get_resource_type()
 

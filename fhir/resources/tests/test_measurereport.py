@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import measurereport
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -229,7 +227,7 @@ def test_measurereport_1(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "measurereport-cms146-cat1-example.json"
     )
-    inst = measurereport.MeasureReport.model_validate_json(Path(filename).read_bytes())
+    inst = measurereport.MeasureReport.model_validate_json(filename.read_bytes())
     assert "MeasureReport" == inst.get_resource_type()
 
     impl_measurereport_1(inst)
@@ -318,7 +316,7 @@ def test_measurereport_2(base_settings):
     Test File: measurereport-general-example.json
     """
     filename = base_settings["unittest_data_dir"] / "measurereport-general-example.json"
-    inst = measurereport.MeasureReport.model_validate_json(Path(filename).read_bytes())
+    inst = measurereport.MeasureReport.model_validate_json(filename.read_bytes())
     assert "MeasureReport" == inst.get_resource_type()
 
     impl_measurereport_2(inst)
@@ -383,7 +381,7 @@ def test_measurereport_3(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "measurereport-788ca455-e11b1a59.json"
     )
-    inst = measurereport.MeasureReport.model_validate_json(Path(filename).read_bytes())
+    inst = measurereport.MeasureReport.model_validate_json(filename.read_bytes())
     assert "MeasureReport" == inst.get_resource_type()
 
     impl_measurereport_3(inst)
@@ -630,7 +628,7 @@ def test_measurereport_4(base_settings):
     Test File: measurereport-hiv-indicators.json
     """
     filename = base_settings["unittest_data_dir"] / "measurereport-hiv-indicators.json"
-    inst = measurereport.MeasureReport.model_validate_json(Path(filename).read_bytes())
+    inst = measurereport.MeasureReport.model_validate_json(filename.read_bytes())
     assert "MeasureReport" == inst.get_resource_type()
 
     impl_measurereport_4(inst)
@@ -858,7 +856,7 @@ def test_measurereport_5(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "measurereport-cms146-cat3-example.json"
     )
-    inst = measurereport.MeasureReport.model_validate_json(Path(filename).read_bytes())
+    inst = measurereport.MeasureReport.model_validate_json(filename.read_bytes())
     assert "MeasureReport" == inst.get_resource_type()
 
     impl_measurereport_5(inst)

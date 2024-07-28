@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import operationoutcome
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -41,9 +39,7 @@ def test_operationoutcome_1(base_settings):
         base_settings["unittest_data_dir"]
         / "operationoutcome-example-validationfail.json"
     )
-    inst = operationoutcome.OperationOutcome.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = operationoutcome.OperationOutcome.model_validate_json(filename.read_bytes())
     assert "OperationOutcome" == inst.get_resource_type()
 
     impl_operationoutcome_1(inst)
@@ -90,9 +86,7 @@ def test_operationoutcome_2(base_settings):
         base_settings["unittest_data_dir"]
         / "operationoutcome-example-break-the-glass.json"
     )
-    inst = operationoutcome.OperationOutcome.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = operationoutcome.OperationOutcome.model_validate_json(filename.read_bytes())
     assert "OperationOutcome" == inst.get_resource_type()
 
     impl_operationoutcome_2(inst)
@@ -132,9 +126,7 @@ def test_operationoutcome_3(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "operationoutcome-example-searchfail.json"
     )
-    inst = operationoutcome.OperationOutcome.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = operationoutcome.OperationOutcome.model_validate_json(filename.read_bytes())
     assert "OperationOutcome" == inst.get_resource_type()
 
     impl_operationoutcome_3(inst)
@@ -170,9 +162,7 @@ def test_operationoutcome_4(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "operationoutcome-example-exception.json"
     )
-    inst = operationoutcome.OperationOutcome.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = operationoutcome.OperationOutcome.model_validate_json(filename.read_bytes())
     assert "OperationOutcome" == inst.get_resource_type()
 
     impl_operationoutcome_4(inst)
@@ -215,9 +205,7 @@ def test_operationoutcome_5(base_settings):
     Test File: operationoutcome-example.json
     """
     filename = base_settings["unittest_data_dir"] / "operationoutcome-example.json"
-    inst = operationoutcome.OperationOutcome.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = operationoutcome.OperationOutcome.model_validate_json(filename.read_bytes())
     assert "OperationOutcome" == inst.get_resource_type()
 
     impl_operationoutcome_5(inst)
@@ -253,9 +241,7 @@ def test_operationoutcome_6(base_settings):
     filename = (
         base_settings["unittest_data_dir"] / "operationoutcome-example-allok.json"
     )
-    inst = operationoutcome.OperationOutcome.model_validate_json(
-        Path(filename).read_bytes()
-    )
+    inst = operationoutcome.OperationOutcome.model_validate_json(filename.read_bytes())
     assert "OperationOutcome" == inst.get_resource_type()
 
     impl_operationoutcome_6(inst)

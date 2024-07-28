@@ -6,8 +6,6 @@ Version: 5.0.0
 Build ID: 2aecd53
 Last updated: 2023-03-26T15:21:02.749+11:00
 """
-from pathlib import Path
-
 from .. import medication
 from .fixtures import ExternalValidatorModel, bytes_validator  # noqa: F401
 
@@ -70,7 +68,7 @@ def test_medication_1(base_settings):
     Test File: medicationexample0307.json
     """
     filename = base_settings["unittest_data_dir"] / "medicationexample0307.json"
-    inst = medication.Medication.model_validate_json(Path(filename).read_bytes())
+    inst = medication.Medication.model_validate_json(filename.read_bytes())
     assert "Medication" == inst.get_resource_type()
 
     impl_medication_1(inst)
@@ -129,7 +127,7 @@ def test_medication_2(base_settings):
     Test File: medicationexample0311.json
     """
     filename = base_settings["unittest_data_dir"] / "medicationexample0311.json"
-    inst = medication.Medication.model_validate_json(Path(filename).read_bytes())
+    inst = medication.Medication.model_validate_json(filename.read_bytes())
     assert "Medication" == inst.get_resource_type()
 
     impl_medication_2(inst)
@@ -188,7 +186,7 @@ def test_medication_3(base_settings):
     Test File: medicationexample0310.json
     """
     filename = base_settings["unittest_data_dir"] / "medicationexample0310.json"
-    inst = medication.Medication.model_validate_json(Path(filename).read_bytes())
+    inst = medication.Medication.model_validate_json(filename.read_bytes())
     assert "Medication" == inst.get_resource_type()
 
     impl_medication_3(inst)
@@ -240,7 +238,7 @@ def test_medication_4(base_settings):
     Test File: medicationexample0306.json
     """
     filename = base_settings["unittest_data_dir"] / "medicationexample0306.json"
-    inst = medication.Medication.model_validate_json(Path(filename).read_bytes())
+    inst = medication.Medication.model_validate_json(filename.read_bytes())
     assert "Medication" == inst.get_resource_type()
 
     impl_medication_4(inst)
@@ -318,7 +316,7 @@ def test_medication_5(base_settings):
     Test File: medicationexample0301.json
     """
     filename = base_settings["unittest_data_dir"] / "medicationexample0301.json"
-    inst = medication.Medication.model_validate_json(Path(filename).read_bytes())
+    inst = medication.Medication.model_validate_json(filename.read_bytes())
     assert "Medication" == inst.get_resource_type()
 
     impl_medication_5(inst)
@@ -399,7 +397,7 @@ def test_medication_6(base_settings):
     Test File: medicationexample0317.json
     """
     filename = base_settings["unittest_data_dir"] / "medicationexample0317.json"
-    inst = medication.Medication.model_validate_json(Path(filename).read_bytes())
+    inst = medication.Medication.model_validate_json(filename.read_bytes())
     assert "Medication" == inst.get_resource_type()
 
     impl_medication_6(inst)
@@ -435,7 +433,7 @@ def test_medication_7(base_settings):
     Test File: medicationexample1.json
     """
     filename = base_settings["unittest_data_dir"] / "medicationexample1.json"
-    inst = medication.Medication.model_validate_json(Path(filename).read_bytes())
+    inst = medication.Medication.model_validate_json(filename.read_bytes())
     assert "Medication" == inst.get_resource_type()
 
     impl_medication_7(inst)
@@ -503,7 +501,7 @@ def test_medication_8(base_settings):
     Test File: medicationexample15.json
     """
     filename = base_settings["unittest_data_dir"] / "medicationexample15.json"
-    inst = medication.Medication.model_validate_json(Path(filename).read_bytes())
+    inst = medication.Medication.model_validate_json(filename.read_bytes())
     assert "Medication" == inst.get_resource_type()
 
     impl_medication_8(inst)
@@ -561,7 +559,7 @@ def test_medication_9(base_settings):
     Test File: medicationexample0321.json
     """
     filename = base_settings["unittest_data_dir"] / "medicationexample0321.json"
-    inst = medication.Medication.model_validate_json(Path(filename).read_bytes())
+    inst = medication.Medication.model_validate_json(filename.read_bytes())
     assert "Medication" == inst.get_resource_type()
 
     impl_medication_9(inst)
@@ -620,7 +618,7 @@ def test_medication_10(base_settings):
     Test File: medicationexample0320.json
     """
     filename = base_settings["unittest_data_dir"] / "medicationexample0320.json"
-    inst = medication.Medication.model_validate_json(Path(filename).read_bytes())
+    inst = medication.Medication.model_validate_json(filename.read_bytes())
     assert "Medication" == inst.get_resource_type()
 
     impl_medication_10(inst)
